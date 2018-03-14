@@ -7,6 +7,7 @@ import Base from '../__examples__/base';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
 import BaseMenuSeparator from '../__examples__/base-menu-separator';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
+import RequiredInputErrorState from '../__examples__/required-input-error-state';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
 import InlineMultiple from '../__examples__/inline-multiple';
@@ -30,6 +31,7 @@ import SnapshotReadonlyMultipleSelection from '../__examples__/snapshot/readonly
 import SnapshotReadonlyMultipleSelectionSingleItemSelected from '../__examples__/snapshot/readonly-multiple-selection-single-item-selected';
 import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__examples__/snapshot/readonly-multiple-selection-multiple-items-selected';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
+import SnapshotBaseLabelRequired from '../__examples__/snapshot/base-label-required';
 
 storiesOf(COMBOBOX, module)
 	.addDecorator((getStory) => (
@@ -54,11 +56,17 @@ storiesOf(COMBOBOX, module)
 	.add('Readonly Single Selection Custom Menu Item', () => (
 		<ReadOnlySingleSelectionCustomMenuItem action={action} />
 	))
+	.add('Required Input in Error State', () => (
+		<RequiredInputErrorState action={action} />
+	))
 	.add('Snapshot Base Open', () => <SnapshotBaseOpen action={action} />)
 	.add('Snapshot Base Custom Menu Item Open', () => (
 		<SnapshotBaseCustomMenuItemOpen action={action} />
 	))
 	.add('Snapshot Base Selected', () => <SnapshotBaseSelected action={action} />)
+	.add('Snapshot Base Label Required', () => (
+		<SnapshotBaseLabelRequired action={action} />
+	))
 	.add('Snapshot Base Open Menu Sub Header Separator', () => (
 		<SnapshotBaseOpenMenuSubHeaderSeparator action={action} />
 	))

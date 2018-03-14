@@ -211,7 +211,7 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open, ', function () {
+		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', function () {
 			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
 			expect(nodes.combobox.node.getAttribute('aria-haspopup')).to.equal(

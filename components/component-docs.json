@@ -2165,6 +2165,13 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getId",
                 "docblock": "Shared class property getter methods",
                 "modifiers": [],
@@ -2565,6 +2572,13 @@
                     "computed": false
                 }
             },
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.\nThis is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._"
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -2689,6 +2703,13 @@
                     "value": "{}",
                     "computed": false
                 }
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
             },
             "hasStaticAlignment": {
                 "type": {
@@ -2873,6 +2894,17 @@
                 },
                 "required": false,
                 "description": "Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._"
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies label styling for a required form element. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "selection": {
                 "type": {

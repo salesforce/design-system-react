@@ -8,6 +8,7 @@ import SnapshotBaseOpenMenuSubHeader from '../__examples__/snapshot/base-open-me
 import SnapshotBaseOpenMenuInheritWidthOf from '../__examples__/snapshot/base-open-menu-inheritWidthOf';
 import SnapshotBaseOpenClassName from '../__examples__/snapshot/base-open-class-name';
 import SnapshotBaseSelected from '../__examples__/snapshot/base-selected';
+import SnapshotBaseLabelRequired from '../__examples__/snapshot/base-label-required';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
 import SnapshotInlineSingleSelectionSelected from '../__examples__/snapshot/inline-single-selection-selected';
 import SnapshotInlineMultipleSelection from '../__examples__/snapshot/inline-multiple-selection';
@@ -38,6 +39,12 @@ testDOMandHTML({
 	name: 'Base Open Custom Class Name',
 	test,
 	Component: SnapshotBaseOpenClassName,
+});
+
+testDOMandHTML({
+	name: 'Base Label Required',
+	test,
+	Component: SnapshotBaseLabelRequired,
 });
 
 testDOMandHTML({

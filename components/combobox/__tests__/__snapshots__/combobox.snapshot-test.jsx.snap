@@ -56,7 +56,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -360,6 +360,117 @@ exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
 </div>"
 `;
 
+exports[`Base Label Required DOM Snapshot 1`] = `
+<div
+  className="slds-form-element"
+>
+  <label
+    className="slds-form-element__label"
+    htmlFor="combobox-unique-id"
+  >
+    <abbr
+      className="slds-required"
+      title="required"
+    >
+      *
+    </abbr>
+    Search
+  </label>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-combobox_container"
+    >
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="combobox-unique-id-listbox"
+        className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
+        role="combobox"
+      >
+        <div
+          className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+          role="none"
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls="combobox-unique-id-listbox"
+            aria-describedby="description-unique-id"
+            aria-expanded={undefined}
+            aria-labelledby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            autoComplete="off"
+            className="slds-input slds-combobox__input"
+            disabled={undefined}
+            id="combobox-unique-id"
+            maxLength={undefined}
+            minLength={undefined}
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={undefined}
+            onInvalid={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onSelect={undefined}
+            onSubmit={undefined}
+            placeholder="Search Salesforce"
+            readOnly={false}
+            required={true}
+            role="textbox"
+            style={undefined}
+            tabIndex={undefined}
+            type="text"
+            value=""
+          />
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default"
+            title={undefined}
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-has-error"
+    >
+      <div
+        className="slds-form-element__help slds-has-error"
+        id="description-unique-id"
+      >
+        This field is required
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Base Label Required HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\"><abbr class=\\"slds-required\\" title=\\"required\\">*</abbr>Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" aria-describedby=\\"description-unique-id\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\"
+            required=\\"\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\" class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+      </div>
+    </div>
+    <div class=\\"slds-has-error\\">
+      <div id=\\"description-unique-id\\" class=\\"slds-form-element__help slds-has-error\\">This field is required</div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
 <div
   className="slds-form-element this-is-the-container"
@@ -410,7 +521,7 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -636,7 +747,7 @@ exports[`Base Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -850,7 +961,7 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1006,7 +1117,7 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1157,7 +1268,7 @@ exports[`Base Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1338,7 +1449,7 @@ exports[`Inline Multiple Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1579,7 +1690,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1682,7 +1793,7 @@ exports[`Inline Single Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1791,7 +1902,7 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1913,7 +2024,7 @@ exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2011,7 +2122,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2219,7 +2330,7 @@ exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2317,7 +2428,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select company"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -3091,7 +3202,7 @@ exports[`Readonly Single Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -3189,7 +3300,7 @@ exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -3287,7 +3398,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
