@@ -18,6 +18,10 @@ const propTypes = {
 	 */
 	checked: PropTypes.bool,
 	/**
+	 * This is a uncontrolled component, and this will be the initial checked status.
+	 */
+	defaultChecked: PropTypes.bool,
+	/**
 	 * Disable this radio input.
 	 */
 	disabled: PropTypes.bool,
@@ -79,7 +83,8 @@ class Radio extends React.Component {
 					id={this.getId()}
 					name={this.props.name}
 					value={this.props.value}
-					checked={!this.props.disabled && this.props.checked}
+					checked={this.props.checked}
+					defaultChecked={this.props.defaultChecked}
 					onChange={this.props.onChange}
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}

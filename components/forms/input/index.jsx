@@ -247,6 +247,10 @@ const Input = createReactClass({
 		 */
 		value: PropTypes.string,
 		/**
+		 * The input is a uncontrolled component, and this will be the initial value.
+		 */
+		defaultValue: PropTypes.string,
+		/**
 		 * ARIA role
 		 */
 		role: PropTypes.string,
@@ -391,6 +395,7 @@ const Input = createReactClass({
 					}
 					type={this.props.type}
 					value={this.props.value}
+					defaultValue={this.props.defaultValue}
 				/>
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">

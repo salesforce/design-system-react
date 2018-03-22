@@ -193,6 +193,10 @@ const Textarea = createReactClass({
 		 */
 		value: PropTypes.string,
 		/**
+		 * The textarea is a uncontrolled component, and this will be the initial value.
+		 */
+		defaultValue: PropTypes.string,
+		/**
 		 * Specifies how the text in a text area is to be wrapped when submitted in a form.
 		 */
 		wrap: PropTypes.oneOf(['soft', 'hard']),
@@ -245,6 +249,7 @@ const Textarea = createReactClass({
 			required,
 			role,
 			value,
+			defaultValue,
 			wrap,
 
 			// ### Additional properties
@@ -311,6 +316,7 @@ const Textarea = createReactClass({
 						required={required}
 						wrap={wrap}
 						value={value}
+						defaultValue={defaultValue}
 					/>
 				</div>
 				{errorText && (

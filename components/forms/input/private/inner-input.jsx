@@ -170,6 +170,10 @@ const propTypes = {
 	 * The input is a controlled component, and will always display this value.
 	 */
 	value: PropTypes.string,
+	/**
+	 * The input is a uncontrolled component, and this will be the initial value.
+	 */
+	defaultValue: PropTypes.string,
 };
 
 const defaultProps = {
@@ -245,6 +249,7 @@ const InnerInput = (props) => {
 					tabIndex={props.tabIndex}
 					type={props.type}
 					value={props.value}
+					defaultValue={props.defaultValue}
 				/>
 			)}
 

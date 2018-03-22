@@ -69,6 +69,10 @@ const Checkbox = createReactClass({
 		 */
 		checked: PropTypes.bool,
 		/**
+		 * This is a uncontrolled component, and this will be the initial checked status.
+		 */
+		defaultChecked: PropTypes.bool,
+		/**
 		 * Class names to be added to the outer container of the Checkbox.
 		 */
 		className: PropTypes.oneOfType([
@@ -199,6 +203,7 @@ const Checkbox = createReactClass({
 					aria-required={this.props['aria-required']}
 					disabled={props.disabled}
 					checked={props.checked}
+					defaultChecked={props.defaultChecked}
 					id={this.getId()}
 					name={props.name}
 					onBlur={props.onBlur}
@@ -250,6 +255,7 @@ const Checkbox = createReactClass({
 							aria-required={this.props['aria-required']}
 							disabled={props.disabled}
 							checked={props.checked}
+							defaultChecked={props.defaultChecked}
 							id={this.getId()}
 							name={props.name}
 							onBlur={props.onBlur}
@@ -325,6 +331,7 @@ const Checkbox = createReactClass({
 						disabled={props.disabled}
 						id={this.getId()}
 						checked={props.checked}
+						defaultChecked={props.defaultChecked}
 						name={props.name}
 						onBlur={props.onBlur}
 						onChange={this.handleChange}
