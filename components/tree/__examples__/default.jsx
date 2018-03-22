@@ -397,7 +397,6 @@ const Example = createReactClass({
 	getDefaultProps () {
 		return {
 			exampleNodesIndex: 'sampleNodesDefault',
-			id: 'example-tree',
 		};
 	},
 
@@ -465,6 +464,7 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<Tree
+						id="example-tree"
 						heading="Miscellaneous Foods"
 						nodes={this.state.nodes}
 						onExpandClick={this.handleExpandClick}
