@@ -124,6 +124,11 @@ const MenuPicklist = createReactClass({
 		 * Current selected item.
 		 */
 		value: PropTypes.node,
+		/**
+		 * Current selected item index.
+		 */
+		valueIndex: PropTypes.number,
+
 	},
 
 	mixins: [KeyboardNavigable],
@@ -142,8 +147,8 @@ const MenuPicklist = createReactClass({
 
 	getInitialState () {
 		return {
-			focusedIndex: -1,
-			selectedIndex: -1,
+			focusedIndex: valueIndex,
+			selectedIndex: valueIndex,
 			selectedIndices: [],
 			currentPillLabel: '',
 		};
