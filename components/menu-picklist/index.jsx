@@ -147,8 +147,8 @@ const MenuPicklist = createReactClass({
 
 	getInitialState () {
 		return {
-			focusedIndex: valueIndex,
-			selectedIndex: valueIndex,
+			focusedIndex: this.props.valueIndex,
+			selectedIndex: this.props.valueIndex,
 			selectedIndices: [],
 			currentPillLabel: '',
 		};
