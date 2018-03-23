@@ -52,7 +52,7 @@ const DatepickerYearSelector = createReactClass({
 		const selectedYear = this.props.initialDateForCalendarRender.getFullYear();
 		const fromYear = now.getFullYear() + this.props.relativeYearFrom;
 		return selectYear - fromYear;
-	}
+	},
 
 	handleSelect (selectedValue) {
 		if (selectedValue) {
