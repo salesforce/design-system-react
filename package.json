@@ -370,7 +370,7 @@
 			"SLDS-component-path": "/components/filter"
 		},
 		{
-			"component": "forms/input/inline",
+			"component": "forms/input",
 			"status": "prod",
 			"display-name": "Inline Edit Inputs",
 			"last-accessibility-review": {
