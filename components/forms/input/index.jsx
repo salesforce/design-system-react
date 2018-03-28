@@ -176,7 +176,7 @@ const Input = createReactClass({
 		 */
 		onInput: PropTypes.func,
 		/**
-		 * Triggered when a submittable <input> element is invalid.
+		 * Triggered when a submittable `<input>` element is invalid.
 		 */
 		onInvalid: PropTypes.func,
 		/**
@@ -204,11 +204,11 @@ const Input = createReactClass({
 		 */
 		placeholder: PropTypes.string,
 		/**
-		 * Sets the minimum number of characters that an <input> can accept.
+		 * Sets the minimum number of characters that an `<input>` can accept.
 		 */
 		minLength: PropTypes.string,
 		/**
-		 * Sets the maximum number of characters that an <input> can accept.
+		 * Sets the maximum number of characters that an `<input>` can accept.
 		 */
 		maxLength: PropTypes.string,
 		/**
