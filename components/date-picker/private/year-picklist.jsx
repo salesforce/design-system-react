@@ -81,7 +81,7 @@ const DatepickerYearSelector = createReactClass({
 					options={this.getOptions()}
 					placeholder="Year"
 					value={this.props.initialDateForCalendarRender.getFullYear()}
-					valueIndex={this.getSelectedValueIndex()}
+					initValueIndex={this.getSelectedValueIndex()}
 				/>
 			</div>
 		);
