@@ -170,6 +170,14 @@ const propTypes = {
 	 * The input is a controlled component, and will always display this value.
 	 */
 	value: PropTypes.string,
+	/**
+	 * This is the initial value of an uncontrolled form element and is present only to provide
+	 * compatibility with hybrid framework applications that are not entirely React. It should only
+	 * be used in an application without centralized state (Redux, Flux). "Controlled components"
+	 * with centralized state is highly recommended.
+	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+	 */
+	defaultValue: PropTypes.string,
 };
 
 const defaultProps = {
@@ -245,6 +253,7 @@ const InnerInput = (props) => {
 					tabIndex={props.tabIndex}
 					type={props.type}
 					value={props.value}
+					defaultValue={props.defaultValue}
 				/>
 			)}
 
