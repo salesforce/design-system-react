@@ -18,7 +18,10 @@ const propTypes = {
 	 */
 	checked: PropTypes.bool,
 	/**
-	 * This is a uncontrolled component, and this will be the initial checked status.
+	 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
+	 * with hybrid framework applications that are not entirely React. It should only be used in an application
+	 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
+	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 	 */
 	defaultChecked: PropTypes.bool,
 	/**
