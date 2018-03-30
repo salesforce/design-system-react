@@ -15,10 +15,11 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It has been tested with React >=15.4.1 <16 and is stable despite its version number. Please polyfill this library in order to meet your target environment needs.
 
 * [Usage](#usage)
-* [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
+* [Getting started](https://react.lightningdesignsystem.com/getting-started/)
 * [Documentation and interactive examples](https://react.lightningdesignsystem.com)
 * [Contributing](CONTRIBUTING.md)
-* [Codebase Overview](docs/codebase-overview.md)
+* [Codebase overview](docs/codebase-overview.md)
+* [Browser compatiblity and polyfills](docs/browser-compatibility.md)
 * [Usage with Webpack](docs/webpack.md)
 
 ## Usage
