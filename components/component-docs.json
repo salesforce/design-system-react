@@ -1973,6 +1973,13 @@
                 "required": false,
                 "description": "The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used."
             },
+            "defaultChecked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility with\nhybrid framework applications that are not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -4181,240 +4188,6 @@
         "SLDS-component-path": "/components/filter",
         "dependencies": []
     },
-    "input/inline": {
-        "description": "An inline input is rendered as a label by default. When clicked (or tabbed in), it's rendered as an input. When the focus is lost, the current input value is saved and the input is rendered as a label again.",
-        "methods": [
-            {
-                "name": "endEditMode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "option",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyUp",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "saveEdits",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "option",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "triggerEditMode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the outer container of the input."
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the submitted form parameter."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the Inline Edit component and prevents editing the contents."
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": true,
-                "description": "Every Inline Edit component must have a unique ID in order to support keyboard navigation and ARIA support."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the input changes."
-            },
-            "onKeyUp": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function will run when keyup during text edit"
-            },
-            "onEnterEditMode": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function will run when we enter edit mode"
-            },
-            "onLeaveEditMode": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function will run when we leave edit mode"
-            },
-            "type": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'text'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'password'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'datetime'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'datetime-local'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'date'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'month'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'time'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'week'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'number'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'email'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'url'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'search'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'tel'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'color'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Typically an Inline Edit component will be of the type text, but like the Input element it includes support for all HTML5 types.",
-                "defaultValue": {
-                    "value": "'text'",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "string"
-                },
-                "required": true,
-                "description": "Inline Edit is a controlled component, and will always display this value."
-            },
-            "assistiveText": {
-                "defaultValue": {
-                    "value": "'Edit text'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "inline-edit-inputs",
-        "display-name": "Inline Edit Inputs",
-        "SLDS-component-path": "/components/forms#flavor-input",
-        "dependencies": []
-    },
     "input": {
         "description": "The HTML `input` with a label and error messaging.",
         "methods": [
@@ -4702,7 +4475,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when a submittable <input> element is invalid."
+                "description": "Triggered when a submittable `<input>` element is invalid."
             },
             "onKeyDown": {
                 "type": {
@@ -4751,14 +4524,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Sets the minimum number of characters that an <input> can accept."
+                "description": "Sets the minimum number of characters that an `<input>` can accept."
             },
             "maxLength": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Sets the maximum number of characters that an <input> can accept."
+                "description": "Sets the maximum number of characters that an `<input>` can accept."
             },
             "name": {
                 "type": {
@@ -4856,6 +4629,13 @@
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "role": {
                 "type": {
@@ -5155,6 +4935,13 @@
                 },
                 "required": false,
                 "description": "The textarea is a controlled component, and will always display this value."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The textarea is a uncontrolled component, and this will be the initial value."
             },
             "wrap": {
                 "type": {
@@ -9605,6 +9392,13 @@
                 },
                 "required": false,
                 "description": "This is a controlled component. This radio is checked according to this value."
+            },
+            "defaultChecked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
