@@ -42,6 +42,7 @@ export Accordion from '../components/accordion/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
+// export Slider from '../components/slider/__docs__/storybook-stories';
 // export SplitView from '../components/split-view/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';
 // export Toast from '../components/toast/__docs__/storybook-stories';
