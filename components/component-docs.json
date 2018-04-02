@@ -1973,6 +1973,13 @@
                 "required": false,
                 "description": "The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used."
             },
+            "defaultChecked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility with\nhybrid framework applications that are not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -4623,6 +4630,13 @@
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
             },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
             "role": {
                 "type": {
                     "name": "string"
@@ -4921,6 +4935,13 @@
                 },
                 "required": false,
                 "description": "The textarea is a controlled component, and will always display this value."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The textarea is a uncontrolled component, and this will be the initial value."
             },
             "wrap": {
                 "type": {
@@ -9371,6 +9392,13 @@
                 },
                 "required": false,
                 "description": "This is a controlled component. This radio is checked according to this value."
+            },
+            "defaultChecked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {

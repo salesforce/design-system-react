@@ -19,6 +19,7 @@ exports[`Radio Group Base DOM Snapshot 1`] = `
         <input
           aria-describedby={undefined}
           checked={false}
+          defaultChecked={undefined}
           disabled={undefined}
           id="Radio Label One"
           name="radioGroup"
@@ -46,6 +47,7 @@ exports[`Radio Group Base DOM Snapshot 1`] = `
         <input
           aria-describedby={undefined}
           checked={false}
+          defaultChecked={undefined}
           disabled={undefined}
           id="Radio Label Two"
           name="radioGroup"
@@ -103,6 +105,7 @@ exports[`Radio Group Disabled DOM Snapshot 1`] = `
         <input
           aria-describedby={undefined}
           checked={false}
+          defaultChecked={undefined}
           disabled={true}
           id="Radio Label One"
           name="radioGroup"
@@ -130,6 +133,7 @@ exports[`Radio Group Disabled DOM Snapshot 1`] = `
         <input
           aria-describedby={undefined}
           checked={false}
+          defaultChecked={undefined}
           disabled={true}
           id="Radio Label Two"
           name="radioGroup"
@@ -175,6 +179,7 @@ exports[`Radio Group Error DOM Snapshot 1`] = `
         <input
           aria-describedby="radioGroupError"
           checked={false}
+          defaultChecked={undefined}
           disabled={undefined}
           id="Radio Label One"
           name="radioGroup"
@@ -202,6 +207,7 @@ exports[`Radio Group Error DOM Snapshot 1`] = `
         <input
           aria-describedby="radioGroupError"
           checked={false}
+          defaultChecked={undefined}
           disabled={undefined}
           id="Radio Label Two"
           name="radioGroup"
@@ -259,6 +265,7 @@ exports[`Radio Group Required DOM Snapshot 1`] = `
         <input
           aria-describedby={undefined}
           checked={false}
+          defaultChecked={undefined}
           disabled={undefined}
           id="Radio Label One"
           name="radioGroup"
@@ -286,6 +293,7 @@ exports[`Radio Group Required DOM Snapshot 1`] = `
         <input
           aria-describedby={undefined}
           checked={false}
+          defaultChecked={undefined}
           disabled={undefined}
           id="Radio Label Two"
           name="radioGroup"
