@@ -323,7 +323,7 @@ const Dialog = createReactClass({
 			applyStyle: { enabled: false },
 			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
 			preventOverflow: {
-				enabled: true,
+				enabled: !this.props.hasStaticAlignment,
 				boundariesElement:
 					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
