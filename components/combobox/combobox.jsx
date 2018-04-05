@@ -121,7 +121,7 @@ const propTypes = {
 	 */
 	errorText: PropTypes.string,
 	/**
-	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
+	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
 	/**
