@@ -39,10 +39,7 @@ describe('SLDSSlider', () => {
 	const renderSlider = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(
-			instance,
-			body
-		);
+		return ReactDOM.render(instance, body);
 	};
 
 	function removeSlider () {
@@ -123,14 +120,20 @@ describe('SLDSSlider', () => {
 			component = getSlider({
 				label: 'Slider Label',
 				id: 'custom-id',
-				value: 200,
+				defaultValue: 200,
 				min: 0,
 				max: 400,
-				step: 100
+				step: 100,
 			});
 			slider = findRenderedDOMComponentWithTag(component, 'input');
-			labelRange = findRenderedDOMComponentWithClass(component, 'slds-slider-label__range');
-			sliderValue = findRenderedDOMComponentWithClass(component, 'slds-slider__value');
+			labelRange = findRenderedDOMComponentWithClass(
+				component,
+				'slds-slider-label__range'
+			);
+			sliderValue = findRenderedDOMComponentWithClass(
+				component,
+				'slds-slider__value'
+			);
 		});
 
 		afterEach(() => {
@@ -177,11 +180,11 @@ describe('SLDSSlider', () => {
 		it('onChange trigged callback', function (done) {
 			wrapper = mount(
 				<Slider
-					value={200}
+					defaultValue={200}
 					min={0}
 					max={400}
 					step={100}
-					onChange={(value, e) => {
+					onChange={(e, value) => {
 						expect(value).to.equal('300');
 						done();
 					}}
@@ -196,11 +199,11 @@ describe('SLDSSlider', () => {
 		it('onInput trigged callback', function (done) {
 			wrapper = mount(
 				<Slider
-					value={200}
+					defaultValue={200}
 					min={0}
 					max={400}
 					step={100}
-					onInput={(value, e) => {
+					onInput={(e, value) => {
 						expect(value).to.equal('300');
 						done();
 					}}
@@ -213,7 +216,7 @@ describe('SLDSSlider', () => {
 		});
 	});
 
-	describe('Slider without Assistive Text Label', () => {
+	describe('Slider with Assistive Text Label', () => {
 		let component;
 		let slider;
 		let label;
@@ -265,7 +268,7 @@ describe('SLDSSlider', () => {
 		});
 
 		it('slider has attribute "disabled"', () => {
-			expect(slider.getAttribute('disabled')).to.equal('');
+			expect(slider.getAttribute('disabled')).to.exist;
 		});
 	});
 
@@ -277,7 +280,7 @@ describe('SLDSSlider', () => {
 			component = getSlider({
 				id: 'custom-id',
 				label: 'Slider Label',
-				size: 'medium'
+				size: 'medium',
 			});
 			container = findRenderedDOMComponentWithClass(component, 'slds-slider');
 		});
@@ -309,7 +312,9 @@ describe('SLDSSlider', () => {
 		});
 
 		it('each slider has unique generated id', () => {
-			expect(slider1.getAttribute('id')).to.not.equal(slider2.getAttribute('id'));
+			expect(slider1.getAttribute('id')).to.not.equal(
+				slider2.getAttribute('id')
+			);
 		});
 	});
 

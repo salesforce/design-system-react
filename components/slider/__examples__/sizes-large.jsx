@@ -6,14 +6,8 @@ const Example = createReactClass({
 	displayName: 'SliderExample',
 
 	render () {
-		return (
-      <Slider
-        id="large-id"
-        label="Slider Label"
-        size="large"
-      />
-		);
-	}
+		return <Slider id="large-id" label="Slider Label" size="large" />;
+	},
 });
 
 export default Example;

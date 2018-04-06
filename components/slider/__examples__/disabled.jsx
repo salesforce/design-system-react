@@ -6,14 +6,8 @@ const Example = createReactClass({
 	displayName: 'SliderExample',
 
 	render () {
-		return (
-      <Slider
-        id="disabled-id"
-        label="Slider Label"
-        disabled={true}
-      />
-		);
-	}
+		return <Slider id="disabled-id" label="Slider Label" disabled />;
+	},
 });
 
 export default Example;

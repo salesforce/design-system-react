@@ -6,14 +6,8 @@ const Example = createReactClass({
 	displayName: 'SliderExample',
 
 	render () {
-		return (
-      <Slider
-        id="vertical-id"
-        label="Slider Label"
-        vertical={true}
-      />
-		);
-	}
+		return <Slider id="vertical-id" label="Slider Label" vertical />;
+	},
 });
 
 export default Example;

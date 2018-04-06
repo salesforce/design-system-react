@@ -7,13 +7,13 @@ const Example = createReactClass({
 
 	render () {
 		return (
-      <Slider
-        id="error-id"
-        label="Slider Label"
-        errorText="There is a problem with this field"
-      />
+			<Slider
+				id="error-id"
+				label="Slider Label"
+				errorText="There is a problem with this field"
+			/>
 		);
-	}
+	},
 });
 
 export default Example;

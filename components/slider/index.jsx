@@ -24,66 +24,60 @@ import { SLIDER } from '../../utilities/constants';
 
 const propTypes = {
 	/**
-	 * Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions.
+	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
 	 */
-	id: PropTypes.string,
+	'aria-describedby': PropTypes.string,
 	/**
-	 * Name of the submitted form parameter.
+	 * Assistive text for accessibility**
+	 * `label`: Visually hidden label but read out loud by screen readers.
+	 *
 	 */
-	name: PropTypes.string,
-	/**
-	 * This label appears above the Slider.
-	 */
-	label: PropTypes.string,
-	/**
-	 * The Slider is a controlled component, and will always display this value.
-	 */
-	value: PropTypes.number,
-	/**
-	 * Minimum value of a specified range.
-	 */
-	min: PropTypes.number,
-	/**
-	 * Maximum value of a specified range.
-	 */
-	max: PropTypes.number,
-	/**
-	 * Indicates the granularity that is expected by limiting the allowed values.
-	 */
-	step: PropTypes.number,
-	/**
-	 * Disables the Slider and prevents clicking it.
-	 */
-	disabled: PropTypes.bool,
-	/**
-	 * Size of the slider.
-	 */
-	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	/**
-	 * Modifier that makes the slider vertical
-	 */
-	vertical: PropTypes.bool,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Class names to be added to the outer container of the Slider.
 	 */
-	className: PropTypes.oneOfType([
+	classNameContainer: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
 	/**
+	 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
+	 * with hybrid framework applications that are not entirely React. It should only be used in an application
+	 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
+	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+	 */
+	defaultValue: PropTypes.number,
+	/**
+	 * Disables the Slider and prevents clicking it. Only available on the horizontal view.
+	 */
+	disabled: PropTypes.bool,
+	/**
 	 * Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error.
 	 */
 	errorText: PropTypes.string,
 	/**
-	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
+	 * Set the HTML `id` of the slider.
 	 */
-	'aria-describedby': PropTypes.string,
+	id: PropTypes.string,
 	/**
-	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the Slider is for.
-	 * If the Slider has a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+	 * This label appears above the Slider.
 	 */
-	assistiveText: PropTypes.object,
+	label: PropTypes.string,
+	/**
+	 * Maximum value of a specified range. Defaults to 100.
+	 */
+	max: PropTypes.number,
+	/**
+	 * Minimum value of a specified range. Defaults to 0.
+	 */
+	min: PropTypes.number,
+	/**
+	 * Name of the submitted form parameter.
+	 */
+	name: PropTypes.string,
 	/**
 	 * This event fires whenever the user has modified the data of the control.
 	 */
@@ -91,14 +85,30 @@ const propTypes = {
 	/**
 	 * This event fires when the value is committed.
 	 */
-	onInput: PropTypes.func
+	onInput: PropTypes.func,
+	/**
+	 * Size of the slider.
+	 */
+	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	/**
+	 * By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01
+	 */
+	step: PropTypes.number,
+	/**
+	 * The Slider is a controlled component, and will always display this value.
+	 */
+	value: PropTypes.number,
+	/**
+	 * Modifier that makes the slider vertical
+	 */
+	vertical: PropTypes.bool,
 };
 
 const defaultProps = {
-	value: 0,
+	defaultValue: 0,
 	min: 0,
 	max: 100,
-	step: 1
+	step: 1,
 };
 
 /**
@@ -109,7 +119,6 @@ class Slider extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 
-
 	constructor (props) {
 		super(props);
 
@@ -118,10 +127,6 @@ class Slider extends React.Component {
 		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
-
-		this.state = {
-			value: props.value
-		};
 	}
 
 	getId () {
@@ -133,32 +138,36 @@ class Slider extends React.Component {
 	}
 
 	handleChange = (event) => {
-		this.setState(({ value: event.target.value }));
-
 		if (isFunction(this.props.onChange)) {
-			this.props.onChange(event.target.value, event);
+			this.props.onChange(event, { value: event.target.value });
 		}
-	}
+	};
 
 	handleInput = (event) => {
 		if (isFunction(this.props.onInput)) {
-			this.props.onInput(event.target.value, event);
+			this.props.onInput(event, { value: event.target.value });
 		}
-	}
+	};
 
 	render () {
 		const labelText =
-			this.props.label || (this.props.assistiveText && this.props.assistiveText.label);
+			this.props.label ||
+			(this.props.assistiveText && this.props.assistiveText.label);
 
 		return (
-			<div className={classNames('slds-form-element', {
-				'slds-has-error': this.props.errorText,
-			},
-			this.props.className
-			)}>
+			<div
+				className={classNames(
+					'slds-form-element',
+					{
+						'slds-has-error': this.props.errorText,
+					},
+					this.props.classNameContainer
+				)}
+			>
 				<label
 					className={classNames('slds-form-element__label', {
-						'slds-assistive-text': this.props.assistiveText && !this.props.label
+						'slds-assistive-text':
+							this.props.assistiveText && !this.props.label,
 					})}
 					htmlFor={this.getId()}
 				>
@@ -166,23 +175,27 @@ class Slider extends React.Component {
 						{labelText ? (
 							<span className="slds-slider-label__label">{labelText}</span>
 						) : null}
-						<span className="slds-slider-label__range">{this.props.min} - {this.props.max}</span>
+						<span className="slds-slider-label__range">
+							{this.props.min} - {this.props.max}
+						</span>
 					</span>
 				</label>
 				<div className="slds-form-element__control">
-					<div className={classNames('slds-slider', {
-						'slds-slider_vertical': this.props.vertical,
-						'slds-size_x-small': this.props.size === 'x-small',
-						'slds-size_small': this.props.size === 'small',
-						'slds-size_medium': this.props.size === 'medium',
-						'slds-size_large': this.props.size === 'large'
-					})}>
+					<div
+						className={classNames('slds-slider', {
+							'slds-slider_vertical': this.props.vertical,
+							'slds-size_x-small': this.props.size === 'x-small',
+							'slds-size_small': this.props.size === 'small',
+							'slds-size_medium': this.props.size === 'medium',
+							'slds-size_large': this.props.size === 'large',
+						})}
+					>
 						<input
 							type="range"
 							id={this.getId()}
 							name={this.props.name}
 							className="slds-slider__range"
-							value={this.state.value}
+							defaultValue={this.props.defaultValue}
 							min={this.props.min}
 							max={this.props.max}
 							step={this.props.step}
@@ -191,18 +204,12 @@ class Slider extends React.Component {
 							onChange={this.handleChange}
 							onInput={this.handleInput}
 						/>
-						<span
-							className="slds-slider__value"
-							aria-hidden="true"
-						>
-							{this.state.value}
+						<span className="slds-slider__value" aria-hidden="true">
+							{this.props.value || this.props.defaultValue}
 						</span>
 					</div>
 					{this.props.errorText ? (
-						<div
-							id={this.getErrorId()}
-							className="slds-form-element__help"
-						>
+						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.props.errorText}
 						</div>
 					) : null}
@@ -210,6 +217,6 @@ class Slider extends React.Component {
 			</div>
 		);
 	}
-};
+}
 
 export default Slider;
