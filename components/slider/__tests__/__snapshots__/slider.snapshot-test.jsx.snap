@@ -390,7 +390,7 @@ exports[`Error DOM Snapshot 1`] = `
       className="slds-slider"
     >
       <input
-        aria-describedby="B1q8lbgKjG"
+        aria-describedby="error message"
         className="slds-slider__range"
         defaultValue={0}
         disabled={undefined}
@@ -412,7 +412,7 @@ exports[`Error DOM Snapshot 1`] = `
     </div>
     <div
       className="slds-form-element__help"
-      id="B1q8lbgKjG"
+      id="error message"
     >
       There is a problem with this field
     </div>
@@ -423,8 +423,8 @@ exports[`Error DOM Snapshot 1`] = `
 exports[`Error HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element slds-has-error\\"><label class=\\"slds-form-element__label\\" for=\\"error-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
   <div class=\\"slds-form-element__control\\">
-    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"error-id\\" class=\\"slds-slider__range\\" aria-describedby=\\"HknLxbxYiG\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
-    <div id=\\"HknLxbxYiG\\" class=\\"slds-form-element__help\\">There is a problem with this field</div>
+    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"error-id\\" class=\\"slds-slider__range\\" aria-describedby=\\"error message\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+    <div id=\\"error message\\" class=\\"slds-form-element__help\\">There is a problem with this field</div>
   </div>
 </div>"
 `;

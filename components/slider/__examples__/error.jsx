@@ -11,6 +11,7 @@ const Example = createReactClass({
 				id="error-id"
 				label="Slider Label"
 				errorText="There is a problem with this field"
+				aria-describedby="error message"
 			/>
 		);
 	},
