@@ -353,6 +353,12 @@
 			"SLDS-component-path": "/components/color-picker"
 		},
 		{
+			"component": "color-picker",
+			"status": "prod",
+			"display-name": "Color Pickers",
+			"SLDS-component-path": "/components/color-picker"
+		},
+		{
 			"component": "combobox",
 			"status": "prod",
 			"display-name": "Comboboxes",

@@ -17,7 +17,7 @@ class CustomColorForm extends React.Component {
 					})}
 					id={`color-picker-input-hex-${this.props.id}`}
 					label={this.props.labels.hexLabel}
-					maxLength={7}
+					maxLength="7"
 					onChange={this.props.onHexChange}
 					value={this.props.color.hex}
 				/>
@@ -30,7 +30,7 @@ class CustomColorForm extends React.Component {
 					id={`color-picker-input-r-${this.props.id}`}
 					label={this.props.labels.redAbbreviated}
 					onChange={this.props.onRedChange}
-					maxLength={3}
+					maxLength="3"
 					value={String(this.props.color.rgb.red)}
 				/>
 				<Input
@@ -42,7 +42,7 @@ class CustomColorForm extends React.Component {
 					id={`color-picker-input-g-${this.props.id}`}
 					label={this.props.labels.greenAbbreviated}
 					onChange={this.props.onGreenChange}
-					maxLength={3}
+					maxLength="3"
 					value={String(this.props.color.rgb.green)}
 				/>
 				<Input
@@ -54,7 +54,7 @@ class CustomColorForm extends React.Component {
 					id={`color-picker-input-b-${this.props.id}`}
 					label={this.props.labels.blueAbbreviated}
 					onChange={this.props.onBlueChange}
-					maxLength={3}
+					maxLength="3"
 					value={String(this.props.color.rgb.blue)}
 				/>
 			</div>

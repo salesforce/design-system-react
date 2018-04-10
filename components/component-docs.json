@@ -2627,6 +2627,261 @@
         "SLDS-component-path": "/components/color-picker",
         "dependencies": []
     },
+    "color-picker": {
+        "description": "",
+        "methods": [
+            {
+                "name": "getDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setWorkingColor",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "color",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleCancelButtonClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleColorChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "property",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleHexInputChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleNavigate",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "property",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSaturationValueChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ saturation, value }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSubmitButtonClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSwatchButtonClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleSwatchSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ hex }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "hueSlider": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "saturationValueGrid": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `hueSlider`: Instructions for hue selection input\n* `saturationValueGrid`: Instructions for using the grid for saturation\nand value selection",
+                "defaultValue": {
+                    "value": "{\n    saturationValueGrid: 'Use arrow keys to select a saturation and brightness, on an x and y axis.',\n    hueSlider: 'Select Hue'\n}",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current color (in hexadecimal string)"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique ID for component"
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and button"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Popover open state"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "blueAbbreviated": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "cancelButton": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "customTab": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "greenAbbreviated": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "hexLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "invalidColor": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "invalidComponent": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "redAbbreviated": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "swatchTab": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "submitButton": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: Label for entire colorpicker control\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
+                "defaultValue": {
+                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    label: 'Choose Color',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n}",
+                    "computed": false
+                }
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the date changes. It receives and event object that\noriginally triggered the change, as well as an object in the shape `{\ncolor: [string] }`, which is a hex representation of the color."
+            },
+            "swatchColors": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.",
+                "defaultValue": {
+                    "value": "[\n    '#e3abec', '#c2dbf7', '#9fd6ff', '#9de7da', '#9df0c0', '#fff099', '#fed49a',\n    '#d073e0', '#86baf3', '#5ebbff', '#44d8be', '#3be282', '#ffe654', '#ffb758',\n    '#bd35bd', '#5779c1', '#5679c0', '#00aea9', '#3cba4c', '#f5bc25', '#f99221',\n    '#580d8c', '#001970', '#0a2399', '#0b7477', '#0b6b50', '#b67e11', '#b85d0d'\n]",
+                    "computed": false
+                }
+            }
+        },
+        "route": "color-pickers",
+        "display-name": "Color Pickers",
+        "SLDS-component-path": "/components/color-picker",
+        "dependencies": []
+    },
     "combobox": {
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
