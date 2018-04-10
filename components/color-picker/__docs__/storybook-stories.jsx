@@ -17,7 +17,9 @@ storiesOf(COLOR_PICKER, module)
 		</div>
 	))
 	.add('Default', () => <ColorPicker onChange={handleChange} />)
-	.add('Custom Colors', () => (
+	.add('Custom Only', () => <ColorPicker onChange={handleChange} variant="custom" />)
+	.add('Swatch Only', () => <ColorPicker onChange={handleChange} variant="swatches" />)
+	.add('Predefined Colors', () => (
 		<ColorPicker
 			value="#000000"
 			onChange={handleChange}
@@ -34,4 +36,22 @@ storiesOf(COLOR_PICKER, module)
 			]}
 		/>
 	))
-	.add('Hide Input', () => <ColorPicker onChange={handleChange} hideInput />);
+	.add('Predefined Colors Only', () => (
+		<ColorPicker
+			value="#000000"
+			onChange={handleChange}
+			swatchColors={[
+				'',
+				'#000000',
+				'#ff0000',
+				'#00ff00',
+				'#0000ff',
+				'#ffff00',
+				'#ff00ff',
+				'#00ffff',
+				'#ffffff',
+			]}
+			variant="swatches"
+		/>
+	))
+	.add('Hidden Input', () => <ColorPicker onChange={handleChange} hideInput />);

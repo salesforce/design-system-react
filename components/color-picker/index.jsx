@@ -86,6 +86,14 @@ const propTypes = {
 	 * swatch tab of the colorpicker popover.
 	 */
 	swatchColors: PropTypes.arrayOf(PropTypes.string),
+	/**
+	 * Selects which tabs are present for the colorpicker
+	 */
+	variant: PropTypes.oneOf([
+		'base',
+		'custom',
+		'swatches'
+	]),
 };
 
 const defaultProps = {
@@ -136,6 +144,7 @@ const defaultProps = {
 		'#b67e11',
 		'#b85d0d',
 	],
+	variant: 'base'
 };
 
 class ColorPicker extends React.Component {
@@ -199,10 +208,45 @@ class ColorPicker extends React.Component {
 					})}
 					disabled={this.props.disabled}
 					id={`color-picker-summary-input-${this.generatedId}`}
-					maxLength={7}
+					maxLength="7"
 					onChange={this.handleHexInputChange}
 					value={activeColor}
 				/>
+			);
+	}
+
+	getDefaultTab () {
+		return (this.props.variant === 'base' || this.props.variant === 'swatches') &&
+			(
+				<TabsPanel label={this.props.labels.swatchTab}>
+					<SwatchPicker
+						color={this.props.workingColor}
+						onSelect={this.handleSwatchSelect}
+						swatchColors={this.props.swatchColors}
+					/>
+				</TabsPanel>
+			);
+	}
+
+	getCustomTab () {
+		return (this.props.variant === 'base' || this.props.variant === 'custom') &&
+			(
+				<TabsPanel label={this.props.labels.customTab}>
+					<CustomColor
+						assistiveText={this.props.assistiveText}
+						id={this.generatedId}
+						color={this.state.workingColor}
+						labels={this.props.labels}
+						onBlueChange={this.handleColorChange('blue')}
+						onGreenChange={this.handleColorChange('green')}
+						onHexChange={this.handleColorChange('hex')}
+						onHueChange={this.handleColorChange('hue')}
+						onRedChange={this.handleColorChange('red')}
+						onSaturationValueChange={this.handleSaturationValueChange}
+						onSaturationNavigate={this.handleNavigate('saturation')}
+						onValueNavigate={this.handleNavigate('value')}
+					/>
+				</TabsPanel>
 			);
 	}
 
@@ -216,29 +260,8 @@ class ColorPicker extends React.Component {
 			>
 				<div className="slds-popover__body">
 					<Tabs>
-						<TabsPanel label={this.props.labels.swatchTab}>
-							<SwatchPicker
-								color={this.props.workingColor}
-								onSelect={this.handleSwatchSelect}
-								swatchColors={this.props.swatchColors}
-							/>
-						</TabsPanel>
-						<TabsPanel label={this.props.labels.customTab}>
-							<CustomColor
-								assistiveText={this.props.assistiveText}
-								id={this.generatedId}
-								color={this.state.workingColor}
-								labels={this.props.labels}
-								onBlueChange={this.handleColorChange('blue')}
-								onGreenChange={this.handleColorChange('green')}
-								onHexChange={this.handleColorChange('hex')}
-								onHueChange={this.handleColorChange('hue')}
-								onRedChange={this.handleColorChange('red')}
-								onSaturationValueChange={this.handleSaturationValueChange}
-								onSaturationNavigate={this.handleNavigate('saturation')}
-								onValueNavigate={this.handleNavigate('value')}
-							/>
-						</TabsPanel>
+						{this.getDefaultTab()}
+						{this.getCustomTab()}
 					</Tabs>
 				</div>
 				<footer className="slds-popover__footer">
@@ -369,12 +392,12 @@ class ColorPicker extends React.Component {
 				}}
 			>
 				<div className="slds-color-picker__summary">
-					<label
+					<span
 						className="slds-color-picker__summary-label"
 						htmlFor={`color-picker-summary-input-${this.generatedId}`}
 					>
 						{this.props.labels.label}
-					</label>
+					</span>
 					<Button
 						className="slds-color-picker__summary-button"
 						disabled={this.props.disabled}
