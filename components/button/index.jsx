@@ -344,7 +344,12 @@ const Button = createReactClass({
 					? this.renderIcon(this.props.iconName)
 					: null}
 				{this.props.iconVariant === 'more' ? (
-					<ButtonIcon category="utility" name="down" size="x-small" />
+					<ButtonIcon
+						category="utility"
+						name="down"
+						size="x-small"
+						className={this.props.iconClassName}
+					/>
 				) : null}
 
 				{this.props.iconPosition === 'left' || !this.props.iconPosition
