@@ -12,7 +12,7 @@ const DemoSlider = createReactClass({
 	},
 
 	handleChange (event, { value }) {
-		this.setState({ value: Number(value) });
+		this.setState({ value });
 	},
 
 	render () {

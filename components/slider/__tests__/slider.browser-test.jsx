@@ -184,7 +184,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
-					onChange={(e, value) => {
+					onChange={(e, { value }) => {
 						expect(value).to.equal('300');
 						done();
 					}}
@@ -203,7 +203,7 @@ describe('SLDSSlider', () => {
 					min={0}
 					max={400}
 					step={100}
-					onInput={(e, value) => {
+					onInput={(e, { value }) => {
 						expect(value).to.equal('300');
 						done();
 					}}
