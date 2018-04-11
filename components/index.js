@@ -187,6 +187,9 @@ export RadioButtonGroup from './radio-button-group';
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
 
+export SLDSSlider from './slider';
+export Slider from './slider';
+
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
 

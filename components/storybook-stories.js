@@ -47,6 +47,7 @@ export ProgressRing from '../components/progress-ring/__docs__/storybook-stories
 export Picklist from '../components/menu-picklist/__docs__/storybook-stories';
 export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
+export Slider from '../components/slider/__docs__/storybook-stories';
 export SplitView from '../components/split-view/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
 export Tabs from '../components/tabs/__docs__/storybook-stories';

@@ -11409,5 +11409,211 @@
         "display-name": "Timepickers",
         "SLDS-component-path": "/components/datepickers",
         "dependencies": []
+    },
+    "slider": {
+        "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInput",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the Slider."
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Slider is a controlled component, and will always display this value.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "min": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Minimum value of a specified range.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "max": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Maximum value of a specified range.",
+                "defaultValue": {
+                    "value": "100",
+                    "computed": false
+                }
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Indicates the granularity that is expected by limiting the allowed values.",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the Slider and prevents clicking it."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the slider."
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Modifier that makes the slider vertical"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the outer container of the Slider."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the Slider is for.\nIf the Slider has a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires whenever the user has modified the data of the control."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the value is committed."
+            }
+        },
+        "route": "slider",
+        "display-name": "Slider",
+        "SLDS-component-path": "/components/slider",
+        "dependencies": []
     }
 }

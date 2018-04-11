@@ -1,0 +1,762 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
+<section>
+  <ol>
+    <li
+      className="slds-p-bottom--large"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical--medium"
+      >
+        1. Base Input with label
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="base-id"
+        >
+          <span
+            className="slds-slider-label"
+          >
+            <span
+              className="slds-slider-label__label"
+            >
+              My Label
+            </span>
+            <span
+              className="slds-slider-label__range"
+            >
+              0
+               - 
+              100
+            </span>
+          </span>
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <div
+            className="slds-slider"
+          >
+            <input
+              aria-describedby={undefined}
+              className="slds-slider__range"
+              defaultValue={0}
+              disabled={undefined}
+              id="base-id"
+              max={100}
+              min={0}
+              name={undefined}
+              onChange={[Function]}
+              onInput={[Function]}
+              step={1}
+              type="range"
+            />
+            <span
+              aria-hidden="true"
+              className="slds-slider__value"
+            >
+              0
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      className="slds-p-bottom--large"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical--medium"
+      >
+        2. Base Input with no label (assistive text)
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label slds-assistive-text"
+          htmlFor="assistiveText-id"
+        >
+          <span
+            className="slds-slider-label"
+          >
+            <span
+              className="slds-slider-label__label"
+            >
+              My Label
+            </span>
+            <span
+              className="slds-slider-label__range"
+            >
+              0
+               - 
+              100
+            </span>
+          </span>
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <div
+            className="slds-slider"
+          >
+            <input
+              aria-describedby={undefined}
+              className="slds-slider__range"
+              defaultValue={0}
+              disabled={undefined}
+              id="assistiveText-id"
+              max={100}
+              min={0}
+              name={undefined}
+              onChange={[Function]}
+              onInput={[Function]}
+              step={1}
+              type="range"
+            />
+            <span
+              aria-hidden="true"
+              className="slds-slider__value"
+            >
+              0
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      className="slds-p-bottom--large"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical--medium"
+      >
+        3. Base Input with min and max.
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="min-max-id"
+        >
+          <span
+            className="slds-slider-label"
+          >
+            <span
+              className="slds-slider-label__label"
+            >
+              My Label
+            </span>
+            <span
+              className="slds-slider-label__range"
+            >
+              0
+               - 
+              400
+            </span>
+          </span>
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <div
+            className="slds-slider"
+          >
+            <input
+              aria-describedby={undefined}
+              className="slds-slider__range"
+              defaultValue={200}
+              disabled={undefined}
+              id="min-max-id"
+              max={400}
+              min={0}
+              name={undefined}
+              onChange={[Function]}
+              onInput={[Function]}
+              step={1}
+              type="range"
+            />
+            <span
+              aria-hidden="true"
+              className="slds-slider__value"
+            >
+              200
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      className="slds-p-bottom--large"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical--medium"
+      >
+        4. Base Input with min, max and step.
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="min-max-step-id"
+        >
+          <span
+            className="slds-slider-label"
+          >
+            <span
+              className="slds-slider-label__label"
+            >
+              My Label
+            </span>
+            <span
+              className="slds-slider-label__range"
+            >
+              0
+               - 
+              400
+            </span>
+          </span>
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <div
+            className="slds-slider"
+          >
+            <input
+              aria-describedby={undefined}
+              className="slds-slider__range"
+              defaultValue={200}
+              disabled={undefined}
+              id="min-max-step-id"
+              max={400}
+              min={0}
+              name={undefined}
+              onChange={[Function]}
+              onInput={[Function]}
+              step={100}
+              type="range"
+            />
+            <span
+              aria-hidden="true"
+              className="slds-slider__value"
+            >
+              200
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ol>
+</section>
+`;
+
+exports[`Base label, no label, min/max, min/max/step HTML Snapshot 1`] = `
+"<section>
+  <ol>
+    <li class=\\"slds-p-bottom--large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">1. Base Input with label</h1>
+      <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"base-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+        <div class=\\"slds-form-element__control\\">
+          <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"base-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+        </div>
+      </div>
+    </li>
+    <li class=\\"slds-p-bottom--large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">2. Base Input with no label (assistive text)</h1>
+      <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label slds-assistive-text\\" for=\\"assistiveText-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+        <div class=\\"slds-form-element__control\\">
+          <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"assistiveText-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+        </div>
+      </div>
+    </li>
+    <li class=\\"slds-p-bottom--large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">3. Base Input with min and max.</h1>
+      <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"min-max-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 400</span></span></label>
+        <div class=\\"slds-form-element__control\\">
+          <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"400\\" id=\\"min-max-id\\" class=\\"slds-slider__range\\" value=\\"200\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">200</span></div>
+        </div>
+      </div>
+    </li>
+    <li class=\\"slds-p-bottom--large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">4. Base Input with min, max and step.</h1>
+      <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"min-max-step-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 400</span></span></label>
+        <div class=\\"slds-form-element__control\\">
+          <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"100\\" min=\\"0\\" max=\\"400\\" id=\\"min-max-step-id\\" class=\\"slds-slider__range\\" value=\\"200\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">200</span></div>
+        </div>
+      </div>
+    </li>
+  </ol>
+</section>"
+`;
+
+exports[`Disabled DOM Snapshot 1`] = `
+<div
+  className="slds-form-element"
+>
+  <label
+    className="slds-form-element__label"
+    htmlFor="disabled-id"
+  >
+    <span
+      className="slds-slider-label"
+    >
+      <span
+        className="slds-slider-label__label"
+      >
+        Slider Label
+      </span>
+      <span
+        className="slds-slider-label__range"
+      >
+        0
+         - 
+        100
+      </span>
+    </span>
+  </label>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-slider"
+    >
+      <input
+        aria-describedby={undefined}
+        className="slds-slider__range"
+        defaultValue={0}
+        disabled={true}
+        id="disabled-id"
+        max={100}
+        min={0}
+        name={undefined}
+        onChange={[Function]}
+        onInput={[Function]}
+        step={1}
+        type="range"
+      />
+      <span
+        aria-hidden="true"
+        className="slds-slider__value"
+      >
+        0
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Disabled HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"disabled-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"disabled-id\\" class=\\"slds-slider__range\\" disabled=\\"\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+  </div>
+</div>"
+`;
+
+exports[`Error DOM Snapshot 1`] = `
+<div
+  className="slds-form-element slds-has-error"
+>
+  <label
+    className="slds-form-element__label"
+    htmlFor="error-id"
+  >
+    <span
+      className="slds-slider-label"
+    >
+      <span
+        className="slds-slider-label__label"
+      >
+        Slider Label
+      </span>
+      <span
+        className="slds-slider-label__range"
+      >
+        0
+         - 
+        100
+      </span>
+    </span>
+  </label>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-slider"
+    >
+      <input
+        aria-describedby="error message"
+        className="slds-slider__range"
+        defaultValue={0}
+        disabled={undefined}
+        id="error-id"
+        max={100}
+        min={0}
+        name={undefined}
+        onChange={[Function]}
+        onInput={[Function]}
+        step={1}
+        type="range"
+      />
+      <span
+        aria-hidden="true"
+        className="slds-slider__value"
+      >
+        0
+      </span>
+    </div>
+    <div
+      className="slds-form-element__help"
+      id="error message"
+    >
+      There is a problem with this field
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Error HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element slds-has-error\\"><label class=\\"slds-form-element__label\\" for=\\"error-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"error-id\\" class=\\"slds-slider__range\\" aria-describedby=\\"error message\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+    <div id=\\"error message\\" class=\\"slds-form-element__help\\">There is a problem with this field</div>
+  </div>
+</div>"
+`;
+
+exports[`Sizes DOM Snapshot 1`] = `
+<div
+  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center"
+>
+  <div
+    className="slds-col--padded"
+  >
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="x-small-id"
+      >
+        <span
+          className="slds-slider-label"
+        >
+          <span
+            className="slds-slider-label__label"
+          >
+            Slider Label
+          </span>
+          <span
+            className="slds-slider-label__range"
+          >
+            0
+             - 
+            100
+          </span>
+        </span>
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <div
+          className="slds-slider slds-size_x-small"
+        >
+          <input
+            aria-describedby={undefined}
+            className="slds-slider__range"
+            defaultValue={0}
+            disabled={undefined}
+            id="x-small-id"
+            max={100}
+            min={0}
+            name={undefined}
+            onChange={[Function]}
+            onInput={[Function]}
+            step={1}
+            type="range"
+          />
+          <span
+            aria-hidden="true"
+            className="slds-slider__value"
+          >
+            0
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="small-id"
+      >
+        <span
+          className="slds-slider-label"
+        >
+          <span
+            className="slds-slider-label__label"
+          >
+            Slider Label
+          </span>
+          <span
+            className="slds-slider-label__range"
+          >
+            0
+             - 
+            100
+          </span>
+        </span>
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <div
+          className="slds-slider slds-size_small"
+        >
+          <input
+            aria-describedby={undefined}
+            className="slds-slider__range"
+            defaultValue={0}
+            disabled={undefined}
+            id="small-id"
+            max={100}
+            min={0}
+            name={undefined}
+            onChange={[Function]}
+            onInput={[Function]}
+            step={1}
+            type="range"
+          />
+          <span
+            aria-hidden="true"
+            className="slds-slider__value"
+          >
+            0
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="medium-id"
+      >
+        <span
+          className="slds-slider-label"
+        >
+          <span
+            className="slds-slider-label__label"
+          >
+            Slider Label
+          </span>
+          <span
+            className="slds-slider-label__range"
+          >
+            0
+             - 
+            100
+          </span>
+        </span>
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <div
+          className="slds-slider slds-size_medium"
+        >
+          <input
+            aria-describedby={undefined}
+            className="slds-slider__range"
+            defaultValue={0}
+            disabled={undefined}
+            id="medium-id"
+            max={100}
+            min={0}
+            name={undefined}
+            onChange={[Function]}
+            onInput={[Function]}
+            step={1}
+            type="range"
+          />
+          <span
+            aria-hidden="true"
+            className="slds-slider__value"
+          >
+            0
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="large-id"
+      >
+        <span
+          className="slds-slider-label"
+        >
+          <span
+            className="slds-slider-label__label"
+          >
+            Slider Label
+          </span>
+          <span
+            className="slds-slider-label__range"
+          >
+            0
+             - 
+            100
+          </span>
+        </span>
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <div
+          className="slds-slider slds-size_large"
+        >
+          <input
+            aria-describedby={undefined}
+            className="slds-slider__range"
+            defaultValue={0}
+            disabled={undefined}
+            id="large-id"
+            max={100}
+            min={0}
+            name={undefined}
+            onChange={[Function]}
+            onInput={[Function]}
+            step={1}
+            type="range"
+          />
+          <span
+            aria-hidden="true"
+            className="slds-slider__value"
+          >
+            0
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Sizes HTML Snapshot 1`] = `
+"<div class=\\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\\">
+  <div class=\\"slds-col--padded\\">
+    <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"x-small-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+      <div class=\\"slds-form-element__control\\">
+        <div class=\\"slds-slider slds-size_x-small\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"x-small-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"slds-col--padded\\">
+    <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"small-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+      <div class=\\"slds-form-element__control\\">
+        <div class=\\"slds-slider slds-size_small\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"small-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"slds-col--padded\\">
+    <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"medium-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+      <div class=\\"slds-form-element__control\\">
+        <div class=\\"slds-slider slds-size_medium\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"medium-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"slds-col--padded\\">
+    <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"large-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+      <div class=\\"slds-form-element__control\\">
+        <div class=\\"slds-slider slds-size_large\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"large-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Vertical DOM Snapshot 1`] = `
+<div
+  className="slds-form-element"
+>
+  <label
+    className="slds-form-element__label"
+    htmlFor="vertical-id"
+  >
+    <span
+      className="slds-slider-label"
+    >
+      <span
+        className="slds-slider-label__label"
+      >
+        Slider Label
+      </span>
+      <span
+        className="slds-slider-label__range"
+      >
+        0
+         - 
+        100
+      </span>
+    </span>
+  </label>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-slider slds-slider_vertical"
+    >
+      <input
+        aria-describedby={undefined}
+        className="slds-slider__range"
+        defaultValue={0}
+        disabled={undefined}
+        id="vertical-id"
+        max={100}
+        min={0}
+        name={undefined}
+        onChange={[Function]}
+        onInput={[Function]}
+        step={1}
+        type="range"
+      />
+      <span
+        aria-hidden="true"
+        className="slds-slider__value"
+      >
+        0
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"vertical-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-slider slds-slider_vertical\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"vertical-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+  </div>
+</div>"
+`;
