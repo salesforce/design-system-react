@@ -24,6 +24,9 @@ import Highlighter from '../../utilities/highlighter';
 // ### Event Helpers
 import EventUtil from '../../../utilities/event';
 
+import KEYS from '../../../utilities/key-code';
+import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
+
 // ## Constants
 import { TREE_ITEM } from '../../../utilities/constants';
 
@@ -39,18 +42,90 @@ const handleClick = (event, props) => {
 	}
 };
 
+const findNextNode = (flattenedNodes, node) => {
+	const nodes = flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const index = nodes.indexOf(node);
+	return flattenedNodes[(index + 1) % flattenedNodes.length];
+};
+
+const findPreviousNode = (flattenedNodes, node) => {
+	const nodes = flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	let index = nodes.indexOf(node) - 1;
+	if (index < 0) {
+		index += flattenedNodes.length;
+	}
+	return flattenedNodes[index];
+};
+
+const handleKeyDownDown = (event, props) => {
+	if (props.node.selected) {
+		// Go to the next visible node
+		handleClick(event, props);
+		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+		props.onClick(event, {
+			node: flattenedNode.node,
+			select: true,
+			treeIndex: flattenedNode.treeIndex,
+		});
+	} else {
+		// Focus is on this node but it's not selected, so select it
+		handleClick(event, props);
+	}
+};
+
+const handleKeyDownUp = (event, props) => {
+	if (props.node.selected) {
+		// Go to the next visible node
+		handleClick(event, props);
+		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+		props.onClick(event, {
+			node: flattenedNode.node,
+			select: true,
+			treeIndex: flattenedNode.treeIndex,
+		});
+	} else {
+		// Focus is on this node but it's not selected, so select it
+		handleClick(event, props);
+	}
+};
+
+const handleKeyDownLeft = (event, props) => {
+	handleClick(event, props);
+	props.onClick(event, {
+		node: props.parent,
+		select: true,
+		treeIndex: '', // TODO
+	});
+};
+
+const handleKeyDown = (event, props) => {
+	mapKeyEventCallbacks(event, {
+		callbacks: {
+			[KEYS.DOWN]: { callback: (event) => handleKeyDownDown(event, props) },
+			[KEYS.UP]: { callback: (event) => handleKeyDownUp(event, props) },
+			[KEYS.LEFT]: { callback: (event) => handleKeyDownLeft(event, props) },
+		},
+	});
+};
+
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
 const Item = (props) => {
 	const isSelected = props.node.selected;
 
-	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li
 			id={`${props.treeId}-${props.node.id}`}
 			role="treeitem"
 			aria-level={props.level}
+			tabIndex="0"
+			onKeyDown={(event) => handleKeyDown(event, props)}
+			ref={(component) => {
+				if (component && isSelected) {
+					component.focus();
+				}
+			}}
 		>
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
@@ -64,7 +139,9 @@ const Item = (props) => {
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
+					tabIndex="-1"
 					assistiveText=""
+					role="presentation"
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
@@ -73,6 +150,7 @@ const Item = (props) => {
 				/>
 				{/* eslint-disable no-script-url */}
 				<a
+					tabIndex="-1"
 					href="javascript:void(0)"
 					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
 					role="presentation"
@@ -124,6 +202,11 @@ Item.propTypes = {
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
 	treeIndex: PropTypes.string,
+	/**
+	 * Key down on the item is triggered.
+	 */
+	onKeyDown: PropTypes.func,
+	flattenedNodes: PropTypes.object,
 };
 
 Item.defaultProps = {

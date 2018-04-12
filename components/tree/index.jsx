@@ -27,8 +27,40 @@ import { TREE } from '../../utilities/constants';
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 class Tree extends React.Component {
+	constructor (props) {
+		super(props);
+		this.state = {
+			flattenedNodes: this.flattenTree({ nodes: this.props.nodes, expanded: true }).slice(1)
+		 };
+	}
+
 	componentWillMount () {
 		checkProps(TREE, this.props);
+	}
+
+	componentWillReceiveProps () {
+		this.state = {
+			flattenedNodes: this.flattenTree({ nodes: this.props.nodes, expanded: true }).slice(1)
+		};
+	}
+
+	/**
+	 * Flattens hierarchical tree structure into a flat array. Stops when we encounter node, because that's all we need.
+	 * @param {*} root
+	 * @param {*} node
+	 */
+	flattenTree (root, treeIndex = '') {
+		if (!root.nodes) {
+			return [{ node: root, treeIndex }];
+		}
+		let nodes = [{ node: root, treeIndex }];
+		if (root.expanded) {
+			for (let index = 0; index < root.nodes.length; index++) {
+				const curNode = root.nodes[index];
+				nodes = nodes.concat(this.flattenTree(curNode, treeIndex ? `${treeIndex}-${index}` : `${index}`));
+			}
+		}
+		return nodes;
 	}
 
 	render () {
@@ -59,7 +91,8 @@ class Tree extends React.Component {
 					htmlId={this.props.id}
 					initialStyle={this.props.listStyle}
 					level={0}
-					node={{ nodes: this.props.nodes }}
+					node={{ nodes: this.props.nodes, expanded: true }}
+					flattenedNodes={this.state.flattenedNodes}
 					onClick={this.props.onClick}
 					onExpandClick={this.props.onExpandClick}
 					onScroll={this.props.onScroll}
