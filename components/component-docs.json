@@ -11453,68 +11453,52 @@
             }
         ],
         "props": {
-            "id": {
+            "aria-describedby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions."
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
             },
-            "name": {
+            "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Name of the submitted form parameter."
+                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
             },
-            "label": {
+            "classNameContainer": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "This label appears above the Slider."
+                "description": "Class names to be added to the outer container of the Slider."
             },
-            "value": {
+            "defaultValue": {
                 "type": {
                     "name": "number"
                 },
                 "required": false,
-                "description": "The Slider is a controlled component, and will always display this value.",
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
                 "defaultValue": {
                     "value": "0",
-                    "computed": false
-                }
-            },
-            "min": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Minimum value of a specified range.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
-            },
-            "max": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Maximum value of a specified range.",
-                "defaultValue": {
-                    "value": "100",
-                    "computed": false
-                }
-            },
-            "step": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Indicates the granularity that is expected by limiting the allowed values.",
-                "defaultValue": {
-                    "value": "1",
                     "computed": false
                 }
             },
@@ -11523,7 +11507,71 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Disables the Slider and prevents clicking it."
+                "description": "Disables the Slider and prevents clicking it. Only available on the horizontal view."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Set the HTML `id` of the slider."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the Slider."
+            },
+            "max": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Maximum value of a specified range. Defaults to 100.",
+                "defaultValue": {
+                    "value": "100",
+                    "computed": false
+                }
+            },
+            "min": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Minimum value of a specified range. Defaults to 0.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`."
             },
             "size": {
                 "type": {
@@ -11550,65 +11598,30 @@
                 "required": false,
                 "description": "Size of the slider."
             },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Slider is a controlled component, and will always display this value."
+            },
             "vertical": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
                 "description": "Modifier that makes the slider vertical"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the outer container of the Slider."
-            },
-            "errorText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
-            },
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the Slider is for.\nIf the Slider has a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires whenever the user has modified the data of the control."
-            },
-            "onInput": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the value is committed."
             }
         },
         "route": "slider",

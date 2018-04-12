@@ -193,7 +193,7 @@ describe('SLDSSlider', () => {
 			);
 			done();
 			const trigger = wrapper.find('input');
-			trigger.simulate('change', { target: { value: 300 } });
+			trigger.simulate('change', { target: { value: '300' } });
 		});
 
 		it('onInput trigged callback', function (done) {
@@ -212,7 +212,7 @@ describe('SLDSSlider', () => {
 			);
 			done();
 			const trigger = wrapper.find('input');
-			trigger.simulate('input', { target: { value: 300 } });
+			trigger.simulate('input', { target: { value: '300' } });
 		});
 	});
 

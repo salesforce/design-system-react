@@ -44,10 +44,11 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
-	 * with hybrid framework applications that are not entirely React. It should only be used in an application
-	 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
-	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+	 * This is the initial value of an uncontrolled form element and is present
+	 * only to provide compatibility with hybrid framework applications that
+	 * are not entirely React. It should only be used in an application without
+	 * centralized state (Redux, Flux). "Controlled components" with centralized
+	 * state is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 	 */
 	defaultValue: PropTypes.number,
 	/**
@@ -79,11 +80,11 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-	 * This event fires whenever the user has modified the data of the control.
+	 * This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`.
 	 */
 	onChange: PropTypes.func,
 	/**
-	 * This event fires when the value is committed.
+	 * This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`.
 	 */
 	onInput: PropTypes.func,
 	/**
@@ -139,13 +140,13 @@ class Slider extends React.Component {
 
 	handleChange = (event) => {
 		if (isFunction(this.props.onChange)) {
-			this.props.onChange(event, { value: Number(event.target.value) });
+			this.props.onChange(event, { value: event.target.value });
 		}
 	};
 
 	handleInput = (event) => {
 		if (isFunction(this.props.onInput)) {
-			this.props.onInput(event, { value: Number(event.target.value) });
+			this.props.onInput(event, { value: event.target.value });
 		}
 	};
 
