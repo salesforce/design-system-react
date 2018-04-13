@@ -38,7 +38,7 @@ class Tree extends React.Component {
 		checkProps(TREE, this.props);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps (nextProps) {
 		this.state = {
 			flattenedNodes: this.flattenTree({ nodes: nextProps.nodes, expanded: true }).slice(1)
 		};
