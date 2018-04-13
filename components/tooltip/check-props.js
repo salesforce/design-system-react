@@ -9,7 +9,9 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		isTriggerTabbable(COMPONENT, props.children, '');
+		if (props.variant === 'base') {
+			isTriggerTabbable(COMPONENT, props.children, '');
+		}
 
 		// Deprecated and changed to another property
 		deprecatedProperty(
