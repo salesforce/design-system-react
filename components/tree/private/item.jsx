@@ -91,10 +91,12 @@ const handleKeyDownUp = (event, props) => {
 
 const handleKeyDownLeft = (event, props) => {
 	handleClick(event, props);
+	const nodes = props.flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const index = nodes.indexOf(props.parent);
 	props.onClick(event, {
 		node: props.parent,
 		select: true,
-		treeIndex: '', // TODO
+		treeIndex: props.flattenedNodes[index].treeIndex,
 	});
 };
 
@@ -203,10 +205,13 @@ Item.propTypes = {
 	 */
 	treeIndex: PropTypes.string,
 	/**
-	 * Key down on the item is triggered.
+	 * Flattened tree structure.
 	 */
-	onKeyDown: PropTypes.func,
-	flattenedNodes: PropTypes.object,
+	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 * This node's parent.
+	 */
+	parent: PropTypes.object,
 };
 
 Item.defaultProps = {

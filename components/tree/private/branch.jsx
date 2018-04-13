@@ -129,6 +129,17 @@ const handleKeyDownRight = (event, props) => {
 const handleKeyDownLeft = (event, props) => {
 	if (props.node.expanded) {
 		handleExpandClick(event, props);
+	} else {
+		const nodes = props.flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+		const index = nodes.indexOf(props.parent);
+		if (index !== -1) {
+			handleClick(event, props);
+			props.onClick(event, {
+				node: props.parent,
+				select: true,
+				treeIndex: props.flattenedNodes[index].treeIndex,
+			});
+		}
 	}
 };
 
@@ -331,10 +342,14 @@ renderBranch.propTypes = {
 	 */
 	treeIndex: PropTypes.string,
 	/**
-	 * Key down on the branch is triggered.
+	 * Flattened tree structure.
 	 */
-	onKeyDown: PropTypes.func,
-	root: PropTypes.object,
+	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 * This node's parent.
+	 */
+	parent: PropTypes.object,
+
 };
 
 /**
@@ -466,10 +481,13 @@ Branch.propTypes = {
 	 */
 	treeIndex: PropTypes.string,
 	/**
-	 * Key down on the branch is triggered.
+	 * Flattened tree structure.
 	 */
-	onKeyDown: PropTypes.func,
-	flattenedNodes: PropTypes.object,
+	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 * This node's parent.
+	 */
+	parent: PropTypes.object,
 };
 
 Branch.defaultProps = {

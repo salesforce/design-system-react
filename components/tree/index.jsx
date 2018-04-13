@@ -31,7 +31,7 @@ class Tree extends React.Component {
 		super(props);
 		this.state = {
 			flattenedNodes: this.flattenTree({ nodes: this.props.nodes, expanded: true }).slice(1)
-		 };
+		};
 	}
 
 	componentWillMount () {
@@ -44,11 +44,7 @@ class Tree extends React.Component {
 		};
 	}
 
-	/**
-	 * Flattens hierarchical tree structure into a flat array. Stops when we encounter node, because that's all we need.
-	 * @param {*} root
-	 * @param {*} node
-	 */
+	// Flattens hierarchical tree structure into a flat array.
 	flattenTree (root, treeIndex = '') {
 		if (!root.nodes) {
 			return [{ node: root, treeIndex }];
@@ -91,7 +87,7 @@ class Tree extends React.Component {
 					htmlId={this.props.id}
 					initialStyle={this.props.listStyle}
 					level={0}
-					node={{ nodes: this.props.nodes, expanded: true }}
+					node={{ nodes: this.props.nodes }}
 					flattenedNodes={this.state.flattenedNodes}
 					onClick={this.props.onClick}
 					onExpandClick={this.props.onExpandClick}
