@@ -21,6 +21,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 * [Codebase overview](docs/codebase-overview.md)
 * [Browser compatiblity and polyfills](docs/browser-compatibility.md)
 * [Usage with Webpack](docs/webpack.md)
+* [Open Sourcing Design System React](https://engineering.salesforce.com/open-sourcing-design-system-react-9be45b8bb127) - Medium article
 
 ## Usage
 
