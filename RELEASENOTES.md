@@ -31,11 +31,49 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.12
+
+**Minor features**
+* Affix position of Dialogs with `hasStaticAlignment` prop. Allows greater control of Tooltip, Popover, and dialog components.
+* Set Datepicker's initial year dropdown menu highlight selection to current selected date.
+
+## Release 0.8.11
+
+**Minor features**
+* Allow `input` label of combobox to show as required
+* Input, Checkbox, and Radio support initial state (uncontrolled) in order to support applications with server-side form submission that are transitioning to atomic state.
+
+**Maintenance**
+* Lint warnings from a third-party package have been removed from CI tests.
+
+**Documentation**
+* Prop doc typos:
+    * replaced rendered input block to code block
+    * fixed broken link to source of Inline Edit Inputs
+
+## Release 0.8.10
+
+**Minor features**
+* Combobox supports error messages. 
+
+**Outside SLDS pattern added**
+* Multiple selection Combobox error messages should be placed after pillboxes with an additional `slds-has-error` wrapping div.
+
+**Maintenance**
+* Update Dropdown Menu children description
+* Update SLDS peer dependency to allow 2.6.0-alphas
+* Remove plus-plus (`var++`) instances from library for clarity
+
+**Notice**
+`package.module` has been removed from the NPM module until a transpiled ES6 module build can be published to support it. The current `package.module` is considered broken already for Create React Apps--for instance, so this is not considered a breaking change. Your module bundler will just use the CommonJS build unless you are already transpiling the source code, so no changes should be need to be made.
+
 ## Release 0.8.9
 
 **Minor features**
 
 * Combobox menu supports subheadings and line separators.
+
+**Outside SLDS pattern added**
 * UX pattern created for Combobox autocomplete that limits subheadings to those that have "child" matching items.
 
 ## Release 0.8.8

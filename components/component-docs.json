@@ -1973,6 +1973,13 @@
                 "required": false,
                 "description": "The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used."
             },
+            "defaultChecked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility with\nhybrid framework applications that are not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -2162,6 +2169,13 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -2565,6 +2579,13 @@
                     "computed": false
                 }
             },
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.\nThis is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._"
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -2690,12 +2711,19 @@
                     "computed": false
                 }
             },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of \"flippable.\""
+                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
             },
             "id": {
                 "type": {
@@ -2873,6 +2901,17 @@
                 },
                 "required": false,
                 "description": "Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._"
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies label styling for a required form element. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "selection": {
                 "type": {
@@ -3737,7 +3776,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. _Not tested._"
+                "description": "Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
             },
             "id": {
                 "type": {
@@ -4149,240 +4188,6 @@
         "SLDS-component-path": "/components/filter",
         "dependencies": []
     },
-    "input/inline": {
-        "description": "An inline input is rendered as a label by default. When clicked (or tabbed in), it's rendered as an input. When the focus is lost, the current input value is saved and the input is rendered as a label again.",
-        "methods": [
-            {
-                "name": "endEditMode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "option",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyUp",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "saveEdits",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "option",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "triggerEditMode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the outer container of the input."
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the submitted form parameter."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the Inline Edit component and prevents editing the contents."
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": true,
-                "description": "Every Inline Edit component must have a unique ID in order to support keyboard navigation and ARIA support."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the input changes."
-            },
-            "onKeyUp": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function will run when keyup during text edit"
-            },
-            "onEnterEditMode": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function will run when we enter edit mode"
-            },
-            "onLeaveEditMode": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function will run when we leave edit mode"
-            },
-            "type": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'text'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'password'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'datetime'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'datetime-local'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'date'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'month'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'time'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'week'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'number'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'email'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'url'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'search'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'tel'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'color'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Typically an Inline Edit component will be of the type text, but like the Input element it includes support for all HTML5 types.",
-                "defaultValue": {
-                    "value": "'text'",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "string"
-                },
-                "required": true,
-                "description": "Inline Edit is a controlled component, and will always display this value."
-            },
-            "assistiveText": {
-                "defaultValue": {
-                    "value": "'Edit text'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "inline-edit-inputs",
-        "display-name": "Inline Edit Inputs",
-        "SLDS-component-path": "/components/forms#flavor-input",
-        "dependencies": []
-    },
     "input": {
         "description": "The HTML `input` with a label and error messaging.",
         "methods": [
@@ -4670,7 +4475,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when a submittable <input> element is invalid."
+                "description": "Triggered when a submittable `<input>` element is invalid."
             },
             "onKeyDown": {
                 "type": {
@@ -4719,14 +4524,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Sets the minimum number of characters that an <input> can accept."
+                "description": "Sets the minimum number of characters that an `<input>` can accept."
             },
             "maxLength": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Sets the maximum number of characters that an <input> can accept."
+                "description": "Sets the maximum number of characters that an `<input>` can accept."
             },
             "name": {
                 "type": {
@@ -4824,6 +4629,13 @@
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "role": {
                 "type": {
@@ -5123,6 +4935,13 @@
                 },
                 "required": false,
                 "description": "The textarea is a controlled component, and will always display this value."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The textarea is a uncontrolled component, and this will be the initial value."
             },
             "wrap": {
                 "type": {
@@ -6864,7 +6683,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
             },
             "className": {
                 "type": {
@@ -6914,7 +6733,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen."
+                "description": "Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
             },
             "hint": {
                 "type": {
@@ -8835,7 +8654,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen."
+                "description": "Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used."
             },
             "heading": {
                 "type": {
@@ -9573,6 +9392,13 @@
                 },
                 "required": false,
                 "description": "This is a controlled component. This radio is checked according to this value."
+            },
+            "defaultChecked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -10640,7 +10466,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of \"flippable.\""
+                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
             },
             "hoverCloseDelay": {
                 "type": {
@@ -11582,6 +11408,225 @@
         "route": "timepickers",
         "display-name": "Timepickers",
         "SLDS-component-path": "/components/datepickers",
+        "dependencies": []
+    },
+    "slider": {
+        "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInput",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the outer container of the Slider."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the Slider and prevents clicking it. Only available on the horizontal view."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Set the HTML `id` of the slider."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the Slider."
+            },
+            "max": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Maximum value of a specified range. Defaults to 100.",
+                "defaultValue": {
+                    "value": "100",
+                    "computed": false
+                }
+            },
+            "min": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Minimum value of a specified range. Defaults to 0.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the slider."
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Slider is a controlled component, and will always display this value."
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Modifier that makes the slider vertical"
+            }
+        },
+        "route": "slider",
+        "display-name": "Slider",
+        "SLDS-component-path": "/components/slider",
         "dependencies": []
     }
 }

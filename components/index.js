@@ -126,6 +126,12 @@ export InputIcon from './icon/input-icon';
 
 export SLDSLookup from './lookup';
 export Lookup from './lookup';
+export SLDSLookupDefaultFooter from './lookup/menu/default-footer';
+export LookupDefaultFooter from './lookup/menu/default-footer';
+export SLDSLookupDefaultHeader from './lookup/menu/default-header';
+export LookupDefaultHeader from './lookup/menu/default-header';
+export SLDSLookupDefaultSectionDivider from './lookup/menu/default-section-divider';
+export LookupDefaultSectionDivider from './lookup/menu/default-section-divider';
 
 export SLDSMediaObject from './media-object';
 export MediaObject from './media-object';
@@ -186,6 +192,9 @@ export RadioButtonGroup from './radio-button-group';
 
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
+
+export SLDSSlider from './slider';
+export Slider from './slider';
 
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';

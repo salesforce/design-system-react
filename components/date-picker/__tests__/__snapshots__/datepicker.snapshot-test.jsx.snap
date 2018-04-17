@@ -36,6 +36,7 @@ exports[`Datepicker
         aria-required={undefined}
         autoComplete={undefined}
         className="slds-input"
+        defaultValue={undefined}
         disabled={undefined}
         id="CUSTOM-ID"
         maxLength={undefined}
@@ -949,6 +950,7 @@ exports[`Datepicker
         aria-required={undefined}
         autoComplete={undefined}
         className="slds-input"
+        defaultValue={undefined}
         disabled={undefined}
         id="sample-datepicker"
         maxLength={undefined}
@@ -1860,6 +1862,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         aria-required={undefined}
         autoComplete={undefined}
         className="slds-input"
+        defaultValue={undefined}
         disabled={undefined}
         id="sample-datepicker"
         maxLength={undefined}

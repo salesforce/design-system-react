@@ -69,6 +69,13 @@ const Checkbox = createReactClass({
 		 */
 		checked: PropTypes.bool,
 		/**
+		 * This is the initial value of an uncontrolled form element and is present only to provide compatibility with
+		 * hybrid framework applications that are not entirely React. It should only be used in an application without
+		 * centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
+		 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+		 */
+		defaultChecked: PropTypes.bool,
+		/**
 		 * Class names to be added to the outer container of the Checkbox.
 		 */
 		className: PropTypes.oneOfType([
@@ -199,6 +206,7 @@ const Checkbox = createReactClass({
 					aria-required={this.props['aria-required']}
 					disabled={props.disabled}
 					checked={props.checked}
+					defaultChecked={props.defaultChecked}
 					id={this.getId()}
 					name={props.name}
 					onBlur={props.onBlur}
@@ -250,6 +258,7 @@ const Checkbox = createReactClass({
 							aria-required={this.props['aria-required']}
 							disabled={props.disabled}
 							checked={props.checked}
+							defaultChecked={props.defaultChecked}
 							id={this.getId()}
 							name={props.name}
 							onBlur={props.onBlur}
@@ -325,6 +334,7 @@ const Checkbox = createReactClass({
 						disabled={props.disabled}
 						id={this.getId()}
 						checked={props.checked}
+						defaultChecked={props.defaultChecked}
 						name={props.name}
 						onBlur={props.onBlur}
 						onChange={this.handleChange}

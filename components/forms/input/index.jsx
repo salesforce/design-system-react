@@ -176,7 +176,7 @@ const Input = createReactClass({
 		 */
 		onInput: PropTypes.func,
 		/**
-		 * Triggered when a submittable <input> element is invalid.
+		 * Triggered when a submittable `<input>` element is invalid.
 		 */
 		onInvalid: PropTypes.func,
 		/**
@@ -204,11 +204,11 @@ const Input = createReactClass({
 		 */
 		placeholder: PropTypes.string,
 		/**
-		 * Sets the minimum number of characters that an <input> can accept.
+		 * Sets the minimum number of characters that an `<input>` can accept.
 		 */
 		minLength: PropTypes.string,
 		/**
-		 * Sets the maximum number of characters that an <input> can accept.
+		 * Sets the maximum number of characters that an `<input>` can accept.
 		 */
 		maxLength: PropTypes.string,
 		/**
@@ -246,6 +246,13 @@ const Input = createReactClass({
 		 * The input is a controlled component, and will always display this value.
 		 */
 		value: PropTypes.string,
+		/**
+		 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
+		 * with hybrid framework applications that are not entirely React. It should only be used in an application
+		 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
+		 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+		 */
+		defaultValue: PropTypes.string,
 		/**
 		 * ARIA role
 		 */
@@ -391,6 +398,7 @@ const Input = createReactClass({
 					}
 					type={this.props.type}
 					value={this.props.value}
+					defaultValue={this.props.defaultValue}
 				/>
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">
