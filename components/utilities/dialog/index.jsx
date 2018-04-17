@@ -99,7 +99,7 @@ const Dialog = createReactClass({
 		 */
 		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 		/**
-		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
+		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements.
 		 */
 		hasStaticAlignment: PropTypes.bool,
 		/**
@@ -323,11 +323,14 @@ const Dialog = createReactClass({
 			applyStyle: { enabled: false },
 			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
 			preventOverflow: {
-				enabled: true,
+				enabled: !this.props.hasStaticAlignment,
 				boundariesElement:
 					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
+			flip: {
+				enabled: !this.props.hasStaticAlignment,
+			},
 			removeOnDestroy: true,
 			updateState: {
 				enabled: true,

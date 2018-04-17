@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.9",
+	"version": "0.8.12",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -185,7 +185,7 @@
 		"phantomjs-prebuilt": "^2.1.15",
 		"prettier": "1.9.2",
 		"prettier-eslint": "~8.8.1",
-		"prettier-eslint-cli": "^4.4.2",
+		"prettier-eslint-cli": "^4.7.1",
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
 		"react": ">=15.4.1 <16",
@@ -370,7 +370,7 @@
 			"SLDS-component-path": "/components/filter"
 		},
 		{
-			"component": "forms/input/inline",
+			"component": "forms/input",
 			"status": "prod",
 			"display-name": "Inline Edit Inputs",
 			"last-accessibility-review": {
@@ -657,6 +657,12 @@
 			"status": "prod",
 			"display-name": "Timepickers",
 			"SLDS-component-path": "/components/datepickers"
+		},
+		{
+			"component": "slider",
+			"status": "prod",
+			"display-name": "Slider",
+			"SLDS-component-path": "/components/slider"
 		}
 	],
 	"documentation": {
