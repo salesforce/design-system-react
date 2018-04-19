@@ -150,28 +150,22 @@ class PopoverTooltip extends React.Component {
 		if (React.Children.count(this.props.children) === 0) {
 			children = [
 				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
-					<Icon
-						category="utility"
-						name="info"
-						size="x-small"
-					/>
-				</a>];
+					<Icon category="utility" name="info" size="x-small" />
+				</a>,
+			];
 		} else {
 			children = this.props.children;
 		}
 
 		return React.Children.map(children, (child, i) =>
-			React.cloneElement(
-				child,
-				{
-					key: i,
-					'aria-describedby': this.getId(),
-					onBlur: this.handleMouseLeave,
-					onFocus: this.handleMouseEnter,
-					onMouseEnter: this.handleMouseEnter,
-					onMouseLeave: this.handleMouseLeave,
-				}
-			)
+			React.cloneElement(child, {
+				key: i,
+				'aria-describedby': this.getId(),
+				onBlur: this.handleMouseLeave,
+				onFocus: this.handleMouseEnter,
+				onMouseEnter: this.handleMouseEnter,
+				onMouseLeave: this.handleMouseLeave,
+			})
 		);
 	}
 
@@ -209,7 +203,9 @@ class PopoverTooltip extends React.Component {
 					className={classNames(
 						'slds-popover',
 						'slds-popover--tooltip',
-						{ 'slds-theme_error': this.props.theme === 'error' || deprecatedWay },
+						{
+							'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+						},
 						getNubbinClassName(align)
 					)}
 					role="tooltip"
@@ -226,9 +222,19 @@ class PopoverTooltip extends React.Component {
 		return (
 			<div className="slds-popover__body">
 				{this.props.content}
-				{this.props.variant === 'learnMore'
-					? <div className="slds-m-top_x-small">{this.props.labels.learnMoreBefore} <Icon assistiveText={this.props.assistiveText.learnMore} category="utility" inverse name="info" size="x-small" /> {this.props.labels.learnMoreAfter} </div>
-					: null}
+				{this.props.variant === 'learnMore' ? (
+					<div className="slds-m-top_x-small">
+						{this.props.labels.learnMoreBefore}{' '}
+						<Icon
+							assistiveText={this.props.assistiveText.learnMore}
+							category="utility"
+							inverse
+							name="info"
+							size="x-small"
+						/>{' '}
+						{this.props.labels.learnMoreAfter}{' '}
+					</div>
+				) : null}
 			</div>
 		);
 	}

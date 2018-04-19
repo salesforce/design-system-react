@@ -7,7 +7,7 @@ import Icon from '~/components/icon';
 class Example extends React.Component {
 	handleClick = (event) => {
 		console.log(event, 'clicked');
-	}
+	};
 
 	render () {
 		return (

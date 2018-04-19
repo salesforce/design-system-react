@@ -12,7 +12,8 @@ let deprecated = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	deprecated = function (control,
+	deprecated = function (
+		control,
 		{
 			propAsString,
 			propValue,
@@ -20,15 +21,16 @@ if (process.env.NODE_ENV !== 'production') {
 			replacementPropAsString,
 			replacementPropAsValue,
 		},
-		comment) {
+		comment
+	) {
 		const additionalComment = comment ? ` ${comment}` : '';
-		const warnOnFirstOccurrenceKey = control + propAsString + deprecatedPropValue;
+		const warnOnFirstOccurrenceKey =
+			control + propAsString + deprecatedPropValue;
 		const triggerWarning = propValue === deprecatedPropValue;
 		const replacementSentence =
-			deprecatedPropValue &&
-			replacementPropAsString &&
-			replacementPropAsValue
-				? ` Replace \`${propAsString}="${deprecatedPropValue}"\` with \`${replacementPropAsString}="${replacementPropAsValue}"\`.` : '';
+			deprecatedPropValue && replacementPropAsString && replacementPropAsValue
+				? ` Replace \`${propAsString}="${deprecatedPropValue}"\` with \`${replacementPropAsString}="${replacementPropAsValue}"\`.`
+				: '';
 
 		if (!hasWarned[warnOnFirstOccurrenceKey]) {
 			warning(

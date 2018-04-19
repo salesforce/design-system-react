@@ -15,24 +15,20 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 
 		// Deprecated and changed to another property
-		deprecatedPropertyValue(
-			COMPONENT, {
-				propAsString: 'variant',
-				propValue: props.variant,
-				deprecatedPropValue: 'info',
-				replacementPropAsString: 'theme',
-				replacementPropAsValue: 'info'
-			}
-		);
-		deprecatedPropertyValue(
-			COMPONENT, {
-				propAsString: 'variant',
-				propValue: props.variant,
-				deprecatedPropValue: 'error',
-				replacementPropAsString: 'theme',
-				replacementPropAsValue: 'error'
-			}
-		);
+		deprecatedPropertyValue(COMPONENT, {
+			propAsString: 'variant',
+			propValue: props.variant,
+			deprecatedPropValue: 'info',
+			replacementPropAsString: 'theme',
+			replacementPropAsValue: 'info',
+		});
+		deprecatedPropertyValue(COMPONENT, {
+			propAsString: 'variant',
+			propValue: props.variant,
+			deprecatedPropValue: 'error',
+			replacementPropAsString: 'theme',
+			replacementPropAsValue: 'error',
+		});
 		deprecatedProperty(
 			COMPONENT,
 			props.openByDefault,
