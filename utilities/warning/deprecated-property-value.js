@@ -27,8 +27,8 @@ if (process.env.NODE_ENV !== 'production') {
 		const replacementSentence =
 			deprecatedPropValue &&
 			replacementPropAsString &&
-			replacementPropAsValue 
-			? ` Replace \`${propAsString}="${deprecatedPropValue}"\` with \`${replacementPropAsString}="${replacementPropAsValue}"\`.` : '';
+			replacementPropAsValue
+				? ` Replace \`${propAsString}="${deprecatedPropValue}"\` with \`${replacementPropAsString}="${replacementPropAsValue}"\`.` : '';
 
 		if (!hasWarned[warnOnFirstOccurrenceKey]) {
 			warning(
