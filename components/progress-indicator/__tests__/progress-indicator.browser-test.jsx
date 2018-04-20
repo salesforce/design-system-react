@@ -242,7 +242,6 @@ describe('SLDSProgressIndicator: ', () => {
 				.find('.slds-tooltip-trigger');
 			expect(item).to.have.length(6);
 		});
-
 	});
 
 	describe('Click Event', () => {
