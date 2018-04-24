@@ -6,6 +6,7 @@
 
 import React from 'react';
 import createReactClass from 'create-react-class';
+import requiredIf from 'react-required-if';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
@@ -66,13 +67,10 @@ const Button = createReactClass({
 		/**
 		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
 		 */
-		iconCategory: PropTypes.oneOf([
-			'action',
-			'custom',
-			'doctype',
-			'standard',
-			'utility',
-		]),
+		iconCategory: requiredIf(
+			PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+			(props) => !!props.iconName
+		),
 		/**
 		 * CSS classes to be added to icon.
 		 */
