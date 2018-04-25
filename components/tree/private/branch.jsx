@@ -89,39 +89,53 @@ const findPreviousNode = (flattenedNodes, node) => {
 };
 
 const handleKeyDownDown = (event, props) => {
-	if (props.node.selected) {
-		// Go to the next visible node
-		handleClick(event, props);
-		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-		props.onClick(event, {
-			node: flattenedNode.node,
-			select: true,
-			treeIndex: flattenedNode.treeIndex,
-		});
-	} else {
-		// Focus is on this node but it's not selected, so select it
-		handleClick(event, props);
+	if (props.focusedNodeIndex === props.treeIndex) {
+		if (event.ctrlKey) {
+			// Focus the next visible node
+			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+			props.onNodeFocus(event, {
+				node: flattenedNode.node,
+				treeIndex: flattenedNode.treeIndex
+			});
+		} else {
+			// Select the next visible node
+			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+			props.onClick(event, {
+				node: flattenedNode.node,
+				select: true,
+				treeIndex: flattenedNode.treeIndex,
+			}, true);
+		}
 	}
 };
 
 const handleKeyDownUp = (event, props) => {
-	if (props.node.selected) {
-		// Go to the next visible node
-		handleClick(event, props);
-		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-		props.onClick(event, {
-			node: flattenedNode.node,
-			select: true,
-			treeIndex: flattenedNode.treeIndex,
-		});
-	} else {
-		// Focus is on this node but it's not selected, so select it
-		handleClick(event, props);
+	if (props.focusedNodeIndex === props.treeIndex) {
+		if (event.ctrlKey) {
+			// Focus the previous visible node
+			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+			props.onNodeFocus(event, {
+				node: flattenedNode.node,
+				treeIndex: flattenedNode.treeIndex
+			});
+		} else {
+			// Go to the previous visible node
+			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+			props.onClick(event, {
+				node: flattenedNode.node,
+				select: true,
+				treeIndex: flattenedNode.treeIndex,
+			}, true);
+		}
 	}
 };
 
 const handleKeyDownRight = (event, props) => {
-	if (!props.node.expanded) {
+	if (props.node.expanded) {
+		if (props.node.nodes && props.node.nodes.length > 0) {
+			handleKeyDownDown(event, props);
+		}
+	} else {
 		handleExpandClick(event, props);
 	}
 };
@@ -133,14 +147,23 @@ const handleKeyDownLeft = (event, props) => {
 		const nodes = props.flattenedNodes.map(((flattenedNode) => flattenedNode.node));
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
-			handleClick(event, props);
 			props.onClick(event, {
 				node: props.parent,
 				select: true,
 				treeIndex: props.flattenedNodes[index].treeIndex,
-			});
+			}, true);
 		}
 	}
+};
+
+const handleKeyDownSpace = (event, props) => {
+	if (event.ctrlKey) {
+		handleClick(event, props);
+	}
+};
+
+const handleKeyDownEnter = (event, props) => {
+	handleClick(event, props);
 };
 
 const handleKeyDown = (event, props) => {
@@ -150,8 +173,24 @@ const handleKeyDown = (event, props) => {
 			[KEYS.UP]: { callback: (event) => handleKeyDownUp(event, props) },
 			[KEYS.RIGHT]: { callback: (event) => handleKeyDownRight(event, props) },
 			[KEYS.LEFT]: { callback: (event) => handleKeyDownLeft(event, props) },
+			[KEYS.SPACE]: { callback: (event) => handleKeyDownSpace(event, props) },
+			[KEYS.ENTER]: { callback: (event) => handleKeyDownEnter(event, props) },
 		},
 	});
+};
+
+const handleFocus = (event, props) => {
+	if (!props.focusedNodeIndex) {
+		handleClick(event, props);
+	}
+};
+
+const getTabIndex = (props) => {
+	if (props.treeIndex === props.focusedNodeIndex ||
+		(props.selectedNodeIndexes.length === 0 && props.treeIndex === props.flattenedNodes[0].treeIndex)) {
+		return 0;
+	}
+	return -1;
 };
 
 const renderInitialNode = (children, props) => (
@@ -197,6 +236,7 @@ renderInitialNode.propTypes = {
 const renderBranch = (children, props) => {
 	const isExpanded = props.node.expanded;
 	const isSelected = props.node.selected;
+	const isFocused = props.treeIndex === props.focusedNodeIndex;
 	const isLoading = props.node.loading;
 
 	const loader = (
@@ -247,10 +287,11 @@ const renderBranch = (children, props) => {
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
 			aria-label={props.node.nodes && props.node.nodes.length > 0 ? props.node.label : null}
-			tabIndex="0"
+			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
+			onFocus={(event) => handleFocus(event, props)}
 			ref={(component) => {
-				if (component && isSelected) {
+				if (component && isFocused) {
 					component.focus();
 				}
 			}}
@@ -346,6 +387,18 @@ renderBranch.propTypes = {
 	 */
 	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
 	/**
+	 * Tree indexes of nodes that are currently selected.
+	 */
+	selectedNodeIndexes: PropTypes.arrayOf(PropTypes.string),
+	/**
+	 * Tree index of the node that is currently focused.
+	 */
+	focusedNodeIndex: PropTypes.string,
+	/**
+	 * Callback for when a node is focused.
+	 */
+	onNodeFocus: PropTypes.func,
+	/**
 	 * This node's parent.
 	 */
 	parent: PropTypes.object,
@@ -380,6 +433,9 @@ const Branch = (props) => {
 						level={level + 1}
 						node={node}
 						flattenedNodes={props.flattenedNodes}
+						selectedNodeIndexes={props.selectedNodeIndexes}
+						focusedNodeIndex={props.focusedNodeIndex}
+						onNodeFocus={props.onNodeFocus}
 						nodes={node.nodes}
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
@@ -398,6 +454,9 @@ const Branch = (props) => {
 						level={level + 1}
 						node={node}
 						flattenedNodes={props.flattenedNodes}
+						selectedNodeIndexes={props.selectedNodeIndexes}
+						focusedNodeIndex={props.focusedNodeIndex}
+						onNodeFocus={props.onNodeFocus}
 						onClick={props.onClick}
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
@@ -485,6 +544,18 @@ Branch.propTypes = {
 	 */
 	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
 	/**
+	 * Tree indexes of nodes that are currently selected.
+	 */
+	selectedNodeIndexes: PropTypes.arrayOf(PropTypes.string),
+	/**
+	 * Tree index of the node that is currently focused.
+	 */
+	focusedNodeIndex: PropTypes.string,
+	/**
+	 * Callback for when a node is focused.
+	 */
+	onNodeFocus: PropTypes.func,
+	/**
 	 * This node's parent.
 	 */
 	parent: PropTypes.object,
@@ -494,6 +565,7 @@ Branch.defaultProps = {
 	level: 0,
 	label: '',
 	treeIndex: '',
+	selectedNodeIndexes: [],
 };
 
 export default Branch;

@@ -29,8 +29,11 @@ import { TREE } from '../../utilities/constants';
 class Tree extends React.Component {
 	constructor (props) {
 		super(props);
+		this.handleClick = this.handleClick.bind(this);
+		this.handleNodeFocus = this.handleNodeFocus.bind(this);
 		this.state = {
-			flattenedNodes: this.flattenTree({ nodes: this.props.nodes, expanded: true }).slice(1)
+			flattenedNodes: this.flattenTree({ nodes: this.props.nodes, expanded: true }).slice(1),
+			selectedNodeIndexes: []
 		};
 	}
 
@@ -39,9 +42,9 @@ class Tree extends React.Component {
 	}
 
 	componentWillReceiveProps (nextProps) {
-		this.state = {
+		this.setState({
 			flattenedNodes: this.flattenTree({ nodes: nextProps.nodes, expanded: true }).slice(1)
-		};
+		});
 	}
 
 	// Flattens hierarchical tree structure into a flat array.
@@ -57,6 +60,36 @@ class Tree extends React.Component {
 			}
 		}
 		return nodes;
+	}
+
+	handleClick (event, data, clearSelectedNodes) {
+		// When triggered by a key event, other nodes should be deselected.
+		if (clearSelectedNodes) {
+			this.state.flattenedNodes.forEach((flattenedNode) => {
+				if (flattenedNode.node.selected) {
+					flattenedNode.node.selected = false;
+				}
+			});
+		}
+
+		// Do the click.
+		this.props.onClick(event, data);
+
+		// Keep track of the currently selected and focused nodes.
+		let selectedNodeIndexes;
+		if (data.select) {
+			selectedNodeIndexes = this.state.selectedNodeIndexes.concat([data.treeIndex]);
+		} else {
+			selectedNodeIndexes = this.state.selectedNodeIndexes.filter((treeIndex) => treeIndex !== data.treeIndex);
+		}
+		this.setState({
+			focusedNodeIndex: data.treeIndex,
+			selectedNodeIndexes
+		});
+	}
+
+	handleNodeFocus (event, data) {
+		this.setState({ focusedNodeIndex: data.treeIndex });
 	}
 
 	render () {
@@ -89,7 +122,10 @@ class Tree extends React.Component {
 					level={0}
 					node={{ nodes: this.props.nodes }}
 					flattenedNodes={this.state.flattenedNodes}
-					onClick={this.props.onClick}
+					selectedNodeIndexes={this.state.selecselectedNodeIndexestedNodes}
+					focusedNodeIndex={this.state.focusedNodeIndex}
+					onNodeFocus={this.handleNodeFocus}
+					onClick={this.handleClick}
 					onExpandClick={this.props.onExpandClick}
 					onScroll={this.props.onScroll}
 					searchTerm={this.props.searchTerm}
