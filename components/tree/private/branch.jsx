@@ -33,7 +33,6 @@ import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 
-
 // ## Constants
 import { TREE_BRANCH } from '../../../utilities/constants';
 
@@ -74,13 +73,13 @@ const handleScroll = (event, props) => {
 };
 
 const findNextNode = (flattenedNodes, node) => {
-	const nodes = flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const index = nodes.indexOf(node);
 	return flattenedNodes[(index + 1) % flattenedNodes.length];
 };
 
 const findPreviousNode = (flattenedNodes, node) => {
-	const nodes = flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	let index = nodes.indexOf(node) - 1;
 	if (index < 0) {
 		index += flattenedNodes.length;
@@ -95,16 +94,20 @@ const handleKeyDownDown = (event, props) => {
 			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
 			props.onNodeFocus(event, {
 				node: flattenedNode.node,
-				treeIndex: flattenedNode.treeIndex
+				treeIndex: flattenedNode.treeIndex,
 			});
 		} else {
 			// Select the next visible node
 			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-			props.onClick(event, {
-				node: flattenedNode.node,
-				select: true,
-				treeIndex: flattenedNode.treeIndex,
-			}, true);
+			props.onClick(
+				event,
+				{
+					node: flattenedNode.node,
+					select: true,
+					treeIndex: flattenedNode.treeIndex,
+				},
+				true
+			);
 		}
 	}
 };
@@ -116,16 +119,20 @@ const handleKeyDownUp = (event, props) => {
 			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
 			props.onNodeFocus(event, {
 				node: flattenedNode.node,
-				treeIndex: flattenedNode.treeIndex
+				treeIndex: flattenedNode.treeIndex,
 			});
 		} else {
 			// Go to the previous visible node
 			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-			props.onClick(event, {
-				node: flattenedNode.node,
-				select: true,
-				treeIndex: flattenedNode.treeIndex,
-			}, true);
+			props.onClick(
+				event,
+				{
+					node: flattenedNode.node,
+					select: true,
+					treeIndex: flattenedNode.treeIndex,
+				},
+				true
+			);
 		}
 	}
 };
@@ -144,14 +151,20 @@ const handleKeyDownLeft = (event, props) => {
 	if (props.node.expanded) {
 		handleExpandClick(event, props);
 	} else {
-		const nodes = props.flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+		const nodes = props.flattenedNodes.map(
+			(flattenedNode) => flattenedNode.node
+		);
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
-			props.onClick(event, {
-				node: props.parent,
-				select: true,
-				treeIndex: props.flattenedNodes[index].treeIndex,
-			}, true);
+			props.onClick(
+				event,
+				{
+					node: props.parent,
+					select: true,
+					treeIndex: props.flattenedNodes[index].treeIndex,
+				},
+				true
+			);
 		}
 	}
 };
@@ -186,8 +199,11 @@ const handleFocus = (event, props) => {
 };
 
 const getTabIndex = (props) => {
-	if (props.treeIndex === props.focusedNodeIndex ||
-		(props.selectedNodeIndexes.length === 0 && props.treeIndex === props.flattenedNodes[0].treeIndex)) {
+	if (
+		props.treeIndex === props.focusedNodeIndex ||
+		(props.selectedNodeIndexes.length === 0 &&
+			props.treeIndex === props.flattenedNodes[0].treeIndex)
+	) {
 		return 0;
 	}
 	return -1;
@@ -286,7 +302,11 @@ const renderBranch = (children, props) => {
 			role="treeitem"
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
-			aria-label={props.node.nodes && props.node.nodes.length > 0 ? props.node.label : null}
+			aria-label={
+				props.node.nodes && props.node.nodes.length > 0
+					? props.node.label
+					: null
+			}
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
 			onFocus={(event) => handleFocus(event, props)}
@@ -402,7 +422,6 @@ renderBranch.propTypes = {
 	 * This node's parent.
 	 */
 	parent: PropTypes.object,
-
 };
 
 /**

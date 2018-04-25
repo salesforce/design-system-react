@@ -43,13 +43,13 @@ const handleClick = (event, props) => {
 };
 
 const findNextNode = (flattenedNodes, node) => {
-	const nodes = flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const index = nodes.indexOf(node);
 	return flattenedNodes[(index + 1) % flattenedNodes.length];
 };
 
 const findPreviousNode = (flattenedNodes, node) => {
-	const nodes = flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	let index = nodes.indexOf(node) - 1;
 	if (index < 0) {
 		index += flattenedNodes.length;
@@ -64,16 +64,20 @@ const handleKeyDownDown = (event, props) => {
 			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
 			props.onNodeFocus(event, {
 				node: flattenedNode.node,
-				treeIndex: flattenedNode.treeIndex
+				treeIndex: flattenedNode.treeIndex,
 			});
 		} else {
 			// Select the next visible node
 			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-			props.onClick(event, {
-				node: flattenedNode.node,
-				select: true,
-				treeIndex: flattenedNode.treeIndex,
-			}, true);
+			props.onClick(
+				event,
+				{
+					node: flattenedNode.node,
+					select: true,
+					treeIndex: flattenedNode.treeIndex,
+				},
+				true
+			);
 		}
 	}
 };
@@ -85,28 +89,36 @@ const handleKeyDownUp = (event, props) => {
 			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
 			props.onNodeFocus(event, {
 				node: flattenedNode.node,
-				treeIndex: flattenedNode.treeIndex
+				treeIndex: flattenedNode.treeIndex,
 			});
 		} else {
 			// Go to the previous visible node
 			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-			props.onClick(event, {
-				node: flattenedNode.node,
-				select: true,
-				treeIndex: flattenedNode.treeIndex,
-			}, true);
+			props.onClick(
+				event,
+				{
+					node: flattenedNode.node,
+					select: true,
+					treeIndex: flattenedNode.treeIndex,
+				},
+				true
+			);
 		}
 	}
 };
 
 const handleKeyDownLeft = (event, props) => {
-	const nodes = props.flattenedNodes.map(((flattenedNode) => flattenedNode.node));
+	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const index = nodes.indexOf(props.parent);
-	props.onClick(event, {
-		node: props.parent,
-		select: true,
-		treeIndex: props.flattenedNodes[index].treeIndex,
-	}, true);
+	props.onClick(
+		event,
+		{
+			node: props.parent,
+			select: true,
+			treeIndex: props.flattenedNodes[index].treeIndex,
+		},
+		true
+	);
 };
 
 const handleKeyDownSpace = (event, props) => {
@@ -120,15 +132,19 @@ const handleKeyDownEnter = (event, props) => {
 };
 
 const handleKeyDown = (event, props) => {
-	mapKeyEventCallbacks(event, {
-		callbacks: {
-			[KEYS.DOWN]: { callback: (event) => handleKeyDownDown(event, props) },
-			[KEYS.UP]: { callback: (event) => handleKeyDownUp(event, props) },
-			[KEYS.LEFT]: { callback: (event) => handleKeyDownLeft(event, props) },
-			[KEYS.SPACE]: { callback: (event) => handleKeyDownSpace(event, props) },
-			[KEYS.ENTER]: { callback: (event) => handleKeyDownEnter(event, props) },
+	mapKeyEventCallbacks(
+		event,
+		{
+			callbacks: {
+				[KEYS.DOWN]: { callback: (event) => handleKeyDownDown(event, props) },
+				[KEYS.UP]: { callback: (event) => handleKeyDownUp(event, props) },
+				[KEYS.LEFT]: { callback: (event) => handleKeyDownLeft(event, props) },
+				[KEYS.SPACE]: { callback: (event) => handleKeyDownSpace(event, props) },
+				[KEYS.ENTER]: { callback: (event) => handleKeyDownEnter(event, props) },
+			},
 		},
-	}, true);
+		true
+	);
 };
 
 const handleFocus = (event, props) => {
@@ -138,8 +154,11 @@ const handleFocus = (event, props) => {
 };
 
 const getTabIndex = (props) => {
-	if (props.treeIndex === props.focusedNodeIndex ||
-		(props.selectedNodeIndexes.length === 0 && props.treeIndex === props.flattenedNodes[0].treeIndex)) {
+	if (
+		props.treeIndex === props.focusedNodeIndex ||
+		(props.selectedNodeIndexes.length === 0 &&
+			props.treeIndex === props.flattenedNodes[0].treeIndex)
+	) {
 		return 0;
 	}
 	return -1;
@@ -265,7 +284,7 @@ Item.propTypes = {
 
 Item.defaultProps = {
 	selected: false,
-	selectedNodeIndexes: []
+	selectedNodeIndexes: [],
 };
 
 export default Item;

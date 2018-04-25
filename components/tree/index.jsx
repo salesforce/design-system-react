@@ -32,8 +32,11 @@ class Tree extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 		this.handleNodeFocus = this.handleNodeFocus.bind(this);
 		this.state = {
-			flattenedNodes: this.flattenTree({ nodes: this.props.nodes, expanded: true }).slice(1),
-			selectedNodeIndexes: []
+			flattenedNodes: this.flattenTree({
+				nodes: this.props.nodes,
+				expanded: true,
+			}).slice(1),
+			selectedNodeIndexes: [],
 		};
 	}
 
@@ -43,7 +46,10 @@ class Tree extends React.Component {
 
 	componentWillReceiveProps (nextProps) {
 		this.setState({
-			flattenedNodes: this.flattenTree({ nodes: nextProps.nodes, expanded: true }).slice(1)
+			flattenedNodes: this.flattenTree({
+				nodes: nextProps.nodes,
+				expanded: true,
+			}).slice(1),
 		});
 	}
 
@@ -56,7 +62,12 @@ class Tree extends React.Component {
 		if (root.expanded) {
 			for (let index = 0; index < root.nodes.length; index++) {
 				const curNode = root.nodes[index];
-				nodes = nodes.concat(this.flattenTree(curNode, treeIndex ? `${treeIndex}-${index}` : `${index}`));
+				nodes = nodes.concat(
+					this.flattenTree(
+						curNode,
+						treeIndex ? `${treeIndex}-${index}` : `${index}`
+					)
+				);
 			}
 		}
 		return nodes;
@@ -78,13 +89,17 @@ class Tree extends React.Component {
 		// Keep track of the currently selected and focused nodes.
 		let selectedNodeIndexes;
 		if (data.select) {
-			selectedNodeIndexes = this.state.selectedNodeIndexes.concat([data.treeIndex]);
+			selectedNodeIndexes = this.state.selectedNodeIndexes.concat([
+				data.treeIndex,
+			]);
 		} else {
-			selectedNodeIndexes = this.state.selectedNodeIndexes.filter((treeIndex) => treeIndex !== data.treeIndex);
+			selectedNodeIndexes = this.state.selectedNodeIndexes.filter(
+				(treeIndex) => treeIndex !== data.treeIndex
+			);
 		}
 		this.setState({
 			focusedNodeIndex: data.treeIndex,
-			selectedNodeIndexes
+			selectedNodeIndexes,
 		});
 	}
 
