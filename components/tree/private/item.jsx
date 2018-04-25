@@ -136,11 +136,11 @@ const handleKeyDown = (event, props) => {
 		event,
 		{
 			callbacks: {
-				[KEYS.DOWN]: { callback: (event) => handleKeyDownDown(event, props) },
-				[KEYS.UP]: { callback: (event) => handleKeyDownUp(event, props) },
-				[KEYS.LEFT]: { callback: (event) => handleKeyDownLeft(event, props) },
-				[KEYS.SPACE]: { callback: (event) => handleKeyDownSpace(event, props) },
-				[KEYS.ENTER]: { callback: (event) => handleKeyDownEnter(event, props) },
+				[KEYS.DOWN]: { callback: (evt) => handleKeyDownDown(evt, props) },
+				[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
+				[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
+				[KEYS.SPACE]: { callback: (evt) => handleKeyDownSpace(evt, props) },
+				[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
 			},
 		},
 		true
