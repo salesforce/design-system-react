@@ -137,7 +137,7 @@ class Tree extends React.Component {
 					level={0}
 					node={{ nodes: this.props.nodes }}
 					flattenedNodes={this.state.flattenedNodes}
-					selectedNodeIndexes={this.state.selecselectedNodeIndexestedNodes}
+					selectedNodeIndexes={this.state.selectedNodeIndexes}
 					focusedNodeIndex={this.state.focusedNodeIndex}
 					onNodeFocus={this.handleNodeFocus}
 					onClick={this.handleClick}
