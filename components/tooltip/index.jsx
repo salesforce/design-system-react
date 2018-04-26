@@ -123,7 +123,8 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
-		learnMore: 'this link',
+		tooltipTipLearnMoreIcon: 'this link',
+		triggerLearnMoreIcon: 'Learn More',
 	},
 	align: 'top',
 	content: <span>Tooltip</span>,
@@ -195,7 +196,7 @@ class Tooltip extends React.Component {
 			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
 		const align = this.props.align;
 
-		// REMOVE AT NEXT BREAKING CHANGE
+		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
 		const deprecatedWay = this.props.variant === 'error';
 
 		return isOpen ? (
