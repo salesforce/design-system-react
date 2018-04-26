@@ -90,6 +90,7 @@ const defaultProps = {
 		placeholder: 'Search Salesforce',
 	},
 	menuPosition: 'relative',
+	onOpen: () => {},
 };
 
 const propTypes = {
@@ -157,6 +158,9 @@ class DemoComponent extends React.Component {
 								selection: data.selection,
 							});
 						},
+						onOpen: (event) => {
+							this.props.onOpen();
+						}
 					}}
 					options={filter({
 						inputValue: this.state.inputValue,
@@ -417,6 +421,24 @@ describe('SLDSCombobox', function () {
 					.find('.slds-listbox__item.slds-listbox__status')
 					.text()
 			).to.equal('No matches found.');
+		});
+	});
+
+	describe('Input Onclick', () => {
+		const onOpenCallback = sinon.spy();
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('onOpen callback is called', function () {
+			wrapper = mount(<DemoComponent onOpen={onOpenCallback} />, { attachTo: mountNode });
+			const nodes = getNodes({ wrapper });
+			nodes.input.simulate('click', {});
+			expect(onOpenCallback.callCount).to.equal(1);
 		});
 	});
 });
