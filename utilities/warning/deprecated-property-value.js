@@ -15,11 +15,12 @@ if (process.env.NODE_ENV !== 'production') {
 	deprecated = function (
 		control,
 		{
-			propAsString,
-			propValue,
-			deprecatedPropValue,
-			replacementPropAsString,
-			replacementPropAsValue,
+			propAsString, // key name of prop being warned about
+			propValue,	// actual value of prop being warned about
+			deprecatedPropValue, // value that is being deprecated
+			replacementPropAsString, // prop that value is being moved to
+			replacementPropAsValue, // value that should be used in new prop
+			log // log function that will disable console warning and pipe to another function log({ message })
 		},
 		comment
 	) {
@@ -33,10 +34,16 @@ if (process.env.NODE_ENV !== 'production') {
 				: '';
 
 		if (!hasWarned[warnOnFirstOccurrenceKey]) {
-			warning(
-				!triggerWarning, // false value triggers warning
-				`[Design System React] The value of \`${deprecatedPropValue}\`, for prop \`${propAsString}\` will be removed in the next major version of ${control}. Please update your props.${replacementSentence}${additionalComment}`
-			);
+			const message = `[Design System React] The value of \`${deprecatedPropValue}\`, for prop \`${propAsString}\` will be removed in the next major version of ${control}. Please update your props.${replacementSentence}${additionalComment}`;
+
+			if (triggerWarning && log) {
+				log({ message });
+			} else {
+				warning(
+					!triggerWarning, // false value triggers warning
+					message
+				);
+			} 
 			// store global flag to limit warnings to first issue
 			hasWarned[warnOnFirstOccurrenceKey] = triggerWarning;
 		}
