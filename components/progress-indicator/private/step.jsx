@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 // Child component
-import PopoverTooltip from '../../popover-tooltip';
+import Tooltip from '../../tooltip';
 import { PROGRESS_INDICATOR_STEP } from '../../../utilities/constants';
 import ButtonIcon from '../../icon/button-icon';
 
@@ -156,7 +156,7 @@ class Step extends React.Component {
 			id: `progress-indicator-tooltip-${this.props.step.id ||
 				this.props.index}`,
 			content: this.props.step.label,
-			variant: this.props.isError ? 'error' : 'info',
+			theme: this.props.isError ? 'error' : 'info',
 			triggerStyle: { display: !renderIcon ? 'flex' : '' },
 		};
 
@@ -176,9 +176,9 @@ class Step extends React.Component {
 					'slds-has-error': this.props.isError,
 				})}
 			>
-				<PopoverTooltip {...tooltipProps}>
+				<Tooltip {...tooltipProps}>
 					{this.buttonIcon(renderIcon, status, this.props)}
-				</PopoverTooltip>
+				</Tooltip>
 			</li>
 		);
 	}
