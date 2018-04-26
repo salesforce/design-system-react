@@ -160,7 +160,7 @@ class DemoComponent extends React.Component {
 						},
 						onOpen: (event) => {
 							this.props.onOpen();
-						}
+						},
 					}}
 					options={filter({
 						inputValue: this.state.inputValue,
@@ -435,7 +435,9 @@ describe('SLDSCombobox', function () {
 		});
 
 		it('onOpen callback is called', function () {
-			wrapper = mount(<DemoComponent onOpen={onOpenCallback} />, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent onOpen={onOpenCallback} />, {
+				attachTo: mountNode,
+			});
 			const nodes = getNodes({ wrapper });
 			nodes.input.simulate('click', {});
 			expect(onOpenCallback.callCount).to.equal(1);
