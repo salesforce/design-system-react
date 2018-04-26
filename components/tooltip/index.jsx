@@ -1,10 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Popover - tooltip variant
-
-// Implements the [Popover design pattern](https://core-204.lightningdesignsystem.com/components/popovers#flavor-tooltips) in React.
-// Based on SLDS v2.1.0-rc3
+// # Tooltip
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -48,6 +45,16 @@ const propTypes = {
 		'left bottom',
 	]).isRequired,
 	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to "complete the sentence" for assistive tech users.
+	 * * `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.
+	 */
+	assistiveText: PropTypes.shape({
+		tooltipTipLearnMoreIcon: PropTypes.string,
+		triggerLearnMoreIcon: PropTypes.string,
+	}),
+	/**
 	 * Pass the one element that triggers the Tooltip as a child. It must be an element with `tabIndex` or an element that already has a `tabIndex` set such as an anchor or a button, so that keyboard users can tab to it.
 	 */
 	children: PropTypes.node,
@@ -67,6 +74,16 @@ const propTypes = {
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
 	 */
 	id: PropTypes.string,
+	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `learnMoreAfter`: This label appears in the tooltip after the info icon.
+	 * * `learnMoreBefore`: This label appears in the tooltip before the info icon.
+	 */
+	labels: PropTypes.shape({
+		learnMoreAfter: PropTypes.string,
+		learnMoreBefore: PropTypes.string,
+	}),
 	/**
 	 * Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
 	 */
@@ -123,7 +140,7 @@ const defaultProps = {
 /**
  * The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.
  */
-class PopoverTooltip extends React.Component {
+class Tooltip extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -150,7 +167,7 @@ class PopoverTooltip extends React.Component {
 		if (React.Children.count(this.props.children) === 0) {
 			children = [
 				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
-					<Icon category="utility" name="info" assistiveText={this.props.assistiveText.learnMore} size="x-small" />
+					<Icon category="utility" name="info" assistiveText={this.props.assistiveText.triggerLearnMoreIcon} size="x-small" />
 				</a>,
 			];
 		} else {
@@ -226,7 +243,7 @@ class PopoverTooltip extends React.Component {
 					<div className="slds-m-top_x-small">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon
-							assistiveText={this.props.assistiveText.learnMore}
+							assistiveText={this.props.assistiveText.tooltipTipLearnMoreIcon}
 							category="utility"
 							inverse
 							name="info"
@@ -301,12 +318,12 @@ class PopoverTooltip extends React.Component {
 	}
 }
 
-PopoverTooltip.contextTypes = {
+Tooltip.contextTypes = {
 	iconPath: PropTypes.string,
 };
 
-PopoverTooltip.displayName = displayName;
-PopoverTooltip.propTypes = propTypes;
-PopoverTooltip.defaultProps = defaultProps;
+Tooltip.displayName = displayName;
+Tooltip.propTypes = propTypes;
+Tooltip.defaultProps = defaultProps;
 
-export default PopoverTooltip;
+export default Tooltip;
