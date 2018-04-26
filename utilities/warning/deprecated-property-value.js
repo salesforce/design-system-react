@@ -16,11 +16,11 @@ if (process.env.NODE_ENV !== 'production') {
 		control,
 		{
 			propAsString, // key name of prop being warned about
-			propValue,	// actual value of prop being warned about
+			propValue, // actual value of prop being warned about
 			deprecatedPropValue, // value that is being deprecated
 			replacementPropAsString, // prop that value is being moved to
 			replacementPropAsValue, // value that should be used in new prop
-			log // log function that will disable console warning and pipe to another function log({ message })
+			log, // log function that will disable console warning and pipe to another function log({ message })
 		},
 		comment
 	) {
@@ -43,7 +43,7 @@ if (process.env.NODE_ENV !== 'production') {
 					!triggerWarning, // false value triggers warning
 					message
 				);
-			} 
+			}
 			// store global flag to limit warnings to first issue
 			hasWarned[warnOnFirstOccurrenceKey] = triggerWarning;
 		}

@@ -321,9 +321,6 @@ describe('SLDSSlider', () => {
 
 		afterEach(() => {
 			removeSlider();
-			body = slider2;
-			console.log(body);
-//			removeSlider();
 		});
 
 		it('each slider has unique generated id', () => {

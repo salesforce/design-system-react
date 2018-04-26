@@ -168,7 +168,12 @@ class Tooltip extends React.Component {
 		if (React.Children.count(this.props.children) === 0) {
 			children = [
 				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
-					<Icon category="utility" name="info" assistiveText={this.props.assistiveText.triggerLearnMoreIcon} size="x-small" />
+					<Icon
+						category="utility"
+						name="info"
+						assistiveText={this.props.assistiveText.triggerLearnMoreIcon}
+						size="x-small"
+					/>
 				</a>,
 			];
 		} else {

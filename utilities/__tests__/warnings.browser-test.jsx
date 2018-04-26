@@ -11,14 +11,13 @@ describe('Console Warnings: ', function () {
 			const log = sinon.spy();
 			const deprecatedValue = 'info';
 
-
 			deprecatedPropertyValue('Dummy Component Name', {
 				propAsString: 'variant',
 				propValue: deprecatedValue,
 				deprecatedPropValue: deprecatedValue,
 				replacementPropAsString: 'theme',
 				replacementPropAsValue: 'info',
-				log
+				log,
 			});
 			expect(log.calledOnce).to.be.true;
 		});
@@ -34,7 +33,7 @@ describe('Console Warnings: ', function () {
 				deprecatedPropValue: deprecatedValue,
 				replacementPropAsString: 'theme',
 				replacementPropAsValue: 'info',
-				log
+				log,
 			});
 			expect(log.calledOnce).to.be.false;
 		});
