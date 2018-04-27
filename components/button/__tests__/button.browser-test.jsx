@@ -145,7 +145,7 @@ describe('SLDSButton: ', () => {
 				assistiveText: 'News',
 				iconSize: 'large',
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
-				title: 'announcement'
+				title: 'announcement',
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');

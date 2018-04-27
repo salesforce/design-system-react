@@ -8,13 +8,13 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			isActive: false
+			isActive: false,
 		};
 	},
 
 	handleOnclick () {
 		this.setState({
-			isActive: !this.state.isActive
+			isActive: !this.state.isActive,
 		});
 	},
 
