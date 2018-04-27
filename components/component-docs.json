@@ -585,6 +585,13 @@
                                 "computed": false
                             }
                         },
+                        "isOpenTooltip": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Open the More Tooltip"
+                        },
                         "moreLabel": {
                             "type": {
                                 "name": "string"
@@ -10317,30 +10324,6 @@
                 "returns": null
             },
             {
-                "name": "decorateGrandKidsWithKeyToSilenceWarning",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "grandKids",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "grandKidsWithAsstText",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "child",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "handleCancel",
                 "docblock": null,
                 "modifiers": [],
@@ -10371,13 +10354,6 @@
                         "type": null
                     }
                 ],
-                "returns": null
-            },
-            {
-                "name": "renderAssistantText",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
                 "returns": null
             }
         ],
@@ -10443,6 +10419,27 @@
                     "computed": false
                 }
             },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "tooltipTipLearnMoreIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "triggerLearnMoreIcon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to \"complete the sentence\" for assistive tech users.\n* `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.",
+                "defaultValue": {
+                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Learn More',\n}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -10485,6 +10482,27 @@
                 },
                 "required": false,
                 "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "learnMoreAfter": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "learnMoreBefore": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: This label appears in the tooltip after the info icon.\n* `learnMoreBefore`: This label appears in the tooltip before the info icon.",
+                "defaultValue": {
+                    "value": "{\n    learnMoreAfter: 'to learn more.',\n    learnMoreBefore: 'Click',\n}",
+                    "computed": false
+                }
             },
             "isOpen": {
                 "type": {
@@ -10543,7 +10561,7 @@
                 "required": false,
                 "description": "Custom styles to be added to wrapping triggering `div`."
             },
-            "variant": {
+            "theme": {
                 "type": {
                     "name": "enum",
                     "value": [
@@ -10558,9 +10576,30 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)",
+                "description": "Determines the theme of tooltip: for informative purpose (blue background) or warning purpose (red background). This used to be `variant`.",
                 "defaultValue": {
                     "value": "'info'",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'learnMore'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the type of the tooltip.",
+                "defaultValue": {
+                    "value": "'base'",
                     "computed": false
                 }
             }
