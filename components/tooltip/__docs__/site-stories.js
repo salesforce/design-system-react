@@ -7,6 +7,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/base.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/button.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/button-group.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/learn-more.jsx'),
 ];
 
 module.exports = siteStories;

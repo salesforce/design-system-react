@@ -3,15 +3,32 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value';
 import isTriggerTabbable from '../../utilities/warning/is-trigger-tabbable';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		isTriggerTabbable(COMPONENT, props.children, '');
+		if (props.variant === 'base') {
+			isTriggerTabbable(COMPONENT, props.children, '');
+		}
 
 		// Deprecated and changed to another property
+		deprecatedPropertyValue(COMPONENT, {
+			propAsString: 'variant',
+			propValue: props.variant,
+			deprecatedPropValue: 'info',
+			replacementPropAsString: 'theme',
+			replacementPropAsValue: 'info',
+		});
+		deprecatedPropertyValue(COMPONENT, {
+			propAsString: 'variant',
+			propValue: props.variant,
+			deprecatedPropValue: 'error',
+			replacementPropAsString: 'theme',
+			replacementPropAsValue: 'error',
+		});
 		deprecatedProperty(
 			COMPONENT,
 			props.openByDefault,
