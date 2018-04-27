@@ -1,19 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Popover - tooltip variant
-
-// Implements the [Popover design pattern](https://core-204.lightningdesignsystem.com/components/popovers#flavor-tooltips) in React.
-// Based on SLDS v2.1.0-rc3
+// # Tooltip
 
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-
-// ### Util helpers
-import flatten from 'lodash.flatten';
-import compact from 'lodash.compact';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -23,6 +16,7 @@ import shortid from 'shortid';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
+import Icon from '../icon';
 import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -51,6 +45,16 @@ const propTypes = {
 		'left bottom',
 	]).isRequired,
 	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to "complete the sentence" for assistive tech users.
+	 * * `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.
+	 */
+	assistiveText: PropTypes.shape({
+		tooltipTipLearnMoreIcon: PropTypes.string,
+		triggerLearnMoreIcon: PropTypes.string,
+	}),
+	/**
 	 * Pass the one element that triggers the Tooltip as a child. It must be an element with `tabIndex` or an element that already has a `tabIndex` set such as an anchor or a button, so that keyboard users can tab to it.
 	 */
 	children: PropTypes.node,
@@ -70,6 +74,16 @@ const propTypes = {
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
 	 */
 	id: PropTypes.string,
+	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `learnMoreAfter`: This label appears in the tooltip after the info icon.
+	 * * `learnMoreBefore`: This label appears in the tooltip before the info icon.
+	 */
+	labels: PropTypes.shape({
+		learnMoreAfter: PropTypes.string,
+		learnMoreBefore: PropTypes.string,
+	}),
 	/**
 	 * Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
 	 */
@@ -98,23 +112,36 @@ const propTypes = {
 	 */
 	triggerStyle: PropTypes.object,
 	/**
-	 * Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)
+	 * Determines the theme of tooltip: for informative purpose (blue background) or warning purpose (red background). This used to be `variant`.
 	 */
-	variant: PropTypes.oneOf(['info', 'error']),
+	theme: PropTypes.oneOf(['info', 'error']),
+	/**
+	 * Determines the type of the tooltip.
+	 */
+	variant: PropTypes.oneOf(['base', 'learnMore']),
 };
 
 const defaultProps = {
+	assistiveText: {
+		tooltipTipLearnMoreIcon: 'this link',
+		triggerLearnMoreIcon: 'Learn More',
+	},
 	align: 'top',
 	content: <span>Tooltip</span>,
+	labels: {
+		learnMoreAfter: 'to learn more.',
+		learnMoreBefore: 'Click',
+	},
 	hoverCloseDelay: 50,
 	position: 'absolute',
-	variant: 'info',
+	theme: 'info',
+	variant: 'base',
 };
 
 /**
  * The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.
  */
-class PopoverTooltip extends React.Component {
+class Tooltip extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -136,19 +163,32 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getContent () {
-		return React.Children.map(this.props.children, (child, i) =>
-			React.cloneElement(
-				child,
-				{
-					key: i,
-					'aria-describedby': this.getId(),
-					onBlur: this.handleMouseLeave,
-					onFocus: this.handleMouseEnter,
-					onMouseEnter: this.handleMouseEnter,
-					onMouseLeave: this.handleMouseLeave,
-				},
-				this.grandKidsWithAsstText(child)
-			)
+		let children;
+
+		if (React.Children.count(this.props.children) === 0) {
+			children = [
+				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
+					<Icon
+						category="utility"
+						name="info"
+						assistiveText={this.props.assistiveText.triggerLearnMoreIcon}
+						size="x-small"
+					/>
+				</a>,
+			];
+		} else {
+			children = this.props.children;
+		}
+
+		return React.Children.map(children, (child, i) =>
+			React.cloneElement(child, {
+				key: i,
+				'aria-describedby': this.getId(),
+				onBlur: this.handleMouseLeave,
+				onFocus: this.handleMouseEnter,
+				onMouseEnter: this.handleMouseEnter,
+				onMouseLeave: this.handleMouseLeave,
+			})
 		);
 	}
 
@@ -160,6 +200,9 @@ class PopoverTooltip extends React.Component {
 		const isOpen =
 			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
 		const align = this.props.align;
+
+		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
+		const deprecatedWay = this.props.variant === 'error';
 
 		return isOpen ? (
 			<Dialog
@@ -183,7 +226,9 @@ class PopoverTooltip extends React.Component {
 					className={classNames(
 						'slds-popover',
 						'slds-popover--tooltip',
-						{ 'slds-theme_error': this.props.variant === 'error' },
+						{
+							'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+						},
 						getNubbinClassName(align)
 					)}
 					role="tooltip"
@@ -197,29 +242,28 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltipContent () {
-		return <div className="slds-popover__body">{this.props.content}</div>;
+		return (
+			<div className="slds-popover__body">
+				{this.props.content}
+				{this.props.variant === 'learnMore' ? (
+					<div className="slds-m-top_x-small">
+						{this.props.labels.learnMoreBefore}{' '}
+						<Icon
+							assistiveText={this.props.assistiveText.tooltipTipLearnMoreIcon}
+							category="utility"
+							inverse
+							name="info"
+							size="x-small"
+						/>{' '}
+						{this.props.labels.learnMoreAfter}{' '}
+					</div>
+				) : null}
+			</div>
+		);
 	}
 
 	getTooltipTarget () {
 		return this.props.target ? this.props.target : this.trigger;
-	}
-
-	// eslint-disable-next-line class-methods-use-this
-	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
-		return React.Children.map(grandKids, (component, i) => {
-			const decoratedComponent = React.isValidElement(component)
-				? React.cloneElement(component, { key: i })
-				: component;
-			return decoratedComponent;
-		});
-	}
-
-	grandKidsWithAsstText (child) {
-		const { props = {} } = child;
-		const grandKids = compact(
-			flatten([this.renderAssistantText()].concat(props.children))
-		);
-		return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
 	}
 
 	handleCancel = () => {
@@ -261,10 +305,6 @@ class PopoverTooltip extends React.Component {
 		}
 	};
 
-	renderAssistantText () {
-		return <span className="slds-assistive-text">{this.props.content}</span>;
-	}
-
 	render () {
 		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
 
@@ -284,12 +324,12 @@ class PopoverTooltip extends React.Component {
 	}
 }
 
-PopoverTooltip.contextTypes = {
+Tooltip.contextTypes = {
 	iconPath: PropTypes.string,
 };
 
-PopoverTooltip.displayName = displayName;
-PopoverTooltip.propTypes = propTypes;
-PopoverTooltip.defaultProps = defaultProps;
+Tooltip.displayName = displayName;
+Tooltip.propTypes = propTypes;
+Tooltip.defaultProps = defaultProps;
 
-export default PopoverTooltip;
+export default Tooltip;
