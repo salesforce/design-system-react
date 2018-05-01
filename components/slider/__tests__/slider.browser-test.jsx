@@ -35,6 +35,7 @@ describe('SLDSSlider', () => {
 	const defaultProps = {};
 
 	let body;
+	let body2;
 
 	const renderSlider = (instance) => {
 		body = document.createElement('div');
@@ -42,14 +43,25 @@ describe('SLDSSlider', () => {
 		return ReactDOM.render(instance, body);
 	};
 
+	const renderSecondSlider = (instance) => {
+		body2 = document.createElement('div');
+		document.body.appendChild(body2);
+		return ReactDOM.render(instance, body2);
+	};
+
 	function removeSlider () {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
+		if (body2 && body2.firstChild) {
+			ReactDOM.unmountComponentAtNode(body2);
+			document.body.removeChild(body2);
+		}
 	}
 
 	const createSlider = (props) =>
 		React.createElement(Slider, assign({}, defaultProps, props));
 	const getSlider = (props) => renderSlider(createSlider(props));
+	const getSecondSlider = (props) => renderSecondSlider(createSlider(props));
 
 	describe('Standard Slider with Label', () => {
 		let component;
@@ -191,7 +203,7 @@ describe('SLDSSlider', () => {
 				/>,
 				{ attachTo: mountNode }
 			);
-			done();
+
 			const trigger = wrapper.find('input');
 			trigger.simulate('change', { target: { value: '300' } });
 		});
@@ -210,7 +222,7 @@ describe('SLDSSlider', () => {
 				/>,
 				{ attachTo: mountNode }
 			);
-			done();
+
 			const trigger = wrapper.find('input');
 			trigger.simulate('input', { target: { value: '300' } });
 		});
@@ -302,7 +314,7 @@ describe('SLDSSlider', () => {
 
 		beforeEach(() => {
 			component1 = getSlider({ label: 'Slider One' });
-			component2 = getSlider({ label: 'Slider Two' });
+			component2 = getSecondSlider({ label: 'Slider Two' });
 			slider1 = findRenderedDOMComponentWithTag(component1, 'input');
 			slider2 = findRenderedDOMComponentWithTag(component2, 'input');
 		});

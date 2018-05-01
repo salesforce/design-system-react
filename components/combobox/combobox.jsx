@@ -549,7 +549,7 @@ class Combobox extends React.Component {
 			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
 				currentOpenDropdown.handleClose();
 			}
-
+		} else {
 			currentOpenDropdown = this;
 
 			this.setState({
