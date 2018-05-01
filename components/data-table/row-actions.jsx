@@ -47,6 +47,10 @@ const DataTableRowActions = createReactClass({
 		 */
 		item: PropTypes.object,
 		/**
+		 * Disable hint styling which changes the color of the dropdown svg on hover over.
+		 */
+		noHint: PropTypes.bool,
+		/**
 		 * Triggered when an item is selected.
 		 */
 		onAction: PropTypes.func,
@@ -59,6 +63,7 @@ const DataTableRowActions = createReactClass({
 	getDefaultProps () {
 		return {
 			assistiveText: 'Actions',
+			noHint: false,
 		};
 	},
 
@@ -91,7 +96,7 @@ const DataTableRowActions = createReactClass({
 					buttonVariant="icon"
 					className={this.props.className}
 					options={this.props.options}
-					hint
+					hint={!this.props.noHint}
 					iconName="down"
 					iconSize="small"
 					iconVariant="border-filled"
