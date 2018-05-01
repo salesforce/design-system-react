@@ -113,6 +113,7 @@ describe('SLDSButton: ', () => {
 			cmp = getButton({
 				assistiveText: 'my settings',
 				variant: 'icon',
+				iconCategory: 'utility',
 				iconName: 'settings',
 				iconSize: 'small',
 				iconVariant: 'bare',

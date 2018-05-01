@@ -140,6 +140,7 @@ const recordHomeDetails = [
 const objectHomeContentRight = (
 	<div>
 		<SLDSButton
+			iconCategory="utility"
 			iconName="settings"
 			variant="icon"
 			iconVariant="more"
@@ -147,6 +148,7 @@ const objectHomeContentRight = (
 			assistiveText="Settings"
 		/>
 		<SLDSButton
+			iconCategory="utility"
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
@@ -155,12 +157,14 @@ const objectHomeContentRight = (
 		/>
 		<SLDSButtonGroup>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="chart"
 				variant="icon"
 				iconVariant="border"
 				assistiveText="Chart"
 			/>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
@@ -207,6 +211,7 @@ const objectHomeNavRight = (
 const relatedListContentRight = (
 	<div>
 		<SLDSButton
+			iconCategory="utility"
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
@@ -215,6 +220,7 @@ const relatedListContentRight = (
 		/>
 		<SLDSButtonGroup>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="chart"
 				variant="icon"
 				iconVariant="border"
@@ -222,6 +228,7 @@ const relatedListContentRight = (
 				assistiveText="Chart"
 			/>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"

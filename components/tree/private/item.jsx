@@ -65,6 +65,7 @@ const Item = (props) => {
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					assistiveText=""
+					iconCategory="utility"
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"

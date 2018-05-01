@@ -22,7 +22,7 @@ const Example = createReactClass({
 					]}
 				>
 					<DropdownTrigger>
-						<Button iconName="down" iconPosition="right" label="Dropdown" />
+						<Button iconCategory="utility" iconName="down" iconPosition="right" label="Dropdown" />
 					</DropdownTrigger>
 				</Dropdown>
 			</IconSettings>

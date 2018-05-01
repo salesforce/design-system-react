@@ -475,6 +475,7 @@ const Popover = createReactClass({
 				>
 					<Button
 						assistiveText={props.closeButtonAssistiveText}
+						iconCategory="utility"
 						iconName="close"
 						iconSize="small"
 						className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"

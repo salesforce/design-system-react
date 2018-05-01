@@ -716,6 +716,7 @@ const Lookup = createReactClass({
 					<Button
 						assistiveText="Press delete to remove"
 						className="slds-pill__remove slds-button--icon-bare"
+						iconCategory="utility"
 						iconName="close"
 						onClick={this.handleDeleteSelected}
 						tabIndex="-1"

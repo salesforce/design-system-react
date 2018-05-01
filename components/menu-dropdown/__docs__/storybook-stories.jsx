@@ -137,6 +137,7 @@ const getDropdownPositioned = (props) => {
 					<Trigger>
 						<Button
 							iconVariant="container"
+							iconCategory="utility"
 							iconName="settings"
 							label={position}
 						/>
@@ -159,6 +160,7 @@ const getDropdownPositioned = (props) => {
 					<Trigger>
 						<Button
 							iconVariant="container"
+							iconCategory="utility"
 							iconName="settings"
 							assistiveText="top right"
 						/>

@@ -19,6 +19,7 @@ const Example = createReactClass({
 						id="ButtonGroupExampleDropdown"
 						assistiveText="More Options"
 						buttonVariant="icon"
+						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
 						onSelect={(item) => {

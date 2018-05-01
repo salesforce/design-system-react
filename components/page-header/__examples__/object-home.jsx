@@ -49,6 +49,7 @@ const Example = createReactClass({
 						<Button
 							assistiveText="List View Controls"
 							className="slds-m-right--xx-small"
+							iconCategory="utility"
 							iconName="settings"
 							iconVariant="more"
 						/>
@@ -71,6 +72,7 @@ const Example = createReactClass({
 						<Button
 							assistiveText="Change view"
 							className="slds-m-right--xx-small"
+							iconCategory="utility"
 							iconName="table"
 							iconVariant="more"
 							variant="icon"
@@ -79,12 +81,14 @@ const Example = createReactClass({
 				</Dropdown>
 				<Button
 					assistiveText="Edit List"
+					iconCategory="utility"
 					iconName="edit"
 					iconVariant="border"
 					variant="icon"
 				/>
 				<Button
 					assistiveText="Refresh"
+					iconCategory="utility"
 					iconName="refresh"
 					iconVariant="border"
 					variant="icon"
@@ -93,12 +97,14 @@ const Example = createReactClass({
 					<ButtonGroup>
 						<Button
 							assistiveText="Charts"
+							iconCategory="utility"
 							iconName="chart"
 							iconVariant="border"
 							variant="icon"
 						/>
 						<Button
 							assistiveText="Filters"
+							iconCategory="utility"
 							iconName="filterList"
 							iconVariant="border"
 							variant="icon"
@@ -132,6 +138,7 @@ const Example = createReactClass({
 								<DropdownTrigger>
 									<Button
 										className="slds-button--reset slds-type-focus"
+										iconCategory="utility"
 										iconName="down"
 										iconPosition="right"
 										label="Dropdown"

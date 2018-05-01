@@ -223,6 +223,7 @@ class InlineEdit extends React.Component {
 						assistiveText={assistiveText}
 						className="slds-m-left_x-small"
 						disabled={disabled}
+						iconCategory="utility"
 						iconName="edit"
 						iconPosition="right"
 						iconSize="small"
