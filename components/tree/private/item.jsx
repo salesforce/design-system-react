@@ -59,51 +59,33 @@ const findPreviousNode = (flattenedNodes, node) => {
 
 const handleKeyDownDown = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
-		if (event.ctrlKey) {
-			// Focus the next visible node
-			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-			props.onNodeFocus(event, {
+		// Select the next visible node
+		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
 				node: flattenedNode.node,
+				select: true,
 				treeIndex: flattenedNode.treeIndex,
-			});
-		} else {
-			// Select the next visible node
-			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-			props.onClick(
-				event,
-				{
-					node: flattenedNode.node,
-					select: true,
-					treeIndex: flattenedNode.treeIndex,
-				},
-				true
-			);
-		}
+			},
+			true
+		);
 	}
 };
 
 const handleKeyDownUp = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
-		if (event.ctrlKey) {
-			// Focus the previous visible node
-			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-			props.onNodeFocus(event, {
+		// Go to the previous visible node
+		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
 				node: flattenedNode.node,
+				select: true,
 				treeIndex: flattenedNode.treeIndex,
-			});
-		} else {
-			// Go to the previous visible node
-			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-			props.onClick(
-				event,
-				{
-					node: flattenedNode.node,
-					select: true,
-					treeIndex: flattenedNode.treeIndex,
-				},
-				true
-			);
-		}
+			},
+			true
+		);
 	}
 };
 
@@ -121,12 +103,6 @@ const handleKeyDownLeft = (event, props) => {
 	);
 };
 
-const handleKeyDownSpace = (event, props) => {
-	if (event.ctrlKey) {
-		handleClick(event, props);
-	}
-};
-
 const handleKeyDownEnter = (event, props) => {
 	handleClick(event, props);
 };
@@ -139,7 +115,6 @@ const handleKeyDown = (event, props) => {
 				[KEYS.DOWN]: { callback: (evt) => handleKeyDownDown(evt, props) },
 				[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
 				[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
-				[KEYS.SPACE]: { callback: (evt) => handleKeyDownSpace(evt, props) },
 				[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
 			},
 		},
@@ -176,11 +151,13 @@ const Item = (props) => {
 			id={`${props.treeId}-${props.node.id}`}
 			role="treeitem"
 			aria-level={props.level}
+			aria-selected={isSelected ? 'true' : 'false'}
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
 			onFocus={(event) => handleFocus(event, props)}
+			onBlur={props.onNodeBlur}
 			ref={(component) => {
-				if (component && isFocused) {
+				if (props.treeHasFocus && component && isFocused) {
 					component.focus();
 				}
 			}}
@@ -190,7 +167,6 @@ const Item = (props) => {
 				className={classNames('slds-tree__item', {
 					'slds-is-selected': isSelected,
 				})}
-				aria-selected={isSelected ? 'true' : 'false'}
 				onClick={(event) => {
 					handleClick(event, props);
 				}}
@@ -273,9 +249,13 @@ Item.propTypes = {
 	 */
 	focusedNodeIndex: PropTypes.string,
 	/**
-	 * Callback for when a node is focused.
+	 * Callback for when a node is blurred.
 	 */
-	onNodeFocus: PropTypes.func,
+	onNodeBlur: PropTypes.func,
+	/**
+	 * Sets focus on render.
+	 */
+	treeHasFocus: PropTypes.bool,
 	/**
 	 * This node's parent.
 	 */

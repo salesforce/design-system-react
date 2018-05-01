@@ -89,51 +89,33 @@ const findPreviousNode = (flattenedNodes, node) => {
 
 const handleKeyDownDown = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
-		if (event.ctrlKey) {
-			// Focus the next visible node
-			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-			props.onNodeFocus(event, {
+		// Select the next visible node
+		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
 				node: flattenedNode.node,
+				select: true,
 				treeIndex: flattenedNode.treeIndex,
-			});
-		} else {
-			// Select the next visible node
-			const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-			props.onClick(
-				event,
-				{
-					node: flattenedNode.node,
-					select: true,
-					treeIndex: flattenedNode.treeIndex,
-				},
-				true
-			);
-		}
+			},
+			true
+		);
 	}
 };
 
 const handleKeyDownUp = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
-		if (event.ctrlKey) {
-			// Focus the previous visible node
-			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-			props.onNodeFocus(event, {
+		// Go to the previous visible node
+		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
 				node: flattenedNode.node,
+				select: true,
 				treeIndex: flattenedNode.treeIndex,
-			});
-		} else {
-			// Go to the previous visible node
-			const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-			props.onClick(
-				event,
-				{
-					node: flattenedNode.node,
-					select: true,
-					treeIndex: flattenedNode.treeIndex,
-				},
-				true
-			);
-		}
+			},
+			true
+		);
 	}
 };
 
@@ -169,12 +151,6 @@ const handleKeyDownLeft = (event, props) => {
 	}
 };
 
-const handleKeyDownSpace = (event, props) => {
-	if (event.ctrlKey) {
-		handleClick(event, props);
-	}
-};
-
 const handleKeyDownEnter = (event, props) => {
 	handleClick(event, props);
 };
@@ -186,7 +162,6 @@ const handleKeyDown = (event, props) => {
 			[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
 			[KEYS.RIGHT]: { callback: (evt) => handleKeyDownRight(evt, props) },
 			[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
-			[KEYS.SPACE]: { callback: (evt) => handleKeyDownSpace(evt, props) },
 			[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
 		},
 	});
@@ -310,8 +285,9 @@ const renderBranch = (children, props) => {
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
 			onFocus={(event) => handleFocus(event, props)}
+			onBlur={props.onNodeBlur}
 			ref={(component) => {
-				if (component && isFocused) {
+				if (props.treeHasFocus && component && isFocused) {
 					component.focus();
 				}
 			}}
@@ -415,9 +391,13 @@ renderBranch.propTypes = {
 	 */
 	focusedNodeIndex: PropTypes.string,
 	/**
-	 * Callback for when a node is focused.
+	 * Callback for when a node is blurred.
 	 */
-	onNodeFocus: PropTypes.func,
+	onNodeBlur: PropTypes.func,
+	/**
+	 * Sets focus on render.
+	 */
+	treeHasFocus: PropTypes.bool,
 	/**
 	 * This node's parent.
 	 */
@@ -454,7 +434,8 @@ const Branch = (props) => {
 						flattenedNodes={props.flattenedNodes}
 						selectedNodeIndexes={props.selectedNodeIndexes}
 						focusedNodeIndex={props.focusedNodeIndex}
-						onNodeFocus={props.onNodeFocus}
+						treeHasFocus={props.treeHasFocus}
+						onNodeBlur={props.onNodeBlur}
 						nodes={node.nodes}
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
@@ -475,7 +456,8 @@ const Branch = (props) => {
 						flattenedNodes={props.flattenedNodes}
 						selectedNodeIndexes={props.selectedNodeIndexes}
 						focusedNodeIndex={props.focusedNodeIndex}
-						onNodeFocus={props.onNodeFocus}
+						treeHasFocus={props.treeHasFocus}
+						onNodeBlur={props.onNodeBlur}
 						onClick={props.onClick}
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
@@ -571,9 +553,13 @@ Branch.propTypes = {
 	 */
 	focusedNodeIndex: PropTypes.string,
 	/**
-	 * Callback for when a node is focused.
+	 * Callback for when a node is blurred.
 	 */
-	onNodeFocus: PropTypes.func,
+	onNodeBlur: PropTypes.func,
+	/**
+	 * Sets focus on render.
+	 */
+	treeHasFocus: PropTypes.bool,
 	/**
 	 * This node's parent.
 	 */

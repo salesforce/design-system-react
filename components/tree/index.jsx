@@ -30,7 +30,7 @@ class Tree extends React.Component {
 	constructor (props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
-		this.handleNodeFocus = this.handleNodeFocus.bind(this);
+		this.handleNodeBlur = this.handleNodeBlur.bind(this);
 		this.state = {
 			flattenedNodes: this.flattenTree({
 				nodes: this.props.nodes,
@@ -51,6 +51,16 @@ class Tree extends React.Component {
 				expanded: true,
 			}).slice(1),
 		});
+	}
+
+	shouldComponentUpdate (nextProps, nextState) {
+		// There is no need to render when blurring a node because focus is either:
+		//  - outside of the tree, or
+		//  - focused on another node in the tree, which triggers its own render
+		if (this.state.treeHasFocus && !nextState.treeHasFocus) {
+			return false;
+		}
+		return true;
 	}
 
 	// Flattens hierarchical tree structure into a flat array.
@@ -100,11 +110,12 @@ class Tree extends React.Component {
 		this.setState({
 			focusedNodeIndex: data.treeIndex,
 			selectedNodeIndexes,
+			treeHasFocus: true,
 		});
 	}
 
-	handleNodeFocus (event, data) {
-		this.setState({ focusedNodeIndex: data.treeIndex });
+	handleNodeBlur () {
+		this.setState({ treeHasFocus: false });
 	}
 
 	render () {
@@ -139,7 +150,8 @@ class Tree extends React.Component {
 					flattenedNodes={this.state.flattenedNodes}
 					selectedNodeIndexes={this.state.selectedNodeIndexes}
 					focusedNodeIndex={this.state.focusedNodeIndex}
-					onNodeFocus={this.handleNodeFocus}
+					treeHasFocus={this.state.treeHasFocus}
+					onNodeBlur={this.handleNodeBlur}
 					onClick={this.handleClick}
 					onExpandClick={this.props.onExpandClick}
 					onScroll={this.props.onScroll}
