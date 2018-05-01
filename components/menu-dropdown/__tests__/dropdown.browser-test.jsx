@@ -40,6 +40,8 @@ const menuOptions = [
 ];
 
 const defaultProps = {
+	iconCategory: 'utility',
+	iconName: 'down',
 	id: 'sample-dropdown',
 	label: 'Test',
 	menuPosition: 'relative',
