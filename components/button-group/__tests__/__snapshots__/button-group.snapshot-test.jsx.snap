@@ -529,6 +529,11 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Sort
+      </span>
     </button>
   </div>
 </div>
@@ -539,7 +544,7 @@ exports[`Button Group IconGroup HTML Snapshot 1`] = `
   <button
     aria-live=\\"polite\\" class=\\"slds-button slds-not-selected slds-button--icon-border\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--stateful\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#filter\\"></use></svg><span class=\\"slds-assistive-text\\">Filter</span></button>
     <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last\\"
-      id=\\"icon-dropdown-example\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more ignore-click-icon-dropdown-example\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#sort\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+      id=\\"icon-dropdown-example\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more ignore-click-icon-dropdown-example\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#sort\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Sort</span></button></div>
 </div>"
 `;
 
