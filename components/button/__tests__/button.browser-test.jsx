@@ -135,6 +135,31 @@ describe('SLDSButton: ', () => {
 		});
 	});
 
+	describe('(icon path) Icon Button renders assistive text', () => {
+		let cmp;
+		let btn;
+		let asstText;
+
+		beforeEach(() => {
+			cmp = getButton({
+				assistiveText: 'News',
+				iconSize: 'large',
+				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
+				title: 'announcement',
+			});
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+		});
+
+		afterEach(() => {
+			removeButton(btn);
+		});
+
+		it('renders label', () => {
+			expect(asstText.textContent).to.equal('News');
+		});
+	});
+
 	describe('External Path Icon Button renders', () => {
 		let cmp;
 		let use;

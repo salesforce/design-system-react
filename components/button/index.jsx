@@ -278,7 +278,7 @@ const Button = createReactClass({
 	},
 
 	renderLabel () {
-		const iconOnly = this.props.variant === 'icon';
+		const iconOnly = this.props.iconName || this.props.iconPath;
 
 		return iconOnly && this.props.assistiveText ? (
 			<span className="slds-assistive-text">{this.props.assistiveText}</span>
