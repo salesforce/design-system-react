@@ -3499,6 +3499,17 @@
                             "required": false,
                             "description": "`DataTable` row item"
                         },
+                        "noHint": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Disable hint styling which changes the color of the dropdown svg on hover over.",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        },
                         "onAction": {
                             "type": {
                                 "name": "func"
