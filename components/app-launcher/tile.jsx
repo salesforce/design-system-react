@@ -80,6 +80,7 @@ const AppLauncherTile = (props) => {
 										{props.description}
 									</Highlighter>
 								}
+								isOpen={props.isOpenTooltip}
 							>
 								<span
 									className="slds-app-launcher__tile-more slds-text-link"
@@ -144,6 +145,10 @@ AppLauncherTile.propTypes = {
 	 * The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.
 	 */
 	href: PropTypes.string,
+	/**
+	 * Open the More Tooltip
+	 */
+	isOpenTooltip: PropTypes.bool,
 	/**
 	 * The localized text for the "More information" tooltip.
 	 */

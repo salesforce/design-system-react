@@ -19,21 +19,21 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
         </th>
         <th aria-sort=\\"ascending\\" class=\\"slds-is-sortable slds-is-sorted\\" focusable=\\"true\\" scope=\\"col\\" style=\\"width:10rem;\\"><a href=\\"javascript:void(0)\\" class=\\"slds-th__action slds-text-link--reset\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Sort </span><span class=\\"slds-truncate\\" title=\\"Name\\">Name</span><span><svg aria-hidden=\\"true\\" class=\\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowup\\"></use></svg></span><span class=\\"slds-assistive-text\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">Sorted Ascending</span></a></th>
         <th
-          class=\\"\\" scope=\\"col\\" style=\\"width:8rem;\\">
+          class=\\"\\" focusable=\\"false\\" scope=\\"col\\" style=\\"width:8rem;\\">
           <div class=\\"slds-truncate\\">Account Name</div>
           </th>
-          <th class=\\"\\" scope=\\"col\\">
+          <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
             <div class=\\"slds-truncate\\">Close Date</div>
           </th>
-          <th class=\\"\\" scope=\\"col\\">
+          <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
             <div class=\\"slds-truncate\\">Stage</div>
           </th>
           <th class=\\"slds-is-sortable\\" focusable=\\"true\\" scope=\\"col\\"><a href=\\"javascript:void(0)\\" class=\\"slds-th__action slds-text-link--reset\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Sort </span><span class=\\"slds-truncate\\" title=\\"Confidence\\">Confidence</span><span><svg aria-hidden=\\"true\\" class=\\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowup\\"></use></svg></span></a></th>
           <th
-            class=\\"\\" scope=\\"col\\">
+            class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
             <div class=\\"slds-truncate\\">Amount</div>
             </th>
-            <th class=\\"\\" scope=\\"col\\">
+            <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
               <div class=\\"slds-truncate\\">Contact</div>
             </th>
             <th scope=\\"col\\" style=\\"width:3.25rem;\\">
@@ -164,25 +164,25 @@ exports[`DataTable Basic HTML Snapshot 1`] = `
   <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer\\" id=\\"DataTableExample-1-default\\">
     <thead>
       <tr class=\\"slds-text-title--caps\\">
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
@@ -263,25 +263,25 @@ exports[`DataTable Basic HTML Snapshot 1`] = `
   <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer slds-table--striped\\" id=\\"DataTableExample-1-striped\\">
     <thead>
       <tr class=\\"slds-text-title--caps\\">
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
@@ -362,25 +362,25 @@ exports[`DataTable Basic HTML Snapshot 1`] = `
   <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover\\" id=\\"DataTableExample-noRowHover\\">
     <thead>
       <tr class=\\"slds-text-title--caps\\">
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
@@ -461,25 +461,25 @@ exports[`DataTable Basic HTML Snapshot 1`] = `
   <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer slds-table--col-bordered\\" id=\\"DataTableExample-columnBordered\\">
     <thead>
       <tr class=\\"slds-text-title--caps\\">
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
@@ -560,25 +560,25 @@ exports[`DataTable Basic HTML Snapshot 1`] = `
   <table class=\\"slds-table slds-table--compact slds-table--bordered slds-table--cell-buffer\\" id=\\"DataTableExample-compact\\">
     <thead>
       <tr class=\\"slds-text-title--caps\\">
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\\"\\" scope=\\"col\\">
+        <th class=\\"\\" focusable=\\"false\\" scope=\\"col\\">
           <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>

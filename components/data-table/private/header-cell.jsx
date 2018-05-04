@@ -133,7 +133,7 @@ const DataTableHeaderCell = createReactClass({
 					[`slds-is-sorted--${sortDirection}`]: sortDirection,
 					'slds-is-sorted--asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
 				})}
-				focusable={sortable ? true : null}
+				focusable={!!sortable}
 				scope="col"
 				style={width ? { width } : null}
 			>

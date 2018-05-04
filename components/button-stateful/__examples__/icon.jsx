@@ -6,11 +6,23 @@ import ButtonStateful from '~/components/button-stateful'; // `~` is replaced wi
 const Example = createReactClass({
 	displayName: 'ButtonStatefulExample',
 
+	getInitialState () {
+		return {
+			isActive: false,
+		};
+	},
+
+	handleOnclick () {
+		this.setState({
+			isActive: !this.state.isActive,
+		});
+	},
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonStateful
-					assistiveText="like"
+					assistiveText={this.state.isActive ? 'liked' : 'not liked'}
 					iconName="like"
 					iconSize="large"
 					variant="icon"
