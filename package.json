@@ -118,7 +118,8 @@
 	"devDependencies": {
 		"@salesforce-ux/design-system": "2.4.3",
 		"@salesforce-ux/icons": "7.x",
-		"@storybook/addon-actions": "^3.2.12",
+		"@storybook/addon-a11y": "^3.4.3",
+		"@storybook/addon-actions": "^3.4.3",
 		"@storybook/addon-info": "^3.2.10",
 		"@storybook/addon-storyshots": "^3.4.0-alpha.4",
 		"@storybook/addons": "^3.4.0-alpha.8",
