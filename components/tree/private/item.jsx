@@ -92,15 +92,22 @@ const handleKeyDownUp = (event, props) => {
 const handleKeyDownLeft = (event, props) => {
 	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const index = nodes.indexOf(props.parent);
-	props.onClick(
-		event,
-		{
+	if (index !== -1) {
+		props.onExpandClick(event, {
 			node: props.parent,
-			select: true,
+			expand: !props.parent.expanded,
 			treeIndex: props.flattenedNodes[index].treeIndex,
-		},
-		true
-	);
+		});
+		props.onClick(
+			event,
+			{
+				node: props.parent,
+				select: true,
+				treeIndex: props.flattenedNodes[index].treeIndex,
+			},
+			true
+		);
+	}
 };
 
 const handleKeyDownEnter = (event, props) => {
@@ -224,6 +231,10 @@ Item.propTypes = {
 	 * Function that will run whenever an item or branch is clicked.
 	 */
 	onClick: PropTypes.func,
+	/**
+	 * This function triggers when the expand or collapse icon is clicked.
+	 */
+	onExpandClick: PropTypes.func.isRequired,
 	/**
 	 * Highlights term if found in node label
 	 */

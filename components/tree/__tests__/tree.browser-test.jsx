@@ -17,6 +17,7 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
+import { keyObjects } from '../../../utilities/key-code';
 import sampleNodes from '../../../utilities/sample-data/tree';
 
 import IconSettings from '../../icon-settings';
@@ -43,12 +44,14 @@ const DemoTree = createReactClass({
 		searchable: PropTypes.bool,
 		singleSelection: PropTypes.bool,
 		treeScrolled: PropTypes.func,
+		loading: PropTypes.bool,
 	},
 
 	getDefaultProps () {
 		return {
 			exampleNodesIndex: 'sampleNodesDefault',
 			id: 'example-tree',
+			loading: true,
 		};
 	},
 
@@ -67,18 +70,22 @@ const DemoTree = createReactClass({
 		if (isFunction(this.props.branchExpandClicked)) {
 			this.props.branchExpandClicked(event, data);
 		}
-		data.node.loading = data.expand ? true : undefined;
-
-		// Fake delay to demonstrate use of loading node attibute
-		setTimeout(
-			(node) => {
-				node.loading = false;
-				this.forceUpdate();
-			},
-			500,
-			data.node
-		);
 		data.node.expanded = data.expand;
+
+		if (this.props.loading) {
+			data.node.loading = data.expand ? true : undefined;
+			// Fake delay to demonstrate use of loading node attibute
+			setTimeout(
+				(node) => {
+					node.loading = false;
+					this.forceUpdate();
+				},
+				500,
+				data.node
+			);
+		} else {
+			this.forceUpdate();
+		}
 	},
 
 	handleClick (event, data) {
@@ -148,6 +155,102 @@ describe('Tree: ', () => {
 	/*
 		Tests
 	 */
+	describe('Tree can be navigated up/down using the keyboard', () => {
+		beforeEach(mountComponent(<DemoTree />));
+
+		afterEach(unmountComponent);
+
+		it('moves selection up/down with wrapping when using keyboard up/down keys', function () {
+			// Initial focus selects the item
+			this.wrapper.find('#example-tree-1').simulate('focus');
+			let itemDiv = this.wrapper
+				.find('#example-tree-1')
+				.find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Go to next node
+			this.wrapper.find('#example-tree-1').simulate('keyDown', keyObjects.DOWN);
+			itemDiv = this.wrapper.find('#example-tree-2').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Go to next node
+			this.wrapper.find('#example-tree-2').simulate('keyDown', keyObjects.DOWN);
+			itemDiv = this.wrapper.find('#example-tree-3').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Go to next node
+			this.wrapper.find('#example-tree-3').simulate('keyDown', keyObjects.DOWN);
+			itemDiv = this.wrapper.find('#example-tree-7').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Wrap to first node
+			this.wrapper.find('#example-tree-7').simulate('keyDown', keyObjects.DOWN);
+			itemDiv = this.wrapper.find('#example-tree-1').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Wrap to last node
+			this.wrapper.find('#example-tree-1').simulate('keyDown', keyObjects.UP);
+			itemDiv = this.wrapper.find('#example-tree-7').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Go to previous node
+			this.wrapper.find('#example-tree-7').simulate('keyDown', keyObjects.UP);
+			itemDiv = this.wrapper.find('#example-tree-3').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Go to previous node
+			this.wrapper.find('#example-tree-3').simulate('keyDown', keyObjects.UP);
+			itemDiv = this.wrapper.find('#example-tree-2').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Go to previous node
+			this.wrapper.find('#example-tree-2').simulate('keyDown', keyObjects.UP);
+			itemDiv = this.wrapper.find('#example-tree-1').find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+		});
+	});
+
+	describe('Tree can be navigated right/left using the keyboard', () => {
+		beforeEach(mountComponent(<DemoTree loading={false} />));
+
+		afterEach(unmountComponent);
+
+		it('expands/collapses branches when using right/left keys', function () {
+			// Initial focus selects the item
+			const item = this.wrapper.find('#example-tree-3');
+			item.simulate('focus');
+			const itemDiv = this.wrapper
+				.find('#example-tree-3')
+				.find('.slds-is-selected');
+			expect(itemDiv).to.have.length(1);
+
+			// Expand branch
+			this.wrapper
+				.find('#example-tree-3')
+				.simulate('keyDown', keyObjects.RIGHT);
+			let items = this.wrapper.find('li[aria-level=2]');
+			expect(items).to.have.length(4);
+
+			// Collapse branch
+			this.wrapper.find('#example-tree-3').simulate('keyDown', keyObjects.LEFT);
+			items = this.wrapper.find('li[aria-level=2]');
+			expect(items).to.have.length(0);
+
+			// Expand branch and select an item
+			this.wrapper
+				.find('#example-tree-3')
+				.simulate('keyDown', keyObjects.RIGHT);
+			items = this.wrapper.find('li[aria-level=2]');
+			expect(items).to.have.length(4);
+
+			// Collapse branch from an item
+			this.wrapper.find('#example-tree-3').simulate('keyDown', keyObjects.DOWN);
+			this.wrapper.find('#example-tree-8').simulate('keyDown', keyObjects.LEFT);
+			items = this.wrapper.find('li[aria-level=2]');
+			expect(items).to.have.length(0);
+		});
+	});
+
 	describe('Default Structure and CSS', () => {
 		const id = 'this-is-a-container-test';
 		beforeEach(

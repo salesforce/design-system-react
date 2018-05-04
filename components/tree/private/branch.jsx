@@ -459,6 +459,7 @@ const Branch = (props) => {
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
 						onClick={props.onClick}
+						onExpandClick={onExpandClick}
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
 						treeId={treeId}
