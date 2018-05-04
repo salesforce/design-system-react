@@ -120,6 +120,12 @@ npx babel \
     --source-maps \
     --out-dir .tmp-esm/utilities
 
+NODE_ENV=esm \
+npx babel \
+    .tmp-es/icons \
+    --out-dir .tmp-esm/icons
+
+
 # NPM module structure
 # You module bundler will decide whether to use `module` or `lib` as an entry point.
 # * `/design-system-react.js` (UMD bundle, backwards compatible, all the things! -- DONT' USE in production.)
