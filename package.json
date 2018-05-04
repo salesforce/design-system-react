@@ -648,7 +648,7 @@
 		},
 		{
 			"component": "tree",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Tree",
 			"SLDS-component-path": "/components/tree"
 		},
