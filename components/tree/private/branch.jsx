@@ -30,6 +30,9 @@ import Highlighter from '../../utilities/highlighter';
 // ### Event Helpers
 import EventUtil from '../../../utilities/event';
 
+import KEYS from '../../../utilities/key-code';
+import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
+
 // ## Constants
 import { TREE_BRANCH } from '../../../utilities/constants';
 
@@ -67,6 +70,118 @@ const handleScroll = (event, props) => {
 			percentage,
 		});
 	}
+};
+
+const findNextNode = (flattenedNodes, node) => {
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
+	const index = nodes.indexOf(node);
+	return flattenedNodes[(index + 1) % flattenedNodes.length];
+};
+
+const findPreviousNode = (flattenedNodes, node) => {
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
+	let index = nodes.indexOf(node) - 1;
+	if (index < 0) {
+		index += flattenedNodes.length;
+	}
+	return flattenedNodes[index];
+};
+
+const handleKeyDownDown = (event, props) => {
+	if (props.focusedNodeIndex === props.treeIndex) {
+		// Select the next visible node
+		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
+				node: flattenedNode.node,
+				select: true,
+				treeIndex: flattenedNode.treeIndex,
+			},
+			true
+		);
+	}
+};
+
+const handleKeyDownUp = (event, props) => {
+	if (props.focusedNodeIndex === props.treeIndex) {
+		// Go to the previous visible node
+		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
+				node: flattenedNode.node,
+				select: true,
+				treeIndex: flattenedNode.treeIndex,
+			},
+			true
+		);
+	}
+};
+
+const handleKeyDownRight = (event, props) => {
+	if (props.node.expanded) {
+		if (props.node.nodes && props.node.nodes.length > 0) {
+			handleKeyDownDown(event, props);
+		}
+	} else {
+		handleExpandClick(event, props);
+	}
+};
+
+const handleKeyDownLeft = (event, props) => {
+	if (props.node.expanded) {
+		handleExpandClick(event, props);
+	} else {
+		const nodes = props.flattenedNodes.map(
+			(flattenedNode) => flattenedNode.node
+		);
+		const index = nodes.indexOf(props.parent);
+		if (index !== -1) {
+			props.onClick(
+				event,
+				{
+					node: props.parent,
+					select: true,
+					treeIndex: props.flattenedNodes[index].treeIndex,
+				},
+				true
+			);
+		}
+	}
+};
+
+const handleKeyDownEnter = (event, props) => {
+	handleClick(event, props);
+};
+
+const handleKeyDown = (event, props) => {
+	mapKeyEventCallbacks(event, {
+		callbacks: {
+			[KEYS.DOWN]: { callback: (evt) => handleKeyDownDown(evt, props) },
+			[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
+			[KEYS.RIGHT]: { callback: (evt) => handleKeyDownRight(evt, props) },
+			[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
+			[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
+		},
+	});
+};
+
+const handleFocus = (event, props) => {
+	if (!props.focusedNodeIndex) {
+		handleClick(event, props);
+	}
+};
+
+const getTabIndex = (props) => {
+	if (
+		props.treeIndex === props.focusedNodeIndex ||
+		(props.selectedNodeIndexes.length === 0 &&
+			props.treeIndex === props.flattenedNodes[0].treeIndex)
+	) {
+		return 0;
+	}
+	return -1;
 };
 
 const renderInitialNode = (children, props) => (
@@ -112,6 +227,7 @@ renderInitialNode.propTypes = {
 const renderBranch = (children, props) => {
 	const isExpanded = props.node.expanded;
 	const isSelected = props.node.selected;
+	const isFocused = props.treeIndex === props.focusedNodeIndex;
 	const isLoading = props.node.loading;
 
 	const loader = (
@@ -155,13 +271,26 @@ const renderBranch = (children, props) => {
 		</div>
 	);
 
-	// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li
 			id={props.htmlId}
 			role="treeitem"
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
+			aria-label={
+				props.node.nodes && props.node.nodes.length > 0
+					? props.node.label
+					: null
+			}
+			tabIndex={getTabIndex(props)}
+			onKeyDown={(event) => handleKeyDown(event, props)}
+			onFocus={(event) => handleFocus(event, props)}
+			onBlur={props.onNodeBlur}
+			ref={(component) => {
+				if (props.treeHasFocus && component && isFocused) {
+					component.focus();
+				}
+			}}
 		>
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
@@ -179,10 +308,12 @@ const renderBranch = (children, props) => {
 					iconSize="small"
 					variant="icon"
 					className="slds-m-right--small"
+					role="presentation"
 					aria-controls={props.htmlId}
 					onClick={(event) => {
 						handleExpandClick(event, props);
 					}}
+					tabIndex="-1"
 				/>
 				{/* eslint-disable no-script-url */}
 				<a
@@ -191,6 +322,7 @@ const renderBranch = (children, props) => {
 					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
 					role="presentation"
 					className="slds-truncate"
+					tabIndex="-1"
 				>
 					{/* eslint-enable no-script-url */}
 					{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
@@ -246,6 +378,30 @@ renderBranch.propTypes = {
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
 	treeIndex: PropTypes.string,
+	/**
+	 * Flattened tree structure.
+	 */
+	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 * Tree indexes of nodes that are currently selected.
+	 */
+	selectedNodeIndexes: PropTypes.arrayOf(PropTypes.string),
+	/**
+	 * Tree index of the node that is currently focused.
+	 */
+	focusedNodeIndex: PropTypes.string,
+	/**
+	 * Callback for when a node is blurred.
+	 */
+	onNodeBlur: PropTypes.func,
+	/**
+	 * Sets focus on render.
+	 */
+	treeHasFocus: PropTypes.bool,
+	/**
+	 * This node's parent.
+	 */
+	parent: PropTypes.object,
 };
 
 /**
@@ -275,12 +431,18 @@ const Branch = (props) => {
 						label={node.label}
 						level={level + 1}
 						node={node}
+						flattenedNodes={props.flattenedNodes}
+						selectedNodeIndexes={props.selectedNodeIndexes}
+						focusedNodeIndex={props.focusedNodeIndex}
+						treeHasFocus={props.treeHasFocus}
+						onNodeBlur={props.onNodeBlur}
 						nodes={node.nodes}
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
 						searchTerm={searchTerm}
 						treeId={treeId}
 						treeIndex={treeIndex}
+						parent={props.node}
 					/>
 				);
 			} else {
@@ -291,10 +453,17 @@ const Branch = (props) => {
 						key={shortid.generate()}
 						level={level + 1}
 						node={node}
+						flattenedNodes={props.flattenedNodes}
+						selectedNodeIndexes={props.selectedNodeIndexes}
+						focusedNodeIndex={props.focusedNodeIndex}
+						treeHasFocus={props.treeHasFocus}
+						onNodeBlur={props.onNodeBlur}
 						onClick={props.onClick}
+						onExpandClick={onExpandClick}
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
 						treeId={treeId}
+						parent={props.node}
 					/>
 				);
 			}
@@ -372,12 +541,37 @@ Branch.propTypes = {
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
 	treeIndex: PropTypes.string,
+	/**
+	 * Flattened tree structure.
+	 */
+	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 * Tree indexes of nodes that are currently selected.
+	 */
+	selectedNodeIndexes: PropTypes.arrayOf(PropTypes.string),
+	/**
+	 * Tree index of the node that is currently focused.
+	 */
+	focusedNodeIndex: PropTypes.string,
+	/**
+	 * Callback for when a node is blurred.
+	 */
+	onNodeBlur: PropTypes.func,
+	/**
+	 * Sets focus on render.
+	 */
+	treeHasFocus: PropTypes.bool,
+	/**
+	 * This node's parent.
+	 */
+	parent: PropTypes.object,
 };
 
 Branch.defaultProps = {
 	level: 0,
 	label: '',
 	treeIndex: '',
+	selectedNodeIndexes: [],
 };
 
 export default Branch;
