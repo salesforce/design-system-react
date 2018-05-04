@@ -87,7 +87,7 @@ app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/
 
 #### Bundle icons
 
-If you use a module bundler, like Webpack, you can import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties. Your SVG images will be bundled with your scripts and block the DOM from rendering until the script file is loaded.
+If you use a module bundler, like Webpack, you can let your module bundler manage SVG sprite file paths and send that path into `<IconSettings>`. This requires configuring your module bundler to manage your public assets.
 
 ```
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
@@ -104,14 +104,14 @@ ReactDOM.render(
 )
 ```
 
-Bundled script files are provided _only_ for convenience.
+Bundled script files are provided _only_ for convenience. Do not use in production.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.
 
 ## Contributing to the code base
 
-#### Clone and develop locally with in-browser test server
+#### Clone and develop locally with Storybook and in-browser tests
 
 ```
 git clone git@github.com:salesforce/design-system-react.git
