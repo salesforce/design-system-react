@@ -25,7 +25,7 @@ const Example = createReactClass({
 	render () {
 		const modal = this.state.noHeaderIsOpen ? (
 			<Modal
-				assistiveText="Modal no header"
+				assistiveText={{ dialogLabel: 'Modal no header' }}
 				isOpen={this.state.noHeaderIsOpen}
 				onRequestClose={this.toggleNoHeaderIsOpen}
 			>
