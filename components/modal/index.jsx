@@ -222,7 +222,11 @@ class Modal extends React.Component {
 			/* eslint-disable */
 			<div
 				aria-label={this.props.assistiveText.dialogLabel}
-				aria-labelledby={!this.props.assistiveText.dialogLabel && this.props.title ? this.getId() : null}
+				aria-labelledby={
+					!this.props.assistiveText.dialogLabel && this.props.title
+						? this.getId()
+						: null
+				}
 				className={classNames({
 					'slds-modal': true,
 					'slds-fade-in-open': true,
