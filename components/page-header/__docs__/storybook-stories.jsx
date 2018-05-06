@@ -98,6 +98,7 @@ const recordHomeContentRight = (
 			<SLDSMenuDropdown
 				assistiveText="More Options"
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
 				onSelect={action('select')}
@@ -196,6 +197,7 @@ const objectHomeNavRight = (
 		<SLDSMenuDropdown
 			align="right"
 			assistiveText="More Options"
+			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
 			onSelect={action('select')}
@@ -260,6 +262,7 @@ const relatedListNavRight = (
 		<SLDSMenuDropdown
 			assistiveText="More Options"
 			buttonVariant="icon"
+			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
 			onSelect={action('select')}

@@ -290,6 +290,7 @@ describe('SLDSMenuDropdown', function () {
 					assistiveText="more options"
 					buttonVariant="icon"
 					checkmark
+					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
 				/>

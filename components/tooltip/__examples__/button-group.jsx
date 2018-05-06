@@ -22,6 +22,7 @@ const Example = createReactClass({
 					<Dropdown
 						assistiveText="More Options"
 						buttonVariant="icon"
+						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
 						onSelect={(item) => console.log('selected', item)}

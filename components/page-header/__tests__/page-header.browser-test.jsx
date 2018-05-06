@@ -20,8 +20,16 @@ const recordHomeContentRight = (
 			iconSize="medium"
 			responsive={false}
 			stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
-			stateTwo={{ iconCategory: 'utility', iconName: 'check', label: 'Following' }}
-			stateThree={{ iconCategory: 'utility', iconName: 'close', label: 'Unfollow' }}
+			stateTwo={{
+				iconCategory: 'utility',
+				iconName: 'check',
+				label: 'Following',
+			}}
+			stateThree={{
+				iconCategory: 'utility',
+				iconName: 'close',
+				label: 'Unfollow',
+			}}
 		/>
 		<SLDSButtonGroup key="">
 			<SLDSButton label="Edit" />

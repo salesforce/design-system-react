@@ -19,6 +19,7 @@ const Example = createReactClass({
 					<Dropdown
 						align="right"
 						assistiveText="More Options"
+						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
 						options={[
