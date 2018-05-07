@@ -212,12 +212,62 @@ const getDropdownCustomContent = (props) => (
 	</Dropdown>
 );
 
+const getVictor = (props) => (
+	<div>
+		<div>absolute:
+			<Dropdown
+				iconName="down"
+				buttonVariant="icon"
+				iconVariant="bare"
+				align="right"
+				assistiveText="More Options"
+				menuPosition="absolute"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+				]}
+			/>
+		</div>
+		<div>Overflow:
+			<Dropdown
+				iconName="down"
+				buttonVariant="icon"
+				iconVariant="bare"
+				align="right"
+				assistiveText="More Options"
+				menuPosition="overflowBoundaryElement"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+				]}
+			/>
+		</div>
+	</div>
+);
+
 storiesOf(MENU_DROPDOWN, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium slds-text-align--center">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
+	.add('Victor breaks things', () =>
+		getVictor()
+	)
 	.add('Base', () =>
 		getDropdown({
 			align: 'right',
