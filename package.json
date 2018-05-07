@@ -69,6 +69,7 @@
 		"lightning",
 		"design system",
 		"lightning design system",
+		"salesforce-lightning",
 		"salesforce lightning design system",
 		"interactive components",
 		"interactive",
@@ -118,7 +119,8 @@
 	"devDependencies": {
 		"@salesforce-ux/design-system": "2.4.3",
 		"@salesforce-ux/icons": "7.x",
-		"@storybook/addon-actions": "^3.2.12",
+		"@storybook/addon-a11y": "^3.4.3",
+		"@storybook/addon-actions": "^3.4.3",
 		"@storybook/addon-info": "^3.2.10",
 		"@storybook/addon-storyshots": "^3.4.0-alpha.4",
 		"@storybook/addons": "^3.4.0-alpha.8",
@@ -649,8 +651,16 @@
 		},
 		{
 			"component": "tree",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Tree",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/05/04",
+				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+			},
+			"last-slds-markup-review": {
+				"date-iso-8601": "2018/05/04",
+				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+			},
 			"SLDS-component-path": "/components/tree"
 		},
 		{
