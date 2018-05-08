@@ -11,6 +11,7 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown
 					assistiveText="More Options"
+					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
 					onSelect={(value) => {

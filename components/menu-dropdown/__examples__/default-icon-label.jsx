@@ -11,6 +11,7 @@ const Example = createReactClass({
 		return (
 			<Dropdown
 				align="right"
+				iconCategory="utility"
 				iconName="down"
 				iconPosition="right"
 				label="Dropdown"

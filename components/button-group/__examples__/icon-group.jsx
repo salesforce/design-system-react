@@ -28,6 +28,7 @@ const Example = createReactClass({
 					<Dropdown
 						assistiveText="Sort"
 						checkmark
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
 						id="icon-dropdown-example"

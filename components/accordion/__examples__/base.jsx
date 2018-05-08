@@ -37,6 +37,7 @@ class Example extends React.Component {
 				assistiveText="More Options"
 				buttonVariant="icon"
 				buttonClassName="slds-shrink-none"
+				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
 				onSelect={(option) => {

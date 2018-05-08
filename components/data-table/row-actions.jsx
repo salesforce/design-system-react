@@ -97,6 +97,7 @@ const DataTableRowActions = createReactClass({
 					className={this.props.className}
 					options={this.props.options}
 					hint={!this.props.noHint}
+					iconCategory="utility"
 					iconName="down"
 					iconSize="small"
 					iconVariant="border-filled"

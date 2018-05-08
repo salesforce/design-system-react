@@ -144,6 +144,7 @@ class Notification extends React.Component {
 			return (
 				<Button
 					assistiveText="Dismiss Notification"
+					iconCategory="utility"
 					iconName="close"
 					iconSize={size}
 					inverse
