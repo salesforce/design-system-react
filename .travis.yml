@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-  - "6"
+  - "8"
 install:
   - npm install npm -g
-  - npm install
+  - npm ci
 script:
   - npm run travis-ci
 cache:
