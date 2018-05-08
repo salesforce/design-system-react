@@ -328,11 +328,9 @@ const Dialog = createReactClass({
 				enabled: true,
 				order: 900,
 				fn: (popperData) => {
-					if (
-						(this.state.popperData &&
-							!isEqual(popperData.offsets, this.state.popperData.offsets)) ||
-						!this.state.popperData
-					) {
+					console.log(popperData);
+					debugger;
+					if ((this.state.popperData && !isEqual(popperData.offsets, this.state.popperData.offsets)) || !this.state.popperData) {
 						this.setState({ popperData });
 					}
 					return popperData;

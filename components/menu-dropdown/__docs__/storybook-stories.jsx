@@ -214,12 +214,42 @@ const getDropdownCustomContent = (props) => (
 
 const getVictor = (props) => (
 	<div>
-		<div>absolute:
+		<div style={{ marginBottom: 200 }}>relative:
 			<Dropdown
+				isOpen={true}
 				iconName="down"
 				buttonVariant="icon"
 				iconVariant="bare"
-				align="right"
+				nubbinPosition="top right"
+				assistiveText="More Options"
+				menuPosition="relative"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+				]}
+			>
+				<Trigger>
+					<Button
+						iconVariant="container"
+						iconName="down"
+					/>
+				</Trigger>
+			</Dropdown>
+		</div>
+		<div style={{ marginBottom: 200 }}>absolute:
+			<Dropdown
+				isOpen={true}
+				iconName="down"
+				buttonVariant="icon"
+				iconVariant="bare"
+				nubbinPosition="top right"
 				assistiveText="More Options"
 				menuPosition="absolute"
 				onSelect={(value) => {
@@ -233,10 +263,18 @@ const getVictor = (props) => (
 					{ label: 'Menu Item One', value: 'A0' },
 					{ label: 'Menu Item Two', value: 'B0' },
 				]}
-			/>
+			>
+				<Trigger>
+					<Button
+						iconVariant="container"
+						iconName="down"
+					/>
+				</Trigger>
+			</Dropdown>
 		</div>
-		<div>Overflow:
+		<div style={{ marginBottom: 200 }}>Overflow:
 			<Dropdown
+				isOpen={true}
 				iconName="down"
 				buttonVariant="icon"
 				iconVariant="bare"
@@ -256,18 +294,54 @@ const getVictor = (props) => (
 				]}
 			/>
 		</div>
+		<div style={{ marginBottom: 200 }}>Nubbin:
+			<Dropdown
+				isOpen={true}
+				iconName="down"
+				buttonVariant="icon"
+				iconVariant="bare"
+				align="right"
+				nubbinPosition="top right"
+				assistiveText="More Options"
+				menuPosition="overflowBoundaryElement"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+				]}
+			>
+				<Trigger>
+					<Button
+						iconVariant="container"
+						iconName="down"
+					/>
+				</Trigger>
+			</Dropdown>
+		</div>
 	</div>
 );
 
 storiesOf(MENU_DROPDOWN, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium slds-text-align--center">
+		<div className="">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Victor breaks things', () =>
-		getVictor()
-	)
+	.add('Victor breaks things', () => (
+		<div>
+			{getVictor()}
+			<hr />
+			<div className="slds-p-around--medium slds-text-align--center">
+				{getVictor()}
+			</div>
+		</div>
+	))
 	.add('Base', () =>
 		getDropdown({
 			align: 'right',
