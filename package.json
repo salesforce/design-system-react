@@ -10,8 +10,8 @@
 	"scripts": {
 		"build-docs": "npx babel-node ./scripts/build-docs.js",
 		"build-and-test-docs": "npm run build-docs && npx babel-node ./tests/component-docs-test.js",
-		"build-storybook": "build-storybook -o ./storybook",
-		"build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
+		"build-storybook": "NODE_ENV=development npx build-storybook -o ./storybook",
+		"build-storybook-for-tests": "NODE_ENV=development npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
