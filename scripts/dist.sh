@@ -3,7 +3,8 @@
 # Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
-./node_modules/.bin/babel-node scripts/inline-icons.js --plugins transform-es2015-modules-commonjs
+npx babel-node scripts/inline-icons.js \
+    --plugins transform-es2015-modules-commonjs
 
 echo "# Building design-system-react"
 echo "## Preparing the .tmp directory"
@@ -12,13 +13,17 @@ rm -rf .tmp/
 # Uncomment this line if you need to build an AMD/Require.js module
 # rm -rf .tmp-amd/
 rm -rf .tmp-commonjs/
+# Source code
 rm -rf .tmp-es/
+# ES6 modules
+rm -rf .tmp-esm/
+# All the formats!!!
 rm -rf .tmp-npm/
 mkdir -p .tmp/
 
 echo "## Running webpack"
 
-BUILD="./node_modules/.bin/webpack --config webpack.config.dist.js"
+BUILD="npx webpack --config webpack.config.dist.js"
 
 eval $BUILD
 eval "MINIFY=true $BUILD"
@@ -35,7 +40,8 @@ cp docs/README-dist.md .tmp/README.md
 
 echo "## Running JS steps"
 
-./node_modules/.bin/babel-node scripts/dist.js
+npx babel-node scripts/dist.js \
+    --plugins transform-es2015-modules-commonjs
 
 echo "## Copying the components"
 
@@ -45,6 +51,7 @@ cp -r .tmp .tmp-commonjs
 cp -r .tmp .tmp-es
 rm -rf .tmp/
 
+# Copy source code
 cp -r components .tmp-es/components
 cp -r styles .tmp-es/styles
 cp -r icons .tmp-es/icons
@@ -76,7 +83,7 @@ echo "## Transpiling with Babel"
 
 # CommonJS module transpilation
 NODE_ENV=commonjs \
-./node_modules/.bin/babel \
+npx babel \
     .tmp-es/components \
     --plugins transform-es2015-modules-commonjs \
     --out-dir .tmp-commonjs/components \
@@ -84,22 +91,54 @@ NODE_ENV=commonjs \
 
 cp -r styles .tmp-commonjs/styles
 
-./node_modules/.bin/babel \
+npx babel \
     .tmp-es/icons \
     --plugins transform-es2015-modules-commonjs \
     --out-dir .tmp-commonjs/icons
 
 NODE_ENV=commonjs \
-./node_modules/.bin/babel \
+npx babel \
     .tmp-es/utilities \
     --plugins transform-es2015-modules-commonjs \
     --out-dir .tmp-commonjs/utilities
 
+# ES6 module transpilation
+NODE_ENV=esm \
+npx babel \
+    .tmp-es/components \
+    --out-dir .tmp-esm/components \
+    --source-maps \
+    --ignore site-stories.js,__docs__,__examples__,__tests__
+
+cp -r styles .tmp-esm/styles
+
+cp -r icons .tmp-esm/icons
+
+NODE_ENV=esm \
+npx babel \
+    .tmp-es/utilities \
+    --source-maps \
+    --out-dir .tmp-esm/utilities
+
+NODE_ENV=esm \
+npx babel \
+    .tmp-es/icons \
+    --out-dir .tmp-esm/icons
+
+
 # NPM module structure
-# * `[root]/design-system-react.js` (UMD bundle, backwards compatible)
-# * `[root]/components/**` ES6 source code. To use: `import Button from 'design-system-react/components/button'`. This will need transpiler plugins.
-# * `lib/**` commonjs transpiled (no babel presets needed, linked to from `package.main`, this would be backwards compatible as long as you didn't want real ES6 modules, this would also be compatible with `create-react-app` See https://github.com/facebookincubator/create-react-app/issues/1125 which doesn't transpile `node_modules` ). To use: `import { Button } from 'design-system-react'`.
+# You module bundler will decide whether to use `module` or `lib` as an entry point.
+# * `/design-system-react.js` (UMD bundle, backwards compatible, all the things! -- DONT' USE in production.)
+# * `/components/**` ES6 source code. To use: `import Button from 'design-system-react/components/button'`. This will need transpiler plugins.
+# * `module/**` ES6 modules transpiled (babel-env preset needed, linked to from `package.module`, To use: `import { Button } from 'design-system-react'`.
+# * `lib/**` commonjs transpiled (no babel presets needed, linked to from `package.main`). To use: `import { Button } from 'design-system-react'`.
 cp -r .tmp-es .tmp-npm
 cp -r .tmp-commonjs .tmp-npm/lib
+cp -r .tmp-esm .tmp-npm/module
 
-./node_modules/.bin/babel-node scripts/npm-transform.js --plugins transform-es2015-modules-commonjs
+# Remove browser UMD bundle from commonjs folder, since the files already exists in the root folder
+rm .tmp-npm/lib/*.map
+rm .tmp-npm/lib/*.js
+
+npx babel-node scripts/npm-transform.js \
+    --plugins transform-es2015-modules-commonjs

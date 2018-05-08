@@ -9,6 +9,7 @@ module.exports = function buildPreset () {
 					browsers: ['last 2 versions', 'ie 11'],
 					node: '8.9.4',
 				},
+				modules: false,
 			}),
 			require('babel-preset-react'),
 		],

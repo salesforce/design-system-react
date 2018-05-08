@@ -61,7 +61,7 @@ class Accordion extends Component {
 	}
 }
 
-export default Accordion;
-
 Accordion.displayName = ACCORDION;
 Accordion.propTypes = propTypes;
+
+export default Accordion;
