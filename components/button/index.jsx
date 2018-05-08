@@ -6,9 +6,11 @@
 
 import React from 'react';
 import createReactClass from 'create-react-class';
+import requiredIf from 'react-required-if';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
+import checkProps from './check-props';
 import PopoverTooltip from '../popover-tooltip';
 
 import { BUTTON } from '../../utilities/constants';
@@ -66,13 +68,10 @@ const Button = createReactClass({
 		/**
 		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
 		 */
-		iconCategory: PropTypes.oneOf([
-			'action',
-			'custom',
-			'doctype',
-			'standard',
-			'utility',
-		]),
+		iconCategory: requiredIf(
+			PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+			(props) => !!props.iconName
+		),
 		/**
 		 * CSS classes to be added to icon.
 		 */
@@ -195,11 +194,15 @@ const Button = createReactClass({
 			disabled: false,
 			hint: false,
 			iconSize: 'medium',
-			iconCategory: 'utility',
 			responsive: false,
 			type: 'button',
 			variant: 'neutral',
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(BUTTON, this.props);
 	},
 
 	getClassName () {
@@ -259,7 +262,7 @@ const Button = createReactClass({
 				: this.props.iconSize;
 		return (
 			<ButtonIcon
-				category={this.props.iconCategory}
+				category={this.props.iconCategory || 'utility'} // BREAKING CHANGE we will introduce in 1.0. For the moment, set default prop here if none specified.
 				className={classNames(
 					{
 						'slds-global-header__icon':

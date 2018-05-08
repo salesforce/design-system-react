@@ -994,36 +994,11 @@
             },
             "iconCategory": {
                 "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'action'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'custom'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'doctype'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'standard'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'utility'",
-                            "computed": false
-                        }
-                    ]
+                    "name": "custom",
+                    "raw": "requiredIf(\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n    (props) => !!props.iconName\n)"
                 },
                 "required": false,
-                "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories.",
-                "defaultValue": {
-                    "value": "'utility'",
-                    "computed": false
-                }
+                "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
             },
             "iconClassName": {
                 "type": {

@@ -95,6 +95,7 @@ const AppLauncherSection = createReactClass({
 					{this.props.toggleable || this.props.onToggleClick ? (
 						<Button
 							assistiveText={this.props.collapseSectionAssistiveText}
+							iconCategory="utility"
 							iconName="switch"
 							onClick={this.toggleOpen}
 							className="slds-m-right--small"

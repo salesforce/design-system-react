@@ -15,6 +15,7 @@ const Example = createReactClass({
 						<Dropdown
 							assistiveText="Checkmark"
 							checkmark
+							iconCategory="utility"
 							iconName="down"
 							iconVariant="border-filled"
 							onSelect={(value) => {

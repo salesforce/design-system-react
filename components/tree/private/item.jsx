@@ -183,6 +183,7 @@ const Item = (props) => {
 					tabIndex="-1"
 					assistiveText=""
 					role="presentation"
+					iconCategory="utility"
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"

@@ -68,6 +68,7 @@ const AccordionPanel = ({
 						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}
 						className="slds-button_reset slds-accordion__summary-action"
+						iconCategory="utility"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
 						iconName="switch"
 						onClick={onTogglePanel}

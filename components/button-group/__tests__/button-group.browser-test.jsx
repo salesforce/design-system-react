@@ -28,18 +28,21 @@ describe('SLDSButtonGroup: ', () => {
 					<SLDSButton
 						label="Chart"
 						variant="icon"
+						iconCategory="utility"
 						iconName="chart"
 						iconVariant="border"
 					/>
 					<SLDSButton
 						label="Filter"
 						variant="icon"
+						iconCategory="utility"
 						iconName="filter"
 						iconVariant="border"
 					/>
 					<SLDSButton
 						label="Sort"
 						variant="icon"
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
 					/>
@@ -55,18 +58,21 @@ describe('SLDSButtonGroup: ', () => {
 					<SLDSButton
 						label="Chart"
 						variant="icon"
+						iconCategory="utility"
 						iconName="chart"
 						iconVariant="border"
 					/>
 					<SLDSButton
 						label="Filter"
 						variant="icon"
+						iconCategory="utility"
 						iconName="filter"
 						iconVariant="border"
 					/>
 					<SLDSButton
 						label="Sort"
 						variant="icon"
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
 					/>
@@ -83,18 +89,21 @@ describe('SLDSButtonGroup: ', () => {
 					<SLDSButton
 						label="Chart"
 						variant="icon"
+						iconCategory="utility"
 						iconName="chart"
 						iconVariant="border"
 					/>
 					<SLDSButton
 						label="Filter"
 						variant="icon"
+						iconCategory="utility"
 						iconName="filter"
 						iconVariant="border"
 					/>
 					<SLDSButton
 						label="Sort"
 						variant="icon"
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
 					/>
@@ -117,6 +126,7 @@ describe('SLDSButtonGroup: ', () => {
 					<SLDSButton
 						label="More Options"
 						variant="icon"
+						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
 					/>

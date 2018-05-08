@@ -25,6 +25,7 @@ storiesOf(BUTTON, module)
 	.add('Neutral Icon', () =>
 		getButton({
 			label: 'Neutral Icon',
+			iconCategory: 'utility',
 			iconName: 'download',
 			iconPosition: 'left',
 			onFocus: action('focus'),
@@ -36,6 +37,7 @@ storiesOf(BUTTON, module)
 		getIconButton({
 			assistiveText: 'Icon',
 			iconSize: 'large',
+			iconCategory: 'utility',
 			iconName: 'answer',
 			title: 'chat',
 		})
@@ -59,6 +61,7 @@ storiesOf(BUTTON, module)
 	.add('Icon Container Small', () =>
 		getIconButton({
 			assistiveText: 'Icon border container small',
+			iconCategory: 'utility',
 			iconName: 'settings',
 			iconSize: 'large',
 			iconVariant: 'border',
@@ -69,6 +72,7 @@ storiesOf(BUTTON, module)
 		getIconButton({
 			'aria-haspopup': true,
 			assistiveText: 'Dropdown Icon inverse',
+			iconCategory: 'utility',
 			iconName: 'settings',
 			iconVariant: 'more',
 			inverse: true,
@@ -82,6 +86,7 @@ storiesOf(BUTTON, module)
 	.add('Small Icon Hint inverse', () =>
 		getIconButton({
 			assistiveTest: 'Hint',
+			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border',
 			iconSize: 'small',

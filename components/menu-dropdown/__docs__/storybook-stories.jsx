@@ -137,6 +137,7 @@ const getDropdownPositioned = (props) => {
 					<Trigger>
 						<Button
 							iconVariant="container"
+							iconCategory="utility"
 							iconName="settings"
 							label={position}
 						/>
@@ -159,6 +160,7 @@ const getDropdownPositioned = (props) => {
 					<Trigger>
 						<Button
 							iconVariant="container"
+							iconCategory="utility"
 							iconName="settings"
 							assistiveText="top right"
 						/>
@@ -233,6 +235,7 @@ storiesOf(MENU_DROPDOWN, module)
 		getDropdown({
 			align: 'right',
 			label: 'Dropdown Click',
+			iconCategory: 'utility',
 			iconName: 'down',
 			iconPosition: 'right',
 			onClick: (...rest) => {
@@ -289,6 +292,7 @@ storiesOf(MENU_DROPDOWN, module)
 		getDropdown({
 			assistiveText: 'Icon More large',
 			buttonVariant: 'icon',
+			iconCategory: 'utility',
 			iconName: 'settings',
 			iconVariant: 'more',
 			onSelect: (...rest) => {
@@ -303,6 +307,7 @@ storiesOf(MENU_DROPDOWN, module)
 			{getDropdown({
 				assistiveText: 'Icon More large',
 				buttonVariant: 'icon',
+				iconCategory: 'utility',
 				iconName: 'settings',
 				iconVariant: 'more',
 				onSelect: (...rest) => {
@@ -314,6 +319,7 @@ storiesOf(MENU_DROPDOWN, module)
 			{getDropdown({
 				assistiveText: 'Icon More large',
 				buttonVariant: 'icon',
+				iconCategory: 'utility',
 				iconName: 'settings',
 				iconVariant: 'more',
 				onSelect: (...rest) => {
@@ -329,6 +335,7 @@ storiesOf(MENU_DROPDOWN, module)
 			assistiveText: 'More Options',
 			buttonVariant: 'icon',
 			checkmark: true,
+			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border-filled',
 			onMouseEnter: action('Mouse enter'),

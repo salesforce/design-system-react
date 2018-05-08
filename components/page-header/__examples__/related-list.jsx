@@ -18,6 +18,7 @@ const Example = createReactClass({
 				</button>
 				<div className="slds-button--last">
 					<Button
+						iconCategory="utility"
 						iconName="down"
 						variant="icon"
 						iconVariant="border-filled"
@@ -46,6 +47,7 @@ const Example = createReactClass({
 						<Button
 							assistiveText="Change view"
 							className="slds-m-right--xx-small"
+							iconCategory="utility"
 							iconName="table"
 							iconVariant="more"
 							variant="icon"
@@ -54,6 +56,7 @@ const Example = createReactClass({
 				</Dropdown>
 				<ButtonGroup>
 					<Button
+						iconCategory="utility"
 						iconName="chart"
 						variant="icon"
 						iconVariant="border"
@@ -61,6 +64,7 @@ const Example = createReactClass({
 						assistiveText="Chart"
 					/>
 					<Button
+						iconCategory="utility"
 						iconName="filterList"
 						variant="icon"
 						iconVariant="border"

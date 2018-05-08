@@ -21,6 +21,7 @@ const Example = createReactClass({
 					<Button label="Neutral" />
 
 					<Button
+						iconCategory="utility"
 						iconName="download"
 						iconPosition="left"
 						label="Neutral Icon"

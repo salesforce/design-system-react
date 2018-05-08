@@ -58,6 +58,7 @@ const headerNavRight = (
 			id="header-nav-right-more"
 			align="right"
 			assistiveText="More Options"
+			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
 			options={[
@@ -76,6 +77,7 @@ const headerContentRight = (
 			assistiveText="Checkmark with right icon"
 			buttonVariant="icon"
 			checkmark
+			iconCategory="utility"
 			iconName="side_list"
 			iconSize="large"
 			iconVariant="more"
@@ -107,6 +109,7 @@ const headerContentRight = (
 
 		<Button
 			assistiveText="Refresh"
+			iconCategory="utility"
 			iconName="refresh"
 			iconVariant="border"
 			variant="icon"
@@ -130,6 +133,7 @@ const headerTitle = (
 				<DropdownTrigger>
 					<Button
 						className="slds-button--reset slds-type-focus"
+						iconCategory="utility"
 						iconName="down"
 						iconPosition="right"
 						label="My Leads"

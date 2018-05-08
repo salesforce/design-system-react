@@ -40,6 +40,8 @@ const menuOptions = [
 ];
 
 const defaultProps = {
+	iconCategory: 'utility',
+	iconName: 'down',
 	id: 'sample-dropdown',
 	label: 'Test',
 	menuPosition: 'relative',
@@ -288,6 +290,7 @@ describe('SLDSMenuDropdown', function () {
 					assistiveText="more options"
 					buttonVariant="icon"
 					checkmark
+					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
 				/>
