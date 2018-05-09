@@ -21,6 +21,9 @@ app.use(
 );
 app.use(express.static(`${__dirname}/storybook`));
 
+// Use the following line to test Storyshots instead
+// app.use(express.static(`${__dirname}/storybook-based-tests`));
+
 // Listen
 const server = app.listen(port, () => {
 	console.log('Server listening on port ', server.address().port);
