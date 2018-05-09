@@ -30,6 +30,12 @@ const propTypes = {
 	 */
 	align: PropTypes.oneOf(['top', 'center']),
 	/**
+	 * Assistive text for the modal.
+	 */
+	assistiveText: PropTypes.shape({
+		dialogLabel: PropTypes.string, // If not provided, `title` is used.
+	}),
+	/**
 	 * Modal content.
 	 */
 	children: PropTypes.node.isRequired,
@@ -135,6 +141,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {},
 	align: 'center',
 	dismissible: true,
 };
@@ -214,7 +221,12 @@ class Modal extends React.Component {
 			// temporarily disabling eslint for the onClicks on the div tags
 			/* eslint-disable */
 			<div
-				aria-labelledby={this.getId()}
+				aria-label={this.props.assistiveText.dialogLabel}
+				aria-labelledby={
+					!this.props.assistiveText.dialogLabel && this.props.title
+						? this.getId()
+						: null
+				}
 				className={classNames({
 					'slds-modal': true,
 					'slds-fade-in-open': true,
