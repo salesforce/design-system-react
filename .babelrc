@@ -1,6 +1,6 @@
 {
-  "env": {
-    "development": {
+	"env": {
+		"development": {
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"],
@@ -8,8 +8,8 @@
 				}
 			}], "react"],
 			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-    },
-    "amd": {
+		},
+		"amd": {
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"],
@@ -17,8 +17,8 @@
 				}
 			}], "react"],
 			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-    },
-    "commonjs": {
+		},
+		"commonjs": {
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"],
@@ -37,19 +37,19 @@
 			}], "react"],
 			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
 		},
-    "test": {
+		"test": {
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"]
 				}
 			}], "react"],
 			"plugins": ["istanbul", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-    }
-  },
-  "ignore": [
-    "preset/**"
-  ],
-  "plugins": [
-    "root-import"
-  ]
+		}
+	},
+	"ignore": [
+		"preset/**"
+	],
+	"plugins": [
+		"root-import"
+	]
 }
