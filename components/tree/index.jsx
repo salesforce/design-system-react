@@ -31,6 +31,7 @@ class Tree extends React.Component {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
 		this.handleNodeBlur = this.handleNodeBlur.bind(this);
+		this.handleExpandClick = this.handleExpandClick.bind(this);
 		this.state = {
 			flattenedNodes: this.flattenTree({
 				nodes: this.props.nodes,
@@ -57,7 +58,7 @@ class Tree extends React.Component {
 		// There is no need to render when blurring a node because focus is either:
 		//  - outside of the tree, or
 		//  - focused on another node in the tree, which triggers its own render
-		if (this.state.treeHasFocus && !nextState.treeHasFocus) {
+		if (!nextState.treeHasFocus) {
 			return false;
 		}
 		return true;
@@ -118,6 +119,11 @@ class Tree extends React.Component {
 		this.setState({ treeHasFocus: false });
 	}
 
+	handleExpandClick (event, data) {
+		this.props.onExpandClick(event, data);
+		this.setState({ treeHasFocus: true });
+	}
+
 	render () {
 		// One of these is required to pass accessibility tests
 		const headingText = this.props.assistiveText || this.props.heading;
@@ -153,7 +159,7 @@ class Tree extends React.Component {
 					treeHasFocus={this.state.treeHasFocus}
 					onNodeBlur={this.handleNodeBlur}
 					onClick={this.handleClick}
-					onExpandClick={this.props.onExpandClick}
+					onExpandClick={this.handleExpandClick}
 					onScroll={this.props.onScroll}
 					searchTerm={this.props.searchTerm}
 					treeId={this.props.id}

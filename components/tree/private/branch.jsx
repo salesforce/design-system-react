@@ -138,6 +138,11 @@ const handleKeyDownLeft = (event, props) => {
 		);
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
+			props.onExpandClick(event, {
+				node: props.parent,
+				expand: !props.parent.expanded,
+				treeIndex: props.flattenedNodes[index].treeIndex,
+			});
 			props.onClick(
 				event,
 				{
