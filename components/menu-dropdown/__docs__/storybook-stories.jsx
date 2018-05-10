@@ -226,11 +226,9 @@ const getVictor = (props) => (
 				id="myPopoverId"
 			>
 				<Button
-					assistiveText="Case Icon"
+					iconVariant="container"
 					iconCategory="utility"
 					iconName="down"
-					iconSize="small"
-					iconVariant="border"
 					variant="icon"
 				/>
 			</Popover>
