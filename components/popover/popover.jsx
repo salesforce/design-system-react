@@ -447,7 +447,8 @@ const Popover = createReactClass({
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
-					'ignore-react-onclickoutside'
+					'ignore-react-onclickoutside',
+					'slds-popover',
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
@@ -477,8 +478,6 @@ const Popover = createReactClass({
 					}
 					aria-describedby={`${this.getId()}-dialog-body`}
 					className={classNames(
-						'slds-popover',
-						getNubbinClassName(props.align),
 						props.className
 					)}
 					id={`${this.getId()}-popover`}

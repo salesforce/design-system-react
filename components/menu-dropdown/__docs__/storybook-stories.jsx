@@ -12,6 +12,7 @@ import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
+import Popover from '../../popover';
 
 const options = [
 	{
@@ -214,9 +215,57 @@ const getDropdownCustomContent = (props) => (
 
 const getVictor = (props) => (
 	<div>
-		<div style={{ marginBottom: 200 }}>relative:
+		<div>
+			<Popover
+				align="bottom right"
+				assistiveText="This is a popover."
+				body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				hasStaticAlignment
+				heading="My Popover"
+				position="overflowBoundaryElement"
+				id="myPopoverId"
+			>
+				<Button
+					assistiveText="Case Icon"
+					iconCategory="utility"
+					iconName="down"
+					iconSize="small"
+					iconVariant="border"
+					variant="icon"
+				/>
+			</Popover>
+		</div>
+		<div style={{ marginBottom: 0 }}>Nubbin:
 			<Dropdown
-				isOpen={true}
+				iconName="down"
+				buttonVariant="icon"
+				iconVariant="bare"
+				align="right"
+				nubbinPosition="top right"
+				assistiveText="More Options"
+				menuPosition="overflowBoundaryElement"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+					{ label: 'Menu Sub Heading', type: 'header' },
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+				]}
+			>
+				<Trigger>
+					<Button
+						iconVariant="container"
+						iconName="down"
+					/>
+				</Trigger>
+			</Dropdown>
+		</div>
+		<div style={{ marginBottom: 0 }}>relative:
+			<Dropdown
 				iconName="down"
 				buttonVariant="icon"
 				iconVariant="bare"
@@ -243,9 +292,8 @@ const getVictor = (props) => (
 				</Trigger>
 			</Dropdown>
 		</div>
-		<div style={{ marginBottom: 200 }}>absolute:
+		<div style={{ marginBottom: 0 }}>absolute:
 			<Dropdown
-				isOpen={true}
 				iconName="down"
 				buttonVariant="icon"
 				iconVariant="bare"
@@ -272,9 +320,8 @@ const getVictor = (props) => (
 				</Trigger>
 			</Dropdown>
 		</div>
-		<div style={{ marginBottom: 200 }}>Overflow:
+		<div style={{ marginBottom: 0 }}>Overflow:
 			<Dropdown
-				isOpen={true}
 				iconName="down"
 				buttonVariant="icon"
 				iconVariant="bare"
@@ -294,36 +341,6 @@ const getVictor = (props) => (
 				]}
 			/>
 		</div>
-		<div style={{ marginBottom: 200 }}>Nubbin:
-			<Dropdown
-				isOpen={true}
-				iconName="down"
-				buttonVariant="icon"
-				iconVariant="bare"
-				align="right"
-				nubbinPosition="top right"
-				assistiveText="More Options"
-				menuPosition="overflowBoundaryElement"
-				onSelect={(value) => {
-					console.log('selected: ', value);
-				}}
-				options={[
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-				]}
-			>
-				<Trigger>
-					<Button
-						iconVariant="container"
-						iconName="down"
-					/>
-				</Trigger>
-			</Dropdown>
-		</div>
 	</div>
 );
 
@@ -337,7 +354,7 @@ storiesOf(MENU_DROPDOWN, module)
 		<div>
 			{getVictor()}
 			<hr />
-			<div className="slds-p-around--medium slds-text-align--center">
+			<div style={{ marginLeft: 500 }}>
 				{getVictor()}
 			</div>
 		</div>
