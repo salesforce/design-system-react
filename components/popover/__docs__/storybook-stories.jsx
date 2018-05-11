@@ -27,6 +27,7 @@ const getPopoverNubbins = (props) => {
 	const children = [];
 
 	const align = [
+		'left top',
 		'top',
 		'top left',
 		'top right',

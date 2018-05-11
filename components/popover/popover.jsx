@@ -101,10 +101,14 @@ const Popover = createReactClass({
 			'top left',
 			'top right',
 			'right',
+			'right top',
+			'right bottom',
 			'bottom',
 			'bottom left',
 			'bottom right',
 			'left',
+			'left top',
+			'left bottom',
 		]),
 		/**
 		 * **Assistive text for accessibility.**
@@ -447,8 +451,7 @@ const Popover = createReactClass({
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
-					'ignore-react-onclickoutside',
-					'slds-popover',
+					'ignore-react-onclickoutside'
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
@@ -463,10 +466,6 @@ const Popover = createReactClass({
 				onRequestTargetElement={() => this.trigger}
 				position={this.props.position}
 				style={{
-					marginBottom: getMargin.bottom(props.align),
-					marginLeft: getMargin.left(props.align),
-					marginRight: getMargin.right(props.align),
-					marginTop: getMargin.top(props.align),
 				}}
 				variant="popover"
 			>
@@ -478,6 +477,7 @@ const Popover = createReactClass({
 					}
 					aria-describedby={`${this.getId()}-dialog-body`}
 					className={classNames(
+						'slds-popover',
 						props.className
 					)}
 					id={`${this.getId()}-popover`}
