@@ -18,7 +18,7 @@ import Portal from './portal';
 import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
 import DOMElementFocus from '../../../utilities/dom-element-focus';
-import { getMargin, getNubbinClassName, mapPropToPopperPlacement } from '../../../utilities/dialog-helpers';
+import { getNubbinMargins, getNubbinClassName, mapPropToPopperPlacement } from '../../../utilities/dialog-helpers';
 
 import { DIALOG } from '../../../utilities/constants';
 
@@ -96,13 +96,17 @@ const Dialog = createReactClass({
 		 */
 		containerProps: PropTypes.object,
 		/**
-		 * Sets the dialog width to the width of either 'target' (Menus attached to `input` typically follow this UX pattern), 'menu' or 'none.
+		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
 		 */
-		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
+		hasNubbin: PropTypes.bool,
 		/**
 		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements.
 		 */
 		hasStaticAlignment: PropTypes.bool,
+		/**
+		 * Sets the dialog width to the width of either 'target' (Menus attached to `input` typically follow this UX pattern), 'menu' or 'none.
+		 */
+		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 		/**
 		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px). SHOULD BE OBJECT -----------
 		 */
@@ -225,7 +229,7 @@ const Dialog = createReactClass({
 	},
 
 	getPopperStyles () {
-		const { popperData } = this.state;
+		const { popperData, nubbinMargins } = this.state;
 		if (!this.popper || !popperData) {
 			return {
 				position: 'absolute',
@@ -233,13 +237,15 @@ const Dialog = createReactClass({
 			};
 		}
 
+		console.log(nubbinMargins)
+
 		const propOffsets = this.getPropOffsetsInPixels(this.props.offset);
 		const { position } = popperData.offsets.popper;
 		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
 		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
-		return { ...popperData.style, left, top, right, position };
+		return { ...popperData.style, ...nubbinMargins, left, top, right, position };
 	},
 
 	// Render
@@ -329,10 +335,15 @@ const Dialog = createReactClass({
 				enabled: true,
 				order: 900,
 				fn: (popperData) => {
-					console.log(popperData);
-					debugger;
 					if ((this.state.popperData && !isEqual(popperData.offsets, this.state.popperData.offsets)) || !this.state.popperData) {
-						this.setState({ popperData });
+						const nubbinMargins = this.props.hasNubbin ?
+							getNubbinMargins(popperData.instance.reference, this.props.align) : {};
+						console.log(nubbinMargins);
+
+						this.setState({
+							popperData,
+							nubbinMargins
+						});
 					}
 					return popperData;
 				},
@@ -360,22 +371,12 @@ const Dialog = createReactClass({
 		}
 	},
 
-	renderArrow () {
-		return (
-			<div className="slds-nubbin--top-right" x-arrow="" />
-		);
-	},
-
 	render () {
 		let style = {};
 
 		if (this.props.position === 'absolute' || this.props.position === 'overflowBoundaryElement') {
 			style = this.getPopperStyles();
 			Object.assign(style, {
-				marginBottom: getMargin.bottom(this.props.align),
-				marginLeft: getMargin.left(this.props.align),
-				marginRight: getMargin.right(this.props.align),
-				marginTop: getMargin.top(this.props.align),
 				outline: 0,
 			});
 		}
@@ -408,7 +409,7 @@ const Dialog = createReactClass({
 								this.props.position === 'overflowBoundaryElement',
 						},
 						this.props.contentsClassName,
-						getNubbinClassName(this.props.align),
+						this.props.hasNubbin && getNubbinClassName(this.props.align),
 					) || undefined
 				}
 				style={style}

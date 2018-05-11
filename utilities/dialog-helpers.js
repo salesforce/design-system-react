@@ -112,9 +112,41 @@ getMargin.bottom = (align) => {
 	return '1rem';
 };
 
+const DISTANCE_OFFSET = 1.5; // 'rem'
+const NUBBIN_SIZE = 1; // 'rem'
+const ROTATED_HEIGHT = NUBBIN_SIZE / Math.sqrt(2); // 'rem'
+/*
+*
+*
+*
+*
+*/
+const getNubbinMargins = ($ref, alignProp) => {
+	// Backwards compatability for align passed as array.
+	const align = Array.isArray(alignProp) ? alignProp.join(' ') : alignProp;
+	const margins = {};
+
+
+	console.log('ROTATED_HEIGHT: ', ROTATED_HEIGHT);
+	switch (align) {
+		case 'top':
+			margins.marginBottom = `${ROTATED_HEIGHT}rem`;
+			break;
+		case 'top right':
+		case 'top left':
+		case 'bottom':
+			margins.marginTop = `${ROTATED_HEIGHT}rem`;
+			break;
+		default:
+	}
+
+	return margins;
+};
+
 export {
 	getMargin,
 	getAlignment,
+	getNubbinMargins,
 	getNubbinClassName,
 	mapPropToPopperPlacement,
 };
