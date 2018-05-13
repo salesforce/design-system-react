@@ -19,6 +19,14 @@ const displayName = PROGRESS_INDICATOR_STEP;
 
 // ### Prop Types
 const propTypes = {
+	/*
+	* assistiveText propTypes
+	*/
+	assistiveText: PropTypes.shape({
+		// percentage: PropTypes.string,
+		completedStep: PropTypes.string,
+		disabledStep: PropTypes.string
+	}),
 	/**
 	 * Id for Steps, ranging in [0, steps.length).
 	 */
@@ -30,6 +38,7 @@ const propTypes = {
 	/**
 	 * Determines if the step has been completed
 	 */
+
 	isCompleted: PropTypes.bool,
 	/**
 	 * Determines if the step has been disabled
@@ -113,7 +122,10 @@ class Step extends React.Component {
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}
+					{(() => {
+
+						return "Disabled: " + (this.props.assistiveText.disabledStep || "");
+					})()}
 				</span>
 			</span>
 		) : (
@@ -128,10 +140,18 @@ class Step extends React.Component {
 				onFocus={handleFocus}
 				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
 					this.props.index}`}
+				aria-current={this.props.isSelected ? 'step' : ''}
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}
+				  {(() => {
+						if (props.isCompleted) {
+							return "Completed: " +
+								(this.props.assistiveText.completedStep || "");
+						} else {
+							return `Step ${props.index + 1}: ${status}`;
+						}
+					})()}
 				</span>
 			</button>
 		);

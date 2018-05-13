@@ -47,6 +47,9 @@ const ExampleProgressIndicator = createReactClass({
 				<ProgressIndicator
 					steps={this.props.steps}
 					selectedStep={this.props.selectedStep}
+					disabledSteps={this.props.disabledSteps}
+					completedSteps={this.props.completedSteps}
+					assistiveText={this.props.assistiveText}
 					onStepClick={(event, data) => {
 						console.log(data);
 					}}
@@ -87,4 +90,15 @@ storiesOf(PROGRESS_INDICATOR, module)
 			errorSteps={steps.slice(1, 2)}
 		/>
 	))
-	.add('In A Modal (With Step Error)', () => <Modal />);
+	.add('In A Modal (With Step Error)', () => <Modal />)
+	.add('Completed Progress', () => (
+		<ExampleProgressIndicator
+			steps={steps}
+			selectedStep={steps[steps.length - 1]}
+			completedSteps={steps.slice(0, steps.length - 1)}
+			assistiveText={{
+				completedStep: "Finished this step.",
+				disabledStep: "Unable to proceed on this step."
+			}}
+		/>
+	));

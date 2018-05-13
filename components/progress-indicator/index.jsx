@@ -30,6 +30,8 @@ const propTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		percentage: PropTypes.string,
+		completedStep: PropTypes.string,
+		disabledStep: PropTypes.string
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -169,6 +171,7 @@ class ProgressIndicator extends React.Component {
 			? assign({}, defaultProps.assistiveText, this.props.assistiveText)
 			: defaultProps.assistiveText;
 
+		const {selectedStep, disabledSteps, errorSteps, completedSteps} = this.props;
 		/** 1. preparing data */
 		const allSteps = this.getSteps();
 
@@ -199,13 +202,14 @@ class ProgressIndicator extends React.Component {
 			>
 				{allSteps.map((step, i) => (
 					<Step
+						assistiveText={this.props.assistiveText}
 						key={`${this.getId()}-${step.id}`}
 						id={this.getId()}
 						index={i}
-						isSelected={findStep(step, this.props.selectedStep)}
-						isDisabled={findStep(step, this.props.disabledSteps)}
-						isError={findStep(step, this.props.errorSteps)}
-						isCompleted={findStep(step, this.props.completedSteps)}
+						isSelected={findStep(step, selectedStep)}
+						isDisabled={findStep(step, disabledSteps)}
+						isError={findStep(step, errorSteps)}
+						isCompleted={findStep(step, completedSteps)}
 						onClick={this.props.onStepClick}
 						onFocus={this.props.onStepFocus}
 						step={step}
