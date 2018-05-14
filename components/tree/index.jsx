@@ -54,16 +54,6 @@ class Tree extends React.Component {
 		});
 	}
 
-	shouldComponentUpdate (nextProps, nextState) {
-		// There is no need to render when blurring a node because focus is either:
-		//  - outside of the tree, or
-		//  - focused on another node in the tree, which triggers its own render
-		if (!nextState.treeHasFocus) {
-			return false;
-		}
-		return true;
-	}
-
 	// Flattens hierarchical tree structure into a flat array.
 	flattenTree (root, treeIndex = '') {
 		if (!root.nodes) {
@@ -108,20 +98,23 @@ class Tree extends React.Component {
 				(treeIndex) => treeIndex !== data.treeIndex
 			);
 		}
+		this.treeHasFocus = true;
 		this.setState({
 			focusedNodeIndex: data.treeIndex,
 			selectedNodeIndexes,
-			treeHasFocus: true,
 		});
 	}
 
 	handleNodeBlur () {
-		this.setState({ treeHasFocus: false });
+		// There is no need to render when blurring a node because focus is either:
+		//  - outside of the tree, or
+		//  - focused on another node in the tree, which triggers its own render
+		this.treeHasFocus = false;
 	}
 
 	handleExpandClick (event, data) {
+		this.treeHasFocus = true;
 		this.props.onExpandClick(event, data);
-		this.setState({ treeHasFocus: true });
 	}
 
 	render () {
@@ -156,7 +149,7 @@ class Tree extends React.Component {
 					flattenedNodes={this.state.flattenedNodes}
 					selectedNodeIndexes={this.state.selectedNodeIndexes}
 					focusedNodeIndex={this.state.focusedNodeIndex}
-					treeHasFocus={this.state.treeHasFocus}
+					treeHasFocus={this.treeHasFocus}
 					onNodeBlur={this.handleNodeBlur}
 					onClick={this.handleClick}
 					onExpandClick={this.handleExpandClick}
@@ -212,7 +205,7 @@ Tree.propTypes = {
 	 */
 	id: PropTypes.string.isRequired,
 	/**
-	 * Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
+	 * Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string or node, assistiveText: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
 	 */
 	nodes: PropTypes.array,
 	/**

@@ -276,6 +276,7 @@ const renderBranch = (children, props) => {
 		</div>
 	);
 
+	const label = props.node.assistiveText || (typeof props.node.label === 'string' ? props.node.label : null);
 	return (
 		<li
 			id={props.htmlId}
@@ -284,7 +285,7 @@ const renderBranch = (children, props) => {
 			aria-expanded={isExpanded ? 'true' : 'false'}
 			aria-label={
 				props.node.nodes && props.node.nodes.length > 0
-					? props.node.label
+					? label
 					: null
 			}
 			tabIndex={getTabIndex(props)}

@@ -13,7 +13,8 @@ const sampleNodes = {
 			selected: true,
 		},
 		{
-			label: 'Fruits',
+			assistiveText: 'Fruits',
+			label: <span>Fruits</span>,
 			type: 'branch',
 			id: 2,
 			expanded: true,
