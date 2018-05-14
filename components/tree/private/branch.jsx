@@ -276,7 +276,9 @@ const renderBranch = (children, props) => {
 		</div>
 	);
 
-	const label = props.node.assistiveText || (typeof props.node.label === 'string' ? props.node.label : null);
+	const label =
+		props.node.assistiveText ||
+		(typeof props.node.label === 'string' ? props.node.label : null);
 	return (
 		<li
 			id={props.htmlId}
@@ -284,9 +286,7 @@ const renderBranch = (children, props) => {
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
 			aria-label={
-				props.node.nodes && props.node.nodes.length > 0
-					? label
-					: null
+				props.node.nodes && props.node.nodes.length > 0 ? label : null
 			}
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
