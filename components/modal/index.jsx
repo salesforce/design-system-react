@@ -181,8 +181,9 @@ class Modal extends React.Component {
 			if (this.state.isClosing) {
 				// console.log("CLOSING: ');
 				if (!this.isUnmounting) {
-					const el = ReactDOM.findDOMNode(this).parentNode; // eslint-disable-line react/no-find-dom-node
-					if (el && el.getAttribute('data-slds-modal')) {
+					const el = ReactDOM.findDOMNode(this); // eslint-disable-line react/no-find-dom-node
+
+					if (el && el.parentNode && el.parentNode.getAttribute('data-slds-modal')) {
 						ReactDOM.unmountComponentAtNode(el);
 						document.body.removeChild(el);
 					}

@@ -138,6 +138,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('closing modal fires callback', () => {
+			debugger;
 			Simulate.click(handles.modal.find('.slds-modal__close').node);
 			expect(onClose.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});

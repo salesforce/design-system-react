@@ -104,7 +104,7 @@
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
 		"react-highlighter": "^0.4.0",
-		"react-modal": "^1.7.7",
+		"react-modal": "3.4.4",
 		"react-onclickoutside": "^6.5.0",
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.12.0",

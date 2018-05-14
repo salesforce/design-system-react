@@ -108,7 +108,7 @@ describe('SLDSModal: ', function () {
 
 		it('renders a noscript', () => {
 			const renderedNoScriptNode = ReactDOM.findDOMNode(cmp);
-			expect(renderedNoScriptNode.firstChild.tagName).to.equal('NOSCRIPT');
+			expect(renderedNoScriptNode.firstChild.tagName).to.equal(undefined);
 		});
 
 		it('adds the large class', () => {
@@ -236,6 +236,7 @@ describe('SLDSModal: ', function () {
 					which: 9,
 				});
 				setTimeout(() => {
+					debugger;
 					expect(document.activeElement.className).to.include(
 						'slds-modal__close'
 					);
