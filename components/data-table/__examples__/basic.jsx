@@ -133,7 +133,6 @@ const Example = createReactClass({
 					>
 						{columns}
 					</DataTable>
-
 				</div>
 			</IconSettings>
 		);
