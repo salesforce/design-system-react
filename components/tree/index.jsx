@@ -27,8 +27,101 @@ import { TREE } from '../../utilities/constants';
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 class Tree extends React.Component {
+	constructor (props) {
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
+		this.handleNodeBlur = this.handleNodeBlur.bind(this);
+		this.handleExpandClick = this.handleExpandClick.bind(this);
+		this.state = {
+			flattenedNodes: this.flattenTree({
+				nodes: this.props.nodes,
+				expanded: true,
+			}).slice(1),
+			selectedNodeIndexes: [],
+		};
+	}
+
 	componentWillMount () {
 		checkProps(TREE, this.props);
+	}
+
+	componentWillReceiveProps (nextProps) {
+		this.setState({
+			flattenedNodes: this.flattenTree({
+				nodes: nextProps.nodes,
+				expanded: true,
+			}).slice(1),
+		});
+	}
+
+	shouldComponentUpdate (nextProps, nextState) {
+		// There is no need to render when blurring a node because focus is either:
+		//  - outside of the tree, or
+		//  - focused on another node in the tree, which triggers its own render
+		if (!nextState.treeHasFocus) {
+			return false;
+		}
+		return true;
+	}
+
+	// Flattens hierarchical tree structure into a flat array.
+	flattenTree (root, treeIndex = '') {
+		if (!root.nodes) {
+			return [{ node: root, treeIndex }];
+		}
+		let nodes = [{ node: root, treeIndex }];
+		if (root.expanded) {
+			for (let index = 0; index < root.nodes.length; index++) {
+				const curNode = root.nodes[index];
+				nodes = nodes.concat(
+					this.flattenTree(
+						curNode,
+						treeIndex ? `${treeIndex}-${index}` : `${index}`
+					)
+				);
+			}
+		}
+		return nodes;
+	}
+
+	handleClick (event, data, clearSelectedNodes) {
+		// When triggered by a key event, other nodes should be deselected.
+		if (clearSelectedNodes) {
+			this.state.flattenedNodes.forEach((flattenedNode) => {
+				if (flattenedNode.node.selected) {
+					flattenedNode.node.selected = false;
+				}
+			});
+		}
+
+		// Do the click.
+		this.props.onClick(event, data);
+
+		// Keep track of the currently selected and focused nodes.
+		let selectedNodeIndexes;
+		if (data.select) {
+			selectedNodeIndexes = this.state.selectedNodeIndexes.concat([
+				data.treeIndex,
+			]);
+		} else {
+			selectedNodeIndexes = this.state.selectedNodeIndexes.filter(
+				(treeIndex) => treeIndex !== data.treeIndex
+			);
+		}
+		this.setState({
+			focusedNodeIndex: data.treeIndex,
+			selectedNodeIndexes,
+			treeHasFocus: true,
+		});
+	}
+
+	handleNodeBlur () {
+		this.setState({ treeHasFocus: false });
+	}
+
+	handleExpandClick (event, data) {
+		this.props.onExpandClick(event, data);
+		this.setState({ treeHasFocus: true });
 	}
 
 	render () {
@@ -60,8 +153,13 @@ class Tree extends React.Component {
 					initialStyle={this.props.listStyle}
 					level={0}
 					node={{ nodes: this.props.nodes }}
-					onClick={this.props.onClick}
-					onExpandClick={this.props.onExpandClick}
+					flattenedNodes={this.state.flattenedNodes}
+					selectedNodeIndexes={this.state.selectedNodeIndexes}
+					focusedNodeIndex={this.state.focusedNodeIndex}
+					treeHasFocus={this.state.treeHasFocus}
+					onNodeBlur={this.handleNodeBlur}
+					onClick={this.handleClick}
+					onExpandClick={this.handleExpandClick}
 					onScroll={this.props.onScroll}
 					searchTerm={this.props.searchTerm}
 					treeId={this.props.id}

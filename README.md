@@ -19,6 +19,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 * [Documentation and interactive examples](https://react.lightningdesignsystem.com)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase overview](docs/codebase-overview.md)
+* [Create React App setup](docs/create-react-app.md)
 * [Browser compatibility and polyfills](docs/browser-compatibility.md)
 * [Usage with Webpack](docs/webpack.md)
 * [Open Sourcing Design System React](https://engineering.salesforce.com/open-sourcing-design-system-react-9be45b8bb127) - Medium article
@@ -27,7 +28,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 ### Quick Setup (CommonJS)
 
-A CommonJS-compatible version has been included within the NPM package to allows usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
+For a no hassle setup and compatibility with Create React App v1, a CommonJS version has been included within the NPM package to allow usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
 
 ```
 import { Button } from '@salesforce/design-system-react';
@@ -35,9 +36,11 @@ import { Button } from '@salesforce/design-system-react';
 <Button label="Hello Button" />
 ```
 
-### Recommended Usage (ES6 modules)
+Please view [Create React App Setup](docs/create-react-app.md) for more information on using this library with Create React App.
 
-Recommended usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://react.lightningdesignsystem.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](https://npmjs.com/package/@salesforce/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking. This library is not browser-ready and should be polyfilled to your target environment.
+### Advanced (Source code)
+
+Advanced usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://react.lightningdesignsystem.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](https://npmjs.com/package/@salesforce/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking. This library is not browser-ready and should be polyfilled to your target environment.
 
 ```
 import Button from '@salesforce/design-system-react/components/button';
@@ -52,6 +55,9 @@ import Button from '@salesforce/design-system-react/components/button';
 	"presets": ["@salesforce/babel-preset-design-system-react"]
 }
 ```
+### Styling
+
+This library does not contain any Cascading Style Sheets (CSS). You will need to add `<link rel="stylesheet" type="text/css"  href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" />` to your page and serve that file from a publicly available folder.
 
 ### Icon Usage
 
@@ -84,7 +90,7 @@ app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/
 
 #### Bundle icons
 
-If you use a module bundler, like Webpack, you can import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties. Your SVG images will be bundled with your scripts and block the DOM from rendering until the script file is loaded.
+If you use a module bundler, like Webpack, you can let your module bundler manage SVG sprite file paths and send that path into `<IconSettings>`. This requires configuring your module bundler to manage your public assets.
 
 ```
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
@@ -101,14 +107,14 @@ ReactDOM.render(
 )
 ```
 
-Bundled script files are provided _only_ for convenience.
+Bundled script files are provided _only_ for convenience. Do not use in production.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.
 
 ## Contributing to the code base
 
-#### Clone and develop locally with in-browser test server
+#### Clone and develop locally with Storybook and in-browser tests
 
 ```
 git clone git@github.com:salesforce/design-system-react.git

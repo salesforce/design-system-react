@@ -9,6 +9,7 @@ import PopoverTooltip from '../../popover-tooltip';
 
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
+import LearnMoreExample from '../__examples__/learn-more';
 
 import Icon from '../../icon';
 import Button from '../../button';
@@ -56,8 +57,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 		<div
 			className="slds-p-around--medium slds-m-horizontal--x-large"
 			style={{
-				margin: '100px auto',
-				textAlign: 'center',
+				margin: '150px auto',
 				width: '500px',
 			}}
 		>
@@ -72,6 +72,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
 		})
 	)
+	.add('Learn More', () => <LearnMoreExample />)
 	.add('Button Group', () => <ButtonGroupExample />)
 	.add('Button', () => <ButtonExample />)
 	.add('Open', () =>

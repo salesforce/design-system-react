@@ -77,14 +77,6 @@ describe('SLDSTooltip: ', function () {
 			);
 		});
 
-		it('renders the content as assistive text', () => {
-			const span = findRenderedDOMComponentWithClass(
-				rootNode,
-				'slds-assistive-text'
-			);
-			expect(span.textContent).to.equal('This is more info. blah blah.');
-		});
-
 		it('is not open', () => {
 			expect(getTip(document.body)).to.equal(null);
 		});

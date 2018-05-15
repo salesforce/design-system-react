@@ -12,6 +12,7 @@ const Example = createReactClass({
 				<div className="-x-small-buttons--horizontal">
 					<Button
 						assistiveText="Icon Bare Small"
+						iconCategory="utility"
 						iconName="settings"
 						iconSize="small"
 						iconVariant="bare"
@@ -23,6 +24,7 @@ const Example = createReactClass({
 
 					<Button
 						assistiveText="Icon Container Small"
+						iconCategory="utility"
 						iconName="settings"
 						iconSize="small"
 						iconVariant="container"
@@ -39,6 +41,7 @@ const Example = createReactClass({
 					>
 						<Button
 							assistiveText="Icon Border medium"
+							iconCategory="utility"
 							iconName="settings"
 							iconVariant="border"
 							variant="icon"
@@ -46,6 +49,7 @@ const Example = createReactClass({
 
 						<Button
 							assistiveText="Icon Border-filled medium"
+							iconCategory="utility"
 							iconName="settings"
 							iconVariant="border-filled"
 							variant="icon"
@@ -54,6 +58,7 @@ const Example = createReactClass({
 
 					<Button
 						assistiveText="Icon More large"
+						iconCategory="utility"
 						iconName="settings"
 						iconSize="large"
 						iconVariant="more"
@@ -70,6 +75,7 @@ const Example = createReactClass({
 					>
 						<Button
 							assistiveText="Icon inverse"
+							iconCategory="utility"
 							iconName="settings"
 							iconSize="large"
 							inverse
@@ -88,6 +94,7 @@ const Example = createReactClass({
 						<Button
 							assistiveText="Icon hint large"
 							hint
+							iconCategory="utility"
 							iconName="settings"
 							iconSize="large"
 							variant="icon"

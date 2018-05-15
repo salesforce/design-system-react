@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.13",
+	"version": "0.8.14",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -10,8 +10,8 @@
 	"scripts": {
 		"build-docs": "npx babel-node ./scripts/build-docs.js",
 		"build-and-test-docs": "npm run build-docs && npx babel-node ./tests/component-docs-test.js",
-		"build-storybook": "build-storybook -o ./storybook",
-		"build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
+		"build-storybook": "NODE_ENV=development npx build-storybook -o ./storybook",
+		"build-storybook-for-tests": "NODE_ENV=development npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
@@ -69,6 +69,7 @@
 		"lightning",
 		"design system",
 		"lightning design system",
+		"salesforce-lightning",
 		"salesforce lightning design system",
 		"interactive components",
 		"interactive",
@@ -105,6 +106,7 @@
 		"react-highlighter": "^0.4.0",
 		"react-modal": "^1.7.7",
 		"react-onclickoutside": "^6.5.0",
+		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.12.0",
 		"shortid": "^2.2.6",
 		"warning": "^3.0.0"
@@ -117,15 +119,16 @@
 	"devDependencies": {
 		"@salesforce-ux/design-system": "2.4.3",
 		"@salesforce-ux/icons": "7.x",
-		"@storybook/addon-actions": "^3.2.12",
+		"@storybook/addon-a11y": "^3.4.3",
+		"@storybook/addon-actions": "^3.4.3",
 		"@storybook/addon-info": "^3.2.10",
-		"@storybook/addon-storyshots": "^3.4.0-alpha.4",
-		"@storybook/addons": "^3.4.0-alpha.8",
-		"@storybook/react": "^3.4.0-alpha.8",
+		"@storybook/addon-storyshots": "^3.4.3",
+		"@storybook/addons": "^3.4.3",
+		"@storybook/react": "^3.4.3",
 		"async": "^2.0.0-rc.5",
 		"babel-cli": "^6.24.1",
 		"babel-core": "^6.26.0",
-		"babel-eslint": "^8.0.2",
+		"babel-eslint": "^8.2.3",
 		"babel-jest": "^20.0.3",
 		"babel-loader": "^7.1.1",
 		"babel-plugin-import-noop": "^1.0.1",
@@ -145,14 +148,14 @@
 		"css-loader": "^0.28.0",
 		"enzyme": "^2.5.1",
 		"enzyme-to-json": "^1.5.0",
-		"eslint": "^4.12.0",
+		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "16.1.0",
 		"eslint-loader": "^1.6.0",
 		"eslint-plugin-filenames": "^1.2.0",
-		"eslint-plugin-import": "^2.2.0",
+		"eslint-plugin-import": "^2.11.0",
 		"eslint-plugin-json": "^1.2.0",
 		"eslint-plugin-jsx-a11y": "^6.0.3",
-		"eslint-plugin-react": "^7.1.0",
+		"eslint-plugin-react": "^7.7.0",
 		"express": "^4.15.5",
 		"file-loader": "^0.11.0",
 		"find-remove": "^1.1.0",
@@ -648,8 +651,16 @@
 		},
 		{
 			"component": "tree",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Tree",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/05/04",
+				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+			},
+			"last-slds-markup-review": {
+				"date-iso-8601": "2018/05/04",
+				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+			},
 			"SLDS-component-path": "/components/tree"
 		},
 		{

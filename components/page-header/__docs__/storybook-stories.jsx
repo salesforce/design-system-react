@@ -98,6 +98,7 @@ const recordHomeContentRight = (
 			<SLDSMenuDropdown
 				assistiveText="More Options"
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
 				onSelect={action('select')}
@@ -140,6 +141,7 @@ const recordHomeDetails = [
 const objectHomeContentRight = (
 	<div>
 		<SLDSButton
+			iconCategory="utility"
 			iconName="settings"
 			variant="icon"
 			iconVariant="more"
@@ -147,6 +149,7 @@ const objectHomeContentRight = (
 			assistiveText="Settings"
 		/>
 		<SLDSButton
+			iconCategory="utility"
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
@@ -155,12 +158,14 @@ const objectHomeContentRight = (
 		/>
 		<SLDSButtonGroup>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="chart"
 				variant="icon"
 				iconVariant="border"
 				assistiveText="Chart"
 			/>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
@@ -192,6 +197,7 @@ const objectHomeNavRight = (
 		<SLDSMenuDropdown
 			align="right"
 			assistiveText="More Options"
+			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
 			onSelect={action('select')}
@@ -207,6 +213,7 @@ const objectHomeNavRight = (
 const relatedListContentRight = (
 	<div>
 		<SLDSButton
+			iconCategory="utility"
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
@@ -215,6 +222,7 @@ const relatedListContentRight = (
 		/>
 		<SLDSButtonGroup>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="chart"
 				variant="icon"
 				iconVariant="border"
@@ -222,6 +230,7 @@ const relatedListContentRight = (
 				assistiveText="Chart"
 			/>
 			<SLDSButton
+				iconCategory="utility"
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
@@ -253,6 +262,7 @@ const relatedListNavRight = (
 		<SLDSMenuDropdown
 			assistiveText="More Options"
 			buttonVariant="icon"
+			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
 			onSelect={action('select')}

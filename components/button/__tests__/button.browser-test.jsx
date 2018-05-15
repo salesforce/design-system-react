@@ -113,6 +113,7 @@ describe('SLDSButton: ', () => {
 			cmp = getButton({
 				assistiveText: 'my settings',
 				variant: 'icon',
+				iconCategory: 'utility',
 				iconName: 'settings',
 				iconSize: 'small',
 				iconVariant: 'bare',
@@ -132,6 +133,31 @@ describe('SLDSButton: ', () => {
 
 		it('renders icon styles', () => {
 			expect(svg.className.baseVal).to.include('slds-button__icon');
+		});
+	});
+
+	describe('(icon path) Icon Button renders assistive text', () => {
+		let cmp;
+		let btn;
+		let asstText;
+
+		beforeEach(() => {
+			cmp = getButton({
+				assistiveText: 'News',
+				iconSize: 'large',
+				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
+				title: 'announcement',
+			});
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+		});
+
+		afterEach(() => {
+			removeButton(btn);
+		});
+
+		it('renders label', () => {
+			expect(asstText.textContent).to.equal('News');
 		});
 	});
 

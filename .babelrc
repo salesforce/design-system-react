@@ -1,20 +1,55 @@
 {
-  "presets": ["@salesforce/babel-preset-design-system-react"],
-  "env": {
-    "amd": {
-      "plugins": ["import-noop"]
-    },
-    "commonjs": {
-      "plugins": ["import-noop"]
-    },
-    "test": {
-      "plugins": ["istanbul"]
-    }
-  },
-  "ignore": [
-    "preset/**",
-  ],
-  plugins: [
-    "root-import"
-  ]
+	"env": {
+		"development": {
+			"presets": [["env", {
+				"targets": {
+					"browsers": ["last 2 versions", "ie 11"],
+					"node": "8.9.4"
+				}
+			}], "react"],
+			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+		},
+		"amd": {
+			"presets": [["env", {
+				"targets": {
+					"browsers": ["last 2 versions", "ie 11"],
+					"node": "8.9.4"
+				}
+			}], "react"],
+			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+		},
+		"commonjs": {
+			"presets": [["env", {
+				"targets": {
+					"browsers": ["last 2 versions", "ie 11"],
+					"node": "8.9.4"
+				}
+			}], "react"],
+			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+		},
+		"esm": {
+			"presets": [["env", {
+				"targets": {
+					"browsers": ["last 2 versions", "ie 11"],
+					"node": "8.9.4"
+				},
+				"modules": false
+			}], "react"],
+			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+		},
+		"test": {
+			"presets": [["env", {
+				"targets": {
+					"browsers": ["last 2 versions", "ie 11"]
+				}
+			}], "react"],
+			"plugins": ["istanbul", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+		}
+	},
+	"ignore": [
+		"preset/**"
+	],
+	"plugins": [
+		"root-import"
+	]
 }

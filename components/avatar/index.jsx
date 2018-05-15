@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) A
 // simple javascript utility for conditionally joining classNames together.
 import classNames from '../../utilities/class-names';
-import AVATAR from '../../utilities/constants';
+import { AVATAR } from '../../utilities/constants';
 import UtilityIcon from '../icon';
 
 // ### Display Name Always use the canonical component name as the React display
@@ -175,4 +175,4 @@ Avatar.defaultProps = defaultProps;
 Avatar.displayName = displayName;
 Avatar.propTypes = propTypes;
 
-module.exports = Avatar;
+export default Avatar;
