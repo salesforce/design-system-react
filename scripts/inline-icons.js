@@ -20,7 +20,7 @@ const parseXml = (string, done) => {
 		{
 			emptyTag: {},
 			explicitArray: false,
-			mergeAttrs: true
+			mergeAttrs: true,
 		},
 		done
 	);
