@@ -3083,13 +3083,6 @@
                 "required": false,
                 "description": "A variant which adds border to the vertical columns."
             },
-            "compact": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "A variant which decreases padding and allows more items and columns to be viewed."
-            },
             "id": {
                 "type": {
                     "name": "string"
