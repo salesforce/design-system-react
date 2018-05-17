@@ -25,29 +25,53 @@ import checkProps from './check-props';
 // ## Constants
 import { TREE } from '../../utilities/constants';
 
+/* Flattens hierarchical tree structure into a flat array. The
+ * first item in the array is the whole tree and therefore should be
+ * removed with `slice(1)`.`
+*/
+const flattenTree = (root, treeIndex = '') => {
+	if (!root.nodes) {
+		return [{ node: root, treeIndex }];
+	}
+	let nodes = [{ node: root, treeIndex }];
+	if (root.expanded) {
+		for (let index = 0; index < root.nodes.length; index++) {
+			const curNode = root.nodes[index];
+			nodes = nodes.concat(
+				flattenTree(
+					curNode,
+					treeIndex ? `${treeIndex}-${index}` : `${index}`
+				)
+			);
+		}
+	}
+	return nodes;
+};
+
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 class Tree extends React.Component {
 	constructor (props) {
 		super(props);
-		const flattenedNodes = this.flattenTree({
+		// Find the first selected node and initialize it properly so that can be tabbed to. If no node is selected, it will be selected upon first focus.
+		const flattenedNodes = flattenTree({
 			nodes: this.props.nodes,
 			expanded: true,
 		}).slice(1);
+
 		const selectedNode = find(
 			flattenedNodes,
 			(curNode) => curNode.node.selected
 		);
 		const selectedNodeIndexes = [];
 		let focusedNodeIndex;
+
 		if (selectedNode) {
 			selectedNodeIndexes.push(selectedNode.treeIndex);
 			focusedNodeIndex = selectedNode.treeIndex;
 		}
-		this.handleSelect = this.handleSelect.bind(this);
-		this.handleNodeBlur = this.handleNodeBlur.bind(this);
-		this.handleExpand = this.handleExpand.bind(this);
+
 		this.state = {
 			flattenedNodes,
 			selectedNodeIndexes,
@@ -61,34 +85,14 @@ class Tree extends React.Component {
 
 	componentWillReceiveProps (nextProps) {
 		this.setState({
-			flattenedNodes: this.flattenTree({
+			flattenedNodes: flattenTree({
 				nodes: nextProps.nodes,
 				expanded: true,
 			}).slice(1),
 		});
 	}
 
-	// Flattens hierarchical tree structure into a flat array.
-	flattenTree (root, treeIndex = '') {
-		if (!root.nodes) {
-			return [{ node: root, treeIndex }];
-		}
-		let nodes = [{ node: root, treeIndex }];
-		if (root.expanded) {
-			for (let index = 0; index < root.nodes.length; index++) {
-				const curNode = root.nodes[index];
-				nodes = nodes.concat(
-					this.flattenTree(
-						curNode,
-						treeIndex ? `${treeIndex}-${index}` : `${index}`
-					)
-				);
-			}
-		}
-		return nodes;
-	}
-
-	handleSelect (event, data, clearSelectedNodes) {
+	handleSelect = (event, data, clearSelectedNodes) => {
 		// When triggered by a key event, other nodes should be deselected.
 		if (clearSelectedNodes) {
 			this.state.flattenedNodes.forEach((flattenedNode) => {
@@ -119,14 +123,14 @@ class Tree extends React.Component {
 		});
 	}
 
-	handleNodeBlur () {
+	handleNodeBlur = () => {
 		// There is no need to render when blurring a node because focus is either:
 		//  - outside of the tree, or
 		//  - focused on another node in the tree, which triggers its own render
 		this.treeHasFocus = false;
 	}
 
-	handleExpand (event, data) {
+	handleExpand = (event, data) => {
 		this.treeHasFocus = true;
 		this.props.onExpandClick(event, data);
 	}
@@ -219,7 +223,18 @@ Tree.propTypes = {
 	 */
 	id: PropTypes.string.isRequired,
 	/**
-	 * Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string or node, assistiveText: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
+	 * Array of items starting at the top of the tree. The shape each node in the array is:
+	 * ```
+	 * {
+	 *   expanded: string,
+	 *   id: string,
+	 *   label: string or node,
+	 *   selected: string,
+	 *   type: string,
+	 *   nodes: array
+	 * }
+	 * ```
+	 * `assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
 	 */
 	nodes: PropTypes.array,
 	/**
