@@ -36,11 +36,11 @@ import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 // ## Constants
 import { TREE_BRANCH } from '../../../utilities/constants';
 
-const handleExpandClick = (event, props) => {
+const handleExpand = (event, props) => {
 	EventUtil.trap(event);
 
-	if (isFunction(props.onExpandClick)) {
-		props.onExpandClick(event, {
+	if (isFunction(props.onExpand)) {
+		props.onExpand(event, {
 			node: props.node,
 			expand: !props.node.expanded,
 			treeIndex: props.treeIndex,
@@ -48,10 +48,10 @@ const handleExpandClick = (event, props) => {
 	}
 };
 
-const handleClick = (event, props) => {
+const handleSelect = (event, props) => {
 	EventUtil.trap(event);
-	if (isFunction(props.onClick)) {
-		props.onClick(event, {
+	if (isFunction(props.onSelect)) {
+		props.onSelect(event, {
 			node: props.node,
 			select: !props.node.selected,
 			treeIndex: props.treeIndex,
@@ -91,7 +91,7 @@ const handleKeyDownDown = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Select the next visible node
 		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-		props.onClick(
+		props.onSelect(
 			event,
 			{
 				node: flattenedNode.node,
@@ -107,7 +107,7 @@ const handleKeyDownUp = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Go to the previous visible node
 		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-		props.onClick(
+		props.onSelect(
 			event,
 			{
 				node: flattenedNode.node,
@@ -125,25 +125,25 @@ const handleKeyDownRight = (event, props) => {
 			handleKeyDownDown(event, props);
 		}
 	} else {
-		handleExpandClick(event, props);
+		handleExpand(event, props);
 	}
 };
 
 const handleKeyDownLeft = (event, props) => {
 	if (props.node.expanded) {
-		handleExpandClick(event, props);
+		handleExpand(event, props);
 	} else {
 		const nodes = props.flattenedNodes.map(
 			(flattenedNode) => flattenedNode.node
 		);
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
-			props.onExpandClick(event, {
+			props.onExpand(event, {
 				node: props.parent,
 				expand: !props.parent.expanded,
 				treeIndex: props.flattenedNodes[index].treeIndex,
 			});
-			props.onClick(
+			props.onSelect(
 				event,
 				{
 					node: props.parent,
@@ -157,7 +157,7 @@ const handleKeyDownLeft = (event, props) => {
 };
 
 const handleKeyDownEnter = (event, props) => {
-	handleClick(event, props);
+	handleSelect(event, props);
 };
 
 const handleKeyDown = (event, props) => {
@@ -174,7 +174,7 @@ const handleKeyDown = (event, props) => {
 
 const handleFocus = (event, props) => {
 	if (!props.focusedNodeIndex) {
-		handleClick(event, props);
+		handleSelect(event, props);
 	}
 };
 
@@ -304,7 +304,7 @@ const renderBranch = (children, props) => {
 					'slds-is-selected': isSelected,
 				})}
 				onClick={(event) => {
-					handleClick(event, props);
+					handleSelect(event, props);
 				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -318,7 +318,7 @@ const renderBranch = (children, props) => {
 					role="presentation"
 					aria-controls={props.htmlId}
 					onClick={(event) => {
-						handleExpandClick(event, props);
+						handleExpand(event, props);
 					}}
 					tabIndex="-1"
 				/>
@@ -370,13 +370,13 @@ renderBranch.propTypes = {
 	 */
 	node: PropTypes.object.isRequired,
 	/**
+	 * This function triggers when the expand or collapse icon is clicked or due to keyboard navigation.
+	 */
+	onExpand: PropTypes.func.isRequired,
+	/**
 	 * Function that will run whenever an item or branch is clicked.
 	 */
-	onClick: PropTypes.func,
-	/**
-	 * This function triggers when the expand or collapse icon is clicked.
-	 */
-	onExpandClick: PropTypes.func.isRequired,
+	onSelect: PropTypes.func,
 	/**
 	 * Highlights term if found in node label
 	 */
@@ -418,7 +418,7 @@ const Branch = (props) => {
 	let treeIndex = '';
 	let children;
 
-	const { treeId, level, onExpandClick, searchTerm } = props;
+	const { treeId, level, onExpand, searchTerm } = props;
 
 	if (Array.isArray(props.getNodes(props.node))) {
 		children = props.node.nodes.map((node, index) => {
@@ -444,8 +444,8 @@ const Branch = (props) => {
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
 						nodes={node.nodes}
-						onClick={props.onClick}
-						onExpandClick={onExpandClick}
+						onSelect={props.onSelect}
+						onExpand={onExpand}
 						searchTerm={searchTerm}
 						treeId={treeId}
 						treeIndex={treeIndex}
@@ -465,8 +465,8 @@ const Branch = (props) => {
 						focusedNodeIndex={props.focusedNodeIndex}
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
-						onClick={props.onClick}
-						onExpandClick={onExpandClick}
+						onSelect={props.onSelect}
+						onExpand={onExpand}
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
 						treeId={treeId}
@@ -529,13 +529,13 @@ Branch.propTypes = {
 	 */
 	node: PropTypes.object.isRequired,
 	/**
-	 * Function that will run whenever an item or branch is clicked.
+	 * Function that will run whenever an item or branch is selected (click or keyboard).
 	 */
-	onClick: PropTypes.func,
+	onSelect: PropTypes.func,
 	/**
 	 * This function triggers when the expand or collapse icon is clicked.
 	 */
-	onExpandClick: PropTypes.func.isRequired,
+	onExpand: PropTypes.func.isRequired,
 	/**
 	 * Highlights term if found in node label
 	 */

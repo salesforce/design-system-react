@@ -29,9 +29,9 @@ import { TREE } from '../../utilities/constants';
 class Tree extends React.Component {
 	constructor (props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
+		this.handleSelect = this.handleSelect.bind(this);
 		this.handleNodeBlur = this.handleNodeBlur.bind(this);
-		this.handleExpandClick = this.handleExpandClick.bind(this);
+		this.handleExpand = this.handleExpand.bind(this);
 		this.state = {
 			flattenedNodes: this.flattenTree({
 				nodes: this.props.nodes,
@@ -74,7 +74,7 @@ class Tree extends React.Component {
 		return nodes;
 	}
 
-	handleClick (event, data, clearSelectedNodes) {
+	handleSelect (event, data, clearSelectedNodes) {
 		// When triggered by a key event, other nodes should be deselected.
 		if (clearSelectedNodes) {
 			this.state.flattenedNodes.forEach((flattenedNode) => {
@@ -112,7 +112,7 @@ class Tree extends React.Component {
 		this.treeHasFocus = false;
 	}
 
-	handleExpandClick (event, data) {
+	handleExpand (event, data) {
 		this.treeHasFocus = true;
 		this.props.onExpandClick(event, data);
 	}
@@ -151,8 +151,8 @@ class Tree extends React.Component {
 					focusedNodeIndex={this.state.focusedNodeIndex}
 					treeHasFocus={this.treeHasFocus}
 					onNodeBlur={this.handleNodeBlur}
-					onClick={this.handleClick}
-					onExpandClick={this.handleExpandClick}
+					onSelect={this.handleSelect}
+					onExpand={this.handleExpand}
 					onScroll={this.props.onScroll}
 					searchTerm={this.props.searchTerm}
 					treeId={this.props.id}
@@ -209,11 +209,11 @@ Tree.propTypes = {
 	 */
 	nodes: PropTypes.array,
 	/**
-	 * Function that will run whenever an item or branch is clicked.
+	 * Function that will run whenever an item or branch is selected due to click or keyboard navigation.
 	 */
 	onClick: PropTypes.func.isRequired,
 	/**
-	 * This function triggers when the expand or collapse icon is clicked.
+	 * This function triggers when the expand or collapse icon is clicked or due to keyboard navigation.
 	 */
 	onExpandClick: PropTypes.func.isRequired,
 	/**

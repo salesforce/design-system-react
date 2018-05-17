@@ -74,7 +74,7 @@ const DemoTree = createReactClass({
 
 				return { selectedNode: data.node };
 			});
-			itemClicked('Node Clicked')(event, data);
+			itemClicked('Node Selected')(event, data);
 		} else if (
 			!this.props.noBranchSelection ||
 			(this.props.noBranchSelection && data.node.type !== 'branch')
@@ -82,7 +82,7 @@ const DemoTree = createReactClass({
 			data.node.selected = data.select;
 			// trigger render
 			this.setState((prevState) => ({ ...prevState }));
-			itemClicked('Node Clicked')(event, data);
+			itemClicked('Node Selected')(event, data);
 		}
 	},
 
