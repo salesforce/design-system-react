@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) A
 // simple javascript utility for conditionally joining classNames together.
 import classNames from '../../utilities/class-names';
-import AVATAR from '../../utilities/constants';
+import { AVATAR } from '../../utilities/constants';
 import UtilityIcon from '../icon';
 
 // ### Display Name Always use the canonical component name as the React display
@@ -21,6 +21,9 @@ const displayName = AVATAR;
 
 // ### Prop Types
 const propTypes = {
+	/**
+	 * Assistive text for accessibility that labels the icon.
+	 */
 	assistiveText: PropTypes.string,
 	/**
 	 * Class names to be applied to Avatar component.
@@ -53,14 +56,14 @@ const propTypes = {
 	/**
 	 * Title attribute for the avatar container.
 	 */
-	title: PropTypes.string
+	title: PropTypes.string,
 };
 
 const defaultProps = {
 	imgAlt: '',
 	size: 'medium',
 	title: 'user avatar',
-	variant: 'user'
+	variant: 'user',
 };
 
 /**
@@ -77,12 +80,8 @@ class Avatar extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			imgLoadError: false
+			imgLoadError: false,
 		};
-	}
-
-	handleImageError () {
-		return this.setState(() => ({ imgLoadError: true }));
 	}
 
 	buildInitials () {
@@ -90,16 +89,28 @@ class Avatar extends React.Component {
 		const name = label.trim();
 		const nameParts = name.split(' ');
 		if (nameParts.length > 1) {
-			return nameParts[0].charAt(0).toUpperCase() +
-				nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+			return (
+				nameParts[0].charAt(0).toUpperCase() +
+				nameParts[nameParts.length - 1].charAt(0).toUpperCase()
+			);
 		}
-		return (name[0] || '').toUpperCase()
-			+ (name[1] || '').toLowerCase();
+		return (name[0] || '').toUpperCase() + (name[1] || '').toLowerCase();
+	}
+
+	handleImageError () {
+		return this.setState(() => ({ imgLoadError: true }));
 	}
 
 	renderBaseAvatar () {
 		const { imgAlt, imgSrc, title } = this.props;
-		return <img alt={imgAlt} src={imgSrc} onError={() => this.handleImageError()} title={title} />;
+		return (
+			<img
+				alt={imgAlt}
+				src={imgSrc}
+				onError={() => this.handleImageError()}
+				title={title}
+			/>
+		);
 	}
 
 	renderIconAvatar () {
@@ -117,12 +128,10 @@ class Avatar extends React.Component {
 		const { initials, label, variant } = this.props;
 		return (
 			<abbr
-				className={classNames(
-					'slds-avatar__initials', {
-						'slds-icon-standard-account': variant === 'entity',
-						'slds-icon-standard-user': variant === 'user'
-					}
-				)}
+				className={classNames('slds-avatar__initials', {
+					'slds-icon-standard-account': variant === 'entity',
+					'slds-icon-standard-user': variant === 'user',
+				})}
 				title={label}
 			>
 				{initials ? initials : this.buildInitials()}
@@ -131,13 +140,7 @@ class Avatar extends React.Component {
 	}
 
 	render () {
-		const {
-			imgSrc,
-			initials,
-			variant,
-			label,
-			size
-		} = this.props;
+		const { imgSrc, initials, variant, label, size } = this.props;
 
 		const renderAvatar = () => {
 			/* eslint no-unneeded-ternary: */
@@ -158,7 +161,7 @@ class Avatar extends React.Component {
 						'slds-avatar_x-small': size === 'x-small',
 						'slds-avatar_small': size === 'small',
 						'slds-avatar_medium': size === 'medium',
-						'slds-avatar_large': size === 'large'
+						'slds-avatar_large': size === 'large',
 					})}
 				>
 					{renderAvatar()}
@@ -172,4 +175,4 @@ Avatar.defaultProps = defaultProps;
 Avatar.displayName = displayName;
 Avatar.propTypes = propTypes;
 
-module.exports = Avatar;
+export default Avatar;

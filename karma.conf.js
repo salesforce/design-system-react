@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint-disable import/no-extraneous-dependencies */
 const webpackConfig = require('./webpack.config');
 const karmaWebpack = require('karma-webpack');
 const karmaMocha = require('karma-mocha');
@@ -14,13 +15,12 @@ webpackConfig.externals = {
 	'react/lib/ReactContext': true,
 	'react/lib/ExecutionEnvironment': true,
 	'react/addons': true,
-	cheerio: 'window'
+	cheerio: 'window',
 };
 
 // Karma configuration
 const configExport = function (config) {
 	config.set({
-
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
 
@@ -34,17 +34,16 @@ const configExport = function (config) {
 			'tests/fixtures/phantomjs-shims.js',
 			'./node_modules/phantomjs-polyfill-find-index/findIndex-polyfill.js',
 			'./node_modules/phantomjs-polyfill-includes/includes-polyfill.js',
-			'tests/tests-bundle.js'
+			'tests/browser-tests.js',
 		],
 
 		// list of files to exclude
-		exclude: [
-		],
+		exclude: [],
 
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'tests/tests-bundle.js': ['webpack', 'sourcemap']
+			'tests/browser-tests.js': ['webpack', 'sourcemap'],
 		},
 
 		// test results reporter to use
@@ -53,10 +52,7 @@ const configExport = function (config) {
 		reporters: ['spec', 'coverage'],
 
 		coverageReporter: {
-			reporters: [
-				{ type: 'html', dir: 'coverage/' },
-				{ type: 'text' }
-			]
+			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }],
 		},
 
 		// web server port
@@ -90,8 +86,8 @@ const configExport = function (config) {
 			karmaPhantomjsLauncher,
 			karmaChromeLauncher,
 			karmaSpecReporter,
-			karmaCoverage
-		]
+			karmaCoverage,
+		],
 	});
 };
 

@@ -23,27 +23,22 @@ import { PANEL_FILTER_LIST_HEADING } from '../../../utilities/constants';
 /**
  * A filtering panel contextual filtering options.
  */
-const PanelFilterListHeading = ({
-	heading,
-	isLocked,
-	lockedHeading
-}) => (
+const PanelFilterListHeading = ({ heading, isLocked, lockedHeading }) => (
 	<h3
-		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small',
-		{ 'slds-grid': isLocked })}
+		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small', {
+			'slds-grid': isLocked,
+		})}
 	>
-		{isLocked
-		? lockedHeading
-		: heading}
-		{isLocked
-		? <Icon
-			className="slds-m-left--x-small"
-			assistiveText="locked"
-			category="utility"
-			name="lock"
-			size="x-small"
-		/>
-		: null}
+		{isLocked ? lockedHeading : heading}
+		{isLocked ? (
+			<Icon
+				className="slds-m-left--x-small"
+				assistiveText="locked"
+				category="utility"
+				name="lock"
+				size="x-small"
+			/>
+		) : null}
 	</h3>
 );
 
@@ -61,13 +56,12 @@ PanelFilterListHeading.propTypes = {
 	/**
 	 * Heading for a group of filters that are locked
 	 */
-	lockedHeading: PropTypes.string
+	lockedHeading: PropTypes.string,
 };
 
 PanelFilterListHeading.defaultProps = {
 	heading: 'Matching all these filters',
-	lockedLabel: 'Locked filters'
-
+	lockedLabel: 'Locked filters',
 };
 
 export default PanelFilterListHeading;

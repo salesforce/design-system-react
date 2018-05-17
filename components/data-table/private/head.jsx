@@ -41,26 +41,28 @@ const DataTableHead = createReactClass({
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
-				props: PropTypes.object
+				props: PropTypes.object,
 			})
 		),
 		id: PropTypes.string,
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
-		showRowActions: PropTypes.bool
+		showRowActions: PropTypes.bool,
 	},
 
-	componentWillMount () {
-
-	},
+	componentWillMount () {},
 
 	// ### Render
 	render () {
 		return (
 			<thead>
 				<tr className="slds-text-title--caps">
-					{this.props.canSelectRows
-						? <th className="slds-text-align--right" scope="col" style={{ width: '3.25rem' }}>
+					{this.props.canSelectRows ? (
+						<th
+							className="slds-text-align--right"
+							scope="col"
+							style={{ width: '3.25rem' }}
+						>
 							<div className="slds-th__action slds-th__action--form">
 								<Checkbox
 									assistiveText={this.props.assistiveTextForSelectAllRows}
@@ -72,29 +74,29 @@ const DataTableHead = createReactClass({
 								/>
 							</div>
 						</th>
-						: null
-					}
-					{this.props.columns.map((column) =>
-						(<HeaderCell
+					) : null}
+					{this.props.columns.map((column) => (
+						<HeaderCell
 							assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
 							id={`${this.props.id}-${column.props.property}`}
 							key={`${this.props.id}-${column.props.property}`}
 							onSort={this.props.onSort}
 							{...column.props}
-						/>)
-					)}
-					{this.props.showRowActions
-						? <th scope="col" style={{ width: '3.25rem' }}>
+						/>
+					))}
+					{this.props.showRowActions ? (
+						<th scope="col" style={{ width: '3.25rem' }}>
 							<div className="slds-th__action">
-								<span className="slds-assistive-text">{this.props.assistiveTextForActionsHeader}</span>
+								<span className="slds-assistive-text">
+									{this.props.assistiveTextForActionsHeader}
+								</span>
 							</div>
 						</th>
-						: null
-					}
+					) : null}
 				</tr>
 			</thead>
 		);
-	}
+	},
 });
 
 export default DataTableHead;

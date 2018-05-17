@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # List Item Label Component
 
 // ## Dependencies
@@ -32,7 +31,7 @@ ListItemLabel.propTypes = {
 	inverted: PropTypes.bool,
 	isSelected: PropTypes.bool,
 	label: PropTypes.string,
-	value: PropTypes.any
+	value: PropTypes.any,
 };
 
 ListItemLabel.defaultProps = {
@@ -41,7 +40,7 @@ ListItemLabel.defaultProps = {
 	inverted: false,
 	isSelected: false,
 	label: '',
-	value: null
+	value: null,
 };
 
 export default ListItemLabel;

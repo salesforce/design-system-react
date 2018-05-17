@@ -18,6 +18,13 @@ const propTypes = {
 	 */
 	checked: PropTypes.bool,
 	/**
+	 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
+	 * with hybrid framework applications that are not entirely React. It should only be used in an application
+	 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
+	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+	 */
+	defaultChecked: PropTypes.bool,
+	/**
 	 * Disable this radio input.
 	 */
 	disabled: PropTypes.bool,
@@ -44,11 +51,11 @@ const propTypes = {
 	/**
 	 * Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).
 	 */
-	variant: PropTypes.oneOf(['base', 'button-group'])
+	variant: PropTypes.oneOf(['base', 'button-group']),
 };
 
 const defaultProps = {
-	variant: 'base'
+	variant: 'base',
 };
 
 /**
@@ -56,7 +63,6 @@ const defaultProps = {
  * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
  */
 class Radio extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.generatedId = shortid.generate();
@@ -71,7 +77,8 @@ class Radio extends React.Component {
 			<span
 				className={classNames({
 					'slds-radio': this.props.variant === 'base',
-					'slds-button slds-radio_button': this.props.variant === 'button-group'
+					'slds-button slds-radio_button':
+						this.props.variant === 'button-group',
 				})}
 			>
 				<input
@@ -79,28 +86,29 @@ class Radio extends React.Component {
 					id={this.getId()}
 					name={this.props.name}
 					value={this.props.value}
-					checked={!this.props.disabled && this.props.checked}
+					checked={this.props.checked}
+					defaultChecked={this.props.defaultChecked}
 					onChange={this.props.onChange}
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
 				/>
-				{ this.props.variant === 'button-group'
-						? <label className="slds-radio_button__label" htmlFor={this.getId()}>
-							<span className="slds-radio_faux">{this.props.label}</span>
-						</label>
-						: <label className="slds-radio__label" htmlFor={this.getId()}>
-							<span className="slds-radio_faux" />
-							<span className="slds-form-element__label">{this.props.label}</span>
-						</label>
-				}
+				{this.props.variant === 'button-group' ? (
+					<label className="slds-radio_button__label" htmlFor={this.getId()}>
+						<span className="slds-radio_faux">{this.props.label}</span>
+					</label>
+				) : (
+					<label className="slds-radio__label" htmlFor={this.getId()}>
+						<span className="slds-radio_faux" />
+						<span className="slds-form-element__label">{this.props.label}</span>
+					</label>
+				)}
 			</span>
 		);
 	}
-
 }
 
 Radio.displayName = RADIO;
 Radio.propTypes = propTypes;
 Radio.defaultProps = defaultProps;
 
-module.exports = Radio;
+export default Radio;

@@ -13,7 +13,7 @@ import { DATA_TABLE_COLUMN } from '../../utilities/constants';
 /**
  * Columns define the structure of the data displayed in the DataTable.
  */
-class DataTableColumn extends React.Component { }
+class DataTableColumn extends React.Component {}
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -77,7 +77,7 @@ DataTableColumn.propTypes = {
 	/**
 	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 	 */
-	width: PropTypes.string
+	width: PropTypes.string,
 };
 
 export default DataTableColumn;

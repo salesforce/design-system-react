@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const displayName = 'LookupDefaultSectionDivider';
 const propTypes = {
-	data: PropTypes.object
+	data: PropTypes.object,
 };
 
 const DefaultSectionDivider = (props) => (
@@ -21,4 +21,3 @@ DefaultSectionDivider.displayName = displayName;
 DefaultSectionDivider.propTypes = propTypes;
 
 export default DefaultSectionDivider;
-

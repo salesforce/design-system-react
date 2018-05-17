@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/aria-activedescendant-has-tabindex */
+
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -40,7 +42,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Class names to be added to the outer container `div` of the input.
@@ -48,7 +50,7 @@ const propTypes = {
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Props to be added to the outer container `div` of the input (excluding `containerClassName`).
@@ -61,17 +63,11 @@ const propTypes = {
 	/**
 	 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
 	 */
-	fixedTextLeft: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.string
-	]),
+	fixedTextLeft: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
 	 */
-	fixedTextRight: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.string
-	]),
+	fixedTextRight: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * If true, loading spinner appears inside input on right hand side.
 	 */
@@ -168,24 +164,35 @@ const propTypes = {
 		'url',
 		'search',
 		'tel',
-		'color'
+		'color',
 	]),
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string
+	value: PropTypes.string,
+	/**
+	 * This is the initial value of an uncontrolled form element and is present only to provide
+	 * compatibility with hybrid framework applications that are not entirely React. It should only
+	 * be used in an application without centralized state (Redux, Flux). "Controlled components"
+	 * with centralized state is highly recommended.
+	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
+	 */
+	defaultValue: PropTypes.string,
 };
 
 const defaultProps = {
 	spinnerAssistiveText: 'Loading ...',
-	type: 'text'
+	type: 'text',
 };
 
 /*
  * This component was created to allow the DIV wrapped input to be used within other components such as combobox. This components API is not public.
  */
 const InnerInput = (props) => {
-	const { className: containerClassName, ...containerProps } = props.containerProps;
+	const {
+		className: containerClassName,
+		...containerProps
+	} = props.containerProps;
 
 	return (
 		<div
@@ -194,75 +201,89 @@ const InnerInput = (props) => {
 				'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
 				'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
 				'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
-				'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight,
-				'slds-has-divider--bottom': props.isStatic
+				'slds-input-has-fixed-addon':
+					props.fixedTextLeft || props.fixedTextRight,
+				'slds-has-divider--bottom': props.isStatic,
 			})}
 			{...containerProps}
 		>
 			{props.iconLeft && props.iconLeft}
-			{props.fixedTextLeft && <span className="slds-form-element__addon">{props.fixedTextLeft}</span>}
+			{props.fixedTextLeft && (
+				<span className="slds-form-element__addon">{props.fixedTextLeft}</span>
+			)}
 
-			{!props.isStatic && <input
-				aria-activedescendant={props['aria-activedescendant']}
-				aria-autocomplete={props['aria-autocomplete']}
-				aria-controls={props['aria-controls']}
-				aria-labelledby={props['aria-labelledby']}
-				aria-describedby={props.hasSpinner ? `loading-status-icon ${props['aria-describedby']}` : props['aria-describedby']}
-				aria-expanded={props['aria-expanded']}
-				aria-owns={props['aria-owns']}
-				aria-required={props['aria-required']}
-				autoComplete={props.autoComplete}
-				className={classNames('slds-input', props.className)}
-				disabled={props.disabled}
-				id={props.id}
-				minLength={props.minLength}
-				maxLength={props.maxLength}
-				name={props.name}
-				onBlur={props.onBlur}
-				onChange={props.onChange}
-				onClick={props.onClick}
-				onFocus={props.onFocus}
-				onInput={props.onInput}
-				onInvalid={props.onInvalid}
-				onKeyDown={props.onKeyDown}
-				onKeyPress={props.onKeyPress}
-				onKeyUp={props.onKeyUp}
-				onSelect={props.onSelect}
-				onSubmit={props.onSubmit}
-				placeholder={props.placeholder}
-				readOnly={props.readOnly}
-				ref={props.inputRef}
-				required={props.required}
-				role={props.role}
-				style={props.style}
-				tabIndex={props.tabIndex}
-				type={props.type}
-				value={props.value}
-			/>}
+			{!props.isStatic && (
+				<input
+					aria-activedescendant={props['aria-activedescendant']}
+					aria-autocomplete={props['aria-autocomplete']}
+					aria-controls={props['aria-controls']}
+					aria-labelledby={props['aria-labelledby']}
+					aria-describedby={
+						props.hasSpinner
+							? `loading-status-icon ${props['aria-describedby']}`
+							: props['aria-describedby']
+					}
+					aria-expanded={props['aria-expanded']}
+					aria-owns={props['aria-owns']}
+					aria-required={props['aria-required']}
+					autoComplete={props.autoComplete}
+					className={classNames('slds-input', props.className)}
+					disabled={props.disabled}
+					id={props.id}
+					minLength={props.minLength}
+					maxLength={props.maxLength}
+					name={props.name}
+					onBlur={props.onBlur}
+					onChange={props.onChange}
+					onClick={props.onClick}
+					onFocus={props.onFocus}
+					onInput={props.onInput}
+					onInvalid={props.onInvalid}
+					onKeyDown={props.onKeyDown}
+					onKeyPress={props.onKeyPress}
+					onKeyUp={props.onKeyUp}
+					onSelect={props.onSelect}
+					onSubmit={props.onSubmit}
+					placeholder={props.placeholder}
+					readOnly={props.readOnly}
+					ref={props.inputRef}
+					required={props.required}
+					role={props.role}
+					style={props.style}
+					tabIndex={props.tabIndex}
+					type={props.type}
+					value={props.value}
+					defaultValue={props.defaultValue}
+				/>
+			)}
 
-			{ props.hasSpinner
-					? (
-						<div className="slds-input__icon-group slds-input__icon-group_right">
-							{props.hasSpinner && (
-								<Spinner
-									assistiveText={props.spinnerAssistiveText}
-									id="loading-status-icon"
-									isInput
-									size="x-small"
-									variant="brand"
-								/>
-							)}
-							{props.iconRight && props.iconRight}
-						</div>
-					)
-					: props.iconRight && props.iconRight
-			}
+			{props.hasSpinner ? (
+				<div className="slds-input__icon-group slds-input__icon-group_right">
+					{props.hasSpinner && (
+						<Spinner
+							assistiveText={props.spinnerAssistiveText}
+							id="loading-status-icon"
+							isInput
+							size="x-small"
+							variant="brand"
+						/>
+					)}
+					{props.iconRight && props.iconRight}
+				</div>
+			) : (
+				props.iconRight && props.iconRight
+			)}
 
-			{props.fixedTextRight && <span className="slds-form-element__addon">{props.fixedTextRight}</span>}
+			{props.fixedTextRight && (
+				<span className="slds-form-element__addon">{props.fixedTextRight}</span>
+			)}
 
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			{props.isStatic && (
-				<span className="slds-form-element__static slds-grid slds-grid_align-spread" onClick={props.onClick}>
+				<span
+					className="slds-form-element__static slds-grid slds-grid_align-spread"
+					onClick={props.onClick}
+				>
 					{props.value}
 					{props.inlineEditTrigger}
 				</span>

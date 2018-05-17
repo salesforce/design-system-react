@@ -25,7 +25,6 @@ import KEYS from '../../../utilities/key-code';
 // ## Constants
 import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
 
-
 // ### Prop Types
 const propTypes = {
 	/**
@@ -34,7 +33,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Name of the submitted form parameter.
@@ -53,16 +52,16 @@ const propTypes = {
 	 */
 	onChange: PropTypes.func,
 	/**
-	* Function will run when keyup during text edit
-	*/
+	 * Function will run when keyup during text edit
+	 */
 	onKeyUp: PropTypes.func,
 	/**
-	* Function will run when we enter edit mode
-	*/
+	 * Function will run when we enter edit mode
+	 */
 	onEnterEditMode: PropTypes.func,
 	/**
-	* Function will run when we leave edit mode
-	*/
+	 * Function will run when we leave edit mode
+	 */
 	onLeaveEditMode: PropTypes.func,
 	/**
 	 * Typically an Inline Edit component will be of the type text, but like the Input element it includes support for all HTML5 types.
@@ -81,17 +80,17 @@ const propTypes = {
 		'url',
 		'search',
 		'tel',
-		'color'
+		'color',
 	]),
 	/**
 	 * Inline Edit is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string.isRequired
+	value: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
 	assistiveText: 'Edit text',
-	type: 'text'
+	type: 'text',
 };
 
 /**
@@ -100,9 +99,10 @@ const defaultProps = {
 class InlineEdit extends React.Component {
 	constructor (props) {
 		super(props);
+
 		this.state = {
 			isEditing: false,
-			value: null
+			value: null,
 		};
 	}
 
@@ -116,29 +116,12 @@ class InlineEdit extends React.Component {
 		}
 	}
 
-	triggerEditMode = () => {
-		if (!this.props.disabled) {
-			this.autoFocus = true;
-			this.setState({
-				isEditing: true,
-				value: this.props.value
-			});
-			if (isFunction(this.props.onEnterEditMode)) {
-				this.props.onEnterEditMode();
-			}
-		}
-	}
-
-	saveEdits = (option) => {
-		if (!(option && option.cancel === true)) {
-			if (isFunction(this.props.onChange)) {
-				this.props.onChange({
-					value: this.state.value
-				});
-			}
-		}
-		this.endEditMode(option);
-	}
+	handleCloseBtnClick = () => {
+		this.endEditMode();
+		setTimeout(() => {
+			this.editButtonRef.focus();
+		}, 100);
+	};
 
 	endEditMode = (option) => {
 		if (this.willSave) {
@@ -148,13 +131,13 @@ class InlineEdit extends React.Component {
 
 		this.setState({
 			isEditing: false,
-			value: null
+			value: null,
 		});
 
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
 			this.props.onLeaveEditMode(undefined, option);
 		}
-	}
+	};
 
 	handleBlur = () => {
 		if (!this.willSave) {
@@ -163,13 +146,13 @@ class InlineEdit extends React.Component {
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
 			this.props.onLeaveEditMode();
 		}
-	}
+	};
 
 	handleChange = (event) => {
 		this.setState({
-			value: event.target.value
+			value: event.target.value,
 		});
-	}
+	};
 
 	handleKeyDown = (event) => {
 		if (event.keyCode) {
@@ -179,17 +162,41 @@ class InlineEdit extends React.Component {
 				this.saveEdits();
 			}
 		}
-	}
+	};
 
 	handleKeyUp = (event) => {
 		if (event.keyCode) {
 			if (this.props.onKeyUp && isFunction(this.props.onKeyUp)) {
 				this.props.onKeyUp(event, {
-					value: this.state.value
+					value: this.state.value,
 				});
 			}
 		}
-	}
+	};
+
+	saveEdits = (option) => {
+		if (!(option && option.cancel === true)) {
+			if (isFunction(this.props.onChange)) {
+				this.props.onChange({
+					value: this.state.value,
+				});
+			}
+		}
+		this.endEditMode(option);
+	};
+
+	triggerEditMode = () => {
+		if (!this.props.disabled) {
+			this.autoFocus = true;
+			this.setState({
+				isEditing: true,
+				value: this.props.value,
+			});
+			if (isFunction(this.props.onEnterEditMode)) {
+				this.props.onEnterEditMode();
+			}
+		}
+	};
 
 	// ### Render
 	render () {
@@ -204,33 +211,36 @@ class InlineEdit extends React.Component {
 			...rest
 		} = this.props;
 
-		const inlineEditTrigger = (
-			<Button
-				assistiveText={assistiveText}
-				className="slds-m-left_x-small"
-				disabled={disabled}
-				iconName="edit"
-				iconPosition="right"
-				iconSize="small"
-				variant="icon"
-			/>
-		);
-
 		return (
 			<Input
 				{...rest}
-				iconRight={this.state.isEditing
-					? <InputIcon
-						category="utility"
-						name="close"
-						position="right"
-						onClick={this.endEditMode}
-						tabIndex="-1"
-					/>
-					: null}
+				iconRight={
+					this.state.isEditing ? (
+						<InputIcon
+							category="utility"
+							name="close"
+							position="right"
+							onBlur={this.handleBlur}
+							onClick={this.handleCloseBtnClick}
+						/>
+					) : null
+				}
 				disabled={disabled}
-				inlineEditTrigger={inlineEditTrigger}
-				onBlur={this.handleBlur}
+				inlineEditTrigger={
+					<Button
+						assistiveText={assistiveText}
+						buttonRef={(component) => {
+							if (component) this.editButtonRef = component;
+						}}
+						className="slds-m-left_x-small"
+						disabled={disabled}
+						iconCategory="utility"
+						iconName="edit"
+						iconPosition="right"
+						iconSize="small"
+						variant="icon"
+					/>
+				}
 				onChange={this.handleChange}
 				onClick={!this.state.isEditing ? this.triggerEditMode : null}
 				onKeyDown={this.handleKeyDown}
@@ -238,7 +248,9 @@ class InlineEdit extends React.Component {
 				isStatic={!this.state.isEditing}
 				name={name}
 				value={this.state.isEditing ? this.state.value : value}
-				inputRef={(input) => { this.inputNode = input; }}
+				inputRef={(input) => {
+					this.inputNode = input;
+				}}
 			/>
 		);
 	}
@@ -249,4 +261,3 @@ InlineEdit.propTypes = propTypes;
 InlineEdit.defaultProps = defaultProps;
 
 export default InlineEdit;
-

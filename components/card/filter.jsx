@@ -14,12 +14,7 @@ import { CARD_FILTER } from '../../utilities/constants';
  * A default filter or search input for Cards that contain items.
  */
 const Filter = (props) => {
-	const {
-		id,
-		placeholder,
-		onChange,
-		...rest
-	} = props;
+	const { id, placeholder, onChange, ...rest } = props;
 
 	return (
 		<Input
@@ -37,7 +32,7 @@ const Filter = (props) => {
 // Always use the canonical component name as the React display name.
 Filter.displayName = CARD_FILTER;
 
-	// ### Prop Types
+// ### Prop Types
 Filter.propTypes = {
 	/**
 	 * The HTML `id` from the card with a suffixe.
@@ -50,11 +45,11 @@ Filter.propTypes = {
 	/**
 	 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
 	 */
-	placeholder: PropTypes.string.isRequired
+	placeholder: PropTypes.string.isRequired,
 };
 
 Filter.defaultProps = {
-	placeholder: 'Find in List'
+	placeholder: 'Find in List',
 };
 
 export default Filter;

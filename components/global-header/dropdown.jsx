@@ -20,11 +20,7 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
 const GlobalHeaderDropdown = (props) => {
-	const {
-		globalAction,
-		iconVariant,
-		...rest
-	} = props;
+	const { globalAction, iconVariant, ...rest } = props;
 	let iconVariantOverride;
 
 	if (globalAction) {
@@ -32,10 +28,7 @@ const GlobalHeaderDropdown = (props) => {
 	}
 
 	return (
-		<MenuDropdown
-			nubbinPosition="top right"
-			{...rest}
-		>
+		<MenuDropdown nubbinPosition="top right" {...rest}>
 			<GlobalHeaderTrigger
 				globalAction={globalAction}
 				iconSize={globalAction && 'small'}
@@ -63,7 +56,11 @@ GlobalHeaderDropdown.propTypes = {
 	/**
 	 * CSS classes to be added to `li` element.
 	 */
-	buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	buttonClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	 */
@@ -71,14 +68,21 @@ GlobalHeaderDropdown.propTypes = {
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
-	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
+	iconVariant: PropTypes.oneOf([
+		'bare',
+		'container',
+		'border',
+		'border-filled',
+		'more',
+		'global-header',
+	]),
 	/**
-	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-	*/
+	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	 */
 	id: PropTypes.string,
 	/**
-	* Adds custom styling such as inverse fill and special sizing/spacing
-	*/
+	 * Adds custom styling such as inverse fill and special sizing/spacing
+	 */
 	globalAction: PropTypes.bool,
 	/**
 	 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
@@ -89,7 +93,7 @@ GlobalHeaderDropdown.propTypes = {
 		'top right',
 		'bottom left',
 		'bottom',
-		'bottom right'
+		'bottom right',
 	]),
 	/**
 	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
@@ -102,7 +106,7 @@ GlobalHeaderDropdown.propTypes = {
 	/**
 	 * An array of menu item.
 	 */
-	options: PropTypes.array.isRequired
+	options: PropTypes.array.isRequired,
 };
 
 // ### Default Props
@@ -112,7 +116,7 @@ GlobalHeaderDropdown.defaultProps = {
 	iconVariant: 'global-header',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
-	offset: '12px 16px'
+	offset: '12px 16px',
 };
 
 export default GlobalHeaderDropdown;

@@ -12,12 +12,13 @@ function createMountNode ({ context, mountNodeId }) {
 	return mountNode;
 }
 
-const mountComponent = (instance) => function () {
-	this.dom = document.createElement('div');
-	const mountNode = document.body.appendChild(this.dom);
-	mountNode.id = 'mount-node';
-	this.wrapper = mount(instance, { attachTo: mountNode });
-};
+const mountComponent = (instance) =>
+	function () {
+		this.dom = document.createElement('div');
+		const mountNode = document.body.appendChild(this.dom);
+		mountNode.id = 'mount-node';
+		this.wrapper = mount(instance, { attachTo: mountNode });
+	};
 
 function unmountComponent () {
 	this.wrapper.unmount();
@@ -29,9 +30,4 @@ function destroyMountNode ({ wrapper, mountNode }) {
 	document.body.removeChild(mountNode);
 }
 
-export {
-	createMountNode,
-	destroyMountNode,
-	mountComponent,
-	unmountComponent
-};
+export { createMountNode, destroyMountNode, mountComponent, unmountComponent };

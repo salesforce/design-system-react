@@ -7,14 +7,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import assign from 'lodash.assign';
+
 import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
 import { TOAST } from '../../utilities/constants';
-import assign from 'lodash.assign';
 import DOMElementFocus from '../../utilities/dom-element-focus';
-import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
 	/**
@@ -23,14 +24,18 @@ const propTypes = {
 	 * * `closeButton`: This is a visually hidden label for the close button.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
-		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+	assistiveText: PropTypes.shape({
+		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 * _Tested with snapshot testing._
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._
 	 */
@@ -44,10 +49,10 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * Triggered by link. _Tested with Mocha testing._
@@ -70,14 +75,14 @@ const propTypes = {
 	/**
 	 * The type of Toast. _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired
+	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 const defaultProps = {
 	assistiveText: {
-		closeButton: 'Close'
+		closeButton: 'Close',
 	},
-	variant: 'info'
+	variant: 'info',
 };
 
 /**
@@ -88,9 +93,14 @@ class Toast extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isInitialRender: true
+			isInitialRender: true,
 		};
 		this.timeout = null;
+	}
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(TOAST, this.props);
 	}
 
 	componentDidMount () {
@@ -101,22 +111,8 @@ class Toast extends React.Component {
 		}
 	}
 
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TOAST, this.props);
-	}
-
 	componentWillUnmount () {
 		DOMElementFocus.returnFocusToStoredElement();
-	}
-
-	saveButtonRef = (component) => {
-		this.closeButton = component;
-		if (this.state.isInitialRender) {
-			DOMElementFocus.storeActiveElement();
-			this.closeButton.focus();
-			this.setState({ isInitialRender: false });
-		}
 	}
 
 	onClose = () => {
@@ -128,11 +124,26 @@ class Toast extends React.Component {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
-	}
+	};
+
+	saveButtonRef = (component) => {
+		this.closeButton = component;
+		if (this.state.isInitialRender) {
+			DOMElementFocus.storeActiveElement();
+			if (this.closeButton) {
+				this.closeButton.focus();
+			}
+			this.setState({ isInitialRender: false });
+		}
+	};
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = assign({}, defaultProps.assistiveText, this.props.assistiveText);
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const heading = labels.heading || this.props.content; // eslint-disable-line react/prop-types
 
@@ -140,46 +151,58 @@ class Toast extends React.Component {
 			info: 'info',
 			success: 'success',
 			warning: 'warning',
-			error: 'error'
+			error: 'error',
 		};
 
 		const defaultIcons = {
 			info: <Icon category="utility" name="info" />,
 			success: <Icon category="utility" name="success" />,
 			warning: <Icon category="utility" name="warning" />,
-			error: <Icon category="utility" name="error" />
+			error: <Icon category="utility" name="error" />,
 		};
 
-		const icon = this.props.icon ? this.props.icon : defaultIcons[this.props.variant];
+		const icon = this.props.icon
+			? this.props.icon
+			: defaultIcons[this.props.variant];
 
 		const clonedIcon = React.cloneElement(icon, {
 			containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
 			inverse: true,
-			size: 'small'
+			size: 'small',
 		});
 
 		/* eslint-disable no-script-url */
 		return (
 			<div
-				className={classNames('slds-notify slds-notify_toast', {
-					'slds-theme_info': this.props.variant === 'info',
-					'slds-theme_success': this.props.variant === 'success',
-					'slds-theme_warning': this.props.variant === 'warning',
-					'slds-theme_error': this.props.variant === 'error'
-				},
-				this.props.className)}
+				className={classNames(
+					'slds-notify slds-notify_toast',
+					{
+						'slds-theme_info': this.props.variant === 'info',
+						'slds-theme_success': this.props.variant === 'success',
+						'slds-theme_warning': this.props.variant === 'warning',
+						'slds-theme_error': this.props.variant === 'error',
+					},
+					this.props.className
+				)}
 				role="alert"
 			>
-				<span className="slds-assistive-text">{assistiveTextVariant[this.props.variant]}</span>
+				<span className="slds-assistive-text">
+					{assistiveTextVariant[this.props.variant]}
+				</span>
 				{clonedIcon}
 				<div className="slds-notify__content">
-					<h2 className="slds-text-heading_small">{heading}{' '}{labels.headingLink
-						? <a onClick={this.props.onClickHeadingLink} href="javascript:void(0);">{labels.headingLink}</a>
-						: null}</h2>
-					{labels.details
-						? <p>{labels.details}</p>
-						: null
-					}
+					<h2 className="slds-text-heading_small">
+						{heading}{' '}
+						{labels.headingLink ? (
+							<a
+								onClick={this.props.onClickHeadingLink}
+								href="javascript:void(0);"
+							>
+								{labels.headingLink}
+							</a>
+						) : null}
+					</h2>
+					{labels.details ? <p>{labels.details}</p> : null}
 				</div>
 				<Button
 					assistiveText={assistiveText.closeButton}

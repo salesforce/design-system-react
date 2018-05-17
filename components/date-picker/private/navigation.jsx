@@ -26,8 +26,8 @@ const DatepickerMonthNavigation = createReactClass({
 		 */
 		id: PropTypes.string,
 		/**
-     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-     */
+		 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+		 */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 		/**
 		 * Displayed calendar has changed or re-rendered
@@ -52,7 +52,17 @@ const DatepickerMonthNavigation = createReactClass({
 		/**
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
 		 */
-		relativeYearTo: PropTypes.number
+		relativeYearTo: PropTypes.number,
+	},
+
+	getMonthLabel () {
+		return this.props.monthLabels[
+			new Date(this.props.initialDateForCalendarRender).getMonth()
+		];
+	},
+
+	getYearLabel () {
+		return new Date(this.props.initialDateForCalendarRender).getFullYear();
 	},
 
 	handleClick (event) {
@@ -60,24 +70,22 @@ const DatepickerMonthNavigation = createReactClass({
 		event.stopPropagation();
 	},
 
-	previousMonthClicked () {
-		this.props.onChangeMonth(undefined, DateUtil.addMonths(this.props.initialDateForCalendarRender, -1));
-	},
-
-	nextMonthClicked () {
-		this.props.onChangeMonth(undefined, DateUtil.addMonths(this.props.initialDateForCalendarRender, 1));
-	},
-
 	handleYearSelect (initialDateForCalendarRender) {
 		this.props.onChangeMonth(undefined, initialDateForCalendarRender);
 	},
 
-	getMonthLabel () {
-		return this.props.monthLabels[new Date(this.props.initialDateForCalendarRender).getMonth()];
+	previousMonthClicked () {
+		this.props.onChangeMonth(
+			undefined,
+			DateUtil.addMonths(this.props.initialDateForCalendarRender, -1)
+		);
 	},
 
-	getYearLabel () {
-		return new Date(this.props.initialDateForCalendarRender).getFullYear();
+	nextMonthClicked () {
+		this.props.onChangeMonth(
+			undefined,
+			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1)
+		);
 	},
 
 	render () {
@@ -104,7 +112,10 @@ const DatepickerMonthNavigation = createReactClass({
 						className="slds-align-middle"
 						aria-live="assertive"
 						aria-atomic
-					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}</span></h2>
+					>
+						{this.getMonthLabel()}{' '}
+						<span className="slds-assistive-text">{this.getYearLabel()}</span>
+					</h2>
 					<div className="slds-align-middle">
 						<Button
 							assistiveText={this.props.assistiveTextNextMonth}
@@ -126,7 +137,7 @@ const DatepickerMonthNavigation = createReactClass({
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 export default DatepickerMonthNavigation;

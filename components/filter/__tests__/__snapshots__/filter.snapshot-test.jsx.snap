@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssistiveText Filter 1`] = `
+<SLDSIconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSFilter
+    align="left"
+    assistiveText={
+      Object {
+        "editFilter": "editFilter-TEST",
+        "editFilterHeading": "editFilterHeading-TEST",
+        "removeFilter": "removeFilter-TEST",
+      }
+    }
+    id="sample-panel-filtering-show-me"
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <OnClickOutside(SLDSCombobox)
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      events={
+        Object {
+          "onSelect": [Function],
+        }
+      }
+      excludeScrollbar={false}
+      labels={
+        Object {
+          "label": "Show Me",
+          "placeholder": "Select record type",
+        }
+      }
+      menuPosition="relative"
+      options={
+        Array [
+          Object {
+            "id": 1,
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "id": 2,
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      selection={
+        Array [
+          Object {
+            "id": 1,
+            "label": "All Products",
+            "value": "all-products",
+          },
+        ]
+      }
+      stopPropagation={false}
+      variant="readonly"
+    />
+  </SLDSFilter>
+</SLDSIconSettings>
+`;
+
+exports[`AssistiveText Filter HTML Snapshot 1`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+</div>"
+`;
+
+exports[`Error Filter Base Snapshot 1`] = `
+<SLDSIconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSFilter
+    align="left"
+    assistiveText={
+      Object {
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
+      }
+    }
+    id="sample-panel-filtering-show-me"
+    isError={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
+        Object {
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      menuPosition="absolute"
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</SLDSIconSettings>
+`;
+
+exports[`Filter Base Snapshot 1`] = `
+<SLDSIconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSFilter
+    align="left"
+    assistiveText={
+      Object {
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
+      }
+    }
+    id="sample-panel-filtering-show-me"
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <OnClickOutside(SLDSCombobox)
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      events={
+        Object {
+          "onSelect": [Function],
+        }
+      }
+      excludeScrollbar={false}
+      labels={
+        Object {
+          "label": "Show Me",
+          "placeholder": "Select record type",
+        }
+      }
+      menuPosition="relative"
+      options={
+        Array [
+          Object {
+            "id": 1,
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "id": 2,
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      selection={
+        Array [
+          Object {
+            "id": 1,
+            "label": "All Products",
+            "value": "all-products",
+          },
+        ]
+      }
+      stopPropagation={false}
+      variant="readonly"
+    />
+  </SLDSFilter>
+</SLDSIconSettings>
+`;
+
+exports[`Filter Base with custom className Snapshot 1`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center MY_CUSTOM_CLASS_NAME\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+</div>"
+`;
+
+exports[`LockedFilter Base Snapshot 1`] = `
+<SLDSIconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSFilter
+    align="left"
+    assistiveText={
+      Object {
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
+      }
+    }
+    id="sample-panel-filtering-show-me"
+    isLocked={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
+        Object {
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      menuPosition="absolute"
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</SLDSIconSettings>
+`;
+
+exports[`NewFilter Base Snapshot 1`] = `
+<SLDSIconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSFilter
+    align="left"
+    assistiveText={
+      Object {
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
+      }
+    }
+    id="sample-panel-filtering-show-me"
+    isNew={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
+        Object {
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      menuPosition="absolute"
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</SLDSIconSettings>
+`;
+
+exports[`Permanant Filter Base Snapshot 1`] = `
+<SLDSIconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSFilter
+    align="left"
+    assistiveText={
+      Object {
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
+      }
+    }
+    id="sample-panel-filtering-show-me"
+    isPermanent={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
+        Object {
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      menuPosition="absolute"
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</SLDSIconSettings>
+`;

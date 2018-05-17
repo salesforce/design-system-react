@@ -46,7 +46,6 @@ import IconSettings from '../../icon-settings';
  * This component is private.
  */
 const Dialog = createReactClass({
-
 	displayName: DIALOG,
 
 	propTypes: {
@@ -65,7 +64,7 @@ const Dialog = createReactClass({
 			'bottom right',
 			'left',
 			'left top',
-			'left bottom'
+			'left bottom',
 		]),
 		/**
 		 * CSS classes to be added to the absolutely positioned element.
@@ -73,16 +72,16 @@ const Dialog = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string]
-		),
+			PropTypes.string,
+		]),
 		/**
 		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
 		 */
 		contentsClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string]
-		),
+			PropTypes.string,
+		]),
 		/**
 		 * Contents of dialog
 		 */
@@ -96,11 +95,11 @@ const Dialog = createReactClass({
 		 */
 		containerProps: PropTypes.object,
 		/**
-		 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
+		 * Sets the dialog width to the width of either 'target' (Menus attached to `input` typically follow this UX pattern), 'menu' or 'none.
 		 */
-		inheritTargetWidth: PropTypes.bool,
+		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 		/**
-		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
+		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements.
 		 */
 		hasStaticAlignment: PropTypes.bool,
 		/**
@@ -136,20 +135,20 @@ const Dialog = createReactClass({
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
 		/**
-		  * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-		  *
-		  * ```
-		  * <Popover
-		 		isOpen
-				portalMount={({ instance, reactElement, domContainerNode }) => {
-					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-				}}
-		 		onOpen={() => {
-		 			expect(portalWrapper.find(`#my-heading`)).to.exist;
-		 			done();
-		 		}}
-		 		/>
-		 *	```
+		 * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+		 *
+		 * ```
+		 * <Popover
+		 *   isOpen
+		 *   portalMount={({ instance, reactElement, domContainerNode }) => {
+		 *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+		 *   }}
+		 *   onOpen={() => {
+		 *     expect(portalWrapper.find(`#my-heading`)).to.exist;
+		 *     done();
+		 *   }}
+		 *   />
+		 * ```
 		 */
 		portalMount: PropTypes.func,
 		/**
@@ -158,7 +157,11 @@ const Dialog = createReactClass({
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		position: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']).isRequired,
+		position: PropTypes.oneOf([
+			'absolute',
+			'overflowBoundaryElement',
+			'relative',
+		]).isRequired,
 		/**
 		 * An object of CSS styles that are applied to the immediate parent `div` of the contents. Use this instead of margin props.
 		 */
@@ -166,28 +169,43 @@ const Dialog = createReactClass({
 		/**
 		 * Sets which focus UX pattern to follow. For instance, popovers trap focus and must be exited to regain focus. Dropdowns and Tooltips never have focus.
 		 */
-		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip'])
+		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
 	},
 
 	getDefaultProps () {
 		return {
 			align: 'bottom left',
 			offset: '0px 0px',
-			outsideClickIgnoreClass: 'ignore-react-onclickoutside'
+			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 		};
 	},
 
 	getInitialState () {
 		return {
 			triggerPopperJS: false,
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
 	componentDidMount () {
-		if (this.props.position === 'absolute'
-			|| this.props.position === 'relative') {
+		if (
+			this.props.position === 'absolute' ||
+			this.props.position === 'relative'
+		) {
 			this.handleOpen();
+		}
+	},
+
+	componentDidUpdate (prevProps, prevState) {
+		if (
+			this.state.triggerPopperJS === true &&
+			prevState.triggerPopperJS === false &&
+			(this.props.position === 'absolute' ||
+				this.props.position === 'overflowBoundaryElement') &&
+			this.dialogContent &&
+			this.props.onRequestTargetElement()
+		) {
+			this.createPopper();
 		}
 	},
 
@@ -197,78 +215,21 @@ const Dialog = createReactClass({
 			DOMElementFocus.returnFocusToStoredElement();
 		}
 
-		if (this.props.position === 'absolute'
-				|| this.props.position === 'overflowBoundaryElement') {
+		if (
+			this.props.position === 'absolute' ||
+			this.props.position === 'overflowBoundaryElement'
+		) {
 			this.destroyPopper();
 		}
 
 		this.handleClose(undefined, { componentWillUnmount: true });
 	},
 
-	componentDidUpdate (prevProps, prevState) {
-		if (this.state.triggerPopperJS === true
-			&& prevState.triggerPopperJS === false
-			&& (this.props.position === 'absolute'
-			|| this.props.position === 'overflowBoundaryElement')
-			&& this.dialogContent
-			&& this.props.onRequestTargetElement()) {
-			this.createPopper();
-		}
-	},
-
-	/**
-	 * Popper API and helper functions
-	 */
-
-	createPopper () {
-		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
-		const popper = this.dialogContent;
-		const placement = mapPropToPopperPlacement(this.props.align);
-		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
-		const modifiers = {
-			applyStyle: { enabled: false },
-			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
-			preventOverflow: {
-				enabled: true,
-				boundariesElement: this.props.position === 'absolute' ? 'scrollParent' : 'viewport'
-			},
-			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
-			removeOnDestroy: true,
-			updateState: {
-				enabled: true,
-				order: 900,
-				fn: (popperData) => {
-					if (
-						(this.state.popperData && !isEqual(popperData.offsets, this.state.popperData.offsets)) ||
-						!this.state.popperData
-					) {
-						this.setState({ popperData });
-					}
-					return popperData;
-				}
-			}
-			// arrow property can also point to an element
-		};
-		if (!reference) {
-			console.error('Target node not found!', reference); // eslint-disable-line no-console
-		}
-		if (!popper) {
-			console.error('Popper node not found!', popper); // eslint-disable-line no-console
-		}
-		this.popper = new Popper(reference, popper, {
-			placement,
-			eventsEnabled,
-			modifiers
-		});
-
-		this.popper.scheduleUpdate();
-	},
-
 	getPropOffsetsInPixels (offsetString) {
 		const offsetArray = offsetString.split(' ');
 		return {
 			vertical: parseInt(offsetArray[0], 10),
-			horizontal: parseInt(offsetArray[1], 10)
+			horizontal: parseInt(offsetArray[1], 10),
 		};
 	},
 
@@ -277,7 +238,7 @@ const Dialog = createReactClass({
 		if (!this.popper || !popperData) {
 			return {
 				position: 'absolute',
-				pointerEvents: 'none'
+				pointerEvents: 'none',
 			};
 		}
 
@@ -288,16 +249,17 @@ const Dialog = createReactClass({
 		return { ...popperData.style, left, top, position };
 	},
 
-	destroyPopper () {
-		if (this.popper) {
-			this.popper.destroy();
+	// Render
+	setDialogContent (component) {
+		this.dialogContent = component;
+		if (!this.state.triggerPopperJS) {
+			this.setState({ triggerPopperJS: true });
 		}
 	},
 
 	/**
 	 * Events
 	 */
-
 	handleClickOutside () {
 		this.handleClose();
 	},
@@ -335,7 +297,7 @@ const Dialog = createReactClass({
 		if (this.props.variant === 'popover' && scopedElement) {
 			DOMElementFocus.storeActiveElement();
 			DOMElementFocus.setupScopedFocus({
-				ancestorElement: scopedElement.querySelector('.slds-popover')
+				ancestorElement: scopedElement.querySelector('.slds-popover'),
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
@@ -348,25 +310,91 @@ const Dialog = createReactClass({
 		}
 	},
 
-	// Render
+	/**
+	 * Popper API and helper functions
+	 */
 
-	setDialogContent (component) {
-		this.dialogContent = component;
-		if (!this.state.triggerPopperJS) {
-			this.setState({ triggerPopperJS: true });
+	createPopper () {
+		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
+		const popper = this.dialogContent;
+		const placement = mapPropToPopperPlacement(this.props.align);
+		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
+		const modifiers = {
+			applyStyle: { enabled: false },
+			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
+			preventOverflow: {
+				enabled: !this.props.hasStaticAlignment,
+				boundariesElement:
+					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
+			},
+			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
+			flip: {
+				enabled: !this.props.hasStaticAlignment,
+			},
+			removeOnDestroy: true,
+			updateState: {
+				enabled: true,
+				order: 900,
+				fn: (popperData) => {
+					if (
+						(this.state.popperData &&
+							!isEqual(popperData.offsets, this.state.popperData.offsets)) ||
+						!this.state.popperData
+					) {
+						this.setState({ popperData });
+					}
+					return popperData;
+				},
+			},
+			// arrow property can also point to an element
+		};
+		if (!reference) {
+			console.error('Target node not found!', reference); // eslint-disable-line no-console
+		}
+		if (!popper) {
+			console.error('Popper node not found!', popper); // eslint-disable-line no-console
+		}
+		this.popper = new Popper(reference, popper, {
+			placement,
+			eventsEnabled,
+			modifiers,
+		});
+
+		this.popper.scheduleUpdate();
+	},
+
+	destroyPopper () {
+		if (this.popper) {
+			this.popper.destroy();
 		}
 	},
 
 	render () {
 		let style = {};
 
-		if (this.props.position === 'absolute'
-			|| this.props.position === 'overflowBoundaryElement') {
+		if (
+			this.props.position === 'absolute' ||
+			this.props.position === 'overflowBoundaryElement'
+		) {
 			style = this.getPopperStyles();
 		}
 
-		if (this.props.inheritTargetWidth && this.props.onRequestTargetElement()) {
-			style.width = this.props.onRequestTargetElement().getBoundingClientRect().width;
+		if (
+			this.props.inheritWidthOf === 'target' &&
+			this.props.onRequestTargetElement()
+		) {
+			style.width = this.props
+				.onRequestTargetElement()
+				.getBoundingClientRect().width;
+		} else if (
+			this.props.inheritWidthOf === 'menu' &&
+			this.dialogContent &&
+			this.dialogContent.querySelector('.slds-listbox')
+		) {
+			// inherit menu renderer width
+			style.width = this.dialogContent
+				.querySelector('.slds-listbox')
+				.getBoundingClientRect().width;
 		}
 
 		if (this.props.style) {
@@ -375,12 +403,17 @@ const Dialog = createReactClass({
 
 		const contents = (
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
-				className={classNames({
-					'absolute-positioned': this.props.position === 'absolute',
-					'portal-positioned': this.props.position === 'overflowBoundaryElement',
-					[`${this.props.outsideClickIgnoreClass}`]: this.props.position === 'overflowBoundaryElement'
-				},
-					this.props.contentsClassName) || undefined
+				className={
+					classNames(
+						{
+							'absolute-positioned': this.props.position === 'absolute',
+							'portal-positioned':
+								this.props.position === 'overflowBoundaryElement',
+							[`${this.props.outsideClickIgnoreClass}`]:
+								this.props.position === 'overflowBoundaryElement',
+						},
+						this.props.contentsClassName
+					) || undefined
 				}
 				style={style}
 				onKeyDown={this.handleKeyDown}
@@ -394,25 +427,23 @@ const Dialog = createReactClass({
 		);
 
 		const subRenders = {
-			absolute: () => (contents),
-			relative: () => (contents),
+			absolute: () => contents,
+			relative: () => contents,
 			overflowBoundaryElement: () => (
-				<Portal
-					onOpen={this.handleOpen}
-					portalMount={this.props.portalMount}
-				>
+				<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
 					<IconSettings iconPath={this.context.iconPath}>
 						{contents}
 					</IconSettings>
-				</Portal>)
+				</Portal>
+			),
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();
-	}
+	},
 });
 
 Dialog.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Dialog;

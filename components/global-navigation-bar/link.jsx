@@ -42,18 +42,22 @@ const GlobalNavigationBarLink = (props) => {
 		onFocus,
 		onKeyDown,
 		onKeyPress,
-		tabIndex
+		tabIndex,
 	} = props;
 
-	const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
+	const listItemstyle = active
+		? {
+			backgroundColor: activeBackgroundColor,
+			borderBottomColor: activeBackgroundColor,
+		}
+		: null;
 
 	return (
 		<li
-			className={classNames(
-				'slds-context-bar__item',
-				{ 'slds-is-active': active,
-					[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
-				})}
+			className={classNames('slds-context-bar__item', {
+				'slds-is-active': active,
+				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
+			})}
 			id={id}
 			style={listItemstyle}
 		>
@@ -61,7 +65,11 @@ const GlobalNavigationBarLink = (props) => {
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
 				onBlur={onBlur}
-				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
+				onClick={
+					isFunction(onClick)
+						? (event) => handleClick(event, href, onClick)
+						: null
+				}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
@@ -88,7 +96,11 @@ GlobalNavigationBarLink.propTypes = {
 	/**
 	 * Class names to be added to the anchor element
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Determines position of separating bar.
 	 */
@@ -105,25 +117,46 @@ GlobalNavigationBarLink.propTypes = {
 	 * Text to show for link item.
 	 */
 	label: PropTypes.string,
+	/**
+	 * Triggered when focus is removed.
+	 */
 	onBlur: PropTypes.func,
 	/**
 	 * `function (event, href)` - fires when the link is clicked. If set, the browser location change to the `href` specified will be ignored, but the `href` will be included in an additional parameter passed to the callback.
 	 */
 	onClick: PropTypes.func,
+	/**
+	 * Triggered when component is focused.
+	 */
 	onFocus: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed down
+	 */
 	onKeyDown: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed and released
+	 */
 	onKeyPress: PropTypes.func,
+	/**
+	 * Triggered when a key is released
+	 */
 	onKeyUp: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow hovers
+	 */
 	onMouseEnter: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow no longer hovers
+	 */
 	onMouseLeave: PropTypes.func,
 	/**
 	 * Write "-1" if you don't want the user to tab to the button.
 	 */
-	tabIndex: PropTypes.string
+	tabIndex: PropTypes.string,
 };
 
 GlobalNavigationBarLink.defaultProps = {
-	href: 'javascript:void(0);' // eslint-disable-line no-script-url
+	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 };
 
 export default GlobalNavigationBarLink;

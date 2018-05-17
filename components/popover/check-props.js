@@ -5,6 +5,7 @@
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import oneOfComponent from '../../utilities/warning/one-of-component';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 let checkProps = function () {};
 
@@ -12,12 +13,23 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		oneOfRequiredProperty(COMPONENT, {
 			ariaLabelledby: props.ariaLabelledby,
-			heading: props.heading
+			heading: props.heading,
 		});
 
 		if (props.children !== undefined) {
-			oneOfComponent(COMPONENT, props, 'children', ['SLDSButton', 'a', 'button']);
+			oneOfComponent(COMPONENT, props, 'children', [
+				'SLDSButton',
+				'a',
+				'button',
+			]);
 		}
+
+		deprecatedProperty(
+			COMPONENT,
+			props.isInline,
+			'isInline',
+			'position="relative"'
+		);
 	};
 }
 

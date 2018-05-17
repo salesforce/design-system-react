@@ -20,13 +20,13 @@ import { CARD_HEADER } from '../../../utilities/constants';
 const idSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 const renderFilter = (filter, id) => {
 	// allow id to be set by custom header component passed in
 	const clonedFilter = React.cloneElement(filter, {
-		id: filter.props.id || id
+		id: filter.props.id || id,
 	});
 
 	return (
@@ -66,15 +66,17 @@ const CardHeader = (props) => {
 			body: heading,
 			verticalCenter: true,
 			canTruncate: true,
-			...props.header.props
+			...props.header.props,
 		});
 	} else {
-		Header = (<MediaObject
-			figure={props.icon}
-			body={heading}
-			verticalCenter
-			canTruncate
-		/>);
+		Header = (
+			<MediaObject
+				figure={props.icon}
+				body={heading}
+				verticalCenter
+				canTruncate
+			/>
+		);
 	}
 
 	const hasFilter = props.filter ? true : null;
@@ -82,19 +84,13 @@ const CardHeader = (props) => {
 	return (
 		<div className={classnames('slds-card__header', 'slds-grid')}>
 			{Header}
-			{
-				props.filter
-				? renderFilter(props.filter, props.filterId)
-				: null
-			}
+			{props.filter ? renderFilter(props.filter, props.filterId) : null}
 			<div
 				id={props.headerActionsId}
-				className={classnames(
-					'slds-no-flex',
-					{
-						'slds-size--1-of-3': hasFilter,
-						'slds-text-align--right': hasFilter
-					})}
+				className={classnames('slds-no-flex', {
+					'slds-size--1-of-3': hasFilter,
+					'slds-text-align--right': hasFilter,
+				})}
 			>
 				{props.headerActions}
 			</div>
@@ -131,10 +127,8 @@ CardHeader.propTypes = {
 	/**
 	 * The heading is the name of the related item group.
 	 */
-	heading: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.string
-	]).isRequired,
+	heading: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
+		.isRequired,
 	/**
 	 * Set the HTML `id` of the card heading.
 	 */
@@ -142,7 +136,7 @@ CardHeader.propTypes = {
 	/**
 	 * Icon associated with grouped items
 	 */
-	icon: PropTypes.node
+	icon: PropTypes.node,
 };
 
 export default CardHeader;

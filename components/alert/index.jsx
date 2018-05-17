@@ -7,14 +7,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import assign from 'lodash.assign';
 import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
 import { ALERT } from '../../utilities/constants';
-import assign from 'lodash.assign';
 import DOMElementFocus from '../../utilities/dom-element-focus';
-import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
 	/**
@@ -23,14 +22,18 @@ const propTypes = {
 	 * * `closeButton`: This is a visually hidden label for the close button.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
-		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+	assistiveText: PropTypes.shape({
+		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 * _Tested with snapshot testing._
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,
 	 * _Tested with snapshot testing._
@@ -54,9 +57,9 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * Triggered by link. _Tested with Mocha testing._
@@ -69,15 +72,15 @@ const propTypes = {
 	/**
 	 * The type of alert. _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['error', 'info', 'offline', 'warning']).isRequired
+	variant: PropTypes.oneOf(['error', 'info', 'offline', 'warning']).isRequired,
 };
 
 const defaultProps = {
 	assistiveText: {
-		closeButton: 'Close'
+		closeButton: 'Close',
 	},
 	labels: {},
-	variant: 'info'
+	variant: 'info',
 };
 
 /**
@@ -88,7 +91,7 @@ class Alert extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isInitialRender: true
+			isInitialRender: true,
 		};
 	}
 
@@ -105,14 +108,20 @@ class Alert extends React.Component {
 		this.closeButton = component;
 		if (this.state.isInitialRender) {
 			DOMElementFocus.storeActiveElement();
-			this.closeButton.focus();
+			if (this.closeButton) {
+				this.closeButton.focus();
+			}
 			this.setState({ isInitialRender: false });
 		}
-	}
+	};
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = assign({}, defaultProps.assistiveText, this.props.assistiveText);
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 
 		// BACKWARD COMPATIBILITY WITH NOTIFICATION
@@ -123,48 +132,66 @@ class Alert extends React.Component {
 			info: 'info',
 			warning: 'warning',
 			error: 'error',
-			offline: 'offline'
+			offline: 'offline',
 		};
 
 		const defaultIcons = {
 			info: <Icon category="utility" name="info" />,
 			offline: <Icon category="utility" name="offline" />,
 			warning: <Icon category="utility" name="warning" />,
-			error: <Icon category="utility" name="error" />
+			error: <Icon category="utility" name="error" />,
 		};
 
-		let icon = this.props.icon ? this.props.icon : defaultIcons[this.props.variant];
+		let icon = this.props.icon
+			? this.props.icon
+			: defaultIcons[this.props.variant];
 
 		// BACKWARD COMPATIBILITY WITH NOTIFICATION
-		if (this.props.iconName && this.props.iconCategory) { // eslint-disable-line react/prop-types
-			icon = <Icon category={this.props.iconCategory} name={this.props.iconName} />;
+		if (this.props.iconName && this.props.iconCategory) {
+			// eslint-disable-line react/prop-types
+			icon = (
+				<Icon category={this.props.iconCategory} name={this.props.iconName} />
+			);
 		}
 
 		const clonedIcon = React.cloneElement(icon, {
 			containerClassName: 'slds-m-right--x-small',
 			inverse: true,
-			size: 'x-small'
+			size: 'x-small',
 		});
 
 		/* eslint-disable no-script-url */
 		return (
 			<div
-				className={classNames('slds-notify slds-notify_alert slds-theme_alert-texture', {
-					'slds-theme_info': this.props.variant === 'info',
-					'slds-theme_warning': this.props.variant === 'warning',
-					'slds-theme_error': this.props.variant === 'error',
-					'slds-theme_offline': this.props.variant === 'offline'
-				},
-				this.props.className)}
+				className={classNames(
+					'slds-notify slds-notify_alert slds-theme_alert-texture',
+					{
+						'slds-theme_info': this.props.variant === 'info',
+						'slds-theme_warning': this.props.variant === 'warning',
+						'slds-theme_error': this.props.variant === 'error',
+						'slds-theme_offline': this.props.variant === 'offline',
+					},
+					this.props.className
+				)}
 				role="alert"
 			>
-				<span className="slds-assistive-text">{assistiveTextVariant[this.props.variant]}</span>
+				<span className="slds-assistive-text">
+					{assistiveTextVariant[this.props.variant]}
+				</span>
 				{clonedIcon}
-				<h2>{heading}{' '}{labels.headingLink
-					? <a onClick={this.props.onClickHeadingLink} href="javascript:void(0);">{labels.headingLink}</a>
-					: null}</h2>
-				{this.props.dismissible
-					? <Button
+				<h2>
+					{heading}{' '}
+					{labels.headingLink ? (
+						<a
+							onClick={this.props.onClickHeadingLink}
+							href="javascript:void(0);"
+						>
+							{labels.headingLink}
+						</a>
+					) : null}
+				</h2>
+				{this.props.dismissible ? (
+					<Button
 						assistiveText={assistiveText.closeButton}
 						buttonRef={this.saveButtonRef}
 						className="slds-notify__close"
@@ -176,7 +203,7 @@ class Alert extends React.Component {
 						title={assistiveText.closeButton}
 						variant="icon"
 					/>
-				: null}
+				) : null}
 			</div>
 		);
 	}

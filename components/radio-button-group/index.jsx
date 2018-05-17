@@ -10,7 +10,6 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 import assign from 'lodash.assign';
-import { shape } from 'airbnb-prop-types';
 
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
@@ -20,12 +19,12 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	* Custom CSS classes added to `slds-radio_button-group` node.
-	*/
+	 * Custom CSS classes added to `slds-radio_button-group` node.
+	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * **Text labels for internationalization**
@@ -33,9 +32,9 @@ const propTypes = {
 	 * * `error`: Message to display when any of Checkboxes are in an error state.
 	 * * `label`: This label appears above the button group.
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	/**
 	 * This event fires when the radio selection changes.
@@ -56,7 +55,7 @@ const propTypes = {
 	/**
 	 * The ID of the error message, for linking to radio inputs with aria-describedby.
 	 */
-	errorId: PropTypes.string
+	errorId: PropTypes.string,
 };
 
 const defaultProps = { labels: {} };
@@ -66,19 +65,16 @@ const defaultProps = { labels: {} };
  * The RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
 class RadioButtonGroup extends React.Component {
-
 	constructor (props) {
 		super(props);
 
 		// Merge objects of strings with their default object
-		this.labels = this.props.labels ? assign({}, defaultProps.labels, this.props.labels) : defaultProps.labels;
+		this.labels = this.props.labels
+			? assign({}, defaultProps.labels, this.props.labels)
+			: defaultProps.labels;
 
 		this.generatedName = shortid.generate();
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
-	}
-
-	getName () {
-		return this.props.name || this.generatedName;
 	}
 
 	getErrorId () {
@@ -86,6 +82,10 @@ class RadioButtonGroup extends React.Component {
 			return this.props.errorId || this.generatedErrorId;
 		}
 		return undefined;
+	}
+
+	getName () {
+		return this.props.name || this.generatedName;
 	}
 
 	hasError () {
@@ -98,32 +98,40 @@ class RadioButtonGroup extends React.Component {
 				name: this.getName(),
 				onChange: this.props.onChange,
 				'aria-describedby': this.getErrorId(),
-				disabled: this.props.disabled
+				disabled: this.props.disabled,
 			})
 		);
 
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
-					'slds-has-error': this.labels.error
+					'slds-has-error': this.labels.error,
 				})}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">
-					{this.props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
+					{this.props.required ? (
+						<abbr className="slds-required" title="required">
+							*
+						</abbr>
+					) : null}
 					{this.labels.label}
 				</legend>
-				<div className={classNames('slds-form-element__control', this.props.className)}>
-					<div className="slds-radio_button-group">
-						{children}
-					</div>
-					{this.labels.error ?
+				<div
+					className={classNames(
+						'slds-form-element__control',
+						this.props.className
+					)}
+				>
+					<div className="slds-radio_button-group">{children}</div>
+					{this.labels.error ? (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}
-						</div> : null}
+						</div>
+					) : null}
 				</div>
-			</fieldset>);
+			</fieldset>
+		);
 	}
-
 }
 
 RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;

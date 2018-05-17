@@ -5,18 +5,16 @@
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
-import { shape } from 'airbnb-prop-types';
 
 import assign from 'lodash.assign';
+
+import find from 'lodash.find';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
-
-// ### find
-import find from 'lodash.find';
 
 // Child components
 import Step from './private/step';
@@ -30,13 +28,17 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
-	assistiveText: shape({
-		percentage: PropTypes.string
+	assistiveText: PropTypes.shape({
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Stores all completed steps. It is an array of step objects.
 	 */
@@ -58,7 +60,7 @@ const propTypes = {
 	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
 	 * const handleStepClick = function(event, data) { console.log(data); };
-	 *     <ProgressIndicator onStepClick={handleStepClick} />
+	 *   <ProgressIndicator onStepClick={handleStepClick} />
 	 * ```
 	 */
 	onStepClick: PropTypes.func,
@@ -66,7 +68,7 @@ const propTypes = {
 	 * Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
 	 * const handleStepFocus = function(event, data) { console.log(data); };
-	 *     <ProgressIndicator onStepFocus={handleStepFocus} />
+	 *   <ProgressIndicator onStepFocus={handleStepFocus} />
 	 * ```
 	 */
 	onStepFocus: PropTypes.func,
@@ -78,9 +80,9 @@ const propTypes = {
 	 * It is an array of step objects in the following form:
 	 * ```
 	 *  [{
-	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
-	 *		label: <PropTypes.string>, representing the tooltip content
-	 *		assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.
+	 *    id: <PropTypes.number> or <PropTypes.string>, has to be unique
+	 *    label: <PropTypes.string>, representing the tooltip content
+	 *    assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.
 	 *  }],
 	 *  ```
 	 */
@@ -92,15 +94,15 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal']),
 };
 
 const defaultSteps = [
-	{ id: 0, label: ('tooltip label #1') },
-	{ id: 1, label: ('tooltip label #2') },
-	{ id: 2, label: ('tooltip label #3') },
-	{ id: 3, label: ('tooltip label #4') },
-	{ id: 4, label: ('tooltip label #5') }
+	{ id: 0, label: 'tooltip label #1' },
+	{ id: 1, label: 'tooltip label #2' },
+	{ id: 2, label: 'tooltip label #3' },
+	{ id: 3, label: 'tooltip label #4' },
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const defaultProps = {
@@ -112,18 +114,18 @@ const defaultProps = {
 	variant: 'base',
 	// click/focus callbacks by default do nothing
 	onStepClick: () => {},
-	onStepFocus: () => {}
+	onStepFocus: () => {},
 };
 
 /**
- * Check if the passed steps are valid
+ * Check if `steps` prop is valid
  */
 function checkSteps (steps) {
-	if (steps === undefined) return false;
-	for (let i = 0; i < steps.length; ++i) {
-		if (steps[i].label === undefined) return false;
-	}
-	return true;
+	const isStepsDefined = steps !== undefined;
+	const isLabelDefined = (step) => step.label !== undefined;
+	const stepLabelsDefined = Array.isArray(steps) && steps.every(isLabelDefined);
+
+	return isStepsDefined && stepLabelsDefined;
 }
 
 /**
@@ -134,15 +136,13 @@ function findStep (item, items) {
 	if (Array.isArray(items)) {
 		return !!find(items, item);
 	}
-	return (JSON.stringify(item) === JSON.stringify(items));
+	return JSON.stringify(item) === JSON.stringify(items);
 }
 
 /**
  * Progress Indicator is a component that communicates to the user the progress of a particular process.
  */
 class ProgressIndicator extends React.Component {
-
-
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 	}
@@ -160,19 +160,21 @@ class ProgressIndicator extends React.Component {
 
 	getSteps () {
 		// check if passed steps are valid
-		return (checkSteps(this.props.steps) ? this.props.steps : defaultSteps);
+		return checkSteps(this.props.steps) ? this.props.steps : defaultSteps;
 	}
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = this.props ? assign({}, defaultProps.assistiveText, this.props.assistiveText) : defaultProps.assistiveText;
+		const assistiveText = this.props
+			? assign({}, defaultProps.assistiveText, this.props.assistiveText)
+			: defaultProps.assistiveText;
 
 		/** 1. preparing data */
 		const allSteps = this.getSteps();
 
 		let currentStep = 0;
 		// find index for the current step
-		for (let i = 0; i < allSteps.length; ++i) {
+		for (let i = 0; i < allSteps.length; i += 1) {
 			// assign step an id if it does not have one
 			if (allSteps[i].id === undefined) {
 				allSteps[i].id = i;
@@ -187,27 +189,29 @@ class ProgressIndicator extends React.Component {
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
-				value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
+				value={
+					currentStep === 0
+						? '0'
+						: `${100 * (currentStep / (allSteps.length - 1))}`
+				}
 				variant={this.props.variant}
 				className={this.props.className}
 			>
-				{
-					allSteps.map((step, i) =>
-						(<Step
-							key={`${this.getId()}-${step.id}`}
-							id={this.getId()}
-							index={i}
-							isSelected={findStep(step, this.props.selectedStep)}
-							isDisabled={findStep(step, this.props.disabledSteps)}
-							isError={findStep(step, this.props.errorSteps)}
-							isCompleted={findStep(step, this.props.completedSteps)}
-							onClick={this.props.onStepClick}
-							onFocus={this.props.onStepFocus}
-							step={step}
-							tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
-						/>)
-					)
-				}
+				{allSteps.map((step, i) => (
+					<Step
+						key={`${this.getId()}-${step.id}`}
+						id={this.getId()}
+						index={i}
+						isSelected={findStep(step, this.props.selectedStep)}
+						isDisabled={findStep(step, this.props.disabledSteps)}
+						isError={findStep(step, this.props.errorSteps)}
+						isCompleted={findStep(step, this.props.completedSteps)}
+						onClick={this.props.onStepClick}
+						onFocus={this.props.onStepFocus}
+						step={step}
+						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
+					/>
+				))}
 			</Progress>
 		);
 	}

@@ -13,6 +13,9 @@ import PropTypes from 'prop-types';
 // ### isDate
 import isDate from 'lodash.isdate';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### Dropdown
 import InputIcon from '../icon/input-icon';
 import MenuDropdown from '../menu-dropdown';
@@ -22,8 +25,8 @@ import TimepickerDropdownTrigger from './private/dropdown-trigger';
 import { TIME_PICKER } from '../../utilities/constants';
 
 /**
-*  Component description.
-*/
+ *  Component description.
+ */
 const Timepicker = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
@@ -31,6 +34,9 @@ const Timepicker = createReactClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * If true, constrains the menu to the scroll parent. See `Dropdown`.
+		 */
 		constrainToScrollParent: PropTypes.bool,
 		/**
 		 * Disables the input and prevents editing the contents.
@@ -40,6 +46,9 @@ const Timepicker = createReactClass({
 		 * Time formatting function
 		 */
 		formatter: PropTypes.func,
+		/**
+		 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
+		 */
 		inheritTargetWidth: PropTypes.bool,
 		/**
 		 * This label appears above the input.
@@ -55,7 +64,11 @@ const Timepicker = createReactClass({
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
+		menuPosition: PropTypes.oneOf([
+			'absolute',
+			'overflowBoundaryElement',
+			'relative',
+		]),
 		/**
 		 * Receives the props `(dateValue, stringValue)`
 		 */
@@ -72,32 +85,45 @@ const Timepicker = createReactClass({
 		 * If true, adds asterisk next to input label to indicate it is a required field.
 		 */
 		required: PropTypes.bool,
+		/**
+		 * Frequency of options
+		 */
 		stepInMinutes: PropTypes.number,
+		/**
+		 * Value for input that is parsed to create an internal state in the `date` format.
+		 */
 		strValue: PropTypes.string,
 		/**
-		 * Date
+		 * Instance an internal state in the `date` format.
 		 */
-		value: PropTypes.instanceOf(Date)
+		value: PropTypes.instanceOf(Date),
 	},
 
 	getDefaultProps () {
 		return {
 			formatter (date) {
 				if (date) {
-					return date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' });
+					return date.toLocaleTimeString(navigator.language, {
+						hour: '2-digit',
+						minute: '2-digit',
+					});
 				}
 
 				return null;
 			},
 			parser (timeStr) {
 				const date = new Date();
-				const dateStr = date.toLocaleString(navigator.language, { year: 'numeric', month: 'numeric', day: 'numeric' });
+				const dateStr = date.toLocaleString(navigator.language, {
+					year: 'numeric',
+					month: 'numeric',
+					day: 'numeric',
+				});
 				return new Date(`${dateStr} ${timeStr}`);
 			},
 			menuPosition: 'absolute',
 			placeholder: 'Pick Time',
 			value: null,
-			stepInMinutes: 30
+			stepInMinutes: 30,
 		};
 	},
 
@@ -105,8 +131,13 @@ const Timepicker = createReactClass({
 		return {
 			value: this.props.value,
 			strValue: this.props.strValue,
-			options: this.getOptions()
+			options: this.getOptions(),
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(TIME_PICKER, this.props);
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -117,7 +148,7 @@ const Timepicker = createReactClass({
 			if (currentTime !== nextTime) {
 				this.setState({
 					value: nextProps.value,
-					strValue: this.props.formatter(nextProps.value)
+					strValue: this.props.formatter(nextProps.value),
 				});
 			}
 		}
@@ -139,7 +170,7 @@ const Timepicker = createReactClass({
 
 			options.push({
 				label: formatted,
-				value: new Date(curDate)
+				value: new Date(curDate),
 			});
 
 			curDate.setMinutes(curDate.getMinutes() + this.props.stepInMinutes);
@@ -160,45 +191,10 @@ const Timepicker = createReactClass({
 		return new Date();
 	},
 
-	// ### Render
-	render () {
-		return (
-			<MenuDropdown
-				checkmark={false}
-				constrainToScrollParent={this.props.constrainToScrollParent}
-				disabled={this.props.disabled}
-				inheritTargetWidth={this.props.inheritTargetWidth}
-				label={this.props.label}
-				listItemRenderer={this.props.listItemRenderer}
-				// inline style override
-				menuStyle={{
-					maxHeight: '20em',
-					overflowX: 'hidden',
-					minWidth: '100%'
-				}}
-				menuPosition={this.props.menuPosition}
-				onSelect={this.handleSelect}
-				options={this.state.options}
-			>
-				<TimepickerDropdownTrigger
-					iconRight={<InputIcon
-						category="utility"
-						name="clock"
-					/>}
-					onChange={this.handleInputChange}
-					placeholder={this.props.placeholder}
-					required={this.props.required}
-					type="text"
-					value={this.state.strValue}
-				/>
-			</MenuDropdown>
-		);
-	},
-
 	handleChange (date, strValue) {
 		this.setState({
 			value: date,
-			strValue
+			strValue,
 		});
 
 		if (this.props.onDateChange) {
@@ -216,14 +212,46 @@ const Timepicker = createReactClass({
 		const strValue = event.target.value;
 
 		this.setState({
-			strValue
+			strValue,
 		});
 
 		if (this.props.onDateChange) {
 			const parsedDate = this.props.parser(strValue);
 			this.props.onDateChange(parsedDate, strValue);
 		}
-	}
+	},
+
+	// ### Render
+	render () {
+		return (
+			<MenuDropdown
+				checkmark={false}
+				constrainToScrollParent={this.props.constrainToScrollParent}
+				disabled={this.props.disabled}
+				inheritTargetWidth={this.props.inheritTargetWidth}
+				label={this.props.label}
+				listItemRenderer={this.props.listItemRenderer}
+				// inline style override
+				menuStyle={{
+					maxHeight: '20em',
+					overflowX: 'hidden',
+					minWidth: '100%',
+				}}
+				menuPosition={this.props.menuPosition}
+				onSelect={this.handleSelect}
+				options={this.state.options}
+			>
+				<TimepickerDropdownTrigger
+					iconRight={<InputIcon category="utility" name="clock" />}
+					onChange={this.handleInputChange}
+					placeholder={this.props.placeholder}
+					required={this.props.required}
+					type="text"
+					value={this.state.strValue}
+				/>
+			</MenuDropdown>
+		);
+	},
 });
 
 export default Timepicker;

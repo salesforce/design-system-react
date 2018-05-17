@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 // Child component
-import PopoverTooltip from '../../popover-tooltip';
+import Tooltip from '../../tooltip';
 import { PROGRESS_INDICATOR_STEP } from '../../../utilities/constants';
 import ButtonIcon from '../../icon/button-icon';
 
@@ -66,7 +66,7 @@ const propTypes = {
 	 * This is mainly for dev test purpose.
 	 * Usually the tooltip should only show when hover.
 	 */
-	tooltipIsOpen: PropTypes.bool
+	tooltipIsOpen: PropTypes.bool,
 };
 
 /**
@@ -85,36 +85,56 @@ class Step extends React.Component {
 			isError: props.isError,
 			isCompleted: props.isCompleted,
 			isDisabled: props.isDisabled,
-			step: props.step
+			step: props.step,
 		};
 
-		const icon = renderIcon ?
-			(<ButtonIcon category="utility" name={this.props.isError ? 'warning' : 'success'} />)
-			: null;
+		const icon = renderIcon ? (
+			<ButtonIcon
+				category="utility"
+				name={this.props.isError ? 'warning' : 'success'}
+			/>
+		) : null;
 
 		const handleClick = (event) => props.onClick(event, data);
 		const handleFocus = (event) => props.onFocus(event, data);
 
-		const stepButton = props.isDisabled ?
-			(<span
-				className={classNames('slds-button', { 'slds-button_icon': renderIcon }, 'slds-progress__marker', { 'slds-progress__marker_icon': renderIcon })}
-				aria-describedby={`progress-indicator-tooltip-${this.props.step.id || this.props.index}`}
+		const stepButton = props.isDisabled ? (
+			<span
+				className={classNames(
+					'slds-button',
+					{ 'slds-button_icon': renderIcon },
+					'slds-progress__marker',
+					{ 'slds-progress__marker_icon': renderIcon }
+				)}
+				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
+					this.props.index}`}
 				tabIndex={0}
 				role="button"
 			>
-				{ icon }
-				<span className="slds-assistive-text">{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}</span>
-			</span>)
-			:
-			(<button
-				className={classNames('slds-button', { 'slds-button_icon': renderIcon }, 'slds-progress__marker', { 'slds-progress__marker_icon': renderIcon })}
+				{icon}
+				<span className="slds-assistive-text">
+					{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}
+				</span>
+			</span>
+		) : (
+			<button
+				className={classNames(
+					'slds-button',
+					{ 'slds-button_icon': renderIcon },
+					'slds-progress__marker',
+					{ 'slds-progress__marker_icon': renderIcon }
+				)}
 				onClick={handleClick}
 				onFocus={handleFocus}
-				aria-describedby={`progress-indicator-tooltip-${this.props.step.id || this.props.index}`}
+				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
+					this.props.index}`}
 			>
-				{ icon }
-				<span className="slds-assistive-text">{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}</span>
-			</button>);
+				{icon}
+				<span className="slds-assistive-text">
+					{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}
+				</span>
+			</button>
+		);
 
 		return stepButton;
 	}
@@ -133,10 +153,11 @@ class Step extends React.Component {
 
 		const tooltipProps = {
 			align: 'top',
-			id: `progress-indicator-tooltip-${this.props.step.id || this.props.index}`,
+			id: `progress-indicator-tooltip-${this.props.step.id ||
+				this.props.index}`,
 			content: this.props.step.label,
-			variant: this.props.isError ? 'error' : 'info',
-			triggerStyle: { display: !renderIcon ? 'flex' : '' }
+			theme: this.props.isError ? 'error' : 'info',
+			triggerStyle: { display: !renderIcon ? 'flex' : '' },
 		};
 
 		// This is mainly for dev test purpose.
@@ -152,12 +173,12 @@ class Step extends React.Component {
 				className={classNames('slds-progress__item', {
 					'slds-is-completed': this.props.isCompleted,
 					'slds-is-active': this.props.isSelected && !this.props.isError,
-					'slds-has-error': this.props.isError
+					'slds-has-error': this.props.isError,
 				})}
 			>
-				<PopoverTooltip {...tooltipProps} >
+				<Tooltip {...tooltipProps}>
 					{this.buttonIcon(renderIcon, status, this.props)}
-				</PopoverTooltip>
+				</Tooltip>
 			</li>
 		);
 	}
@@ -166,4 +187,4 @@ class Step extends React.Component {
 Step.propTypes = propTypes;
 Step.displayName = displayName;
 
-export default Step;    // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Step; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

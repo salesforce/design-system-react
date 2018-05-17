@@ -15,22 +15,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { TABS_LIST } from '../../../utilities/constants';
 
-
-const TabsList = ({
-	id,
-	className,
-	children,
-	variant
-}) => (
+const TabsList = ({ id, className, children, variant }) => (
 	<ul
 		id={`${id}-slds-tabs__nav`}
-		className={classNames(
-			className,
-			{
-				'slds-tabs--default__nav': variant === 'default',
-				'slds-tabs--scoped__nav': variant === 'scoped'
-			}
-		)}
+		className={classNames(className, {
+			'slds-tabs--default__nav': variant === 'default',
+			'slds-tabs--scoped__nav': variant === 'scoped',
+		})}
 		role="tablist"
 	>
 		{children}
@@ -51,21 +42,18 @@ TabsList.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 
 	/**
 	 * The `children` are the actual tabs to be rendered as `li` elements. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabsList` function.
 	 */
-	children: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.array
-	]),
+	children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
 	/**
 	 * If the Tabs should be scopped, defaults to false
 	 */
-	variant: PropTypes.oneOf(['default', 'scoped'])
+	variant: PropTypes.oneOf(['default', 'scoped']),
 };
 
 export default TabsList;

@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,10 +15,10 @@ import isFunction from 'lodash.isfunction';
 
 import { NAVIGATION_ITEM } from '../../../utilities/constants';
 
-const	handleClick = (event, props) => {
+const handleClick = (event, props) => {
 	if (isFunction(props.onSelect)) {
 		props.onSelect(event, {
-			item: props.item
+			item: props.item,
 		});
 	}
 };
@@ -31,7 +30,9 @@ const Item = (props) => (
 			href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
 			className="slds-navigation-list--vertical__action slds-text-link--reset"
 			aria-describedby={props.categoryId}
-			onClick={(event) => { handleClick(event, props); }}
+			onClick={(event) => {
+				handleClick(event, props);
+			}}
 		>
 			{props.item.label}
 		</a>
@@ -50,7 +51,7 @@ Item.propTypes = {
 	item: PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		label: PropTypes.string.isRequired,
-		url: PropTypes.string
+		url: PropTypes.string,
 	}),
 	/**
 	 * Whether item is selected or not.
@@ -63,11 +64,11 @@ Item.propTypes = {
 	/**
 	 * Function that will run whenever an item is selected.
 	 */
-	onSelect: PropTypes.func
+	onSelect: PropTypes.func,
 };
 
-Item.getDefaultProps = {
-	isSelected: false
+Item.defaultProps = {
+	isSelected: false,
 };
 
 export default Item;

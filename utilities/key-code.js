@@ -8,7 +8,7 @@ const keys = {
 	DOWN: 40,
 	TAB: 9,
 	DELETE: 46,
-	BACKSPACE: 8
+	BACKSPACE: 8,
 };
 
 // Helpful for interaction/event tests. Use with simulate:
@@ -23,7 +23,11 @@ const keyObjects = {
 	DOWN: { key: 'Down', keyCode: keys.DOWN, which: keys.DOWN },
 	TAB: { key: 'Tab', keyCode: keys.TAB, which: keys.TAB },
 	DELETE: { key: 'Delete', keyCode: keys.DELETE, which: keys.DELETE },
-	BACKSPACE: { key: 'Backspace', keyCode: keys.BACKSPACE, which: keys.BACKSPACE }
+	BACKSPACE: {
+		key: 'Backspace',
+		keyCode: keys.BACKSPACE,
+		which: keys.BACKSPACE,
+	},
 };
 
 export default keys;

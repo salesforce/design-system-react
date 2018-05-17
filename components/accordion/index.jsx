@@ -16,7 +16,11 @@ const propTypes = {
 	/**
 	 * CSS class names to be added to the accordion component. _Tested with snapshot testing._
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * HTML id for accordion component. _Tested with snapshot testing._
 	 */
@@ -33,7 +37,7 @@ const propTypes = {
 	 * </SLDSAccordion>
 	 * ```
 	 */
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
 };
 
 /**
@@ -47,14 +51,17 @@ class Accordion extends Component {
 
 	render () {
 		return (
-			<ul name={this.props.id || this.generatedId} className={classNames('slds-accordion', this.props.className)}>
+			<ul
+				name={this.props.id || this.generatedId}
+				className={classNames('slds-accordion', this.props.className)}
+			>
 				{this.props.children}
 			</ul>
 		);
 	}
 }
 
-export default Accordion;
-
 Accordion.displayName = ACCORDION;
 Accordion.propTypes = propTypes;
+
+export default Accordion;

@@ -21,16 +21,16 @@ import assign from 'lodash.assign';
 // ### classNames
 import classNames from 'classnames';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
 import Button from '../button';
 import Popover from '../popover';
-
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
 
 // ## Constants
 import { FILTER } from '../../utilities/constants';
@@ -55,19 +55,20 @@ const Filter = createReactClass({
 		assistiveText: PropTypes.shape({
 			editFilter: PropTypes.string,
 			editFilterHeading: PropTypes.string,
-			removeFilter: PropTypes.string
+			removeFilter: PropTypes.string,
 		}),
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria.
 		 */
 		children: PropTypes.node,
 		/**
-		  * Custom CSS classes for `slds-filters__item` node. Uses `classNames` [API](https://github.com/JedWatson/classnames).
-		  */
+		 * Custom CSS classes for `slds-filters__item` node. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+		 */
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string]),
+			PropTypes.string,
+		]),
 		/**
 		 * Applies error state styling. Per filter error messages are outside this components.
 		 */
@@ -111,7 +112,7 @@ const Filter = createReactClass({
 		/**
 		 * The property you are filtering. For instance, if "Hair Color is PURPLE" is your filter, "Hair Color" is your filter property.
 		 */
-		property: PropTypes.node
+		property: PropTypes.node,
 	},
 
 	getDefaultProps () {
@@ -119,15 +120,17 @@ const Filter = createReactClass({
 			align: 'left',
 			assistiveText: {
 				editFilter: 'Edit filter:',
-				editFilterHeading: 'Choose filter criteria'
+				editFilterHeading: 'Choose filter criteria',
 			},
-			predicate: 'New Filter'
+			predicate: 'New Filter',
 		};
 	},
 
 	getInitialState () {
 		return {
-			popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false
+			popoverIsOpen: this.props.popover
+				? this.props.popover.props.isOpen
+				: false,
 		};
 	},
 
@@ -138,6 +141,53 @@ const Filter = createReactClass({
 
 	getId () {
 		return this.props.id || this.generatedId;
+	},
+
+	getCustomPopoverProps ({ assistiveText }) {
+		/*
+		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
+		 */
+		const popoverBody = (
+			<div>
+				<h4
+					className="slds-assistive-text"
+					id={`${this.getId()}-popover-heading`}
+				>
+					{assistiveText.editFilterHeading}
+				</h4>
+				{this.props.children}
+				<div className="slds-m-top--small slds-text-align--right">
+					<Button
+						className="slds-col--bump-left"
+						label="Done"
+						onClick={this.handleChange}
+					/>
+				</div>
+			</div>
+		);
+
+		const defaultPopoverProps = {
+			ariaLabelledby: `${this.getId()}-popover-heading`,
+			align: this.props.align,
+			body: popoverBody,
+			heading: '',
+			id: this.getId(),
+			isOpen: this.state.popoverIsOpen,
+			// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
+			offset: this.props.align === 'right' ? '0px -35px' : undefined,
+			onClose: this.handleClose,
+			onRequestClose: this.handleClose,
+			position: 'overflowBoundaryElement',
+			triggerClassName: 'slds-grow',
+		};
+
+		/* Mixin passed popover's props if there is any to override the default popover props */
+		const popoverProps = assign(
+			defaultPopoverProps,
+			this.props.popover ? this.props.popover.props : {}
+		);
+		delete popoverProps.children;
+		return popoverProps;
 	},
 
 	handleFilterClick () {
@@ -166,55 +216,19 @@ const Filter = createReactClass({
 		}
 	},
 
-	getCustomPopoverProps ({ assistiveText }) {
-		/*
-		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
-		 */
-		const popoverBody = (
-			<div>
-				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{assistiveText.editFilterHeading}</h4>
-				{this.props.children}
-				<div className="slds-m-top--small slds-text-align--right">
-					<Button
-						className="slds-col--bump-left"
-						label="Done"
-						onClick={this.handleChange}
-					/>
-				</div>
-			</div>
-		);
-
-		const defaultPopoverProps = {
-			ariaLabelledby: `${this.getId()}-popover-heading`,
-			align: this.props.align,
-			body: popoverBody,
-			heading: '',
-			id: this.getId(),
-			isOpen: this.state.popoverIsOpen,
-			// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
-			offset: this.props.align === 'right' ? '0px -35px' : undefined,
-			onClose: this.handleClose,
-			onRequestClose: this.handleClose,
-			position: 'overflowBoundaryElement',
-			triggerClassName: 'slds-grow'
-		};
-
-		/* Mixin passed popover's props if there is any to override the default popover props */
-		const popoverProps = assign(defaultPopoverProps, this.props.popover ? this.props.popover.props : {});
-		delete popoverProps.children;
-		return popoverProps;
-	},
-
 	render () {
 		/* Remove at next breaking change */
 		const assistiveText = {
-			editFilter: this.props.assistiveTextEditFilter // eslint-disable-line react/prop-types
-				|| this.props.assistiveText.editFilter,
-			editFilterHeading: this.props.assistiveTextEditFilterHeading // eslint-disable-line react/prop-types
-				|| this.props.assistiveText.editFilterHeading,
-			removeFilter: this.props.assistiveTextRemoveFilter // eslint-disable-line react/prop-types
-				|| this.props.assistiveText.removeFilter
-				|| `Remove Filter: ${this.props.property} ${this.props.predicate}`
+			editFilter:
+				this.props.assistiveTextEditFilter || // eslint-disable-line react/prop-types
+				this.props.assistiveText.editFilter,
+			editFilterHeading:
+				this.props.assistiveTextEditFilterHeading || // eslint-disable-line react/prop-types
+				this.props.assistiveText.editFilterHeading,
+			removeFilter:
+				this.props.assistiveTextRemoveFilter || // eslint-disable-line react/prop-types
+				this.props.assistiveText.removeFilter ||
+				`Remove Filter: ${this.props.property} ${this.props.predicate}`,
 		};
 
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
@@ -224,54 +238,62 @@ const Filter = createReactClass({
 				className={classNames(
 					'slds-filters__item',
 					'slds-grid',
-					'slds-grid--vertical-align-center', {
+					'slds-grid--vertical-align-center',
+					{
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
-						'slds-has-error': this.props.isError
+						'slds-has-error': this.props.isError,
 					},
 					this.props.className
 				)}
 			>
-				{!this.props.isLocked && (this.props.children || this.props.popover)
-				? <Popover
-					{...popoverProps}
-				>
+				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
+					<Popover {...popoverProps}>
+						<button
+							className="slds-button--reset slds-grow slds-has-blur-focus"
+							onClick={this.handleFilterClick}
+							aria-describedby={
+								this.props.isError ? `${this.getId()}-error` : undefined
+							}
+						>
+							<span className="slds-assistive-text">
+								{assistiveText.editFilter}
+							</span>
+							{this.props.property ? (
+								<p className="slds-text-body--small">{this.props.property}</p>
+							) : null}
+							<p>{this.props.predicate}</p>
+						</button>
+					</Popover>
+				) : (
 					<button
+						aria-describedby={
+							this.props.isError ? `${this.getId()}-error` : undefined
+						}
 						className="slds-button--reset slds-grow slds-has-blur-focus"
-						onClick={this.handleFilterClick}
-						aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
+						disabled
 					>
-						<span className="slds-assistive-text">{assistiveText.editFilter}</span>
-						{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
+						<p className="slds-text-body--small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>
 					</button>
-				</Popover>
-				: <button
-					aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
-					className="slds-button--reset slds-grow slds-has-blur-focus"
-					disabled
-				>
-					<p className="slds-text-body--small">{this.props.property}</p>
-					<p>{this.props.predicate}</p>
-				</button>
-				}
+				)}
 				{// Remove button
-					!this.props.isPermanent && !this.props.isLocked
-					? <Button
-						assistiveText={assistiveText.removeFilter}
-						hint
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						iconVariant="bare"
-						onClick={this.handleRemove}
-						title={assistiveText.removeFilter}
-						variant="icon"
-					/>
-				: null}
+					!this.props.isPermanent && !this.props.isLocked ? (
+						<Button
+							assistiveText={assistiveText.removeFilter}
+							hint
+							iconCategory="utility"
+							iconName="close"
+							iconSize="small"
+							iconVariant="bare"
+							onClick={this.handleRemove}
+							title={assistiveText.removeFilter}
+							variant="icon"
+						/>
+					) : null}
 			</div>
 		);
-	}
+	},
 });
 
 export default Filter;

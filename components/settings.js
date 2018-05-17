@@ -35,7 +35,7 @@ const settings = {
 		}
 	},
 
-	getAppElement: () => appRoot
+	getAppElement: () => appRoot,
 };
 
 export default settings;

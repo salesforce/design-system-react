@@ -17,7 +17,10 @@ if (process.env.NODE_ENV !== 'production') {
 		const newPropertySentence = newProp ? ` ${newProperty} instead.` : '';
 		if (!hasWarned[control + oldProp]) {
 			/* eslint-disable max-len */
-			warning(propValue === undefined, `[Design System React] \`${oldProp}\` will be removed in the next major version of ${control}.${newPropertySentence}${additionalComment}`);
+			warning(
+				propValue === undefined,
+				`[Design System React] \`${oldProp}\` will be removed in the next major version of ${control}.${newPropertySentence}${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control + oldProp] = propValue !== undefined;
 		}

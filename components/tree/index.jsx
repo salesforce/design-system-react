@@ -11,11 +11,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Child components
-import Branch from './private/branch';
-
 // ### classNames
 import classNames from 'classnames';
+
+// Child components
+import Branch from './private/branch';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
@@ -27,8 +27,101 @@ import { TREE } from '../../utilities/constants';
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 class Tree extends React.Component {
+	constructor (props) {
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
+		this.handleNodeBlur = this.handleNodeBlur.bind(this);
+		this.handleExpandClick = this.handleExpandClick.bind(this);
+		this.state = {
+			flattenedNodes: this.flattenTree({
+				nodes: this.props.nodes,
+				expanded: true,
+			}).slice(1),
+			selectedNodeIndexes: [],
+		};
+	}
+
 	componentWillMount () {
 		checkProps(TREE, this.props);
+	}
+
+	componentWillReceiveProps (nextProps) {
+		this.setState({
+			flattenedNodes: this.flattenTree({
+				nodes: nextProps.nodes,
+				expanded: true,
+			}).slice(1),
+		});
+	}
+
+	shouldComponentUpdate (nextProps, nextState) {
+		// There is no need to render when blurring a node because focus is either:
+		//  - outside of the tree, or
+		//  - focused on another node in the tree, which triggers its own render
+		if (!nextState.treeHasFocus) {
+			return false;
+		}
+		return true;
+	}
+
+	// Flattens hierarchical tree structure into a flat array.
+	flattenTree (root, treeIndex = '') {
+		if (!root.nodes) {
+			return [{ node: root, treeIndex }];
+		}
+		let nodes = [{ node: root, treeIndex }];
+		if (root.expanded) {
+			for (let index = 0; index < root.nodes.length; index++) {
+				const curNode = root.nodes[index];
+				nodes = nodes.concat(
+					this.flattenTree(
+						curNode,
+						treeIndex ? `${treeIndex}-${index}` : `${index}`
+					)
+				);
+			}
+		}
+		return nodes;
+	}
+
+	handleClick (event, data, clearSelectedNodes) {
+		// When triggered by a key event, other nodes should be deselected.
+		if (clearSelectedNodes) {
+			this.state.flattenedNodes.forEach((flattenedNode) => {
+				if (flattenedNode.node.selected) {
+					flattenedNode.node.selected = false;
+				}
+			});
+		}
+
+		// Do the click.
+		this.props.onClick(event, data);
+
+		// Keep track of the currently selected and focused nodes.
+		let selectedNodeIndexes;
+		if (data.select) {
+			selectedNodeIndexes = this.state.selectedNodeIndexes.concat([
+				data.treeIndex,
+			]);
+		} else {
+			selectedNodeIndexes = this.state.selectedNodeIndexes.filter(
+				(treeIndex) => treeIndex !== data.treeIndex
+			);
+		}
+		this.setState({
+			focusedNodeIndex: data.treeIndex,
+			selectedNodeIndexes,
+			treeHasFocus: true,
+		});
+	}
+
+	handleNodeBlur () {
+		this.setState({ treeHasFocus: false });
+	}
+
+	handleExpandClick (event, data) {
+		this.props.onExpandClick(event, data);
+		this.setState({ treeHasFocus: true });
 	}
 
 	render () {
@@ -38,11 +131,21 @@ class Tree extends React.Component {
 		// Start the zero level branch--that is the tree root. There is no label for
 		// the tree root, but is required by all other nodes
 		return (
-			<div id={this.props.id} className={classNames('slds-tree_container', this.props.className)} /* role="application" */>
+			<div
+				id={this.props.id}
+				className={classNames(
+					'slds-tree_container',
+					this.props.className
+				)} /* role="application" */
+			>
 				<h4
-					className={classNames('slds-text-title--caps', { 'slds-assistive-text': this.props.assistiveText })}
+					className={classNames('slds-text-title--caps', {
+						'slds-assistive-text': this.props.assistiveText,
+					})}
 					id={`${this.props.id}__heading`}
-				>{headingText}</h4>
+				>
+					{headingText}
+				</h4>
 				<Branch
 					getNodes={this.props.getNodes}
 					initalClassName={this.props.listClassName}
@@ -50,8 +153,13 @@ class Tree extends React.Component {
 					initialStyle={this.props.listStyle}
 					level={0}
 					node={{ nodes: this.props.nodes }}
-					onClick={this.props.onClick}
-					onExpandClick={this.props.onExpandClick}
+					flattenedNodes={this.state.flattenedNodes}
+					selectedNodeIndexes={this.state.selectedNodeIndexes}
+					focusedNodeIndex={this.state.focusedNodeIndex}
+					treeHasFocus={this.state.treeHasFocus}
+					onNodeBlur={this.handleNodeBlur}
+					onClick={this.handleClick}
+					onExpandClick={this.handleExpandClick}
 					onScroll={this.props.onScroll}
 					searchTerm={this.props.searchTerm}
 					treeId={this.props.id}
@@ -59,10 +167,10 @@ class Tree extends React.Component {
 			</div>
 		);
 	}
- }
+}
 
 Tree.defaultProps = {
-	getNodes: (node) => node.nodes
+	getNodes: (node) => node.nodes,
 };
 
 // ### Display Name
@@ -81,14 +189,16 @@ Tree.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string,
+	]),
 	/**
 	 * Class names to be added to the top-level `ul` element of the tree.
 	 */
 	listClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string,
+	]),
 	/**
 	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
 	 */
@@ -121,10 +231,10 @@ Tree.propTypes = {
 	 * Highlights term if found in node label. This does not auto-expand branches.
 	 */
 	searchTerm: PropTypes.string,
-	/*
+	/**
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
-	listStyle: PropTypes.object
+	listStyle: PropTypes.object,
 };
 
 export default Tree;

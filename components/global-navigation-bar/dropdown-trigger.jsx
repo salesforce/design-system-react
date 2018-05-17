@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 // # Global Navigation Dropdown Component
 
 // ## Dependencies
@@ -19,8 +21,8 @@ import Button from '../button';
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 /**
-*  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
-*/
+ *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
+ */
 const GlobalNavigationDropdownTrigger = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
@@ -45,18 +47,22 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		/**
 		 * CSS classes to be added to the 'li'.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
 		/**
 		 * Determines position of separating bar.
 		 */
 		dividerPosition: PropTypes.oneOf(['left', 'right']),
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-		*/
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 */
 		id: PropTypes.string,
 		/**
-		* Allows the dropdown menu to style itself accordingly when open since CSS hover rules cannot take effect if the menu is not inline.
-		*/
+		 * Allows the dropdown menu to style itself accordingly when open since CSS hover rules cannot take effect if the menu is not inline.
+		 */
 		isOpen: PropTypes.bool,
 		/**
 		 * Visible label on the dropdown menu trigger button.
@@ -97,7 +103,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		/**
 		 * The ref of the actual triggering button.
 		 */
-		triggerRef: PropTypes.func
+		triggerRef: PropTypes.func,
 	},
 
 	// ### Render
@@ -145,7 +151,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 					{
 						'slds-is-open': isOpen,
 						'slds-is-active': active,
-						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
 					},
 					className
 				)}
@@ -178,7 +184,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 				{menu}
 			</li>
 		);
-	}
+	},
 });
 
 export default GlobalNavigationDropdownTrigger;

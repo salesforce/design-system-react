@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 		// Deprecated and changed to another property
 		ifOneThenBothRequiredProperty(COMPONENT, props, {
 			isSorted: props.isSorted,
-			sortDirection: props.sortDirection
+			sortDirection: props.sortDirection,
 		});
 		/* eslint-enable max-len */
 	};

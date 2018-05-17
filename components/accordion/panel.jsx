@@ -41,18 +41,34 @@ const propTypes = {
 	/**
 	 * HTML title attribute. _Tested with snapshot testing._
 	 */
-	title: PropTypes.string
+	title: PropTypes.string,
 };
 
-const AccordionPanel = ({ children, expanded, id, panelContentActions, summary, title, onTogglePanel }) => (
+/**
+ * The panel content for the Accordion component.
+ */
+const AccordionPanel = ({
+	children,
+	expanded,
+	id,
+	panelContentActions,
+	summary,
+	title,
+	onTogglePanel,
+}) => (
 	<li className="slds-accordion__list-item">
-		<section className={classNames('slds-accordion__section', { 'slds-is-open': expanded })}>
+		<section
+			className={classNames('slds-accordion__section', {
+				'slds-is-open': expanded,
+			})}
+		>
 			<div className="slds-accordion__summary">
 				<h3 className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate">
 					<Button
 						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}
 						className="slds-button_reset slds-accordion__summary-action"
+						iconCategory="utility"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
 						iconName="switch"
 						onClick={onTogglePanel}
@@ -65,7 +81,11 @@ const AccordionPanel = ({ children, expanded, id, panelContentActions, summary, 
 				</h3>
 				{panelContentActions}
 			</div>
-			<div aria-hidden={!expanded} className="slds-accordion__content" id={`${id}-accordion-panel`}>
+			<div
+				aria-hidden={!expanded}
+				className="slds-accordion__content"
+				id={`${id}-accordion-panel`}
+			>
 				{children}
 			</div>
 		</section>

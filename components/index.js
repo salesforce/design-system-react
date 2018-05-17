@@ -55,6 +55,7 @@ export Combobox from './combobox';
 
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
+export comboboxAddSubheadings from './combobox/add-subheadings';
 
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';
@@ -125,6 +126,12 @@ export InputIcon from './icon/input-icon';
 
 export SLDSLookup from './lookup';
 export Lookup from './lookup';
+export SLDSLookupDefaultFooter from './lookup/menu/default-footer';
+export LookupDefaultFooter from './lookup/menu/default-footer';
+export SLDSLookupDefaultHeader from './lookup/menu/default-header';
+export LookupDefaultHeader from './lookup/menu/default-header';
+export SLDSLookupDefaultSectionDivider from './lookup/menu/default-section-divider';
+export LookupDefaultSectionDivider from './lookup/menu/default-section-divider';
 
 export SLDSMediaObject from './media-object';
 export MediaObject from './media-object';
@@ -161,15 +168,22 @@ export PanelFilterListHeading from './panel/filtering/list-heading';
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
 
+export SLDSPill from './pill';
+export Pill from './pill';
+
 export SLDSPopover from './popover';
 export Popover from './popover';
 
 export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
+export Tooltip from './tooltip';
 
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
+
+export SLDSProgressRing from './progress-ring';
+export ProgressRing from './progress-ring';
 
 export SLDSRadio from './forms/radio';
 export Radio from './forms/radio';
@@ -180,8 +194,24 @@ export RadioButtonGroup from './radio-button-group';
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
 
+export SLDSSlider from './slider';
+export Slider from './slider';
+
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
+
+// Remove at next breaking change
+export SLDSSplitview from './split-view';
+export Splitview from './split-view';
+
+export SLDSSplitView from './split-view';
+export SplitView from './split-view';
+
+export SLDSSplitViewHeader from './split-view/header';
+export SplitViewHeader from './split-view/header';
+
+export SLDSSplitViewListbox from './split-view/listbox';
+export SplitViewListbox from './split-view/listbox';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';

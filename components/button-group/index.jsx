@@ -10,8 +10,6 @@ import classNames from 'classnames';
 
 import assign from 'lodash.assign';
 
-import { shape } from 'airbnb-prop-types';
-
 import { BUTTON_GROUP } from '../../utilities/constants';
 
 const propTypes = {
@@ -25,7 +23,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * **Text labels for internationalization**
@@ -33,14 +31,14 @@ const propTypes = {
 	 * * `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._
 	 * * `label`: This label appears above the button group. _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	/**
 	 * Use checkbox variant for "Checkbox Button Group" styling and add Checkbox components as children _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['checkbox'])
+	variant: PropTypes.oneOf(['checkbox']),
 };
 
 const defaultProps = { labels: {} };
@@ -50,8 +48,10 @@ const defaultProps = { labels: {} };
  */
 const ButtonGroup = (props) => {
 	// Merge objects of strings with their default object
-	const labels = props ? assign({}, defaultProps.labels, props.labels) : defaultProps.labels;
-	
+	const labels = props
+		? assign({}, defaultProps.labels, props.labels)
+		: defaultProps.labels;
+
 	let children = props.children;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
 
@@ -60,7 +60,7 @@ const ButtonGroup = (props) => {
 			let newChild;
 			if (index === zeroIndexLength) {
 				newChild = React.cloneElement(child, {
-					triggerClassName: 'slds-button--last'
+					triggerClassName: 'slds-button--last',
 				});
 			}
 
@@ -69,34 +69,48 @@ const ButtonGroup = (props) => {
 	}
 
 	if (props.variant === 'checkbox') {
-		children = React.Children.map(props.children, (child) => (React.cloneElement(child, {
-			variant: 'button-group'
-		})));
+		children = React.Children.map(props.children, (child) =>
+			React.cloneElement(child, {
+				variant: 'button-group',
+			})
+		);
 	}
 
 	if (props.variant === 'checkbox') {
-		return (<fieldset
-			className={classNames('slds-form-element', {
-				'slds-has-error': labels.error
-			})}
-		>
-			<legend
-				className="slds-form-element__legend slds-form-element__label"
+		return (
+			<fieldset
+				className={classNames('slds-form-element', {
+					'slds-has-error': labels.error,
+				})}
 			>
-				{props.labels.label}
-			</legend>
-			<div className="slds-form-element__control">
-				<div className={classNames('slds-checkbox--button-group', props.className)}>
-					{children}
+				<legend className="slds-form-element__legend slds-form-element__label">
+					{props.labels.label}
+				</legend>
+				<div className="slds-form-element__control">
+					<div
+						className={classNames(
+							'slds-checkbox--button-group',
+							props.className
+						)}
+					>
+						{children}
+					</div>
+					{labels.error ? (
+						<div className="slds-form-element__help">{labels.error}</div>
+					) : null}
 				</div>
-				{labels.error ? <div className="slds-form-element__help">{labels.error}</div> : null}
-			</div>
-		</fieldset>);
+			</fieldset>
+		);
 	}
 	// default
-	return (<div className={classNames('slds-button-group', props.className)} role="group">
-		{children}
-	</div>);
+	return (
+		<div
+			className={classNames('slds-button-group', props.className)}
+			role="group"
+		>
+			{children}
+		</div>
+	);
 };
 
 ButtonGroup.displayName = BUTTON_GROUP;

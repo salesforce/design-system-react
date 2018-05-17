@@ -10,7 +10,13 @@ let oneOfComponent = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
-	oneOfComponent = function (control, props, propName, allowedComponents, comment) {
+	oneOfComponent = function (
+		control,
+		props,
+		propName,
+		allowedComponents,
+		comment
+	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 
 		let componentType;
@@ -25,7 +31,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (!hasWarned[control]) {
 			/* eslint-disable max-len */
-			warning(allowedComponentFound, `[Design System React] ${control} requires that prop '${propName}' is an instance of one of the following components: ${allowedComponents.join(', ')}. An instance of '${componentType}' was given.${additionalComment}`);
+			warning(
+				allowedComponentFound,
+				`[Design System React] ${control} requires that prop '${propName}' is an instance of one of the following components: ${allowedComponents.join(
+					', '
+				)}. An instance of '${componentType}' was given.${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!allowedComponentFound;
 		}

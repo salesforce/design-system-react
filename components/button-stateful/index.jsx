@@ -21,10 +21,8 @@ import isFunction from 'lodash.isfunction';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
-import TooltipTrigger from '../popover-tooltip/trigger';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
-
 
 const propTypes = {
 	/**
@@ -36,24 +34,57 @@ const propTypes = {
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
 	assistiveText: PropTypes.string,
+	/**
+	 * Disables the button and adds disabled styling.
+	 */
 	disabled: PropTypes.bool,
 	/**
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */
 	iconName: PropTypes.string,
+	/**
+	 * Determines the size of the icon.
+	 */
 	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
 	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 	 */
 	inverse: PropTypes.bool,
+	/**
+	 * Triggered when focus is removed.
+	 */
 	onBlur: PropTypes.func,
+	/**
+	 * Triggered when the button is clicked.
+	 */
 	onClick: PropTypes.func,
+	/**
+	 * Triggered when component is focused.
+	 */
 	onFocus: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed down
+	 */
 	onKeyDown: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed and released
+	 */
 	onKeyPress: PropTypes.func,
+	/**
+	 * Triggered when a key is released
+	 */
 	onKeyUp: PropTypes.func,
+	/**
+	 * Triggered when a mouse button is pressed down
+	 */
 	onMouseDown: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow hovers
+	 */
 	onMouseEnter: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow no longer hovers
+	 */
 	onMouseLeave: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
@@ -68,15 +99,21 @@ const propTypes = {
 	 */
 	stateTwo: PropTypes.object,
 	/**
-	 *	Deselect label and icon (optional) of button.
+	 * Deselect label and icon (optional) of button.
 	 */
 	stateThree: PropTypes.object,
 	/**
 	 * Write "-1" if you don't want the user to tab to the button.
 	 */
 	tabIndex: PropTypes.string,
+	/**
+	 * [Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead.
+	 */
 	tooltip: PropTypes.node,
-	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
+	/**
+	 * Different types of buttons
+	 */
+	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
 };
 
 // i18n
@@ -86,35 +123,17 @@ const defaultProps = {
 	responsive: false,
 	stateOne: { iconName: 'add', label: 'Follow' },
 	stateTwo: { iconName: 'check', label: 'Following' },
-	stateThree: { iconName: 'close', label: 'Unfollow' }
+	stateThree: { iconName: 'close', label: 'Unfollow' },
 };
 
 /**
  * The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  */
-class ButtonStateful extends TooltipTrigger {
+class ButtonStateful extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = { active: false };
-	}
-
-	componentDidMount () {
-		super.componentDidMount();
-	}
-
-	componentWillUnmount () {
-		super.componentWillUnmount();
-	}
-
-	handleClick = (e) => {
-		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
-	}
-
-	handleBlur = (e) => {
-		if (this.props.onBlur) this.props.onBlur(e);
-		e.currentTarget.blur();
 	}
 
 	getClassName (active) {
@@ -124,9 +143,21 @@ class ButtonStateful extends TooltipTrigger {
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
 			'slds-max-small-button--stretch': this.props.responsive,
-			'slds-button--icon-border': this.props.variant === 'icon'
+			'slds-button--icon-border': this.props.variant === 'icon',
 		});
 	}
+
+	handleBlur = (e) => {
+		if (this.props.onBlur) this.props.onBlur(e);
+		e.currentTarget.blur();
+	};
+
+	handleClick = (e) => {
+		if (isFunction(this.props.onClick)) this.props.onClick(e);
+		if (!isBoolean(this.props.active)) {
+			this.setState({ active: !this.state.active });
+		}
+	};
 
 	render () {
 		const {
@@ -147,7 +178,7 @@ class ButtonStateful extends TooltipTrigger {
 			stateTwo,
 			stateThree,
 			tabIndex,
-			variant
+			variant,
 		} = this.props;
 
 		const isActive = isBoolean(active) ? active : this.state.active;
@@ -176,8 +207,9 @@ class ButtonStateful extends TooltipTrigger {
 						size={iconSize}
 						className="slds-button__icon--stateful"
 					/>
-					{this.getTooltip()}
-					{assistiveText ? <span className="slds-assistive-text">{assistiveText}</span> : null}
+					{assistiveText ? (
+						<span className="slds-assistive-text">{assistiveText}</span>
+					) : null}
 				</button>
 			);
 		}
@@ -228,7 +260,6 @@ class ButtonStateful extends TooltipTrigger {
 					/>
 					{stateThree.label}
 				</span>
-				{this.getTooltip()}
 			</button>
 		);
 	}

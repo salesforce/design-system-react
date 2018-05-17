@@ -12,11 +12,15 @@ const propTypes = {
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Alert components
 	 */
-	children: PropTypes.node
+	children: PropTypes.node,
 };
 
 /**

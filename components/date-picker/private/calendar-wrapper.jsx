@@ -4,19 +4,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Calendar from './calendar';
-import CalendarNavigation from './navigation';
-
-import EventUtil from '../../../utilities/event';
-import KEYS from '../../../utilities/key-code';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
 
+import Calendar from './calendar';
+import CalendarNavigation from './navigation';
+
+import EventUtil from '../../../utilities/event';
+import KEYS from '../../../utilities/key-code';
+
 class DatepickerCalendarWrapper extends React.Component {
+	static defaultProps = {
+		selectedDate: new Date(),
+		value: new Date(),
+	};
+
 	static displayName = 'DatepickerCalendarWrapper';
 
 	static propTypes = {
@@ -35,7 +40,11 @@ class DatepickerCalendarWrapper extends React.Component {
 		/**
 		 * CSS classes to be added to tag with `slds-datepicker`.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
 		/**
 		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
 		 */
@@ -91,42 +100,56 @@ class DatepickerCalendarWrapper extends React.Component {
 		/**
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
-		weekDayLabels: PropTypes.array.isRequired
-	};
-
-	static defaultProps = {
-		selectedDate: new Date(),
-		value: new Date()
+		weekDayLabels: PropTypes.array.isRequired,
 	};
 
 	state = {
 		initialDateForCalendarRender: this.props.selectedDate,
-		isCalendarFocused: true
-	};
-
-	handleInitialDateForCalendarRenderChange = (event, initialDateForCalendarRender) => {
-		this.setState({ initialDateForCalendarRender });
+		isCalendarFocused: true,
 	};
 
 	handleCalendarBlur = (event, { direction }) => {
 		if (direction === 'next' && this.previousMonthRef) {
 			this.setState({ isCalendarFocused: false });
 			if (this.props.onCalendarFocus) {
-				this.props.onCalendarFocus(event, { direction, isCalendarFocused: false, ref: this.previousMonthRef });
+				this.props.onCalendarFocus(event, {
+					direction,
+					isCalendarFocused: false,
+					ref: this.previousMonthRef,
+				});
 			}
 			this.previousMonthRef.focus();
 		} else if (direction === 'previous' && this.todayRef) {
 			this.setState({ isCalendarFocused: false });
 			if (this.props.onCalendarFocus) {
-				this.props.onCalendarFocus(event, { direction, isCalendarFocused: false, ref: this.todayRef });
+				this.props.onCalendarFocus(event, {
+					direction,
+					isCalendarFocused: false,
+					ref: this.todayRef,
+				});
 			}
 			this.todayRef.focus();
 		}
 	};
 
-	handleRequestClose = () => {
-		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
+	handleFirstFocusableNodeKeyDown = (event) => {
+		if (event.shiftKey && event.keyCode === KEYS.TAB) {
+			EventUtil.trapEvent(event);
+			this.setState({ isCalendarFocused: true });
+		}
+	};
+
+	handleInitialDateForCalendarRenderChange = (
+		event,
+		initialDateForCalendarRender
+	) => {
+		this.setState({ initialDateForCalendarRender });
+	};
+
+	handleKeyDown = (event) => {
+		if (event.keyCode === KEYS.ESCAPE) {
+			EventUtil.trapEvent(event);
+			this.props.onRequestClose(event);
 		}
 	};
 
@@ -137,10 +160,9 @@ class DatepickerCalendarWrapper extends React.Component {
 		}
 	};
 
-	handleFirstFocusableNodeKeyDown = (event) => {
-		if (event.shiftKey && event.keyCode === KEYS.TAB) {
-			EventUtil.trapEvent(event);
-			this.setState({ isCalendarFocused: true });
+	handleRequestClose = () => {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
 		}
 	};
 
@@ -152,25 +174,20 @@ class DatepickerCalendarWrapper extends React.Component {
 
 		// only call on actual DOM event and not on re-render
 		if (this.props.onCalendarFocus && data.triggerCallback) {
-			const { triggerCallback, ...modifiedData } = data;	// eslint-disable-line no-unused-vars
+			const { triggerCallback, ...modifiedData } = data; // eslint-disable-line no-unused-vars
 			this.props.onCalendarFocus(event, modifiedData);
-		}
-	};
-
-	handleKeyDown = (event) => {
-		if (event.keyCode === KEYS.ESCAPE) {
-			EventUtil.trapEvent(event);
-			this.props.onRequestClose(event);
 		}
 	};
 
 	render () {
 		return (
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
-				className={classNames({
-					'slds-datepicker': this.props.isolated
-				},
-					this.props.className)}
+				className={classNames(
+					{
+						'slds-datepicker': this.props.isolated,
+					},
+					this.props.className
+				)}
 				aria-hidden="false"
 				data-selection="single"
 				onKeyDown={this.handleKeyDown}

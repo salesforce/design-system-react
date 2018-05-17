@@ -12,11 +12,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### classNames
 import classNames from 'classnames';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ## Constants
 import { PANEL } from '../../utilities/constants';
@@ -35,9 +35,11 @@ class Panel extends React.Component {
 					'slds-panel',
 					'slds-grid',
 					'slds-grid--vertical',
-					'slds-nowrap', {
-						'slds-panel--filters': this.props.variant === 'filters'
-					})}
+					'slds-nowrap',
+					{
+						'slds-panel--filters': this.props.variant === 'filters',
+					}
+				)}
 			>
 				<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
 					{this.props.children}
@@ -57,7 +59,7 @@ Panel.propTypes = {
 	/**
 	 * The type of panel
 	 */
-	variant: PropTypes.oneOf(['filters'])
+	variant: PropTypes.oneOf(['filters']),
 };
 
 export default Panel;

@@ -42,14 +42,14 @@ const propTypes = {
 	 * Styling for Notification background color. Please reference <a href='http://www.lightningdesignsystem.com/components/utilities/themes/#color'>Lighning Design System Themes > Color</a>.
 	 */
 	theme: PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
-	variant: PropTypes.oneOf(['alert', 'toast']).isRequired
+	variant: PropTypes.oneOf(['alert', 'toast']).isRequired,
 };
 
 const defaultProps = {
 	iconCategory: 'utility',
 	dismissible: true,
 	isOpen: false,
-	texture: false
+	texture: false,
 };
 
 /**
@@ -96,6 +96,82 @@ class Notification extends React.Component {
 		}
 	}
 
+	onDismiss = () => {
+		if (this.timeout) {
+			clearTimeout(this.timeout);
+			this.timeout = null;
+		}
+
+		if (this.props.onDismiss) this.props.onDismiss();
+		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+			this.state.returnFocusTo.focus();
+		}
+	};
+
+	getClassName () {
+		return classNames(this.props.className, 'slds-notify', {
+			[`slds-notify--${this.props.variant}`]: this.props.variant,
+			[`slds-theme--${this.props.theme}`]: this.props.theme,
+			'slds-theme--alert-texture': this.props.texture,
+		});
+	}
+
+	/*
+	 * The parent container with role='alert' only announces its content if there is a change inside of it.
+	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
+	 * Bummer, I know.
+	 */
+	// eslint-disable-next-line class-methods-use-this
+	blankContent () {
+		return <div />;
+	}
+
+	renderAlertContent () {
+		return (
+			<h2 id="dialogTitle">
+				{this.renderIcon()}
+				{this.props.content}
+			</h2>
+		);
+	}
+
+	renderClose () {
+		if (this.props.dismissible) {
+			let size = null;
+			if (this.props.variant === 'toast') size = 'large';
+
+			// i18n
+			return (
+				<Button
+					assistiveText="Dismiss Notification"
+					iconCategory="utility"
+					iconName="close"
+					iconSize={size}
+					inverse
+					className="slds-notify__close"
+					onClick={this.onDismiss}
+					buttonRef={(dismissBtn) => {
+						this.dismissBtnRef = dismissBtn;
+					}}
+					variant="icon"
+				/>
+			);
+		}
+
+		return null;
+	}
+
+	renderContent () {
+		return (
+			<div>
+				<span className="slds-assistive-text">{this.props.theme}</span>
+				{this.renderClose()}
+				{this.props.variant === 'toast' ? this.renderToastContent() : null}
+				{this.props.variant === 'alert' ? this.renderAlertContent() : null}
+			</div>
+		);
+	}
+
 	renderIcon () {
 		if (this.props.iconName) {
 			let classes = '';
@@ -120,88 +196,16 @@ class Notification extends React.Component {
 		return null;
 	}
 
-	renderClose () {
-		if (this.props.dismissible) {
-			let size = null;
-			if (this.props.variant === 'toast') size = 'large';
-
-			// i18n
-			return (
-				<Button
-					assistiveText="Dismiss Notification"
-					iconName="close"
-					iconSize={size}
-					inverse
-					className="slds-notify__close"
-					onClick={this.onDismiss}
-					buttonRef={(dismissBtn) => { this.dismissBtnRef = dismissBtn; }}
-					variant="icon"
-				/>
-			);
-		}
-
-		return null;
-	}
-
-	onDismiss = () => {
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-			this.timeout = null;
-		}
-
-		if (this.props.onDismiss) this.props.onDismiss();
-		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
-			this.state.returnFocusTo.focus();
-		}
-	}
-
-	renderAlertContent () {
-		return (
-			<h2 id="dialogTitle">
-				{this.renderIcon()}
-				{this.props.content}
-			</h2>
-		);
-	}
-
 	renderToastContent () {
 		return (
 			<section className="notify__content slds-grid">
 				{this.renderIcon()}
 				<div className="slds-col slds-align-middle">
-					<h2 id="dialogTitle" className="slds-text-heading--small">{this.props.content}</h2>
+					<h2 id="dialogTitle" className="slds-text-heading--small">
+						{this.props.content}
+					</h2>
 				</div>
 			</section>
-		);
-	}
-
-	getClassName () {
-		return classNames(this.props.className, 'slds-notify', {
-			[`slds-notify--${this.props.variant}`]: this.props.variant,
-			[`slds-theme--${this.props.theme}`]: this.props.theme,
-			'slds-theme--alert-texture': this.props.texture
-		});
-	}
-
-	renderContent () {
-		return (
-			<div>
-				<span className="slds-assistive-text">{this.props.theme}</span>
-				{this.renderClose()}
-				{this.props.variant === 'toast' ? this.renderToastContent() : null}
-				{this.props.variant === 'alert' ? this.renderAlertContent() : null}
-			</div>
-		);
-	}
-
-	/*
-	 * The parent container with role='alert' only announces its content if there is a change inside of it.
-	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
-	 * Bummer, I know.
-	 */
-	blankContent () { // eslint-disable-line class-methods-use-this
-		return (
-			<div />
 		);
 	}
 
@@ -212,13 +216,21 @@ class Notification extends React.Component {
 		if (!this.props.isOpen) {
 			styles = { width: '0px' };
 		} else {
-			styles = this.props.variant === 'toast' ? { width: 'auto', left: '50%', transform: 'translateX(-50%)' } : { width: '100%' };
+			styles =
+				this.props.variant === 'toast'
+					? { width: 'auto', left: '50%', transform: 'translateX(-50%)' }
+					: { width: '100%' };
 		}
 
 		const alertStyles = !this.props.isOpen ? { display: 'none' } : null;
 		return (
 			<div className="slds-notify-container" style={styles}>
-				<div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle" style={alertStyles}>
+				<div
+					className={this.getClassName()}
+					role="alertdialog"
+					aria-labelledby="dialogTitle"
+					style={alertStyles}
+				>
 					{this.props.isOpen ? this.renderContent() : this.blankContent()}
 				</div>
 			</div>

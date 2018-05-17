@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role */
+
 // # TabItem Component
 
 // ## Dependencies
@@ -68,15 +70,12 @@ const Tab = createReactClass({
 		/**
 		 * The string or element that is shown as both the title and the label for this tab.
 		 */
-		children: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.element
-		]),
+		children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
 		/**
 		 * If the Tabs should be scopped, defaults to false
 		 */
-		variant: PropTypes.oneOf(['default', 'scoped'])
+		variant: PropTypes.oneOf(['default', 'scoped']),
 	},
 
 	getDefaultProps () {
@@ -85,7 +84,7 @@ const Tab = createReactClass({
 			selected: false,
 			activeTabClassName: 'slds-active',
 			disabledTabClassName: 'slds-disabled',
-			variant: 'default'
+			variant: 'default',
 		};
 	},
 
@@ -113,7 +112,7 @@ const Tab = createReactClass({
 			className,
 			children,
 			id,
-			variant
+			variant,
 		} = this.props;
 		let tabIndex;
 
@@ -127,18 +126,16 @@ const Tab = createReactClass({
 
 		return (
 			<li
-				className={classNames(
-					'slds-text-title--caps',
-					className,
-					{
-						[activeTabClassName]: selected,
-						[disabledTabClassName]: disabled,
-						'slds-tabs--default__item': variant === 'default',
-						'slds-tabs--scoped__item': variant === 'scoped'
-					}
-				)}
+				className={classNames('slds-text-title--caps', className, {
+					[activeTabClassName]: selected,
+					[disabledTabClassName]: disabled,
+					'slds-tabs--default__item': variant === 'default',
+					'slds-tabs--scoped__item': variant === 'scoped',
+				})}
 				role="tab"
-				ref={(node) => { this.node = node; }}
+				ref={(node) => {
+					this.node = node;
+				}}
 				aria-selected={selected ? 'true' : 'false'}
 				aria-disabled={disabled}
 				aria-controls={panelId}
@@ -147,14 +144,12 @@ const Tab = createReactClass({
 				title={typeof children === 'string' ? children : null}
 			>
 				<a
-					className={classNames(
-						{
-							[activeTabClassName]: selected,
-							[disabledTabClassName]: disabled,
-							'slds-tabs--default__link': variant === 'default',
-							'slds-tabs--scoped__link': variant === 'scoped'
-						}
-					)}
+					className={classNames({
+						[activeTabClassName]: selected,
+						[disabledTabClassName]: disabled,
+						'slds-tabs--default__link': variant === 'default',
+						'slds-tabs--scoped__link': variant === 'scoped',
+					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="presentation"
 					tabIndex="-1"
@@ -164,7 +159,7 @@ const Tab = createReactClass({
 				</a>
 			</li>
 		);
-	}
+	},
 });
 
 export default Tab;

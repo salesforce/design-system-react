@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # Assistive Technology / Keyboard Navigable Trait for Dialogs with Tabbable content
 
 /*
@@ -24,12 +23,11 @@ import ReactDOM from 'react-dom';
 // ### Event Helpers
 import KEYS from './key-code';
 
-const internalHandleClick = ({
-				trigger,
-				eventTarget,
-				handleClick
-			}) => {
-	if (trigger &&	ReactDOM.findDOMNode(trigger) === eventTarget) { // eslint-disable-line react/no-find-dom-node
+/* eslint-disable react/no-find-dom-node */
+
+const internalHandleClick = ({ trigger, eventTarget, handleClick }) => {
+	if (trigger && ReactDOM.findDOMNode(trigger) === eventTarget) {
+		// eslint-disable-line react/no-find-dom-node
 		handleClick(event);
 	}
 };
@@ -40,8 +38,8 @@ const KeyboardNavigableDialog = ({
 	keyCode,
 	eventTarget,
 	trigger,
-	toggleOpen
-	}) => {
+	toggleOpen,
+}) => {
 	switch (keyCode) {
 		case KEYS.ESCAPE:
 			if (isOpen) {
@@ -53,7 +51,7 @@ const KeyboardNavigableDialog = ({
 				internalHandleClick({
 					trigger,
 					eventTarget,
-					handleClick
+					handleClick,
 				});
 			}
 			break;

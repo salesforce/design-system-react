@@ -19,14 +19,17 @@ import SLDS_ICONS_STANDARD from '../../../icons/standard';
 /*
  * If inline icons are present and icon bundle imports are not just an empty object, then inline icons will be used instead of external icons that require HTTP access.
  */
-const UtilityIcon = ({
-	name = '',
-	assistiveText, // eslint-disable-line no-unused-vars
-	category,
-	icon,
-	path,
-	...rest
-}, context) => {
+const UtilityIcon = (
+	{
+		name = '',
+		assistiveText, // eslint-disable-line no-unused-vars
+		category,
+		icon,
+		path,
+		...rest
+	},
+	context
+) => {
 	checkProps('UtilityIcon', { name, category, path, context });
 
 	const inlineIcons = {
@@ -34,52 +37,79 @@ const UtilityIcon = ({
 		custom: SLDS_ICONS_CUSTOM,
 		doctype: SLDS_ICONS_DOCTYPE,
 		standard: SLDS_ICONS_STANDARD,
-		utility: SLDS_ICONS_UTILITY
+		utility: SLDS_ICONS_UTILITY,
 	};
 	let inlineData;
 
 	if (icon) {
+		// Use SVG data passed in with `icon` prop
 		inlineData = icon;
 	} else if (Object.keys(inlineIcons[category]).length) {
+		// Use inline icon data if it exists. ENV variables will have to set to allow this.
 		inlineData = inlineIcons[category][name.toLowerCase()];
 		inlineData.viewBox = inlineIcons[category].viewBox;
 	}
 
-	// Use inline icons if the icon object is present, otherwise use external URLs for icons.
-	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
+	let modifiedPath;
 
-	return inlineData
-		? (<Svg data={inlineData} name={name} {...rest} />)
-		: (<svg {...rest}>
+	if (path) {
+		// Use `path` prop of Icon if present
+		modifiedPath = path;
+	} else if (context[`${category}Sprite`]) {
+		// Use category sprite file from IconSettings if present
+		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
+	} else {
+		// Otherwise, use external URLs for icons
+		modifiedPath =
+			context.iconPath &&
+			`${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
+	}
+
+	return inlineData ? (
+		<Svg data={inlineData} name={name} {...rest} />
+	) : (
+		<svg {...rest}>
 			<use xlinkHref={modifiedPath} />
-		</svg>);
+		</svg>
+	);
 };
 
 UtilityIcon.displayName = 'UtilityIcon';
 
 UtilityIcon.propTypes = {
 	assistiveText: PropTypes.string,
-	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	category: PropTypes.oneOf([
+		'action',
+		'custom',
+		'doctype',
+		'standard',
+		'utility',
+	]),
 	/**
-   * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
-   */
+	 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
+	 */
 	icon: PropTypes.object,
 	/**
-   * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-   */
+	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
 	name: PropTypes.string,
 	/**
-   * Path to the icon. This will override any global icon settings.
-   */
-	path: PropTypes.string
+	 * Path to the icon. This will override any global icon settings.
+	 */
+	path: PropTypes.string,
 };
 
 UtilityIcon.defaultProps = {
-	category: 'utility'
+	category: 'utility',
 };
 
 UtilityIcon.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string,
 };
 
 export default UtilityIcon;

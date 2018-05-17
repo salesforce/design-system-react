@@ -1,7 +1,5 @@
-
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-
 
 // # Picklist Component
 
@@ -12,10 +10,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-
-// This component's `checkProps` which issues warnings to developers about properties
-// when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -28,14 +22,16 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### Children
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
 import Pill from '../utilities/pill';
-
-import { shape } from 'airbnb-prop-types';
 
 // ### Traits
 
@@ -55,8 +51,6 @@ const MenuPicklist = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_PICKLIST,
-
-	mixins: [KeyboardNavigable],
 
 	// ### Prop Types
 	propTypes: {
@@ -91,8 +85,8 @@ const MenuPicklist = createReactClass({
 		 * This object is merged with the default props object on every render.
 		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
 		 */
-		labels: shape({
-			multipleOptionsSelected: PropTypes.string
+		labels: PropTypes.shape({
+			multipleOptionsSelected: PropTypes.string,
 		}),
 		/**
 		 * Custom element that overrides the default Menu Item component.
@@ -129,8 +123,14 @@ const MenuPicklist = createReactClass({
 		/**
 		 * Current selected item.
 		 */
-		value: PropTypes.node
+		value: PropTypes.node,
+		/**
+		 * Initial selected item index.
+		 */
+		initValueIndex: PropTypes.number,
 	},
+
+	mixins: [KeyboardNavigable],
 
 	getDefaultProps () {
 		return {
@@ -138,18 +138,18 @@ const MenuPicklist = createReactClass({
 			placeholder: 'Select an Option',
 			checkmark: true,
 			labels: {
-				multipleOptionsSelected: 'Multiple Options Selected'
+				multipleOptionsSelected: 'Multiple Options Selected',
 			},
-			menuPosition: 'absolute'
+			menuPosition: 'absolute',
 		};
 	},
 
 	getInitialState () {
 		return {
-			focusedIndex: -1,
-			selectedIndex: -1,
+			focusedIndex: this.props.initValueIndex ? this.props.initValueIndex : -1,
+			selectedIndex: this.props.initValueIndex ? this.props.initValueIndex : -1,
 			selectedIndices: [],
-			currentPillLabel: ''
+			currentPillLabel: '',
 		};
 	},
 
@@ -162,11 +162,13 @@ const MenuPicklist = createReactClass({
 			this.generatedErrorId = shortid.generate();
 		}
 
-		window.addEventListener('click', this.closeOnClick, false);
+		if (typeof window !== 'undefined') {
+			window.addEventListener('click', this.closeOnClick, false);
+		}
 
 		if (!this.props.multiple) {
 			this.setState({
-				selectedIndex: this.getIndexByValue(this.props)
+				selectedIndex: this.getIndexByValue(this.props),
 			});
 		} else {
 			const currentSelectedIndex = this.getIndexByValue(this.props);
@@ -175,23 +177,28 @@ const MenuPicklist = createReactClass({
 				currentIndices.push(currentSelectedIndex);
 			}
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		}
 	},
 
 	componentWillReceiveProps (nextProps) {
-		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
+		if (
+			this.props.value !== nextProps.value ||
+			this.props.options.length !== nextProps.length
+		) {
 			if (this.props.multiple !== true) {
 				this.setState({
-					selectedIndex: this.getIndexByValue(nextProps)
+					selectedIndex: this.getIndexByValue(nextProps),
 				});
 			} else {
 				const currentSelectedIndex = this.getIndexByValue(nextProps);
 				if (currentSelectedIndex !== -1) {
-					const currentIndices = this.state.selectedIndices.concat(currentSelectedIndex);
+					const currentIndices = this.state.selectedIndices.concat(
+						currentSelectedIndex
+					);
 					this.setState({
-						selectedIndices: currentIndices
+						selectedIndices: currentIndices,
 					});
 				}
 			}
@@ -237,7 +244,15 @@ const MenuPicklist = createReactClass({
 	},
 
 	getListItemRenderer () {
-		return this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
+		return this.props.listItemRenderer
+			? this.props.listItemRenderer
+			: ListItemLabel;
+	},
+
+	setFocus () {
+		if (!this.isUnmounting && this.button) {
+			this.button.focus();
+		}
 	},
 
 	handleSelect (index) {
@@ -257,7 +272,7 @@ const MenuPicklist = createReactClass({
 			}
 
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		}
 
@@ -295,24 +310,23 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	setFocus () {
-		if (!this.isUnmounting && this.button) {
-			this.button.focus();
-		}
-	},
-
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
+			if (
+				event.keyCode === KEYS.ENTER ||
 				event.keyCode === KEYS.SPACE ||
 				event.keyCode === KEYS.DOWN ||
-				event.keyCode === KEYS.UP) {
+				event.keyCode === KEYS.UP
+			) {
 				EventUtil.trap(event);
 			}
 
 			if (event.keyCode !== KEYS.TAB) {
 				// The outer div with onKeyDown is overriding button onClick so we need to add it here.
-				const openMenuKeys = event.keyCode === KEYS.ENTER || event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP;
+				const openMenuKeys =
+					event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.DOWN ||
+					event.keyCode === KEYS.UP;
 				const isTrigger = event.target.tagName === 'BUTTON';
 				if (openMenuKeys && isTrigger && this.props.onClick) {
 					this.props.onClick(event);
@@ -322,7 +336,7 @@ const MenuPicklist = createReactClass({
 					isOpen: this.state.isOpen || false,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
-					toggleOpen: this.toggleOpen
+					toggleOpen: this.toggleOpen,
 				});
 			} else {
 				this.handleCancel();
@@ -356,7 +370,9 @@ const MenuPicklist = createReactClass({
 
 		this.listItems[index] = listItem;
 
-		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
+		if (index === this.state.focusedIndex) {
+			this.handleKeyboardFocus(this.state.focusedIndex);
+		}
 	},
 
 	// Trigger opens, closes, and recieves focus on close
@@ -382,35 +398,36 @@ const MenuPicklist = createReactClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={!this.props.multiple ? this.state.selectedIndex : undefined}
-				selectedIndices={this.props.multiple ? this.state.selectedIndices : undefined}
+				selectedIndex={
+					!this.props.multiple ? this.state.selectedIndex : undefined
+				}
+				selectedIndices={
+					this.props.multiple ? this.state.selectedIndices : undefined
+				}
 				triggerId={this.getId()}
 			/>
 		);
 	},
 
 	renderInlineMenu () {
-		return (
-			!this.props.disabled && this.state.isOpen
-			? <div
+		return !this.props.disabled && this.state.isOpen ? (
+			<div
 				className="slds-dropdown slds-dropdown--left"
 				// inline style override
 				style={{
 					maxHeight: '20em',
 					overflowX: 'hidden',
-					minWidth: '100%'
+					minWidth: '100%',
 				}}
 			>
 				{this.renderMenuContent()}
 			</div>
-			: null
-		);
+		) : null;
 	},
 
 	renderDialog () {
-		return (
-			!this.props.disabled && this.state.isOpen
-			? <Dialog
+		return !this.props.disabled && this.state.isOpen ? (
+			<Dialog
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				contentsClassName="slds-dropdown slds-dropdown--left"
@@ -419,13 +436,12 @@ const MenuPicklist = createReactClass({
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
 				onRequestTargetElement={() => this.button}
-				inheritTargetWidth={this.props.inheritTargetWidth}
+				inheritWidthOf={this.props.inheritTargetWidth ? 'target' : 'none'}
 				position={this.props.menuPosition}
 			>
 				{this.renderMenuContent()}
 			</Dialog>
-			: null
-		);
+		) : null;
 	},
 
 	renderTrigger () {
@@ -441,14 +457,15 @@ const MenuPicklist = createReactClass({
 		let inputValue;
 		if (this.props.multiple && this.state.selectedIndices.length === 0) {
 			inputValue = this.props.placeholder;
-		}	else if (this.props.multiple && this.state.selectedIndices.length === 1) {
+		} else if (this.props.multiple && this.state.selectedIndices.length === 1) {
 			const option = this.props.options[this.state.selectedIndices];
 			inputValue = option.label;
 		} else if (this.props.multiple && this.state.selectedIndices.length > 1) {
 			inputValue = this.props.labels.multipleOptionsSelected;
 		} else {
 			const option = this.props.options[this.state.selectedIndex];
-			inputValue = (option && option.label) ? option.label : this.props.placeholder;
+			inputValue =
+				option && option.label ? option.label : this.props.placeholder;
 		}
 
 		// TODO: make use of <Button>
@@ -456,10 +473,10 @@ const MenuPicklist = createReactClass({
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div
 				className={classNames(
-						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
-						{ 'slds-is-open': this.state.isOpen },
-						this.props.className
-					)}
+					'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+					{ 'slds-is-open': this.state.isOpen },
+					this.props.className
+				)}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.handleMouseDown}
 			>
@@ -495,7 +512,7 @@ const MenuPicklist = createReactClass({
 					<Pill
 						eventData={{
 							item: this.props.options[selectedPill],
-							index: selectedPill
+							index: selectedPill,
 						}}
 						events={{
 							onRequestRemove: (event, data) => {
@@ -506,12 +523,15 @@ const MenuPicklist = createReactClass({
 
 								if (this.props.onPillRemove) {
 									const option = this.getValueByIndex(index);
-									this.props.onPillRemove(option, { option, optionIndex: index });
+									this.props.onPillRemove(option, {
+										option,
+										optionIndex: index,
+									});
 								}
-							}
+							},
 						}}
 						labels={{
-							label: pillLabel
+							label: pillLabel,
 						}}
 					/>
 				</li>
@@ -535,42 +555,47 @@ const MenuPicklist = createReactClass({
 	},
 
 	render () {
-		const {
-			className,
-			errorText,
-			label,
-			required
-		} = this.props;
+		const { className, errorText, label, required } = this.props;
 
-		const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
+		const requiredElem = required ? (
+			<span style={{ color: 'red' }}>* </span>
+		) : null;
 
 		return (
 			<div
-				className={classNames('slds-form-element', {
-					'slds-has-error': errorText
-				},
-				className)}
+				className={classNames(
+					'slds-form-element',
+					{
+						'slds-has-error': errorText,
+					},
+					className
+				)}
 			>
-				{this.props.label
-					? <label
+				{this.props.label ? (
+					<label
 						className="slds-form-element__label"
 						htmlFor={this.getId()}
 						// inline style override
 						style={{ width: '100%' }}
 					>
-						{requiredElem}{label}
+						{requiredElem}
+						{label}
 					</label>
-				: null}
+				) : null}
 				{this.renderTrigger()}
 				{this.renderPills()}
-				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
+				{errorText && (
+					<div id={this.getErrorId()} className="slds-form-element__help">
+						{errorText}
+					</div>
+				)}
 			</div>
 		);
-	}
+	},
 });
 
 MenuPicklist.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default MenuPicklist;

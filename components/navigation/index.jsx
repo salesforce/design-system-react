@@ -38,7 +38,11 @@ const Navigation = createReactClass({
 		/**
 		 * CSS class names to be added to the container element. _Tested with snapshot testing._
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
 		/**
 		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._
 		 */
@@ -54,12 +58,12 @@ const Navigation = createReactClass({
 		/**
 		 * Determines component style. _Tested with snapshot testing._
 		 */
-		variant: PropTypes.oneOf(['default', 'shade'])
+		variant: PropTypes.oneOf(['default', 'shade']),
 	},
 
 	getDefaultProps () {
 		return {
-			variant: 'default'
+			variant: 'default',
 		};
 	},
 
@@ -80,7 +84,11 @@ const Navigation = createReactClass({
 		let selectedId;
 		if (this.props.selectedId) {
 			selectedId = this.props.selectedId;
-		} else if (categories.length > 0 && categories[0].items && categories[0].items.length > 0) {
+		} else if (
+			categories.length > 0 &&
+			categories[0].items &&
+			categories[0].items.length > 0
+		) {
 			selectedId = categories[0].items[0].id;
 		}
 		return selectedId;
@@ -95,8 +103,9 @@ const Navigation = createReactClass({
 				className={classNames(
 					'slds-grid',
 					'slds-grid--vertical',
-					'slds-navigation-list--vertical', {
-						'slds-navigation-list--vertical-inverse': variant === 'shade'
+					'slds-navigation-list--vertical',
+					{
+						'slds-navigation-list--vertical-inverse': variant === 'shade',
 					},
 					this.props.className
 				)}
@@ -122,12 +131,12 @@ const Navigation = createReactClass({
 									onSelect={this.props.onSelect}
 								/>
 							))}
-						</ul>
+						</ul>,
 					];
 				})}
 			</div>
 		);
-	}
+	},
 });
 
 export default Navigation;

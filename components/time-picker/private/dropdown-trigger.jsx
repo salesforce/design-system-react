@@ -20,8 +20,8 @@ import KEYS from '../../../utilities/key-code';
 import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';
 
 /**
-*  Component description.
-*/
+ *  Component description.
+ */
 const TimepickerDropdownTrigger = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
@@ -31,12 +31,12 @@ const TimepickerDropdownTrigger = createReactClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		* Icon for right side of trigger
-		*/
+		 * Icon for right side of trigger
+		 */
 		iconRight: PropTypes.node,
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering input.
-		*/
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering input.
+		 */
 		id: PropTypes.string,
 		/**
 		 * This label appears above the input.
@@ -73,7 +73,20 @@ const TimepickerDropdownTrigger = createReactClass({
 		/**
 		 * Date
 		 */
-		value: PropTypes.string
+		value: PropTypes.string,
+	},
+
+	handleKeyDown (event) {
+		if (this.props.onKeyDown && event.keyCode) {
+			if (
+				event.keyCode === KEYS.ENTER ||
+				event.keyCode === KEYS.DOWN ||
+				event.keyCode === KEYS.UP ||
+				event.keyCode === KEYS.ESCAPE
+			) {
+				this.props.onKeyDown(event);
+			}
+		}
 	},
 
 	// ### Render
@@ -104,17 +117,6 @@ const TimepickerDropdownTrigger = createReactClass({
 			</div>
 		);
 	},
-
-	handleKeyDown (event) {
-		if (this.props.onKeyDown && event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.DOWN ||
-					event.keyCode === KEYS.UP ||
-					event.keyCode === KEYS.ESCAPE) {
-				this.props.onKeyDown(event);
-			}
-		}
-	}
 });
 
 export default TimepickerDropdownTrigger;

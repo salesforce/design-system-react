@@ -16,7 +16,11 @@ import find from 'lodash.find';
 import Checkbox from '../../forms/checkbox';
 
 // ## Constants
-import { DATA_TABLE_ROW, DATA_TABLE_ROW_ACTIONS, DATA_TABLE_CELL } from '../../../utilities/constants';
+import {
+	DATA_TABLE_ROW,
+	DATA_TABLE_ROW_ACTIONS,
+	DATA_TABLE_CELL,
+} from '../../../utilities/constants';
 
 /**
  * Used internally, provides row rendering to the DataTable.
@@ -36,7 +40,7 @@ const DataTableRow = createReactClass({
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
-				props: PropTypes.object
+				props: PropTypes.object,
 			})
 		),
 		/**
@@ -47,7 +51,15 @@ const DataTableRow = createReactClass({
 		item: PropTypes.object.isRequired,
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
-		selection: PropTypes.array
+		selection: PropTypes.array,
+	},
+
+	isSelected () {
+		return !!find(this.props.selection, this.props.item);
+	},
+
+	handleToggle (selected, e) {
+		return this.props.onToggle(this.props.item, selected, e);
 	},
 
 	// ### Render
@@ -59,7 +71,7 @@ const DataTableRow = createReactClass({
 			<tr
 				className={classNames({
 					'slds-hint-parent': this.props.rowActions,
-					'slds-is-selected': this.props.canSelectRows && isSelected
+					'slds-is-selected': this.props.canSelectRows && isSelected,
 				})}
 			>
 				{this.props.canSelectRows ? (
@@ -80,7 +92,9 @@ const DataTableRow = createReactClass({
 				) : null}
 				{this.props.columns.map((column) => {
 					const Cell = column.Cell;
-					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
+					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${
+						column.props.property
+					}`;
 
 					return (
 						<Cell
@@ -97,23 +111,15 @@ const DataTableRow = createReactClass({
 						</Cell>
 					);
 				})}
-				{this.props.rowActions ?
-					React.cloneElement(this.props.rowActions, {
+				{this.props.rowActions
+					? React.cloneElement(this.props.rowActions, {
 						id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
-						item: this.props.item
-					}) : null
-				}
+						item: this.props.item,
+					})
+					: null}
 			</tr>
 		);
 	},
-
-	isSelected () {
-		return !!find(this.props.selection, this.props.item);
-	},
-
-	handleToggle (selected, e) {
-		return this.props.onToggle(this.props.item, selected, e);
-	}
 });
 
 export default DataTableRow;

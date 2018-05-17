@@ -10,8 +10,6 @@ function textContentArray (child) {
 		text.push(textContentArray(children));
 	}
 
-	console.log(text);
-
 	return text;
 }
 

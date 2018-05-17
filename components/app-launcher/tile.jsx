@@ -1,28 +1,19 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # App Launcher Component
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
-// ## Dependencies
-
-// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// ### classNames
+import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
-// ### Truncate
 import Truncate from '../utilities/truncate';
-
-// ### isFunction
-import isFunction from 'lodash.isfunction';
 
 // ## Children
 import Highlighter from '../utilities/highlighter';
 import PopoverTooltip from '../popover-tooltip';
 
-// ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
 const handleClick = (event, href, onClick) => {
@@ -39,70 +30,85 @@ const AppLauncherTile = (props) => {
 	return (
 		<a
 			href={props.href} // eslint-disable-line no-script-url
-			onClick={isFunction(props.onClick) ? (event) => handleClick(event, props.href, props.onClick) : null}
-			className={
-				classNames(
-					'slds-app-launcher__tile slds-text-link--reset',
-					{ 'slds-app-launcher__tile--small': smallTile },
-					props.className
-				)
+			onClick={
+				isFunction(props.onClick)
+					? (event) => handleClick(event, props.href, props.onClick)
+					: null
 			}
+			className={classNames(
+				'slds-app-launcher__tile slds-text-link--reset',
+				{ 'slds-app-launcher__tile--small': smallTile },
+				props.className
+			)}
 		>
 			<div
-				className={classNames(
-					'slds-app-launcher__tile-figure',
-					{ 'slds-app-launcher__tile-figure--small': smallTile })}
+				className={classNames('slds-app-launcher__tile-figure', {
+					'slds-app-launcher__tile-figure--small': smallTile,
+				})}
 			>
-				{
-					props.iconNode
-					|| <span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">
+				{props.iconNode || (
+					<span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">
 						{props.iconText}
 					</span>
-				}
+				)}
 			</div>
-			{
-				smallTile
-				? <div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
+			{smallTile ? (
+				<div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
 					<p className="slds-truncate">
-						<Highlighter className="slds-text-link" search={props.search}>{props.title}</Highlighter>
+						<Highlighter className="slds-text-link" search={props.search}>
+							{props.title}
+						</Highlighter>
 					</p>
 				</div>
-				: <div className="slds-app-launcher__tile-body">
-					<Highlighter className="slds-text-link" search={props.search}>{props.title}</Highlighter>
+			) : (
+				<div className="slds-app-launcher__tile-body">
+					<Highlighter className="slds-text-link" search={props.search}>
+						{props.title}
+					</Highlighter>
 					<Truncate
 						line={2}
-						prefix={props.descriptionHeading && props.descriptionHeading.toUpperCase()}
+						prefix={
+							props.descriptionHeading && props.descriptionHeading.toUpperCase()
+						}
 						suffix={props.moreLabel}
 						text={props.description}
 						textTruncateChild={
 							<PopoverTooltip
 								align="bottom"
-								content={<Highlighter
-									search={props.search}
-								>{props.description}</Highlighter>
-							}
+								content={
+									<Highlighter search={props.search}>
+										{props.description}
+									</Highlighter>
+								}
+								isOpen={props.isOpenTooltip}
 							>
-								<span className="slds-app-launcher__tile-more slds-text-link" tabIndex="0">{props.moreLabel}</span>
+								<span
+									className="slds-app-launcher__tile-more slds-text-link"
+									tabIndex="0"
+								>
+									{props.moreLabel}
+								</span>
 							</PopoverTooltip>
 						}
-						wrapper={(text, textTruncateChild) =>
-							(<div>
-								{props.descriptionHeading
+						wrapper={(text, textTruncateChild) => (
+							<div>
+								{props.descriptionHeading && (
 									// inline style override
-									&& <span
+									<span
 										className="slds-text-heading--label"
 										style={{ letterSpacing: '0.025rem' }}
-									>{props.descriptionHeading}{' '}</span>}
-								<Highlighter search={props.search}>
-									{text}
-								</Highlighter>
+									>
+										{props.descriptionHeading}{' '}
+									</span>
+								)}
+								<Highlighter search={props.search}>{text}</Highlighter>
 								{textTruncateChild && ' '}
 								{textTruncateChild}
-							</div>)
-						}
+							</div>
+						)}
 					/>
 				</div>
-			}
+			)}
 		</a>
 	);
 };
@@ -114,7 +120,7 @@ AppLauncherTile.displayName = APP_LAUNCHER_TILE;
 AppLauncherTile.defaultProps = {
 	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 	size: 'default',
-	moreLabel: ' More'
+	moreLabel: ' More',
 };
 
 // ### Prop Types
@@ -140,13 +146,21 @@ AppLauncherTile.propTypes = {
 	 */
 	href: PropTypes.string,
 	/**
+	 * Open the More Tooltip
+	 */
+	isOpenTooltip: PropTypes.bool,
+	/**
 	 * The localized text for the "More information" tooltip.
 	 */
 	moreLabel: PropTypes.string,
 	/**
 	 * Class names to be added to the tile.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Function that will be executed when clicking on a tile
 	 */
@@ -162,7 +176,7 @@ AppLauncherTile.propTypes = {
 	/**
 	 * Text used to highlight content in app tiles
 	 */
-	search: PropTypes.string
+	search: PropTypes.string,
 	// TODO: allow for passing iconBackgroundColor
 	// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
 };

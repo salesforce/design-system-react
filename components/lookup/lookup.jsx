@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/role-has-required-aria-props */
+
 // # Lookup Component
 
 // Implements the [Lookup design pattern](https://latest-204.lightningdesignsystem.com/components/lookups) in React.
@@ -15,6 +17,7 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
+import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -32,7 +35,6 @@ import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import Menu from './menu';
-import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
 
@@ -41,7 +43,10 @@ import { LOOKUP } from '../../utilities/constants';
  */
 const defaultFilter = (term, item) => {
 	if (!term) return true;
-	return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
+	return (
+		(item.data && item.data.type === 'section') ||
+		item.label.match(new RegExp(escapeRegExp(term), 'ig'))
+	);
 };
 
 /**
@@ -63,7 +68,11 @@ const Lookup = createReactClass({
 		/**
 		 * Class names to be added to the tag classed with `slds-lookup`.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
 		/**
 		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
 		 */
@@ -72,6 +81,13 @@ const Lookup = createReactClass({
 		 * ID for aria-describedby (e.g. for an error message or a description)
 		 */
 		describedById: PropTypes.string,
+		/**
+		 * Please select one of the following:
+		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+		 */
+		menuPosition: PropTypes.string,
 		/**
 		 * This prop is passed onto the `input`. Prevents dropdown menu from opening. Also applies disabled styling to input.
 		 */
@@ -111,10 +127,7 @@ const Lookup = createReactClass({
 		/**
 		 * Determines whether the input's icon will display that icon on the left or the right.
 		 */
-		iconPosition: PropTypes.oneOf([
-			'left',
-			'right'
-		]),
+		iconPosition: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
@@ -186,8 +199,7 @@ const Lookup = createReactClass({
 		/**
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
-		selectedItem: PropTypes.number
-
+		selectedItem: PropTypes.number,
 	},
 
 	getDefaultProps () {
@@ -195,7 +207,8 @@ const Lookup = createReactClass({
 			constrainToScrollParent: true,
 			filterWith: defaultFilter,
 			iconPosition: 'right',
-			searchTerm: ''
+			searchTerm: '',
+			menuPosition: 'absolute',
 		};
 	},
 
@@ -206,29 +219,8 @@ const Lookup = createReactClass({
 			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-			selectedIndex: this.props.selectedItem
+			selectedIndex: this.props.selectedItem,
 		};
-	},
-
-	componentDidUpdate (prevProps, prevState) {
-		if (!isNaN(parseInt(prevState.selectedIndex, 10)) && isNaN(parseInt(this.state.selectedIndex, 10))) {
-			if (this.input) {
-				this.input.focus();
-			}
-		} else if (isNaN(parseInt(prevState.selectedIndex, 10)) && !isNaN(parseInt(this.state.selectedIndex, 10))) {
-			if (this.pills[this.state.selectedIndex]) {
-				this.pills[this.state.selectedIndex].focus();
-			}
-		}
-	},
-
-	componentWillReceiveProps (newProps) {
-		if (newProps.options) {
-			this.modifyItems(newProps.options);
-		}
-		if (newProps.selectedItem !== this.props.selectedItem || !isEqual(newProps.options, this.props.options)) {
-			this.setState({ selectedIndex: newProps.selectedItem });
-		}
 	},
 
 	componentWillMount () {
@@ -243,14 +235,41 @@ const Lookup = createReactClass({
 		this.modifyItems(this.props.options);
 	},
 
-	modifyItems (itemsToModify) {
-		const items = itemsToModify.map((item, index) => ({
-			id: `item-${index}`,
-			label: item.label,
-			data: item
-		}));
+	componentWillReceiveProps (newProps) {
+		if (newProps.options) {
+			this.modifyItems(newProps.options);
+		}
+		if (
+			newProps.selectedItem !== this.props.selectedItem ||
+			!isEqual(newProps.options, this.props.options)
+		) {
+			this.setState({ selectedIndex: newProps.selectedItem });
+		}
+	},
 
-		this.setState({ items });
+	componentDidUpdate (prevProps, prevState) {
+		if (
+			!isNaN(parseInt(prevState.selectedIndex, 10)) &&
+			isNaN(parseInt(this.state.selectedIndex, 10))
+		) {
+			if (this.input) {
+				this.input.focus();
+			}
+		} else if (
+			isNaN(parseInt(prevState.selectedIndex, 10)) &&
+			!isNaN(parseInt(this.state.selectedIndex, 10))
+		) {
+			if (this.pills[this.state.selectedIndex]) {
+				this.pills[this.state.selectedIndex].focus();
+			}
+		}
+	},
+
+	getClassName () {
+		return classNames(this.props.className, 'slds-form-element slds-lookup', {
+			'slds-has-selection': this.isSelected(),
+			'slds-is-open': this.getIsOpen(),
+		});
 	},
 
 	setFirstIndex () {
@@ -262,37 +281,48 @@ const Lookup = createReactClass({
 		}
 
 		if (filteredItem && filteredItem.data.type === 'section') {
-			nextFocusIndex++;
+			nextFocusIndex += 1;
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
 	},
 
-	// =================================================
-	// Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
-	// Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
-	increaseIndex () {
-		const numFocusable = this.getNumFocusableItems();
-		let nextFocusIndex = this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
-		const filteredItem = this.menuComponent.getFilteredItemForIndex(nextFocusIndex);
+	getHeader () {
+		const Header = this.props.headerRenderer;
+		const headerActive = this.state.focusIndex === 0;
 
-		if (filteredItem && filteredItem.data.type === 'section') {
-			nextFocusIndex++;
-		}
-
-		this.setState({ focusIndex: nextFocusIndex });
+		return (
+			<Header
+				ref={(header) => {
+					this.headerComponent = header;
+				}}
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={headerActive}
+				onClose={this.handleClose}
+				searchTerm={this.state.searchTerm}
+				setFocus={this.setFocus}
+			/>
+		);
 	},
 
-	decreaseIndex () {
+	getFooter () {
+		const Footer = this.props.footerRenderer;
 		const numFocusable = this.getNumFocusableItems();
-		let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
-		const filteredItem = this.menuComponent.getFilteredItemForIndex(prevFocusIndex);
+		const footerActive = this.state.focusIndex === numFocusable;
 
-		if (filteredItem && filteredItem.data.type === 'section') {
-			prevFocusIndex = prevFocusIndex === 0 ? numFocusable : prevFocusIndex - 1;
-		}
-
-		this.setState({ focusIndex: prevFocusIndex });
+		return (
+			<Footer
+				ref={(footer) => {
+					this.footerComponent = footer;
+				}}
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={footerActive}
+				onClose={this.handleClose}
+				setFocus={this.setFocus}
+			/>
+		);
 	},
 
 	setFocus (id) {
@@ -300,7 +330,9 @@ const Lookup = createReactClass({
 	},
 
 	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		return !!(isBoolean(this.props.isOpen)
+			? this.props.isOpen
+			: this.state.isOpen);
 	},
 
 	getListLength (qty) {
@@ -320,7 +352,40 @@ const Lookup = createReactClass({
 			offset += 1;
 		}
 
-		return (this.state.listLength - 1) + offset;
+		return this.state.listLength - 1 + offset;
+	},
+
+	// =================================================
+	// Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
+	// Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
+	increaseIndex () {
+		const numFocusable = this.getNumFocusableItems();
+		let nextFocusIndex =
+			this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
+		const filteredItem = this.menuComponent.getFilteredItemForIndex(
+			nextFocusIndex
+		);
+
+		if (filteredItem && filteredItem.data.type === 'section') {
+			nextFocusIndex += 1;
+		}
+
+		this.setState({ focusIndex: nextFocusIndex });
+	},
+
+	decreaseIndex () {
+		const numFocusable = this.getNumFocusableItems();
+		let prevFocusIndex =
+			this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
+		const filteredItem = this.menuComponent.getFilteredItemForIndex(
+			prevFocusIndex
+		);
+
+		if (filteredItem && filteredItem.data.type === 'section') {
+			prevFocusIndex = prevFocusIndex === 0 ? numFocusable : prevFocusIndex - 1;
+		}
+
+		this.setState({ focusIndex: prevFocusIndex });
 	},
 
 	// =================================================
@@ -340,7 +405,7 @@ const Lookup = createReactClass({
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
-				searchTerm: ''
+				searchTerm: '',
 			});
 			const data = this.state.items[index].data;
 			if (this.props.onSelect) {
@@ -355,7 +420,7 @@ const Lookup = createReactClass({
 		}
 		this.setState({
 			selectedIndex: null,
-			isOpen: true
+			isOpen: true,
 		});
 
 		this.focusInput();
@@ -374,7 +439,7 @@ const Lookup = createReactClass({
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
-			currentFocus: null
+			currentFocus: null,
 		});
 	},
 
@@ -433,7 +498,9 @@ const Lookup = createReactClass({
 				this.handleEscape(event);
 			} else if (event.keyCode === KEYS.TAB) {
 				// remove the focus on input, tab focus shoud move to next tabbale elemnt
-				setTimeout(() => { this.handleClose(); }, 200);
+				setTimeout(() => {
+					this.handleClose();
+				}, 200);
 				this.handleBlur(event);
 			} else {
 				this.handleClick();
@@ -456,13 +523,19 @@ const Lookup = createReactClass({
 				} else {
 					this.decreaseIndex();
 				}
-			} else if ((event.keyCode === KEYS.ENTER) && this.state.focusIndex !== null) {
+			} else if (
+				event.keyCode === KEYS.ENTER &&
+				this.state.focusIndex !== null
+			) {
 				// If user hits enter, select current activedescendant item
 				EventUtil.trapImmediate(event);
 				// If the focus is on the first fixed Action Item in Menu, click it
 				if (this.headerComponent && this.state.focusIndex === 0) {
 					this.headerComponent.handleClick();
-				} else if (this.footerComponent && this.state.focusIndex === (this.state.listLength + 1)) {
+				} else if (
+					this.footerComponent &&
+					this.state.focusIndex === this.state.listLength + 1
+				) {
 					// If the focus is on the last fixed Action Item in Menu, click it
 					this.footerComponent.handleClick();
 				} else {
@@ -482,42 +555,33 @@ const Lookup = createReactClass({
 		}
 	},
 
-	getHeader () {
-		const Header = this.props.headerRenderer;
-		const headerActive = this.state.focusIndex === 0;
-
-		return (
-			<Header
-				ref={(header) => { this.headerComponent = header; }}
-				{...this.props}
-				focusIndex={this.state.focusIndex}
-				isActive={headerActive}
-				onClose={this.handleClose}
-				searchTerm={this.state.searchTerm}
-				setFocus={this.setFocus}
-			/>
-		);
-	},
-
-	getFooter () {
-		const Footer = this.props.footerRenderer;
-		const numFocusable = this.getNumFocusableItems();
-		const footerActive = this.state.focusIndex === numFocusable;
-
-		return (
-			<Footer
-				ref={(footer) => { this.footerComponent = footer; }}
-				{... this.props}
-				focusIndex={this.state.focusIndex}
-				isActive={footerActive}
-				onClose={this.handleClose}
-				setFocus={this.setFocus}
-			/>
-		);
-	},
-
 	normalizeSearchTerm (string) {
 		return (string || '').toString().replace(/^\s+/, '');
+	},
+
+	inputRefId () {
+		return `${this.props.label}Lookup`;
+	},
+
+	focusInput () {
+		this.focusOnRender = true;
+	},
+
+	isSelected () {
+		const hasSelection =
+			!isNaN(parseInt(this.state.selectedIndex, 10)) &&
+			this.state.selectedIndex >= 0;
+		return hasSelection;
+	},
+
+	modifyItems (itemsToModify) {
+		const items = itemsToModify.map((item, index) => ({
+			id: `item-${index}`,
+			label: item.label,
+			data: item,
+		}));
+
+		this.setState({ items });
 	},
 
 	// =================================================
@@ -525,7 +589,9 @@ const Lookup = createReactClass({
 	renderMenuContent () {
 		return (
 			<Menu
-				ref={(menu) => { this.menuComponent = menu; }}
+				ref={(menu) => {
+					this.menuComponent = menu;
+				}}
 				emptyMessage={this.props.emptyMessage}
 				filterWith={this.props.filterWith}
 				focusIndex={this.state.focusIndex}
@@ -548,38 +614,46 @@ const Lookup = createReactClass({
 	},
 
 	renderInlineMenu () {
-		return (this.getIsOpen()
-			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox">
+		return this.getIsOpen() ? (
+			<div
+				className="ignore-react-onclickoutside slds-lookup__menu"
+				role="listbox"
+			>
 				{this.renderMenuContent()}
 			</div>
-			: null
-		);
+		) : null;
 	},
 
 	renderSeparateMenu () {
-		return (this.getIsOpen()
-			? <Dialog
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
+		return this.getIsOpen() ? (
+			<Dialog
 				align="bottom"
 				className="slds-lookup__menu slds-show"
 				closeOnTabKey
 				contentsClassName="slds-lookup__menu slds-show"
 				context={this.context}
-				inheritTargetWidth
+				inheritWidthOf="target"
 				onClose={this.handleCancel}
 				hasStaticAlignement={!this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				onRequestTargetElement={() => this.input}
+				position={menuPosition}
 			>
 				{this.renderMenuContent()}
 			</Dialog>
-			: null
-		);
+		) : null;
 	},
 
 	renderInput () {
 		return (
 			<Input
-				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
+				aria-activedescendant={
+					this.state.currentFocus ? this.state.currentFocus : ''
+				}
 				aria-autocomplete="list"
 				aria-describedby={this.props.describedById}
 				aria-expanded={!!this.getIsOpen()}
@@ -587,11 +661,8 @@ const Lookup = createReactClass({
 				className="slds-lookup__search-input"
 				disabled={this.props.disabled}
 				iconRight={
-					<InputIcon
-						assistiveText="Search"
-						category="utility"
-						name="search"
-					/>}
+					<InputIcon assistiveText="Search" category="utility" name="search" />
+				}
 				id={this.inputRefId()}
 				onBlur={this.handleBlur}
 				onChange={this.handleChange}
@@ -615,15 +686,17 @@ const Lookup = createReactClass({
 
 	renderSelectedItem () {
 		const selectedItem = this.props.options[this.state.selectedIndex].label;
-		const renderIcon = this.props.iconName
-			? (<Icon
+		const renderIcon = this.props.iconName ? (
+			<Icon
 				category={this.props.iconCategory}
 				className="slds-icon slds-pill__icon"
 				inverse={this.props.iconInverse}
 				name={this.props.iconName}
-			/>)
-			: null;
-		const labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
+			/>
+		) : null;
+		const labelClassName = this.props.iconName
+			? 'slds-pill__label'
+			: 'slds-pill__label slds-m-left--x-small';
 
 		// i18n
 		return (
@@ -632,17 +705,18 @@ const Lookup = createReactClass({
 				<a
 					href="javascript:void(0)"
 					className="slds-pill"
-					ref={(pill) => { this.pills[this.state.selectedIndex] = pill; }}
+					ref={(pill) => {
+						this.pills[this.state.selectedIndex] = pill;
+					}}
 					onKeyDown={this.handlePillKeyDown}
 				>
 					{/* eslint-enable no-script-url */}
 					{renderIcon}
-					<span className={labelClassName}>
-						{selectedItem}
-					</span>
+					<span className={labelClassName}>{selectedItem}</span>
 					<Button
 						assistiveText="Press delete to remove"
 						className="slds-pill__remove slds-button--icon-bare"
+						iconCategory="utility"
 						iconName="close"
 						onClick={this.handleDeleteSelected}
 						tabIndex="-1"
@@ -655,43 +729,30 @@ const Lookup = createReactClass({
 
 	renderLabel () {
 		let inputLabel;
-		const required = this.props.required
-			? <span className="slds-required">*</span>
-			: null;
+		const required = this.props.required ? (
+			<span className="slds-required">*</span>
+		) : null;
 		if (this.isSelected()) {
 			// inline style override
-			inputLabel = (<span
-				className="slds-form-element__label"
-				style={{ width: '100%' }}
-			>{required}{this.props.label}</span>);
+			inputLabel = (
+				<span className="slds-form-element__label" style={{ width: '100%' }}>
+					{required}
+					{this.props.label}
+				</span>
+			);
 		} else {
-			inputLabel = (<label
-				className="slds-form-element__label"
-				htmlFor={this.inputRefId()}
-				style={{ width: '100%' }}
-			>{required}{this.props.label}</label>);
+			inputLabel = (
+				<label
+					className="slds-form-element__label"
+					htmlFor={this.inputRefId()}
+					style={{ width: '100%' }}
+				>
+					{required}
+					{this.props.label}
+				</label>
+			);
 		}
 		return inputLabel;
-	},
-
-	inputRefId () {
-		return `${this.props.label}Lookup`;
-	},
-
-	focusInput () {
-		this.focusOnRender = true;
-	},
-
-	isSelected () {
-		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
-		return hasSelection;
-	},
-
-	getClassName () {
-		return classNames(this.props.className, 'slds-form-element slds-lookup', {
-			'slds-has-selection': this.isSelected(),
-			'slds-is-open': this.getIsOpen()
-		});
 	},
 
 	render () {
@@ -706,11 +767,18 @@ const Lookup = createReactClass({
 
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
-			[`slds-input-has-icon slds-input-has-icon--${this.props.iconPosition}`]: !this.isSelected()
+			[`slds-input-has-icon slds-input-has-icon--${
+				this.props.iconPosition
+			}`]: !this.isSelected(),
 		};
 
 		return (
-			<div className={this.getClassName()} data-select="single" data-scope="single" onScroll={this.props.onScroll}>
+			<div
+				className={this.getClassName()}
+				data-select="single"
+				data-scope="single"
+				onScroll={this.props.onScroll}
+			>
 				{this.props.label ? this.renderLabel() : null}
 				<div className={classNames(formElementControlClasses)}>
 					{this.isSelected() ? this.renderSelectedItem() : null}
@@ -719,12 +787,11 @@ const Lookup = createReactClass({
 				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 			</div>
 		);
-	}
+	},
 });
 
 Lookup.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Lookup;
-

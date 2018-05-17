@@ -15,8 +15,8 @@ const DatepickerYearSelector = createReactClass({
 		 */
 		id: PropTypes.string,
 		/**
-     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-     */
+		 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+		 */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 		/**
 		 * Displayed calendar has changed or re-rendered
@@ -33,7 +33,7 @@ const DatepickerYearSelector = createReactClass({
 		/**
 		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
 		 */
-		yearPicklistButtonRef: PropTypes.func
+		yearPicklistButtonRef: PropTypes.func,
 	},
 
 	getOptions () {
@@ -42,22 +42,34 @@ const DatepickerYearSelector = createReactClass({
 		const toYear = now.getFullYear() + this.props.relativeYearTo;
 		const opts = [];
 
-		for (let year = fromYear; year < toYear; year++) {
+		for (let year = fromYear; year < toYear; year += 1) {
 			opts.push({ label: `${year}`, value: year });
 		}
 		return opts;
 	},
 
+	getSelectedValueIndex () {
+		const now = new Date();
+		const selectedYear = this.props.initialDateForCalendarRender.getFullYear();
+		const fromYear = now.getFullYear() + this.props.relativeYearFrom;
+		return selectedYear - fromYear;
+	},
+
 	handleSelect (selectedValue) {
 		if (selectedValue) {
-			this.props.onChangeMonth(new Date(this.props.initialDateForCalendarRender.setFullYear(parseInt(selectedValue.value, 10))));
+			this.props.onChangeMonth(
+				new Date(
+					this.props.initialDateForCalendarRender.setFullYear(
+						parseInt(selectedValue.value, 10)
+					)
+				)
+			);
 		}
 	},
 
 	render () {
 		return (
 			<div className="slds-form-element">
-
 				<MenuPicklist
 					buttonRef={this.props.yearPicklistButtonRef}
 					checkmark={false}
@@ -69,10 +81,11 @@ const DatepickerYearSelector = createReactClass({
 					options={this.getOptions()}
 					placeholder="Year"
 					value={this.props.initialDateForCalendarRender.getFullYear()}
+					initValueIndex={this.getSelectedValueIndex()}
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 export default DatepickerYearSelector;

@@ -42,36 +42,44 @@ const PanelFilterGroup = ({
 	onRequestCancel,
 	onRequestClose,
 	onRequestSave,
-	saveLabel
+	saveLabel,
 }) => (
 	<div className="slds-filters">
-		{variant === 'panel' ? <PanelHeader
-			assistiveTextCloseFilterPanel={assistiveTextCloseFilterPanel}
-			cancelLabel={cancelLabel}
-			heading={heading}
-			modified={modified}
-			onRequestCancel={onRequestCancel}
-			onRequestClose={onRequestClose}
-			onRequestSave={onRequestSave}
-			saveLabel={saveLabel}
-
-		/>
-		: header || null
-		}
+		{variant === 'panel' ? (
+			<PanelHeader
+				assistiveTextCloseFilterPanel={assistiveTextCloseFilterPanel}
+				cancelLabel={cancelLabel}
+				heading={heading}
+				modified={modified}
+				onRequestCancel={onRequestCancel}
+				onRequestClose={onRequestClose}
+				onRequestSave={onRequestSave}
+				saveLabel={saveLabel}
+			/>
+		) : (
+			header || null
+		)}
 		<div className="slds-filters__body">
-			{errorLabel
-				? <div className="slds-text-color--error slds-m-bottom--x-small" role="alert">{errorLabel}</div>
-				: null}
+			{errorLabel ? (
+				<div
+					className="slds-text-color--error slds-m-bottom--x-small"
+					role="alert"
+				>
+					{errorLabel}
+				</div>
+			) : null}
 			{children}
 		</div>
-		{variant === 'panel' ? <PanelFilteringFooter
-			addFilterLabel={addFilterLabel}
-			onClickAdd={onClickAdd}
-			onClickRemoveAll={onClickRemoveAll}
-			removeAllLabel={removeAllLabel}
-		/>
-		: footer || null
-		}
+		{variant === 'panel' ? (
+			<PanelFilteringFooter
+				addFilterLabel={addFilterLabel}
+				onClickAdd={onClickAdd}
+				onClickRemoveAll={onClickRemoveAll}
+				removeAllLabel={removeAllLabel}
+			/>
+		) : (
+			footer || null
+		)}
 	</div>
 );
 
@@ -98,12 +106,12 @@ PanelFilterGroup.propTypes = {
 	 *   variant="panel"
 	 * >
 	 *   <FilterList>
-	 *     <Filter
-	 *       property="Show Me"
-	 *       predicate="All Wackamoles"
-	 *     >
-	 *     {popoverContents}
-	 *     </Filter>
+	 *   <Filter
+	 *     property="Show Me"
+	 *     predicate="All Wackamoles"
+	 *   >
+	 *   {popoverContents}
+	 *   </Filter>
 	 *   </FilterList>
 	 * </FilterGroup>
 	 * ```
@@ -160,7 +168,7 @@ PanelFilterGroup.propTypes = {
 	/**
 	 * Adds in default Panel header and footer
 	 */
-	variant: PropTypes.oneOf(['panel'])
+	variant: PropTypes.oneOf(['panel']),
 };
 
 PanelFilterGroup.defaultProps = {
@@ -169,7 +177,7 @@ PanelFilterGroup.defaultProps = {
 	assistiveTextCloseFilterPanel: 'Close Filter Panel',
 	heading: 'Filter',
 	saveLabel: 'Save',
-	removeAllLabel: 'Remove All'
+	removeAllLabel: 'Remove All',
 };
 
 export default PanelFilterGroup;

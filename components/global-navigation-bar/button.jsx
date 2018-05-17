@@ -23,11 +23,10 @@ import { GLOBAL_NAVIGATION_BAR_BUTTON } from '../../utilities/constants';
  */
 const GlobalNavigationButton = ({ active, dividerPosition, ...props }) => (
 	<li
-		className={classNames(
-			'slds-context-bar__item',
-			{ 'slds-is-active': active,
-				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
-			})}
+		className={classNames('slds-context-bar__item', {
+			'slds-is-active': active,
+			[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
+		})}
 	>
 		<Button {...props} />
 	</li>
@@ -44,7 +43,7 @@ GlobalNavigationButton.propTypes = {
 	/**
 	 * Determines position of separating bar.
 	 */
-	dividerPosition: PropTypes.oneOf(['left', 'right'])
+	dividerPosition: PropTypes.oneOf(['left', 'right']),
 };
 
 // ### Default Props
@@ -54,7 +53,7 @@ GlobalNavigationButton.defaultProps = {
 	// Bar and have different `font-size` and `line-height` than links or
 	// dropdowns.
 	style: { lineHeight: 'inherit' },
-	variant: 'base'
+	variant: 'base',
 };
 
 export default GlobalNavigationButton;

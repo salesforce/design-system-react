@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-  - "6"
+  - "8"
 install:
   - npm install npm -g
-  - npm install
+  - npm config set audit false
+  - npm ci
 script:
-  - npm test
+  - npm run travis-ci
 cache:
   directories:
     - node_modules

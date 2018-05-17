@@ -41,37 +41,49 @@ const InputIcon = (props) => {
 	// need to pass click event up on SVG
 
 	const variants = {
-		combobox: (<span className="slds-icon_container slds-input__icon slds-input__icon_right">
+		combobox: (
+			<span className="slds-icon_container slds-input__icon slds-input__icon_right">
+				<UtilityIcon
+					aria-hidden
+					category={category}
+					className={classNames(
+						'slds-icon slds-icon_x-small slds-icon-text-default'
+					)}
+					name={name}
+					path={path}
+					{...rest}
+				/>
+			</span>
+		),
+		base: (
 			<UtilityIcon
 				aria-hidden
 				category={category}
-				className={classNames('slds-icon slds-icon_x-small slds-icon-text-default')}
+				className={classNames('slds-input__icon slds-icon-text-default', {
+					[`slds-input__icon--${iconPosition}`]: iconPosition
+				})}
 				name={name}
 				path={path}
 				{...rest}
 			/>
-		</span>),
-		base: (<UtilityIcon
-			aria-hidden
-			category={category}
-			className={classNames('slds-input__icon slds-icon-text-default', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
-			name={name}
-			path={path}
-			{...rest}
-		/>)
+		)
 	};
 
-	return isFunction(onClick)
-	? <Button
-		className={classNames('slds-input__icon', { [`slds-input__icon_${iconPosition}`]: iconPosition })}
-		iconCategory={category}
-		iconName={name}
-		iconPath={path}
-		onClick={onClick}
-		variant="icon"
-		{...rest}
-	/>
-	: variants[variant];
+	return isFunction(onClick) ? (
+		<Button
+			className={classNames('slds-input__icon', {
+				[`slds-input__icon_${iconPosition}`]: iconPosition
+			})}
+			iconCategory={category}
+			iconName={name}
+			iconPath={path}
+			onClick={onClick}
+			variant="icon"
+			{...rest}
+		/>
+	) : (
+		variants[variant]
+	);
 };
 
 InputIcon.displayName = ICON_INPUT;
@@ -84,10 +96,7 @@ InputIcon.propTypes = {
 	/**
 	 * This is only needed if an input contains two icons, the Input component handles this prop for you.
 	 */
-	iconPosition: PropTypes.oneOf([
-		'left',
-		'right'
-	]),
+	iconPosition: PropTypes.oneOf(['left', 'right']),
 	/**
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */

@@ -18,14 +18,17 @@ const propTypes = {
 	/**
 	 * Info node passed by PageHeader
 	 */
-	info: PropTypes.node
+	info: PropTypes.node,
 };
 
 const Base = (props) => (
 	<MediaObject
-		body={<div>
-			{props.title}
-			{props.info}</div>}
+		body={
+			<div>
+				{props.title}
+				{props.info}
+			</div>
+		}
 		figure={props.icon}
 		verticalCenter
 	/>

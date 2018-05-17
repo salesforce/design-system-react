@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-redundant-roles */
+
 // # Global Navigation Bar Region Component
 
 // ## Dependencies
@@ -17,48 +19,61 @@ import classNames from 'classnames';
 import { GLOBAL_NAVIGATION_BAR_REGION } from '../../utilities/constants';
 
 // List regions for export
-const regions = [
-	'primary',
-	'secondary',
-	'tertiary'
-];
+const regions = ['primary', 'secondary', 'tertiary'];
 
 /* eslint-disable react/display-name */
-const renderPrimary = (dividerClass, className, children) =>
-	(<div className={classNames('slds-context-bar__primary', dividerClass, className)}>
+const renderPrimary = (dividerClass, className, children) => (
+	<div
+		className={classNames('slds-context-bar__primary', dividerClass, className)}
+	>
 		{children}
-	</div>);
-
+	</div>
+);
 
 const renderSecondary = (dividerClass, className, children, navigation) => {
 	let region;
 
 	if (navigation) {
 		region = (
-			<nav className={classNames('slds-context-bar__secondary', dividerClass, className)} role="navigation">
-				<ul className="slds-grid">
-					{children}
-				</ul>
+			<nav
+				className={classNames(
+					'slds-context-bar__secondary',
+					dividerClass,
+					className
+				)}
+				role="navigation"
+			>
+				<ul className="slds-grid">{children}</ul>
 			</nav>
 		);
 	} else {
 		region = (
-			<div className={classNames('slds-context-bar__secondary', dividerClass, className)}>
-				<ul className="slds-grid">
-					{children}
-				</ul>
+			<div
+				className={classNames(
+					'slds-context-bar__secondary',
+					dividerClass,
+					className
+				)}
+			>
+				<ul className="slds-grid">{children}</ul>
 			</div>
 		);
 	}
 	return region;
 };
 
-const renderTertiary = (dividerClass, className, children) =>
-	(<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, className)}>
-		<ul className="slds-grid">
-			{children}
-		</ul>
-	</div>);
+const renderTertiary = (dividerClass, className, children) => (
+	<div
+		className={classNames(
+			'slds-context-bar__tertiary',
+			'slds-col--bump-left',
+			dividerClass,
+			className
+		)}
+	>
+		<ul className="slds-grid">{children}</ul>
+	</div>
+);
 /* eslint-enable react/display-name */
 
 /**
@@ -79,7 +94,11 @@ const Region = createReactClass({
 		/**
 		 * CSS classes to be added to the region
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
 		/**
 		 * Wraps the `secondary` region in a `nav` and adds a role attribute
 		 */
@@ -87,29 +106,44 @@ const Region = createReactClass({
 		/**
 		 * Region wrap children in styling specific to that region.
 		 */
-		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired
+		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
 	},
 
 	render () {
 		let region;
-		const dividerClass = this.props.dividerPosition ? `slds-context-bar__item--divider-${this.props.dividerPosition}` : null;
+		const dividerClass = this.props.dividerPosition
+			? `slds-context-bar__item--divider-${this.props.dividerPosition}`
+			: null;
 
 		switch (this.props.region) {
 			case 'primary':
-				region = renderPrimary(dividerClass, this.props.className, this.props.children);
+				region = renderPrimary(
+					dividerClass,
+					this.props.className,
+					this.props.children
+				);
 				break;
 			case 'secondary':
-				region = renderSecondary(dividerClass, this.props.className, this.props.children, this.props.navigation);
+				region = renderSecondary(
+					dividerClass,
+					this.props.className,
+					this.props.children,
+					this.props.navigation
+				);
 				break;
 			case 'tertiary':
-				region = renderTertiary(dividerClass, this.props.className, this.props.children);
+				region = renderTertiary(
+					dividerClass,
+					this.props.className,
+					this.props.children
+				);
 				break;
 			default:
-				// do nothing
+			// do nothing
 		}
 
 		return region;
-	}
+	},
 });
 
 export default Region;

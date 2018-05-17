@@ -11,33 +11,139 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../button';
-
 // ### classNames
 import classNames from 'classnames';
-
-import Highlighter from '../../utilities/highlighter';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+import Button from '../../button';
+
+import Highlighter from '../../utilities/highlighter';
+
 // ### Event Helpers
 import EventUtil from '../../../utilities/event';
+
+import KEYS from '../../../utilities/key-code';
+import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 
 // ## Constants
 import { TREE_ITEM } from '../../../utilities/constants';
 
-
-const	handleClick = (event, props) => {
+const handleClick = (event, props) => {
 	EventUtil.trap(event);
 
 	if (isFunction(props.onClick)) {
 		props.onClick(event, {
 			node: props.node,
 			select: !props.node.selected,
-			treeIndex: props.treeIndex
+			treeIndex: props.treeIndex,
 		});
 	}
+};
+
+const findNextNode = (flattenedNodes, node) => {
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
+	const index = nodes.indexOf(node);
+	return flattenedNodes[(index + 1) % flattenedNodes.length];
+};
+
+const findPreviousNode = (flattenedNodes, node) => {
+	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
+	let index = nodes.indexOf(node) - 1;
+	if (index < 0) {
+		index += flattenedNodes.length;
+	}
+	return flattenedNodes[index];
+};
+
+const handleKeyDownDown = (event, props) => {
+	if (props.focusedNodeIndex === props.treeIndex) {
+		// Select the next visible node
+		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
+				node: flattenedNode.node,
+				select: true,
+				treeIndex: flattenedNode.treeIndex,
+			},
+			true
+		);
+	}
+};
+
+const handleKeyDownUp = (event, props) => {
+	if (props.focusedNodeIndex === props.treeIndex) {
+		// Go to the previous visible node
+		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
+		props.onClick(
+			event,
+			{
+				node: flattenedNode.node,
+				select: true,
+				treeIndex: flattenedNode.treeIndex,
+			},
+			true
+		);
+	}
+};
+
+const handleKeyDownLeft = (event, props) => {
+	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
+	const index = nodes.indexOf(props.parent);
+	if (index !== -1) {
+		props.onExpandClick(event, {
+			node: props.parent,
+			expand: !props.parent.expanded,
+			treeIndex: props.flattenedNodes[index].treeIndex,
+		});
+		props.onClick(
+			event,
+			{
+				node: props.parent,
+				select: true,
+				treeIndex: props.flattenedNodes[index].treeIndex,
+			},
+			true
+		);
+	}
+};
+
+const handleKeyDownEnter = (event, props) => {
+	handleClick(event, props);
+};
+
+const handleKeyDown = (event, props) => {
+	mapKeyEventCallbacks(
+		event,
+		{
+			callbacks: {
+				[KEYS.DOWN]: { callback: (evt) => handleKeyDownDown(evt, props) },
+				[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
+				[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
+				[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
+			},
+		},
+		true
+	);
+};
+
+const handleFocus = (event, props) => {
+	if (!props.focusedNodeIndex) {
+		handleClick(event, props);
+	}
+};
+
+const getTabIndex = (props) => {
+	if (
+		props.treeIndex === props.focusedNodeIndex ||
+		(props.selectedNodeIndexes.length === 0 &&
+			props.treeIndex === props.flattenedNodes[0].treeIndex)
+	) {
+		return 0;
+	}
+	return -1;
 };
 
 /**
@@ -45,19 +151,39 @@ const	handleClick = (event, props) => {
  */
 const Item = (props) => {
 	const isSelected = props.node.selected;
+	const isFocused = props.treeIndex === props.focusedNodeIndex;
 
-	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
 	return (
-		<li id={`${props.treeId}-${props.node.id}`} role="treeitem" aria-level={props.level}>
+		<li
+			id={`${props.treeId}-${props.node.id}`}
+			role="treeitem"
+			aria-level={props.level}
+			aria-selected={isSelected ? 'true' : 'false'}
+			tabIndex={getTabIndex(props)}
+			onKeyDown={(event) => handleKeyDown(event, props)}
+			onFocus={(event) => handleFocus(event, props)}
+			onBlur={props.onNodeBlur}
+			ref={(component) => {
+				if (props.treeHasFocus && component && isFocused) {
+					component.focus();
+				}
+			}}
+		>
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
-				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
-				aria-selected={isSelected ? 'true' : 'false'}
-				onClick={(event) => { handleClick(event, props); }}
+				className={classNames('slds-tree__item', {
+					'slds-is-selected': isSelected,
+				})}
+				onClick={(event) => {
+					handleClick(event, props);
+				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
+					tabIndex="-1"
 					assistiveText=""
+					role="presentation"
+					iconCategory="utility"
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
@@ -65,7 +191,13 @@ const Item = (props) => {
 					disabled
 				/>
 				{/* eslint-disable no-script-url */}
-				<a href="javascript:void(0)" role="presentation" className="slds-truncate">
+				<a
+					tabIndex="-1"
+					href="javascript:void(0)"
+					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
+					role="presentation"
+					className="slds-truncate"
+				>
 					{/* eslint-enable no-script-url */}
 					<Highlighter search={props.searchTerm}>{props.label}</Highlighter>
 				</a>
@@ -87,9 +219,7 @@ Item.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.string]).isRequired,
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
@@ -103,6 +233,10 @@ Item.propTypes = {
 	 */
 	onClick: PropTypes.func,
 	/**
+	 * This function triggers when the expand or collapse icon is clicked.
+	 */
+	onExpandClick: PropTypes.func.isRequired,
+	/**
 	 * Highlights term if found in node label
 	 */
 	searchTerm: PropTypes.string,
@@ -113,11 +247,36 @@ Item.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
+	/**
+	 * Flattened tree structure.
+	 */
+	flattenedNodes: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 * Tree indexes of nodes that are currently selected.
+	 */
+	selectedNodeIndexes: PropTypes.arrayOf(PropTypes.string),
+	/**
+	 * Tree index of the node that is currently focused.
+	 */
+	focusedNodeIndex: PropTypes.string,
+	/**
+	 * Callback for when a node is blurred.
+	 */
+	onNodeBlur: PropTypes.func,
+	/**
+	 * Sets focus on render.
+	 */
+	treeHasFocus: PropTypes.bool,
+	/**
+	 * This node's parent.
+	 */
+	parent: PropTypes.object,
 };
 
-Item.getDefaultProps = {
-	selected: false
+Item.defaultProps = {
+	selected: false,
+	selectedNodeIndexes: [],
 };
 
 export default Item;
