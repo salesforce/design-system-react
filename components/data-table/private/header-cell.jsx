@@ -122,26 +122,36 @@ const DataTableHeaderCell = createReactClass({
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
-		const ariaSort = isSorted ? expandedSortDirection : null;
+		const ariaSort = isSorted ? expandedSortDirection : 'none';
+		// The following padding styles exist in case you have
+		const thStyle = {
+			paddingLeft: sortable ? '0' : null,
+			paddingRight: sortable ? '0' : null,
+			width: width ? { width } : null,
+		};
 
 		return (
 			<th
+				aria-label={labelType === 'string' ? label : undefined}
 				aria-sort={ariaSort}
-				className={classNames({
-					'slds-is-sortable': sortable,
-					'slds-is-sorted': isSorted,
-					[`slds-is-sorted--${sortDirection}`]: sortDirection,
-					'slds-is-sorted--asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-				})}
-				focusable={!!sortable}
+				className={classNames(
+					{
+						'slds-is-sortable': sortable,
+						'slds-is-sorted': isSorted,
+						[`slds-is-sorted_${sortDirection}`]: sortDirection,
+						'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
+					},
+					'slds-text-title_caps'
+				)}
 				scope="col"
-				style={width ? { width } : null}
+				style={thStyle}
 			>
 				{sortable ? (
 					<a
 						href="javascript:void(0)" // eslint-disable-line no-script-url
-						className="slds-th__action slds-text-link--reset"
+						className="slds-th__action slds-text-link_reset"
 						onClick={this.handleSort}
+						role="button"
 						tabIndex="0"
 					>
 						<span className="slds-assistive-text">
@@ -172,7 +182,17 @@ const DataTableHeaderCell = createReactClass({
 						) : null}
 					</a>
 				) : (
-					<div className="slds-truncate">{label}</div>
+					<div
+						className={classNames(
+							{
+								// Adds padding to header cells if the are not sortable, but are in a fixed layour / advanced table.
+								'slds-p-horizontal_x-small': this.props.fixedLayout,
+							},
+							'slds-truncate'
+						)}
+					>
+						{label}
+					</div>
 				)}
 			</th>
 		);
