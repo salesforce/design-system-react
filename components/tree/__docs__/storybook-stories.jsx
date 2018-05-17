@@ -2,10 +2,12 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@storybook/react';
+import cloneDeep from 'lodash.clonedeep';
 import IconSettings from '../../icon-settings';
 
 import { TREE } from '../../../utilities/constants';
 import sampleNodes from '../../../utilities/sample-data/tree';
+
 
 import Tree from '../../tree';
 import Search from '../../forms/input/search';
@@ -38,7 +40,7 @@ const DemoTree = createReactClass({
 			? sampleNodes[this.props.exampleNodesIndex]
 			: sampleNodes.sampleNodesDefault;
 		return {
-			nodes: initalNodes,
+			nodes: cloneDeep(initalNodes),
 			selectedNode: undefined,
 			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
