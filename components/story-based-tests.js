@@ -27,7 +27,7 @@ export Accordion from '../components/accordion/__docs__/storybook-stories';
 // export Checkbox from '../components/forms/checkbox/__docs__/storybook-stories';
 // export Combobox from '../components/combobox/__docs__/storybook-stories';
 // export Filter from '../components/filter/__docs__/storybook-stories';
-// export DataTable from '../components/data-table/__docs__/storybook-stories';
+export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 // export Input from '../components/forms/input/__docs__/storybook-stories';
 // export Teaxtarea from '../components/forms/textarea/__docs__/storybook-stories';
