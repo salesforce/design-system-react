@@ -38,10 +38,7 @@ const flattenTree = (root, treeIndex = '') => {
 		for (let index = 0; index < root.nodes.length; index++) {
 			const curNode = root.nodes[index];
 			nodes = nodes.concat(
-				flattenTree(
-					curNode,
-					treeIndex ? `${treeIndex}-${index}` : `${index}`
-				)
+				flattenTree(curNode, treeIndex ? `${treeIndex}-${index}` : `${index}`)
 			);
 		}
 	}
@@ -121,19 +118,19 @@ class Tree extends React.Component {
 			focusedNodeIndex: data.treeIndex,
 			selectedNodeIndexes,
 		});
-	}
+	};
 
 	handleNodeBlur = () => {
 		// There is no need to render when blurring a node because focus is either:
 		//  - outside of the tree, or
 		//  - focused on another node in the tree, which triggers its own render
 		this.treeHasFocus = false;
-	}
+	};
 
 	handleExpand = (event, data) => {
 		this.treeHasFocus = true;
 		this.props.onExpandClick(event, data);
-	}
+	};
 
 	render () {
 		// One of these is required to pass accessibility tests

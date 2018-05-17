@@ -8,7 +8,6 @@ import IconSettings from '../../icon-settings';
 import { TREE } from '../../../utilities/constants';
 import sampleNodes from '../../../utilities/sample-data/tree';
 
-
 import Tree from '../../tree';
 import Search from '../../forms/input/search';
 
