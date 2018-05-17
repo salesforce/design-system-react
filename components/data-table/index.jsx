@@ -119,10 +119,6 @@ const DataTable = createReactClass({
 		 */
 		columnBordered: PropTypes.bool,
 		/**
-		 * A variant which decreases padding and allows more items and columns to be viewed.
-		 */
-		compact: PropTypes.bool,
-		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -261,7 +257,6 @@ const DataTable = createReactClass({
 				className={classNames(
 					'slds-table',
 					{
-						'slds-table--compact': this.props.compact,
 						'slds-table--fixed-layout': this.props.fixedLayout,
 						'slds-table--bordered': !this.props.unborderedRow,
 						'slds-table--cell-buffer':

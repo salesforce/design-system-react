@@ -11,6 +11,14 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
+		deprecatedProperty(
+			COMPONENT,
+			props.compact,
+			'compact',
+			undefined,
+			'compact has been deprecated as non-compact data tables do not exist in SLDS'
+		);
+
 		deprecatedProperty(COMPONENT, props.collection, 'collection', 'items');
 		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
 		deprecatedProperty(COMPONENT, props.onDeselect, 'onDeselect', 'onChange');
