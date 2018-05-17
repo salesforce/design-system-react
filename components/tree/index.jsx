@@ -14,6 +14,8 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
+import find from 'lodash.find';
+
 // Child components
 import Branch from './private/branch';
 
@@ -29,15 +31,27 @@ import { TREE } from '../../utilities/constants';
 class Tree extends React.Component {
 	constructor (props) {
 		super(props);
+		const flattenedNodes = this.flattenTree({
+			nodes: this.props.nodes,
+			expanded: true,
+		}).slice(1);
+		const selectedNode = find(
+			flattenedNodes,
+			(curNode) => curNode.node.selected
+		);
+		const selectedNodeIndexes = [];
+		let focusedNodeIndex;
+		if (selectedNode) {
+			selectedNodeIndexes.push(selectedNode.treeIndex);
+			focusedNodeIndex = selectedNode.treeIndex;
+		}
 		this.handleSelect = this.handleSelect.bind(this);
 		this.handleNodeBlur = this.handleNodeBlur.bind(this);
 		this.handleExpand = this.handleExpand.bind(this);
 		this.state = {
-			flattenedNodes: this.flattenTree({
-				nodes: this.props.nodes,
-				expanded: true,
-			}).slice(1),
-			selectedNodeIndexes: [],
+			flattenedNodes,
+			selectedNodeIndexes,
+			focusedNodeIndex,
 		};
 	}
 

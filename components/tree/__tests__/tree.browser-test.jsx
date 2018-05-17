@@ -8,6 +8,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import isFunction from 'lodash.isfunction';
+import cloneDeep from 'lodash.clonedeep';
 
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -60,7 +61,7 @@ const DemoTree = createReactClass({
 			? sampleNodes[this.props.exampleNodesIndex]
 			: sampleNodes.sampleNodesDefault;
 		return {
-			nodes: initalNodes,
+			nodes: cloneDeep(initalNodes),
 			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
 	},

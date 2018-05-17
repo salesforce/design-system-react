@@ -38,7 +38,6 @@ import { TREE_BRANCH } from '../../../utilities/constants';
 
 const handleExpand = (event, props) => {
 	EventUtil.trap(event);
-
 	if (isFunction(props.onExpand)) {
 		props.onExpand(event, {
 			node: props.node,
@@ -173,7 +172,7 @@ const handleKeyDown = (event, props) => {
 };
 
 const handleFocus = (event, props) => {
-	if (!props.focusedNodeIndex) {
+	if (!props.focusedNodeIndex && event.target === event.currentTarget) {
 		handleSelect(event, props);
 	}
 };

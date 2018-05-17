@@ -130,7 +130,7 @@ const handleKeyDown = (event, props) => {
 };
 
 const handleFocus = (event, props) => {
-	if (!props.focusedNodeIndex) {
+	if (!props.focusedNodeIndex && event.target === event.currentTarget) {
 		handleSelect(event, props);
 	}
 };
