@@ -95,7 +95,9 @@ describe('SLDSModal: ', function () {
 		beforeEach(() => {
 			closed = false;
 			cmp = getModal({
-				closeButtonAssistiveText: 'Exit',
+				assistiveText: {
+					closeButton: 'Exit',
+				},
 				isOpen: true,
 				size: 'large',
 				containerClassName: 'my-custom-class',

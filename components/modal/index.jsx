@@ -21,9 +21,13 @@ import isBoolean from 'lodash.isboolean';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 import Button from '../button';
 
-const displayName = 'Modal';
+import { MODAL } from '../../utilities/constants';
+
 const propTypes = {
 	/**
 	 * Vertical alignment of Modal.
@@ -34,15 +38,12 @@ const propTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		dialogLabel: PropTypes.string, // If not provided, `title` is used.
+		closeButton: PropTypes.string, // Text read aloud by screen readers when the user focuses on the Close Button.
 	}),
 	/**
 	 * Modal content.
 	 */
 	children: PropTypes.node.isRequired,
-	/**
-	 * Text read aloud by screen readers when the user focuses on the Close Button.
-	 */
-	closeButtonAssistiveText: PropTypes.string,
 	/**
 	 * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -173,6 +174,7 @@ class Modal extends React.Component {
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+		checkProps(MODAL, this.props);
 	}
 
 	componentDidMount () {
@@ -339,7 +341,7 @@ class Modal extends React.Component {
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
 		const closeButtonAssistiveText =
-			this.props.closeButtonAssistiveText || 'Close';
+			this.props.assistiveText.closeButton || this.props.closeButtonAssistiveText || 'Close';
 		const closeButton = (
 			<Button
 				assistiveText={closeButtonAssistiveText}
@@ -449,7 +451,7 @@ class Modal extends React.Component {
 	}
 }
 
-Modal.displayName = displayName;
+Modal.displayName = MODAL;
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
