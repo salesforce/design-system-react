@@ -6741,29 +6741,8 @@
             },
             "iconCategory": {
                 "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'action'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'custom'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'doctype'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'standard'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'utility'",
-                            "computed": false
-                        }
-                    ]
+                    "name": "custom",
+                    "raw": "requiredIf(\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n    (props) => !!props.iconName\n)"
                 },
                 "required": false,
                 "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
@@ -7435,6 +7414,23 @@
                 "description": "Vertical alignment of Modal.",
                 "defaultValue": {
                     "value": "'center'",
+                    "computed": false
+                }
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "dialogLabel": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Assistive text for the modal.",
+                "defaultValue": {
+                    "value": "{}",
                     "computed": false
                 }
             },
@@ -11103,7 +11099,51 @@
     },
     "tree": {
         "description": "A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    },
+                    {
+                        "name": "clearSelectedNodes",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleNodeBlur",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleExpand",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
         "props": {
             "assistiveText": {
                 "type": {
@@ -11178,21 +11218,21 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
+                "description": "Array of items starting at the top of the tree. The shape each node in the array is:\n```\n{\n  expanded: string,\n  id: string,\n  label: string or node,\n  selected: string,\n  type: string,\n  nodes: array\n}\n```\n`assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
             },
             "onClick": {
                 "type": {
                     "name": "func"
                 },
                 "required": true,
-                "description": "Function that will run whenever an item or branch is clicked."
+                "description": "Function that will run whenever an item or branch is selected due to click or keyboard navigation."
             },
             "onExpandClick": {
                 "type": {
                     "name": "func"
                 },
                 "required": true,
-                "description": "This function triggers when the expand or collapse icon is clicked."
+                "description": "This function triggers when the expand or collapse icon is clicked or due to keyboard navigation."
             },
             "onScroll": {
                 "type": {

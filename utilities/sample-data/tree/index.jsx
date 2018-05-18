@@ -1,3 +1,4 @@
+import React from 'react';
 import sampleNodesWithLargeDataset from './sample-nodes-with-large-dataset';
 import sampleNodesWithInitialState from './sample-nodes-with-initial-state';
 
@@ -13,7 +14,8 @@ const sampleNodesDefault = [
 		id: 2,
 		nodes: [
 			{
-				label: 'Ground Fruits',
+				assistiveText: 'Ground Fruits',
+				label: <span>Ground Fruits</span>,
 				type: 'branch',
 				id: 4,
 				nodes: [
