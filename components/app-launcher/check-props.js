@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import oneOfComponent from '../../utilities/warning/one-of-component';
 
 let checkProps = function () {};
@@ -11,6 +12,13 @@ if (process.env.NODE_ENV !== 'production') {
 		if (props.modalHeaderButton !== undefined) {
 			oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton']);
 		}
+
+		deprecatedProperty(
+			COMPONENT,
+			props.triggerAssistiveText,
+			'triggerAssistiveText',
+			'assistiveText[\'trigger\']',
+		);
 	};
 }
 

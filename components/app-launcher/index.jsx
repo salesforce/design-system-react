@@ -69,6 +69,12 @@ const AppLauncher = createReactClass({
 	// ### Prop Types
 	propTypes: {
 		/**
+		 * Assistive text for the app launcher.
+		 */
+		assistiveText: PropTypes.shape({
+			trigger: PropTypes.string, // Assistive text for app launcher icon
+		}),
+		/**
 		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
 		children: PropTypes.node.isRequired,
@@ -105,10 +111,6 @@ const AppLauncher = createReactClass({
 		 */
 		title: PropTypes.string,
 		/**
-		 * Assistive text for app launcher icon
-		 */
-		triggerAssistiveText: PropTypes.string,
-		/**
 		 * This is typically the name of the cloud or application
 		 */
 		triggerName: PropTypes.node,
@@ -120,7 +122,7 @@ const AppLauncher = createReactClass({
 
 	getDefaultProps () {
 		return {
-			triggerAssistiveText: 'Open App Launcher',
+			assistiveText: {},
 			title: 'App Launcher',
 		};
 	},
@@ -208,6 +210,7 @@ const AppLauncher = createReactClass({
 		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
 		const modalContentStaticHeight = '90%';
 
+		const triggerAssistiveText = this.props.assistiveText.trigger || this.props.triggerAssistiveText || 'Open App Launcher';
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
@@ -227,9 +230,9 @@ const AppLauncher = createReactClass({
 							<span className="slds-r8" />
 							<span className="slds-r9" />
 						</span>
-						{this.props.triggerAssistiveText && (
+						{triggerAssistiveText && (
 							<span className="slds-assistive-text">
-								{this.props.triggerAssistiveText}
+								{triggerAssistiveText}
 							</span>
 						)}
 					</button>
