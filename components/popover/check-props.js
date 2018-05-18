@@ -35,7 +35,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.closeButtonAssistiveText,
 			'closeButtonAssistiveText',
-			'assistiveText[\'closeButton\']',
+			"assistiveText['closeButton']"
 		);
 	};
 }

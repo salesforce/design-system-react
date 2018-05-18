@@ -476,7 +476,11 @@ const Popover = createReactClass({
 					ref={this.setMenuRef}
 				>
 					<Button
-						assistiveText={props.assistiveText.closeButton || props.closeButtonAssistiveText || 'Close dialog'}
+						assistiveText={
+							props.assistiveText.closeButton ||
+							props.closeButtonAssistiveText ||
+							'Close dialog'
+						}
 						iconCategory="utility"
 						iconName="close"
 						iconSize="small"

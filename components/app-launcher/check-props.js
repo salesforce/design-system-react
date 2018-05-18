@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.triggerAssistiveText,
 			'triggerAssistiveText',
-			'assistiveText[\'trigger\']',
+			"assistiveText['trigger']"
 		);
 	};
 }

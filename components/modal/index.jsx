@@ -341,7 +341,9 @@ class Modal extends React.Component {
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
 		const closeButtonAssistiveText =
-			this.props.assistiveText.closeButton || this.props.closeButtonAssistiveText || 'Close';
+			this.props.assistiveText.closeButton ||
+			this.props.closeButtonAssistiveText ||
+			'Close';
 		const closeButton = (
 			<Button
 				assistiveText={closeButtonAssistiveText}
