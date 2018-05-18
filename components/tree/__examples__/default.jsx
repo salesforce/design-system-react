@@ -19,7 +19,8 @@ const sampleNodes = {
 			expanded: true,
 			nodes: [
 				{
-					label: 'Ground Fruits',
+					assistiveText: 'Ground Fruits',
+					label: <span>Ground Fruits</span>,
 					type: 'branch',
 					id: 4,
 					nodes: [

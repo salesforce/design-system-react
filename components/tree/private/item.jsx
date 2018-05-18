@@ -30,11 +30,11 @@ import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 // ## Constants
 import { TREE_ITEM } from '../../../utilities/constants';
 
-const handleClick = (event, props) => {
+const handleSelect = (event, props) => {
 	EventUtil.trap(event);
 
-	if (isFunction(props.onClick)) {
-		props.onClick(event, {
+	if (isFunction(props.onSelect)) {
+		props.onSelect(event, {
 			node: props.node,
 			select: !props.node.selected,
 			treeIndex: props.treeIndex,
@@ -61,7 +61,7 @@ const handleKeyDownDown = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Select the next visible node
 		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-		props.onClick(
+		props.onSelect(
 			event,
 			{
 				node: flattenedNode.node,
@@ -77,7 +77,7 @@ const handleKeyDownUp = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Go to the previous visible node
 		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-		props.onClick(
+		props.onSelect(
 			event,
 			{
 				node: flattenedNode.node,
@@ -93,12 +93,12 @@ const handleKeyDownLeft = (event, props) => {
 	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const index = nodes.indexOf(props.parent);
 	if (index !== -1) {
-		props.onExpandClick(event, {
+		props.onExpand(event, {
 			node: props.parent,
 			expand: !props.parent.expanded,
 			treeIndex: props.flattenedNodes[index].treeIndex,
 		});
-		props.onClick(
+		props.onSelect(
 			event,
 			{
 				node: props.parent,
@@ -111,7 +111,7 @@ const handleKeyDownLeft = (event, props) => {
 };
 
 const handleKeyDownEnter = (event, props) => {
-	handleClick(event, props);
+	handleSelect(event, props);
 };
 
 const handleKeyDown = (event, props) => {
@@ -130,8 +130,8 @@ const handleKeyDown = (event, props) => {
 };
 
 const handleFocus = (event, props) => {
-	if (!props.focusedNodeIndex) {
-		handleClick(event, props);
+	if (!props.focusedNodeIndex && event.target === event.currentTarget) {
+		handleSelect(event, props);
 	}
 };
 
@@ -175,7 +175,7 @@ const Item = (props) => {
 					'slds-is-selected': isSelected,
 				})}
 				onClick={(event) => {
-					handleClick(event, props);
+					handleSelect(event, props);
 				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -229,13 +229,13 @@ Item.propTypes = {
 	 */
 	node: PropTypes.object.isRequired,
 	/**
-	 * Function that will run whenever an item or branch is clicked.
+	 * This function triggers when the expand or collapse icon is clicked or due to keyboard navigation.
 	 */
-	onClick: PropTypes.func,
+	onExpand: PropTypes.func.isRequired,
 	/**
-	 * This function triggers when the expand or collapse icon is clicked.
+	 * Function that will run whenever an item or branch is selected (click or keyboard).
 	 */
-	onExpandClick: PropTypes.func.isRequired,
+	onSelect: PropTypes.func,
 	/**
 	 * Highlights term if found in node label
 	 */
