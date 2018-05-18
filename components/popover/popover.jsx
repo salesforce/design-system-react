@@ -97,6 +97,12 @@ const Popover = createReactClass({
 			'left',
 		]),
 		/**
+		 * Assistive text for the popover.
+		 */
+		assistiveText: PropTypes.shape({
+			closeButton: PropTypes.string, // All popovers require a close button.
+		}),
+		/**
 		 * HTML `id` of heading for popover. Only use if your header is within your popover body.
 		 */
 		ariaLabelledby: PropTypes.string,
@@ -116,10 +122,6 @@ const Popover = createReactClass({
 			PropTypes.object,
 			PropTypes.string,
 		]),
-		/**
-		 * All popovers require a close button.
-		 */
-		closeButtonAssistiveText: PropTypes.oneOfType([PropTypes.string]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent popover from opening. Also applies disabled styling to trigger button.
 		 */
@@ -204,7 +206,7 @@ const Popover = createReactClass({
 	getDefaultProps () {
 		return {
 			align: 'right',
-			closeButtonAssistiveText: 'Close dialog',
+			assistiveText: {},
 			hoverCloseDelay: 300,
 			openOn: 'click',
 			position: 'absolute',
@@ -474,7 +476,7 @@ const Popover = createReactClass({
 					ref={this.setMenuRef}
 				>
 					<Button
-						assistiveText={props.closeButtonAssistiveText}
+						assistiveText={props.assistiveText.closeButton || props.closeButtonAssistiveText || 'Close dialog'}
 						iconCategory="utility"
 						iconName="close"
 						iconSize="small"

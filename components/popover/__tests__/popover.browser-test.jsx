@@ -145,7 +145,9 @@ describe('SLDSPopover', function () {
 		// What should be present in the DOM when style and className are applied?
 		const optionalProps = {
 			className: 'sample-classname',
-			closeButtonAssistiveText: 'Shut it now!',
+			assistiveText: {
+				closeButton: 'Shut it now!',
+			},
 			containerClassName: 'sample-container-classname',
 			containerStyle: { background: containerBackgroundColor },
 			footer: <p id="footer">Footer</p>,
@@ -160,7 +162,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has correct className, closeButtonAssistiveText, style, and footer', function () {
+		it('has correct className, assistiveText, style, and footer', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} isOpen />, {
 				attachTo: mountNode,
 			});
@@ -170,7 +172,7 @@ describe('SLDSPopover', function () {
 			expect(popover.node.classList.contains(optionalProps.className)).to.be
 				.true;
 			expect(popover.find('.slds-popover__close').node.textContent).to.equal(
-				optionalProps.closeButtonAssistiveText
+				optionalProps.assistiveText.closeButton
 			);
 			expect(popover.find('#footer')).to.exist;
 			expect(popover.node.style.background).to.equal(popoverBackgroundColor);
