@@ -426,7 +426,7 @@ class Modal extends React.Component {
 				padding: 'default',
 			},
 			overlay: {
-				position: 'absolute',
+				position: 'static',
 				backgroundColor: 'default',
 			},
 		};
