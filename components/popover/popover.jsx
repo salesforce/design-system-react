@@ -73,6 +73,16 @@ const PopoverNubbinPositions = [
 	'bottom right',
 ];
 
+const defaultProps = {
+	align: 'right',
+	assistiveText: {
+		// Need to add `closeButton` here after we remove `closeButtonAssistiveText`.
+	},
+	hoverCloseDelay: 300,
+	openOn: 'click',
+	position: 'absolute',
+};
+
 /**
  * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.
  */
@@ -97,10 +107,12 @@ const Popover = createReactClass({
 			'left',
 		]),
 		/**
-		 * Assistive text for the popover.
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `closeButton`: This is a visually hidden label for the close button.
 		 */
 		assistiveText: PropTypes.shape({
-			closeButton: PropTypes.string, // All popovers require a close button.
+			closeButton: PropTypes.string,
 		}),
 		/**
 		 * HTML `id` of heading for popover. Only use if your header is within your popover body.
@@ -204,13 +216,7 @@ const Popover = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			align: 'right',
-			assistiveText: {},
-			hoverCloseDelay: 300,
-			openOn: 'click',
-			position: 'absolute',
-		};
+		return defaultProps;
 	},
 
 	getInitialState () {
@@ -429,6 +435,15 @@ const Popover = createReactClass({
 		const props = this.props;
 		const offset = props.offset;
 		const style = this.props.style || {};
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
+		const deprecatedCloseButtonAssistiveText =
+			props.closeButtonAssistiveText || 'Close dialog';
+		const closeButtonAssistiveText =
+			assistiveText.closeButton || deprecatedCloseButtonAssistiveText;
 
 		return isOpen ? (
 			<Dialog
@@ -476,11 +491,7 @@ const Popover = createReactClass({
 					ref={this.setMenuRef}
 				>
 					<Button
-						assistiveText={
-							props.assistiveText.closeButton ||
-							props.closeButtonAssistiveText ||
-							'Close dialog'
-						}
+						assistiveText={closeButtonAssistiveText}
 						iconCategory="utility"
 						iconName="close"
 						iconSize="small"

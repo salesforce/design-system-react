@@ -368,7 +368,7 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for the app launcher.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `trigger`: This is a visually hidden label for the app launcher icon.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -7437,9 +7437,9 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for the modal.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{\n    dialogLabel: '',\n    // Need to add `closeButton` here after we remove `closeButtonAssistiveText`.\n}",
                     "computed": false
                 }
             },
@@ -8567,7 +8567,7 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for the popover.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false

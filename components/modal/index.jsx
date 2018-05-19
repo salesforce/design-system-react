@@ -13,6 +13,9 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
+// ### assign
+import assign from 'lodash.assign';
+
 // ### isBoolean
 import isBoolean from 'lodash.isboolean';
 
@@ -34,11 +37,14 @@ const propTypes = {
 	 */
 	align: PropTypes.oneOf(['top', 'center']),
 	/**
-	 * Assistive text for the modal.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.
+	 * * `closeButton`: This is a visually hidden label for the close button.
 	 */
 	assistiveText: PropTypes.shape({
-		dialogLabel: PropTypes.string, // If not provided, `title` is used.
-		closeButton: PropTypes.string, // Text read aloud by screen readers when the user focuses on the Close Button.
+		dialogLabel: PropTypes.string,
+		closeButton: PropTypes.string,
 	}),
 	/**
 	 * Modal content.
@@ -142,7 +148,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: {},
+	assistiveText: {
+		dialogLabel: '',
+		// Need to add `closeButton` here after we remove `closeButtonAssistiveText`.
+	},
 	align: 'center',
 	dismissible: true,
 };
@@ -340,10 +349,15 @@ class Modal extends React.Component {
 		let headerContent = this.props.header;
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
+		const deprecatedCloseButtonAssistiveText =
+			this.props.closeButtonAssistiveText || 'Close';
 		const closeButtonAssistiveText =
-			this.props.assistiveText.closeButton ||
-			this.props.closeButtonAssistiveText ||
-			'Close';
+			assistiveText.closeButton || deprecatedCloseButtonAssistiveText;
 		const closeButton = (
 			<Button
 				assistiveText={closeButtonAssistiveText}

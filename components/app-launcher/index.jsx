@@ -15,6 +15,9 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
+// ### assign
+import assign from 'lodash.assign';
+
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -26,6 +29,13 @@ import Modal from '../modal';
 
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
+
+const defaultProps = {
+	assistiveText: {
+		// Need to add `trigger` here after we remove `triggerAssistiveText`.
+	},
+	title: 'App Launcher',
+};
 
 /**
  * The App Launcher allows the user to quickly access all the apps and functionality with their organization.
@@ -60,7 +70,6 @@ import { APP_LAUNCHER } from '../../utilities/constants';
  * settings.setAppElement('#mount');
  * ```
  */
-
 const AppLauncher = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
@@ -69,10 +78,12 @@ const AppLauncher = createReactClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Assistive text for the app launcher.
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `trigger`: This is a visually hidden label for the app launcher icon.
 		 */
 		assistiveText: PropTypes.shape({
-			trigger: PropTypes.string, // Assistive text for app launcher icon
+			trigger: PropTypes.string,
 		}),
 		/**
 		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
@@ -121,10 +132,7 @@ const AppLauncher = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			assistiveText: {},
-			title: 'App Launcher',
-		};
+		return defaultProps;
 	},
 
 	getInitialState () {
@@ -210,10 +218,15 @@ const AppLauncher = createReactClass({
 		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
 		const modalContentStaticHeight = '90%';
 
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
+		const deprecatedTriggerAssitiveText =
+			this.props.triggerAssistiveText || 'Open App Launcher';
 		const triggerAssistiveText =
-			this.props.assistiveText.trigger ||
-			this.props.triggerAssistiveText ||
-			'Open App Launcher';
+			assistiveText.trigger || deprecatedTriggerAssitiveText;
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
