@@ -224,6 +224,7 @@ describe('SLDSModal: ', function () {
 		});
 
 		it('first tab focuses close button', (done) => {
+			// There an issue with this test, functionality works fine.
 			// setTimeout(() => {
 			// 	Simulate.keyDown(modal, {
 			// 		key: 'Tab',
