@@ -472,13 +472,13 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
       className="slds-button__icon slds-button__icon--stateful"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
       />
     </svg>
     <span
       className="slds-assistive-text"
     >
-      Filter
+      Filter List
     </span>
   </button>
   <div
@@ -518,7 +518,7 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <svg
@@ -532,7 +532,7 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
       <span
         className="slds-assistive-text"
       >
-        Sort
+        Settings
       </span>
     </button>
   </div>
@@ -542,9 +542,9 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
 exports[`Button Group IconGroup HTML Snapshot 1`] = `
 "<div class=\\"slds-button-group\\" role=\\"group\\"><button aria-live=\\"polite\\" class=\\"slds-button slds-not-selected slds-button--icon-border\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--stateful\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#chart\\"></use></svg><span class=\\"slds-assistive-text\\">Show Chart</span></button>
   <button
-    aria-live=\\"polite\\" class=\\"slds-button slds-not-selected slds-button--icon-border\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--stateful\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#filter\\"></use></svg><span class=\\"slds-assistive-text\\">Filter</span></button>
+    aria-live=\\"polite\\" class=\\"slds-button slds-not-selected slds-button--icon-border\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--stateful\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#filterList\\"></use></svg><span class=\\"slds-assistive-text\\">Filter List</span></button>
     <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last\\"
-      id=\\"icon-dropdown-example\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more ignore-click-icon-dropdown-example\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#sort\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Sort</span></button></div>
+      id=\\"icon-dropdown-example\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more ignore-click-icon-dropdown-example\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Settings</span></button></div>
 </div>"
 `;
 

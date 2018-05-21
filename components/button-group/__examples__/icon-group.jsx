@@ -20,16 +20,16 @@ const Example = createReactClass({
 						variant="icon"
 					/>
 					<ButtonStateful
-						assistiveText="Filter"
-						iconName="filter"
+						assistiveText="Filter List"
+						iconName="filterList"
 						iconVariant="border"
 						variant="icon"
 					/>
 					<Dropdown
-						assistiveText="Sort"
+						assistiveText="Settings"
 						checkmark
 						iconCategory="utility"
-						iconName="sort"
+						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example"
 						onSelect={(item) => {
@@ -37,8 +37,8 @@ const Example = createReactClass({
 						}}
 						openOn="click"
 						options={[
-							{ label: 'Sort ascending', value: 'A0' },
-							{ label: 'Sort descending', value: 'B0' },
+							{ label: 'Bring left panel to front', value: 'A0' },
+							{ label: 'Bring right panel to front', value: 'B0' },
 						]}
 						value="A0"
 						variant="icon"
