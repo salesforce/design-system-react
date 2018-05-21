@@ -106,11 +106,6 @@ describe('SLDSModal: ', function () {
 			modal = getModalNode(document.body);
 		});
 
-		it('renders a noscript', () => {
-			const renderedNoScriptNode = ReactDOM.findDOMNode(cmp);
-			expect(renderedNoScriptNode.firstChild.tagName).to.equal(undefined);
-		});
-
 		it('adds the large class', () => {
 			expect(modal.className).to.include('slds-modal--large');
 		});
