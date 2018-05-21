@@ -76,7 +76,7 @@ const PopoverNubbinPositions = [
 const defaultProps = {
 	align: 'right',
 	assistiveText: {
-		// Need to add `closeButton` here after we remove `closeButtonAssistiveText`.
+		closeButton: 'Close dialog',
 	},
 	hoverCloseDelay: 300,
 	openOn: 'click',
@@ -435,15 +435,12 @@ const Popover = createReactClass({
 		const props = this.props;
 		const offset = props.offset;
 		const style = this.props.style || {};
-		const assistiveText = assign(
-			{},
-			defaultProps.assistiveText,
-			this.props.assistiveText
-		);
-		const deprecatedCloseButtonAssistiveText =
-			props.closeButtonAssistiveText || 'Close dialog';
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const closeButtonAssistiveText =
-			assistiveText.closeButton || deprecatedCloseButtonAssistiveText;
+			props.closeButtonAssistiveText || assistiveText.closeButton;
 
 		return isOpen ? (
 			<Dialog

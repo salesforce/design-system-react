@@ -15,9 +15,6 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
-// ### assign
-import assign from 'lodash.assign';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -32,7 +29,7 @@ import { APP_LAUNCHER } from '../../utilities/constants';
 
 const defaultProps = {
 	assistiveText: {
-		// Need to add `trigger` here after we remove `triggerAssistiveText`.
+		trigger: 'Open App Launcher',
 	},
 	title: 'App Launcher',
 };
@@ -218,15 +215,12 @@ const AppLauncher = createReactClass({
 		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
 		const modalContentStaticHeight = '90%';
 
-		const assistiveText = assign(
-			{},
-			defaultProps.assistiveText,
-			this.props.assistiveText
-		);
-		const deprecatedTriggerAssitiveText =
-			this.props.triggerAssistiveText || 'Open App Launcher';
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const triggerAssistiveText =
-			assistiveText.trigger || deprecatedTriggerAssitiveText;
+			this.props.triggerAssistiveText || assistiveText.trigger;
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">

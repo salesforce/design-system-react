@@ -13,9 +13,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-// ### assign
-import assign from 'lodash.assign';
-
 // ### isBoolean
 import isBoolean from 'lodash.isboolean';
 
@@ -150,7 +147,7 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		dialogLabel: '',
-		// Need to add `closeButton` here after we remove `closeButtonAssistiveText`.
+		closeButton: 'Close',
 	},
 	align: 'center',
 	dismissible: true,
@@ -349,15 +346,12 @@ class Modal extends React.Component {
 		let headerContent = this.props.header;
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
-		const assistiveText = assign(
-			{},
-			defaultProps.assistiveText,
-			this.props.assistiveText
-		);
-		const deprecatedCloseButtonAssistiveText =
-			this.props.closeButtonAssistiveText || 'Close';
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const closeButtonAssistiveText =
-			assistiveText.closeButton || deprecatedCloseButtonAssistiveText;
+			this.props.closeButtonAssistiveText || assistiveText.closeButton;
 		const closeButton = (
 			<Button
 				assistiveText={closeButtonAssistiveText}
