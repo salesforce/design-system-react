@@ -8,6 +8,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import isFunction from 'lodash.isfunction';
+import cloneDeep from 'lodash.clonedeep';
 
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -60,7 +61,7 @@ const DemoTree = createReactClass({
 			? sampleNodes[this.props.exampleNodesIndex]
 			: sampleNodes.sampleNodesDefault;
 		return {
-			nodes: initalNodes,
+			nodes: cloneDeep(initalNodes),
 			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
 	},
@@ -312,9 +313,10 @@ describe('Tree: ', () => {
 
 		it('has initial selection', function () {
 			let selectedNode = this.wrapper
-				.find('#example-tree-1')
+				.find('#example-tree-2')
 				.find('.slds-is-selected');
-			expect(selectedNode).to.have.length(1);
+			// Fruits, Watermelon, Tree Fruits
+			expect(selectedNode).to.have.length(3);
 			selectedNode = this.wrapper
 				.find('#example-tree-5')
 				.find('.slds-is-selected');

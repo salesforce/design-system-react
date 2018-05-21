@@ -5,4 +5,4 @@
 
 echo "# Building for Heroku"
 
-npm run build-storybook
+npm run static:build

@@ -12,7 +12,7 @@ import express from 'express';
 import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
 import path from 'path';
 
-// Express server setup. `npm run build-storybook-image-test` must
+// Express server setup. `npm run storyshots:build` must
 // be run first.
 const rootPath = path.resolve(__dirname, '../');
 const app = express();

@@ -3,23 +3,25 @@ const treeNodesWithInitialState = [
 		label: 'Grains',
 		type: 'item',
 		id: 1,
-		selected: true,
 	},
 	{
 		label: 'Fruits',
 		type: 'branch',
 		id: 2,
 		expanded: true,
+		selected: true,
 		nodes: [
 			{
 				label: 'Ground Fruits',
 				type: 'branch',
 				id: 4,
+				expanded: true,
 				nodes: [
 					{
 						label: 'Watermelon',
 						type: 'item',
 						id: 12,
+						selected: true,
 					},
 					{
 						label: 'Canteloupe',
