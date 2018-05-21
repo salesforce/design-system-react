@@ -236,7 +236,6 @@ describe('SLDSModal: ', function () {
 					which: 9,
 				});
 				setTimeout(() => {
-					debugger;
 					expect(document.activeElement.className).to.include(
 						'slds-modal__close'
 					);
