@@ -123,12 +123,6 @@ const DataTableHeaderCell = createReactClass({
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
-		// The following padding styles exist in case you have
-		const thStyle = {
-			paddingLeft: sortable ? '0' : null,
-			paddingRight: sortable ? '0' : null,
-			width: width ? { width } : null,
-		};
 
 		return (
 			<th
@@ -144,7 +138,7 @@ const DataTableHeaderCell = createReactClass({
 					'slds-text-title_caps'
 				)}
 				scope="col"
-				style={thStyle}
+				style={{ width: width ? { width } : null }}
 			>
 				{sortable ? (
 					<a
@@ -185,7 +179,7 @@ const DataTableHeaderCell = createReactClass({
 					<div
 						className={classNames(
 							{
-								// Adds padding to header cells if the are not sortable, but are in a fixed layour / advanced table.
+								// Adds padding to header cells if the are not sortable, but are in a fixed layouy / advanced table.
 								'slds-p-horizontal_x-small': this.props.fixedLayout,
 							},
 							'slds-truncate'

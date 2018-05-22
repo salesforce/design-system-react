@@ -416,8 +416,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": "0",
-                "paddingRight": "0",
                 "width": Object {
                   "width": "10rem",
                 },
@@ -474,8 +472,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": Object {
                   "width": "8rem",
                 },
@@ -495,8 +491,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -514,8 +508,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -533,8 +525,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": "0",
-                "paddingRight": "0",
                 "width": null,
               }
             }
@@ -582,8 +572,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -601,8 +589,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1332,8 +1318,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1351,8 +1335,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1370,8 +1352,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1389,8 +1369,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1408,8 +1386,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1427,8 +1403,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1446,8 +1420,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1778,8 +1750,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1797,8 +1767,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1816,8 +1784,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1835,8 +1801,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1854,8 +1818,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1873,8 +1835,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -1892,8 +1852,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2224,8 +2182,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2243,8 +2199,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2262,8 +2216,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2281,8 +2233,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2300,8 +2250,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2319,8 +2267,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2338,8 +2284,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2670,8 +2614,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2689,8 +2631,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2708,8 +2648,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2727,8 +2665,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2746,8 +2682,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2765,8 +2699,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
@@ -2784,8 +2716,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "paddingLeft": null,
-                "paddingRight": null,
                 "width": null,
               }
             }
