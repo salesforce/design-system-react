@@ -127,6 +127,27 @@ describe('SLDSModal: ', function () {
 		});
 	});
 
+	describe('Proper HTML markup', () => {
+		it('dismissible modal has role=dialog', () => {
+			const cmp = getModal({
+				isOpen: true
+			});
+			const modal = getModalNode(document.body);
+			const role = modal.getAttribute('role');
+			expect(role).to.equal('dialog');
+		});
+
+		it('non-dismissible modal has role=alertdialog', () => {
+			const cmp = getModal({
+				isOpen: true,
+				dismissible: false
+			});
+			const modal = getModalNode(document.body);
+			const role = modal.getAttribute('role');
+			expect(role).to.equal('alertdialog');
+		});
+	});
+
 	describe('Open with custom header and header className', () => {
 		let modal;
 
