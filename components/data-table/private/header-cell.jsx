@@ -114,7 +114,6 @@ const DataTableHeaderCell = createReactClass({
 	},
 
 	// ### Render
-	// Should return a `<th></th>`.
 	render () {
 		const { isSorted, label, sortable, width } = this.props;
 
@@ -123,6 +122,54 @@ const DataTableHeaderCell = createReactClass({
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
+		const fixedLayoutSubRenders = {
+			sortable: (
+				<a
+					href="javascript:void(0)" // eslint-disable-line no-script-url
+					className="slds-th__action slds-text-link_reset"
+					onClick={this.handleSort}
+					role="button"
+					tabIndex="0"
+				>
+					<span className="slds-assistive-text">
+						{this.props.assistiveTextForColumnSort}{' '}
+					</span>
+					<span
+						className="slds-truncate"
+						title={labelType === 'string' ? label : undefined}
+					>
+						{label}
+					</span>
+					<Icon
+						className="slds-is-sortable__icon"
+						category="utility"
+						name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+						size="x-small"
+					/>
+					{sortDirection ? (
+						<span
+							className="slds-assistive-text"
+							aria-live="assertive"
+							aria-atomic="true"
+						>
+							{sortDirection === 'asc'
+								? this.props.assistiveTextForColumnSortedAscending
+								: this.props.assistiveTextForColumnSortedDescending}
+						</span>
+					) : null}
+				</a>
+			),
+			notSortable: (
+				<span className="slds-p-horizontal_x-small" style={{ display: 'flex' }}>
+					<span
+						className="slds-truncate"
+						title={labelType === 'string' ? label : undefined}
+					>
+						{label}
+					</span>
+				</span>
+			),
+		};
 
 		return (
 			<th
@@ -140,50 +187,12 @@ const DataTableHeaderCell = createReactClass({
 				scope="col"
 				style={{ width: width ? { width } : null }}
 			>
-				{sortable ? (
-					<a
-						href="javascript:void(0)" // eslint-disable-line no-script-url
-						className="slds-th__action slds-text-link_reset"
-						onClick={this.handleSort}
-						role="button"
-						tabIndex="0"
-					>
-						<span className="slds-assistive-text">
-							{this.props.assistiveTextForColumnSort}{' '}
-						</span>
-						<span
-							className="slds-truncate"
-							title={labelType === 'string' ? label : undefined}
-						>
-							{label}
-						</span>
-						<Icon
-							className="slds-is-sortable__icon"
-							category="utility"
-							name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-							size="x-small"
-						/>
-						{sortDirection ? (
-							<span
-								className="slds-assistive-text"
-								aria-live="assertive"
-								aria-atomic="true"
-							>
-								{sortDirection === 'asc'
-									? this.props.assistiveTextForColumnSortedAscending
-									: this.props.assistiveTextForColumnSortedDescending}
-							</span>
-						) : null}
-					</a>
+				{this.props.fixedLayout ? (
+					fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
 				) : (
 					<div
-						className={classNames(
-							{
-								// Adds padding to header cells if the are not sortable, but are in a fixed layouy / advanced table.
-								'slds-p-horizontal_x-small': this.props.fixedLayout,
-							},
-							'slds-truncate'
-						)}
+						className="slds-truncate"
+						title={labelType === 'string' ? label : undefined}
 					>
 						{label}
 					</div>

@@ -478,11 +478,21 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               }
             }
           >
-            <div
-              className="slds-p-horizontal_x-small slds-truncate"
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
             >
-              Account Name
-            </div>
+              <span
+                className="slds-truncate"
+                title="Account Name"
+              >
+                Account Name
+              </span>
+            </span>
           </th>
           <th
             aria-label="Close Date"
@@ -495,11 +505,21 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               }
             }
           >
-            <div
-              className="slds-p-horizontal_x-small slds-truncate"
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
             >
-              Close Date
-            </div>
+              <span
+                className="slds-truncate"
+                title="Close Date"
+              >
+                Close Date
+              </span>
+            </span>
           </th>
           <th
             aria-label="Stage"
@@ -512,11 +532,21 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               }
             }
           >
-            <div
-              className="slds-p-horizontal_x-small slds-truncate"
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
             >
-              Stage
-            </div>
+              <span
+                className="slds-truncate"
+                title="Stage"
+              >
+                Stage
+              </span>
+            </span>
           </th>
           <th
             aria-label="Confidence"
@@ -576,11 +606,21 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               }
             }
           >
-            <div
-              className="slds-p-horizontal_x-small slds-truncate"
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
             >
-              Amount
-            </div>
+              <span
+                className="slds-truncate"
+                title="Amount"
+              >
+                Amount
+              </span>
+            </span>
           </th>
           <th
             aria-label="Contact"
@@ -593,11 +633,21 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               }
             }
           >
-            <div
-              className="slds-p-horizontal_x-small slds-truncate"
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
             >
-              Contact
-            </div>
+              <span
+                className="slds-truncate"
+                title="Contact"
+              >
+                Contact
+              </span>
+            </span>
           </th>
           <th
             scope="col"
@@ -1324,6 +1374,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Opportunity Name"
             >
               Opportunity Name
             </div>
@@ -1341,6 +1392,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Account Name"
             >
               Account Name
             </div>
@@ -1358,6 +1410,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Close Date"
             >
               Close Date
             </div>
@@ -1375,6 +1428,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Stage"
             >
               Stage
             </div>
@@ -1392,6 +1446,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Confidence"
             >
               Confidence
             </div>
@@ -1409,6 +1464,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Amount"
             >
               Amount
             </div>
@@ -1426,6 +1482,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Contact"
             >
               Contact
             </div>
@@ -1756,6 +1813,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Opportunity Name"
             >
               Opportunity Name
             </div>
@@ -1773,6 +1831,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Account Name"
             >
               Account Name
             </div>
@@ -1790,6 +1849,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Close Date"
             >
               Close Date
             </div>
@@ -1807,6 +1867,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Stage"
             >
               Stage
             </div>
@@ -1824,6 +1885,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Confidence"
             >
               Confidence
             </div>
@@ -1841,6 +1903,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Amount"
             >
               Amount
             </div>
@@ -1858,6 +1921,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Contact"
             >
               Contact
             </div>
@@ -2188,6 +2252,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Opportunity Name"
             >
               Opportunity Name
             </div>
@@ -2205,6 +2270,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Account Name"
             >
               Account Name
             </div>
@@ -2222,6 +2288,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Close Date"
             >
               Close Date
             </div>
@@ -2239,6 +2306,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Stage"
             >
               Stage
             </div>
@@ -2256,6 +2324,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Confidence"
             >
               Confidence
             </div>
@@ -2273,6 +2342,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Amount"
             >
               Amount
             </div>
@@ -2290,6 +2360,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Contact"
             >
               Contact
             </div>
@@ -2620,6 +2691,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Opportunity Name"
             >
               Opportunity Name
             </div>
@@ -2637,6 +2709,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Account Name"
             >
               Account Name
             </div>
@@ -2654,6 +2727,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Close Date"
             >
               Close Date
             </div>
@@ -2671,6 +2745,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Stage"
             >
               Stage
             </div>
@@ -2688,6 +2763,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Confidence"
             >
               Confidence
             </div>
@@ -2705,6 +2781,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Amount"
             >
               Amount
             </div>
@@ -2722,6 +2799,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           >
             <div
               className="slds-truncate"
+              title="Contact"
             >
               Contact
             </div>
