@@ -23,7 +23,7 @@ import sampleNodes from '../../../utilities/sample-data/tree';
 
 import IconSettings from '../../icon-settings';
 import Tree from '../../tree';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 
 chai.use(chaiEnzyme());
 

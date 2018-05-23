@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Input from '../forms/input';
+import Input from '../input';
 import InputIcon from '../icon/input-icon';
 
 import { CARD_FILTER } from '../../utilities/constants';

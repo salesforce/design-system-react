@@ -9,7 +9,7 @@ import { TREE } from '../../../utilities/constants';
 import sampleNodes from '../../../utilities/sample-data/tree';
 
 import Tree from '../../tree';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 
 const branchExpandClicked = action;
 const itemClicked = action;

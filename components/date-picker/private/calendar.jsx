@@ -112,9 +112,9 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
-	handleRequestClose () {
+	handleRequestClose (event) {
 		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
+			this.props.onRequestClose(event, {});
 		}
 	},
 

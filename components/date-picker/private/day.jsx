@@ -174,10 +174,6 @@ DatepickerCalendarDay.propTypes = {
 	 */
 	onKeyboardNavigateToPreviousWeek: PropTypes.func.isRequired,
 	/**
-	 * Triggered when the calendar is cancelled.
-	 */
-	onRequestClose: PropTypes.func.isRequired,
-	/**
 	 * Triggered when a date on the calendar is clicked.
 	 */
 	onSelectDate: PropTypes.func.isRequired,

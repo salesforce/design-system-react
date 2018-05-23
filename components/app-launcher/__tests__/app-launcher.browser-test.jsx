@@ -10,7 +10,7 @@ import IconSettings from '../../icon-settings';
 import AppLauncher from '../../app-launcher';
 import AppLauncherTile from '../../app-launcher/tile';
 import AppLauncherSection from '../../app-launcher/section';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 import Button from '../../button';
 
 /* eslint-disable react/no-find-dom-node */
