@@ -112,7 +112,9 @@ storiesOf(POPOVER, module)
 			id: 'myPopoverId',
 			isOpen: true,
 			className: 'sample-classname',
-			closeButtonAssistiveText: 'Shut it now!',
+			assistiveText: {
+				closeButton: 'Shut it now!',
+			},
 			containerClassName: 'sample-container-classname',
 			containerStyle: { background: containerBackgroundColor },
 			style: { background: popoverBackgroundColor },

@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 			process.env.NODE_ENV !== 'test'
 		) {
 			const http = new XMLHttpRequest();
-			http.open('HEAD', url, false);
+			http.open('GET', url, false);
 			http.send();
 			hasExecuted = true;
 
