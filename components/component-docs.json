@@ -357,6 +357,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "trigger": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `trigger`: This is a visually hidden label for the app launcher icon.",
+                "defaultValue": {
+                    "value": "{\n    trigger: 'Open App Launcher',\n}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -425,17 +442,6 @@
                 "description": "Set the App Launcher's title text (for localization)",
                 "defaultValue": {
                     "value": "'App Launcher'",
-                    "computed": false
-                }
-            },
-            "triggerAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Assistive text for app launcher icon",
-                "defaultValue": {
-                    "value": "'Open App Launcher'",
                     "computed": false
                 }
             },
@@ -7296,7 +7302,6 @@
     },
     "modal": {
         "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.",
-        "displayName": "Modal",
         "methods": [
             {
                 "name": "getId",
@@ -7424,13 +7429,17 @@
                         "dialogLabel": {
                             "name": "string",
                             "required": false
+                        },
+                        "closeButton": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Assistive text for the modal.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -7440,13 +7449,6 @@
                 },
                 "required": true,
                 "description": "Modal content."
-            },
-            "closeButtonAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text read aloud by screen readers when the user focuses on the Close Button."
             },
             "containerClassName": {
                 "type": {
@@ -8554,6 +8556,23 @@
                     "computed": false
                 }
             },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "closeButton": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "defaultValue": {
+                    "value": "{\n    closeButton: 'Close dialog',\n}",
+                    "computed": false
+                }
+            },
             "ariaLabelledby": {
                 "type": {
                     "name": "string"
@@ -8600,22 +8619,6 @@
                 },
                 "required": false,
                 "description": "CSS classes to be added to the popover. That is the element with `.slds-popover` on it."
-            },
-            "closeButtonAssistiveText": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "All popovers require a close button.",
-                "defaultValue": {
-                    "value": "'Close dialog'",
-                    "computed": false
-                }
             },
             "disabled": {
                 "type": {

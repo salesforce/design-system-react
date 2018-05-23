@@ -195,7 +195,9 @@ storiesOf(MODAL, module)
 	.add('Modal with Custom Parent Node', () => <ModalCustomParentNode />)
 	.add('Small', () =>
 		getModal({
-			closeButtonAssistiveText: 'Exit',
+			assistiveText: {
+				closeButton: 'Exit',
+			},
 			isOpen: true,
 			tagline: 'Enter in details below',
 			title: 'New Opportunity',

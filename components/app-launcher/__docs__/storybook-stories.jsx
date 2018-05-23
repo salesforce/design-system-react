@@ -291,6 +291,7 @@ const DemoAppLauncher = createReactClass({
 			<GlobalNavigationBar>
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
+						assistiveText={{ trigger: 'Open App Launcher' }}
 						triggerName="App Name"
 						search={search}
 						modalClassName="custom-modal-class"

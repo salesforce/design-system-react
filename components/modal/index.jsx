@@ -21,28 +21,32 @@ import isBoolean from 'lodash.isboolean';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 import Button from '../button';
 
-const displayName = 'Modal';
+import { MODAL } from '../../utilities/constants';
+
 const propTypes = {
 	/**
 	 * Vertical alignment of Modal.
 	 */
 	align: PropTypes.oneOf(['top', 'center']),
 	/**
-	 * Assistive text for the modal.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.
+	 * * `closeButton`: This is a visually hidden label for the close button.
 	 */
 	assistiveText: PropTypes.shape({
-		dialogLabel: PropTypes.string, // If not provided, `title` is used.
+		dialogLabel: PropTypes.string,
+		closeButton: PropTypes.string,
 	}),
 	/**
 	 * Modal content.
 	 */
 	children: PropTypes.node.isRequired,
-	/**
-	 * Text read aloud by screen readers when the user focuses on the Close Button.
-	 */
-	closeButtonAssistiveText: PropTypes.string,
 	/**
 	 * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -141,7 +145,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: {},
+	assistiveText: {
+		dialogLabel: '',
+		closeButton: 'Close',
+	},
 	align: 'center',
 	dismissible: true,
 };
@@ -173,6 +180,7 @@ class Modal extends React.Component {
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+		checkProps(MODAL, this.props);
 	}
 
 	componentDidMount () {
@@ -338,8 +346,12 @@ class Modal extends React.Component {
 		let headerContent = this.props.header;
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const closeButtonAssistiveText =
-			this.props.closeButtonAssistiveText || 'Close';
+			this.props.closeButtonAssistiveText || assistiveText.closeButton;
 		const closeButton = (
 			<Button
 				assistiveText={closeButtonAssistiveText}
@@ -449,7 +461,7 @@ class Modal extends React.Component {
 	}
 }
 
-Modal.displayName = displayName;
+Modal.displayName = MODAL;
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
