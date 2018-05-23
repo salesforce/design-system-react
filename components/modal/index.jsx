@@ -239,7 +239,7 @@ class Modal extends React.Component {
 					'slds-modal--prompt': this.isPrompt(),
 				})}
 				onClick={this.dismissModalOnClickOutside}
-				role={this.props.dismissible ? "dialog" : "alertdialog"}
+				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
 			>
 				<div
 					className={classNames(

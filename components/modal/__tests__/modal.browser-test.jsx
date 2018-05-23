@@ -130,7 +130,7 @@ describe('SLDSModal: ', function () {
 	describe('Proper HTML markup', () => {
 		it('dismissible modal has role=dialog', () => {
 			const cmp = getModal({
-				isOpen: true
+				isOpen: true,
 			});
 			const modal = getModalNode(document.body);
 			const role = modal.getAttribute('role');
@@ -140,7 +140,7 @@ describe('SLDSModal: ', function () {
 		it('non-dismissible modal has role=alertdialog', () => {
 			const cmp = getModal({
 				isOpen: true,
-				dismissible: false
+				dismissible: false,
 			});
 			const modal = getModalNode(document.body);
 			const role = modal.getAttribute('role');
