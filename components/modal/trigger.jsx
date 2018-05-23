@@ -6,6 +6,9 @@ import ReactDOM from 'react-dom';
 
 import Modal from './index';
 
+// This component should be deprecated and appears to have
+// been created in order to do modals in portals.
+
 const ModalTrigger = {
 	open: (cfg) => {
 		const el = document.createElement('span');

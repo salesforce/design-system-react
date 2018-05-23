@@ -194,10 +194,11 @@ class Modal extends React.Component {
 		}
 		if (this.state.isClosing !== prevState.isClosing) {
 			if (this.state.isClosing) {
-				// console.log("CLOSING: ');
+				// This section of code should be removed once trigger.jsx
+				// and manager.jsx are removed. They appear to have
+				// been created in order to do modals in portals.
 				if (!this.isUnmounting) {
 					const el = ReactDOM.findDOMNode(this); // eslint-disable-line react/no-find-dom-node
-
 					if (
 						el &&
 						el.parentNode &&
