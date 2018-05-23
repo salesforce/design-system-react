@@ -437,7 +437,7 @@ class Modal extends React.Component {
 				padding: 'default',
 			},
 			overlay: {
-				position: 'static',
+				zIndex: 8000, // following SLDS guideline for z-index overlay
 				backgroundColor: 'default',
 			},
 		};
