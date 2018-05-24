@@ -1,10 +1,21 @@
 {
 	"env": {
+		"esm": {
+			"presets": [["env", {
+				"targets": {
+					"browsers": ["last 2 versions", "ie 11"],
+					"node": "6.8"
+				},
+				"modules": false
+			}], "react"],
+			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+		},
 		"development": {
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
+					"modules": "commonjs",
+					"node": "6.8"
 				}
 			}], "react"],
 			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
@@ -13,7 +24,7 @@
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
+					"node": "6.8"
 				}
 			}], "react"],
 			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
@@ -22,20 +33,11 @@
 			"presets": [["env", {
 				"targets": {
 					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
+					"modules": "commonjs",
+					"node": "6.8"
 				}
 			}], "react"],
 			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
-		"esm": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
-				},
-				"modules": false
-			}], "react"],
-			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
 		},
 		"test": {
 			"presets": [["env", {
