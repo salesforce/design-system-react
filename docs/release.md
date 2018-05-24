@@ -1,5 +1,7 @@
 # Release Process
 
+Before releasing, make sure all examples work in documentation site.
+
 ## Release with build server (preferred)
 
 1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
