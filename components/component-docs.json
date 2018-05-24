@@ -3009,7 +3009,7 @@
                 "required": false,
                 "description": "Text for sort action on table column header",
                 "defaultValue": {
-                    "value": "'Sort'",
+                    "value": "'Sort by: '",
                     "computed": false
                 }
             },
