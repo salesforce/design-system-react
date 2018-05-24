@@ -1,57 +1,32 @@
 {
-	"env": {
-		"esm": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "6.8"
-				},
-				"modules": false
-			}], "react"],
-			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
-		"development": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"modules": "commonjs",
-					"node": "6.8"
-				}
-			}], "react"],
-			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
-		"amd": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "6.8"
-				}
-			}], "react"],
-			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
-		"commonjs": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"modules": "commonjs",
-					"node": "6.8"
-				}
-			}], "react"],
-			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
-		"test": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"]
-				}
-			}], "react"],
-			"plugins": ["istanbul", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		}
-	},
-	"ignore": [
-		"preset/**"
-	],
-	"plugins": [
-		"root-import"
-	]
+  "presets": [
+    ["env", {
+      "targets": {
+        browsers: ['last 2 versions', 'ie 11'],
+        node: '6.8'
+      }
+    }],
+    "babel-preset-react"
+  ],
+  "env": {
+    "amd": {
+      "plugins": ["import-noop"]
+    },
+    "commonjs": {
+      "plugins": ["import-noop"]
+    },
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  },
+  "ignore": [
+    "preset/**",
+  ],
+  plugins: [
+    "root-import",
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "syntax-export-extensions",
+    "transform-export-extensions"
+  ]
 }
