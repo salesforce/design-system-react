@@ -175,7 +175,7 @@ const DataTable = createReactClass({
 	getDefaultProps () {
 		return {
 			assistiveTextForActionsHeader: 'Actions',
-			assistiveTextForColumnSort: 'Sort',
+			assistiveTextForColumnSort: 'Sort by: ',
 			assistiveTextForColumnSortedAscending: 'Sorted Ascending',
 			assistiveTextForColumnSortedDescending: 'Sorted Descending',
 			assistiveTextForSelectAllRows: 'Select all rows',
@@ -258,14 +258,15 @@ const DataTable = createReactClass({
 					'slds-table',
 					{
 						'slds-table--fixed-layout': this.props.fixedLayout,
-						'slds-table--bordered': !this.props.unborderedRow,
-						'slds-table--cell-buffer':
+						'slds-table_resizable-cols': this.props.fixedLayout,
+						'slds-table_bordered': !this.props.unborderedRow,
+						'slds-table_cell-buffer':
 							!this.props.fixedLayout && !this.props.unbufferedCell,
-						'slds-max-medium-table--stacked': this.props.stacked,
-						'slds-max-medium-table--stacked-horizontalviewports': this.props
+						'slds-max-medium-table_stacked': this.props.stacked,
+						'slds-max-medium-table_stacked-horizontalviewports': this.props
 							.stackedHorizontal,
-						'slds-table--striped': this.props.striped,
-						'slds-table--col-bordered': this.props.columnBordered,
+						'slds-table_striped': this.props.striped,
+						'slds-table_col-bordered': this.props.columnBordered,
 						'slds-no-row-hover': this.props.noRowHover,
 					},
 					this.props.className
