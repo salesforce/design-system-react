@@ -2,9 +2,9 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@storybook/react';
-import cloneDeep from 'lodash.clonedeep';
-import IconSettings from '../../icon-settings';
+import { normalize, schema } from 'normalizr';
 
+import IconSettings from '../../icon-settings';
 import { TREE } from '../../../utilities/constants';
 import sampleNodes from '../../../utilities/sample-data/tree';
 
@@ -14,6 +14,12 @@ import Search from '../../forms/input/search';
 const branchExpandClicked = action;
 const itemClicked = action;
 const treeScrolled = action;
+
+const nodeEntity = new schema.Entity('nodes');
+const nodes = new schema.Array(nodeEntity);
+nodeEntity.define({ nodes });
+const normalizedData = normalize(sampleNodes.sampleNodesDefault, nodeEntity).entities.nodes;
+console.log(normalizedData);
 
 const DemoTree = createReactClass({
 	displayName: 'DemoTree',
@@ -35,56 +41,42 @@ const DemoTree = createReactClass({
 	},
 
 	getInitialState () {
-		const initalNodes = this.props.exampleNodesIndex
-			? sampleNodes[this.props.exampleNodesIndex]
-			: sampleNodes.sampleNodesDefault;
 		return {
-			nodes: cloneDeep(initalNodes),
-			selectedNode: undefined,
+			nodes: normalizedData,
 			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
 	},
 
-	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified, and due to object and arrays being reference variables, forceUpate is needed. This is just a "working example" not a prescription.
+	getNodes (node) {
+		return node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : [];
+	},
+
+	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified. Object and arrays are reference variables.
 	handleExpandClick (event, data) {
 		branchExpandClicked('Expand Branch')(event, data);
-		data.node.loading = data.expand ? true : undefined;
-
-		// Fake delay to demonstrate use of loading node attibute
-		setTimeout(
-			(node) => {
-				node.loading = false;
-				this.forceUpdate();
+		this.setState((state) => ({
+			...state,
+			nodes: {
+				...state.nodes,
+				...{
+					[data.node.id]: { ...data.node, expanded: data.expand }
+				}
 			},
-			500,
-			data.node
-		);
-		data.node.expanded = data.expand;
+		}));
 	},
 
 	handleClick (event, data) {
-		if (this.props.singleSelection) {
-			data.node.selected = data.select;
-			this.setState((prevState) => {
-				if (
-					this.state.selectedNode &&
-					this.state.selectedNode.id !== data.node.id
-				) {
-					this.state.selectedNode.selected = false;
+		this.setState((state) => ({
+			...state,
+			nodes: {
+				...state.nodes,
+				...{
+					[data.node.id]: { ...data.node, selected: data.select }
 				}
+			},
+		}));
 
-				return { selectedNode: data.node };
-			});
-			itemClicked('Node Selected')(event, data);
-		} else if (
-			!this.props.noBranchSelection ||
-			(this.props.noBranchSelection && data.node.type !== 'branch')
-		) {
-			data.node.selected = data.select;
-			// trigger render
-			this.setState((prevState) => ({ ...prevState }));
-			itemClicked('Node Selected')(event, data);
-		}
+		itemClicked('Node Selected')(event, data);
 	},
 
 	handleScroll (event, data) {
@@ -109,7 +101,8 @@ const DemoTree = createReactClass({
 					</div>
 				) : null}
 				<Tree
-					nodes={this.state.nodes}
+					getNodes={this.getNodes}
+					nodes={this.state.nodes['0'].nodes}
 					onExpandClick={this.handleExpandClick}
 					onClick={this.handleClick}
 					onScroll={this.handleScroll}

@@ -120,7 +120,7 @@ const handleKeyDownUp = (event, props) => {
 
 const handleKeyDownRight = (event, props) => {
 	if (props.node.expanded) {
-		if (props.node.nodes && props.node.nodes.length > 0) {
+		if (this.props.getNodes(props.node) && this.props.getNodes(props.node).length > 0) {
 			handleKeyDownDown(event, props);
 		}
 	} else {
@@ -432,7 +432,7 @@ const Branch = (props) => {
 					<Branch
 						getNodes={props.getNodes}
 						htmlId={htmlId}
-						key={shortid.generate()}
+						key={node.id}
 						label={node.label}
 						level={level + 1}
 						node={node}

@@ -14,6 +14,7 @@ const sampleNodesDefault = {
 			label: 'Fruits',
 			type: 'branch',
 			id: 2,
+			expanded: true,
 			nodes: [
 				{
 					assistiveText: 'Ground Fruits',
