@@ -420,14 +420,13 @@ const Branch = (props) => {
 	const { treeId, level, onExpand, searchTerm } = props;
 
 	if (Array.isArray(props.getNodes(props.node))) {
-		children = props.node.nodes.map((node, index) => {
+		children = props.getNodes(props.node).map((node, index) => {
 			let child;
 			const htmlId = `${props.treeId}-${node.id}`;
 			treeIndex = `${index}`;
 			if (props.treeIndex) {
 				treeIndex = `${props.treeIndex}-${treeIndex}`;
 			}
-
 			if (node.type === 'branch') {
 				child = (
 					<Branch
