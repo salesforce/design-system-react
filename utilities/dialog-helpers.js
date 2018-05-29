@@ -53,65 +53,6 @@ const getNubbinClassName = (align) =>
 			align === 'left' || align === 'left bottom' || align === 'left top',
 	});
 
-const getAlignment = {};
-
-// `indexOf` is used becauses `align` can be a string OR an array at this time.
-getAlignment.horizontal = (align) => {
-	let alignment = 'center';
-	if (align && align.indexOf('left') > -1) {
-		alignment = 'left';
-	} else if (align && align.indexOf('right') > -1) {
-		alignment = 'right';
-	}
-	return alignment;
-};
-
-getAlignment.vertical = (align) => {
-	let alignment = 'middle';
-	if (align && align.indexOf('bottom') > -1) {
-		alignment = 'bottom';
-	} else if (align && align.indexOf('top') > -1) {
-		alignment = 'top';
-	}
-	return alignment;
-};
-
-getMargin.right = (align) => {
-	if (getAlignment.horizontal(align) === 'right') {
-		return '-.75rem';
-	}
-	return '.75rem';
-};
-
-getMargin.left = (align) => {
-	if (getAlignment.horizontal(align) === 'left') {
-		return '-.75rem';
-	}
-	return '.75rem';
-};
-
-getMargin.top = (align) => {
-	if (
-		align &&
-		getAlignment.vertical(align) === 'top' &&
-		align.indexOf('top') > 0
-	) {
-		return '0.25rem';
-	}
-	return '1.25rem';
-};
-
-getMargin.bottom = (align) => {
-	if (
-		align &&
-		getAlignment.vertical(align) === 'bottom' &&
-		align.indexOf('bottom') > 0
-	) {
-		return '0.25rem';
-	}
-	return '1rem';
-};
-
 const DISTANCE_OFFSET = 1.5; // 'rem'
 const NUBBIN_SIZE = 1; // 'rem'
 const ROTATED_HEIGHT = NUBBIN_SIZE / Math.sqrt(2); // 'rem'
@@ -121,31 +62,56 @@ const ROTATED_HEIGHT = NUBBIN_SIZE / Math.sqrt(2); // 'rem'
 *
 *
 */
-const getNubbinMargins = ($ref, alignProp) => {
+// FIXME - still need to account for border shadow of 2px. probably only needs to be added to the rotated height.
+// TODO - should we convert all rem to pixels right from the get go? Keep units consistent. Memoize the values for perf?
+const getNubbinMargins = (offsets, alignProp) => {
 	// Backwards compatability for align passed as array.
 	const align = Array.isArray(alignProp) ? alignProp.join(' ') : alignProp;
 	const margins = {};
 
+	const DISTANCE_OFFSET_PX = 16 * DISTANCE_OFFSET; // FIXME - actually do a real convert based on font size.
 
-	console.log('ROTATED_HEIGHT: ', ROTATED_HEIGHT);
-	switch (align) {
-		case 'top':
-			margins.marginBottom = `${ROTATED_HEIGHT}rem`;
-			break;
-		case 'top right':
-		case 'top left':
-		case 'bottom':
-			margins.marginTop = `${ROTATED_HEIGHT}rem`;
-			break;
-		default:
+	if (align === 'top') {
+		margins.marginBottom = `${ROTATED_HEIGHT}rem`;
+	} else if (align === 'top right') {
+		margins.marginBottom = `${ROTATED_HEIGHT}rem`;
+		// const setLeft = (offsets.reference.left - (DISTANCE_OFFSET * REM_CONVERT));
+		// const moveRight = (offsets.reference.width * 0.5);
+		const moveLeft = (offsets.reference.width * 0.5);
+		margins.marginLeft = DISTANCE_OFFSET_PX - moveLeft; // setRight  be negative
+		debugger;
+
+	} else if (align === 'top left') {
+		const moveRight = (offsets.reference.width * 0.5);
+		margins.marginLeft = moveRight - DISTANCE_OFFSET_PX; // px
+		margins.marginBottom = `${ROTATED_HEIGHT}rem`;
+
+	} else if (align === 'bottom') {
+		console.log('hi');
+	} else {
+		console.log('hi');
 	}
-
+	// 	case 'top right':
+	// 		break;
+	// 	case 'top left':
+	// 		break;
+	// 	case 'bottom':
+	// 		margins.marginTop = `${ROTATED_HEIGHT}rem`;
+	// 		break;
+	// 	case 'bottom left':
+	// 		margins.marginTop = `${ROTATED_HEIGHT}rem`;
+	// 		break;
+	// 	case 'bottom right':
+	// 		margins.marginTop = `${ROTATED_HEIGHT}rem`;
+	// 		break;
+	// 	default:
+	// }
+	//
 	return margins;
 };
 
 export {
 	getMargin,
-	getAlignment,
 	getNubbinMargins,
 	getNubbinClassName,
 	mapPropToPopperPlacement,
