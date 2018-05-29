@@ -83,9 +83,15 @@ class Tree extends React.Component {
 		let nodes = [{ node: root, treeIndex }];
 		if (root.expanded) {
 			for (let index = 0; index < root.nodes.length; index++) {
-				const curNode = firstLevel ? root.nodes[index] : this.props.getNodes(root)[index];
+				const curNode = firstLevel
+					? root.nodes[index]
+					: this.props.getNodes(root)[index];
 				nodes = nodes.concat(
-					this.flattenTree(curNode, treeIndex ? `${treeIndex}-${index}` : `${index}`, false)
+					this.flattenTree(
+						curNode,
+						treeIndex ? `${treeIndex}-${index}` : `${index}`,
+						false
+					)
 				);
 			}
 		}
@@ -236,11 +242,13 @@ Tree.propTypes = {
 	 * ```
 	 * `assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
 	 */
-	nodes: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		label: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-	})).isRequired,
+	nodes: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			label: PropTypes.string.isRequired,
+			type: PropTypes.string.isRequired,
+		})
+	).isRequired,
 	/**
 	 * Function that will run whenever an item or branch is selected due to click or keyboard navigation.
 	 */

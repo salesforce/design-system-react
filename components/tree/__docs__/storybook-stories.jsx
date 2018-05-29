@@ -18,8 +18,9 @@ const treeScrolled = action;
 const nodeEntity = new schema.Entity('nodes');
 const nodes = new schema.Array(nodeEntity);
 nodeEntity.define({ nodes });
-const normalizedData = normalize(sampleNodes.sampleNodesDefault, nodeEntity).entities.nodes;
-console.log(normalizedData);
+const normalizedData = normalize(sampleNodes.sampleNodesDefault, nodeEntity)
+	.entities.nodes;
+console.log(JSON.stringify(normalizedData));
 
 const DemoTree = createReactClass({
 	displayName: 'DemoTree',
@@ -59,8 +60,8 @@ const DemoTree = createReactClass({
 			nodes: {
 				...state.nodes,
 				...{
-					[data.node.id]: { ...data.node, expanded: data.expand }
-				}
+					[data.node.id]: { ...data.node, expanded: data.expand },
+				},
 			},
 		}));
 	},
@@ -71,8 +72,8 @@ const DemoTree = createReactClass({
 			nodes: {
 				...state.nodes,
 				...{
-					[data.node.id]: { ...data.node, selected: data.select }
-				}
+					[data.node.id]: { ...data.node, selected: data.select },
+				},
 			},
 		}));
 

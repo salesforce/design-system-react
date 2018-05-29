@@ -120,7 +120,10 @@ const handleKeyDownUp = (event, props) => {
 
 const handleKeyDownRight = (event, props) => {
 	if (props.node.expanded) {
-		if (this.props.getNodes(props.node) && this.props.getNodes(props.node).length > 0) {
+		if (
+			this.props.getNodes(props.node) &&
+			this.props.getNodes(props.node).length > 0
+		) {
 			handleKeyDownDown(event, props);
 		}
 	} else {
