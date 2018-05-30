@@ -223,7 +223,10 @@ Tree.propTypes = {
 	/**
 	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
 	 * */
-	heading: PropTypes.string,
+	heading: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string,
+	]),
 	/**
 	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 	 */
@@ -244,7 +247,10 @@ Tree.propTypes = {
 	 */
 	nodes: PropTypes.arrayOf(
 		PropTypes.shape({
-			id: PropTypes.string.isRequired,
+			id: PropTypes.oneOfType([
+				PropTypes.number,
+				PropTypes.string,
+			]).isRequired,
 			label: PropTypes.string.isRequired,
 			type: PropTypes.string.isRequired,
 		})
