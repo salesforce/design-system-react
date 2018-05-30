@@ -64,33 +64,60 @@ const ROTATED_HEIGHT = NUBBIN_SIZE / Math.sqrt(2); // 'rem'
 */
 // FIXME - still need to account for border shadow of 2px. probably only needs to be added to the rotated height.
 // TODO - should we convert all rem to pixels right from the get go? Keep units consistent. Memoize the values for perf?
-const getNubbinMargins = (offsets, alignProp) => {
+const getNubbinMargins = (popperData, alignProp) => {
 	// Backwards compatability for align passed as array.
 	const align = Array.isArray(alignProp) ? alignProp.join(' ') : alignProp;
-	const margins = {};
+	let top = 0;
+	let left = 0;
 
 	const DISTANCE_OFFSET_PX = 16 * DISTANCE_OFFSET; // FIXME - actually do a real convert based on font size.
+	const ROTATED_HEIGHT_PX  = 16 * ROTATED_HEIGHT; // FIXME - actually do a real convert based on font size.
+
+	const halfWidth = popperData.offsets.reference.width * 0.5;
+	const halfHeight = popperData.offsets.reference.height * 0.5;
 
 	if (align === 'top') {
-		margins.marginBottom = `${ROTATED_HEIGHT}rem`;
+		top = ROTATED_HEIGHT_PX * -1;
 	} else if (align === 'top right') {
-		margins.marginBottom = `${ROTATED_HEIGHT}rem`;
-		// const setLeft = (offsets.reference.left - (DISTANCE_OFFSET * REM_CONVERT));
-		// const moveRight = (offsets.reference.width * 0.5);
-		const moveLeft = (offsets.reference.width * 0.5);
-		margins.marginLeft = DISTANCE_OFFSET_PX - moveLeft; // setRight  be negative
-		debugger;
-
+		top = ROTATED_HEIGHT_PX * -1;
+		left = DISTANCE_OFFSET_PX - halfWidth;
 	} else if (align === 'top left') {
-		const moveRight = (offsets.reference.width * 0.5);
-		margins.marginLeft = moveRight - DISTANCE_OFFSET_PX; // px
-		margins.marginBottom = `${ROTATED_HEIGHT}rem`;
-
-	} else if (align === 'bottom') {
-		console.log('hi');
-	} else {
-		console.log('hi');
+		top = ROTATED_HEIGHT_PX * -1;
+		left = halfWidth - DISTANCE_OFFSET_PX;
 	}
+
+	if (align === 'bottom') {
+		top = ROTATED_HEIGHT_PX;
+	} else if (align === 'bottom right') {
+		top = ROTATED_HEIGHT_PX;
+		left = DISTANCE_OFFSET_PX - halfWidth;
+	} else if (align === 'bottom left') {
+		top = ROTATED_HEIGHT_PX;
+		left = halfWidth - DISTANCE_OFFSET_PX;
+	}
+
+	if (align === 'right') {
+		left = ROTATED_HEIGHT_PX;
+	} else if (align === 'right bottom') {
+		left = ROTATED_HEIGHT_PX;
+		top = DISTANCE_OFFSET_PX - halfHeight;
+	} else if (align === 'right top') {
+		left = ROTATED_HEIGHT_PX;
+		top = halfHeight - DISTANCE_OFFSET_PX;
+	}
+
+
+	return {
+		left, top
+	};
+	//
+	// } else if (align === 'top left') {
+	//
+	// } else if (align === 'bottom') {
+	// 	console.log('hi');
+	// } else {
+	// 	console.log('hi');
+	// }
 	// 	case 'top right':
 	// 		break;
 	// 	case 'top left':
