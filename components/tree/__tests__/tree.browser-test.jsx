@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import isFunction from 'lodash.isfunction';
 import cloneDeep from 'lodash.clonedeep';
+import isEqual from 'lodash.isequal';
 
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -50,7 +51,7 @@ const DemoTree = createReactClass({
 
 	getDefaultProps () {
 		return {
-			exampleNodesIndex: 'sampleNodesDefault',
+			exampleNodesIndex: 'sampleNodesDefaultArray',
 			id: 'example-tree',
 			loading: true,
 		};
@@ -59,7 +60,7 @@ const DemoTree = createReactClass({
 	getInitialState () {
 		const initalNodes = this.props.exampleNodesIndex
 			? sampleNodes[this.props.exampleNodesIndex]
-			: sampleNodes.sampleNodesDefault;
+			: sampleNodes.sampleNodesDefaultArray;
 		return {
 			nodes: cloneDeep(initalNodes),
 			searchTerm: this.props.searchable ? 'fruit' : undefined,
@@ -138,6 +139,7 @@ const DemoTree = createReactClass({
 					) : null}
 					<Tree
 						id="example-tree"
+						heading="Miscellaneous Foods"
 						getNodes={this.props.getNodes}
 						nodes={this.state.nodes}
 						onExpandClick={this.handleExpandClick}
@@ -381,13 +383,14 @@ describe('Tree: ', () => {
 	});
 
 	describe('getNodes is called on initial tree', () => {
-		const getNodes = sinon.spy();
+		const getNodes = (node) => node.nodes;
+		const getNodesSpy = sinon.spy(getNodes);
 
 		beforeEach(
 			mountComponent(
 				<DemoTree
 					exampleNodesIndex="sampleNodesWithInitialState"
-					getNodes={getNodes}
+					getNodes={getNodesSpy}
 					heading="Foods"
 				/>
 			)
@@ -395,8 +398,10 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('getNodes is called on initial tree', () => {
-			expect(getNodes.callCount).to.equal(1);
+		it('getNodes passes in correct node and is called 17 times (all branches twice + root branch) on initial tree', () => {
+			const nodeCallbackParameter = getNodesSpy.args[0][0];
+			expect(isEqual(nodeCallbackParameter.nodes, sampleNodes.sampleNodesWithInitialState)).is.true;
+			expect(getNodesSpy.callCount).to.equal(17);
 		});
 	});
 
