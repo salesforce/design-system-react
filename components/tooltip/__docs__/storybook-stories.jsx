@@ -42,7 +42,7 @@ const getPopoverTooltipAlign = (props) => {
 	align.forEach((value) => {
 		children.push(
 			<div key={value} style={{ margin: '100px auto' }}>
-				<PopoverTooltip {...props} align={value}>
+				<PopoverTooltip {...props} isOpen align={value}>
 					{props.trigger}
 				</PopoverTooltip>
 			</div>

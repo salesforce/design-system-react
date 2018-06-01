@@ -37,8 +37,6 @@ const mapPropToPopperPlacement = (propString) => {
 	return placement;
 };
 
-const getMargin = {};
-
 const getNubbinClassName = (align) =>
 	classNames({
 		'slds-nubbin--top': align === 'bottom',
@@ -122,35 +120,9 @@ const getNubbinMargins = (popperData, alignProp) => {
 	return {
 		left, top
 	};
-	//
-	// } else if (align === 'top left') {
-	//
-	// } else if (align === 'bottom') {
-	// 	console.log('hi');
-	// } else {
-	// 	console.log('hi');
-	// }
-	// 	case 'top right':
-	// 		break;
-	// 	case 'top left':
-	// 		break;
-	// 	case 'bottom':
-	// 		margins.marginTop = `${ROTATED_HEIGHT}rem`;
-	// 		break;
-	// 	case 'bottom left':
-	// 		margins.marginTop = `${ROTATED_HEIGHT}rem`;
-	// 		break;
-	// 	case 'bottom right':
-	// 		margins.marginTop = `${ROTATED_HEIGHT}rem`;
-	// 		break;
-	// 	default:
-	// }
-	//
-	return margins;
 };
 
 export {
-	getMargin,
 	getNubbinMargins,
 	getNubbinClassName,
 	mapPropToPopperPlacement,

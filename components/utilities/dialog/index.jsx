@@ -244,14 +244,10 @@ const Dialog = createReactClass({
 		const nubbinOffsets = this.props.hasNubbin ?
 			getNubbinMargins(this.state.popperData, this.props.align) : {};
 
-<<<<<<< HEAD
-		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
-		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
-		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
-=======
 		const left = popperData.offsets.popper.left + nubbinOffsets.left + propOffsets.horizontal;
 		const top = popperData.offsets.popper.top + nubbinOffsets.top + propOffsets.vertical;
->>>>>>> WIP
+
+		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
 		return { ...popperData.style, left, top, right, position };
 	},
@@ -344,7 +340,6 @@ const Dialog = createReactClass({
 				order: 900,
 				fn: (popperData) => {
 					if ((this.state.popperData && !isEqual(popperData.offsets, this.state.popperData.offsets)) || !this.state.popperData) {
-
 						this.setState({
 							popperData,
 						});
@@ -376,7 +371,7 @@ const Dialog = createReactClass({
 	},
 
 	render () {
-		let style = {};
+		const style = {};
 
 		if (this.props.position === 'absolute' || this.props.position === 'overflowBoundaryElement') {
 			style = {
@@ -418,12 +413,14 @@ const Dialog = createReactClass({
 						this.props.hasNubbin && getNubbinClassName(this.props.align),
 					) || undefined
 				}
+				id={this.props.id}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
 				{...this.props.containerProps}
 				ref={this.setDialogContent}
+				role={this.props.variant}
 			>
 				{this.props.children}
 			</div>

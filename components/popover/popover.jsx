@@ -467,8 +467,6 @@ const Popover = createReactClass({
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				onRequestTargetElement={() => this.trigger}
 				position={this.props.position}
-				style={{
-				}}
 				variant="popover"
 			>
 				<div
