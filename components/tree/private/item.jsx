@@ -5,39 +5,31 @@
 
 // Implements the [Tree design pattern](https://www.lightningdesignsystem.com/components/tree/) in React.
 
-// ## Dependencies
-
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// ### classNames
 import classNames from 'classnames';
-
-// ### isFunction
 import isFunction from 'lodash.isfunction';
 
 import Button from '../../button';
-
 import Highlighter from '../../utilities/highlighter';
 
-// ### Event Helpers
 import EventUtil from '../../../utilities/event';
-
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
-
-// ## Constants
 import { TREE_ITEM } from '../../../utilities/constants';
 
-const handleSelect = (event, props) => {
+const handleSelect = ({ event, props, fromFocus }) => {
 	EventUtil.trap(event);
-
 	if (isFunction(props.onSelect)) {
-		props.onSelect(event, {
-			node: props.node,
-			select: !props.node.selected,
-			treeIndex: props.treeIndex,
+		props.onSelect({
+			event,
+			data: {
+				node: props.node,
+				select: !props.node.selected,
+				treeIndex: props.treeIndex,
+			},
+			fromFocus
 		});
 	}
 };
@@ -61,15 +53,15 @@ const handleKeyDownDown = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Select the next visible node
 		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-		props.onSelect(
+		props.onSelect({
 			event,
-			{
+			data: {
 				node: flattenedNode.node,
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			true
-		);
+			clearSelectedNodes: true
+		});
 	}
 };
 
@@ -77,15 +69,15 @@ const handleKeyDownUp = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Go to the previous visible node
 		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-		props.onSelect(
+		props.onSelect({
 			event,
-			{
+			data: {
 				node: flattenedNode.node,
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			true
-		);
+			clearSelectedNodes: true
+		});
 	}
 };
 
@@ -93,25 +85,20 @@ const handleKeyDownLeft = (event, props) => {
 	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
 	const index = nodes.indexOf(props.parent);
 	if (index !== -1) {
-		props.onExpand(event, {
-			node: props.parent,
-			expand: !props.parent.expanded,
-			treeIndex: props.flattenedNodes[index].treeIndex,
-		});
-		props.onSelect(
+		props.onExpand({
 			event,
-			{
+			data: {
 				node: props.parent,
 				select: true,
-				treeIndex: props.flattenedNodes[index].treeIndex,
-			},
-			true
-		);
+				expand: !props.parent.expanded,
+				treeIndex: props.flattenedNodes[index].treeIndex
+			}
+		});
 	}
 };
 
 const handleKeyDownEnter = (event, props) => {
-	handleSelect(event, props);
+	handleSelect({ event, props });
 };
 
 const handleKeyDown = (event, props) => {
@@ -124,26 +111,23 @@ const handleKeyDown = (event, props) => {
 				[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
 				[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
 			},
-		},
-		true
+		}
 	);
 };
 
 const handleFocus = (event, props) => {
-	if (!props.focusedNodeIndex && event.target === event.currentTarget) {
-		handleSelect(event, props);
+	if (!props.treeHasFocus && !props.focusedNodeIndex && event.target === event.currentTarget) {
+		handleSelect({ event, props });
 	}
 };
 
 const getTabIndex = (props) => {
-	if (
-		props.treeIndex === props.focusedNodeIndex ||
-		(props.selectedNodeIndexes.length === 0 &&
-			props.treeIndex === props.flattenedNodes[0].treeIndex)
-	) {
-		return 0;
-	}
-	return -1;
+	const initialFocus = props.selectedNodeIndexes.length === 0
+			&& props.treeIndex === props.flattenedNodes[0].treeIndex;
+	return (props.treeIndex === props.focusedNodeIndex
+		|| initialFocus)
+		? 0
+		: -1;
 };
 
 /**
@@ -175,7 +159,7 @@ const Item = (props) => {
 					'slds-is-selected': isSelected,
 				})}
 				onClick={(event) => {
-					handleSelect(event, props);
+					handleSelect({ event, props });
 				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
