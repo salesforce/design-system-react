@@ -242,7 +242,7 @@ const Dialog = createReactClass({
 
 		// FIXME before merge - gotta rename from margin to offset
 		const nubbinOffsets = this.props.hasNubbin ?
-			getNubbinMargins(this.state.popperData, this.props.align) : {};
+			getNubbinMargins(this.state.popperData, this.props.align) : { left: 0, top: 0 };
 
 		const left = popperData.offsets.popper.left + nubbinOffsets.left + propOffsets.horizontal;
 		const top = popperData.offsets.popper.top + nubbinOffsets.top + propOffsets.vertical;
