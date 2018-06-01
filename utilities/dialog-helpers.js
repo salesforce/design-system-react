@@ -47,10 +47,12 @@ const getNubbinClassName = (align) =>
 		'slds-nubbin--bottom': align === 'top',
 		'slds-nubbin--bottom-left': align === 'top left',
 		'slds-nubbin--bottom-right': align === 'top right',
-		'slds-nubbin--left':
-			align === 'right' || align === 'right bottom' || align === 'right top',
-		'slds-nubbin--right':
-			align === 'left' || align === 'left bottom' || align === 'left top',
+		'slds-nubbin--left': align === 'right',
+		'slds-nubbin--left-bottom': align === 'right bottom',
+		'slds-nubbin--left-top': align === 'right top',
+		'slds-nubbin--right': align === 'left',
+		'slds-nubbin--right-bottom': align === 'left bottom',
+		'slds-nubbin--right-top': align === 'left top',
 	});
 
 const DISTANCE_OFFSET = 1.5; // 'rem'
@@ -103,6 +105,16 @@ const getNubbinMargins = (popperData, alignProp) => {
 		top = DISTANCE_OFFSET_PX - halfHeight;
 	} else if (align === 'right top') {
 		left = ROTATED_HEIGHT_PX;
+		top = halfHeight - DISTANCE_OFFSET_PX;
+	}
+
+	if (align === 'left') {
+		left = ROTATED_HEIGHT_PX * -1;
+	} else if (align === 'left bottom') {
+		left = ROTATED_HEIGHT_PX * -1;
+		top = DISTANCE_OFFSET_PX - halfHeight;
+	} else if (align === 'left top') {
+		left = ROTATED_HEIGHT_PX * -1;
 		top = halfHeight - DISTANCE_OFFSET_PX;
 	}
 
