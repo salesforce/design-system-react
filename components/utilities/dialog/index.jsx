@@ -246,7 +246,8 @@ const Dialog = createReactClass({
 		const { position } = popperData.offsets.popper;
 		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
 		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
-		return { ...popperData.style, left, top, position };
+		const right = 'inherit';
+		return { ...popperData.style, left, top, right, position };
 	},
 
 	// Render
