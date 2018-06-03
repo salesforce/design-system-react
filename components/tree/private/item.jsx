@@ -29,7 +29,7 @@ const handleSelect = ({ event, props, fromFocus }) => {
 				select: !props.node.selected,
 				treeIndex: props.treeIndex,
 			},
-			fromFocus
+			fromFocus,
 		});
 	}
 };
@@ -60,7 +60,7 @@ const handleKeyDownDown = (event, props) => {
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			clearSelectedNodes: true
+			clearSelectedNodes: true,
 		});
 	}
 };
@@ -76,7 +76,7 @@ const handleKeyDownUp = (event, props) => {
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			clearSelectedNodes: true
+			clearSelectedNodes: true,
 		});
 	}
 };
@@ -91,8 +91,8 @@ const handleKeyDownLeft = (event, props) => {
 				node: props.parent,
 				select: true,
 				expand: !props.parent.expanded,
-				treeIndex: props.flattenedNodes[index].treeIndex
-			}
+				treeIndex: props.flattenedNodes[index].treeIndex,
+			},
 		});
 	}
 };
@@ -102,32 +102,31 @@ const handleKeyDownEnter = (event, props) => {
 };
 
 const handleKeyDown = (event, props) => {
-	mapKeyEventCallbacks(
-		event,
-		{
-			callbacks: {
-				[KEYS.DOWN]: { callback: (evt) => handleKeyDownDown(evt, props) },
-				[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
-				[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
-				[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
-			},
-		}
-	);
+	mapKeyEventCallbacks(event, {
+		callbacks: {
+			[KEYS.DOWN]: { callback: (evt) => handleKeyDownDown(evt, props) },
+			[KEYS.UP]: { callback: (evt) => handleKeyDownUp(evt, props) },
+			[KEYS.LEFT]: { callback: (evt) => handleKeyDownLeft(evt, props) },
+			[KEYS.ENTER]: { callback: (evt) => handleKeyDownEnter(evt, props) },
+		},
+	});
 };
 
 const handleFocus = (event, props) => {
-	if (!props.treeHasFocus && !props.focusedNodeIndex && event.target === event.currentTarget) {
+	if (
+		!props.treeHasFocus &&
+		!props.focusedNodeIndex &&
+		event.target === event.currentTarget
+	) {
 		handleSelect({ event, props });
 	}
 };
 
 const getTabIndex = (props) => {
-	const initialFocus = props.selectedNodeIndexes.length === 0
-			&& props.treeIndex === props.flattenedNodes[0].treeIndex;
-	return (props.treeIndex === props.focusedNodeIndex
-		|| initialFocus)
-		? 0
-		: -1;
+	const initialFocus =
+		props.selectedNodeIndexes.length === 0 &&
+		props.treeIndex === props.flattenedNodes[0].treeIndex;
+	return props.treeIndex === props.focusedNodeIndex || initialFocus ? 0 : -1;
 };
 
 /**

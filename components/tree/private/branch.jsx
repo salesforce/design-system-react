@@ -32,7 +32,7 @@ const handleExpand = (event, props) => {
 				node: props.node,
 				expand: !props.node.expanded,
 				treeIndex: props.treeIndex,
-			}
+			},
 		});
 	}
 };
@@ -40,13 +40,14 @@ const handleExpand = (event, props) => {
 const handleSelect = ({ event, props, fromFocus }) => {
 	EventUtil.trap(event);
 	if (isFunction(props.onSelect)) {
-		props.onSelect({ event,
+		props.onSelect({
+			event,
 			data: {
 				node: props.node,
 				select: !props.node.selected,
 				treeIndex: props.treeIndex,
 			},
-			fromFocus
+			fromFocus,
 		});
 	}
 };
@@ -90,7 +91,7 @@ const handleKeyDownDown = (event, props) => {
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			clearSelectedNodes: true
+			clearSelectedNodes: true,
 		});
 	}
 };
@@ -106,7 +107,7 @@ const handleKeyDownUp = (event, props) => {
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			clearSelectedNodes: true
+			clearSelectedNodes: true,
 		});
 	}
 };
@@ -160,7 +161,11 @@ const handleKeyDown = (event, props) => {
 };
 
 const handleFocus = (event, props) => {
-	if (!props.treeHasFocus && !props.focusedNodeIndex && event.target === event.currentTarget) {
+	if (
+		!props.treeHasFocus &&
+		!props.focusedNodeIndex &&
+		event.target === event.currentTarget
+	) {
 		// did it happen by mouse?
 		handleSelect({ event, props, fromFocus: true });
 	}

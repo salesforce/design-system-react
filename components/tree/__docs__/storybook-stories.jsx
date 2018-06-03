@@ -26,7 +26,9 @@ storiesOf(TREE, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium">{getStory()}</div>
 	))
-	.add('Base', () => <DefaultExample nodes={sampleNodesDynamicHashMap.base} action={action} />)
+	.add('Base', () => (
+		<DefaultExample nodes={sampleNodesDynamicHashMap.base} action={action} />
+	))
 	.add('Base with stencil', () => (
 		<DefaultExample action={action} loadingStencil />
 	))

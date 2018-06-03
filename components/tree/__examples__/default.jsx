@@ -370,6 +370,7 @@ class Example extends React.Component {
 						<div>
 							<Search
 								assistiveText="Search Tree"
+								id="example-search"
 								value={this.state.searchTerm}
 								onChange={this.handleSearchChange}
 							/>

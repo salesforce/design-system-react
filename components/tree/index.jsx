@@ -90,12 +90,7 @@ class Tree extends React.Component {
 		return nodes;
 	};
 
-	handleSelect = ({
-		event,
-		data,
-		clearSelectedNodes,
-		fromFocus
-	}) => {
+	handleSelect = ({ event, data, clearSelectedNodes, fromFocus }) => {
 		// When triggered by a key event, other nodes should be deselected.
 		if (clearSelectedNodes) {
 			this.state.flattenedNodes.forEach((flattenedNode) => {
@@ -127,7 +122,7 @@ class Tree extends React.Component {
 			focusedNodeIndex: data.treeIndex,
 			selectedNodeIndexes,
 		});
-	}
+	};
 
 	handleNodeBlur = () => {
 		// There is no need to render when blurring a node because focus is either:

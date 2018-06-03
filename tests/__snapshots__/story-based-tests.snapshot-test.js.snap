@@ -4018,7 +4018,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
       >
         <label
           className="slds-form-element__label slds-assistive-text"
-          htmlFor="HkWxeYAW-kx7"
+          htmlFor="example-search"
         >
           Search Tree
         </label>
@@ -4046,7 +4046,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
             className="slds-input"
             defaultValue={undefined}
             disabled={undefined}
-            id="HkWxeYAW-kx7"
+            id="example-search"
             maxLength={undefined}
             minLength={undefined}
             name={undefined}
