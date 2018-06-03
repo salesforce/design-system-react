@@ -1,3 +1,4 @@
+sudo: false
 language: node_js
 node_js:
   - "8"
@@ -7,9 +8,6 @@ install:
   - npm ci
 script:
   - npm run travis-ci
-cache:
-  directories:
-    - node_modules
 env:
   - CXX=g++-4.8
 addons:
