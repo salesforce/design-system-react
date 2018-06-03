@@ -49,11 +49,8 @@ const DatepickerYearSelector = createReactClass({
 	},
 
 	getSelectedValueOption () {
-		debugger;
 		const selectedYear = this.props.initialDateForCalendarRender.getFullYear();
-		return this.getOptions().filter((option) =>
-			option.value === selectedYear
-		);
+		return this.getOptions().filter((option) => option.value === selectedYear);
 	},
 
 	handleSelect (event, { selection: selectedValues }) {
@@ -77,7 +74,7 @@ const DatepickerYearSelector = createReactClass({
 				<Combobox
 					className="slds-picklist--fluid slds-shrink-none"
 					events={{
-						onSelect: this.handleSelect
+						onSelect: this.handleSelect,
 					}}
 					id={`${this.props.id}-year-picklist`}
 					inheritWidthOf="target"
@@ -85,7 +82,7 @@ const DatepickerYearSelector = createReactClass({
 					multiple={false}
 					options={this.getOptions()}
 					labels={{
-						placeholder: 'Year'
+						placeholder: 'Year',
 					}}
 					selection={selection}
 					value={selection.value}

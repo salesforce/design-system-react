@@ -80,11 +80,11 @@ const Example = createReactClass({
 											comboboxSelection: data.selection,
 										},
 									});
-								}
+								},
 							}}
 							labels={{
 								label: 'Show Me',
-								placeholder: 'Select record type'
+								placeholder: 'Select record type',
 							}}
 							menuPosition="relative"
 							options={options['show-me']}
