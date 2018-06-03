@@ -31,6 +31,9 @@ const customStyles = {
 	},
 };
 
+// This component should be deprecated and appears to have
+// been created in order to do modals in portals.
+
 const Manager = createReactClass({
 	getDefaultProps () {
 		return {

@@ -168,7 +168,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 			triggerOnClick = sinon.spy();
 
 			mountAppLauncher({
-				triggerAssistiveText: 'Custom Icon Assistive Text',
+				assistiveText: { trigger: 'Custom Icon Assistive Text' },
 				triggerOnClick,
 			});
 		});

@@ -17,7 +17,7 @@ const documentationSiteLiveExamples = {
 	card: require('@salesforce/design-system-react/components/card/__docs__/site-stories.js'),
 	combobox: require('@salesforce/design-system-react/components/combobox/__docs__/site-stories.js'),
 	filter: require('@salesforce/design-system-react/components/filter/__docs__/site-stories.js'),
-	'forms-checkbox': require('@salesforce/design-system-react/components/checkbox/__docs__/site-stories.js'),
+	'forms-checkbox': require('@salesforce/design-system-react/components/forms/checkbox/__docs__/site-stories.js'),
 	'data-table': require('@salesforce/design-system-react/components/data-table/__docs__/site-stories.js'),
 	'date-picker': require('@salesforce/design-system-react/components/date-picker/__docs__/site-stories.js'),
 	icon: require('@salesforce/design-system-react/components/icon/__docs__/site-stories.js'),

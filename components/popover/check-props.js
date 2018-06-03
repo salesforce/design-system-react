@@ -30,6 +30,13 @@ if (process.env.NODE_ENV !== 'production') {
 			'isInline',
 			'position="relative"'
 		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.closeButtonAssistiveText,
+			'closeButtonAssistiveText',
+			"assistiveText['closeButton']"
+		);
 	};
 }
 

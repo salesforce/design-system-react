@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.14",
+	"version": "0.8.15",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -32,6 +32,7 @@
 		"storyshots:build": "NODE_ENV=development npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"storyshots:start": "node app --folder=storybook-based-tests",
 		"test": "scripts/local-qa.sh --no-fix",
+		"test-concurrent": "npx concurrently \"npm run lint\" \"npx karma start --single-run\" \"npm run snapshot-test\" \"npm run build-and-test-docs\"",
 		"test:fix": "scripts/local-qa.sh",
 		"travis-ci": "scripts/travis-ci.sh",
 		"validate": "npm ls",
@@ -104,7 +105,7 @@
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
 		"react-highlighter": "^0.4.0",
-		"react-modal": "^1.7.7",
+		"react-modal": "3.4.4",
 		"react-onclickoutside": "^6.5.0",
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.12.0",
@@ -145,6 +146,7 @@
 		"chai": "^4.0.1",
 		"chai-enzyme": "^0.8.0",
 		"compression": "^1.6.2",
+		"concurrently": "^3.5.1",
 		"css-loader": "^0.28.0",
 		"enzyme": "^2.5.1",
 		"enzyme-to-json": "^1.5.0",

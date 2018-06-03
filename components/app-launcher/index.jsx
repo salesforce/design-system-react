@@ -27,6 +27,13 @@ import Modal from '../modal';
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
 
+const defaultProps = {
+	assistiveText: {
+		trigger: 'Open App Launcher',
+	},
+	title: 'App Launcher',
+};
+
 /**
  * The App Launcher allows the user to quickly access all the apps and functionality with their organization.
  * The App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)
@@ -60,7 +67,6 @@ import { APP_LAUNCHER } from '../../utilities/constants';
  * settings.setAppElement('#mount');
  * ```
  */
-
 const AppLauncher = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
@@ -68,6 +74,14 @@ const AppLauncher = createReactClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `trigger`: This is a visually hidden label for the app launcher icon.
+		 */
+		assistiveText: PropTypes.shape({
+			trigger: PropTypes.string,
+		}),
 		/**
 		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
@@ -105,10 +119,6 @@ const AppLauncher = createReactClass({
 		 */
 		title: PropTypes.string,
 		/**
-		 * Assistive text for app launcher icon
-		 */
-		triggerAssistiveText: PropTypes.string,
-		/**
 		 * This is typically the name of the cloud or application
 		 */
 		triggerName: PropTypes.node,
@@ -119,10 +129,7 @@ const AppLauncher = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			triggerAssistiveText: 'Open App Launcher',
-			title: 'App Launcher',
-		};
+		return defaultProps;
 	},
 
 	getInitialState () {
@@ -208,6 +215,12 @@ const AppLauncher = createReactClass({
 		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
 		const modalContentStaticHeight = '90%';
 
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
+		const triggerAssistiveText =
+			this.props.triggerAssistiveText || assistiveText.trigger;
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
@@ -227,9 +240,9 @@ const AppLauncher = createReactClass({
 							<span className="slds-r8" />
 							<span className="slds-r9" />
 						</span>
-						{this.props.triggerAssistiveText && (
+						{triggerAssistiveText && (
 							<span className="slds-assistive-text">
-								{this.props.triggerAssistiveText}
+								{triggerAssistiveText}
 							</span>
 						)}
 					</button>
