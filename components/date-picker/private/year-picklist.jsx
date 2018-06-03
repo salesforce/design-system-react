@@ -73,7 +73,7 @@ const DatepickerYearSelector = createReactClass({
 	render () {
 		const selection = this.getSelectedValueOption();
 		return (
-			<div className="slds-form-elgetSelectedValueIndexement">
+			<div className="slds-form-element slds-align-content-center">
 				<Combobox
 					className="slds-picklist--fluid slds-shrink-none"
 					events={{
