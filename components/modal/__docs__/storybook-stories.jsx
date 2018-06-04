@@ -104,7 +104,7 @@ const modalContent = (
 			<Combobox
 				events={{
 					onSelect: (event, data) =>
-						action('selected: ', data.selection[0].label)
+						action('selected: ', data.selection[0].label),
 				}}
 				labels={{
 					label: 'Lead Source',

@@ -29,7 +29,7 @@ const Example = createReactClass({
 		return {
 			isOpen: false,
 			leadSourceSelection: [leadSourceOptions[0]],
-			opportunityTypeSelection: [opportunityTypeOptions[0]]
+			opportunityTypeSelection: [opportunityTypeOptions[0]],
 		};
 	},
 
@@ -112,14 +112,17 @@ const Example = createReactClass({
 								<Combobox
 									events={{
 										onSelect: (event, data) => {
-											const selection = data.selection.length === 0 ? this.state.leadSourceSelection : data.selection;
+											const selection =
+												data.selection.length === 0
+													? this.state.leadSourceSelection
+													: data.selection;
 											console.log('selected: ', selection[0].label);
 											this.setState({ leadSourceSelection: selection });
-										}
+										},
 									}}
 									labels={{
 										label: 'Lead Source',
-										placeholder: 'Select Lead Source'
+										placeholder: 'Select Lead Source',
 									}}
 									menuPosition="relative"
 									options={leadSourceOptions}
@@ -131,14 +134,17 @@ const Example = createReactClass({
 								<Combobox
 									events={{
 										onSelect: (event, data) => {
-											const selection = data.selection.length === 0 ? this.state.opportunityTypeSelection : data.selection;
+											const selection =
+												data.selection.length === 0
+													? this.state.opportunityTypeSelection
+													: data.selection;
 											console.log('selected: ', selection[0].label);
 											this.setState({ opportunityTypeSelection: selection });
-										}
+										},
 									}}
 									labels={{
 										label: 'Type',
-										placeholder: 'Select Opportunity Type'
+										placeholder: 'Select Opportunity Type',
 									}}
 									menuPosition="relative"
 									options={opportunityTypeOptions}
