@@ -38,9 +38,6 @@ import Button from '../button';
 // ### Children
 import Dialog from '../utilities/dialog';
 
-// ### Traits
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
-
 // #### KeyboardNavigable
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
@@ -569,7 +566,7 @@ const Popover = createReactClass({
 
 		this.renderOverlay(this.getIsOpen());
 
-		const containerStyles = { width: 100, height: 100, border: '1px solid black', display: 'inline-block' }; // ATTN FIXME - can we make this change??!
+		const containerStyles = { display: 'inline-block' }; // ATTN FIXME - can we make this change??!
 		return (
 			<div
 				className={this.props.triggerClassName}
