@@ -336,20 +336,22 @@ describe('DataTable: ', function () {
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
 					<DataTableRowActions
-						dropdown={<Dropdown
-							options={[
-								{
-									id: 0,
-									label: 'Add to Group',
-									value: '1',
-								},
-								{
-									id: 1,
-									label: 'Publish',
-									value: '2',
-								},
-							]}
-						/>}
+						dropdown={
+							<Dropdown
+								options={[
+									{
+										id: 0,
+										label: 'Add to Group',
+										value: '1',
+									},
+									{
+										id: 1,
+										label: 'Publish',
+										value: '2',
+									},
+								]}
+							/>
+						}
 					/>
 				</DataTable>
 			).call(this);

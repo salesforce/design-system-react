@@ -199,7 +199,7 @@ const Example = createReactClass({
 									id: 6,
 									label: 'Seventh of Seven',
 									value: '7',
-								}
+								},
 							]}
 							onAction={this.handleRowAction}
 							dropdown={<Dropdown length="7" />}
