@@ -4,6 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import chai from 'chai';
 
+import Dropdown from '../../menu-dropdown';
 import DataTable from '../../data-table';
 import DataTableColumn from '../../data-table/column';
 import DataTableRowActions from '../../data-table/row-actions';
@@ -328,25 +329,27 @@ describe('DataTable: ', function () {
 	describe('w/ RowActions', function () {
 		afterEach(removeTable);
 
-		it('renders the RowActions', function () {
+		it('renders the RowActions and uses dropdown override property', function () {
 			renderTable(
 				<DataTable {...defaultProps}>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
 					<DataTableRowActions
-						options={[
-							{
-								id: 0,
-								label: 'Add to Group',
-								value: '1',
-							},
-							{
-								id: 1,
-								label: 'Publish',
-								value: '2',
-							},
-						]}
+						dropdown={<Dropdown
+							options={[
+								{
+									id: 0,
+									label: 'Add to Group',
+									value: '1',
+								},
+								{
+									id: 1,
+									label: 'Publish',
+									value: '2',
+								},
+							]}
+						/>}
 					/>
 				</DataTable>
 			).call(this);
@@ -371,6 +374,7 @@ describe('DataTable: ', function () {
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
 					<DataTableRowActions
+						onAction={this.onAction}
 						options={[
 							{
 								id: 0,
@@ -383,7 +387,6 @@ describe('DataTable: ', function () {
 								value: '2',
 							},
 						]}
-						onAction={this.onAction}
 					/>
 				</DataTable>
 			).call(this);
