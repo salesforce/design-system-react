@@ -28,23 +28,10 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           >
             <button
               aria-controls="1-accordion-panel"
-              aria-describedby={undefined}
               aria-expanded={false}
-              aria-haspopup={undefined}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -66,33 +53,19 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger--click"
             id="ButtonGroupExampleDropdown"
-            onBlur={undefined}
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
-            onMouseDown={undefined}
             onMouseEnter={null}
             onMouseLeave={null}
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               className="slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
               tabIndex="0"
-              title={undefined}
               type="button"
             >
               <svg
@@ -134,23 +107,10 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           >
             <button
               aria-controls="2-accordion-panel"
-              aria-describedby={undefined}
               aria-expanded={false}
-              aria-haspopup={undefined}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -172,33 +132,19 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger--click"
             id="ButtonGroupExampleDropdown"
-            onBlur={undefined}
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
-            onMouseDown={undefined}
             onMouseEnter={null}
             onMouseLeave={null}
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               className="slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
               tabIndex="0"
-              title={undefined}
               type="button"
             >
               <svg
@@ -240,23 +186,10 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           >
             <button
               aria-controls="3-accordion-panel"
-              aria-describedby={undefined}
               aria-expanded={false}
-              aria-haspopup={undefined}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -278,33 +211,19 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger--click"
             id="ButtonGroupExampleDropdown"
-            onBlur={undefined}
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
-            onMouseDown={undefined}
             onMouseEnter={null}
             onMouseLeave={null}
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               className="slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
               tabIndex="0"
-              title={undefined}
               type="button"
             >
               <svg
@@ -372,23 +291,10 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     className="slds-checkbox"
                   >
                     <input
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
-                      aria-owns={undefined}
-                      aria-required={undefined}
                       checked={false}
-                      defaultChecked={undefined}
-                      disabled={undefined}
                       id="DataTableExample-2-SLDSDataTableHead-SelectAll"
                       name="SelectAll"
-                      onBlur={undefined}
                       onChange={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      required={undefined}
-                      role={undefined}
                       type="checkbox"
                     />
                     <label
@@ -441,14 +347,10 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               >
                 Name
               </span>
-              <span
-                className={undefined}
-                title={undefined}
-              >
+              <span>
                 <svg
                   aria-hidden="true"
                   className="slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
@@ -578,14 +480,10 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               >
                 Confidence
               </span>
-              <span
-                className={undefined}
-                title={undefined}
-              >
+              <span>
                 <svg
                   aria-hidden="true"
                   className="slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
@@ -693,23 +591,10 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   className="slds-checkbox"
                 >
                   <input
-                    aria-controls={undefined}
-                    aria-describedby={undefined}
-                    aria-owns={undefined}
-                    aria-required={undefined}
                     checked={false}
-                    defaultChecked={undefined}
-                    disabled={undefined}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                     name="SelectRow"
-                    onBlur={undefined}
                     onChange={[Function]}
-                    onFocus={undefined}
-                    onKeyDown={undefined}
-                    onKeyPress={undefined}
-                    onKeyUp={undefined}
-                    required={undefined}
-                    role={undefined}
                     type="checkbox"
                   />
                   <label
@@ -844,33 +729,19 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger--click"
               id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
-              onBlur={undefined}
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
-              onMouseDown={undefined}
               onMouseEnter={null}
               onMouseLeave={null}
             >
               <button
-                aria-controls={undefined}
-                aria-describedby={undefined}
                 aria-expanded={false}
                 aria-haspopup={true}
                 className="slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button--icon-x-small"
                 disabled={false}
-                id={undefined}
-                onBlur={undefined}
                 onClick={[Function]}
-                onFocus={undefined}
-                onKeyDown={undefined}
-                onKeyPress={undefined}
-                onKeyUp={undefined}
-                onMouseDown={undefined}
-                onMouseEnter={undefined}
-                onMouseLeave={undefined}
                 tabIndex="0"
-                title={undefined}
                 type="button"
               >
                 <svg
@@ -913,23 +784,10 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   className="slds-checkbox"
                 >
                   <input
-                    aria-controls={undefined}
-                    aria-describedby={undefined}
-                    aria-owns={undefined}
-                    aria-required={undefined}
                     checked={false}
-                    defaultChecked={undefined}
-                    disabled={undefined}
                     id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                     name="SelectRow"
-                    onBlur={undefined}
                     onChange={[Function]}
-                    onFocus={undefined}
-                    onKeyDown={undefined}
-                    onKeyPress={undefined}
-                    onKeyUp={undefined}
-                    required={undefined}
-                    role={undefined}
                     type="checkbox"
                   />
                   <label
@@ -1064,33 +922,19 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger--click"
               id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
-              onBlur={undefined}
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
-              onMouseDown={undefined}
               onMouseEnter={null}
               onMouseLeave={null}
             >
               <button
-                aria-controls={undefined}
-                aria-describedby={undefined}
                 aria-expanded={false}
                 aria-haspopup={true}
                 className="slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button--icon-x-small"
                 disabled={false}
-                id={undefined}
-                onBlur={undefined}
                 onClick={[Function]}
-                onFocus={undefined}
-                onKeyDown={undefined}
-                onKeyPress={undefined}
-                onKeyUp={undefined}
-                onMouseDown={undefined}
-                onMouseEnter={undefined}
-                onMouseLeave={undefined}
                 tabIndex="0"
-                title={undefined}
                 type="button"
               >
                 <svg
@@ -1133,23 +977,10 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   className="slds-checkbox"
                 >
                   <input
-                    aria-controls={undefined}
-                    aria-describedby={undefined}
-                    aria-owns={undefined}
-                    aria-required={undefined}
                     checked={true}
-                    defaultChecked={undefined}
-                    disabled={undefined}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
                     name="SelectRow"
-                    onBlur={undefined}
                     onChange={[Function]}
-                    onFocus={undefined}
-                    onKeyDown={undefined}
-                    onKeyPress={undefined}
-                    onKeyUp={undefined}
-                    required={undefined}
-                    role={undefined}
                     type="checkbox"
                   />
                   <label
@@ -1284,33 +1115,19 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger--click"
               id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
-              onBlur={undefined}
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
-              onMouseDown={undefined}
               onMouseEnter={null}
               onMouseLeave={null}
             >
               <button
-                aria-controls={undefined}
-                aria-describedby={undefined}
                 aria-expanded={false}
                 aria-haspopup={true}
                 className="slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button--icon-x-small"
                 disabled={false}
-                id={undefined}
-                onBlur={undefined}
                 onClick={[Function]}
-                onFocus={undefined}
-                onKeyDown={undefined}
-                onKeyPress={undefined}
-                onKeyUp={undefined}
-                onMouseDown={undefined}
-                onMouseEnter={undefined}
-                onMouseLeave={undefined}
                 tabIndex="0"
-                title={undefined}
                 type="button"
               >
                 <svg

@@ -22,12 +22,10 @@ exports[`Avatar Entity Icon Snapshot 1`] = `
   >
     <span
       className="slds-icon_container slds-icon-standard-account"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -65,12 +63,10 @@ exports[`Avatar User Icon Snapshot 1`] = `
   >
     <span
       className="slds-icon_container slds-icon-standard-user"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
