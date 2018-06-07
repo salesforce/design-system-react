@@ -82,9 +82,7 @@
 	"main": "components/index.js",
 	"homepage": "https://react.lightningdesignsystem.com",
 	"dependencies": {
-		"@babel/preset-env": "7.0.0-beta.44",
 		"@salesforce/babel-preset-design-system-react": "^1.0.0",
-		"babel-jest": "^23.0.1",
 		"classnames": "^2.2.5",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
@@ -145,6 +143,7 @@
 		"babel-plugin-import-noop": "^1.0.1",
 		"babel-plugin-istanbul": "^4.1.6",
 		"babel-plugin-root-import": "^5.1.0",
+		"babel-jest": "^23.0.1",
 		"basic-auth": "^1.0.4",
 		"chai": "^4.0.1",
 		"chai-enzyme": "^0.8.0",
