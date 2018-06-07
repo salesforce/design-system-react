@@ -53,6 +53,7 @@ These are changes that have backwards-compatible solutions present and that comp
 * Datepicker: Change the year picklist initial focus to currently selected year
 * Datepicker: Focus input only if menu was previously open and not just requested to close
 * Inline Edit UX pattern updated for keyboard: New pattern is that it'll tab to the close button, and if you're focused on the close button and tab again, it'll blur the field.
+* `Dropdown` with `overflowBoundaryElement` and `align=right` use max-width instead of inherited children width.
 
 **Maintenance**
 * Require `iconCategory` if `iconName` is set. `utility` used to be the default icon category. `iconCategory` is now required.
