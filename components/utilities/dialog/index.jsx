@@ -246,6 +246,7 @@ const Dialog = createReactClass({
 		const { position } = popperData.offsets.popper;
 		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
 		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
+		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
 		return { ...popperData.style, left, top, right, position };
 	},
