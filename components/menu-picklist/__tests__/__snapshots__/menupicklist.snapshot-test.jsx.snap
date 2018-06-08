@@ -23,11 +23,8 @@ exports[`MenuPicklist
     onMouseDown={[Function]}
   >
     <button
-      aria-describedby={undefined}
-      aria-expanded={undefined}
       aria-haspopup="true"
       className="slds-button slds-button--neutral slds-picklist__label"
-      disabled={undefined}
       id="sample-menu-picklist"
       onClick={[Function]}
       tabIndex={0}
@@ -38,14 +35,10 @@ exports[`MenuPicklist
       >
         Option C
       </span>
-      <span
-        className={undefined}
-        title={undefined}
-      >
+      <span>
         <svg
           aria-hidden="true"
           className="slds-icon slds-icon-text-default"
-          style={undefined}
         >
           <use
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -90,11 +83,8 @@ exports[`MenuPicklist Default DOM Snapshot 1`] = `
     onMouseDown={[Function]}
   >
     <button
-      aria-describedby={undefined}
-      aria-expanded={undefined}
       aria-haspopup="true"
       className="slds-button slds-button--neutral slds-picklist__label"
-      disabled={undefined}
       id="sample-menu-picklist"
       onClick={[Function]}
       tabIndex={0}
@@ -105,14 +95,10 @@ exports[`MenuPicklist Default DOM Snapshot 1`] = `
       >
         Option C
       </span>
-      <span
-        className={undefined}
-        title={undefined}
-      >
+      <span>
         <svg
           aria-hidden="true"
           className="slds-icon slds-icon-text-default"
-          style={undefined}
         >
           <use
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
