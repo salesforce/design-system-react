@@ -363,11 +363,18 @@ describe('DataTable: ', function () {
 			rowActionMenus.should.have.length(6);
 		});
 
-		it('calls onAction when an action is clicked', function (done) {
+		it('calls onAction & onSelect when an action is clicked', function (done) {
+			let expectedCalbacks = 2;
+
 			this.onAction = (item, action) => {
 				item.id.should.equal('8IKZHZZV80');
 				action.value.should.equal('1');
-				done();
+				if (!--expectedCalbacks) done();
+			};
+
+			this.onSelect = (action) => {
+				action.value.should.equal('1');
+				if (!--expectedCalbacks) done();
 			};
 
 			renderTable(
@@ -389,6 +396,7 @@ describe('DataTable: ', function () {
 								value: '2',
 							},
 						]}
+						dropdown={<Dropdown onSelect={this.onSelect} />}
 					/>
 				</DataTable>
 			).call(this);

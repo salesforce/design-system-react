@@ -60,7 +60,7 @@ const DataTableRowActions = createReactClass({
 		/**
 		 * `Dropdown` options. See `Dropdown`.
 		 */
-		options: PropTypes.array.isRequired,
+		options: PropTypes.array,
 		/**
 		 * A `Dropdown` component. The props from this drop will be merged and override any default props.
 		 * **Note:** onAction will not be overridden, both `DropDown`'s onSelect and onAction will be called with appropriate parameters
@@ -72,6 +72,7 @@ const DataTableRowActions = createReactClass({
 		return {
 			assistiveText: 'Actions',
 			noHint: false,
+			options: [],
 		};
 	},
 
