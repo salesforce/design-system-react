@@ -84,8 +84,8 @@ const DataTableRowActions = createReactClass({
 		if (isFunction(this.props.onAction)) {
 			this.props.onAction(this.props.item, selection);
 		}
-		if (this.props.dropdown && isFunction(this.props.dropdown.onSelect)) {
-			this.props.dropdown.onSelect(selection);
+		if (this.props.dropdown && isFunction(this.props.dropdown.props.onSelect)) {
+			this.props.dropdown.props.onSelect(selection);
 		}
 	},
 
@@ -112,7 +112,7 @@ const DataTableRowActions = createReactClass({
 			this.props.dropdown ? this.props.dropdown.props : {}
 		);
 
-		dropdownProps.onAction = this.handleSelect;
+		dropdownProps.onSelect = this.handleSelect;
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
