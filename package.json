@@ -112,7 +112,7 @@
 		"warning": "^3.0.0"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "^2.4.0 || ^2.6.0-alpha",
+		"@salesforce-ux/design-system": "^2.6.0",
 		"react": ">=15.4.1 <16",
 		"react-dom": ">=15.4.1 <16"
 	},
@@ -128,7 +128,7 @@
 		"@babel/polyfill": "7.0.0-beta.44",
 		"@babel/preset-env": "7.0.0-beta.44",
 		"@babel/preset-react": "7.0.0-beta.44",
-		"@salesforce-ux/design-system": "2.4.3",
+		"@salesforce-ux/design-system": "^2.6.0",
 		"@salesforce-ux/icons": "7.x",
 		"@storybook/addon-a11y": "^3.4.3",
 		"@storybook/addon-actions": "^3.4.3",
