@@ -31,43 +31,24 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -75,18 +56,14 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
           </svg>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
             role="presentation"
-            style={undefined}
           >
             <li
               className="slds-listbox__item"
@@ -399,42 +376,24 @@ exports[`Base Label Required DOM Snapshot 1`] = `
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
             aria-describedby="description-unique-id"
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={true}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -498,43 +457,24 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -542,18 +482,14 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
           </svg>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid this-is-the-menu"
             role="presentation"
-            style={undefined}
           >
             <li
               className="slds-dropdown__header slds-truncate"
@@ -582,12 +518,10 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
                 >
                   <span
                     className="slds-icon_container slds-icon-standard-account"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -632,12 +566,10 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
                 >
                   <span
                     className="slds-icon_container slds-icon-standard-account"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -725,43 +657,24 @@ exports[`Base Open DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -769,18 +682,14 @@ exports[`Base Open DOM Snapshot 1`] = `
           </svg>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
             role="presentation"
-            style={undefined}
           >
             <li
               className="slds-listbox__item"
@@ -798,12 +707,10 @@ exports[`Base Open DOM Snapshot 1`] = `
                 >
                   <span
                     className="slds-icon_container slds-icon-standard-account"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -848,12 +755,10 @@ exports[`Base Open DOM Snapshot 1`] = `
                 >
                   <span
                     className="slds-icon_container slds-icon-standard-account"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -940,43 +845,24 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -984,11 +870,8 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
           </svg>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
@@ -1097,43 +980,24 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -1141,18 +1005,14 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
           </svg>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
             role="presentation"
-            style={undefined}
           >
             <li
               className="slds-dropdown__header slds-truncate"
@@ -1249,43 +1109,24 @@ exports[`Base Selected DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -1322,12 +1163,10 @@ exports[`Base Selected DOM Snapshot 1`] = `
             >
               <span
                 className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
-                title={undefined}
               >
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -1431,43 +1270,24 @@ exports[`Inline Multiple Selection DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -1537,12 +1357,10 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               >
                 <span
                   className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
-                  title={undefined}
                 >
                   <svg
                     aria-hidden="true"
                     className="slds-icon"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -1605,12 +1423,10 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               >
                 <span
                   className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
-                  title={undefined}
                 >
                   <svg
                     aria-hidden="true"
                     className="slds-icon"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -1673,43 +1489,24 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
           <svg
             aria-hidden={true}
             className="slds-input__icon slds-icon-text-default"
-            title={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
@@ -1777,36 +1574,18 @@ exports[`Inline Single Selection DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
@@ -1866,12 +1645,10 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
         >
           <span
             className="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
-            title={undefined}
           >
             <svg
               aria-hidden="true"
               className="slds-icon"
-              style={undefined}
             >
               <use
                 xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -1887,58 +1664,25 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value="Acme"
           />
           <button
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-haspopup={undefined}
             className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
-            tabIndex={undefined}
-            title={undefined}
             type="button"
           >
             <svg
@@ -2010,36 +1754,18 @@ exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
@@ -2109,36 +1835,18 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value="2 options selected"
           />
@@ -2318,36 +2026,18 @@ exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value="Acme"
           />
@@ -2417,36 +2107,18 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select company"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
@@ -2464,18 +2136,14 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
           </span>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
             role="presentation"
-            style={undefined}
           >
             <li
               className="slds-listbox__item"
@@ -2491,14 +2159,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2518,12 +2182,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -2565,14 +2227,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2592,12 +2250,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -2639,14 +2295,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2666,12 +2318,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -2713,14 +2363,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2740,12 +2386,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -2787,14 +2431,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2814,12 +2454,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -2861,14 +2499,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2888,12 +2522,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -2935,14 +2567,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -2962,12 +2590,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -3009,14 +2635,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3036,12 +2658,10 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
                     >
                       <span
                         className="slds-icon_container slds-icon-standard-account"
-                        title={undefined}
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon slds-icon--x-small"
-                          style={undefined}
                         >
                           <use
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -3192,36 +2812,18 @@ exports[`Readonly Single Selection DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value=""
           />
@@ -3291,36 +2893,18 @@ exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value="Acme"
           />
@@ -3390,36 +2974,18 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
-            aria-expanded={undefined}
-            aria-labelledby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             autoComplete="off"
             className="slds-input slds-combobox__input"
-            defaultValue={undefined}
-            disabled={undefined}
             id="combobox-unique-id"
-            maxLength={undefined}
-            minLength={undefined}
-            name={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
-            onInput={undefined}
-            onInvalid={undefined}
             onKeyDown={[Function]}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onSelect={undefined}
-            onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
             required={false}
             role="textbox"
-            style={undefined}
-            tabIndex={undefined}
             type="text"
             value="Acme"
           />
@@ -3437,18 +3003,14 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
           </span>
         </div>
         <div
-          className={undefined}
           id="combobox-unique-id-listbox"
           onKeyDown={[Function]}
-          onMouseEnter={undefined}
-          onMouseLeave={undefined}
           role="listbox"
           style={Object {}}
         >
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
             role="presentation"
-            style={undefined}
           >
             <li
               className="slds-listbox__item"
@@ -3464,14 +3026,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3512,14 +3070,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3555,14 +3109,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3598,14 +3148,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3641,14 +3187,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3684,14 +3226,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3727,14 +3265,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
@@ -3770,14 +3304,10 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
                 <span
                   className="slds-media__figure"
                 >
-                  <span
-                    className={undefined}
-                    title={undefined}
-                  >
+                  <span>
                     <svg
                       aria-hidden="true"
                       className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"

@@ -42,14 +42,11 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
             className="slds-slider"
           >
             <input
-              aria-describedby={undefined}
               className="slds-slider__range"
               defaultValue={0}
-              disabled={undefined}
               id="base-id"
               max={100}
               min={0}
-              name={undefined}
               onChange={[Function]}
               onInput={[Function]}
               step={1}
@@ -104,14 +101,11 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
             className="slds-slider"
           >
             <input
-              aria-describedby={undefined}
               className="slds-slider__range"
               defaultValue={0}
-              disabled={undefined}
               id="assistiveText-id"
               max={100}
               min={0}
-              name={undefined}
               onChange={[Function]}
               onInput={[Function]}
               step={1}
@@ -166,14 +160,11 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
             className="slds-slider"
           >
             <input
-              aria-describedby={undefined}
               className="slds-slider__range"
               defaultValue={200}
-              disabled={undefined}
               id="min-max-id"
               max={400}
               min={0}
-              name={undefined}
               onChange={[Function]}
               onInput={[Function]}
               step={1}
@@ -228,14 +219,11 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
             className="slds-slider"
           >
             <input
-              aria-describedby={undefined}
               className="slds-slider__range"
               defaultValue={200}
-              disabled={undefined}
               id="min-max-step-id"
               max={400}
               min={0}
-              name={undefined}
               onChange={[Function]}
               onInput={[Function]}
               step={100}
@@ -326,14 +314,12 @@ exports[`Disabled DOM Snapshot 1`] = `
       className="slds-slider"
     >
       <input
-        aria-describedby={undefined}
         className="slds-slider__range"
         defaultValue={0}
         disabled={true}
         id="disabled-id"
         max={100}
         min={0}
-        name={undefined}
         onChange={[Function]}
         onInput={[Function]}
         step={1}
@@ -393,11 +379,9 @@ exports[`Error DOM Snapshot 1`] = `
         aria-describedby="error message"
         className="slds-slider__range"
         defaultValue={0}
-        disabled={undefined}
         id="error-id"
         max={100}
         min={0}
-        name={undefined}
         onChange={[Function]}
         onInput={[Function]}
         step={1}
@@ -467,14 +451,11 @@ exports[`Sizes DOM Snapshot 1`] = `
           className="slds-slider slds-size_x-small"
         >
           <input
-            aria-describedby={undefined}
             className="slds-slider__range"
             defaultValue={0}
-            disabled={undefined}
             id="x-small-id"
             max={100}
             min={0}
-            name={undefined}
             onChange={[Function]}
             onInput={[Function]}
             step={1}
@@ -524,14 +505,11 @@ exports[`Sizes DOM Snapshot 1`] = `
           className="slds-slider slds-size_small"
         >
           <input
-            aria-describedby={undefined}
             className="slds-slider__range"
             defaultValue={0}
-            disabled={undefined}
             id="small-id"
             max={100}
             min={0}
-            name={undefined}
             onChange={[Function]}
             onInput={[Function]}
             step={1}
@@ -581,14 +559,11 @@ exports[`Sizes DOM Snapshot 1`] = `
           className="slds-slider slds-size_medium"
         >
           <input
-            aria-describedby={undefined}
             className="slds-slider__range"
             defaultValue={0}
-            disabled={undefined}
             id="medium-id"
             max={100}
             min={0}
-            name={undefined}
             onChange={[Function]}
             onInput={[Function]}
             step={1}
@@ -638,14 +613,11 @@ exports[`Sizes DOM Snapshot 1`] = `
           className="slds-slider slds-size_large"
         >
           <input
-            aria-describedby={undefined}
             className="slds-slider__range"
             defaultValue={0}
-            disabled={undefined}
             id="large-id"
             max={100}
             min={0}
-            name={undefined}
             onChange={[Function]}
             onInput={[Function]}
             step={1}
@@ -729,14 +701,11 @@ exports[`Vertical DOM Snapshot 1`] = `
       className="slds-slider slds-slider_vertical"
     >
       <input
-        aria-describedby={undefined}
         className="slds-slider__range"
         defaultValue={0}
-        disabled={undefined}
         id="vertical-id"
         max={100}
         min={0}
-        name={undefined}
         onChange={[Function]}
         onInput={[Function]}
         step={1}

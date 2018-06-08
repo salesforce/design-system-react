@@ -19,23 +19,8 @@ exports[`Button Group Checkbox DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleMon"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -53,23 +38,8 @@ exports[`Button Group Checkbox DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleTue"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -87,23 +57,8 @@ exports[`Button Group Checkbox DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleWed"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -121,23 +76,8 @@ exports[`Button Group Checkbox DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleThu"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -155,23 +95,8 @@ exports[`Button Group Checkbox DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleFri"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -209,23 +134,8 @@ exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleMon"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -243,23 +153,8 @@ exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleTue"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -277,23 +172,8 @@ exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleWed"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -311,23 +191,8 @@ exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleThu"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -345,23 +210,8 @@ exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
         className="slds-button slds-checkbox--button"
       >
         <input
-          aria-controls={undefined}
-          aria-describedby={undefined}
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="ButtonGroupExampleFri"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <label
@@ -425,17 +275,9 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
     aria-live="polite"
     className="slds-button slds-not-selected slds-button--icon-border"
     disabled={false}
-    id={undefined}
     onBlur={[Function]}
     onClick={[Function]}
-    onFocus={undefined}
-    onKeyDown={undefined}
-    onKeyPress={undefined}
-    onKeyUp={undefined}
-    onMouseDown={undefined}
-    onMouseEnter={undefined}
     onMouseLeave={[Function]}
-    tabIndex={undefined}
   >
     <svg
       aria-hidden="true"
@@ -455,17 +297,9 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
     aria-live="polite"
     className="slds-button slds-not-selected slds-button--icon-border"
     disabled={false}
-    id={undefined}
     onBlur={[Function]}
     onClick={[Function]}
-    onFocus={undefined}
-    onKeyDown={undefined}
-    onKeyPress={undefined}
-    onKeyUp={undefined}
-    onMouseDown={undefined}
-    onMouseEnter={undefined}
     onMouseLeave={[Function]}
-    tabIndex={undefined}
   >
     <svg
       aria-hidden="true"
@@ -484,33 +318,19 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
   <div
     className="slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last"
     id="icon-dropdown-example"
-    onBlur={undefined}
     onClick={[Function]}
     onFocus={null}
     onKeyDown={[Function]}
-    onMouseDown={undefined}
     onMouseEnter={null}
     onMouseLeave={null}
   >
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
       aria-expanded={false}
       aria-haspopup={true}
       className="slds-button slds-button--icon-more ignore-click-icon-dropdown-example"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
       tabIndex="0"
-      title={undefined}
       type="button"
     >
       <svg
@@ -554,70 +374,25 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
   role="group"
 >
   <button
-    aria-controls={undefined}
-    aria-describedby={undefined}
-    aria-expanded={undefined}
-    aria-haspopup={undefined}
     className="slds-button slds-button--neutral"
     disabled={false}
-    id={undefined}
-    onBlur={undefined}
     onClick={[Function]}
-    onFocus={undefined}
-    onKeyDown={undefined}
-    onKeyPress={undefined}
-    onKeyUp={undefined}
-    onMouseDown={undefined}
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
-    tabIndex={undefined}
-    title={undefined}
     type="button"
   >
     Refresh
   </button>
   <button
-    aria-controls={undefined}
-    aria-describedby={undefined}
-    aria-expanded={undefined}
-    aria-haspopup={undefined}
     className="slds-button slds-button--neutral"
     disabled={false}
-    id={undefined}
-    onBlur={undefined}
     onClick={[Function]}
-    onFocus={undefined}
-    onKeyDown={undefined}
-    onKeyPress={undefined}
-    onKeyUp={undefined}
-    onMouseDown={undefined}
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
-    tabIndex={undefined}
-    title={undefined}
     type="button"
   >
     Edit
   </button>
   <button
-    aria-controls={undefined}
-    aria-describedby={undefined}
-    aria-expanded={undefined}
-    aria-haspopup={undefined}
     className="slds-button slds-button--neutral"
     disabled={false}
-    id={undefined}
-    onBlur={undefined}
     onClick={[Function]}
-    onFocus={undefined}
-    onKeyDown={undefined}
-    onKeyPress={undefined}
-    onKeyUp={undefined}
-    onMouseDown={undefined}
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
-    tabIndex={undefined}
-    title={undefined}
     type="button"
   >
     Save
@@ -625,33 +400,19 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
   <div
     className="slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last"
     id="ButtonGroupExampleDropdown"
-    onBlur={undefined}
     onClick={[Function]}
     onFocus={null}
     onKeyDown={[Function]}
-    onMouseDown={undefined}
     onMouseEnter={null}
     onMouseLeave={null}
   >
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
       aria-expanded={false}
       aria-haspopup={true}
       className="slds-button slds-button--icon-border-filled ignore-click-ButtonGroupExampleDropdown"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
       tabIndex="0"
-      title={undefined}
       type="button"
     >
       <svg

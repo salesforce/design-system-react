@@ -19,23 +19,10 @@ exports[`Base DOM Snapshot 1`] = `
         >
           <button
             aria-controls="1-accordion-panel"
-            aria-describedby={undefined}
             aria-expanded={false}
-            aria-haspopup={undefined}
             className="slds-button slds-button_reset slds-accordion__summary-action"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
-            tabIndex={undefined}
-            title={undefined}
             type="button"
           >
             <svg
@@ -57,33 +44,19 @@ exports[`Base DOM Snapshot 1`] = `
         <div
           className="slds-dropdown-trigger slds-dropdown-trigger--click"
           id="ButtonGroupExampleDropdown"
-          onBlur={undefined}
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
-          onMouseDown={undefined}
           onMouseEnter={null}
           onMouseLeave={null}
         >
           <button
-            aria-controls={undefined}
-            aria-describedby={undefined}
             aria-expanded={false}
             aria-haspopup={true}
             className="slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
             tabIndex="0"
-            title={undefined}
             type="button"
           >
             <svg
@@ -125,23 +98,10 @@ exports[`Base DOM Snapshot 1`] = `
         >
           <button
             aria-controls="2-accordion-panel"
-            aria-describedby={undefined}
             aria-expanded={false}
-            aria-haspopup={undefined}
             className="slds-button slds-button_reset slds-accordion__summary-action"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
-            tabIndex={undefined}
-            title={undefined}
             type="button"
           >
             <svg
@@ -163,33 +123,19 @@ exports[`Base DOM Snapshot 1`] = `
         <div
           className="slds-dropdown-trigger slds-dropdown-trigger--click"
           id="ButtonGroupExampleDropdown"
-          onBlur={undefined}
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
-          onMouseDown={undefined}
           onMouseEnter={null}
           onMouseLeave={null}
         >
           <button
-            aria-controls={undefined}
-            aria-describedby={undefined}
             aria-expanded={false}
             aria-haspopup={true}
             className="slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
             tabIndex="0"
-            title={undefined}
             type="button"
           >
             <svg
@@ -231,23 +177,10 @@ exports[`Base DOM Snapshot 1`] = `
         >
           <button
             aria-controls="3-accordion-panel"
-            aria-describedby={undefined}
             aria-expanded={false}
-            aria-haspopup={undefined}
             className="slds-button slds-button_reset slds-accordion__summary-action"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
-            tabIndex={undefined}
-            title={undefined}
             type="button"
           >
             <svg
@@ -269,33 +202,19 @@ exports[`Base DOM Snapshot 1`] = `
         <div
           className="slds-dropdown-trigger slds-dropdown-trigger--click"
           id="ButtonGroupExampleDropdown"
-          onBlur={undefined}
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
-          onMouseDown={undefined}
           onMouseEnter={null}
           onMouseLeave={null}
         >
           <button
-            aria-controls={undefined}
-            aria-describedby={undefined}
             aria-expanded={false}
             aria-haspopup={true}
             className="slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
             tabIndex="0"
-            title={undefined}
             type="button"
           >
             <svg
@@ -380,23 +299,10 @@ exports[`Base Open DOM Snapshot 1`] = `
         >
           <button
             aria-controls="1-accordion-panel"
-            aria-describedby={undefined}
             aria-expanded={true}
-            aria-haspopup={undefined}
             className="slds-button slds-button_reset slds-accordion__summary-action"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
-            tabIndex={undefined}
-            title={undefined}
             type="button"
           >
             <svg
@@ -439,23 +345,10 @@ exports[`Base Open DOM Snapshot 1`] = `
         >
           <button
             aria-controls="2-accordion-panel"
-            aria-describedby={undefined}
             aria-expanded={true}
-            aria-haspopup={undefined}
             className="slds-button slds-button_reset slds-accordion__summary-action"
             disabled={false}
-            id={undefined}
-            onBlur={undefined}
             onClick={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            onMouseDown={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
-            tabIndex={undefined}
-            title={undefined}
             type="button"
           >
             <svg

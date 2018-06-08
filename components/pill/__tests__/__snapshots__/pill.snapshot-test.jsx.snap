@@ -30,7 +30,6 @@ exports[`Bare DOM Snapshot 1`] = `
           <span
             aria-selected="true"
             className="slds-pill slds-pill_bare"
-            onClick={undefined}
             onKeyDown={[Function]}
             role="option"
             tabIndex="0"
@@ -74,7 +73,6 @@ exports[`Bare DOM Snapshot 1`] = `
           <span
             aria-selected="true"
             className="slds-pill slds-pill_bare"
-            onClick={undefined}
             onKeyDown={[Function]}
             role="option"
             tabIndex="0"
@@ -162,7 +160,6 @@ exports[`Icon, Avatar, Error DOM Snapshot 1`] = `
           <svg
             aria-hidden="true"
             className="slds-icon"
-            style={undefined}
           >
             <use
               xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -285,13 +282,11 @@ exports[`Icon, Avatar, Error DOM Snapshot 1`] = `
         className="slds-pill__icon_container"
       >
         <span
-          className={undefined}
           title="Error"
         >
           <svg
             aria-hidden="true"
             className="slds-icon-text-error slds-icon slds-icon-text-default"
-            style={undefined}
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
@@ -423,7 +418,6 @@ exports[`Linked, Unlinked, Truncated DOM Snapshot 1`] = `
       <a
         className="slds-pill__action"
         href="javascript:void(0);"
-        onClick={undefined}
         title="Full pill label verbiage mirrored here"
       >
         <span
@@ -881,7 +875,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
@@ -942,7 +935,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
@@ -997,13 +989,11 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               className="slds-pill__icon_container"
             >
               <span
-                className={undefined}
                 title="Title"
               >
                 <svg
                   aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#retweet"
@@ -1064,7 +1054,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#solution"
@@ -1125,7 +1114,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#custom_notification"
@@ -1186,7 +1174,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#email"
@@ -1247,7 +1234,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#endorsement"
@@ -1308,7 +1294,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#recent"
@@ -1369,7 +1354,6 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   className="slds-icon"
-                  style={undefined}
                 >
                   <use
                     xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom31"
@@ -1642,7 +1626,6 @@ exports[`Pill Container DOM Snapshot 1`] = `
             <span
               aria-selected="true"
               className="slds-pill"
-              onClick={undefined}
               onKeyDown={null}
               role="option"
             >
@@ -1660,7 +1643,6 @@ exports[`Pill Container DOM Snapshot 1`] = `
           >
             <span
               className="slds-pill"
-              onClick={undefined}
               onKeyDown={null}
               role="option"
             >

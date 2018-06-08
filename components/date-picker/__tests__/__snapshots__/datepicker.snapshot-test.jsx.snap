@@ -26,61 +26,21 @@ exports[`Datepicker
       className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
     >
       <input
-        aria-activedescendant={undefined}
-        aria-autocomplete={undefined}
-        aria-controls={undefined}
-        aria-describedby={undefined}
-        aria-expanded={undefined}
-        aria-labelledby={undefined}
-        aria-owns={undefined}
-        aria-required={undefined}
-        autoComplete={undefined}
         className="slds-input"
-        defaultValue={undefined}
-        disabled={undefined}
         id="CUSTOM-ID"
-        maxLength={undefined}
-        minLength={undefined}
-        name={undefined}
-        onBlur={undefined}
         onChange={[Function]}
         onClick={[Function]}
-        onFocus={undefined}
-        onInput={undefined}
-        onInvalid={undefined}
         onKeyDown={[Function]}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onSelect={undefined}
-        onSubmit={undefined}
         placeholder="SWIPE RIGHT :-)"
-        readOnly={undefined}
-        required={undefined}
-        role={undefined}
-        style={undefined}
-        tabIndex={undefined}
         type="text"
         value="Llama and Lamb's epiphany of love"
       />
       <button
-        aria-controls={undefined}
-        aria-describedby={undefined}
         aria-expanded={true}
         aria-haspopup={true}
         className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
-        title={undefined}
         type="button"
       >
         <svg
@@ -102,8 +62,6 @@ exports[`Datepicker
   <div
     className="slds-datepicker slds-dropdown slds-dropdown--right CUSTOM-CLASSNAME"
     onKeyDown={[Function]}
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
     style={Object {}}
   >
     <div
@@ -122,24 +80,10 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup={undefined}
               className="slds-button slds-button--icon-container"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
               onKeyDown={[Function]}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -175,24 +119,9 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup={undefined}
               className="slds-button slds-button--icon-container"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -223,11 +152,8 @@ exports[`Datepicker
               onMouseDown={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-expanded={undefined}
                 aria-haspopup="true"
                 className="slds-button slds-button--neutral slds-picklist__label"
-                disabled={undefined}
                 id="CUSTOM-ID-year-picklist"
                 onClick={[Function]}
                 tabIndex={0}
@@ -238,14 +164,10 @@ exports[`Datepicker
                 >
                   2007
                 </span>
-                <span
-                  className={undefined}
-                  title={undefined}
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     className="slds-icon slds-icon-text-default"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -940,61 +862,21 @@ exports[`Datepicker
       className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
     >
       <input
-        aria-activedescendant={undefined}
-        aria-autocomplete={undefined}
-        aria-controls={undefined}
-        aria-describedby={undefined}
-        aria-expanded={undefined}
-        aria-labelledby={undefined}
-        aria-owns={undefined}
-        aria-required={undefined}
-        autoComplete={undefined}
         className="slds-input"
-        defaultValue={undefined}
-        disabled={undefined}
         id="sample-datepicker"
-        maxLength={undefined}
-        minLength={undefined}
-        name={undefined}
-        onBlur={undefined}
         onChange={[Function]}
         onClick={[Function]}
-        onFocus={undefined}
-        onInput={undefined}
-        onInvalid={undefined}
         onKeyDown={[Function]}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onSelect={undefined}
-        onSubmit={undefined}
         placeholder="Pick a Date"
-        readOnly={undefined}
-        required={undefined}
-        role={undefined}
-        style={undefined}
-        tabIndex={undefined}
         type="text"
         value="7/23/2014"
       />
       <button
-        aria-controls={undefined}
-        aria-describedby={undefined}
         aria-expanded={true}
         aria-haspopup={true}
         className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
-        title={undefined}
         type="button"
       >
         <svg
@@ -1016,8 +898,6 @@ exports[`Datepicker
   <div
     className="slds-datepicker slds-dropdown slds-dropdown--left"
     onKeyDown={[Function]}
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
     style={Object {}}
   >
     <div
@@ -1036,24 +916,10 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup={undefined}
               className="slds-button slds-button--icon-container"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
               onKeyDown={[Function]}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -1089,24 +955,9 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup={undefined}
               className="slds-button slds-button--icon-container"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -1137,11 +988,8 @@ exports[`Datepicker
               onMouseDown={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-expanded={undefined}
                 aria-haspopup="true"
                 className="slds-button slds-button--neutral slds-picklist__label"
-                disabled={undefined}
                 id="sample-datepicker-year-picklist"
                 onClick={[Function]}
                 tabIndex={0}
@@ -1152,14 +1000,10 @@ exports[`Datepicker
                 >
                   2014
                 </span>
-                <span
-                  className={undefined}
-                  title={undefined}
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     className="slds-icon slds-icon-text-default"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -1852,61 +1696,21 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
       className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
     >
       <input
-        aria-activedescendant={undefined}
-        aria-autocomplete={undefined}
-        aria-controls={undefined}
-        aria-describedby={undefined}
-        aria-expanded={undefined}
-        aria-labelledby={undefined}
-        aria-owns={undefined}
-        aria-required={undefined}
-        autoComplete={undefined}
         className="slds-input"
-        defaultValue={undefined}
-        disabled={undefined}
         id="sample-datepicker"
-        maxLength={undefined}
-        minLength={undefined}
-        name={undefined}
-        onBlur={undefined}
         onChange={[Function]}
         onClick={[Function]}
-        onFocus={undefined}
-        onInput={undefined}
-        onInvalid={undefined}
         onKeyDown={[Function]}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onSelect={undefined}
-        onSubmit={undefined}
         placeholder="Pick a Date"
-        readOnly={undefined}
-        required={undefined}
-        role={undefined}
-        style={undefined}
-        tabIndex={undefined}
         type="text"
         value="7/23/2014"
       />
       <button
-        aria-controls={undefined}
-        aria-describedby={undefined}
         aria-expanded={true}
         aria-haspopup={true}
         className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
-        title={undefined}
         type="button"
       >
         <svg
@@ -1928,8 +1732,6 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
   <div
     className="slds-datepicker slds-dropdown slds-dropdown--left"
     onKeyDown={[Function]}
-    onMouseEnter={undefined}
-    onMouseLeave={undefined}
     style={Object {}}
   >
     <div
@@ -1948,24 +1750,10 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
             className="slds-align-middle"
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup={undefined}
               className="slds-button slds-button--icon-container"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
               onKeyDown={[Function]}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -2001,24 +1789,9 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
             className="slds-align-middle"
           >
             <button
-              aria-controls={undefined}
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup={undefined}
               className="slds-button slds-button--icon-container"
               disabled={false}
-              id={undefined}
-              onBlur={undefined}
               onClick={[Function]}
-              onFocus={undefined}
-              onKeyDown={undefined}
-              onKeyPress={undefined}
-              onKeyUp={undefined}
-              onMouseDown={undefined}
-              onMouseEnter={undefined}
-              onMouseLeave={undefined}
-              tabIndex={undefined}
-              title={undefined}
               type="button"
             >
               <svg
@@ -2049,11 +1822,8 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
               onMouseDown={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-expanded={undefined}
                 aria-haspopup="true"
                 className="slds-button slds-button--neutral slds-picklist__label"
-                disabled={undefined}
                 id="sample-datepicker-year-picklist"
                 onClick={[Function]}
                 tabIndex={0}
@@ -2064,14 +1834,10 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
                 >
                   2014
                 </span>
-                <span
-                  className={undefined}
-                  title={undefined}
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     className="slds-icon slds-icon-text-default"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
