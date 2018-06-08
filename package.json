@@ -317,14 +317,14 @@
 			]
 		},
 		{
-			"component": "forms/checkbox",
+			"component": "checkbox",
 			"status": "prod",
 			"display-name": "Checkboxes",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/forms/#flavor-checkbox"
+			"SLDS-component-path": "/components/checkbox/"
 		},
 		{
 			"component": "combobox",
@@ -378,20 +378,14 @@
 			"SLDS-component-path": "/components/filter"
 		},
 		{
-			"component": "forms/input",
+			"component": "input",
 			"status": "prod",
 			"display-name": "Inputs",
 			"last-accessibility-review": {
 				"date-iso-8601": "2017/09/22",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/forms#flavor-input"
-		},
-		{
-			"component": "forms/textarea",
-			"status": "prod",
-			"display-name": "Textareas",
-			"SLDS-component-path": "/components/forms#flavor-textarea"
+			"SLDS-component-path": "/components/input/"
 		},
 		{
 			"component": "global-header",
@@ -553,14 +547,14 @@
 			"SLDS-component-path": "/components/progress-ring"
 		},
 		{
-			"component": "forms/radio",
+			"component": "radio",
 			"status": "prod",
 			"display-name": "Radios",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/forms/#flavor-radio"
+			"SLDS-component-path": "/components/radio-group/"
 		},
 		{
 			"component": "split-view",
@@ -605,10 +599,10 @@
 			"SLDS-component-path": "/components/radio-button-group"
 		},
 		{
-			"component": "tooltip",
+			"component": "slider",
 			"status": "prod",
-			"display-name": "Tooltips",
-			"SLDS-component-path": "/components/tooltips"
+			"display-name": "Slider",
+			"SLDS-component-path": "/components/slider"
 		},
 		{
 			"component": "tabs",
@@ -626,6 +620,18 @@
 			]
 		},
 		{
+			"component": "textarea",
+			"status": "prod",
+			"display-name": "Textareas",
+			"SLDS-component-path": "/components/forms#flavor-textarea"
+		},
+		{
+			"component": "time-picker",
+			"status": "prod",
+			"display-name": "Timepickers",
+			"SLDS-component-path": "/components/datepickers"
+		},
+		{
 			"component": "toast",
 			"status": "prod",
 			"display-name": "Toasts",
@@ -641,6 +647,12 @@
 			]
 		},
 		{
+			"component": "tooltip",
+			"status": "prod",
+			"display-name": "Tooltips",
+			"SLDS-component-path": "/components/tooltips"
+		},
+		{
 			"component": "tree",
 			"status": "prod",
 			"display-name": "Tree",
@@ -653,18 +665,6 @@
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
 			},
 			"SLDS-component-path": "/components/tree"
-		},
-		{
-			"component": "time-picker",
-			"status": "prod",
-			"display-name": "Timepickers",
-			"SLDS-component-path": "/components/datepickers"
-		},
-		{
-			"component": "slider",
-			"status": "prod",
-			"display-name": "Slider",
-			"SLDS-component-path": "/components/slider"
 		}
 	],
 	"documentation": {

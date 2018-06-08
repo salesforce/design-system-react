@@ -23,9 +23,6 @@ import classNames from 'classnames';
 // ### assign
 import assign from 'lodash.assign';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
 // ### reject
 import reject from 'lodash.reject';
 
@@ -190,16 +187,16 @@ const DataTable = createReactClass({
 		checkProps(DATA_TABLE, this.props);
 	},
 
-	handleToggleAll (selected, e) {
-		if (isFunction(this.props.onChange)) {
-			const selection = selected ? [...this.props.items] : [];
+	handleToggleAll (e, { checked }) {
+		if (typeof this.props.onChange === 'function') {
+			const selection = checked ? [...this.props.items] : [];
 
 			this.props.onChange(selection, e);
 		}
 	},
 
 	handleRowToggle (item, selected, e) {
-		if (isFunction(this.props.onChange)) {
+		if (typeof this.props.onChange === 'function') {
 			let selection;
 
 			if (selected) {
