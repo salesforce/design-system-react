@@ -15,12 +15,10 @@ exports[`Alert Custom Class Name DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right--x-small"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--x-small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
@@ -65,12 +63,10 @@ exports[`Alert Dismissable DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right--x-small"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--x-small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
@@ -89,23 +85,9 @@ exports[`Alert Dismissable DOM Snapshot 1`] = `
       </a>
     </h2>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >
@@ -149,12 +131,10 @@ exports[`Alert Error DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right--x-small"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--x-small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
@@ -199,12 +179,10 @@ exports[`Alert Info DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right--x-small"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--x-small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
@@ -249,12 +227,10 @@ exports[`Alert Offline DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right--x-small"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--x-small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#offline"
@@ -299,12 +275,10 @@ exports[`Alert Warning DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right--x-small"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--x-small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"

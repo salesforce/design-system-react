@@ -17,23 +17,8 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
-            checked={undefined}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="checkbox-base-example"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -66,23 +51,8 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
-            checked={undefined}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="checkbox-base-example--error"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -120,23 +90,9 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
-            checked={undefined}
-            defaultChecked={undefined}
             disabled={true}
             id="checkbox-base-example--disabled"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -175,23 +131,9 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             *
           </abbr>
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
-            checked={undefined}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="checkbox-base-example--required"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
             required={true}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -224,23 +166,8 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
-            checked={undefined}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="checkbox-base-example--assistive-text"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -273,23 +200,9 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             checked={true}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="checkbox-base-example--checked"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -322,23 +235,10 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
             checked={true}
-            defaultChecked={undefined}
             disabled={true}
             id="checkbox-base-example--checked-disabled"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -371,23 +271,8 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
           className="slds-checkbox"
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
-            aria-owns={undefined}
-            aria-required={undefined}
-            checked={undefined}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="checkbox-base-example--indeterminate"
-            name={undefined}
-            onBlur={undefined}
             onChange={[Function]}
-            onFocus={undefined}
-            onKeyDown={undefined}
-            onKeyPress={undefined}
-            onKeyUp={undefined}
-            required={undefined}
-            role={undefined}
             type="checkbox"
           />
           <label
@@ -498,23 +383,9 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="checkbox-toggle-example"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <span
@@ -555,23 +426,9 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example--error-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="checkbox-toggle-example--error"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <span
@@ -617,23 +474,10 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle (disabled)
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example--disabled-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
           disabled={true}
           id="checkbox-toggle-example--disabled"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <span
@@ -680,23 +524,10 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle (required)
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example--required-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="checkbox-toggle-example--required"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
           required={true}
-          role={undefined}
           type="checkbox"
         />
         <span
@@ -737,23 +568,9 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle (with assistive text)
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example--assitive-text-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
-          checked={undefined}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="checkbox-toggle-example--assitive-text"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <span
@@ -794,23 +611,10 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle (checked)
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example--checked-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
           checked={true}
-          defaultChecked={undefined}
-          disabled={undefined}
           id="checkbox-toggle-example--checked"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <span
@@ -851,23 +655,11 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           Toggle (checked + disabled)
         </span>
         <input
-          aria-controls={undefined}
           aria-describedby="checkbox-toggle-example--checked-disabled-desc"
-          aria-owns={undefined}
-          aria-required={undefined}
           checked={true}
-          defaultChecked={undefined}
           disabled={true}
           id="checkbox-toggle-example--checked-disabled"
-          name={undefined}
-          onBlur={undefined}
           onChange={[Function]}
-          onFocus={undefined}
-          onKeyDown={undefined}
-          onKeyPress={undefined}
-          onKeyUp={undefined}
-          required={undefined}
-          role={undefined}
           type="checkbox"
         />
         <span

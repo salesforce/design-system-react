@@ -27,22 +27,10 @@ exports[`Base Closed DOM Snapshot 1`] = `
     >
       <button
         aria-controls="master_view_base-example"
-        aria-describedby={undefined}
         aria-expanded={false}
-        aria-haspopup={undefined}
         className="slds-button slds-button slds-button_icon slds-split-view__toggle-button"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
         title="Open split view"
         type="button"
       >
@@ -170,22 +158,10 @@ exports[`Base Multiple DOM Snapshot 1`] = `
     >
       <button
         aria-controls="master_view_base-multiple-example"
-        aria-describedby={undefined}
         aria-expanded={true}
-        aria-haspopup={undefined}
         className="slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
         title="Close split view"
         type="button"
       >
@@ -225,12 +201,10 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                   >
                     <span
                       className="slds-icon_container slds-icon-standard-lead"
-                      title={undefined}
                     >
                       <svg
                         aria-hidden="true"
                         className="slds-icon"
-                        style={undefined}
                       >
                         <use
                           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
@@ -253,33 +227,19 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                           <div
                             className="slds-dropdown-trigger slds-dropdown-trigger--click"
                             id="header-title-leads"
-                            onBlur={undefined}
                             onClick={[Function]}
                             onFocus={null}
                             onKeyDown={[Function]}
-                            onMouseDown={undefined}
                             onMouseEnter={null}
                             onMouseLeave={null}
                           >
                             <button
-                              aria-controls={undefined}
-                              aria-describedby={undefined}
                               aria-expanded={false}
                               aria-haspopup={true}
                               className="slds-button slds-button--reset slds-type-focus"
                               disabled={false}
-                              id={undefined}
-                              onBlur={undefined}
                               onClick={[Function]}
-                              onFocus={undefined}
-                              onKeyDown={undefined}
-                              onKeyPress={undefined}
-                              onKeyUp={undefined}
-                              onMouseDown={undefined}
-                              onMouseEnter={undefined}
-                              onMouseLeave={undefined}
                               tabIndex="0"
-                              title={undefined}
                               type="button"
                             >
                               My Leads
@@ -308,33 +268,19 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger--click"
                     id="header-nav-right-more"
-                    onBlur={undefined}
                     onClick={[Function]}
                     onFocus={null}
                     onKeyDown={[Function]}
-                    onMouseDown={undefined}
                     onMouseEnter={null}
                     onMouseLeave={null}
                   >
                     <button
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
                       aria-expanded={false}
                       aria-haspopup={true}
                       className="slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more"
                       disabled={false}
-                      id={undefined}
-                      onBlur={undefined}
                       onClick={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      onMouseDown={undefined}
-                      onMouseEnter={undefined}
-                      onMouseLeave={undefined}
                       tabIndex="0"
-                      title={undefined}
                       type="button"
                     >
                       <svg
@@ -376,33 +322,19 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger--click"
                     id="header-right-refresh"
-                    onBlur={undefined}
                     onClick={[Function]}
                     onFocus={null}
                     onKeyDown={[Function]}
-                    onMouseDown={undefined}
                     onMouseEnter={null}
                     onMouseLeave={null}
                   >
                     <button
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
                       aria-expanded={false}
                       aria-haspopup={true}
                       className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
                       disabled={false}
-                      id={undefined}
-                      onBlur={undefined}
                       onClick={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      onMouseDown={undefined}
-                      onMouseEnter={undefined}
-                      onMouseLeave={undefined}
                       tabIndex="0"
-                      title={undefined}
                       type="button"
                     >
                       <svg
@@ -429,24 +361,9 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                     </button>
                   </div>
                   <button
-                    aria-controls={undefined}
-                    aria-describedby={undefined}
-                    aria-expanded={undefined}
-                    aria-haspopup={undefined}
                     className="slds-button slds-button--icon-border"
                     disabled={false}
-                    id={undefined}
-                    onBlur={undefined}
                     onClick={[Function]}
-                    onFocus={undefined}
-                    onKeyDown={undefined}
-                    onKeyPress={undefined}
-                    onKeyUp={undefined}
-                    onMouseDown={undefined}
-                    onMouseEnter={undefined}
-                    onMouseLeave={undefined}
-                    tabIndex={undefined}
-                    title={undefined}
                     type="button"
                   >
                     <svg
@@ -470,7 +387,6 @@ exports[`Base Multiple DOM Snapshot 1`] = `
         </div>
         <div
           className="slds-grid slds-grid_vertical slds-scrollable_none"
-          id={undefined}
         >
           <a
             className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
@@ -492,14 +408,10 @@ exports[`Base Multiple DOM Snapshot 1`] = `
               </span>
               <span>
                 Lead Score
-                <span
-                  className={undefined}
-                  title={undefined}
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     className="slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
@@ -537,9 +449,7 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                 tabIndex={-1}
               >
                 <abbr
-                  aria-label={undefined}
                   className="slds-indicator_unread"
-                  title={undefined}
                 >
                   <span
                     className="slds-assistive-text"
@@ -644,9 +554,7 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                 tabIndex={-1}
               >
                 <abbr
-                  aria-label={undefined}
                   className="slds-indicator_unread"
-                  title={undefined}
                 >
                   <span
                     className="slds-assistive-text"
@@ -1196,22 +1104,10 @@ exports[`Base Open DOM Snapshot 1`] = `
     >
       <button
         aria-controls="master_view_base-example"
-        aria-describedby={undefined}
         aria-expanded={true}
-        aria-haspopup={undefined}
         className="slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
         title="Close split view"
         type="button"
       >
@@ -1251,12 +1147,10 @@ exports[`Base Open DOM Snapshot 1`] = `
                   >
                     <span
                       className="slds-icon_container slds-icon-standard-lead"
-                      title={undefined}
                     >
                       <svg
                         aria-hidden="true"
                         className="slds-icon"
-                        style={undefined}
                       >
                         <use
                           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
@@ -1279,33 +1173,19 @@ exports[`Base Open DOM Snapshot 1`] = `
                           <div
                             className="slds-dropdown-trigger slds-dropdown-trigger--click"
                             id="header-title-leads"
-                            onBlur={undefined}
                             onClick={[Function]}
                             onFocus={null}
                             onKeyDown={[Function]}
-                            onMouseDown={undefined}
                             onMouseEnter={null}
                             onMouseLeave={null}
                           >
                             <button
-                              aria-controls={undefined}
-                              aria-describedby={undefined}
                               aria-expanded={false}
                               aria-haspopup={true}
                               className="slds-button slds-button--reset slds-type-focus"
                               disabled={false}
-                              id={undefined}
-                              onBlur={undefined}
                               onClick={[Function]}
-                              onFocus={undefined}
-                              onKeyDown={undefined}
-                              onKeyPress={undefined}
-                              onKeyUp={undefined}
-                              onMouseDown={undefined}
-                              onMouseEnter={undefined}
-                              onMouseLeave={undefined}
                               tabIndex="0"
-                              title={undefined}
                               type="button"
                             >
                               My Leads
@@ -1334,33 +1214,19 @@ exports[`Base Open DOM Snapshot 1`] = `
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger--click"
                     id="header-nav-right-more"
-                    onBlur={undefined}
                     onClick={[Function]}
                     onFocus={null}
                     onKeyDown={[Function]}
-                    onMouseDown={undefined}
                     onMouseEnter={null}
                     onMouseLeave={null}
                   >
                     <button
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
                       aria-expanded={false}
                       aria-haspopup={true}
                       className="slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more"
                       disabled={false}
-                      id={undefined}
-                      onBlur={undefined}
                       onClick={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      onMouseDown={undefined}
-                      onMouseEnter={undefined}
-                      onMouseLeave={undefined}
                       tabIndex="0"
-                      title={undefined}
                       type="button"
                     >
                       <svg
@@ -1402,33 +1268,19 @@ exports[`Base Open DOM Snapshot 1`] = `
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger--click"
                     id="header-right-refresh"
-                    onBlur={undefined}
                     onClick={[Function]}
                     onFocus={null}
                     onKeyDown={[Function]}
-                    onMouseDown={undefined}
                     onMouseEnter={null}
                     onMouseLeave={null}
                   >
                     <button
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
                       aria-expanded={false}
                       aria-haspopup={true}
                       className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
                       disabled={false}
-                      id={undefined}
-                      onBlur={undefined}
                       onClick={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      onMouseDown={undefined}
-                      onMouseEnter={undefined}
-                      onMouseLeave={undefined}
                       tabIndex="0"
-                      title={undefined}
                       type="button"
                     >
                       <svg
@@ -1455,24 +1307,9 @@ exports[`Base Open DOM Snapshot 1`] = `
                     </button>
                   </div>
                   <button
-                    aria-controls={undefined}
-                    aria-describedby={undefined}
-                    aria-expanded={undefined}
-                    aria-haspopup={undefined}
                     className="slds-button slds-button--icon-border"
                     disabled={false}
-                    id={undefined}
-                    onBlur={undefined}
                     onClick={[Function]}
-                    onFocus={undefined}
-                    onKeyDown={undefined}
-                    onKeyPress={undefined}
-                    onKeyUp={undefined}
-                    onMouseDown={undefined}
-                    onMouseEnter={undefined}
-                    onMouseLeave={undefined}
-                    tabIndex={undefined}
-                    title={undefined}
                     type="button"
                   >
                     <svg
@@ -1496,7 +1333,6 @@ exports[`Base Open DOM Snapshot 1`] = `
         </div>
         <div
           className="slds-grid slds-grid_vertical slds-scrollable_none"
-          id={undefined}
         >
           <a
             className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
@@ -1518,14 +1354,10 @@ exports[`Base Open DOM Snapshot 1`] = `
               </span>
               <span>
                 Lead Score
-                <span
-                  className={undefined}
-                  title={undefined}
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     className="slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
@@ -1545,7 +1377,6 @@ exports[`Base Open DOM Snapshot 1`] = `
           </a>
           <ul
             aria-label="Select an item to open it in a new workspace tab."
-            aria-multiselectable={undefined}
             className="slds-scrollable_y"
             onKeyDown={[Function]}
             role="listbox"
@@ -1563,9 +1394,7 @@ exports[`Base Open DOM Snapshot 1`] = `
                 tabIndex={-1}
               >
                 <abbr
-                  aria-label={undefined}
                   className="slds-indicator_unread"
-                  title={undefined}
                 >
                   <span
                     className="slds-assistive-text"
@@ -1670,9 +1499,7 @@ exports[`Base Open DOM Snapshot 1`] = `
                 tabIndex={-1}
               >
                 <abbr
-                  aria-label={undefined}
                   className="slds-indicator_unread"
-                  title={undefined}
                 >
                   <span
                     className="slds-assistive-text"
@@ -2222,22 +2049,10 @@ exports[`Custom DOM Snapshot 1`] = `
     >
       <button
         aria-controls="master_view_custom-example"
-        aria-describedby={undefined}
         aria-expanded={true}
-        aria-haspopup={undefined}
         className="slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open"
         disabled={false}
-        id={undefined}
-        onBlur={undefined}
         onClick={[Function]}
-        onFocus={undefined}
-        onKeyDown={undefined}
-        onKeyPress={undefined}
-        onKeyUp={undefined}
-        onMouseDown={undefined}
-        onMouseEnter={undefined}
-        onMouseLeave={undefined}
-        tabIndex={undefined}
         title="Close split view"
         type="button"
       >
@@ -2277,12 +2092,10 @@ exports[`Custom DOM Snapshot 1`] = `
                   >
                     <span
                       className="slds-icon_container slds-icon-standard-lead"
-                      title={undefined}
                     >
                       <svg
                         aria-hidden="true"
                         className="slds-icon"
-                        style={undefined}
                       >
                         <use
                           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
@@ -2305,33 +2118,19 @@ exports[`Custom DOM Snapshot 1`] = `
                           <div
                             className="slds-dropdown-trigger slds-dropdown-trigger--click"
                             id="header-title-leads"
-                            onBlur={undefined}
                             onClick={[Function]}
                             onFocus={null}
                             onKeyDown={[Function]}
-                            onMouseDown={undefined}
                             onMouseEnter={null}
                             onMouseLeave={null}
                           >
                             <button
-                              aria-controls={undefined}
-                              aria-describedby={undefined}
                               aria-expanded={false}
                               aria-haspopup={true}
                               className="slds-button slds-button--reset slds-type-focus"
                               disabled={false}
-                              id={undefined}
-                              onBlur={undefined}
                               onClick={[Function]}
-                              onFocus={undefined}
-                              onKeyDown={undefined}
-                              onKeyPress={undefined}
-                              onKeyUp={undefined}
-                              onMouseDown={undefined}
-                              onMouseEnter={undefined}
-                              onMouseLeave={undefined}
                               tabIndex="0"
-                              title={undefined}
                               type="button"
                             >
                               My Leads
@@ -2360,33 +2159,19 @@ exports[`Custom DOM Snapshot 1`] = `
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger--click"
                     id="header-nav-right-more"
-                    onBlur={undefined}
                     onClick={[Function]}
                     onFocus={null}
                     onKeyDown={[Function]}
-                    onMouseDown={undefined}
                     onMouseEnter={null}
                     onMouseLeave={null}
                   >
                     <button
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
                       aria-expanded={false}
                       aria-haspopup={true}
                       className="slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more"
                       disabled={false}
-                      id={undefined}
-                      onBlur={undefined}
                       onClick={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      onMouseDown={undefined}
-                      onMouseEnter={undefined}
-                      onMouseLeave={undefined}
                       tabIndex="0"
-                      title={undefined}
                       type="button"
                     >
                       <svg
@@ -2428,33 +2213,19 @@ exports[`Custom DOM Snapshot 1`] = `
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger--click"
                     id="header-right-refresh"
-                    onBlur={undefined}
                     onClick={[Function]}
                     onFocus={null}
                     onKeyDown={[Function]}
-                    onMouseDown={undefined}
                     onMouseEnter={null}
                     onMouseLeave={null}
                   >
                     <button
-                      aria-controls={undefined}
-                      aria-describedby={undefined}
                       aria-expanded={false}
                       aria-haspopup={true}
                       className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
                       disabled={false}
-                      id={undefined}
-                      onBlur={undefined}
                       onClick={[Function]}
-                      onFocus={undefined}
-                      onKeyDown={undefined}
-                      onKeyPress={undefined}
-                      onKeyUp={undefined}
-                      onMouseDown={undefined}
-                      onMouseEnter={undefined}
-                      onMouseLeave={undefined}
                       tabIndex="0"
-                      title={undefined}
                       type="button"
                     >
                       <svg
@@ -2481,24 +2252,9 @@ exports[`Custom DOM Snapshot 1`] = `
                     </button>
                   </div>
                   <button
-                    aria-controls={undefined}
-                    aria-describedby={undefined}
-                    aria-expanded={undefined}
-                    aria-haspopup={undefined}
                     className="slds-button slds-button--icon-border"
                     disabled={false}
-                    id={undefined}
-                    onBlur={undefined}
                     onClick={[Function]}
-                    onFocus={undefined}
-                    onKeyDown={undefined}
-                    onKeyPress={undefined}
-                    onKeyUp={undefined}
-                    onMouseDown={undefined}
-                    onMouseEnter={undefined}
-                    onMouseLeave={undefined}
-                    tabIndex={undefined}
-                    title={undefined}
                     type="button"
                   >
                     <svg
@@ -2522,7 +2278,6 @@ exports[`Custom DOM Snapshot 1`] = `
         </div>
         <div
           className="slds-grid slds-grid_vertical slds-scrollable_none"
-          id={undefined}
         >
           <a
             className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
@@ -2544,14 +2299,10 @@ exports[`Custom DOM Snapshot 1`] = `
               </span>
               <span>
                 Lead Score
-                <span
-                  className={undefined}
-                  title={undefined}
-                >
+                <span>
                   <svg
                     aria-hidden="true"
                     className="slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default"
-                    style={undefined}
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
@@ -2571,7 +2322,6 @@ exports[`Custom DOM Snapshot 1`] = `
           </a>
           <ul
             aria-label="Select an item to open it in a new workspace tab."
-            aria-multiselectable={undefined}
             className="slds-scrollable_y"
             onKeyDown={[Function]}
             role="listbox"
@@ -2589,9 +2339,7 @@ exports[`Custom DOM Snapshot 1`] = `
                 tabIndex={-1}
               >
                 <abbr
-                  aria-label={undefined}
                   className="slds-indicator_unread"
-                  title={undefined}
                 >
                   <span
                     className="slds-assistive-text"
@@ -2602,12 +2350,10 @@ exports[`Custom DOM Snapshot 1`] = `
                 <div>
                   <span
                     className="slds-icon_container slds-icon_container--circle slds-icon-action-call"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon slds-icon--x-small"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#call"
@@ -2638,12 +2384,10 @@ exports[`Custom DOM Snapshot 1`] = `
                 <div>
                   <span
                     className="slds-icon_container slds-icon_container--circle slds-icon-action-check"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon slds-icon--x-small"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#check"
@@ -2672,9 +2416,7 @@ exports[`Custom DOM Snapshot 1`] = `
                 tabIndex={-1}
               >
                 <abbr
-                  aria-label={undefined}
                   className="slds-indicator_unread"
-                  title={undefined}
                 >
                   <span
                     className="slds-assistive-text"
@@ -2685,12 +2427,10 @@ exports[`Custom DOM Snapshot 1`] = `
                 <div>
                   <span
                     className="slds-icon_container slds-icon_container--circle slds-icon-action-check"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon slds-icon--x-small"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#check"
@@ -2721,12 +2461,10 @@ exports[`Custom DOM Snapshot 1`] = `
                 <div>
                   <span
                     className="slds-icon_container slds-icon_container--circle slds-icon-action-call"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon slds-icon--x-small"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#call"
@@ -2757,12 +2495,10 @@ exports[`Custom DOM Snapshot 1`] = `
                 <div>
                   <span
                     className="slds-icon_container slds-icon_container--circle slds-icon-action-check"
-                    title={undefined}
                   >
                     <svg
                       aria-hidden="true"
                       className="slds-icon slds-icon--x-small"
-                      style={undefined}
                     >
                       <use
                         xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#check"
