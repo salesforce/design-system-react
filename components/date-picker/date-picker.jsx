@@ -23,7 +23,7 @@ import shortid from 'shortid';
 import Dialog from '../utilities/dialog';
 import CalendarWrapper from './private/calendar-wrapper';
 import InputIcon from '../icon/input-icon';
-import Input from '../forms/input';
+import Input from '../input';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -454,7 +454,7 @@ class Datepicker extends React.Component {
 		// Please remove `onKeyDown` on the next breaking change.
 		/* eslint-disable react/prop-types */
 		if (this.props.onKeyDown) {
-			this.props.onKeyDown(event);
+			this.props.onKeyDown(event, {});
 		}
 		/* eslint-enable react/prop-types */
 	}

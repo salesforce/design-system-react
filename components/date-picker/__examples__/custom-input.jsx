@@ -2,7 +2,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import Datepicker from '~/components/date-picker';
-import Input from '~/components/forms/input';
+import Input from '~/components/input';
 
 const Example = createReactClass({
 	displayName: 'DatepickerExample',

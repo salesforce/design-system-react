@@ -112,14 +112,11 @@ export Filter from './filter';
 export SLDSInlineEdit from './forms/input/inline';
 export InlineEdit from './forms/input/inline';
 
-export SLDSInput from './forms/input';
-export Input from './forms/input';
+export SLDSInput from './input';
+export Input from './input';
 
-export SLDSTextarea from './forms/textarea';
-export Textarea from './forms/textarea';
-
-export SLDSSearch from './forms/input/search';
-export Search from './forms/input/search';
+export SLDSSearch from './input/search';
+export Search from './input/search';
 
 export SLDSInputIcon from './icon/input-icon';
 export InputIcon from './icon/input-icon';
@@ -185,8 +182,8 @@ export ProgressIndicator from './progress-indicator';
 export SLDSProgressRing from './progress-ring';
 export ProgressRing from './progress-ring';
 
-export SLDSRadio from './forms/radio';
-export Radio from './forms/radio';
+export SLDSRadio from './radio';
+export Radio from './radio';
 
 export SLDSRadioButtonGroup from './radio-button-group';
 export RadioButtonGroup from './radio-button-group';
@@ -212,6 +209,9 @@ export SplitViewHeader from './split-view/header';
 
 export SLDSSplitViewListbox from './split-view/listbox';
 export SplitViewListbox from './split-view/listbox';
+
+export SLDSTextarea from './textarea';
+export Textarea from './textarea';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';

@@ -19,7 +19,7 @@ import {
 
 // Import your internal dependencies (for example):
 import Datepicker from '../../date-picker';
-import Input from '../../forms/input';
+import Input from '../../input';
 import KEYS from '../../../utilities/key-code';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:

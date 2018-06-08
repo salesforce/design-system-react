@@ -22,6 +22,9 @@ import InputIcon from '../../icon/input-icon';
 // ### Event Helpers
 import KEYS from '../../../utilities/key-code';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './inline-check-props';
+
 // ## Constants
 import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
 
@@ -104,6 +107,10 @@ class InlineEdit extends React.Component {
 			isEditing: false,
 			value: null,
 		};
+	}
+
+	componentWillMount () {
+		checkProps(FORMS_INLINE_EDIT, this.props);
 	}
 
 	componentDidUpdate () {

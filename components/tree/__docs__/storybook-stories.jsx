@@ -13,7 +13,7 @@ import { TREE } from '../../../utilities/constants';
 import sampleNodesDynamicHashMap from './dynamic-hashmap';
 
 import Tree from '../../tree';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 
 import DefaultExample from '../__examples__/default';
 

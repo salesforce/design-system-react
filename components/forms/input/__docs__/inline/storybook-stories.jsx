@@ -6,7 +6,7 @@ import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../../../../components/icon-settings';
 
 import { FORMS_INLINE_EDIT } from '../../../../../utilities/constants';
-import InlineEdit from '../../../input/inline';
+import InlineEdit from '../../inline';
 
 const DemoInlineEdit = createReactClass({
 	displayName: 'DemoInlineEdit',

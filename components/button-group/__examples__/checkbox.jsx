@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import ButtonGroup from '~/components/button-group';
-import Checkbox from '~/components/forms/checkbox';
+import Checkbox from '~/components/checkbox';
 
 const Example = createReactClass({
 	displayName: 'ButtonGroupExample',

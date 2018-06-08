@@ -111,7 +111,7 @@ const AppLauncher = createReactClass({
 		 */
 		onClose: PropTypes.func,
 		/**
-		 * Search bar for the Modal's header. Will typically be an instance of `design-system-react/forms/input/search`
+		 * Search bar for the Modal's header. Will typically be an instance of `design-system-react/input/search`
 		 */
 		search: PropTypes.node,
 		/**
@@ -147,7 +147,7 @@ const AppLauncher = createReactClass({
 		this.setState({ isOpen: true });
 
 		if (isFunction(this.props.triggerOnClick)) {
-			this.props.triggerOnClick(event);
+			this.props.triggerOnClick(event, {});
 		}
 	},
 
@@ -155,7 +155,7 @@ const AppLauncher = createReactClass({
 		this.setState({ isOpen: false });
 
 		if (isFunction(this.props.onClose)) {
-			this.props.onClose(event);
+			this.props.onClose(event, {});
 		}
 	},
 
