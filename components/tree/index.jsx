@@ -1,17 +1,9 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Tree Component (PROTOTYPE)
-
-// THIS IS A PROTOTYPE and does NOT meet accessibility standards. It implements the [Tree design pattern](https://www.lightningdesignsystem.com/components/trees/) in React.
-
-// ## Dependencies
-
-// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### classNames
 import classNames from 'classnames';
 
 import find from 'lodash.find';
@@ -25,35 +17,16 @@ import checkProps from './check-props';
 // ## Constants
 import { TREE } from '../../utilities/constants';
 
-/* Flattens hierarchical tree structure into a flat array. The
- * first item in the array is the whole tree and therefore should be
- * removed with `slice(1)`.`
-*/
-const flattenTree = (root, treeIndex = '') => {
-	if (!root.nodes) {
-		return [{ node: root, treeIndex }];
-	}
-	let nodes = [{ node: root, treeIndex }];
-	if (root.expanded) {
-		for (let index = 0; index < root.nodes.length; index++) {
-			const curNode = root.nodes[index];
-			nodes = nodes.concat(
-				flattenTree(curNode, treeIndex ? `${treeIndex}-${index}` : `${index}`)
-			);
-		}
-	}
-	return nodes;
-};
-
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 class Tree extends React.Component {
 	constructor (props) {
 		super(props);
+
 		// Find the first selected node and initialize it properly so that can be tabbed to. If no node is selected, it will be selected upon first focus.
-		const flattenedNodes = flattenTree({
-			nodes: this.props.nodes,
+		const flattenedNodes = this.flattenTree({
+			nodes: this.props.getNodes({ nodes: this.props.nodes }),
 			expanded: true,
 		}).slice(1);
 
@@ -82,14 +55,42 @@ class Tree extends React.Component {
 
 	componentWillReceiveProps (nextProps) {
 		this.setState({
-			flattenedNodes: flattenTree({
-				nodes: nextProps.nodes,
+			flattenedNodes: this.flattenTree({
+				nodes: this.props.getNodes({ nodes: nextProps.nodes }),
 				expanded: true,
 			}).slice(1),
 		});
 	}
 
-	handleSelect = (event, data, clearSelectedNodes) => {
+	/* Flattens hierarchical tree structure into a flat array. The
+	 * first item in the array is the whole tree and therefore should be
+	 * removed with `slice(1)`.` This means that root cannot call `getNodes()`
+	 * and should directly reference the `nodes` key. All level after that
+	 * should use `getNodes()` to access the correct nodes.
+	*/
+	flattenTree = (root, treeIndex = '', firstLevel = true) => {
+		if (!root.nodes) {
+			return [{ node: root, treeIndex }];
+		}
+		let nodes = [{ node: root, treeIndex }];
+		if (root.expanded) {
+			for (let index = 0; index < root.nodes.length; index++) {
+				const curNode = firstLevel
+					? root.nodes[index]
+					: this.props.getNodes(root)[index];
+				nodes = nodes.concat(
+					this.flattenTree(
+						curNode,
+						treeIndex ? `${treeIndex}-${index}` : `${index}`,
+						false
+					)
+				);
+			}
+		}
+		return nodes;
+	};
+
+	handleSelect = ({ event, data, clearSelectedNodes, fromFocus }) => {
 		// When triggered by a key event, other nodes should be deselected.
 		if (clearSelectedNodes) {
 			this.state.flattenedNodes.forEach((flattenedNode) => {
@@ -99,8 +100,11 @@ class Tree extends React.Component {
 			});
 		}
 
-		// Do the click.
-		this.props.onClick(event, data);
+		// Prevent firing twice on first click, due to the handleSelect
+		// triggered by a focus event
+		if (!fromFocus) {
+			this.props.onClick(event, data);
+		}
 
 		// Keep track of the currently selected and focused nodes.
 		let selectedNodeIndexes;
@@ -127,9 +131,15 @@ class Tree extends React.Component {
 		this.treeHasFocus = false;
 	};
 
-	handleExpand = (event, data) => {
+	handleExpand = ({ event, data }) => {
 		this.treeHasFocus = true;
 		this.props.onExpandClick(event, data);
+
+		if (data.select) {
+			this.setState({
+				focusedNodeIndex: data.treeIndex,
+			});
+		}
 	};
 
 	render () {
@@ -214,7 +224,7 @@ Tree.propTypes = {
 	/**
 	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
 	 * */
-	heading: PropTypes.string,
+	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 	 */
@@ -233,7 +243,18 @@ Tree.propTypes = {
 	 * ```
 	 * `assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
 	 */
-	nodes: PropTypes.array,
+	nodes: PropTypes.arrayOf(
+		PropTypes.oneOfType([
+			PropTypes.number,
+			PropTypes.string,
+			PropTypes.shape({
+				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+					.isRequired,
+				label: PropTypes.string.isRequired,
+				type: PropTypes.string.isRequired,
+			}),
+		])
+	).isRequired,
 	/**
 	 * Function that will run whenever an item or branch is selected due to click or keyboard navigation.
 	 */

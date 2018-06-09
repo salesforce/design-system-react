@@ -46,7 +46,7 @@ export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';
 // export Toast from '../components/toast/__docs__/storybook-stories';
 // export Tooltip from '../components/tooltip/__docs__/storybook-stories';
-// export Tree from '../components/tree/__docs__/storybook-stories';
+export Tree from '../components/tree/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because

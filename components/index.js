@@ -231,3 +231,6 @@ export UtilityIcon from './utilities/utility-icon';
 
 export SLDSTree from './tree';
 export Tree from './tree';
+
+// Library utilities
+export log from '../utilities/log';
