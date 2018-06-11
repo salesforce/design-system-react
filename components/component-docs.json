@@ -5001,7 +5001,7 @@
                 "required": false,
                 "description": "The Salesforce logo to display in the header.",
                 "defaultValue": {
-                    "value": "'/assets/images/logo.svg'",
+                    "value": "'/assets/images/logo-noname.svg'",
                     "computed": false
                 }
             },
