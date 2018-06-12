@@ -46,7 +46,7 @@ If you are new to React, you may be trained to design components in a more compl
 
 * <a name="different-react-component-hierarchy" href="#different-react-component-hierarchy">#</a> React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
 
-* <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application. See [Child component decorator pattern](#child-component-decorator-pattern)
+* <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application.
 
 * <a name="code-design-choices" href="#code-design-choices">#</a> **Use loose coupling and weak connascence.** The goal should be that a contributor can understand one piece of code without understanding another and be able to easily make updates in the future. You want weak connascence between components or components and the application (such as events) and not strong connascence. This makes it easier to update one component when modifying another in the future. How easy it will be to change in the future depends on which of the nine [types of connascence](<https://en.wikipedia.org/wiki/Connascence_(computer_programming)>) is being used. For instance, _Connascence of Name_ can be simply updated with Find/Replace. PropTypes and type systems help with _Connascence of Type_. _Connascence of Position_ with parameters is bad because it relies on the correct order of parameters. Objects with named keys should be used to avoid Connascence of Position.
 
@@ -309,52 +309,13 @@ Wrap props on newlines for exactly 2 or more. Always list alphabetically.
 />
 ```
 
-## Child component decorator pattern
+## Component composition with prop spread
 
-Limit aliasing of props for child components that already exist. This pattern is similar to [higher-order components](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.gjdiuf68s). It creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component.
+Some props accept an existing Design System React component such as the `dropdown` prop of `DataTableRowActions`. _Component composition with prop spread_ is a similar pattern to [render prop](https://reactjs.org/docs/render-props.html) composition in that it fully exposes the functionality of sub-components. The difference is that a shallow prop/object merge is assumed with the prop component overriding any props from its parent.
 
-For instance, allowing `MenuDropdown` to have a `Trigger` child that can be a `Button` can prevent the creation of new props such as `buttonClassName` on `MenuDropdown`, since `Button` already has a `className` prop.
+In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developers or the "grandparent" takes precedence and merges in last.
 
-* This reduces `prop` duplication for `props` that will just be passed down to the child component.
-* It allows `MenuDropdown` to decorate `Button` with the correct `onClick` among other `props`.
-* It allows the end-developer to use all existing `Button` props that they may already be familiar with.
-
-The following is a simple example of the cloning process within the parent.
-
-```javascript
-class CleverParent extends React.Component {
-  render() {
-    const children = React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, {
-        onClick: () => alert(JSON.stringify(child.props, 0, 2))
-      });
-    });
-    return <div>{children}</div>;
-  }
-}
-
-class SimpleChild extends React.Component {
-  render() {
-    return <div onClick={this.props.onClick}>{this.props.children}</div>;
-  }
-}
-
-class App extends React.Component {
-  render() {
-    return (
-      <CleverParent>
-        <SimpleChild>1</SimpleChild>
-        <SimpleChild>2</SimpleChild>
-        <SimpleChild>3</SimpleChild>
-        <SimpleChild>4</SimpleChild>
-        <SimpleChild>5</SimpleChild>
-      </CleverParent>
-    );
-  }
-}
-```
-
-Example taken from [React Composability Patterns](http://www.zhubert.com/blog/2016/02/05/react-composability-patterns/)
+This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in “<Dropdown options={} /> to a “dropdown” prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and increases library maintainability. 
 
 ## Prefer Ternary to Sub-render
 
