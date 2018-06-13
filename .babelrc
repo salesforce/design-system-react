@@ -1,55 +1,62 @@
 {
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"browsers": [
+						"last 2 versions",
+						"ie 11"
+					],
+					"node": "8.9.4"
+				}
+			}
+		],
+		"@babel/preset-react"
+	],
+	"plugins": [
+		"@babel/plugin-proposal-object-rest-spread",
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-export-default-from",
+		"@babel/plugin-proposal-export-namespace-from",
+		"root-import"
+	],
 	"env": {
-		"development": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
-				}
-			}], "react"],
-			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
 		"amd": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
-				}
-			}], "react"],
-			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
-		},
-		"commonjs": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
-				}
-			}], "react"],
-			"plugins": ["import-noop", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+			"plugins": ["import-noop"]
 		},
 		"esm": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"],
-					"node": "8.9.4"
-				},
-				"modules": false
-			}], "react"],
-			"plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+			"presets": [
+				[
+					"@babel/preset-env",
+					{
+						"targets": {
+							"browsers": [
+								"last 2 versions",
+								"ie 11"
+							],
+							"node": "8.9.4"
+						},
+						"modules": false
+					}
+				],
+				"@babel/preset-react"
+			],
+			"plugins": [
+				"@babel/plugin-proposal-object-rest-spread",
+				"@babel/plugin-proposal-class-properties",
+				"@babel/plugin-proposal-export-default-from",
+				"@babel/plugin-proposal-export-namespace-from"
+			]
+		},
+		"commonjs": {
+			"plugins": ["import-noop"]
 		},
 		"test": {
-			"presets": [["env", {
-				"targets": {
-					"browsers": ["last 2 versions", "ie 11"]
-				}
-			}], "react"],
-			"plugins": ["istanbul", "transform-object-rest-spread", "transform-class-properties", "transform-export-extensions"]
+			"plugins": ["istanbul"]
 		}
 	},
 	"ignore": [
-		"preset/**"
+		"preset/**",
 	],
-	"plugins": [
-		"root-import"
-	]
 }

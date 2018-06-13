@@ -251,7 +251,7 @@ const Button = createReactClass({
 
 	handleClick (event) {
 		if (this.props.onClick) {
-			this.props.onClick(event);
+			this.props.onClick(event, {});
 		}
 	},
 

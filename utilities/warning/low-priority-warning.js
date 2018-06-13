@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 	};
 
 	lowPriorityWarning = (condition, originalMessage, ...args) => {
-		if (originalMessage) {
+		if (!condition && originalMessage) {
 			printWarning(originalMessage, ...args);
 		}
 	};

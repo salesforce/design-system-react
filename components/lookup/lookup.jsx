@@ -28,7 +28,7 @@ import Dialog from '../utilities/dialog';
 import Button from '../button';
 import Icon from '../icon';
 import InputIcon from '../icon/input-icon';
-import Input from '../forms/input';
+import Input from '../input';
 
 // ### Event Helpers
 import EventUtil from '../../utilities/event';

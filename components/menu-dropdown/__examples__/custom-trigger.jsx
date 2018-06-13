@@ -12,6 +12,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown
+					tabIndex="-1"
 					align="right"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },

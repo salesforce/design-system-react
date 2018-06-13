@@ -272,6 +272,7 @@ storiesOf(MENU_DROPDOWN, module)
 	)
 	.add('Custom Trigger', () =>
 		getDropdownCustomTrigger({
+			tabIndex: '-1',
 			assistiveText: 'Custom Dropdown Trigger',
 			onSelect: (...rest) => {
 				action('Selected')(...rest);

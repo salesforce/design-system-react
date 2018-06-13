@@ -15,12 +15,10 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right_small slds-no-flex slds-align-top"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
@@ -38,30 +36,15 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
          
         <a
           href="javascript:void(0);"
-          onClick={undefined}
         >
           Select Leads to Merge
         </a>
       </h2>
     </div>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >
@@ -108,12 +91,10 @@ exports[`Toast Error DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right_small slds-no-flex slds-align-top"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
@@ -132,23 +113,9 @@ exports[`Toast Error DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >
@@ -195,12 +162,10 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right_small slds-no-flex slds-align-top"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
@@ -222,23 +187,9 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
       </p>
     </div>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >
@@ -286,12 +237,10 @@ exports[`Toast Info DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right_small slds-no-flex slds-align-top"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
@@ -316,23 +265,9 @@ exports[`Toast Info DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >
@@ -379,12 +314,10 @@ exports[`Toast Success DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right_small slds-no-flex slds-align-top"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
@@ -409,23 +342,9 @@ exports[`Toast Success DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >
@@ -472,12 +391,10 @@ exports[`Toast Warning DOM Snapshot 1`] = `
     </span>
     <span
       className="slds-m-right_small slds-no-flex slds-align-top"
-      title={undefined}
     >
       <svg
         aria-hidden="true"
         className="slds-icon slds-icon--small"
-        style={undefined}
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
@@ -496,23 +413,9 @@ exports[`Toast Warning DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      aria-controls={undefined}
-      aria-describedby={undefined}
-      aria-expanded={undefined}
-      aria-haspopup={undefined}
       className="slds-button slds-button--icon-inverse slds-notify__close"
       disabled={false}
-      id={undefined}
-      onBlur={undefined}
       onClick={[Function]}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={undefined}
-      onKeyUp={undefined}
-      onMouseDown={undefined}
-      onMouseEnter={undefined}
-      onMouseLeave={undefined}
-      tabIndex={undefined}
       title="Close"
       type="button"
     >

@@ -11,7 +11,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### Children
-import Input from '../../forms/input';
+import Input from '../../input';
 
 // ### Event Helpers
 import KEYS from '../../../utilities/key-code';

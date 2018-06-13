@@ -13,7 +13,7 @@ import classNames from 'classnames';
 import find from 'lodash.find';
 
 // ## Children
-import Checkbox from '../../forms/checkbox';
+import Checkbox from '../../checkbox';
 
 // ## Constants
 import {
@@ -58,8 +58,8 @@ const DataTableRow = createReactClass({
 		return !!find(this.props.selection, this.props.item);
 	},
 
-	handleToggle (selected, e) {
-		return this.props.onToggle(this.props.item, selected, e);
+	handleToggle (e, { checked }) {
+		return this.props.onToggle(this.props.item, checked, e);
 	},
 
 	// ### Render
@@ -82,7 +82,9 @@ const DataTableRow = createReactClass({
 						style={{ width: '3.25rem' }}
 					>
 						<Checkbox
-							assistiveText={this.props.assistiveTextForSelectRow}
+							assistiveText={{
+								label: this.props.assistiveTextForSelectRow,
+							}}
 							checked={isSelected}
 							id={`${this.props.id}-SelectRow`}
 							name="SelectRow"
