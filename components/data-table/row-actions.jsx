@@ -11,9 +11,6 @@ import PropTypes from 'prop-types';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### merge
-import assign from 'lodash.assign';
-
 // ## Children
 import Dropdown from '../menu-dropdown';
 
@@ -107,12 +104,12 @@ const DataTableRowActions = createReactClass({
 			id: this.props.id,
 		};
 
-		const dropdownProps = assign(
-			defaultDropdownProps,
-			this.props.dropdown ? this.props.dropdown.props : {}
-		);
-
-		dropdownProps.onSelect = this.handleSelect;
+		const props = this.props.dropdown ? this.props.dropdown.props : {};
+		const dropdownProps = {
+			...defaultDropdownProps,
+			...props,
+			onSelect: this.handleSelect,
+		};
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
