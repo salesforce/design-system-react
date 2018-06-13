@@ -432,7 +432,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Search bar for the Modal's header. Will typically be an instance of `design-system-react/forms/input/search`"
+                "description": "Search bar for the Modal's header. Will typically be an instance of `design-system-react/input/search`"
             },
             "title": {
                 "type": {
@@ -1889,6 +1889,14 @@
                     {
                         "name": "props",
                         "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    },
+                    {
+                        "name": "labels",
+                        "type": null
                     }
                 ],
                 "returns": null
@@ -1901,6 +1909,14 @@
                     {
                         "name": "props",
                         "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    },
+                    {
+                        "name": "labels",
+                        "type": null
                     }
                 ],
                 "returns": null
@@ -1912,6 +1928,14 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    },
+                    {
+                        "name": "labels",
                         "type": null
                     }
                 ],
@@ -1949,24 +1973,34 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the Checkbox is for.\nIf the Checkbox has a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "checked": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used."
+                "description": "The Checkbox should be a controlled component, and will always be in the state specified. If checked is not defined, the state of the uncontrolled native `input` component will be used."
             },
             "defaultChecked": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility with\nhybrid framework applications that are not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+                "description": "This is the initial value of an uncontrolled form element and is present only\nto provide compatibility with hybrid framework applications that are not\nentirely React. It should only be used in an application without centralized\nstate (Redux, Flux). \"Controlled components\" with centralized state is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "className": {
                 "type": {
@@ -2014,32 +2048,28 @@
                 "required": false,
                 "description": "The Checkbox will be indeterminate if its state can not be figured out or is partially checked. Once a checkbox is indeterminate, a click should cause it to be checked. Since a user cannot put a checkbox into an indeterminate state, it is assumed you are controlling the value of `checked` with the parent, also, and that this is a controlled component. **Note:** `indeterminate` proptype does nothing in the `toggle` variant, as [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle)."
             },
-            "label": {
+            "labels": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "toggleDisabled": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "toggleEnabled": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "An optional label for the Checkbox."
-            },
-            "labelToggleEnabled": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
                 "defaultValue": {
-                    "value": "'Enabled'",
-                    "computed": false
-                }
-            },
-            "labelToggleDisabled": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.",
-                "defaultValue": {
-                    "value": "'Disabled'",
+                    "value": "{\n    toggleDisabled: 'Disabled',\n    toggleEnabled: 'Enabled',\n}",
                     "computed": false
                 }
             },
@@ -2055,42 +2085,42 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the Checkbox focused is blurred."
+                "description": "This event fires when the Checkbox looses focus. It passes in `{ event }`."
             },
             "onChange": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the Checkbox changes."
+                "description": "This event fires when the Checkbox changes. Passes in `event, { checked }`. This used to be `checked, event, { checked }`."
             },
             "onFocus": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the Checkbox is focused."
+                "description": "This event fires when the Checkbox is focused. It passes in `{ event }`."
             },
             "onKeyDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when a key is pressed down."
+                "description": "This event fires when a key is pressed down. It passes in `{ event }`."
             },
             "onKeyPress": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when a character is typed. Probably. 👀 See [this article](http://www.bloggingdeveloper.com/post/KeyPress-KeyDown-KeyUp-The-Difference-Between-Javascript-Key-Events.aspx) for more information."
+                "description": "This event fires when a character is typed. See [this article](http://www.bloggingdeveloper.com/post/KeyPress-KeyDown-KeyUp-The-Difference-Between-Javascript-Key-Events.aspx) for more information. It passes in `{ event }`."
             },
             "onKeyUp": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when a pressed key is released."
+                "description": "This event fires when a pressed key is released. It passes in `{ event }`."
             },
             "readOnly": {
                 "type": {
@@ -2132,7 +2162,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Which flavor of checkbox? Default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)",
+                "description": "Which UX pattern of checkbox? The default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -2141,7 +2171,7 @@
         },
         "route": "checkboxes",
         "display-name": "Checkboxes",
-        "SLDS-component-path": "/components/forms/#flavor-checkbox",
+        "SLDS-component-path": "/components/checkbox/",
         "dependencies": []
     },
     "combobox": {
@@ -2230,7 +2260,11 @@
                 "name": "handleClickOutside",
                 "docblock": "Menu open/close and sub-render methods",
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event"
+                    }
+                ],
                 "returns": null,
                 "description": "Menu open/close and sub-render methods"
             },
@@ -2238,7 +2272,12 @@
                 "name": "handleClose",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2361,7 +2400,16 @@
                 "name": "handleOpen",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2399,7 +2447,16 @@
                 "name": "handleRequestClose",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2959,11 +3016,11 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "selected",
+                        "name": "e",
                         "type": null
                     },
                     {
-                        "name": "e",
+                        "name": "{ checked }",
                         "type": null
                     }
                 ],
@@ -4320,6 +4377,13 @@
                 "required": false,
                 "description": "Class names to be added to the outer container of the input."
             },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -4329,7 +4393,15 @@
             },
             "errorText": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
@@ -4378,26 +4450,12 @@
                 "required": false,
                 "description": "Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
             },
-            "iconPosition": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "[DEPRECATED] Please use `iconLeft` and `iconRight`."
-            },
             "iconRight": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
                 "description": "Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
-            },
-            "inlineEditTrigger": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Triggered when an `InlineEdit` becomes editable."
             },
             "id": {
                 "type": {
@@ -4537,7 +4595,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Displays the value of the input as readOnly."
+                "description": "Displays the value of the input as read-only. This is used in the inline edit UX pattern."
             },
             "required": {
                 "type": {
@@ -4545,6 +4603,13 @@
                 },
                 "required": false,
                 "description": "Highlights the input as a required field (does not perform any validation)."
+            },
+            "role": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "ARIA role"
             },
             "type": {
                 "type": {
@@ -4621,341 +4686,11 @@
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
-            },
-            "defaultValue": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
-            },
-            "role": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "ARIA role"
             }
         },
         "route": "inputs",
         "display-name": "Inputs",
-        "SLDS-component-path": "/components/forms#flavor-input",
-        "dependencies": []
-    },
-    "textarea": {
-        "description": "A multi-line plain-text editing control.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "aria-activedescendant": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget."
-            },
-            "aria-autocomplete": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Indicates if the suggestions in a composite widget are values that complete the current textbox input."
-            },
-            "aria-controls": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
-            },
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
-            },
-            "aria-expanded": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed."
-            },
-            "aria-haspopup": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Indicates that the element has a popup context menu or sub-level menu."
-            },
-            "aria-labelledby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object."
-            },
-            "aria-owns": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
-            },
-            "aria-required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
-            },
-            "autoFocus": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "If present, the label associated with this `textarea` is overwritten\nby this text and is visually not shown."
-            },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Elements are added after the `textarea`."
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the textarea component."
-            },
-            "classNameContainer": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Allows for ability to apply classNames to outer textarea div."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the textarea and prevents editing the contents."
-            },
-            "errorText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error."
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Every textarea must have a unique ID in order to support keyboard navigation and ARIA support."
-            },
-            "textareaRef": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This callback exposes the textarea reference / DOM node to parent components. `<Parent textareaRef={(textareaComponent) => this.textarea = textareaComponent} />"
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "This label appears above the textarea."
-            },
-            "onBlur": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when focus is removed."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This callback fires when the textarea changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided."
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the textarea is clicked."
-            },
-            "onFocus": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when component is focused."
-            },
-            "onInput": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Similar to `onchange`. Triggered when an element gets user input."
-            },
-            "onInvalid": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a submittable <input> element is invalid."
-            },
-            "onKeyDown": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is pressed down"
-            },
-            "onKeyPress": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is pressed and released"
-            },
-            "onKeyUp": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is released"
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered after some text has been selected in an element."
-            },
-            "onSubmit": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Fires when a form is submitted."
-            },
-            "maxLength": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Maximum number of characters allowed."
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the submitted form parameter."
-            },
-            "placeholder": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text that will appear in an empty textarea."
-            },
-            "required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Highlights the textarea as a required field (does not perform any validation)."
-            },
-            "value": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The textarea is a controlled component, and will always display this value."
-            },
-            "defaultValue": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The textarea is a uncontrolled component, and this will be the initial value."
-            },
-            "wrap": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'soft'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'hard'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Specifies how the text in a text area is to be wrapped when submitted in a form."
-            }
-        },
-        "route": "textareas",
-        "display-name": "Textareas",
-        "SLDS-component-path": "/components/forms#flavor-textarea",
+        "SLDS-component-path": "/components/input/",
         "dependencies": []
     },
     "global-header": {
@@ -9466,7 +9201,7 @@
         },
         "route": "radios",
         "display-name": "Radios",
-        "SLDS-component-path": "/components/forms/#flavor-radio",
+        "SLDS-component-path": "/components/radio-group/",
         "dependencies": []
     },
     "split-view": {
@@ -10270,6 +10005,1261 @@
         "SLDS-component-path": "/components/radio-button-group",
         "dependencies": []
     },
+    "slider": {
+        "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInput",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the outer container of the Slider."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the Slider and prevents clicking it. Only available on the horizontal view."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Set the HTML `id` of the slider."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the Slider."
+            },
+            "max": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Maximum value of a specified range. Defaults to 100.",
+                "defaultValue": {
+                    "value": "100",
+                    "computed": false
+                }
+            },
+            "min": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Minimum value of a specified range. Defaults to 0.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the slider."
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Slider is a controlled component, and will always display this value."
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Modifier that makes the slider vertical"
+            }
+        },
+        "route": "slider",
+        "display-name": "Slider",
+        "SLDS-component-path": "/components/slider",
+        "dependencies": []
+    },
+    "tabs": {
+        "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
+        "methods": [
+            {
+                "name": "getNextTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getPanelsCount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getPrevTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getSelectedIndex",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getTabNode",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getTabsCount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setSelected",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    },
+                    {
+                        "name": "focus",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "isTabFromContainer",
+                "docblock": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false.",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "node"
+                    }
+                ],
+                "returns": null,
+                "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false."
+            },
+            {
+                "name": "renderTabPanels",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "parentId",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderTabsList",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "parentId",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created."
+            },
+            "children": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "node"
+                            }
+                        },
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The `children` are the actual tabs and panels to be displayed.\n\nNote that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.\n\nThe component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.\n\n```\n<Tabs>\n\t<TabsPanel label=\"Tab 1\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t\t<p>They show when you click the first tab.</p>\n\t\t</div>\n\t</TabsPanel>\n\t<TabsPanel label=\"Tab 2\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 2 contents!</h2>\n\t\t\t<p>They show when you click the second tab.</p>\n\t\t</div>\n\t</TabsPanel>\n</Tabs>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the container element and is passed along to its children."
+            },
+            "defaultSelectedIndex": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Tab (and corresponding TabPanel) that is selected when the component first renders. Defaults to `0`.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This function triggers when a tab is selected."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'scoped'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If the Tabs should be scopped, defaults to false",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            },
+            "selectedIndex": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Tab (and corresponding TabPanel) that is currently selected."
+            }
+        },
+        "route": "tabs",
+        "display-name": "Tabs",
+        "SLDS-component-path": "/components/tabs",
+        "dependencies": [
+            {
+                "panel": {
+                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\n\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\n\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\n\n```\n<TabsPanel label=\"Tab 1\">\n\t<div>\n\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t<p>They show when you click the first tab.</p>\n\t</div>\n</TabsPanel>\n```",
+                    "methods": [],
+                    "props": {
+                        "label": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "element"
+                                    }
+                                ]
+                            },
+                            "required": true,
+                            "description": "The string or element that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel."
+                        },
+                        "children": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "arrayOf",
+                                        "value": {
+                                            "name": "node"
+                                        }
+                                    },
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "element"
+                                    }
+                                ]
+                            },
+                            "required": true,
+                            "description": "The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.\n\nNote that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one \"parent\" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM."
+                        }
+                    },
+                    "name": "panel",
+                    "source": "/components/tabs/panel.jsx"
+                }
+            }
+        ]
+    },
+    "textarea": {
+        "description": "A multi-line plain-text editing control.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-activedescendant": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget."
+            },
+            "aria-autocomplete": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Indicates if the suggestions in a composite widget are values that complete the current textbox input."
+            },
+            "aria-controls": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
+            },
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "aria-expanded": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed."
+            },
+            "aria-haspopup": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Indicates that the element has a popup context menu or sub-level menu."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object."
+            },
+            "aria-owns": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
+            },
+            "aria-required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
+            },
+            "autoFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "If present, the label associated with this `textarea` is overwritten\nby this text and is visually not shown."
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Elements are added after the `textarea`."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the textarea component."
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Allows for ability to apply classNames to outer textarea div."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the textarea and prevents editing the contents."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Every textarea must have a unique ID in order to support keyboard navigation and ARIA support."
+            },
+            "textareaRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback exposes the textarea reference / DOM node to parent components. `<Parent textareaRef={(textareaComponent) => this.textarea = textareaComponent} />"
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the textarea."
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when focus is removed."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback fires when the textarea changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the textarea is clicked."
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when component is focused."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Similar to `onchange`. Triggered when an element gets user input."
+            },
+            "onInvalid": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a submittable <input> element is invalid."
+            },
+            "onKeyDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is pressed down"
+            },
+            "onKeyPress": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is pressed and released"
+            },
+            "onKeyUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is released"
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered after some text has been selected in an element."
+            },
+            "onSubmit": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Fires when a form is submitted."
+            },
+            "maxLength": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Maximum number of characters allowed."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that will appear in an empty textarea."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Highlights the textarea as a required field (does not perform any validation)."
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The textarea is a controlled component, and will always display this value."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The textarea is a uncontrolled component, and this will be the initial value."
+            },
+            "wrap": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'soft'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'hard'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Specifies how the text in a text area is to be wrapped when submitted in a form."
+            }
+        },
+        "route": "textareas",
+        "display-name": "Textareas",
+        "SLDS-component-path": "/components/forms#flavor-textarea",
+        "dependencies": []
+    },
+    "time-picker": {
+        "description": "Component description.",
+        "methods": [
+            {
+                "name": "getOptions",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "parseDate",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "strValue",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "date",
+                        "type": null
+                    },
+                    {
+                        "name": "strValue",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "val",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInputChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "constrainToScrollParent": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, constrains the menu to the scroll parent. See `Dropdown`."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents."
+            },
+            "formatter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Time formatting function",
+                "defaultValue": {
+                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n\n    return null;\n}",
+                    "computed": false
+                }
+            },
+            "inheritTargetWidth": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the input."
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component."
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
+            },
+            "onDateChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Receives the props `(dateValue, stringValue)`"
+            },
+            "parser": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Parsing date string into Date",
+                "defaultValue": {
+                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric',\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that will appear in an empty input.",
+                "defaultValue": {
+                    "value": "'Pick Time'",
+                    "computed": false
+                }
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, adds asterisk next to input label to indicate it is a required field."
+            },
+            "stepInMinutes": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Frequency of options",
+                "defaultValue": {
+                    "value": "30",
+                    "computed": false
+                }
+            },
+            "strValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Value for input that is parsed to create an internal state in the `date` format."
+            },
+            "value": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "Date"
+                },
+                "required": false,
+                "description": "Instance an internal state in the `date` format.",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            }
+        },
+        "route": "timepickers",
+        "display-name": "Timepickers",
+        "SLDS-component-path": "/components/datepickers",
+        "dependencies": []
+    },
+    "toast": {
+        "description": "Toast serves as a feedback & confirmation mechanism after the user takes an action. View [banner guidelines](https://www.lightningdesignsystem.com/guidelines/messaging/components/banners/).",
+        "methods": [
+            {
+                "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "saveButtonRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "closeButton": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    closeButton: 'Close',\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with snapshot testing._"
+            },
+            "duration": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "details": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "heading": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "headingLink": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._"
+            },
+            "onClickHeadingLink": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered by link. _Tested with Mocha testing._"
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* success variant: `utility:success`\n* warning variant: `utility:warning`\n\n_Tested with snapshot testing._"
+            },
+            "onRequestClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered by close button. _Tested with Mocha testing._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The type of Toast. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "toasts",
+        "display-name": "Toasts",
+        "SLDS-component-path": "/components/toasts",
+        "dependencies": [
+            {
+                "container": {
+                    "description": "A fixed container for toast banners.",
+                    "methods": [],
+                    "props": {
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to tag with `.slds-notify-container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Toast components"
+                        }
+                    },
+                    "name": "container",
+                    "source": "/components/toast/container.jsx"
+                }
+            }
+        ]
+    },
     "tooltip": {
         "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.",
         "methods": [
@@ -10594,537 +11584,36 @@
         "SLDS-component-path": "/components/tooltips",
         "dependencies": []
     },
-    "tabs": {
-        "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
-        "methods": [
-            {
-                "name": "getNextTab",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getPanelsCount",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getPrevTab",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getSelectedIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getTab",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getTabNode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getTabsCount",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "setSelected",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    },
-                    {
-                        "name": "focus",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "e",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "isTabFromContainer",
-                "docblock": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false.",
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "node"
-                    }
-                ],
-                "returns": null,
-                "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false."
-            },
-            {
-                "name": "renderTabPanels",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "parentId",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "renderTabsList",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "parentId",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
-        "props": {
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created."
-            },
-            "children": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "arrayOf",
-                            "value": {
-                                "name": "node"
-                            }
-                        },
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": true,
-                "description": "The `children` are the actual tabs and panels to be displayed.\n\nNote that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.\n\nThe component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.\n\n```\n<Tabs>\n\t<TabsPanel label=\"Tab 1\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t\t<p>They show when you click the first tab.</p>\n\t\t</div>\n\t</TabsPanel>\n\t<TabsPanel label=\"Tab 2\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 2 contents!</h2>\n\t\t\t<p>They show when you click the second tab.</p>\n\t\t</div>\n\t</TabsPanel>\n</Tabs>\n```"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the container element and is passed along to its children."
-            },
-            "defaultSelectedIndex": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "The Tab (and corresponding TabPanel) that is selected when the component first renders. Defaults to `0`.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This function triggers when a tab is selected."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'scoped'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "If the Tabs should be scopped, defaults to false",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            },
-            "selectedIndex": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "The Tab (and corresponding TabPanel) that is currently selected."
-            }
-        },
-        "route": "tabs",
-        "display-name": "Tabs",
-        "SLDS-component-path": "/components/tabs",
-        "dependencies": [
-            {
-                "panel": {
-                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\n\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\n\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\n\n```\n<TabsPanel label=\"Tab 1\">\n\t<div>\n\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t<p>They show when you click the first tab.</p>\n\t</div>\n</TabsPanel>\n```",
-                    "methods": [],
-                    "props": {
-                        "label": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "string"
-                                    },
-                                    {
-                                        "name": "element"
-                                    }
-                                ]
-                            },
-                            "required": true,
-                            "description": "The string or element that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel."
-                        },
-                        "children": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "arrayOf",
-                                        "value": {
-                                            "name": "node"
-                                        }
-                                    },
-                                    {
-                                        "name": "node"
-                                    },
-                                    {
-                                        "name": "element"
-                                    }
-                                ]
-                            },
-                            "required": true,
-                            "description": "The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.\n\nNote that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one \"parent\" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM."
-                        }
-                    },
-                    "name": "panel",
-                    "source": "/components/tabs/panel.jsx"
-                }
-            }
-        ]
-    },
-    "toast": {
-        "description": "Toast serves as a feedback & confirmation mechanism after the user takes an action. View [banner guidelines](https://www.lightningdesignsystem.com/guidelines/messaging/components/banners/).",
-        "methods": [
-            {
-                "name": "onClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "saveButtonRef",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "component",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "closeButton": {
-                            "name": "union",
-                            "value": [
-                                {
-                                    "name": "string"
-                                },
-                                {
-                                    "name": "node"
-                                }
-                            ],
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "{\n    closeButton: 'Close',\n}",
-                    "computed": false
-                }
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with snapshot testing._"
-            },
-            "duration": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._"
-            },
-            "labels": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "details": {
-                            "name": "union",
-                            "value": [
-                                {
-                                    "name": "string"
-                                },
-                                {
-                                    "name": "node"
-                                }
-                            ],
-                            "required": false
-                        },
-                        "heading": {
-                            "name": "union",
-                            "value": [
-                                {
-                                    "name": "string"
-                                },
-                                {
-                                    "name": "node"
-                                }
-                            ],
-                            "required": false
-                        },
-                        "headingLink": {
-                            "name": "union",
-                            "value": [
-                                {
-                                    "name": "string"
-                                },
-                                {
-                                    "name": "node"
-                                }
-                            ],
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._"
-            },
-            "onClickHeadingLink": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered by link. _Tested with Mocha testing._"
-            },
-            "icon": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* success variant: `utility:success`\n* warning variant: `utility:warning`\n\n_Tested with snapshot testing._"
-            },
-            "onRequestClose": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered by close button. _Tested with Mocha testing._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'error'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'info'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'success'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'warning'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": true,
-                "description": "The type of Toast. _Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'info'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "toasts",
-        "display-name": "Toasts",
-        "SLDS-component-path": "/components/toasts",
-        "dependencies": [
-            {
-                "container": {
-                    "description": "A fixed container for toast banners.",
-                    "methods": [],
-                    "props": {
-                        "className": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "array"
-                                    },
-                                    {
-                                        "name": "object"
-                                    },
-                                    {
-                                        "name": "string"
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "CSS classes to be added to tag with `.slds-notify-container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
-                        },
-                        "children": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": false,
-                            "description": "Toast components"
-                        }
-                    },
-                    "name": "container",
-                    "source": "/components/toast/container.jsx"
-                }
-            }
-        ]
-    },
     "tree": {
         "description": "A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.",
         "methods": [
+            {
+                "name": "flattenTree",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "root",
+                        "type": null
+                    },
+                    {
+                        "name": "treeIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "firstLevel",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
             {
                 "name": "handleSelect",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "event",
-                        "type": null
-                    },
-                    {
-                        "name": "data",
-                        "type": null
-                    },
-                    {
-                        "name": "clearSelectedNodes",
+                        "name": "{ event, data, clearSelectedNodes, fromFocus }",
                         "type": null
                     }
                 ],
@@ -11143,11 +11632,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "event",
-                        "type": null
-                    },
-                    {
-                        "name": "data",
+                        "name": "{ event, data }",
                         "type": null
                     }
                 ],
@@ -11211,7 +11696,15 @@
             },
             "heading": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`."
@@ -11225,9 +11718,45 @@
             },
             "nodes": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "union",
+                        "value": [
+                            {
+                                "name": "number"
+                            },
+                            {
+                                "name": "string"
+                            },
+                            {
+                                "name": "shape",
+                                "value": {
+                                    "id": {
+                                        "name": "union",
+                                        "value": [
+                                            {
+                                                "name": "number"
+                                            },
+                                            {
+                                                "name": "string"
+                                            }
+                                        ],
+                                        "required": true
+                                    },
+                                    "label": {
+                                        "name": "string",
+                                        "required": true
+                                    },
+                                    "type": {
+                                        "name": "string",
+                                        "required": true
+                                    }
+                                }
+                            }
+                        ]
+                    }
                 },
-                "required": false,
+                "required": true,
                 "description": "Array of items starting at the top of the tree. The shape each node in the array is:\n```\n{\n  expanded: string,\n  id: string,\n  label: string or node,\n  selected: string,\n  type: string,\n  nodes: array\n}\n```\n`assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
             },
             "onClick": {
@@ -11269,432 +11798,6 @@
         "route": "tree",
         "display-name": "Tree",
         "SLDS-component-path": "/components/tree",
-        "dependencies": []
-    },
-    "time-picker": {
-        "description": "Component description.",
-        "methods": [
-            {
-                "name": "getOptions",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "parseDate",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "strValue",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "date",
-                        "type": null
-                    },
-                    {
-                        "name": "strValue",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleSelect",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "val",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleInputChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
-        "props": {
-            "constrainToScrollParent": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, constrains the menu to the scroll parent. See `Dropdown`."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the input and prevents editing the contents."
-            },
-            "formatter": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Time formatting function",
-                "defaultValue": {
-                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n\n    return null;\n}",
-                    "computed": false
-                }
-            },
-            "inheritTargetWidth": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern."
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "This label appears above the input."
-            },
-            "listItemRenderer": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Custom element that overrides the default Menu Item component."
-            },
-            "menuPosition": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'absolute'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'overflowBoundaryElement'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'relative'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
-                "defaultValue": {
-                    "value": "'absolute'",
-                    "computed": false
-                }
-            },
-            "onDateChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Receives the props `(dateValue, stringValue)`"
-            },
-            "parser": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Parsing date string into Date",
-                "defaultValue": {
-                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric',\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
-                    "computed": false
-                }
-            },
-            "placeholder": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text that will appear in an empty input.",
-                "defaultValue": {
-                    "value": "'Pick Time'",
-                    "computed": false
-                }
-            },
-            "required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, adds asterisk next to input label to indicate it is a required field."
-            },
-            "stepInMinutes": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Frequency of options",
-                "defaultValue": {
-                    "value": "30",
-                    "computed": false
-                }
-            },
-            "strValue": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Value for input that is parsed to create an internal state in the `date` format."
-            },
-            "value": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "Date"
-                },
-                "required": false,
-                "description": "Instance an internal state in the `date` format.",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
-            }
-        },
-        "route": "timepickers",
-        "display-name": "Timepickers",
-        "SLDS-component-path": "/components/datepickers",
-        "dependencies": []
-    },
-    "slider": {
-        "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleInput",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
-        "props": {
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
-            },
-            "classNameContainer": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the outer container of the Slider."
-            },
-            "defaultValue": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the Slider and prevents clicking it. Only available on the horizontal view."
-            },
-            "errorText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Set the HTML `id` of the slider."
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "This label appears above the Slider."
-            },
-            "max": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Maximum value of a specified range. Defaults to 100.",
-                "defaultValue": {
-                    "value": "100",
-                    "computed": false
-                }
-            },
-            "min": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Minimum value of a specified range. Defaults to 0.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the submitted form parameter."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`."
-            },
-            "onInput": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`."
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Size of the slider."
-            },
-            "step": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01",
-                "defaultValue": {
-                    "value": "1",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "The Slider is a controlled component, and will always display this value."
-            },
-            "vertical": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Modifier that makes the slider vertical"
-            }
-        },
-        "route": "slider",
-        "display-name": "Slider",
-        "SLDS-component-path": "/components/slider",
         "dependencies": []
     }
 }
