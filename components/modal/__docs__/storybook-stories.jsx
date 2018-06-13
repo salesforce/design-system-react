@@ -6,7 +6,7 @@ import IconSettings from '../../icon-settings';
 
 import { MODAL } from '../../../utilities/constants';
 import Modal from '../../modal';
-import MenuPicklist from '../../menu-picklist';
+import Combobox from '../../combobox/';
 import Timepicker from '../../time-picker';
 import Datepicker from '../../date-picker';
 import Button from '../../button';
@@ -24,6 +24,14 @@ const getModal = (props) => <Modal {...props} />;
 const modalFooter = [
 	<Button key="modalBCancel" label="Cancel" />,
 	<Button key="modalBSave" label="Save" variant="brand" />,
+];
+
+const leadSourceTypes = [
+	{ id: 1, label: 'Third Party Program', value: 'A0' },
+	{ id: 2, label: 'Cold Call', value: 'B0' },
+	{ id: 3, label: 'LinkedIn', value: 'C0' },
+	{ id: 4, label: 'Direct Mail', value: 'D0' },
+	{ id: 5, label: 'Other', value: 'E0' },
 ];
 
 const modalContent = (
@@ -92,22 +100,22 @@ const modalContent = (
 			<ComboboxBase />
 		</div>
 
-		<MenuPicklist
-			className="slds-m-bottom--large"
-			label="Lead Source"
-			onSelect={(option) => {
-				action('selected: ', option.label);
-			}}
-			options={[
-				{ label: 'Third Party Program', value: 'A0' },
-				{ label: 'Cold Call', value: 'B0' },
-				{ label: 'LinkedIn', value: 'C0' },
-				{ label: 'Direct Mail', value: 'D0' },
-				{ label: 'Other', value: 'E0' },
-			]}
-			placeholder="Select Lead Source"
-			value="B0"
-		/>
+		<div className="slds-m-bottom--large">
+			<Combobox
+				events={{
+					onSelect: (event, data) =>
+						action('selected: ', data.selection[0].label),
+				}}
+				labels={{
+					label: 'Lead Source',
+					placeholder: 'Select Lead Source',
+				}}
+				menuPosition="relative"
+				options={leadSourceTypes}
+				selection={[leadSourceTypes[1]]}
+				variant="readonly"
+			/>
+		</div>
 
 		<div className="slds-m-bottom--large">
 			<Timepicker

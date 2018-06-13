@@ -141,52 +141,63 @@ exports[`Datepicker
           </div>
         </div>
         <div
-          className="slds-form-element"
+          className="slds-form-element slds-align-content-center"
         >
           <div
-            className="slds-form-element slds-picklist--fluid slds-shrink-none"
+            className="slds-form-element"
           >
             <div
-              className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
+              className="slds-form-element__control"
             >
-              <button
-                aria-haspopup="true"
-                className="slds-button slds-button--neutral slds-picklist__label"
-                id="CUSTOM-ID-year-picklist"
-                onClick={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="slds-combobox_container"
               >
-                <span
-                  className="slds-truncate"
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-picklist--fluid slds-shrink-none"
+                  role="combobox"
                 >
-                  2007
-                </span>
-                <span>
-                  <svg
-                    aria-hidden="true"
-                    className="slds-icon slds-icon-text-default"
+                  <div
+                    aria-expanded={false}
+                    aria-haspopup="listbox"
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
                   >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      aria-controls="CUSTOM-ID-year-picklist-listbox"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      id="CUSTOM-ID-year-picklist"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Select an Option"
+                      readOnly={true}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value="2007"
                     />
-                  </svg>
-                  
-                </span>
-              </button>
-            </div>
-            <div
-              id="listbox-selections-unique-id"
-              orientation="horizontal"
-              role="listbox"
-            >
-              <ul
-                aria-label="Selected Options:"
-                className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
-                role="group"
-              />
+                    <span
+                      className="slds-icon_container slds-input__icon slds-input__icon_right"
+                    >
+                      <svg
+                        aria-hidden={true}
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -977,52 +988,63 @@ exports[`Datepicker
           </div>
         </div>
         <div
-          className="slds-form-element"
+          className="slds-form-element slds-align-content-center"
         >
           <div
-            className="slds-form-element slds-picklist--fluid slds-shrink-none"
+            className="slds-form-element"
           >
             <div
-              className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
+              className="slds-form-element__control"
             >
-              <button
-                aria-haspopup="true"
-                className="slds-button slds-button--neutral slds-picklist__label"
-                id="sample-datepicker-year-picklist"
-                onClick={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="slds-combobox_container"
               >
-                <span
-                  className="slds-truncate"
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-picklist--fluid slds-shrink-none"
+                  role="combobox"
                 >
-                  2014
-                </span>
-                <span>
-                  <svg
-                    aria-hidden="true"
-                    className="slds-icon slds-icon-text-default"
+                  <div
+                    aria-expanded={false}
+                    aria-haspopup="listbox"
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
                   >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      aria-controls="sample-datepicker-year-picklist-listbox"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      id="sample-datepicker-year-picklist"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Select an Option"
+                      readOnly={true}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value="2014"
                     />
-                  </svg>
-                  
-                </span>
-              </button>
-            </div>
-            <div
-              id="listbox-selections-unique-id"
-              orientation="horizontal"
-              role="listbox"
-            >
-              <ul
-                aria-label="Selected Options:"
-                className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
-                role="group"
-              />
+                    <span
+                      className="slds-icon_container slds-input__icon slds-input__icon_right"
+                    >
+                      <svg
+                        aria-hidden={true}
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1811,52 +1833,63 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
           </div>
         </div>
         <div
-          className="slds-form-element"
+          className="slds-form-element slds-align-content-center"
         >
           <div
-            className="slds-form-element slds-picklist--fluid slds-shrink-none"
+            className="slds-form-element"
           >
             <div
-              className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
+              className="slds-form-element__control"
             >
-              <button
-                aria-haspopup="true"
-                className="slds-button slds-button--neutral slds-picklist__label"
-                id="sample-datepicker-year-picklist"
-                onClick={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="slds-combobox_container"
               >
-                <span
-                  className="slds-truncate"
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-picklist--fluid slds-shrink-none"
+                  role="combobox"
                 >
-                  2014
-                </span>
-                <span>
-                  <svg
-                    aria-hidden="true"
-                    className="slds-icon slds-icon-text-default"
+                  <div
+                    aria-expanded={false}
+                    aria-haspopup="listbox"
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
                   >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      aria-controls="sample-datepicker-year-picklist-listbox"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      id="sample-datepicker-year-picklist"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Select an Option"
+                      readOnly={true}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value="2014"
                     />
-                  </svg>
-                  
-                </span>
-              </button>
-            </div>
-            <div
-              id="listbox-selections-unique-id"
-              orientation="horizontal"
-              role="listbox"
-            >
-              <ul
-                aria-label="Selected Options:"
-                className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
-                role="group"
-              />
+                    <span
+                      className="slds-icon_container slds-input__icon slds-input__icon_right"
+                    >
+                      <svg
+                        aria-hidden={true}
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2533,85 +2566,88 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
             id=\\"sample-datepicker-month\\" class=\\"slds-align-middle\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">July <span class=\\"slds-assistive-text\\">2014</span></h2>
             <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
         </div>
-        <div class=\\"slds-form-element\\">
-          <div class=\\"slds-form-element slds-picklist--fluid slds-shrink-none\\">
-            <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-datepicker-year-picklist\\" tabindex=\\"0\\" type=\\"button\\"><span class=\\"slds-truncate\\">2014</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
-            <div
-              id=\\"listbox-selections-unique-id\\" orientation=\\"horizontal\\" role=\\"listbox\\">
-              <ul class=\\"slds-listbox slds-listbox_inline slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\"></ul>
+        <div class=\\"slds-form-element slds-align-content-center\\">
+          <div class=\\"slds-form-element\\">
+            <div class=\\"slds-form-element__control\\">
+              <div class=\\"slds-combobox_container\\">
+                <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-picklist--fluid slds-shrink-none\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"sample-datepicker-year-picklist-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\"
+                      role=\\"textbox\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class=\\"calendar\\">
-      <table class=\\"datepicker__month\\" role=\\"grid\\" aria-labelledby=\\"sample-datepicker-month\\">
-        <thead>
-          <tr>
-            <th><abbr title=\\"Sunday\\">Sun</abbr></th>
-            <th scope=\\"col\\"><abbr title=\\"Monday\\">Mon</abbr></th>
-            <th scope=\\"col\\"><abbr title=\\"Tuesday\\">Tue</abbr></th>
-            <th scope=\\"col\\"><abbr title=\\"Wednesday\\">Wed</abbr></th>
-            <th scope=\\"col\\"><abbr title=\\"Thursday\\">Thu</abbr></th>
-            <th scope=\\"col\\"><abbr title=\\"Friday\\">Fri</abbr></th>
-            <th scope=\\"col\\"><abbr title=\\"Saturday\\">Sat</abbr></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class=\\"week\\">
-            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
-            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">3</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">4</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">5</span></td>
-          </tr>
-          <tr class=\\"week\\">
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">6</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">7</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">8</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">9</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">10</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">11</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">12</span></td>
-          </tr>
-          <tr class=\\"week\\">
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">13</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">14</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">15</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">16</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">17</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">18</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">19</span></td>
-          </tr>
-          <tr class=\\"week\\">
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">20</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">21</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">22</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"true\\" class=\\"slds-is-selected\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">23</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">24</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">25</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">26</span></td>
-          </tr>
-          <tr class=\\"week\\">
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">27</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">28</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
-            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">31</span></td>
-            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
-            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
-          </tr>
-          <tr class=\\"week\\">
-            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
-          </tr>
-          <tr>
-            <td colspan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class=\\"calendar\\">
+        <table class=\\"datepicker__month\\" role=\\"grid\\" aria-labelledby=\\"sample-datepicker-month\\">
+          <thead>
+            <tr>
+              <th><abbr title=\\"Sunday\\">Sun</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Monday\\">Mon</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Tuesday\\">Tue</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Wednesday\\">Wed</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Thursday\\">Thu</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Friday\\">Fri</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Saturday\\">Sat</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">3</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">4</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">5</span></td>
+            </tr>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">6</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">7</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">8</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">9</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">10</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">11</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">12</span></td>
+            </tr>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">13</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">14</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">15</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">16</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">17</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">18</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">19</span></td>
+            </tr>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">20</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">21</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">22</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"true\\" class=\\"slds-is-selected\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">23</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">24</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">25</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">26</span></td>
+            </tr>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">27</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">28</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">31</span></td>
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
+            </tr>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
+            </tr>
+            <tr>
+              <td colspan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>"
 `;

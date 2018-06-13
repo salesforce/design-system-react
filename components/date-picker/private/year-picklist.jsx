@@ -4,7 +4,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import MenuPicklist from '../../menu-picklist';
+import Combobox from '../../combobox/combobox';
 
 const DatepickerYearSelector = createReactClass({
 	displayName: 'SLDSDatepickerYearSelector',
@@ -43,19 +43,19 @@ const DatepickerYearSelector = createReactClass({
 		const opts = [];
 
 		for (let year = fromYear; year < toYear; year += 1) {
-			opts.push({ label: `${year}`, value: year });
+			opts.push({ label: `${year}`, value: year, id: opts.length });
 		}
 		return opts;
 	},
 
-	getSelectedValueIndex () {
-		const now = new Date();
+	getSelectedValueOption () {
 		const selectedYear = this.props.initialDateForCalendarRender.getFullYear();
-		const fromYear = now.getFullYear() + this.props.relativeYearFrom;
-		return selectedYear - fromYear;
+		return this.getOptions().filter((option) => option.value === selectedYear);
 	},
 
-	handleSelect (selectedValue) {
+	handleSelect (event, { selection: selectedValues }) {
+		const selectedValue = selectedValues[0]; // safe since we are working with a single selection
+
 		if (selectedValue) {
 			this.props.onChangeMonth(
 				new Date(
@@ -68,20 +68,25 @@ const DatepickerYearSelector = createReactClass({
 	},
 
 	render () {
+		const selection = this.getSelectedValueOption();
 		return (
-			<div className="slds-form-element">
-				<MenuPicklist
-					buttonRef={this.props.yearPicklistButtonRef}
-					checkmark={false}
+			<div className="slds-form-element slds-align-content-center">
+				<Combobox
 					className="slds-picklist--fluid slds-shrink-none"
-					initialFocus
+					events={{
+						onSelect: this.handleSelect,
+					}}
 					id={`${this.props.id}-year-picklist`}
+					inheritWidthOf="target"
 					menuPosition="relative"
-					onSelect={this.handleSelect}
+					multiple={false}
 					options={this.getOptions()}
-					placeholder="Year"
-					value={this.props.initialDateForCalendarRender.getFullYear()}
-					initValueIndex={this.getSelectedValueIndex()}
+					labels={{
+						placeholder: 'Year',
+					}}
+					selection={selection}
+					value={selection.value}
+					variant="readonly"
 				/>
 			</div>
 		);
