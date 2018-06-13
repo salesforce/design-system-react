@@ -59,7 +59,7 @@ const DataTableRowActions = createReactClass({
 		 */
 		options: PropTypes.array,
 		/**
-		 * A `Dropdown` component. The props from this drop will be merged and override any default props.
+		 * A [Dropdown](http://react.lightningdesignsystem.com/components/dropdown-menus/) component. The props from this drop will be merged and override any default props.
 		 * **Note:** onAction will not be overridden, both `DropDown`'s onSelect and onAction will be called with appropriate parameters
 		 */
 		dropdown: PropTypes.node,
