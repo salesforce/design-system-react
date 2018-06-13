@@ -7077,6 +7077,13 @@
                 "required": false,
                 "description": "An object of CSS styles that are applied to the triggering button."
             },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
+            },
             "overlay": {
                 "type": {
                     "name": "union",
