@@ -45,7 +45,6 @@ const HeaderProfileCustomContent = (props) => (
 /* eslint-disable react/display-name */
 const GlobalHeaderDemo = (props) => (
 	<GlobalHeader
-		logoSrc={logo}
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
 		navigation={globalNavigationBar(props)}
