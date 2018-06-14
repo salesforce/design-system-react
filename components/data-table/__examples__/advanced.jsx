@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import Dropdown from '~/components/menu-dropdown';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
@@ -174,8 +175,34 @@ const Example = createReactClass({
 									label: 'Publish',
 									value: '2',
 								},
+								{
+									id: 2,
+									label: 'Third of Seven',
+									value: '3',
+								},
+								{
+									id: 3,
+									label: 'Fourth of Seven',
+									value: '4',
+								},
+								{
+									id: 4,
+									label: 'Fifth of Seven',
+									value: '5',
+								},
+								{
+									id: 5,
+									label: 'Sixth of Seven',
+									value: '6',
+								},
+								{
+									id: 6,
+									label: 'Seventh of Seven',
+									value: '7',
+								},
 							]}
 							onAction={this.handleRowAction}
+							dropdown={<Dropdown length="7" />}
 						/>
 					</DataTable>
 				</IconSettings>
