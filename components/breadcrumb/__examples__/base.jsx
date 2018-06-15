@@ -16,7 +16,10 @@ const Example = createReactClass({
 
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<BreadCrumb trail={trail} />
+				<BreadCrumb
+					assistiveText={{ breadcrumb: 'Two item breadcrumb' }}
+					trail={trail}
+				/>
 			</IconSettings>
 		);
 	},

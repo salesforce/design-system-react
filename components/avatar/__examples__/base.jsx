@@ -10,7 +10,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Avatar
-					assistiveText="Avatar image"
+					assistiveText={{ icon: 'Avatar image' }}
 					imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
 					imgAlt="Person Name"
 				/>

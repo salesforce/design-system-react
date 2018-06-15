@@ -8,6 +8,10 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) A
 // simple javascript utility for conditionally joining classNames together.
@@ -22,9 +26,13 @@ const displayName = AVATAR;
 // ### Prop Types
 const propTypes = {
 	/**
-	 * Assistive text for accessibility that labels the icon.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `icon`: Assistive text for accessibility that labels the icon.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		icon: PropTypes.string,
+	}),
 	/**
 	 * Class names to be applied to Avatar component.
 	 */
@@ -60,6 +68,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		icon: 'User or Account Icon',
+	},
 	imgAlt: '',
 	size: 'medium',
 	title: 'user avatar',
@@ -82,6 +93,10 @@ class Avatar extends React.Component {
 		this.state = {
 			imgLoadError: false,
 		};
+	}
+
+	componentWillMount () {
+		checkProps(AVATAR, this.props);
 	}
 
 	buildInitials () {
@@ -114,10 +129,17 @@ class Avatar extends React.Component {
 	}
 
 	renderIconAvatar () {
-		const { assistiveText, variant } = this.props;
+		const { variant } = this.props;
+		const iconAssistiveText =
+			typeof this.props.assistiveText === 'string'
+				? this.props.assistiveText
+				: {
+					...defaultProps.assistiveText,
+					...this.props.assistiveText,
+				}.icon;
 		return (
 			<UtilityIcon
-				assistiveText={assistiveText || 'User or Account Icon'}
+				assistiveText={iconAssistiveText}
 				category="standard"
 				name={variant === 'entity' ? 'account' : 'user'}
 			/>
