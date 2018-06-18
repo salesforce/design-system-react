@@ -767,6 +767,7 @@ const MenuDropdown = createReactClass({
 	renderInlineMenu (customContent, isOpen) {
 		let positionClassName;
 
+
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
 			positionClassName = classNames(
