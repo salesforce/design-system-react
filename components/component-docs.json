@@ -3552,8 +3552,19 @@
                             "type": {
                                 "name": "array"
                             },
-                            "required": true,
-                            "description": "`Dropdown` options. See `Dropdown`."
+                            "required": false,
+                            "description": "`Dropdown` options. See `Dropdown`.",
+                            "defaultValue": {
+                                "value": "[]",
+                                "computed": false
+                            }
+                        },
+                        "dropdown": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/dropdown-menus/) component. The props from this drop will be merged and override any default props.\n**Note:** onAction will not be overridden, both `DropDown`'s onSelect(dropDownActionOption) and onAction(rowItem, dropdownActionOption) will be called with appropriate parameters"
                         }
                     },
                     "name": "row-actions",
