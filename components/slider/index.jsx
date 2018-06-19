@@ -201,6 +201,7 @@ class Slider extends React.Component {
 							max={this.props.max}
 							step={this.props.step}
 							aria-describedby={this.getErrorId()}
+							value={this.props.value}
 							disabled={this.props.disabled}
 							onChange={this.handleChange}
 							onInput={this.handleInput}
