@@ -13,8 +13,6 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import requiredIf from 'react-required-if';
 
-import assign from 'lodash.assign';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -764,64 +762,37 @@ const MenuDropdown = createReactClass({
 		);
 	},
 
-	renderInlineMenu (customContent, isOpen) {
-		let positionClassName;
-
-
-		if (this.props.nubbinPosition) {
-			const positions = this.props.nubbinPosition.split(' ');
-			positionClassName = classNames(
-				`slds-nubbin--${positions.join('-')}`,
-				positions.map((position) => `slds-dropdown--${position}`)
-			);
-
-			// TODO: allow nubbinPosition prop to set the offset automatically
-			// if (this.props.nubbinPosition === 'top right') {
-			// 	offset = '-12px -24px';
-			// }
-		} else if (this.props.align) {
-			positionClassName = `slds-dropdown--${this.props.align}`;
-		}
-
-		return isOpen ? (
-			<div
-				className={classNames(
-					'slds-dropdown',
-					positionClassName,
-					this.props.className
-				)}
-				onMouseEnter={
-					this.props.openOn === 'hover' ? this.handleMouseEnter : null
-				}
-				onMouseLeave={
-					this.props.openOn === 'hover' ? this.handleMouseLeave : null
-				}
-				style={this.props.menuStyle}
-			>
-				{this.renderMenuContent(customContent)}
-			</div>
-		) : null;
-	},
-
 	renderDialog (customContent, isOpen, outsideClickIgnoreClass) {
-		let positionClassName;
-		let marginTop;
-		const offset = this.props.offset;
+		let align = 'bottom';
+		let hasNubbin = false;
+		let positionClassName = '';
 
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
 			positionClassName = classNames(
-				`slds-nubbin--${positions.join('-')}`,
+				// `slds-nubbin--${positions.join('-')}`,
 				positions.map((position) => `slds-dropdown--${position}`)
 			);
-			marginTop = 0;
-			// TODO: allow nubbinPosition prop to set the offset automatically
-			// if (this.props.nubbinPosition === 'top right') {
-			// 	offset = '-12px -24px';
-			// }
+			hasNubbin = true;
+			align = this.props.nubbinPosition;
 		} else if (this.props.align) {
-			positionClassName = `slds-dropdown--${this.props.align}`;
+			align = `bottom ${this.props.align}`;
 		}
+
+		// if (this.props.nubbinPosition) {
+		// 	const positions = this.props.nubbinPosition.split(' ');
+		// 	positionClassName = classNames(
+		// 		`slds-nubbin--${positions.join('-')}`,
+		// 		positions.map((position) => `slds-dropdown--${position}`)
+		// 	);
+		// 	marginTop = 0;
+		// 	// TODO: allow nubbinPosition prop to set the offset automatically
+		// 	// if (this.props.nubbinPosition === 'top right') {
+		// 	// 	offset = '-12px -24px';
+		// 	// }
+		// } else if (this.props.align) {
+		// 	positionClassName = `slds-dropdown--${this.props.align}`;
+		// }
 
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
@@ -830,19 +801,20 @@ const MenuDropdown = createReactClass({
 
 		return isOpen ? (
 			<Dialog
-				align={`bottom ${this.props.align}`}
+				align={align}
 				className={classNames(this.props.containerClassName)}
 				closeOnTabKey
 				contentsClassName={classNames(
 					'slds-dropdown',
 					'ignore-react-onclickoutside',
-					positionClassName,
-					this.props.className
+					this.props.className,
+					positionClassName
 				)}
 				context={this.context}
+				hasNubbin={hasNubbin}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritTargetWidth ? 'target' : 'none'}
-				offset={offset}
+				offset={this.props.offset}
 				onClose={this.handleClose}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={
@@ -853,10 +825,7 @@ const MenuDropdown = createReactClass({
 				}
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				position={menuPosition}
-				style={
-					this.props.menuStyle ||
-					assign({}, this.props.menuStyle, { marginTop })
-				}
+				style={this.props.menuStyle}
 				onRequestTargetElement={() => this.trigger}
 			>
 				{this.renderMenuContent(customContent)}

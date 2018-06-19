@@ -222,7 +222,7 @@ const getVictor = (props) => (
 				body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 				hasStaticAlignment
 				heading="My Popover"
-				position="overflowBoundaryElement"
+				position="absolute"
 				id="myPopoverId"
 			>
 				<Button
@@ -241,7 +241,7 @@ const getVictor = (props) => (
 				align="right"
 				nubbinPosition="top right"
 				assistiveText="More Options"
-				menuPosition="overflowBoundaryElement"
+				menuPosition="relative"
 				onSelect={(value) => {
 					console.log('selected: ', value);
 				}}
