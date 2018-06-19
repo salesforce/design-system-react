@@ -57,13 +57,19 @@ const DataTableRowActions = createReactClass({
 		/**
 		 * `Dropdown` options. See `Dropdown`.
 		 */
-		options: PropTypes.array.isRequired,
+		options: PropTypes.array,
+		/**
+		 * A [Dropdown](http://react.lightningdesignsystem.com/components/dropdown-menus/) component. The props from this drop will be merged and override any default props.
+		 * **Note:** onAction will not be overridden, both `DropDown`'s onSelect(dropDownActionOption) and onAction(rowItem, dropdownActionOption) will be called with appropriate parameters
+		 */
+		dropdown: PropTypes.node,
 	},
 
 	getDefaultProps () {
 		return {
 			assistiveText: 'Actions',
 			noHint: false,
+			options: [],
 		};
 	},
 
@@ -75,11 +81,36 @@ const DataTableRowActions = createReactClass({
 		if (isFunction(this.props.onAction)) {
 			this.props.onAction(this.props.item, selection);
 		}
+		if (this.props.dropdown && isFunction(this.props.dropdown.props.onSelect)) {
+			this.props.dropdown.props.onSelect(selection);
+		}
 	},
 
 	// ### Render
 	render () {
 		// i18n
+		const defaultDropdownProps = {
+			align: 'right',
+			buttonClassName: 'slds-button--icon-x-small',
+			buttonVariant: 'icon',
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconSize: 'small',
+			iconVariant: 'border-filled',
+			assistiveText: this.props.assistiveText,
+			className: this.props.className,
+			options: this.props.options,
+			hint: !this.props.noHint,
+			id: this.props.id,
+		};
+
+		const props = this.props.dropdown ? this.props.dropdown.props : {};
+		const dropdownProps = {
+			...defaultDropdownProps,
+			...props,
+			onSelect: this.handleSelect,
+		};
+
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<td
@@ -89,21 +120,7 @@ const DataTableRowActions = createReactClass({
 				style={{ width: '3.25rem' }}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				<Dropdown
-					align="right"
-					assistiveText={this.props.assistiveText}
-					buttonClassName="slds-button--icon-x-small"
-					buttonVariant="icon"
-					className={this.props.className}
-					options={this.props.options}
-					hint={!this.props.noHint}
-					iconCategory="utility"
-					iconName="down"
-					iconSize="small"
-					iconVariant="border-filled"
-					id={this.props.id}
-					onSelect={this.handleSelect}
-				/>
+				<Dropdown {...dropdownProps} />
 			</td>
 		);
 	},
