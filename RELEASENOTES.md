@@ -55,6 +55,16 @@ TL:DR; If you use the source code directly, update your form component paths and
 **Documentation**
 * Remove deprecated Picklist from code base and examples
 
+## Release 0.8.16
+
+**Bugfixes**
+* REVERT [Change inline edit for accessibility](https://github.com/salesforce/design-system-react/pull/1332). It will not be updated. There is a new View/Edit Record Input pattern that uses the [Docked Former Footer component](http://www.lightningdesignsystem.com/components/docked-form-footer/) and this should be used instead of the Inline Edit Input in the future.
+
+**Minor features**
+* `dropdown` prop added to `DataTableRowActions` to increase customization of the dropdown menu
+* `tabIndex` added to `MenuDropdown` component
+* `Picklist` has been removed from examples. Please use a Comboboxe instead.
+
 ## Release 0.8.15
 **Modals are now at `z-index: 8000`.** If there are items on the main page with a higher `z-index`, they will appear in front of the modal. This setting aligns with the [prescribed z-index in SLDS](https://www.lightningdesignsystem.com/design-tokens/#category-z-index) for `$z-index-overlay`.
 **Require `iconCategory` if `iconName` is set.** `utility` used to be the default icon category. `iconCategory` is now required.
