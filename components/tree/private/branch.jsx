@@ -115,8 +115,8 @@ const handleKeyDownUp = (event, props) => {
 const handleKeyDownRight = (event, props) => {
 	if (props.node.expanded) {
 		if (
-			this.props.getNodes(props.node) &&
-			this.props.getNodes(props.node).length > 0
+			props.getNodes(props.node) &&
+			props.getNodes(props.node).length > 0
 		) {
 			handleKeyDownDown(event, props);
 		}
@@ -134,11 +134,14 @@ const handleKeyDownLeft = (event, props) => {
 		);
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
-			props.onExpand(event, {
-				node: props.parent,
-				select: true,
-				expand: !props.parent.expanded,
-				treeIndex: props.flattenedNodes[index].treeIndex,
+			const expand = !props.parent.expanded;
+			props.onExpand({event,
+				data: {
+					node: props.parent,
+					select: true,
+					expand: !props.parent.expanded,
+					treeIndex: props.flattenedNodes[index].treeIndex,
+				}
 			});
 		}
 	}
