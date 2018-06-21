@@ -442,6 +442,7 @@ const Dialog = createReactClass({
 				{...this.props.containerProps}
 				ref={this.setDialogContent}
 				role={this.props.variant}
+				tabIndex={}
 			>
 				{this.props.children}
 			</div>
