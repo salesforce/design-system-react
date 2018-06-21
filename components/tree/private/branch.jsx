@@ -131,7 +131,6 @@ const handleKeyDownLeft = (event, props) => {
 		);
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
-			const expand = !props.parent.expanded;
 			props.onExpand({
 				event,
 				data: {
