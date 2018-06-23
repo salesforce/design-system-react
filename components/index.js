@@ -216,6 +216,9 @@ export Textarea from './textarea';
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
 
+export SLDSTimePicker from './timepicker';
+export TimePicker from './timepicker';
+
 export SLDSTabs from './tabs';
 export Tabs from './tabs';
 export SLDSTabsPanel from './tabs/panel';

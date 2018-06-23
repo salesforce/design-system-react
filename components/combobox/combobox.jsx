@@ -125,6 +125,10 @@ const propTypes = {
 	 */
 	hasStaticAlignment: PropTypes.bool,
 	/**
+	 * Right aligned icon, must be instance of `design-system-react/components/icon/input-icon`
+	 */
+	iconRight: PropTypes.node,
+	/**
 	 * HTML id for component. _Tested with snapshot testing._
 	 */
 	id: PropTypes.string,
@@ -387,11 +391,11 @@ class Combobox extends React.Component {
 	 * Menu open/close and sub-render methods
 	 */
 
-	handleClickOutside = (event) => {
-		this.handleRequestClose(event, {});
+	handleClickOutside = () => {
+		this.handleRequestClose();
 	};
 
-	handleClose = (event) => {
+	handleClose = () => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -406,7 +410,7 @@ class Combobox extends React.Component {
 			});
 
 			if (this.props.events.onClose) {
-				this.props.events.onClose(event, {});
+				this.props.events.onClose();
 			}
 		}
 	};
@@ -414,7 +418,7 @@ class Combobox extends React.Component {
 	handleInputBlur = (event) => {
 		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
 		setTimeout(() => {
-			this.handleClose(event);
+			this.handleClose();
 		}, 200);
 
 		if (this.props.events.onBlur) {
@@ -424,12 +428,13 @@ class Combobox extends React.Component {
 
 	handleInputChange = (event) => {
 		this.requestOpenMenu();
+
 		this.props.events.onChange(event, { value: event.target.value });
 	};
 
 	handleInputFocus = (event) => {
 		if (this.props.events.onFocus) {
-			this.props.events.onFocus(event, {});
+			this.props.events.onFocus(event);
 		}
 	};
 
@@ -542,7 +547,7 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handleOpen = (event, data) => {
+	handleOpen = () => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -557,7 +562,7 @@ class Combobox extends React.Component {
 			});
 
 			if (this.props.events.onOpen) {
-				this.props.events.onOpen(event, data);
+				this.props.events.onOpen();
 			}
 		}
 	};
@@ -612,9 +617,9 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleRequestClose = (event, data) => {
+	handleRequestClose = () => {
 		if (this.props.events.onRequestClose) {
-			this.props.events.onRequestClose(event, data);
+			this.props.events.onRequestClose();
 		}
 
 		if (this.getIsOpen()) {
@@ -728,11 +733,15 @@ class Combobox extends React.Component {
 							role: 'none',
 						}}
 						iconRight={
-							<InputIcon
-								category="utility"
-								name="search"
-								title={labels.inputIconTitle}
-							/>
+							this.props.iconRight ? (
+								this.props.iconRight
+							) : (
+								<InputIcon
+									category="utility"
+									name="search"
+									title={labels.inputIconTitle}
+								/>
+							)
 						}
 						id={this.getId()}
 						onFocus={this.handleInputFocus}
@@ -853,11 +862,15 @@ class Combobox extends React.Component {
 							role: 'none',
 						}}
 						iconRight={
-							<InputIcon
-								category="utility"
-								name="search"
-								title={labels.inputIconTitle}
-							/>
+							this.props.iconRight ? (
+								this.props.iconRight
+							) : (
+								<InputIcon
+									category="utility"
+									name="search"
+									title={labels.inputIconTitle}
+								/>
+							)
 						}
 						id={this.getId()}
 						onFocus={this.handleInputFocus}
@@ -906,6 +919,12 @@ class Combobox extends React.Component {
 			props.selection[0] && props.selection[0].label
 				? props.selection[0].label
 				: props.value;
+
+		const iconRight = this.props.iconRight ? (
+			this.props.iconRight
+		) : (
+			<InputIcon category="utility" name="search" />
+		);
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
 		return (
@@ -967,7 +986,7 @@ class Combobox extends React.Component {
 										}}
 									/>
 								) : (
-									<InputIcon category="utility" name="search" />
+									iconRight
 								)
 							}
 							iconLeft={iconLeft}
@@ -1097,7 +1116,15 @@ class Combobox extends React.Component {
 								role: 'none',
 							}}
 							iconRight={
-								<InputIcon category="utility" name="down" variant="combobox" />
+								this.props.iconRight ? (
+									this.props.iconRight
+								) : (
+									<InputIcon
+										category="utility"
+										name="down"
+										variant="combobox"
+									/>
+								)
 							}
 							id={this.getId()}
 							onFocus={this.handleInputFocus}
@@ -1201,7 +1228,15 @@ class Combobox extends React.Component {
 								role: 'none',
 							}}
 							iconRight={
-								<InputIcon category="utility" name="down" variant="combobox" />
+								this.props.iconRight ? (
+									this.props.iconRight
+								) : (
+									<InputIcon
+										category="utility"
+										name="down"
+										variant="combobox"
+									/>
+								)
 							}
 							id={this.getId()}
 							onFocus={this.handleInputFocus}
