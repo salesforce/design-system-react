@@ -633,6 +633,12 @@
 			"SLDS-component-path": "/components/datepickers"
 		},
 		{
+			"component": "timepicker",
+			"status": "prod",
+			"display-name": "TimePickers",
+			"SLDS-component-path": "/components/timepicker"
+		},
+		{
 			"component": "toast",
 			"status": "prod",
 			"display-name": "Toasts",

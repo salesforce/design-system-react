@@ -2770,6 +2770,13 @@
                 "required": false,
                 "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
             },
+            "iconRight": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Right aligned icon, must be instance of `design-system-react/components/icon/input-icon`"
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -2914,6 +2921,17 @@
                 },
                 "required": true,
                 "description": "Item added to the dropdown menu.\nTo add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._"
+            },
+            "readOnlySingleInputDisabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents for read only single variant only.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -11058,6 +11076,224 @@
         "route": "timepickers",
         "display-name": "Timepickers",
         "SLDS-component-path": "/components/datepickers",
+        "dependencies": []
+    },
+    "timepicker": {
+        "description": "A timepicker is an autocomplete text input to capture a time.",
+        "methods": [
+            {
+                "name": "getOptions",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "parseDate",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "strValue",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "date",
+                        "type": null
+                    },
+                    {
+                        "name": "strValue",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ selection }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInputChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents."
+            },
+            "formatter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Time formatting function",
+                "defaultValue": {
+                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n\n    return null;\n}",
+                    "computed": false
+                }
+            },
+            "inheritWidthOf": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'target'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'menu'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'none'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Sets the dialog width to the width of one of the following:\n* `target` - (default): Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),\n* `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.\n* `none`: Does not set a width on the dialog. _Tested with snapshot testing._"
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the input."
+            },
+            "menuItem": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Accepts a custom menu item rendering function that becomes a custom component. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
+            },
+            "onDateChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Receives the props `(dateValue, stringValue)`"
+            },
+            "parser": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Parsing date string into Date",
+                "defaultValue": {
+                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric',\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that will appear in an empty input.",
+                "defaultValue": {
+                    "value": "'Pick Time'",
+                    "computed": false
+                }
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, adds asterisk next to input label to indicate it is a required field."
+            },
+            "stepInMinutes": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Frequency of options",
+                "defaultValue": {
+                    "value": "30",
+                    "computed": false
+                }
+            },
+            "strValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Value for input that is parsed to create an internal state in the `date` format."
+            },
+            "value": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "Date"
+                },
+                "required": false,
+                "description": "Instance an internal state in the `date` format.",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            }
+        },
+        "route": "time-pickers",
+        "display-name": "TimePickers",
+        "SLDS-component-path": "/components/timepicker",
         "dependencies": []
     },
     "toast": {

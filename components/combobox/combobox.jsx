@@ -197,6 +197,10 @@ const propTypes = {
 	 */
 	options: PropTypes.array.isRequired,
 	/**
+	 * Disables the input and prevents editing the contents for read only single variant only.
+	 */
+	readOnlySingleInputDisabled: PropTypes.bool,
+	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
 	readOnlyMenuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
@@ -237,6 +241,7 @@ const defaultProps = {
 	},
 	inheritWidthOf: 'target',
 	menuPosition: 'absolute',
+	readOnlySingleInputDisabled: false,
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
@@ -1227,6 +1232,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.readOnlySingleInputDisabled}
 							iconRight={
 								this.props.iconRight ? (
 									this.props.iconRight

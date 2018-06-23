@@ -25,7 +25,7 @@ import Combobox from '../combobox/combobox.jsx';
 import { TIMEPICKER } from '../../utilities/constants';
 
 /**
- *  Component description.
+ *  A timepicker is an autocomplete text input to capture a time.
  */
 class TimePicker extends React.Component {
 	// ### Display Name
@@ -228,7 +228,6 @@ class TimePicker extends React.Component {
 	render () {
 		return (
 			<Combobox
-				disabled={this.props.disabled}
 				events={{
 					onChange: this.handleInputChange,
 					onSelect: this.handleSelect,
@@ -242,7 +241,9 @@ class TimePicker extends React.Component {
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				options={this.state.options}
+				predefinedOptionsOnly
 				required={this.props.required}
+				readOnlySingleInputDisabled={this.props.disabled}
 				selection={this.state.options.filter(
 					(option) => option.value === this.state.value
 				)}
