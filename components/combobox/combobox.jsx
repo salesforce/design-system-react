@@ -391,11 +391,11 @@ class Combobox extends React.Component {
 	 * Menu open/close and sub-render methods
 	 */
 
-	handleClickOutside = () => {
-		this.handleRequestClose();
+	handleClickOutside = (event) => {
+		this.handleRequestClose(event, {});
 	};
 
-	handleClose = () => {
+	handleClose = (event) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -410,7 +410,7 @@ class Combobox extends React.Component {
 			});
 
 			if (this.props.events.onClose) {
-				this.props.events.onClose();
+				this.props.events.onClose(event, {});
 			}
 		}
 	};
@@ -418,7 +418,7 @@ class Combobox extends React.Component {
 	handleInputBlur = (event) => {
 		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
 		setTimeout(() => {
-			this.handleClose();
+			this.handleClose(event);
 		}, 200);
 
 		if (this.props.events.onBlur) {
@@ -434,7 +434,7 @@ class Combobox extends React.Component {
 
 	handleInputFocus = (event) => {
 		if (this.props.events.onFocus) {
-			this.props.events.onFocus(event);
+			this.props.events.onFocus(event, {});
 		}
 	};
 
@@ -547,7 +547,7 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handleOpen = () => {
+	handleOpen = (event, data) => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -562,7 +562,7 @@ class Combobox extends React.Component {
 			});
 
 			if (this.props.events.onOpen) {
-				this.props.events.onOpen();
+				this.props.events.onOpen(event, data);
 			}
 		}
 	};
@@ -617,9 +617,9 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleRequestClose = () => {
+	handleRequestClose = (event, data) => {
 		if (this.props.events.onRequestClose) {
-			this.props.events.onRequestClose();
+			this.props.events.onRequestClose(event, data);
 		}
 
 		if (this.getIsOpen()) {
