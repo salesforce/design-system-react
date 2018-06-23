@@ -44,7 +44,7 @@ class TimePicker extends React.Component {
 		formatter: PropTypes.func,
 		/**
 		 * Sets the dialog width to the width of one of the following:
-		 * * `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),
+		 * * `target` - (default): Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),
 		 * * `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.
 		 * * `none`: Does not set a width on the dialog. _Tested with snapshot testing._
 		 */
@@ -130,9 +130,10 @@ class TimePicker extends React.Component {
 	};
 
 	state = {
-		value: this.props.value,
-		strValue: this.props.strValue,
+		inheritWidthOf: 'target',
 		options: this.getOptions(),
+		strValue: this.props.strValue,
+		value: this.props.value,
 	};
 
 	componentWillMount () {
