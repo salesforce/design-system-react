@@ -52,7 +52,9 @@ storiesOf(COMBOBOX, module)
 		<BaseInheritMenuWidth action={action} />
 	))
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
-	.add('Readonly Single Selection Disabled', () => <ReadOnlyDisabled action={action} />)
+	.add('Readonly Single Selection Disabled', () => (
+		<ReadOnlyDisabled action={action} />
+	))
 	.add('Readonly Multiple Selection', () => (
 		<ReadOnlyMultiple action={action} />
 	))

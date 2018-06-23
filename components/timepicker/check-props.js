@@ -4,7 +4,7 @@
 
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
-let checkProps = function () { };
+let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
@@ -20,8 +20,8 @@ if (process.env.NODE_ENV !== 'production') {
 			props.inheritTargetWidth,
 			'inheritTargetWidth',
 			'Use inheritWidthOf instead.'
-        );
-        sunsetProperty(
+		);
+		sunsetProperty(
 			COMPONENT,
 			props.listItemRenderer,
 			'listItemRenderer',
