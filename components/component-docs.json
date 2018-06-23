@@ -2927,7 +2927,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Disables the input and prevents editing the contents for read only single variant only.",
+                "description": "Disables the input and prevents editing the contents. This only applies for read only single variant.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false

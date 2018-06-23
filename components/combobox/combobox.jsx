@@ -197,7 +197,7 @@ const propTypes = {
 	 */
 	options: PropTypes.array.isRequired,
 	/**
-	 * Disables the input and prevents editing the contents for read only single variant only.
+	 * Disables the input and prevents editing the contents. This only applies for read only single variant.
 	 */
 	readOnlySingleInputDisabled: PropTypes.bool,
 	/**
