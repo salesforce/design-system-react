@@ -170,6 +170,7 @@ exports[`Datepicker
                       aria-controls="CUSTOM-ID-year-picklist-listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
+                      disabled={false}
                       id="CUSTOM-ID-year-picklist"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -1017,6 +1018,7 @@ exports[`Datepicker
                       aria-controls="sample-datepicker-year-picklist-listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
+                      disabled={false}
                       id="sample-datepicker-year-picklist"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -1862,6 +1864,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
                       aria-controls="sample-datepicker-year-picklist-listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
+                      disabled={false}
                       id="sample-datepicker-year-picklist"
                       onBlur={[Function]}
                       onChange={[Function]}
