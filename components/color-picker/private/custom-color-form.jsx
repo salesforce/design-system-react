@@ -11,13 +11,10 @@ class CustomColorForm extends React.Component {
 			<div className="slds-color-picker__custom-inputs">
 				<Input
 					aria-describedby={`color-picker-custom-error-${this.props.id}`}
-					className={classNames(
-						'slds-color-picker__input-custom-hex',
-						{
-							'slds-has-error': this.props.color.errors &&
-								this.props.color.errors.hex
-						}
-					)}
+					className={classNames('slds-color-picker__input-custom-hex', {
+						'slds-has-error':
+							this.props.color.errors && this.props.color.errors.hex,
+					})}
 					id={`color-picker-input-hex-${this.props.id}`}
 					label={this.props.labels.hexLabel}
 					onChange={this.props.onHexChange}
@@ -25,13 +22,10 @@ class CustomColorForm extends React.Component {
 				/>
 				<Input
 					aria-describedby={`color-picker-custom-error-${this.props.id}`}
-					className={classNames(
-						'slds-color-picker__input-custom-r',
-						{
-							'slds-has-error': this.props.color.errors &&
-								this.props.color.errors.red
-						}
-					)}
+					className={classNames('slds-color-picker__input-custom-r', {
+						'slds-has-error':
+							this.props.color.errors && this.props.color.errors.red,
+					})}
 					id={`color-picker-input-r-${this.props.id}`}
 					label={this.props.labels.redAbbreviated}
 					onChange={this.props.onRedChange}
@@ -39,13 +33,10 @@ class CustomColorForm extends React.Component {
 				/>
 				<Input
 					aria-describedby={`color-picker-custom-error-${this.props.id}`}
-					className={classNames(
-						'slds-color-picker__input-custom-g',
-						{
-							'slds-has-error': this.props.color.errors &&
-								this.props.color.errors.green
-						}
-					)}
+					className={classNames('slds-color-picker__input-custom-g', {
+						'slds-has-error':
+							this.props.color.errors && this.props.color.errors.green,
+					})}
 					id={`color-picker-input-g-${this.props.id}`}
 					label={this.props.labels.greenAbbreviated}
 					onChange={this.props.onGreenChange}
@@ -53,13 +44,10 @@ class CustomColorForm extends React.Component {
 				/>
 				<Input
 					aria-describedby={`color-picker-custom-error-${this.props.id}`}
-					className={classNames(
-						'slds-color-picker__input-custom-b',
-						{
-							'slds-has-error': this.props.color.errors &&
-								this.props.color.errors.blue
-						}
-					)}
+					className={classNames('slds-color-picker__input-custom-b', {
+						'slds-has-error':
+							this.props.color.errors && this.props.color.errors.blue,
+					})}
 					id={`color-picker-input-b-${this.props.id}`}
 					label={this.props.labels.blueAbbreviated}
 					onChange={this.props.onBlueChange}

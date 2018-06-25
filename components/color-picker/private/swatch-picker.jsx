@@ -7,20 +7,15 @@ class SwatchPicker extends React.Component {
 
 	render () {
 		return (
-			<ul
-				className="slds-color-picker__swatches"
-				role="listbox"
-			>
-				{
-					this.props.swatchColors.map((color) => (
-						<SwatchOption
-							color={color}
-							key={color}
-							onSelect={this.props.onSelect}
-							workingColor={this.props.color}
-						/>
-					))
-				}
+			<ul className="slds-color-picker__swatches" role="listbox">
+				{this.props.swatchColors.map((color) => (
+					<SwatchOption
+						color={color}
+						key={color}
+						onSelect={this.props.onSelect}
+						workingColor={this.props.color}
+					/>
+				))}
 			</ul>
 		);
 	}

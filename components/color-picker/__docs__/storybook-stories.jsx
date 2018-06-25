@@ -22,8 +22,15 @@ storiesOf(COLOR_PICKER, module)
 			color="#000000"
 			onChange={handleChange}
 			swatchColors={[
-				'', '#000000', '#ff0000', '#00ff00', '#0000ff',
-				'#ffff00', '#ff00ff', '#00ffff', '#ffffff'
+				'',
+				'#000000',
+				'#ff0000',
+				'#00ff00',
+				'#0000ff',
+				'#ffff00',
+				'#ff00ff',
+				'#00ffff',
+				'#ffffff',
 			]}
 		/>
 	));

@@ -9,8 +9,8 @@ const ColorUtils = {
 				return assign({}, oldColor, {
 					hex: options.hex,
 					errors: assign({}, oldColor && oldColor.errors, {
-						hex: true
-					})
+						hex: true,
+					}),
 				});
 			}
 
@@ -28,7 +28,7 @@ const ColorUtils = {
 			if (Object.values(errors).includes(true)) {
 				return assign({}, oldColor, {
 					rgb,
-					errors: assign({}, oldColor && oldColor.errors, errors)
+					errors: assign({}, oldColor && oldColor.errors, errors),
 				});
 			}
 
@@ -53,27 +53,28 @@ const ColorUtils = {
 			hsv: {
 				hue: 0,
 				saturation: 0,
-				value: 0
+				value: 0,
 			},
 			rgb: {
 				red: 0,
 				green: 0,
-				blue: 0
-			}
+				blue: 0,
+			},
 		};
 	},
 
 	getDeltaColor (options, oldColor) {
 		const limitValue = (value) => Math.min(Math.max(value, 0), 100);
 
-		return this.getNewColor({
-			saturation: limitValue(
-				oldColor.hsv.saturation + (options.saturation || 0)
-			),
-			value: limitValue(
-				oldColor.hsv.value + (options.value || 0)
-			),
-		}, oldColor);
+		return this.getNewColor(
+			{
+				saturation: limitValue(
+					oldColor.hsv.saturation + (options.saturation || 0)
+				),
+				value: limitValue(oldColor.hsv.value + (options.value || 0)),
+			},
+			oldColor
+		);
 	},
 
 	isValidHex (value) {
@@ -81,10 +82,11 @@ const ColorUtils = {
 	},
 
 	getRgbErrors (rgb) {
-		const hasError = (value) => isNaN(value) ||
-				Math.floor(value) !== Number(value) ||
-				value < 0 ||
-				value >= 256;
+		const hasError = (value) =>
+			isNaN(value) ||
+			Math.floor(value) !== Number(value) ||
+			value < 0 ||
+			value >= 256;
 
 		return Object.entries(rgb).reduce((errors, keyValue) => {
 			errors[keyValue[0]] = hasError(keyValue[1]);
@@ -117,7 +119,8 @@ const ColorUtils = {
 			hue = 0;
 		} else {
 			if (redRatio === max) {
-				hue = (greenRatio - blueRatio) / delta + (greenRatio < blueRatio ? 6 : 0);
+				hue =
+					(greenRatio - blueRatio) / delta + (greenRatio < blueRatio ? 6 : 0);
 			} else if (greenRatio === max) {
 				hue = (blueRatio - redRatio) / delta + 2;
 			} else {
@@ -180,7 +183,7 @@ const ColorUtils = {
 		return {
 			red: Math.round(red * 255),
 			blue: Math.round(blue * 255),
-			green: Math.round(green * 255)
+			green: Math.round(green * 255),
 		};
 	},
 
@@ -196,7 +199,7 @@ const ColorUtils = {
 		return {
 			red: parseInt(result[1], 16),
 			green: parseInt(result[2], 16),
-			blue: parseInt(result[3], 16)
+			blue: parseInt(result[3], 16),
 		};
 	},
 
@@ -204,12 +207,13 @@ const ColorUtils = {
 		const shortHandHex = /^#([a-f\d])([a-f\d])([a-f\d])$/i;
 		const match = shortHandHex.exec(value);
 		if (match) {
-			return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${match[3]}`;
+			return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${
+				match[3]
+			}`;
 		}
 
 		return value;
-	}
-
+	},
 };
 
 export default ColorUtils;
