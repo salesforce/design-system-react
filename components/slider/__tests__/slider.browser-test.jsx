@@ -132,7 +132,7 @@ describe('SLDSSlider', () => {
 			component = getSlider({
 				label: 'Slider Label',
 				id: 'custom-id',
-				defaultValue: 200,
+				value: 200,
 				min: 0,
 				max: 400,
 				step: 100,
@@ -192,30 +192,30 @@ describe('SLDSSlider', () => {
 		it('onChange trigged callback', function (done) {
 			wrapper = mount(
 				<Slider
-					defaultValue={200}
+					value={200}
 					min={0}
 					max={400}
 					step={100}
 					onChange={(e, { value }) => {
-						expect(value).to.equal('300');
+						expect(value).to.equal(300);
 						done();
 					}}
 				/>,
 				{ attachTo: mountNode }
 			);
 			const trigger = wrapper.find('input');
-			trigger.simulate('change', { target: { value: '300' } });
+			trigger.simulate('change', { target: { value: 300 } });
 		});
 
 		it('onInput trigged callback', function (done) {
 			wrapper = mount(
 				<Slider
-					defaultValue={200}
+					value={200}
 					min={0}
 					max={400}
 					step={100}
 					onInput={(e, { value }) => {
-						expect(value).to.equal('300');
+						expect(value).to.equal(300);
 						done();
 					}}
 				/>,
