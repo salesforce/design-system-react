@@ -71,7 +71,7 @@ const propTypes = {
 		label: PropTypes.string,
 		redAbbreviated: PropTypes.string,
 		swatchTab: PropTypes.string,
-		submitButton: PropTypes.string
+		submitButton: PropTypes.string,
 	}),
 	/**
 	 * Triggered when the date changes. It receives and event object that
@@ -88,8 +88,9 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
-		saturationValueGrid: 'Use arrow keys to select a saturation and brightness, on an x and y axis.',
-		hueSlider: 'Select Hue'
+		saturationValueGrid:
+			'Use arrow keys to select a saturation and brightness, on an x and y axis.',
+		hueSlider: 'Select Hue',
 	},
 	labels: {
 		blueAbbreviated: 'B',
@@ -105,10 +106,34 @@ const defaultProps = {
 		swatchTab: 'Default',
 	},
 	swatchColors: [
-		'#e3abec', '#c2dbf7', '#9fd6ff', '#9de7da', '#9df0c0', '#fff099', '#fed49a',
-		'#d073e0', '#86baf3', '#5ebbff', '#44d8be', '#3be282', '#ffe654', '#ffb758',
-		'#bd35bd', '#5779c1', '#5679c0', '#00aea9', '#3cba4c', '#f5bc25', '#f99221',
-		'#580d8c', '#001970', '#0a2399', '#0b7477', '#0b6b50', '#b67e11', '#b85d0d'
+		'#e3abec',
+		'#c2dbf7',
+		'#9fd6ff',
+		'#9de7da',
+		'#9df0c0',
+		'#fff099',
+		'#fed49a',
+		'#d073e0',
+		'#86baf3',
+		'#5ebbff',
+		'#44d8be',
+		'#3be282',
+		'#ffe654',
+		'#ffb758',
+		'#bd35bd',
+		'#5779c1',
+		'#5679c0',
+		'#00aea9',
+		'#3cba4c',
+		'#f5bc25',
+		'#f99221',
+		'#580d8c',
+		'#001970',
+		'#0a2399',
+		'#0b7477',
+		'#0b6b50',
+		'#b67e11',
+		'#b85d0d',
 	],
 };
 
@@ -124,7 +149,9 @@ class ColorPicker extends React.Component {
 
 		this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this);
 		this.handleHexInputChange = this.handleHexInputChange.bind(this);
-		this.handleSaturationValueChange = this.handleSaturationValueChange.bind(this);
+		this.handleSaturationValueChange = this.handleSaturationValueChange.bind(
+			this
+		);
 		this.handleSubmitButtonClick = this.handleSubmitButtonClick.bind(this);
 		this.handleSwatchButtonClick = this.handleSwatchButtonClick.bind(this);
 		this.handleSwatchSelect = this.handleSwatchSelect.bind(this);
@@ -134,7 +161,7 @@ class ColorPicker extends React.Component {
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
 			workingColor: ColorUtils.getNewColor({
-				hex: this.props.value
+				hex: this.props.value,
 			}),
 		};
 	}
@@ -150,7 +177,7 @@ class ColorPicker extends React.Component {
 		if (nextProps.value) {
 			nextState.currentColor = nextProps.value;
 			nextState.workingColor = ColorUtils.getNewColor({
-				hex: nextProps.value
+				hex: nextProps.value,
 			});
 		}
 
@@ -167,9 +194,7 @@ class ColorPicker extends React.Component {
 				align="bottom left"
 				contentsClassName="slds-color-picker__selector slds-popover"
 				position="absolute"
-				onRequestTargetElement={() =>
-					this.wrapper
-				}
+				onRequestTargetElement={() => this.wrapper}
 			>
 				<div className="slds-popover__body">
 					<Tabs>
@@ -221,7 +246,7 @@ class ColorPicker extends React.Component {
 	setWorkingColor (event, color) {
 		const newColor = ColorUtils.getNewColor(color, this.state.workingColor);
 		this.setState({
-			workingColor: newColor
+			workingColor: newColor,
 		});
 
 		if (this.props.onWorkingColorChange) {
@@ -231,7 +256,7 @@ class ColorPicker extends React.Component {
 
 	handleCancelButtonClick () {
 		this.setState({
-			isOpen: false
+			isOpen: false,
 		});
 	}
 
@@ -248,12 +273,12 @@ class ColorPicker extends React.Component {
 		const isValid = ColorUtils.isValidHex(event.target.value);
 		this.setState({
 			currentColor,
-			colorErrorMessage: isValid ? '' : this.props.labels.invalidColor
+			colorErrorMessage: isValid ? '' : this.props.labels.invalidColor,
 		});
 
 		if (this.props.onChange && isValid) {
 			this.props.onChange(event, {
-				color: currentColor
+				color: currentColor,
 			});
 		}
 	}
@@ -262,9 +287,12 @@ class ColorPicker extends React.Component {
 		return (event, { delta }) => {
 			const colorProperties = {};
 			colorProperties[property] = delta;
-			const newColor = ColorUtils.getDeltaColor(colorProperties, this.state.workingColor);
+			const newColor = ColorUtils.getDeltaColor(
+				colorProperties,
+				this.state.workingColor
+			);
 			this.setState({
-				workingColor: newColor
+				workingColor: newColor,
 			});
 
 			if (this.props.onWorkingColorChange) {
@@ -276,7 +304,7 @@ class ColorPicker extends React.Component {
 	handleSaturationValueChange (event, { saturation, value }) {
 		this.setWorkingColor(event, {
 			saturation,
-			value
+			value,
 		});
 	}
 
@@ -284,25 +312,25 @@ class ColorPicker extends React.Component {
 		this.setState({
 			isOpen: false,
 			currentColor: this.state.workingColor.hex,
-			colorErrorMessage: ''
+			colorErrorMessage: '',
 		});
 
 		if (this.props.onChange) {
 			this.props.onChange(event, {
-				color: this.state.workingColor.hex
+				color: this.state.workingColor.hex,
 			});
 		}
 	}
 
 	handleSwatchButtonClick () {
 		this.setState({
-			isOpen: !this.state.isOpen
+			isOpen: !this.state.isOpen,
 		});
 	}
 
 	handleSwatchSelect (event, { hex }) {
 		this.setWorkingColor(event, {
-			hex
+			hex,
 		});
 	}
 
@@ -327,34 +355,31 @@ class ColorPicker extends React.Component {
 						iconClassName="slds-m-left_xx-small"
 						iconPosition="right"
 						iconVariant="more"
-						label={(
-							<Swatch color={this.state.currentColor} />
-						)}
+						label={<Swatch color={this.state.currentColor} />}
 						onClick={this.handleSwatchButtonClick}
 						variant="icon"
 					/>
 					<Input
 						aria-describedby={`color-picker-summary-error-${this.generatedId}`}
 						disabled={this.props.disabled}
-						className={classNames(
-							'slds-color-picker__summary-input',
-							{
-								'slds-has-error': !!this.state.colorErrorMessage
-							}
-						)}
+						className={classNames('slds-color-picker__summary-input', {
+							'slds-has-error': !!this.state.colorErrorMessage,
+						})}
 						id={`color-picker-summary-input-${this.generatedId}`}
 						onChange={this.handleHexInputChange}
 						value={this.state.currentColor}
 					/>
 					{this.getDialog()}
-					{!this.state.isOpen && this.state.colorErrorMessage ?
+					{!this.state.isOpen && this.state.colorErrorMessage ? (
 						<p
 							className="slds-form-error"
 							id={`color-picker-summary-error-${this.generatedId}`}
 						>
 							{this.state.colorErrorMessage}
-						</p> : ''
-					}
+						</p>
+					) : (
+						''
+					)}
 				</div>
 			</div>
 		);

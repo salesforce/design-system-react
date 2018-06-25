@@ -51,44 +51,40 @@ describe('SLDSColorPicker', function () {
 
 	describe('Summary input', () => {
 		it('fires onChange with value when valid', function () {
-			wrapper = mount((
+			wrapper = mount(
 				<ColorPicker
 					onChange={(event, { color }) => {
 						expect(color).to.equal('#ff0000');
 					}}
-
-				/>
-			), { attachTo: mountNode });
-
-
-			const input = wrapper
-				.find(selectors.summaryInput)
-				.first();
-
-			input.simulate('change', {
-				target: {
-					value: '#ff0000'
-				}
-			});
-		});
-
-		it('does not fire onChange with value when invalid', function () {
-			wrapper = mount((
-				<ColorPicker
-					onChange={(event, { color }) => {
-						expect.fail();
-					}}
-
-				/>
-			), { attachTo: mountNode });
-
+				/>,
+				{ attachTo: mountNode }
+			);
 
 			const input = wrapper.find(selectors.summaryInput).first();
 
 			input.simulate('change', {
 				target: {
-					value: 'invalid'
-				}
+					value: '#ff0000',
+				},
+			});
+		});
+
+		it('does not fire onChange with value when invalid', function () {
+			wrapper = mount(
+				<ColorPicker
+					onChange={(event, { color }) => {
+						expect.fail();
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const input = wrapper.find(selectors.summaryInput).first();
+
+			input.simulate('change', {
+				target: {
+					value: 'invalid',
+				},
 			});
 		});
 	});
@@ -115,12 +111,15 @@ describe('SLDSColorPicker', function () {
 
 	describe('Popover', function () {
 		const clickSubmit = (el) => {
-			el.find(selectors.submit).first().simulate('click');
+			el
+				.find(selectors.submit)
+				.first()
+				.simulate('click');
 		};
 
 		describe('Swatch tab', function () {
 			it('clicking a swatch sets that working color', function (done) {
-				wrapper = mount((
+				wrapper = mount(
 					<ColorPicker
 						isOpen
 						value="#000000"
@@ -129,8 +128,9 @@ describe('SLDSColorPicker', function () {
 							expect(color.hex).to.equal('#ff0000');
 							done();
 						}}
-					/>
-				), { attachTo: mountNode });
+					/>,
+					{ attachTo: mountNode }
+				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('click');
@@ -139,13 +139,10 @@ describe('SLDSColorPicker', function () {
 
 		describe('Submit button', function () {
 			it('sets the input color', function () {
-				wrapper = mount((
-					<ColorPicker
-						isOpen
-						value="#000000"
-						swatchColors={['#ff0000']}
-					/>
-				), { attachTo: mountNode });
+				wrapper = mount(
+					<ColorPicker isOpen value="#000000" swatchColors={['#ff0000']} />,
+					{ attachTo: mountNode }
+				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('click');
@@ -156,7 +153,7 @@ describe('SLDSColorPicker', function () {
 			});
 
 			it('triggers onChange', function (done) {
-				wrapper = mount((
+				wrapper = mount(
 					<ColorPicker
 						isOpen
 						value="#000000"
@@ -165,8 +162,9 @@ describe('SLDSColorPicker', function () {
 							expect(color).to.equal('#ff0000');
 							done();
 						}}
-					/>
-				), { attachTo: mountNode });
+					/>,
+					{ attachTo: mountNode }
+				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('click');
@@ -176,7 +174,7 @@ describe('SLDSColorPicker', function () {
 
 		describe('Cancel button', function () {
 			it('does not trigger onChange', function () {
-				wrapper = mount((
+				wrapper = mount(
 					<ColorPicker
 						isOpen
 						value="#000000"
@@ -184,8 +182,9 @@ describe('SLDSColorPicker', function () {
 						onChange={(event, { color }) => {
 							expect().fail();
 						}}
-					/>
-				), { attachTo: mountNode });
+					/>,
+					{ attachTo: mountNode }
+				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('click');
@@ -199,21 +198,22 @@ describe('SLDSColorPicker', function () {
 			describe('HSV', function () {
 				describe('hue slider', function () {
 					it('change causes color hue to update', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								isOpen
 								onWorkingColorChange={(event, { color }) => {
 									expect(color.hsv.hue).to.equal(50);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const hue = wrapper.find(selectors.hueSlider).first();
 						hue.simulate('change', {
 							target: {
-								value: 50
-							}
+								value: 50,
+							},
 						});
 					});
 				});
@@ -224,7 +224,7 @@ describe('SLDSColorPicker', function () {
 					});
 
 					it('up key causes color value to go up', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#000000"
 								isOpen
@@ -232,18 +232,19 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.value).to.equal(1);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							keyCode: KEYS.UP,
-							which: KEYS.UP
+							which: KEYS.UP,
 						});
 					});
 
 					it('down key causes color value to go down', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#ffffff"
 								isOpen
@@ -251,18 +252,19 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.value).to.equal(99);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							keyCode: KEYS.DOWN,
-							which: KEYS.DOWN
+							which: KEYS.DOWN,
 						});
 					});
 
 					it('left key causes color sat. to go down 1', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#ff0000"
 								isOpen
@@ -270,18 +272,19 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.saturation).to.equal(99);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							keyCode: KEYS.LEFT,
-							which: KEYS.LEFT
+							which: KEYS.LEFT,
 						});
 					});
 
 					it('right key causes color sat. to go up 1', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#000000"
 								isOpen
@@ -289,18 +292,19 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.saturation).to.equal(1);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							keyCode: KEYS.RIGHT,
-							which: KEYS.RIGHT
+							which: KEYS.RIGHT,
 						});
 					});
 
 					it('shift-up causes color value to go up 10', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#000000"
 								isOpen
@@ -308,19 +312,20 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.value).to.equal(10);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							shiftKey: true,
 							keyCode: KEYS.UP,
-							which: KEYS.UP
+							which: KEYS.UP,
 						});
 					});
 
 					it('up key at value 100 causes no change', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#ffffff"
 								isOpen
@@ -328,18 +333,19 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.value).to.equal(100);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							keyCode: KEYS.UP,
-							which: KEYS.UP
+							which: KEYS.UP,
 						});
 					});
 
 					it('shift-up at value > 90 causes value to be 100', function (done) {
-						wrapper = mount((
+						wrapper = mount(
 							<ColorPicker
 								value="#EBEBEB"
 								isOpen
@@ -347,14 +353,15 @@ describe('SLDSColorPicker', function () {
 									expect(color.hsv.value).to.equal(100);
 									done();
 								}}
-							/>
-						), { attachTo: mountNode });
+							/>,
+							{ attachTo: mountNode }
+						);
 
 						const point = wrapper.find(selectors.gridPoint).first();
 						point.simulate('keyDown', {
 							shiftKey: true,
 							keyCode: KEYS.UP,
-							which: KEYS.UP
+							which: KEYS.UP,
 						});
 					});
 				});
@@ -362,137 +369,144 @@ describe('SLDSColorPicker', function () {
 
 			describe('Hex input', function () {
 				it('invalid value sets error message', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.errors.hex).to.be.true;
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const hexInput = wrapper.find(selectors.customHex).first();
 					hexInput.find('input').simulate('change', {
 						target: {
-							value: 'invalid'
-						}
+							value: 'invalid',
+						},
 					});
 				});
 
 				it('valid value updates color', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.hex).to.equal('#00ff00');
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const hexInput = wrapper.find(selectors.customHex).first();
 					hexInput.find('input').simulate('change', {
 						target: {
-							value: '#00ff00'
-						}
+							value: '#00ff00',
+						},
 					});
 				});
 			});
 
 			describe('RGB input', function () {
 				it('non-number causes error message', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.errors.red).to.be.true;
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const redInput = wrapper.find(selectors.customRed).first();
 					redInput.find('input').simulate('change', {
 						target: {
-							value: 'abc'
-						}
+							value: 'abc',
+						},
 					});
 				});
 
 				it('non-integer number causes error message', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.errors.red).to.be.true;
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const redInput = wrapper.find(selectors.customRed).first();
 					redInput.find('input').simulate('change', {
 						target: {
-							value: 123.45
-						}
+							value: 123.45,
+						},
 					});
 				});
 
 				it('number greater than 255 causes error message', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.errors.red).to.be.true;
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const redInput = wrapper.find(selectors.customRed).first();
 					redInput.find('input').simulate('change', {
 						target: {
-							value: 500
-						}
+							value: 500,
+						},
 					});
 				});
 
 				it('negative number causes error message', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.errors.red).to.be.true;
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const redInput = wrapper.find(selectors.customRed).first();
 					redInput.find('input').simulate('change', {
 						target: {
-							value: -123
-						}
+							value: -123,
+						},
 					});
 				});
 
 				it('valid number updates color', function (done) {
-					wrapper = mount((
+					wrapper = mount(
 						<ColorPicker
 							isOpen
 							onWorkingColorChange={(event, { color }) => {
 								expect(color.rgb.red).to.eql(123);
 								done();
 							}}
-						/>
-					), { attachTo: mountNode });
+						/>,
+						{ attachTo: mountNode }
+					);
 
 					const redInput = wrapper.find(selectors.customRed).first();
 					redInput.find('input').simulate('change', {
 						target: {
-							value: 123
-						}
+							value: 123,
+						},
 					});
 				});
 			});
