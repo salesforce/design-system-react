@@ -31,6 +31,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.18
+
+**Bugfixes**
+* `Icon` uses new values for `name` and `category` when changed.
+* Fixes console error that appears when using keyboard navigation to navigate the tree.
+
+**Maintenance**
+* `url-exists` utility uses `fetch` instead of `xmlHttpRequest`.
+
 ## Release 0.8.17
 
 **Bugfixes**
@@ -140,7 +149,7 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 ## Release 0.8.10
 
 **Minor features**
-* Combobox supports error messages. 
+* Combobox supports error messages.
 
 **Outside SLDS pattern added**
 * Multiple selection Combobox error messages should be placed after pillboxes with an additional `slds-has-error` wrapping div.
