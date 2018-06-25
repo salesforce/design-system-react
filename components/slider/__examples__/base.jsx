@@ -7,7 +7,7 @@ const DemoSlider = createReactClass({
 
 	getInitialState () {
 		return {
-			value: this.props.defaultValue,
+			value: this.props.value,
 		};
 	},
 
@@ -57,7 +57,7 @@ const Example = createReactClass({
 							label="My Label"
 							min={0}
 							max={400}
-							defaultValue={200}
+							value={200}
 						/>
 					</li>
 					<li className="slds-p-bottom--large">
@@ -70,7 +70,7 @@ const Example = createReactClass({
 							min={0}
 							max={400}
 							step={100}
-							defaultValue={200}
+							value={200}
 						/>
 					</li>
 				</ol>

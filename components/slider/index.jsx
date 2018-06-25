@@ -106,10 +106,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-	defaultValue: 0,
 	min: 0,
 	max: 100,
 	step: 1,
+	value: 0
 };
 
 /**
@@ -140,13 +140,13 @@ class Slider extends React.Component {
 
 	handleChange = (event) => {
 		if (isFunction(this.props.onChange)) {
-			this.props.onChange(event, { value: event.target.value });
+			this.props.onChange(event, { value: parseInt(event.target.value, 10) });
 		}
 	};
 
 	handleInput = (event) => {
 		if (isFunction(this.props.onInput)) {
-			this.props.onInput(event, { value: event.target.value });
+			this.props.onInput(event, { value: parseInt(event.target.value, 10) });
 		}
 	};
 
@@ -207,7 +207,7 @@ class Slider extends React.Component {
 							onInput={this.handleInput}
 						/>
 						<span className="slds-slider__value" aria-hidden="true">
-							{this.props.value || this.props.defaultValue}
+							{this.props.value || this.props.defaultValue || '0'}
 						</span>
 					</div>
 					{this.props.errorText ? (
