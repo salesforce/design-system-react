@@ -7,43 +7,33 @@ import KEYS from '../../../utilities/key-code';
 const handleClick = (event, { onSaturationValueChange }) => {
 	const rect = event.target.getBoundingClientRect();
 	onSaturationValueChange(event, {
-		saturation: Math.round(
-			(event.clientX - rect.left) / rect.width * 100
-		),
-		value: Math.round(
-			(rect.bottom - event.clientY) / rect.height * 100
-		)
+		saturation: Math.round((event.clientX - rect.left) / rect.width * 100),
+		value: Math.round((rect.bottom - event.clientY) / rect.height * 100),
 	});
 };
 
-const handleKeyDown = (
-	event,
-	{
-		onSaturationNavigate,
-		onValueNavigate
-	}
-) => {
+const handleKeyDown = (event, { onSaturationNavigate, onValueNavigate }) => {
 	const keyDownCallbacks = {
 		[KEYS.LEFT]: (multiplier) => {
 			onSaturationNavigate(event, {
-				delta: multiplier * -1
+				delta: multiplier * -1,
 			});
 		},
 		[KEYS.RIGHT]: (multiplier) => {
 			onSaturationNavigate(event, {
-				delta: multiplier
+				delta: multiplier,
 			});
 		},
 		[KEYS.UP]: (multiplier) => {
 			onValueNavigate(event, {
-				delta: multiplier
+				delta: multiplier,
 			});
 		},
 		[KEYS.DOWN]: (multiplier) => {
 			onValueNavigate(event, {
-				delta: multiplier * -1
+				delta: multiplier * -1,
 			});
-		}
+		},
 	};
 
 	if (keyDownCallbacks[event.keyCode]) {
@@ -67,7 +57,7 @@ class HsvColor extends React.Component {
 				<div
 					className="slds-color-picker__custom-range"
 					style={{
-						background: `hsl(${this.props.color.hsv.hue}, 100%, 50%)`
+						background: `hsl(${this.props.color.hsv.hue}, 100%, 50%)`,
 					}}
 					onClick={(event) => {
 						handleClick(event, {
@@ -88,7 +78,7 @@ class HsvColor extends React.Component {
 						}}
 						style={{
 							bottom: `${this.props.color.hsv.value}%`,
-							left: `${this.props.color.hsv.saturation}%`
+							left: `${this.props.color.hsv.saturation}%`,
 						}}
 					/>
 				</div>
@@ -116,4 +106,3 @@ class HsvColor extends React.Component {
 }
 
 export default HsvColor;
-

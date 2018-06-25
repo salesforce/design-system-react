@@ -12,10 +12,7 @@ class SwatchOption extends React.Component {
 
 	render () {
 		return (
-			<li
-				className="slds-color-picker__swatch"
-				role="presentation"
-			>
+			<li className="slds-color-picker__swatch" role="presentation">
 				<a
 					aria-selected={
 						this.props.workingColor &&
@@ -26,7 +23,7 @@ class SwatchOption extends React.Component {
 					onClick={(event) => {
 						handleClick(event, {
 							hex: this.props.color,
-							onSelect: this.props.onSelect
+							onSelect: this.props.onSelect,
 						});
 					}}
 					role="option"
