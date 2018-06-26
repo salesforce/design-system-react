@@ -400,7 +400,7 @@ const Dialog = createReactClass({
 		}
 
 		if (this.props.style) {
-			style = Object.assign(style, this.props.style);
+			style = { ...style, ...this.props.style };
 		}
 
 		const contents = (
