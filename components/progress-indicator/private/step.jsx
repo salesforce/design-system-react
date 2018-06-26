@@ -122,10 +122,7 @@ class Step extends React.Component {
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{(() => {
-
-						return "Disabled: " + (this.props.assistiveText.disabledStep || "");
-					})()}
+					{this.props.assistiveText.disabledStep}
 				</span>
 			</span>
 		) : (
@@ -146,8 +143,7 @@ class Step extends React.Component {
 				<span className="slds-assistive-text">
 				  {(() => {
 						if (props.isCompleted) {
-							return "Completed: " +
-								(this.props.assistiveText.completedStep || "");
+   						return this.props.assistiveText.completedStep;
 						} else {
 							return `Step ${props.index + 1}: ${status}`;
 						}
