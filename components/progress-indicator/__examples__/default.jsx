@@ -50,6 +50,7 @@ class Example extends React.Component {
 					}}
 				>
 					<ProgressIndicator
+						id="example-progress-indicator"
 						completedSteps={this.state.completedSteps}
 						disabledSteps={this.state.disabledSteps}
 						onStepClick={this.handleStepEvent}

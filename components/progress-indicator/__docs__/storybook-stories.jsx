@@ -45,6 +45,7 @@ const ExampleProgressIndicator = createReactClass({
 		return (
 			<div style={{ padding: '2rem 1rem 0px' }}>
 				<ProgressIndicator
+					id="example-progress-indicator"
 					steps={this.props.steps}
 					selectedStep={this.props.selectedStep}
 					disabledSteps={this.props.disabledSteps}
@@ -84,13 +85,14 @@ storiesOf(PROGRESS_INDICATOR, module)
 	))
 	.add('Step Error', () => (
 		<StepError
+			id="example-progress-indicator"
 			steps={steps}
 			selectedStep={steps[1]}
 			completedSteps={steps.slice(0, 1)}
 			errorSteps={steps.slice(1, 2)}
 		/>
 	))
-	.add('In A Modal (With Step Error)', () => <Modal />)
+	.add('In A Modal (With Step Error) - Needs DOM', () => (typeof document !== 'undefined' ? <Modal /> : null))
 	.add('Completed Progress', () => (
 		<ExampleProgressIndicator
 			steps={steps}
