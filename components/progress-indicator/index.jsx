@@ -31,7 +31,7 @@ const propTypes = {
 	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
 	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.
-* * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
+	 * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
 	 */
 	assistiveText: PropTypes.shape({
 		activeStep: PropTypes.string,
@@ -120,7 +120,7 @@ const defaultProps = {
 		completedStep: 'Completed Step',
 		disabledStep: 'Disabled Step',
 		errorStep: 'Error Step',
-		step: 'Step'
+		step: 'Step',
 	},
 	errorSteps: [],
 	completedSteps: [],
