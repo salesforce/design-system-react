@@ -203,7 +203,6 @@ describe('SLDSSlider', () => {
 				/>,
 				{ attachTo: mountNode }
 			);
-
 			const trigger = wrapper.find('input');
 			trigger.simulate('change', { target: { value: '300' } });
 		});
@@ -222,7 +221,6 @@ describe('SLDSSlider', () => {
 				/>,
 				{ attachTo: mountNode }
 			);
-
 			const trigger = wrapper.find('input');
 			trigger.simulate('input', { target: { value: '300' } });
 		});

@@ -1,4 +1,4 @@
-// This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the kabob case of the "URL folder". In the case of `http://localhost:8080/components/app-launcher/`, `app-launcher` is the `key`. The folder name is created by `components.component` value in `package.json`. Keep in mind, some components like `forms/checkbox` will be changed to `forms-checkbox`. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site on page load.
+// This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the kabob case of the "URL folder". In the case of `http://localhost:8080/components/app-launcher/`, `app-launcher` is the `key`. The folder name is created by `components.component` value in `package.json`. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site on page load.
 
 /* eslint-env node */
 /* eslint-disable global-require */
@@ -17,13 +17,12 @@ const documentationSiteLiveExamples = {
 	card: require('@salesforce/design-system-react/components/card/__docs__/site-stories.js'),
 	combobox: require('@salesforce/design-system-react/components/combobox/__docs__/site-stories.js'),
 	filter: require('@salesforce/design-system-react/components/filter/__docs__/site-stories.js'),
-	'forms-checkbox': require('@salesforce/design-system-react/components/forms/checkbox/__docs__/site-stories.js'),
+	checkbox: require('@salesforce/design-system-react/components/checkbox/__docs__/site-stories.js'),
 	'data-table': require('@salesforce/design-system-react/components/data-table/__docs__/site-stories.js'),
 	'date-picker': require('@salesforce/design-system-react/components/date-picker/__docs__/site-stories.js'),
 	icon: require('@salesforce/design-system-react/components/icon/__docs__/site-stories.js'),
-	'forms-input-inline': require('@salesforce/design-system-react/components/forms/input/__docs__/inline/site-stories.js'),
-	'forms-input': require('@salesforce/design-system-react/components/forms/input/__docs__/site-stories.js'),
-	'forms-textarea': require('@salesforce/design-system-react/components/forms/textarea/__docs__/site-stories.js'),
+	input: require('@salesforce/design-system-react/components/input/__docs__/site-stories.js'),
+	textarea: require('@salesforce/design-system-react/components/textarea/__docs__/site-stories.js'),
 	'global-header': require('@salesforce/design-system-react/components/global-header/__docs__/site-stories.js'),
 	'global-navigation-bar': require('@salesforce/design-system-react/components/global-navigation-bar/__docs__/site-stories.js'),
 	'icon-settings': require('@salesforce/design-system-react/components/icon-settings/__docs__/site-stories.js'),

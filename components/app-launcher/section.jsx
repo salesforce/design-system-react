@@ -77,7 +77,7 @@ const AppLauncherSection = createReactClass({
 		this.setState({ isOpen: !this.state.isOpen });
 
 		if (isFunction(this.props.onToggleClick)) {
-			this.props.onToggleClick(event);
+			this.props.onToggleClick(event, {});
 		}
 	},
 

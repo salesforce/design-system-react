@@ -10,7 +10,7 @@ import AppLauncherTile from '../../app-launcher/tile';
 import AppLauncherSection from '../../app-launcher/section';
 import Icon from '../../icon';
 import Button from '../../button';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 
 import GlobalNavigationBar from '../../global-navigation-bar';
 import GlobalNavigationBarRegion from '../../global-navigation-bar/region';
@@ -291,6 +291,7 @@ const DemoAppLauncher = createReactClass({
 			<GlobalNavigationBar>
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
+						assistiveText={{ trigger: 'Open App Launcher' }}
 						triggerName="App Name"
 						search={search}
 						modalClassName="custom-modal-class"

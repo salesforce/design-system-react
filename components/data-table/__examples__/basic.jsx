@@ -133,18 +133,6 @@ const Example = createReactClass({
 					>
 						{columns}
 					</DataTable>
-
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
-						Compact
-					</h3>
-
-					<DataTable
-						compact
-						items={this.state.items}
-						id="DataTableExample-compact"
-					>
-						{columns}
-					</DataTable>
 				</div>
 			</IconSettings>
 		);

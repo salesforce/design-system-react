@@ -74,7 +74,7 @@ const GlobalHeader = createReactClass({
 
 	getDefaultProps () {
 		return {
-			logoSrc: '/assets/images/logo.svg',
+			logoSrc: '/assets/images/logo-noname.svg',
 			skipToNavAssistiveText: 'Skip to Navigation',
 			skipToContentAssistiveText: 'Skip to Main Content',
 		};
@@ -129,9 +129,10 @@ const GlobalHeader = createReactClass({
 				) : null}
 				<div className="slds-global-header slds-grid slds-grid--align-spread">
 					<div className="slds-global-header__item">
-						<div className="slds-global-header__logo">
-							<img src={this.props.logoSrc} alt="" />
-						</div>
+						<div
+							className="slds-global-header__logo"
+							style={{ backgroundImage: `url(${this.props.logoSrc})` }}
+						/>
 					</div>
 					{search}
 					<ul className="slds-global-header__item slds-grid slds-grid--vertical-align-center">

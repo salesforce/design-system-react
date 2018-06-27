@@ -4,7 +4,23 @@ import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import Lookup from '~/components/lookup';
-import Picklist from '~/components/menu-picklist';
+import Combobox from '~/components/combobox';
+
+const leadSourceOptions = [
+	{ id: 1, label: 'Third Party Program', value: 'A0' },
+	{ id: 2, label: 'Cold Call', value: 'B0' },
+	{ id: 3, label: 'LinkedIn', value: 'C0' },
+	{ id: 4, label: 'Direct Mail', value: 'D0' },
+	{ id: 5, label: 'Other', value: 'E0' },
+];
+
+const opportunityTypeOptions = [
+	{ id: 1, label: 'Add on Business', value: 'A0' },
+	{ id: 2, label: 'Courtesy', value: 'B0' },
+	{ id: 3, label: 'New Business', value: 'C0' },
+	{ id: 4, label: 'Renewal', value: 'D0' },
+	{ id: 5, label: 'Upgrade', value: 'E0' },
+];
 
 const Example = createReactClass({
 	displayName: 'ModalExample',
@@ -12,6 +28,8 @@ const Example = createReactClass({
 	getInitialState () {
 		return {
 			isOpen: false,
+			leadSourceSelection: [leadSourceOptions[0]],
+			opportunityTypeSelection: [opportunityTypeOptions[0]],
 		};
 	},
 
@@ -90,38 +108,50 @@ const Example = createReactClass({
 									sectionDividerRenderer={Lookup.DefaultSectionDivider}
 								/>
 							</div>
-							<Picklist
-								className="slds-m-bottom--large"
-								label="Lead Source"
-								onSelect={(option) => {
-									console.log('selected: ', option.label);
-								}}
-								options={[
-									{ label: 'Third Party Program', value: 'A0' },
-									{ label: 'Cold Call', value: 'B0' },
-									{ label: 'LinkedIn', value: 'C0' },
-									{ label: 'Direct Mail', value: 'D0' },
-									{ label: 'Other', value: 'E0' },
-								]}
-								placeholder="Select Lead Source"
-								value="B0"
-							/>
-							<Picklist
-								className="slds-m-bottom--large"
-								label="Type"
-								onSelect={(option) => {
-									console.log('selected: ', option.label);
-								}}
-								options={[
-									{ label: 'Add on Business', value: 'A0' },
-									{ label: 'Courtesy', value: 'B0' },
-									{ label: 'New Business', value: 'C0' },
-									{ label: 'Renewal', value: 'D0' },
-									{ label: 'Upgrade', value: 'E0' },
-								]}
-								placeholder="Select Opportunity Type"
-								value="C0"
-							/>
+							<div className="slds-m-bottom--large">
+								<Combobox
+									events={{
+										onSelect: (event, data) => {
+											const selection =
+												data.selection.length === 0
+													? this.state.leadSourceSelection
+													: data.selection;
+											console.log('selected: ', selection[0].label);
+											this.setState({ leadSourceSelection: selection });
+										},
+									}}
+									labels={{
+										label: 'Lead Source',
+										placeholder: 'Select Lead Source',
+									}}
+									menuPosition="relative"
+									options={leadSourceOptions}
+									selection={this.state.leadSourceSelection}
+									variant="readonly"
+								/>
+							</div>
+							<div className="slds-m-bottom--large">
+								<Combobox
+									events={{
+										onSelect: (event, data) => {
+											const selection =
+												data.selection.length === 0
+													? this.state.opportunityTypeSelection
+													: data.selection;
+											console.log('selected: ', selection[0].label);
+											this.setState({ opportunityTypeSelection: selection });
+										},
+									}}
+									labels={{
+										label: 'Type',
+										placeholder: 'Select Opportunity Type',
+									}}
+									menuPosition="relative"
+									options={opportunityTypeOptions}
+									selection={this.state.opportunityTypeSelection}
+									variant="readonly"
+								/>
+							</div>
 							<div className="slds-form-element slds-m-bottom--large">
 								<label className="slds-form-element__label" htmlFor="amount">
 									Amount

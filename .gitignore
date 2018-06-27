@@ -16,6 +16,10 @@ design-system-react
 # Allow custom pre-commit
 scripts/pre-commit.sh
 
+# Visual diff images. These are the images that compare differences
+# in the current and previous capture
+__diff_output__
+
 # --- MACHINE GENERATED BELOW THIS LINE ---
 
 ### Node ###

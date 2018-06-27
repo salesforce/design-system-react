@@ -24,15 +24,14 @@ export Accordion from '../components/accordion/__docs__/storybook-stories';
 // export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 // export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
 // export Card from '../components/card/__docs__/storybook-stories';
-// export Checkbox from '../components/forms/checkbox/__docs__/storybook-stories';
+// export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 // export Combobox from '../components/combobox/__docs__/storybook-stories';
 // export Filter from '../components/filter/__docs__/storybook-stories';
-// export DataTable from '../components/data-table/__docs__/storybook-stories';
+export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
-// export Input from '../components/forms/input/__docs__/storybook-stories';
-// export Teaxtarea from '../components/forms/textarea/__docs__/storybook-stories';
-// export InlineInput from '../components/forms/input/__docs__/inline/storybook-stories';
-// export Search from '../components/forms/input/__docs__/search/storybook-stories';
+// export Input from '../components/input/__docs__/storybook-stories';
+// export Textarea from '../components/textarea/__docs__/storybook-stories';
+// export Search from '../components/input/__docs__/search/storybook-stories';
 // export Icon from '../components/icon/__docs__/storybook-stories';
 // export Lookup from '../components/lookup/__docs__/storybook-stories';
 // export MediaObject from '../components/media-object/__docs__/storybook-stories';
@@ -47,7 +46,7 @@ export Accordion from '../components/accordion/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';
 // export Toast from '../components/toast/__docs__/storybook-stories';
 // export Tooltip from '../components/tooltip/__docs__/storybook-stories';
-// export Tree from '../components/tree/__docs__/storybook-stories';
+export Tree from '../components/tree/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because

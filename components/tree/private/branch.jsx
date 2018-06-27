@@ -7,54 +7,47 @@
 
 // ## Dependencies
 
-// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// ### isFunction
 import isFunction from 'lodash.isfunction';
-
-// ### classNames
 import classNames from 'classnames';
-
-// ### shortid
 import shortid from 'shortid';
 
-import Button from '../../button';
-
 // Child components
+import Button from '../../button';
 import Item from './item';
-
 import Highlighter from '../../utilities/highlighter';
 
-// ### Event Helpers
 import EventUtil from '../../../utilities/event';
-
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
-
-// ## Constants
 import { TREE_BRANCH } from '../../../utilities/constants';
 
-const handleExpandClick = (event, props) => {
+const handleExpand = (event, props) => {
 	EventUtil.trap(event);
-
-	if (isFunction(props.onExpandClick)) {
-		props.onExpandClick(event, {
-			node: props.node,
-			expand: !props.node.expanded,
-			treeIndex: props.treeIndex,
+	if (isFunction(props.onExpand)) {
+		props.onExpand({
+			event,
+			data: {
+				node: props.node,
+				expand: !props.node.expanded,
+				treeIndex: props.treeIndex,
+			},
 		});
 	}
 };
 
-const handleClick = (event, props) => {
+const handleSelect = ({ event, props, fromFocus }) => {
 	EventUtil.trap(event);
-	if (isFunction(props.onClick)) {
-		props.onClick(event, {
-			node: props.node,
-			select: !props.node.selected,
-			treeIndex: props.treeIndex,
+	if (isFunction(props.onSelect)) {
+		props.onSelect({
+			event,
+			data: {
+				node: props.node,
+				select: !props.node.selected,
+				treeIndex: props.treeIndex,
+			},
+			fromFocus,
 		});
 	}
 };
@@ -91,15 +84,15 @@ const handleKeyDownDown = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Select the next visible node
 		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
-		props.onClick(
+		props.onSelect({
 			event,
-			{
+			data: {
 				node: flattenedNode.node,
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			true
-		);
+			clearSelectedNodes: true,
+		});
 	}
 };
 
@@ -107,57 +100,52 @@ const handleKeyDownUp = (event, props) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		// Go to the previous visible node
 		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
-		props.onClick(
+		props.onSelect({
 			event,
-			{
+			data: {
 				node: flattenedNode.node,
 				select: true,
 				treeIndex: flattenedNode.treeIndex,
 			},
-			true
-		);
+			clearSelectedNodes: true,
+		});
 	}
 };
 
 const handleKeyDownRight = (event, props) => {
 	if (props.node.expanded) {
-		if (props.node.nodes && props.node.nodes.length > 0) {
+		if (props.getNodes(props.node) && props.getNodes(props.node).length > 0) {
 			handleKeyDownDown(event, props);
 		}
 	} else {
-		handleExpandClick(event, props);
+		handleExpand(event, props);
 	}
 };
 
 const handleKeyDownLeft = (event, props) => {
 	if (props.node.expanded) {
-		handleExpandClick(event, props);
+		handleExpand(event, props);
 	} else {
 		const nodes = props.flattenedNodes.map(
 			(flattenedNode) => flattenedNode.node
 		);
 		const index = nodes.indexOf(props.parent);
 		if (index !== -1) {
-			props.onExpandClick(event, {
-				node: props.parent,
-				expand: !props.parent.expanded,
-				treeIndex: props.flattenedNodes[index].treeIndex,
-			});
-			props.onClick(
+			props.onExpand({
 				event,
-				{
+				data: {
 					node: props.parent,
 					select: true,
+					expand: !props.parent.expanded,
 					treeIndex: props.flattenedNodes[index].treeIndex,
 				},
-				true
-			);
+			});
 		}
 	}
 };
 
 const handleKeyDownEnter = (event, props) => {
-	handleClick(event, props);
+	handleSelect({ event, props });
 };
 
 const handleKeyDown = (event, props) => {
@@ -173,35 +161,34 @@ const handleKeyDown = (event, props) => {
 };
 
 const handleFocus = (event, props) => {
-	if (!props.focusedNodeIndex) {
-		handleClick(event, props);
+	if (
+		!props.treeHasFocus &&
+		!props.focusedNodeIndex &&
+		event.target === event.currentTarget
+	) {
+		// did it happen by mouse?
+		handleSelect({ event, props, fromFocus: true });
 	}
 };
 
 const getTabIndex = (props) => {
-	if (
-		props.treeIndex === props.focusedNodeIndex ||
-		(props.selectedNodeIndexes.length === 0 &&
-			props.treeIndex === props.flattenedNodes[0].treeIndex)
-	) {
-		return 0;
-	}
-	return -1;
+	const initialFocus =
+		props.selectedNodeIndexes.length === 0 &&
+		props.treeIndex === props.flattenedNodes[0].treeIndex;
+	return props.treeIndex === props.focusedNodeIndex || initialFocus ? 0 : -1;
 };
 
 const renderInitialNode = (children, props) => (
-	// id intentionally not rendered here, and is present on container that includes the header
+	// id intentionally not rendered here, and is present on
+	// container that includes the header
 	<ul
 		aria-labelledby={`${props.htmlId}__heading`}
-		// TODO
-		// aria-activedescendant=""
 		className={classNames('slds-tree', props.initalClassName)}
 		onScroll={(event) => {
 			handleScroll(event, props);
 		}}
 		role="tree"
 		style={props.initialStyle}
-		// tabIndex="0"
 	>
 		{children}
 	</ul>
@@ -276,6 +263,9 @@ const renderBranch = (children, props) => {
 		</div>
 	);
 
+	const label =
+		props.node.assistiveText ||
+		(typeof props.node.label === 'string' ? props.node.label : null);
 	return (
 		<li
 			id={props.htmlId}
@@ -283,9 +273,7 @@ const renderBranch = (children, props) => {
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
 			aria-label={
-				props.node.nodes && props.node.nodes.length > 0
-					? props.node.label
-					: null
+				props.node.nodes && props.node.nodes.length > 0 ? label : null
 			}
 			tabIndex={getTabIndex(props)}
 			onKeyDown={(event) => handleKeyDown(event, props)}
@@ -303,7 +291,7 @@ const renderBranch = (children, props) => {
 					'slds-is-selected': isSelected,
 				})}
 				onClick={(event) => {
-					handleClick(event, props);
+					handleSelect({ event, props });
 				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -317,7 +305,7 @@ const renderBranch = (children, props) => {
 					role="presentation"
 					aria-controls={props.htmlId}
 					onClick={(event) => {
-						handleExpandClick(event, props);
+						handleExpand(event, props);
 					}}
 					tabIndex="-1"
 				/>
@@ -369,13 +357,13 @@ renderBranch.propTypes = {
 	 */
 	node: PropTypes.object.isRequired,
 	/**
+	 * This function triggers when the expand or collapse icon is clicked or due to keyboard navigation.
+	 */
+	onExpand: PropTypes.func.isRequired,
+	/**
 	 * Function that will run whenever an item or branch is clicked.
 	 */
-	onClick: PropTypes.func,
-	/**
-	 * This function triggers when the expand or collapse icon is clicked.
-	 */
-	onExpandClick: PropTypes.func.isRequired,
+	onSelect: PropTypes.func,
 	/**
 	 * Highlights term if found in node label
 	 */
@@ -417,23 +405,22 @@ const Branch = (props) => {
 	let treeIndex = '';
 	let children;
 
-	const { treeId, level, onExpandClick, searchTerm } = props;
+	const { treeId, level, onExpand, searchTerm } = props;
 
 	if (Array.isArray(props.getNodes(props.node))) {
-		children = props.node.nodes.map((node, index) => {
+		children = props.getNodes(props.node).map((node, index) => {
 			let child;
 			const htmlId = `${props.treeId}-${node.id}`;
 			treeIndex = `${index}`;
 			if (props.treeIndex) {
 				treeIndex = `${props.treeIndex}-${treeIndex}`;
 			}
-
 			if (node.type === 'branch') {
 				child = (
 					<Branch
 						getNodes={props.getNodes}
 						htmlId={htmlId}
-						key={shortid.generate()}
+						key={node.id}
 						label={node.label}
 						level={level + 1}
 						node={node}
@@ -443,8 +430,8 @@ const Branch = (props) => {
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
 						nodes={node.nodes}
-						onClick={props.onClick}
-						onExpandClick={onExpandClick}
+						onSelect={props.onSelect}
+						onExpand={onExpand}
 						searchTerm={searchTerm}
 						treeId={treeId}
 						treeIndex={treeIndex}
@@ -464,8 +451,8 @@ const Branch = (props) => {
 						focusedNodeIndex={props.focusedNodeIndex}
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
-						onClick={props.onClick}
-						onExpandClick={onExpandClick}
+						onSelect={props.onSelect}
+						onExpand={onExpand}
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
 						treeId={treeId}
@@ -528,13 +515,13 @@ Branch.propTypes = {
 	 */
 	node: PropTypes.object.isRequired,
 	/**
-	 * Function that will run whenever an item or branch is clicked.
+	 * Function that will run whenever an item or branch is selected (click or keyboard).
 	 */
-	onClick: PropTypes.func,
+	onSelect: PropTypes.func,
 	/**
 	 * This function triggers when the expand or collapse icon is clicked.
 	 */
-	onExpandClick: PropTypes.func.isRequired,
+	onExpand: PropTypes.func.isRequired,
 	/**
 	 * Highlights term if found in node label
 	 */

@@ -13,11 +13,11 @@ import Tabs from '../../tabs';
 import Panel from '../../tabs/panel';
 
 // Used in the Nested story
-import Input from '../../forms/input';
+import Input from '../../input';
 import InputIcon from '../../icon/input-icon';
 
 // Used in the Conditinal story
-import Checkbox from '../../forms/checkbox';
+import Checkbox from '../../checkbox';
 
 // Used in the outside control story
 import Button from '../../button';

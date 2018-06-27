@@ -7,7 +7,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ## Children
-import Checkbox from '../../forms/checkbox';
+import Checkbox from '../../checkbox';
 import HeaderCell from './header-cell';
 
 // ## Constants
@@ -56,16 +56,18 @@ const DataTableHead = createReactClass({
 	render () {
 		return (
 			<thead>
-				<tr className="slds-text-title--caps">
+				<tr className="slds-line-height_reset">
 					{this.props.canSelectRows ? (
 						<th
-							className="slds-text-align--right"
+							className="slds-text-align_right"
 							scope="col"
 							style={{ width: '3.25rem' }}
 						>
 							<div className="slds-th__action slds-th__action--form">
 								<Checkbox
-									assistiveText={this.props.assistiveTextForSelectAllRows}
+									assistiveText={{
+										label: this.props.assistiveTextForSelectAllRows,
+									}}
 									checked={this.props.allSelected}
 									indeterminate={this.props.indeterminateSelected}
 									id={`${this.props.id}-SelectAll`}

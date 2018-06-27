@@ -23,9 +23,6 @@ import classNames from 'classnames';
 // ### assign
 import assign from 'lodash.assign';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
 // ### reject
 import reject from 'lodash.reject';
 
@@ -119,10 +116,6 @@ const DataTable = createReactClass({
 		 */
 		columnBordered: PropTypes.bool,
 		/**
-		 * A variant which decreases padding and allows more items and columns to be viewed.
-		 */
-		compact: PropTypes.bool,
-		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -179,7 +172,7 @@ const DataTable = createReactClass({
 	getDefaultProps () {
 		return {
 			assistiveTextForActionsHeader: 'Actions',
-			assistiveTextForColumnSort: 'Sort',
+			assistiveTextForColumnSort: 'Sort by: ',
 			assistiveTextForColumnSortedAscending: 'Sorted Ascending',
 			assistiveTextForColumnSortedDescending: 'Sorted Descending',
 			assistiveTextForSelectAllRows: 'Select all rows',
@@ -194,16 +187,16 @@ const DataTable = createReactClass({
 		checkProps(DATA_TABLE, this.props);
 	},
 
-	handleToggleAll (selected, e) {
-		if (isFunction(this.props.onChange)) {
-			const selection = selected ? [...this.props.items] : [];
+	handleToggleAll (e, { checked }) {
+		if (typeof this.props.onChange === 'function') {
+			const selection = checked ? [...this.props.items] : [];
 
 			this.props.onChange(selection, e);
 		}
 	},
 
 	handleRowToggle (item, selected, e) {
-		if (isFunction(this.props.onChange)) {
+		if (typeof this.props.onChange === 'function') {
 			let selection;
 
 			if (selected) {
@@ -261,16 +254,16 @@ const DataTable = createReactClass({
 				className={classNames(
 					'slds-table',
 					{
-						'slds-table--compact': this.props.compact,
 						'slds-table--fixed-layout': this.props.fixedLayout,
-						'slds-table--bordered': !this.props.unborderedRow,
-						'slds-table--cell-buffer':
+						'slds-table_resizable-cols': this.props.fixedLayout,
+						'slds-table_bordered': !this.props.unborderedRow,
+						'slds-table_cell-buffer':
 							!this.props.fixedLayout && !this.props.unbufferedCell,
-						'slds-max-medium-table--stacked': this.props.stacked,
-						'slds-max-medium-table--stacked-horizontalviewports': this.props
+						'slds-max-medium-table_stacked': this.props.stacked,
+						'slds-max-medium-table_stacked-horizontalviewports': this.props
 							.stackedHorizontal,
-						'slds-table--striped': this.props.striped,
-						'slds-table--col-bordered': this.props.columnBordered,
+						'slds-table_striped': this.props.striped,
+						'slds-table_col-bordered': this.props.columnBordered,
 						'slds-no-row-hover': this.props.noRowHover,
 					},
 					this.props.className

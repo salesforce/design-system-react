@@ -20,10 +20,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Mon"
             name="dayOfWeek"
             onChange={[Function]}
@@ -45,10 +42,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={true}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Tue"
             name="dayOfWeek"
             onChange={[Function]}
@@ -70,10 +64,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Wed"
             name="dayOfWeek"
             onChange={[Function]}
@@ -95,10 +86,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Thu"
             name="dayOfWeek"
             onChange={[Function]}
@@ -120,10 +108,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Fri"
             name="dayOfWeek"
             onChange={[Function]}
@@ -184,9 +169,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
             disabled={true}
             id="Mon"
             name="dayOfWeek"
@@ -209,9 +192,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={true}
-            defaultChecked={undefined}
             disabled={true}
             id="Tue"
             name="dayOfWeek"
@@ -234,9 +215,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
             disabled={true}
             id="Wed"
             name="dayOfWeek"
@@ -259,9 +238,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
             disabled={true}
             id="Thu"
             name="dayOfWeek"
@@ -284,9 +261,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
             disabled={true}
             id="Fri"
             name="dayOfWeek"
@@ -333,8 +308,6 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
           <input
             aria-describedby="radioGroupError"
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Mon"
             name="radioGroup"
             onChange={[Function]}
@@ -358,8 +331,6 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
           <input
             aria-describedby="radioGroupError"
             checked={true}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Tue"
             name="radioGroup"
             onChange={[Function]}
@@ -383,8 +354,6 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
           <input
             aria-describedby="radioGroupError"
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Wed"
             name="radioGroup"
             onChange={[Function]}
@@ -408,8 +377,6 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
           <input
             aria-describedby="radioGroupError"
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Thu"
             name="radioGroup"
             onChange={[Function]}
@@ -433,8 +400,6 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
           <input
             aria-describedby="radioGroupError"
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Fri"
             name="radioGroup"
             onChange={[Function]}
@@ -490,10 +455,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Mon"
             name="dayOfWeek"
             onChange={[Function]}
@@ -515,10 +477,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={true}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Tue"
             name="dayOfWeek"
             onChange={[Function]}
@@ -540,10 +499,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Wed"
             name="dayOfWeek"
             onChange={[Function]}
@@ -565,10 +521,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Thu"
             name="dayOfWeek"
             onChange={[Function]}
@@ -590,10 +543,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby={undefined}
             checked={false}
-            defaultChecked={undefined}
-            disabled={undefined}
             id="Fri"
             name="dayOfWeek"
             onChange={[Function]}

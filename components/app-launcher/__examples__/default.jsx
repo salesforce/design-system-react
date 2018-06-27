@@ -9,7 +9,7 @@ import GlobalNavigationBarRegion from '~/components/global-navigation-bar/region
 
 import Icon from '~/components/icon';
 import Button from '~/components/button';
-import Search from '~/components/forms/input/search';
+import Search from '~/components/input/search';
 import IconSettings from '~/components/icon-settings';
 
 const Example = createReactClass({

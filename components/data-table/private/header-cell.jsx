@@ -114,7 +114,6 @@ const DataTableHeaderCell = createReactClass({
 	},
 
 	// ### Render
-	// Should return a `<th></th>`.
 	render () {
 		const { isSorted, label, sortable, width } = this.props;
 
@@ -122,57 +121,81 @@ const DataTableHeaderCell = createReactClass({
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
-		const ariaSort = isSorted ? expandedSortDirection : null;
+		const ariaSort = isSorted ? expandedSortDirection : 'none';
+		const fixedLayoutSubRenders = {
+			sortable: (
+				<a
+					href="javascript:void(0)" // eslint-disable-line no-script-url
+					className="slds-th__action slds-text-link_reset"
+					onClick={this.handleSort}
+					role="button"
+					tabIndex="0"
+				>
+					<span className="slds-assistive-text">
+						{this.props.assistiveTextForColumnSort}{' '}
+					</span>
+					<span
+						className="slds-truncate"
+						title={labelType === 'string' ? label : undefined}
+					>
+						{label}
+					</span>
+					<Icon
+						className="slds-is-sortable__icon"
+						category="utility"
+						name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+						size="x-small"
+					/>
+					{sortDirection ? (
+						<span
+							className="slds-assistive-text"
+							aria-live="assertive"
+							aria-atomic="true"
+						>
+							{sortDirection === 'asc'
+								? this.props.assistiveTextForColumnSortedAscending
+								: this.props.assistiveTextForColumnSortedDescending}
+						</span>
+					) : null}
+				</a>
+			),
+			notSortable: (
+				<span className="slds-p-horizontal_x-small" style={{ display: 'flex' }}>
+					<span
+						className="slds-truncate"
+						title={labelType === 'string' ? label : undefined}
+					>
+						{label}
+					</span>
+				</span>
+			),
+		};
 
 		return (
 			<th
+				aria-label={labelType === 'string' ? label : undefined}
 				aria-sort={ariaSort}
-				className={classNames({
-					'slds-is-sortable': sortable,
-					'slds-is-sorted': isSorted,
-					[`slds-is-sorted--${sortDirection}`]: sortDirection,
-					'slds-is-sorted--asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-				})}
-				focusable={!!sortable}
+				className={classNames(
+					{
+						'slds-is-sortable': sortable,
+						'slds-is-sorted': isSorted,
+						[`slds-is-sorted_${sortDirection}`]: sortDirection,
+						'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
+					},
+					'slds-text-title_caps'
+				)}
 				scope="col"
-				style={width ? { width } : null}
+				style={{ width: width ? { width } : null }}
 			>
-				{sortable ? (
-					<a
-						href="javascript:void(0)" // eslint-disable-line no-script-url
-						className="slds-th__action slds-text-link--reset"
-						onClick={this.handleSort}
-						tabIndex="0"
-					>
-						<span className="slds-assistive-text">
-							{this.props.assistiveTextForColumnSort}{' '}
-						</span>
-						<span
-							className="slds-truncate"
-							title={labelType === 'string' ? label : undefined}
-						>
-							{label}
-						</span>
-						<Icon
-							className="slds-is-sortable__icon"
-							category="utility"
-							name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-							size="x-small"
-						/>
-						{sortDirection ? (
-							<span
-								className="slds-assistive-text"
-								aria-live="assertive"
-								aria-atomic="true"
-							>
-								{sortDirection === 'asc'
-									? this.props.assistiveTextForColumnSortedAscending
-									: this.props.assistiveTextForColumnSortedDescending}
-							</span>
-						) : null}
-					</a>
+				{this.props.fixedLayout ? (
+					fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
 				) : (
-					<div className="slds-truncate">{label}</div>
+					<div
+						className="slds-truncate"
+						title={labelType === 'string' ? label : undefined}
+					>
+						{label}
+					</div>
 				)}
 			</th>
 		);

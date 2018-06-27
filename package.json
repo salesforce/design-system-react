@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.14",
+	"version": "0.8.18",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -10,8 +10,6 @@
 	"scripts": {
 		"build-docs": "npx babel-node ./scripts/build-docs.js",
 		"build-and-test-docs": "npm run build-docs && npx babel-node ./tests/component-docs-test.js",
-		"build-storybook": "NODE_ENV=development npx build-storybook -o ./storybook",
-		"build-storybook-for-tests": "NODE_ENV=development npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
@@ -27,13 +25,16 @@
 		"publish:upstream": "npx babel-node scripts/publish-to-git.js --remote=upstream",
 		"release:patch": "npx babel-node scripts/release.js --release=patch",
 		"release:minor": "npx babel-node scripts/release.js --release=minor",
-		"snapshot-test": "npx jest",
+		"snapshot-test": "npm run storyshots:build && npx jest",
 		"start": "npx start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
-		"start:static": "node app",
-		"storybook": "start-storybook -p 9001 -s ./node_modules",
-		"test": "scripts/local-qa.sh --no-fix",
-		"test:fix": "scripts/local-qa.sh",
-		"travis-ci": "scripts/travis-ci.sh",
+		"static:start": "node app",
+		"static:build": "npx build-storybook -o ./storybook",
+		"storyshots:build": "npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
+		"storyshots:start": "node app --folder=storybook-based-tests",
+		"test": "NODE_ENV=test scripts/local-qa.sh --no-fix",
+		"test-concurrent": "NODE_ENV=test npx concurrently \"npm run lint\" \"npx karma start --single-run\" \"npm run snapshot-test\" \"npm run build-and-test-docs\"",
+		"test:fix": "NODE_ENV=test scripts/local-qa.sh",
+		"travis-ci": "NODE_ENV=test scripts/travis-ci.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},
@@ -82,7 +83,6 @@
 	"homepage": "https://react.lightningdesignsystem.com",
 	"dependencies": {
 		"@salesforce/babel-preset-design-system-react": "^1.0.0",
-		"babel-preset-es2015": "^6.24.1",
 		"classnames": "^2.2.5",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
@@ -104,7 +104,7 @@
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
 		"react-highlighter": "^0.4.0",
-		"react-modal": "^1.7.7",
+		"react-modal": "3.4.4",
 		"react-onclickoutside": "^6.5.0",
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.12.0",
@@ -112,39 +112,43 @@
 		"warning": "^3.0.0"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "^2.4.0 || ^2.6.0-alpha",
+		"@salesforce-ux/design-system": "^2.6.0",
 		"react": ">=15.4.1 <16",
 		"react-dom": ">=15.4.1 <16"
 	},
 	"devDependencies": {
-		"@salesforce-ux/design-system": "2.4.3",
+		"@babel/cli": "7.0.0-beta.44",
+		"@babel/core": "^7.0.0-beta.44",
+		"@babel/node": "7.0.0-beta.44",
+		"@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
+		"@babel/plugin-proposal-export-default-from": "7.0.0-beta.44",
+		"@babel/plugin-proposal-export-namespace-from": "7.0.0-beta.44",
+		"@babel/plugin-transform-modules-amd": "7.0.0-beta.44",
+		"@babel/plugin-transform-modules-commonjs": "7.0.0-beta.44",
+		"@babel/polyfill": "7.0.0-beta.44",
+		"@babel/preset-env": "7.0.0-beta.44",
+		"@babel/preset-react": "7.0.0-beta.44",
+		"@salesforce-ux/design-system": "^2.6.0",
 		"@salesforce-ux/icons": "7.x",
 		"@storybook/addon-a11y": "^3.4.3",
-		"@storybook/addon-actions": "^3.4.3",
+		"@storybook/addon-actions": "^3.4.6",
 		"@storybook/addon-info": "^3.2.10",
 		"@storybook/addon-storyshots": "^3.4.3",
 		"@storybook/addons": "^3.4.3",
 		"@storybook/react": "^3.4.3",
 		"async": "^2.0.0-rc.5",
-		"babel-cli": "^6.24.1",
-		"babel-core": "^6.26.0",
+		"babel-core": "^7.0.0-bridge.0",
 		"babel-eslint": "^8.2.3",
-		"babel-jest": "^20.0.3",
-		"babel-loader": "^7.1.1",
+		"babel-loader": "^8.0.0-beta.3",
 		"babel-plugin-import-noop": "^1.0.1",
-		"babel-plugin-istanbul": "^4.1.4",
+		"babel-plugin-istanbul": "^4.1.6",
 		"babel-plugin-root-import": "^5.1.0",
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"babel-plugin-transform-es2015-modules-amd": "^6.24.0",
-		"babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
-		"babel-plugin-transform-export-extensions": "6.22.0",
-		"babel-polyfill": "^6.26.0",
-		"babel-preset-env": "^1.5.2",
-		"babel-preset-react": "^6.23.0",
+		"babel-jest": "^23.0.1",
 		"basic-auth": "^1.0.4",
 		"chai": "^4.0.1",
 		"chai-enzyme": "^0.8.0",
 		"compression": "^1.6.2",
+		"concurrently": "^3.5.1",
 		"css-loader": "^0.28.0",
 		"enzyme": "^2.5.1",
 		"enzyme-to-json": "^1.5.0",
@@ -160,8 +164,8 @@
 		"file-loader": "^0.11.0",
 		"find-remove": "^1.1.0",
 		"fs-extra": "^3.0.0",
-		"istanbul-instrumenter-loader": "^2.0.0",
-		"jest": "^21.2.1",
+		"istanbul-instrumenter-loader": "^3.0.1",
+		"jest": "^23.1.0",
 		"js-beautify": "^1.6.8",
 		"json-loader": "^0.5.3",
 		"karma": "^1.7.0",
@@ -173,7 +177,7 @@
 		"karma-phantomjs-launcher": "^1.0.4",
 		"karma-sourcemap-loader": "^0.3.5",
 		"karma-spec-reporter": "^0.0.31",
-		"karma-webpack": "^2.0.2",
+		"karma-webpack": "^3.0.0",
 		"lint-staged": "^3.3.0",
 		"lodash.filter": "^4.6.0",
 		"lodash.isempty": "^4.2.1",
@@ -182,6 +186,7 @@
 		"minimist": "^1.2.0",
 		"mocha": "^3.1.2",
 		"node-sass": "^4.5.0",
+		"normalizr": "^3.2.4",
 		"object.entries": "^1.0.4",
 		"phantomjs-polyfill-find-index": "^1.0.1",
 		"phantomjs-polyfill-includes": "^1.0.2",
@@ -197,6 +202,7 @@
 		"react-dom": ">=15.4.1 <16",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": ">=15.4.1 <16",
+		"regenerator-runtime": "^0.11.1",
 		"sinon": "^2.3.5",
 		"sinon-chai": "^2.14.0",
 		"string-replace-webpack-plugin": "^0.1.2",
@@ -204,7 +210,7 @@
 		"webpack": "^3.4.1",
 		"webpack-dev-middleware": "^1.12.0",
 		"webpack-hot-middleware": "^2.18.2",
-		"xml2json": "^0.11.0"
+		"xml2js": "^0.4.19"
 	},
 	"components": [
 		{
@@ -312,14 +318,14 @@
 			]
 		},
 		{
-			"component": "forms/checkbox",
+			"component": "checkbox",
 			"status": "prod",
 			"display-name": "Checkboxes",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/forms/#flavor-checkbox"
+			"SLDS-component-path": "/components/checkbox/"
 		},
 		{
 			"component": "combobox",
@@ -373,34 +379,14 @@
 			"SLDS-component-path": "/components/filter"
 		},
 		{
-			"component": "forms/input",
-			"status": "prod",
-			"display-name": "Inline Edit Inputs",
-			"last-accessibility-review": {
-				"date-iso-8601": "2017/08/21",
-				"commit-sha": "119f7033c17a8a0634a31c6eeef947ddd0ee876b"
-			},
-			"last-slds-markup-review": {
-				"date-iso-8601": "2017/08/21",
-				"commit-sha": "119f7033c17a8a0634a31c6eeef947ddd0ee876b"
-			},
-			"SLDS-component-path": "/components/forms#flavor-input"
-		},
-		{
-			"component": "forms/input",
+			"component": "input",
 			"status": "prod",
 			"display-name": "Inputs",
 			"last-accessibility-review": {
 				"date-iso-8601": "2017/09/22",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/forms#flavor-input"
-		},
-		{
-			"component": "forms/textarea",
-			"status": "prod",
-			"display-name": "Textareas",
-			"SLDS-component-path": "/components/forms#flavor-textarea"
+			"SLDS-component-path": "/components/input/"
 		},
 		{
 			"component": "global-header",
@@ -562,14 +548,14 @@
 			"SLDS-component-path": "/components/progress-ring"
 		},
 		{
-			"component": "forms/radio",
+			"component": "radio",
 			"status": "prod",
 			"display-name": "Radios",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/forms/#flavor-radio"
+			"SLDS-component-path": "/components/radio-group/"
 		},
 		{
 			"component": "split-view",
@@ -614,10 +600,10 @@
 			"SLDS-component-path": "/components/radio-button-group"
 		},
 		{
-			"component": "tooltip",
+			"component": "slider",
 			"status": "prod",
-			"display-name": "Tooltips",
-			"SLDS-component-path": "/components/tooltips"
+			"display-name": "Slider",
+			"SLDS-component-path": "/components/slider"
 		},
 		{
 			"component": "tabs",
@@ -635,6 +621,18 @@
 			]
 		},
 		{
+			"component": "textarea",
+			"status": "prod",
+			"display-name": "Textareas",
+			"SLDS-component-path": "/components/forms#flavor-textarea"
+		},
+		{
+			"component": "time-picker",
+			"status": "prod",
+			"display-name": "Timepickers",
+			"SLDS-component-path": "/components/datepickers"
+		},
+		{
 			"component": "toast",
 			"status": "prod",
 			"display-name": "Toasts",
@@ -650,6 +648,12 @@
 			]
 		},
 		{
+			"component": "tooltip",
+			"status": "prod",
+			"display-name": "Tooltips",
+			"SLDS-component-path": "/components/tooltips"
+		},
+		{
 			"component": "tree",
 			"status": "prod",
 			"display-name": "Tree",
@@ -662,18 +666,6 @@
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
 			},
 			"SLDS-component-path": "/components/tree"
-		},
-		{
-			"component": "time-picker",
-			"status": "prod",
-			"display-name": "Timepickers",
-			"SLDS-component-path": "/components/datepickers"
-		},
-		{
-			"component": "slider",
-			"status": "prod",
-			"display-name": "Slider",
-			"SLDS-component-path": "/components/slider"
 		}
 	],
 	"documentation": {

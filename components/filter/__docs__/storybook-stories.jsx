@@ -58,4 +58,9 @@ storiesOf(FILTER, module)
 		<CustomAlignment>
 			<AssistiveTextFilter />
 		</CustomAlignment>
+	))
+	.add('ErrorFilter', () => (
+		<CustomAlignment>
+			<ErrorFilter />
+		</CustomAlignment>
 	));
