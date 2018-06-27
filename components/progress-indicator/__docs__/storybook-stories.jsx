@@ -94,11 +94,11 @@ storiesOf(PROGRESS_INDICATOR, module)
 	.add('Completed Progress', () => (
 		<ExampleProgressIndicator
 			steps={steps}
-			selectedStep={steps[steps.length - 1]}
-			completedSteps={steps.slice(0, steps.length - 1)}
+			selectedStep={steps[steps.length - 2]}
+			completedSteps={steps.slice(0, steps.length - 2)}
 			assistiveText={{
-				completedStep: "Finished this step.",
-				disabledStep: "Unable to proceed on this step."
+				completedStep: 'Finished this step.',
+				disabledStep: 'Unable to proceed on this step.',
 			}}
 		/>
 	));
