@@ -26,12 +26,19 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
+	 * * `activeStep`: Label for the active step. The default is `Active Step`
+	 * * `completedStep`: Label for a completed step. The default is `Completed Step`
+	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
+	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
+	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.
+* * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
 	 */
 	assistiveText: PropTypes.shape({
-		percentage: PropTypes.string,
+		activeStep: PropTypes.string,
 		completedStep: PropTypes.string,
-		disabledStep: PropTypes.string
+		disabledStep: PropTypes.string,
+		percentage: PropTypes.string,
+		step: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -108,7 +115,13 @@ const defaultSteps = [
 ];
 
 const defaultProps = {
-	assistiveText: {},
+	assistiveText: {
+		activeStep: 'Active Step',
+		completedStep: 'Completed Step',
+		disabledStep: 'Disabled Step',
+		errorStep: 'Error Step',
+		step: 'Step'
+	},
 	errorSteps: [],
 	completedSteps: [],
 	disabledSteps: [],
@@ -171,7 +184,12 @@ class ProgressIndicator extends React.Component {
 			? assign({}, defaultProps.assistiveText, this.props.assistiveText)
 			: defaultProps.assistiveText;
 
-		const {selectedStep, disabledSteps, errorSteps, completedSteps} = this.props;
+		const {
+			selectedStep,
+			disabledSteps,
+			errorSteps,
+			completedSteps,
+		} = this.props;
 		/** 1. preparing data */
 		const allSteps = this.getSteps();
 
