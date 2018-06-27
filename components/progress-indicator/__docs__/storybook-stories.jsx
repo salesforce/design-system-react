@@ -92,7 +92,10 @@ storiesOf(PROGRESS_INDICATOR, module)
 			errorSteps={steps.slice(1, 2)}
 		/>
 	))
-	.add('In A Modal (With Step Error) - Needs DOM', () => (typeof document !== 'undefined' ? <Modal /> : null))
+	.add(
+		'In A Modal (With Step Error) - Needs DOM',
+		() => (typeof document !== 'undefined' ? <Modal /> : null)
+	)
 	.add('Completed Progress', () => (
 		<ExampleProgressIndicator
 			steps={steps}
