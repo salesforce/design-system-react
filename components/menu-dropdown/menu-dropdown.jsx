@@ -767,12 +767,13 @@ const MenuDropdown = createReactClass({
 		let hasNubbin = false;
 		let positionClassName = '';
 
+
 		if (this.props.nubbinPosition) {
-			const positions = this.props.nubbinPosition.split(' ');
-			positionClassName = classNames(
-				// `slds-nubbin--${positions.join('-')}`,
-				positions.map((position) => `slds-dropdown--${position}`)
-			);
+			// const positions = this.props.nubbinPosition.split(' ');
+			// positionClassName = classNames(
+			// 	// `slds-nubbin--${positions.join('-')}`,
+			// 	positions.map((position) => `slds-dropdown--${position}`)
+			// );
 			hasNubbin = true;
 			align = this.props.nubbinPosition;
 		} else if (this.props.align) {
