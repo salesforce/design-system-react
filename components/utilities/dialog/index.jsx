@@ -171,6 +171,7 @@ const Dialog = createReactClass({
 		 * An object of CSS styles that are applied to the immediate parent `div` of the contents. Use this instead of margin props.
 		 */
 		style: PropTypes.object,
+
 		/**
 		 * Sets which focus UX pattern to follow. For instance, popovers trap focus and must be exited to regain focus. Dropdowns and Tooltips never have focus.
 		 */
@@ -305,12 +306,10 @@ const Dialog = createReactClass({
 	},
 
 	handleOpen () {
-		const scopedElement = this.dialogContent;
-
-		if (this.props.variant === 'popover' && scopedElement) {
+		if (this.props.variant === 'popover' && this.dialogContent) {
 			DOMElementFocus.storeActiveElement();
 			DOMElementFocus.setupScopedFocus({
-				ancestorElement: scopedElement.querySelector('.slds-popover'),
+				ancestorElement: this.dialogContent,
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
@@ -442,7 +441,7 @@ const Dialog = createReactClass({
 				{...this.props.containerProps}
 				ref={this.setDialogContent}
 				role={this.props.variant}
-				tabIndex={}
+				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
 			>
 				{this.props.children}
 			</div>

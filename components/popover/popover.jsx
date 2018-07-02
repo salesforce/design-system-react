@@ -10,9 +10,6 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
-// ### assign
-import assign from 'lodash.assign';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -436,7 +433,6 @@ const Popover = createReactClass({
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		const offset = props.offset;
-		const style = this.props.style || {};
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -450,7 +446,9 @@ const Popover = createReactClass({
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
-					'ignore-react-onclickoutside'
+					'ignore-react-onclickoutside',
+					'slds-popover',
+					props.className,
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
@@ -473,14 +471,7 @@ const Popover = createReactClass({
 							: `${this.getId()}-dialog-heading`
 					}
 					aria-describedby={`${this.getId()}-dialog-body`}
-					className={classNames(
-						'slds-popover',
-						props.className
-					)}
 					id={`${this.getId()}-popover`}
-					role="dialog"
-					style={assign({ outline: '0' }, style)}
-					tabIndex="-1"
 					ref={this.setMenuRef}
 				>
 					<Button
