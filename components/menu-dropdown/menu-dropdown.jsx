@@ -82,6 +82,25 @@ const DropdownNubbinPositions = [
 	'bottom right',
 ];
 
+/*
+* Dropdowns with nubbins have a different API from other Dialogs
+*
+* Dialog receives an alignment position and whether it has a nubbin. The nubbin position is inferred from the align.
+* Dropdowns have a nubbinPosition which dictates the align, but in an inverse fashion which then gets inversed back by the Dialog.
+*
+* Since Dialog is the future API and we don't want to break backwards compatability, we currently map to the Dialog api here. Even if Dialog will map it again.
+* TODO - deprecate nubbinPosition in favor for additional `align` values and a flag to show a nubbin.
+*/
+const DropdownToDialogNubbinMapping = {
+	top: 'bottom',
+	'top left': 'bottom left',
+	'top right': 'bottom right',
+
+	bottom: 'top',
+	'bottom left': 'top left',
+	'bottom right': 'top right',
+};
+
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component. This component
  * may require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to
@@ -767,33 +786,17 @@ const MenuDropdown = createReactClass({
 		let hasNubbin = false;
 		let positionClassName = '';
 
-
 		if (this.props.nubbinPosition) {
-			// const positions = this.props.nubbinPosition.split(' ');
-			// positionClassName = classNames(
-			// 	// `slds-nubbin--${positions.join('-')}`,
-			// 	positions.map((position) => `slds-dropdown--${position}`)
-			// );
 			hasNubbin = true;
-			align = this.props.nubbinPosition;
+			align = DropdownToDialogNubbinMapping[this.props.nubbinPosition];
 		} else if (this.props.align) {
 			align = `bottom ${this.props.align}`;
 		}
 
-		// if (this.props.nubbinPosition) {
-		// 	const positions = this.props.nubbinPosition.split(' ');
-		// 	positionClassName = classNames(
-		// 		`slds-nubbin--${positions.join('-')}`,
-		// 		positions.map((position) => `slds-dropdown--${position}`)
-		// 	);
-		// 	marginTop = 0;
-		// 	// TODO: allow nubbinPosition prop to set the offset automatically
-		// 	// if (this.props.nubbinPosition === 'top right') {
-		// 	// 	offset = '-12px -24px';
-		// 	// }
-		// } else if (this.props.align) {
-		// 	positionClassName = `slds-dropdown--${this.props.align}`;
-		// }
+		const positions = DropdownToDialogNubbinMapping[align].split(' ');
+		positionClassName = classNames(
+			positions.map((position) => `slds-dropdown--${position}`)
+		);
 
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
