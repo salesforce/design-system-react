@@ -448,7 +448,7 @@ const Popover = createReactClass({
 					this.props.contentsClassName,
 					'ignore-react-onclickoutside',
 					'slds-popover',
-					props.className,
+					props.className
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}

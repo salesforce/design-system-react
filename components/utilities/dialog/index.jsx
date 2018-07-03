@@ -18,7 +18,11 @@ import Portal from './portal';
 import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
 import DOMElementFocus from '../../../utilities/dom-element-focus';
-import { getNubbinMargins, getNubbinClassName, mapPropToPopperPlacement } from '../../../utilities/dialog-helpers';
+import {
+	getNubbinMargins,
+	getNubbinClassName,
+	mapPropToPopperPlacement,
+} from '../../../utilities/dialog-helpers';
 
 import { DIALOG } from '../../../utilities/constants';
 
@@ -252,11 +256,16 @@ const Dialog = createReactClass({
 		const propOffsets = this.getPropOffsetsInPixels(this.props.offset);
 
 		// FIXME before merge - gotta rename from margin to offset
-		const nubbinOffsets = this.props.hasNubbin ?
-			getNubbinMargins(this.state.popperData, this.props.align) : { left: 0, top: 0 };
+		const nubbinOffsets = this.props.hasNubbin
+			? getNubbinMargins(this.state.popperData, this.props.align)
+			: { left: 0, top: 0 };
 
-		const left = popperData.offsets.popper.left + nubbinOffsets.left + propOffsets.horizontal;
-		const top = popperData.offsets.popper.top + nubbinOffsets.top + propOffsets.vertical;
+		const left =
+			popperData.offsets.popper.left +
+			nubbinOffsets.left +
+			propOffsets.horizontal;
+		const top =
+			popperData.offsets.popper.top + nubbinOffsets.top + propOffsets.vertical;
 
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
@@ -430,7 +439,7 @@ const Dialog = createReactClass({
 								this.props.position === 'overflowBoundaryElement',
 						},
 						this.props.hasNubbin && getNubbinClassName(this.props.align),
-						this.props.contentsClassName,
+						this.props.contentsClassName
 					) || undefined
 				}
 				id={this.props.id}

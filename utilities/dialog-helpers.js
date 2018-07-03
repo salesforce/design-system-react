@@ -71,7 +71,7 @@ const getNubbinMargins = (popperData, alignProp) => {
 	let left = 0;
 
 	const DISTANCE_OFFSET_PX = 16 * DISTANCE_OFFSET; // FIXME - actually do a real convert based on font size.
-	const ROTATED_HEIGHT_PX  = 16 * ROTATED_HEIGHT; // FIXME - actually do a real convert based on font size.
+	const ROTATED_HEIGHT_PX = 16 * ROTATED_HEIGHT; // FIXME - actually do a real convert based on font size.
 
 	const halfWidth = popperData.offsets.reference.width * 0.5;
 	const halfHeight = popperData.offsets.reference.height * 0.5;
@@ -116,14 +116,10 @@ const getNubbinMargins = (popperData, alignProp) => {
 		top = halfHeight - DISTANCE_OFFSET_PX;
 	}
 
-
 	return {
-		left, top
+		left,
+		top,
 	};
 };
 
-export {
-	getNubbinMargins,
-	getNubbinClassName,
-	mapPropToPopperPlacement,
-};
+export { getNubbinMargins, getNubbinClassName, mapPropToPopperPlacement };

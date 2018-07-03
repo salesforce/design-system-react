@@ -233,7 +233,8 @@ const getVictor = (props) => (
 				/>
 			</Popover>
 		</div>
-		<div style={{ marginBottom: 0 }}>Nubbin:
+		<div style={{ marginBottom: 0 }}>
+			Nubbin:
 			<Dropdown
 				iconName="down"
 				buttonVariant="icon"
@@ -255,14 +256,12 @@ const getVictor = (props) => (
 				]}
 			>
 				<Trigger>
-					<Button
-						iconVariant="container"
-						iconName="down"
-					/>
+					<Button iconVariant="container" iconName="down" />
 				</Trigger>
 			</Dropdown>
 		</div>
-		<div style={{ marginBottom: 0 }}>relative:
+		<div style={{ marginBottom: 0 }}>
+			relative:
 			<Dropdown
 				iconName="down"
 				buttonVariant="icon"
@@ -283,14 +282,12 @@ const getVictor = (props) => (
 				]}
 			>
 				<Trigger>
-					<Button
-						iconVariant="container"
-						iconName="down"
-					/>
+					<Button iconVariant="container" iconName="down" />
 				</Trigger>
 			</Dropdown>
 		</div>
-		<div style={{ marginBottom: 0 }}>absolute:
+		<div style={{ marginBottom: 0 }}>
+			absolute:
 			<Dropdown
 				iconName="down"
 				buttonVariant="icon"
@@ -311,14 +308,12 @@ const getVictor = (props) => (
 				]}
 			>
 				<Trigger>
-					<Button
-						iconVariant="container"
-						iconName="down"
-					/>
+					<Button iconVariant="container" iconName="down" />
 				</Trigger>
 			</Dropdown>
 		</div>
-		<div style={{ marginBottom: 0 }}>Overflow:
+		<div style={{ marginBottom: 0 }}>
+			Overflow:
 			<Dropdown
 				iconName="down"
 				buttonVariant="icon"
@@ -352,9 +347,7 @@ storiesOf(MENU_DROPDOWN, module)
 		<div>
 			{getVictor()}
 			<hr />
-			<div style={{ marginLeft: 500 }}>
-				{getVictor()}
-			</div>
+			<div style={{ marginLeft: 500 }}>{getVictor()}</div>
 		</div>
 	))
 	.add('Base', () =>

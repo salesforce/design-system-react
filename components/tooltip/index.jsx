@@ -207,13 +207,9 @@ class Tooltip extends React.Component {
 			<Dialog
 				closeOnTabKey
 				hasNubbin
-				contentsClassName={classNames(
-					'slds-popover',
-					'slds-popover--tooltip',
-					{
-						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-					},
-				)}
+				contentsClassName={classNames('slds-popover', 'slds-popover--tooltip', {
+					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+				})}
 				align={align}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
@@ -294,7 +290,10 @@ class Tooltip extends React.Component {
 	};
 
 	render () {
-		const containerStyles = { display: 'inline-block', ...this.props.triggerStyle };
+		const containerStyles = {
+			display: 'inline-block',
+			...this.props.triggerStyle,
+		};
 
 		return (
 			<div
