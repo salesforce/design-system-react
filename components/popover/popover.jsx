@@ -452,7 +452,6 @@ const Popover = createReactClass({
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
-				id={`${this.getId()}-popover`}
 				offset={offset}
 				onCancel={this.handleClose}
 				onClose={this.handleDialogClose}
@@ -463,48 +462,49 @@ const Popover = createReactClass({
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				onRequestTargetElement={() => this.trigger}
 				position={this.props.position}
+				style={this.props.style}
 				variant="popover"
+				ref={this.setMenuRef}
+
+				containerProps={{
+					id: `${this.getId()}-popover`,
+					'aria-labelledby': this.props.ariaLabelledby || `${this.getId()}-dialog-heading`,
+					'aria-describedby': `${this.getId()}-dialog-body`,
+				}}
+
 			>
+				<Button
+					assistiveText={{ icon: closeButtonAssistiveText }}
+					iconCategory="utility"
+					iconName="close"
+					iconSize="small"
+					className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
+					onClick={this.handleCancel}
+					variant="icon"
+				/>
+
+				{this.props.heading ? (
+					<header className="slds-popover__header">
+						<h2
+							id={`${this.getId()}-dialog-heading`}
+							className="slds-text-heading--small"
+						>
+							{this.props.heading}
+						</h2>
+					</header>
+				) : null}
+
 				<div
-					aria-labelledby={
-						this.props.ariaLabelledby
-							? this.props.ariaLabelledby
-							: `${this.getId()}-dialog-heading`
-					}
-					aria-describedby={`${this.getId()}-dialog-body`}
-					ref={this.setMenuRef}
+					id={`${this.getId()}-dialog-body`}
+					className="slds-popover__body"
 				>
-					<Button
-						assistiveText={{ icon: closeButtonAssistiveText }}
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
-						onClick={this.handleCancel}
-						variant="icon"
-					/>
-					{this.props.heading ? (
-						<header className="slds-popover__header">
-							<h2
-								id={`${this.getId()}-dialog-heading`}
-								className="slds-text-heading--small"
-							>
-								{this.props.heading}
-							</h2>
-						</header>
-					) : null}
-					<div
-						id={`${this.getId()}-dialog-body`}
-						className="slds-popover__body"
-					>
-						{props.body}
-					</div>
-					{this.props.footer ? (
-						<footer className="slds-popover__footer">
-							{this.props.footer}
-						</footer>
-					) : null}
+					{props.body}
 				</div>
+				{this.props.footer ? (
+					<footer className="slds-popover__footer">
+						{this.props.footer}
+					</footer>
+				) : null}
 			</Dialog>
 		) : null;
 	},

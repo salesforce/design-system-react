@@ -163,21 +163,19 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it.only('has correct className, assistiveText, style, and footer', function () {
+		it('has correct className, assistiveText, style, and footer', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} isOpen />, {
 				attachTo: mountNode,
 			});
 
 			const popover = wrapper.find(Dialog);
-			console.log(popover.length);
 
-			// expect(popover.node.classList.contains(optionalProps.className)).to.be
-			// 	.true;
+			expect(popover.hasClass(optionalProps.className)).to.be.true;
 			expect(popover.find('.slds-popover__close').node.textContent).to.equal(
 				optionalProps.assistiveText.closeButton
 			);
 			expect(popover.find('#footer')).to.exist;
-			expect(popover.node.style.background).to.equal(popoverBackgroundColor);
+			expect(popover.prop('style').background).to.equal(popoverBackgroundColor);
 		});
 	});
 
