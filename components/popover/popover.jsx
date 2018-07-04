@@ -465,13 +465,12 @@ const Popover = createReactClass({
 				style={this.props.style}
 				variant="popover"
 				ref={this.setMenuRef}
-
 				containerProps={{
 					id: `${this.getId()}-popover`,
-					'aria-labelledby': this.props.ariaLabelledby || `${this.getId()}-dialog-heading`,
+					'aria-labelledby':
+						this.props.ariaLabelledby || `${this.getId()}-dialog-heading`,
 					'aria-describedby': `${this.getId()}-dialog-body`,
 				}}
-
 			>
 				<Button
 					assistiveText={{ icon: closeButtonAssistiveText }}
@@ -501,9 +500,7 @@ const Popover = createReactClass({
 					{props.body}
 				</div>
 				{this.props.footer ? (
-					<footer className="slds-popover__footer">
-						{this.props.footer}
-					</footer>
+					<footer className="slds-popover__footer">{this.props.footer}</footer>
 				) : null}
 			</Dialog>
 		) : null;
