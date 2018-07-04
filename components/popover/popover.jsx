@@ -452,6 +452,7 @@ const Popover = createReactClass({
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
+				id={`${this.getId()}-popover`}
 				offset={offset}
 				onCancel={this.handleClose}
 				onClose={this.handleDialogClose}
@@ -471,7 +472,6 @@ const Popover = createReactClass({
 							: `${this.getId()}-dialog-heading`
 					}
 					aria-describedby={`${this.getId()}-dialog-body`}
-					id={`${this.getId()}-popover`}
 					ref={this.setMenuRef}
 				>
 					<Button
