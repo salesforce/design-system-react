@@ -447,10 +447,10 @@ const Dialog = createReactClass({
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
-				{...this.props.containerProps}
 				ref={this.setDialogContent}
 				role={this.props.variant}
 				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
+				{...this.props.containerProps}
 			>
 				{this.props.children}
 			</div>
