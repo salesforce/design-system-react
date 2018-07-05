@@ -2977,7 +2977,6 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -3028,7 +3027,6 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -3085,7 +3083,6 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -3142,7 +3139,6 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -3219,7 +3215,6 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -3270,7 +3265,6 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -3327,7 +3321,6 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -3384,7 +3377,6 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -3461,7 +3453,6 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -3512,7 +3503,6 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -3569,7 +3559,6 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -3626,7 +3615,6 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -3736,7 +3724,6 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -3791,7 +3778,6 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -3858,7 +3844,6 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -3919,7 +3904,6 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -4000,7 +3984,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -4051,7 +4034,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -4107,7 +4089,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                 </button>
                 <a
                   className="slds-truncate"
-                  href="javascript:void(0)"
                   id="example-tree-4__label"
                   role="presentation"
                   tabIndex="-1"
@@ -4156,7 +4137,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                     </button>
                     <a
                       className="slds-truncate"
-                      href="javascript:void(0)"
                       role="presentation"
                       tabIndex="-1"
                     >
@@ -4200,7 +4180,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                     </button>
                     <a
                       className="slds-truncate"
-                      href="javascript:void(0)"
                       role="presentation"
                       tabIndex="-1"
                     >
@@ -4244,7 +4223,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                     </button>
                     <a
                       className="slds-truncate"
-                      href="javascript:void(0)"
                       role="presentation"
                       tabIndex="-1"
                     >
@@ -4297,7 +4275,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                 </button>
                 <a
                   className="slds-truncate"
-                  href="javascript:void(0)"
                   id="example-tree-5__label"
                   role="presentation"
                   tabIndex="-1"
@@ -4356,7 +4333,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -4413,7 +4389,6 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -4497,7 +4472,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4002__label"
               role="presentation"
               tabIndex="-1"
@@ -4554,7 +4528,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4006__label"
               role="presentation"
               tabIndex="-1"
@@ -4611,7 +4584,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4009__label"
               role="presentation"
               tabIndex="-1"
@@ -4668,7 +4640,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4014__label"
               role="presentation"
               tabIndex="-1"
@@ -4725,7 +4696,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4022__label"
               role="presentation"
               tabIndex="-1"
@@ -4782,7 +4752,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4024__label"
               role="presentation"
               tabIndex="-1"
@@ -4839,7 +4808,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4028__label"
               role="presentation"
               tabIndex="-1"
@@ -4896,7 +4864,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4033__label"
               role="presentation"
               tabIndex="-1"
@@ -4953,7 +4920,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4045__label"
               role="presentation"
               tabIndex="-1"
@@ -5010,7 +4976,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4049__label"
               role="presentation"
               tabIndex="-1"
@@ -5067,7 +5032,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4051__label"
               role="presentation"
               tabIndex="-1"
@@ -5124,7 +5088,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4055__label"
               role="presentation"
               tabIndex="-1"
@@ -5181,7 +5144,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4060__label"
               role="presentation"
               tabIndex="-1"
@@ -5238,7 +5200,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4069__label"
               role="presentation"
               tabIndex="-1"
@@ -5295,7 +5256,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4071__label"
               role="presentation"
               tabIndex="-1"
@@ -5352,7 +5312,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4077__label"
               role="presentation"
               tabIndex="-1"
@@ -5409,7 +5368,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4082__label"
               role="presentation"
               tabIndex="-1"
@@ -5466,7 +5424,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4087__label"
               role="presentation"
               tabIndex="-1"
@@ -5523,7 +5480,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4089__label"
               role="presentation"
               tabIndex="-1"
@@ -5580,7 +5536,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4091__label"
               role="presentation"
               tabIndex="-1"
@@ -5637,7 +5592,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4096__label"
               role="presentation"
               tabIndex="-1"
@@ -5694,7 +5648,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4101__label"
               role="presentation"
               tabIndex="-1"
@@ -5751,7 +5704,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4105__label"
               role="presentation"
               tabIndex="-1"
@@ -5808,7 +5760,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4109__label"
               role="presentation"
               tabIndex="-1"
@@ -5865,7 +5816,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4111__label"
               role="presentation"
               tabIndex="-1"
@@ -5922,7 +5872,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4115__label"
               role="presentation"
               tabIndex="-1"
@@ -5979,7 +5928,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4117__label"
               role="presentation"
               tabIndex="-1"
@@ -6036,7 +5984,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4121__label"
               role="presentation"
               tabIndex="-1"
@@ -6093,7 +6040,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4124__label"
               role="presentation"
               tabIndex="-1"
@@ -6150,7 +6096,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4127__label"
               role="presentation"
               tabIndex="-1"
@@ -6207,7 +6152,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4129__label"
               role="presentation"
               tabIndex="-1"
@@ -6264,7 +6208,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4133__label"
               role="presentation"
               tabIndex="-1"
@@ -6321,7 +6264,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4141__label"
               role="presentation"
               tabIndex="-1"
@@ -6378,7 +6320,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4150__label"
               role="presentation"
               tabIndex="-1"
@@ -6435,7 +6376,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4153__label"
               role="presentation"
               tabIndex="-1"
@@ -6492,7 +6432,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4159__label"
               role="presentation"
               tabIndex="-1"
@@ -6549,7 +6488,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4163__label"
               role="presentation"
               tabIndex="-1"
@@ -6606,7 +6544,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4167__label"
               role="presentation"
               tabIndex="-1"
@@ -6663,7 +6600,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4172__label"
               role="presentation"
               tabIndex="-1"
@@ -6720,7 +6656,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4174__label"
               role="presentation"
               tabIndex="-1"
@@ -6777,7 +6712,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4178__label"
               role="presentation"
               tabIndex="-1"
@@ -6834,7 +6768,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4186__label"
               role="presentation"
               tabIndex="-1"
@@ -6891,7 +6824,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4191__label"
               role="presentation"
               tabIndex="-1"
@@ -6948,7 +6880,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4196__label"
               role="presentation"
               tabIndex="-1"
@@ -7005,7 +6936,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4198__label"
               role="presentation"
               tabIndex="-1"
@@ -7062,7 +6992,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4206__label"
               role="presentation"
               tabIndex="-1"
@@ -7119,7 +7048,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4212__label"
               role="presentation"
               tabIndex="-1"
@@ -7176,7 +7104,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4214__label"
               role="presentation"
               tabIndex="-1"
@@ -7233,7 +7160,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4222__label"
               role="presentation"
               tabIndex="-1"
@@ -7290,7 +7216,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4228__label"
               role="presentation"
               tabIndex="-1"
@@ -7347,7 +7272,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4232__label"
               role="presentation"
               tabIndex="-1"
@@ -7404,7 +7328,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4234__label"
               role="presentation"
               tabIndex="-1"
@@ -7461,7 +7384,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4236__label"
               role="presentation"
               tabIndex="-1"
@@ -7518,7 +7440,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4240__label"
               role="presentation"
               tabIndex="-1"
@@ -7575,7 +7496,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4242__label"
               role="presentation"
               tabIndex="-1"
@@ -7632,7 +7552,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4246__label"
               role="presentation"
               tabIndex="-1"
@@ -7689,7 +7608,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4248__label"
               role="presentation"
               tabIndex="-1"
@@ -7746,7 +7664,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4250__label"
               role="presentation"
               tabIndex="-1"
@@ -7803,7 +7720,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4252__label"
               role="presentation"
               tabIndex="-1"
@@ -7860,7 +7776,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4254__label"
               role="presentation"
               tabIndex="-1"
@@ -7917,7 +7832,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4263__label"
               role="presentation"
               tabIndex="-1"
@@ -7974,7 +7888,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4265__label"
               role="presentation"
               tabIndex="-1"
@@ -8031,7 +7944,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4267__label"
               role="presentation"
               tabIndex="-1"
@@ -8088,7 +8000,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4270__label"
               role="presentation"
               tabIndex="-1"
@@ -8145,7 +8056,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4273__label"
               role="presentation"
               tabIndex="-1"
@@ -8202,7 +8112,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4282__label"
               role="presentation"
               tabIndex="-1"
@@ -8259,7 +8168,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4284__label"
               role="presentation"
               tabIndex="-1"
@@ -8316,7 +8224,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4288__label"
               role="presentation"
               tabIndex="-1"
@@ -8373,7 +8280,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4293__label"
               role="presentation"
               tabIndex="-1"
@@ -8430,7 +8336,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4296__label"
               role="presentation"
               tabIndex="-1"
@@ -8487,7 +8392,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4300__label"
               role="presentation"
               tabIndex="-1"
@@ -8544,7 +8448,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4302__label"
               role="presentation"
               tabIndex="-1"
@@ -8601,7 +8504,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4304__label"
               role="presentation"
               tabIndex="-1"
@@ -8658,7 +8560,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4306__label"
               role="presentation"
               tabIndex="-1"
@@ -8715,7 +8616,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4308__label"
               role="presentation"
               tabIndex="-1"
@@ -8772,7 +8672,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4310__label"
               role="presentation"
               tabIndex="-1"
@@ -8829,7 +8728,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4319__label"
               role="presentation"
               tabIndex="-1"
@@ -8886,7 +8784,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4321__label"
               role="presentation"
               tabIndex="-1"
@@ -8943,7 +8840,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4323__label"
               role="presentation"
               tabIndex="-1"
@@ -9000,7 +8896,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4328__label"
               role="presentation"
               tabIndex="-1"
@@ -9057,7 +8952,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4336__label"
               role="presentation"
               tabIndex="-1"
@@ -9114,7 +9008,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4339__label"
               role="presentation"
               tabIndex="-1"
@@ -9171,7 +9064,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4341__label"
               role="presentation"
               tabIndex="-1"
@@ -9228,7 +9120,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4343__label"
               role="presentation"
               tabIndex="-1"
@@ -9285,7 +9176,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4348__label"
               role="presentation"
               tabIndex="-1"
@@ -9342,7 +9232,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4356__label"
               role="presentation"
               tabIndex="-1"
@@ -9399,7 +9288,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4359__label"
               role="presentation"
               tabIndex="-1"
@@ -9456,7 +9344,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4363__label"
               role="presentation"
               tabIndex="-1"
@@ -9513,7 +9400,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4365__label"
               role="presentation"
               tabIndex="-1"
@@ -9570,7 +9456,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4369__label"
               role="presentation"
               tabIndex="-1"
@@ -9627,7 +9512,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4375__label"
               role="presentation"
               tabIndex="-1"
@@ -9684,7 +9568,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4384__label"
               role="presentation"
               tabIndex="-1"
@@ -9741,7 +9624,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4388__label"
               role="presentation"
               tabIndex="-1"
@@ -9798,7 +9680,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4390__label"
               role="presentation"
               tabIndex="-1"
@@ -9855,7 +9736,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4395__label"
               role="presentation"
               tabIndex="-1"
@@ -9912,7 +9792,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4403__label"
               role="presentation"
               tabIndex="-1"
@@ -9969,7 +9848,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4407__label"
               role="presentation"
               tabIndex="-1"
@@ -10026,7 +9904,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4411__label"
               role="presentation"
               tabIndex="-1"
@@ -10083,7 +9960,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4419__label"
               role="presentation"
               tabIndex="-1"
@@ -10140,7 +10016,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4422__label"
               role="presentation"
               tabIndex="-1"
@@ -10197,7 +10072,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4426__label"
               role="presentation"
               tabIndex="-1"
@@ -10254,7 +10128,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4429__label"
               role="presentation"
               tabIndex="-1"
@@ -10311,7 +10184,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4432__label"
               role="presentation"
               tabIndex="-1"
@@ -10368,7 +10240,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4438__label"
               role="presentation"
               tabIndex="-1"
@@ -10425,7 +10296,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4440__label"
               role="presentation"
               tabIndex="-1"
@@ -10482,7 +10352,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4443__label"
               role="presentation"
               tabIndex="-1"
@@ -10539,7 +10408,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4446__label"
               role="presentation"
               tabIndex="-1"
@@ -10596,7 +10464,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4450__label"
               role="presentation"
               tabIndex="-1"
@@ -10653,7 +10520,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4458__label"
               role="presentation"
               tabIndex="-1"
@@ -10710,7 +10576,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4463__label"
               role="presentation"
               tabIndex="-1"
@@ -10767,7 +10632,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4465__label"
               role="presentation"
               tabIndex="-1"
@@ -10824,7 +10688,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4469__label"
               role="presentation"
               tabIndex="-1"
@@ -10881,7 +10744,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4474__label"
               role="presentation"
               tabIndex="-1"
@@ -10938,7 +10800,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4477__label"
               role="presentation"
               tabIndex="-1"
@@ -10995,7 +10856,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4482__label"
               role="presentation"
               tabIndex="-1"
@@ -11052,7 +10912,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4486__label"
               role="presentation"
               tabIndex="-1"
@@ -11109,7 +10968,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4492__label"
               role="presentation"
               tabIndex="-1"
@@ -11166,7 +11024,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4497__label"
               role="presentation"
               tabIndex="-1"
@@ -11223,7 +11080,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4499__label"
               role="presentation"
               tabIndex="-1"
@@ -11280,7 +11136,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4501__label"
               role="presentation"
               tabIndex="-1"
@@ -11337,7 +11192,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4505__label"
               role="presentation"
               tabIndex="-1"
@@ -11394,7 +11248,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4508__label"
               role="presentation"
               tabIndex="-1"
@@ -11451,7 +11304,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4516__label"
               role="presentation"
               tabIndex="-1"
@@ -11508,7 +11360,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4522__label"
               role="presentation"
               tabIndex="-1"
@@ -11565,7 +11416,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4528__label"
               role="presentation"
               tabIndex="-1"
@@ -11622,7 +11472,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4532__label"
               role="presentation"
               tabIndex="-1"
@@ -11679,7 +11528,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4534__label"
               role="presentation"
               tabIndex="-1"
@@ -11736,7 +11584,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4540__label"
               role="presentation"
               tabIndex="-1"
@@ -11793,7 +11640,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4542__label"
               role="presentation"
               tabIndex="-1"
@@ -11850,7 +11696,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4551__label"
               role="presentation"
               tabIndex="-1"
@@ -11907,7 +11752,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4560__label"
               role="presentation"
               tabIndex="-1"
@@ -11964,7 +11808,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4568__label"
               role="presentation"
               tabIndex="-1"
@@ -12021,7 +11864,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4576__label"
               role="presentation"
               tabIndex="-1"
@@ -12078,7 +11920,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4585__label"
               role="presentation"
               tabIndex="-1"
@@ -12135,7 +11976,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4587__label"
               role="presentation"
               tabIndex="-1"
@@ -12192,7 +12032,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4592__label"
               role="presentation"
               tabIndex="-1"
@@ -12249,7 +12088,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4595__label"
               role="presentation"
               tabIndex="-1"
@@ -12306,7 +12144,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4603__label"
               role="presentation"
               tabIndex="-1"
@@ -12363,7 +12200,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4615__label"
               role="presentation"
               tabIndex="-1"
@@ -12420,7 +12256,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4620__label"
               role="presentation"
               tabIndex="-1"
@@ -12477,7 +12312,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4626__label"
               role="presentation"
               tabIndex="-1"
@@ -12534,7 +12368,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4631__label"
               role="presentation"
               tabIndex="-1"
@@ -12591,7 +12424,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4634__label"
               role="presentation"
               tabIndex="-1"
@@ -12648,7 +12480,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4636__label"
               role="presentation"
               tabIndex="-1"
@@ -12705,7 +12536,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4638__label"
               role="presentation"
               tabIndex="-1"
@@ -12762,7 +12592,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4644__label"
               role="presentation"
               tabIndex="-1"
@@ -12819,7 +12648,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4646__label"
               role="presentation"
               tabIndex="-1"
@@ -12876,7 +12704,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4652__label"
               role="presentation"
               tabIndex="-1"
@@ -12933,7 +12760,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4656__label"
               role="presentation"
               tabIndex="-1"
@@ -12990,7 +12816,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4664__label"
               role="presentation"
               tabIndex="-1"
@@ -13047,7 +12872,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4666__label"
               role="presentation"
               tabIndex="-1"
@@ -13104,7 +12928,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4669__label"
               role="presentation"
               tabIndex="-1"
@@ -13161,7 +12984,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4673__label"
               role="presentation"
               tabIndex="-1"
@@ -13218,7 +13040,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4679__label"
               role="presentation"
               tabIndex="-1"
@@ -13275,7 +13096,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4684__label"
               role="presentation"
               tabIndex="-1"
@@ -13332,7 +13152,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4688__label"
               role="presentation"
               tabIndex="-1"
@@ -13389,7 +13208,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4692__label"
               role="presentation"
               tabIndex="-1"
@@ -13446,7 +13264,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4700__label"
               role="presentation"
               tabIndex="-1"
@@ -13503,7 +13320,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4708__label"
               role="presentation"
               tabIndex="-1"
@@ -13560,7 +13376,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4710__label"
               role="presentation"
               tabIndex="-1"
@@ -13617,7 +13432,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4714__label"
               role="presentation"
               tabIndex="-1"
@@ -13674,7 +13488,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4716__label"
               role="presentation"
               tabIndex="-1"
@@ -13731,7 +13544,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4722__label"
               role="presentation"
               tabIndex="-1"
@@ -13788,7 +13600,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4727__label"
               role="presentation"
               tabIndex="-1"
@@ -13845,7 +13656,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4733__label"
               role="presentation"
               tabIndex="-1"
@@ -13902,7 +13712,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4736__label"
               role="presentation"
               tabIndex="-1"
@@ -13959,7 +13768,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4741__label"
               role="presentation"
               tabIndex="-1"
@@ -14016,7 +13824,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4750__label"
               role="presentation"
               tabIndex="-1"
@@ -14073,7 +13880,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4752__label"
               role="presentation"
               tabIndex="-1"
@@ -14130,7 +13936,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4758__label"
               role="presentation"
               tabIndex="-1"
@@ -14187,7 +13992,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4763__label"
               role="presentation"
               tabIndex="-1"
@@ -14244,7 +14048,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4765__label"
               role="presentation"
               tabIndex="-1"
@@ -14301,7 +14104,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4773__label"
               role="presentation"
               tabIndex="-1"
@@ -14358,7 +14160,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4777__label"
               role="presentation"
               tabIndex="-1"
@@ -14415,7 +14216,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4783__label"
               role="presentation"
               tabIndex="-1"
@@ -14472,7 +14272,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4785__label"
               role="presentation"
               tabIndex="-1"
@@ -14529,7 +14328,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4791__label"
               role="presentation"
               tabIndex="-1"
@@ -14586,7 +14384,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4796__label"
               role="presentation"
               tabIndex="-1"
@@ -14643,7 +14440,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4800__label"
               role="presentation"
               tabIndex="-1"
@@ -14700,7 +14496,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4808__label"
               role="presentation"
               tabIndex="-1"
@@ -14757,7 +14552,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4814__label"
               role="presentation"
               tabIndex="-1"
@@ -14814,7 +14608,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4819__label"
               role="presentation"
               tabIndex="-1"
@@ -14871,7 +14664,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4825__label"
               role="presentation"
               tabIndex="-1"
@@ -14928,7 +14720,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4833__label"
               role="presentation"
               tabIndex="-1"
@@ -14985,7 +14776,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4838__label"
               role="presentation"
               tabIndex="-1"
@@ -15042,7 +14832,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4841__label"
               role="presentation"
               tabIndex="-1"
@@ -15099,7 +14888,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4843__label"
               role="presentation"
               tabIndex="-1"
@@ -15156,7 +14944,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4855__label"
               role="presentation"
               tabIndex="-1"
@@ -15213,7 +15000,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4863__label"
               role="presentation"
               tabIndex="-1"
@@ -15270,7 +15056,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4867__label"
               role="presentation"
               tabIndex="-1"
@@ -15327,7 +15112,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4871__label"
               role="presentation"
               tabIndex="-1"
@@ -15384,7 +15168,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4879__label"
               role="presentation"
               tabIndex="-1"
@@ -15441,7 +15224,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4881__label"
               role="presentation"
               tabIndex="-1"
@@ -15498,7 +15280,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4885__label"
               role="presentation"
               tabIndex="-1"
@@ -15555,7 +15336,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4887__label"
               role="presentation"
               tabIndex="-1"
@@ -15612,7 +15392,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4890__label"
               role="presentation"
               tabIndex="-1"
@@ -15669,7 +15448,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4894__label"
               role="presentation"
               tabIndex="-1"
@@ -15726,7 +15504,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4896__label"
               role="presentation"
               tabIndex="-1"
@@ -15783,7 +15560,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4898__label"
               role="presentation"
               tabIndex="-1"
@@ -15840,7 +15616,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4900__label"
               role="presentation"
               tabIndex="-1"
@@ -15897,7 +15672,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4904__label"
               role="presentation"
               tabIndex="-1"
@@ -15954,7 +15728,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4908__label"
               role="presentation"
               tabIndex="-1"
@@ -16011,7 +15784,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4910__label"
               role="presentation"
               tabIndex="-1"
@@ -16068,7 +15840,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4912__label"
               role="presentation"
               tabIndex="-1"
@@ -16125,7 +15896,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4916__label"
               role="presentation"
               tabIndex="-1"
@@ -16182,7 +15952,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4918__label"
               role="presentation"
               tabIndex="-1"
@@ -16239,7 +16008,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4921__label"
               role="presentation"
               tabIndex="-1"
@@ -16296,7 +16064,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4923__label"
               role="presentation"
               tabIndex="-1"
@@ -16353,7 +16120,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4925__label"
               role="presentation"
               tabIndex="-1"
@@ -16410,7 +16176,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4928__label"
               role="presentation"
               tabIndex="-1"
@@ -16467,7 +16232,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4934__label"
               role="presentation"
               tabIndex="-1"
@@ -16524,7 +16288,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4938__label"
               role="presentation"
               tabIndex="-1"
@@ -16581,7 +16344,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4944__label"
               role="presentation"
               tabIndex="-1"
@@ -16638,7 +16400,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4946__label"
               role="presentation"
               tabIndex="-1"
@@ -16695,7 +16456,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4949__label"
               role="presentation"
               tabIndex="-1"
@@ -16752,7 +16512,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4951__label"
               role="presentation"
               tabIndex="-1"
@@ -16809,7 +16568,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4957__label"
               role="presentation"
               tabIndex="-1"
@@ -16866,7 +16624,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4959__label"
               role="presentation"
               tabIndex="-1"
@@ -16923,7 +16680,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4962__label"
               role="presentation"
               tabIndex="-1"
@@ -16980,7 +16736,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4964__label"
               role="presentation"
               tabIndex="-1"
@@ -17037,7 +16792,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4973__label"
               role="presentation"
               tabIndex="-1"
@@ -17094,7 +16848,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4981__label"
               role="presentation"
               tabIndex="-1"
@@ -17151,7 +16904,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4983__label"
               role="presentation"
               tabIndex="-1"
@@ -17208,7 +16960,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4985__label"
               role="presentation"
               tabIndex="-1"
@@ -17265,7 +17016,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4987__label"
               role="presentation"
               tabIndex="-1"
@@ -17322,7 +17072,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4989__label"
               role="presentation"
               tabIndex="-1"
@@ -17379,7 +17128,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4992__label"
               role="presentation"
               tabIndex="-1"
@@ -17436,7 +17184,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4996__label"
               role="presentation"
               tabIndex="-1"
@@ -17493,7 +17240,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5002__label"
               role="presentation"
               tabIndex="-1"
@@ -17550,7 +17296,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5004__label"
               role="presentation"
               tabIndex="-1"
@@ -17607,7 +17352,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5010__label"
               role="presentation"
               tabIndex="-1"
@@ -17664,7 +17408,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5013__label"
               role="presentation"
               tabIndex="-1"
@@ -17721,7 +17464,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5019__label"
               role="presentation"
               tabIndex="-1"
@@ -17778,7 +17520,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5023__label"
               role="presentation"
               tabIndex="-1"
@@ -17835,7 +17576,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5031__label"
               role="presentation"
               tabIndex="-1"
@@ -17892,7 +17632,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5036__label"
               role="presentation"
               tabIndex="-1"
@@ -17949,7 +17688,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5044__label"
               role="presentation"
               tabIndex="-1"
@@ -18006,7 +17744,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5047__label"
               role="presentation"
               tabIndex="-1"
@@ -18063,7 +17800,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5052__label"
               role="presentation"
               tabIndex="-1"
@@ -18120,7 +17856,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5064__label"
               role="presentation"
               tabIndex="-1"
@@ -18177,7 +17912,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5073__label"
               role="presentation"
               tabIndex="-1"
@@ -18234,7 +17968,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5077__label"
               role="presentation"
               tabIndex="-1"
@@ -18291,7 +18024,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5079__label"
               role="presentation"
               tabIndex="-1"
@@ -18348,7 +18080,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5081__label"
               role="presentation"
               tabIndex="-1"
@@ -18405,7 +18136,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5087__label"
               role="presentation"
               tabIndex="-1"
@@ -18462,7 +18192,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5091__label"
               role="presentation"
               tabIndex="-1"
@@ -18519,7 +18248,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5095__label"
               role="presentation"
               tabIndex="-1"
@@ -18576,7 +18304,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5098__label"
               role="presentation"
               tabIndex="-1"
@@ -18633,7 +18360,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5104__label"
               role="presentation"
               tabIndex="-1"
@@ -18690,7 +18416,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5109__label"
               role="presentation"
               tabIndex="-1"
@@ -18747,7 +18472,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5114__label"
               role="presentation"
               tabIndex="-1"
@@ -18804,7 +18528,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5116__label"
               role="presentation"
               tabIndex="-1"
@@ -18861,7 +18584,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5121__label"
               role="presentation"
               tabIndex="-1"
@@ -18918,7 +18640,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5127__label"
               role="presentation"
               tabIndex="-1"
@@ -18975,7 +18696,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5136__label"
               role="presentation"
               tabIndex="-1"
@@ -19032,7 +18752,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5140__label"
               role="presentation"
               tabIndex="-1"
@@ -19089,7 +18808,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5148__label"
               role="presentation"
               tabIndex="-1"
@@ -19146,7 +18864,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5156__label"
               role="presentation"
               tabIndex="-1"
@@ -19203,7 +18920,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5164__label"
               role="presentation"
               tabIndex="-1"
@@ -19260,7 +18976,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5168__label"
               role="presentation"
               tabIndex="-1"
@@ -19317,7 +19032,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5172__label"
               role="presentation"
               tabIndex="-1"
@@ -19374,7 +19088,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5178__label"
               role="presentation"
               tabIndex="-1"
@@ -19431,7 +19144,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5182__label"
               role="presentation"
               tabIndex="-1"
@@ -19488,7 +19200,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5186__label"
               role="presentation"
               tabIndex="-1"
@@ -19545,7 +19256,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5192__label"
               role="presentation"
               tabIndex="-1"
@@ -19602,7 +19312,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5194__label"
               role="presentation"
               tabIndex="-1"
@@ -19659,7 +19368,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5199__label"
               role="presentation"
               tabIndex="-1"
@@ -19716,7 +19424,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5205__label"
               role="presentation"
               tabIndex="-1"
@@ -19773,7 +19480,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5209__label"
               role="presentation"
               tabIndex="-1"
@@ -19830,7 +19536,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5217__label"
               role="presentation"
               tabIndex="-1"
@@ -19887,7 +19592,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5220__label"
               role="presentation"
               tabIndex="-1"
@@ -19944,7 +19648,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5228__label"
               role="presentation"
               tabIndex="-1"
@@ -20001,7 +19704,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5234__label"
               role="presentation"
               tabIndex="-1"
@@ -20058,7 +19760,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5242__label"
               role="presentation"
               tabIndex="-1"
@@ -20115,7 +19816,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5244__label"
               role="presentation"
               tabIndex="-1"
@@ -20172,7 +19872,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5248__label"
               role="presentation"
               tabIndex="-1"
@@ -20229,7 +19928,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5252__label"
               role="presentation"
               tabIndex="-1"
@@ -20286,7 +19984,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5256__label"
               role="presentation"
               tabIndex="-1"
@@ -20343,7 +20040,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5260__label"
               role="presentation"
               tabIndex="-1"
@@ -20400,7 +20096,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5268__label"
               role="presentation"
               tabIndex="-1"
@@ -20457,7 +20152,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5273__label"
               role="presentation"
               tabIndex="-1"
@@ -20514,7 +20208,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5282__label"
               role="presentation"
               tabIndex="-1"
@@ -20571,7 +20264,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5288__label"
               role="presentation"
               tabIndex="-1"
@@ -20628,7 +20320,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5290__label"
               role="presentation"
               tabIndex="-1"
@@ -20685,7 +20376,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5299__label"
               role="presentation"
               tabIndex="-1"
@@ -20742,7 +20432,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5302__label"
               role="presentation"
               tabIndex="-1"
@@ -20799,7 +20488,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5307__label"
               role="presentation"
               tabIndex="-1"
@@ -20856,7 +20544,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5309__label"
               role="presentation"
               tabIndex="-1"
@@ -20913,7 +20600,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5311__label"
               role="presentation"
               tabIndex="-1"
@@ -20970,7 +20656,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5317__label"
               role="presentation"
               tabIndex="-1"
@@ -21027,7 +20712,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5323__label"
               role="presentation"
               tabIndex="-1"
@@ -21084,7 +20768,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5325__label"
               role="presentation"
               tabIndex="-1"
@@ -21141,7 +20824,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5327__label"
               role="presentation"
               tabIndex="-1"
@@ -21198,7 +20880,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5329__label"
               role="presentation"
               tabIndex="-1"
@@ -21255,7 +20936,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5337__label"
               role="presentation"
               tabIndex="-1"
@@ -21312,7 +20992,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5341__label"
               role="presentation"
               tabIndex="-1"
@@ -21369,7 +21048,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5343__label"
               role="presentation"
               tabIndex="-1"
@@ -21426,7 +21104,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5349__label"
               role="presentation"
               tabIndex="-1"
@@ -21483,7 +21160,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5351__label"
               role="presentation"
               tabIndex="-1"
@@ -21540,7 +21216,6 @@ exports[`DOM snapshots SLDSTree Large dataset (300+) 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5354__label"
               role="presentation"
               tabIndex="-1"
@@ -21617,7 +21292,6 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -21668,7 +21342,6 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -21725,7 +21398,6 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -21782,7 +21454,6 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -21859,7 +21530,6 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               role="presentation"
               tabIndex="-1"
             >
@@ -21910,7 +21580,6 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-2__label"
               role="presentation"
               tabIndex="-1"
@@ -21967,7 +21636,6 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-3__label"
               role="presentation"
               tabIndex="-1"
@@ -22024,7 +21692,6 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-7__label"
               role="presentation"
               tabIndex="-1"
@@ -22114,7 +21781,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4002__label"
               role="presentation"
               tabIndex="-1"
@@ -22171,7 +21837,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4006__label"
               role="presentation"
               tabIndex="-1"
@@ -22228,7 +21893,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4009__label"
               role="presentation"
               tabIndex="-1"
@@ -22285,7 +21949,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4014__label"
               role="presentation"
               tabIndex="-1"
@@ -22342,7 +22005,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4022__label"
               role="presentation"
               tabIndex="-1"
@@ -22399,7 +22061,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4024__label"
               role="presentation"
               tabIndex="-1"
@@ -22456,7 +22117,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4028__label"
               role="presentation"
               tabIndex="-1"
@@ -22513,7 +22173,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4033__label"
               role="presentation"
               tabIndex="-1"
@@ -22570,7 +22229,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4045__label"
               role="presentation"
               tabIndex="-1"
@@ -22627,7 +22285,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4049__label"
               role="presentation"
               tabIndex="-1"
@@ -22684,7 +22341,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4051__label"
               role="presentation"
               tabIndex="-1"
@@ -22741,7 +22397,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4055__label"
               role="presentation"
               tabIndex="-1"
@@ -22798,7 +22453,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4060__label"
               role="presentation"
               tabIndex="-1"
@@ -22855,7 +22509,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4069__label"
               role="presentation"
               tabIndex="-1"
@@ -22912,7 +22565,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4071__label"
               role="presentation"
               tabIndex="-1"
@@ -22969,7 +22621,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4077__label"
               role="presentation"
               tabIndex="-1"
@@ -23026,7 +22677,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4082__label"
               role="presentation"
               tabIndex="-1"
@@ -23083,7 +22733,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4087__label"
               role="presentation"
               tabIndex="-1"
@@ -23140,7 +22789,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4089__label"
               role="presentation"
               tabIndex="-1"
@@ -23197,7 +22845,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4091__label"
               role="presentation"
               tabIndex="-1"
@@ -23254,7 +22901,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4096__label"
               role="presentation"
               tabIndex="-1"
@@ -23311,7 +22957,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4101__label"
               role="presentation"
               tabIndex="-1"
@@ -23368,7 +23013,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4105__label"
               role="presentation"
               tabIndex="-1"
@@ -23425,7 +23069,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4109__label"
               role="presentation"
               tabIndex="-1"
@@ -23482,7 +23125,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4111__label"
               role="presentation"
               tabIndex="-1"
@@ -23539,7 +23181,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4115__label"
               role="presentation"
               tabIndex="-1"
@@ -23596,7 +23237,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4117__label"
               role="presentation"
               tabIndex="-1"
@@ -23653,7 +23293,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4121__label"
               role="presentation"
               tabIndex="-1"
@@ -23710,7 +23349,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4124__label"
               role="presentation"
               tabIndex="-1"
@@ -23767,7 +23405,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4127__label"
               role="presentation"
               tabIndex="-1"
@@ -23824,7 +23461,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4129__label"
               role="presentation"
               tabIndex="-1"
@@ -23881,7 +23517,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4133__label"
               role="presentation"
               tabIndex="-1"
@@ -23938,7 +23573,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4141__label"
               role="presentation"
               tabIndex="-1"
@@ -23995,7 +23629,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4150__label"
               role="presentation"
               tabIndex="-1"
@@ -24052,7 +23685,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4153__label"
               role="presentation"
               tabIndex="-1"
@@ -24109,7 +23741,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4159__label"
               role="presentation"
               tabIndex="-1"
@@ -24166,7 +23797,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4163__label"
               role="presentation"
               tabIndex="-1"
@@ -24223,7 +23853,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4167__label"
               role="presentation"
               tabIndex="-1"
@@ -24280,7 +23909,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4172__label"
               role="presentation"
               tabIndex="-1"
@@ -24337,7 +23965,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4174__label"
               role="presentation"
               tabIndex="-1"
@@ -24394,7 +24021,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4178__label"
               role="presentation"
               tabIndex="-1"
@@ -24451,7 +24077,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4186__label"
               role="presentation"
               tabIndex="-1"
@@ -24508,7 +24133,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4191__label"
               role="presentation"
               tabIndex="-1"
@@ -24565,7 +24189,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4196__label"
               role="presentation"
               tabIndex="-1"
@@ -24622,7 +24245,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4198__label"
               role="presentation"
               tabIndex="-1"
@@ -24679,7 +24301,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4206__label"
               role="presentation"
               tabIndex="-1"
@@ -24736,7 +24357,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4212__label"
               role="presentation"
               tabIndex="-1"
@@ -24793,7 +24413,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4214__label"
               role="presentation"
               tabIndex="-1"
@@ -24850,7 +24469,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4222__label"
               role="presentation"
               tabIndex="-1"
@@ -24907,7 +24525,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4228__label"
               role="presentation"
               tabIndex="-1"
@@ -24964,7 +24581,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4232__label"
               role="presentation"
               tabIndex="-1"
@@ -25021,7 +24637,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4234__label"
               role="presentation"
               tabIndex="-1"
@@ -25078,7 +24693,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4236__label"
               role="presentation"
               tabIndex="-1"
@@ -25135,7 +24749,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4240__label"
               role="presentation"
               tabIndex="-1"
@@ -25192,7 +24805,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4242__label"
               role="presentation"
               tabIndex="-1"
@@ -25249,7 +24861,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4246__label"
               role="presentation"
               tabIndex="-1"
@@ -25306,7 +24917,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4248__label"
               role="presentation"
               tabIndex="-1"
@@ -25363,7 +24973,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4250__label"
               role="presentation"
               tabIndex="-1"
@@ -25420,7 +25029,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4252__label"
               role="presentation"
               tabIndex="-1"
@@ -25477,7 +25085,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4254__label"
               role="presentation"
               tabIndex="-1"
@@ -25534,7 +25141,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4263__label"
               role="presentation"
               tabIndex="-1"
@@ -25591,7 +25197,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4265__label"
               role="presentation"
               tabIndex="-1"
@@ -25648,7 +25253,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4267__label"
               role="presentation"
               tabIndex="-1"
@@ -25705,7 +25309,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4270__label"
               role="presentation"
               tabIndex="-1"
@@ -25762,7 +25365,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4273__label"
               role="presentation"
               tabIndex="-1"
@@ -25819,7 +25421,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4282__label"
               role="presentation"
               tabIndex="-1"
@@ -25876,7 +25477,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4284__label"
               role="presentation"
               tabIndex="-1"
@@ -25933,7 +25533,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4288__label"
               role="presentation"
               tabIndex="-1"
@@ -25990,7 +25589,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4293__label"
               role="presentation"
               tabIndex="-1"
@@ -26047,7 +25645,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4296__label"
               role="presentation"
               tabIndex="-1"
@@ -26104,7 +25701,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4300__label"
               role="presentation"
               tabIndex="-1"
@@ -26161,7 +25757,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4302__label"
               role="presentation"
               tabIndex="-1"
@@ -26218,7 +25813,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4304__label"
               role="presentation"
               tabIndex="-1"
@@ -26275,7 +25869,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4306__label"
               role="presentation"
               tabIndex="-1"
@@ -26332,7 +25925,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4308__label"
               role="presentation"
               tabIndex="-1"
@@ -26389,7 +25981,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4310__label"
               role="presentation"
               tabIndex="-1"
@@ -26446,7 +26037,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4319__label"
               role="presentation"
               tabIndex="-1"
@@ -26503,7 +26093,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4321__label"
               role="presentation"
               tabIndex="-1"
@@ -26560,7 +26149,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4323__label"
               role="presentation"
               tabIndex="-1"
@@ -26617,7 +26205,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4328__label"
               role="presentation"
               tabIndex="-1"
@@ -26674,7 +26261,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4336__label"
               role="presentation"
               tabIndex="-1"
@@ -26731,7 +26317,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4339__label"
               role="presentation"
               tabIndex="-1"
@@ -26788,7 +26373,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4341__label"
               role="presentation"
               tabIndex="-1"
@@ -26845,7 +26429,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4343__label"
               role="presentation"
               tabIndex="-1"
@@ -26902,7 +26485,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4348__label"
               role="presentation"
               tabIndex="-1"
@@ -26959,7 +26541,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4356__label"
               role="presentation"
               tabIndex="-1"
@@ -27016,7 +26597,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4359__label"
               role="presentation"
               tabIndex="-1"
@@ -27073,7 +26653,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4363__label"
               role="presentation"
               tabIndex="-1"
@@ -27130,7 +26709,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4365__label"
               role="presentation"
               tabIndex="-1"
@@ -27187,7 +26765,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4369__label"
               role="presentation"
               tabIndex="-1"
@@ -27244,7 +26821,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4375__label"
               role="presentation"
               tabIndex="-1"
@@ -27301,7 +26877,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4384__label"
               role="presentation"
               tabIndex="-1"
@@ -27358,7 +26933,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4388__label"
               role="presentation"
               tabIndex="-1"
@@ -27415,7 +26989,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4390__label"
               role="presentation"
               tabIndex="-1"
@@ -27472,7 +27045,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4395__label"
               role="presentation"
               tabIndex="-1"
@@ -27529,7 +27101,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4403__label"
               role="presentation"
               tabIndex="-1"
@@ -27586,7 +27157,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4407__label"
               role="presentation"
               tabIndex="-1"
@@ -27643,7 +27213,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4411__label"
               role="presentation"
               tabIndex="-1"
@@ -27700,7 +27269,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4419__label"
               role="presentation"
               tabIndex="-1"
@@ -27757,7 +27325,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4422__label"
               role="presentation"
               tabIndex="-1"
@@ -27814,7 +27381,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4426__label"
               role="presentation"
               tabIndex="-1"
@@ -27871,7 +27437,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4429__label"
               role="presentation"
               tabIndex="-1"
@@ -27928,7 +27493,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4432__label"
               role="presentation"
               tabIndex="-1"
@@ -27985,7 +27549,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4438__label"
               role="presentation"
               tabIndex="-1"
@@ -28042,7 +27605,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4440__label"
               role="presentation"
               tabIndex="-1"
@@ -28099,7 +27661,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4443__label"
               role="presentation"
               tabIndex="-1"
@@ -28156,7 +27717,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4446__label"
               role="presentation"
               tabIndex="-1"
@@ -28213,7 +27773,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4450__label"
               role="presentation"
               tabIndex="-1"
@@ -28270,7 +27829,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4458__label"
               role="presentation"
               tabIndex="-1"
@@ -28327,7 +27885,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4463__label"
               role="presentation"
               tabIndex="-1"
@@ -28384,7 +27941,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4465__label"
               role="presentation"
               tabIndex="-1"
@@ -28441,7 +27997,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4469__label"
               role="presentation"
               tabIndex="-1"
@@ -28498,7 +28053,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4474__label"
               role="presentation"
               tabIndex="-1"
@@ -28555,7 +28109,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4477__label"
               role="presentation"
               tabIndex="-1"
@@ -28612,7 +28165,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4482__label"
               role="presentation"
               tabIndex="-1"
@@ -28669,7 +28221,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4486__label"
               role="presentation"
               tabIndex="-1"
@@ -28726,7 +28277,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4492__label"
               role="presentation"
               tabIndex="-1"
@@ -28783,7 +28333,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4497__label"
               role="presentation"
               tabIndex="-1"
@@ -28840,7 +28389,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4499__label"
               role="presentation"
               tabIndex="-1"
@@ -28897,7 +28445,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4501__label"
               role="presentation"
               tabIndex="-1"
@@ -28954,7 +28501,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4505__label"
               role="presentation"
               tabIndex="-1"
@@ -29011,7 +28557,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4508__label"
               role="presentation"
               tabIndex="-1"
@@ -29068,7 +28613,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4516__label"
               role="presentation"
               tabIndex="-1"
@@ -29125,7 +28669,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4522__label"
               role="presentation"
               tabIndex="-1"
@@ -29182,7 +28725,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4528__label"
               role="presentation"
               tabIndex="-1"
@@ -29239,7 +28781,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4532__label"
               role="presentation"
               tabIndex="-1"
@@ -29296,7 +28837,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4534__label"
               role="presentation"
               tabIndex="-1"
@@ -29353,7 +28893,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4540__label"
               role="presentation"
               tabIndex="-1"
@@ -29410,7 +28949,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4542__label"
               role="presentation"
               tabIndex="-1"
@@ -29467,7 +29005,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4551__label"
               role="presentation"
               tabIndex="-1"
@@ -29524,7 +29061,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4560__label"
               role="presentation"
               tabIndex="-1"
@@ -29581,7 +29117,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4568__label"
               role="presentation"
               tabIndex="-1"
@@ -29638,7 +29173,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4576__label"
               role="presentation"
               tabIndex="-1"
@@ -29695,7 +29229,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4585__label"
               role="presentation"
               tabIndex="-1"
@@ -29752,7 +29285,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4587__label"
               role="presentation"
               tabIndex="-1"
@@ -29809,7 +29341,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4592__label"
               role="presentation"
               tabIndex="-1"
@@ -29866,7 +29397,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4595__label"
               role="presentation"
               tabIndex="-1"
@@ -29923,7 +29453,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4603__label"
               role="presentation"
               tabIndex="-1"
@@ -29980,7 +29509,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4615__label"
               role="presentation"
               tabIndex="-1"
@@ -30037,7 +29565,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4620__label"
               role="presentation"
               tabIndex="-1"
@@ -30094,7 +29621,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4626__label"
               role="presentation"
               tabIndex="-1"
@@ -30151,7 +29677,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4631__label"
               role="presentation"
               tabIndex="-1"
@@ -30208,7 +29733,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4634__label"
               role="presentation"
               tabIndex="-1"
@@ -30265,7 +29789,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4636__label"
               role="presentation"
               tabIndex="-1"
@@ -30322,7 +29845,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4638__label"
               role="presentation"
               tabIndex="-1"
@@ -30379,7 +29901,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4644__label"
               role="presentation"
               tabIndex="-1"
@@ -30436,7 +29957,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4646__label"
               role="presentation"
               tabIndex="-1"
@@ -30493,7 +30013,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4652__label"
               role="presentation"
               tabIndex="-1"
@@ -30550,7 +30069,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4656__label"
               role="presentation"
               tabIndex="-1"
@@ -30607,7 +30125,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4664__label"
               role="presentation"
               tabIndex="-1"
@@ -30664,7 +30181,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4666__label"
               role="presentation"
               tabIndex="-1"
@@ -30721,7 +30237,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4669__label"
               role="presentation"
               tabIndex="-1"
@@ -30778,7 +30293,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4673__label"
               role="presentation"
               tabIndex="-1"
@@ -30835,7 +30349,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4679__label"
               role="presentation"
               tabIndex="-1"
@@ -30892,7 +30405,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4684__label"
               role="presentation"
               tabIndex="-1"
@@ -30949,7 +30461,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4688__label"
               role="presentation"
               tabIndex="-1"
@@ -31006,7 +30517,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4692__label"
               role="presentation"
               tabIndex="-1"
@@ -31063,7 +30573,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4700__label"
               role="presentation"
               tabIndex="-1"
@@ -31120,7 +30629,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4708__label"
               role="presentation"
               tabIndex="-1"
@@ -31177,7 +30685,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4710__label"
               role="presentation"
               tabIndex="-1"
@@ -31234,7 +30741,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4714__label"
               role="presentation"
               tabIndex="-1"
@@ -31291,7 +30797,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4716__label"
               role="presentation"
               tabIndex="-1"
@@ -31348,7 +30853,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4722__label"
               role="presentation"
               tabIndex="-1"
@@ -31405,7 +30909,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4727__label"
               role="presentation"
               tabIndex="-1"
@@ -31462,7 +30965,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4733__label"
               role="presentation"
               tabIndex="-1"
@@ -31519,7 +31021,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4736__label"
               role="presentation"
               tabIndex="-1"
@@ -31576,7 +31077,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4741__label"
               role="presentation"
               tabIndex="-1"
@@ -31633,7 +31133,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4750__label"
               role="presentation"
               tabIndex="-1"
@@ -31690,7 +31189,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4752__label"
               role="presentation"
               tabIndex="-1"
@@ -31747,7 +31245,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4758__label"
               role="presentation"
               tabIndex="-1"
@@ -31804,7 +31301,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4763__label"
               role="presentation"
               tabIndex="-1"
@@ -31861,7 +31357,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4765__label"
               role="presentation"
               tabIndex="-1"
@@ -31918,7 +31413,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4773__label"
               role="presentation"
               tabIndex="-1"
@@ -31975,7 +31469,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4777__label"
               role="presentation"
               tabIndex="-1"
@@ -32032,7 +31525,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4783__label"
               role="presentation"
               tabIndex="-1"
@@ -32089,7 +31581,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4785__label"
               role="presentation"
               tabIndex="-1"
@@ -32146,7 +31637,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4791__label"
               role="presentation"
               tabIndex="-1"
@@ -32203,7 +31693,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4796__label"
               role="presentation"
               tabIndex="-1"
@@ -32260,7 +31749,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4800__label"
               role="presentation"
               tabIndex="-1"
@@ -32317,7 +31805,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4808__label"
               role="presentation"
               tabIndex="-1"
@@ -32374,7 +31861,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4814__label"
               role="presentation"
               tabIndex="-1"
@@ -32431,7 +31917,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4819__label"
               role="presentation"
               tabIndex="-1"
@@ -32488,7 +31973,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4825__label"
               role="presentation"
               tabIndex="-1"
@@ -32545,7 +32029,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4833__label"
               role="presentation"
               tabIndex="-1"
@@ -32602,7 +32085,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4838__label"
               role="presentation"
               tabIndex="-1"
@@ -32659,7 +32141,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4841__label"
               role="presentation"
               tabIndex="-1"
@@ -32716,7 +32197,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4843__label"
               role="presentation"
               tabIndex="-1"
@@ -32773,7 +32253,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4855__label"
               role="presentation"
               tabIndex="-1"
@@ -32830,7 +32309,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4863__label"
               role="presentation"
               tabIndex="-1"
@@ -32887,7 +32365,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4867__label"
               role="presentation"
               tabIndex="-1"
@@ -32944,7 +32421,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4871__label"
               role="presentation"
               tabIndex="-1"
@@ -33001,7 +32477,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4879__label"
               role="presentation"
               tabIndex="-1"
@@ -33058,7 +32533,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4881__label"
               role="presentation"
               tabIndex="-1"
@@ -33115,7 +32589,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4885__label"
               role="presentation"
               tabIndex="-1"
@@ -33172,7 +32645,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4887__label"
               role="presentation"
               tabIndex="-1"
@@ -33229,7 +32701,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4890__label"
               role="presentation"
               tabIndex="-1"
@@ -33286,7 +32757,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4894__label"
               role="presentation"
               tabIndex="-1"
@@ -33343,7 +32813,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4896__label"
               role="presentation"
               tabIndex="-1"
@@ -33400,7 +32869,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4898__label"
               role="presentation"
               tabIndex="-1"
@@ -33457,7 +32925,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4900__label"
               role="presentation"
               tabIndex="-1"
@@ -33514,7 +32981,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4904__label"
               role="presentation"
               tabIndex="-1"
@@ -33571,7 +33037,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4908__label"
               role="presentation"
               tabIndex="-1"
@@ -33628,7 +33093,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4910__label"
               role="presentation"
               tabIndex="-1"
@@ -33685,7 +33149,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4912__label"
               role="presentation"
               tabIndex="-1"
@@ -33742,7 +33205,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4916__label"
               role="presentation"
               tabIndex="-1"
@@ -33799,7 +33261,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4918__label"
               role="presentation"
               tabIndex="-1"
@@ -33856,7 +33317,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4921__label"
               role="presentation"
               tabIndex="-1"
@@ -33913,7 +33373,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4923__label"
               role="presentation"
               tabIndex="-1"
@@ -33970,7 +33429,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4925__label"
               role="presentation"
               tabIndex="-1"
@@ -34027,7 +33485,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4928__label"
               role="presentation"
               tabIndex="-1"
@@ -34084,7 +33541,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4934__label"
               role="presentation"
               tabIndex="-1"
@@ -34141,7 +33597,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4938__label"
               role="presentation"
               tabIndex="-1"
@@ -34198,7 +33653,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4944__label"
               role="presentation"
               tabIndex="-1"
@@ -34255,7 +33709,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4946__label"
               role="presentation"
               tabIndex="-1"
@@ -34312,7 +33765,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4949__label"
               role="presentation"
               tabIndex="-1"
@@ -34369,7 +33821,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4951__label"
               role="presentation"
               tabIndex="-1"
@@ -34426,7 +33877,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4957__label"
               role="presentation"
               tabIndex="-1"
@@ -34483,7 +33933,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4959__label"
               role="presentation"
               tabIndex="-1"
@@ -34540,7 +33989,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4962__label"
               role="presentation"
               tabIndex="-1"
@@ -34597,7 +34045,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4964__label"
               role="presentation"
               tabIndex="-1"
@@ -34654,7 +34101,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4973__label"
               role="presentation"
               tabIndex="-1"
@@ -34711,7 +34157,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4981__label"
               role="presentation"
               tabIndex="-1"
@@ -34768,7 +34213,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4983__label"
               role="presentation"
               tabIndex="-1"
@@ -34825,7 +34269,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4985__label"
               role="presentation"
               tabIndex="-1"
@@ -34882,7 +34325,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4987__label"
               role="presentation"
               tabIndex="-1"
@@ -34939,7 +34381,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4989__label"
               role="presentation"
               tabIndex="-1"
@@ -34996,7 +34437,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4992__label"
               role="presentation"
               tabIndex="-1"
@@ -35053,7 +34493,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-4996__label"
               role="presentation"
               tabIndex="-1"
@@ -35110,7 +34549,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5002__label"
               role="presentation"
               tabIndex="-1"
@@ -35167,7 +34605,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5004__label"
               role="presentation"
               tabIndex="-1"
@@ -35224,7 +34661,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5010__label"
               role="presentation"
               tabIndex="-1"
@@ -35281,7 +34717,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5013__label"
               role="presentation"
               tabIndex="-1"
@@ -35338,7 +34773,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5019__label"
               role="presentation"
               tabIndex="-1"
@@ -35395,7 +34829,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5023__label"
               role="presentation"
               tabIndex="-1"
@@ -35452,7 +34885,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5031__label"
               role="presentation"
               tabIndex="-1"
@@ -35509,7 +34941,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5036__label"
               role="presentation"
               tabIndex="-1"
@@ -35566,7 +34997,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5044__label"
               role="presentation"
               tabIndex="-1"
@@ -35623,7 +35053,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5047__label"
               role="presentation"
               tabIndex="-1"
@@ -35680,7 +35109,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5052__label"
               role="presentation"
               tabIndex="-1"
@@ -35737,7 +35165,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5064__label"
               role="presentation"
               tabIndex="-1"
@@ -35794,7 +35221,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5073__label"
               role="presentation"
               tabIndex="-1"
@@ -35851,7 +35277,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5077__label"
               role="presentation"
               tabIndex="-1"
@@ -35908,7 +35333,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5079__label"
               role="presentation"
               tabIndex="-1"
@@ -35965,7 +35389,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5081__label"
               role="presentation"
               tabIndex="-1"
@@ -36022,7 +35445,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5087__label"
               role="presentation"
               tabIndex="-1"
@@ -36079,7 +35501,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5091__label"
               role="presentation"
               tabIndex="-1"
@@ -36136,7 +35557,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5095__label"
               role="presentation"
               tabIndex="-1"
@@ -36193,7 +35613,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5098__label"
               role="presentation"
               tabIndex="-1"
@@ -36250,7 +35669,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5104__label"
               role="presentation"
               tabIndex="-1"
@@ -36307,7 +35725,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5109__label"
               role="presentation"
               tabIndex="-1"
@@ -36364,7 +35781,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5114__label"
               role="presentation"
               tabIndex="-1"
@@ -36421,7 +35837,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5116__label"
               role="presentation"
               tabIndex="-1"
@@ -36478,7 +35893,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5121__label"
               role="presentation"
               tabIndex="-1"
@@ -36535,7 +35949,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5127__label"
               role="presentation"
               tabIndex="-1"
@@ -36592,7 +36005,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5136__label"
               role="presentation"
               tabIndex="-1"
@@ -36649,7 +36061,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5140__label"
               role="presentation"
               tabIndex="-1"
@@ -36706,7 +36117,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5148__label"
               role="presentation"
               tabIndex="-1"
@@ -36763,7 +36173,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5156__label"
               role="presentation"
               tabIndex="-1"
@@ -36820,7 +36229,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5164__label"
               role="presentation"
               tabIndex="-1"
@@ -36877,7 +36285,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5168__label"
               role="presentation"
               tabIndex="-1"
@@ -36934,7 +36341,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5172__label"
               role="presentation"
               tabIndex="-1"
@@ -36991,7 +36397,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5178__label"
               role="presentation"
               tabIndex="-1"
@@ -37048,7 +36453,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5182__label"
               role="presentation"
               tabIndex="-1"
@@ -37105,7 +36509,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5186__label"
               role="presentation"
               tabIndex="-1"
@@ -37162,7 +36565,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5192__label"
               role="presentation"
               tabIndex="-1"
@@ -37219,7 +36621,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5194__label"
               role="presentation"
               tabIndex="-1"
@@ -37276,7 +36677,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5199__label"
               role="presentation"
               tabIndex="-1"
@@ -37333,7 +36733,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5205__label"
               role="presentation"
               tabIndex="-1"
@@ -37390,7 +36789,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5209__label"
               role="presentation"
               tabIndex="-1"
@@ -37447,7 +36845,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5217__label"
               role="presentation"
               tabIndex="-1"
@@ -37504,7 +36901,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5220__label"
               role="presentation"
               tabIndex="-1"
@@ -37561,7 +36957,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5228__label"
               role="presentation"
               tabIndex="-1"
@@ -37618,7 +37013,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5234__label"
               role="presentation"
               tabIndex="-1"
@@ -37675,7 +37069,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5242__label"
               role="presentation"
               tabIndex="-1"
@@ -37732,7 +37125,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5244__label"
               role="presentation"
               tabIndex="-1"
@@ -37789,7 +37181,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5248__label"
               role="presentation"
               tabIndex="-1"
@@ -37846,7 +37237,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5252__label"
               role="presentation"
               tabIndex="-1"
@@ -37903,7 +37293,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5256__label"
               role="presentation"
               tabIndex="-1"
@@ -37960,7 +37349,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5260__label"
               role="presentation"
               tabIndex="-1"
@@ -38017,7 +37405,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5268__label"
               role="presentation"
               tabIndex="-1"
@@ -38074,7 +37461,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5273__label"
               role="presentation"
               tabIndex="-1"
@@ -38131,7 +37517,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5282__label"
               role="presentation"
               tabIndex="-1"
@@ -38188,7 +37573,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5288__label"
               role="presentation"
               tabIndex="-1"
@@ -38245,7 +37629,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5290__label"
               role="presentation"
               tabIndex="-1"
@@ -38302,7 +37685,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5299__label"
               role="presentation"
               tabIndex="-1"
@@ -38359,7 +37741,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5302__label"
               role="presentation"
               tabIndex="-1"
@@ -38416,7 +37797,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5307__label"
               role="presentation"
               tabIndex="-1"
@@ -38473,7 +37853,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5309__label"
               role="presentation"
               tabIndex="-1"
@@ -38530,7 +37909,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5311__label"
               role="presentation"
               tabIndex="-1"
@@ -38587,7 +37965,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5317__label"
               role="presentation"
               tabIndex="-1"
@@ -38644,7 +38021,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5323__label"
               role="presentation"
               tabIndex="-1"
@@ -38701,7 +38077,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5325__label"
               role="presentation"
               tabIndex="-1"
@@ -38758,7 +38133,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5327__label"
               role="presentation"
               tabIndex="-1"
@@ -38815,7 +38189,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5329__label"
               role="presentation"
               tabIndex="-1"
@@ -38872,7 +38245,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5337__label"
               role="presentation"
               tabIndex="-1"
@@ -38929,7 +38301,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5341__label"
               role="presentation"
               tabIndex="-1"
@@ -38986,7 +38357,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5343__label"
               role="presentation"
               tabIndex="-1"
@@ -39043,7 +38413,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5349__label"
               role="presentation"
               tabIndex="-1"
@@ -39100,7 +38469,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5351__label"
               role="presentation"
               tabIndex="-1"
@@ -39157,7 +38525,6 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
             </button>
             <a
               className="slds-truncate"
-              href="javascript:void(0)"
               id="example-tree-5354__label"
               role="presentation"
               tabIndex="-1"
