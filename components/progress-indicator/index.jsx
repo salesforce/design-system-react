@@ -58,7 +58,7 @@ const propTypes = {
 	 */
 	disabledSteps: PropTypes.array,
 	/**
-	 * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step.
+	 * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step. If an error occurs a second error icon should be placed to the left of related confirmation buttons (e.g. Cancel, Save) and an Error Popover should appear indicating there are errors. These additional items are NOT part of this component. This note was included for visibility purposes. Please refer to [SLDS website](https://www.lightningdesignsystem.com/components/progress-indicator/) for full details **
 	 */
 	errorSteps: PropTypes.array,
 	/**
