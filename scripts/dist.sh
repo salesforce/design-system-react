@@ -36,6 +36,7 @@ echo "## Cloning additional files"
 cp .gitignore .tmp/.gitignore
 cp LICENSE.txt .tmp/LICENSE.txt
 cp package.json .tmp/package.json
+cp -r docs .tmp/docs
 cp docs/README-dist.md .tmp/README.md
 
 echo "## Running JS steps"
