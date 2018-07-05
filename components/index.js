@@ -102,6 +102,9 @@ export Datepicker from './date-picker';
 export SLDSIcon from './icon';
 export Icon from './icon';
 
+export SLDSIllustration from './illustration';
+export Illustration from './illustration';
+
 // TODO: Should probably be removed from export and only used internally. This component does not implement Button Icons per SLDS, but only the icons in buttons
 export SLDSButtonIcon from './icon/button-icon';
 export ButtonIcon from './icon/button-icon';

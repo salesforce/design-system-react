@@ -2924,6 +2924,118 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSIllustration Heading Only 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration"
+  >
+    <svg
+      aria-hidden="true"
+    >
+      <use />
+    </svg>
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Heading and Message 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration"
+  >
+    <svg
+      aria-hidden="true"
+    >
+      <use />
+    </svg>
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Image and Text 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration"
+  >
+    <svg
+      aria-hidden="true"
+    >
+      <use
+        xlinkHref="/assets/images/illustrations/NoAccess.svg#no-access"
+      />
+    </svg>
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Message Only 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration"
+  >
+    <svg
+      aria-hidden="true"
+    >
+      <use />
+    </svg>
+    <div
+      className="slds-text-longform"
+    >
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
 <div
   className="slds-p-around--medium"
