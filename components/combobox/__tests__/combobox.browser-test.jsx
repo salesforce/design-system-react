@@ -453,7 +453,7 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has attribute "disabled"', function() {
+		it('has attribute "disabled"', function () {
 			wrapper = mount(<DemoComponent disabled />, {
 				attachTo: mountNode,
 			});
@@ -461,6 +461,5 @@ describe('SLDSCombobox', function () {
 			const nodes = getNodes({ wrapper });
 			expect(nodes.input.node.getAttribute('disabled')).to.equal('');
 		});
-
-	})
+	});
 });

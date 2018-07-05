@@ -108,6 +108,4 @@ storiesOf(COMBOBOX, module)
 	.add('Snapshot Readonly Single Selection Custom Menu Item', () => (
 		<SnapshotReadonlySingleSelectionCustomMenuItemOpen action={action} />
 	))
-	.add('Disabled', () => (
-		<Disabled action={action} />
-	));
+	.add('Disabled', () => <Disabled action={action} />);
