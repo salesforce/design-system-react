@@ -755,6 +755,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						disabled={props.disabled}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -880,6 +881,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						disabled={props.disabled}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -998,6 +1000,7 @@ class Combobox extends React.Component {
 										props.value
 									: value
 							}
+							disabled={props.disabled}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1117,6 +1120,7 @@ class Combobox extends React.Component {
 							required={props.required}
 							role="textbox"
 							value={value}
+							disabled={props.disabled}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1224,6 +1228,7 @@ class Combobox extends React.Component {
 								(this.state.activeOption && this.state.activeOption.label) ||
 								value
 							}
+							disabled={props.disabled}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
