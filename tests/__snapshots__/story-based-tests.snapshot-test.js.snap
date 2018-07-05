@@ -3129,7 +3129,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
   <div
     style={
       Object {
-        "padding": "2rem 1rem 0px",
+        "padding": "4rem 1rem 0px",
       }
     }
   >
@@ -3342,7 +3342,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
   <div
     style={
       Object {
-        "padding": "2rem 1rem 0px",
+        "padding": "4rem 1rem 0px",
       }
     }
   >
@@ -3691,7 +3691,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
   <div
     style={
       Object {
-        "padding": "2rem 1rem 0px",
+        "padding": "4rem 1rem 0px",
       }
     }
   >
@@ -3918,7 +3918,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
   <div
     style={
       Object {
-        "padding": "2rem 1rem 0px",
+        "padding": "4rem 1rem 0px",
       }
     }
   >

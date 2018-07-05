@@ -7,7 +7,7 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div style={{ padding: '2rem 1rem 0px' }}>
+			<div style={{ padding: '4rem 1rem 0px' }}>
 				<ProgressIndicator {...this.props} />
 			</div>
 		);
