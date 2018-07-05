@@ -12,7 +12,6 @@ import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
-import Popover from '../../popover';
 
 const options = [
 	{
@@ -213,141 +212,10 @@ const getDropdownCustomContent = (props) => (
 	</Dropdown>
 );
 
-const getVictor = (props) => (
-	<div>
-		<div>
-			<Popover
-				align="bottom right"
-				assistiveText="This is a popover."
-				body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-				hasStaticAlignment
-				heading="My Popover"
-				position="absolute"
-				id="myPopoverId"
-			>
-				<Button
-					iconVariant="container"
-					iconCategory="utility"
-					iconName="down"
-					variant="icon"
-				/>
-			</Popover>
-		</div>
-		<div style={{ marginBottom: 0 }}>
-			Nubbin:
-			<Dropdown
-				iconName="down"
-				buttonVariant="icon"
-				iconVariant="bare"
-				align="right"
-				nubbinPosition="top right"
-				assistiveText="More Options"
-				menuPosition="relative"
-				onSelect={(value) => {
-					console.log('selected: ', value);
-				}}
-				options={[
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-				]}
-			>
-				<Trigger>
-					<Button iconVariant="container" iconName="down" />
-				</Trigger>
-			</Dropdown>
-		</div>
-		<div style={{ marginBottom: 0 }}>
-			relative:
-			<Dropdown
-				iconName="down"
-				buttonVariant="icon"
-				iconVariant="bare"
-				nubbinPosition="top right"
-				assistiveText="More Options"
-				menuPosition="relative"
-				onSelect={(value) => {
-					console.log('selected: ', value);
-				}}
-				options={[
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-				]}
-			>
-				<Trigger>
-					<Button iconVariant="container" iconName="down" />
-				</Trigger>
-			</Dropdown>
-		</div>
-		<div style={{ marginBottom: 0 }}>
-			absolute:
-			<Dropdown
-				iconName="down"
-				buttonVariant="icon"
-				iconVariant="bare"
-				nubbinPosition="top right"
-				assistiveText="More Options"
-				menuPosition="absolute"
-				onSelect={(value) => {
-					console.log('selected: ', value);
-				}}
-				options={[
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-				]}
-			>
-				<Trigger>
-					<Button iconVariant="container" iconName="down" />
-				</Trigger>
-			</Dropdown>
-		</div>
-		<div style={{ marginBottom: 0 }}>
-			Overflow:
-			<Dropdown
-				iconName="down"
-				buttonVariant="icon"
-				iconVariant="bare"
-				align="right"
-				assistiveText="More Options"
-				menuPosition="overflowBoundaryElement"
-				onSelect={(value) => {
-					console.log('selected: ', value);
-				}}
-				options={[
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-					{ label: 'Menu Sub Heading', type: 'header' },
-					{ label: 'Menu Item One', value: 'A0' },
-					{ label: 'Menu Item Two', value: 'B0' },
-				]}
-			/>
-		</div>
-	</div>
-);
-
 storiesOf(MENU_DROPDOWN, module)
 	.addDecorator((getStory) => (
-		<div className="">
+		<div className="slds-p-around--medium slds-text-align--center">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
-		</div>
-	))
-	.add('Victor breaks things', () => (
-		<div>
-			{getVictor()}
-			<hr />
-			<div style={{ marginLeft: 500 }}>{getVictor()}</div>
 		</div>
 	))
 	.add('Base', () =>
