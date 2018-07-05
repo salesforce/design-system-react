@@ -139,13 +139,13 @@ class Slider extends React.Component {
 
 	handleChange = (event) => {
 		if (isFunction(this.props.onChange)) {
-			this.props.onChange(event, { value: parseInt(event.target.value, 10) });
+			this.props.onChange(event, { value: Number(event.target.value) });
 		}
 	};
 
 	handleInput = (event) => {
 		if (isFunction(this.props.onInput)) {
-			this.props.onInput(event, { value: parseInt(event.target.value, 10) });
+			this.props.onInput(event, { value: Number(event.target.value) });
 		}
 	};
 
