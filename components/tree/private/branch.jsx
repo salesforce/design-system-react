@@ -312,7 +312,6 @@ const renderBranch = (children, props) => {
 				{/* eslint-disable no-script-url */}
 				<a
 					id={`${props.htmlId}__label`}
-					href="javascript:void(0)"
 					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
 					role="presentation"
 					className="slds-truncate"

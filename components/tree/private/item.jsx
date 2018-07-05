@@ -176,7 +176,6 @@ const Item = (props) => {
 				{/* eslint-disable no-script-url */}
 				<a
 					tabIndex="-1"
-					href="javascript:void(0)"
 					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
 					role="presentation"
 					className="slds-truncate"
