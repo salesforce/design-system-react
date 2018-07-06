@@ -2931,11 +2931,6 @@ exports[`DOM snapshots SLDSIllustration Heading Only 1`] = `
   <div
     className="slds-illustration"
   >
-    <svg
-      aria-hidden="true"
-    >
-      <use />
-    </svg>
     <div
       className="slds-text-longform"
     >
@@ -2956,11 +2951,6 @@ exports[`DOM snapshots SLDSIllustration Heading and Message 1`] = `
   <div
     className="slds-illustration"
   >
-    <svg
-      aria-hidden="true"
-    >
-      <use />
-    </svg>
     <div
       className="slds-text-longform"
     >
@@ -2988,6 +2978,8 @@ exports[`DOM snapshots SLDSIllustration Image and Text 1`] = `
   >
     <svg
       aria-hidden="true"
+      className="slds-illustration__svg"
+      name="no-access"
     >
       <use
         xlinkHref="/assets/images/illustrations/NoAccess.svg#no-access"
@@ -3018,11 +3010,6 @@ exports[`DOM snapshots SLDSIllustration Message Only 1`] = `
   <div
     className="slds-illustration"
   >
-    <svg
-      aria-hidden="true"
-    >
-      <use />
-    </svg>
     <div
       className="slds-text-longform"
     >

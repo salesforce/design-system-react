@@ -38,18 +38,18 @@ const Illustration = ({
 	style
 }) => {
 	checkProps('Illustration', { illustration, internalIllustration, heading, path });
-	const kababCaseName = name ? name.replace(/_/g, '-') : '';
+	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	let illustrationSvg;
 	let headingNode;
 	let messagBodyNode;
 	if (illustration) {
 		// Use SVG data passed in with `illustration` prop
 		illustrationSvg = (
-			<Svg aria-hidden="true" data={illustration} name={kababCaseName} style={style} />
+			<Svg className="slds-illustration__svg" aria-hidden="true" data={illustration} name={kababCaseName} style={style} />
 		);
-	} else {
+	} else if (path) {
 		illustrationSvg = (
-			<svg aria-hidden="true" key={kababCaseName} style={style}>
+			<svg className="slds-illustration__svg" aria-hidden="true" name={kababCaseName} style={style}>
 				<use xlinkHref={path} />
 			</svg>
 		);
@@ -93,7 +93,7 @@ Illustration.displayName = ILLUSTRATION;
 // ### Prop Types
 Illustration.propTypes = {
 	/**
-	 * CSS classes that are applied to the SVG.
+	 * CSS classes that are applied to the SVG. _Tested with Mocha testing._
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
@@ -101,11 +101,11 @@ Illustration.propTypes = {
 		PropTypes.string
 	]),
 	/**
-	 * A heading text inline that must be accompanied with the illustration image.
+	 * A heading text inline that must be accompanied with the illustration image. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	heading: PropTypes.string,
 	/**
-	 * A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/illustrations` for examples and syntax.
+	 * A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	illustration: PropTypes.object,
 	/**
@@ -113,23 +113,23 @@ Illustration.propTypes = {
 	 */
 	internalIllustration: PropTypes.bool.isRequired,
 	/**
-	 * A message body below the heading to further communicate the state of the component.
+	 * A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	messageBody: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
-	 * Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names.
+	 * Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	name: PropTypes.string,
 	/**
-	 * Path to the illustration SVG image.
+	 * Path to the illustration SVG image. _Tested with snapshot testing._
 	 */
 	path: PropTypes.string,
 	/**
-	 * Size of the illustration.
+	 * Size of the illustration. _Tested with Mocha testing._
 	 */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/**
-	 * Custom styles to be passed to the illustration SVG.
+	 * Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._
 	 */
 	style: PropTypes.object,
 };

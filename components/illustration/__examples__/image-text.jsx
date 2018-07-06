@@ -11,7 +11,7 @@ const Example = createReactClass({
 				internalIllustration
 				heading="Lorem ipsum dolor"
 				messageBody="Lorem ipsum dolor sit amet, consectetur"
-				name="NoAccess"
+				name="No Access"
 				path="/assets/images/illustrations/NoAccess.svg#no-access"
 			/>
 		);
