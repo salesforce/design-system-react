@@ -12,7 +12,7 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 import Illustration from '../../illustration';
@@ -24,7 +24,7 @@ const DemoIllustration = createReactClass({
 
 	render () {
 		return <Illustration {...this.props} />;
-	}
+	},
 });
 
 describe('SLDSIllustration: ', function () {
@@ -59,20 +59,15 @@ describe('SLDSIllustration: ', function () {
 		});
 		it('sets svg aria-hidden to true', function () {
 			svg = this.wrapper.find('svg');
-			expect(
-				svg.node.getAttribute('aria-hidden')
-			).to.equal('true');
+			expect(svg.node.getAttribute('aria-hidden')).to.equal('true');
 		});
 		it('renders illustration svg class', function () {
-			expect(
-				svg.hasClass('slds-illustration__svg')).to.be.true;
+			expect(svg.hasClass('slds-illustration__svg')).to.be.true;
 		});
 		it('renders svg name attribute', function () {
 			svg = this.wrapper.find('svg');
 			// also tests that all '_' and ' ' are replaced with '-'
-			expect(
-				svg.node.getAttribute('name')
-			).to.equal('no-access');
+			expect(svg.node.getAttribute('name')).to.equal('no-access');
 		});
 		it('renders svg custom background color', function () {
 			svg = this.wrapper.find('svg');
@@ -84,7 +79,9 @@ describe('SLDSIllustration: ', function () {
 		});
 		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');
-			expect(messageBody.text()).to.equal('Lorem ipsum dolor sit amet, consectetur');
+			expect(messageBody.text()).to.equal(
+				'Lorem ipsum dolor sit amet, consectetur'
+			);
 		});
 	});
 
@@ -115,7 +112,9 @@ describe('SLDSIllustration: ', function () {
 		});
 		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');
-			expect(messageBody.text()).to.equal('Lorem ipsum dolor sit amet, consectetur');
+			expect(messageBody.text()).to.equal(
+				'Lorem ipsum dolor sit amet, consectetur'
+			);
 		});
 	});
 
@@ -126,10 +125,7 @@ describe('SLDSIllustration: ', function () {
 
 		beforeEach(
 			mountComponent(
-				<DemoIllustration
-					internalIllustration
-					heading="Lorem ipsum dolor"
-				/>
+				<DemoIllustration internalIllustration heading="Lorem ipsum dolor" />
 			)
 		);
 
@@ -175,7 +171,9 @@ describe('SLDSIllustration: ', function () {
 		});
 		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');
-			expect(messageBody.text()).to.equal('Lorem ipsum dolor sit amet, consectetur');
+			expect(messageBody.text()).to.equal(
+				'Lorem ipsum dolor sit amet, consectetur'
+			);
 		});
 	});
 });

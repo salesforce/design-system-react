@@ -13,7 +13,7 @@ const Example = createReactClass({
 				messageBody="Lorem ipsum dolor sit amet, consectetur"
 			/>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

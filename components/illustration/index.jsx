@@ -35,9 +35,14 @@ const Illustration = ({
 	name,
 	path,
 	size,
-	style
+	style,
 }) => {
-	checkProps('Illustration', { illustration, internalIllustration, heading, path });
+	checkProps('Illustration', {
+		illustration,
+		internalIllustration,
+		heading,
+		path,
+	});
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	let illustrationSvg;
 	let headingNode;
@@ -45,35 +50,38 @@ const Illustration = ({
 	if (illustration) {
 		// Use SVG data passed in with `illustration` prop
 		illustrationSvg = (
-			<Svg className="slds-illustration__svg" aria-hidden="true" data={illustration} name={kababCaseName} style={style} />
+			<Svg
+				className="slds-illustration__svg"
+				aria-hidden="true"
+				data={illustration}
+				name={kababCaseName}
+				style={style}
+			/>
 		);
 	} else if (path) {
 		illustrationSvg = (
-			<svg className="slds-illustration__svg" aria-hidden="true" name={kababCaseName} style={style}>
+			<svg
+				className="slds-illustration__svg"
+				aria-hidden="true"
+				name={kababCaseName}
+				style={style}
+			>
 				<use xlinkHref={path} />
 			</svg>
 		);
 	}
 	if (heading) {
-		headingNode = (
-			<h3 className="slds-text-heading_medium">
-				{heading}
-			</h3>
-		);
+		headingNode = <h3 className="slds-text-heading_medium">{heading}</h3>;
 	}
 	if (messageBody) {
-		messagBodyNode = (
-			<p className="slds-text-body_regular">
-				{messageBody}
-			</p>
-		);
+		messagBodyNode = <p className="slds-text-body_regular">{messageBody}</p>;
 	}
 	return (
 		<div
 			className={classNames(className, 'slds-illustration', {
 				'slds-illustration_small': size === 'small',
 				// medium intentially not present
-				'slds-illustration_large': size === 'large'
+				'slds-illustration_large': size === 'large',
 			})}
 		>
 			{illustrationSvg}
@@ -82,7 +90,6 @@ const Illustration = ({
 				{messagBodyNode}
 			</div>
 		</div>
-
 	);
 };
 
@@ -98,7 +105,7 @@ Illustration.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * A heading text inline that must be accompanied with the illustration image. _Tested with snapshot testing._ _Tested with Mocha testing._
@@ -136,7 +143,7 @@ Illustration.propTypes = {
 
 Illustration.defaultProps = {
 	internalIllustration: true,
-	size: 'medium'
+	size: 'medium',
 };
 
 export default Illustration;

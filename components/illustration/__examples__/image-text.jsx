@@ -15,7 +15,7 @@ const Example = createReactClass({
 				path="/assets/images/illustrations/NoAccess.svg#no-access"
 			/>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -6,13 +6,8 @@ const Example = createReactClass({
 	displayName: 'IllustrationExample',
 
 	render () {
-		return (
-			<Illustration
-				internalIllustration
-				heading="Lorem ipsum dolor"
-			/>
-		);
-	}
+		return <Illustration internalIllustration heading="Lorem ipsum dolor" />;
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
