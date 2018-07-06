@@ -33,7 +33,6 @@ const propTypes = {
 	 */
 	active: PropTypes.bool,
 	/**
-	 * Assistive text for accessibility that labels the icon.
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
 	 * * `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.

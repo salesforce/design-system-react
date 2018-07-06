@@ -108,7 +108,7 @@ const headerContentRight = (
 		/>
 
 		<Button
-			assistiveText="Refresh"
+			assistiveText={{ icon: 'Refresh' }}
 			iconCategory="utility"
 			iconName="refresh"
 			iconVariant="border"

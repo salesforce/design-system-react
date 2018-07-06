@@ -62,7 +62,6 @@ Breadcrumb.displayName = BREADCRUMB;
 
 Breadcrumb.propTypes = {
 	/**
-	 * Assistive text for accessibility that labels the icon.
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: The assistive text for the breadcrumb trail.

@@ -82,7 +82,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion region="primary" {...primaryRegionProps}>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
-				assistiveText="Open App Launcher"
+				assistiveText={{ trigger: 'Open App Launcher' }}
 				id="app-launcher-trigger"
 				triggerName="App Name"
 			>
@@ -109,7 +109,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				}}
 			/>
 			<GlobalNavigationBarDropdown
-				assistiveText="Open Menu Item 1"
+				assistiveText={{ icon: 'Open Menu Item 1' }}
 				id="primaryDropdown"
 				label="Menu Item"
 				openOn={props.openOn || undefined}
@@ -298,7 +298,7 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion region="primary" {...primaryRegionProps}>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
-				assistiveText="Open App Launcher"
+				assistiveText={{ trigger: 'Open App Launcher' }}
 				id="app-launcher-trigger"
 				triggerName="App Name"
 			>

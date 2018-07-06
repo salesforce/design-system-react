@@ -48,6 +48,10 @@ const GlobalHeaderDemo = (props) => (
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
 		navigation={globalNavigationBar(props)}
+		assistiveText={{
+			skipToContent: 'Skip to Main Content',
+			skipToNavAssistiveText: 'Skip to Navigation',
+		}}
 	>
 		<GlobalHeaderSearch
 			onSelect={action('Search Selected')}
@@ -84,7 +88,7 @@ const GlobalHeaderDemo = (props) => (
 			]}
 		/>
 		<GlobalHeaderButton
-			assistiveText="Help and Training"
+			assistiveText={{ icon: 'Help and Training' }}
 			iconName="question"
 			onClick={action('Help Clicked')}
 		/>
@@ -96,7 +100,7 @@ const GlobalHeaderDemo = (props) => (
 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
 		/>
 		<GlobalHeaderButton
-			assistiveText="Notifications"
+			assistiveText={{ icon: 'Notifications' }}
 			iconName="Notification"
 			onClick={action('Notifications Clicked')}
 		/>
