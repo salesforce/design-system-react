@@ -17,7 +17,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<BreadCrumb
-					assistiveText={{ breadcrumb: 'Two item breadcrumb' }}
+					assistiveText={{ label: 'Two item breadcrumb' }}
 					trail={trail}
 				/>
 			</IconSettings>

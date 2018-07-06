@@ -22,7 +22,7 @@ import { BREADCRUMB } from '../../utilities/constants';
 
 const defaultProps = {
 	assistiveText: {
-		breadcrumb: 'Breadcrumbs',
+		label: 'Breadcrumbs',
 	},
 };
 
@@ -39,7 +39,7 @@ const Breadcrumb = (props) => {
 			: {
 				...defaultProps.assistiveText,
 				...props.assistiveText,
-			}.breadcrumb;
+			}.label;
 
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
@@ -65,10 +65,10 @@ Breadcrumb.propTypes = {
 	 * Assistive text for accessibility that labels the icon.
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
-	 * * `breadcrumb`: The assistive text for the breadcrumb trail.
+	 * * `label`: The assistive text for the breadcrumb trail.
 	 */
 	assistiveText: PropTypes.shape({
-		breadcrumb: PropTypes.string,
+		label: PropTypes.string,
 	}),
 	/**
 	 * An array of react elements presumably anchor elements.
