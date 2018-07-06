@@ -28,7 +28,7 @@ const DemoIllustration = createReactClass({
 });
 
 describe('SLDSIllustration: ', function () {
-	describe('Image with text renders', function () {
+	describe('Image with heading and message render', function () {
 		let svg;
 		let heading;
 		let messageBody;
@@ -85,7 +85,7 @@ describe('SLDSIllustration: ', function () {
 		});
 	});
 
-	describe('Heading and Message Renders', function () {
+	describe('Heading and message render', function () {
 		let svg;
 		let heading;
 		let messageBody;
@@ -118,7 +118,7 @@ describe('SLDSIllustration: ', function () {
 		});
 	});
 
-	describe('Heading Only Renders', function () {
+	describe('Heading only renders', function () {
 		let svg;
 		let heading;
 		let messageBody;
@@ -145,7 +145,7 @@ describe('SLDSIllustration: ', function () {
 		});
 	});
 
-	describe('Message Only Renders', function () {
+	describe('Message only renders', function () {
 		let svg;
 		let heading;
 		let messageBody;
