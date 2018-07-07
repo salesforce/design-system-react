@@ -205,7 +205,7 @@ class Toast extends React.Component {
 					{labels.details ? <p>{labels.details}</p> : null}
 				</div>
 				<Button
-					assistiveText={assistiveText.closeButton}
+					assistiveText={{ icon: assistiveText.closeButton }}
 					buttonRef={this.saveButtonRef}
 					className="slds-notify__close"
 					iconCategory="utility"

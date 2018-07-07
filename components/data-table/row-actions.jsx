@@ -33,7 +33,7 @@ const DataTableRowActions = createReactClass({
 		/**
 		 * Description of the menu for screenreaders.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: PropTypes.object,
 		/**
 		 * Class names to be added to the actions menu.
 		 */
@@ -67,7 +67,7 @@ const DataTableRowActions = createReactClass({
 
 	getDefaultProps () {
 		return {
-			assistiveText: 'Actions',
+			assistiveText: { icon: 'Actions' },
 			noHint: false,
 			options: [],
 		};

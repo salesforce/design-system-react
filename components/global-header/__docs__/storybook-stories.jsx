@@ -67,7 +67,7 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
-			assistiveText="Global Actions"
+			assistiveText={{ icon: 'Global Actions' }}
 			globalAction
 			iconCategory="utility"
 			iconName="add"
@@ -94,7 +94,7 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
-			assistiveText="Setup"
+			assistiveText={{ icon: 'Setup' }}
 			iconName="setup"
 			onSelect={action('Action Selected')}
 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
@@ -125,7 +125,7 @@ storiesOf(GLOBAL_HEADER, module)
 	.add('Fewer Elements', () => (
 		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
-				assistiveText="Setup"
+				assistiveText={{ icon: 'Setup' }}
 				iconName="setup"
 				onSelect={action('Action Selected')}
 				options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
