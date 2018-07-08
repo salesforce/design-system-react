@@ -7,7 +7,7 @@ const DemoSlider = createReactClass({
 
 	getInitialState () {
 		return {
-			value: this.props.defaultValue,
+			value: this.props.value,
 		};
 	},
 
@@ -37,7 +37,7 @@ const Example = createReactClass({
 						<h1 className="slds-text-title_caps slds-p-vertical--medium">
 							1. Base Input with label
 						</h1>
-						<DemoSlider id="base-id" label="My Label" />
+						<DemoSlider id="base-id" label="My Label" value={0} />
 					</li>
 					<li className="slds-p-bottom--large">
 						<h1 className="slds-text-title_caps slds-p-vertical--medium">
@@ -46,6 +46,7 @@ const Example = createReactClass({
 						<DemoSlider
 							id="assistiveText-id"
 							assistiveText={{ label: 'My Label' }}
+							value={0}
 						/>
 					</li>
 					<li className="slds-p-bottom--large">
@@ -57,7 +58,7 @@ const Example = createReactClass({
 							label="My Label"
 							min={0}
 							max={400}
-							defaultValue={200}
+							value={200}
 						/>
 					</li>
 					<li className="slds-p-bottom--large">
@@ -70,7 +71,7 @@ const Example = createReactClass({
 							min={0}
 							max={400}
 							step={100}
-							defaultValue={200}
+							value={200}
 						/>
 					</li>
 				</ol>
