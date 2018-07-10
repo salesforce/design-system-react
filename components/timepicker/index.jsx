@@ -18,6 +18,9 @@ import checkProps from './check-props';
 // ### Dropdown
 import InputIcon from '../icon/input-icon';
 
+// ### Input
+import Input from '../input/index.jsx';
+
 // ### Combobox
 import Combobox from '../combobox/combobox.jsx';
 
@@ -232,7 +235,9 @@ class TimePicker extends React.Component {
 					onChange: this.handleInputChange,
 					onSelect: this.handleSelect,
 				}}
-				iconRight={<InputIcon category="utility" name="clock" />}
+				input={
+					<Input iconRight={<InputIcon category="utility" name="clock" />} />
+				}
 				inheritWidthOf={this.props.inheritWidthOf}
 				labels={{
 					label: this.props.label,
