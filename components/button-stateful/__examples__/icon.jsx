@@ -22,7 +22,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonStateful
-					assistiveText={this.state.isActive ? 'liked' : 'not liked'}
+					assistiveText={{ icon: this.state.isActive ? 'liked' : 'not liked' }}
 					iconName="like"
 					iconSize="large"
 					variant="icon"

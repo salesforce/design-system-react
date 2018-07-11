@@ -106,7 +106,7 @@ const MenuDropdown = createReactClass({
 		/**
 		 * This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: PropTypes.object,
 		/**
 		 * CSS classes to be added to triggering button.
 		 */

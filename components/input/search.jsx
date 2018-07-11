@@ -44,7 +44,7 @@ const Search = ({
 		assistiveText={{ label: assistiveText }}
 		iconLeft={
 			<InputIcon
-				assistiveText="Search"
+				assistiveText={{ icon: 'Search' }}
 				category="utility"
 				name="search"
 				onClick={onSearch}
@@ -53,7 +53,7 @@ const Search = ({
 		iconRight={
 			clearable ? (
 				<InputIcon
-					assistiveText="Clear"
+					assistiveText={{ icon: 'Clear' }}
 					category="utility"
 					name="clear"
 					onClick={onClear}

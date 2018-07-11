@@ -284,10 +284,12 @@ const Input = createReactClass({
 		// Remove at next breaking change
 		/* eslint-disable react/prop-types */
 		const deprecatedProps = {
-			assistiveText:
-				(this.props[iconPositionProp] &&
-					this.props[iconPositionProp].props.assistiveText) ||
-				this.props.iconAssistiveText,
+			assistiveText: {
+				icon:
+					(this.props[iconPositionProp] &&
+						this.props[iconPositionProp].props.assistiveText) ||
+					this.props.iconAssistiveText,
+			},
 			category:
 				(this.props[iconPositionProp] &&
 					this.props[iconPositionProp].props.category) ||

@@ -20,7 +20,7 @@ const Example = createReactClass({
 						<Button label="Edit" />
 					</PopoverTooltip>
 					<Dropdown
-						assistiveText="More Options"
+						assistiveText={{ icon: 'More Options' }}
 						buttonVariant="icon"
 						iconCategory="utility"
 						iconName="down"

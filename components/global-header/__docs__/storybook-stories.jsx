@@ -48,6 +48,10 @@ const GlobalHeaderDemo = (props) => (
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
 		navigation={globalNavigationBar(props)}
+		assistiveText={{
+			skipToContent: 'Skip to Main Content',
+			skipToNavAssistiveText: 'Skip to Navigation',
+		}}
 	>
 		<GlobalHeaderSearch
 			onSelect={action('Search Selected')}
@@ -63,7 +67,7 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
-			assistiveText="Global Actions"
+			assistiveText={{ icon: 'Global Actions' }}
 			globalAction
 			iconCategory="utility"
 			iconName="add"
@@ -84,19 +88,19 @@ const GlobalHeaderDemo = (props) => (
 			]}
 		/>
 		<GlobalHeaderButton
-			assistiveText="Help and Training"
+			assistiveText={{ icon: 'Help and Training' }}
 			iconName="question"
 			onClick={action('Help Clicked')}
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
-			assistiveText="Setup"
+			assistiveText={{ icon: 'Setup' }}
 			iconName="setup"
 			onSelect={action('Action Selected')}
 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
 		/>
 		<GlobalHeaderButton
-			assistiveText="Notifications"
+			assistiveText={{ icon: 'Notifications' }}
 			iconName="Notification"
 			onClick={action('Notifications Clicked')}
 		/>
@@ -121,7 +125,7 @@ storiesOf(GLOBAL_HEADER, module)
 	.add('Fewer Elements', () => (
 		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
-				assistiveText="Setup"
+				assistiveText={{ icon: 'Setup' }}
 				iconName="setup"
 				onSelect={action('Action Selected')}
 				options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}

@@ -37,7 +37,7 @@ const PanelFilterHeader = ({
 			<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
 			<Button
 				className="slds-col--bump-left"
-				assistiveText={assistiveTextCloseFilterPanel}
+				assistiveText={{ icon: assistiveTextCloseFilterPanel }}
 				iconCategory="utility"
 				iconName="forward"
 				iconVariant="bare"
