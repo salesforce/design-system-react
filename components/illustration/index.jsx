@@ -26,6 +26,9 @@ import Svg from '../utilities/utility-icon/svg';
 // ## Constants
 import { ILLUSTRATION } from '../../utilities/constants';
 
+/**
+ * An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.
+ */
 const Illustration = ({
 	className,
 	illustration,

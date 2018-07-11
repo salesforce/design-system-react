@@ -5978,7 +5978,7 @@
         "dependencies": []
     },
     "illustration": {
-        "description": "",
+        "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
         "methods": [],
         "props": {
             "className": {
@@ -6068,7 +6068,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Size of the illustration. _Tested with Mocha testing._",
+                "description": "Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._",
                 "defaultValue": {
                     "value": "'small'",
                     "computed": false
