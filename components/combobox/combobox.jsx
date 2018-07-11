@@ -188,11 +188,6 @@ const propTypes = {
 	 */
 	multiple: PropTypes.bool,
 	/**
-	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
-	 *  This is an undocumented prop and its usage is discouraged.
-	 */
-	offset: PropTypes.string,
-	/**
 	 * Item added to the dropdown menu.
 	 * To add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._
 	 */
@@ -322,7 +317,9 @@ class Combobox extends React.Component {
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
+
 		return !this.props.disabled && this.getIsOpen() ? (
+			// offset is an undocumented prop and its usage is discouraged.
 			<Dialog
 				align="bottom left"
 				context={this.context}
