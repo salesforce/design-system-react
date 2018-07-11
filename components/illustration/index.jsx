@@ -81,8 +81,12 @@ const Illustration = ({
 		>
 			{illustrationSvg}
 			<div className="slds-text-longform">
-				{heading ? <h3 className="slds-text-heading_medium">{heading}</h3> : null}
-				{messageBody ? <p className="slds-text-body_regular">{messageBody}</p> : null}
+				{heading ? (
+					<h3 className="slds-text-heading_medium">{heading}</h3>
+				) : null}
+				{messageBody ? (
+					<p className="slds-text-body_regular">{messageBody}</p>
+				) : null}
 			</div>
 		</div>
 	);
@@ -139,7 +143,7 @@ Illustration.propTypes = {
 Illustration.defaultProps = {
 	internalIllustration: true,
 	size: 'small',
-	style: {}
+	style: {},
 };
 
 export default Illustration;
