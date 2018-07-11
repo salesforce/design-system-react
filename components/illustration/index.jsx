@@ -68,7 +68,7 @@ const Illustration = ({
 			</svg>
 		);
 	}
-	// large illustration svg should have a default height of 400px is not already specified
+	// large illustration svg should have a default height of 400px if not already specified
 	if (illustrationSvg && size === 'large' && !style.height) {
 		style.height = '400px';
 	}
