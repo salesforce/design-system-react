@@ -317,12 +317,15 @@ class Combobox extends React.Component {
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
+
 		return !this.props.disabled && this.getIsOpen() ? (
+			// offset is an undocumented prop and its usage is discouraged.
 			<Dialog
 				align="bottom left"
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}
+				offset={this.props.offset}
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
 				onRequestTargetElement={this.getTargetElement}
