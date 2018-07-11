@@ -131,7 +131,7 @@ Illustration.propTypes = {
 	 */
 	path: PropTypes.string,
 	/**
-	 * Size of the illustration. _Tested with Mocha testing._
+	 * Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	size: PropTypes.oneOf(['small', 'large']),
 	/**
