@@ -45,8 +45,6 @@ const Illustration = ({
 	});
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	let illustrationSvg;
-	let headingNode;
-	let messagBodyNode;
 	if (illustration) {
 		// Use SVG data passed in with `illustration` prop
 		illustrationSvg = (
@@ -70,24 +68,21 @@ const Illustration = ({
 			</svg>
 		);
 	}
-	if (heading) {
-		headingNode = <h3 className="slds-text-heading_medium">{heading}</h3>;
-	}
-	if (messageBody) {
-		messagBodyNode = <p className="slds-text-body_regular">{messageBody}</p>;
+	// large illustration svg should have a default height of 400px is not already specified
+	if (illustrationSvg && size === 'large' && !style.height) {
+		style.height = '400px';
 	}
 	return (
 		<div
 			className={classNames(className, 'slds-illustration', {
 				'slds-illustration_small': size === 'small',
-				// medium intentially not present
 				'slds-illustration_large': size === 'large',
 			})}
 		>
 			{illustrationSvg}
 			<div className="slds-text-longform">
-				{headingNode}
-				{messagBodyNode}
+				{heading ? <h3 className="slds-text-heading_medium">{heading}</h3> : null}
+				{messageBody ? <p className="slds-text-body_regular">{messageBody}</p> : null}
 			</div>
 		</div>
 	);
@@ -108,11 +103,11 @@ Illustration.propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * A heading text inline that must be accompanied with the illustration image. _Tested with snapshot testing._ _Tested with Mocha testing._
+	 * A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	heading: PropTypes.string,
 	/**
-	 * A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._
+	 * A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	illustration: PropTypes.object,
 	/**
@@ -134,7 +129,7 @@ Illustration.propTypes = {
 	/**
 	 * Size of the illustration. _Tested with Mocha testing._
 	 */
-	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	size: PropTypes.oneOf(['small', 'large']),
 	/**
 	 * Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._
 	 */
@@ -143,7 +138,8 @@ Illustration.propTypes = {
 
 Illustration.defaultProps = {
 	internalIllustration: true,
-	size: 'medium',
+	size: 'small',
+	style: {}
 };
 
 export default Illustration;

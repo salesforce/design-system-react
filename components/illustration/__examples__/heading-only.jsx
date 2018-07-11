@@ -2,12 +2,12 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import Illustration from '~/components/illustration'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'IllustrationExample',
-
+class Example extends React.Component {
 	render () {
-		return <Illustration internalIllustration heading="Lorem ipsum dolor" />;
-	},
-});
+		return <Illustration heading="Lorem ipsum dolor" />;
+	}
+}
+
+Example.displayName = 'IllustrationExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

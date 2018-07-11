@@ -41,7 +41,7 @@ describe('SLDSIllustration: ', function () {
 					heading="Lorem ipsum dolor"
 					messageBody="Lorem ipsum dolor sit amet, consectetur"
 					name="No Access"
-					path="/assets/images/illustrations/NoAccess.svg#no-access"
+					path="/assets/images/illustrations/empty-state-no-access.svg#no-access"
 					size="small"
 					style={{ backgroundColor: 'rgb(218, 165, 32)' }}
 				/>

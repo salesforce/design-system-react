@@ -452,6 +452,12 @@
 			"SLDS-component-path": "/components/icons-settings"
 		},
 		{
+			"component": "illustration",
+			"status": "prod",
+			"display-name": "Illustrations",
+			"SLDS-component-path": "/components/illustrations"
+		},
+		{
 			"component": "media-object",
 			"status": "prod",
 			"display-name": "Media Objects",

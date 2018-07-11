@@ -8,6 +8,8 @@ class Example extends React.Component {
 			<Illustration
 				heading="Lorem ipsum dolor"
 				messageBody="Lorem ipsum dolor sit amet, consectetur"
+				name="No Access"
+				path="/assets/images/illustrations/empty-state-no-access.svg#no-access"
 			/>
 		);
 	}

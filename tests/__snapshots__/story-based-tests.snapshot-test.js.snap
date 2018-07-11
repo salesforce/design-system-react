@@ -2982,7 +2982,7 @@ exports[`DOM snapshots SLDSIllustration Image and Text 1`] = `
       name="no-access"
     >
       <use
-        xlinkHref="/assets/images/illustrations/NoAccess.svg#no-access"
+        xlinkHref="/assets/images/illustrations/empty-state-no-access.svg#no-access"
       />
     </svg>
     <div
