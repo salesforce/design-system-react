@@ -32,6 +32,7 @@ import SnapshotReadonlyMultipleSelectionSingleItemSelected from '../__examples__
 import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__examples__/snapshot/readonly-multiple-selection-multiple-items-selected';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
 import SnapshotBaseLabelRequired from '../__examples__/snapshot/base-label-required';
+import Disabled from '../__examples__/snapshot/disabled';
 
 storiesOf(COMBOBOX, module)
 	.addDecorator((getStory) => (
@@ -106,4 +107,5 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Snapshot Readonly Single Selection Custom Menu Item', () => (
 		<SnapshotReadonlySingleSelectionCustomMenuItemOpen action={action} />
-	));
+	))
+	.add('Disabled', () => <Disabled action={action} />);

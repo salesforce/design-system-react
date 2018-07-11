@@ -443,4 +443,23 @@ describe('SLDSCombobox', function () {
 			expect(onOpenCallback.callCount).to.equal(1);
 		});
 	});
+
+	describe('Disabled', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('has attribute "disabled"', function () {
+			wrapper = mount(<DemoComponent disabled />, {
+				attachTo: mountNode,
+			});
+
+			const nodes = getNodes({ wrapper });
+			expect(nodes.input.node.getAttribute('disabled')).to.equal('');
+		});
+	});
 });
