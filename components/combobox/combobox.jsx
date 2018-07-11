@@ -189,6 +189,7 @@ const propTypes = {
 	multiple: PropTypes.bool,
 	/**
 	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+	 *  This is an undocumented prop and its usage is discouraged.
 	 */
 	offset: PropTypes.string,
 	/**
