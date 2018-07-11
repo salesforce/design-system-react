@@ -482,6 +482,23 @@
                         }
                     ],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "collapseSection": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "defaultValue": {
+                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
+                                "computed": false
+                            }
+                        },
                         "title": {
                             "type": {
                                 "name": "string"
@@ -495,17 +512,6 @@
                             },
                             "required": false,
                             "description": "Allows the user to show/hide the section"
-                        },
-                        "collapseSectionAssistiveText": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The assistive text for the section collapse icons",
-                            "defaultValue": {
-                                "value": "'Toggle visibility of section'",
-                                "computed": false
-                            }
                         },
                         "children": {
                             "type": {
@@ -704,10 +710,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility that labels the icon."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Assistive text for accessibility that labels the icon.",
+                "defaultValue": {
+                    "value": "{\n    icon: 'User or Account Icon',\n}",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {
@@ -821,12 +837,18 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "breadcrumb": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "The assistive text for the breadcrumb trail",
+                "description": "Assistive text for accessibility that labels the icon.\n**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `breadcrumb`: The assistive text for the breadcrumb trail.",
                 "defaultValue": {
-                    "value": "'Breadcrumbs'",
+                    "value": "{\n    breadcrumb: 'Breadcrumbs',\n}",
                     "computed": false
                 }
             },
@@ -1363,10 +1385,20 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "Assistive text for accessibility that labels the icon.\n**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
             },
             "disabled": {
                 "type": {

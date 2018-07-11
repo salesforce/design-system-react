@@ -77,7 +77,7 @@ const UtilityIcon = (
 UtilityIcon.displayName = 'UtilityIcon';
 
 UtilityIcon.propTypes = {
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.object,
 	category: PropTypes.oneOf([
 		'action',
 		'custom',

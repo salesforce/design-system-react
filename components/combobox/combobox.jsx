@@ -953,7 +953,9 @@ class Combobox extends React.Component {
 							iconRight={
 								props.selection.length ? (
 									<InputIcon
-										assistiveText={assistiveText.removeSingleSelectedOption}
+										assistiveText={{
+											icon: assistiveText.removeSingleSelectedOption,
+										}}
 										buttonRef={(component) => {
 											this.buttonRef = component;
 										}}

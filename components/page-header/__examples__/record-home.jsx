@@ -26,7 +26,7 @@ const Example = createReactClass({
 					<Button label="Clone" />
 					<Dropdown
 						align="right"
-						assistiveText="More Options"
+						assistiveText={{ icon: 'More Options' }}
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
@@ -66,7 +66,7 @@ const Example = createReactClass({
 				<PageHeader
 					contentRight={contentRight}
 					details={details}
-					iconAssistiveText="User"
+					iconAssistiveText={{ icon: 'User' }}
 					iconCategory="standard"
 					iconName="user"
 					label="Record Type"

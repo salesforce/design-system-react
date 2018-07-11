@@ -13,20 +13,20 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup>
 					<ButtonStateful
-						assistiveText="Show Chart"
+						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
 						iconName="chart"
 						iconVariant="border"
 						variant="icon"
 					/>
 					<ButtonStateful
-						assistiveText="Filter List"
+						assistiveText={{ icon: 'Filter List' }}
 						iconName="filterList"
 						iconVariant="border"
 						variant="icon"
 					/>
 					<Dropdown
-						assistiveText="Settings"
+						assistiveText={{ icon: 'Settings' }}
 						checkmark
 						iconCategory="utility"
 						iconName="settings"

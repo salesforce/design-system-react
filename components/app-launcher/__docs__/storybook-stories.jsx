@@ -199,6 +199,7 @@ const DemoAppLauncherSection = createReactClass({
 		return (
 			<div>
 				<AppLauncherSection
+					assistiveText={{ collapseSection: 'Collapse Section' }}
 					title="All Items"
 					toggleable
 					onToggleClick={action('Section `All Items` open -->')}

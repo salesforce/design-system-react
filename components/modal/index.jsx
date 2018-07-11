@@ -360,7 +360,7 @@ class Modal extends React.Component {
 			this.props.closeButtonAssistiveText || assistiveText.closeButton;
 		const closeButton = (
 			<Button
-				assistiveText={closeButtonAssistiveText}
+				assistiveText={{ icon: closeButtonAssistiveText }}
 				iconCategory="utility"
 				iconName="close"
 				iconSize="large"
