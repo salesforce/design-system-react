@@ -2908,6 +2908,13 @@
                 "required": false,
                 "description": "Allows multiple selections _Tested with mocha testing._"
             },
+            "offset": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
+            },
             "options": {
                 "type": {
                     "name": "array"

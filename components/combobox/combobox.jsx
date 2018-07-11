@@ -188,6 +188,10 @@ const propTypes = {
 	 */
 	multiple: PropTypes.bool,
 	/**
+	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+	 */
+	offset: PropTypes.string,
+	/**
 	 * Item added to the dropdown menu.
 	 * To add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._
 	 */
@@ -323,6 +327,7 @@ class Combobox extends React.Component {
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}
+				offset={this.props.offset}
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
 				onRequestTargetElement={this.getTargetElement}
