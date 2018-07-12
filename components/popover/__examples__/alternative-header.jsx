@@ -12,7 +12,7 @@ const panelContent = (
 				<div className="slds-media slds-media--center">
 					<div className="slds-media__figure">
 						<Icon
-							assistiveText="Opportunity Icon"
+							assistiveText={{ label: 'Opportunity Icon' }}
 							category="standard"
 							name="opportunity"
 							size="small"

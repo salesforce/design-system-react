@@ -2,20 +2,12 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		/* eslint-disable max-len */
-		oneOfRequiredProperty(COMPONENT, {
-			assistiveText: props.assistiveText,
-			heading: props.heading,
-		});
-		/* eslint-enable max-len */
-
 		if (typeof props.assistiveText === 'string') {
 			sunsetProperty(
 				COMPONENT,

@@ -392,9 +392,7 @@ const Input = createReactClass({
 					readOnly={this.props.readOnly}
 					required={this.props.required}
 					role={this.props.role}
-					spinnerAssistiveText={
-						this.props.assistiveText && this.props.assistiveText.spinner
-					}
+					assistiveText={this.props.assistiveText}
 					type={this.props.type}
 					value={this.props.value}
 				/>
