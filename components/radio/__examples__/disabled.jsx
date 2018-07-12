@@ -6,7 +6,7 @@ const Example = createReactClass({
 	displayName: 'RadioExample',
 
 	render () {
-		return <Radio id="radioId1" label="Radio Label" disabled />;
+		return <Radio id="radioId2" label="Radio Label" disabled />;
 	},
 });
 
