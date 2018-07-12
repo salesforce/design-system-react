@@ -5977,6 +5977,120 @@
         "SLDS-component-path": "/components/icons-settings",
         "dependencies": []
     },
+    "illustration": {
+        "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the SVG. _Tested with Mocha testing._"
+            },
+            "heading": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "illustration": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "internalIllustration": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": true,
+                "description": "Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "messageBody": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "path": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the illustration SVG image. _Tested with snapshot testing._"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "'small'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            }
+        },
+        "route": "illustrations",
+        "display-name": "Illustrations",
+        "SLDS-component-path": "/components/illustrations",
+        "dependencies": []
+    },
     "media-object": {
         "description": "When you need text and a figure next to each other, use a media object.",
         "methods": [],
