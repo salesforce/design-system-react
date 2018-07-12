@@ -1040,6 +1040,7 @@ class Combobox extends React.Component {
 				}
 				labels={labels}
 				menuItem={this.props.menuItem}
+				menuPosition={this.props.menuPosition}
 				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}
