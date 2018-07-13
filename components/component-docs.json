@@ -839,16 +839,16 @@
                 "type": {
                     "name": "shape",
                     "value": {
-                        "breadcrumb": {
+                        "label": {
                             "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility that labels the icon.\n**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `breadcrumb`: The assistive text for the breadcrumb trail.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: The assistive text for the breadcrumb trail.",
                 "defaultValue": {
-                    "value": "{\n    breadcrumb: 'Breadcrumbs',\n}",
+                    "value": "{\n    label: 'Breadcrumbs',\n}",
                     "computed": false
                 }
             },
@@ -866,7 +866,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
         "methods": [
             {
                 "name": "getClassName",
@@ -968,10 +968,20 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
             },
             "buttonRef": {
                 "type": {
@@ -1166,7 +1176,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop."
+                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText.icon</code> prop."
             },
             "onBlur": {
                 "type": {
@@ -1394,7 +1404,7 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility that labels the icon.\n**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
                 "defaultValue": {
                     "value": "{ icon: '' }",
                     "computed": false
@@ -3532,12 +3542,12 @@
                     "props": {
                         "assistiveText": {
                             "type": {
-                                "name": "string"
+                                "name": "object"
                             },
                             "required": false,
                             "description": "Description of the menu for screenreaders.",
                             "defaultValue": {
-                                "value": "'Actions'",
+                                "value": "{ icon: 'Actions' }",
                                 "computed": false
                             }
                         },
@@ -4765,6 +4775,27 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "skipToNav": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "skipToContent": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `skipToNav`: The localized text that will be read back for the \"Skip to Navigation\" accessibility link.\n* `skipToContent`: The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
+                "defaultValue": {
+                    "value": "{\n    skipToNav: 'Skip to Navigation',\n    skipToContent: 'Skip to Main Content',\n}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -4803,28 +4834,6 @@
                 },
                 "required": false,
                 "description": "Required for accessibility. Should jump the user to the primary navigation."
-            },
-            "skipToContentAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
-                "defaultValue": {
-                    "value": "'Skip to Main Content'",
-                    "computed": false
-                }
-            },
-            "skipToNavAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The localized text that will be read back for the \"Skip to Navigation\" accessibility link.",
-                "defaultValue": {
-                    "value": "'Skip to Navigation'",
-                    "computed": false
-                }
             }
         },
         "route": "global-header",
@@ -5321,10 +5330,16 @@
                         },
                         "assistiveText": {
                             "type": {
-                                "name": "string"
+                                "name": "shape",
+                                "value": {
+                                    "icon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
                             },
-                            "required": true,
-                            "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means."
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop."
                         },
                         "align": {
                             "type": {
@@ -6496,7 +6511,7 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "object"
                 },
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop."
@@ -7476,7 +7491,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer')."
+                "description": "Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`."
             },
             "portalClassName": {
                 "type": {
@@ -10248,11 +10263,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
+                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -10366,7 +10377,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "The Slider is a controlled component, and will always display this value."
+                "description": "The Slider should be a controlled component, and will always display this value. This should always be used if you are using a Flux/Redux framework."
             },
             "vertical": {
                 "type": {
