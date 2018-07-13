@@ -171,7 +171,9 @@ class Tooltip extends React.Component {
 					<Icon
 						category="utility"
 						name="info"
-						assistiveText={this.props.assistiveText.triggerLearnMoreIcon}
+						assistiveText={{
+							label: this.props.assistiveText.triggerLearnMoreIcon,
+						}}
 						size="x-small"
 					/>
 				</a>,
@@ -249,7 +251,9 @@ class Tooltip extends React.Component {
 					<div className="slds-m-top_x-small">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon
-							assistiveText={this.props.assistiveText.tooltipTipLearnMoreIcon}
+							assistiveText={{
+								label: this.props.assistiveText.tooltipTipLearnMoreIcon,
+							}}
 							category="utility"
 							inverse
 							name="info"

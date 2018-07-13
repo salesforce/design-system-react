@@ -84,7 +84,7 @@ Search.propTypes = {
 	 * * `label`: Assistive text to search input
 	 */
 	assistiveText: PropTypes.shape({
-		icon: PropTypes.string,
+		label: PropTypes.string,
 	}),
 	/**
 	 * Adds a clear button to right side of the input

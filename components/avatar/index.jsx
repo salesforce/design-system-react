@@ -139,7 +139,7 @@ class Avatar extends React.Component {
 				}.icon;
 		return (
 			<UtilityIcon
-				assistiveText={iconAssistiveText}
+				assistiveText={{ label: iconAssistiveText }}
 				category="standard"
 				name={variant === 'entity' ? 'account' : 'user'}
 			/>
