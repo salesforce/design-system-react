@@ -31,21 +31,53 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.19
+
+**Major Features**
+
+* Add Illustration Component
+
+**Bugfixes**
+
+* Make `Slider` a controlled component. Use `value` and `onChange` props.
+* `Combobox`: Allow PopperJS to position menu correctly when menu hits the screen or overflow ancestor boundary.
+* Update `Tree` branch and item to use latest SLDS HTML tags
+* Update `Alert` error icon
+
+**Maintenance**
+
+* Add `getting-started.md` to NPM module
+* Document copying over SLDS fonts to public for Create React App
+* Update `Radio` component examples
+* Remove `Object.assign()` from codebase and replace with spread
+* Consolidate `assistiveText` props under one object. This is going to deprecate many props, but will make props more consistent across all the components.
+  * `AppLauncherSection`
+  * `Avatar`
+  * `Breadcrumb`
+  * `ButtonStateful`
+  * `Button`
+  * `GlobalHeader`
+  * `GlobalNavigationBarDropdown`
+
 ## Release 0.8.18
 
 **Bugfixes**
+
 * `Icon` uses new values for `name` and `category` when changed.
 * Fixes console error that appears when using keyboard navigation to navigate the tree.
 
 **Maintenance**
+
 * `url-exists` utility uses `fetch` instead of `xmlHttpRequest`.
 
 ## Release 0.8.17
 
 **Bugfixes**
+
 * REVERT [Change inline edit for accessibility](https://github.com/salesforce/design-system-react/pull/1332). It will not be updated. There is a new View/Edit Record Input pattern that uses the [Docked Former Footer component](http://www.lightningdesignsystem.com/components/docked-form-footer/) and this should be used instead of the Inline Edit Input in the future.
 
 **Minor features**
+
 * `dropdown` prop added to `DataTableRowActions` to increase customization of the dropdown menu
 * `tabIndex` added to `MenuDropdown` component
 * `Picklist` has been removed from examples. Please use a Combobox instead.
@@ -54,41 +86,50 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **Deprecation**
 TL:DR; If you use the source code directly, update your form component paths and the parameters in `onChange`. All others stay the same for now.
+
 * Moves `Input`, `Checkbox`, and `Textarea` out of `component/forms` and directly into `component/`. Old paths such as `component/forms/input` will still work, but include a console warning as deprecated.
 * `components/input`, `components/checkbox`, and `components/textarea` pass different parameters into the `onChange` callback. `onChange` now passes in `event, { checked }` if the new paths are used. The parameters used to be `checked, event, { checked }`. If you use the new paths such as `components/input`, please update your parameter variables. This aligns the callback's parameters with the rest of the library's callback functions.
 * If you consume the library with named imports `{[component]} from '@salesforce/design-system-react'`, you will recieve the warning and will need to use the old parameter order until the next breaking change.
 * For more information, please review #1350.
 
 **Minor features**
+
 * Update `Tree` example to be hashmap in order to promote immutability. Please review `Tree` example on [documentation site](http://react.lightningdesignsystem.com/components/tree/) in order to understand flattened tree data.
 * Add `tabIndex` prop to `MenuDropdown`
 * Update SLDS version to 2.6.0 and test
 
 **Bug fix**
+
 * Dialog components such as Dropdown when used with `menuPosition='overflowBoundaryElement'` now respect `max-width` instead of inherited children width
 * Remove duplicate logo in `GlobalHeader`
 
 **Maintenance**
+
 * Upgrade Babel to v7 and Jest to v23
 
 **Documentation**
+
 * Remove deprecated Picklist from code base and examples
 
 ## Release 0.8.15
+
 **Modals are now at `z-index: 8000`.** If there are items on the main page with a higher `z-index`, they will appear in front of the modal. This setting aligns with the [prescribed z-index in SLDS](https://www.lightningdesignsystem.com/design-tokens/#category-z-index) for `$z-index-overlay`.
 **Require `iconCategory` if `iconName` is set.** `utility` used to be the default icon category. `iconCategory` is now required.
 
 **Major features**
+
 * `@salesforce/design-system-react/module` now contains tree-shaking compatible ES6 modules (Tested with Webpack 4). This should work out of the box (due to `package.json`'s `module` field) and replace CommonJS module usage in Webpack 3 and 4. See [pull request](https://github.com/salesforce/design-system-react/pull/1300) for more details.
 * Tree is now a production component and supports [single selection keyboard navigation](https://www.lightningdesignsystem.com/components/trees/).
 
 **Minor features**
+
 * DataTable: Align header markup with SLDS to fix alignment issues. Remove error for non-boolean attribute `focusable`.
 * Upgrade React Modal to 3.4.4. This is a dependency of `Modal`.
 * Modal: Adds `assistiveText.dialogLabel` to define modal label when there is no header.
 * DataTable: Adds `noHint` prop to actions and makes hints an optional field.
 
 **Bug fix**
+
 * Request icons (console warning) with HTTP GET, so Create React App's webpack dev server doesn't 404
 * Modal no longer jumps to 50% of page.
 * Documentation: Align button group example on site with SLDS example
@@ -99,6 +140,7 @@ TL:DR; If you use the source code directly, update your form component paths and
 * `Dropdown` with `overflowBoundaryElement` and `align=right` use max-width instead of inherited children width.
 
 **Maintenance**
+
 * Require `iconCategory` if `iconName` is set. `utility` used to be the default icon category. `iconCategory` is now required.
 * App Launcher - `assistiveText` is now an object with keys. Please update your component props.
 * Popover - `assistiveText` is now an object with keys. Please update your component props.
@@ -111,9 +153,11 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 ## Release 0.8.14
 
 **Minor features**
+
 * Tooltip: "Learn more" variant added. Deprecation notice added for `variant: info || error`. Please use `theme` prop going forward instead.
 
 **Bug fix**
+
 * Data Table: Remove console warning when DataTableColumn `sortable` is `true`.
 * Combobox: Trigger onOpen callback when menu opens
 * Datepicker: Focus input if menu was actually open and not just requested to close
@@ -121,40 +165,49 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 ## Release 0.8.13
 
 **Major features**
+
 * Add SLDS Slider
 
 **Minor features**
+
 * Allow importing Lookup [deprecated] subcomponents in CommonJS modules
 
 ## Release 0.8.12
 
 **Minor features**
+
 * Affix position of Dialogs with `hasStaticAlignment` prop. Allows greater control of Tooltip, Popover, and dialog components.
 * Set Datepicker's initial year dropdown menu highlight selection to current selected date.
 
 ## Release 0.8.11
 
 **Minor features**
+
 * Allow `input` label of combobox to show as required
 * Input, Checkbox, and Radio support initial state (uncontrolled) in order to support applications with server-side form submission that are transitioning to atomic state.
 
 **Maintenance**
+
 * Lint warnings from a third-party package have been removed from CI tests.
 
 **Documentation**
+
 * Prop doc typos:
-    * replaced rendered input block to code block
-    * fixed broken link to source of Inline Edit Inputs
+  * replaced rendered input block to code block
+  * fixed broken link to source of Inline Edit Inputs
 
 ## Release 0.8.10
 
 **Minor features**
+
 * Combobox supports error messages.
 
 **Outside SLDS pattern added**
+
 * Multiple selection Combobox error messages should be placed after pillboxes with an additional `slds-has-error` wrapping div.
 
 **Maintenance**
+
 * Update Dropdown Menu children description
 * Update SLDS peer dependency to allow 2.6.0-alphas
 * Remove plus-plus (`var++`) instances from library for clarity
@@ -169,6 +222,7 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 * Combobox menu supports subheadings and line separators.
 
 **Outside SLDS pattern added**
+
 * UX pattern created for Combobox autocomplete that limits subheadings to those that have "child" matching items.
 
 ## Release 0.8.8
@@ -190,7 +244,6 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 * Add missing documentation site component descriptions
 * Document child nodes of `IconSettings`
 * Update `Modal` footer prop description
-
 
 ## Release 0.8.7
 
