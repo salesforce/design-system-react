@@ -486,8 +486,12 @@ const MenuDropdown = createReactClass({
 			} else {
 				values = nextProps.value;
 			}
-			values = values.filter((value) => this.getIndexByValue(value, nextProps.options) !== -1);
-			currentIndices = values.map((value) => this.getIndexByValue(value, nextProps.options));
+			values = values.filter(
+				(value) => this.getIndexByValue(value, nextProps.options) !== -1
+			);
+			currentIndices = values.map((value) =>
+				this.getIndexByValue(value, nextProps.options)
+			);
 
 			this.setState({
 				selectedIndices: currentIndices,
