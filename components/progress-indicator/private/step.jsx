@@ -117,7 +117,7 @@ class Step extends React.Component {
 		const handleFocus = (event) => props.onFocus(event, data);
 
 		const stepButton = props.isDisabled ? (
-			<span
+			<a
 				className={classNames(
 					'slds-button',
 					{ 'slds-button_icon': renderIcon },
@@ -132,9 +132,9 @@ class Step extends React.Component {
 				{icon}
 				<span className="slds-assistive-text">
 					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${status}`}
+						`${props.assistiveText.step} ${props.index + 1}: ${props.step.label} - ${status}`}
 				</span>
-			</span>
+			</a>
 		) : (
 			<button
 				className={classNames(
@@ -152,7 +152,7 @@ class Step extends React.Component {
 				{icon}
 				<span className="slds-assistive-text">
 					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${status}`}
+						`${props.assistiveText.step} ${props.index + 1}: ${props.step.label} - ${status}`}
 				</span>
 			</button>
 		);
