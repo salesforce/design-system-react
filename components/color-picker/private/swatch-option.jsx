@@ -19,7 +19,6 @@ class SwatchOption extends React.Component {
 						this.props.workingColor.hex === this.props.color
 					}
 					className="slds-color-picker__swatch-trigger"
-					href="#"
 					onClick={(event) => {
 						handleClick(event, {
 							hex: this.props.color,
@@ -27,6 +26,7 @@ class SwatchOption extends React.Component {
 						});
 					}}
 					role="option"
+					tabIndex={0}
 				>
 					<Swatch color={this.props.color} />
 				</a>

@@ -4,8 +4,9 @@ import Swatch from './swatch';
 
 import KEYS from '../../../utilities/key-code';
 
-const handleClick = (event, { onSaturationValueChange }) => {
-	const rect = event.target.getBoundingClientRect();
+const handleClick = (event, rangeIndicator, { onSaturationValueChange }) => {
+	const rect = event.currentTarget.getBoundingClientRect();
+	rangeIndicator.focus();
 	onSaturationValueChange(event, {
 		saturation: Math.round((event.clientX - rect.left) / rect.width * 100),
 		value: Math.round((rect.bottom - event.clientY) / rect.height * 100),
@@ -60,7 +61,7 @@ class HsvColor extends React.Component {
 						background: `hsl(${this.props.color.hsv.hue}, 100%, 50%)`,
 					}}
 					onClick={(event) => {
-						handleClick(event, {
+						handleClick(event, this.rangeIndicator, {
 							onSaturationValueChange: this.props.onSaturationValueChange,
 						});
 					}}
@@ -72,14 +73,16 @@ class HsvColor extends React.Component {
 						aria-describedby={`color-picker-instructions-${this.props.id}`}
 						aria-live="assertive"
 						className="slds-color-picker__range-indicator"
-						href="#"
 						onKeyDown={(event) => {
 							handleKeyDown(event, { ...this.props });
 						}}
+						ref={(rangeIndicator) => { this.rangeIndicator = rangeIndicator; }}
+						role="button"
 						style={{
 							bottom: `${this.props.color.hsv.value}%`,
 							left: `${this.props.color.hsv.saturation}%`,
 						}}
+						tabIndex={0}
 					/>
 				</div>
 				<div className="slds-color-picker__hue-and-preview">
