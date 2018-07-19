@@ -3090,69 +3090,40 @@
             }
         ],
         "props": {
-            "assistiveTextForActionsHeader": {
+            "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "actionsHeader": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSort": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSortedAscending": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSortedDescending": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectAllRows": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectRow": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text for heading of actions column",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
                 "defaultValue": {
-                    "value": "'Actions'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSort": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for sort action on table column header",
-                "defaultValue": {
-                    "value": "'Sort by: '",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSortedAscending": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text announced once a column is sorted in ascending order",
-                "defaultValue": {
-                    "value": "'Sorted Ascending'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSortedDescending": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text announced once a column is sorted in descending order",
-                "defaultValue": {
-                    "value": "'Sorted Descending'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForSelectAllRows": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for select all checkbox within the table header",
-                "defaultValue": {
-                    "value": "'Select all rows'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForSelectRow": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for select row",
-                "defaultValue": {
-                    "value": "'Select row'",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
                     "computed": false
                 }
             },
@@ -5760,10 +5731,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=''</code>."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "category": {
                 "type": {
@@ -7721,6 +7702,23 @@
                     "description": "A filtering panel contextual filtering options.",
                     "methods": [],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "closeButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: Localized description of the close button for the panel for screen readers",
+                            "defaultValue": {
+                                "value": "{\n    closeButton: 'Close Filter Panel',\n}",
+                                "computed": false
+                            }
+                        },
                         "addFilterLabel": {
                             "type": {
                                 "name": "node"
@@ -7729,17 +7727,6 @@
                             "description": "Localized description of the \"Add Filter\" button in the footer",
                             "defaultValue": {
                                 "value": "'Add Filter'",
-                                "computed": false
-                            }
-                        },
-                        "assistiveTextCloseFilterPanel": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": false,
-                            "description": "Localized description of the close button for the panel for screen readers",
-                            "defaultValue": {
-                                "value": "'Close Filter Panel'",
                                 "computed": false
                             }
                         },
@@ -10785,10 +10772,16 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "If present, the label associated with this `textarea` is overwritten\nby this text and is visually not shown."
+                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
             },
             "children": {
                 "type": {
@@ -11810,10 +11803,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {

@@ -11,15 +11,21 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import checkProps from './check-props';
+
 // ## Constants
 import { SPINNER } from '../../utilities/constants';
 
 // ### Prop Types
 const PROP_TYPES = {
 	/**
-	 * Assistive text that is read out loud to screen readers.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: Assistive text that is read out loud to screen readers.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Custom css classes applied to Spinner container
 	 */
@@ -43,21 +49,22 @@ const PROP_TYPES = {
 };
 
 const DEFAULT_PROPS = {
-	assistiveText: 'Loading...',
+	assistiveText: { label: 'Loading...' },
 	size: 'medium',
 	variant: 'base',
 };
 
 // ## Spinner
 const Spinner = (props) => {
-	const {
-		assistiveText,
-		containerClassName,
-		id,
-		isInput,
-		size,
-		variant,
-	} = props;
+	checkProps(SPINNER, props);
+	const { containerClassName, id, isInput, size, variant } = props;
+	const assistiveText =
+		typeof props.assistiveText === 'string'
+			? props.assistiveText
+			: {
+				...DEFAULT_PROPS.assistiveText,
+				...props.assistiveText,
+			}.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-input__spinner': isInput,

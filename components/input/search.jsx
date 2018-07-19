@@ -15,6 +15,8 @@ import PropTypes from 'prop-types';
 import Input from './index';
 import InputIcon from '../icon/input-icon';
 
+import checkProps from './check-props';
+
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
@@ -29,50 +31,61 @@ const handleKeyDown = (event, onSearch) => {
 	}
 };
 
+const defaultProps = {
+	assistiveText: {},
+};
+
 /**
  * A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.
  */
-const Search = ({
-	assistiveText,
-	clearable,
-	onClear,
-	onSearch,
-	placeholder,
-	...props
-}) => (
-	<Input
-		assistiveText={{ label: assistiveText }}
-		iconLeft={
-			<InputIcon
-				assistiveText={{ icon: 'Search' }}
-				category="utility"
-				name="search"
-				onClick={onSearch}
-			/>
-		}
-		iconRight={
-			clearable ? (
+const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
+	checkProps(FORMS_SEARCH, props);
+	const assistiveText =
+		typeof props.assistiveText === 'string'
+			? props.assistiveText
+			: {
+				...defaultProps.assistiveText,
+				...props.assistiveText,
+			}.label;
+	return (
+		<Input
+			assistiveText={{ label: assistiveText }}
+			iconLeft={
 				<InputIcon
-					assistiveText={{ icon: 'Clear' }}
+					assistiveText={{ icon: 'Search' }}
 					category="utility"
-					name="clear"
-					onClick={onClear}
+					name="search"
+					onClick={onSearch}
 				/>
-			) : null
-		}
-		onKeyDown={onSearch ? (event) => handleKeyDown(event, onSearch) : null}
-		placeholder={placeholder}
-		{...props}
-	/>
-);
+			}
+			iconRight={
+				clearable ? (
+					<InputIcon
+						assistiveText={{ icon: 'Clear' }}
+						category="utility"
+						name="clear"
+						onClick={onClear}
+					/>
+				) : null
+			}
+			onKeyDown={onSearch ? (event) => handleKeyDown(event, onSearch) : null}
+			placeholder={placeholder}
+			{...props}
+		/>
+	);
+};
 
 Search.displayName = FORMS_SEARCH;
 
 Search.propTypes = {
 	/**
-	 * Assistive text to search input
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: Assistive text to search input
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Adds a clear button to right side of the input
 	 */
@@ -90,5 +103,7 @@ Search.propTypes = {
 	 */
 	placeholder: PropTypes.string,
 };
+
+Search.defaultProps = defaultProps;
 
 export default Search;

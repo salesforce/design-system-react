@@ -11,6 +11,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import checkProps from './check-props';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // A simple javascript utility for conditionally joining classNames together.
@@ -22,22 +24,36 @@ import UtilityIcon from '../utilities/utility-icon';
 // ## Constants
 import { ICON } from '../../utilities/constants';
 
+const defaultProps = {
+	assistiveText: {},
+	category: 'standard',
+	size: 'medium'
+};
+
 /**
  * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.
  */
-const Icon = ({
-	assistiveText,
-	category,
-	className,
-	containerClassName,
-	icon,
-	inverse,
-	name,
-	path,
-	size,
-	style,
-	title
-}) => {
+const Icon = (props) => {
+	checkProps(ICON, props);
+	const {
+		category,
+		className,
+		containerClassName,
+		icon,
+		inverse,
+		name,
+		path,
+		size,
+		style,
+		title
+	} = props;
+	const assistiveText = typeof props.assistiveText === 'string'
+		? props.assistiveText
+		: {
+			...defaultProps.assistiveText,
+			...props.assistiveText,
+		}.label;
+
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
 
 	return (
@@ -89,11 +105,13 @@ Icon.displayName = ICON;
 // ### Prop Types
 Icon.propTypes = {
 	/**
-	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	 * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
-	 * declare this prop as <code>assistiveText=''</code>.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
 	 */
@@ -154,9 +172,6 @@ Icon.propTypes = {
 	title: PropTypes.string
 };
 
-Icon.defaultProps = {
-	category: 'standard',
-	size: 'medium'
-};
+Icon.defaultProps = defaultProps;
 
 export default Icon;

@@ -47,6 +47,19 @@ import {
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
 
+const defaultProps = {
+	assistiveText: {
+		actionsHeader: 'Actions',
+		columnSort: 'Sort by: ',
+		columnSortedAscending: 'Sorted Ascending',
+		columnSortedDescending: 'Sorted Descending',
+		selectAllRows: 'Select all rows',
+		selectRow: 'Select row',
+	},
+	id: shortid.generate(),
+	selection: [],
+};
+
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
@@ -59,29 +72,23 @@ const DataTable = createReactClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Text for heading of actions column
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `actionsHeader`: Text for heading of actions column
+		 * * `columnSort`: Text for sort action on table column header
+		 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
+		 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
+		 * * `selectAllRows`: Text for select all checkbox within the table header
+		 * * `selectRow`: Text for select row
 		 */
-		assistiveTextForActionsHeader: PropTypes.string,
-		/**
-		 * Text for sort action on table column header
-		 */
-		assistiveTextForColumnSort: PropTypes.string,
-		/**
-		 * Text announced once a column is sorted in ascending order
-		 */
-		assistiveTextForColumnSortedAscending: PropTypes.string,
-		/**
-		 * Text announced once a column is sorted in descending order
-		 */
-		assistiveTextForColumnSortedDescending: PropTypes.string,
-		/**
-		 * Text for select all checkbox within the table header
-		 */
-		assistiveTextForSelectAllRows: PropTypes.string,
-		/**
-		 * Text for select row
-		 */
-		assistiveTextForSelectRow: PropTypes.string,
+		assistiveText: PropTypes.shape({
+			actionsHeader: PropTypes.string,
+			columnSort: PropTypes.string,
+			columnSortedAscending: PropTypes.string,
+			columnSortedDescending: PropTypes.string,
+			selectAllRows: PropTypes.string,
+			selectRow: PropTypes.string,
+		}),
 		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
 		 * ```
@@ -170,16 +177,7 @@ const DataTable = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			assistiveTextForActionsHeader: 'Actions',
-			assistiveTextForColumnSort: 'Sort by: ',
-			assistiveTextForColumnSortedAscending: 'Sorted Ascending',
-			assistiveTextForColumnSortedDescending: 'Sorted Descending',
-			assistiveTextForSelectAllRows: 'Select all rows',
-			assistiveTextForSelectRow: 'Select row',
-			id: shortid.generate(),
-			selection: [],
-		};
+		return defaultProps;
 	},
 
 	componentWillMount () {
@@ -249,6 +247,29 @@ const DataTable = createReactClass({
 			}
 		});
 
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
+		if (this.props.assistiveTextForActionsHeader) {
+			assistiveText.actionsHeader = this.props.assistiveTextForActionsHeader;
+		}
+		if (this.props.assistiveTextForSelectAllRows) {
+			assistiveText.selectAllRows = this.props.assistiveTextForSelectAllRows;
+		}
+		if (this.props.assistiveTextForColumnSortedAscending) {
+			assistiveText.columnSortedAscending = this.props.assistiveTextForColumnSortedAscending;
+		}
+		if (this.props.assistiveTextForColumnSortedDescending) {
+			assistiveText.columnSortedDescending = this.props.assistiveTextForColumnSortedDescending;
+		}
+		if (this.props.assistiveTextForColumnSort) {
+			assistiveText.columnSort = this.props.assistiveTextForColumnSort;
+		}
+		if (this.props.assistiveTextForSelectRow) {
+			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
+		}
+
 		return (
 			<table
 				className={classNames(
@@ -272,19 +293,7 @@ const DataTable = createReactClass({
 				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
-					assistiveTextForActionsHeader={
-						this.props.assistiveTextForActionsHeader
-					}
-					assistiveTextForSelectAllRows={
-						this.props.assistiveTextForSelectAllRows
-					}
-					assistiveTextForColumnSortedAscending={
-						this.props.assistiveTextForColumnSortedAscending
-					}
-					assistiveTextForColumnSortedDescending={
-						this.props.assistiveTextForColumnSortedDescending
-					}
-					assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
+					assistiveText={assistiveText}
 					allSelected={allSelected}
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
@@ -302,9 +311,7 @@ const DataTable = createReactClass({
 									shortid.generate();
 							return (
 								<DataTableRow
-									assistiveTextForSelectRow={
-										this.props.assistiveTextForSelectRow
-									}
+									assistiveText={assistiveText}
 									canSelectRows={canSelectRows}
 									columns={columns}
 									fixedLayout={this.props.fixedLayout}

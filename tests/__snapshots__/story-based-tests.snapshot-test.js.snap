@@ -307,7 +307,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                       <span
                         className="slds-assistive-text"
                       >
-                        Select all rows
+                        all rows
                       </span>
                     </label>
                   </span>
@@ -338,7 +338,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Sort by: 
+                sort this column
                  
               </span>
               <span
@@ -363,7 +363,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                 aria-live="assertive"
                 className="slds-assistive-text"
               >
-                Sorted Ascending
+                asc
               </span>
             </a>
           </th>
@@ -471,7 +471,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Sort by: 
+                sort this column
                  
               </span>
               <span
@@ -561,7 +561,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Actions
+                actions
               </span>
             </div>
           </th>
@@ -607,7 +607,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Select row
+                      select this row
                     </span>
                   </label>
                 </span>
@@ -800,7 +800,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Select row
+                      select this row
                     </span>
                   </label>
                 </span>
@@ -993,7 +993,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Select row
+                      select this row
                     </span>
                   </label>
                 </span>
