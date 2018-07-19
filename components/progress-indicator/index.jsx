@@ -116,7 +116,6 @@ const defaultSteps = [
 
 const defaultProps = {
 	assistiveText: {
-		activeStep: '',
 		completedStep: 'Completed',
 		disabledStep: 'Disabled',
 		errorStep: 'Error',

@@ -22,7 +22,6 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `activeStep`: Label for the active step. The default is `Active Step`
 	 * * `completedStep`: Label for a completed step. The default is `Completed Step`
 	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
 	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
@@ -30,7 +29,6 @@ const propTypes = {
 	 * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
 	 */
 	assistiveText: PropTypes.shape({
-		activeStep: PropTypes.string,
 		completedStep: PropTypes.string,
 		disabledStep: PropTypes.string,
 		percentage: PropTypes.string,
@@ -165,8 +163,6 @@ class Step extends React.Component {
 		let status = '';
 		if (this.props.isError) {
 			status = this.props.assistiveText.errorStep;
-		} else if (this.props.isSelected) {
-			status = this.props.assistiveText.activeStep;
 		} else if (this.props.isCompleted) {
 			status = this.props.assistiveText.completedStep;
 		} else if (this.props.isDisabled) {
