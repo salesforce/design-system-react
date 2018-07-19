@@ -31,7 +31,7 @@ const propTypes = {
 		saturationValueGrid: PropTypes.string,
 	}),
 	/**
-	 * Current color (in hexadecimal string)
+	 * Current color in hexadecimal string, including # sign (eg: "#000000")
 	 */
 	value: PropTypes.string,
 	/**
@@ -42,6 +42,10 @@ const propTypes = {
 	 * Disables the input and button
 	 */
 	disabled: PropTypes.bool,
+	/**
+	 * Hides the text input
+	 */
+	hideInput: PropTypes.bool,
 	/**
 	 * Popover open state
 	 */
@@ -55,7 +59,6 @@ const propTypes = {
 	 * * `hexLabel`: Label for input of hexadecimal color
 	 * * `invalidColor`: Error message when hex color input is invalid
 	 * * `invalidComponent`: Error message when a component input is invalid
-	 * * `label`: Label for entire colorpicker control
 	 * * `redAbbreviated`: One letter abbreviation of red color component
 	 * * `swatchTab`: Label for swatch tab of popover
 	 * * `submitButton`: Text for submit/done button of popover
@@ -68,15 +71,14 @@ const propTypes = {
 		hexLabel: PropTypes.string,
 		invalidColor: PropTypes.string,
 		invalidComponent: PropTypes.string,
-		label: PropTypes.string,
 		redAbbreviated: PropTypes.string,
 		swatchTab: PropTypes.string,
 		submitButton: PropTypes.string,
 	}),
 	/**
-	 * Triggered when the date changes. It receives and event object that
-	 * originally triggered the change, as well as an object in the shape `{
-	 * color: [string] }`, which is a hex representation of the color.
+	 * onChange is triggered when done is clicked within the Popover. It receives
+	 * the event object that originally triggered the change, as well as an object
+	 * in the shape `{color: [string] }`, which is a hex representation of the color.
 	 */
 	onChange: PropTypes.func,
 	/**
@@ -100,7 +102,6 @@ const defaultProps = {
 		hexLabel: 'Hex',
 		invalidColor: 'The color entered is invalid',
 		invalidComponent: 'The value needs to be an integer from 0-255',
-		label: 'Choose Color',
 		redAbbreviated: 'R',
 		submitButton: 'Done',
 		swatchTab: 'Default',
@@ -157,12 +158,12 @@ class ColorPicker extends React.Component {
 		this.handleSwatchSelect = this.handleSwatchSelect.bind(this);
 
 		this.state = {
-			currentColor: this.props.value,
+			currentColor: this.props.value || '',
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
 			workingColor: ColorUtils.getNewColor({
-				hex: this.props.value,
-			}),
+				hex: this.props.value
+			})
 		};
 	}
 
@@ -186,6 +187,23 @@ class ColorPicker extends React.Component {
 		}
 
 		this.setState(nextState);
+	}
+
+	getInput (activeColor) {
+		return this.props.hideInput ? null :
+			(
+				<Input
+					aria-describedby={`color-picker-summary-error-${this.generatedId}`}
+					className={classNames('slds-color-picker__summary-input', {
+						'slds-has-error': !!this.state.colorErrorMessage,
+					})}
+					disabled={this.props.disabled}
+					id={`color-picker-summary-input-${this.generatedId}`}
+					maxLength={7}
+					onChange={this.handleHexInputChange}
+					value={activeColor}
+				/>
+			);
 	}
 
 	getDialog () {
@@ -233,6 +251,7 @@ class ColorPicker extends React.Component {
 						/>
 						<Button
 							className="slds-color-picker__selector-submit"
+							disabled={this.state.workingColor.errors}
 							label={this.props.labels.submitButton}
 							onClick={this.handleSubmitButtonClick}
 							variant="brand"
@@ -257,6 +276,9 @@ class ColorPicker extends React.Component {
 	handleCancelButtonClick () {
 		this.setState({
 			isOpen: false,
+			workingColor: ColorUtils.getNewColor({
+				hex: this.state.currentColor
+			})
 		});
 	}
 
@@ -325,6 +347,9 @@ class ColorPicker extends React.Component {
 	handleSwatchButtonClick () {
 		this.setState({
 			isOpen: !this.state.isOpen,
+			workingColor: ColorUtils.getNewColor({
+				hex: this.state.currentColor
+			})
 		});
 	}
 
@@ -335,6 +360,7 @@ class ColorPicker extends React.Component {
 	}
 
 	render () {
+		const activeColor = this.state.isOpen ? this.state.workingColor.hex : this.state.currentColor;
 		return (
 			<div
 				className="slds-color-picker"
@@ -355,20 +381,11 @@ class ColorPicker extends React.Component {
 						iconClassName="slds-m-left_xx-small"
 						iconPosition="right"
 						iconVariant="more"
-						label={<Swatch color={this.state.currentColor} />}
+						label={<Swatch color={activeColor} />}
 						onClick={this.handleSwatchButtonClick}
 						variant="icon"
 					/>
-					<Input
-						aria-describedby={`color-picker-summary-error-${this.generatedId}`}
-						disabled={this.props.disabled}
-						className={classNames('slds-color-picker__summary-input', {
-							'slds-has-error': !!this.state.colorErrorMessage,
-						})}
-						id={`color-picker-summary-input-${this.generatedId}`}
-						onChange={this.handleHexInputChange}
-						value={this.state.currentColor}
-					/>
+					{this.getInput(activeColor)}
 					{this.getDialog()}
 					{!this.state.isOpen && this.state.colorErrorMessage ? (
 						<p

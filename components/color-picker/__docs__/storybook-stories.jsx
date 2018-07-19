@@ -19,7 +19,7 @@ storiesOf(COLOR_PICKER, module)
 	.add('Default', () => <ColorPicker onChange={handleChange} />)
 	.add('Custom Colors', () => (
 		<ColorPicker
-			color="#000000"
+			value="#000000"
 			onChange={handleChange}
 			swatchColors={[
 				'',
@@ -33,4 +33,5 @@ storiesOf(COLOR_PICKER, module)
 				'#ffffff',
 			]}
 		/>
-	));
+	))
+	.add('Hide Input', () => <ColorPicker onChange={handleChange} hideInput />);

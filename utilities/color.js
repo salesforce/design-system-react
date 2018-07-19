@@ -49,7 +49,7 @@ const ColorUtils = {
 		}
 
 		return {
-			hex: '#000000',
+			hex: '',
 			hsv: {
 				hue: 0,
 				saturation: 0,
