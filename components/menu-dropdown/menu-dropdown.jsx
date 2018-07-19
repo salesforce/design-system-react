@@ -428,11 +428,11 @@ const MenuDropdown = createReactClass({
 			: this.state.isOpen);
 	},
 
-	getIndexByValue (value) {
+	getIndexByValue (value, options) {
 		let foundIndex = -1;
 
-		if (this.props.options && this.props.options.length) {
-			this.props.options.some((element, index) => {
+		if (options && options.length) {
+			options.some((element, index) => {
 				if (element && element.value === value) {
 					foundIndex = index;
 					return true;
@@ -476,7 +476,7 @@ const MenuDropdown = createReactClass({
 	setCurrentSelectedIndices (nextProps) {
 		if (this.props.multiple !== true) {
 			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value),
+				selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
 			});
 		} else {
 			let values = [];
@@ -486,8 +486,12 @@ const MenuDropdown = createReactClass({
 			} else {
 				values = nextProps.value;
 			}
-			values = values.filter((value) => this.getIndexByValue(value) !== -1);
-			currentIndices = values.map((value) => this.getIndexByValue(value));
+			values = values.filter(
+				(value) => this.getIndexByValue(value, nextProps.options) !== -1
+			);
+			currentIndices = values.map((value) =>
+				this.getIndexByValue(value, nextProps.options)
+			);
 
 			this.setState({
 				selectedIndices: currentIndices,
