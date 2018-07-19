@@ -9,7 +9,7 @@ import assign from 'lodash.assign';
 import {
 	Simulate,
 	findRenderedDOMComponentWithClass,
-} from 'react-addons-test-utils';
+} from 'react-dom/test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`

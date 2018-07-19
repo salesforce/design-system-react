@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
 import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 import IconSettings from '../../icon-settings';
 import AppLauncher from '../../app-launcher';

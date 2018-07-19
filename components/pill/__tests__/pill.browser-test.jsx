@@ -1,6 +1,6 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import SLDSPill from '~/components/pill';
 import SLDSIcon from '~/components/icon';
 import SLDSAvatar from '~/components/avatar';
