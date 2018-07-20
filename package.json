@@ -1,0 +1,537 @@
+{
+  "name": "design-system-react",
+  "version": "0.8.20",
+  "description": "Salesforce Lightning Design System for React",
+  "license": "SEE LICENSE IN README.md",
+  "engines": {
+    "npm": "^5.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/salesforce/design-system-react.git"
+  },
+  "keywords": [
+    "react",
+    "slds",
+    "salesforce",
+    "salesforce-ux",
+    "lightning",
+    "design system",
+    "lightning design system",
+    "salesforce-lightning",
+    "salesforce lightning design system",
+    "interactive components",
+    "interactive",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/salesforce/design-system-react/issues"
+  },
+  "main": "components/index.js",
+  "homepage": "https://react.lightningdesignsystem.com",
+  "dependencies": {
+    "@salesforce/babel-preset-design-system-react": "^1.0.0",
+    "classnames": "^2.2.5",
+    "create-react-class": "^15.6.0",
+    "lodash.assign": "^4.0.9",
+    "lodash.compact": "^3.0.0",
+    "lodash.escaperegexp": "^4.1.1",
+    "lodash.find": "^4.3.0",
+    "lodash.findindex": "^4.3.0",
+    "lodash.flatten": "^4.2.0",
+    "lodash.isboolean": "^3.0.3",
+    "lodash.isdate": "^4.0.1",
+    "lodash.isequal": "^4.2.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isnumber": "^3.0.3",
+    "lodash.memoize": "^4.1.1",
+    "lodash.omit": "^4.3.0",
+    "lodash.partial": "^4.1.3",
+    "lodash.reject": "^4.3.0",
+    "lodash.uniqueid": "^4.0.0",
+    "popper.js": "^1.10.8",
+    "prop-types": ">=15.5.8",
+    "react-highlighter": "^0.4.0",
+    "react-modal": "3.4.4",
+    "react-onclickoutside": "^6.5.0",
+    "react-required-if": "^1.0.3",
+    "react-text-truncate": "^0.12.0",
+    "shortid": "^2.2.6",
+    "warning": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@salesforce-ux/design-system": "^2.6.0",
+    "react": ">=15.4.1 <16",
+    "react-dom": ">=15.4.1 <16"
+  },
+  "components": [
+    {
+      "component": "accordion",
+      "status": "prod",
+      "display-name": "Accordions",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/accordions",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/alerts",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ]
+    },
+    {
+      "component": "app-launcher",
+      "status": "prototype",
+      "display-name": "App Launcher",
+      "SLDS-component-path": "/components/app-launcher/#flavor-default",
+      "dependencies": [
+        {
+          "component": "section"
+        },
+        {
+          "component": "tile"
+        }
+      ]
+    },
+    {
+      "component": "avatar",
+      "status": "prod",
+      "display-name": "Avatars",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/avatars"
+    },
+    {
+      "component": "breadcrumb",
+      "status": "prod",
+      "display-name": "Breadcrumbs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/breadcrumbs"
+    },
+    {
+      "component": "button",
+      "status": "prod",
+      "display-name": "Buttons",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/buttons"
+    },
+    {
+      "component": "button-stateful",
+      "status": "prod",
+      "display-name": "Stateful Buttons",
+      "SLDS-component-path": "/components/buttons/#flavor-stateful"
+    },
+    {
+      "component": "button-group",
+      "status": "prod",
+      "display-name": "Button Groups",
+      "SLDS-component-path": "/components/button-groups"
+    },
+    {
+      "component": "card",
+      "status": "prod",
+      "display-name": "Cards",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/cards",
+      "dependencies": [
+        {
+          "component": "empty"
+        },
+        {
+          "component": "filter"
+        }
+      ]
+    },
+    {
+      "component": "checkbox",
+      "status": "prod",
+      "display-name": "Checkboxes",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/checkbox/"
+    },
+    {
+      "component": "combobox",
+      "status": "prod",
+      "display-name": "Comboboxes",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/08/21",
+        "commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+      },
+      "SLDS-component-path": "/components/comboboxes"
+    },
+    {
+      "component": "data-table",
+      "status": "prod",
+      "display-name": "Data Tables",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/01",
+        "deprecated-accessibility": "true",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/data-tables",
+      "dependencies": [
+        {
+          "component": "cell"
+        },
+        {
+          "component": "column"
+        },
+        {
+          "component": "highlight-cell"
+        },
+        {
+          "component": "row-actions"
+        }
+      ]
+    },
+    {
+      "component": "date-picker",
+      "status": "prod",
+      "display-name": "Datepickers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/20",
+        "commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
+      },
+      "SLDS-component-path": "/components/datepickers"
+    },
+    {
+      "component": "filter",
+      "status": "prototype",
+      "display-name": "Filters",
+      "SLDS-component-path": "/components/filter"
+    },
+    {
+      "component": "input",
+      "status": "prod",
+      "display-name": "Inputs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/09/22",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/input/"
+    },
+    {
+      "component": "global-header",
+      "status": "prototype",
+      "display-name": "Global Header",
+      "SLDS-component-path": "/components/global-header#flavor-base",
+      "dependencies": [
+        {
+          "component": "button"
+        },
+        {
+          "component": "dropdown"
+        },
+        {
+          "component": "profile"
+        },
+        {
+          "component": "search"
+        }
+      ]
+    },
+    {
+      "component": "global-navigation-bar",
+      "status": "prototype",
+      "display-name": "Global Navigation Bar",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/05/02",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
+      "dependencies": [
+        {
+          "component": "button"
+        },
+        {
+          "component": "dropdown"
+        },
+        {
+          "component": "label"
+        },
+        {
+          "component": "link"
+        },
+        {
+          "component": "region"
+        }
+      ]
+    },
+    {
+      "component": "icon",
+      "status": "prod",
+      "display-name": "Icons",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "icon-settings",
+      "status": "prod",
+      "display-name": "Icon Settings",
+      "SLDS-component-path": "/components/icons-settings"
+    },
+    {
+      "component": "illustration",
+      "status": "prod",
+      "display-name": "Illustrations",
+      "SLDS-component-path": "/components/illustrations"
+    },
+    {
+      "component": "media-object",
+      "status": "prod",
+      "display-name": "Media Objects",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/utilities/media-objects/"
+    },
+    {
+      "component": "menu-dropdown",
+      "status": "prod",
+      "display-name": "Dropdown Menus",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/menus#flavor-dropdown",
+      "dependencies": [
+        {
+          "component": "button-trigger"
+        }
+      ]
+    },
+    {
+      "component": "modal",
+      "status": "prod",
+      "display-name": "Modals",
+      "SLDS-component-path": "/components/modals"
+    },
+    {
+      "component": "navigation",
+      "status": "prod",
+      "display-name": "Navigation",
+      "SLDS-component-path": "/components/navigation"
+    },
+    {
+      "component": "panel",
+      "status": "prototype",
+      "display-name": "Panels",
+      "SLDS-component-path": "/components/panels",
+      "dependencies": [
+        {
+          "component": "filtering/group"
+        },
+        {
+          "component": "filtering/list-heading"
+        },
+        {
+          "component": "filtering/list"
+        }
+      ]
+    },
+    {
+      "component": "pill",
+      "status": "prototype",
+      "display-name": "Pills",
+      "SLDS-component-path": "/components/pills"
+    },
+    {
+      "component": "popover",
+      "status": "prod",
+      "display-name": "Popovers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/popovers"
+    },
+    {
+      "component": "page-header",
+      "status": "prod",
+      "display-name": "Page Headers",
+      "SLDS-component-path": "/components/page-headers"
+    },
+    {
+      "component": "progress-indicator",
+      "status": "prod",
+      "display-name": "Progress Indicators",
+      "SLDS-component-path": "/components/progress-indicator"
+    },
+    {
+      "component": "progress-ring",
+      "status": "prod",
+      "display-name": "Progress Rings",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+      },
+      "SLDS-component-path": "/components/progress-ring"
+    },
+    {
+      "component": "radio",
+      "status": "prod",
+      "display-name": "Radios",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-group/"
+    },
+    {
+      "component": "split-view",
+      "status": "prod",
+      "display-name": "Split View",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/split-view",
+      "dependencies": [
+        {
+          "component": "header"
+        },
+        {
+          "component": "listbox"
+        }
+      ]
+    },
+    {
+      "component": "radio-group",
+      "status": "prod",
+      "display-name": "Radio Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-group"
+    },
+    {
+      "component": "radio-button-group",
+      "status": "prod",
+      "display-name": "Radio Button Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-button-group"
+    },
+    {
+      "component": "slider",
+      "status": "prod",
+      "display-name": "Slider",
+      "SLDS-component-path": "/components/slider"
+    },
+    {
+      "component": "tabs",
+      "status": "prod",
+      "display-name": "Tabs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/tabs",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "textarea",
+      "status": "prod",
+      "display-name": "Textareas",
+      "SLDS-component-path": "/components/forms#flavor-textarea"
+    },
+    {
+      "component": "time-picker",
+      "status": "prod",
+      "display-name": "Timepickers",
+      "SLDS-component-path": "/components/datepickers"
+    },
+    {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/toasts",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ]
+    },
+    {
+      "component": "tooltip",
+      "status": "prod",
+      "display-name": "Tooltips",
+      "SLDS-component-path": "/components/tooltips"
+    },
+    {
+      "component": "tree",
+      "status": "prod",
+      "display-name": "Tree",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/05/04",
+        "commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/05/04",
+        "commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+      },
+      "SLDS-component-path": "/components/tree"
+    }
+  ],
+  "documentation": {
+    "prototype": {
+      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+    }
+  },
+  "SLDS": {
+    "gitURL": "^2.6.0"
+  }
+}
