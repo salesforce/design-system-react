@@ -36,6 +36,7 @@ These are changes that have backwards-compatible solutions present and that comp
 **Bugfixes**
 
 * Fix bug in `Dropdown` component where getIndexByValue() needs to look at nextProps.options when componentWillreceiveProps() is called.
+* Datepicker: Make year Combobox menu width match the width of its input/button.
 
 **Maintenance**
 
