@@ -148,7 +148,7 @@ class Tabs extends React.Component {
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.defaultSelectedIndex !== this.props.defaultSelectedIndex) {
 			this.setState({
-				selectedIndex: nextProps.defaultSelectedIndex
+				selectedIndex: nextProps.defaultSelectedIndex,
 			});
 		}
 	}
