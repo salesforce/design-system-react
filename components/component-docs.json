@@ -6168,6 +6168,10 @@
                     {
                         "name": "value",
                         "type": null
+                    },
+                    {
+                        "name": "options",
+                        "type": null
                     }
                 ],
                 "returns": null
