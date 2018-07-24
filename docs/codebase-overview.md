@@ -529,7 +529,7 @@ This preset enables a module bundler, such as Webpack, to transpile Design Syste
   * Independence between re-users and providers
   * Relief of component providers
 * Better software product
-  * increased code quality
+  * Increased code quality
   * More innovative development
 * More flexible utilization of developers
   * Simplified developer deployment
@@ -538,3 +538,5 @@ This preset enables a module bundler, such as Webpack, to transpile Design Syste
   * Community-based learning
   * Openness and availability of knowledge
 * Higher employee motivation
+  * Shareable work
+		* Opportuntity to lead engineering community
