@@ -68,11 +68,11 @@ describe('SLDSAlert: ', function () {
 		 * It allows access to the Mocha test context via `this`.
 		 */
 		it('calls onRequestClose handler', function () {
-			const button = this.wrapper.find('.slds-notify__close');
+			const button = this.wrapper.find('button.slds-notify__close');
 			// If applicable, use second parameter to pass the data object
-			expect(this.wrapper.find('.slds-notify').length).to.equal(1);
+			expect(this.wrapper).to.have.state('isOpen', true);
 			button.simulate('click', {});
-			expect(this.wrapper.find('.slds-notify').length).to.equal(0);
+			expect(this.wrapper).to.have.state('isOpen', false);
 		});
 		it('calls onClickHeadingLink handler', function () {
 			const link = this.wrapper.find('a');
