@@ -64,6 +64,13 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
             role="presentation"
+            style={
+              Object {
+                "maxWidth": undefined,
+                "position": undefined,
+                "width": undefined,
+              }
+            }
           >
             <li
               className="slds-listbox__item"
@@ -490,6 +497,13 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid this-is-the-menu"
             role="presentation"
+            style={
+              Object {
+                "maxWidth": undefined,
+                "position": undefined,
+                "width": undefined,
+              }
+            }
           >
             <li
               className="slds-dropdown__header slds-truncate"
@@ -690,6 +704,13 @@ exports[`Base Open DOM Snapshot 1`] = `
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
             role="presentation"
+            style={
+              Object {
+                "maxWidth": undefined,
+                "position": undefined,
+                "width": undefined,
+              }
+            }
           >
             <li
               className="slds-listbox__item"
@@ -881,6 +902,7 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
             style={
               Object {
                 "maxWidth": "500px",
+                "position": undefined,
                 "width": "auto",
               }
             }
@@ -1013,6 +1035,13 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
             role="presentation"
+            style={
+              Object {
+                "maxWidth": undefined,
+                "position": undefined,
+                "width": undefined,
+              }
+            }
           >
             <li
               className="slds-dropdown__header slds-truncate"
@@ -2144,6 +2173,13 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
             role="presentation"
+            style={
+              Object {
+                "maxWidth": undefined,
+                "position": undefined,
+                "width": undefined,
+              }
+            }
           >
             <li
               className="slds-listbox__item"
@@ -3011,6 +3047,13 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
           <ul
             className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
             role="presentation"
+            style={
+              Object {
+                "maxWidth": undefined,
+                "position": undefined,
+                "width": undefined,
+              }
+            }
           >
             <li
               className="slds-listbox__item"

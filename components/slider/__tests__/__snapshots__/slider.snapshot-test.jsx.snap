@@ -43,7 +43,6 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
           >
             <input
               className="slds-slider__range"
-              defaultValue={0}
               id="base-id"
               max={100}
               min={0}
@@ -51,6 +50,7 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
               onInput={[Function]}
               step={1}
               type="range"
+              value={0}
             />
             <span
               aria-hidden="true"
@@ -102,7 +102,6 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
           >
             <input
               className="slds-slider__range"
-              defaultValue={0}
               id="assistiveText-id"
               max={100}
               min={0}
@@ -110,6 +109,7 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
               onInput={[Function]}
               step={1}
               type="range"
+              value={0}
             />
             <span
               aria-hidden="true"
@@ -161,7 +161,6 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
           >
             <input
               className="slds-slider__range"
-              defaultValue={200}
               id="min-max-id"
               max={400}
               min={0}
@@ -169,6 +168,7 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
               onInput={[Function]}
               step={1}
               type="range"
+              value={200}
             />
             <span
               aria-hidden="true"
@@ -220,7 +220,6 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
           >
             <input
               className="slds-slider__range"
-              defaultValue={200}
               id="min-max-step-id"
               max={400}
               min={0}
@@ -228,6 +227,7 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
               onInput={[Function]}
               step={100}
               type="range"
+              value={200}
             />
             <span
               aria-hidden="true"
@@ -315,7 +315,6 @@ exports[`Disabled DOM Snapshot 1`] = `
     >
       <input
         className="slds-slider__range"
-        defaultValue={0}
         disabled={true}
         id="disabled-id"
         max={100}
@@ -339,7 +338,7 @@ exports[`Disabled DOM Snapshot 1`] = `
 exports[`Disabled HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"disabled-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
   <div class=\\"slds-form-element__control\\">
-    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"disabled-id\\" class=\\"slds-slider__range\\" disabled=\\"\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"disabled-id\\" class=\\"slds-slider__range\\" disabled=\\"\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
   </div>
 </div>"
 `;
@@ -378,7 +377,6 @@ exports[`Error DOM Snapshot 1`] = `
       <input
         aria-describedby="error message"
         className="slds-slider__range"
-        defaultValue={0}
         id="error-id"
         max={100}
         min={0}
@@ -407,7 +405,7 @@ exports[`Error DOM Snapshot 1`] = `
 exports[`Error HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element slds-has-error\\"><label class=\\"slds-form-element__label\\" for=\\"error-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
   <div class=\\"slds-form-element__control\\">
-    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"error-id\\" class=\\"slds-slider__range\\" aria-describedby=\\"error message\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+    <div class=\\"slds-slider\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"error-id\\" class=\\"slds-slider__range\\" aria-describedby=\\"error message\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
     <div id=\\"error message\\" class=\\"slds-form-element__help\\">There is a problem with this field</div>
   </div>
 </div>"
@@ -452,7 +450,6 @@ exports[`Sizes DOM Snapshot 1`] = `
         >
           <input
             className="slds-slider__range"
-            defaultValue={0}
             id="x-small-id"
             max={100}
             min={0}
@@ -506,7 +503,6 @@ exports[`Sizes DOM Snapshot 1`] = `
         >
           <input
             className="slds-slider__range"
-            defaultValue={0}
             id="small-id"
             max={100}
             min={0}
@@ -560,7 +556,6 @@ exports[`Sizes DOM Snapshot 1`] = `
         >
           <input
             className="slds-slider__range"
-            defaultValue={0}
             id="medium-id"
             max={100}
             min={0}
@@ -614,7 +609,6 @@ exports[`Sizes DOM Snapshot 1`] = `
         >
           <input
             className="slds-slider__range"
-            defaultValue={0}
             id="large-id"
             max={100}
             min={0}
@@ -641,28 +635,28 @@ exports[`Sizes HTML Snapshot 1`] = `
   <div class=\\"slds-col--padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"x-small-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
-        <div class=\\"slds-slider slds-size_x-small\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"x-small-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+        <div class=\\"slds-slider slds-size_x-small\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"x-small-id\\" class=\\"slds-slider__range\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
   <div class=\\"slds-col--padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"small-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
-        <div class=\\"slds-slider slds-size_small\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"small-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+        <div class=\\"slds-slider slds-size_small\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"small-id\\" class=\\"slds-slider__range\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
   <div class=\\"slds-col--padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"medium-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
-        <div class=\\"slds-slider slds-size_medium\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"medium-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+        <div class=\\"slds-slider slds-size_medium\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"medium-id\\" class=\\"slds-slider__range\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
   <div class=\\"slds-col--padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"large-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
-        <div class=\\"slds-slider slds-size_large\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"large-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+        <div class=\\"slds-slider slds-size_large\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"large-id\\" class=\\"slds-slider__range\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
@@ -702,7 +696,6 @@ exports[`Vertical DOM Snapshot 1`] = `
     >
       <input
         className="slds-slider__range"
-        defaultValue={0}
         id="vertical-id"
         max={100}
         min={0}
@@ -725,7 +718,7 @@ exports[`Vertical DOM Snapshot 1`] = `
 exports[`Vertical HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"vertical-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
   <div class=\\"slds-form-element__control\\">
-    <div class=\\"slds-slider slds-slider_vertical\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"vertical-id\\" class=\\"slds-slider__range\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
+    <div class=\\"slds-slider slds-slider_vertical\\"><input type=\\"range\\" step=\\"1\\" min=\\"0\\" max=\\"100\\" id=\\"vertical-id\\" class=\\"slds-slider__range\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
   </div>
 </div>"
 `;

@@ -126,6 +126,14 @@ const Example = createReactClass({
 			<div>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
+						assistiveText={{
+							actionsHeader: 'actions',
+							columnSort: 'sort this column',
+							columnSortedAscending: 'asc',
+							columnSortedDescending: 'desc',
+							selectAllRows: 'all rows',
+							selectRow: 'select this row',
+						}}
 						fixedLayout
 						items={this.state.items}
 						id="DataTableExample-2"

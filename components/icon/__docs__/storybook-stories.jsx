@@ -49,7 +49,7 @@ storiesOf(ICON, module)
 	.add('Color: Default', () => <ColorDefault />)
 	.add('Base: Standard (custom styles)', () => (
 		<Icon
-			assistiveText="Account"
+			assistiveText={{ label: 'Account' }}
 			category="standard"
 			name="account"
 			style={{ backgroundColor: '#aceace', fill: 'orangered' }}
@@ -57,5 +57,5 @@ storiesOf(ICON, module)
 		/>
 	))
 	.add('Base: Imported', () => (
-		<Icon assistiveText="Download" category="utility" icon={download} />
+		<Icon assistiveText={{ label: 'Download' }} category="utility" icon={download} />
 	));

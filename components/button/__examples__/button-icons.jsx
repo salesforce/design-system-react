@@ -11,7 +11,7 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<div className="-x-small-buttons--horizontal">
 					<Button
-						assistiveText="Icon Bare Small"
+						assistiveText={{ icon: 'Icon Bare Small' }}
 						iconCategory="utility"
 						iconName="settings"
 						iconSize="small"
@@ -23,7 +23,7 @@ const Example = createReactClass({
 					/>
 
 					<Button
-						assistiveText="Icon Container Small"
+						assistiveText={{ icon: 'Icon Container Small' }}
 						iconCategory="utility"
 						iconName="settings"
 						iconSize="small"
@@ -40,7 +40,7 @@ const Example = createReactClass({
 						className="-m-horizontal--small"
 					>
 						<Button
-							assistiveText="Icon Border medium"
+							assistiveText={{ icon: 'Icon Border medium' }}
 							iconCategory="utility"
 							iconName="settings"
 							iconVariant="border"
@@ -48,7 +48,7 @@ const Example = createReactClass({
 						/>
 
 						<Button
-							assistiveText="Icon Border-filled medium"
+							assistiveText={{ icon: 'Icon Border-filled medium' }}
 							iconCategory="utility"
 							iconName="settings"
 							iconVariant="border-filled"
@@ -57,7 +57,7 @@ const Example = createReactClass({
 					</div>
 
 					<Button
-						assistiveText="Icon More large"
+						assistiveText={{ icon: 'Icon More large' }}
 						iconCategory="utility"
 						iconName="settings"
 						iconSize="large"
@@ -74,7 +74,7 @@ const Example = createReactClass({
 						className="-m-horizontal--small"
 					>
 						<Button
-							assistiveText="Icon inverse"
+							assistiveText={{ icon: 'Icon inverse' }}
 							iconCategory="utility"
 							iconName="settings"
 							iconSize="large"
@@ -92,7 +92,7 @@ const Example = createReactClass({
 						className="-hint-parent -m-horizontal--small"
 					>
 						<Button
-							assistiveText="Icon hint large"
+							assistiveText={{ icon: 'Icon hint large' }}
 							hint
 							iconCategory="utility"
 							iconName="settings"

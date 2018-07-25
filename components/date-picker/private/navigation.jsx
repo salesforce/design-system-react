@@ -94,7 +94,7 @@ const DatepickerMonthNavigation = createReactClass({
 				<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow">
 					<div className="slds-align-middle">
 						<Button
-							assistiveText={this.props.assistiveTextPreviousMonth}
+							assistiveText={{ icon: this.props.assistiveTextPreviousMonth }}
 							iconCategory="utility"
 							iconName="left"
 							iconVariant="container"
@@ -118,7 +118,7 @@ const DatepickerMonthNavigation = createReactClass({
 					</h2>
 					<div className="slds-align-middle">
 						<Button
-							assistiveText={this.props.assistiveTextNextMonth}
+							assistiveText={{ icon: this.props.assistiveTextNextMonth }}
 							iconCategory="utility"
 							iconName="right"
 							iconVariant="container"

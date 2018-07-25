@@ -374,6 +374,17 @@
                     "computed": false
                 }
             },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -482,6 +493,23 @@
                         }
                     ],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "collapseSection": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "defaultValue": {
+                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
+                                "computed": false
+                            }
+                        },
                         "title": {
                             "type": {
                                 "name": "string"
@@ -495,17 +523,6 @@
                             },
                             "required": false,
                             "description": "Allows the user to show/hide the section"
-                        },
-                        "collapseSectionAssistiveText": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The assistive text for the section collapse icons",
-                            "defaultValue": {
-                                "value": "'Toggle visibility of section'",
-                                "computed": false
-                            }
                         },
                         "children": {
                             "type": {
@@ -704,10 +721,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility that labels the icon."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Assistive text for accessibility that labels the icon.",
+                "defaultValue": {
+                    "value": "{\n    icon: 'User or Account Icon',\n}",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {
@@ -821,12 +848,18 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "The assistive text for the breadcrumb trail",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: The assistive text for the breadcrumb trail.",
                 "defaultValue": {
-                    "value": "'Breadcrumbs'",
+                    "value": "{\n    label: 'Breadcrumbs',\n}",
                     "computed": false
                 }
             },
@@ -844,7 +877,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
         "methods": [
             {
                 "name": "getClassName",
@@ -946,10 +979,20 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
             },
             "buttonRef": {
                 "type": {
@@ -1144,7 +1187,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop."
+                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText.icon</code> prop."
             },
             "onBlur": {
                 "type": {
@@ -1363,10 +1406,20 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
             },
             "disabled": {
                 "type": {
@@ -3048,69 +3101,40 @@
             }
         ],
         "props": {
-            "assistiveTextForActionsHeader": {
+            "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "actionsHeader": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSort": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSortedAscending": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSortedDescending": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectAllRows": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectRow": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text for heading of actions column",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
                 "defaultValue": {
-                    "value": "'Actions'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSort": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for sort action on table column header",
-                "defaultValue": {
-                    "value": "'Sort by: '",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSortedAscending": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text announced once a column is sorted in ascending order",
-                "defaultValue": {
-                    "value": "'Sorted Ascending'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSortedDescending": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text announced once a column is sorted in descending order",
-                "defaultValue": {
-                    "value": "'Sorted Descending'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForSelectAllRows": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for select all checkbox within the table header",
-                "defaultValue": {
-                    "value": "'Select all rows'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForSelectRow": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for select row",
-                "defaultValue": {
-                    "value": "'Select row'",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
                     "computed": false
                 }
             },
@@ -3500,12 +3524,12 @@
                     "props": {
                         "assistiveText": {
                             "type": {
-                                "name": "string"
+                                "name": "object"
                             },
                             "required": false,
                             "description": "Description of the menu for screenreaders.",
                             "defaultValue": {
-                                "value": "'Actions'",
+                                "value": "{ icon: 'Actions' }",
                                 "computed": false
                             }
                         },
@@ -4733,6 +4757,27 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "skipToNav": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "skipToContent": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `skipToNav`: The localized text that will be read back for the \"Skip to Navigation\" accessibility link.\n* `skipToContent`: The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
+                "defaultValue": {
+                    "value": "{\n    skipToNav: 'Skip to Navigation',\n    skipToContent: 'Skip to Main Content',\n}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -4771,28 +4816,6 @@
                 },
                 "required": false,
                 "description": "Required for accessibility. Should jump the user to the primary navigation."
-            },
-            "skipToContentAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
-                "defaultValue": {
-                    "value": "'Skip to Main Content'",
-                    "computed": false
-                }
-            },
-            "skipToNavAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The localized text that will be read back for the \"Skip to Navigation\" accessibility link.",
-                "defaultValue": {
-                    "value": "'Skip to Navigation'",
-                    "computed": false
-                }
             }
         },
         "route": "global-header",
@@ -5289,10 +5312,16 @@
                         },
                         "assistiveText": {
                             "type": {
-                                "name": "string"
+                                "name": "shape",
+                                "value": {
+                                    "icon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
                             },
-                            "required": true,
-                            "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means."
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop."
                         },
                         "align": {
                             "type": {
@@ -5713,10 +5742,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=''</code>."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "category": {
                 "type": {
@@ -5945,6 +5984,120 @@
         "SLDS-component-path": "/components/icons-settings",
         "dependencies": []
     },
+    "illustration": {
+        "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the SVG. _Tested with Mocha testing._"
+            },
+            "heading": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "illustration": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "internalIllustration": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": true,
+                "description": "Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "messageBody": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "path": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the illustration SVG image. _Tested with snapshot testing._"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "'small'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            }
+        },
+        "route": "illustrations",
+        "display-name": "Illustrations",
+        "SLDS-component-path": "/components/illustrations",
+        "dependencies": []
+    },
     "media-object": {
         "description": "When you need text and a figure next to each other, use a media object.",
         "methods": [],
@@ -6025,6 +6178,10 @@
                 "params": [
                     {
                         "name": "value",
+                        "type": null
+                    },
+                    {
+                        "name": "options",
                         "type": null
                     }
                 ],
@@ -6350,7 +6507,7 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "object"
                 },
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop."
@@ -7175,6 +7332,17 @@
                     "computed": false
                 }
             },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "assistiveText": {
                 "type": {
                     "name": "shape",
@@ -7330,7 +7498,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer')."
+                "description": "Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`."
             },
             "portalClassName": {
                 "type": {
@@ -7560,6 +7728,23 @@
                     "description": "A filtering panel contextual filtering options.",
                     "methods": [],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "closeButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: Localized description of the close button for the panel for screen readers",
+                            "defaultValue": {
+                                "value": "{\n    closeButton: 'Close Filter Panel',\n}",
+                                "computed": false
+                            }
+                        },
                         "addFilterLabel": {
                             "type": {
                                 "name": "node"
@@ -7568,17 +7753,6 @@
                             "description": "Localized description of the \"Add Filter\" button in the footer",
                             "defaultValue": {
                                 "value": "'Add Filter'",
-                                "computed": false
-                            }
-                        },
-                        "assistiveTextCloseFilterPanel": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": false,
-                            "description": "Localized description of the close button for the panel for screen readers",
-                            "defaultValue": {
-                                "value": "'Close Filter Panel'",
                                 "computed": false
                             }
                         },
@@ -10102,11 +10276,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
+                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -10220,7 +10390,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "The Slider is a controlled component, and will always display this value."
+                "description": "The Slider should be a controlled component, and will always display this value. This should always be used if you are using a Flux/Redux framework."
             },
             "vertical": {
                 "type": {
@@ -10628,10 +10798,16 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "If present, the label associated with this `textarea` is overwritten\nby this text and is visually not shown."
+                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
             },
             "children": {
                 "type": {
@@ -11653,10 +11829,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {

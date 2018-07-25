@@ -31,6 +31,7 @@ const defaultProps = {
 	assistiveText: {
 		trigger: 'Open App Launcher',
 	},
+	ariaHideApp: true,
 	title: 'App Launcher',
 };
 
@@ -82,6 +83,10 @@ const AppLauncher = createReactClass({
 		assistiveText: PropTypes.shape({
 			trigger: PropTypes.string,
 		}),
+		/**
+		 * Boolean indicating if the appElement should be hidden.
+		 */
+		ariaHideApp: PropTypes.bool,
 		/**
 		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
@@ -248,6 +253,7 @@ const AppLauncher = createReactClass({
 					</button>
 				</div>
 				<Modal
+					ariaHideApp={this.props.ariaHideApp}
 					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around--medium"
 					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}

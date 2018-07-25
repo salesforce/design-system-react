@@ -15,6 +15,8 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
+import checkProps from './check-props';
+
 import Button from '../button';
 
 // ## Constants
@@ -40,10 +42,13 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		 */
 		activeBackgroundColor: PropTypes.string,
 		/**
-		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.
 		 */
-		assistiveText: PropTypes.string.isRequired,
+		assistiveText: PropTypes.shape({
+			icon: PropTypes.string,
+		}),
 		/**
 		 * CSS classes to be added to the 'li'.
 		 */
@@ -104,6 +109,10 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		 * The ref of the actual triggering button.
 		 */
 		triggerRef: PropTypes.func,
+	},
+
+	componentWillMount () {
+		checkProps(MENU_DROPDOWN_TRIGGER, this.props);
 	},
 
 	// ### Render

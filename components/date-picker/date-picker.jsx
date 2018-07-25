@@ -519,9 +519,11 @@ class Datepicker extends React.Component {
 				!!this.props.children.props.iconRight) || (
 				<InputIcon
 					// Remove || for assistiveText at next breaking change
-					assistiveText={
-						this.props.assistiveTextOpenCalendar || assistiveText.openCalendar // eslint-disable-line react/prop-types
-					}
+					assistiveText={{
+						icon:
+							this.props.assistiveTextOpenCalendar ||
+							assistiveText.openCalendar, // eslint-disable-line react/prop-types
+					}}
 					aria-haspopup
 					aria-expanded={this.getIsOpen()}
 					category="utility"

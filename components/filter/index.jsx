@@ -280,7 +280,7 @@ const Filter = createReactClass({
 				{// Remove button
 					!this.props.isPermanent && !this.props.isLocked ? (
 						<Button
-							assistiveText={assistiveText.removeFilter}
+							assistiveText={{ icon: assistiveText.removeFilter }}
 							hint
 							iconCategory="utility"
 							iconName="close"
