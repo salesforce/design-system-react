@@ -158,10 +158,6 @@ const Popover = createReactClass({
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		 *  Offset adds pixels to the absolutely positioned dialog in the format: ([vertical]px [horizontal]px).
-		 */
-		offset: PropTypes.string,
-		/**
 		 * This function is passed onto the triggering `Button`. Triggered when the trigger button is clicked. You will want this if Popover is to be a controlled component.
 		 */
 		onClick: PropTypes.func,

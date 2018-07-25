@@ -276,10 +276,6 @@ const MenuDropdown = createReactClass({
 			'bottom right',
 		]),
 		/**
-		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
-		 */
-		offset: PropTypes.string,
-		/**
 		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
 		 */
 		onBlur: PropTypes.func,

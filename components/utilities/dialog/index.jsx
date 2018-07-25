@@ -111,7 +111,9 @@ const Dialog = createReactClass({
 		 */
 		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 		/**
-		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px). SHOULD BE OBJECT -----------
+		 * DEPRECATED - do not add checkProp deprecation message at this level. It is handled at higher level components.
+		 * TODO - to be removed.
+		 * Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px). SHOULD BE OBJECT -----------
 		 */
 		offset: PropTypes.string,
 		/**
