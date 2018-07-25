@@ -220,7 +220,7 @@ class Tooltip extends React.Component {
 				position={this.props.position}
 				variant="tooltip"
 				containerProps={{
-					id: this.getId()
+					id: this.getId(),
 				}}
 			>
 				{this.getTooltipContent()}
