@@ -150,7 +150,7 @@ class Step extends React.Component {
 				{icon}
 				<span className="slds-assistive-text">
 					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${props.step.label} - ${status}`}
+						`${props.assistiveText.step} ${props.index + 1}: ${props.step.label}${status ? " - " + status : ""}`}
 				</span>
 			</button>
 		);
