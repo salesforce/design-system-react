@@ -493,10 +493,7 @@ const Popover = createReactClass({
 					</header>
 				) : null}
 
-				<div
-					id={`${this.getId()}-dialog-body`}
-					className="slds-popover__body"
-				>
+				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
 					{props.body}
 				</div>
 				{this.props.footer ? (

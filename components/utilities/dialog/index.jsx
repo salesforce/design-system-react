@@ -437,7 +437,8 @@ const Dialog = createReactClass({
 							[`${this.props.outsideClickIgnoreClass}`]:
 								this.props.position === 'overflowBoundaryElement',
 						},
-						this.props.hasNubbin && getNubbinClassName(this.props.align, this.state.popperData),
+						this.props.hasNubbin &&
+							getNubbinClassName(this.props.align, this.state.popperData),
 						this.props.contentsClassName
 					) || undefined
 				}
