@@ -12,7 +12,7 @@
 			"modules": true
 		}
 	},
-	"plugins": ["filenames", "json"],
+	"plugins": ["filenames", "json", "prefer-object-spread"],
 	"env": {
 		"browser": true
 	},
@@ -112,6 +112,8 @@
 		"no-tabs": "off",
 		// _ is not really private.
 		"no-underscore-dangle": ["error", { "allowAfterThis": true }],
+		//
+		"prefer-object-spread/prefer-object-spread": [2, "always"],
 		// Increases readability of function name
 		"space-before-function-paren": [2, "always"],
 

@@ -9,6 +9,7 @@ const license = fs.readFileSync('./LICENSE.txt', 'utf8');
 
 const baseConfig = require('./webpack.config');
 
+// eslint-disable-next-line prefer-object-spread/prefer-object-spread
 const config = Object.assign({}, baseConfig, {
 	externals: {
 		react: {
