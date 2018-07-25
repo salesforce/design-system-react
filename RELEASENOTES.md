@@ -43,7 +43,7 @@ These are changes that have backwards-compatible solutions present and that comp
     * In the case of a `top left` align the left will only designate the location of the nubbin on the Dialog.
     * We may decide to bring back the ability to control both the nubbin location on the Dialog, but also the location at which it points to on the reference element. Much of the logic surrounding nubbins has been broken at the seams and edge cases for a long time. This change has been done in order to provide a more robust and dependable solution.
     * Any dialog that uses an `offset` prop will need to be manually readjusted.
-    * `offset` props are now deprecated.
+    * Deprecate `offset` prop for `Dropdown` and `Popover`. The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic.
     * In the future we may change the props on some of these Dialog components to ensure a more consistent positioning API with hopefully some less head-scratching in terms of how to use it. This may include deprecating certain props and introduction of other props.
 
 
