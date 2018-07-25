@@ -33,6 +33,14 @@ const propTypes = {
 	'aria-owns': PropTypes.string,
 	'aria-required': PropTypes.bool,
 	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `spinner`: Assistive text on the spinner.
+	 */
+	assistiveText: PropTypes.shape({
+		spinner: PropTypes.string,
+	}),
+	/**
 	 * Disabled brower's autocomplete when "off" is used.
 	 */
 	autoComplete: PropTypes.string,
@@ -136,10 +144,6 @@ const propTypes = {
 	 */
 	role: PropTypes.string,
 	/**
-	 * Assistive text on the spinner
-	 */
-	spinnerAssistiveText: PropTypes.string,
-	/**
 	 * Style object to be added to `input` node
 	 */
 	style: PropTypes.object,
@@ -181,7 +185,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-	spinnerAssistiveText: 'Loading ...',
+	assistiveText: {
+		spinner: 'Loading ...',
+	},
 	type: 'text',
 };
 
@@ -193,6 +199,11 @@ const InnerInput = (props) => {
 		className: containerClassName,
 		...containerProps
 	} = props.containerProps;
+
+	const assistiveText = {
+		...defaultProps.assistiveText,
+		...props.assistiveText,
+	};
 
 	return (
 		<div
@@ -261,7 +272,7 @@ const InnerInput = (props) => {
 				<div className="slds-input__icon-group slds-input__icon-group_right">
 					{props.hasSpinner && (
 						<Spinner
-							assistiveText={props.spinnerAssistiveText}
+							assistiveText={{ label: assistiveText.spinner }}
 							id="loading-status-icon"
 							isInput
 							size="x-small"

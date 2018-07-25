@@ -307,7 +307,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                       <span
                         className="slds-assistive-text"
                       >
-                        Select all rows
+                        all rows
                       </span>
                     </label>
                   </span>
@@ -338,7 +338,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Sort by: 
+                sort this column
                  
               </span>
               <span
@@ -363,7 +363,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                 aria-live="assertive"
                 className="slds-assistive-text"
               >
-                Sorted Ascending
+                asc
               </span>
             </a>
           </th>
@@ -471,7 +471,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Sort by: 
+                sort this column
                  
               </span>
               <span
@@ -561,7 +561,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Actions
+                actions
               </span>
             </div>
           </th>
@@ -607,7 +607,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Select row
+                      select this row
                     </span>
                   </label>
                 </span>
@@ -800,7 +800,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Select row
+                      select this row
                     </span>
                   </label>
                 </span>
@@ -993,7 +993,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Select row
+                      select this row
                     </span>
                   </label>
                 </span>
@@ -2920,6 +2920,145 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Heading Only 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration slds-illustration_small"
+  >
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Heading and Message 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration slds-illustration_small"
+  >
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Large Image and Text 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration slds-illustration_large"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-illustration__svg"
+      name="no-access"
+      style={
+        Object {
+          "height": "400px",
+        }
+      }
+    >
+      <use
+        xlinkHref="/assets/images/illustrations/empty-state-no-access.svg#no-access"
+      />
+    </svg>
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Message Only 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration slds-illustration_small"
+  >
+    <div
+      className="slds-text-longform"
+    >
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIllustration Small Image and Text 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    className="slds-illustration slds-illustration_small"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-illustration__svg"
+      name="no-access"
+      style={Object {}}
+    >
+      <use
+        xlinkHref="/assets/images/illustrations/empty-state-no-access.svg#no-access"
+      />
+    </svg>
+    <div
+      className="slds-text-longform"
+    >
+      <h3
+        className="slds-text-heading_medium"
+      >
+        Lorem ipsum dolor
+      </h3>
+      <p
+        className="slds-text-body_regular"
+      >
+        Lorem ipsum dolor sit amet, consectetur
+      </p>
+    </div>
   </div>
 </div>
 `;

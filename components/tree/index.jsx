@@ -17,6 +17,11 @@ import checkProps from './check-props';
 // ## Constants
 import { TREE } from '../../utilities/constants';
 
+const defaultProps = {
+	assistiveText: {},
+	getNodes: (node) => node.nodes,
+};
+
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
@@ -144,7 +149,14 @@ class Tree extends React.Component {
 
 	render () {
 		// One of these is required to pass accessibility tests
-		const headingText = this.props.assistiveText || this.props.heading;
+		const assistiveText =
+			typeof this.props.assistiveText === 'string'
+				? this.props.assistiveText
+				: {
+					...defaultProps.assistiveText,
+					...this.props.assistiveText,
+				}.label;
+		const headingText = assistiveText || this.props.heading;
 
 		// Start the zero level branch--that is the tree root. There is no label for
 		// the tree root, but is required by all other nodes
@@ -158,7 +170,7 @@ class Tree extends React.Component {
 			>
 				<h4
 					className={classNames('slds-text-title--caps', {
-						'slds-assistive-text': this.props.assistiveText,
+						'slds-assistive-text': assistiveText,
 					})}
 					id={`${this.props.id}__heading`}
 				>
@@ -187,9 +199,7 @@ class Tree extends React.Component {
 	}
 }
 
-Tree.defaultProps = {
-	getNodes: (node) => node.nodes,
-};
+Tree.defaultProps = defaultProps;
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -198,9 +208,13 @@ Tree.displayName = TREE;
 // ### Prop Types
 Tree.propTypes = {
 	/**
-	 * For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
 	 */

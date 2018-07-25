@@ -53,6 +53,7 @@ cp -r .tmp .tmp-es
 rm -rf .tmp/
 
 # Copy source code
+cp -r assets .tmp-es/assets
 cp -r components .tmp-es/components
 cp -r styles .tmp-es/styles
 cp -r icons .tmp-es/icons
@@ -90,6 +91,7 @@ npx babel \
     --out-dir .tmp-commonjs/components \
     --ignore site-stories.js,__docs__,__examples__,__tests__
 
+cp -r assets .tmp-commonjs/assets
 cp -r styles .tmp-commonjs/styles
 
 npx babel \
@@ -110,6 +112,8 @@ npx babel \
     --out-dir .tmp-esm/components \
     --source-maps \
     --ignore site-stories.js,__docs__,__examples__,__tests__
+
+cp -r assets .tmp-esm/assets
 
 cp -r styles .tmp-esm/styles
 

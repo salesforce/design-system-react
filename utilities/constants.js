@@ -55,6 +55,7 @@ export const HIGHLIGHTER = 'SLDSHighlighter';
 export const ICON = 'SLDSIcon';
 export const ICON_SETTINGS = 'SLDSIconSettings';
 export const ICON_INPUT = 'SLDSIconInput';
+export const ILLUSTRATION = 'SLDSIllustration';
 export const LIST = 'SLDSList';
 export const LIST_ITEM = 'SLDSListItem';
 export const LIST_ITEM_LABEL = 'SLDSListItemLabel';

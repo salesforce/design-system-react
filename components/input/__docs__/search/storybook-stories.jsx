@@ -13,7 +13,7 @@ storiesOf(FORMS_SEARCH, module)
 	))
 	.add('Standard', () => (
 		<Search
-			assistiveText="Search"
+			assistiveText={{ label: 'Search' }}
 			placeholder="Search"
 			name="search-input"
 			onChange={action('change')}

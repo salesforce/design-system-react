@@ -12,6 +12,15 @@ const expressMiddleWare = (router) => {
 			)
 		)
 	);
+	router.use(
+		'/assets',
+		express.static(
+			path.join(
+				__dirname,
+				'../assets/'
+			)
+		)
+	);
 };
 
 module.exports = expressMiddleWare;

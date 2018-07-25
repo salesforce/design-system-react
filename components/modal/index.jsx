@@ -104,7 +104,7 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool.isRequired,
 	/**
-	 * Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer').
+	 * Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`.
 	 */
 	parentSelector: PropTypes.func,
 	/**

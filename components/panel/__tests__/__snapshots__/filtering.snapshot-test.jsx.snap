@@ -5,7 +5,7 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
   <div class=\\"slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical\\">
     <div class=\\"slds-filters\\">
       <div class=\\"slds-filters__header slds-grid slds-has-divider--bottom-space\\">
-        <h2 class=\\"slds-align-middle slds-text-heading--small\\">Filter</h2><button class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small slds-col--bump-left\\" title=\\"Close Filter Panel\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#forward\\"></use></svg><span class=\\"slds-assistive-text\\">Close Filter Panel</span></button></div>
+        <h2 class=\\"slds-align-middle slds-text-heading--small\\">Filter</h2><button class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small slds-col--bump-left\\" title=\\"Close Panel\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#forward\\"></use></svg><span class=\\"slds-assistive-text\\">Close Panel</span></button></div>
       <div
         class=\\"slds-filters__body\\">
         <ol class=\\"slds-list--vertical slds-list--vertical-space\\">
@@ -48,7 +48,11 @@ exports[`Panel Filtering Default Snapshot 1`] = `
   >
     <SLDSFilterGroup
       addFilterLabel="Add Filter"
-      assistiveTextCloseFilterPanel="Close Filter Panel"
+      assistiveText={
+        Object {
+          "closeButton": "Close Panel",
+        }
+      }
       cancelLabel="Cancel"
       heading="Filter"
       modified={false}
