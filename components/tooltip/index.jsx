@@ -219,6 +219,9 @@ class Tooltip extends React.Component {
 				onRequestTargetElement={() => this.getTooltipTarget()}
 				position={this.props.position}
 				variant="tooltip"
+				containerProps={{
+					id: this.getId()
+				}}
 			>
 				{this.getTooltipContent()}
 			</Dialog>

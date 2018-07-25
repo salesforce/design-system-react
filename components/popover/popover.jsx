@@ -547,7 +547,7 @@ const Popover = createReactClass({
 
 		this.renderOverlay(this.getIsOpen());
 
-		const containerStyles = { display: 'inline-block' }; // ATTN FIXME - can we make this change??!
+		const containerStyles = { display: 'inline-block' };
 		return (
 			<div
 				className={this.props.triggerClassName}
