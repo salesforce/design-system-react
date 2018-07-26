@@ -374,6 +374,17 @@
                     "computed": false
                 }
             },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -6168,6 +6179,10 @@
                     {
                         "name": "value",
                         "type": null
+                    },
+                    {
+                        "name": "options",
+                        "type": null
                     }
                 ],
                 "returns": null
@@ -7314,6 +7329,17 @@
                 "description": "Vertical alignment of Modal.",
                 "defaultValue": {
                     "value": "'center'",
+                    "computed": false
+                }
+            },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "true",
                     "computed": false
                 }
             },

@@ -10,7 +10,6 @@ The eventual goal is to remove all polyfills (such as [lodash](https://lodash.co
 
 * `Array.prototype.findIndex` - use [core-js library](https://github.com/zloirock/core-js#commonjs)
 * `Element.classList` - use [classList.js](https://github.com/eligrey/classList.js)
-* `Object.assign` - use [core-js library](https://github.com/zloirock/core-js#commonjs)
 
 ### Internet Explorer 11 Support
 

@@ -24,6 +24,8 @@ import shortid from 'shortid';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
+import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
+
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
@@ -33,6 +35,10 @@ const propTypes = {
 	 * Vertical alignment of Modal.
 	 */
 	align: PropTypes.oneOf(['top', 'center']),
+	/**
+	 * Boolean indicating if the appElement should be hidden.
+	 */
+	ariaHideApp: PropTypes.bool,
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
@@ -150,6 +156,7 @@ const defaultProps = {
 		closeButton: 'Close',
 	},
 	align: 'center',
+	ariaHideApp: true,
 	dismissible: true,
 };
 
@@ -181,6 +188,9 @@ class Modal extends React.Component {
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 		checkProps(MODAL, this.props);
+		if (this.props.ariaHideApp) {
+			checkAppElementIsSet();
+		}
 	}
 
 	componentDidMount () {
@@ -450,6 +460,7 @@ class Modal extends React.Component {
 
 		return (
 			<ReactModal
+				ariaHideApp={this.props.ariaHideApp}
 				contentLabel="Modal"
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}

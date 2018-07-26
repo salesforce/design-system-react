@@ -1,6 +1,8 @@
 # Create React App
 
-The following tasks will help you get started using Design System React within Create React App 1.x.
+The following tasks will help you get started using Design System React within Create React App 1.x. 
+
+Do you have tips to share with other Create React Users users? Please share with the rest of the Create React community and add to the list below.
 
 ## Getting Started
 
