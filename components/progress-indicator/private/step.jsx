@@ -20,6 +20,21 @@ const displayName = PROGRESS_INDICATOR_STEP;
 // ### Prop Types
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `completedStep`: Label for a completed step. The default is `Completed Step`
+	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
+	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
+	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.
+	 * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
+	 */
+	assistiveText: PropTypes.shape({
+		completedStep: PropTypes.string,
+		disabledStep: PropTypes.string,
+		percentage: PropTypes.string,
+		step: PropTypes.string,
+	}),
+	/**
 	 * Id for Steps, ranging in [0, steps.length).
 	 */
 	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -30,6 +45,7 @@ const propTypes = {
 	/**
 	 * Determines if the step has been completed
 	 */
+
 	isCompleted: PropTypes.bool,
 	/**
 	 * Determines if the step has been disabled
@@ -91,7 +107,7 @@ class Step extends React.Component {
 		const icon = renderIcon ? (
 			<ButtonIcon
 				category="utility"
-				name={this.props.isError ? 'warning' : 'success'}
+				name={this.props.isError ? 'error' : 'success'}
 			/>
 		) : null;
 
@@ -99,7 +115,7 @@ class Step extends React.Component {
 		const handleFocus = (event) => props.onFocus(event, data);
 
 		const stepButton = props.isDisabled ? (
-			<span
+			<a
 				className={classNames(
 					'slds-button',
 					{ 'slds-button_icon': renderIcon },
@@ -113,9 +129,12 @@ class Step extends React.Component {
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}
+					{this.props.step.assistiveText ||
+						`${props.assistiveText.step} ${props.index + 1}: ${
+							props.step.label
+						} - ${status}`}
 				</span>
-			</span>
+			</a>
 		) : (
 			<button
 				className={classNames(
@@ -128,10 +147,14 @@ class Step extends React.Component {
 				onFocus={handleFocus}
 				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
 					this.props.index}`}
+				aria-current={this.props.isSelected ? 'step' : null}
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{props.step.assistiveText || `Step ${props.index + 1}: ${status}`}
+					{this.props.step.assistiveText ||
+						`${props.assistiveText.step} ${props.index + 1}: ${
+							props.step.label
+						}${status ? ` - ${status}` : ''}`}
 				</span>
 			</button>
 		);
@@ -141,22 +164,21 @@ class Step extends React.Component {
 
 	render () {
 		const renderIcon = this.props.isCompleted || this.props.isError;
-		// step status (one of ['Error', 'Completed', 'Active', 'Uncompleted'])
 		let status = '';
 		if (this.props.isError) {
-			status = 'Error';
+			status = this.props.assistiveText.errorStep;
 		} else if (this.props.isCompleted) {
-			status = 'Completed';
-		} else if (this.props.isSelected) {
-			status = 'Active';
-		} else status = 'Uncompleted';
+			status = this.props.assistiveText.completedStep;
+		} else if (this.props.isDisabled) {
+			status = this.props.assistiveText.disabledStep;
+		}
 
 		const tooltipProps = {
 			align: 'top',
 			id: `progress-indicator-tooltip-${this.props.step.id ||
 				this.props.index}`,
 			content: this.props.step.label,
-			theme: this.props.isError ? 'error' : 'info',
+			theme: 'info',
 			triggerStyle: { display: !renderIcon ? 'flex' : '' },
 		};
 
