@@ -222,7 +222,7 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/accordions",
+			"SLDS-component-path": "/components/accordion",
 			"dependencies": [
 				{
 					"component": "panel"
@@ -237,7 +237,7 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/alerts",
+			"SLDS-component-path": "/components/alert",
 			"dependencies": [
 				{
 					"component": "container"
@@ -266,7 +266,7 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/avatars"
+			"SLDS-component-path": "/components/avatar"
 		},
 		{
 			"component": "breadcrumb",
@@ -292,7 +292,7 @@
 			"component": "button-stateful",
 			"status": "prod",
 			"display-name": "Stateful Buttons",
-			"SLDS-component-path": "/components/buttons/#flavor-stateful"
+			"SLDS-component-path": "/components/button/#flavor-stateful"
 		},
 		{
 			"component": "button-group",
@@ -326,7 +326,7 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/checkbox/"
+			"SLDS-component-path": "/components/checkbox"
 		},
 		{
 			"component": "combobox",
@@ -336,7 +336,7 @@
 				"date-iso-8601": "2017/08/21",
 				"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
 			},
-			"SLDS-component-path": "/components/comboboxes"
+			"SLDS-component-path": "/components/combobox"
 		},
 		{
 			"component": "data-table",
@@ -387,7 +387,7 @@
 				"date-iso-8601": "2017/09/22",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/input/"
+			"SLDS-component-path": "/components/input"
 		},
 		{
 			"component": "global-header",
@@ -417,7 +417,7 @@
 				"date-iso-8601": "2017/05/02",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
+			"SLDS-component-path": "/components/global-navigation",
 			"dependencies": [
 				{
 					"component": "button"
@@ -449,14 +449,13 @@
 		{
 			"component": "icon-settings",
 			"status": "prod",
-			"display-name": "Icon Settings",
-			"SLDS-component-path": "/components/icons-settings"
+			"display-name": "Icon Settings"
 		},
 		{
 			"component": "illustration",
 			"status": "prod",
 			"display-name": "Illustrations",
-			"SLDS-component-path": "/components/illustrations"
+			"SLDS-component-path": "/components/illustration"
 		},
 		{
 			"component": "media-object",
@@ -466,7 +465,7 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/utilities/media-objects/"
+			"SLDS-component-path": "/components/utilities/media-object"
 		},
 		{
 			"component": "menu-dropdown",
@@ -493,7 +492,7 @@
 			"component": "navigation",
 			"status": "prod",
 			"display-name": "Navigation",
-			"SLDS-component-path": "/components/navigation"
+			"SLDS-component-path": "/components/vertical-navigation"
 		},
 		{
 			"component": "panel",
@@ -645,7 +644,7 @@
 			"component": "time-picker",
 			"status": "prod",
 			"display-name": "Timepickers",
-			"SLDS-component-path": "/components/datepickers"
+			"SLDS-component-path": "/components/timepicker"
 		},
 		{
 			"component": "toast",
@@ -655,7 +654,7 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/toasts",
+			"SLDS-component-path": "/components/toast",
 			"dependencies": [
 				{
 					"component": "container"
@@ -680,7 +679,7 @@
 				"date-iso-8601": "2018/05/04",
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
 			},
-			"SLDS-component-path": "/components/tree"
+			"SLDS-component-path": "/components/trees"
 		}
 	],
 	"documentation": {
