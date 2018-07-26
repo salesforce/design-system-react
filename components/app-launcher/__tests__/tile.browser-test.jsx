@@ -116,7 +116,10 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('has an href attribute', () => {
-			expect(handles.tile.find('a')).to.have.attr('href', 'https://www.marketingcloud.com/');
+			expect(handles.tile.find('a')).to.have.attr(
+				'href',
+				'https://www.marketingcloud.com/'
+			);
 		});
 
 		it('clicking tile fires callback', () => {
@@ -249,7 +252,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders <Icon>', () => {
-			expect(handles.icon.find('span')).to.have.className('slds-icon_container');
+			expect(handles.icon.find('span')).to.have.className(
+				'slds-icon_container'
+			);
 		});
 
 		it('renders <svg>', () => {

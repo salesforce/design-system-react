@@ -93,7 +93,10 @@ describe('SLDSDatepicker', function () {
 		it('has custom input with custom placeholder', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} />);
 
-			expect(wrapper.find('input')).to.have.attr('placeholder', customPlaceholder);
+			expect(wrapper.find('input')).to.have.attr(
+				'placeholder',
+				customPlaceholder
+			);
 		});
 	});
 

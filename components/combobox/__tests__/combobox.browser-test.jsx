@@ -239,8 +239,11 @@ describe('SLDSCombobox', function () {
 			nodes.input.simulate('focus');
 			nodes.input.simulate('change', { target: { value: accounts[1].label } });
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
-			expect(nodes.menuListbox.find('#combobox-unique-id-listbox-option-2')).to.have.attr('aria-selected', 'true');
-			expect(nodes.input).attr('aria-activedescendant',
+			expect(
+				nodes.menuListbox.find('#combobox-unique-id-listbox-option-2')
+			).to.have.attr('aria-selected', 'true');
+			expect(nodes.input).attr(
+				'aria-activedescendant',
 				`${defaultProps.id}-listbox-option-2`
 			);
 			// select
@@ -314,43 +317,43 @@ describe('SLDSCombobox', function () {
 				keyObjects.DELETE
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 0 }).simulate(
-				'keyDown',
-				keyObjects.RIGHT
-			);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 0,
+			}).simulate('keyDown', keyObjects.RIGHT);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[2].label);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 1 }).simulate(
-				'keyDown',
-				keyObjects.DELETE
-			);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 1,
+			}).simulate('keyDown', keyObjects.DELETE);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[3].label);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 1 }).simulate(
-				'keyDown',
-				keyObjects.LEFT
-			);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 0 }).simulate(
-				'keyDown',
-				keyObjects.LEFT
-			);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 1,
+			}).simulate('keyDown', keyObjects.LEFT);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 0,
+			}).simulate('keyDown', keyObjects.LEFT);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[4].label);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 2 }).simulate(
-				'keyDown',
-				keyObjects.DELETE
-			);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 2,
+			}).simulate('keyDown', keyObjects.DELETE);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[3].label);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 1 }).simulate(
-				'keyDown',
-				keyObjects.RIGHT
-			);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 1,
+			}).simulate('keyDown', keyObjects.RIGHT);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 0 }).simulate(
-				'keyDown',
-				keyObjects.DELETE
-			);
-			getSelectedListboxPills({ nodes: getNodes({ wrapper }), index: 0 }).simulate(
-				'keydown',
-				keyObjects.DELETE
-			);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 0,
+			}).simulate('keyDown', keyObjects.DELETE);
+			getSelectedListboxPills({
+				nodes: getNodes({ wrapper }),
+				index: 0,
+			}).simulate('keydown', keyObjects.DELETE);
 		});
 	});
 

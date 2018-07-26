@@ -110,7 +110,9 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('app launcher title can be set', () => {
-			expect(handles.appLauncher).to.contain(<h2 className="slds-text-heading--medium">App Launcher!</h2>);
+			expect(handles.appLauncher).to.contain(
+				<h2 className="slds-text-heading--medium">App Launcher!</h2>
+			);
 		});
 
 		it('renders search bar', () => {
@@ -145,7 +147,9 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('app launcher can be passed children', () => {
 			should.exist(handles.appLauncher.find('SLDSAppLauncherSection'));
-			expect(handles.appLauncher.find('SLDSAppLauncherTile').length).to.equal(2);
+			expect(handles.appLauncher.find('SLDSAppLauncherTile').length).to.equal(
+				2
+			);
 		});
 	});
 

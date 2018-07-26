@@ -156,7 +156,11 @@ describe('Tree: ', () => {
 			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(list).to.have.length(1);
 			expect(list.hasClass('this-is-an-unordered-list-test')).to.be.true;
-			expect(list.get(0).props.style).to.have.property('height', '500px', 'height of list');
+			expect(list.get(0).props.style).to.have.property(
+				'height',
+				'500px',
+				'height of list'
+			);
 
 			const heading = this.wrapper.find(`#${id}__heading`);
 			expect(heading).to.have.length(1);

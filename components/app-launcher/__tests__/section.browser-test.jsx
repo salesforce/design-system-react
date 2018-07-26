@@ -61,7 +61,9 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		});
 
 		it('modal section has "slds-is-open" class when open', () => {
-			expect(handles.section.find('.slds-section')).to.have.className('slds-is-open');
+			expect(handles.section.find('.slds-section')).to.have.className(
+				'slds-is-open'
+			);
 		});
 
 		it('section has a title', () => {
