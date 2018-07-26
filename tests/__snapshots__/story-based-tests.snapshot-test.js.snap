@@ -3908,7 +3908,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                undefined 2: tooltip label #2 - Finished this step.
+                Step 2: tooltip label #2 - Finished this step.
               </span>
             </button>
             <span />
@@ -3946,7 +3946,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                undefined 3: [object Object] - Finished this step.
+                Step 3: [object Object] - Finished this step.
               </span>
             </button>
             <span />
@@ -3976,7 +3976,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                undefined 4: tooltip label #4
+                Step 4: tooltip label #4
               </span>
             </button>
             <span />
@@ -4006,7 +4006,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                undefined 5: tooltip label #5
+                Step 5: tooltip label #5
               </span>
             </button>
             <span />

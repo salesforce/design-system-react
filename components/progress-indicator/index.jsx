@@ -6,8 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import assign from 'lodash.assign';
-
 import find from 'lodash.find';
 
 // ### shortid
@@ -26,7 +24,6 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `activeStep`: Label for the active step. The default is `Active Step`
 	 * * `completedStep`: Label for a completed step. The default is `Completed Step`
 	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
 	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
@@ -34,7 +31,6 @@ const propTypes = {
 	 * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
 	 */
 	assistiveText: PropTypes.shape({
-		activeStep: PropTypes.string,
 		completedStep: PropTypes.string,
 		disabledStep: PropTypes.string,
 		percentage: PropTypes.string,
@@ -179,9 +175,10 @@ class ProgressIndicator extends React.Component {
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = this.props
-			? assign({}, defaultProps.assistiveText, this.props.assistiveText)
-			: defaultProps.assistiveText;
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 
 		const {
 			selectedStep,
@@ -219,7 +216,7 @@ class ProgressIndicator extends React.Component {
 			>
 				{allSteps.map((step, i) => (
 					<Step
-						assistiveText={this.props.assistiveText}
+						assistiveText={assistiveText}
 						key={`${this.getId()}-${step.id}`}
 						id={this.getId()}
 						index={i}
