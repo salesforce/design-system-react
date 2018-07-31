@@ -218,8 +218,8 @@ const defaultProps = {
 	parser (str) {
 		return new Date(str);
 	},
-	relativeYearFrom: -5,
-	relativeYearTo: 5,
+	relativeYearFrom: -10,
+	relativeYearTo: 10,
 	dateDisabled: () => false,
 };
 
