@@ -13,7 +13,7 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-import { NAVIGATION_ITEM } from '../../../utilities/constants';
+import { VERTICAL_NAVIGATION_ITEM } from '../../../utilities/constants';
 
 const handleClick = (event, props) => {
 	if (isFunction(props.onSelect)) {
@@ -41,7 +41,7 @@ const Item = (props) => (
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
-Item.displayName = NAVIGATION_ITEM;
+Item.displayName = VERTICAL_NAVIGATION_ITEM;
 
 // ### Prop Types
 Item.propTypes = {
