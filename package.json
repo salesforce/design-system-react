@@ -489,12 +489,6 @@
 			"SLDS-component-path": "/components/modals"
 		},
 		{
-			"component": "navigation",
-			"status": "prod",
-			"display-name": "Navigation",
-			"SLDS-component-path": "/components/vertical-navigation"
-		},
-		{
 			"component": "panel",
 			"status": "prototype",
 			"display-name": "Panels",
@@ -680,6 +674,12 @@
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
 			},
 			"SLDS-component-path": "/components/trees"
+		},
+		{
+			"component": "vertical-navigation",
+			"status": "prod",
+			"display-name": "Vertical Navigation",
+			"SLDS-component-path": "/components/vertical-navigation"
 		}
 	],
 	"documentation": {
