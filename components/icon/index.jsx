@@ -20,7 +20,7 @@ import { ICON } from '../../utilities/constants';
 const defaultProps = {
 	assistiveText: {},
 	category: 'standard',
-	colorVariant: 'base',
+	colorVariant: 'default',
 	size: 'medium',
 };
 
@@ -79,7 +79,7 @@ const Icon = (props) => {
 					// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
 					// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
 					'slds-icon-text-default':
-						colorVariant === 'base' && category === 'utility'
+						colorVariant === 'default' && category === 'utility'
 							? !inverse
 							: inverse,
 					'slds-icon-text-warning': colorVariant === 'warning',
