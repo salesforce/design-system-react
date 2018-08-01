@@ -46,7 +46,7 @@
         },
         "route": "accordions",
         "display-name": "Accordions",
-        "SLDS-component-path": "/components/accordions",
+        "SLDS-component-path": "/components/accordion",
         "dependencies": [
             {
                 "panel": {
@@ -282,7 +282,7 @@
         },
         "route": "alerts",
         "display-name": "Alerts",
-        "SLDS-component-path": "/components/alerts",
+        "SLDS-component-path": "/components/alert",
         "dependencies": [
             {
                 "container": {
@@ -379,7 +379,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean indicating if the appElement should be hidden. _Tested with snapshot testing._",
+                "description": "Boolean indicating if the appElement should be hidden.",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -839,7 +839,7 @@
         },
         "route": "avatars",
         "display-name": "Avatars",
-        "SLDS-component-path": "/components/avatars",
+        "SLDS-component-path": "/components/avatar",
         "dependencies": []
     },
     "breadcrumb": {
@@ -1628,7 +1628,7 @@
         },
         "route": "stateful-buttons",
         "display-name": "Stateful Buttons",
-        "SLDS-component-path": "/components/buttons/#flavor-stateful",
+        "SLDS-component-path": "/components/button/#flavor-stateful",
         "dependencies": []
     },
     "button-group": {
@@ -2224,7 +2224,7 @@
         },
         "route": "checkboxes",
         "display-name": "Checkboxes",
-        "SLDS-component-path": "/components/checkbox/",
+        "SLDS-component-path": "/components/checkbox",
         "dependencies": []
     },
     "combobox": {
@@ -3057,7 +3057,7 @@
         },
         "route": "comboboxes",
         "display-name": "Comboboxes",
-        "SLDS-component-path": "/components/comboboxes",
+        "SLDS-component-path": "/components/combobox",
         "dependencies": []
     },
     "data-table": {
@@ -4725,7 +4725,7 @@
         },
         "route": "inputs",
         "display-name": "Inputs",
-        "SLDS-component-path": "/components/input/",
+        "SLDS-component-path": "/components/input",
         "dependencies": []
     },
     "global-header": {
@@ -5237,7 +5237,7 @@
         },
         "route": "global-navigation-bar",
         "display-name": "Global Navigation Bar",
-        "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
+        "SLDS-component-path": "/components/global-navigation",
         "dependencies": [
             {
                 "button": {
@@ -5981,7 +5981,6 @@
         },
         "route": "icon-settings",
         "display-name": "Icon Settings",
-        "SLDS-component-path": "/components/icons-settings",
         "dependencies": []
     },
     "illustration": {
@@ -6095,7 +6094,7 @@
         },
         "route": "illustrations",
         "display-name": "Illustrations",
-        "SLDS-component-path": "/components/illustrations",
+        "SLDS-component-path": "/components/illustration",
         "dependencies": []
     },
     "media-object": {
@@ -6151,7 +6150,7 @@
         },
         "route": "media-objects",
         "display-name": "Media Objects",
-        "SLDS-component-path": "/components/utilities/media-objects/",
+        "SLDS-component-path": "/components/utilities/media-object",
         "dependencies": []
     },
     "menu-dropdown": {
@@ -7337,7 +7336,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean indicating if the appElement should be hidden. _Tested with snapshot testing._",
+                "description": "Boolean indicating if the appElement should be hidden.",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -7691,7 +7690,7 @@
         },
         "route": "navigation",
         "display-name": "Navigation",
-        "SLDS-component-path": "/components/navigation",
+        "SLDS-component-path": "/components/vertical-navigation",
         "dependencies": []
     },
     "panel": {
@@ -9017,16 +9016,28 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "completedStep": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "disabledStep": {
+                            "name": "string",
+                            "required": false
+                        },
                         "percentage": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "step": {
                             "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `completedStep`: Label for a completed step. The default is `Completed Step`\n* `disabledStep`: Label for disabled step. The default is `Disabled Step`\n* `errorStep`: Label for a step with an error. The default is `Error Step`\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.\n* `step`: Label for a step. It will be typically followed by the number of the step such as \"Step 1\".",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{\n    completedStep: 'Completed',\n    disabledStep: 'Disabled',\n    errorStep: 'Error',\n    step: 'Step',\n}",
                     "computed": false
                 }
             },
@@ -9075,7 +9086,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "Stores all error steps. It is an array of step objects and usually there is only one error step, the current step.",
+                "description": "Stores all error steps. It is an array of step objects and usually there is only one error step, the current step. If an error occurs a second error icon should be placed to the left of related confirmation buttons (e.g. Cancel, Save) and an Error Popover should appear indicating there are errors. These additional items are NOT part of this component. This note was included for visibility purposes. Please refer to [SLDS website](https://www.lightningdesignsystem.com/components/progress-indicator/) for full details **",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -10405,6 +10416,108 @@
         "SLDS-component-path": "/components/slider",
         "dependencies": []
     },
+    "spinner": {
+        "description": "Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text that is read out loud to screen readers.",
+                "defaultValue": {
+                    "value": "{ label: 'Loading...' }",
+                    "computed": false
+                }
+            },
+            "containerClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom css classes applied to Spinner container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique html id placed on div with role=\"status\"."
+            },
+            "isInput": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support a spinner inside an input field."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the size of the spinner",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inverse'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "spinners",
+        "display-name": "Spinners",
+        "SLDS-component-path": "/components/spinner",
+        "dependencies": []
+    },
     "tabs": {
         "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
         "methods": [
@@ -11233,7 +11346,7 @@
         },
         "route": "timepickers",
         "display-name": "Timepickers",
-        "SLDS-component-path": "/components/datepickers",
+        "SLDS-component-path": "/components/timepicker",
         "dependencies": []
     },
     "toast": {
@@ -11408,7 +11521,7 @@
         },
         "route": "toasts",
         "display-name": "Toasts",
-        "SLDS-component-path": "/components/toasts",
+        "SLDS-component-path": "/components/toast",
         "dependencies": [
             {
                 "container": {
@@ -11994,7 +12107,7 @@
         },
         "route": "tree",
         "display-name": "Tree",
-        "SLDS-component-path": "/components/tree",
+        "SLDS-component-path": "/components/trees",
         "dependencies": []
     }
 }

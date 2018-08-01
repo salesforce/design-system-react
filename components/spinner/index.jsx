@@ -17,7 +17,7 @@ import checkProps from './check-props';
 import { SPINNER } from '../../utilities/constants';
 
 // ### Prop Types
-const PROP_TYPES = {
+const propTypes = {
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
@@ -35,7 +35,7 @@ const PROP_TYPES = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Determines if spinner is inside input field
+	 * Add styling to support a spinner inside an input field.
 	 */
 	isInput: PropTypes.bool,
 	/**
@@ -48,13 +48,15 @@ const PROP_TYPES = {
 	variant: PropTypes.oneOf(['base', 'brand', 'inverse']),
 };
 
-const DEFAULT_PROPS = {
+const defaultProps = {
 	assistiveText: { label: 'Loading...' },
 	size: 'medium',
 	variant: 'base',
 };
 
-// ## Spinner
+/**
+ * Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.
+ */
 const Spinner = (props) => {
 	checkProps(SPINNER, props);
 	const { containerClassName, id, isInput, size, variant } = props;
@@ -62,7 +64,7 @@ const Spinner = (props) => {
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
 			: {
-				...DEFAULT_PROPS.assistiveText,
+				...defaultProps.assistiveText,
 				...props.assistiveText,
 			}.label;
 
@@ -92,7 +94,7 @@ const Spinner = (props) => {
 };
 
 Spinner.displayName = SPINNER;
-Spinner.propTypes = PROP_TYPES;
-Spinner.defaultProps = DEFAULT_PROPS;
+Spinner.propTypes = propTypes;
+Spinner.defaultProps = defaultProps;
 
 export default Spinner;

@@ -620,6 +620,12 @@
 			"SLDS-component-path": "/components/slider"
 		},
 		{
+			"component": "spinner",
+			"status": "prod",
+			"display-name": "Spinners",
+			"SLDS-component-path": "/components/spinner"
+		},
+		{
 			"component": "tabs",
 			"status": "prod",
 			"display-name": "Tabs",
