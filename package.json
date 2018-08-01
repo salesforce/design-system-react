@@ -227,7 +227,8 @@
 				{
 					"component": "panel"
 				}
-			]
+			],
+			"url-slug": "accordions"
 		},
 		{
 			"component": "alert",
@@ -242,7 +243,8 @@
 				{
 					"component": "container"
 				}
-			]
+			],
+			"url-slug": "alerts"
 		},
 		{
 			"component": "app-launcher",
@@ -256,7 +258,8 @@
 				{
 					"component": "tile"
 				}
-			]
+			],
+			"url-slug": "app-launchers"
 		},
 		{
 			"component": "avatar",
@@ -266,7 +269,8 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/avatar"
+			"SLDS-component-path": "/components/avatar",
+			"url-slug": "avatars"
 		},
 		{
 			"component": "breadcrumb",
@@ -276,7 +280,8 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/breadcrumbs"
+			"SLDS-component-path": "/components/breadcrumbs",
+			"url-slug": "breadcrumbs"
 		},
 		{
 			"component": "button",
@@ -286,19 +291,22 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/buttons"
+			"SLDS-component-path": "/components/buttons",
+			"url-slug": "buttons"
 		},
 		{
 			"component": "button-stateful",
 			"status": "prod",
 			"display-name": "Stateful Buttons",
-			"SLDS-component-path": "/components/button/#flavor-stateful"
+			"SLDS-component-path": "/components/button/#flavor-stateful",
+			"url-slug": "stateful-buttons"
 		},
 		{
 			"component": "button-group",
 			"status": "prod",
 			"display-name": "Button Groups",
-			"SLDS-component-path": "/components/button-groups"
+			"SLDS-component-path": "/components/button-groups",
+			"url-slug": "button-groups"
 		},
 		{
 			"component": "card",
@@ -316,7 +324,8 @@
 				{
 					"component": "filter"
 				}
-			]
+			],
+			"url-slug": "cards"
 		},
 		{
 			"component": "checkbox",
@@ -326,7 +335,8 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/checkbox"
+			"SLDS-component-path": "/components/checkbox",
+			"url-slug": "checkboxes"
 		},
 		{
 			"component": "combobox",
@@ -336,7 +346,8 @@
 				"date-iso-8601": "2017/08/21",
 				"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
 			},
-			"SLDS-component-path": "/components/combobox"
+			"SLDS-component-path": "/components/combobox",
+			"url-slug": "comboboxes"
 		},
 		{
 			"component": "data-table",
@@ -361,7 +372,8 @@
 				{
 					"component": "row-actions"
 				}
-			]
+			],
+			"url-slug": "data-table"
 		},
 		{
 			"component": "date-picker",
@@ -371,13 +383,15 @@
 				"date-iso-8601": "2017/01/20",
 				"commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
 			},
-			"SLDS-component-path": "/components/datepickers"
+			"SLDS-component-path": "/components/datepickers",
+			"url-slug": "date-pickers"
 		},
 		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
-			"SLDS-component-path": "/components/filter"
+			"SLDS-component-path": "/components/filter",
+			"url-slug": "filters"
 		},
 		{
 			"component": "input",
@@ -387,7 +401,8 @@
 				"date-iso-8601": "2017/09/22",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/input"
+			"SLDS-component-path": "/components/input",
+			"url-slug": "inputs"
 		},
 		{
 			"component": "global-header",
@@ -407,7 +422,8 @@
 				{
 					"component": "search"
 				}
-			]
+			],
+			"url-slug": "global-headers"
 		},
 		{
 			"component": "global-navigation-bar",
@@ -434,7 +450,8 @@
 				{
 					"component": "region"
 				}
-			]
+			],
+			"url-slug": "global-navigation-bars"
 		},
 		{
 			"component": "icon",
@@ -444,18 +461,21 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/icons"
+			"SLDS-component-path": "/components/icons",
+			"url-slug": "icons"
 		},
 		{
 			"component": "icon-settings",
 			"status": "prod",
-			"display-name": "Icon Settings"
+			"display-name": "Icon Settings",
+			"url-slug": "icon-settings"
 		},
 		{
 			"component": "illustration",
 			"status": "prod",
 			"display-name": "Illustrations",
-			"SLDS-component-path": "/components/illustration"
+			"SLDS-component-path": "/components/illustration",
+			"url-slug": "illustrations"
 		},
 		{
 			"component": "media-object",
@@ -465,7 +485,8 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/utilities/media-object"
+			"SLDS-component-path": "/components/utilities/media-object",
+			"url-slug": "media-objects"
 		},
 		{
 			"component": "menu-dropdown",
@@ -480,19 +501,22 @@
 				{
 					"component": "button-trigger"
 				}
-			]
+			],
+			"url-slug": "menu-dropdowns"
 		},
 		{
 			"component": "modal",
 			"status": "prod",
-			"display-name": "Modals",
-			"SLDS-component-path": "/components/modals"
+			"display-name": "Modals and Prompts",
+			"SLDS-component-path": "/components/modals",
+			"url-slug": "modals"
 		},
 		{
 			"component": "navigation",
 			"status": "prod",
 			"display-name": "Navigation",
-			"SLDS-component-path": "/components/vertical-navigation"
+			"SLDS-component-path": "/components/vertical-navigation",
+			"url-slug": "navigations"
 		},
 		{
 			"component": "panel",
@@ -509,13 +533,15 @@
 				{
 					"component": "filtering/list"
 				}
-			]
+			],
+			"url-slug": "panels"
 		},
 		{
 			"component": "pill",
 			"status": "prototype",
 			"display-name": "Pills",
-			"SLDS-component-path": "/components/pills"
+			"SLDS-component-path": "/components/pills",
+			"url-slug": "pills"
 		},
 		{
 			"component": "popover",
@@ -525,13 +551,15 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/popovers"
+			"SLDS-component-path": "/components/popovers",
+			"url-slug": "popovers"
 		},
 		{
 			"component": "page-header",
 			"status": "prod",
 			"display-name": "Page Headers",
-			"SLDS-component-path": "/components/page-headers"
+			"SLDS-component-path": "/components/page-headers",
+			"url-slug": "page-headers"
 		},
 		{
 			"component": "progress-indicator",
@@ -545,7 +573,8 @@
 			"last-slds-markup-review": {
 				"date-iso-8601": "2018/07/25",
 				"commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
-			}
+			},
+			"url-slug": "progress-indicators"
 		},
 		{
 			"component": "progress-ring",
@@ -559,7 +588,8 @@
 				"date-iso-8601": "2017/11/28",
 				"commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
 			},
-			"SLDS-component-path": "/components/progress-ring"
+			"SLDS-component-path": "/components/progress-ring",
+			"url-slug": "progress-rings"
 		},
 		{
 			"component": "radio",
@@ -569,7 +599,8 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/radio-group/"
+			"SLDS-component-path": "/components/radio-group/",
+			"url-slug": "radios"
 		},
 		{
 			"component": "split-view",
@@ -591,7 +622,8 @@
 				{
 					"component": "listbox"
 				}
-			]
+			],
+			"url-slug": "split-views"
 		},
 		{
 			"component": "radio-group",
@@ -601,7 +633,8 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/radio-group"
+			"SLDS-component-path": "/components/radio-group",
+			"url-slug": "radio-groups"
 		},
 		{
 			"component": "radio-button-group",
@@ -611,13 +644,15 @@
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/radio-button-group"
+			"SLDS-component-path": "/components/radio-button-group",
+			"url-slug": "radio-button-groups"
 		},
 		{
 			"component": "slider",
 			"status": "prod",
 			"display-name": "Slider",
-			"SLDS-component-path": "/components/slider"
+			"SLDS-component-path": "/components/slider",
+			"url-slug": "sliders"
 		},
 		{
 			"component": "spinner",
@@ -638,19 +673,22 @@
 				{
 					"component": "panel"
 				}
-			]
+			],
+			"url-slug": "tabss"
 		},
 		{
 			"component": "textarea",
 			"status": "prod",
 			"display-name": "Textareas",
-			"SLDS-component-path": "/components/forms#flavor-textarea"
+			"SLDS-component-path": "/components/forms#flavor-textarea",
+			"url-slug": "textareas"
 		},
 		{
 			"component": "time-picker",
 			"status": "prod",
 			"display-name": "Timepickers",
-			"SLDS-component-path": "/components/timepicker"
+			"SLDS-component-path": "/components/timepicker",
+			"url-slug": "time-pickers"
 		},
 		{
 			"component": "toast",
@@ -665,13 +703,15 @@
 				{
 					"component": "container"
 				}
-			]
+			],
+			"url-slug": "toasts"
 		},
 		{
 			"component": "tooltip",
 			"status": "prod",
 			"display-name": "Tooltips",
-			"SLDS-component-path": "/components/tooltips"
+			"SLDS-component-path": "/components/tooltips",
+			"url-slug": "tooltips"
 		},
 		{
 			"component": "tree",
@@ -685,7 +725,8 @@
 				"date-iso-8601": "2018/05/04",
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
 			},
-			"SLDS-component-path": "/components/trees"
+			"SLDS-component-path": "/components/trees",
+			"url-slug": "trees"
 		}
 	],
 	"documentation": {
