@@ -378,6 +378,7 @@ const MenuDropdown = createReactClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
+			length: '5',
 			menuPosition: 'absolute',
 			openOn: 'click',
 		};
