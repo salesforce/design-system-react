@@ -12,8 +12,9 @@ const Example = createReactClass({
 				<Icon
 					assistiveText={{ label: 'Description of icon' }}
 					category="utility"
+					colorVariant="light"
 					name="announcement"
-					title="This is a title"
+					title="description of icon"
 				/>
 			</IconSettings>
 		);
