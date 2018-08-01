@@ -3,8 +3,8 @@
 # Comment to be posted to on first time issues
 newIssueWelcomeComment: >
   Thanks for opening your first issue! :wave: 
-    
-  A maintainer will respond within 7 days. If you haven’t heard anything by then, please bump this thread.
+
+  If you have found this library helpful, please star it. A maintainer will try to respond within 7 days. If you haven’t heard anything by then, please bump this thread.
 
 # Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
 
@@ -12,9 +12,9 @@ newIssueWelcomeComment: >
 newPRWelcomeComment: >
   Thanks for opening this pull request! :100: 
     
-  This is a community-driven project, and we can't do it without your participation. Please check out our [contributing guidelines](https://github.com/salesforce/design-system-react/blob/master/CONTRIBUTING.md) and review the Contributor Checklist if you haven't already to make sure everything is squared away. TravisCI will take about 10 minutes to run through the same items that are on the Contributor checklist with a pass/fail check below. Please fix any issues that cause TravisCI to fail or ask for clarification--we try, but sometimes the errors can be unclear.
+  This is a community-driven project, and we can't do it without your participation. Please check out our [contributing guidelines](https://github.com/salesforce/design-system-react/blob/master/CONTRIBUTING.md) and review the Contributor Checklist if you haven't already, to make sure everything is squared away. TravisCI will take about 10 minutes to run through the same items that are on the Contributor checklist with a pass/fail check below. Please fix any issues that cause TravisCI to fail or ask for clarification--we try, but sometimes the errors can be unclear.
 
-  A maintainer will respond within 7 days. If you haven’t heard anything by then, please bump this thread.
+  A maintainer will try to respond within 7 days. If you haven’t heard anything by then, please bump this thread.
 
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 
