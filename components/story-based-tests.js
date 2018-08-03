@@ -32,7 +32,7 @@ export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Input from '../components/input/__docs__/storybook-stories';
 // export Textarea from '../components/textarea/__docs__/storybook-stories';
 // export Search from '../components/input/__docs__/search/storybook-stories';
-// export Icon from '../components/icon/__docs__/storybook-stories';
+export Icon from '../components/icon/__docs__/storybook-stories';
 export Illustration from '../components/illustration/__docs__/storybook-stories';
 // export Lookup from '../components/lookup/__docs__/storybook-stories';
 // export MediaObject from '../components/media-object/__docs__/storybook-stories';

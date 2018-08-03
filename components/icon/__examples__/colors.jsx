@@ -28,6 +28,14 @@ const Example = createReactClass({
 					</div>
 					<div className="slds-col--padded">
 						<Icon
+							assistiveText={{ label: 'Lock' }}
+							category="utility"
+							colorVariant="light"
+							name="lock"
+						/>
+					</div>
+					<div className="slds-col--padded">
+						<Icon
 							assistiveText={{ label: 'Warning' }}
 							category="utility"
 							colorVariant="warning"
@@ -45,7 +53,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

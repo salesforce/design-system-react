@@ -2,12 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # Icon Component
-
-// Based on SLDS v2.1.0-rc.4
-
-// ## Dependencies
-
-// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -21,13 +15,13 @@ import classNames from '../../utilities/class-names';
 // ## Children
 import UtilityIcon from '../utilities/utility-icon';
 
-// ## Constants
 import { ICON } from '../../utilities/constants';
 
 const defaultProps = {
 	assistiveText: {},
 	category: 'standard',
-	size: 'medium'
+	colorVariant: 'default',
+	size: 'medium',
 };
 
 /**
@@ -38,6 +32,7 @@ const Icon = (props) => {
 	const {
 		category,
 		className,
+		colorVariant,
 		containerClassName,
 		icon,
 		inverse,
@@ -45,14 +40,15 @@ const Icon = (props) => {
 		path,
 		size,
 		style,
-		title
+		title,
 	} = props;
-	const assistiveText = typeof props.assistiveText === 'string'
-		? props.assistiveText
-		: {
-			...defaultProps.assistiveText,
-			...props.assistiveText,
-		}.label;
+	const assistiveText =
+		typeof props.assistiveText === 'string'
+			? props.assistiveText
+			: {
+				...defaultProps.assistiveText,
+				...props.assistiveText,
+			}.label;
 
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
 
@@ -63,7 +59,7 @@ const Icon = (props) => {
 					'slds-icon_container': category !== 'utility',
 					'slds-icon_container--circle': category === 'action',
 					[`slds-icon-${category}-${kababCaseName}`]:
-						category !== 'utility' && category !== 'doctype' && !path
+						category !== 'utility' && category !== 'doctype' && !path,
 				},
 				containerClassName
 			)}
@@ -82,7 +78,13 @@ const Icon = (props) => {
 					// if category is `utility` and `inverse` is true, icon will be light // return false
 					// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
 					// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
-					'slds-icon-text-default': category === 'utility' ? !inverse : inverse
+					'slds-icon-text-default':
+						colorVariant === 'default' && category === 'utility'
+							? !inverse
+							: inverse,
+					'slds-icon-text-warning': colorVariant === 'warning',
+					'slds-icon-text-error': colorVariant === 'error',
+					'slds-icon-text-light': colorVariant === 'light',
 				})}
 				icon={icon}
 				name={name}
@@ -120,7 +122,7 @@ Icon.propTypes = {
 		'custom',
 		'doctype',
 		'standard',
-		'utility'
+		'utility',
 	]).isRequired,
 	/**
 	 * CSS classes that are applied to the SVG.
@@ -128,7 +130,7 @@ Icon.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * CSS classes that are applied to the span.
@@ -136,12 +138,18 @@ Icon.propTypes = {
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Icon color variants
 	 */
-	colorVariant: PropTypes.oneOf(['base', 'default', 'error', 'warning']),
+	colorVariant: PropTypes.oneOf([
+		'base',
+		'default',
+		'error',
+		'light',
+		'warning',
+	]),
 	/**
 	 * A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax.
 	 */
@@ -169,7 +177,7 @@ Icon.propTypes = {
 	/**
 	 * Title attribute for the icon container
 	 */
-	title: PropTypes.string
+	title: PropTypes.string,
 };
 
 Icon.defaultProps = defaultProps;
