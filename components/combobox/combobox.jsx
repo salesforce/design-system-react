@@ -205,7 +205,13 @@ const propTypes = {
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
 	 */
-	options: PropTypes.array.isRequired,
+	options: PropTypes.arrayOf(PropTypes.PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		icon: PropTypes.node,
+		label: PropTypes.string,
+		subTitle: PropTypes.string,
+		type: PropTypes.string,
+	})).isRequired,
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
