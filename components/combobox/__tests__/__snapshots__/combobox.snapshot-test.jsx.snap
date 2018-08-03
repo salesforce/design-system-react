@@ -287,7 +287,7 @@ exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span>
               <span
@@ -627,7 +627,7 @@ exports[`Base Open Custom Class Name HTML Snapshot 1`] = `
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open this-is-the-input\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid this-is-the-menu\\" role=\\"presentation\\">
             <li class=\\"slds-dropdown__header slds-truncate\\" title=\\"Accounts\\" role=\\"separator\\"><span class=\\"slds-text-title_caps this-is-the-menu-sub-header\\">Accounts</span></li>
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
@@ -823,7 +823,7 @@ exports[`Base Open HTML Snapshot 1`] = `
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
               </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
@@ -960,7 +960,7 @@ exports[`Base Open Menu Inherit Width Of Menu HTML Snapshot 1`] = `
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\" style=\\"width:auto;max-width:500px;\\">
             <li class=\\"slds-dropdown__header slds-truncate\\" title=\\"Accounts\\" role=\\"separator\\"><span class=\\"slds-text-title_caps\\">Accounts</span></li>
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
@@ -1096,7 +1096,7 @@ exports[`Base Open Menu Sub Header HTML Snapshot 1`] = `
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
             <li class=\\"slds-dropdown__header slds-truncate\\" title=\\"Accounts\\" role=\\"separator\\"><span class=\\"slds-text-title_caps\\">Accounts</span></li>
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
@@ -2742,7 +2742,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
           <span
             class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
         </div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
@@ -3389,7 +3389,7 @@ exports[`Readonly Single Selection Selected Open HTML Snapshot 1`] = `
           <span
             class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
         </div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"true\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span

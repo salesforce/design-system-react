@@ -26,6 +26,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.offset,
+			'offset',
+			undefined,
+			'The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic.'
+		);
+
+		deprecatedProperty(
+			COMPONENT,
 			props.isInline,
 			'isInline',
 			'position="relative"'
