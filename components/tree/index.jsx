@@ -17,6 +17,92 @@ import checkProps from './check-props';
 // ## Constants
 import { TREE } from '../../utilities/constants';
 
+// ### Prop Types
+const propTypes = {
+	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
+	/**
+	 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Class names to be added to the top-level `ul` element of the tree.
+	 */
+	listClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
+	 */
+	getNodes: PropTypes.func,
+	/**
+	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
+	 * */
+	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+	/**
+	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 */
+	id: PropTypes.string.isRequired,
+	/**
+	 * Array of items starting at the top of the tree. The shape each node in the array is:
+	 * ```
+	 * {
+	 *   expanded: string,
+	 *   id: string,
+	 *   label: string or node,
+	 *   selected: string,
+	 *   type: string,
+	 *   nodes: array
+	 * }
+	 * ```
+	 * `assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
+	 */
+	nodes: PropTypes.arrayOf(
+		PropTypes.oneOfType([
+			PropTypes.number,
+			PropTypes.string,
+			PropTypes.shape({
+				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+					.isRequired,
+				label: PropTypes.string.isRequired,
+				type: PropTypes.string.isRequired,
+			}),
+		])
+	).isRequired,
+	/**
+	 * Function that will run whenever an item or branch is selected due to click or keyboard navigation.
+	 */
+	onClick: PropTypes.func.isRequired,
+	/**
+	 * This function triggers when the expand or collapse icon is clicked or due to keyboard navigation.
+	 */
+	onExpandClick: PropTypes.func.isRequired,
+	/**
+	 * This function triggers when the top-level `ul` element scrolls. This can be used to implement an "infinite scroll" pattern and update the `nodes` prop accordingly.
+	 */
+	onScroll: PropTypes.func,
+	/**
+	 * Highlights term if found in node label. This does not auto-expand branches.
+	 */
+	searchTerm: PropTypes.string,
+	/**
+	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
+	 */
+	listStyle: PropTypes.object,
+};
+
 const defaultProps = {
 	assistiveText: {},
 	getNodes: (node) => node.nodes,
@@ -199,96 +285,8 @@ class Tree extends React.Component {
 	}
 }
 
-Tree.defaultProps = defaultProps;
-
-// ### Display Name
-// Always use the canonical component name as the React display name.
 Tree.displayName = TREE;
-
-// ### Prop Types
-Tree.propTypes = {
-	/**
-	 * **Assistive text for accessibility.**
-	 * This object is merged with the default props object on every render.
-	 * * `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.
-	 */
-	assistiveText: PropTypes.shape({
-		label: PropTypes.string,
-	}),
-	/**
-	 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
-	 * Class names to be added to the top-level `ul` element of the tree.
-	 */
-	listClassName: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
-	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
-	 */
-	getNodes: PropTypes.func,
-	/**
-	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
-	 * */
-	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-	/**
-	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
-	 */
-	id: PropTypes.string.isRequired,
-	/**
-	 * Array of items starting at the top of the tree. The shape each node in the array is:
-	 * ```
-	 * {
-	 *   expanded: string,
-	 *   id: string,
-	 *   label: string or node,
-	 *   selected: string,
-	 *   type: string,
-	 *   nodes: array
-	 * }
-	 * ```
-	 * `assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
-	 */
-	nodes: PropTypes.arrayOf(
-		PropTypes.oneOfType([
-			PropTypes.number,
-			PropTypes.string,
-			PropTypes.shape({
-				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-					.isRequired,
-				label: PropTypes.string.isRequired,
-				type: PropTypes.string.isRequired,
-			}),
-		])
-	).isRequired,
-	/**
-	 * Function that will run whenever an item or branch is selected due to click or keyboard navigation.
-	 */
-	onClick: PropTypes.func.isRequired,
-	/**
-	 * This function triggers when the expand or collapse icon is clicked or due to keyboard navigation.
-	 */
-	onExpandClick: PropTypes.func.isRequired,
-	/**
-	 * This function triggers when the top-level `ul` element scrolls. This can be used to implement an "infinite scroll" pattern and update the `nodes` prop accordingly.
-	 */
-	onScroll: PropTypes.func,
-	/**
-	 * Highlights term if found in node label. This does not auto-expand branches.
-	 */
-	searchTerm: PropTypes.string,
-	/**
-	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
-	 */
-	listStyle: PropTypes.object,
-};
+Tree.propTypes = propTypes;
+Tree.defaultProps = defaultProps;
 
 export default Tree;
