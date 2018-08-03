@@ -205,13 +205,15 @@ const propTypes = {
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
 	 */
-	options: PropTypes.arrayOf(PropTypes.PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		icon: PropTypes.node,
-		label: PropTypes.string,
-		subTitle: PropTypes.string,
-		type: PropTypes.string,
-	})).isRequired,
+	options: PropTypes.arrayOf(
+		PropTypes.PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			subTitle: PropTypes.string,
+			type: PropTypes.string,
+		})
+	).isRequired,
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
@@ -227,13 +229,15 @@ const propTypes = {
 	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object. For item object keys, see `options` prop. _Tested with snapshot testing._
 	 */
-	selection: PropTypes.arrayOf(PropTypes.PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		icon: PropTypes.node,
-		label: PropTypes.string,
-		subTitle: PropTypes.string,
-		type: PropTypes.string,
-	})).isRequired,
+	selection: PropTypes.arrayOf(
+		PropTypes.PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			subTitle: PropTypes.string,
+			type: PropTypes.string,
+		})
+	).isRequired,
 	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
