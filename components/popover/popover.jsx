@@ -10,9 +10,6 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
-// ### assign
-import assign from 'lodash.assign';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -38,9 +35,6 @@ import Button from '../button';
 // ### Children
 import Dialog from '../utilities/dialog';
 
-// ### Traits
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
-
 // #### KeyboardNavigable
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
@@ -64,6 +58,7 @@ overlay.style.position = 'absolute';
 
 let currentOpenPopover;
 
+// FIXME - what is this exported for? Probably needs to be deprecated.
 const PopoverNubbinPositions = [
 	'top left',
 	'top',
@@ -101,10 +96,14 @@ const Popover = createReactClass({
 			'top left',
 			'top right',
 			'right',
+			'right top',
+			'right bottom',
 			'bottom',
 			'bottom left',
 			'bottom right',
 			'left',
+			'left top',
+			'left bottom',
 		]),
 		/**
 		 * **Assistive text for accessibility.**
@@ -158,10 +157,6 @@ const Popover = createReactClass({
 		 * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) You will want this if Popover is to be a controlled component.
 		 */
 		isOpen: PropTypes.bool,
-		/**
-		 *  Offset adds pixels to the absolutely positioned dialog in the format: ([vertical]px [horizontal]px).
-		 */
-		offset: PropTypes.string,
 		/**
 		 * This function is passed onto the triggering `Button`. Triggered when the trigger button is clicked. You will want this if Popover is to be a controlled component.
 		 */
@@ -434,7 +429,6 @@ const Popover = createReactClass({
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		const offset = props.offset;
-		const style = this.props.style || {};
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -444,10 +438,13 @@ const Popover = createReactClass({
 
 		return isOpen ? (
 			<Dialog
+				hasNubbin
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
-					'ignore-react-onclickoutside'
+					'ignore-react-onclickoutside',
+					'slds-popover',
+					props.className
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
@@ -461,63 +458,43 @@ const Popover = createReactClass({
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				onRequestTargetElement={() => this.trigger}
 				position={this.props.position}
-				style={{
-					marginBottom: getMargin.bottom(props.align),
-					marginLeft: getMargin.left(props.align),
-					marginRight: getMargin.right(props.align),
-					marginTop: getMargin.top(props.align),
-				}}
+				style={this.props.style}
 				variant="popover"
+				ref={this.setMenuRef}
+				containerProps={{
+					id: `${this.getId()}-popover`,
+					'aria-labelledby':
+						this.props.ariaLabelledby || `${this.getId()}-dialog-heading`,
+					'aria-describedby': `${this.getId()}-dialog-body`,
+				}}
 			>
-				<div
-					aria-labelledby={
-						this.props.ariaLabelledby
-							? this.props.ariaLabelledby
-							: `${this.getId()}-dialog-heading`
-					}
-					aria-describedby={`${this.getId()}-dialog-body`}
-					className={classNames(
-						'slds-popover',
-						getNubbinClassName(props.align),
-						props.className
-					)}
-					id={`${this.getId()}-popover`}
-					role="dialog"
-					style={assign({ outline: '0' }, style)}
-					tabIndex="-1"
-					ref={this.setMenuRef}
-				>
-					<Button
-						assistiveText={{ icon: closeButtonAssistiveText }}
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
-						onClick={this.handleCancel}
-						variant="icon"
-					/>
-					{this.props.heading ? (
-						<header className="slds-popover__header">
-							<h2
-								id={`${this.getId()}-dialog-heading`}
-								className="slds-text-heading--small"
-							>
-								{this.props.heading}
-							</h2>
-						</header>
-					) : null}
-					<div
-						id={`${this.getId()}-dialog-body`}
-						className="slds-popover__body"
-					>
-						{props.body}
-					</div>
-					{this.props.footer ? (
-						<footer className="slds-popover__footer">
-							{this.props.footer}
-						</footer>
-					) : null}
+				<Button
+					assistiveText={{ icon: closeButtonAssistiveText }}
+					iconCategory="utility"
+					iconName="close"
+					iconSize="small"
+					className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
+					onClick={this.handleCancel}
+					variant="icon"
+				/>
+
+				{this.props.heading ? (
+					<header className="slds-popover__header">
+						<h2
+							id={`${this.getId()}-dialog-heading`}
+							className="slds-text-heading--small"
+						>
+							{this.props.heading}
+						</h2>
+					</header>
+				) : null}
+
+				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+					{props.body}
 				</div>
+				{this.props.footer ? (
+					<footer className="slds-popover__footer">{this.props.footer}</footer>
+				) : null}
 			</Dialog>
 		) : null;
 	},
@@ -570,7 +547,7 @@ const Popover = createReactClass({
 
 		this.renderOverlay(this.getIsOpen());
 
-		const containerStyles = { display: 'inline' };
+		const containerStyles = { display: 'inline-block' };
 		return (
 			<div
 				className={this.props.triggerClassName}

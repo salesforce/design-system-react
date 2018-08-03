@@ -7594,6 +7594,105 @@
         "SLDS-component-path": "/components/modals",
         "dependencies": []
     },
+    "navigation": {
+        "description": "Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getSelectedId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component. _Tested with snapshot testing._"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. _Tested with snapshot testing._"
+            },
+            "categories": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
+            },
+            "selectedId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._"
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'shade'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines component style. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "navigation",
+        "display-name": "Navigation",
+        "SLDS-component-path": "/components/vertical-navigation",
+        "dependencies": []
+    },
     "panel": {
         "description": "A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [],
@@ -10317,6 +10416,108 @@
         "SLDS-component-path": "/components/slider",
         "dependencies": []
     },
+    "spinner": {
+        "description": "Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text that is read out loud to screen readers.",
+                "defaultValue": {
+                    "value": "{ label: 'Loading...' }",
+                    "computed": false
+                }
+            },
+            "containerClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom css classes applied to Spinner container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique html id placed on div with role=\"status\"."
+            },
+            "isInput": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support a spinner inside an input field."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the size of the spinner",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inverse'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "spinners",
+        "display-name": "Spinners",
+        "SLDS-component-path": "/components/spinner",
+        "dependencies": []
+    },
     "tabs": {
         "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
         "methods": [
@@ -11907,105 +12108,6 @@
         "route": "tree",
         "display-name": "Tree",
         "SLDS-component-path": "/components/trees",
-        "dependencies": []
-    },
-    "vertical-navigation": {
-        "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getSelectedId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "HTML id for component. _Tested with snapshot testing._"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS class names to be added to the container element. _Tested with snapshot testing._"
-            },
-            "categories": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
-            },
-            "selectedId": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._"
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style. _Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "vertical-navigation",
-        "display-name": "Vertical Navigation",
-        "SLDS-component-path": "/components/vertical-navigation",
         "dependencies": []
     }
 }

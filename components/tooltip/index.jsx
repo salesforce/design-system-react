@@ -17,7 +17,6 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -208,35 +207,23 @@ class Tooltip extends React.Component {
 
 		return isOpen ? (
 			<Dialog
+				closeOnTabKey
+				hasNubbin
+				contentsClassName={classNames('slds-popover', 'slds-popover--tooltip', {
+					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+				})}
 				align={align}
 				context={this.context}
-				closeOnTabKey
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				onClose={this.handleCancel}
 				onRequestTargetElement={() => this.getTooltipTarget()}
 				position={this.props.position}
-				style={{
-					marginBottom: getMargin.bottom(align),
-					marginLeft: getMargin.left(align),
-					marginRight: getMargin.right(align),
-					marginTop: getMargin.top(align),
-				}}
 				variant="tooltip"
+				containerProps={{
+					id: this.getId(),
+				}}
 			>
-				<div
-					id={this.getId()}
-					className={classNames(
-						'slds-popover',
-						'slds-popover--tooltip',
-						{
-							'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-						},
-						getNubbinClassName(align)
-					)}
-					role="tooltip"
-				>
-					{this.getTooltipContent()}
-				</div>
+				{this.getTooltipContent()}
 			</Dialog>
 		) : (
 			<span />
@@ -310,7 +297,10 @@ class Tooltip extends React.Component {
 	};
 
 	render () {
-		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
+		const containerStyles = {
+			display: 'inline-block',
+			...this.props.triggerStyle,
+		};
 
 		return (
 			<div

@@ -1,6 +1,7 @@
-Thank you for filing an issue! 
+Thank you for filing an issue!
 
 Please review the [frequently asked questions](faq.md) such as:
+
 * [Why do my icons not show up in IE11?](browser-compatibility.md#internet-explorer-11-support)
 * [Why aren't my ES6 imports, icons, styles, or fonts working in Create React App?](create-react-app.md)
 
@@ -11,10 +12,6 @@ Please include in your issue:
 * If you are a Salesforce employee. You should also create a duplicate work item in your internal ticket system and link to this issue.
 * If you plan to work on a new component. Please propose props after reviewing at newly written components and `docs/codebase-overview.md`.
 
-For Salesforce platform questions, please visit https://success.salesforce.com,  https://partners.salesforce.com, or https://salesforce.stackexchange.com
+For Salesforce platform questions, please visit https://success.salesforce.com, https://partners.salesforce.com, or https://salesforce.stackexchange.com
 
 This project uses SLDS markup, but you should submit HTML/CSS issues to https://github.com/salesforce-ux/design-system.
-
-A maintainer will:
-* Respond within 7 days. If you haven’t heard anything by then, please bump the thread.
-* Close issues outside project scope.

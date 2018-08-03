@@ -31,6 +31,22 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.21
+
+**Bugfixes**
+
+* Positioning behavior of Dialog components that use nubbins has changed. This applies to `Popover`, `Tooltip`, `Datepicker`, `Dropdown`. Previously the nubbin would be misaligned due to hardcoded margins that would get added onto the dialog component. It will now instead calculate the offsets and include them in the positioning logic and add/subtract from the left and top.
+
+* Dialogs that use nubbins would previously have the nubbins point at the location on the reference trigger component (i.e. `Button`). Details:
+    * If a Popover had an align of `top left`, that meant the nubbin would point at the top left hand side of the `Button`.
+    * The behavior now is that the nubbin will always position the Dialog element as needed to ensure it points at the center of the desired side.
+    * In the case of a `top left` align the left will only designate the location of the nubbin on the Dialog.
+    * We may decide to bring back the ability to control both the nubbin location on the Dialog, but also the location at which it points to on the reference element. Much of the logic surrounding nubbins has been broken at the seams and edge cases for a long time. This change has been done in order to provide a more robust and dependable solution.
+    * Any dialog that uses an `offset` prop will need to be manually readjusted.
+    * Deprecate `offset` prop for `Dropdown` and `Popover`. The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic.
+    * In the future we may change the props on some of these Dialog components to ensure a more consistent positioning API with hopefully some less head-scratching in terms of how to use it. This may include deprecating certain props and introduction of other props.
+
+
 ## Release 0.8.20
 
 **Bugfixes**
