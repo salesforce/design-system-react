@@ -238,5 +238,8 @@ export UtilityIcon from './utilities/utility-icon';
 export SLDSTree from './tree';
 export Tree from './tree';
 
+export SLDSVerticalNavigation from './vertical-navigation';
+export VerticalNavigation from './vertical-navigation';
+
 // Library utilities
 export log from '../utilities/log';

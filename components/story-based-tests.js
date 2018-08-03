@@ -36,7 +36,6 @@ export Icon from '../components/icon/__docs__/storybook-stories';
 export Illustration from '../components/illustration/__docs__/storybook-stories';
 // export Lookup from '../components/lookup/__docs__/storybook-stories';
 // export MediaObject from '../components/media-object/__docs__/storybook-stories';
-// export Navigation from '../components/navigation/__docs__/storybook-stories';
 // export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
@@ -48,6 +47,7 @@ export Illustration from '../components/illustration/__docs__/storybook-stories'
 // export Toast from '../components/toast/__docs__/storybook-stories';
 // export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
+// export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because

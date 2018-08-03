@@ -32,7 +32,6 @@ const documentationSiteLiveExamples = {
 	'menu-dropdown': require('@salesforce/design-system-react/components/menu-dropdown/__docs__/site-stories.js'),
 	'menu-picklist': require('@salesforce/design-system-react/components/menu-picklist/__docs__/site-stories.js'),
 	modal: require('@salesforce/design-system-react/components/modal/__docs__/site-stories.js'),
-	navigation: require('@salesforce/design-system-react/components/navigation/__docs__/site-stories.js'),
 	notification: require('@salesforce/design-system-react/components/notification/__docs__/site-stories.js'),
 	'page-header': require('@salesforce/design-system-react/components/page-header/__docs__/site-stories.js'),
 	panel: require('@salesforce/design-system-react/components/panel/__docs__/site-stories.js'),
@@ -51,6 +50,7 @@ const documentationSiteLiveExamples = {
 	toast: require('@salesforce/design-system-react/components/toast/__docs__/site-stories.js'),
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
 	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
+	'vertical-navigation': require('@salesforce/design-system-react/components/vertical-navigation/__docs__/site-stories.js'),
 };
 
 module.exports = documentationSiteLiveExamples;

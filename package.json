@@ -512,13 +512,6 @@
 			"url-slug": "modals"
 		},
 		{
-			"component": "navigation",
-			"status": "prod",
-			"display-name": "Navigation",
-			"SLDS-component-path": "/components/vertical-navigation",
-			"url-slug": "navigations"
-		},
-		{
 			"component": "panel",
 			"status": "prototype",
 			"display-name": "Panels",
@@ -727,6 +720,13 @@
 			},
 			"SLDS-component-path": "/components/trees",
 			"url-slug": "trees"
+		},
+		{
+			"component": "vertical-navigation",
+			"status": "prod",
+			"display-name": "Vertical Navigation",
+			"SLDS-component-path": "/components/vertical-navigation",
+			"url-slug": "vertical-navigation"
 		}
 	],
 	"documentation": {
