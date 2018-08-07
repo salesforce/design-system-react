@@ -3,5 +3,12 @@
 
 // Alias
 import VerticalNavigation from '../vertical-navigation';
+import componentHasMoved from '../../utilities/warning/component-has-moved';
+import { NAVIGATION } from '../../utilities/constants';
+
+componentHasMoved(NAVIGATION, {
+	oldFileLocation: 'components/navigation',
+	newFileLocation: 'components/vertical-navigation',
+});
 
 export default VerticalNavigation;
