@@ -5,6 +5,7 @@ import IconSettings from '../../icon-settings';
 import { FORMS_INPUT } from '../../../utilities/constants';
 import Button from '../../button';
 import Input from '../';
+import Tooltip from '../../tooltip';
 import InputIcon from '../../icon/input-icon';
 
 const iconClicked = action;
@@ -229,6 +230,31 @@ storiesOf(FORMS_INPUT, module)
 				required
 				errorText="This field is required."
 				placeholder="My placeholder"
+			/>
+		</section>
+	))
+	.add('Inline Help', () => (
+		<section>
+			<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				Inline Help
+			</h1>
+			<Input label="My Label" inlineHelpText="ex: (415) 111-2222" />
+		</section>
+	))
+	.add('Field Level Help', () => (
+		<section>
+			<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				Field Level Help
+			</h1>
+			<Input
+				label="My Label"
+				fieldLevelHelpTooltip={
+					<Tooltip
+						align="top left"
+						content="Some helpful information"
+						position="overflowBoundaryElement"
+					/>
+				}
 			/>
 		</section>
 	));

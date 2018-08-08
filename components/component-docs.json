@@ -4507,6 +4507,13 @@
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
             },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label. The props from the component will be merged and override any default props."
+            },
             "fixedTextLeft": {
                 "type": {
                     "name": "union",
@@ -4564,6 +4571,13 @@
                 },
                 "required": false,
                 "description": "Every input must have a unique ID in order to support keyboard navigation and ARIA support."
+            },
+            "inlineHelpText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Displays help text under the input."
             },
             "inputRef": {
                 "type": {

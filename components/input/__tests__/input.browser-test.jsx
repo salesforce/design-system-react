@@ -5,8 +5,10 @@ import { expect } from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
+import Button from '../../button';
 import Input from '../../input';
 import Icon from '../../icon';
+import Tooltip from '../../tooltip';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
 
@@ -499,6 +501,64 @@ describe('SLDSInput', () => {
 
 		it('renders fixed text node content', () => {
 			expect(fixedTextLeft.textContent).to.equal('$');
+		});
+	});
+
+	describe('Inline Help', () => {
+		let component;
+		let inlineHelpText;
+
+		beforeEach(() => {
+			component = getInput({
+				label: 'Input Label',
+				inlineHelpText: 'ex: (415) 111-2222',
+			});
+			inlineHelpText = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__help'
+			);
+		});
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('renders the inline help text', () => {
+			expect(inlineHelpText).to.be.ok;
+		});
+
+		it('renders the inline help text content', () => {
+			expect(inlineHelpText.textContent).to.equal('ex: (415) 111-2222');
+		});
+	});
+
+	describe('Field Level Help', () => {
+		let component;
+		let fieldLevelHelpTooltip;
+
+		beforeEach(() => {
+			component = getInput({
+				label: 'Input Label',
+				fieldLevelHelpTooltip: (
+					<Tooltip
+						align="top left"
+						content="Some helpful information"
+						position="overflowBoundaryElement"
+					/>
+				),
+			});
+			fieldLevelHelpTooltip = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__icon'
+			);
+		});
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('renders the tooltip trigger', () => {
+			expect(fieldLevelHelpTooltip).to.be.ok;
 		});
 	});
 });
