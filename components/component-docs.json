@@ -6796,7 +6796,11 @@
                     ]
                 },
                 "required": false,
-                "description": "This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height"
+                "description": "This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height",
+                "defaultValue": {
+                    "value": "'5'",
+                    "computed": false
+                }
             },
             "menuPosition": {
                 "type": {
@@ -7589,8 +7593,8 @@
                 "description": "Allows adding additional notifications within the modal."
             }
         },
-        "route": "modals",
-        "display-name": "Modals",
+        "route": "modals-and-prompts",
+        "display-name": "Modals and Prompts",
         "SLDS-component-path": "/components/modals",
         "dependencies": []
     },
