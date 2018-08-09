@@ -159,7 +159,7 @@ const propTypes = {
 	 */
 	inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 	/**
-	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
+	 * Accepts a custom menu item rendering function that becomes a custom component. It should return a React node. The checkmark is still rendered in readonly variants. This function is passed the following props:
 	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
 	 * * `option`: Object, option data for item being rendered that is passed into Combobox
 	 * * `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox
@@ -188,10 +188,32 @@ const propTypes = {
 	 */
 	multiple: PropTypes.bool,
 	/**
-	 * Item added to the dropdown menu.
-	 * To add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._
+	 * **Array of item objects in the dropdown menu.**
+	 * Each object can contain:
+	 * * `icon`: An `Icon` component. (not used in read-only variant)
+	 * * `id`: A unique identifier string.
+	 * * `label`: A primary string of text for a menu item or group separator.
+	 * * `subTitle`: A secondary string of text added for clarity. (optional)
+	 * * `type`: 'separator' is the only type currently used
+	 * ```
+	 * {
+	 * 	id: '2',
+	 * 	label: 'Salesforce.com, Inc.',
+	 * 	subTitle: 'Account • San Francisco',
+	 * 	type: 'account',
+	 * },
+	 * ```
+	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
 	 */
-	options: PropTypes.array.isRequired,
+	options: PropTypes.arrayOf(
+		PropTypes.PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			subTitle: PropTypes.string,
+			type: PropTypes.string,
+		})
+	).isRequired,
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
@@ -205,11 +227,19 @@ const propTypes = {
 	 */
 	required: PropTypes.bool,
 	/**
-	 * Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._
+	 * Accepts an array of item objects. For single selection, pass in an array of one object. For item object keys, see `options` prop. _Tested with snapshot testing._
 	 */
-	selection: PropTypes.array,
+	selection: PropTypes.arrayOf(
+		PropTypes.PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			subTitle: PropTypes.string,
+			type: PropTypes.string,
+		})
+	).isRequired,
 	/**
-	 * Value of input. This is a controlled component, so you will need to control the input value. _Tested with snapshot testing._
+	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
 	/**
