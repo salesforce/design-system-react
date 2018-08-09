@@ -272,7 +272,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "The type of alert. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'info'",
@@ -789,7 +789,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.",
                 "defaultValue": {
                     "value": "'user'",
@@ -818,7 +818,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Size of the icon in \"icon\" fallback case.",
                 "defaultValue": {
                     "value": "'medium'",
@@ -1795,7 +1795,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "The heading is the name of the related item group and should only contain inline elements.",
                 "defaultValue": {
                     "value": "'Related Items'",
@@ -1886,7 +1886,7 @@
                             "type": {
                                 "name": "string"
                             },
-                            "required": true,
+                            "required": false,
                             "description": "Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.",
                             "defaultValue": {
                                 "value": "'Find in List'",
@@ -2920,7 +2920,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
+                "description": "Accepts a custom menu item rendering function that becomes a custom component. It should return a React node. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
             },
             "menuPosition": {
                 "type": {
@@ -2963,10 +2963,35 @@
             },
             "options": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "icon": {
+                                "name": "node",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "subTitle": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "type": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
                 },
                 "required": true,
-                "description": "Item added to the dropdown menu.\nTo add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._"
+                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -3013,10 +3038,35 @@
             },
             "selection": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "icon": {
+                                "name": "node",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "subTitle": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "type": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._",
+                "description": "Accepts an array of item objects. For single selection, pass in an array of one object. For item object keys, see `options` prop. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -3027,7 +3077,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Value of input. This is a controlled component, so you will need to control the input value. _Tested with snapshot testing._"
+                "description": "Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._"
             },
             "variant": {
                 "type": {
@@ -3053,6 +3103,14 @@
                     "value": "'base'",
                     "computed": false
                 }
+            }
+        },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
             }
         },
         "route": "comboboxes",
@@ -4005,7 +4063,7 @@
                 "required": false,
                 "description": "Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012). _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "-5",
+                    "value": "-10",
                     "computed": false
                 }
             },
@@ -4016,7 +4074,7 @@
                 "required": false,
                 "description": "Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012). _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "5",
+                    "value": "10",
                     "computed": false
                 }
             },
@@ -4045,6 +4103,14 @@
                 },
                 "required": false,
                 "description": "Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._"
+            }
+        },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
             }
         },
         "route": "datepickers",
@@ -5005,7 +5071,8 @@
                             "defaultValue": {
                                 "value": "'icon'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "dropdown",
@@ -5150,13 +5217,15 @@
                             "defaultValue": {
                                 "value": "'icon'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         },
                         "iconVariant": {
                             "defaultValue": {
                                 "value": "'container'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "profile",
@@ -5272,19 +5341,22 @@
                             "defaultValue": {
                                 "value": "'slds-context-bar__label-action slds-text-body--regular'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         },
                         "style": {
                             "defaultValue": {
                                 "value": "{ lineHeight: 'inherit' }",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         },
                         "variant": {
                             "defaultValue": {
                                 "value": "'base'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "button",
@@ -5783,7 +5855,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)",
                 "defaultValue": {
                     "value": "'standard'",
@@ -5843,13 +5915,21 @@
                             "computed": false
                         },
                         {
+                            "value": "'light'",
+                            "computed": false
+                        },
+                        {
                             "value": "'warning'",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Icon color variants"
+                "description": "Icon color variants",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
             },
             "icon": {
                 "type": {
@@ -5979,6 +6059,44 @@
                 "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
             }
         },
+        "childContext": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "actionSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "customSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "doctypeSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "standardSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "utilitySprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            }
+        },
         "route": "icon-settings",
         "display-name": "Icon Settings",
         "dependencies": []
@@ -6023,7 +6141,7 @@
                 "type": {
                     "name": "bool"
                 },
-                "required": true,
+                "required": false,
                 "description": "Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.",
                 "defaultValue": {
                     "value": "true",
@@ -6428,22 +6546,6 @@
                 "params": [
                     {
                         "name": "customContent",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "renderInlineMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "customContent",
-                        "type": null
-                    },
-                    {
-                        "name": "isOpen",
                         "type": null
                     }
                 ],
@@ -6866,13 +6968,6 @@
                 },
                 "required": false,
                 "description": "Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with \"icon container\" styling (`iconVariant=\"container\"`). Use with `isInline` prop, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly without manual offsets."
-            },
-            "offset": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
             },
             "onBlur": {
                 "type": {
@@ -7598,105 +7693,6 @@
         "SLDS-component-path": "/components/modals",
         "dependencies": []
     },
-    "navigation": {
-        "description": "Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getSelectedId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "HTML id for component. _Tested with snapshot testing._"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS class names to be added to the container element. _Tested with snapshot testing._"
-            },
-            "categories": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
-            },
-            "selectedId": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._"
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style. _Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "navigation",
-        "display-name": "Navigation",
-        "SLDS-component-path": "/components/vertical-navigation",
-        "dependencies": []
-    },
     "panel": {
         "description": "A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [],
@@ -7941,7 +7937,8 @@
                             "defaultValue": {
                                 "value": "'Locked filters'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "filtering/list-heading",
@@ -8462,6 +8459,14 @@
                             "computed": false
                         },
                         {
+                            "value": "'right top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right bottom'",
+                            "computed": false
+                        },
+                        {
                             "value": "'bottom'",
                             "computed": false
                         },
@@ -8475,6 +8480,14 @@
                         },
                         {
                             "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'left top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'left bottom'",
                             "computed": false
                         }
                     ]
@@ -8600,13 +8613,6 @@
                 "required": false,
                 "description": "Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) You will want this if Popover is to be a controlled component."
             },
-            "offset": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Offset adds pixels to the absolutely positioned dialog in the format: ([vertical]px [horizontal]px)."
-            },
             "onClick": {
                 "type": {
                     "name": "func"
@@ -8718,13 +8724,15 @@
                 "defaultValue": {
                     "value": "300",
                     "computed": false
-                }
+                },
+                "required": false
             },
             "openOn": {
                 "defaultValue": {
                     "value": "'click'",
                     "computed": false
-                }
+                },
+                "required": false
             }
         },
         "route": "popovers",
@@ -9129,7 +9137,7 @@
                 "type": {
                     "name": "object"
                 },
-                "required": true,
+                "required": false,
                 "description": "Represents the currently selected or active step. It is a step object.",
                 "defaultValue": {
                     "value": "defaultSteps[0]",
@@ -11515,7 +11523,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "The type of Toast. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'info'",
@@ -11691,7 +11699,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Alignment of the Tooltip relative to the element that triggers it.",
                 "defaultValue": {
                     "value": "'top'",
@@ -11730,7 +11738,7 @@
                 "type": {
                     "name": "node"
                 },
-                "required": true,
+                "required": false,
                 "description": "Content inside Tooltip.",
                 "defaultValue": {
                     "value": "<span>Tooltip</span>",
@@ -11881,6 +11889,14 @@
                     "value": "'base'",
                     "computed": false
                 }
+            }
+        },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
             }
         },
         "route": "tooltips",
@@ -12112,6 +12128,105 @@
         "route": "tree",
         "display-name": "Tree",
         "SLDS-component-path": "/components/trees",
+        "dependencies": []
+    },
+    "vertical-navigation": {
+        "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getSelectedId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component. _Tested with snapshot testing._"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. _Tested with snapshot testing._"
+            },
+            "categories": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
+            },
+            "selectedId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._"
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'shade'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines component style. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "vertical-navigation",
+        "display-name": "Vertical Navigation",
+        "SLDS-component-path": "/components/vertical-navigation",
         "dependencies": []
     }
 }
