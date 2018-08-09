@@ -199,7 +199,7 @@
 		"prompt": "^1.0.0",
 		"react": ">=15.4.1 <16",
 		"react-addons-test-utils": ">=15.4.1 <16",
-		"react-docgen": "^2.14.1",
+		"react-docgen": "^2.21.0",
 		"react-dom": ">=15.4.1 <16",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": ">=15.4.1 <16",
