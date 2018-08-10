@@ -7,6 +7,8 @@ import Button from '../../button';
 import Input from '../';
 import InputIcon from '../../icon/input-icon';
 
+import ViewEditMode from '../__examples__/view-edit-mode';
+
 const iconClicked = action;
 
 const clearIcon = (
@@ -231,4 +233,5 @@ storiesOf(FORMS_INPUT, module)
 				placeholder="My placeholder"
 			/>
 		</section>
-	));
+	))
+	.add('View/Edit Modes', () => <ViewEditMode />);
