@@ -154,7 +154,7 @@ describe('SLDSMenuDropdown', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.customContent.nodes.length).to.equal(1);
+			expect(openNodes.customContent.length).to.equal(1);
 		});
 
 		it('closes when custom content is clicked', function () {
@@ -163,15 +163,15 @@ describe('SLDSMenuDropdown', function () {
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			openNodes.customContentLink.simulate('click', {});
 			const closedNodes = getNodes({ wrapper: this.wrapper });
-			expect(closedNodes.customContent.nodes.length).to.equal(0);
+			expect(closedNodes.customContent.length).to.equal(0);
 		});
 
 		it("has additional ListItem from list child's options prop", function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			const buttonId = nodes.trigger.node.id;
+			const buttonId = nodes.trigger.prop('id');
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find(`#${buttonId}-item-0`).text()).to.equal(
+			expect(openNodes.menu.find(`li#${buttonId}-item-0`).text()).to.equal(
 				'Custom Content Option'
 			);
 		});
@@ -186,21 +186,21 @@ describe('SLDSMenuDropdown', function () {
 
 		it('does not expand on hover', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('mouseEnter', {});
 			const hoverNodes = getNodes({ wrapper: this.wrapper });
-			expect(hoverNodes.menu.nodes.length).to.equal(0);
+			expect(hoverNodes.menu.length).to.equal(0);
 		});
 
 		it('expands/contracts on click', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 			openNodes.trigger.simulate('click', {});
 			const closedNodes = getNodes({ wrapper: this.wrapper });
-			expect(closedNodes.menu.nodes.length).to.equal(0);
+			expect(closedNodes.menu.length).to.equal(0);
 		});
 
 		it('preserves click behavior', function () {
@@ -228,7 +228,7 @@ describe('SLDSMenuDropdown', function () {
 
 		it('selects an item on click', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			openNodes.menu
@@ -248,12 +248,9 @@ describe('SLDSMenuDropdown', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find('ul').node.getAttribute('role')).to.equal(
-				'menu'
-			);
-			expect(
-				openNodes.menu.find('ul').node.getAttribute('aria-labelledby')
-			).to.equal(openNodes.trigger.node.getAttribute('id'));
+			expect(openNodes.menu.find('ul')).to.have.attr('role', 'menu');
+			const nodeId = openNodes.trigger.prop('id');
+			expect(openNodes.menu.find('ul')).attr('aria-labelledby', nodeId);
 		});
 
 		it('<a> inside <li> has role menuitem', function () {
@@ -263,7 +260,7 @@ describe('SLDSMenuDropdown', function () {
 			const anchorRole = openNodes.menu
 				.find('li a')
 				.first()
-				.node.getAttribute('role');
+				.prop('role');
 			const match =
 				anchorRole === 'menuitem' ||
 				anchorRole === 'menuitemradio' ||
@@ -275,11 +272,8 @@ describe('SLDSMenuDropdown', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			const lastItemAriaDisabledRole = openNodes.menu
-				.find('li a')
-				.get(3)
-				.getAttribute('aria-disabled');
-			expect(lastItemAriaDisabledRole).to.equal('true');
+			const lastItemAriaDisabledRole = openNodes.menu.find('li a').at(3).prop('aria-disabled');
+			expect(lastItemAriaDisabledRole).to.be.true;
 		});
 	});
 
@@ -301,7 +295,6 @@ describe('SLDSMenuDropdown', function () {
 
 		it('<button> has assistiveText', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			console.log(nodes.button);
 			expect(nodes.button.find('.slds-assistive-text').text()).to.equal(
 				'more options'
 			);
@@ -325,18 +318,18 @@ describe('SLDSMenuDropdown', function () {
 
 		it('opens menu with enter', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.ENTER);
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 		});
 
 		it('opens menu with down arrow key', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.DOWN);
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 		});
 
 		it('selects an item with keyboard', function () {
@@ -351,16 +344,16 @@ describe('SLDSMenuDropdown', function () {
 
 		it('closes Menu on esc', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 			openNodes.menu
 				.find('.slds-dropdown__item a')
 				.first()
 				.simulate('keyDown', keyObjects.ESCAPE);
 			const closedNodes = getNodes({ wrapper: this.wrapper });
-			expect(closedNodes.menu.nodes.length).to.equal(0);
+			expect(closedNodes.menu.length).to.equal(0);
 		});
 	});
 
@@ -372,16 +365,14 @@ describe('SLDSMenuDropdown', function () {
 		it('selects multiple items and renders checkmarks', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
-			const openNodes = getNodes({ wrapper: this.wrapper });
+			let openNodes = getNodes({ wrapper: this.wrapper });
 			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').nodes.length
+				openNodes.menu.find('.slds-dropdown__item svg').length
 			).to.equal(1);
-			openNodes.menu
-				.find('.slds-dropdown__item a')
-				.first()
-				.simulate('click', {});
+			openNodes.menu.find('.slds-dropdown__item a').at(0).simulate('click');
+			openNodes = getNodes({ wrapper: this.wrapper });
 			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').nodes.length
+				openNodes.menu.find('.slds-dropdown__item svg').length
 			).to.equal(2);
 		});
 	});
@@ -450,7 +441,7 @@ describe('SLDSMenuDropdown', function () {
 			setTimeout(() => {
 				expect(getMenu(body)).to.equal(null);
 				done();
-			}, 600);
+			}, 300);
 		});
 
 		it("doesn't close on quick hover outside", (done) => {
@@ -462,8 +453,8 @@ describe('SLDSMenuDropdown', function () {
 				setTimeout(() => {
 					expect(getMenu(body)).to.equal(null);
 					done();
-				}, 600);
-			}, 100);
+				}, 300);
+			}, 10);
 		});
 	});
 
@@ -526,7 +517,7 @@ describe('SLDSMenuDropdown', function () {
 			setTimeout(() => {
 				expect(getMenu(body)).to.equal(null);
 				done();
-			}, 600);
+			}, 300);
 		});
 	});
 });
