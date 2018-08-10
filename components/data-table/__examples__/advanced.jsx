@@ -77,8 +77,9 @@ const Example = createReactClass({
 		};
 	},
 
-	handleChanged (selection) {
-		this.setState({ selection });
+	handleChanged (event, data) {
+		this.setState({ selection: data.selection });
+		console.log(event, data);
 	},
 
 	handleRowAction (item, action) {
@@ -137,7 +138,7 @@ const Example = createReactClass({
 						fixedLayout
 						items={this.state.items}
 						id="DataTableExample-2"
-						onChange={this.handleChanged}
+						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
 						selectRows

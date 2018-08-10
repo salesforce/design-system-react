@@ -131,23 +131,29 @@ const DataTable = createReactClass({
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
-		 * The collection of items to render in the table.
+		 * The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.
 		 */
-		items: PropTypes.array.isRequired,
+		items: PropTypes.arrayOf(
+			PropTypes.shape({
+				id: PropTypes.string.isRequired,
+			})
+		).isRequired,
 		/**
 		 * A variant which removes hover style on rows
 		 */
 		noRowHover: PropTypes.bool,
 		/**
-		 * This function fires when the selection of rows changes.
+		 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
+		 *
+		 * This used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object.
 		 */
-		onChange: PropTypes.func,
+		onRowChange: PropTypes.func,
 		/**
 		 * This function fires when the table should be sorted.
 		 */
 		onSort: PropTypes.func,
 		/**
-		 * The selected rows.
+		 * An array of objects of selected rows. See `items` prop for shape of objects.
 		 */
 		selection: PropTypes.array,
 		/**
@@ -186,14 +192,22 @@ const DataTable = createReactClass({
 	},
 
 	handleToggleAll (e, { checked }) {
+		// REMOVE AT NEXT BREAKING CHANGE
+		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			const selection = checked ? [...this.props.items] : [];
-
 			this.props.onChange(selection, e);
+		}
+
+		if (typeof this.props.onRowChange === 'function') {
+			const selection = checked ? [...this.props.items] : [];
+			this.props.onRowChange(e, { selection });
 		}
 	},
 
 	handleRowToggle (item, selected, e) {
+		// REMOVE AT NEXT BREAKING CHANGE
+		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			let selection;
 
@@ -204,6 +218,18 @@ const DataTable = createReactClass({
 			}
 
 			this.props.onChange(selection, e);
+		}
+
+		if (typeof this.props.onRowChange === 'function') {
+			let selection;
+
+			if (selected) {
+				selection = [...this.props.selection, item];
+			} else {
+				selection = reject(this.props.selection, item);
+			}
+
+			this.props.onRowChange(e, { selection });
 		}
 	},
 
