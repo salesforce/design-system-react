@@ -58,13 +58,19 @@ describe('Global Navigation Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has wrapping div and one primary region', function () {
-			expect(this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`)).to.be.present();
-			expect(this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)).to.be.present();
+			expect(
+				this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.be.present();
 		});
 
 		it('Primary region DOES not have divider on right', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.not.have.className('slds-context-bar__item--divider-right');
+			expect(primary).to.not.have.className(
+				'slds-context-bar__item--divider-right'
+			);
 		});
 	});
 
@@ -161,13 +167,21 @@ describe('Global Navigation Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has 1 primary, 1 secondary, and 1 tertiary region', function () {
-			expect(this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)).to.be.present();
-			expect(this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`)).to.be.present();
-			expect(this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`)).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`)
+			).to.be.present();
 		});
 
 		it('Primary region has divider on right due to secondary region', function () {
-			expect(this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)).to.have.className('slds-context-bar__item--divider-right');
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.have.className('slds-context-bar__item--divider-right');
 		});
 
 		it('Secondary region application is a nav HTML element and has divider on right side', function () {

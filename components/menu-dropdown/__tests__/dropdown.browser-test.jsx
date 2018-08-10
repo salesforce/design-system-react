@@ -272,7 +272,10 @@ describe('SLDSMenuDropdown', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			const lastItemAriaDisabledRole = openNodes.menu.find('li a').at(3).prop('aria-disabled');
+			const lastItemAriaDisabledRole = openNodes.menu
+				.find('li a')
+				.at(3)
+				.prop('aria-disabled');
 			expect(lastItemAriaDisabledRole).to.be.true;
 		});
 	});
@@ -366,14 +369,17 @@ describe('SLDSMenuDropdown', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			let openNodes = getNodes({ wrapper: this.wrapper });
-			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').length
-			).to.equal(1);
-			openNodes.menu.find('.slds-dropdown__item a').at(0).simulate('click');
+			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
+				1
+			);
+			openNodes.menu
+				.find('.slds-dropdown__item a')
+				.at(0)
+				.simulate('click');
 			openNodes = getNodes({ wrapper: this.wrapper });
-			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').length
-			).to.equal(2);
+			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
+				2
+			);
 		});
 	});
 

@@ -96,7 +96,10 @@ describe('PageHeader: ', function () {
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
-			expect(wrapper.find('SLDSPageHeader')).to.have.prop('label', 'Record Type');
+			expect(wrapper.find('SLDSPageHeader')).to.have.prop(
+				'label',
+				'Record Type'
+			);
 		});
 
 		it('renders correct Title prop', () => {
@@ -105,7 +108,10 @@ describe('PageHeader: ', function () {
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
-			expect(wrapper.find('SLDSPageHeader')).to.have.prop('title', 'Record Title');
+			expect(wrapper.find('SLDSPageHeader')).to.have.prop(
+				'title',
+				'Record Title'
+			);
 		});
 
 		it('renders ContentRight prop', () => {
