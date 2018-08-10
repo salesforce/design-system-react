@@ -32,7 +32,6 @@ const documentationSiteLiveExamples = {
 	'menu-dropdown': require('@salesforce/design-system-react/components/menu-dropdown/__docs__/site-stories.js'),
 	'menu-picklist': require('@salesforce/design-system-react/components/menu-picklist/__docs__/site-stories.js'),
 	modal: require('@salesforce/design-system-react/components/modal/__docs__/site-stories.js'),
-	navigation: require('@salesforce/design-system-react/components/navigation/__docs__/site-stories.js'),
 	notification: require('@salesforce/design-system-react/components/notification/__docs__/site-stories.js'),
 	'page-header': require('@salesforce/design-system-react/components/page-header/__docs__/site-stories.js'),
 	panel: require('@salesforce/design-system-react/components/panel/__docs__/site-stories.js'),
@@ -45,11 +44,13 @@ const documentationSiteLiveExamples = {
 	radio: require('@salesforce/design-system-react/components/radio/__docs__/site-stories.js'),
 	tabs: require('@salesforce/design-system-react/components/tabs/__docs__/site-stories.js'),
 	slider: require('@salesforce/design-system-react/components/slider/__docs__/site-stories.js'),
+	spinner: require('@salesforce/design-system-react/components/spinner/__docs__/site-stories.js'),
 	'split-view': require('@salesforce/design-system-react/components/split-view/__docs__/site-stories.js'),
 	'time-picker': require('@salesforce/design-system-react/components/time-picker/__docs__/site-stories.js'),
 	toast: require('@salesforce/design-system-react/components/toast/__docs__/site-stories.js'),
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
 	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
+	'vertical-navigation': require('@salesforce/design-system-react/components/vertical-navigation/__docs__/site-stories.js'),
 };
 
 module.exports = documentationSiteLiveExamples;

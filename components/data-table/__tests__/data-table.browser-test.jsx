@@ -191,8 +191,8 @@ describe('DataTable: ', function () {
 		});
 
 		it('can deselect a row', function (done) {
-			this.onChange = (newSelection, ...rest) => {
-				newSelection.should.have.length(0);
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(0);
 				done();
 			};
 
@@ -200,7 +200,7 @@ describe('DataTable: ', function () {
 				<DataTable
 					{...defaultProps}
 					selection={defaultSelection}
-					onChange={this.onChange}
+					onRowChange={this.onRowChange}
 				>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
@@ -215,9 +215,9 @@ describe('DataTable: ', function () {
 		});
 
 		it('can select a row', function (done) {
-			this.onChange = (newSelection) => {
-				newSelection.should.have.length(2);
-				newSelection[1].id.should.equal('5GJOOOPWU7');
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(2);
+				selection[1].id.should.equal('5GJOOOPWU7');
 				done();
 			};
 
@@ -225,7 +225,7 @@ describe('DataTable: ', function () {
 				<DataTable
 					{...defaultProps}
 					selection={defaultSelection}
-					onChange={this.onChange}
+					onRowChange={this.onRowChange}
 				>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
@@ -240,13 +240,13 @@ describe('DataTable: ', function () {
 		});
 
 		it('can select all rows', function (done) {
-			this.onChange = (newSelection) => {
-				newSelection.should.have.length(6);
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(6);
 				done();
 			};
 
 			renderTable(
-				<DataTable {...defaultProps} onChange={this.onChange}>
+				<DataTable {...defaultProps} onRowChange={this.onRowChange}>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
@@ -260,13 +260,17 @@ describe('DataTable: ', function () {
 		});
 
 		it('can deselect all rows', function (done) {
-			this.onChange = (newSelection) => {
-				newSelection.should.have.length(0);
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(0);
 				done();
 			};
 
 			renderTable(
-				<DataTable {...defaultProps} selection={items} onChange={this.onChange}>
+				<DataTable
+					{...defaultProps}
+					selection={items}
+					onRowChange={this.onRowChange}
+				>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
