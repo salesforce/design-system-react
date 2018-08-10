@@ -19,11 +19,14 @@
 		"@babel/plugin-proposal-class-properties",
 		"@babel/plugin-proposal-export-default-from",
 		"@babel/plugin-proposal-export-namespace-from",
-		"root-import"
+		"root-import",
+		"syntax-dynamic-import"
 	],
 	"env": {
 		"amd": {
-			"plugins": ["import-noop"]
+			"plugins": [
+				"import-noop"
+			]
 		},
 		"esm": {
 			"presets": [
@@ -46,14 +49,19 @@
 				"@babel/plugin-proposal-object-rest-spread",
 				"@babel/plugin-proposal-class-properties",
 				"@babel/plugin-proposal-export-default-from",
-				"@babel/plugin-proposal-export-namespace-from"
+				"@babel/plugin-proposal-export-namespace-from",
+				"syntax-dynamic-import"
 			]
 		},
 		"commonjs": {
-			"plugins": ["import-noop"]
+			"plugins": [
+				"import-noop"
+			]
 		},
 		"test": {
-			"plugins": ["istanbul"]
+			"plugins": [
+				"istanbul"
+			]
 		}
 	},
 	"ignore": [

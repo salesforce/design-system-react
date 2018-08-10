@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDoc from '../../utilities/get-component-doc';
 import oneOfComponent from '../../utilities/warning/one-of-component';
 import { APP_LAUNCHER, APP_LAUNCHER_SECTION } from '../../utilities/constants';
 
@@ -10,25 +11,30 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		if (COMPONENT === APP_LAUNCHER) {
-			if (props.modalHeaderButton !== undefined) {
-				oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton']);
-			}
+		import('./docs.json').then((jsonDoc) => {
+			const createDocUrl = getComponentDoc(jsonDoc);
+			if (COMPONENT === APP_LAUNCHER) {
+				if (props.modalHeaderButton !== undefined) {
+					oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton'], createDocUrl('modalHeaderButton'));
+				}
 
-			deprecatedProperty(
-				COMPONENT,
-				props.triggerAssistiveText,
-				'triggerAssistiveText',
-				"assistiveText['trigger']"
-			);
-		} else if (COMPONENT === APP_LAUNCHER_SECTION) {
-			deprecatedProperty(
-				COMPONENT,
-				props.collapseSectionAssistiveText,
-				'collapseSectionAssistiveText',
-				"assistiveText['collapseSection']"
-			);
-		}
+				deprecatedProperty(
+					COMPONENT,
+					props.triggerAssistiveText,
+					'triggerAssistiveText',
+					"assistiveText['trigger']",
+					createDocUrl('assistiveText')
+				);
+			} else if (COMPONENT === APP_LAUNCHER_SECTION) {
+				deprecatedProperty(
+					COMPONENT,
+					props.collapseSectionAssistiveText,
+					'collapseSectionAssistiveText',
+					"assistiveText['collapseSection']",
+					createDocUrl('assistiveText')
+				);
+			}
+		});
 	};
 }
 
