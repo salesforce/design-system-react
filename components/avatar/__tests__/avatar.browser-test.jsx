@@ -89,11 +89,7 @@ describe('SLDSAvatar: ', function () {
 			mountNode = createMountNode({ context: this });
 		});
 
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
-
-		it('renders "iniitals prop" initials if they are passed in directly', () => {
+		it('renders "initials prop" initials if they are passed in directly', () => {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar initials="AW" />
@@ -164,10 +160,6 @@ describe('SLDSAvatar: ', function () {
 	describe('Icon avatar fallback check', () => {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
-		});
-
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
 		});
 
 		it('renders expected assistiveText', () => {

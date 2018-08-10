@@ -52,17 +52,16 @@ describe('SLDSIcon: ', function () {
 		afterEach(unmountComponent);
 
 		it('renders container class', function () {
-			expect(this.wrapper.hasClass('slds-icon_container')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon_container');
 		});
 
 		it('renders assistive text', function () {
-			asstText = this.wrapper.find('.slds-assistive-text');
-			expect(asstText.text()).to.equal('Log a Call');
+			expect(this.wrapper.find('.slds-assistive-text')).to.have.text('Log a Call');
 		});
 
 		it('renders icon name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
-			expect(this.wrapper.hasClass('slds-icon-standard-log-a-call')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon-standard-log-a-call');
 		});
 
 		it('renders custom background color', function () {
@@ -98,17 +97,16 @@ describe('SLDSIcon: ', function () {
 		afterEach(unmountComponent);
 
 		it('renders container class', function () {
-			expect(this.wrapper.hasClass('slds-icon_container')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon_container');
 		});
 
 		it('renders assistive text', function () {
-			asstText = this.wrapper.find('.slds-assistive-text');
-			expect(asstText.text()).to.equal('Heart');
+			expect(this.wrapper.find('.slds-assistive-text')).to.have.text('Heart');
 		});
 
 		it('renders icon name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
-			expect(this.wrapper.hasClass('slds-icon-custom-custom1')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon-custom-custom1');
 		});
 
 		it('renders icon size class', function () {
@@ -141,21 +139,20 @@ describe('SLDSIcon: ', function () {
 		afterEach(unmountComponent);
 
 		it('renders container class', function () {
-			expect(this.wrapper.hasClass('slds-icon_container')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon_container');
 		});
 
 		it('renders assistive text', function () {
-			asstText = this.wrapper.find('.slds-assistive-text');
-			expect(asstText.text()).to.equal('Announcements');
+			expect(this.wrapper.find('.slds-assistive-text')).to.have.text('Announcements');
 		});
 
 		it('renders round container', function () {
-			expect(this.wrapper.hasClass('slds-icon_container--circle')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon_container--circle');
 		});
 
 		it('renders icon name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
-			expect(this.wrapper.hasClass('slds-icon-action-announcement')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-icon-action-announcement');
 		});
 
 		it('renders icon size class', function () {
@@ -225,12 +222,7 @@ describe('SLDSIcon: ', function () {
 		});
 
 		it('path prop is passed to svg', function () {
-			use = this.wrapper
-				.find('svg')
-				.node.firstChild.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
-			expect(use).to.equal(
-				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
-			);
+			expect(this.wrapper.find('use')).to.have.attr('xlink:href', '/assets/icons/utility-sprite/svg/symbols.svg#announcement');
 		});
 	});
 });
