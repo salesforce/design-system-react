@@ -618,6 +618,8 @@ class Combobox extends React.Component {
 		}
 
 		if (this.getIsOpen()) {
+			// by the time handleClose is normally called, the menu is already closed
+			this.handleClose();
 			this.setState({ isOpen: false });
 		}
 	};
