@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				props.iconCategory,
 				'iconCategory',
-				`Use \`Icon\` instead.${createDocUrl('icon')}`
+				`Use \`Icon\` instead. ${createDocUrl('icon')}`
 			);
 			sunsetProperty(
 				COMPONENT,
