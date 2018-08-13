@@ -3,7 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
-import getComponentDoc from '../../utilities/get-component-doc';
+import getComponentDocFn from '../../utilities/get-component-doc';
 import oneOfComponent from '../../utilities/warning/one-of-component';
 import { APP_LAUNCHER, APP_LAUNCHER_SECTION } from '../../utilities/constants';
 
@@ -12,7 +12,7 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDoc(jsonDoc);
+			const createDocUrl = getComponentDocFn(jsonDoc);
 			if (COMPONENT === APP_LAUNCHER) {
 				if (props.modalHeaderButton !== undefined) {
 					oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton'], createDocUrl('modalHeaderButton'));

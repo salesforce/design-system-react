@@ -3,14 +3,14 @@
 /* eslint-disable import/no-mutable-exports */
 
 import sunsetProperty from '../../utilities/warning/sunset-property';
-import getComponentDoc from '../../utilities/get-component-doc';
+import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDoc(jsonDoc);
+			const createDocUrl = getComponentDocFn(jsonDoc);
 			/* eslint-disable max-len */
 			sunsetProperty(
 				COMPONENT,

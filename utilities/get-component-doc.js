@@ -2,10 +2,10 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-let getComponentDoc = function () {};
+let getComponentDocFn = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	getComponentDoc = function (jsonDoc) {
+	getComponentDocFn = function (jsonDoc) {
 		jsonDoc.componentUrl = `https://react.lightningdesignsystem.com/components/${jsonDoc['url-slug']}`;
 		return ((propName) =>
 			`Please check the current documentation at: ${propName ? `${jsonDoc.componentUrl}#prop-${propName}` : jsonDoc.componentUrl}`
@@ -13,4 +13,4 @@ if (process.env.NODE_ENV !== 'production') {
 	};
 }
 
-export default getComponentDoc;
+export default getComponentDocFn;

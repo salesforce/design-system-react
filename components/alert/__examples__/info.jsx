@@ -10,6 +10,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<AlertContainer>
 					<Alert
+						iconCategory="utility"
 						icon={<Icon category="utility" name="user" />}
 						labels={{
 							heading: 'Logged in as John Smith (johnsmith@acme.com).',

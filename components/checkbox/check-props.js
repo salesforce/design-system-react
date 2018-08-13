@@ -4,7 +4,7 @@
 /* eslint-disable max-len */
 
 import deprecatedEventParameter from '../../utilities/warning/deprecated-event-parameter';
-import getComponentDoc from '../../utilities/get-component-doc';
+import getComponentDocFn from '../../utilities/get-component-doc';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 
 let checkProps = function () {};
@@ -12,7 +12,7 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDoc(jsonDoc);
+			const createDocUrl = getComponentDocFn(jsonDoc);
 
 			deprecatedEventParameter(
 				COMPONENT,

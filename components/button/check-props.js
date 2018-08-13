@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-import getComponentDoc from '../../utilities/get-component-doc';
+import getComponentDocFn from '../../utilities/get-component-doc';
 import ifOneThenBothRequiredProperty from '../../utilities/warning/if-one-then-both-required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
@@ -11,7 +11,7 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDoc(jsonDoc);
+			const createDocUrl = getComponentDocFn(jsonDoc);
 
 			/* eslint-disable max-len */
 			// If iconName is set, iconCategory must also be set.

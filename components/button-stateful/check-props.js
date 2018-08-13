@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-import getComponentDoc from '../../utilities/get-component-doc';
+import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function () {};
@@ -10,7 +10,7 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDoc(jsonDoc);
+			const createDocUrl = getComponentDocFn(jsonDoc);
 
 			if (typeof props.assistiveText === 'string') {
 				sunsetProperty(
