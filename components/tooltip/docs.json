@@ -1,0 +1,7 @@
+{
+    "component": "tooltip",
+    "status": "prod",
+    "display-name": "Tooltips",
+    "SLDS-component-path": "/components/tooltips",
+    "url-slug": "tooltips"
+}
