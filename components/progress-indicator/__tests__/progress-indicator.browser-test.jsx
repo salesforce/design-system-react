@@ -266,9 +266,8 @@ describe('SLDSProgressIndicator: ', () => {
 				.find('.slds-progress')
 				.find('li')
 				.find('button')
-				.first().node;
-			// step.simulate('click'); <-- this is causing some errors on tab tests
-			Simulate.click(step);
+				.first();
+			step.simulate('click'); // <-- this is causing some errors on tab tests
 			expect(clickHandler.callCount).to.equal(1);
 		});
 	});
