@@ -19,8 +19,7 @@
 		"@babel/plugin-proposal-class-properties",
 		"@babel/plugin-proposal-export-default-from",
 		"@babel/plugin-proposal-export-namespace-from",
-		"root-import",
-		"syntax-dynamic-import"
+		"root-import"
 	],
 	"env": {
 		"amd": {
@@ -65,6 +64,6 @@
 		}
 	},
 	"ignore": [
-		"preset/**",
-	],
+		"preset/**"
+	]
 }
