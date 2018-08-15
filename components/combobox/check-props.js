@@ -9,18 +9,17 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		import('./docs.json').then((jsonDoc) => {
-			/* eslint-disable max-len */
-			deprecatedProperty(
-				COMPONENT,
-				props.isInline,
-				'isInline',
-				'menuPosition="relative"',
-				createDocUrl('menuPosition')
-			);
-			/* eslint-enable max-len */
-		});
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+		/* eslint-disable max-len */
+		deprecatedProperty(
+			COMPONENT,
+			props.isInline,
+			'isInline',
+			'menuPosition="relative"',
+			createDocUrl('menuPosition')
+		);
+		/* eslint-enable max-len */
 	};
 }
 

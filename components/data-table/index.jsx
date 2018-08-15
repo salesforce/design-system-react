@@ -43,6 +43,7 @@ import {
 	DATA_TABLE_HEAD,
 	DATA_TABLE_ROW,
 } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
@@ -182,7 +183,7 @@ const DataTable = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATA_TABLE, this.props);
+		checkProps(DATA_TABLE, this.props, componentDoc);
 	},
 
 	handleToggleAll (e, { checked }) {

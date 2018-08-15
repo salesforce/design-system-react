@@ -9,26 +9,24 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDocFn(jsonDoc);
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
 
-			/* eslint-disable max-len */
-			// If iconName is set, iconCategory must also be set.
-			ifOneThenBothRequiredProperty(COMPONENT, props, {
-				iconName: props.iconName,
-				iconCategory: props.iconCategory,
-			}, createDocUrl('iconCategory'));
+		/* eslint-disable max-len */
+		// If iconName is set, iconCategory must also be set.
+		ifOneThenBothRequiredProperty(COMPONENT, props, {
+			iconName: props.iconName,
+			iconCategory: props.iconCategory,
+		}, createDocUrl('iconCategory'));
 
-			if (typeof props.assistiveText === 'string') {
-				sunsetProperty(
-					COMPONENT,
-					props.assistiveText,
-					'assistiveText',
-					`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl('assistiveText')}`
-				);
-			}
-		});
+		if (typeof props.assistiveText === 'string') {
+			sunsetProperty(
+				COMPONENT,
+				props.assistiveText,
+				'assistiveText',
+				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl('assistiveText')}`
+			);
+		}
 	};
 }
 

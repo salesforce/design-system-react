@@ -19,6 +19,7 @@ import checkProps from './check-props';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {
@@ -30,7 +31,7 @@ const defaultProps = {
  * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
  */
 const Breadcrumb = (props) => {
-	checkProps(BREADCRUMB, props);
+	checkProps(BREADCRUMB, props, componentDoc);
 
 	const { trail } = props;
 	const assistiveText =

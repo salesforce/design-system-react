@@ -26,6 +26,7 @@ import checkProps from './check-props';
 import ButtonIcon from '../icon/button-icon';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const propTypes = {
 	/**
@@ -144,7 +145,7 @@ class ButtonStateful extends React.Component {
 	}
 
 	componentWillMount () {
-		checkProps(BUTTON_STATEFUL, this.props);
+		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
 	}
 
 	getClassName (active) {

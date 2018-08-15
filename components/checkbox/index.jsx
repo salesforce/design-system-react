@@ -23,6 +23,7 @@ import EventUtil from '../../utilities/event';
 import checkProps from './check-props';
 
 import { FORMS_CHECKBOX } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const propTypes = {
 	/**
@@ -159,7 +160,7 @@ const defaultProps = {
  */
 class Checkbox extends React.Component {
 	componentWillMount () {
-		checkProps(FORMS_CHECKBOX, this.props);
+		checkProps(FORMS_CHECKBOX, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}
 

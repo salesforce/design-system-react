@@ -10,31 +10,30 @@ import { APP_LAUNCHER, APP_LAUNCHER_SECTION } from '../../utilities/constants';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDocFn(jsonDoc);
-			if (COMPONENT === APP_LAUNCHER) {
-				if (props.modalHeaderButton !== undefined) {
-					oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton'], createDocUrl('modalHeaderButton'));
-				}
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
 
-				deprecatedProperty(
-					COMPONENT,
-					props.triggerAssistiveText,
-					'triggerAssistiveText',
-					"assistiveText['trigger']",
-					createDocUrl('assistiveText')
-				);
-			} else if (COMPONENT === APP_LAUNCHER_SECTION) {
-				deprecatedProperty(
-					COMPONENT,
-					props.collapseSectionAssistiveText,
-					'collapseSectionAssistiveText',
-					"assistiveText['collapseSection']",
-					createDocUrl('assistiveText')
-				);
+		if (COMPONENT === APP_LAUNCHER) {
+			if (props.modalHeaderButton !== undefined) {
+				oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton'], createDocUrl('modalHeaderButton'));
 			}
-		});
+
+			deprecatedProperty(
+				COMPONENT,
+				props.triggerAssistiveText,
+				'triggerAssistiveText',
+				"assistiveText['trigger']",
+				createDocUrl('assistiveText')
+			);
+		} else if (COMPONENT === APP_LAUNCHER_SECTION) {
+			deprecatedProperty(
+				COMPONENT,
+				props.collapseSectionAssistiveText,
+				'collapseSectionAssistiveText',
+				"assistiveText['collapseSection']",
+				createDocUrl('assistiveText')
+			);
+		}
 	};
 }
 

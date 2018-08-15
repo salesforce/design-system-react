@@ -26,6 +26,7 @@ import Modal from '../modal';
 
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {
@@ -145,7 +146,7 @@ const AppLauncher = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER, this.props);
+		checkProps(APP_LAUNCHER, this.props, componentDoc);
 	},
 
 	openAppLauncher (event) {

@@ -8,19 +8,17 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		import('./docs.json').then((jsonDoc) => {
-			const createDocUrl = getComponentDocFn(jsonDoc);
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
 
-			if (typeof props.assistiveText === 'string') {
-				sunsetProperty(
-					COMPONENT,
-					props.assistiveText,
-					'assistiveText',
-					`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl('assistiveText')}`
-				);
-			}
-		});
+		if (typeof props.assistiveText === 'string') {
+			sunsetProperty(
+				COMPONENT,
+				props.assistiveText,
+				'assistiveText',
+				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl('assistiveText')}`
+			);
+		}
 	};
 }
 

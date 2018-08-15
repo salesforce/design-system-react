@@ -8,7 +8,8 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
 		deprecatedProperty(
@@ -16,17 +17,17 @@ if (process.env.NODE_ENV !== 'production') {
 			props.compact,
 			'compact',
 			undefined,
-			'compact has been deprecated as non-compact data tables do not exist in SLDS'
+			`compact has been deprecated as non-compact data tables do not exist in SLDS. ${createDocUrl()}`
 		);
 
-		deprecatedProperty(COMPONENT, props.collection, 'collection', 'items');
-		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
-		deprecatedProperty(COMPONENT, props.onDeselect, 'onDeselect', 'onChange');
+		deprecatedProperty(COMPONENT, props.collection, 'collection', 'items', createDocUrl('items'));
+		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange', createDocUrl('onChange'));
+		deprecatedProperty(COMPONENT, props.onDeselect, 'onDeselect', 'onChange', createDocUrl('onChange'));
 		sunsetProperty(
 			COMPONENT,
 			props.sortable,
 			'sortable',
-			'The table is sortable if one or more of its columns are sortable.'
+			`The table is sortable if one or more of its columns are sortable. ${createDocUrl()}`
 		);
 
 		// Deprecated and moved to a child
@@ -34,14 +35,14 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.columns,
 			'columns',
-			'Please provide one or more children of the type <Column /> instead.'
+			`Please provide one or more children of the type <Column /> instead. ${createDocUrl()}`
 		);
 
 		sunsetProperty(
 			COMPONENT,
 			props.bordered,
 			'bordered',
-			'All SLDS DataTables have row borders by default now. If you do not want row borders, please use `unborderedRow`'
+			`All SLDS DataTables have row borders by default now. If you do not want row borders, please use \`unborderedRow\`. ${createDocUrl('unborderedRow')}`
 		);
 		/* eslint-enable max-len */
 
@@ -49,37 +50,43 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.assistiveTextForActionsHeader,
 			'assistiveTextForActionsHeader',
-			"assistiveText['actionsHeader']"
+			"assistiveText['actionsHeader']",
+			createDocUrl('assistiveText')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.assistiveTextForColumnSort,
 			'assistiveTextForColumnSort',
-			"assistiveText['columnSort']"
+			"assistiveText['columnSort']",
+			createDocUrl('assistiveText')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.assistiveTextForColumnSortedAscending,
 			'assistiveTextForColumnSortedAscending',
-			"assistiveText['columnSortedAscending']"
+			"assistiveText['columnSortedAscending']",
+			createDocUrl('assistiveText')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.assistiveTextForColumnSortedDescending,
 			'assistiveTextForColumnSortedDescending',
-			"assistiveText['columnSortedDescending']"
+			"assistiveText['columnSortedDescending']",
+			createDocUrl('assistiveText')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.assistiveTextForSelectAllRows,
 			'assistiveTextForSelectAllRows',
-			"assistiveText['selectAllRows']"
+			"assistiveText['selectAllRows']",
+			createDocUrl('assistiveText')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.assistiveTextForSelectRow,
 			'assistiveTextForSelectRow',
-			"assistiveText['selectRow']"
+			"assistiveText['selectRow']",
+			createDocUrl('assistiveText')
 		);
 	};
 }

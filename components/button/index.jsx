@@ -14,6 +14,7 @@ import checkProps from './check-props';
 import PopoverTooltip from '../popover-tooltip';
 
 import { BUTTON } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: { icon: '' },
@@ -209,7 +210,7 @@ const Button = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props);
+		checkProps(BUTTON, this.props, componentDoc);
 	},
 
 	getClassName () {

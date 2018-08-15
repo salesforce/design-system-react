@@ -33,6 +33,7 @@ import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import { DATE_PICKER } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const propTypes = {
 	/**
@@ -264,7 +265,7 @@ class Datepicker extends React.Component {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATE_PICKER, this.props);
+		checkProps(DATE_PICKER, this.props, componentDoc);
 	}
 
 	componentWillReceiveProps (nextProps) {
