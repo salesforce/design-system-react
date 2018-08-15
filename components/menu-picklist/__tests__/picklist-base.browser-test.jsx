@@ -75,17 +75,14 @@ describe('SLDSMenuPicklist: ', function () {
 			removePicklist();
 		});
 
-		it('expands/contracts the dropdown on click', (done) => {
+		it('expands/contracts the dropdown on click', () => {
 			expect(getMenu(document.body)).to.equal(null);
 			Simulate.click(btn, {});
-			setTimeout(() => {
-				expect(getMenu(document.body).className).to.include(
-					'slds-dropdown--left'
-				);
-				Simulate.click(btn, {});
-				expect(getMenu(document.body)).to.equal(null);
-				done();
-			}, 600);
+			expect(getMenu(document.body).className).to.include(
+				'slds-dropdown--left'
+			);
+			Simulate.click(btn, {});
+			expect(getMenu(document.body)).to.equal(null);
 		});
 	});
 

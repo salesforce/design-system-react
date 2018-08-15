@@ -357,7 +357,7 @@ describe('SLDSDatepicker', function () {
 
 		afterEach(() => wrapper.unmount());
 
-		it('onOpen is not called when disabled', function (done) {
+		it('onOpen is not called when disabled', function () {
 			wrapper = mount(
 				<DemoComponent
 					disabled
@@ -369,10 +369,7 @@ describe('SLDSDatepicker', function () {
 
 			wrapper.simulate('click', {});
 
-			setTimeout(() => {
-				expect(dialogOpened.callCount).to.equal(0);
-				done();
-			}, 200);
+			expect(dialogOpened.callCount).to.equal(0);
 		});
 	});
 

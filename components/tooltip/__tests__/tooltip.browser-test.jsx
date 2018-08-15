@@ -115,7 +115,7 @@ describe('SLDSTooltip: ', function () {
 				setTimeout(() => {
 					expect(getTip(document.body)).to.be.null;
 					done();
-				}, 600);
+				}, 60);
 			});
 		});
 	});

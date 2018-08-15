@@ -416,7 +416,11 @@ describe('SLDSMenuDropdown', function () {
 		let btn;
 
 		beforeEach(() => {
-			cmp = dropItDown({ buttonClassName: 'dijkstrafied', openOn: 'hover' });
+			cmp = dropItDown({
+				buttonClassName: 'dijkstrafied',
+				openOn: 'hover',
+				hoverCloseDelay: 2,
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
@@ -447,7 +451,7 @@ describe('SLDSMenuDropdown', function () {
 			setTimeout(() => {
 				expect(getMenu(body)).to.equal(null);
 				done();
-			}, 300);
+			}, 3);
 		});
 
 		it("doesn't close on quick hover outside", (done) => {
@@ -455,12 +459,13 @@ describe('SLDSMenuDropdown', function () {
 			Simulate.mouseEnter(btn, {});
 			Simulate.mouseLeave(btn);
 			setTimeout(() => {
+				Simulate.mouseEnter(btn, {});
 				expect(getMenu(body)).to.not.equal(null);
 				setTimeout(() => {
-					expect(getMenu(body)).to.equal(null);
+					expect(getMenu(body)).to.not.equal(null);
 					done();
-				}, 300);
-			}, 10);
+				}, 3);
+			}, 1);
 		});
 	});
 
@@ -496,7 +501,7 @@ describe('SLDSMenuDropdown', function () {
 		const onClick = sinon.spy();
 
 		beforeEach(() => {
-			cmp = dropItDown({ openOn: 'hybrid', onClick });
+			cmp = dropItDown({ openOn: 'hybrid', onClick, hoverCloseDelay: 1 });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
@@ -523,7 +528,7 @@ describe('SLDSMenuDropdown', function () {
 			setTimeout(() => {
 				expect(getMenu(body)).to.equal(null);
 				done();
-			}, 300);
+			}, 2);
 		});
 	});
 });
