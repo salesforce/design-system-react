@@ -17,11 +17,11 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 /**
  * A helper component that renders a Button in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden if text-based buttons are required.
  */
-const GlobalHeaderButton = (props) => (
-	<li>
-		<Button iconVariant="global-header" variant="icon" {...props} />
-	</li>
-);
+const GlobalHeaderButton = (props) => {
+	const { buttonVariant, ...rest } = props;
+	const btn = <Button iconVariant="global-header" variant="icon" {...rest} />;
+	return buttonVariant === 'dropdown' ? btn : <li>{btn}</li>;
+};
 
 GlobalHeaderButton.displayName = GLOBAL_HEADER_TOOL;
 
