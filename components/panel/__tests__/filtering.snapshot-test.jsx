@@ -5,5 +5,5 @@ import { testDOMandHTML } from '../../../tests/snapshot-helpers';
 testDOMandHTML({
 	name: 'Panel Filtering Default Snapshot',
 	test,
-	Component: PanelFiltering
+	Component: PanelFiltering,
 });

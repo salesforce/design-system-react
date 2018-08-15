@@ -83,7 +83,6 @@
 	"homepage": "https://react.lightningdesignsystem.com",
 	"dependencies": {
 		"@salesforce/babel-preset-design-system-react": "^1.0.0",
-		"@storybook/addon-storyshots": "^3.4.10",
 		"classnames": "^2.2.5",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
@@ -133,6 +132,7 @@
 		"@salesforce-ux/icons": "7.x",
 		"@storybook/addon-a11y": "^3.4.10",
 		"@storybook/addon-actions": "^3.4.10",
+		"@storybook/addon-storyshots": "^3.4.10",
 		"@storybook/addons": "^3.4.10",
 		"@storybook/react": "^3.4.10",
 		"async": "^2.0.0-rc.5",

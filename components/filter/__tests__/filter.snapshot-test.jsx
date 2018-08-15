@@ -10,37 +10,37 @@ import AssistiveTextFilter from '../__examples__/assistive-text';
 testDOMandHTML({
 	name: 'Filter Base Snapshot',
 	test,
-	Component: Default
+	Component: Default,
 });
 
 testDOMandHTML({
 	name: 'NewFilter Base Snapshot',
 	test,
-	Component: NewFilter
+	Component: NewFilter,
 });
 
 testDOMandHTML({
 	name: 'LockedFilter Base Snapshot',
 	test,
-	Component: LockedFilter
+	Component: LockedFilter,
 });
 
 testDOMandHTML({
 	name: 'Permanant Filter Base Snapshot',
 	test,
-	Component: PermanantFilter
+	Component: PermanantFilter,
 });
 
 testDOMandHTML({
 	name: 'Error Filter Base Snapshot',
 	test,
-	Component: ErrorFilter
+	Component: ErrorFilter,
 });
 
 testDOMandHTML({
 	name: 'AssistiveText Filter',
 	test,
-	Component: AssistiveTextFilter
+	Component: AssistiveTextFilter,
 });
 
 test('Filter Base with custom className Snapshot', () => {
