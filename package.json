@@ -83,6 +83,7 @@
 	"homepage": "https://react.lightningdesignsystem.com",
 	"dependencies": {
 		"@salesforce/babel-preset-design-system-react": "^1.0.0",
+		"@storybook/addon-storyshots": "^3.4.10",
 		"classnames": "^2.2.5",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
