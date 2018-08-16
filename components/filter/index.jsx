@@ -34,6 +34,7 @@ import Popover from '../popover';
 
 // ## Constants
 import { FILTER } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
@@ -136,7 +137,7 @@ const Filter = createReactClass({
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
-		checkProps(FILTER);
+		checkProps(FILTER, componentDoc);
 	},
 
 	getId () {

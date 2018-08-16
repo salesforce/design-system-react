@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function () {};

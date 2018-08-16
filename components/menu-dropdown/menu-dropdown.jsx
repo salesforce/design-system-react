@@ -55,6 +55,7 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 	LIST,
 } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -407,7 +408,7 @@ const MenuDropdown = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(MENU_DROPDOWN, this.props);
+		checkProps(MENU_DROPDOWN, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 

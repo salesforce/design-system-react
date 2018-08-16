@@ -26,6 +26,7 @@ import {
 	GLOBAL_HEADER_SEARCH,
 	GLOBAL_HEADER_TOOL,
 } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {
@@ -90,7 +91,7 @@ const GlobalHeader = createReactClass({
 	},
 
 	componentWillMount () {
-		checkProps(GLOBAL_HEADER, this.props);
+		checkProps(GLOBAL_HEADER, this.props, componentDoc);
 	},
 
 	handleSkipToContent (e) {

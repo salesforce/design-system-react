@@ -21,11 +21,13 @@ import checkProps from './check-props';
 // ## Constants
 import { PANEL } from '../../utilities/constants';
 
+import componentDoc from './docs.json';
+
 /**
  * A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have "portal mounts" and be inline. */
 class Panel extends React.Component {
 	componentWillMount () {
-		checkProps(PANEL);
+		checkProps(PANEL, componentDoc);
 	}
 
 	render () {

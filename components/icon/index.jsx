@@ -16,6 +16,7 @@ import classNames from '../../utilities/class-names';
 import UtilityIcon from '../utilities/utility-icon';
 
 import { ICON } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {},
@@ -28,7 +29,7 @@ const defaultProps = {
  * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.
  */
 const Icon = (props) => {
-	checkProps(ICON, props);
+	checkProps(ICON, props, componentDoc);
 	const {
 		category,
 		className,

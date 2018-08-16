@@ -31,6 +31,8 @@ import checkProps from './check-props';
 
 import { FORMS_TEXTAREA } from '../../utilities/constants';
 
+import componentDoc from './docs.json';
+
 /**
  * A multi-line plain-text editing control.
  */
@@ -206,7 +208,7 @@ const Textarea = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(FORMS_TEXTAREA, this.props);
+		checkProps(FORMS_TEXTAREA, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 		if (this.props.errorText) {

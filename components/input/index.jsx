@@ -32,6 +32,7 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { FORMS_INPUT } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 /**
  * The HTML `input` with a label and error messaging.
@@ -261,7 +262,7 @@ const Input = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(FORMS_INPUT, this.props);
+		checkProps(FORMS_INPUT, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 		if (this.props.errorText) {

@@ -41,6 +41,8 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 
+import componentDoc from './docs.json';
+
 const documentDefined = typeof document !== 'undefined';
 
 // The overlay is an optional way to allow the popover to close on outside
@@ -223,7 +225,7 @@ const Popover = createReactClass({
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER, this.props);
+		checkProps(POPOVER, this.props, componentDoc);
 	},
 
 	componentWillUnmount () {
