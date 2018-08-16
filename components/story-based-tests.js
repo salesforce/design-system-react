@@ -59,7 +59,7 @@ export Tree from '../components/tree/__docs__/storybook-stories';
 // export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';
 // export DatePicker from '../components/date-picker/__docs__/storybook-stories';
 // export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
-// export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
+export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
 // export Modal from '../components/modal/__docs__/storybook-stories';
 // export Notification from '../components/notification/__docs__/storybook-stories';
 // export Panel from '../components/panel/__docs__/storybook-stories';
