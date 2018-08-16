@@ -81,7 +81,7 @@ class Example extends React.Component {
 					}}
 					menuPosition="relative"
 					options={accounts}
-					readOnlySingleInputDisabled
+					singleInputDisabled
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="readonly"

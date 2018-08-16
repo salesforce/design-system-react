@@ -2600,7 +2600,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
+                        "name": "{ assistiveText, labels, props, userDefinedProps }",
                         "type": null
                     }
                 ],
@@ -2830,6 +2830,17 @@
                 "required": false,
                 "description": "An [Input](https://react.lightningdesignsystem.com/components/inputs) component.\nThe props from this component will override any default props."
             },
+            "singleInputDisabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents. This only applies for single readonly and inline-listbox variants.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -2999,17 +3010,6 @@
                 },
                 "required": true,
                 "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
-            },
-            "readOnlySingleInputDisabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the input and prevents editing the contents. This only applies for read only single variant.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -3266,10 +3266,19 @@
             },
             "items": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            }
+                        }
+                    }
                 },
                 "required": true,
-                "description": "The collection of items to render in the table."
+                "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
             },
             "noRowHover": {
                 "type": {
@@ -3278,12 +3287,12 @@
                 "required": false,
                 "description": "A variant which removes hover style on rows"
             },
-            "onChange": {
+            "onRowChange": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This function fires when the selection of rows changes."
+                "description": "This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.\n\nThis used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object."
             },
             "onSort": {
                 "type": {
@@ -3297,7 +3306,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "The selected rows.",
+                "description": "An array of objects of selected rows. See `items` prop for shape of objects.",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -11390,6 +11399,18 @@
                 "returns": null
             },
             {
+                "name": "autoCompleteFilter",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ inputValue, options, selection }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "parseDate",
                 "docblock": null,
                 "modifiers": [],
@@ -11441,18 +11462,76 @@
                     {
                         "name": "event",
                         "type": null
+                    },
+                    {
+                        "name": "{ value }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRemoveSelectedOption",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ option }",
+                        "type": null
                     }
                 ],
                 "returns": null
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "removeSingleSelectedOption": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.",
+                "defaultValue": {
+                    "value": "{\n    removeSingleSelectedOption: 'Remove selected option',\n}",
+                    "computed": false
+                }
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
                 "description": "Disables the input and prevents editing the contents."
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onChange": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestRemoveSelectedOption": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onSelect": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onChange`: Called when keyboard events occur within `input`. Receives the props `(strValue)`\n* `onRequestRemoveSelectedOption`: Function called when selection option is to be removed. Receives the props `(value)`\n* `onSelect`: Function called when a menu item is selected. Receives the props `(value)`\n_Tested with Mocha testing._"
             },
             "formatter": {
                 "type": {
@@ -11525,13 +11604,6 @@
                     "computed": false
                 }
             },
-            "onDateChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Receives the props `(dateValue, stringValue)`"
-            },
             "parser": {
                 "type": {
                     "name": "func"
@@ -11577,7 +11649,11 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Value for input that is parsed to create an internal state in the `date` format."
+                "description": "Value for input that is parsed to create an internal state in the `date` format.",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
             },
             "value": {
                 "type": {
@@ -12310,7 +12386,15 @@
                                         "required": true
                                     },
                                     "label": {
-                                        "name": "string",
+                                        "name": "union",
+                                        "value": [
+                                            {
+                                                "name": "node"
+                                            },
+                                            {
+                                                "name": "string"
+                                            }
+                                        ],
                                         "required": true
                                     },
                                     "type": {
