@@ -11,7 +11,7 @@ import GlobalHeaderSearch from '../../global-header/search';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
-import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
+// import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
 
 /* eslint-disable react/prop-types */
 /* eslint-disable no-script-url */
@@ -46,7 +46,9 @@ const GlobalHeaderDemo = (props) => (
 	<GlobalHeader
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
-		navigation={globalNavigationBar(props)}
+		// Add back for visual review with navigation present.
+		// The presence of React Modal in App Launcher in Global Navigation prevents Jest (node) testing.
+		// navigation={globalNavigationBar(props)}
 		assistiveText={{
 			skipToContent: 'Skip to Main Content',
 			skipToNavAssistiveText: 'Skip to Navigation',
