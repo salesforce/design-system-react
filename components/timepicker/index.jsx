@@ -128,7 +128,7 @@ class TimePicker extends React.Component {
 		assistiveText: {
 			removeSingleSelectedOption: 'Remove selected option',
 		},
-		formatter(date) {
+		formatter (date) {
 			if (date) {
 				return date.toLocaleTimeString(navigator.language, {
 					hour: '2-digit',
@@ -138,7 +138,7 @@ class TimePicker extends React.Component {
 
 			return null;
 		},
-		parser(timeStr) {
+		parser (timeStr) {
 			const date = new Date();
 			const dateStr = date.toLocaleString(navigator.language, {
 				year: 'numeric',
@@ -161,12 +161,12 @@ class TimePicker extends React.Component {
 		value: this.props.value,
 	};
 
-	componentWillMount() {
+	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TIMEPICKER, this.props);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps (nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentTime = this.props.value.getTime();
 			const nextTime = nextProps.value.getTime();
@@ -180,7 +180,7 @@ class TimePicker extends React.Component {
 		}
 	}
 
-	getOptions() {
+	getOptions () {
 		const baseDate = new Date();
 		const options = [];
 
@@ -268,7 +268,7 @@ class TimePicker extends React.Component {
 	};
 
 	// ### Render
-	render() {
+	render () {
 		const selection = this.state.options.filter(
 			(option) => option.value === this.state.value
 		);
@@ -302,8 +302,8 @@ class TimePicker extends React.Component {
 									variant="combobox"
 								/>
 							) : (
-									<InputIcon category="utility" name="clock" variant="combobox" />
-								)
+								<InputIcon category="utility" name="clock" variant="combobox" />
+							)
 						}
 					/>
 				}
