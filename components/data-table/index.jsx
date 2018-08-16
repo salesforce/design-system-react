@@ -47,6 +47,19 @@ import {
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
 
+const defaultProps = {
+	assistiveText: {
+		actionsHeader: 'Actions',
+		columnSort: 'Sort by: ',
+		columnSortedAscending: 'Sorted Ascending',
+		columnSortedDescending: 'Sorted Descending',
+		selectAllRows: 'Select all rows',
+		selectRow: 'Select row',
+	},
+	id: shortid.generate(),
+	selection: [],
+};
+
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
@@ -59,29 +72,23 @@ const DataTable = createReactClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Text for heading of actions column
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `actionsHeader`: Text for heading of actions column
+		 * * `columnSort`: Text for sort action on table column header
+		 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
+		 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
+		 * * `selectAllRows`: Text for select all checkbox within the table header
+		 * * `selectRow`: Text for select row
 		 */
-		assistiveTextForActionsHeader: PropTypes.string,
-		/**
-		 * Text for sort action on table column header
-		 */
-		assistiveTextForColumnSort: PropTypes.string,
-		/**
-		 * Text announced once a column is sorted in ascending order
-		 */
-		assistiveTextForColumnSortedAscending: PropTypes.string,
-		/**
-		 * Text announced once a column is sorted in descending order
-		 */
-		assistiveTextForColumnSortedDescending: PropTypes.string,
-		/**
-		 * Text for select all checkbox within the table header
-		 */
-		assistiveTextForSelectAllRows: PropTypes.string,
-		/**
-		 * Text for select row
-		 */
-		assistiveTextForSelectRow: PropTypes.string,
+		assistiveText: PropTypes.shape({
+			actionsHeader: PropTypes.string,
+			columnSort: PropTypes.string,
+			columnSortedAscending: PropTypes.string,
+			columnSortedDescending: PropTypes.string,
+			selectAllRows: PropTypes.string,
+			selectRow: PropTypes.string,
+		}),
 		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
 		 * ```
@@ -124,23 +131,29 @@ const DataTable = createReactClass({
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
-		 * The collection of items to render in the table.
+		 * The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.
 		 */
-		items: PropTypes.array.isRequired,
+		items: PropTypes.arrayOf(
+			PropTypes.shape({
+				id: PropTypes.string.isRequired,
+			})
+		).isRequired,
 		/**
 		 * A variant which removes hover style on rows
 		 */
 		noRowHover: PropTypes.bool,
 		/**
-		 * This function fires when the selection of rows changes.
+		 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
+		 *
+		 * This used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object.
 		 */
-		onChange: PropTypes.func,
+		onRowChange: PropTypes.func,
 		/**
 		 * This function fires when the table should be sorted.
 		 */
 		onSort: PropTypes.func,
 		/**
-		 * The selected rows.
+		 * An array of objects of selected rows. See `items` prop for shape of objects.
 		 */
 		selection: PropTypes.array,
 		/**
@@ -170,16 +183,7 @@ const DataTable = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			assistiveTextForActionsHeader: 'Actions',
-			assistiveTextForColumnSort: 'Sort by: ',
-			assistiveTextForColumnSortedAscending: 'Sorted Ascending',
-			assistiveTextForColumnSortedDescending: 'Sorted Descending',
-			assistiveTextForSelectAllRows: 'Select all rows',
-			assistiveTextForSelectRow: 'Select row',
-			id: shortid.generate(),
-			selection: [],
-		};
+		return defaultProps;
 	},
 
 	componentWillMount () {
@@ -188,14 +192,22 @@ const DataTable = createReactClass({
 	},
 
 	handleToggleAll (e, { checked }) {
+		// REMOVE AT NEXT BREAKING CHANGE
+		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			const selection = checked ? [...this.props.items] : [];
-
 			this.props.onChange(selection, e);
+		}
+
+		if (typeof this.props.onRowChange === 'function') {
+			const selection = checked ? [...this.props.items] : [];
+			this.props.onRowChange(e, { selection });
 		}
 	},
 
 	handleRowToggle (item, selected, e) {
+		// REMOVE AT NEXT BREAKING CHANGE
+		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			let selection;
 
@@ -206,6 +218,18 @@ const DataTable = createReactClass({
 			}
 
 			this.props.onChange(selection, e);
+		}
+
+		if (typeof this.props.onRowChange === 'function') {
+			let selection;
+
+			if (selected) {
+				selection = [...this.props.selection, item];
+			} else {
+				selection = reject(this.props.selection, item);
+			}
+
+			this.props.onRowChange(e, { selection });
 		}
 	},
 
@@ -249,6 +273,29 @@ const DataTable = createReactClass({
 			}
 		});
 
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
+		if (this.props.assistiveTextForActionsHeader) {
+			assistiveText.actionsHeader = this.props.assistiveTextForActionsHeader;
+		}
+		if (this.props.assistiveTextForSelectAllRows) {
+			assistiveText.selectAllRows = this.props.assistiveTextForSelectAllRows;
+		}
+		if (this.props.assistiveTextForColumnSortedAscending) {
+			assistiveText.columnSortedAscending = this.props.assistiveTextForColumnSortedAscending;
+		}
+		if (this.props.assistiveTextForColumnSortedDescending) {
+			assistiveText.columnSortedDescending = this.props.assistiveTextForColumnSortedDescending;
+		}
+		if (this.props.assistiveTextForColumnSort) {
+			assistiveText.columnSort = this.props.assistiveTextForColumnSort;
+		}
+		if (this.props.assistiveTextForSelectRow) {
+			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
+		}
+
 		return (
 			<table
 				className={classNames(
@@ -272,19 +319,7 @@ const DataTable = createReactClass({
 				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
-					assistiveTextForActionsHeader={
-						this.props.assistiveTextForActionsHeader
-					}
-					assistiveTextForSelectAllRows={
-						this.props.assistiveTextForSelectAllRows
-					}
-					assistiveTextForColumnSortedAscending={
-						this.props.assistiveTextForColumnSortedAscending
-					}
-					assistiveTextForColumnSortedDescending={
-						this.props.assistiveTextForColumnSortedDescending
-					}
-					assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
+					assistiveText={assistiveText}
 					allSelected={allSelected}
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
@@ -302,9 +337,7 @@ const DataTable = createReactClass({
 									shortid.generate();
 							return (
 								<DataTableRow
-									assistiveTextForSelectRow={
-										this.props.assistiveTextForSelectRow
-									}
+									assistiveText={assistiveText}
 									canSelectRows={canSelectRows}
 									columns={columns}
 									fixedLayout={this.props.fixedLayout}

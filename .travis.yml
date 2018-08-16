@@ -5,7 +5,7 @@ node_js:
 install:
   - npm install npm -g
   - npm config set audit false
-  - npm ci
+  - npm install
 script:
   - npm run travis-ci
 env:

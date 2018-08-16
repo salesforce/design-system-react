@@ -36,6 +36,7 @@ echo "## Cloning additional files"
 cp .gitignore .tmp/.gitignore
 cp LICENSE.txt .tmp/LICENSE.txt
 cp package.json .tmp/package.json
+cp -r docs .tmp/docs
 cp docs/README-dist.md .tmp/README.md
 
 echo "## Running JS steps"
@@ -52,6 +53,7 @@ cp -r .tmp .tmp-es
 rm -rf .tmp/
 
 # Copy source code
+cp -r assets .tmp-es/assets
 cp -r components .tmp-es/components
 cp -r styles .tmp-es/styles
 cp -r icons .tmp-es/icons
@@ -89,6 +91,7 @@ npx babel \
     --out-dir .tmp-commonjs/components \
     --ignore site-stories.js,__docs__,__examples__,__tests__
 
+cp -r assets .tmp-commonjs/assets
 cp -r styles .tmp-commonjs/styles
 
 npx babel \
@@ -109,6 +112,8 @@ npx babel \
     --out-dir .tmp-esm/components \
     --source-maps \
     --ignore site-stories.js,__docs__,__examples__,__tests__
+
+cp -r assets .tmp-esm/assets
 
 cp -r styles .tmp-esm/styles
 

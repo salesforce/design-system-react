@@ -12,88 +12,115 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import checkProps from './check-props';
+
 import PanelFilteringFooter from './private/panel-footer';
 import PanelHeader from './private/panel-header';
 
 // ## Constants
 import { PANEL_FILTER_GROUP } from '../../../utilities/constants';
 
+const defaultProps = {
+	addFilterLabel: 'Add Filter',
+	cancelLabel: 'Cancel',
+	assistiveText: {
+		closeButton: 'Close Filter Panel',
+	},
+	heading: 'Filter',
+	saveLabel: 'Save',
+	removeAllLabel: 'Remove All',
+};
+
 /**
  * A filtering panel contextual filtering options.
  */
-const PanelFilterGroup = ({
-	children,
-	errorLabel,
-	footer,
-	header,
-	variant,
+const PanelFilterGroup = (props) => {
+	checkProps(PANEL_FILTER_GROUP, props);
+	const {
+		children,
+		errorLabel,
+		footer,
+		header,
+		variant,
 
-	// footer
-	addFilterLabel,
-	onClickAdd,
-	onClickRemoveAll,
-	removeAllLabel,
+		// footer
+		addFilterLabel,
+		onClickAdd,
+		onClickRemoveAll,
+		removeAllLabel,
 
-	// header
-	assistiveTextCloseFilterPanel,
-	cancelLabel,
-	heading,
-	modified,
-	onRequestCancel,
-	onRequestClose,
-	onRequestSave,
-	saveLabel,
-}) => (
-	<div className="slds-filters">
-		{variant === 'panel' ? (
-			<PanelHeader
-				assistiveTextCloseFilterPanel={assistiveTextCloseFilterPanel}
-				cancelLabel={cancelLabel}
-				heading={heading}
-				modified={modified}
-				onRequestCancel={onRequestCancel}
-				onRequestClose={onRequestClose}
-				onRequestSave={onRequestSave}
-				saveLabel={saveLabel}
-			/>
-		) : (
-			header || null
-		)}
-		<div className="slds-filters__body">
-			{errorLabel ? (
-				<div
-					className="slds-text-color--error slds-m-bottom--x-small"
-					role="alert"
-				>
-					{errorLabel}
-				</div>
-			) : null}
-			{children}
+		// header
+		cancelLabel,
+		heading,
+		modified,
+		onRequestCancel,
+		onRequestClose,
+		onRequestSave,
+		saveLabel,
+	} = props;
+	const assistiveText = {
+		...defaultProps.assistiveText,
+		...props.assistiveText,
+	};
+	if (props.assistiveTextCloseFilterPanel) {
+		assistiveText.closeButton = props.assistiveTextCloseFilterPanel;
+	}
+	return (
+		<div className="slds-filters">
+			{variant === 'panel' ? (
+				<PanelHeader
+					assistiveText={assistiveText}
+					cancelLabel={cancelLabel}
+					heading={heading}
+					modified={modified}
+					onRequestCancel={onRequestCancel}
+					onRequestClose={onRequestClose}
+					onRequestSave={onRequestSave}
+					saveLabel={saveLabel}
+				/>
+			) : (
+				header || null
+			)}
+			<div className="slds-filters__body">
+				{errorLabel ? (
+					<div
+						className="slds-text-color--error slds-m-bottom--x-small"
+						role="alert"
+					>
+						{errorLabel}
+					</div>
+				) : null}
+				{children}
+			</div>
+			{variant === 'panel' ? (
+				<PanelFilteringFooter
+					addFilterLabel={addFilterLabel}
+					onClickAdd={onClickAdd}
+					onClickRemoveAll={onClickRemoveAll}
+					removeAllLabel={removeAllLabel}
+				/>
+			) : (
+				footer || null
+			)}
 		</div>
-		{variant === 'panel' ? (
-			<PanelFilteringFooter
-				addFilterLabel={addFilterLabel}
-				onClickAdd={onClickAdd}
-				onClickRemoveAll={onClickRemoveAll}
-				removeAllLabel={removeAllLabel}
-			/>
-		) : (
-			footer || null
-		)}
-	</div>
-);
+	);
+};
 
 PanelFilterGroup.displayName = PANEL_FILTER_GROUP;
 
 PanelFilterGroup.propTypes = {
 	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `closeButton`: Localized description of the close button for the panel for screen readers
+	 */
+	assistiveText: PropTypes.shape({
+		closeButton: PropTypes.string,
+	}),
+	/**
 	 * Localized description of the "Add Filter" button in the footer
 	 */
 	addFilterLabel: PropTypes.node,
-	/**
-	 * Localized description of the close button for the panel for screen readers
-	 */
-	assistiveTextCloseFilterPanel: PropTypes.node,
 	/**
 	 * Label for button that cancels modified filters
 	 */
@@ -171,13 +198,6 @@ PanelFilterGroup.propTypes = {
 	variant: PropTypes.oneOf(['panel']),
 };
 
-PanelFilterGroup.defaultProps = {
-	addFilterLabel: 'Add Filter',
-	cancelLabel: 'Cancel',
-	assistiveTextCloseFilterPanel: 'Close Filter Panel',
-	heading: 'Filter',
-	saveLabel: 'Save',
-	removeAllLabel: 'Remove All',
-};
+PanelFilterGroup.defaultProps = defaultProps;
 
 export default PanelFilterGroup;

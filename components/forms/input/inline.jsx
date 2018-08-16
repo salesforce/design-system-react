@@ -227,7 +227,7 @@ class InlineEdit extends React.Component {
 				disabled={disabled}
 				inlineEditTrigger={
 					<Button
-						assistiveText={assistiveText}
+						assistiveText={{ icon: assistiveText }}
 						className="slds-m-left_x-small"
 						disabled={disabled}
 						iconCategory="utility"

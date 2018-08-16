@@ -4,8 +4,11 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/navigation/__examples__/default.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/navigation/__examples__/shade.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/small-image-text.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/large-image-text.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/heading-message.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/heading-only.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/message-only.jsx'),
 ];
 
 module.exports = siteStories;

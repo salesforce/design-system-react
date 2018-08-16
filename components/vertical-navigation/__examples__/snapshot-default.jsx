@@ -3,10 +3,10 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 
 // Higher Order Components such as `react-onclickoutside` use the DOM and Jest snapshot testing must be DOMless
-import Navigation from '~/components/navigation';
+import VerticalNavigation from '~/components/vertical-navigation';
 import IconSettings from '~/components/icon-settings';
 
-import { sampleReportCategories } from '~/utilities/sample-data/navigation';
+import { sampleReportCategories } from '~/utilities/sample-data/vertical-navigation';
 
 const Example = createReactClass({
 	displayName: 'NavigationExample',
@@ -14,7 +14,7 @@ const Example = createReactClass({
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Navigation
+				<VerticalNavigation
 					id="sample-navigation"
 					categories={sampleReportCategories}
 					{...this.props}

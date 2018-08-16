@@ -9,6 +9,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import checkProps from './check-props';
+
 // ### Dropdown
 import MenuDropdown from '../menu-dropdown';
 import GlobalNavigationTrigger from './dropdown-trigger';
@@ -20,6 +22,8 @@ import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
 const GlobalNavigationBarDropdown = (props) => {
+	checkProps(GLOBAL_NAVIGATION_BAR_DROPDOWN, props);
+
 	// Separate props we care about in order to pass others along passively to the dropdown component
 	const {
 		active,
@@ -65,9 +69,13 @@ GlobalNavigationBarDropdown.propTypes = {
 	 */
 	activeBackgroundColor: PropTypes.string,
 	/**
-	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.
 	 */
-	assistiveText: PropTypes.string.isRequired,
+	assistiveText: PropTypes.shape({
+		icon: PropTypes.string,
+	}),
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
 	 */

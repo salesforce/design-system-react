@@ -2,7 +2,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
-import Navigation from '~/components/navigation';
+import VerticalNavigation from '~/components/vertical-navigation';
 
 const sampleReportCategories = [
 	{
@@ -40,7 +40,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ width: '320px' }}>
-					<Navigation
+					<VerticalNavigation
 						id="sample-navigation"
 						categories={sampleReportCategories}
 						selectedId={this.state.selectedId}

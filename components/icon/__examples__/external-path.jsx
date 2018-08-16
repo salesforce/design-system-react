@@ -10,7 +10,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Icon
-					assistiveText="We got news!"
+					assistiveText={{ label: 'We got news!' }}
 					inverse
 					path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 					size="medium"

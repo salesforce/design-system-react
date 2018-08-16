@@ -23,8 +23,8 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
-import { sampleReportCategories } from '../../../utilities/sample-data/navigation';
-import Navigation from '../../navigation';
+import { sampleReportCategories } from '../../../utilities/sample-data/vertical-navigation';
+import VerticalNavigation from '../../vertical-navigation';
 
 // shim for PhantomJS
 if (!Object.entries) {
@@ -63,11 +63,11 @@ const DemoComponent = createReactClass({
 	// event handlers
 
 	render () {
-		return <Navigation {...this.props} />;
+		return <VerticalNavigation {...this.props} />;
 	},
 });
 
-describe('SLDSNavigation', () => {
+describe('SLDSVerticalNavigation', () => {
 	describe('Assistive technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.

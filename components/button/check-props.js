@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import ifOneThenBothRequiredProperty from '../../utilities/warning/if-one-then-both-required-property';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function () {};
 
@@ -14,6 +15,15 @@ if (process.env.NODE_ENV !== 'production') {
 			iconName: props.iconName,
 			iconCategory: props.iconCategory,
 		});
+
+		if (typeof props.assistiveText === 'string') {
+			sunsetProperty(
+				COMPONENT,
+				props.assistiveText,
+				'assistiveText',
+				'`assistiveText` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use `assistiveText.icon` instead.'
+			);
+		}
 	};
 }
 

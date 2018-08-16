@@ -48,7 +48,7 @@ storiesOf(TREE, module)
 		<DefaultExample
 			action={action}
 			noHeading
-			assistiveText="Miscellaneous Foods"
+			assistiveText={{ label: 'Miscellaneous Foods' }}
 		/>
 	))
 	.add('Overflow Hidden', () => (

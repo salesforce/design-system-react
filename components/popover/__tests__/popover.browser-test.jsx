@@ -18,6 +18,7 @@ import {
 // Import your internal dependencies (for example):
 import Popover from '../../popover';
 import Button from '../../button';
+import Dialog from '../../utilities/dialog';
 import IconSettings from '../../icon-settings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -167,15 +168,14 @@ describe('SLDSPopover', function () {
 				attachTo: mountNode,
 			});
 
-			const popover = wrapper.find(`#${defaultIds.popover}`);
+			const popover = wrapper.find(Dialog);
 
-			expect(popover.node.classList.contains(optionalProps.className)).to.be
-				.true;
+			expect(popover.hasClass(optionalProps.className)).to.be.true;
 			expect(popover.find('.slds-popover__close').node.textContent).to.equal(
 				optionalProps.assistiveText.closeButton
 			);
 			expect(popover.find('#footer')).to.exist;
-			expect(popover.node.style.background).to.equal(popoverBackgroundColor);
+			expect(popover.prop('style').background).to.equal(popoverBackgroundColor);
 		});
 	});
 

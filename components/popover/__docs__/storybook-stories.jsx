@@ -28,13 +28,17 @@ const getPopoverNubbins = (props) => {
 
 	const align = [
 		'top',
-		'top left',
 		'top right',
+		'top left',
 		'right',
+		'right top',
+		'right bottom',
 		'bottom',
 		'bottom left',
 		'bottom right',
 		'left',
+		'left top',
+		'left bottom',
 	];
 
 	align.forEach((value) => {
@@ -42,7 +46,7 @@ const getPopoverNubbins = (props) => {
 			<div key={value} style={{ margin: '150px auto' }}>
 				<Popover
 					align={value}
-					assistiveText="This is a popover."
+					assistiveText={{ closeButton: 'This is a popover.' }}
 					body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 					hasStaticAlignment
 					heading="My Popover"
@@ -95,7 +99,7 @@ storiesOf(POPOVER, module)
 			isOpen: true,
 			trigger: (
 				<Button
-					assistiveText="Case Icon"
+					assistiveText={{ icon: 'Case Icon' }}
 					iconCategory="utility"
 					iconName="filter"
 					iconSize="small"

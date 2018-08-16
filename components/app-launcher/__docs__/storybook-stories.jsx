@@ -199,6 +199,7 @@ const DemoAppLauncherSection = createReactClass({
 		return (
 			<div>
 				<AppLauncherSection
+					assistiveText={{ collapseSection: 'Collapse Section' }}
 					title="All Items"
 					toggleable
 					onToggleClick={action('Section `All Items` open -->')}
@@ -279,7 +280,7 @@ const DemoAppLauncher = createReactClass({
 				onChange={this.onSearch}
 				onClear={this.onClear}
 				placeholder="Find an app"
-				assistiveText="Find an app"
+				assistiveText={{ label: 'Find an app' }}
 				value={this.state.search}
 			/>
 		);
@@ -367,7 +368,7 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 			<Search
 				onChange={this.onSearch}
 				placeholder="Find an app"
-				assistiveText="Find an app"
+				assistiveText={{ label: 'Find an app' }}
 			/>
 		);
 
@@ -456,7 +457,7 @@ const DemoAppLauncherWithSeveralSections = createReactClass({
 			<Search
 				onChange={this.onSearch}
 				placeholder="Find an app"
-				assistiveText="Find an app"
+				assistiveText={{ label: 'Find an app' }}
 			/>
 		);
 		const modalHeaderButton = (

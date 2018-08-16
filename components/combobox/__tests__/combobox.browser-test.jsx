@@ -79,7 +79,13 @@ const accounts = [
 
 const accountsWithIcon = accounts.map((elem) =>
 	assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
+		icon: (
+			<Icon
+				assistiveText={{ label: 'Account' }}
+				category="standard"
+				name={elem.type}
+			/>
+		),
 	})
 );
 

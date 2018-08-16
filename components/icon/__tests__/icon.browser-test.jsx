@@ -39,7 +39,7 @@ describe('SLDSIcon: ', function () {
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
-						assistiveText="Log a Call"
+						assistiveText={{ label: 'Log a Call' }}
 						category="standard"
 						name="log_a_call"
 						style={{ backgroundColor: 'rgb(218, 165, 32)' }}
@@ -86,7 +86,7 @@ describe('SLDSIcon: ', function () {
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
-						assistiveText="Heart"
+						assistiveText={{ label: 'Heart' }}
 						category="custom"
 						name="custom1"
 						size="small"
@@ -127,7 +127,7 @@ describe('SLDSIcon: ', function () {
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
-						assistiveText="Announcements"
+						assistiveText={{ label: 'Announcements' }}
 						category="action"
 						name="announcement"
 						size="large"
@@ -209,7 +209,7 @@ describe('SLDSIcon: ', function () {
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
-						assistiveText="New stuff!"
+						assistiveText={{ label: 'New stuff!' }}
 						inverse
 						path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 						size="medium"

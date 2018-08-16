@@ -88,7 +88,7 @@ describe('SLDS TEXTAREA **************************************************', () 
 		let label;
 
 		beforeEach(() => {
-			component = getTextarea({ assistiveText: 'Assistive Label' });
+			component = getTextarea({ assistiveText: { label: 'Assistive Label' } });
 			label = findRenderedDOMComponentWithClass(
 				component,
 				'slds-form-element__label'

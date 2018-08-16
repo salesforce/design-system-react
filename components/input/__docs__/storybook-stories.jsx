@@ -10,11 +10,15 @@ import InputIcon from '../../icon/input-icon';
 const iconClicked = action;
 
 const clearIcon = (
-	<InputIcon assistiveText="clear" name="clear" category="utility" />
+	<InputIcon
+		assistiveText={{ icon: 'clear' }}
+		name="clear"
+		category="utility"
+	/>
 );
 const clearIconClickable = (
 	<InputIcon
-		assistiveText="clear"
+		assistiveText={{ icon: 'clear' }}
 		name="clear"
 		category="utility"
 		onClick={iconClicked('Clear icon clicked')}
@@ -23,7 +27,7 @@ const clearIconClickable = (
 const searchIcon = <InputIcon name="search" category="utility" />;
 const searchIconClickable = (
 	<InputIcon
-		assistiveText="Search"
+		assistiveText={{ icon: 'Search' }}
 		name="search"
 		category="utility"
 		onClick={iconClicked('Search icon clicked')}

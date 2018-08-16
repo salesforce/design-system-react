@@ -30,7 +30,7 @@ storiesOf(FORMS_TEXTAREA, module)
 		<Textarea
 			aria-describedby="required-1"
 			name="required-textarea"
-			label="Textarea Label"
+			assistiveText={{ label: 'Textarea Label' }}
 			required
 			placeholder="Placeholder Text"
 		/>

@@ -192,7 +192,7 @@ class Alert extends React.Component {
 				</h2>
 				{this.props.dismissible ? (
 					<Button
-						assistiveText={assistiveText.closeButton}
+						assistiveText={{ icon: assistiveText.closeButton }}
 						buttonRef={this.saveButtonRef}
 						className="slds-notify__close"
 						iconCategory="utility"
