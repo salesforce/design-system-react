@@ -4,6 +4,7 @@ import IconSettings from '../../icon-settings';
 
 import logo from '../__examples__/logo.svg';
 
+import Avatar from '../../avatar';
 import GlobalHeader from '../../global-header';
 import GlobalHeaderButton from '../../global-header/button';
 import GlobalHeaderDropdown from '../../global-header/dropdown';
@@ -108,6 +109,7 @@ const GlobalHeaderDemo = (props) => (
 			openOn={props.openOn}
 			onClick={action('Profile Clicked')}
 			onSelect={action('Profile Selected')}
+			avatar={props.avatar}
 		>
 			<HeaderProfileCustomContent />
 		</GlobalHeaderProfile>
@@ -136,4 +138,7 @@ storiesOf(GLOBAL_HEADER, module)
 				options={[{ label: 'Profile Menu' }]}
 			/>
 		</GlobalHeader>
+	))
+	.add('With custom <Avatar/>', () => (
+		<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
 	));
