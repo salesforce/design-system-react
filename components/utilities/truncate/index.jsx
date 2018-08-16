@@ -7,16 +7,23 @@ import PropTypes from 'prop-types';
 
 import memoize from 'lodash.memoize';
 
-const canvas = document.createElement('canvas');
-const docFragment = document.createDocumentFragment();
-docFragment.appendChild(canvas);
-const canvasContext = canvas.getContext('2d');
+const documentDefined = typeof document !== 'undefined';
 
-const measureWidth = memoize((text, font) => {
-	canvasContext.font = font;
+let canvas;
+let docFragment;
+let canvasContext;
+let measureWidth = () => {};
 
-	return canvasContext.measureText(text).width;
-});
+if (documentDefined) {
+	canvas = document.createElement('canvas');
+	docFragment = document.createDocumentFragment();
+	docFragment.appendChild(canvas);
+	canvasContext = canvas.getContext('2d');
+	measureWidth = memoize((text, font) => {
+		canvasContext.font = font;
+		return canvasContext.measureText(text).width;
+	});
+}
 
 const TextTruncate = createReactClass({
 	displayName: 'TextTruncate',
