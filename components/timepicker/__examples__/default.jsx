@@ -6,7 +6,7 @@ import TimePicker from '~/components/timepicker'; // `~` is replaced with design
 const Example = createReactClass({
 	displayName: 'TimePickerExample',
 
-	render() {
+	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<TimePicker
@@ -24,10 +24,7 @@ const Example = createReactClass({
 						);
 					}}
 					onRequestRemoveSelectedOption={(date) => {
-						console.log(
-							'user callback: onRequestRemoveSelectedOption ',
-							date,
-						);
+						console.log('user callback: onRequestRemoveSelectedOption ', date);
 					}}
 				/>
 			</IconSettings>
