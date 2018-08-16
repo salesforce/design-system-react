@@ -75,6 +75,11 @@ exports[`Datepicker
       >
         <div
           className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+          style={
+            Object {
+              "flex": 1.75,
+            }
+          }
         >
           <div
             className="slds-align-middle"
@@ -922,6 +927,11 @@ exports[`Datepicker
       >
         <div
           className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+          style={
+            Object {
+              "flex": 1.75,
+            }
+          }
         >
           <div
             className="slds-align-middle"
@@ -1767,6 +1777,11 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
       >
         <div
           className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+          style={
+            Object {
+              "flex": 1.75,
+            }
+          }
         >
           <div
             className="slds-align-middle"
@@ -2560,7 +2575,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
   <div class=\\"slds-datepicker slds-dropdown slds-dropdown--left\\">
     <div class=\\"\\" aria-hidden=\\"false\\" data-selection=\\"single\\">
       <div class=\\"slds-datepicker__filter slds-grid\\">
-        <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\">
+        <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\" style=\\"flex:1.75;\\">
           <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
           <h2
             id=\\"sample-datepicker-month\\" class=\\"slds-align-middle\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">July <span class=\\"slds-assistive-text\\">2014</span></h2>
