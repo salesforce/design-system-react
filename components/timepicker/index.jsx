@@ -12,6 +12,9 @@ import PropTypes from 'prop-types';
 // ### isDate
 import isDate from 'lodash.isdate';
 
+// ### Escape RegExp
+import escapeRegExp from 'lodash.escaperegexp';
+
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
@@ -38,9 +41,28 @@ class TimePicker extends React.Component {
 	// ### Prop Types
 	static propTypes = {
 		/**
+		 * **Assistive text for accessibility**
+		 * * `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.
+		 */
+		assistiveText: PropTypes.shape({
+			removeSingleSelectedOption: PropTypes.string,
+		}),
+		/**
 		 * Disables the input and prevents editing the contents.
 		 */
 		disabled: PropTypes.bool,
+		/**
+		 * Event Callbacks
+		 * * `onChange`: Called when keyboard events occur within `input`. Receives the props `(strValue)`
+		 * * `onRequestRemoveSelectedOption`: Function called when selection option is to be removed. Receives the props `(value)`
+		 * * `onSelect`: Function called when a menu item is selected. Receives the props `(value)`
+		 * _Tested with Mocha testing._
+		 */
+		events: PropTypes.shape({
+			onChange: PropTypes.func,
+			onRequestRemoveSelectedOption: PropTypes.func,
+			onSelect: PropTypes.func,
+		}),
 		/**
 		 * Time formatting function
 		 */
@@ -77,10 +99,6 @@ class TimePicker extends React.Component {
 			'relative',
 		]),
 		/**
-		 * Receives the props `(dateValue, stringValue)`
-		 */
-		onDateChange: PropTypes.func,
-		/**
 		 * Parsing date string into Date
 		 */
 		parser: PropTypes.func,
@@ -107,7 +125,10 @@ class TimePicker extends React.Component {
 	};
 
 	static defaultProps = {
-		formatter (date) {
+		assistiveText: {
+			removeSingleSelectedOption: 'Remove selected option',
+		},
+		formatter(date) {
 			if (date) {
 				return date.toLocaleTimeString(navigator.language, {
 					hour: '2-digit',
@@ -117,7 +138,7 @@ class TimePicker extends React.Component {
 
 			return null;
 		},
-		parser (timeStr) {
+		parser(timeStr) {
 			const date = new Date();
 			const dateStr = date.toLocaleString(navigator.language, {
 				year: 'numeric',
@@ -129,6 +150,7 @@ class TimePicker extends React.Component {
 		menuPosition: 'absolute',
 		placeholder: 'Pick Time',
 		value: null,
+		strValue: '',
 		stepInMinutes: 30,
 	};
 
@@ -139,12 +161,12 @@ class TimePicker extends React.Component {
 		value: this.props.value,
 	};
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TIMEPICKER, this.props);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentTime = this.props.value.getTime();
 			const nextTime = nextProps.value.getTime();
@@ -158,7 +180,7 @@ class TimePicker extends React.Component {
 		}
 	}
 
-	getOptions () {
+	getOptions() {
 		const baseDate = new Date();
 		const options = [];
 
@@ -184,6 +206,16 @@ class TimePicker extends React.Component {
 		return options;
 	}
 
+	autoCompleteFilter = ({ inputValue, options, selection }) =>
+		options.filter((option) => {
+			const searchTermFound = option.label
+				? option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'))
+				: false;
+			const notAlreadySelected = !selection.includes(option);
+
+			return (!inputValue || searchTermFound) && notAlreadySelected;
+		});
+
 	parseDate = (strValue) => {
 		const newDate = this.props.parser(strValue);
 
@@ -202,8 +234,8 @@ class TimePicker extends React.Component {
 			strValue,
 		});
 
-		if (this.props.onDateChange) {
-			this.props.onDateChange(date, strValue);
+		if (this.props.onSelect) {
+			this.props.onSelect(date, strValue);
 		}
 	};
 
@@ -214,29 +246,65 @@ class TimePicker extends React.Component {
 		}
 	};
 
-	handleInputChange = (event) => {
-		const strValue = event.target.value;
-
+	handleInputChange = (event, { value }) => {
 		this.setState({
-			strValue,
+			strValue: value,
 		});
 
-		if (this.props.onDateChange) {
-			const parsedDate = this.props.parser(strValue);
-			this.props.onDateChange(parsedDate, strValue);
+		if (this.props.onChange) {
+			this.props.onChange(value);
+		}
+	};
+
+	handleRemoveSelectedOption = (event, { option }) => {
+		this.setState({
+			value: null,
+			strValue: '',
+		});
+
+		if (this.props.onRequestRemoveSelectedOption) {
+			this.props.onRequestRemoveSelectedOption(option);
 		}
 	};
 
 	// ### Render
-	render () {
+	render() {
+		const selection = this.state.options.filter(
+			(option) => option.value === this.state.value
+		);
 		return (
 			<Combobox
+				classNameMenu="slds-dropdown--length-5"
 				events={{
 					onChange: this.handleInputChange,
 					onSelect: this.handleSelect,
 				}}
 				input={
-					<Input iconRight={<InputIcon category="utility" name="clock" />} />
+					<Input
+						iconRight={
+							selection.length > 0 ? (
+								<InputIcon
+									assistiveText={
+										this.props.assistiveText.removeSingleSelectedOption
+									}
+									buttonRef={(component) => {
+										this.buttonRef = component;
+									}}
+									category="utility"
+									iconPosition="right"
+									name="close"
+									onClick={(event) => {
+										this.handleRemoveSelectedOption(event, {
+											option: selection[0],
+										});
+									}}
+									variant="combobox"
+								/>
+							) : (
+									<InputIcon category="utility" name="clock" variant="combobox" />
+								)
+						}
+					/>
 				}
 				inheritWidthOf={this.props.inheritWidthOf}
 				labels={{
@@ -245,15 +313,17 @@ class TimePicker extends React.Component {
 				}}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
-				options={this.state.options}
+				options={this.autoCompleteFilter({
+					inputValue: this.state.strValue,
+					options: this.state.options,
+					selection,
+				})}
 				predefinedOptionsOnly
 				required={this.props.required}
 				readOnlySingleInputDisabled={this.props.disabled}
-				selection={this.state.options.filter(
-					(option) => option.value === this.state.value
-				)}
+				selection={selection}
 				value={this.state.strValue}
-				variant="readonly"
+				variant="inline-listbox"
 			/>
 		);
 	}

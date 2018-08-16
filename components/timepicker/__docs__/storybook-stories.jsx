@@ -20,10 +20,11 @@ storiesOf(TIMEPICKER, module)
 			label: 'Time',
 			required: true,
 			stepInMinutes: 30,
-			onDateChange: action('onDateChange'),
+			onChange: action('onChange'),
+			onSelect: action('onSelect'),
+			onRequestRemoveSelectedOption: action('onRequestRemoveSelectedOption'),
 			placeholder: 'Pick a time',
 			disabled: false,
-			inheritWidthOf: 'target',
 		})
 	)
 	.add('Disabled', () =>
@@ -31,9 +32,10 @@ storiesOf(TIMEPICKER, module)
 			label: 'Time',
 			required: true,
 			stepInMinutes: 30,
-			onDateChange: action('onDateChange'),
+			onChange: action('onChange'),
+			onSelect: action('onSelect'),
+			onRequestRemoveSelectedOption: action('onRequestRemoveSelectedOption'),
 			placeholder: 'Pick a time',
 			disabled: true,
-			inheritWidthOf: 'target',
 		})
 	);

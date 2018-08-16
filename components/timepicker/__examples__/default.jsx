@@ -6,14 +6,28 @@ import TimePicker from '~/components/timepicker'; // `~` is replaced with design
 const Example = createReactClass({
 	displayName: 'TimePickerExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<TimePicker
 					placeholder="Select a time"
 					stepInMinutes={30}
-					onDateChange={(date, inputStr) => {
-						console.log('onDateChange ', date, ' inputStr: ', inputStr);
+					onChange={(inputStr) => {
+						console.log('user callback: onChange ', ' inputStr: ', inputStr);
+					}}
+					onSelect={(date, inputStr) => {
+						console.log(
+							'user callback: onSelect ',
+							date,
+							' inputStr: ',
+							inputStr
+						);
+					}}
+					onRequestRemoveSelectedOption={(date) => {
+						console.log(
+							'user callback: onRequestRemoveSelectedOption ',
+							date,
+						);
 					}}
 				/>
 			</IconSettings>

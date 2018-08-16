@@ -27,6 +27,12 @@ if (process.env.NODE_ENV !== 'production') {
 			'listItemRenderer',
 			'Use MenuItem instead.'
 		);
+		sunsetProperty(
+			COMPONENT,
+			null,
+			'onDateChange',
+			'onDateChange listener has been deprecated. Please use the following: onChange or onSelect instead.'
+		);
 	};
 }
 
