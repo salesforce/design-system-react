@@ -21,9 +21,27 @@ if (process.env.NODE_ENV !== 'production') {
 			`compact has been deprecated as non-compact data tables do not exist in SLDS. ${createDocUrl()}`
 		);
 
-		deprecatedProperty(COMPONENT, props.collection, 'collection', 'items', createDocUrl('items'));
-		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange', createDocUrl('onChange'));
-		deprecatedProperty(COMPONENT, props.onDeselect, 'onDeselect', 'onChange', createDocUrl('onChange'));
+		deprecatedProperty(
+			COMPONENT,
+			props.collection,
+			'collection',
+			'items',
+			createDocUrl('items')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onSelect,
+			'onSelect',
+			'onChange',
+			createDocUrl('onChange')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onDeselect,
+			'onDeselect',
+			'onChange',
+			createDocUrl('onChange')
+		);
 		sunsetProperty(
 			COMPONENT,
 			props.sortable,
@@ -43,7 +61,9 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.bordered,
 			'bordered',
-			`All SLDS DataTables have row borders by default now. If you do not want row borders, please use \`unborderedRow\`. ${createDocUrl('unborderedRow')}`
+			`All SLDS DataTables have row borders by default now. If you do not want row borders, please use \`unborderedRow\`. ${createDocUrl(
+				'unborderedRow'
+			)}`
 		);
 		/* eslint-enable max-len */
 

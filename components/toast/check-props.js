@@ -29,7 +29,9 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.content,
 			'content',
-			`Use \`labels.heading\` and \`labels.headingLink\` instead. ${createDocUrl('labels')}`
+			`Use \`labels.heading\` and \`labels.headingLink\` instead. ${createDocUrl(
+				'labels'
+			)}`
 		);
 		sunsetProperty(
 			COMPONENT,
@@ -44,7 +46,12 @@ if (process.env.NODE_ENV !== 'production') {
 			`Use \`onRequestClose\` instead. ${createDocUrl('onRequestClose')}`
 		);
 		sunsetProperty(COMPONENT, props.texture, 'texture', createDocUrl());
-		sunsetProperty(COMPONENT, props.theme, 'theme', `Use \`variant\` instead. ${createDocUrl('variant')}`);
+		sunsetProperty(
+			COMPONENT,
+			props.theme,
+			'theme',
+			`Use \`variant\` instead. ${createDocUrl('variant')}`
+		);
 	};
 }
 

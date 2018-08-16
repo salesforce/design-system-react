@@ -62,19 +62,29 @@ if (process.env.NODE_ENV !== 'production') {
 					COMPONENT,
 					props.assistiveText,
 					'assistiveText',
-					`AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner. ${createDocUrl('assistiveText')}`
+					`AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner. ${createDocUrl(
+						'assistiveText'
+					)}`
 				);
 			}
 
-			onlyOneOfProperties(COMPONENT, {
-				assistiveText: props.assistiveText,
-				label: props.label,
-			}, createDocUrl('assistiveText'));
+			onlyOneOfProperties(
+				COMPONENT,
+				{
+					assistiveText: props.assistiveText,
+					label: props.label,
+				},
+				createDocUrl('assistiveText')
+			);
 
-			onlyOneOfProperties(COMPONENT, {
-				fixedTextLeft: props.fixedTextLeft,
-				fixedTextRight: props.fixedTextRight,
-			}, createDocUrl('assistiveText'));
+			onlyOneOfProperties(
+				COMPONENT,
+				{
+					fixedTextLeft: props.fixedTextLeft,
+					fixedTextRight: props.fixedTextRight,
+				},
+				createDocUrl('assistiveText')
+			);
 
 			/*
 			* Once we support horizontal labels, then I think we can enable this check
@@ -92,7 +102,9 @@ if (process.env.NODE_ENV !== 'production') {
 					COMPONENT,
 					props.assistiveText,
 					'assistiveText',
-					`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl('assistiveText')}`
+					`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
+						'assistiveText'
+					)}`
 				);
 			}
 		}

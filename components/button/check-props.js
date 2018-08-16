@@ -14,17 +14,24 @@ if (process.env.NODE_ENV !== 'production') {
 
 		/* eslint-disable max-len */
 		// If iconName is set, iconCategory must also be set.
-		ifOneThenBothRequiredProperty(COMPONENT, props, {
-			iconName: props.iconName,
-			iconCategory: props.iconCategory,
-		}, createDocUrl('iconCategory'));
+		ifOneThenBothRequiredProperty(
+			COMPONENT,
+			props,
+			{
+				iconName: props.iconName,
+				iconCategory: props.iconCategory,
+			},
+			createDocUrl('iconCategory')
+		);
 
 		if (typeof props.assistiveText === 'string') {
 			sunsetProperty(
 				COMPONENT,
 				props.assistiveText,
 				'assistiveText',
-				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl('assistiveText')}`
+				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl(
+					'assistiveText'
+				)}`
 			);
 		}
 	};

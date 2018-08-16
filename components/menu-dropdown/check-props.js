@@ -20,7 +20,9 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.forceOpen,
 			'forceOpen',
-			`Please use \`isOpen\` instead. It provides a consistent prop that aligns with other componenents. ${createDocUrl('isOpen')}`
+			`Please use \`isOpen\` instead. It provides a consistent prop that aligns with other componenents. ${createDocUrl(
+				'isOpen'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -31,10 +33,14 @@ if (process.env.NODE_ENV !== 'production') {
 			`The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic. ${createDocUrl()}`
 		);
 
-		oneOfRequiredProperty(COMPONENT, {
-			options: props.options,
-			children: props.children,
-		}, createDocUrl());
+		oneOfRequiredProperty(
+			COMPONENT,
+			{
+				options: props.options,
+				children: props.children,
+			},
+			createDocUrl()
+		);
 
 		if (!props.options) {
 			hasChildrenWithoutDisplayNameOf(

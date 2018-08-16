@@ -41,12 +41,16 @@ const Illustration = ({
 	size,
 	style,
 }) => {
-	checkProps('Illustration', {
-		illustration,
-		internalIllustration,
-		heading,
-		path,
-	}, componentDoc);
+	checkProps(
+		'Illustration',
+		{
+			illustration,
+			internalIllustration,
+			heading,
+			path,
+		},
+		componentDoc
+	);
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	let illustrationSvg;
 	if (illustration) {

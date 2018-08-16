@@ -6,10 +6,15 @@ let getComponentDocFn = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	getComponentDocFn = function (jsonDoc) {
-		jsonDoc.componentUrl = `https://react.lightningdesignsystem.com/components/${jsonDoc['url-slug']}`;
-		return ((propName) =>
-			`Please check the current documentation at: ${propName ? `${jsonDoc.componentUrl}#prop-${propName}` : jsonDoc.componentUrl}`
-		);
+		jsonDoc.componentUrl = `https://react.lightningdesignsystem.com/components/${
+			jsonDoc['url-slug']
+		}`;
+		return (propName) =>
+			`Please check the current documentation at: ${
+				propName
+					? `${jsonDoc.componentUrl}#prop-${propName}`
+					: jsonDoc.componentUrl
+			}`;
 	};
 }
 

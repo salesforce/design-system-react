@@ -13,10 +13,14 @@ if (process.env.NODE_ENV !== 'production') {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		/* eslint-disable max-len */
-		oneOfRequiredProperty(COMPONENT, {
-			assistiveText: props.assistiveText,
-			heading: props.heading,
-		}, createDocUrl());
+		oneOfRequiredProperty(
+			COMPONENT,
+			{
+				assistiveText: props.assistiveText,
+				heading: props.heading,
+			},
+			createDocUrl()
+		);
 		/* eslint-enable max-len */
 
 		if (typeof props.assistiveText === 'string') {
@@ -24,7 +28,9 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				props.assistiveText,
 				'assistiveText',
-				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl('assistiveText')}`
+				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
+					'assistiveText'
+				)}`
 			);
 		}
 	};

@@ -308,8 +308,8 @@ const DataTable = createReactClass({
 					{numRows > 0
 						? this.props.items.map((item) => {
 							const rowId =
-								`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
-								shortid.generate();
+									`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
+									shortid.generate();
 							return (
 								<DataTableRow
 									assistiveText={assistiveText}

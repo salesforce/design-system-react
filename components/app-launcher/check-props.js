@@ -15,7 +15,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (COMPONENT === APP_LAUNCHER) {
 			if (props.modalHeaderButton !== undefined) {
-				oneOfComponent(COMPONENT, props, 'modalHeaderButton', ['SLDSButton'], createDocUrl('modalHeaderButton'));
+				oneOfComponent(
+					COMPONENT,
+					props,
+					'modalHeaderButton',
+					['SLDSButton'],
+					createDocUrl('modalHeaderButton')
+				);
 			}
 
 			deprecatedProperty(

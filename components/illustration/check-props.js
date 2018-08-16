@@ -30,9 +30,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (props.illustration || props.path) {
 			// An illustration image must be accompanied with a heading text
-			oneOfRequiredProperty(COMPONENT, {
-				heading: props.heading,
-			}, createDocUrl('heading'));
+			oneOfRequiredProperty(
+				COMPONENT,
+				{
+					heading: props.heading,
+				},
+				createDocUrl('heading')
+			);
 		}
 	};
 }

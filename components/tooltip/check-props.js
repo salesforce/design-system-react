@@ -18,20 +18,28 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 
 		// Deprecated and changed to another property
-		deprecatedPropertyValue(COMPONENT, {
-			propAsString: 'variant',
-			propValue: props.variant,
-			deprecatedPropValue: 'info',
-			replacementPropAsString: 'theme',
-			replacementPropAsValue: 'info',
-		}, createDocUrl('theme'));
-		deprecatedPropertyValue(COMPONENT, {
-			propAsString: 'variant',
-			propValue: props.variant,
-			deprecatedPropValue: 'error',
-			replacementPropAsString: 'theme',
-			replacementPropAsValue: 'error',
-		}, createDocUrl('theme'));
+		deprecatedPropertyValue(
+			COMPONENT,
+			{
+				propAsString: 'variant',
+				propValue: props.variant,
+				deprecatedPropValue: 'info',
+				replacementPropAsString: 'theme',
+				replacementPropAsValue: 'info',
+			},
+			createDocUrl('theme')
+		);
+		deprecatedPropertyValue(
+			COMPONENT,
+			{
+				propAsString: 'variant',
+				propValue: props.variant,
+				deprecatedPropValue: 'error',
+				replacementPropAsString: 'theme',
+				replacementPropAsValue: 'error',
+			},
+			createDocUrl('theme')
+		);
 		deprecatedProperty(
 			COMPONENT,
 			props.openByDefault,
@@ -44,7 +52,9 @@ if (process.env.NODE_ENV !== 'production') {
 			props.target,
 			'target',
 			undefined,
-			`A new positioning library is being implmented under the hood. Please trigger tooltips to appear on their triggers with \`isOpen\` and not on other DOM elements. ${createDocUrl('isOpen')}` // eslint-disable-line max-len
+			`A new positioning library is being implmented under the hood. Please trigger tooltips to appear on their triggers with \`isOpen\` and not on other DOM elements. ${createDocUrl(
+				'isOpen'
+			)}` // eslint-disable-line max-len
 		);
 
 		deprecatedProperty(

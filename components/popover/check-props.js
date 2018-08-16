@@ -14,17 +14,23 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		oneOfRequiredProperty(COMPONENT, {
-			ariaLabelledby: props.ariaLabelledby,
-			heading: props.heading,
-		}, createDocUrl());
+		oneOfRequiredProperty(
+			COMPONENT,
+			{
+				ariaLabelledby: props.ariaLabelledby,
+				heading: props.heading,
+			},
+			createDocUrl()
+		);
 
 		if (props.children !== undefined) {
-			oneOfComponent(COMPONENT, props, 'children', [
-				'SLDSButton',
-				'a',
-				'button',
-			], createDocUrl());
+			oneOfComponent(
+				COMPONENT,
+				props,
+				'children',
+				['SLDSButton', 'a', 'button'],
+				createDocUrl()
+			);
 		}
 
 		deprecatedProperty(
