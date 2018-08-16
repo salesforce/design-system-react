@@ -5,7 +5,6 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {

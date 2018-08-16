@@ -15,9 +15,9 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props, jsonDoc) {
-		if (COMPONENT === FORMS_INPUT) {
-			const createDocUrl = getComponentDocFn(jsonDoc);
+		const createDocUrl = getComponentDocFn(jsonDoc);
 
+		if (COMPONENT === FORMS_INPUT) {
 			const iconDeprecatedMessage = `Please use \`iconLeft\` and \`iconRight\` to pass in a customized <Icon> component. ${createDocUrl()}`;
 
 			// Deprecated and changed to another property

@@ -8,7 +8,6 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-
 	checkProps = function (COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 

@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -16,7 +17,6 @@ import classNames from '../../utilities/class-names';
 import UtilityIcon from '../utilities/utility-icon';
 
 import { ICON } from '../../utilities/constants';
-import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {},
@@ -95,8 +95,8 @@ const Icon = (props) => {
 			{assistiveText ? (
 				<span className="slds-assistive-text">{assistiveText}</span>
 			) : (
-				''
-			)}
+					''
+				)}
 		</span>
 	);
 };

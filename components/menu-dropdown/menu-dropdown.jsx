@@ -42,6 +42,7 @@ import DefaultTrigger from './button-trigger';
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### Traits
 
@@ -55,7 +56,6 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 	LIST,
 } from '../../utilities/constants';
-import componentDoc from './docs.json';
 
 const documentDefined = typeof document !== 'undefined';
 

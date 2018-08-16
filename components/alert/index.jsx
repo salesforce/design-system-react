@@ -12,9 +12,9 @@ import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 import { ALERT } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
-import componentDoc from './docs.json';
 
 const propTypes = {
 	/**

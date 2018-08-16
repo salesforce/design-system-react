@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (props.variant === 'base') {
-			isTriggerTabbable(COMPONENT, props.children, '');
+			isTriggerTabbable(COMPONENT, props.children, createDocUrl());
 		}
 
 		// Deprecated and changed to another property

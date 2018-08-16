@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.forceOpen,
 			'forceOpen',
-			`Please use isOpen instead. It provides a consistent prop that aligns with other componenents. ${createDocUrl('isOpen')}`
+			`Please use \`isOpen\` instead. It provides a consistent prop that aligns with other componenents. ${createDocUrl('isOpen')}`
 		);
 
 		deprecatedProperty(

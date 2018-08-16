@@ -28,12 +28,12 @@ import Input from '../input';
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import { DATE_PICKER } from '../../utilities/constants';
-import componentDoc from './docs.json';
 
 const propTypes = {
 	/**
@@ -522,8 +522,8 @@ class Datepicker extends React.Component {
 					// Remove || for assistiveText at next breaking change
 					assistiveText={{
 						icon:
-							this.props.assistiveTextOpenCalendar ||
-							assistiveText.openCalendar, // eslint-disable-line react/prop-types
+								this.props.assistiveTextOpenCalendar ||
+								assistiveText.openCalendar, // eslint-disable-line react/prop-types
 					}}
 					aria-haspopup
 					aria-expanded={this.getIsOpen()}

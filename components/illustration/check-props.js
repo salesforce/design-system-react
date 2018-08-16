@@ -11,6 +11,8 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
 		/**
 		 * If illustration SVGs are added to SLDS in the future, we will deprecate the value
 		 * of internalIllustration being true and give a warning.
@@ -27,7 +29,6 @@ if (process.env.NODE_ENV !== 'production') {
 		 */
 
 		if (props.illustration || props.path) {
-			const createDocUrl = getComponentDocFn(jsonDoc);
 			// An illustration image must be accompanied with a heading text
 			oneOfRequiredProperty(COMPONENT, {
 				heading: props.heading,

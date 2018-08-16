@@ -28,6 +28,7 @@ import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ## Children
 import DataTableCell from './cell';
@@ -43,7 +44,6 @@ import {
 	DATA_TABLE_HEAD,
 	DATA_TABLE_ROW,
 } from '../../utilities/constants';
-import componentDoc from './docs.json';
 
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
@@ -308,8 +308,8 @@ const DataTable = createReactClass({
 					{numRows > 0
 						? this.props.items.map((item) => {
 							const rowId =
-									`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
-									shortid.generate();
+								`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
+								shortid.generate();
 							return (
 								<DataTableRow
 									assistiveText={assistiveText}

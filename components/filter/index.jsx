@@ -28,13 +28,13 @@ import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 import Button from '../button';
 import Popover from '../popover';
 
 // ## Constants
 import { FILTER } from '../../utilities/constants';
-import componentDoc from './docs.json';
 
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.

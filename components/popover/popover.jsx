@@ -29,6 +29,7 @@ import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 import Button from '../button';
 
@@ -40,8 +41,6 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
-
-import componentDoc from './docs.json';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -525,23 +524,23 @@ const Popover = createReactClass({
 			? React.cloneElement(this.props.children, {
 				id: this.getId(),
 				onClick:
-						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
-							? (event) => {
-								this.handleClick(event, {
-									triggerOnClickCallback: this.props.children.props.onClick,
-								});
-							}
-							: this.children.props.onClick,
+					this.props.openOn === 'click' || this.props.openOn === 'hybrid'
+						? (event) => {
+							this.handleClick(event, {
+								triggerOnClickCallback: this.props.children.props.onClick,
+							});
+						}
+						: this.children.props.onClick,
 				onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 				onMouseDown: this.props.onMouseDown,
 				onMouseEnter:
-						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-							? this.handleMouseEnter
-							: null,
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseEnter
+						: null,
 				onMouseLeave:
-						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-							? this.handleMouseLeave
-							: null,
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseLeave
+						: null,
 				tabIndex: this.props.children.props.tabIndex || '0',
 				...this.props.children.props,
 			})

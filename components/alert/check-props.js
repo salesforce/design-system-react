@@ -34,22 +34,22 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.duration,
 			'duration',
-			`Only Toasts can auto-hide.${createDocUrl()}`
+			`Only Toasts can auto-hide. ${createDocUrl()}`
 		);
 		sunsetProperty(
 			COMPONENT,
 			props.isOpen,
 			'isOpen',
-			`Use a conditional outside of alert.${createDocUrl()}`
+			`Use a conditional outside of alert. ${createDocUrl()}`
 		);
 		sunsetProperty(
 			COMPONENT,
 			props.isOpen,
 			'onDismiss',
-			`Use \`onRequestClose\` instead${createDocUrl('onRequestClose')}`
+			`Use \`onRequestClose\` instead. ${createDocUrl('onRequestClose')}`
 		);
 		sunsetProperty(COMPONENT, props.texture, 'texture', createDocUrl());
-		sunsetProperty(COMPONENT, props.theme, 'theme', 'Use `variant` instead.', createDocUrl('variant'));
+		sunsetProperty(COMPONENT, props.theme, 'theme', `Use \`variant\` instead. ${createDocUrl('variant')}`);
 	};
 }
 

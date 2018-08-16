@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### Event Helpers
 import EventUtil from '../../utilities/event';
@@ -26,7 +27,6 @@ import {
 	GLOBAL_HEADER_SEARCH,
 	GLOBAL_HEADER_TOOL,
 } from '../../utilities/constants';
-import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {

@@ -46,7 +46,7 @@ const Illustration = ({
 		internalIllustration,
 		heading,
 		path,
-	}, componentDoc, componentDoc);
+	}, componentDoc);
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	let illustrationSvg;
 	if (illustration) {
