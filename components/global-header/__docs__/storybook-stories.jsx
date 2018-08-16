@@ -2,8 +2,6 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
-import logo from '../__examples__/logo.svg';
-
 import Avatar from '../../avatar';
 import GlobalHeader from '../../global-header';
 import GlobalHeaderButton from '../../global-header/button';
@@ -125,7 +123,7 @@ storiesOf(GLOBAL_HEADER, module)
 	.add('Search + Navigation', () => <GlobalHeaderDemo />)
 	.add('Open on Hybrid', () => <GlobalHeaderDemo openOn="hybrid" />)
 	.add('Fewer Elements', () => (
-		<GlobalHeader logoSrc={logo}>
+		<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
 			<GlobalHeaderDropdown
 				assistiveText={{ icon: 'Setup' }}
 				iconName="setup"
