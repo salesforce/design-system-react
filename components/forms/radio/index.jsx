@@ -3,5 +3,12 @@
 
 // Alias
 import Radio from '../../radio';
+import componentHasMoved from '../../../utilities/warning/component-has-moved';
+import { RADIO } from '../../../utilities/constants';
+
+componentHasMoved(RADIO, {
+	oldFileLocation: 'components/forms/radio',
+	newFileLocation: 'components/radio',
+});
 
 export default Radio;

@@ -160,6 +160,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 						'slds-global-header__icon-actions': globalAction,
 					})}
 					aria-haspopup="true"
+					buttonVariant="dropdown"
 					{...rest}
 				>
 					{avatar ? (

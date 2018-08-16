@@ -15,6 +15,13 @@ if (process.env.NODE_ENV !== 'production') {
 		// Deprecated and changed to another property
 		deprecatedProperty(
 			COMPONENT,
+			props.onChange,
+			'onChange',
+			'onRowChange',
+			'The callback parameters have been changed. `onRowChange` passes in `[event, { selection }` in order to align with other components.'
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.compact,
 			'compact',
 			undefined,
