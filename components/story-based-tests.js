@@ -29,7 +29,7 @@ export Accordion from '../components/accordion/__docs__/storybook-stories';
 // export Filter from '../components/filter/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
-// export Input from '../components/input/__docs__/storybook-stories';
+export Input from '../components/input/__docs__/storybook-stories';
 // export Textarea from '../components/textarea/__docs__/storybook-stories';
 // export Search from '../components/input/__docs__/search/storybook-stories';
 export Icon from '../components/icon/__docs__/storybook-stories';

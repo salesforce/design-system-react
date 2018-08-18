@@ -8,6 +8,8 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/icons.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/error.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/inactiveInputs.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/inline-help.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/field-level-help.jsx'),
 ];
 
 module.exports = siteStories;

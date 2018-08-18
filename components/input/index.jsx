@@ -36,6 +36,13 @@ import checkProps from './check-props';
 
 import { FORMS_INPUT } from '../../utilities/constants';
 
+const defaultProps = {
+	assistiveText: {
+		fieldLevelHelpButton: 'Help',
+	},
+	type: 'text',
+};
+
 /**
  * The HTML `input` with a label and error messaging.
  */
@@ -89,10 +96,12 @@ const Input = createReactClass({
 		 * **Assistive text for accessibility**
 		 * * `label`: Visually hidden label but read out loud by screen readers.
 		 * * `spinner`: Text for loading spinner icon.
+		 * * `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.
 		 */
 		assistiveText: PropTypes.shape({
 			label: PropTypes.string,
 			spinner: PropTypes.string,
+			fieldLevelHelpButton: PropTypes.string,
 		}),
 		/**
 		 * Elements are added after the `input`.
@@ -154,7 +163,7 @@ const Input = createReactClass({
 		/**
 		 * Displays help text under the input.
 		 */
-		inlineHelpText: PropTypes.string,
+		inlineHelpText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
 		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 		 */
@@ -265,9 +274,7 @@ const Input = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			type: 'text',
-		};
+		return defaultProps;
 	},
 
 	componentWillMount () {
@@ -342,17 +349,22 @@ const Input = createReactClass({
 		const hasRightIcon =
 			!!this.props.iconRight ||
 			(this.props.iconPosition === 'right' && !!this.props.iconName);
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		let fieldLevelHelpTooltip;
 		if (
 			(this.props.label ||
 				(this.props.assistiveText && this.props.assistiveText.label)) &&
 			this.props.fieldLevelHelpTooltip
 		) {
-			const defaultProps = {
+			const defaultTooltipProps = {
 				triggerClassName: 'slds-form-element__icon',
+				triggerStyle: { position: 'static' },
 				children: (
 					<Button
-						assistiveText={{ label: 'Help' }}
+						assistiveText={{ icon: assistiveText.fieldLevelHelpButton }}
 						iconCategory="utility"
 						iconName="info"
 						variant="icon"
@@ -360,7 +372,7 @@ const Input = createReactClass({
 				),
 			};
 			const tooltipProps = {
-				...defaultProps,
+				...defaultTooltipProps,
 				...this.props.fieldLevelHelpTooltip.props,
 			};
 			fieldLevelHelpTooltip = <Tooltip {...tooltipProps} />;
