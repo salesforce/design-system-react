@@ -5,9 +5,10 @@ class Example extends React.Component {
 	render () {
 		return (
 			<BrandBand
+				id="brand-band-no-image"
+				image="none"
 				style={{ zIndex: 1 }}
 				styleContainer={{ border: '1px solid #eee' }}
-				image="none"
 			/>
 		);
 	}

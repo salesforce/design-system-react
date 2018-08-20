@@ -3,7 +3,7 @@ import BrandBand from '~/components/brand-band'; // `~` is replaced with design-
 
 class Example extends React.Component {
 	render () {
-		return <BrandBand theme="lightning-blue" />;
+		return <BrandBand id="brand-band-lightning-blue" theme="lightning-blue" />;
 	}
 }
 

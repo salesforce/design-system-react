@@ -11,15 +11,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### classNames
-// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// A simple javascript utility for conditionally joining classNames together.
-import classNames from '../../utilities/class-names';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// A simple javascript utility for conditionally joining classNames together.
+import classNames from '../../utilities/class-names';
 
 // ## Constants
 import { BRAND_BAND } from '../../utilities/constants';

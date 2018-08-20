@@ -3,7 +3,7 @@ import BrandBand from '~/components/brand-band'; // `~` is replaced with design-
 
 class Example extends React.Component {
 	render () {
-		return <BrandBand id="custom-brand-band-id" size="small" />;
+		return <BrandBand id="brand-band-small" size="small" />;
 	}
 }
 
