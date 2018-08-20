@@ -11,12 +11,21 @@ import Small from '../__examples__/small';
 
 storiesOf(BRAND_BAND, module)
 	.addDecorator((getStory) => (
-		<div style={{ bottom: '1rem', left: '1rem', overflow: 'auto', position: 'absolute', right: '1rem', top: '1rem' }}>
+		<div
+			style={{
+				bottom: '1rem',
+				left: '1rem',
+				overflow: 'auto',
+				position: 'absolute',
+				right: '1rem',
+				top: '1rem',
+			}}
+		>
 			{getStory()}
 		</div>
 	))
-	.add('Default (medium)', () => (<Default />))
-	.add('Small', () => (<Small />))
-	.add('Large', () => (<Large />))
-	.add('No Image', () => (<NoImage />))
-	.add('Lightning Blue Theme', () => (<LightningBlueTheme />));
+	.add('Default (medium)', () => <Default />)
+	.add('Small', () => <Small />)
+	.add('Large', () => <Large />)
+	.add('No Image', () => <NoImage />)
+	.add('Lightning Blue Theme', () => <LightningBlueTheme />);

@@ -25,7 +25,7 @@ import shortid from 'shortid';
 import { BRAND_BAND } from '../../utilities/constants';
 
 class BrandBand extends React.Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.generatedId = shortid.generate();
 	}
@@ -36,14 +36,12 @@ class BrandBand extends React.Component {
 
 	injectLightningBlueStyles () {
 		return (
-			<style>{
-`#${this.getId()}.slds-brand-band:before {
+			<style>{`#${this.getId()}.slds-brand-band:before {
 	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
 }
 #${this.getId()}.slds-brand-band:after {
 	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
-}`
-			}</style>
+}`}</style>
 		);
 	}
 
@@ -53,26 +51,33 @@ class BrandBand extends React.Component {
 		return (
 			<div
 				style={{
-					background: (props.theme === 'lightning-blue') ? 'rgb(176, 196, 223)' : 'rgb(250, 250, 249)',
+					background:
+						props.theme === 'lightning-blue'
+							? 'rgb(176, 196, 223)'
+							: 'rgb(250, 250, 249)',
 					height: '100%',
 					position: 'relative',
 					width: '100%',
 					zIndex: 1,
-					...props.styleContainer
+					...props.styleContainer,
 				}}
 			>
 				<div
-					className={classNames('slds-brand-band', {
-						'slds-brand-band_small': props.size === 'small',
-						'slds-brand-band_medium': props.size === 'medium',
-						'slds-brand-band_large': props.size === 'large',
+					className={classNames(
+						'slds-brand-band',
+						{
+							'slds-brand-band_small': props.size === 'small',
+							'slds-brand-band_medium': props.size === 'medium',
+							'slds-brand-band_large': props.size === 'large',
 
-						'slds-brand-band_none': props.image === 'none'
-					}, props.className)}
+							'slds-brand-band_none': props.image === 'none',
+						},
+						props.className
+					)}
 					id={this.getId()}
 					style={props.style}
 				>
-					{(props.theme === 'lightning-blue' && this.injectLightningBlueStyles())}
+					{props.theme === 'lightning-blue' && this.injectLightningBlueStyles()}
 					{props.children}
 				</div>
 			</div>
@@ -125,13 +130,13 @@ BrandBand.propTypes = {
 	/**
 	 * Different brand band styling
 	 */
-	theme: PropTypes.oneOf(['default', 'lightning-blue'])
+	theme: PropTypes.oneOf(['default', 'lightning-blue']),
 };
 
 BrandBand.defaultProps = {
 	image: 'default',
 	size: 'medium',
-	theme: 'default'
+	theme: 'default',
 };
 
 export default BrandBand;
