@@ -23,6 +23,9 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+import Button from '../button';
+import Tooltip from '../tooltip';
+
 // ## Children
 import InputIcon from '../icon/input-icon';
 import InnerInput from './private/inner-input';
@@ -32,6 +35,13 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { FORMS_INPUT } from '../../utilities/constants';
+
+const defaultProps = {
+	assistiveText: {
+		fieldLevelHelpButton: 'Help',
+	},
+	type: 'text',
+};
 
 /**
  * The HTML `input` with a label and error messaging.
@@ -86,10 +96,12 @@ const Input = createReactClass({
 		 * **Assistive text for accessibility**
 		 * * `label`: Visually hidden label but read out loud by screen readers.
 		 * * `spinner`: Text for loading spinner icon.
+		 * * `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.
 		 */
 		assistiveText: PropTypes.shape({
 			label: PropTypes.string,
 			spinner: PropTypes.string,
+			fieldLevelHelpButton: PropTypes.string,
 		}),
 		/**
 		 * Elements are added after the `input`.
@@ -121,6 +133,10 @@ const Input = createReactClass({
 		 */
 		errorText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
+		 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label. The props from the component will be merged and override any default props.
+		 */
+		fieldLevelHelpTooltip: PropTypes.node,
+		/**
 		 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
 		 */
 		fixedTextLeft: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
@@ -144,6 +160,10 @@ const Input = createReactClass({
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
+		/**
+		 * Displays help text under the input.
+		 */
+		inlineHelpText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
 		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 		 */
@@ -254,9 +274,7 @@ const Input = createReactClass({
 	},
 
 	getDefaultProps () {
-		return {
-			type: 'text',
-		};
+		return defaultProps;
 	},
 
 	componentWillMount () {
@@ -331,6 +349,34 @@ const Input = createReactClass({
 		const hasRightIcon =
 			!!this.props.iconRight ||
 			(this.props.iconPosition === 'right' && !!this.props.iconName);
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
+		let fieldLevelHelpTooltip;
+		if (
+			(this.props.label ||
+				(this.props.assistiveText && this.props.assistiveText.label)) &&
+			this.props.fieldLevelHelpTooltip
+		) {
+			const defaultTooltipProps = {
+				triggerClassName: 'slds-form-element__icon',
+				triggerStyle: { position: 'static' },
+				children: (
+					<Button
+						assistiveText={{ icon: assistiveText.fieldLevelHelpButton }}
+						iconCategory="utility"
+						iconName="info"
+						variant="icon"
+					/>
+				),
+			};
+			const tooltipProps = {
+				...defaultTooltipProps,
+				...this.props.fieldLevelHelpTooltip.props,
+			};
+			fieldLevelHelpTooltip = <Tooltip {...tooltipProps} />;
+		}
 
 		return (
 			<div
@@ -349,6 +395,7 @@ const Input = createReactClass({
 					required={this.props.required}
 					variant={this.props.isStatic ? 'static' : 'base'}
 				/>
+				{fieldLevelHelpTooltip}
 				<InnerInput
 					aria-activedescendant={this.props['aria-activedescendant']}
 					aria-autocomplete={this.props['aria-autocomplete']}
@@ -372,6 +419,7 @@ const Input = createReactClass({
 						hasRightIcon ? this.getIconRender('right', 'iconRight') : null
 					}
 					inlineEditTrigger={this.props.inlineEditTrigger}
+					inlineHelpText={this.props.inlineHelpText}
 					isStatic={this.props.isStatic}
 					minLength={this.props.minLength}
 					maxLength={this.props.maxLength}
