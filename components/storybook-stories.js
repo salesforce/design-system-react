@@ -14,6 +14,7 @@ export Accordion from '../components/accordion/__docs__/storybook-stories';
 export Alert from '../components/alert/__docs__/storybook-stories';
 export AppLauncher from '../components/app-launcher/__docs__/storybook-stories';
 export Avatar from '../components/avatar/__docs__/storybook-stories';
+export BrandBand from '../components/brand-band/__docs__/storybook-stories';
 export Breadcrumb from '../components/breadcrumb/__docs__/storybook-stories';
 export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
