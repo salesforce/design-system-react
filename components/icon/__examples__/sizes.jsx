@@ -12,7 +12,7 @@ const Example = createReactClass({
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 					<div className="slds-col--padded">
 						<Icon
-							assistiveText="Warning"
+							assistiveText={{ label: 'Warning' }}
 							category="utility"
 							color="warning"
 							name="warning"
@@ -21,7 +21,7 @@ const Example = createReactClass({
 					</div>
 					<div className="slds-col--padded">
 						<Icon
-							assistiveText="Case"
+							assistiveText={{ label: 'Case' }}
 							category="standard"
 							name="case"
 							size="small"
@@ -29,7 +29,7 @@ const Example = createReactClass({
 					</div>
 					<div className="slds-col--padded">
 						<Icon
-							assistiveText="Case"
+							assistiveText={{ label: 'Case' }}
 							category="standard"
 							name="case"
 							size="medium"
@@ -37,7 +37,7 @@ const Example = createReactClass({
 					</div>
 					<div className="slds-col--padded">
 						<Icon
-							assistiveText="Case"
+							assistiveText={{ label: 'Case' }}
 							category="standard"
 							name="case"
 							size="large"

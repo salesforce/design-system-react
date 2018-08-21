@@ -16,7 +16,7 @@ import path from 'path';
 // be run first.
 const rootPath = path.resolve(__dirname, '../');
 const app = express();
-const port = process.env.PORT || 9001;
+const port = process.env.PORT || 8002;
 
 // Register static asset folders
 app.use(

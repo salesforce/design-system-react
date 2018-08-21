@@ -2,7 +2,7 @@
 
 exports[`Breadcrumb Base Snapshot 1`] = `
 <nav
-  aria-label="Breadcrumbs"
+  aria-label="Two item breadcrumb"
   role="navigation"
 >
   <ol

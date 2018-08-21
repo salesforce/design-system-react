@@ -16,7 +16,7 @@ const Example = createReactClass({
 				>
 					<a href="javascript:void(0)">
 						<Icon
-							assistiveText="Tooltip with icon"
+							assistiveText={{ label: 'Tooltip with icon' }}
 							category="utility"
 							name="info"
 							size="x-small"

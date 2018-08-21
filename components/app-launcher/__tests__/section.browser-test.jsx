@@ -49,7 +49,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 			onToggleClick = sinon.spy();
 
 			mountSection({
-				collapseSectionAssistiveText: 'Collapse Section',
+				assistiveText: { collapseSection: 'Collapse Section' },
 				onToggleClick,
 				title: 'ALL THE ITEMS!',
 				toggleable: true,

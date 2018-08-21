@@ -2,8 +2,6 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
-import logo from '../__examples__/logo.svg';
-
 import Avatar from '../../avatar';
 import GlobalHeader from '../../global-header';
 import GlobalHeaderButton from '../../global-header/button';
@@ -13,7 +11,7 @@ import GlobalHeaderSearch from '../../global-header/search';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
-import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
+// import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
 
 /* eslint-disable react/prop-types */
 /* eslint-disable no-script-url */
@@ -48,7 +46,13 @@ const GlobalHeaderDemo = (props) => (
 	<GlobalHeader
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
-		navigation={globalNavigationBar(props)}
+		// Add back for visual review with navigation present.
+		// The presence of React Modal in App Launcher in Global Navigation prevents Jest (node) testing.
+		// navigation={globalNavigationBar(props)}
+		assistiveText={{
+			skipToContent: 'Skip to Main Content',
+			skipToNavAssistiveText: 'Skip to Navigation',
+		}}
 	>
 		<GlobalHeaderSearch
 			onSelect={action('Search Selected')}
@@ -64,7 +68,7 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
-			assistiveText="Global Actions"
+			assistiveText={{ icon: 'Global Actions' }}
 			globalAction
 			iconCategory="utility"
 			iconName="add"
@@ -85,19 +89,19 @@ const GlobalHeaderDemo = (props) => (
 			]}
 		/>
 		<GlobalHeaderButton
-			assistiveText="Help and Training"
+			assistiveText={{ icon: 'Help and Training' }}
 			iconName="question"
 			onClick={action('Help Clicked')}
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
-			assistiveText="Setup"
+			assistiveText={{ icon: 'Setup' }}
 			iconName="setup"
 			onSelect={action('Action Selected')}
 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
 		/>
 		<GlobalHeaderButton
-			assistiveText="Notifications"
+			assistiveText={{ icon: 'Notifications' }}
 			iconName="Notification"
 			onClick={action('Notifications Clicked')}
 		/>
@@ -121,9 +125,9 @@ storiesOf(GLOBAL_HEADER, module)
 	.add('Search + Navigation', () => <GlobalHeaderDemo />)
 	.add('Open on Hybrid', () => <GlobalHeaderDemo openOn="hybrid" />)
 	.add('Fewer Elements', () => (
-		<GlobalHeader logoSrc={logo}>
+		<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
 			<GlobalHeaderDropdown
-				assistiveText="Setup"
+				assistiveText={{ icon: 'Setup' }}
 				iconName="setup"
 				onSelect={action('Action Selected')}
 				options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}

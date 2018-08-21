@@ -369,7 +369,7 @@ class Example extends React.Component {
 					{this.props.searchable ? (
 						<div>
 							<Search
-								assistiveText="Search Tree"
+								assistiveText={{ label: 'Search Tree' }}
 								id="example-search"
 								value={this.state.searchTerm}
 								onChange={this.handleSearchChange}

@@ -46,7 +46,7 @@
         },
         "route": "accordions",
         "display-name": "Accordions",
-        "SLDS-component-path": "/components/accordions",
+        "SLDS-component-path": "/components/accordion",
         "dependencies": [
             {
                 "panel": {
@@ -272,7 +272,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "The type of alert. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'info'",
@@ -282,7 +282,7 @@
         },
         "route": "alerts",
         "display-name": "Alerts",
-        "SLDS-component-path": "/components/alerts",
+        "SLDS-component-path": "/components/alert",
         "dependencies": [
             {
                 "container": {
@@ -371,6 +371,17 @@
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `trigger`: This is a visually hidden label for the app launcher icon.",
                 "defaultValue": {
                     "value": "{\n    trigger: 'Open App Launcher',\n}",
+                    "computed": false
+                }
+            },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden.",
+                "defaultValue": {
+                    "value": "true",
                     "computed": false
                 }
             },
@@ -482,6 +493,23 @@
                         }
                     ],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "collapseSection": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "defaultValue": {
+                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
+                                "computed": false
+                            }
+                        },
                         "title": {
                             "type": {
                                 "name": "string"
@@ -495,17 +523,6 @@
                             },
                             "required": false,
                             "description": "Allows the user to show/hide the section"
-                        },
-                        "collapseSectionAssistiveText": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The assistive text for the section collapse icons",
-                            "defaultValue": {
-                                "value": "'Toggle visibility of section'",
-                                "computed": false
-                            }
                         },
                         "children": {
                             "type": {
@@ -704,10 +721,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility that labels the icon."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Assistive text for accessibility that labels the icon.",
+                "defaultValue": {
+                    "value": "{\n    icon: 'User or Account Icon',\n}",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {
@@ -762,7 +789,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.",
                 "defaultValue": {
                     "value": "'user'",
@@ -791,7 +818,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Size of the icon in \"icon\" fallback case.",
                 "defaultValue": {
                     "value": "'medium'",
@@ -812,7 +839,7 @@
         },
         "route": "avatars",
         "display-name": "Avatars",
-        "SLDS-component-path": "/components/avatars",
+        "SLDS-component-path": "/components/avatar",
         "dependencies": []
     },
     "breadcrumb": {
@@ -821,12 +848,18 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "The assistive text for the breadcrumb trail",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: The assistive text for the breadcrumb trail.",
                 "defaultValue": {
-                    "value": "'Breadcrumbs'",
+                    "value": "{\n    label: 'Breadcrumbs',\n}",
                     "computed": false
                 }
             },
@@ -844,7 +877,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
         "methods": [
             {
                 "name": "getClassName",
@@ -946,10 +979,20 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
             },
             "buttonRef": {
                 "type": {
@@ -1144,7 +1187,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop."
+                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText.icon</code> prop."
             },
             "onBlur": {
                 "type": {
@@ -1363,10 +1406,20 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
             },
             "disabled": {
                 "type": {
@@ -1575,7 +1628,7 @@
         },
         "route": "stateful-buttons",
         "display-name": "Stateful Buttons",
-        "SLDS-component-path": "/components/buttons/#flavor-stateful",
+        "SLDS-component-path": "/components/button/#flavor-stateful",
         "dependencies": []
     },
     "button-group": {
@@ -1742,7 +1795,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "The heading is the name of the related item group and should only contain inline elements.",
                 "defaultValue": {
                     "value": "'Related Items'",
@@ -1833,7 +1886,7 @@
                             "type": {
                                 "name": "string"
                             },
-                            "required": true,
+                            "required": false,
                             "description": "Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.",
                             "defaultValue": {
                                 "value": "'Find in List'",
@@ -2171,7 +2224,7 @@
         },
         "route": "checkboxes",
         "display-name": "Checkboxes",
-        "SLDS-component-path": "/components/checkbox/",
+        "SLDS-component-path": "/components/checkbox",
         "dependencies": []
     },
     "combobox": {
@@ -2867,7 +2920,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
+                "description": "Accepts a custom menu item rendering function that becomes a custom component. It should return a React node. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
             },
             "menuPosition": {
                 "type": {
@@ -2910,10 +2963,35 @@
             },
             "options": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "icon": {
+                                "name": "node",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "subTitle": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "type": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
                 },
                 "required": true,
-                "description": "Item added to the dropdown menu.\nTo add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._"
+                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -2960,10 +3038,35 @@
             },
             "selection": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "icon": {
+                                "name": "node",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "subTitle": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "type": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._",
+                "description": "Accepts an array of item objects. For single selection, pass in an array of one object. For item object keys, see `options` prop. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -2974,7 +3077,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Value of input. This is a controlled component, so you will need to control the input value. _Tested with snapshot testing._"
+                "description": "Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._"
             },
             "variant": {
                 "type": {
@@ -3002,9 +3105,17 @@
                 }
             }
         },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            }
+        },
         "route": "comboboxes",
         "display-name": "Comboboxes",
-        "SLDS-component-path": "/components/comboboxes",
+        "SLDS-component-path": "/components/combobox",
         "dependencies": []
     },
     "data-table": {
@@ -3048,69 +3159,40 @@
             }
         ],
         "props": {
-            "assistiveTextForActionsHeader": {
+            "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "actionsHeader": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSort": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSortedAscending": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "columnSortedDescending": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectAllRows": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectRow": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text for heading of actions column",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
                 "defaultValue": {
-                    "value": "'Actions'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSort": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for sort action on table column header",
-                "defaultValue": {
-                    "value": "'Sort by: '",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSortedAscending": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text announced once a column is sorted in ascending order",
-                "defaultValue": {
-                    "value": "'Sorted Ascending'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForColumnSortedDescending": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text announced once a column is sorted in descending order",
-                "defaultValue": {
-                    "value": "'Sorted Descending'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForSelectAllRows": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for select all checkbox within the table header",
-                "defaultValue": {
-                    "value": "'Select all rows'",
-                    "computed": false
-                }
-            },
-            "assistiveTextForSelectRow": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text for select row",
-                "defaultValue": {
-                    "value": "'Select row'",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
                     "computed": false
                 }
             },
@@ -3500,12 +3582,12 @@
                     "props": {
                         "assistiveText": {
                             "type": {
-                                "name": "string"
+                                "name": "object"
                             },
                             "required": false,
                             "description": "Description of the menu for screenreaders.",
                             "defaultValue": {
-                                "value": "'Actions'",
+                                "value": "{ icon: 'Actions' }",
                                 "computed": false
                             }
                         },
@@ -3981,7 +4063,7 @@
                 "required": false,
                 "description": "Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012). _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "-5",
+                    "value": "-10",
                     "computed": false
                 }
             },
@@ -3992,7 +4074,7 @@
                 "required": false,
                 "description": "Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012). _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "5",
+                    "value": "10",
                     "computed": false
                 }
             },
@@ -4021,6 +4103,14 @@
                 },
                 "required": false,
                 "description": "Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._"
+            }
+        },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
             }
         },
         "route": "datepickers",
@@ -4701,7 +4791,7 @@
         },
         "route": "inputs",
         "display-name": "Inputs",
-        "SLDS-component-path": "/components/input/",
+        "SLDS-component-path": "/components/input",
         "dependencies": []
     },
     "global-header": {
@@ -4733,6 +4823,27 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "skipToNav": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "skipToContent": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `skipToNav`: The localized text that will be read back for the \"Skip to Navigation\" accessibility link.\n* `skipToContent`: The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
+                "defaultValue": {
+                    "value": "{\n    skipToNav: 'Skip to Navigation',\n    skipToContent: 'Skip to Main Content',\n}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -4771,28 +4882,6 @@
                 },
                 "required": false,
                 "description": "Required for accessibility. Should jump the user to the primary navigation."
-            },
-            "skipToContentAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
-                "defaultValue": {
-                    "value": "'Skip to Main Content'",
-                    "computed": false
-                }
-            },
-            "skipToNavAssistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The localized text that will be read back for the \"Skip to Navigation\" accessibility link.",
-                "defaultValue": {
-                    "value": "'Skip to Navigation'",
-                    "computed": false
-                }
             }
         },
         "route": "global-header",
@@ -4982,7 +5071,8 @@
                             "defaultValue": {
                                 "value": "'icon'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "dropdown",
@@ -5135,13 +5225,15 @@
                             "defaultValue": {
                                 "value": "'icon'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         },
                         "iconVariant": {
                             "defaultValue": {
                                 "value": "'container'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "profile",
@@ -5222,7 +5314,7 @@
         },
         "route": "global-navigation-bar",
         "display-name": "Global Navigation Bar",
-        "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
+        "SLDS-component-path": "/components/global-navigation",
         "dependencies": [
             {
                 "button": {
@@ -5257,19 +5349,22 @@
                             "defaultValue": {
                                 "value": "'slds-context-bar__label-action slds-text-body--regular'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         },
                         "style": {
                             "defaultValue": {
                                 "value": "{ lineHeight: 'inherit' }",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         },
                         "variant": {
                             "defaultValue": {
                                 "value": "'base'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "button",
@@ -5297,10 +5392,16 @@
                         },
                         "assistiveText": {
                             "type": {
-                                "name": "string"
+                                "name": "shape",
+                                "value": {
+                                    "icon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
                             },
-                            "required": true,
-                            "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means."
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop."
                         },
                         "align": {
                             "type": {
@@ -5721,10 +5822,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=''</code>."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "category": {
                 "type": {
@@ -5752,7 +5863,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)",
                 "defaultValue": {
                     "value": "'standard'",
@@ -5812,13 +5923,21 @@
                             "computed": false
                         },
                         {
+                            "value": "'light'",
+                            "computed": false
+                        },
+                        {
                             "value": "'warning'",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Icon color variants"
+                "description": "Icon color variants",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
             },
             "icon": {
                 "type": {
@@ -5948,9 +6067,160 @@
                 "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
             }
         },
+        "childContext": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "actionSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "customSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "doctypeSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "standardSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "utilitySprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            }
+        },
         "route": "icon-settings",
         "display-name": "Icon Settings",
-        "SLDS-component-path": "/components/icons-settings",
+        "dependencies": []
+    },
+    "illustration": {
+        "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the SVG. _Tested with Mocha testing._"
+            },
+            "heading": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "illustration": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "internalIllustration": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "messageBody": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names. _Tested with snapshot testing._ _Tested with Mocha testing._"
+            },
+            "path": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the illustration SVG image. _Tested with snapshot testing._"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "'small'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            }
+        },
+        "route": "illustrations",
+        "display-name": "Illustrations",
+        "SLDS-component-path": "/components/illustration",
         "dependencies": []
     },
     "media-object": {
@@ -6006,7 +6276,7 @@
         },
         "route": "media-objects",
         "display-name": "Media Objects",
-        "SLDS-component-path": "/components/utilities/media-objects/",
+        "SLDS-component-path": "/components/utilities/media-object",
         "dependencies": []
     },
     "menu-dropdown": {
@@ -6033,6 +6303,10 @@
                 "params": [
                     {
                         "name": "value",
+                        "type": null
+                    },
+                    {
+                        "name": "options",
                         "type": null
                     }
                 ],
@@ -6286,22 +6560,6 @@
                 "returns": null
             },
             {
-                "name": "renderInlineMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "customContent",
-                        "type": null
-                    },
-                    {
-                        "name": "isOpen",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "renderDialog",
                 "docblock": null,
                 "modifiers": [],
@@ -6358,7 +6616,7 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "object"
                 },
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop."
@@ -6648,7 +6906,11 @@
                     ]
                 },
                 "required": false,
-                "description": "This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height"
+                "description": "This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height",
+                "defaultValue": {
+                    "value": "'5'",
+                    "computed": false
+                }
             },
             "menuPosition": {
                 "type": {
@@ -6714,13 +6976,6 @@
                 },
                 "required": false,
                 "description": "Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with \"icon container\" styling (`iconVariant=\"container\"`). Use with `isInline` prop, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly without manual offsets."
-            },
-            "offset": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
             },
             "onBlur": {
                 "type": {
@@ -7183,6 +7438,17 @@
                     "computed": false
                 }
             },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "assistiveText": {
                 "type": {
                     "name": "shape",
@@ -7338,7 +7604,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer')."
+                "description": "Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`."
             },
             "portalClassName": {
                 "type": {
@@ -7430,108 +7696,9 @@
                 "description": "Allows adding additional notifications within the modal."
             }
         },
-        "route": "modals",
-        "display-name": "Modals",
+        "route": "modals-and-prompts",
+        "display-name": "Modals and Prompts",
         "SLDS-component-path": "/components/modals",
-        "dependencies": []
-    },
-    "navigation": {
-        "description": "Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getSelectedId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "HTML id for component. _Tested with snapshot testing._"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS class names to be added to the container element. _Tested with snapshot testing._"
-            },
-            "categories": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
-            },
-            "selectedId": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._"
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style. _Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "navigation",
-        "display-name": "Navigation",
-        "SLDS-component-path": "/components/navigation",
         "dependencies": []
     },
     "panel": {
@@ -7568,6 +7735,23 @@
                     "description": "A filtering panel contextual filtering options.",
                     "methods": [],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "closeButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: Localized description of the close button for the panel for screen readers",
+                            "defaultValue": {
+                                "value": "{\n    closeButton: 'Close Filter Panel',\n}",
+                                "computed": false
+                            }
+                        },
                         "addFilterLabel": {
                             "type": {
                                 "name": "node"
@@ -7576,17 +7760,6 @@
                             "description": "Localized description of the \"Add Filter\" button in the footer",
                             "defaultValue": {
                                 "value": "'Add Filter'",
-                                "computed": false
-                            }
-                        },
-                        "assistiveTextCloseFilterPanel": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": false,
-                            "description": "Localized description of the close button for the panel for screen readers",
-                            "defaultValue": {
-                                "value": "'Close Filter Panel'",
                                 "computed": false
                             }
                         },
@@ -7772,7 +7945,8 @@
                             "defaultValue": {
                                 "value": "'Locked filters'",
                                 "computed": false
-                            }
+                            },
+                            "required": false
                         }
                     },
                     "name": "filtering/list-heading",
@@ -8293,6 +8467,14 @@
                             "computed": false
                         },
                         {
+                            "value": "'right top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right bottom'",
+                            "computed": false
+                        },
+                        {
                             "value": "'bottom'",
                             "computed": false
                         },
@@ -8306,6 +8488,14 @@
                         },
                         {
                             "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'left top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'left bottom'",
                             "computed": false
                         }
                     ]
@@ -8431,13 +8621,6 @@
                 "required": false,
                 "description": "Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) You will want this if Popover is to be a controlled component."
             },
-            "offset": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Offset adds pixels to the absolutely positioned dialog in the format: ([vertical]px [horizontal]px)."
-            },
             "onClick": {
                 "type": {
                     "name": "func"
@@ -8549,13 +8732,15 @@
                 "defaultValue": {
                     "value": "300",
                     "computed": false
-                }
+                },
+                "required": false
             },
             "openOn": {
                 "defaultValue": {
                     "value": "'click'",
                     "computed": false
-                }
+                },
+                "required": false
             }
         },
         "route": "popovers",
@@ -8851,16 +9036,28 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "completedStep": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "disabledStep": {
+                            "name": "string",
+                            "required": false
+                        },
                         "percentage": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "step": {
                             "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `completedStep`: Label for a completed step. The default is `Completed Step`\n* `disabledStep`: Label for disabled step. The default is `Disabled Step`\n* `errorStep`: Label for a step with an error. The default is `Error Step`\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.\n* `step`: Label for a step. It will be typically followed by the number of the step such as \"Step 1\".",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{\n    completedStep: 'Completed',\n    disabledStep: 'Disabled',\n    errorStep: 'Error',\n    step: 'Step',\n}",
                     "computed": false
                 }
             },
@@ -8909,7 +9106,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "Stores all error steps. It is an array of step objects and usually there is only one error step, the current step.",
+                "description": "Stores all error steps. It is an array of step objects and usually there is only one error step, the current step. If an error occurs a second error icon should be placed to the left of related confirmation buttons (e.g. Cancel, Save) and an Error Popover should appear indicating there are errors. These additional items are NOT part of this component. This note was included for visibility purposes. Please refer to [SLDS website](https://www.lightningdesignsystem.com/components/progress-indicator/) for full details **",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -8948,7 +9145,7 @@
                 "type": {
                     "name": "object"
                 },
-                "required": true,
+                "required": false,
                 "description": "Represents the currently selected or active step. It is a step object.",
                 "defaultValue": {
                     "value": "defaultSteps[0]",
@@ -10110,11 +10307,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
+                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -10228,7 +10421,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "The Slider is a controlled component, and will always display this value."
+                "description": "The Slider should be a controlled component, and will always display this value. This should always be used if you are using a Flux/Redux framework."
             },
             "vertical": {
                 "type": {
@@ -10241,6 +10434,108 @@
         "route": "slider",
         "display-name": "Slider",
         "SLDS-component-path": "/components/slider",
+        "dependencies": []
+    },
+    "spinner": {
+        "description": "Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text that is read out loud to screen readers.",
+                "defaultValue": {
+                    "value": "{ label: 'Loading...' }",
+                    "computed": false
+                }
+            },
+            "containerClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom css classes applied to Spinner container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique html id placed on div with role=\"status\"."
+            },
+            "isInput": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support a spinner inside an input field."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the size of the spinner",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inverse'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "spinners",
+        "display-name": "Spinners",
+        "SLDS-component-path": "/components/spinner",
         "dependencies": []
     },
     "tabs": {
@@ -10636,10 +10931,16 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "If present, the label associated with this `textarea` is overwritten\nby this text and is visually not shown."
+                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
             },
             "children": {
                 "type": {
@@ -11065,7 +11366,7 @@
         },
         "route": "timepickers",
         "display-name": "Timepickers",
-        "SLDS-component-path": "/components/datepickers",
+        "SLDS-component-path": "/components/timepicker",
         "dependencies": []
     },
     "toast": {
@@ -11230,7 +11531,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "The type of Toast. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'info'",
@@ -11240,7 +11541,7 @@
         },
         "route": "toasts",
         "display-name": "Toasts",
-        "SLDS-component-path": "/components/toasts",
+        "SLDS-component-path": "/components/toast",
         "dependencies": [
             {
                 "container": {
@@ -11406,7 +11707,7 @@
                         }
                     ]
                 },
-                "required": true,
+                "required": false,
                 "description": "Alignment of the Tooltip relative to the element that triggers it.",
                 "defaultValue": {
                     "value": "'top'",
@@ -11445,7 +11746,7 @@
                 "type": {
                     "name": "node"
                 },
-                "required": true,
+                "required": false,
                 "description": "Content inside Tooltip.",
                 "defaultValue": {
                     "value": "<span>Tooltip</span>",
@@ -11598,6 +11899,14 @@
                 }
             }
         },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            }
+        },
         "route": "tooltips",
         "display-name": "Tooltips",
         "SLDS-component-path": "/components/tooltips",
@@ -11661,10 +11970,20 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
-                "description": "For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree."
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {
@@ -11816,7 +12135,106 @@
         },
         "route": "tree",
         "display-name": "Tree",
-        "SLDS-component-path": "/components/tree",
+        "SLDS-component-path": "/components/trees",
+        "dependencies": []
+    },
+    "vertical-navigation": {
+        "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getSelectedId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component. _Tested with snapshot testing._"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. _Tested with snapshot testing._"
+            },
+            "categories": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
+            },
+            "selectedId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._"
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'shade'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines component style. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "vertical-navigation",
+        "display-name": "Vertical Navigation",
+        "SLDS-component-path": "/components/vertical-navigation",
         "dependencies": []
     }
 }

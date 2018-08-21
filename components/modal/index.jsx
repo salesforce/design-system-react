@@ -24,15 +24,24 @@ import shortid from 'shortid';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
+import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
+
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
+
+const documentDefined = typeof document !== 'undefined';
+const windowDefined = typeof window !== 'undefined';
 
 const propTypes = {
 	/**
 	 * Vertical alignment of Modal.
 	 */
 	align: PropTypes.oneOf(['top', 'center']),
+	/**
+	 * Boolean indicating if the appElement should be hidden.
+	 */
+	ariaHideApp: PropTypes.bool,
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
@@ -104,7 +113,7 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool.isRequired,
 	/**
-	 * Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer').
+	 * Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`.
 	 */
 	parentSelector: PropTypes.func,
 	/**
@@ -150,6 +159,7 @@ const defaultProps = {
 		closeButton: 'Close',
 	},
 	align: 'center',
+	ariaHideApp: true,
 	dismissible: true,
 };
 
@@ -181,6 +191,9 @@ class Modal extends React.Component {
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 		checkProps(MODAL, this.props);
+		if (this.props.ariaHideApp) {
+			checkAppElementIsSet();
+		}
 	}
 
 	componentDidMount () {
@@ -277,13 +290,13 @@ class Modal extends React.Component {
 
 	setReturnFocus () {
 		this.setState({
-			returnFocusTo: document.activeElement,
+			returnFocusTo: documentDefined ? document.activeElement : null,
 		});
 	}
 
 	// eslint-disable-next-line class-methods-use-this
 	clearBodyScroll () {
-		if (window && document && document.body) {
+		if (windowDefined && documentDefined && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
@@ -360,7 +373,7 @@ class Modal extends React.Component {
 			this.props.closeButtonAssistiveText || assistiveText.closeButton;
 		const closeButton = (
 			<Button
-				assistiveText={closeButtonAssistiveText}
+				assistiveText={{ icon: closeButtonAssistiveText }}
 				iconCategory="utility"
 				iconName="close"
 				iconSize="large"
@@ -417,7 +430,7 @@ class Modal extends React.Component {
 	}
 
 	updateBodyScroll () {
-		if (window && document && document.body) {
+		if (windowDefined && documentDefined && document.body) {
 			if (this.props.isOpen) {
 				document.body.style.overflow = 'hidden';
 			} else {
@@ -450,6 +463,7 @@ class Modal extends React.Component {
 
 		return (
 			<ReactModal
+				ariaHideApp={this.props.ariaHideApp}
 				contentLabel="Modal"
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}

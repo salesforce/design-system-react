@@ -13,7 +13,7 @@ chai.should();
 describe('Button Stateful: ', () => {
 	// Base defaults
 	const requiredProps = {
-		assistiveText: 'like',
+		assistiveText: { icon: 'like' },
 		iconName: 'like',
 		iconSize: 'large',
 		variant: 'icon',

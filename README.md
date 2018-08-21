@@ -28,7 +28,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 ### Quick Setup (CommonJS)
 
-For a no hassle setup and compatibility with Create React App v1, a CommonJS version has been included within the NPM package to allow usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
+For a no hassle setup and compatibility with Create React App v1, a CommonJS version has been included within the NPM package. If using this setup, please re-write the `import` statement in the documentation site examples. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
 
 ```
 import { Button } from '@salesforce/design-system-react';
@@ -59,10 +59,6 @@ import Button from '@salesforce/design-system-react/components/button';
 
 This library does not contain any Cascading Style Sheets (CSS). You will need to add `<link rel="stylesheet" type="text/css"  href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" />` to your page and serve that file from a publicly available folder.
 
-### Icon Usage
-
-Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
-
 #### Serve icons publicly
 
 Typically, scripts should be downloaded in the background without blocking the DOM. With React, this works best with [server side rendering](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup). SLDS recommends placeholder stencils while scripts are initializing if the HTML cannot be served immediately. If you can serve the HTML, then icon SVGs should not be bundled and served like any other file. Set a path `context` for all child components with `<IconSettings>` at the top of your render tree:
@@ -85,7 +81,7 @@ ReactDOM.render(
 
 ```
 // ExpressJS example
-app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/'));
+app.use('/assets/icons', express.static('node_modules/@salesforce-ux/design-system/assets/icons/'));
 ```
 
 #### Bundle icons
@@ -94,7 +90,6 @@ If you use a module bundler, like Webpack, you can let your module bundler manag
 
 ```
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-
 import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 ...
 ...
@@ -106,6 +101,10 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
+
+### Icon Usage
+
+Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
 
 Bundled script files are provided _only_ for convenience. Do not use in production.
 

@@ -18,7 +18,7 @@ const Example = createReactClass({
 					<Button label="Import Leads" />
 					<Dropdown
 						align="right"
-						assistiveText="More Options"
+						assistiveText={{ icon: 'More Options' }}
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
@@ -48,7 +48,7 @@ const Example = createReactClass({
 				>
 					<DropdownTrigger>
 						<Button
-							assistiveText="List View Controls"
+							assistiveText={{ icon: 'List View Controls' }}
 							className="slds-m-right--xx-small"
 							iconCategory="utility"
 							iconName="settings"
@@ -58,7 +58,7 @@ const Example = createReactClass({
 				</Dropdown>
 				<Dropdown
 					align="right"
-					assistiveText="Change view"
+					assistiveText={{ icon: 'Change view' }}
 					iconName="settings"
 					iconVariant="more"
 					options={[
@@ -71,7 +71,7 @@ const Example = createReactClass({
 				>
 					<DropdownTrigger>
 						<Button
-							assistiveText="Change view"
+							assistiveText={{ icon: 'Change view' }}
 							className="slds-m-right--xx-small"
 							iconCategory="utility"
 							iconName="table"
@@ -81,14 +81,14 @@ const Example = createReactClass({
 					</DropdownTrigger>
 				</Dropdown>
 				<Button
-					assistiveText="Edit List"
+					assistiveText={{ icon: 'Edit List' }}
 					iconCategory="utility"
 					iconName="edit"
 					iconVariant="border"
 					variant="icon"
 				/>
 				<Button
-					assistiveText="Refresh"
+					assistiveText={{ icon: 'Refresh' }}
 					iconCategory="utility"
 					iconName="refresh"
 					iconVariant="border"
@@ -97,14 +97,14 @@ const Example = createReactClass({
 				<div>
 					<ButtonGroup>
 						<Button
-							assistiveText="Charts"
+							assistiveText={{ icon: 'Charts' }}
 							iconCategory="utility"
 							iconName="chart"
 							iconVariant="border"
 							variant="icon"
 						/>
 						<Button
-							assistiveText="Filters"
+							assistiveText={{ icon: 'Filters' }}
 							iconCategory="utility"
 							iconName="filterList"
 							iconVariant="border"

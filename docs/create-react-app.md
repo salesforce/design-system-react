@@ -1,17 +1,21 @@
 # Create React App
 
-The following tasks will help you get started using Design System React within Create React App 1.x.
+The following tasks will help you get started using Design System React within Create React App 1.x. 
+
+Do you have tips to share with other Create React Users users? Please share with the rest of the Create React community and add to the list below.
 
 ## Getting Started
 
 1. Create a new app
     * `create-react-app my-react-app`
 1. Install NPM modules
-    * `npm install @salesforce-ux/design-system @salesforce/design-system-react`
+    * `cd my-react-app && npm install @salesforce-ux/design-system @salesforce/design-system-react`
 1. Copy SLDS CSS file to `public` folder
-    * `/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css`
+    * `cp node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css public/`
 1. Copy SLDS icons folder to `public` folder
-    * `/node_modules/@salesforce-ux/design-system/assets/icons`
+    * `cp -r node_modules/@salesforce-ux/design-system/assets/icons public/`
+1. Copy SLDS fonts folder to `public` folder
+    * `cp -r node_modules/@salesforce-ux/design-system/assets/fonts public/`
 1. Add CSS file to `index.html`
     * `<link rel="stylesheet" type="text/css" href="/salesforce-lightning-design-system.min.css">`
 1. Copy examples from [Design System React website](https://react.lightningdesignsystem.com/) into `app.js`.

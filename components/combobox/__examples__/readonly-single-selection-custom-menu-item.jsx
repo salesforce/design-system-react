@@ -51,18 +51,19 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
 		icon: (
 			<Icon
-				assistiveText="Account"
+				assistiveText={{ label: 'Account' }}
 				category="standard"
 				size="x-small"
 				name={elem.type}
 			/>
 		),
-	})
-);
+	},
+}));
 
 const CustomMenuItem = (props) => (
 	<span className="slds-media">

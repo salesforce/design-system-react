@@ -105,7 +105,7 @@ If you are new to React, you may be trained to design components in a more compl
 
 ### Use "the good parts"
 
-* <a name="do-not-mutate-data" href="#do-not-mutate-data">#</a> **Do not mutate data.** React tries to [optimize and prevent re-rendering the DOM when possible](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data). Many times this is not what you want. Avoid solitary use of `push`, `pop`, `shift`, `unshift`, `sort`, `reverse`, `splice` and `delete` when mutating arrays. If you ever have to ask yourself, why isn't my component rendering, this is likely the reason. Use `Object.assign()` on objects and `Array.concat()` on arrays instead of directly modifying these variables that are accessed by reference. A common pattern is to deconstruct an array with `...` and create a new one. You may consider exploring some new ES6 types such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) which are collections that help store unique values of any type.
+* <a name="do-not-mutate-data" href="#do-not-mutate-data">#</a> **Do not mutate data.** React tries to [optimize and prevent re-rendering the DOM when possible](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data). Many times this is not what you want. Avoid solitary use of `push`, `pop`, `shift`, `unshift`, `sort`, `reverse`, `splice` and `delete` when mutating arrays. If you ever have to ask yourself, why isn't my component rendering with new props, this is likely the reason. Use the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) on objects and arrays--or [`Array.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) on arrays instead of directly modifying these variables that are accessed by reference. You may consider exploring some new ES6 types such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) which are collections that help store unique values of any type.
 
 * <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function.
 
@@ -315,7 +315,7 @@ Some props accept an existing Design System React component such as the `dropdow
 
 In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developers or the "grandparent" takes precedence and merges in last.
 
-This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in “<Dropdown options={} /> to a “dropdown” prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and increases library maintainability. 
+This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and increases library maintainability. 
 
 ## Prefer Ternary to Sub-render
 
@@ -529,7 +529,7 @@ This preset enables a module bundler, such as Webpack, to transpile Design Syste
   * Independence between re-users and providers
   * Relief of component providers
 * Better software product
-  * increased code quality
+  * Increased code quality
   * More innovative development
 * More flexible utilization of developers
   * Simplified developer deployment
@@ -538,3 +538,5 @@ This preset enables a module bundler, such as Webpack, to transpile Design Syste
   * Community-based learning
   * Openness and availability of knowledge
 * Higher employee motivation
+  * Shareable work
+		* Opportuntity to lead engineering community

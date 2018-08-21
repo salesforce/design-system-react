@@ -117,7 +117,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			), // react/no-unescaped-entities
 			trigger: (
 				<Icon
-					assistiveText="Case Icon"
+					assistiveText={{ label: 'Case Icon' }}
 					category="standard"
 					name="case"
 					size="small"

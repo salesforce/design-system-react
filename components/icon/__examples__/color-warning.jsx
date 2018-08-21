@@ -10,14 +10,15 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Icon
-					assistiveText="Description of icon"
-					category="standard"
-					name="account"
+					assistiveText={{ label: 'Description of icon' }}
+					category="utility"
+					colorVariant="warning"
+					name="announcement"
 					title="description of icon"
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

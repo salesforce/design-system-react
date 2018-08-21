@@ -11,15 +11,21 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import checkProps from './check-props';
+
 // ## Constants
 import { SPINNER } from '../../utilities/constants';
 
 // ### Prop Types
-const PROP_TYPES = {
+const propTypes = {
 	/**
-	 * Assistive text that is read out loud to screen readers.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: Assistive text that is read out loud to screen readers.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Custom css classes applied to Spinner container
 	 */
@@ -29,7 +35,7 @@ const PROP_TYPES = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Determines if spinner is inside input field
+	 * Add styling to support a spinner inside an input field.
 	 */
 	isInput: PropTypes.bool,
 	/**
@@ -42,22 +48,25 @@ const PROP_TYPES = {
 	variant: PropTypes.oneOf(['base', 'brand', 'inverse']),
 };
 
-const DEFAULT_PROPS = {
-	assistiveText: 'Loading...',
+const defaultProps = {
+	assistiveText: { label: 'Loading...' },
 	size: 'medium',
 	variant: 'base',
 };
 
-// ## Spinner
+/**
+ * Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.
+ */
 const Spinner = (props) => {
-	const {
-		assistiveText,
-		containerClassName,
-		id,
-		isInput,
-		size,
-		variant,
-	} = props;
+	checkProps(SPINNER, props);
+	const { containerClassName, id, isInput, size, variant } = props;
+	const assistiveText =
+		typeof props.assistiveText === 'string'
+			? props.assistiveText
+			: {
+				...defaultProps.assistiveText,
+				...props.assistiveText,
+			}.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-input__spinner': isInput,
@@ -85,7 +94,7 @@ const Spinner = (props) => {
 };
 
 Spinner.displayName = SPINNER;
-Spinner.propTypes = PROP_TYPES;
-Spinner.defaultProps = DEFAULT_PROPS;
+Spinner.propTypes = propTypes;
+Spinner.defaultProps = defaultProps;
 
 export default Spinner;

@@ -19,6 +19,7 @@ import ColorBase from '../__examples__/color-base';
 import ColorDefault from '../__examples__/color-default';
 import ColorError from '../__examples__/color-error';
 import ColorWarning from '../__examples__/color-warning';
+import ColorLight from '../__examples__/color-light';
 
 import SizesExtraSmall from '../__examples__/sizes-extra-small';
 import SizesSmall from '../__examples__/sizes-small';
@@ -47,9 +48,12 @@ storiesOf(ICON, module)
 		</div>
 	))
 	.add('Color: Default', () => <ColorDefault />)
+	.add('Color: Error', () => <ColorError />)
+	.add('Color: Warning', () => <ColorWarning />)
+	.add('Color: Light', () => <ColorLight />)
 	.add('Base: Standard (custom styles)', () => (
 		<Icon
-			assistiveText="Account"
+			assistiveText={{ label: 'Account' }}
 			category="standard"
 			name="account"
 			style={{ backgroundColor: '#aceace', fill: 'orangered' }}
@@ -57,5 +61,9 @@ storiesOf(ICON, module)
 		/>
 	))
 	.add('Base: Imported', () => (
-		<Icon assistiveText="Download" category="utility" icon={download} />
+		<Icon
+			assistiveText={{ label: 'Download' }}
+			category="utility"
+			icon={download}
+		/>
 	));

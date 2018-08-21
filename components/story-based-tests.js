@@ -32,10 +32,10 @@ export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Input from '../components/input/__docs__/storybook-stories';
 // export Textarea from '../components/textarea/__docs__/storybook-stories';
 // export Search from '../components/input/__docs__/search/storybook-stories';
-// export Icon from '../components/icon/__docs__/storybook-stories';
+export Icon from '../components/icon/__docs__/storybook-stories';
+export Illustration from '../components/illustration/__docs__/storybook-stories';
 // export Lookup from '../components/lookup/__docs__/storybook-stories';
 // export MediaObject from '../components/media-object/__docs__/storybook-stories';
-// export Navigation from '../components/navigation/__docs__/storybook-stories';
 // export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
@@ -47,6 +47,7 @@ export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Toast from '../components/toast/__docs__/storybook-stories';
 // export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
+// export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because
@@ -58,12 +59,12 @@ export Tree from '../components/tree/__docs__/storybook-stories';
 // export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';
 // export DatePicker from '../components/date-picker/__docs__/storybook-stories';
 // export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
-// export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
+export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
 // export Modal from '../components/modal/__docs__/storybook-stories';
 // export Notification from '../components/notification/__docs__/storybook-stories';
 // export Panel from '../components/panel/__docs__/storybook-stories';
 // export Popover from '../components/popover/__docs__/storybook-stories';
-// export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
+export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 // export Picklist from '../components/menu-picklist/__docs__/storybook-stories';
 // export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export TimePicker from '../components/time-picker/__docs__/storybook-stories';
