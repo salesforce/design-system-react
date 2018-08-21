@@ -3248,10 +3248,19 @@
             },
             "items": {
                 "type": {
-                    "name": "array"
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            }
+                        }
+                    }
                 },
                 "required": true,
-                "description": "The collection of items to render in the table."
+                "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
             },
             "noRowHover": {
                 "type": {
@@ -3260,12 +3269,12 @@
                 "required": false,
                 "description": "A variant which removes hover style on rows"
             },
-            "onChange": {
+            "onRowChange": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "This function fires when the selection of rows changes."
+                "description": "This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.\n\nThis used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object."
             },
             "onSort": {
                 "type": {
@@ -3279,7 +3288,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "The selected rows.",
+                "description": "An array of objects of selected rows. See `items` prop for shape of objects.",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -4447,11 +4456,19 @@
                         "spinner": {
                             "name": "string",
                             "required": false
+                        },
+                        "fieldLevelHelpButton": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon."
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.\n* `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.",
+                "defaultValue": {
+                    "value": "{\n    fieldLevelHelpButton: 'Help',\n}",
+                    "computed": false
+                }
             },
             "children": {
                 "type": {
@@ -4574,7 +4591,15 @@
             },
             "inlineHelpText": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "Displays help text under the input."
@@ -12088,7 +12113,15 @@
                                         "required": true
                                     },
                                     "label": {
-                                        "name": "string",
+                                        "name": "union",
+                                        "value": [
+                                            {
+                                                "name": "node"
+                                            },
+                                            {
+                                                "name": "string"
+                                            }
+                                        ],
                                         "required": true
                                     },
                                     "type": {
