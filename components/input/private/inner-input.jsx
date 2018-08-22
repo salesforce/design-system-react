@@ -93,6 +93,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string.isRequired,
 	/**
+	 * Displays help text under the input.
+	 */
+	inlineHelpText: PropTypes.string,
+	/**
 	 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 	 */
 	inputRef: PropTypes.func,
@@ -300,6 +304,10 @@ const InnerInput = (props) => {
 				</span>
 			)}
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+
+			{props.inlineHelpText && (
+				<div className="slds-form-element__help">{props.inlineHelpText}</div>
+			)}
 		</div>
 	);
 };
