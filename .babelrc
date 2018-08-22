@@ -56,5 +56,7 @@
 			"plugins": ["istanbul"]
 		}
 	},
-	"ignore": ["preset/**"]
+	"ignore": [
+		"preset/**",
+	],
 }
