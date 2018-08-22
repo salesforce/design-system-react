@@ -70,7 +70,7 @@ describe('SLDSToast: ', function () {
 		 * It allows access to the Mocha test context via `this`.
 		 */
 		it('calls onRequestClose handler', function () {
-			const button = this.wrapper.find('.slds-notify__close');
+			const button = this.wrapper.find('button.slds-notify__close');
 			// If applicable, use second parameter to pass the data object
 			expect(this.wrapper.find('.slds-notify').length).to.equal(1);
 			button.simulate('click', {});
@@ -86,20 +86,20 @@ describe('SLDSToast: ', function () {
 	});
 
 	describe('Toast with duration auto-closes itself', () => {
-		beforeEach(mountComponent(<DemoComponent duration={500} />));
+		beforeEach(mountComponent(<DemoComponent duration={1} />));
 
 		// afterEach(unmountComponent);
 
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('it calls onRequestClose after 500ms', function (done) {
-			expect(this.wrapper.find('.slds-notify').length).to.equal(1);
+		it('it calls onRequestClose after 1ms', function (done) {
+			expect(this.wrapper).to.have.state('isOpen', true);
 
 			setTimeout(() => {
-				expect(this.wrapper.find('.slds-notify').length).to.equal(0);
+				expect(this.wrapper).to.have.state('isOpen', false);
 				done();
-			}, 800);
+			}, 2);
 		});
 	});
 });

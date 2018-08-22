@@ -51,23 +51,24 @@ describe('SLDSIllustration: ', function () {
 		afterEach(unmountComponent);
 
 		it('renders container class', function () {
-			expect(this.wrapper.hasClass('slds-illustration')).to.be.true;
-			expect(this.wrapper.hasClass('custom-illustration')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-illustration');
+			expect(this.wrapper).to.have.className('custom-illustration');
 		});
 		it('renders illustration size class', function () {
-			expect(this.wrapper.hasClass('slds-illustration_small')).to.be.true;
+			expect(this.wrapper).to.have.className('slds-illustration_small');
 		});
 		it('sets svg aria-hidden to true', function () {
 			svg = this.wrapper.find('svg');
-			expect(svg.node.getAttribute('aria-hidden')).to.equal('true');
+			expect(svg).to.have.attr('aria-hidden', 'true');
 		});
 		it('renders illustration svg class', function () {
-			expect(svg.hasClass('slds-illustration__svg')).to.be.true;
+			svg = this.wrapper.find('svg');
+			expect(svg.hasClass('slds-illustration__svg')).to.be.true; // chai-enzyme is buggy with an svg
 		});
 		it('renders svg name attribute', function () {
 			svg = this.wrapper.find('svg');
 			// also tests that all '_' and ' ' are replaced with '-'
-			expect(svg.node.getAttribute('name')).to.equal('no-access');
+			expect(svg).to.have.attr('name', 'no-access');
 		});
 		it('renders svg custom background color', function () {
 			svg = this.wrapper.find('svg');
@@ -104,7 +105,7 @@ describe('SLDSIllustration: ', function () {
 
 		it('does not render svg', function () {
 			svg = this.wrapper.find('svg');
-			expect(svg.node).to.be.undefined;
+			expect(svg).not.to.be.present();
 		});
 		it('renders heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
@@ -133,15 +134,14 @@ describe('SLDSIllustration: ', function () {
 
 		it('does not render svg', function () {
 			svg = this.wrapper.find('svg');
-			expect(svg.node).to.be.undefined;
+			expect(svg).not.to.be.present();
 		});
 		it('renders heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
 			expect(heading.text()).to.equal('Lorem ipsum dolor');
 		});
 		it('does not render message body', function () {
-			messageBody = this.wrapper.find('.slds-text-body_regular');
-			expect(messageBody.node).to.be.undefined;
+			expect(this.wrapper.find('.slds-text-body_regular')).not.to.be.present();
 		});
 	});
 
@@ -163,11 +163,11 @@ describe('SLDSIllustration: ', function () {
 
 		it('does not render svg', function () {
 			svg = this.wrapper.find('svg');
-			expect(svg.node).to.be.undefined;
+			expect(svg).not.to.be.present();
 		});
 		it('does not render heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
-			expect(heading.node).to.be.undefined;
+			expect(heading).not.to.be.present();
 		});
 		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');

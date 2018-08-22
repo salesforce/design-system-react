@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 const defaultIds = {
-	trigger: defaultProps.id,
+	trigger: `button#${defaultProps.id}`,
 	popover: `${defaultProps.id}-popover`,
 	body: `${defaultProps.id}-dialog-body`,
 	heading: `${defaultProps.id}-dialog-heading`,
@@ -129,12 +129,8 @@ describe('SLDSPopover', function () {
 
 			const trigger = wrapper.find('#sample-popover');
 			const popover = wrapper.find(`#${defaultIds.popover}`);
-			expect(popover.node.getAttribute('aria-labelledby')).to.equal(
-				`${defaultIds.heading}`
-			);
-			expect(popover.node.getAttribute('aria-describedby')).to.equal(
-				`${defaultIds.body}`
-			);
+			expect(popover).to.have.attr('aria-labelledby', defaultIds.heading);
+			expect(popover).to.have.attr('aria-describedby', defaultIds.body);
 		});
 	});
 
@@ -170,8 +166,8 @@ describe('SLDSPopover', function () {
 
 			const popover = wrapper.find(Dialog);
 
-			expect(popover.hasClass(optionalProps.className)).to.be.true;
-			expect(popover.find('.slds-popover__close').node.textContent).to.equal(
+			expect(popover).to.have.className(optionalProps.className);
+			expect(popover.find('button.slds-popover__close')).to.have.text(
 				optionalProps.assistiveText.closeButton
 			);
 			expect(popover.find('#footer')).to.exist;
@@ -203,24 +199,26 @@ describe('SLDSPopover', function () {
 						onClose={() => {
 							setTimeout(() => {
 								const popover = wrapper.find(`#${defaultIds.popover}`);
-								expect(popover.node).to.not.exist;
+								expect(popover).to.not.exist;
 								done();
 							}, 0);
 						}}
 						onOpen={() => {
+							wrapper.update();
 							const popover = wrapper.find(`#${defaultIds.popover}`);
 
 							expect(popover).to.exist;
 							expect(triggerClicked.callCount).to.equal(1);
 
-							popover.find('.slds-popover__close').simulate('click', {});
+							popover.find('button.slds-popover__close').simulate('click');
 						}}
+						position="absolute"
 					/>,
 					{ attachTo: mountNode }
 				);
 
-				const trigger = wrapper.find(`#${defaultIds.trigger}`);
-				trigger.simulate('click', {});
+				const trigger = wrapper.find(defaultIds.trigger);
+				trigger.simulate('click');
 			});
 
 			it('opens on click, closes on ESC', function (done) {
@@ -229,11 +227,12 @@ describe('SLDSPopover', function () {
 						onClose={() => {
 							setTimeout(() => {
 								const popover = wrapper.find(`#${defaultIds.popover}`);
-								expect(popover.node).to.not.exist;
+								expect(popover).to.not.exist;
 								done();
 							}, 0);
 						}}
 						onOpen={() => {
+							wrapper.update();
 							const popover = wrapper.find(`#${defaultIds.popover}`);
 							popover.simulate('keyDown', {
 								key: 'Esc',
@@ -245,8 +244,8 @@ describe('SLDSPopover', function () {
 					{ attachTo: mountNode }
 				);
 
-				const trigger = wrapper.find(`#${defaultIds.trigger}`);
-				trigger.simulate('click', {});
+				const trigger = wrapper.find(defaultIds.trigger);
+				trigger.simulate('click');
 			});
 		});
 	});
@@ -275,7 +274,7 @@ describe('SLDSPopover', function () {
 				{ attachTo: mountNode }
 			);
 
-			const trigger = wrapper.find(`#${defaultIds.trigger}`);
+			const trigger = wrapper.find(defaultIds.trigger);
 			trigger.simulate('click', {});
 		});
 	});
@@ -292,7 +291,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onOpen is not called when disabled', function (done) {
+		it('onOpen is not called when disabled', function () {
 			wrapper = mount(
 				<DemoComponent
 					disabled
@@ -302,13 +301,9 @@ describe('SLDSPopover', function () {
 				{ attachTo: mountNode }
 			);
 
-			const trigger = wrapper.find(`#${defaultIds.trigger}`);
+			const trigger = wrapper.find(defaultIds.trigger);
 			trigger.simulate('click', {});
-
-			setTimeout(() => {
-				expect(popoverOpened.callCount).to.equal(0);
-				done();
-			}, 200);
+			expect(popoverOpened.callCount).to.equal(0);
 		});
 	});
 });

@@ -2575,7 +2575,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
   <div class=\\"slds-datepicker slds-dropdown slds-dropdown--left\\">
     <div class=\\"\\" aria-hidden=\\"false\\" data-selection=\\"single\\">
       <div class=\\"slds-datepicker__filter slds-grid\\">
-        <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\" style=\\"flex:1.75;\\">
+        <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\" style=\\"flex:1.75\\">
           <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
           <h2
             id=\\"sample-datepicker-month\\" class=\\"slds-align-middle\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">July <span class=\\"slds-assistive-text\\">2014</span></h2>
@@ -2586,7 +2586,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
             <div class=\\"slds-form-element__control\\">
               <div class=\\"slds-combobox_container\\">
                 <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
-                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"sample-datepicker-year-picklist-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\"
+                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"sample-datepicker-year-picklist-listbox\\" autoComplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\"
                       role=\\"textbox\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></div>
                 </div>
               </div>
@@ -2657,7 +2657,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
               <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
             </tr>
             <tr>
-              <td colspan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
+              <td colSpan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
             </tr>
           </tbody>
         </table>
