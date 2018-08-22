@@ -23,9 +23,7 @@
 	],
 	"env": {
 		"amd": {
-			"plugins": [
-				"import-noop"
-			]
+			"plugins": ["import-noop"]
 		},
 		"esm": {
 			"presets": [
@@ -52,17 +50,11 @@
 			]
 		},
 		"commonjs": {
-			"plugins": [
-				"import-noop"
-			]
+			"plugins": ["import-noop"]
 		},
 		"test": {
-			"plugins": [
-				"istanbul"
-			]
+			"plugins": ["istanbul"]
 		}
 	},
-	"ignore": [
-		"preset/**"
-	]
+	"ignore": ["preset/**"]
 }
