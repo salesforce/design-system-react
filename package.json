@@ -113,8 +113,8 @@
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.6.0",
-		"react": ">=16",
-		"react-dom": ">=16"
+		"react": ">=15.4.1 <17",
+		"react-dom": ">=15.4.1 <17"
 	},
 	"devDependencies": {
 		"@babel/cli": "7.0.0-beta.44",
@@ -196,11 +196,11 @@
 		"prettier-eslint-cli": "^4.7.1",
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
-		"react": ">=16",
+		"react": "^16.4",
 		"react-docgen": "^2.21.0",
-		"react-dom": ">=16",
+		"react-dom": "^16.4",
 		"react-hot-loader": "^1.2.7",
-		"react-test-renderer": ">=16",
+		"react-test-renderer": "^16.4",
 		"regenerator-runtime": "^0.11.1",
 		"sinon": "^2.3.5",
 		"sinon-chai": "^2.14.0",
