@@ -4,16 +4,16 @@
 
 let getComponentDocFn = function () {};
 
+const baseURL = 'https://react.lightningdesignsystem.com';
+
 if (process.env.NODE_ENV !== 'production') {
 	getComponentDocFn = function (jsonDoc) {
-		jsonDoc.componentUrl = `https://react.lightningdesignsystem.com/components/${
-			jsonDoc['url-slug']
-		}`;
+		const componentUrl = `${baseURL + (jsonDoc && jsonDoc['url-slug'] ? '/components/' + jsonDoc['url-slug'] : '')}`;
 		return (propName) =>
 			`Please check the current documentation at: ${
 				propName
-					? `${jsonDoc.componentUrl}#prop-${propName}`
-					: jsonDoc.componentUrl
+					? `${componentUrl}#prop-${propName}`
+					: componentUrl
 			}`;
 	};
 }
