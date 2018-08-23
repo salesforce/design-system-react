@@ -34,7 +34,7 @@ import Label from '../utilities/label';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-import { FORMS_INPUT } from '../../utilities/constants';
+import { INPUT } from '../../utilities/constants';
 
 const defaultProps = {
 	assistiveText: {
@@ -47,7 +47,7 @@ const defaultProps = {
  * The HTML `input` with a label and error messaging.
  */
 const Input = createReactClass({
-	displayName: FORMS_INPUT,
+	displayName: INPUT,
 
 	propTypes: {
 		/**
@@ -279,7 +279,7 @@ const Input = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(FORMS_INPUT, this.props);
+		checkProps(INPUT, this.props);
 
 		this.generatedId = shortid.generate();
 		if (this.props.errorText) {
