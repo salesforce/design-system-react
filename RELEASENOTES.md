@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.22
+
+**Bugfixes**
+
+* Fixes v0.8.21 CommonJS/ES6 module versions of this library which had an undefined error that is a high priority blocker. See 0.8.21 release tag for more details on the bug.
+
 ## Release 0.8.21
 
 * DataTable's `onChange` replaced with `onRowChange`. `onChange`'s parameters are `(selectedArrayOfItems, event)`. `onRowChange` standardizes the parameters with the rest of the library with `event, { selection:[array] }`.
