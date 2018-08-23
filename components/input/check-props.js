@@ -8,13 +8,13 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 // import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 
-import { FORMS_INPUT, FORMS_SEARCH } from '../../utilities/constants';
+import { INPUT, SEARCH } from '../../utilities/constants';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		if (COMPONENT === FORMS_INPUT) {
+		if (COMPONENT === INPUT) {
 			// Deprecated and changed to another property
 			deprecatedProperty(
 				COMPONENT,
@@ -81,7 +81,7 @@ if (process.env.NODE_ENV !== 'production') {
 				});
 			}
 			*/
-		} else if (COMPONENT === FORMS_SEARCH) {
+		} else if (COMPONENT === SEARCH) {
 			if (typeof props.assistiveText === 'string') {
 				sunsetProperty(
 					COMPONENT,

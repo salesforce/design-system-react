@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 
-import { FORMS_INPUT } from '../../../utilities/constants';
+import { INPUT } from '../../../utilities/constants';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
 import Input from '../';
@@ -38,7 +38,7 @@ const searchIconClickable = (
 	/>
 );
 
-storiesOf(FORMS_INPUT, module)
+storiesOf(INPUT, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium">{getStory()}</div>
 	))

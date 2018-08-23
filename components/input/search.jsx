@@ -22,7 +22,7 @@ import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
 // ## Constants
-import { FORMS_SEARCH } from '../../utilities/constants';
+import { SEARCH } from '../../utilities/constants';
 
 const handleKeyDown = (event, onSearch) => {
 	if (event.keyCode === KEYS.ENTER) {
@@ -39,7 +39,7 @@ const defaultProps = {
  * A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.
  */
 const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
-	checkProps(FORMS_SEARCH, props);
+	checkProps(SEARCH, props);
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -75,7 +75,7 @@ const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
 	);
 };
 
-Search.displayName = FORMS_SEARCH;
+Search.displayName = SEARCH;
 
 Search.propTypes = {
 	/**
