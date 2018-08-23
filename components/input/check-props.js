@@ -62,7 +62,7 @@ if (process.env.NODE_ENV !== 'production') {
 			}
 
 			onlyOneOfProperties(COMPONENT, {
-				assistiveText: props.assistiveText,
+				'assistiveText.label': props.assistiveText && props.assistiveText.label,
 				label: props.label,
 			});
 
