@@ -12,19 +12,19 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 ## Add a new component
 
 1. Create a new issue or add to an existing one.
-    1. **List out all public props**, so that props can be consistent across the library. You are proposing an API that hopefully will never have to be changed.
+   1. **List out all public props**, so that props can be consistent across the library. You are proposing an API that hopefully will never have to be changed.
 1. Build out the component file structure
-    1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
-`. 
+   1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
 1. Connect the newly created files
-    1. Add public component exports to `/components/index.js`.
-    1. Add the component's name to `/components/constants.js`
-    1. Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
-    1.	Add Storybook and site examples in `/components/[COMPONENT]/__docs__/`.
-    1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
-				1. Then import `__docs__` examples file into the documentation site by adding them to `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
-    1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here.
-    1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries.
+   1. Add public component exports to `/components/index.js`.
+   1. Add the component's name to `/components/constants.js`
+   1. Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
+   1. Add Storybook and site examples in `/components/[COMPONENT]/__docs__/`.
+   1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
+   1. Then import `__docs__` examples file into the documentation site by adding them to `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
+   1. Review the [tests readme](/tests/README.md)
+   1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here. `npm run snapshot-test` will run these tests by themselves
+   1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries. These tests can be viewed at `http://localhost:8001`
 1. Push to your username's forked repository.
 1. Submit a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
 1. We'll review your code, suggest any needed changes, and hopefully merge it in soon. Thank you!
