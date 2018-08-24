@@ -9,7 +9,7 @@ class Example extends React.Component {
 				id="brand-band-large"
 				size="large"
 			>
-				<strong>Hello World!</strong>
+				<span className="slds-assistive-text">Hello World!</span>
 			</BrandBand>
 		);
 	}
