@@ -72,6 +72,7 @@ const GlobalHeaderDemo = (props) => (
 			globalAction
 			iconCategory="utility"
 			iconName="add"
+			id="global-header-dropdown-example"
 			onSelect={action('Action Selected')}
 			options={[
 				{
@@ -97,6 +98,7 @@ const GlobalHeaderDemo = (props) => (
 			openOn={props.openOn}
 			assistiveText={{ icon: 'Setup' }}
 			iconName="setup"
+			id="global-header-dropdown-example"
 			onSelect={action('Action Selected')}
 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
 		/>
@@ -106,6 +108,7 @@ const GlobalHeaderDemo = (props) => (
 			onClick={action('Notifications Clicked')}
 		/>
 		<GlobalHeaderProfile
+			id="global-header-dropdown-profile-example"
 			openOn={props.openOn}
 			onClick={action('Profile Clicked')}
 			onSelect={action('Profile Selected')}
@@ -129,10 +132,12 @@ storiesOf(GLOBAL_HEADER, module)
 			<GlobalHeaderDropdown
 				assistiveText={{ icon: 'Setup' }}
 				iconName="setup"
+				id="global-header-dropdown-example"
 				onSelect={action('Action Selected')}
 				options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
 			/>
 			<GlobalHeaderProfile
+				id="global-header-dropdown-profile-example"
 				onClick={action('Profile Clicked')}
 				onSelect={action('Profile Selected')}
 				options={[{ label: 'Profile Menu' }]}

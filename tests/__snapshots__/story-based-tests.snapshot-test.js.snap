@@ -2951,8 +2951,8 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
       >
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-By_HeDYOXIX"
-          id="By_HeDYOXIX"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -2985,7 +2985,7 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
         <li
           aria-haspopup="true"
           className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small"
-          id="HktBlPYumLm"
+          id="global-header-dropdown-profile-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3113,8 +3113,8 @@ exports[`DOM snapshots SLDSGlobalHeader Open on Hybrid 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click slds-p-around--xx-small ignore-click-r1BHgPY_XI7"
-          id="r1BHgPY_XI7"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click slds-p-around--xx-small ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3168,8 +3168,8 @@ exports[`DOM snapshots SLDSGlobalHeader Open on Hybrid 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-HyIrlDKdX8Q"
-          id="HyIrlDKdX8Q"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3224,7 +3224,7 @@ exports[`DOM snapshots SLDSGlobalHeader Open on Hybrid 1`] = `
         <li
           aria-haspopup="true"
           className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small"
-          id="HkvrlPYdmUX"
+          id="global-header-dropdown-profile-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3352,8 +3352,8 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click slds-p-around--xx-small ignore-click-S1-rxvYO7Lm"
-          id="S1-rxvYO7Lm"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click slds-p-around--xx-small ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3407,8 +3407,8 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-ryfSePtO7Im"
-          id="ryfSePtO7Im"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3463,7 +3463,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
         <li
           aria-haspopup="true"
           className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small"
-          id="SJQSlDFum8Q"
+          id="global-header-dropdown-profile-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3591,8 +3591,8 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click slds-p-around--xx-small ignore-click-SkjHlwY_XLm"
-          id="SkjHlwY_XLm"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click slds-p-around--xx-small ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3646,8 +3646,8 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-HJhBgvtOX8Q"
-          id="HJhBgvtOX8Q"
+          className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -3702,7 +3702,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
         <li
           aria-haspopup="true"
           className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small"
-          id="H1THePKO7IX"
+          id="global-header-dropdown-profile-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
