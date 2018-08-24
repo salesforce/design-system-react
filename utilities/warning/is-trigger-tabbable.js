@@ -10,9 +10,9 @@ import {
 	BUTTON,
 	BUTTON_STATEFUL,
 	BUTTON_GROUP,
-	FORMS_CHECKBOX,
+	CHECKBOX,
 	DATE_PICKER,
-	FORMS_INPUT,
+	INPUT,
 	LOOKUP,
 	TIME_PICKER,
 } from '../../utilities/constants';
@@ -40,9 +40,9 @@ if (process.env.NODE_ENV !== 'production') {
 			trigger.type.displayName !== BUTTON &&
 			trigger.type.displayName !== BUTTON_STATEFUL &&
 			trigger.type.displayName !== BUTTON_GROUP &&
-			trigger.type.displayName !== FORMS_CHECKBOX &&
+			trigger.type.displayName !== CHECKBOX &&
 			trigger.type.displayName !== DATE_PICKER &&
-			trigger.type.displayName !== FORMS_INPUT &&
+			trigger.type.displayName !== INPUT &&
 			trigger.type.displayName !== LOOKUP &&
 			trigger.type.displayName !== TIME_PICKER
 		) {

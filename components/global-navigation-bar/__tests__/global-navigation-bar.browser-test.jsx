@@ -58,16 +58,17 @@ describe('Global Navigation Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has wrapping div and one primary region', function () {
-			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			expect(component).to.have.length(1);
-
-			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.have.length(1);
+			expect(
+				this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.be.present();
 		});
 
 		it('Primary region DOES not have divider on right', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.nodes[0].className).to.not.include(
+			expect(primary).to.not.have.className(
 				'slds-context-bar__item--divider-right'
 			);
 		});
@@ -89,16 +90,12 @@ describe('Global Navigation Bar: ', () => {
 
 		it('has custom cloud and theme CSS', function () {
 			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			expect(
-				component.hasClass(
-					`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`
-				)
-			).to.be.true;
-			expect(
-				component.hasClass(
-					`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`
-				)
-			).to.be.true;
+			expect(component).to.have.className(
+				`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`
+			);
+			expect(component).to.have.className(
+				`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`
+			);
 		});
 	});
 
@@ -170,29 +167,27 @@ describe('Global Navigation Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has 1 primary, 1 secondary, and 1 tertiary region', function () {
-			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.have.length(1);
-
-			const secondary = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
-			expect(secondary).to.have.length(1);
-
-			const tertiary = this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`);
-			expect(tertiary).to.have.length(1);
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`)
+			).to.be.present();
 		});
 
 		it('Primary region has divider on right due to secondary region', function () {
-			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.nodes[0].className).to.include(
-				'slds-context-bar__item--divider-right'
-			);
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.have.className('slds-context-bar__item--divider-right');
 		});
 
 		it('Secondary region application is a nav HTML element and has divider on right side', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
-			expect(nav.node.className).to.include(
-				'slds-context-bar__item--divider-right'
-			);
+			expect(nav).to.have.className('slds-context-bar__item--divider-right');
 		});
 
 		it('displays active items as active', function () {
@@ -237,7 +232,7 @@ describe('Global Navigation Bar: ', () => {
 			this.wrapper = mount(instance, {
 				attachTo: document.body.appendChild(document.createElement('div')),
 			});
-			link = this.wrapper.find('#home-link');
+			link = this.wrapper.find('li#home-link');
 		});
 
 		afterEach(function () {
@@ -268,7 +263,7 @@ describe('Global Navigation Bar: ', () => {
 			this.wrapper = mount(instance, {
 				attachTo: document.body.appendChild(document.createElement('div')),
 			});
-			const link = this.wrapper.find('#global-nav__button');
+			const link = this.wrapper.find('button#global-nav__button');
 			expect(link.text()).to.equal('Button');
 			link.simulate('click');
 			expect(buttonClicked.calledOnce).to.be.true;
@@ -283,7 +278,7 @@ describe('Global Navigation Bar: ', () => {
 			this.wrapper = mount(instance, {
 				attachTo: document.body.appendChild(document.createElement('div')),
 			});
-			const item = this.wrapper.find('#test-text');
+			const item = this.wrapper.find('span#test-text');
 			expect(item.text()).to.equal('Text');
 
 			this.wrapper.unmount();

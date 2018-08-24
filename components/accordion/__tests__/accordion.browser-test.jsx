@@ -152,7 +152,7 @@ describe('Accordion', function () {
 		it('renders an accordion', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
 			const accordion = wrapper.find(Accordion);
-			expect();
+			expect(accordion).to.be.present;
 		});
 
 		it('renders `panelContentActions` component, if passed', () => {
@@ -179,18 +179,23 @@ describe('Accordion', function () {
 
 		it('triggers a change callback on panel select', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const panel = wrapper.find('SLDSAccordionPanel').first();
-			expect(panel.props().expanded).to.be.false;
-			panel.find('.slds-accordion__summary-action').simulate('click');
-			expect(panel.props().expanded).to.be.true;
+			const panel = () => wrapper.find('SLDSAccordionPanel').first();
+			expect(panel()).to.have.prop('expanded', false);
+			panel()
+				.find('button.slds-accordion__summary-action')
+				.simulate('click');
+			expect(panel()).to.have.prop('expanded', true);
 		});
 
 		it('`aria-expanded` set to true on panel select', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const panel = wrapper.find('SLDSAccordionPanel').first();
-			const button = panel.find('.slds-accordion__summary-action');
-			panel.find('.slds-accordion__summary-action').simulate('click');
-			expect(button.props()['aria-expanded']).to.be.true;
+			const panel = () => wrapper.find('SLDSAccordionPanel').first();
+			panel()
+				.find('button.slds-accordion__summary-action')
+				.simulate('click');
+			expect(
+				panel().find('button.slds-accordion__summary-action')
+			).to.have.prop('aria-expanded', true);
 		});
 	});
 });

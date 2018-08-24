@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 /* Enzyme Helpers that can mount and unmount React component instances to

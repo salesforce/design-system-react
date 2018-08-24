@@ -76,7 +76,8 @@ const propTypes = {
 			PropTypes.shape({
 				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 					.isRequired,
-				label: PropTypes.string.isRequired,
+				label: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+					.isRequired,
 				type: PropTypes.string.isRequired,
 			}),
 		])

@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
 import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 import IconSettings from '../../icon-settings';
 import AppLauncher from '../../app-launcher';
@@ -51,17 +51,9 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 			'.slds-context-bar__icon-action'
 		);
 
-		/*
-		 * How to write tests for react-modal using portal
-		 * http://remarkablemark.org/blog/2017/05/17/testing-react-modal/
-		 */
-		const portalNode = ReactDOM.findDOMNode(
-			handles.appLauncher.find(ReactModal).node.portal
-		); // eslint-disable-line react/no-find-dom-node
-
 		// Wrap the modal portal in an Enzyme wrapper
 		handles.modal = new ReactWrapper(
-			handles.appLauncher.find(ReactModal).node.portal,
+			handles.appLauncher.find(ReactModal).getElement().portal,
 			true
 		);
 	}
@@ -106,23 +98,21 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('renders modal', () => {
-			should.exist(handles.modal);
+			expect(handles.modal).to.be.present;
 		});
 
 		it('renders custom modal class', () => {
-			should.exist(handles.modal.find('.custom-modal-class'));
+			should.exist(handles.appLauncher.find('.custom-modal-class'));
 		});
 
 		it('renders modal header', () => {
-			should.exist(handles.modal.find('.slds-app-launcher__header'));
+			should.exist(handles.appLauncher.find('.slds-app-launcher__header'));
 		});
 
 		it('app launcher title can be set', () => {
-			expect(
-				handles.modal.contains(
-					<h2 className="slds-text-heading--medium">App Launcher!</h2>
-				)
-			).to.equal(true);
+			expect(handles.appLauncher).to.contain(
+				<h2 className="slds-text-heading--medium">App Launcher!</h2>
+			);
 		});
 
 		it('renders search bar', () => {
@@ -138,12 +128,12 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('closing modal fires callback', () => {
-			Simulate.click(handles.modal.find('.slds-modal__close').node);
+			handles.appLauncher.find('button.slds-modal__close').simulate('click');
 			expect(onClose.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});
 
 		it('close modal callback receives original event as arg', () => {
-			Simulate.click(handles.modal.find('.slds-modal__close').node);
+			handles.appLauncher.find('button.slds-modal__close').simulate('click');
 			expect(onClose.args.length).to.equal(1);
 		});
 
@@ -156,8 +146,10 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('app launcher can be passed children', () => {
-			should.exist(handles.modal.find('SLDSAppLauncherSection'));
-			expect(handles.modal.find('SLDSAppLauncherTile').length).to.equal(2);
+			should.exist(handles.appLauncher.find('SLDSAppLauncherSection'));
+			expect(handles.appLauncher.find('SLDSAppLauncherTile').length).to.equal(
+				2
+			);
 		});
 	});
 
@@ -200,18 +192,18 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('App Launcher Icon link has proper classes', () => {
-			expect(handles.appLauncherIcon.find('button').node.className).to.include(
-				'slds-icon-waffle_container slds-context-bar__button'
-			);
+			const button = handles.appLauncherIcon.find('button');
+			expect(button).to.have.className('slds-icon-waffle_container');
+			expect(button).to.have.className('slds-context-bar__button');
 		});
 
 		it('clicking App Launcher Icon fires callback', () => {
-			Simulate.click(handles.appLauncherIcon.find('button').node);
+			handles.appLauncherIcon.find('button').simulate('click');
 			expect(triggerOnClick.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});
 
 		it('App Launcher Icon callback receives original event as arg', () => {
-			Simulate.click(handles.appLauncherIcon.find('button').node);
+			handles.appLauncherIcon.find('button').simulate('click');
 			expect(triggerOnClick.args.length).to.equal(1);
 		});
 

@@ -29,13 +29,13 @@ import shortid from 'shortid';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-import { FORMS_TEXTAREA } from '../../utilities/constants';
+import { TEXTAREA } from '../../utilities/constants';
 
 /**
  * A multi-line plain-text editing control.
  */
 const Textarea = createReactClass({
-	displayName: FORMS_TEXTAREA,
+	displayName: TEXTAREA,
 
 	propTypes: {
 		/**
@@ -206,7 +206,7 @@ const Textarea = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(FORMS_TEXTAREA, this.props);
+		checkProps(TEXTAREA, this.props);
 
 		this.generatedId = shortid.generate();
 		if (this.props.errorText) {
