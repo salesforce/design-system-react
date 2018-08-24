@@ -2,8 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
-import logo from '../__examples__/logo.svg';
-
+import Avatar from '../../avatar';
 import GlobalHeader from '../../global-header';
 import GlobalHeaderButton from '../../global-header/button';
 import GlobalHeaderDropdown from '../../global-header/dropdown';
@@ -12,7 +11,7 @@ import GlobalHeaderSearch from '../../global-header/search';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
-import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
+// import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
 
 /* eslint-disable react/prop-types */
 /* eslint-disable no-script-url */
@@ -47,7 +46,9 @@ const GlobalHeaderDemo = (props) => (
 	<GlobalHeader
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
-		navigation={globalNavigationBar(props)}
+		// Add back for visual review with navigation present.
+		// The presence of React Modal in App Launcher in Global Navigation prevents Jest (node) testing.
+		// navigation={globalNavigationBar(props)}
 		assistiveText={{
 			skipToContent: 'Skip to Main Content',
 			skipToNavAssistiveText: 'Skip to Navigation',
@@ -108,6 +109,7 @@ const GlobalHeaderDemo = (props) => (
 			openOn={props.openOn}
 			onClick={action('Profile Clicked')}
 			onSelect={action('Profile Selected')}
+			avatar={props.avatar}
 		>
 			<HeaderProfileCustomContent />
 		</GlobalHeaderProfile>
@@ -123,7 +125,7 @@ storiesOf(GLOBAL_HEADER, module)
 	.add('Search + Navigation', () => <GlobalHeaderDemo />)
 	.add('Open on Hybrid', () => <GlobalHeaderDemo openOn="hybrid" />)
 	.add('Fewer Elements', () => (
-		<GlobalHeader logoSrc={logo}>
+		<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
 			<GlobalHeaderDropdown
 				assistiveText={{ icon: 'Setup' }}
 				iconName="setup"
@@ -136,4 +138,7 @@ storiesOf(GLOBAL_HEADER, module)
 				options={[{ label: 'Profile Menu' }]}
 			/>
 		</GlobalHeader>
+	))
+	.add('With custom <Avatar/>', () => (
+		<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
 	));

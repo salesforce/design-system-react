@@ -5160,10 +5160,18 @@
                         },
                         "avatar": {
                             "type": {
-                                "name": "string"
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
                             },
                             "required": false,
-                            "description": "An image URL to display for the user profile."
+                            "description": "An image URL or avatar node to display for the user profile."
                         },
                         "buttonClassName": {
                             "type": {
