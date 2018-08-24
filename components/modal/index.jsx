@@ -31,6 +31,9 @@ import Button from '../button';
 import { MODAL } from '../../utilities/constants';
 import componentDoc from './docs.json';
 
+const documentDefined = typeof document !== 'undefined';
+const windowDefined = typeof window !== 'undefined';
+
 const propTypes = {
 	/**
 	 * Vertical alignment of Modal.
@@ -288,13 +291,13 @@ class Modal extends React.Component {
 
 	setReturnFocus () {
 		this.setState({
-			returnFocusTo: document.activeElement,
+			returnFocusTo: documentDefined ? document.activeElement : null,
 		});
 	}
 
 	// eslint-disable-next-line class-methods-use-this
 	clearBodyScroll () {
-		if (window && document && document.body) {
+		if (windowDefined && documentDefined && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
@@ -428,7 +431,7 @@ class Modal extends React.Component {
 	}
 
 	updateBodyScroll () {
-		if (window && document && document.body) {
+		if (windowDefined && documentDefined && document.body) {
 			if (this.props.isOpen) {
 				document.body.style.overflow = 'hidden';
 			} else {

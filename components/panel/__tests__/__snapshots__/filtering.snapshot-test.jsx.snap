@@ -1,6 +1,250 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Panel Filtering Default HTML Snapshot 1`] = `
+exports[`Panel Filtering Default Snapshot DOM Snapshot 1`] = `
+<div
+  className="slds-panel slds-grid slds-grid--vertical slds-nowrap slds-panel--filters"
+>
+  <div
+    className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical"
+  >
+    <div
+      className="slds-filters"
+    >
+      <div
+        className="slds-filters__header slds-grid slds-has-divider--bottom-space"
+      >
+        <h2
+          className="slds-align-middle slds-text-heading--small"
+        >
+          Filter
+        </h2>
+        <button
+          className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small slds-col--bump-left"
+          disabled={false}
+          onClick={[Function]}
+          title="Close Panel"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#forward"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Close Panel
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-filters__body"
+      >
+        <ol
+          className="slds-list--vertical slds-list--vertical-space"
+        >
+          <li
+            className="slds-item slds-hint-parent"
+          >
+            <div
+              className="slds-filters__item slds-grid slds-grid--vertical-align-center"
+            >
+              <div
+                className="slds-grow"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <button
+                  className="slds-button--reset slds-grow slds-has-blur-focus"
+                  id="sample-panel-filtering-show-me"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Edit filter:
+                  </span>
+                  <p
+                    className="slds-text-body--small"
+                  >
+                    Show Me
+                  </p>
+                  <p>
+                    All Products
+                  </p>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <h3
+          className="slds-text-body--small slds-m-vertical--x-small"
+        >
+          Matching all these filters
+        </h3>
+        <ol
+          className="slds-list--vertical slds-list--vertical-space"
+        >
+          <li
+            className="slds-item slds-hint-parent"
+          >
+            <div
+              className="slds-filters__item slds-grid slds-grid--vertical-align-center"
+            >
+              <div
+                className="slds-grow"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <button
+                  className="slds-button--reset slds-grow slds-has-blur-focus"
+                  id="sample-panel-filtering-created-date"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Edit filter:
+                  </span>
+                  <p
+                    className="slds-text-body--small"
+                  >
+                    Created Date
+                  </p>
+                  <p>
+                    equals THIS WEEK
+                  </p>
+                </button>
+              </div>
+              <button
+                className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+                disabled={false}
+                onClick={[Function]}
+                title="Remove Filter: Created Date equals THIS WEEK"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon--hint"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Remove Filter: Created Date equals THIS WEEK
+                </span>
+              </button>
+            </div>
+          </li>
+          <li
+            className="slds-item slds-hint-parent"
+          >
+            <div
+              className="slds-filters__item slds-grid slds-grid--vertical-align-center"
+            >
+              <div
+                className="slds-grow"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <button
+                  className="slds-button--reset slds-grow slds-has-blur-focus"
+                  id="sample-panel-filtering-list-price"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Edit filter:
+                  </span>
+                  <p
+                    className="slds-text-body--small"
+                  >
+                    List Price
+                  </p>
+                  <p>
+                    greater than "500"
+                  </p>
+                </button>
+              </div>
+              <button
+                className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+                disabled={false}
+                onClick={[Function]}
+                title="Remove Filter: List Price greater than \\"500\\""
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon--hint"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Remove Filter: List Price greater than "500"
+                </span>
+              </button>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div
+        className="slds-filters__footer slds-grid slds-shrink-none"
+      >
+        <button
+          className="slds-button--reset slds-text-link"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Add Filter
+        </button>
+        <button
+          className="slds-button--reset slds-text-link slds-col--bump-left"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Remove All
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Panel Filtering Default Snapshot HTML Snapshot 1`] = `
 "<div class=\\"slds-panel slds-grid slds-grid--vertical slds-nowrap slds-panel--filters\\">
   <div class=\\"slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical\\">
     <div class=\\"slds-filters\\">
@@ -11,7 +255,7 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
         <ol class=\\"slds-list--vertical slds-list--vertical-space\\">
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
-              <div class=\\"slds-grow\\" style=\\"display:inline-block;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
             </div>
           </li>
         </ol>
@@ -19,14 +263,14 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
         <ol class=\\"slds-list--vertical slds-list--vertical-space\\">
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
-              <div class=\\"slds-grow\\" style=\\"display:inline-block;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-created-date\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Created Date</p><p>equals THIS WEEK</p></button></div>
+              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-created-date\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Created Date</p><p>equals THIS WEEK</p></button></div>
               <button
                 class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Created Date equals THIS WEEK\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Created Date equals THIS WEEK</span></button>
             </div>
           </li>
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
-              <div class=\\"slds-grow\\" style=\\"display:inline-block;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-list-price\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">List Price</p><p>greater than &quot;500&quot;</p></button></div>
+              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-list-price\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">List Price</p><p>greater than &quot;500&quot;</p></button></div>
               <button
                 class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: List Price greater than &quot;500&quot;\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: List Price greater than &quot;500&quot;</span></button>
             </div>
@@ -37,170 +281,4 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
   </div>
 </div>
 </div>"
-`;
-
-exports[`Panel Filtering Default Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
->
-  <SLDSPanel
-    variant="filters"
-  >
-    <SLDSFilterGroup
-      addFilterLabel="Add Filter"
-      assistiveText={
-        Object {
-          "closeButton": "Close Panel",
-        }
-      }
-      cancelLabel="Cancel"
-      heading="Filter"
-      modified={false}
-      onClickAdd={[Function]}
-      onClickRemoveAll={[Function]}
-      onRequestCancel={[Function]}
-      onRequestClose={[Function]}
-      onRequestSave={[Function]}
-      removeAllLabel="Remove All"
-      saveLabel="Save"
-      variant="panel"
-    >
-      <SLDSFilterList>
-        <SLDSFilter
-          align="left"
-          assistiveText={
-            Object {
-              "editFilter": "Edit filter:",
-              "editFilterHeading": "Choose filter criteria",
-            }
-          }
-          id="sample-panel-filtering-show-me"
-          isPermanent={true}
-          onChange={[Function]}
-          predicate="All Products"
-          property="Show Me"
-        >
-          <SLDSMenuPicklist
-            checkmark={true}
-            inheritTargetWidth={true}
-            isInline={true}
-            label="Show Me"
-            labels={
-              Object {
-                "multipleOptionsSelected": "Multiple Options Selected",
-              }
-            }
-            menuPosition="absolute"
-            onSelect={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "All Products",
-                  "value": "all-products",
-                },
-                Object {
-                  "label": "All Wackamoles",
-                  "value": "all-Wackamoles",
-                },
-              ]
-            }
-            placeholder="Select record type"
-            value="all-products"
-          />
-        </SLDSFilter>
-      </SLDSFilterList>
-      <SLDSPanelFilterListHeading
-        heading="Matching all these filters"
-        label="Matching all these filters"
-        lockedLabel="Locked filters"
-      />
-      <SLDSFilterList>
-        <SLDSFilter
-          align="left"
-          assistiveText={
-            Object {
-              "editFilter": "Edit filter:",
-              "editFilterHeading": "Choose filter criteria",
-            }
-          }
-          id="sample-panel-filtering-created-date"
-          onChange={[Function]}
-          onRemove={[Function]}
-          predicate="equals THIS WEEK"
-          property="Created Date"
-        >
-          <SLDSMenuPicklist
-            checkmark={true}
-            inheritTargetWidth={true}
-            isInline={true}
-            label="Created Date EQUALS"
-            labels={
-              Object {
-                "multipleOptionsSelected": "Multiple Options Selected",
-              }
-            }
-            menuPosition="absolute"
-            onSelect={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "equals THIS WEEK",
-                  "value": "this-week",
-                },
-                Object {
-                  "label": "equals LAST WEEK",
-                  "value": "last-week",
-                },
-              ]
-            }
-            placeholder="Select a time range"
-            value="this-week"
-          />
-        </SLDSFilter>
-        <SLDSFilter
-          align="left"
-          assistiveText={
-            Object {
-              "editFilter": "Edit filter:",
-              "editFilterHeading": "Choose filter criteria",
-            }
-          }
-          id="sample-panel-filtering-list-price"
-          onChange={[Function]}
-          onRemove={[Function]}
-          predicate="greater than \\"500\\""
-          property="List Price"
-        >
-          <SLDSMenuPicklist
-            checkmark={true}
-            inheritTargetWidth={true}
-            isInline={true}
-            label="List Price"
-            labels={
-              Object {
-                "multipleOptionsSelected": "Multiple Options Selected",
-              }
-            }
-            menuPosition="absolute"
-            onSelect={[Function]}
-            options={
-              Array [
-                Object {
-                  "label": "greater than \\"500\\"",
-                  "value": "greater-than-500",
-                },
-                Object {
-                  "label": "greater than \\"100\\"",
-                  "value": "greater-than-100",
-                },
-              ]
-            }
-            placeholder="Select a price"
-            value="greater-than-500"
-          />
-        </SLDSFilter>
-      </SLDSFilterList>
-    </SLDSFilterGroup>
-  </SLDSPanel>
-</SLDSIconSettings>
 `;

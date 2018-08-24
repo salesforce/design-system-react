@@ -1,6 +1,3 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { testDOMandHTML } from '../../../tests/snapshot-helpers';
 
 import IconGroup from '../__examples__/icon-group';

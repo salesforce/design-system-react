@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 import SLDSPopoverTooltip from '../../popover-tooltip';
 import SLDSButton from '../../button';
@@ -115,7 +115,7 @@ describe('SLDSTooltip: ', function () {
 				setTimeout(() => {
 					expect(getTip(document.body)).to.be.null;
 					done();
-				}, 600);
+				}, 60);
 			});
 		});
 	});

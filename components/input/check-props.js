@@ -9,7 +9,7 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-import { FORMS_INPUT, FORMS_SEARCH } from '../../utilities/constants';
+import { INPUT, SEARCH } from '../../utilities/constants';
 
 let checkProps = function () {};
 
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		if (COMPONENT === FORMS_INPUT) {
+		if (COMPONENT === INPUT) {
 			const iconDeprecatedMessage = `Please use \`iconLeft\` and \`iconRight\` to pass in a customized <Icon> component. ${createDocUrl()}`;
 
 			// Deprecated and changed to another property
@@ -71,7 +71,8 @@ if (process.env.NODE_ENV !== 'production') {
 			onlyOneOfProperties(
 				COMPONENT,
 				{
-					assistiveText: props.assistiveText,
+					'assistiveText.label':
+						props.assistiveText && props.assistiveText.label,
 					label: props.label,
 				},
 				createDocUrl('assistiveText')
@@ -96,7 +97,7 @@ if (process.env.NODE_ENV !== 'production') {
 				});
 			}
 			*/
-		} else if (COMPONENT === FORMS_SEARCH) {
+		} else if (COMPONENT === SEARCH) {
 			if (typeof props.assistiveText === 'string') {
 				sunsetProperty(
 					COMPONENT,
