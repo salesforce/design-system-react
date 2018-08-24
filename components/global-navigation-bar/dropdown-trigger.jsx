@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 import Button from '../button';
 
@@ -112,7 +113,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 	},
 
 	componentWillMount () {
-		checkProps(MENU_DROPDOWN_TRIGGER, this.props);
+		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
 	},
 
 	// ### Render

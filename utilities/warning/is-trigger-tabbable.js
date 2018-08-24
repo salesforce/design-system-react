@@ -53,7 +53,7 @@ if (process.env.NODE_ENV !== 'production') {
 					/* eslint-disable max-len */
 					warning(
 						elementIsTabbable,
-						`[Design System React] The element that triggers ${COMPONENT} must be tabbable for  keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable.${additionalComment}`
+						`[Design System React] The element that triggers ${COMPONENT} must be tabbable for keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable. ${additionalComment}`
 					);
 					/* eslint-enable max-len */
 					hasWarned[COMPONENT] = !!elementIsTabbable;

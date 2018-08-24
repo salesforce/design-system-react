@@ -16,6 +16,7 @@ import Input from './index';
 import InputIcon from '../icon/input-icon';
 
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
@@ -39,7 +40,7 @@ const defaultProps = {
  * A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.
  */
 const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
-	checkProps(SEARCH, props);
+	checkProps(SEARCH, props, componentDoc);
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText

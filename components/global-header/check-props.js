@@ -3,22 +3,27 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
 		deprecatedProperty(
 			COMPONENT,
 			props.skipToContentAssistiveText,
 			'skipToContentAssistiveText',
-			"assistiveText['skipToContent']"
+			"assistiveText['skipToContent']",
+			createDocUrl('assistiveText')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.skipToNavAssistiveText,
 			'skipToNavAssistiveText',
-			"assistiveText['skipToNav']"
+			"assistiveText['skipToNav']",
+			createDocUrl('assistiveText')
 		);
 	};
 }

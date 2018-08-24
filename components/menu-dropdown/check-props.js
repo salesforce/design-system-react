@@ -6,18 +6,23 @@ import oneOfRequiredProperty from '../../utilities/warning/one-of-required-prope
 import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
 		sunsetProperty(
 			COMPONENT,
 			props.forceOpen,
 			'forceOpen',
-			'Please use isOpen instead. It provides a consistent prop that aligns with other componenents.'
+			`Please use \`isOpen\` instead. It provides a consistent prop that aligns with other componenents. ${createDocUrl(
+				'isOpen'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -25,19 +30,24 @@ if (process.env.NODE_ENV !== 'production') {
 			props.offset,
 			'offset',
 			undefined,
-			'The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic.'
+			`The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic. ${createDocUrl()}`
 		);
 
-		oneOfRequiredProperty(COMPONENT, {
-			options: props.options,
-			children: props.children,
-		});
+		oneOfRequiredProperty(
+			COMPONENT,
+			{
+				options: props.options,
+				children: props.children,
+			},
+			createDocUrl()
+		);
 
 		if (!props.options) {
 			hasChildrenWithoutDisplayNameOf(
 				COMPONENT,
 				props.children,
-				MENU_DROPDOWN_TRIGGER
+				MENU_DROPDOWN_TRIGGER,
+				createDocUrl('children')
 			);
 		}
 
@@ -45,7 +55,8 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'menuPosition="relative"'
+			'menuPosition="relative"',
+			createDocUrl('menuPosition')
 		);
 	};
 }

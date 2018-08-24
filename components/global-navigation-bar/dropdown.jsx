@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### Dropdown
 import MenuDropdown from '../menu-dropdown';
@@ -22,7 +23,7 @@ import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
 const GlobalNavigationBarDropdown = (props) => {
-	checkProps(GLOBAL_NAVIGATION_BAR_DROPDOWN, props);
+	checkProps(GLOBAL_NAVIGATION_BAR_DROPDOWN, props, componentDoc);
 
 	// Separate props we care about in order to pass others along passively to the dropdown component
 	const {

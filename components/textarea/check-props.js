@@ -5,22 +5,31 @@
 
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		onlyOneOfProperties(COMPONENT, {
-			assistiveText: props.assistiveText,
-			label: props.label,
-		});
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		onlyOneOfProperties(
+			COMPONENT,
+			{
+				assistiveText: props.assistiveText,
+				label: props.label,
+			},
+			createDocUrl()
+		);
 
 		if (typeof props.assistiveText === 'string') {
 			sunsetProperty(
 				COMPONENT,
 				props.assistiveText,
 				'assistiveText',
-				'`assistiveText` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use `assistiveText.label` instead.'
+				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
+					'assistiveText'
+				)}`
 			);
 		}
 	};

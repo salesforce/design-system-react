@@ -29,6 +29,7 @@ import checkAppElementIsSet from '../../utilities/warning/check-app-element-set'
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';
@@ -190,7 +191,7 @@ class Modal extends React.Component {
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
-		checkProps(MODAL, this.props);
+		checkProps(MODAL, this.props, componentDoc);
 		if (this.props.ariaHideApp) {
 			checkAppElementIsSet();
 		}

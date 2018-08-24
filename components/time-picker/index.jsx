@@ -24,6 +24,8 @@ import TimepickerDropdownTrigger from './private/dropdown-trigger';
 // ## Constants
 import { TIME_PICKER } from '../../utilities/constants';
 
+import componentDoc from './docs.json';
+
 /**
  *  Component description.
  */
@@ -137,7 +139,7 @@ const Timepicker = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TIME_PICKER, this.props);
+		checkProps(TIME_PICKER, this.props, componentDoc);
 	},
 
 	componentWillReceiveProps (nextProps) {

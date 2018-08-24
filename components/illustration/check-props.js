@@ -3,12 +3,16 @@
 /* eslint-disable import/no-mutable-exports */
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
+
 /* import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value'; */
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
 		/**
 		 * If illustration SVGs are added to SLDS in the future, we will deprecate the value
 		 * of internalIllustration being true and give a warning.
@@ -26,9 +30,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (props.illustration || props.path) {
 			// An illustration image must be accompanied with a heading text
-			oneOfRequiredProperty(COMPONENT, {
-				heading: props.heading,
-			});
+			oneOfRequiredProperty(
+				COMPONENT,
+				{
+					heading: props.heading,
+				},
+				createDocUrl('heading')
+			);
 		}
 	};
 }

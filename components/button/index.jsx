@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 import PopoverTooltip from '../popover-tooltip';
 
 import { BUTTON } from '../../utilities/constants';
@@ -209,7 +210,7 @@ const Button = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props);
+		checkProps(BUTTON, this.props, componentDoc);
 	},
 
 	getClassName () {

@@ -35,6 +35,7 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { INPUT } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 const defaultProps = {
 	assistiveText: {
@@ -279,7 +280,7 @@ const Input = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(INPUT, this.props);
+		checkProps(INPUT, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 		if (this.props.errorText) {

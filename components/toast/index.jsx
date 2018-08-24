@@ -16,6 +16,7 @@ import Icon from '../icon';
 import checkProps from './check-props';
 import { TOAST } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
+import componentDoc from './docs.json';
 
 const propTypes = {
 	/**
@@ -100,7 +101,7 @@ class Toast extends React.Component {
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TOAST, this.props);
+		checkProps(TOAST, this.props, componentDoc);
 	}
 
 	componentDidMount () {
