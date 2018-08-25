@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import TestUtils from 'react-dom/test-utils';
 
-import SLDSPopoverTooltip from '../../popover-tooltip';
+import SLDSTooltip from '../../tooltip';
 import SLDSButton from '../../button';
 
 const {
@@ -56,7 +56,7 @@ describe('SLDSTooltip: ', function () {
 	const renderTooltip = (inst) => ReactDOM.render(inst, body);
 
 	const createTooltip = (props, kids) =>
-		React.createElement(SLDSPopoverTooltip, props, kids);
+		React.createElement(SLDSTooltip, props, kids);
 
 	const generateTooltip = (props, kids) =>
 		renderTooltip(createTooltip(props, kids));

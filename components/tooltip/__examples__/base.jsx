@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
-import PopoverTooltip from '~/components/popover-tooltip'; // `~` is replaced with design-system-react at runtime
+import Tooltip from '~/components/tooltip'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon';
 
 const Example = createReactClass({
@@ -10,7 +10,7 @@ const Example = createReactClass({
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<PopoverTooltip
+				<Tooltip
 					align="top left"
 					content="Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
 				>
@@ -22,7 +22,7 @@ const Example = createReactClass({
 							size="x-small"
 						/>
 					</a>
-				</PopoverTooltip>
+				</Tooltip>
 			</IconSettings>
 		);
 	},

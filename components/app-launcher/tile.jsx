@@ -12,7 +12,7 @@ import Truncate from '../utilities/truncate';
 
 // ## Children
 import Highlighter from '../utilities/highlighter';
-import PopoverTooltip from '../popover-tooltip';
+import Tooltip from '../tooltip';
 
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
@@ -73,7 +73,7 @@ const AppLauncherTile = (props) => {
 						suffix={props.moreLabel}
 						text={props.description}
 						textTruncateChild={
-							<PopoverTooltip
+							<Tooltip
 								align="bottom"
 								content={
 									<Highlighter search={props.search}>
@@ -88,7 +88,7 @@ const AppLauncherTile = (props) => {
 								>
 									{props.moreLabel}
 								</span>
-							</PopoverTooltip>
+							</Tooltip>
 						}
 						wrapper={(text, textTruncateChild) => (
 							<div>
