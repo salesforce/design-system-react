@@ -1,8 +1,9 @@
 /**
- * @fileoverview Warns against using the deprecated, double-dash style for BEM notation. See https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm.
+ * @fileoverview Warns against using the deprecated, double-dash style for BEM
+ * notation. See:
+ * https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm.
  * @author Kevin Gao
  */
-
 
 //------------------------------------------------------------------------------
 // Rule Definition
@@ -12,7 +13,9 @@ module.exports = {
 	meta: {
 		docs: {
 			description:
-				'Warns against using the deprecated, double-dash style for BEM notation. See https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm.',
+				'Warns against using the deprecated, double-dash style for ' +
+				'BEM notation. See:  ' +
+				'https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm.',
 			category: 'Fill me in',
 			recommended: false,
 		},

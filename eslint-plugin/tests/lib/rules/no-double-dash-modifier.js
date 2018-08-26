@@ -1,15 +1,17 @@
 /**
- * @fileoverview Warns against using the deprecated, double-dash style for BEM notation. See https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm.
+ * @fileoverview Warns against using the deprecated, double-dash style for BEM
+ * notation. See:
+ * https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm.
  * @author Kevin Gao
  */
-
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-let rule = require('../../../lib/rules/no-double-dash-modifier'),
-	RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-double-dash-modifier');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const RuleTester = require('eslint').RuleTester;
 
 //------------------------------------------------------------------------------
 // Tests
