@@ -17,10 +17,28 @@ const RuleTester = require('eslint').RuleTester;
 // Tests
 //------------------------------------------------------------------------------
 
+const parserOptions = {
+	ecmaVersion: 6,
+	ecmaFeatures: {
+		jsx: true,
+	},
+};
+
 const ruleTester = new RuleTester();
 ruleTester.run('no-double-dash-modifier', rule, {
 	valid: [
-		// give me some code that won't trigger a warning
+		{
+			code: '<div className="slds-p-around_medium"/>',
+			parserOptions,
+		},
+		{
+			code: '<div className="slds-p-around_medium slds-m-around_medium"/>',
+			parserOptions,
+		},
+		{
+			code: '<div className="some-other-bem--modifier"/>',
+			parserOptions,
+		},
 	],
 
 	invalid: [
@@ -28,10 +46,38 @@ ruleTester.run('no-double-dash-modifier', rule, {
 			code: '<div className="slds-p-around--medium"/>',
 			errors: [
 				{
-					message: 'Fill me in.',
-					type: 'Me too',
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-p-around--medium".',
 				},
 			],
+			parserOptions,
+		},
+		{
+			code: '<div className="slds-p-around--medium slds-m-around--medium"/>',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-p-around--medium", "slds-m-around--medium".',
+				},
+			],
+			parserOptions,
+		},
+		{
+			code:
+				'<div className="another-class slds-p-around--medium and-another"/>',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-p-around--medium".',
+				},
+			],
+			parserOptions,
 		},
 	],
 });
