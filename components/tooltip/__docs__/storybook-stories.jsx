@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
 import { POPOVER_TOOLTIP } from '../../../utilities/constants';
-import PopoverTooltip from '../../popover-tooltip';
+import Tooltip from '../../tooltip';
 
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
@@ -15,9 +15,9 @@ import Icon from '../../icon';
 import Button from '../../button';
 
 const getPopoverTooltip = (props) => (
-	<PopoverTooltip {...props}>
+	<Tooltip {...props}>
 		<Button label="Trigger Tooltip" />
-	</PopoverTooltip>
+	</Tooltip>
 );
 
 const getPopoverTooltipAlign = (props) => {
@@ -42,9 +42,9 @@ const getPopoverTooltipAlign = (props) => {
 	align.forEach((value) => {
 		children.push(
 			<div key={value} style={{ margin: '100px auto' }}>
-				<PopoverTooltip {...props} align={value}>
+				<Tooltip {...props} align={value}>
 					{props.trigger}
-				</PopoverTooltip>
+				</Tooltip>
 			</div>
 		);
 	});

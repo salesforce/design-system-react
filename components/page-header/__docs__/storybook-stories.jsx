@@ -11,7 +11,7 @@ import SLDSButtonStateful from '../../button-stateful';
 import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
 import SLDSMenuDropdown from '../../menu-dropdown';
-import PopoverTooltip from '../../popover-tooltip';
+import Tooltip from '../../tooltip';
 
 import ObjectHome from '../__examples__/object-home';
 
@@ -117,11 +117,11 @@ const customTooltip = () => {
 	const content =
 		'here is a super long description that will truncate and the rest of it will show in the tooltip.';
 	return (
-		<PopoverTooltip align="top" content={content}>
+		<Tooltip align="top" content={content}>
 			<p tabIndex="0" className="slds-truncate">
 				{content}
 			</p>
-		</PopoverTooltip>
+		</Tooltip>
 	);
 };
 
