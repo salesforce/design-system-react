@@ -315,9 +315,11 @@ exports[`DOM snapshots SLDSBrandBand Large 1`] = `
       className="slds-brand-band slds-brand-band_large custom-brand-band-class"
       id="brand-band-large"
     >
-      <strong>
+      <span
+        className="slds-assistive-text"
+      >
         Hello World!
-      </strong>
+      </span>
     </div>
   </div>
 </div>
