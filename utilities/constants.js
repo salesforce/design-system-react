@@ -8,6 +8,8 @@ export const APP_LAUNCHER_SECTION = 'SLDSAppLauncherSection';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
 export const APP_LAUNCHER_HEADER = 'SLDSAppLauncherHeader';
 export const AVATAR = 'SLDSAvatar';
+export const BRAND_BAND = 'SLDSBrandBand';
+
 /* Remove at next breaking change */
 export const BREAD_CRUMB = 'SLDSBreadcrumb';
 
