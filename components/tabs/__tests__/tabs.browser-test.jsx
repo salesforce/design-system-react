@@ -2,7 +2,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import classNames from 'classnames';
@@ -289,8 +289,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
-			const myThirdPanel = this.wrapper.find(`#${id}-slds-tabs--panel-2`);
+			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			let myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -298,7 +298,9 @@ describe('Tabs', () => {
 			expect(myThirdPanel.hasClass('slds-show')).to.equal(false);
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.click(myTabsListItems.nodes[2], {});
+			myTabsListItems.at(2).simulate('click');
+			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -318,8 +320,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
-			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
+			const myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			const mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -327,7 +329,7 @@ describe('Tabs', () => {
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.click(myTabsListItems.nodes[1], {});
+			myTabsListItems.at(1).simulate('click');
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -347,9 +349,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
-
-			const myThirdPanel = this.wrapper.find(`#${id}-slds-tabs--panel-2`);
+			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			let myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -357,16 +358,18 @@ describe('Tabs', () => {
 			expect(myThirdPanel.hasClass('slds-show')).to.equal(false);
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.keyDown(myTabsListItems.nodes[0], {
+			myTabsListItems.at(0).simulate('keyDown', {
 				key: 'Tab',
 				keyCode: 9,
 				which: 9,
 			});
-			Simulate.keyDown(myTabsListItems.nodes[0], {
+			myTabsListItems.at(0).simulate('keyDown', {
 				key: 'Right',
 				keyCode: 39,
 				which: 39,
 			});
+			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -386,8 +389,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
-			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
+			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			let mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -395,16 +398,18 @@ describe('Tabs', () => {
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.keyDown(myTabsListItems.nodes[0], {
+			myTabsListItems.at(0).simulate('keyDown', {
 				key: 'Tab',
 				keyCode: 9,
 				which: 9,
 			});
-			Simulate.keyDown(myTabsListItems.nodes[0], {
+			myTabsListItems.at(0).simulate('keyDown', {
 				key: 'Right',
 				keyCode: 39,
 				which: 39,
 			});
+			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -432,8 +437,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
-			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
+			const myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
+			const mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -441,7 +446,7 @@ describe('Tabs', () => {
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.click(myTabsListItems.nodes[1], {});
+			myTabsListItems.at(1).simulate('click');
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);

@@ -43,7 +43,7 @@ const DatepickerYearSelector = createReactClass({
 		const opts = [];
 
 		for (let year = fromYear; year < toYear; year += 1) {
-			opts.push({ label: `${year}`, value: year, id: opts.length });
+			opts.push({ label: `${year}`, value: year, id: String(opts.length) });
 		}
 		return opts;
 	},
@@ -73,6 +73,7 @@ const DatepickerYearSelector = createReactClass({
 			<div className="slds-form-element slds-align-content-center">
 				<Combobox
 					className="slds-shrink-none"
+					classNameMenu="slds-datepicker"
 					events={{
 						onSelect: this.handleSelect,
 					}}

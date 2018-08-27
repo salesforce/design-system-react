@@ -20,6 +20,7 @@ import isFunction from 'lodash.isfunction';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ## Children
 import Modal from '../modal';
@@ -145,7 +146,7 @@ const AppLauncher = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER, this.props);
+		checkProps(APP_LAUNCHER, this.props, componentDoc);
 	},
 
 	openAppLauncher (event) {

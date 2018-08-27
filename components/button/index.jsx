@@ -11,7 +11,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
-import PopoverTooltip from '../popover-tooltip';
+import componentDoc from './docs.json';
+import Tooltip from '../tooltip';
 
 import { BUTTON } from '../../utilities/constants';
 
@@ -209,7 +210,7 @@ const Button = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props);
+		checkProps(BUTTON, this.props, componentDoc);
 	},
 
 	getClassName () {
@@ -353,11 +354,7 @@ const Button = createReactClass({
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
 	renderTooltip () {
-		return (
-			<PopoverTooltip content={this.props.tooltip}>
-				{this.renderButton}
-			</PopoverTooltip>
-		);
+		return <Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>;
 	},
 
 	render () {

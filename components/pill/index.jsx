@@ -14,6 +14,7 @@ import EventUtil from '../../utilities/event';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 const propTypes = {
 	/**
@@ -115,7 +116,7 @@ const propTypes = {
  */
 class Pill extends React.Component {
 	componentWillMount () {
-		checkProps(PILL);
+		checkProps(PILL, componentDoc);
 	}
 
 	getHref = () =>

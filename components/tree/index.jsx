@@ -13,6 +13,7 @@ import Branch from './private/branch';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ## Constants
 import { TREE } from '../../utilities/constants';
@@ -76,7 +77,8 @@ const propTypes = {
 			PropTypes.shape({
 				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 					.isRequired,
-				label: PropTypes.string.isRequired,
+				label: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+					.isRequired,
 				type: PropTypes.string.isRequired,
 			}),
 		])
@@ -141,7 +143,7 @@ class Tree extends React.Component {
 	}
 
 	componentWillMount () {
-		checkProps(TREE, this.props);
+		checkProps(TREE, this.props, componentDoc);
 	}
 
 	componentWillReceiveProps (nextProps) {

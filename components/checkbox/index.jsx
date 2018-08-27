@@ -21,8 +21,9 @@ import EventUtil from '../../utilities/event';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
-import { FORMS_CHECKBOX } from '../../utilities/constants';
+import { CHECKBOX } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -159,7 +160,7 @@ const defaultProps = {
  */
 class Checkbox extends React.Component {
 	componentWillMount () {
-		checkProps(FORMS_CHECKBOX, this.props);
+		checkProps(CHECKBOX, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}
 
@@ -384,7 +385,7 @@ class Checkbox extends React.Component {
 	}
 }
 
-Checkbox.displayName = FORMS_CHECKBOX;
+Checkbox.displayName = CHECKBOX;
 Checkbox.propTypes = propTypes;
 Checkbox.defaultProps = defaultProps;
 

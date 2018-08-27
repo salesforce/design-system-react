@@ -20,6 +20,7 @@ import Icon from '../icon';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -152,7 +153,7 @@ class Tooltip extends React.Component {
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER_TOOLTIP, this.props);
+		checkProps(POPOVER_TOOLTIP, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 	}

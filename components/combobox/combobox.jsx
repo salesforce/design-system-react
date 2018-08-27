@@ -32,6 +32,7 @@ import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import checkProps from './check-props';
 
 import { COMBOBOX } from '../../utilities/constants';
+import componentDoc from './docs.json';
 
 let currentOpenDropdown;
 
@@ -293,7 +294,7 @@ class Combobox extends React.Component {
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(COMBOBOX, this.props);
+		checkProps(COMBOBOX, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 		if (this.props.errorText) {

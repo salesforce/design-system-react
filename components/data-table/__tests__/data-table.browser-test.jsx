@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
 import chai from 'chai';
 
@@ -326,7 +326,7 @@ describe('DataTable: ', function () {
 			const secondColumn = thead.querySelectorAll('th')[1];
 
 			Simulate.click(secondColumn, {});
-			setTimeout(done, 600);
+			setTimeout(done, 0);
 		});
 	});
 
@@ -419,7 +419,7 @@ describe('DataTable: ', function () {
 				const menu = getMenu(document.body);
 				const firstAction = menu.querySelectorAll('.slds-dropdown__item')[0];
 				Simulate.click(firstAction.querySelector('a'), {});
-			}, 100);
+			}, 0);
 		});
 	});
 

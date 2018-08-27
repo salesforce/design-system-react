@@ -115,11 +115,11 @@ exports[`Base Closed DOM Snapshot 1`] = `
 `;
 
 exports[`Base Closed HTML Snapshot 1`] = `
-"<div style=\\"height:90vh;\\">
-  <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
-    <div style=\\"max-width:0px;\\" class=\\"slds-split-view_container slds-is-closed\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button\\" title=\\"Open split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Open split view</span></button></div>
+"<div style=\\"height:90vh\\">
+  <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
+    <div style=\\"max-width:0\\" class=\\"slds-split-view_container slds-is-closed\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button\\" title=\\"Open split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Open split view</span></button></div>
     <div
-      style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+      style=\\"margin-left:0.75rem\\" class=\\"slds-grow slds-scrollable_y\\">
       <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"John Gardner\\">John Gardner</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"70\\">70</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
@@ -956,9 +956,9 @@ exports[`Base Multiple DOM Snapshot 1`] = `
 `;
 
 exports[`Base Multiple HTML Snapshot 1`] = `
-"<div style=\\"height:90vh;\\">
-  <div id=\\"base-multiple-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
-    <div style=\\"max-width:20rem;\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-multiple-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
+"<div style=\\"height:90vh\\">
+  <div id=\\"base-multiple-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
+    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-multiple-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
       <article
         id=\\"master_view_base-multiple-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet\\">
@@ -998,7 +998,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0px;\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
           <ul
             class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" aria-multiselectable=\\"true\\" role=\\"listbox\\">
             <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"99\\">99</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Biotech, Inc.\\">Biotech, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Biotech, Inc.\\">Nurturing</span></div></div></a></li>
@@ -1065,7 +1065,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
         </div>
         </article>
     </div>
-    <div style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+    <div style=\\"margin-left:0.75rem\\" class=\\"slds-grow slds-scrollable_y\\">
       <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"John Gardner\\">John Gardner</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"70\\">70</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
@@ -1901,9 +1901,9 @@ exports[`Base Open DOM Snapshot 1`] = `
 `;
 
 exports[`Base Open HTML Snapshot 1`] = `
-"<div style=\\"height:90vh;\\">
-  <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
-    <div style=\\"max-width:20rem;\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
+"<div style=\\"height:90vh\\">
+  <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
+    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
       <article
         id=\\"master_view_base-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet\\">
@@ -1943,7 +1943,7 @@ exports[`Base Open HTML Snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0px;\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
           <ul
             class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" role=\\"listbox\\">
             <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"99\\">99</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Biotech, Inc.\\">Biotech, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Biotech, Inc.\\">Nurturing</span></div></div></a></li>
@@ -2010,7 +2010,7 @@ exports[`Base Open HTML Snapshot 1`] = `
         </div>
         </article>
     </div>
-    <div style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+    <div style=\\"margin-left:0.75rem\\" class=\\"slds-grow slds-scrollable_y\\">
       <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"John Gardner\\">John Gardner</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"70\\">70</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
@@ -2584,9 +2584,9 @@ exports[`Custom DOM Snapshot 1`] = `
 `;
 
 exports[`Custom HTML Snapshot 1`] = `
-"<div style=\\"height:90vh;\\">
-  <div id=\\"custom-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
-    <div style=\\"max-width:20rem;\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_custom-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
+"<div style=\\"height:90vh\\">
+  <div id=\\"custom-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
+    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_custom-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
       <article
         id=\\"master_view_custom-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet\\">
@@ -2626,7 +2626,7 @@ exports[`Custom HTML Snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0px;\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
           <ul
             class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" role=\\"listbox\\">
             <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-call\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#call\\"></use></svg></span><span class=\\"slds-text-heading_small slds-m-left_medium\\">Riley Shultz</span></div></a></li>
@@ -2661,7 +2661,7 @@ exports[`Custom HTML Snapshot 1`] = `
         </div>
         </article>
     </div>
-    <div style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+    <div style=\\"margin-left:0.75rem\\" class=\\"slds-grow slds-scrollable_y\\">
       <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Bobby Tree\\">Bobby Tree</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
         <dd class=\\"slds-item_detail slds-truncate\\" title=\\"89\\">89</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>

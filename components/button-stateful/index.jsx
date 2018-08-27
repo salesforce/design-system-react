@@ -21,6 +21,7 @@ import isFunction from 'lodash.isfunction';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
@@ -144,7 +145,7 @@ class ButtonStateful extends React.Component {
 	}
 
 	componentWillMount () {
-		checkProps(BUTTON_STATEFUL, this.props);
+		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
 	}
 
 	getClassName (active) {

@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
-import { FORMS_TEXTAREA } from '../../../utilities/constants';
+import { TEXTAREA } from '../../../utilities/constants';
 import Textarea from '../';
 
-storiesOf(FORMS_TEXTAREA, module)
+storiesOf(TEXTAREA, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>

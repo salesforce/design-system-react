@@ -3,7 +3,7 @@
 import React, { createFactory } from 'react';
 import createReactClass from 'create-react-class';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
 

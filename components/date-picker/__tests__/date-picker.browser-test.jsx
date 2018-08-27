@@ -7,16 +7,6 @@ import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
 import IconSettings from '../../icon-settings';
 
-/* Enzyme Helpers that can mount and unmount React component instances to
- * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
- * context [full source here](tests/enzyme-helpers.js). `this` can
- * only be referenced if inside `function () {}`.
- */
-import {
-	createMountNode,
-	destroyMountNode,
-} from '../../../tests/enzyme-helpers';
-
 // Import your internal dependencies (for example):
 import Datepicker from '../../date-picker';
 import Input from '../../input';
@@ -72,33 +62,21 @@ const DemoComponent = createReactClass({
  * as much as possible/appropriate.`
  */
 describe('SLDSDatepicker', function () {
-	let mountNode;
 	let wrapper;
 
-	const triggerClassSelector = '.slds-input__icon';
+	const triggerClassSelector = 'button.slds-input__icon';
 
 	describe('Assistive technology', () => {
-		/* Detect if presence of accessibility features such as ARIA
-		 * roles and screen reader text is present in the DOM.
-		 */
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-		});
-
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
+		afterEach(() => wrapper.unmount());
 
 		it('has aria-haspopup, correct aria-expanded on input trigger.', function () {
-			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent isOpen />);
 
 			const inputTrigger = wrapper.find(triggerClassSelector);
-			expect(inputTrigger.node.getAttribute('aria-haspopup')).to.equal('true');
+			expect(inputTrigger).to.have.attr('aria-haspopup', 'true');
 
-			const ariaExpanded = inputTrigger
-				.find('button')
-				.node.getAttribute('aria-expanded');
-			expect(ariaExpanded).to.equal('true');
+			const ariaExpanded = inputTrigger.find('button');
+			expect(ariaExpanded).to.have.attr('aria-expanded', 'true');
 		});
 	});
 
@@ -110,20 +88,13 @@ describe('SLDSDatepicker', function () {
 			children: <Input placeholder={customPlaceholder} value="" />,
 		};
 
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-		});
-
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
+		afterEach(() => wrapper.unmount());
 
 		it('has custom input with custom placeholder', function () {
-			wrapper = mount(<DemoComponent {...optionalProps} />, {
-				attachTo: mountNode,
-			});
+			wrapper = mount(<DemoComponent {...optionalProps} />);
 
-			expect(wrapper.find('input').node.getAttribute('placeholder')).to.equal(
+			expect(wrapper.find('input')).to.have.attr(
+				'placeholder',
 				customPlaceholder
 			);
 		});
@@ -132,37 +103,33 @@ describe('SLDSDatepicker', function () {
 	// EVENTS
 
 	describe('onClose, onRequestClose, onOpen callbacks are set', function () {
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-		});
-
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
+		afterEach(() => wrapper.unmount());
 
 		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function (done) {
 			wrapper = mount(
 				<DemoComponent
+					menuPosition="relative"
 					onClose={() => {
 						setTimeout(() => {
 							const month = wrapper.find('.datepicker__month');
-							expect(month.node).to.not.exist;
+							expect(month).to.not.be.present;
 							done();
 						}, 0);
 					}}
 					onRequestClose={() => {
 						const month = wrapper.find('.datepicker__month');
-						expect(month.node).to.exist;
+						expect(month).to.be.present;
 					}}
 					onOpen={() => {
-						const firstDayOfMonth = wrapper
-							.find('.datepicker__month [aria-disabled=false]')
-							.first();
-						expect(firstDayOfMonth).to.exist;
-						firstDayOfMonth.simulate('click', {});
+						setTimeout(() => {
+							const firstDayOfMonth = wrapper
+								.find('.datepicker__month [aria-disabled=false]')
+								.first();
+							expect(firstDayOfMonth).to.be.present;
+							firstDayOfMonth.simulate('click', {});
+						}, 0);
 					}}
-				/>,
-				{ attachTo: mountNode }
+				/>
 			);
 
 			const trigger = wrapper.find(triggerClassSelector);
@@ -172,11 +139,11 @@ describe('SLDSDatepicker', function () {
 		it('onChange is triggered when date is selected', function (done) {
 			wrapper = mount(
 				<DemoComponent
+					menuPosition="relative"
 					onChange={(event, data) => {
-						console.log('onChange');
 						setTimeout(() => {
 							const input = wrapper.find('input');
-							expect(input.node.value).to.equal('1/1/2007');
+							expect(input).to.have.value('1/1/2007');
 
 							// test callback parameters
 							expect(data.date.getTime()).to.equal(
@@ -188,14 +155,15 @@ describe('SLDSDatepicker', function () {
 						}, 0);
 					}}
 					onOpen={() => {
-						const firstDayOfMonth = wrapper
-							.find('.datepicker__month [aria-disabled=false]')
-							.first();
-						expect(firstDayOfMonth).to.exist;
-						firstDayOfMonth.simulate('click', {});
+						setTimeout(() => {
+							const firstDayOfMonth = wrapper
+								.find('.datepicker__month [aria-disabled=false]')
+								.first();
+							expect(firstDayOfMonth).to.exist;
+							firstDayOfMonth.simulate('click', {});
+						});
 					}}
-				/>,
-				{ attachTo: mountNode }
+				/>
 			);
 
 			const trigger = wrapper.find(triggerClassSelector);
@@ -208,36 +176,32 @@ describe('SLDSDatepicker', function () {
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
 		describe('Esc when menu is open', function () {
-			beforeEach(() => {
-				mountNode = createMountNode({ context: this });
-			});
-
-			afterEach(() => {
-				destroyMountNode({ wrapper, mountNode });
-			});
+			afterEach(() => wrapper.unmount());
 
 			it('opens on trigger click, closes on ESC', function (done) {
 				wrapper = mount(
 					<DemoComponent
+						menuPosition="relative"
 						onClose={() => {
 							setTimeout(() => {
 								const month = wrapper.find('.datepicker__month');
-								expect(month.node).to.not.exist;
+								expect(month).to.not.be.present;
 								done();
 							}, 0);
 						}}
 						onOpen={() => {
-							const firstDayOfMonth = wrapper
-								.find('.datepicker__month [aria-disabled=false]')
-								.first();
-							firstDayOfMonth.simulate('keyDown', {
-								key: 'Esc',
-								keyCode: KEYS.ESCAPE,
-								which: KEYS.ESCAPE,
-							});
+							setTimeout(() => {
+								const firstDayOfMonth = wrapper
+									.find('.datepicker__month [aria-disabled=false]')
+									.first();
+								firstDayOfMonth.simulate('keyDown', {
+									key: 'Esc',
+									keyCode: KEYS.ESCAPE,
+									which: KEYS.ESCAPE,
+								});
+							}, 0);
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const trigger = wrapper.find(triggerClassSelector);
@@ -248,14 +212,14 @@ describe('SLDSDatepicker', function () {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
+						menuPosition="relative"
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
 								new Date(2007, 0, 13).getTime()
 							);
 							done();
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const selectedDay = wrapper.find(
@@ -272,14 +236,14 @@ describe('SLDSDatepicker', function () {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
+						menuPosition="relative"
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
 								new Date(2007, 0, 7).getTime()
 							);
 							done();
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const selectedDay = wrapper.find(
@@ -296,14 +260,14 @@ describe('SLDSDatepicker', function () {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
+						menuPosition="relative"
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
 								new Date(2006, 11, 30).getTime()
 							);
 							done();
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const selectedDay = wrapper.find(
@@ -320,14 +284,14 @@ describe('SLDSDatepicker', function () {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
+						menuPosition="relative"
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
 								new Date(2007, 0, 5).getTime()
 							);
 							done();
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const selectedDay = wrapper.find(
@@ -344,12 +308,12 @@ describe('SLDSDatepicker', function () {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
+						menuPosition="relative"
 						onCalendarFocus={(event, data) => {
 							expect(data.ref.textContent).to.equal('Previous month');
 							done();
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const selectedDay = wrapper.find(
@@ -366,12 +330,12 @@ describe('SLDSDatepicker', function () {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
+						menuPosition="relative"
 						onCalendarFocus={(event, data) => {
 							expect(data.ref.textContent).to.equal('Today');
 							done();
 						}}
-					/>,
-					{ attachTo: mountNode }
+					/>
 				);
 
 				const selectedDay = wrapper.find(
@@ -391,69 +355,53 @@ describe('SLDSDatepicker', function () {
 		const triggerClicked = sinon.spy();
 		const dialogOpened = sinon.spy();
 
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-		});
+		afterEach(() => wrapper.unmount());
 
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
-
-		it('onOpen is not called when disabled', function (done) {
+		it('onOpen is not called when disabled', function () {
 			wrapper = mount(
 				<DemoComponent
 					disabled
+					menuPosition="relative"
 					onClick={triggerClicked}
 					onOpen={dialogOpened}
-				/>,
-				{ attachTo: mountNode }
+				/>
 			);
 
-			const trigger = wrapper.find('#sample-datepicker');
-			trigger.simulate('click', {});
+			wrapper.simulate('click', {});
 
-			setTimeout(() => {
-				expect(dialogOpened.callCount).to.equal(0);
-				done();
-			}, 200);
+			expect(dialogOpened.callCount).to.equal(0);
 		});
 	});
 
 	describe('Disable dates', () => {
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-		});
-
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
+		afterEach(() => wrapper.unmount());
 
 		it('disable weekends', (done) => {
 			wrapper = mount(
 				<DemoComponent
 					isOpen
+					menuPosition="relative"
 					value={new Date(2007, 0, 5)}
 					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
-				/>,
-				{ attachTo: mountNode }
+				/>
 			);
 
-			const input = wrapper.find('input');
-			expect(input.node.value).to.equal('1/5/2007');
+			const input = wrapper.find('input').first();
+			expect(input).to.have.value('1/5/2007');
 
 			const disabledDay = wrapper
 				.find('.datepicker__month [aria-disabled=true]')
 				.first();
 			disabledDay.simulate('click', {});
 
-			expect(input.node.value).to.equal('1/5/2007');
+			expect(input).to.have.value('1/5/2007');
 
 			const day = wrapper
 				.find('.datepicker__month [aria-disabled=false]')
 				.first();
 			day.simulate('click', {});
 
-			expect(input.node.value).to.equal('1/1/2007');
+			expect(input).to.have.value('1/1/2007');
 			done();
 
 			const trigger = wrapper.find(triggerClassSelector);

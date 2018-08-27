@@ -4,17 +4,22 @@
 /* eslint-disable  max-len */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function (COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
 		deprecatedProperty(
 			COMPONENT,
 			props.onFocus,
 			'onFocus',
 			undefined,
-			'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.'
+			`Please see children prop description and add your own \`Input\` with this prop as a child of Datepicker. ${createDocUrl(
+				'children'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -22,7 +27,9 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onBlur,
 			'onBlur',
 			undefined,
-			'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.'
+			`Please see children prop description and add your own \`Input\` with this prop as a child of Datepicker. ${createDocUrl(
+				'children'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -30,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onFocus,
 			'abbrWeekDayLabels',
 			'abbreviatedWeekDayLabels',
-			'Prop name has changed.'
+			`Prop name has changed. ${createDocUrl('labels')}`
 		);
 
 		deprecatedProperty(
@@ -38,7 +45,9 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onFocus,
 			'onDateChange',
 			'onChange',
-			'Please see prop description for `onChange`. Parameters have changed. The callback recieves an event and a data object of the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`'
+			`Please see prop description for \`onChange\`. Parameters have changed. The callback receives an event and a data object of the shape: \`{date: [Date object], formattedDate: [string], timezoneOffset: [number]}\` ${createDocUrl(
+				'onChange'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -46,7 +55,9 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onFocus,
 			'onKeyDown',
 			undefined,
-			'Please see children prop description and add your own `Input` as a child of Datepicker.'
+			`Please see children prop description and add your own \`Input\` as a child of Datepicker. ${createDocUrl(
+				'children'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -54,16 +65,25 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onFocus,
 			'required',
 			undefined,
-			'Please see children prop description and add your own `Input` as a child of Datepicker.'
+			`Please see children prop description and add your own \`Input\` as a child of Datepicker. ${createDocUrl(
+				'children'
+			)}`
 		);
 
-		deprecatedProperty(COMPONENT, props.strValue, 'strValue', 'formattedValue');
+		deprecatedProperty(
+			COMPONENT,
+			props.strValue,
+			'strValue',
+			'formattedValue',
+			createDocUrl('formattedValue')
+		);
 
 		deprecatedProperty(
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'menuPosition="relative"'
+			'menuPosition="relative"',
+			createDocUrl('menuPosition')
 		);
 	};
 }

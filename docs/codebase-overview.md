@@ -2,7 +2,7 @@
 
 ### This page will give you an overview of the library codebase organization, conventions, and implementation. Components will always be moving toward this specification, but may not comply currently.
 
-If you want to [contribute](CONTRIBUTING.md), we hope that this overview will help you feel more comfortable.
+If you want to [contribute](/CONTRIBUTING.md), we hope that this overview will help you feel more comfortable.
 
 ## Top-Level folders
 

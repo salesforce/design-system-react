@@ -28,6 +28,7 @@ import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ## Children
 import DataTableCell from './cell';
@@ -188,7 +189,7 @@ const DataTable = createReactClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATA_TABLE, this.props);
+		checkProps(DATA_TABLE, this.props, componentDoc);
 	},
 
 	handleToggleAll (e, { checked }) {
