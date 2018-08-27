@@ -24,6 +24,9 @@ import classNames from '../../utilities/class-names';
 // ## Constants
 import { BRAND_BAND } from '../../utilities/constants';
 
+/**
+ * The brand band provides theming capability that adds personality and improves information density and contrast.
+ */
 class BrandBand extends React.Component {
 	constructor (props) {
 		super(props);
