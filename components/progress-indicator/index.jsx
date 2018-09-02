@@ -6,6 +6,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import assign from 'lodash.assign';
+
 import find from 'lodash.find';
 
 // ### shortid
@@ -24,17 +26,10 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `completedStep`: Label for a completed step. The default is `Completed Step`
-	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
-	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
-	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.
-	 * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
+	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
 	assistiveText: PropTypes.shape({
-		completedStep: PropTypes.string,
-		disabledStep: PropTypes.string,
 		percentage: PropTypes.string,
-		step: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -54,7 +49,7 @@ const propTypes = {
 	 */
 	disabledSteps: PropTypes.array,
 	/**
-	 * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step. If an error occurs a second error icon should be placed to the left of related confirmation buttons (e.g. Cancel, Save) and an Error Popover should appear indicating there are errors. These additional items are NOT part of this component. This note was included for visibility purposes. Please refer to [SLDS website](https://www.lightningdesignsystem.com/components/progress-indicator/) for full details **
+	 * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step.
 	 */
 	errorSteps: PropTypes.array,
 	/**
@@ -111,12 +106,7 @@ const defaultSteps = [
 ];
 
 const defaultProps = {
-	assistiveText: {
-		completedStep: 'Completed',
-		disabledStep: 'Disabled',
-		errorStep: 'Error',
-		step: 'Step',
-	},
+	assistiveText: {},
 	errorSteps: [],
 	completedSteps: [],
 	disabledSteps: [],
@@ -175,17 +165,10 @@ class ProgressIndicator extends React.Component {
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = {
-			...defaultProps.assistiveText,
-			...this.props.assistiveText,
-		};
+		const assistiveText = this.props
+			? assign({}, defaultProps.assistiveText, this.props.assistiveText)
+			: defaultProps.assistiveText;
 
-		const {
-			selectedStep,
-			disabledSteps,
-			errorSteps,
-			completedSteps,
-		} = this.props;
 		/** 1. preparing data */
 		const allSteps = this.getSteps();
 
@@ -216,14 +199,13 @@ class ProgressIndicator extends React.Component {
 			>
 				{allSteps.map((step, i) => (
 					<Step
-						assistiveText={assistiveText}
 						key={`${this.getId()}-${step.id}`}
 						id={this.getId()}
 						index={i}
-						isSelected={findStep(step, selectedStep)}
-						isDisabled={findStep(step, disabledSteps)}
-						isError={findStep(step, errorSteps)}
-						isCompleted={findStep(step, completedSteps)}
+						isSelected={findStep(step, this.props.selectedStep)}
+						isDisabled={findStep(step, this.props.disabledSteps)}
+						isError={findStep(step, this.props.errorSteps)}
+						isCompleted={findStep(step, this.props.completedSteps)}
 						onClick={this.props.onStepClick}
 						onFocus={this.props.onStepFocus}
 						step={step}

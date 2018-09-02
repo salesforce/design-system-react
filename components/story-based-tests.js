@@ -65,7 +65,7 @@ export GlobalHeader from '../components/global-header/__docs__/storybook-stories
 // export Notification from '../components/notification/__docs__/storybook-stories';
 // export Panel from '../components/panel/__docs__/storybook-stories';
 // export Popover from '../components/popover/__docs__/storybook-stories';
-export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
+// export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 // export Picklist from '../components/menu-picklist/__docs__/storybook-stories';
 // export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export TimePicker from '../components/time-picker/__docs__/storybook-stories';

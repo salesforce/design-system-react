@@ -28,6 +28,7 @@ class ProgressBar extends React.Component {
 				aria-valuemax="100"
 				aria-valuenow={this.props.value}
 				role="progressbar"
+				tabIndex={0}
 			>
 				<span
 					className="slds-progress-bar__value"
