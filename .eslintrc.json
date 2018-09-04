@@ -114,8 +114,6 @@
 		"no-underscore-dangle": ["error", { "allowAfterThis": true }],
 		//
 		"prefer-object-spread/prefer-object-spread": [2, "always"],
-		// Increases readability of function name
-		"space-before-function-paren": [2, "always"],
 
 		// Can't be used because it doesn't currently recognize props used in functions
 		"react/no-unused-prop-types": "off",
