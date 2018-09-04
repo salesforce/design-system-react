@@ -64,7 +64,7 @@ class CheckboxIndeterminate extends React.Component {
 		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
 	};
 
-	render () {
+	render() {
 		return (
 			<div>
 				<Button onClick={this.changeToIndeterminate} label="Indeterminate" />

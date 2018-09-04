@@ -6,7 +6,7 @@ import BreadCrumb from '~/components/breadcrumb'; // `~` is replaced with design
 const Example = createReactClass({
 	displayName: 'BreadCrumbExample',
 
-	render () {
+	render() {
 		const trail = [<a href="javascript:void(0);">Parent Entity</a>];
 
 		return (

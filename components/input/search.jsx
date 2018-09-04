@@ -45,9 +45,9 @@ const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
 			: {
-				...defaultProps.assistiveText,
-				...props.assistiveText,
-			}.label;
+					...defaultProps.assistiveText,
+					...props.assistiveText,
+				}.label;
 	return (
 		<Input
 			assistiveText={{ label: assistiveText }}

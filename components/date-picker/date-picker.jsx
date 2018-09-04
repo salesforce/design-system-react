@@ -182,7 +182,7 @@ const defaultProps = {
 		openCalendar: 'Open Calendar',
 		previousMonth: 'Previous month',
 	},
-	formatter (date) {
+	formatter(date) {
 		return date
 			? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
 			: '';
@@ -216,7 +216,7 @@ const defaultProps = {
 		],
 	},
 	menuPosition: 'absolute',
-	parser (str) {
+	parser(str) {
 		return new Date(str);
 	},
 	relativeYearFrom: -10,
@@ -232,7 +232,7 @@ const defaultProps = {
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  */
 class Datepicker extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		// Please remove `strValue` on the next breaking change.
 		const formattedValue = props.formattedValue || props.strValue; // eslint-disable-line react/prop-types
@@ -261,14 +261,14 @@ class Datepicker extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATE_PICKER, this.props, componentDoc);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentDate = this.props.value.getTime();
 			const nextDate = nextProps.value.getTime();
@@ -283,7 +283,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	getDatePicker ({ labels, assistiveText }) {
+	getDatePicker({ labels, assistiveText }) {
 		const date = this.state.formattedValue
 			? this.parseDate(this.state.formattedValue)
 			: this.state.value;
@@ -328,7 +328,7 @@ class Datepicker extends React.Component {
 		);
 	}
 
-	getDialog ({ labels, assistiveText }) {
+	getDialog({ labels, assistiveText }) {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
 			? 'relative'
@@ -367,17 +367,17 @@ class Datepicker extends React.Component {
 		) : null;
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getIsOpen () {
+	getIsOpen() {
 		return !!(isBoolean(this.props.isOpen)
 			? this.props.isOpen
 			: this.state.isOpen);
 	}
 
-	setInputRef (component) {
+	setInputRef(component) {
 		this.inputRef = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -389,7 +389,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	handleCalendarChange (event, { date }) {
+	handleCalendarChange(event, { date }) {
 		this.setState({
 			value: date,
 			formattedValue: this.props.formatter(date),
@@ -414,17 +414,17 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
-	handleClickOutside () {
+	handleClickOutside() {
 		this.handleRequestClose();
 	}
 
-	handleClose () {
+	handleClose() {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
 	}
 
-	handleInputChange (event) {
+	handleInputChange(event) {
 		this.setState({
 			formattedValue: event.target.value,
 			inputValue: event.target.value,
@@ -441,7 +441,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		// Don't open if user is selecting text
 		if (
 			event.keyCode &&
@@ -460,7 +460,7 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
-	handleOpen (event, { portal }) {
+	handleOpen(event, { portal }) {
 		if (this.props.onOpen) {
 			this.props.onOpen(event, { portal });
 		}
@@ -470,7 +470,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	handleRequestClose () {
+	handleRequestClose() {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
@@ -484,7 +484,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	openDialog () {
+	openDialog() {
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {
@@ -492,7 +492,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	parseDate (formattedValue) {
+	parseDate(formattedValue) {
 		let parsedDate = this.props.parser(formattedValue);
 		if (
 			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
@@ -503,7 +503,7 @@ class Datepicker extends React.Component {
 		return parsedDate;
 	}
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const assistiveText = assign(

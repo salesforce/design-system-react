@@ -26,7 +26,7 @@ describe('SLDS TEXTAREA **************************************************', () 
 		return ReactDOM.render(instance, body);
 	};
 
-	function removeTextarea () {
+	function removeTextarea() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}

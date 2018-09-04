@@ -77,7 +77,7 @@ const defaultProps = {
 };
 
 const SelectedListBox = (props) =>
-	(props.selection.length >= props.renderAtSelectionLength ? (
+	props.selection.length >= props.renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
 			id={`${props.id}-selected-listbox`}
 			role="listbox"
@@ -105,8 +105,8 @@ const SelectedListBox = (props) =>
 						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
 					const icon = option.icon
 						? React.cloneElement(option.icon, {
-							containerClassName: 'slds-pill__icon_container',
-						})
+								containerClassName: 'slds-pill__icon_container',
+							})
 						: null;
 
 					return (
@@ -154,7 +154,7 @@ const SelectedListBox = (props) =>
 				})}
 			</ul>
 		</div>
-	) : null);
+	) : null;
 
 SelectedListBox.displayName = 'SelectedListBox';
 SelectedListBox.propTypes = propTypes;

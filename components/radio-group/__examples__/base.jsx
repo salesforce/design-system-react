@@ -4,12 +4,12 @@ import RadioGroup from '~/components/radio-group'; // `~` is replaced with desig
 import Radio from '~/components/radio-group/radio'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {};
 	}
 
-	render () {
+	render() {
 		const values = ['Radio Label One', 'Radio Label Two'];
 		const labels = { label: 'Radio Group Label' };
 		if (this.props.errorLabel) {

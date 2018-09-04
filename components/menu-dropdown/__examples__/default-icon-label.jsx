@@ -7,7 +7,7 @@ import Button from '~/components/button/'; // `~` is replaced with design-system
 const Example = createReactClass({
 	displayName: 'DropdownExample',
 
-	render () {
+	render() {
 		return (
 			<Dropdown
 				align="right"

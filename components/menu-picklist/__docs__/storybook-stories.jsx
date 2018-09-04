@@ -32,13 +32,13 @@ const getPicklist = (props) => (
 const MultipleExample = createReactClass({
 	displayName: 'MultiplePicklistExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			selectedIndexes: new Set(),
 		};
 	},
 
-	handleSelect (selectedItem, data) {
+	handleSelect(selectedItem, data) {
 		this.setState((prevState, props) => ({
 			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
 				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
@@ -46,7 +46,7 @@ const MultipleExample = createReactClass({
 		}));
 	},
 
-	render () {
+	render() {
 		console.log(this.state.selectedIndexes);
 
 		return (

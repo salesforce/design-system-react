@@ -85,7 +85,7 @@ class SplitView extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -93,27 +93,27 @@ class SplitView extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 
 		this.setIsOpen(this.props.isOpen);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.isOpen !== this.props.isOpen) {
 			this.setIsOpen(nextProps.isOpen);
 		}
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getMasterViewId () {
+	getMasterViewId() {
 		return `master_view_${this.getId()}`;
 	}
 
-	setIsOpen (isOpen) {
+	setIsOpen(isOpen) {
 		if (isBoolean(isOpen)) {
 			this.setState({
 				isOpen,
@@ -121,7 +121,7 @@ class SplitView extends React.Component {
 		}
 	}
 
-	toggle (event) {
+	toggle(event) {
 		this.setIsOpen(!this.state.isOpen);
 
 		if (this.state.isOpen && this.props.events.onClose) {
@@ -131,7 +131,7 @@ class SplitView extends React.Component {
 		}
 	}
 
-	masterContent () {
+	masterContent() {
 		return this.state.isOpen ? (
 			<article
 				id={this.getMasterViewId()}
@@ -142,7 +142,7 @@ class SplitView extends React.Component {
 		) : null;
 	}
 
-	render () {
+	render() {
 		return (
 			<div
 				id={this.getId()}

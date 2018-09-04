@@ -9,7 +9,7 @@ class Example extends React.Component {
 		console.log(event, 'clicked');
 	};
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Tooltip

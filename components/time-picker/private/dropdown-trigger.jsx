@@ -76,7 +76,7 @@ const TimepickerDropdownTrigger = createReactClass({
 		value: PropTypes.string,
 	},
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		if (this.props.onKeyDown && event.keyCode) {
 			if (
 				event.keyCode === KEYS.ENTER ||
@@ -90,7 +90,7 @@ const TimepickerDropdownTrigger = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		const {
 			iconRight,
 			menu,

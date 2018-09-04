@@ -15,7 +15,7 @@ import IconSettings from '~/components/icon-settings';
 const Example = createReactClass({
 	displayName: 'AppLauncherExample',
 
-	render () {
+	render() {
 		const search = (
 			<Search
 				onChange={() => {

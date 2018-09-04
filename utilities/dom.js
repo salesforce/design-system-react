@@ -8,9 +8,9 @@ import React from 'react';
 /**
  * Traverse all children
  */
-function flatMapChildren (children, iterator) {
+function flatMapChildren(children, iterator) {
 	const result = [];
-	function go (xs) {
+	function go(xs) {
 		return React.Children.map(xs, (child) => {
 			result.push(iterator(child));
 			if (child.type) go(child.props.children);
@@ -23,7 +23,7 @@ function flatMapChildren (children, iterator) {
 /**
  * Perhaps there's a more pragmatic way to do this. Eventually, I suspect we'll have some utils to help find children.
  */
-function hasChild (children, name) {
+function hasChild(children, name) {
 	let flag = false;
 	flatMapChildren(children, (child) => {
 		flag = flag || (child.type && child.type.name === name);
@@ -32,7 +32,7 @@ function hasChild (children, name) {
 }
 
 // findDOMNode complains so filter out strings from virtual dom
-function textContent (children) {
+function textContent(children) {
 	return flatMapChildren(children, (child) => {
 		// eslint-disable-line consistent-return
 		if (typeof child === 'string') return child;

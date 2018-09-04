@@ -179,7 +179,7 @@ class DatepickerCalendarWrapper extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		return (
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				className={classNames(

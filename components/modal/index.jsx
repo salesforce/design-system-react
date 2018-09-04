@@ -175,7 +175,7 @@ const defaultProps = {
  * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
  */
 class Modal extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isClosing: false,
@@ -189,7 +189,7 @@ class Modal extends React.Component {
 		);
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(MODAL, this.props, componentDoc);
 		if (this.props.ariaHideApp) {
@@ -197,12 +197,12 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.setReturnFocus();
 		this.updateBodyScroll();
 	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.props.isOpen !== prevProps.isOpen) {
 			this.updateBodyScroll();
 		}
@@ -226,16 +226,16 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 		this.clearBodyScroll();
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getModal () {
+	getModal() {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
 		const borderRadius =
@@ -289,26 +289,26 @@ class Modal extends React.Component {
 		);
 	}
 
-	setReturnFocus () {
+	setReturnFocus() {
 		this.setState({
 			returnFocusTo: documentDefined ? document.activeElement : null,
 		});
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	clearBodyScroll () {
+	clearBodyScroll() {
 		if (windowDefined && documentDefined && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
 
-	closeModal () {
+	closeModal() {
 		if (this.props.dismissible) {
 			this.dismissModal();
 		}
 	}
 
-	dismissModal () {
+	dismissModal() {
 		this.setState({ isClosing: true });
 		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
 			this.state.returnFocusTo.focus();
@@ -318,7 +318,7 @@ class Modal extends React.Component {
 		}
 	}
 
-	dismissModalOnClickOutside () {
+	dismissModalOnClickOutside() {
 		// if dismissOnClickOutside is not set, default its value to dismissible
 		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
 			? this.props.dismissOnClickOutside
@@ -329,7 +329,7 @@ class Modal extends React.Component {
 		}
 	}
 
-	footerComponent () {
+	footerComponent() {
 		let footer = null;
 		const hasFooter = this.props.footer;
 		const footerClass = {
@@ -352,17 +352,17 @@ class Modal extends React.Component {
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	handleModalClick (event) {
+	handleModalClick(event) {
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}
 	}
 
-	handleSubmitModal () {
+	handleSubmitModal() {
 		this.closeModal();
 	}
 
-	headerComponent () {
+	headerComponent() {
 		let headerContent = this.props.header;
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
@@ -426,11 +426,11 @@ class Modal extends React.Component {
 		);
 	}
 
-	isPrompt () {
+	isPrompt() {
 		return this.props.prompt !== undefined;
 	}
 
-	updateBodyScroll () {
+	updateBodyScroll() {
 		if (windowDefined && documentDefined && document.body) {
 			if (this.props.isOpen) {
 				document.body.style.overflow = 'hidden';
@@ -440,7 +440,7 @@ class Modal extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		const customStyles = {
 			content: {
 				position: 'default',

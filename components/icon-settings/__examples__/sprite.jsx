@@ -12,7 +12,7 @@ import doctypeSprite from '@salesforce-ux/design-system/assets/icons/doctype-spr
 const Example = createReactClass({
 	displayName: 'IconSettingsExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings
 				standardSprite={standardSprite}

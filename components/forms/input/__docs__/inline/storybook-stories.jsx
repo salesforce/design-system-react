@@ -11,13 +11,13 @@ import InlineEdit from '../../inline';
 const DemoInlineEdit = createReactClass({
 	displayName: 'DemoInlineEdit',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			value: 'Edit me inline',
 		};
 	},
 
-	handleChange (eventProps, ...rest) {
+	handleChange(eventProps, ...rest) {
 		action('change')(rest);
 
 		if (eventProps.value === '') {
@@ -27,7 +27,7 @@ const DemoInlineEdit = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		return (
 			<InlineEdit
 				{...this.props}

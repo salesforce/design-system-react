@@ -67,7 +67,7 @@ const recordHomeDetails = [
 	{ label: 'Status', content: 'Status of thing you wanna know' },
 ];
 
-describe('PageHeader: ', function () {
+describe('PageHeader: ', function() {
 	const defaultPropsRecordHome = {
 		iconAssistiveText: 'User',
 		iconCategory: 'standard',
@@ -79,8 +79,8 @@ describe('PageHeader: ', function () {
 		details: recordHomeDetails,
 	};
 
-	describe('Renders basic props', function () {
-		it('renders correct Icon prop', function () {
+	describe('Renders basic props', function() {
+		it('renders correct Icon prop', function() {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />

@@ -173,7 +173,7 @@ const headerTitle = (
 );
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -186,7 +186,7 @@ class Example extends React.Component {
 		this.sortList = this.sortList.bind(this);
 	}
 
-	sortList () {
+	sortList() {
 		const sortDirection =
 			this.state.sortDirection === SORT_OPTIONS.DOWN
 				? SORT_OPTIONS.UP
@@ -195,9 +195,9 @@ class Example extends React.Component {
 		this.setState({
 			options: this.state.options.sort(
 				(a, b) =>
-					(sortDirection === SORT_OPTIONS.DOWN
+					sortDirection === SORT_OPTIONS.DOWN
 						? a.label > b.label
-						: b.label > a.label)
+						: b.label > a.label
 			),
 			sortDirection,
 		});
@@ -205,7 +205,7 @@ class Example extends React.Component {
 
 	// For multiple elements you need to pass an array in order for the scrolling to in the SplitViewList to work.
 	// React also requires a key prop on each items [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys).
-	masterView () {
+	masterView() {
 		return [
 			<SplitViewHeader
 				key="1"
@@ -241,7 +241,7 @@ class Example extends React.Component {
 		];
 	}
 
-	detailView () {
+	detailView() {
 		return this.state.selected.length ? (
 			this.state.selected.map((item) => (
 				<dl
@@ -300,7 +300,7 @@ class Example extends React.Component {
 		);
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ height: '90vh' }}>

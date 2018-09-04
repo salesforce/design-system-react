@@ -4,10 +4,10 @@
 
 import deprecatedProperty from '../../../utilities/warning/deprecated-property';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function(COMPONENT, props) {
 		deprecatedProperty(
 			COMPONENT,
 			props.assistiveTextCloseFilterPanel,

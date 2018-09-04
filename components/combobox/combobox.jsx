@@ -274,7 +274,7 @@ const defaultProps = {
  * A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.
  */
 class Combobox extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -292,7 +292,7 @@ class Combobox extends React.Component {
 	 * Lifecycle methods
 	 */
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(COMBOBOX, this.props, componentDoc);
 
@@ -302,7 +302,7 @@ class Combobox extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		// This logic will maintain the active highlight even when the
 		// option order changes. One example would be the server pushes
 		// data out as the user has the menu open. This logic clears
@@ -336,13 +336,13 @@ class Combobox extends React.Component {
 		}
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		if (currentOpenDropdown === this) {
 			currentOpenDropdown = undefined;
 		}
 	}
 
-	getDialog ({ menuRenderer }) {
+	getDialog({ menuRenderer }) {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
 			? 'relative'
@@ -368,7 +368,7 @@ class Combobox extends React.Component {
 		) : null;
 	}
 
-	getErrorId () {
+	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	}
 
@@ -929,8 +929,8 @@ class Combobox extends React.Component {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
-					containerClassName: 'slds-combobox__input-entity-icon',
-				})
+						containerClassName: 'slds-combobox__input-entity-icon',
+					})
 				: null;
 
 		const value =
@@ -970,8 +970,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-										this.state.activeOption.id
-									}`
+											this.state.activeOption.id
+										}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1117,8 +1117,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-										this.state.activeOption.id
-									}`
+											this.state.activeOption.id
+										}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1221,8 +1221,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-										this.state.activeOption.id
-									}`
+											this.state.activeOption.id
+										}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1273,7 +1273,7 @@ class Combobox extends React.Component {
 		);
 	};
 
-	render () {
+	render() {
 		const props = this.props;
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
@@ -1313,8 +1313,8 @@ class Combobox extends React.Component {
 				/>
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
-						subRenderParameters
-					)
+							subRenderParameters
+						)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);

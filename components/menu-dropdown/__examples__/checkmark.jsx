@@ -6,7 +6,7 @@ import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with desig
 const Example = createReactClass({
 	displayName: 'MediaObjectExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

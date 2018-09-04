@@ -58,16 +58,16 @@ const DataTableRow = createReactClass({
 		selection: PropTypes.array,
 	},
 
-	isSelected () {
+	isSelected() {
 		return !!find(this.props.selection, this.props.item);
 	},
 
-	handleToggle (e, { checked }) {
+	handleToggle(e, { checked }) {
 		return this.props.onToggle(this.props.item, checked, e);
 	},
 
 	// ### Render
-	render () {
+	render() {
 		const isSelected = this.isSelected();
 
 		// i18n
@@ -119,9 +119,9 @@ const DataTableRow = createReactClass({
 				})}
 				{this.props.rowActions
 					? React.cloneElement(this.props.rowActions, {
-						id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
-						item: this.props.item,
-					})
+							id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
+							item: this.props.item,
+						})
 					: null}
 			</tr>
 		);

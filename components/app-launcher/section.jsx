@@ -75,21 +75,21 @@ const AppLauncherSection = createReactClass({
 		onToggleClick: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: true,
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(APP_LAUNCHER_SECTION, this.props, componentDoc);
 	},
 
-	toggleOpen (event) {
+	toggleOpen(event) {
 		this.setState({ isOpen: !this.state.isOpen });
 
 		if (isFunction(this.props.onToggleClick)) {
@@ -97,7 +97,7 @@ const AppLauncherSection = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		const isOpen =
 			this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 		const iconIsOpenClass = isOpen ? 'slds-is-open' : 'slds-is-close';

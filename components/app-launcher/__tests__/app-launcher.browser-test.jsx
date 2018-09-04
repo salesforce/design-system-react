@@ -40,7 +40,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 			</AppLauncherSection>
 		);
 
-	function mountAppLauncher (props) {
+	function mountAppLauncher(props) {
 		handles.appLauncher = mount(
 			<IconSettings iconPath="/assets/icons">
 				{createAppLauncher(props)}
@@ -58,7 +58,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		);
 	}
 
-	function cleanDom () {
+	function cleanDom() {
 		// Removes the modal container element from the bottom of the DOM, this will prevent the 'setState' errors
 		// gotta be a better way to do this..
 		const modalWrapper = document.documentElement.querySelectorAll(

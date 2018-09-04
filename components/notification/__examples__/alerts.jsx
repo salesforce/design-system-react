@@ -7,7 +7,7 @@ import Button from '~/components/button';
 const Example = createReactClass({
 	displayName: 'NotificationExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			baseIsOpen: false,
 			successIsOpen: false,
@@ -16,11 +16,11 @@ const Example = createReactClass({
 		};
 	},
 
-	toggleOpen (event, theme) {
+	toggleOpen(event, theme) {
 		this.setState({ [`${theme}IsOpen`]: !this.state[`${theme}IsOpen`] });
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

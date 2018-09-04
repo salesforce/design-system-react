@@ -134,22 +134,22 @@ const AppLauncher = createReactClass({
 		triggerOnClick: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(APP_LAUNCHER, this.props, componentDoc);
 	},
 
-	openAppLauncher (event) {
+	openAppLauncher(event) {
 		this.setState({ isOpen: true });
 
 		if (isFunction(this.props.triggerOnClick)) {
@@ -157,7 +157,7 @@ const AppLauncher = createReactClass({
 		}
 	},
 
-	closeAppLauncher (event) {
+	closeAppLauncher(event) {
 		this.setState({ isOpen: false });
 
 		if (isFunction(this.props.onClose)) {
@@ -165,7 +165,7 @@ const AppLauncher = createReactClass({
 		}
 	},
 
-	renderSearch () {
+	renderSearch() {
 		let returnVal;
 
 		if (this.props.search) {
@@ -197,7 +197,7 @@ const AppLauncher = createReactClass({
 		return returnVal;
 	},
 
-	render () {
+	render() {
 		const isOpen =
 			this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 

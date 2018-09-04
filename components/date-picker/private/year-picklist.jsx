@@ -36,7 +36,7 @@ const DatepickerYearSelector = createReactClass({
 		yearPicklistButtonRef: PropTypes.func,
 	},
 
-	getOptions () {
+	getOptions() {
 		const now = new Date();
 		const fromYear = now.getFullYear() + this.props.relativeYearFrom;
 		const toYear = now.getFullYear() + this.props.relativeYearTo;
@@ -48,12 +48,12 @@ const DatepickerYearSelector = createReactClass({
 		return opts;
 	},
 
-	getSelectedValueOption () {
+	getSelectedValueOption() {
 		const selectedYear = this.props.initialDateForCalendarRender.getFullYear();
 		return this.getOptions().filter((option) => option.value === selectedYear);
 	},
 
-	handleSelect (event, { selection: selectedValues }) {
+	handleSelect(event, { selection: selectedValues }) {
 		const selectedValue = selectedValues[0]; // safe since we are working with a single selection
 
 		if (selectedValue) {
@@ -67,7 +67,7 @@ const DatepickerYearSelector = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		const selection = this.getSelectedValueOption();
 		return (
 			<div className="slds-form-element slds-align-content-center">

@@ -55,40 +55,40 @@ const DatepickerMonthNavigation = createReactClass({
 		relativeYearTo: PropTypes.number,
 	},
 
-	getMonthLabel () {
+	getMonthLabel() {
 		return this.props.monthLabels[
 			new Date(this.props.initialDateForCalendarRender).getMonth()
 		];
 	},
 
-	getYearLabel () {
+	getYearLabel() {
 		return new Date(this.props.initialDateForCalendarRender).getFullYear();
 	},
 
-	handleClick (event) {
+	handleClick(event) {
 		event.preventDefault();
 		event.stopPropagation();
 	},
 
-	handleYearSelect (initialDateForCalendarRender) {
+	handleYearSelect(initialDateForCalendarRender) {
 		this.props.onChangeMonth(undefined, initialDateForCalendarRender);
 	},
 
-	previousMonthClicked () {
+	previousMonthClicked() {
 		this.props.onChangeMonth(
 			undefined,
 			DateUtil.addMonths(this.props.initialDateForCalendarRender, -1)
 		);
 	},
 
-	nextMonthClicked () {
+	nextMonthClicked() {
 		this.props.onChangeMonth(
 			undefined,
 			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1)
 		);
 	},
 
-	render () {
+	render() {
 		return (
 			<div className="slds-datepicker__filter slds-grid">
 				<div

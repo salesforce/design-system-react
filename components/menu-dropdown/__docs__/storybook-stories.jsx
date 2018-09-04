@@ -57,28 +57,28 @@ const getDropdown = (props) => (
 const DropdownControlled = createReactClass({
 	displayName: 'DropdownControlled',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			forcedState: undefined,
 			menuOptions: options,
 		};
 	},
 
-	handleButtonClickReset () {
+	handleButtonClickReset() {
 		this.setState({ forcedState: undefined });
 	},
 
-	handleOpen (...params) {
+	handleOpen(...params) {
 		action('Force Open')(...params);
 		this.setState({ forcedState: true });
 	},
 
-	handleClose (...params) {
+	handleClose(...params) {
 		action('Force Closed')(...params);
 		this.setState({ forcedState: false });
 	},
 
-	toggleDisabledOption () {
+	toggleDisabledOption() {
 		this.setState((prevState, props) => {
 			prevState.menuOptions.splice(1, 1, {
 				disabled: false,
@@ -89,7 +89,7 @@ const DropdownControlled = createReactClass({
 		});
 	},
 
-	render () {
+	render() {
 		return (
 			<div className="slds-grid">
 				<div className="slds-col">

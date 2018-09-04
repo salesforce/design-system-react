@@ -183,16 +183,16 @@ const DataTable = createReactClass({
 		unbufferedCell: PropTypes.bool,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props, componentDoc);
 	},
 
-	handleToggleAll (e, { checked }) {
+	handleToggleAll(e, { checked }) {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
@@ -206,7 +206,7 @@ const DataTable = createReactClass({
 		}
 	},
 
-	handleRowToggle (item, selected, e) {
+	handleRowToggle(item, selected, e) {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
@@ -235,7 +235,7 @@ const DataTable = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
 		const canSelectRows = this.props.selectRows && numRows > 0;
@@ -333,26 +333,26 @@ const DataTable = createReactClass({
 				<tbody>
 					{numRows > 0
 						? this.props.items.map((item) => {
-							const rowId =
+								const rowId =
 									`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
 									shortid.generate();
-							return (
-								<DataTableRow
-									assistiveText={assistiveText}
-									canSelectRows={canSelectRows}
-									columns={columns}
-									fixedLayout={this.props.fixedLayout}
-									id={rowId}
-									item={item}
-									key={rowId}
-									onToggle={this.handleRowToggle}
-									selection={this.props.selection}
-									rowActions={RowActions}
-								/>
-							);
-						})
+								return (
+									<DataTableRow
+										assistiveText={assistiveText}
+										canSelectRows={canSelectRows}
+										columns={columns}
+										fixedLayout={this.props.fixedLayout}
+										id={rowId}
+										item={item}
+										key={rowId}
+										onToggle={this.handleRowToggle}
+										selection={this.props.selection}
+										rowActions={RowActions}
+									/>
+								);
+							})
 						: // Someday this should be an element to render when the table is empty
-						null}
+							null}
 				</tbody>
 			</table>
 		);

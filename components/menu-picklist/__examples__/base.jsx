@@ -6,7 +6,7 @@ import Picklist from '~/components/menu-picklist'; // `~` is replaced with desig
 const Example = createReactClass({
 	displayName: 'PicklistExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

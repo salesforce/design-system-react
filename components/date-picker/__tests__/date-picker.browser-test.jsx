@@ -33,17 +33,17 @@ const DemoComponent = createReactClass({
 		isOpen: PropTypes.bool,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {};
 	},
 
 	// event handlers
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Datepicker {...this.props} />
@@ -61,7 +61,7 @@ const DemoComponent = createReactClass({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSDatepicker', function () {
+describe('SLDSDatepicker', function() {
 	let wrapper;
 
 	const triggerClassSelector = 'button.slds-input__icon';
@@ -69,7 +69,7 @@ describe('SLDSDatepicker', function () {
 	describe('Assistive technology', () => {
 		afterEach(() => wrapper.unmount());
 
-		it('has aria-haspopup, correct aria-expanded on input trigger.', function () {
+		it('has aria-haspopup, correct aria-expanded on input trigger.', function() {
 			wrapper = mount(<DemoComponent isOpen />);
 
 			const inputTrigger = wrapper.find(triggerClassSelector);
@@ -90,7 +90,7 @@ describe('SLDSDatepicker', function () {
 
 		afterEach(() => wrapper.unmount());
 
-		it('has custom input with custom placeholder', function () {
+		it('has custom input with custom placeholder', function() {
 			wrapper = mount(<DemoComponent {...optionalProps} />);
 
 			expect(wrapper.find('input')).to.have.attr(
@@ -102,10 +102,10 @@ describe('SLDSDatepicker', function () {
 
 	// EVENTS
 
-	describe('onClose, onRequestClose, onOpen callbacks are set', function () {
+	describe('onClose, onRequestClose, onOpen callbacks are set', function() {
 		afterEach(() => wrapper.unmount());
 
-		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function (done) {
+		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function(done) {
 			wrapper = mount(
 				<DemoComponent
 					menuPosition="relative"
@@ -136,7 +136,7 @@ describe('SLDSDatepicker', function () {
 			trigger.simulate('click', {});
 		});
 
-		it('onChange is triggered when date is selected', function (done) {
+		it('onChange is triggered when date is selected', function(done) {
 			wrapper = mount(
 				<DemoComponent
 					menuPosition="relative"
@@ -175,10 +175,10 @@ describe('SLDSDatepicker', function () {
 		/* Test event callback functions using Simulate. For more information, view
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
-		describe('Esc when menu is open', function () {
+		describe('Esc when menu is open', function() {
 			afterEach(() => wrapper.unmount());
 
-			it('opens on trigger click, closes on ESC', function (done) {
+			it('opens on trigger click, closes on ESC', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						menuPosition="relative"
@@ -208,7 +208,7 @@ describe('SLDSDatepicker', function () {
 				trigger.simulate('click', {});
 			});
 
-			it('navigates to next week', function (done) {
+			it('navigates to next week', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -232,7 +232,7 @@ describe('SLDSDatepicker', function () {
 				});
 			});
 
-			it('navigates to next day', function (done) {
+			it('navigates to next day', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -256,7 +256,7 @@ describe('SLDSDatepicker', function () {
 				});
 			});
 
-			it('navigates to previous week (that is of a previous month)', function (done) {
+			it('navigates to previous week (that is of a previous month)', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -280,7 +280,7 @@ describe('SLDSDatepicker', function () {
 				});
 			});
 
-			it('navigates to previous day', function (done) {
+			it('navigates to previous day', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -304,7 +304,7 @@ describe('SLDSDatepicker', function () {
 				});
 			});
 
-			it('calendar blur, focus on previous month button', function (done) {
+			it('calendar blur, focus on previous month button', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -326,7 +326,7 @@ describe('SLDSDatepicker', function () {
 				});
 			});
 
-			it('calendar blur, focus on today', function (done) {
+			it('calendar blur, focus on today', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -351,13 +351,13 @@ describe('SLDSDatepicker', function () {
 		});
 	});
 
-	describe('Disabled', function () {
+	describe('Disabled', function() {
 		const triggerClicked = sinon.spy();
 		const dialogOpened = sinon.spy();
 
 		afterEach(() => wrapper.unmount());
 
-		it('onOpen is not called when disabled', function () {
+		it('onOpen is not called when disabled', function() {
 			wrapper = mount(
 				<DemoComponent
 					disabled

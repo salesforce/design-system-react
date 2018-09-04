@@ -7,10 +7,10 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 import oneOfComponent from '../../utilities/warning/one-of-component';
 import { APP_LAUNCHER, APP_LAUNCHER_SECTION } from '../../utilities/constants';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props, jsonDoc) {
+	checkProps = function(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === APP_LAUNCHER) {

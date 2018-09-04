@@ -6,10 +6,10 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 import ifOneThenBothRequiredProperty from '../../utilities/warning/if-one-then-both-required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props, jsonDoc) {
+	checkProps = function(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		/* eslint-disable max-len */

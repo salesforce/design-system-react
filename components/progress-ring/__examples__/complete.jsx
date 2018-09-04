@@ -3,7 +3,7 @@ import IconSettings from '~/components/icon-settings';
 import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

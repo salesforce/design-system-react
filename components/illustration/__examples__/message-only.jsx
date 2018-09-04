@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class';
 import Illustration from '~/components/illustration'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<Illustration messageBody="Lorem ipsum dolor sit amet, consectetur" />
 		);

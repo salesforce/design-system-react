@@ -6,7 +6,7 @@ import Icon from '~/components/icon'; // `~` is replaced with design-system-reac
 const Example = createReactClass({
 	displayName: 'IconSettingsExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

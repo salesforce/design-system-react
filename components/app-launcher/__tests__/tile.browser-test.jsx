@@ -32,7 +32,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 	const createTile = (props) =>
 		React.createElement(AppLauncherTile, assign({}, defaultTileProps, props));
 
-	function mountTile (props) {
+	function mountTile(props) {
 		// This div is needed for Truncate to properly determine the description width
 		div = document.createElement('div');
 		div.style.cssText = 'width: 300px';
@@ -54,7 +54,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			.childAt(0);
 	}
 
-	function cleanDom () {
+	function cleanDom() {
 		document.body.removeChild(div);
 	}
 
@@ -199,7 +199,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('search string highlights tooltip content', () => {
 			// this is a hack that waits for the tooltip to render through PopperJS
-			setTimeout(function () {
+			setTimeout(function() {
 				expect(
 					handles.more
 						.find('mark')

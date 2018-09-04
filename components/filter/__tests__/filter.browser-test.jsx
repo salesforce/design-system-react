@@ -50,15 +50,15 @@ const DemoComponent = createReactClass({
 		isOpen: PropTypes.bool,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {};
 	},
 
-	render () {
+	render() {
 		return (
 			<Popover {...this.props}>
 				<Button label="Trigger Popover" />
@@ -76,14 +76,14 @@ const DemoComponent = createReactClass({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSFilter', function () {
+describe('SLDSFilter', function() {
 	let mountNode;
 	let portalWrapper;
 	let wrapper;
 
 	// BASIC STRUCTURE
 
-	describe('Add custom props to Filter Popover', function () {
+	describe('Add custom props to Filter Popover', function() {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -115,7 +115,7 @@ describe('SLDSFilter', function () {
 		});
 	});
 
-	describe('On click handler when clicking on filter', function () {
+	describe('On click handler when clicking on filter', function() {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});

@@ -5,24 +5,24 @@ import React from 'react';
 import classNames from 'classnames';
 
 class GridColumn extends React.Component {
-	getClassName () {
+	getClassName() {
 		return `${this.props.className} slds-col`;
 	}
 
-	render () {
+	render() {
 		return <div className={this.getClassName()}>{this.props.children}</div>;
 	}
 }
 
 class Grid extends React.Component {
-	getClassName () {
+	getClassName() {
 		const flavor = this.props.flavor;
 		return classNames(this.props.className, 'slds-grid', {
 			[`slds-grid--${flavor}`]: flavor,
 		});
 	}
 
-	render () {
+	render() {
 		return <div className={this.getClassName()}>{this.props.children}</div>;
 	}
 }

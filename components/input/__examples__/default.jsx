@@ -6,7 +6,7 @@ import Input from '~/components/input'; // `~` is replaced with design-system-re
 const Example = createReactClass({
 	displayName: 'BaseInputExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

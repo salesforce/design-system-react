@@ -6,17 +6,17 @@ import InlineEdit from '~/components/forms/input/inline'; // `~` is replaced wit
 const Example = createReactClass({
 	displayName: 'InlineEditExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			value: 'Edit me inline',
 		};
 	},
 
-	handleChange (eventProps) {
+	handleChange(eventProps) {
 		this.setState({ value: eventProps.value });
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

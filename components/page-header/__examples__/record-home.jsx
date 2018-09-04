@@ -10,7 +10,7 @@ import Dropdown from '~/components/menu-dropdown';
 const Example = createReactClass({
 	displayName: 'PageHeaderExample',
 
-	render () {
+	render() {
 		const contentRight = (
 			<div>
 				<ButtonStateful

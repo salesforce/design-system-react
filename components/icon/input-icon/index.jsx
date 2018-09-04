@@ -60,19 +60,19 @@ const InputIcon = (props) => {
 				aria-hidden
 				category={category}
 				className={classNames('slds-input__icon slds-icon-text-default', {
-					[`slds-input__icon--${iconPosition}`]: iconPosition
+					[`slds-input__icon--${iconPosition}`]: iconPosition,
 				})}
 				name={name}
 				path={path}
 				{...rest}
 			/>
-		)
+		),
 	};
 
 	return isFunction(onClick) ? (
 		<Button
 			className={classNames('slds-input__icon', {
-				[`slds-input__icon_${iconPosition}`]: iconPosition
+				[`slds-input__icon_${iconPosition}`]: iconPosition,
 			})}
 			iconCategory={category}
 			iconName={name}
@@ -112,12 +112,12 @@ InputIcon.propTypes = {
 	/**
 	 * Changes styles of the InputIcon.
 	 */
-	variant: PropTypes.oneOf(['base', 'combobox'])
+	variant: PropTypes.oneOf(['base', 'combobox']),
 };
 
 InputIcon.defaultProps = {
 	category: 'utility',
-	variant: 'base'
+	variant: 'base',
 };
 
 export default InputIcon;

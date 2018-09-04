@@ -211,23 +211,23 @@ const Popover = createReactClass({
 		]),
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(POPOVER, this.props, componentDoc);
 	},
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		if (currentOpenPopover === this) {
 			currentOpenPopover = undefined;
 		}
@@ -235,27 +235,27 @@ const Popover = createReactClass({
 		this.renderOverlay(false);
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getIsOpen () {
+	getIsOpen() {
 		return (
 			!this.props.disabled &&
 			!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen)
 		);
 	},
 
-	getMenu () {
+	getMenu() {
 		// needed by keyboard navigation
 		return this.dialog;
 	},
 
-	setMenuRef (component) {
+	setMenuRef(component) {
 		this.dialog = component;
 	},
 
-	setContainerRef (component) {
+	setContainerRef(component) {
 		this.trigger = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -267,7 +267,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleDialogClose (event, data) {
+	handleDialogClose(event, data) {
 		const componentWillUnmount = (data && data.componentWillUnmount) || false;
 
 		if (currentOpenPopover === this) {
@@ -283,7 +283,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleClose (event, data) {
+	handleClose(event, data) {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -304,7 +304,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleOpen () {
+	handleOpen() {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -326,7 +326,7 @@ const Popover = createReactClass({
 	/* props.openOn is not a part of prop-types because it is not a supported feature, but may be needed for backwards compatibility with non-accessible dropdown/popover hybrids. */
 
 	/* eslint-disable react/prop-types */
-	handleMouseEnter (event) {
+	handleMouseEnter(event) {
 		const isOpen = this.getIsOpen();
 
 		this.isHover = true;
@@ -343,7 +343,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleMouseLeave (event) {
+	handleMouseLeave(event) {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -358,7 +358,7 @@ const Popover = createReactClass({
 	},
 	/* eslint-enable react/prop-types */
 
-	handleClick (event, { triggerOnClickCallback }) {
+	handleClick(event, { triggerOnClickCallback }) {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -376,7 +376,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleFocus (event) {
+	handleFocus(event) {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -388,7 +388,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		if (event.keyCode) {
 			if (event.keyCode !== KEYS.TAB) {
 				const isOpen = this.getIsOpen();
@@ -410,15 +410,15 @@ const Popover = createReactClass({
 		}
 	},
 
-	handleCancel (event) {
+	handleCancel(event) {
 		this.handleClose(event, { trigger: 'cancel' });
 	},
 
-	handleClickOutside (event) {
+	handleClickOutside(event) {
 		this.handleClose(event, { trigger: 'clickOutside' });
 	},
 
-	toggleOpenFromKeyboard (event) {
+	toggleOpenFromKeyboard(event) {
 		const isOpen = this.getIsOpen();
 		if (isOpen) {
 			this.handleCancel(event);
@@ -427,7 +427,7 @@ const Popover = createReactClass({
 		}
 	},
 
-	renderDialog (isOpen, outsideClickIgnoreClass) {
+	renderDialog(isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		const offset = props.offset;
 		const assistiveText = {
@@ -500,7 +500,7 @@ const Popover = createReactClass({
 		) : null;
 	},
 
-	renderOverlay (isOpen) {
+	renderOverlay(isOpen) {
 		if (isFunction(overlay) && documentDefined) {
 			overlay(isOpen, overlay);
 		} else if (
@@ -517,33 +517,33 @@ const Popover = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 
 		const clonedTrigger = this.props.children
 			? React.cloneElement(this.props.children, {
-				id: this.getId(),
-				onClick:
+					id: this.getId(),
+					onClick:
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
 							? (event) => {
-								this.handleClick(event, {
-									triggerOnClickCallback: this.props.children.props.onClick,
-								});
-							}
+									this.handleClick(event, {
+										triggerOnClickCallback: this.props.children.props.onClick,
+									});
+								}
 							: this.children.props.onClick,
-				onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
-				onMouseDown: this.props.onMouseDown,
-				onMouseEnter:
+					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
+					onMouseDown: this.props.onMouseDown,
+					onMouseEnter:
 						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
 							? this.handleMouseEnter
 							: null,
-				onMouseLeave:
+					onMouseLeave:
 						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
 							? this.handleMouseLeave
 							: null,
-				tabIndex: this.props.children.props.tabIndex || '0',
-				...this.props.children.props,
-			})
+					tabIndex: this.props.children.props.tabIndex || '0',
+					...this.props.children.props,
+				})
 			: null;
 
 		this.renderOverlay(this.getIsOpen());

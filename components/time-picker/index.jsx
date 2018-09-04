@@ -101,9 +101,9 @@ const Timepicker = createReactClass({
 		value: PropTypes.instanceOf(Date),
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
-			formatter (date) {
+			formatter(date) {
 				if (date) {
 					return date.toLocaleTimeString(navigator.language, {
 						hour: '2-digit',
@@ -113,7 +113,7 @@ const Timepicker = createReactClass({
 
 				return null;
 			},
-			parser (timeStr) {
+			parser(timeStr) {
 				const date = new Date();
 				const dateStr = date.toLocaleString(navigator.language, {
 					year: 'numeric',
@@ -129,7 +129,7 @@ const Timepicker = createReactClass({
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			value: this.props.value,
 			strValue: this.props.strValue,
@@ -137,12 +137,12 @@ const Timepicker = createReactClass({
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TIME_PICKER, this.props, componentDoc);
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentTime = this.props.value.getTime();
 			const nextTime = nextProps.value.getTime();
@@ -156,7 +156,7 @@ const Timepicker = createReactClass({
 		}
 	},
 
-	getOptions () {
+	getOptions() {
 		const baseDate = new Date();
 		const options = [];
 
@@ -181,7 +181,7 @@ const Timepicker = createReactClass({
 		return options;
 	},
 
-	parseDate (strValue) {
+	parseDate(strValue) {
 		const newDate = this.props.parser(strValue);
 
 		if (isDate(newDate)) {
@@ -193,7 +193,7 @@ const Timepicker = createReactClass({
 		return new Date();
 	},
 
-	handleChange (date, strValue) {
+	handleChange(date, strValue) {
 		this.setState({
 			value: date,
 			strValue,
@@ -204,13 +204,13 @@ const Timepicker = createReactClass({
 		}
 	},
 
-	handleSelect (val) {
+	handleSelect(val) {
 		if (val && val.value) {
 			this.handleChange(val.value, val.label);
 		}
 	},
 
-	handleInputChange (event) {
+	handleInputChange(event) {
 		const strValue = event.target.value;
 
 		this.setState({
@@ -224,7 +224,7 @@ const Timepicker = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		return (
 			<MenuDropdown
 				checkmark={false}

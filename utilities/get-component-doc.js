@@ -2,12 +2,12 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-let getComponentDocFn = function () {};
+let getComponentDocFn = function() {};
 
 const baseURL = 'https://react.lightningdesignsystem.com';
 
 if (process.env.NODE_ENV !== 'production') {
-	getComponentDocFn = function (jsonDoc) {
+	getComponentDocFn = function(jsonDoc) {
 		const componentUrl = `${baseURL +
 			(jsonDoc && jsonDoc['url-slug']
 				? `/components/${jsonDoc['url-slug']}`

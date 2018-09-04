@@ -13,7 +13,7 @@ const propTypes = {};
 const defaultProps = {};
 
 class DefaultHeader extends React.Component {
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.isActive !== this.props.isActive &&
 			nextProps.isActive === true
@@ -28,7 +28,7 @@ class DefaultHeader extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
 		if (this.props.isActive) className += ' slds-theme--shade';
 

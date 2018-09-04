@@ -7,7 +7,7 @@ import Icon from '~/components/icon';
 const Example = createReactClass({
 	displayName: 'MediaObjectExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<MediaObject

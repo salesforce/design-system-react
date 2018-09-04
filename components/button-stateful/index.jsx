@@ -139,16 +139,16 @@ const defaultProps = {
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  */
 class ButtonStateful extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { active: false };
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
 	}
 
-	getClassName (active) {
+	getClassName(active) {
 		return classNames(this.props.className, 'slds-button', {
 			'slds-button--neutral': this.props.variant !== 'icon',
 			'slds-button--inverse': this.props.variant === 'inverse',
@@ -171,7 +171,7 @@ class ButtonStateful extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		const {
 			active,
 			disabled,
@@ -196,9 +196,9 @@ class ButtonStateful extends React.Component {
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...defaultProps.assistiveText,
-					...this.props.assistiveText,
-				}.icon;
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
 
 		const isActive = isBoolean(active) ? active : this.state.active;
 

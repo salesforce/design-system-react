@@ -6,7 +6,7 @@ import IconSettings from '~/components/icon-settings';
 const Example = createReactClass({
 	displayName: 'IconExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Icon

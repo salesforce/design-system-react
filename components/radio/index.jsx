@@ -63,16 +63,16 @@ const defaultProps = {
  * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
  */
 class Radio extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.generatedId = shortid.generate();
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	render () {
+	render() {
 		return (
 			<span
 				className={classNames({

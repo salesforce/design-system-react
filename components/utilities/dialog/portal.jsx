@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
  * This component mounts its children within a disconnected render tree (portal).
  */
 class Portal extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.portalNode = null;
 		this.state = {
@@ -17,23 +17,23 @@ class Portal extends Component {
 		};
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.renderPortal();
 	}
 
-	componentDidUpdate () {
+	componentDidUpdate() {
 		this.renderPortal();
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.unmountPortal();
 	}
 
-	getChildren () {
+	getChildren() {
 		return Children.only(this.props.children);
 	}
 
-	getPortalParentNode () {
+	getPortalParentNode() {
 		let element;
 		if (typeof this.props.renderTo === 'string') {
 			element = document.querySelector(this.props.renderTo);
@@ -43,7 +43,7 @@ class Portal extends Component {
 		return element;
 	}
 
-	setupPortalNode () {
+	setupPortalNode() {
 		const parentParentNode = this.getPortalParentNode();
 
 		this.portalNode = document.createElement(this.props.renderTag);
@@ -53,7 +53,7 @@ class Portal extends Component {
 			: this.portalNode;
 	}
 
-	unmountPortal () {
+	unmountPortal() {
 		if (this.portalNode) {
 			ReactDOM.unmountComponentAtNode(this.portalNode);
 			this.portalNode.parentNode.removeChild(this.portalNode);
@@ -61,7 +61,7 @@ class Portal extends Component {
 		this.portalNode = null;
 	}
 
-	updatePortal () {
+	updatePortal() {
 		if (this.props.id) {
 			this.portalNode.id = this.props.id;
 		}
@@ -81,7 +81,7 @@ class Portal extends Component {
 		}
 	}
 
-	renderPortal () {
+	renderPortal() {
 		// if no portal contents, then unmount
 		if (!this.getChildren()) {
 			this.unmountPortal();
@@ -121,7 +121,7 @@ class Portal extends Component {
 		}
 	}
 
-	render () {
+	render() {
 		return null;
 	}
 }

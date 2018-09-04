@@ -1,5 +1,5 @@
 /* eslint-disable prefer-rest-params */
-(function () {
+(function() {
 	// Src: https://gist.github.com/noradaiko/12cbaf8a1674e3b8c8e6
 
 	const Ap = Array.prototype;
@@ -9,11 +9,11 @@
 	if (!Fp.bind) {
 		// PhantomJS doesn't support Function.prototype.bind natively, so
 		// polyfill it whenever this module is required.
-		Fp.bind = function (context) {
+		Fp.bind = function(context) {
 			const func = this;
 			const args = slice.call(arguments, 1);
 
-			function bound () {
+			function bound() {
 				const invokedAsConstructor = func.prototype && this instanceof func;
 				return func.apply(
 					// Ignore the context parameter when invoking the bound function
@@ -33,4 +33,4 @@
 			return bound;
 		};
 	}
-}());
+})();

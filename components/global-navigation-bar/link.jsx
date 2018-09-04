@@ -18,7 +18,7 @@ import isFunction from 'lodash.isfunction';
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
-function handleClick (event, href, onClick) {
+function handleClick(event, href, onClick) {
 	event.preventDefault();
 
 	onClick(event, { href });
@@ -47,9 +47,9 @@ const GlobalNavigationBarLink = (props) => {
 
 	const listItemstyle = active
 		? {
-			backgroundColor: activeBackgroundColor,
-			borderBottomColor: activeBackgroundColor,
-		}
+				backgroundColor: activeBackgroundColor,
+				borderBottomColor: activeBackgroundColor,
+			}
 		: null;
 
 	return (

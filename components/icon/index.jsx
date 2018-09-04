@@ -47,9 +47,9 @@ const Icon = (props) => {
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
 			: {
-				...defaultProps.assistiveText,
-				...props.assistiveText,
-			}.label;
+					...defaultProps.assistiveText,
+					...props.assistiveText,
+				}.label;
 
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
 
@@ -95,8 +95,8 @@ const Icon = (props) => {
 			{assistiveText ? (
 				<span className="slds-assistive-text">{assistiveText}</span>
 			) : (
-					''
-				)}
+				''
+			)}
 		</span>
 	);
 };

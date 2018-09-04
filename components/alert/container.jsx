@@ -28,7 +28,7 @@ const propTypes = {
  */
 
 class AlertContainer extends React.Component {
-	render () {
+	render() {
 		return (
 			<div
 				className={classNames('slds-notify-container', this.props.className)}

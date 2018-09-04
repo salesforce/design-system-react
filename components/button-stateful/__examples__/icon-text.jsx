@@ -6,7 +6,7 @@ import ButtonStateful from '~/components/button-stateful'; // `~` is replaced wi
 const Example = createReactClass({
 	displayName: 'ButtonStatefulExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-x-small-buttons--horizontal">

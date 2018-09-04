@@ -132,7 +132,7 @@ const MenuPicklist = createReactClass({
 
 	mixins: [KeyboardNavigable],
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			inheritTargetWidth: true,
 			placeholder: 'Select an Option',
@@ -144,7 +144,7 @@ const MenuPicklist = createReactClass({
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			focusedIndex: this.props.initValueIndex ? this.props.initValueIndex : -1,
 			selectedIndex: this.props.initValueIndex ? this.props.initValueIndex : -1,
@@ -153,7 +153,7 @@ const MenuPicklist = createReactClass({
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_PICKLIST, this.props);
 
@@ -182,7 +182,7 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (
 			this.props.value !== nextProps.value ||
 			this.props.options.length !== nextProps.length
@@ -205,24 +205,24 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getErrorId () {
+	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	},
 
-	getClickEventName () {
+	getClickEventName() {
 		return `SLDS${this.getId()}ClickEvent`;
 	},
 
-	getIndexByValue ({ value, options } = this.props) {
+	getIndexByValue({ value, options } = this.props) {
 		let foundIndex = -1;
 
 		if (options && options.length) {
@@ -239,23 +239,23 @@ const MenuPicklist = createReactClass({
 		return foundIndex;
 	},
 
-	getValueByIndex (index) {
+	getValueByIndex(index) {
 		return this.props.options[index];
 	},
 
-	getListItemRenderer () {
+	getListItemRenderer() {
 		return this.props.listItemRenderer
 			? this.props.listItemRenderer
 			: ListItemLabel;
 	},
 
-	setFocus () {
+	setFocus() {
 		if (!this.isUnmounting && this.button) {
 			this.button.focus();
 		}
 	},
 
-	handleSelect (index) {
+	handleSelect(index) {
 		if (!this.props.multiple) {
 			this.setState({ selectedIndex: index });
 			this.handleClose();
@@ -282,11 +282,11 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	handleClose () {
+	handleClose() {
 		this.setState({ isOpen: false });
 	},
 
-	handleClick (event) {
+	handleClick(event) {
 		if (event) {
 			event.nativeEvent[this.getClickEventName()] = true;
 		}
@@ -303,14 +303,14 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	handleMouseDown (event) {
+	handleMouseDown(event) {
 		if (event) {
 			EventUtil.trapImmediate(event);
 			event.nativeEvent[this.getClickEventName()] = true;
 		}
 	},
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		if (event.keyCode) {
 			if (
 				event.keyCode === KEYS.ENTER ||
@@ -344,26 +344,26 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	handleCancel () {
+	handleCancel() {
 		this.setFocus();
 		this.handleClose();
 	},
 
-	closeOnClick (event) {
+	closeOnClick(event) {
 		if (!event[this.getClickEventName()] && this.state.isOpen) {
 			this.handleClose();
 		}
 	},
 
-	toggleOpen () {
+	toggleOpen() {
 		this.setState({ isOpen: !this.state.isOpen });
 	},
 
-	saveRefToList (list) {
+	saveRefToList(list) {
 		this.list = list;
 	},
 
-	saveRefToListItem (listItem, index) {
+	saveRefToListItem(listItem, index) {
 		if (!this.listItems) {
 			this.listItems = {};
 		}
@@ -376,7 +376,7 @@ const MenuPicklist = createReactClass({
 	},
 
 	// Trigger opens, closes, and recieves focus on close
-	saveRefToTrigger (trigger) {
+	saveRefToTrigger(trigger) {
 		this.button = trigger;
 		if (this.props.buttonRef) {
 			this.props.buttonRef(this.button);
@@ -387,7 +387,7 @@ const MenuPicklist = createReactClass({
 		}
 	},
 
-	renderMenuContent () {
+	renderMenuContent() {
 		return (
 			<List
 				checkmark={this.props.checkmark}
@@ -409,7 +409,7 @@ const MenuPicklist = createReactClass({
 		);
 	},
 
-	renderInlineMenu () {
+	renderInlineMenu() {
 		return !this.props.disabled && this.state.isOpen ? (
 			<div
 				className="slds-dropdown slds-dropdown--left"
@@ -425,7 +425,7 @@ const MenuPicklist = createReactClass({
 		) : null;
 	},
 
-	renderDialog () {
+	renderDialog() {
 		return !this.props.disabled && this.state.isOpen ? (
 			<Dialog
 				closeOnTabKey
@@ -444,7 +444,7 @@ const MenuPicklist = createReactClass({
 		) : null;
 	},
 
-	renderTrigger () {
+	renderTrigger() {
 		let isInline;
 		/* eslint-disable react/prop-types */
 		if (this.props.isInline) {
@@ -500,7 +500,7 @@ const MenuPicklist = createReactClass({
 		);
 	},
 
-	renderPills () {
+	renderPills() {
 		const selectedPills = this.state.selectedIndices.map((selectedPill) => {
 			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
@@ -554,7 +554,7 @@ const MenuPicklist = createReactClass({
 		);
 	},
 
-	render () {
+	render() {
 		const { className, errorText, label, required } = this.props;
 
 		const requiredElem = required ? (

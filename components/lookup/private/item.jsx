@@ -26,7 +26,7 @@ const propTypes = {
 };
 
 class Item extends React.Component {
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.isActive !== this.props.isActive &&
 			nextProps.isActive === true
@@ -36,12 +36,12 @@ class Item extends React.Component {
 		}
 	}
 
-	getCustomLabel () {
+	getCustomLabel() {
 		const ListItemLabel = this.props.listItemLabelRenderer;
 		return <ListItemLabel {...this.props} />;
 	}
 
-	getIcon () {
+	getIcon() {
 		if (this.props.iconName && !this.props.listItemLabelRenderer) {
 			return (
 				<span className="slds-media__figure">
@@ -58,7 +58,7 @@ class Item extends React.Component {
 		return null;
 	}
 
-	getLabel () {
+	getLabel() {
 		let label;
 		if (this.props.children.data.subTitle) {
 			label = (
@@ -88,14 +88,14 @@ class Item extends React.Component {
 	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
 
 	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
-	scrollFocus () {
+	scrollFocus() {
 		const height = this.itemRef.offsetHeight;
 		if (height && this.props.handleItemFocus) {
 			this.props.handleItemFocus(this.props.index, height);
 		}
 	}
 
-	render () {
+	render() {
 		let itemClassName = 'js-slds-lookup__item';
 		const id = this.props.id;
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';

@@ -16,7 +16,7 @@ import AppLauncherTile from '~/components/app-launcher/tile';
 const Example = createReactClass({
 	displayName: 'GlobalNavigationBarExample',
 
-	render () {
+	render() {
 		const dropdownCollection = [
 			{
 				label: 'Menu Item One',

@@ -7,7 +7,7 @@ import Button from '~/components/button';
 const Example = createReactClass({
 	displayName: 'TooltipExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Tooltip align="right" content="Tooltip with right alignment">

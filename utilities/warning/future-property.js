@@ -6,12 +6,12 @@
 // This function will deliver an error message to the browser console that another component may use, but is not yet released.
 import warning from 'warning';
 
-let future = function () {};
+let future = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	future = function (control, propValue, newProp, comment) {
+	future = function(control, propValue, newProp, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control + newProp]) {
 			/* eslint-disable max-len */

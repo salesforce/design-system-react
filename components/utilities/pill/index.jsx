@@ -119,12 +119,12 @@ const Pill = (props) => {
 			onClick={
 				typeof props.events.onClick === 'function'
 					? (event) => {
-						if (props.events.onClick) {
-							props.events.onClick(event, {
-								option: props.eventData,
-							});
+							if (props.events.onClick) {
+								props.events.onClick(event, {
+									option: props.eventData,
+								});
+							}
 						}
-					}
 					: null
 			}
 			onRemove={(event) => {

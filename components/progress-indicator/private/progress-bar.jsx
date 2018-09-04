@@ -20,7 +20,7 @@ const propTypes = {
  * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage
  */
 class ProgressBar extends React.Component {
-	render () {
+	render() {
 		return (
 			<div
 				className="slds-progress-bar slds-progress-bar_x-small"

@@ -5,7 +5,7 @@ import Radio from '~/components/radio'; // `~` is replaced with design-system-re
 const Example = createReactClass({
 	displayName: 'RadioExample',
 
-	render () {
+	render() {
 		return <Radio id="radioId2" label="Radio Label" disabled />;
 	},
 });

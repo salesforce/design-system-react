@@ -5,7 +5,7 @@ import Spinner from '~/components/slider';
 class Example extends React.Component {
 	static displayName = 'SpinnerExample';
 
-	render () {
+	render() {
 		return (
 			<div style={{ position: 'relative', height: '5rem' }}>
 				<Spinner

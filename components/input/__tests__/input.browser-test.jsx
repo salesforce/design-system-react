@@ -34,7 +34,7 @@ describe('SLDSInput', () => {
 		);
 	};
 
-	function removeInput () {
+	function removeInput() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}

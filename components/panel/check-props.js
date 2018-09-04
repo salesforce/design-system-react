@@ -5,10 +5,10 @@
 import isPrototype from '../../utilities/warning/component-is-prototype';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, jsonDoc) {
+	checkProps = function(COMPONENT, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 		isPrototype(COMPONENT, createDocUrl());
 	};

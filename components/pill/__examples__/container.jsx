@@ -5,7 +5,7 @@ import createReactClass from 'create-react-class';
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
-function noop () {}
+function noop() {}
 
 const Example = createReactClass({
 	displayName: 'PillContainerExample',
@@ -14,21 +14,21 @@ const Example = createReactClass({
 		action: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			action: () => noop,
 		};
 	},
 
-	onClick (event) {
+	onClick(event) {
 		this.props.action('onClick')(event);
 	},
 
-	onRemove (event) {
+	onRemove(event) {
 		this.props.action('onRemove')(event);
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

@@ -7,7 +7,7 @@ import Icon from '~/components/icon';
 import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
-function noop () {}
+function noop() {}
 
 const Example = createReactClass({
 	displayName: 'PillWithIconExample',
@@ -16,13 +16,13 @@ const Example = createReactClass({
 		action: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			action: () => noop,
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			pill1: true,
 			pill2: true,
@@ -30,18 +30,18 @@ const Example = createReactClass({
 		};
 	},
 
-	onClick (event) {
+	onClick(event) {
 		this.props.action('onClick')(event);
 	},
 
-	onRemove (event, pill) {
+	onRemove(event, pill) {
 		this.props.action('onRemove')(event);
 		this.setState({
 			[pill]: false,
 		});
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid_pull-padded-medium">

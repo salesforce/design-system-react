@@ -30,13 +30,13 @@ const sampleReportCategories = [
 const Example = createReactClass({
 	displayName: 'NavigationExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			selectedId: 'recent_reports',
 		};
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ width: '320px' }}>

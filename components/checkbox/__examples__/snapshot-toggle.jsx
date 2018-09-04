@@ -4,7 +4,7 @@ import React from 'react';
 import Checkbox from '~/components/checkbox';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 				<div className="slds-col--padded">

@@ -5,12 +5,12 @@
 
 import warning from 'warning';
 
-let hasMoved = function () {};
+let hasMoved = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	hasMoved = function (control, { oldFileLocation, newFileLocation, comment }) {
+	hasMoved = function(control, { oldFileLocation, newFileLocation, comment }) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control]) {
 			/* eslint-disable max-len */

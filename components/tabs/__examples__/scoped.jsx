@@ -7,7 +7,7 @@ import TabsPanel from '~/components/tabs/panel';
 const Example = createReactClass({
 	displayName: 'TabsExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Tabs variant="scoped" id="tabs-example-scoped">

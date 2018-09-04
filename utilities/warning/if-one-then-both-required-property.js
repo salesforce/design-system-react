@@ -11,7 +11,7 @@ let ifOneThenBothRequiredProperty;
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	ifOneThenBothRequiredProperty = function (
+	ifOneThenBothRequiredProperty = function(
 		control,
 		props,
 		selectedProps,
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 	};
 } else {
-	ifOneThenBothRequiredProperty = function () {};
+	ifOneThenBothRequiredProperty = function() {};
 }
 
 export default ifOneThenBothRequiredProperty;

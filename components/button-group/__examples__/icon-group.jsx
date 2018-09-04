@@ -8,7 +8,7 @@ import IconSettings from '~/components/icon-settings';
 const Example = createReactClass({
 	displayName: 'ButtonGroupExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup>

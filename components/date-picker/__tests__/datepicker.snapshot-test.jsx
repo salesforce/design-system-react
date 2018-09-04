@@ -22,7 +22,7 @@ const customProps = {
 		previousMonth: 'CUSTOM previous month',
 	},
 	className: 'CUSTOM-CLASSNAME',
-	formatter () {
+	formatter() {
 		return "Llama and Lamb's epiphany of love";
 	},
 	id: 'CUSTOM-ID',
@@ -46,7 +46,7 @@ const customProps = {
 		today: 'TODAY YOU ARE YOU!',
 		weekDays: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
 	},
-	parser () {
+	parser() {
 		return new Date(2007, 0, 6);
 	},
 	relativeYearFrom: -20,

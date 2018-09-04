@@ -34,7 +34,7 @@ describe('SLDSButton: ', () => {
 		);
 	};
 
-	function removeButton () {
+	function removeButton() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}
@@ -190,7 +190,7 @@ describe('SLDSButton: ', () => {
 		let btn;
 		let clicked;
 
-		function setClick () {
+		function setClick() {
 			clicked = true;
 		}
 
