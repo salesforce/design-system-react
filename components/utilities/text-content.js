@@ -1,4 +1,4 @@
-function textContentArray (child) {
+function textContentArray(child) {
 	const text = [];
 
 	if (typeof child === 'string' || typeof child === 'number') {
@@ -13,6 +13,6 @@ function textContentArray (child) {
 	return text;
 }
 
-export default function textContent (child) {
+export default function textContent(child) {
 	return textContentArray(child).join('');
 }

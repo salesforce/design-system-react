@@ -5,7 +5,7 @@ import Slider from '~/components/slider';
 const Example = createReactClass({
 	displayName: 'SliderExample',
 
-	render () {
+	render() {
 		return <Slider id="vertical-id" label="Slider Label" vertical />;
 	},
 });

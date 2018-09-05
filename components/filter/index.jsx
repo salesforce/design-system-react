@@ -116,7 +116,7 @@ const Filter = createReactClass({
 		property: PropTypes.node,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			align: 'left',
 			assistiveText: {
@@ -127,7 +127,7 @@ const Filter = createReactClass({
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			popoverIsOpen: this.props.popover
 				? this.props.popover.props.isOpen
@@ -135,16 +135,16 @@ const Filter = createReactClass({
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(FILTER, componentDoc);
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getCustomPopoverProps ({ assistiveText }) {
+	getCustomPopoverProps({ assistiveText }) {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
@@ -191,7 +191,7 @@ const Filter = createReactClass({
 		return popoverProps;
 	},
 
-	handleFilterClick () {
+	handleFilterClick() {
 		this.setState({ popoverIsOpen: true });
 
 		if (this.props.onClick) {
@@ -199,11 +199,11 @@ const Filter = createReactClass({
 		}
 	},
 
-	handleClose () {
+	handleClose() {
 		this.setState({ popoverIsOpen: false });
 	},
 
-	handleChange (event) {
+	handleChange(event) {
 		this.setState({ popoverIsOpen: false });
 
 		if (this.props.onChange) {
@@ -211,13 +211,13 @@ const Filter = createReactClass({
 		}
 	},
 
-	handleRemove (event) {
+	handleRemove(event) {
 		if (this.props.onRemove) {
 			this.props.onRemove(event, { id: this.getId() });
 		}
 	},
 
-	render () {
+	render() {
 		/* Remove at next breaking change */
 		const assistiveText = {
 			editFilter:
@@ -279,19 +279,19 @@ const Filter = createReactClass({
 					</button>
 				)}
 				{// Remove button
-					!this.props.isPermanent && !this.props.isLocked ? (
-						<Button
-							assistiveText={{ icon: assistiveText.removeFilter }}
-							hint
-							iconCategory="utility"
-							iconName="close"
-							iconSize="small"
-							iconVariant="bare"
-							onClick={this.handleRemove}
-							title={assistiveText.removeFilter}
-							variant="icon"
-						/>
-					) : null}
+				!this.props.isPermanent && !this.props.isLocked ? (
+					<Button
+						assistiveText={{ icon: assistiveText.removeFilter }}
+						hint
+						iconCategory="utility"
+						iconName="close"
+						iconSize="small"
+						iconVariant="bare"
+						onClick={this.handleRemove}
+						title={assistiveText.removeFilter}
+						variant="icon"
+					/>
+				) : null}
 			</div>
 		);
 	},

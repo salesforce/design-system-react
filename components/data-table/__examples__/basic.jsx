@@ -50,7 +50,7 @@ const columns = [
 const Example = createReactClass({
 	displayName: 'DataTableExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			items: [
 				{
@@ -87,7 +87,7 @@ const Example = createReactClass({
 		};
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>

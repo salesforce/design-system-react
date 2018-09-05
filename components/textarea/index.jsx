@@ -206,7 +206,7 @@ const Textarea = createReactClass({
 		wrap: PropTypes.oneOf(['soft', 'hard']),
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TEXTAREA, this.props, componentDoc);
 
@@ -216,16 +216,16 @@ const Textarea = createReactClass({
 		}
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getErrorId () {
+	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	},
 
 	// ### Render
-	render () {
+	render() {
 		const {
 			autoFocus,
 			children,
@@ -264,8 +264,8 @@ const Textarea = createReactClass({
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...this.props.assistiveText,
-				}.label;
+						...this.props.assistiveText,
+					}.label;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 

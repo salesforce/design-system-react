@@ -7,17 +7,17 @@ import Button from '~/components/button';
 const Example = createReactClass({
 	displayName: 'ModalExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 		};
 	},
 
-	toggleOpen () {
+	toggleOpen() {
 		this.setState({ isOpen: !this.state.isOpen });
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

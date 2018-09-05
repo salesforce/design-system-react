@@ -37,7 +37,7 @@ import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
 // Determine if a node from event.target is a Tab element
-function isTabNode (node) {
+function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
 		(node.nodeName === 'LI' && node.getAttribute('role') === 'tab')
@@ -45,7 +45,7 @@ function isTabNode (node) {
 }
 
 // Determine if a tab node is disabled
-function isTabDisabled (node) {
+function isTabDisabled(node) {
 	if (node.getAttribute) {
 		return node.getAttribute('aria-disabled') === 'true';
 	}
@@ -131,12 +131,12 @@ const defaultProps = {
  * A tab keeps related content in a single container that is shown and hidden through navigation.
  */
 class Tabs extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.tabs = [];
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		this.generatedId = shortid.generate();
 		this.flavor = this.getVariant();
@@ -145,7 +145,7 @@ class Tabs extends React.Component {
 		});
 	}
 
-	getNextTab (index) {
+	getNextTab(index) {
 		const count = this.getTabsCount();
 
 		// Look for non-disabled tab from index to the last tab on the right
@@ -170,11 +170,11 @@ class Tabs extends React.Component {
 		return index;
 	}
 
-	getPanelsCount () {
+	getPanelsCount() {
 		return this.props.children ? React.Children.count(this.props.children) : 0;
 	}
 
-	getPrevTab (index) {
+	getPrevTab(index) {
 		let i = index;
 
 		// Look for non-disabled tab from index to first tab on the left
@@ -200,29 +200,29 @@ class Tabs extends React.Component {
 		return index;
 	}
 
-	getSelectedIndex () {
+	getSelectedIndex() {
 		return isNumber(this.props.selectedIndex)
 			? this.props.selectedIndex
 			: this.state.selectedIndex;
 	}
 
-	getTab (index) {
+	getTab(index) {
 		return this.tabs[index].tab;
 	}
 
-	getTabNode (index) {
+	getTabNode(index) {
 		return this.tabs[index].node;
 	}
 
-	getTabsCount () {
+	getTabsCount() {
 		return this.props.children ? React.Children.count(this.props.children) : 0;
 	}
 
-	getVariant () {
+	getVariant() {
 		return this.props.variant === 'scoped' ? 'scoped' : 'default';
 	}
 
-	setSelected (index, focus) {
+	setSelected(index, focus) {
 		// Check index boundary
 		if (index < 0 || index >= this.getTabsCount()) {
 			return;
@@ -295,7 +295,7 @@ class Tabs extends React.Component {
 	 * If the clicked element is not a Tab, it returns false.
 	 * If it finds another Tabs container between the Tab and `this`, it returns false.
 	 */
-	isTabFromContainer (node) {
+	isTabFromContainer(node) {
 		// Return immediately if the clicked element is not a Tab. This prevents tab panel content from selecting a tab.
 		if (!isTabNode(node)) {
 			return false;
@@ -313,7 +313,7 @@ class Tabs extends React.Component {
 		return false;
 	}
 
-	renderTabPanels (parentId) {
+	renderTabPanels(parentId) {
 		const children = React.Children.toArray(this.props.children);
 		const selectedIndex = this.getSelectedIndex();
 		let result = null;
@@ -339,7 +339,7 @@ class Tabs extends React.Component {
 		return result;
 	}
 
-	renderTabsList (parentId) {
+	renderTabsList(parentId) {
 		const children = React.Children.toArray(this.props.children);
 
 		return (
@@ -372,7 +372,7 @@ class Tabs extends React.Component {
 		);
 	}
 
-	render () {
+	render() {
 		const {
 			className,
 			id = this.generatedId,

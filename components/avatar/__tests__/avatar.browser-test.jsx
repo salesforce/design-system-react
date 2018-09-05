@@ -15,11 +15,11 @@ import IconSettings from '../../icon-settings';
 
 chai.use(chaiEnzyme());
 
-describe('SLDSAvatar: ', function () {
+describe('SLDSAvatar: ', function() {
 	let mountNode;
 	let wrapper;
 
-	describe('Default Structure', function () {
+	describe('Default Structure', function() {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});

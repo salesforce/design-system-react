@@ -12,7 +12,7 @@ import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
 
 describe('SLDSButtonGroup: ', () => {
-	const generateButtonGroup = function (buttonGroupInstance) {
+	const generateButtonGroup = function(buttonGroupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
 				<div>{buttonGroupInstance}</div>

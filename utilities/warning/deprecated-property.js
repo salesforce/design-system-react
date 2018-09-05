@@ -6,12 +6,12 @@
 // This function will deliver an error message to the browser console about the removal of a property.
 import warning from 'warning';
 
-let deprecated = function () {};
+let deprecated = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	deprecated = function (control, propValue, oldProp, newProp, comment) {
+	deprecated = function(control, propValue, oldProp, newProp, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const newProperty = newProp ? `Use \`${newProp}\`` : '';
 		const newPropertySentence = newProp ? ` ${newProperty} instead.` : '';

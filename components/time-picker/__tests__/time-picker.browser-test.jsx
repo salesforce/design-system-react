@@ -38,7 +38,7 @@ describe('SLDSTimepicker: ', () => {
 
 			const TestTimepicker = createFactory(
 				createReactClass({
-					getInitialState () {
+					getInitialState() {
 						// force the state to have a future dateTime...
 						return {
 							isOpen: false,
@@ -46,7 +46,7 @@ describe('SLDSTimepicker: ', () => {
 							strValue: formatter(futureDateTime),
 						};
 					},
-					render () {
+					render() {
 						return (
 							<IconSettings iconPath="/assets/icons">
 								<SLDSTimepicker ref="timePicker" {...defaultProps} />

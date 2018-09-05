@@ -6,19 +6,19 @@ import ButtonStateful from '~/components/button-stateful'; // `~` is replaced wi
 const Example = createReactClass({
 	displayName: 'ButtonStatefulExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isActive: false,
 		};
 	},
 
-	handleOnclick () {
+	handleOnclick() {
 		this.setState({
 			isActive: !this.state.isActive,
 		});
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonStateful

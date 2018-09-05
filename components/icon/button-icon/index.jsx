@@ -36,7 +36,7 @@ const ButtonIcon = (props) => {
 						props.size && props.size !== 'medium',
 					'slds-button__icon--inverse-hint': props.inverse && props.hint,
 					'slds-button__icon--hint': props.hint && !props.inverse,
-					[`slds-button__icon--${props.position}`]: props.position
+					[`slds-button__icon--${props.position}`]: props.position,
 				},
 				props.className
 			)} // iconClassName has been deprecated
@@ -56,7 +56,7 @@ const propTypes = {
 		'custom',
 		'doctype',
 		'standard',
-		'utility'
+		'utility',
 	]).isRequired,
 	/**
 	 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
@@ -72,7 +72,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
@@ -93,12 +93,12 @@ const propTypes = {
 	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 	 */
-	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large'])
+	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 };
 
 const defaultProps = {
 	category: 'utility',
-	size: 'medium'
+	size: 'medium',
 };
 
 ButtonIcon.displayName = BUTTON_ICON;

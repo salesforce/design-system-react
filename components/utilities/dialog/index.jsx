@@ -183,7 +183,7 @@ const Dialog = createReactClass({
 		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			align: 'bottom left',
 			offset: '0px 0px',
@@ -191,14 +191,14 @@ const Dialog = createReactClass({
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			triggerPopperJS: false,
 			isOpen: false,
 		};
 	},
 
-	componentDidMount () {
+	componentDidMount() {
 		if (
 			this.props.position === 'absolute' ||
 			this.props.position === 'relative'
@@ -207,7 +207,7 @@ const Dialog = createReactClass({
 		}
 	},
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&
 			prevState.triggerPopperJS === false &&
@@ -220,7 +220,7 @@ const Dialog = createReactClass({
 		}
 	},
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.teardownScopedFocus();
 			DOMElementFocus.returnFocusToStoredElement();
@@ -236,7 +236,7 @@ const Dialog = createReactClass({
 		this.handleClose(undefined, { componentWillUnmount: true });
 	},
 
-	getPropOffsetsInPixels (offsetString) {
+	getPropOffsetsInPixels(offsetString) {
 		const offsetArray = offsetString.split(' ');
 		return {
 			vertical: parseInt(offsetArray[0], 10),
@@ -244,7 +244,7 @@ const Dialog = createReactClass({
 		};
 	},
 
-	getPopperStyles () {
+	getPopperStyles() {
 		const { popperData } = this.state;
 		if (!this.popper || !popperData) {
 			return {
@@ -274,7 +274,7 @@ const Dialog = createReactClass({
 	},
 
 	// Render
-	setDialogContent (component) {
+	setDialogContent(component) {
 		this.dialogContent = component;
 		if (!this.state.triggerPopperJS) {
 			this.setState({ triggerPopperJS: true });
@@ -284,25 +284,25 @@ const Dialog = createReactClass({
 	/**
 	 * Events
 	 */
-	handleClickOutside () {
+	handleClickOutside() {
 		this.handleClose();
 	},
 
-	handleClose (event, data) {
+	handleClose(event, data) {
 		this.setState({ triggerPopperJS: true });
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}
 	},
 
-	handleClick (event) {
+	handleClick(event) {
 		if (event.nativeEvent) {
 			event.nativeEvent.preventDefault();
 			event.nativeEvent.stopPropagation();
 		}
 	},
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		if (event.keyCode === KEYS.TAB) {
 			if (this.props.closeOnTabKey) {
 				EventUtil.trap(event);
@@ -315,7 +315,7 @@ const Dialog = createReactClass({
 		}
 	},
 
-	handleOpen () {
+	handleOpen() {
 		if (this.props.variant === 'popover' && this.dialogContent) {
 			DOMElementFocus.storeActiveElement();
 			DOMElementFocus.setupScopedFocus({
@@ -336,7 +336,7 @@ const Dialog = createReactClass({
 	 * Popper API and helper functions
 	 */
 
-	createPopper () {
+	createPopper() {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
 		const placement = mapPropToPopperPlacement(this.props.align);
@@ -385,13 +385,13 @@ const Dialog = createReactClass({
 		this.popper.scheduleUpdate();
 	},
 
-	destroyPopper () {
+	destroyPopper() {
 		if (this.popper) {
 			this.popper.destroy();
 		}
 	},
 
-	render () {
+	render() {
 		let style = {};
 
 		if (

@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<div>
 				<h1 className="slds-text-title_caps slds-p-vertical--medium">

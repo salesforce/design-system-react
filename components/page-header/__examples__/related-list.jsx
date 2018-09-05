@@ -10,7 +10,7 @@ import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 const Example = createReactClass({
 	displayName: 'PageHeaderExample',
 
-	render () {
+	render() {
 		const navRight = (
 			<div className="slds-button-group" role="group">
 				<button className="slds-button slds-button--neutral">

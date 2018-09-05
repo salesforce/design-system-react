@@ -107,7 +107,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		triggerRef: PropTypes.func,
 	},
 
-	renderAvatar () {
+	renderAvatar() {
 		const { avatar } = this.props;
 		if (typeof avatar === 'string') {
 			return (
@@ -120,7 +120,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		// The following props are provided to the `li`, all others are passed into the `Button`
 		const {
 			className,

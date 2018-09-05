@@ -3,7 +3,7 @@ import React from 'react';
 import RequiredInputErrorStateComponent from '../required-input-error-state';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return <RequiredInputErrorStateComponent />;
 	}
 }

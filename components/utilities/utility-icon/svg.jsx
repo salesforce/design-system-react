@@ -7,28 +7,28 @@ import createReactClass from 'create-react-class';
 const Svg = createReactClass({
 	displayName: 'Svg',
 
-	getPaths (paths) {
+	getPaths(paths) {
 		if (paths instanceof Array) {
 			return paths.map((item) => <path {...item} />);
 		}
 		return <path key="pathSVG" {...paths} />;
 	},
 
-	getCircles (circles) {
+	getCircles(circles) {
 		if (circles instanceof Array) {
 			return circles.map((item) => <circle {...item} />);
 		}
 		return <circle key="circleSVG" {...circles} />;
 	},
 
-	getEllipses (ellipses) {
+	getEllipses(ellipses) {
 		if (ellipses instanceof Array) {
 			return ellipses.map((item) => <ellipse {...item} />);
 		}
 		return <ellipse key="ellipseSVG" {...ellipses} />;
 	},
 
-	getGroups (groups) {
+	getGroups(groups) {
 		if (groups instanceof Array) {
 			return groups.map((item) => <g>{this.getShapes(item)}</g>);
 		}
@@ -36,7 +36,7 @@ const Svg = createReactClass({
 		return <g key="groupsSVG">{this.getShapes(groups)}</g>;
 	},
 
-	getShapes (data) {
+	getShapes(data) {
 		const shapes = [];
 
 		if (data) {
@@ -59,7 +59,7 @@ const Svg = createReactClass({
 		return shapes;
 	},
 
-	getSVG ({ viewBox, ...rest }, props) {
+	getSVG({ viewBox, ...rest }, props) {
 		return (
 			<svg
 				aria-hidden={props['aria-hidden']}
@@ -73,7 +73,7 @@ const Svg = createReactClass({
 		);
 	},
 
-	render () {
+	render() {
 		const { data, ...props } = this.props;
 
 		return data ? this.getSVG(data, props) : null;

@@ -388,7 +388,7 @@ const MenuDropdown = createReactClass({
 
 	mixins: [KeyboardNavigable],
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
@@ -398,7 +398,7 @@ const MenuDropdown = createReactClass({
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			focusedIndex: -1,
 			selectedIndex: -1,
@@ -406,7 +406,7 @@ const MenuDropdown = createReactClass({
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_DROPDOWN, this.props, componentDoc);
 
@@ -415,7 +415,7 @@ const MenuDropdown = createReactClass({
 		this.setCurrentSelectedIndices(this.props);
 	},
 
-	componentWillReceiveProps (nextProps, prevProps) {
+	componentWillReceiveProps(nextProps, prevProps) {
 		if (prevProps.value !== nextProps.value) {
 			this.setCurrentSelectedIndices(nextProps);
 		}
@@ -425,7 +425,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		if (currentOpenDropdown === this) {
 			currentOpenDropdown = undefined;
 		}
@@ -433,17 +433,17 @@ const MenuDropdown = createReactClass({
 		this.renderOverlay(false);
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getIsOpen () {
+	getIsOpen() {
 		return !!(isBoolean(this.props.isOpen)
 			? this.props.isOpen
 			: this.state.isOpen);
 	},
 
-	getIndexByValue (value, options) {
+	getIndexByValue(value, options) {
 		let foundIndex = -1;
 
 		if (options && options.length) {
@@ -460,27 +460,27 @@ const MenuDropdown = createReactClass({
 		return foundIndex;
 	},
 
-	getValueByIndex (index) {
+	getValueByIndex(index) {
 		return this.props.options[index];
 	},
 
-	getListItemRenderer () {
+	getListItemRenderer() {
 		return this.props.listItemRenderer
 			? this.props.listItemRenderer
 			: ListItemLabel;
 	},
 
-	setFocus () {
+	setFocus() {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
 			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
 		}
 	},
 
-	getMenu () {
+	getMenu() {
 		return ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
 	},
 
-	getMenuItem (index) {
+	getMenuItem(index) {
 		if (index !== undefined && this.listItems) {
 			return ReactDOM.findDOMNode(this.listItems[index]); // eslint-disable-line react/no-find-dom-node
 		}
@@ -488,7 +488,7 @@ const MenuDropdown = createReactClass({
 		return undefined;
 	},
 
-	setCurrentSelectedIndices (nextProps) {
+	setCurrentSelectedIndices(nextProps) {
 		if (this.props.multiple !== true) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
@@ -515,7 +515,7 @@ const MenuDropdown = createReactClass({
 	},
 
 	// Trigger opens, closes, and recieves focus on close
-	saveRefToTrigger (trigger) {
+	saveRefToTrigger(trigger) {
 		this.trigger = trigger;
 
 		if (!this.state.triggerRendered) {
@@ -524,16 +524,16 @@ const MenuDropdown = createReactClass({
 	},
 
 	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
-	saveRefToTriggerContainer (triggerContainer) {
+	saveRefToTriggerContainer(triggerContainer) {
 		this.triggerContainer = triggerContainer;
 		if (!this.trigger) this.trigger = triggerContainer;
 	},
 
-	saveRefToList (list) {
+	saveRefToList(list) {
 		this.list = list;
 	},
 
-	saveRefToListItem (listItem, index) {
+	saveRefToListItem(listItem, index) {
 		if (!this.listItems) {
 			this.listItems = {};
 		}
@@ -545,7 +545,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleClose () {
+	handleClose() {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -565,7 +565,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleOpen () {
+	handleOpen() {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -585,7 +585,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleMouseEnter (event) {
+	handleMouseEnter(event) {
 		const isOpen = this.getIsOpen();
 
 		this.isHover = true;
@@ -602,7 +602,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleMouseLeave (event) {
+	handleMouseLeave(event) {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -616,7 +616,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleClick (event) {
+	handleClick(event) {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -631,7 +631,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleFocus (event) {
+	handleFocus(event) {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -643,7 +643,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleClickCustomContent () {
+	handleClickCustomContent() {
 		this.setFocus();
 		this.handleClose();
 
@@ -652,7 +652,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleSelect (index) {
+	handleSelect(index) {
 		if (!this.props.multiple) {
 			this.setState({ selectedIndex: index });
 			this.handleClose();
@@ -680,7 +680,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		if (event.keyCode) {
 			if (
 				event.keyCode === KEYS.ENTER ||
@@ -713,16 +713,16 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	handleCancel () {
+	handleCancel() {
 		this.setFocus();
 		this.handleClose();
 	},
 
-	handleClickOutside () {
+	handleClickOutside() {
 		this.handleClose();
 	},
 
-	toggleOpen () {
+	toggleOpen() {
 		const isOpen = this.getIsOpen();
 		this.setFocus();
 
@@ -733,7 +733,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	renderDefaultMenuContent (customListProps) {
+	renderDefaultMenuContent(customListProps) {
 		return (
 			<List
 				key={`${this.getId()}-dropdown-list`}
@@ -758,7 +758,7 @@ const MenuDropdown = createReactClass({
 		);
 	},
 
-	renderMenuContent (customContent) {
+	renderMenuContent(customContent) {
 		let customContentWithListPropInjection = [];
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
@@ -783,7 +783,7 @@ const MenuDropdown = createReactClass({
 		);
 	},
 
-	renderDialog (customContent, isOpen, outsideClickIgnoreClass) {
+	renderDialog(customContent, isOpen, outsideClickIgnoreClass) {
 		let align = 'bottom';
 		let hasNubbin = false;
 		let positionClassName = '';
@@ -839,7 +839,7 @@ const MenuDropdown = createReactClass({
 		) : null;
 	},
 
-	renderOverlay (isOpen) {
+	renderOverlay(isOpen) {
 		if (isFunction(overlay) && documentDefined) {
 			overlay(isOpen, overlay);
 		} else if (
@@ -856,7 +856,7 @@ const MenuDropdown = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		// Dropdowns are used by other components. The default trigger is a button, but some other components use `li` elements. The following allows `MenuDropdown` to be extended by providing a child component with the displayName of `DropdownTrigger`.
 		let CurrentTrigger = DefaultTrigger;
 

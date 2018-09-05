@@ -19,7 +19,7 @@ const steps = [
 	{ id: 4, label: 'tooltip label #5' },
 ];
 
-const handleStepEvent = function (event, data) {
+const handleStepEvent = function(event, data) {
 	console.log(data);
 };
 
@@ -49,7 +49,7 @@ const modalContent = (
 const Example = createReactClass({
 	displayName: 'ProgressIndicatorModal',
 
-	render () {
+	render() {
 		return (
 			<div style={{ height: '640px' }}>
 				{getModal({

@@ -6,7 +6,7 @@ import Lookup from '~/components/lookup'; // `~` is replaced with design-system-
 const Example = createReactClass({
 	displayName: 'LookupExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Lookup

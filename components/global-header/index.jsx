@@ -86,25 +86,25 @@ const GlobalHeader = createReactClass({
 		onSkipToNav: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(GLOBAL_HEADER, this.props, componentDoc);
 	},
 
-	handleSkipToContent (e) {
+	handleSkipToContent(e) {
 		EventUtil.trap(e);
 		this.props.onSkipToContent(e);
 	},
 
-	handleSkipToNav (e) {
+	handleSkipToNav(e) {
 		EventUtil.trap(e);
 		this.props.onSkipToNav(e);
 	},
 
-	render () {
+	render() {
 		let tools;
 		let search;
 		let profile;

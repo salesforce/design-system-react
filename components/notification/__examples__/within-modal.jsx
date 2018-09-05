@@ -8,7 +8,7 @@ import Button from '~/components/button';
 const Example = createReactClass({
 	displayName: 'NotificationExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 			modalOpen: false,
@@ -16,15 +16,15 @@ const Example = createReactClass({
 		};
 	},
 
-	toggleModal () {
+	toggleModal() {
 		this.setState({ modalOpen: !this.state.modalOpen });
 	},
 
-	toggleToast () {
+	toggleToast() {
 		this.setState({ toastOpen: !this.state.toastOpen });
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

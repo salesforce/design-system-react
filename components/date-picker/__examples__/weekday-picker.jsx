@@ -6,7 +6,7 @@ import Datepicker from '~/components/date-picker';
 const Example = createReactClass({
 	displayName: 'DatepickerExample',
 
-	render () {
+	render() {
 		return (
 			<Datepicker
 				dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}

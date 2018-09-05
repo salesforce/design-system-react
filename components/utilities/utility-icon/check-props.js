@@ -4,10 +4,10 @@
 
 import urlExists from '../../../utilities/warning/url-exists';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function(COMPONENT, props) {
 		if (!props.context[`${props.category}Sprite`]) {
 			const modifiedPath = props.path || props.context.iconPath;
 			urlExists(

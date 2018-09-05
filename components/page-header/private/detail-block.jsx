@@ -35,29 +35,29 @@ const defaultProps = {
 };
 
 class DetailBlock extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { showTooltip: false };
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this._renderFieldTruncation();
 	}
 
-	componentDidUpdate (prevProps) {
+	componentDidUpdate(prevProps) {
 		if (this.props.content !== prevProps.content) {
 			this._renderFieldTruncation();
 		}
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	_getClassNames (className, flavor) {
+	_getClassNames(className, flavor) {
 		return classnames('slds-page-header__detail-block', className, {
 			[`slds-size--${flavor}`]: flavor,
 		});
 	}
 
-	_renderFieldTruncation () {
+	_renderFieldTruncation() {
 		const fieldContent = this.fieldContentRef;
 		const isTruncated =
 			fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
@@ -68,7 +68,7 @@ class DetailBlock extends Component {
 		}
 	}
 
-	render () {
+	render() {
 		const { className, content, flavor, label, truncate } = this.props;
 
 		const classes = this._getClassNames(className, flavor);

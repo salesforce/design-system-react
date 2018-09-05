@@ -17,7 +17,7 @@ const ListItemRenderer = (props) => (
 const Example = createReactClass({
 	displayName: 'PicklistExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Picklist

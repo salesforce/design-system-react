@@ -11,7 +11,7 @@ import IconSettings from '../../icon-settings';
 
 const { Simulate } = TestUtils;
 
-describe('SLDSModal: ', function () {
+describe('SLDSModal: ', function() {
 	let container;
 	let renderedNode;
 

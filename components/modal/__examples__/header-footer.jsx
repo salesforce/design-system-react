@@ -7,22 +7,22 @@ import Button from '~/components/button';
 const Example = createReactClass({
 	displayName: 'ModalExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			noHeaderIsOpen: false,
 			noFooterIsOpen: false,
 		};
 	},
 
-	toggleNoHeaderIsOpen () {
+	toggleNoHeaderIsOpen() {
 		this.setState({ noHeaderIsOpen: !this.state.noHeaderIsOpen });
 	},
 
-	toggleNofooterIsOpen () {
+	toggleNofooterIsOpen() {
 		this.setState({ noFooterIsOpen: !this.state.noFooterIsOpen });
 	},
 
-	render () {
+	render() {
 		const modal = this.state.noHeaderIsOpen ? (
 			<Modal
 				assistiveText={{ dialogLabel: 'Modal no header' }}

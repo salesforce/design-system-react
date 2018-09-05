@@ -63,7 +63,7 @@ const ListItem = createReactClass({
 		value: PropTypes.any,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			data: {},
 			href: 'javascript:void(0);', // eslint-disable-line no-script-url
@@ -75,7 +75,7 @@ const ListItem = createReactClass({
 		};
 	},
 
-	getLabel () {
+	getLabel() {
 		const Label = this.props.labelRenderer;
 		return (
 			<Label
@@ -91,7 +91,7 @@ const ListItem = createReactClass({
 		);
 	},
 
-	getIcon (position) {
+	getIcon(position) {
 		const classnames = ['slds-icon-text-default'];
 		let iconProps = this.props[`${position}Icon`];
 
@@ -123,7 +123,7 @@ const ListItem = createReactClass({
 		return null;
 	},
 
-	handleClick (event) {
+	handleClick(event) {
 		if (
 			this.props.type !== 'link' ||
 			this.props.href === 'javascript:void(0);' // eslint-disable-line no-script-url
@@ -137,11 +137,11 @@ const ListItem = createReactClass({
 		}
 	},
 
-	handleMouseDown (event) {
+	handleMouseDown(event) {
 		EventUtil.trapImmediate(event);
 	},
 
-	render () {
+	render() {
 		switch (this.props.type) {
 			case 'header': {
 				return (

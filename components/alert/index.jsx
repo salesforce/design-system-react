@@ -89,19 +89,19 @@ const defaultProps = {
  */
 
 class Alert extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isInitialRender: true,
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(ALERT, this.props, componentDoc);
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		DOMElementFocus.returnFocusToStoredElement();
 	}
 
@@ -116,7 +116,7 @@ class Alert extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},

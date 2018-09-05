@@ -10,7 +10,7 @@
  * http://api.jqueryui.com/category/ui-core/
  */
 
-function focusable (element, isTabIndexNotNaN) {
+function focusable(element, isTabIndexNotNaN) {
 	const nodeName = element.nodeName.toLowerCase();
 	if (/input|select|textarea|button|object/.test(nodeName)) {
 		return !element.disabled;
@@ -20,14 +20,14 @@ function focusable (element, isTabIndexNotNaN) {
 	return isTabIndexNotNaN;
 }
 
-function tabbable (element) {
+function tabbable(element) {
 	let tabIndex = element.getAttribute('tabindex');
 	if (tabIndex === null) tabIndex = undefined;
 	const isTabIndexNaN = isNaN(tabIndex);
 	return (isTabIndexNaN || tabIndex >= 0) && focusable(element, !isTabIndexNaN);
 }
 
-function findTabbableDescendants (element) {
+function findTabbableDescendants(element) {
 	return [].slice
 		.call(element.querySelectorAll('*'), 0)
 		.filter((el) => tabbable(el));

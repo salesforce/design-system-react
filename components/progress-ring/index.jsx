@@ -70,7 +70,7 @@ class ProgressRing extends React.Component {
 	 * Gets the icon to display
 	 * @returns {node} Icon
 	 */
-	icon () {
+	icon() {
 		let icon = '';
 
 		if (this.props.hasIcon) {
@@ -92,7 +92,7 @@ class ProgressRing extends React.Component {
 	 * Percentage as a decimal
 	 * @returns {decimal} Percentage
 	 */
-	percentDecimal () {
+	percentDecimal() {
 		return this.props.value / 100;
 	}
 
@@ -100,11 +100,11 @@ class ProgressRing extends React.Component {
 	 * Gets the theme CSS class
 	 * @returns {string} Class name
 	 */
-	themeClass () {
+	themeClass() {
 		return THEME_CLASSES[this.props.theme] || '';
 	}
 
-	render () {
+	render() {
 		return (
 			<ProgressRingShape
 				id={this.props.id}

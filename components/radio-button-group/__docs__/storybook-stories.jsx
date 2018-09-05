@@ -10,18 +10,18 @@ import Radio from '../../radio-button-group/radio';
 import { RADIO_BUTTON_GROUP } from '../../../utilities/constants';
 
 class RadioButtonGroupExample extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { checked: 'Tue' };
 		this.onChange = this.onChange.bind(this);
 	}
 
-	onChange (event) {
+	onChange(event) {
 		this.setState({ checked: event.target.value });
 		action('onChange')(event);
 	}
 
-	render () {
+	render() {
 		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 		return (
 			<div>

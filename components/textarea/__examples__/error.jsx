@@ -6,7 +6,7 @@ import Textarea from '~/components/textarea'; // `~` is replaced with design-sys
 const Example = createReactClass({
 	displayName: 'TextareaExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Textarea

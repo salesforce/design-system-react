@@ -55,11 +55,11 @@ class Progress extends React.Component {
 	/**
 	 * Get the progress's HTML id. Generate a new one if no ID present.
 	 */
-	getId () {
+	getId() {
 		return this.props.id;
 	}
 
-	render () {
+	render() {
 		return (
 			<div
 				id={this.getId()}

@@ -6,21 +6,21 @@ import Button from '~/components/button';
 const Example = createReactClass({
 	displayName: 'ModalExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 		};
 	},
 
-	getParent () {
+	getParent() {
 		return document.querySelector('#myModalContainer');
 	},
 
-	toggleOpen () {
+	toggleOpen() {
 		this.setState({ isOpen: !this.state.isOpen });
 	},
 
-	render () {
+	render() {
 		return (
 			<div id="myModalContainer">
 				<Button label="Open large modal" onClick={this.toggleOpen} />

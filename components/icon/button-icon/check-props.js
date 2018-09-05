@@ -4,10 +4,10 @@
 
 import sunsetProperty from '../../../utilities/warning/sunset-property';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function(COMPONENT, props) {
 		/* eslint-disable max-len */
 		sunsetProperty(
 			COMPONENT,

@@ -21,7 +21,7 @@ describe('Button Stateful: ', () => {
 
 	// Setup and takedown
 	const renderButton = (instance) =>
-		function () {
+		function() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
@@ -29,7 +29,7 @@ describe('Button Stateful: ', () => {
 				this.dom
 			);
 		};
-	function removeButton () {
+	function removeButton() {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
 	}
@@ -41,12 +41,12 @@ describe('Button Stateful: ', () => {
 		beforeEach(renderButton(<ButtonStateful {...requiredProps} />));
 		afterEach(removeButton);
 
-		it('button exists - is not undefined', function () {
+		it('button exists - is not undefined', function() {
 			const button = getButton(this.dom);
 			button.should.not.be.undefined;
 		});
 
-		it('if no active prop, is not active', function () {
+		it('if no active prop, is not active', function() {
 			const button = getButton(this.dom);
 			button.className.should.include('slds-not-selected');
 		});
@@ -58,7 +58,7 @@ describe('Button Stateful: ', () => {
 		beforeEach(renderButton(<ButtonStateful {...propsWithActive} />));
 		afterEach(removeButton);
 
-		it('renders active prop', function () {
+		it('renders active prop', function() {
 			const button = getButton(this.dom);
 			button.className.should.include('slds-is-selected');
 		});

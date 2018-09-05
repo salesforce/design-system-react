@@ -5,17 +5,17 @@ import Slider from '~/components/slider';
 const DemoSlider = createReactClass({
 	displayName: 'DemoSlider',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			value: this.props.value,
 		};
 	},
 
-	handleChange (event, { value }) {
+	handleChange(event, { value }) {
 		this.setState({ value });
 	},
 
-	render () {
+	render() {
 		return (
 			<Slider
 				{...this.props}
@@ -29,7 +29,7 @@ const DemoSlider = createReactClass({
 const Example = createReactClass({
 	displayName: 'SliderExample',
 
-	render () {
+	render() {
 		return (
 			<section>
 				<ol>

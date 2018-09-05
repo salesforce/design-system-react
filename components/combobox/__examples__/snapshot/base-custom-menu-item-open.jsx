@@ -3,7 +3,7 @@ import React from 'react';
 import BaseCustomMenuItem from '../base-custom-menu-item';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return <BaseCustomMenuItem menuPosition="relative" isOpen />;
 	}
 }

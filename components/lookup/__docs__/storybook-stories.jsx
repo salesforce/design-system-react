@@ -13,7 +13,7 @@ import SLDSButton from '../../button';
 const DemoLookup = createReactClass({
 	displayName: 'DemoLookup',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			options: [
 				{ label: 'File 1' },
@@ -24,18 +24,18 @@ const DemoLookup = createReactClass({
 		};
 	},
 
-	clearSelected () {
+	clearSelected() {
 		this.setState({ currentSelected: -1 });
 	},
 
-	handleSelect (selectedItem, ...rest) {
+	handleSelect(selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
 		this.setState({
 			currentSelected: this.state.options.indexOf(selectedItem),
 		});
 	},
 
-	render () {
+	render() {
 		return (
 			<div>
 				<div>
@@ -56,7 +56,7 @@ const DemoLookup = createReactClass({
 const DemoLookupAccounts = createReactClass({
 	displayName: 'DemoLookupAccounts',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			options: [
 				{ label: "Paddy's Pub", subTitle: 'Boston, MA' },
@@ -69,12 +69,12 @@ const DemoLookupAccounts = createReactClass({
 		};
 	},
 
-	handleSelect (selectedItem, ...rest) {
+	handleSelect(selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
 		this.setState({ selectedItem });
 	},
 
-	render () {
+	render() {
 		return (
 			<Lookup
 				{...this.props}

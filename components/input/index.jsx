@@ -274,11 +274,11 @@ const Input = createReactClass({
 		value: PropTypes.string,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(INPUT, this.props, componentDoc);
 
@@ -288,16 +288,16 @@ const Input = createReactClass({
 		}
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getErrorId () {
+	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	},
 
 	// This is convuluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
-	getIconRender (position, iconPositionProp) {
+	getIconRender(position, iconPositionProp) {
 		let icon;
 
 		// Remove at next breaking change
@@ -339,7 +339,7 @@ const Input = createReactClass({
 		return icon;
 	},
 
-	render () {
+	render() {
 		// Remove at next breaking change
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
 		const hasLeftIcon =

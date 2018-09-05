@@ -73,24 +73,24 @@ const DataTableHeaderCell = createReactClass({
 		width: PropTypes.string,
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			sortDirection: null,
 		};
 	},
 
-	componentDidMount () {
+	componentDidMount() {
 		checkProps(DATA_TABLE_COLUMN, this.props);
 	},
 
-	componentDidUpdate (prevProps) {
+	componentDidUpdate(prevProps) {
 		// reset sort state when another column is sorted
 		if (prevProps.isSorted === true && this.props.isSorted === false) {
 			this.setState({ sortDirection: null }); // eslint-disable-line react/no-did-update-set-state
 		}
 	},
 
-	handleSort (e) {
+	handleSort(e) {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
 		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
@@ -109,7 +109,7 @@ const DataTableHeaderCell = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		const { isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;

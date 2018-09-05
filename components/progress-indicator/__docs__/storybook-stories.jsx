@@ -41,7 +41,7 @@ const manySteps = [
 const ExampleProgressIndicator = createReactClass({
 	displayName: 'ProgressIndicatorDefault',
 
-	render () {
+	render() {
 		return (
 			<div style={{ padding: '4rem 1rem 0px' }}>
 				<ProgressIndicator

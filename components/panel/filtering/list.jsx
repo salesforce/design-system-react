@@ -27,7 +27,7 @@ import { PANEL_FILTER_LIST } from '../../../utilities/constants';
 const PanelFilterList = createReactClass({
 	displayName: PANEL_FILTER_LIST,
 
-	propTypes () {
+	propTypes() {
 		return {
 			/**
 			 * Pass in `Filter` components
@@ -36,11 +36,11 @@ const PanelFilterList = createReactClass({
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 	},
 
-	render () {
+	render() {
 		const children = React.Children.map(this.props.children, (child, index) => {
 			const id =
 				child && child.props.id

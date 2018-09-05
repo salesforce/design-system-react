@@ -36,13 +36,13 @@ const recordHomeDetails2 = [
 const DemoPageHeader = createReactClass({
 	displayName: 'DemoPageHeader',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			recordHomeDetails: recordHomeDetails2,
 		};
 	},
 
-	changeDescription () {
+	changeDescription() {
 		if (this.state.recordHomeDetails[0].content === 'hi') {
 			this.setState({ recordHomeDetails: recordHomeDetails1 });
 		} else {
@@ -50,14 +50,14 @@ const DemoPageHeader = createReactClass({
 		}
 	},
 
-	handleSelect (selectedItem, ...rest) {
+	handleSelect(selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
 		this.setState({
 			currentSelected: this.state.options.indexOf(selectedItem),
 		});
 	},
 
-	render () {
+	render() {
 		const defaultProps = {
 			iconAssistiveText: 'User',
 			iconCategory: 'standard',

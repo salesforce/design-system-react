@@ -204,16 +204,16 @@ const Button = createReactClass({
 		]),
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(BUTTON, this.props, componentDoc);
 	},
 
-	getClassName () {
+	getClassName() {
 		const isIcon = this.props.variant === 'icon';
 
 		let iconVariant = this.props.iconVariant;
@@ -257,13 +257,13 @@ const Button = createReactClass({
 		);
 	},
 
-	handleClick (event) {
+	handleClick(event) {
 		if (this.props.onClick) {
 			this.props.onClick(event, {});
 		}
 	},
 
-	renderIcon (name) {
+	renderIcon(name) {
 		const iconSize =
 			this.props.iconSize === '' || this.props.iconVariant
 				? null
@@ -288,15 +288,15 @@ const Button = createReactClass({
 		);
 	},
 
-	renderLabel () {
+	renderLabel() {
 		const iconOnly = this.props.iconName || this.props.iconPath;
 		const assistiveTextIcon =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...defaultProps.assistiveText,
-					...this.props.assistiveText,
-				}.icon;
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
 
 		return iconOnly && assistiveTextIcon ? (
 			<span className="slds-assistive-text">{assistiveTextIcon}</span>
@@ -305,7 +305,7 @@ const Button = createReactClass({
 		);
 	},
 
-	renderButton () {
+	renderButton() {
 		return (
 			<button
 				aria-controls={this.props['aria-controls']}
@@ -353,11 +353,11 @@ const Button = createReactClass({
 	},
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
-	renderTooltip () {
+	renderTooltip() {
 		return <Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>;
 	},
 
-	render () {
+	render() {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
 	},
 });

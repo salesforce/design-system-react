@@ -35,21 +35,21 @@ const customStyles = {
 // been created in order to do modals in portals.
 
 const Manager = createReactClass({
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			title: '',
 			isOpen: false,
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: this.props.isOpen,
 			revealed: false,
 		};
 	},
 
-	componentDidMount () {
+	componentDidMount() {
 		if (!this.state.revealed) {
 			setTimeout(() => {
 				this.setState({ revealed: true });
@@ -58,7 +58,7 @@ const Manager = createReactClass({
 		this.updateBodyScroll();
 	},
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.state.isOpen !== prevState.isOpen) {
 			this.updateBodyScroll();
 
@@ -74,11 +74,11 @@ const Manager = createReactClass({
 		}
 	},
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 	},
 
-	getModal () {
+	getModal() {
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
@@ -112,19 +112,19 @@ const Manager = createReactClass({
 		);
 	},
 
-	openModal () {
+	openModal() {
 		this.setState({ isOpen: true });
 	},
 
-	closeModal () {
+	closeModal() {
 		this.setState({ isOpen: false });
 	},
 
-	handleSubmitModal () {
+	handleSubmitModal() {
 		this.closeModal();
 	},
 
-	updateBodyScroll () {
+	updateBodyScroll() {
 		if (window && document && document.body) {
 			if (this.state.isOpen) {
 				document.body.style.overflow = 'hidden';
@@ -134,7 +134,7 @@ const Manager = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		return (
 			<Modal
 				isOpen={this.state.isOpen}

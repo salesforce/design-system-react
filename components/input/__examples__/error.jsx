@@ -7,7 +7,7 @@ import InputIcon from '~/components/icon/input-icon'; // `~` is replaced with de
 const Example = createReactClass({
 	displayName: 'ErrorInputExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

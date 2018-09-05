@@ -56,7 +56,7 @@ const MediaObject = createReactClass({
 		verticalCenter: PropTypes.bool,
 	},
 
-	render () {
+	render() {
 		return (
 			<div
 				className={classnames(

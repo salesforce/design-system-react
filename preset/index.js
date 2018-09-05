@@ -1,7 +1,7 @@
 /* eslint-env commonjs */
 /* eslint-disable global-require */
 
-module.exports = function buildPreset () {
+module.exports = function buildPreset() {
 	return {
 		presets: [
 			require('babel-preset-env').default(null, {

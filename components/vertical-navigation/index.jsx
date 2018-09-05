@@ -61,25 +61,25 @@ const VerticalNavigation = createReactClass({
 		variant: PropTypes.oneOf(['default', 'shade']),
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			variant: 'default',
 		};
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 	},
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	},
 
-	getVariant () {
+	getVariant() {
 		return this.props.variant === 'shade' ? 'shade' : 'default';
 	},
 
-	getSelectedId () {
+	getSelectedId() {
 		const categories = this.props.categories;
 		let selectedId;
 		if (this.props.selectedId) {
@@ -94,7 +94,7 @@ const VerticalNavigation = createReactClass({
 		return selectedId;
 	},
 
-	render () {
+	render() {
 		const rootId = this.getId();
 		const variant = this.getVariant();
 		return (

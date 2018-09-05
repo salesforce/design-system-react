@@ -2,7 +2,7 @@ import React from 'react';
 import BrandBand from '~/components/brand-band'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return <BrandBand id="brand-band-lightning-blue" theme="lightning-blue" />;
 	}
 }

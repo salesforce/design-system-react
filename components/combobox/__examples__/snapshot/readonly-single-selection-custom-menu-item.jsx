@@ -3,7 +3,7 @@ import React from 'react';
 import ReadonlySingleSelectionCustomMenuItem from '../readonly-single-selection-custom-menu-item';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<ReadonlySingleSelectionCustomMenuItem menuPosition="relative" isOpen />
 		);

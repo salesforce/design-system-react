@@ -28,16 +28,16 @@ import { BRAND_BAND } from '../../utilities/constants';
  * The brand band provides theming capability that adds personality and improves information density and contrast.
  */
 class BrandBand extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.generatedId = shortid.generate();
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	injectLightningBlueStyles () {
+	injectLightningBlueStyles() {
 		return (
 			<style>{`#${this.getId()}.slds-brand-band:before {
 	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
@@ -48,7 +48,7 @@ class BrandBand extends React.Component {
 		);
 	}
 
-	render () {
+	render() {
 		const props = this.props;
 
 		return (

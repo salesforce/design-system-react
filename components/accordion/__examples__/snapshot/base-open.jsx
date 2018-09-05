@@ -4,7 +4,7 @@ import Panel from '~/components/accordion/panel'; // `~` is replaced with design
 import IconSettings from '~/components/icon-settings'; // `~` is replaced with design-system-react at runtime
 
 export default class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			expandedPanels: {},
@@ -23,7 +23,7 @@ export default class Example extends React.Component {
 		};
 	}
 
-	togglePanel (event, data) {
+	togglePanel(event, data) {
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
@@ -34,7 +34,7 @@ export default class Example extends React.Component {
 		console.log('onClick', data);
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">

@@ -6,7 +6,7 @@ import IconSettings from '~/components/icon-settings';
 const Example = createReactClass({
 	displayName: 'AvatarExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Avatar

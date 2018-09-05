@@ -5,7 +5,7 @@ import Slider from '~/components/slider';
 const Example = createReactClass({
 	displayName: 'SliderExample',
 
-	render () {
+	render() {
 		return (
 			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 				<div className="slds-col--padded">

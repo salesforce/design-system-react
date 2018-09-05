@@ -19,7 +19,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe('DataTable: ', function () {
+describe('DataTable: ', function() {
 	const items = [
 		{
 			id: '8IKZHZZV80',
@@ -79,7 +79,7 @@ describe('DataTable: ', function () {
 	};
 
 	const renderTable = (instance) =>
-		function () {
+		function() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
@@ -88,7 +88,7 @@ describe('DataTable: ', function () {
 			);
 		};
 
-	function removeTable () {
+	function removeTable() {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
 	}
@@ -107,7 +107,7 @@ describe('DataTable: ', function () {
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
-	describe('Structure', function () {
+	describe('Structure', function() {
 		beforeEach(
 			renderTable(
 				<DataTable {...defaultProps}>
@@ -120,19 +120,19 @@ describe('DataTable: ', function () {
 
 		afterEach(removeTable);
 
-		it('has a header', function () {
+		it('has a header', function() {
 			const thead = getTable(this.dom).querySelectorAll('thead');
 			thead.should.have.length(1);
 			thead[0].querySelectorAll('th').should.have.length(3);
 		});
 
-		it('has a row for each item', function () {
+		it('has a row for each item', function() {
 			const tbody = getTable(this.dom).querySelectorAll('tbody');
 			tbody.should.have.length(1);
 			tbody[0].querySelectorAll('tr').should.have.length(6);
 		});
 
-		it('renders the correct contents in each cell', function () {
+		it('renders the correct contents in each cell', function() {
 			const firstName = getCell(this.dom, 1, 1);
 			firstName.innerHTML.should.equal(
 				'<div class="" title="Cloudhub">Cloudhub</div>'
@@ -143,7 +143,7 @@ describe('DataTable: ', function () {
 			);
 		});
 
-		it('has checkboxes only when selectRows is true', function () {
+		it('has checkboxes only when selectRows is true', function() {
 			let checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(7);
 			removeTable.call(this);
@@ -160,7 +160,7 @@ describe('DataTable: ', function () {
 		});
 	});
 
-	describe('Selectable', function () {
+	describe('Selectable', function() {
 		const defaultSelection = [
 			{
 				id: '8IKZHZZV80',
@@ -172,7 +172,7 @@ describe('DataTable: ', function () {
 
 		afterEach(removeTable);
 
-		it('can start with a row selected', function () {
+		it('can start with a row selected', function() {
 			renderTable(
 				<DataTable {...defaultProps} selection={defaultSelection}>
 					{columns.map((columnProps) => (
@@ -190,7 +190,7 @@ describe('DataTable: ', function () {
 			checkedBoxes.should.have.length(1);
 		});
 
-		it('can deselect a row', function (done) {
+		it('can deselect a row', function(done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
 				done();
@@ -214,7 +214,7 @@ describe('DataTable: ', function () {
 			Simulate.change(checkbox, { target: { checked: false } });
 		});
 
-		it('can select a row', function (done) {
+		it('can select a row', function(done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(2);
 				selection[1].id.should.equal('5GJOOOPWU7');
@@ -239,7 +239,7 @@ describe('DataTable: ', function () {
 			Simulate.change(checkbox, { target: { checked: true } });
 		});
 
-		it('can select all rows', function (done) {
+		it('can select all rows', function(done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(6);
 				done();
@@ -259,7 +259,7 @@ describe('DataTable: ', function () {
 			Simulate.change(checkAll, { target: { checked: true } });
 		});
 
-		it('can deselect all rows', function (done) {
+		it('can deselect all rows', function(done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
 				done();
@@ -284,10 +284,10 @@ describe('DataTable: ', function () {
 		});
 	});
 
-	describe('Sortable', function () {
+	describe('Sortable', function() {
 		afterEach(removeTable);
 
-		it('first clicked on sortable column header should result in ascending sort', function (done) {
+		it('first clicked on sortable column header should result in ascending sort', function(done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
 				data.sortDirection.should.equal('asc');
@@ -309,7 +309,7 @@ describe('DataTable: ', function () {
 			Simulate.click(sortButton, {});
 		});
 
-		it('does not call onSort when a non-sortable column is clicked', function (done) {
+		it('does not call onSort when a non-sortable column is clicked', function(done) {
 			this.onSort = () => {
 				done('sort called');
 			};
@@ -330,10 +330,10 @@ describe('DataTable: ', function () {
 		});
 	});
 
-	describe('w/ RowActions', function () {
+	describe('w/ RowActions', function() {
 		afterEach(removeTable);
 
-		it('renders the RowActions and uses dropdown override property', function () {
+		it('renders the RowActions and uses dropdown override property', function() {
 			renderTable(
 				<DataTable {...defaultProps}>
 					{columns.map((columnProps) => (
@@ -367,7 +367,7 @@ describe('DataTable: ', function () {
 			rowActionMenus.should.have.length(6);
 		});
 
-		it('calls onAction & onSelect when an action is clicked', function (done) {
+		it('calls onAction & onSelect when an action is clicked', function(done) {
 			let expectedCalbacks = 2;
 
 			this.onAction = (item, action) => {
@@ -423,10 +423,10 @@ describe('DataTable: ', function () {
 		});
 	});
 
-	describe('w/ HighlightCell', function () {
+	describe('w/ HighlightCell', function() {
 		afterEach(removeTable);
 
-		it('marks the appropriate text in a cell', function () {
+		it('marks the appropriate text in a cell', function() {
 			renderTable(
 				<DataTable {...defaultProps} search="Cloud">
 					{columns.map((columnProps) => (

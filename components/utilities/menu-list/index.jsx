@@ -68,7 +68,7 @@ const List = createReactClass({
 		triggerId: PropTypes.string,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			length: '5',
 			options: [],
@@ -76,7 +76,7 @@ const List = createReactClass({
 		};
 	},
 
-	render () {
+	render() {
 		let lengthClassName;
 		if (this.props.length) {
 			lengthClassName = `slds-dropdown--length-${this.props.length}`;

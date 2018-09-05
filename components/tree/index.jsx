@@ -114,7 +114,7 @@ const defaultProps = {
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 class Tree extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		// Find the first selected node and initialize it properly so that can be tabbed to. If no node is selected, it will be selected upon first focus.
@@ -142,11 +142,11 @@ class Tree extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(TREE, this.props, componentDoc);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		this.setState({
 			flattenedNodes: this.flattenTree({
 				nodes: this.props.getNodes({ nodes: nextProps.nodes }),
@@ -235,15 +235,15 @@ class Tree extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		// One of these is required to pass accessibility tests
 		const assistiveText =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...defaultProps.assistiveText,
-					...this.props.assistiveText,
-				}.label;
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.label;
 		const headingText = assistiveText || this.props.heading;
 
 		// Start the zero level branch--that is the tree root. There is no label for

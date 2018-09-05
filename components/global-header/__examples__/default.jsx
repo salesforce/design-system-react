@@ -10,7 +10,7 @@ import GlobalHeaderSearch from '~/components/global-header/search';
 const Example = createReactClass({
 	displayName: 'GlobalHeaderExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<GlobalHeader

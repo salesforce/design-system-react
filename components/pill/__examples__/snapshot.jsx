@@ -5,12 +5,12 @@ import Pill from '~/components/pill'; // `~` is replaced with design-system-reac
 import Icon from '~/components/icon';
 import Avatar from '~/components/avatar';
 
-function noop () {}
+function noop() {}
 
 const Example = createReactClass({
 	displayName: 'PillExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

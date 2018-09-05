@@ -49,7 +49,7 @@ describe('SLDSSlider', () => {
 		return ReactDOM.render(instance, body2);
 	};
 
-	function removeSlider () {
+	function removeSlider() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 		if (body2 && body2.firstChild) {
@@ -177,7 +177,7 @@ describe('SLDSSlider', () => {
 		});
 	});
 
-	describe('onInput, onChange callbacks are set', function () {
+	describe('onInput, onChange callbacks are set', function() {
 		let mountNode;
 		let wrapper;
 
@@ -189,7 +189,7 @@ describe('SLDSSlider', () => {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onChange trigged callback', function (done) {
+		it('onChange trigged callback', function(done) {
 			wrapper = mount(
 				<Slider
 					value={200}
@@ -207,7 +207,7 @@ describe('SLDSSlider', () => {
 			trigger.simulate('change', { target: { value: 300 } });
 		});
 
-		it('onInput trigged callback', function (done) {
+		it('onInput trigged callback', function(done) {
 			wrapper = mount(
 				<Slider
 					value={200}

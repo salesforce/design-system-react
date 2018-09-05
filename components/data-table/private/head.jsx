@@ -46,10 +46,10 @@ const DataTableHead = createReactClass({
 		showRowActions: PropTypes.bool,
 	},
 
-	componentWillMount () {},
+	componentWillMount() {},
 
 	// ### Render
-	render () {
+	render() {
 		return (
 			<thead>
 				<tr className="slds-line-height_reset">

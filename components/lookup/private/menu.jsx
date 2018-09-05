@@ -25,13 +25,13 @@ const defaultProps = {
 	emptyMessage: 'No matches found.',
 };
 class Menu extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { filteredItems: this.filteredItems() };
 	}
 
 	// Set filtered list length in parent to determine active indexes for aria-activedescendent
-	componentDidUpdate (prevProps) {
+	componentDidUpdate(prevProps) {
 		// make an array of the children of the list but only count the actual items (but include section dividers)
 		const childFilter = (child) =>
 			child.className.indexOf('js-slds-lookup__item') > -1 ||
@@ -51,7 +51,7 @@ class Menu extends React.Component {
 		}
 	}
 
-	getFilteredItemForIndex (i) {
+	getFilteredItemForIndex(i) {
 		if (
 			i > -1 &&
 			this.state.filteredItems &&
@@ -62,12 +62,12 @@ class Menu extends React.Component {
 		return null;
 	}
 
-	filter (item) {
+	filter(item) {
 		return this.props.filterWith(this.props.searchTerm, item);
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	filterEmptySections (items) {
+	filterEmptySections(items) {
 		const result = [];
 		items.forEach((item, index) => {
 			if (item && item.data && item.data.type === 'section') {
@@ -84,7 +84,7 @@ class Menu extends React.Component {
 		return result;
 	}
 
-	filteredItems () {
+	filteredItems() {
 		return this.filterEmptySections(this.props.items.filter(this.filter, this));
 	}
 
@@ -95,7 +95,7 @@ class Menu extends React.Component {
 		}
 	};
 
-	renderContent () {
+	renderContent() {
 		if (this.state.filteredItems.length === 0) {
 			return (
 				<li className="slds-lookup__message" aria-live="polite">
@@ -109,15 +109,15 @@ class Menu extends React.Component {
 		return this.renderItems();
 	}
 
-	renderFooter () {
+	renderFooter() {
 		return this.props.footer;
 	}
 
-	renderHeader () {
+	renderHeader() {
 		return this.props.header;
 	}
 
-	renderItems () {
+	renderItems() {
 		const focusIndex = this.props.focusIndex;
 		return this.state.filteredItems.map((component, i) => {
 			// isActive means it is aria-activedescendant
@@ -163,11 +163,11 @@ class Menu extends React.Component {
 		});
 	}
 
-	renderSectionDivider () {
+	renderSectionDivider() {
 		return this.props.sectionDivider;
 	}
 
-	render () {
+	render() {
 		return (
 			<section id="menuContainer" className="ignore-react-onclickoutside">
 				{this.renderHeader()}

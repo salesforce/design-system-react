@@ -112,12 +112,12 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		triggerRef: PropTypes.func,
 	},
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
 	},
 
 	// ### Render
-	render () {
+	render() {
 		const {
 			active,
 			activeBackgroundColor,

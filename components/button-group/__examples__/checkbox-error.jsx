@@ -6,7 +6,7 @@ import Checkbox from '~/components/checkbox';
 const Example = createReactClass({
 	displayName: 'ButtonGroupExample',
 
-	render () {
+	render() {
 		return (
 			<ButtonGroup
 				labels={{
