@@ -268,7 +268,7 @@ class Example extends React.Component {
 	};
 
 	getNodes = (node) =>
-		(node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : []);
+		node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : [];
 
 	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified. Object and arrays are reference variables.
 	handleExpandClick = (event, data) => {
@@ -328,11 +328,11 @@ class Example extends React.Component {
 				// be updated
 				const selectedNode = prevState.selectedNode
 					? {
-						[prevState.selectedNode.id]: {
-							...prevState.nodes[prevState.selectedNode.id],
-							selected: false,
-						},
-					}
+							[prevState.selectedNode.id]: {
+								...prevState.nodes[prevState.selectedNode.id],
+								selected: false,
+							},
+						}
 					: {};
 				return {
 					...prevState,
@@ -362,7 +362,7 @@ class Example extends React.Component {
 		this.setState({ searchTerm: event.target.value });
 	};
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

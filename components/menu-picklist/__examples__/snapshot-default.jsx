@@ -9,7 +9,7 @@ import MenuPicklist from '~/components/menu-picklist';
 const Example = createReactClass({
 	displayName: 'MenuPicklistExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<MenuPicklist

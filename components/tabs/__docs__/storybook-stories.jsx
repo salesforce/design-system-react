@@ -216,7 +216,7 @@ const DemoTabsConditional = createReactClass({
 		]),
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			showA: true,
 			showB: true,
@@ -227,19 +227,19 @@ const DemoTabsConditional = createReactClass({
 		};
 	},
 
-	handleCheckClicked (checked, event) {
+	handleCheckClicked(checked, event) {
 		const state = {};
 		state[event.target.name] = checked;
 		this.setState(state);
 	},
 
-	handleCheckClickedDisable (checked, event) {
+	handleCheckClickedDisable(checked, event) {
 		const state = {};
 		state[event.target.name] = checked;
 		this.setState(state);
 	},
 
-	renderPaneA (disabled) {
+	renderPaneA(disabled) {
 		return (
 			<Panel label="Tab A" disabled={disabled}>
 				<p>This is tab A.</p>
@@ -263,7 +263,7 @@ const DemoTabsConditional = createReactClass({
 		);
 	},
 
-	render () {
+	render() {
 		return (
 			<div>
 				<h2 className="slds-text-heading--large">Conditional Tabs Demo</h2>
@@ -344,14 +344,14 @@ const DemoTabsOutsideControl = createReactClass({
 		prevOneSelectedYo: PropTypes.number,
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			whichOneSelectedYo: this.props.whichOneSelectedYo || 0,
 			prevOneSelectedYo: this.props.prevOneSelectedYo || 0,
 		};
 	},
 
-	handleSelect (index, last) {
+	handleSelect(index, last) {
 		let toReturn = true;
 		if (
 			index === this.state.whichOneSelectedYo &&
@@ -365,12 +365,12 @@ const DemoTabsOutsideControl = createReactClass({
 		return toReturn;
 	},
 
-	showState () {
+	showState() {
 		action('showState (current)')(this.state.whichOneSelectedYo);
 		action('showState (previous)')(this.state.prevOneSelectedYo);
 	},
 
-	handleButtonClicked (event) {
+	handleButtonClicked(event) {
 		const prevOneSelected = this.state.prevOneSelectedYo;
 		const thisOneSelected = this.state.whichOneSelectedYo;
 
@@ -418,7 +418,7 @@ const DemoTabsOutsideControl = createReactClass({
 		}
 	},
 
-	render () {
+	render() {
 		return (
 			<div>
 				<h2 className="slds-text-heading--large">Outside Tabs Demo</h2>
@@ -570,18 +570,18 @@ const getCustomContentTabs = () => {
 const DemoTabsInterceptSelect = createReactClass({
 	displayName: 'DemoTabsInterceptSelect',
 
-	getInitialState () {
+	getInitialState() {
 		return { intercepts: 0 };
 	},
 
-	handleTabSelect (next, last) {
+	handleTabSelect(next, last) {
 		action('handleTabSelect')(next, last);
 		const intercepts = this.state.intercepts + 1;
 		this.setState({ intercepts });
 		return false;
 	},
 
-	render () {
+	render() {
 		return (
 			<div>
 				<Tabs onSelect={this.handleTabSelect}>

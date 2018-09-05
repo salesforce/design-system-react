@@ -28,7 +28,7 @@ const options = {
 const Example = createReactClass({
 	displayName: 'PanelExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			modifiedPanel: false,
 			'show-me': {
@@ -48,7 +48,7 @@ const Example = createReactClass({
 		};
 	},
 
-	onChangePredicate (event, { id }) {
+	onChangePredicate(event, { id }) {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			modifiedPanel:
@@ -61,7 +61,7 @@ const Example = createReactClass({
 		});
 	},
 
-	onSelectPicklist (selectedItem, id) {
+	onSelectPicklist(selectedItem, id) {
 		this.setState({
 			[id]: {
 				...this.state[id],
@@ -70,7 +70,7 @@ const Example = createReactClass({
 		});
 	},
 
-	onRemove (event, { id }) {
+	onRemove(event, { id }) {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -80,7 +80,7 @@ const Example = createReactClass({
 		});
 	},
 
-	render () {
+	render() {
 		const hasActiveFilters =
 			this.state['created-date'].isActive ||
 			this.state['list-price'].isActive ||

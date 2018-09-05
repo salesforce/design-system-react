@@ -65,7 +65,7 @@ const defaultProps = { labels: {} };
  * The RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
 class RadioButtonGroup extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		// Merge objects of strings with their default object
@@ -77,22 +77,22 @@ class RadioButtonGroup extends React.Component {
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
 	}
 
-	getErrorId () {
+	getErrorId() {
 		if (this.hasError()) {
 			return this.props.errorId || this.generatedErrorId;
 		}
 		return undefined;
 	}
 
-	getName () {
+	getName() {
 		return this.props.name || this.generatedName;
 	}
 
-	hasError () {
+	hasError() {
 		return !!this.labels.error;
 	}
 
-	render () {
+	render() {
 		const children = React.Children.map(this.props.children, (child) =>
 			React.cloneElement(child, {
 				name: this.getName(),

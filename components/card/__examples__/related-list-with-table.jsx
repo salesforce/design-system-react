@@ -18,29 +18,29 @@ const sampleItems = [
 const Example = createReactClass({
 	displayName: 'CardExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			items: sampleItems,
 			isFiltering: false,
 		};
 	},
 
-	handleFilterChange (event) {
+	handleFilterChange(event) {
 		const filteredItems = sampleItems.filter((item) =>
 			RegExp(event.target.value, 'i').test(item.name)
 		);
 		this.setState({ isFiltering: true, items: filteredItems });
 	},
 
-	handleDeleteAllItems () {
+	handleDeleteAllItems() {
 		this.setState({ isFiltering: false, items: [] });
 	},
 
-	handleAddItem () {
+	handleAddItem() {
 		this.setState({ items: sampleItems });
 	},
 
-	render () {
+	render() {
 		const isEmpty = this.state.items.length === 0;
 
 		return (

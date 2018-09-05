@@ -34,7 +34,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 			children
 		);
 
-	function mountSection (props, children = defaultChildren) {
+	function mountSection(props, children = defaultChildren) {
 		handles.section = mount(
 			<IconSettings iconPath="/assets/icons">
 				{createSection(props, children)}

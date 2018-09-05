@@ -77,7 +77,7 @@ const DatepickerCalendar = createReactClass({
 		weekDayLabels: PropTypes.array.isRequired,
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			focusedDate: this.props.initialDateForCalendarRender,
 			calendarHasFocus: true,
@@ -85,11 +85,11 @@ const DatepickerCalendar = createReactClass({
 		};
 	},
 
-	componentDidUpdate (prevProps) {
+	componentDidUpdate(prevProps) {
 		this.setCalendarRenderSeedDate(prevProps);
 	},
 
-	setCalendarRenderSeedDate (prevProps) {
+	setCalendarRenderSeedDate(prevProps) {
 		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
 		if (
 			!DateUtil.isEqual(
@@ -105,20 +105,20 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
-	handleSelectDate (event, { date }) {
+	handleSelectDate(event, { date }) {
 		if (!this.props.dateDisabled({ date })) {
 			this.setState({ selected: date });
 			this.props.onSelectDate(event, { date });
 		}
 	},
 
-	handleRequestClose (event) {
+	handleRequestClose(event) {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose(event, {});
 		}
 	},
 
-	handleKeyboardNavigateToPreviousDay (event, { date }) {
+	handleKeyboardNavigateToPreviousDay(event, { date }) {
 		const prevDate = DateUtil.addDays(date, -1);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.props.onChangeMonth(event, prevDate);
@@ -131,7 +131,7 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
-	handleKeyboardNavigateToNextDay (event, { date }) {
+	handleKeyboardNavigateToNextDay(event, { date }) {
 		const nextDate = DateUtil.addDays(date, 1);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.props.onChangeMonth(event, nextDate);
@@ -144,7 +144,7 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
-	handleKeyboardNavigateToPreviousWeek (event, { date }) {
+	handleKeyboardNavigateToPreviousWeek(event, { date }) {
 		const prevDate = DateUtil.addDays(date, -7);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.props.onChangeMonth(event, prevDate);
@@ -157,7 +157,7 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
-	handleKeyboardNavigateToNextWeek (event, { date }) {
+	handleKeyboardNavigateToNextWeek(event, { date }) {
 		const nextDate = DateUtil.addDays(date, 7);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.props.onChangeMonth(event, nextDate);
@@ -170,7 +170,7 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
-	renderWeeks () {
+	renderWeeks() {
 		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
 
 		const firstDayOfMonth = DateUtil.firstDayOfMonth(
@@ -243,7 +243,7 @@ const DatepickerCalendar = createReactClass({
 		return weeks;
 	},
 
-	render () {
+	render() {
 		const sunday = (
 			<th>
 				<abbr title={this.props.weekDayLabels[0]}>

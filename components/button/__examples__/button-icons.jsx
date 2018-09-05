@@ -6,7 +6,7 @@ import Button from '~/components/button'; // `~` is replaced with design-system-
 const Example = createReactClass({
 	displayName: 'ButtonExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="-x-small-buttons--horizontal">

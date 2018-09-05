@@ -40,7 +40,7 @@ const DemoAppLauncherTile = createReactClass({
 		size: PropTypes.string,
 	},
 
-	render () {
+	render() {
 		return (
 			<AppLauncherTile
 				title="Marketing Cloud"
@@ -58,7 +58,7 @@ const DemoAppLauncherTile = createReactClass({
 const DemoAppLauncherSmallTile = createReactClass({
 	displayName: 'DemoAppLauncherSmallTile',
 
-	render () {
+	render() {
 		return (
 			<AppLauncherTile
 				title="Journey Builder"
@@ -78,7 +78,7 @@ const DemoAppLauncherTileWithIconNode = createReactClass({
 		size: PropTypes.string,
 	},
 
-	render () {
+	render() {
 		const icon = <Icon name="campaign" category="standard" size="large" />;
 
 		return (
@@ -103,7 +103,7 @@ const DemoAppLauncherTileWithIconText = createReactClass({
 		size: PropTypes.string,
 	},
 
-	render () {
+	render() {
 		return (
 			<AppLauncherTile
 				title="Sales Cloud"
@@ -125,7 +125,7 @@ const DemoAppLauncherTileWithTruncatedText = createReactClass({
 		size: PropTypes.string,
 	},
 
-	render () {
+	render() {
 		return (
 			<AppLauncherTile
 				title="Call Center"
@@ -147,13 +147,13 @@ const DemoAppLauncherTileWithDescriptionHeading = createReactClass({
 		size: PropTypes.string,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			search: 'journey',
 		};
 	},
 
-	render () {
+	render() {
 		return (
 			<AppLauncherTile
 				title="Journey Builder"
@@ -176,13 +176,13 @@ const DemoAppLauncherTileWithSearchText = createReactClass({
 		size: PropTypes.string,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			search: 'Call',
 		};
 	},
 
-	render () {
+	render() {
 		return (
 			<DemoAppLauncherTileWithTruncatedText
 				search={this.props.search}
@@ -195,7 +195,7 @@ const DemoAppLauncherTileWithSearchText = createReactClass({
 const DemoAppLauncherSection = createReactClass({
 	displayName: 'DemoAppLauncherSection',
 
-	render () {
+	render() {
 		return (
 			<div>
 				<AppLauncherSection
@@ -223,7 +223,7 @@ const DemoAppLauncherSection = createReactClass({
 const DemoAppLauncherSectionWithSmallTiles = createReactClass({
 	displayName: 'DemoAppLauncherSectionWithSmallTiles',
 
-	render () {
+	render() {
 		return (
 			<div>
 				<AppLauncherSection
@@ -249,7 +249,7 @@ const DemoAppLauncherSectionWithSmallTiles = createReactClass({
 const DemoAppLauncher = createReactClass({
 	displayName: 'DemoAppLauncher',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			search: '',
 			appLauncherOpen: this.props.isOpen || false, // eslint-disable-line react/prop-types
@@ -257,23 +257,23 @@ const DemoAppLauncher = createReactClass({
 		};
 	},
 
-	onClear () {
+	onClear() {
 		this.setState({ search: '' });
 	},
 
-	onSearch (event) {
+	onSearch(event) {
 		this.setState({ search: event.target.value });
 	},
 
-	toggleAppLauncher () {
+	toggleAppLauncher() {
 		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
 	},
 
-	toggleSection () {
+	toggleSection() {
 		this.setState({ allItemsSectionIsOpen: !this.state.allItemsSectionIsOpen });
 	},
 
-	render () {
+	render() {
 		const search = (
 			<Search
 				clearable={this.state.search !== ''}
@@ -347,7 +347,7 @@ const DemoAppLauncher = createReactClass({
 const DemoAppLauncherNoHeaderButton = createReactClass({
 	displayName: 'DemoAppLauncherNoHeaderButton',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			search: '',
 			appLauncherOpen: false,
@@ -355,15 +355,15 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 		};
 	},
 
-	onSearch (event) {
+	onSearch(event) {
 		this.setState({ search: event.target.value });
 	},
 
-	toggleAppLauncher () {
+	toggleAppLauncher() {
 		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
 	},
 
-	render () {
+	render() {
 		const search = (
 			<Search
 				onChange={this.onSearch}
@@ -403,18 +403,18 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 const DemoAppLauncherNoSearch = createReactClass({
 	displayName: 'DemoAppLauncherNoSearch',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			appLauncherOpen: false,
 			allItemsSectionIsOpen: false,
 		};
 	},
 
-	toggleAppLauncher () {
+	toggleAppLauncher() {
 		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
 	},
 
-	render () {
+	render() {
 		const modalHeaderButton = (
 			<Button label="App Exchange" onclick={action('Modal Button clicked!')} />
 		);
@@ -448,11 +448,11 @@ const DemoAppLauncherNoSearch = createReactClass({
 const DemoAppLauncherWithSeveralSections = createReactClass({
 	displayName: 'DemoAppLauncherWithSeveralSections',
 
-	onSearch () {
+	onSearch() {
 		// stub
 	},
 
-	render () {
+	render() {
 		const search = (
 			<Search
 				onChange={this.onSearch}

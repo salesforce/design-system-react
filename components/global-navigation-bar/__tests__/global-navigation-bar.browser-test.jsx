@@ -57,7 +57,7 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has wrapping div and one primary region', function () {
+		it('has wrapping div and one primary region', function() {
 			expect(
 				this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`)
 			).to.be.present();
@@ -66,7 +66,7 @@ describe('Global Navigation Bar: ', () => {
 			).to.be.present();
 		});
 
-		it('Primary region DOES not have divider on right', function () {
+		it('Primary region DOES not have divider on right', function() {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
 			expect(primary).to.not.have.className(
 				'slds-context-bar__item--divider-right'
@@ -88,7 +88,7 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has custom cloud and theme CSS', function () {
+		it('has custom cloud and theme CSS', function() {
 			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(component).to.have.className(
 				`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`
@@ -166,7 +166,7 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has 1 primary, 1 secondary, and 1 tertiary region', function () {
+		it('has 1 primary, 1 secondary, and 1 tertiary region', function() {
 			expect(
 				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
 			).to.be.present();
@@ -178,19 +178,19 @@ describe('Global Navigation Bar: ', () => {
 			).to.be.present();
 		});
 
-		it('Primary region has divider on right due to secondary region', function () {
+		it('Primary region has divider on right due to secondary region', function() {
 			expect(
 				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
 			).to.have.className('slds-context-bar__item--divider-right');
 		});
 
-		it('Secondary region application is a nav HTML element and has divider on right side', function () {
+		it('Secondary region application is a nav HTML element and has divider on right side', function() {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
 			expect(nav).to.have.className('slds-context-bar__item--divider-right');
 		});
 
-		it('displays active items as active', function () {
+		it('displays active items as active', function() {
 			const activeItems = this.wrapper.find('.slds-is-active');
 			expect(activeItems).to.have.length(3);
 		});
@@ -207,7 +207,7 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('Secondary region application is div and not a nav', function () {
+		it('Secondary region application is div and not a nav', function() {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('div');
 		});
@@ -219,7 +219,7 @@ describe('Global Navigation Bar: ', () => {
 		let linkClicked;
 		let link;
 
-		beforeEach(function () {
+		beforeEach(function() {
 			linkClicked = sinon.spy();
 			const instance = (
 				<GlobalNavigationBarLink
@@ -235,11 +235,11 @@ describe('Global Navigation Bar: ', () => {
 			link = this.wrapper.find('li#home-link');
 		});
 
-		afterEach(function () {
+		afterEach(function() {
 			this.wrapper.unmount();
 		});
 
-		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
+		it('GlobalNavigationBarLink has attributes and onClick runs callback', function() {
 			expect(link.text()).to.equal('Home');
 			link.simulate('click');
 			expect(linkClicked.calledOnce).to.be.true;
@@ -251,7 +251,7 @@ describe('Global Navigation Bar: ', () => {
 	});
 
 	describe('GlobalNavigationButton child component', () => {
-		it('GlobalNavigationBarButton has attributes and onClick runs callback', function () {
+		it('GlobalNavigationBarButton has attributes and onClick runs callback', function() {
 			const buttonClicked = sinon.spy();
 			const instance = (
 				<GlobalNavigationBarButton
@@ -273,7 +273,7 @@ describe('Global Navigation Bar: ', () => {
 	});
 
 	describe('GlobalNavigationLabel child component', () => {
-		it('GlobalNavigationBarLabel has attributes', function () {
+		it('GlobalNavigationBarLabel has attributes', function() {
 			const instance = <GlobalNavigationBarLabel label="Text" id="test-text" />;
 			this.wrapper = mount(instance, {
 				attachTo: document.body.appendChild(document.createElement('div')),

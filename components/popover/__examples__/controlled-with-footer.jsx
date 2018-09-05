@@ -9,38 +9,38 @@ import { action, decorateAction } from '@storybook/addon-actions';
 const Example = createReactClass({
 	displayName: 'PopoverExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 		};
 	},
 
-	handleOpen () {
+	handleOpen() {
 		this.setState({ isOpen: true });
 	},
 
-	handleCancel () {
+	handleCancel() {
 		this.setState({ isOpen: false });
 	},
 
-	handleApply () {
+	handleApply() {
 		this.setState({ isOpen: false });
 	},
 
-	handleRequestClose (event, data) {
+	handleRequestClose(event, data) {
 		if (this.props.log) {
 			this.props.log('onRequestClose');
 		}
 		this.setState({ isOpen: false });
 	},
 
-	handleClose (event, data) {
+	handleClose(event, data) {
 		if (this.props.log) {
 			this.props.log('onClose')(event, data);
 		}
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

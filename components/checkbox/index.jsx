@@ -159,7 +159,7 @@ const defaultProps = {
  * The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.
  */
 class Checkbox extends React.Component {
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(CHECKBOX, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}
@@ -354,7 +354,7 @@ class Checkbox extends React.Component {
 		</div>
 	);
 
-	render () {
+	render() {
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			/* Remove backward compatibility at next breaking change */

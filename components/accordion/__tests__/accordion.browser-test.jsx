@@ -33,7 +33,7 @@ const propTypes = {};
 const defaultProps = {};
 
 class AccordionExample extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			expandedPanels: {},
@@ -57,7 +57,7 @@ class AccordionExample extends React.Component {
 		};
 	}
 
-	menuDropdown (selectedItem) {
+	menuDropdown(selectedItem) {
 		return (
 			<Dropdown
 				align="right"
@@ -97,7 +97,7 @@ class AccordionExample extends React.Component {
 		);
 	}
 
-	togglePanel (id) {
+	togglePanel(id) {
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
@@ -107,7 +107,7 @@ class AccordionExample extends React.Component {
 		}));
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">
@@ -136,7 +136,7 @@ AccordionExample.defaultProps = defaultProps;
 /* Accordion rendering tests
  */
 
-describe('Accordion', function () {
+describe('Accordion', function() {
 	describe('Renders Accordion', () => {
 		let mountNode;
 		let wrapper;

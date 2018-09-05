@@ -5,7 +5,7 @@ import ProgressIndicator from '~/components/progress-indicator'; // `~` is repla
 const Example = createReactClass({
 	displayName: 'ProgressIndicatorStepError',
 
-	render () {
+	render() {
 		return (
 			<div style={{ padding: '4rem 1rem 0px' }}>
 				<ProgressIndicator {...this.props} />

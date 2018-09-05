@@ -75,7 +75,7 @@ const listItemWithContent = (ListItemContent) => {
 		static propTypes = propsTypes;
 		static defaultProps = defaultProps;
 
-		onClick (event) {
+		onClick(event) {
 			this.props.events.onClick(event, {
 				item: this.props.item,
 				isSelected: this.props.isSelected,
@@ -83,7 +83,7 @@ const listItemWithContent = (ListItemContent) => {
 			});
 		}
 
-		unread () {
+		unread() {
 			return this.props.isUnread ? (
 				<abbr
 					className="slds-indicator_unread"
@@ -95,7 +95,7 @@ const listItemWithContent = (ListItemContent) => {
 			) : null;
 		}
 
-		render () {
+		render() {
 			return (
 				<li
 					className={classNames('slds-split-view__list-item', {

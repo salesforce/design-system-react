@@ -28,7 +28,7 @@ Add DOM snapshot, image snapshot, and documentation site examples to Storybook f
 
 ### Style and quality linting
 
-There are two parts to code linting: style and quality. [Prettier-ESLint](https://github.com/prettier/prettier-eslint)/[Prettier](https://prettier.io/) formats JavaScript, markdown and JSON to a consistent style for increased readability. [ESLint](http://eslint.org/) checks for code quality. Many editors have `prettier-eslint` format-on-save options. However, do not use Prettier by itself or linting will not pass. Use `eslint-disable-line [RULE]` within tests for necessary exceptions.
+There are two parts to code linting: style and quality. [Prettier](https://prettier.io/) formats JavaScript, markdown and JSON to a consistent style for increased readability. [ESLint](http://eslint.org/) checks for code quality. Many editors have `prettier` format-on-save options. Use `eslint-disable-line [RULE]` within tests for necessary exceptions.
 
 * `npm run lint` will check style and quality.
 * `npm run lint:fix` will fix most style issues.
@@ -39,7 +39,7 @@ There are two parts to code linting: style and quality. [Prettier-ESLint](https:
 
 Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
 
-To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run snapshot-test`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`. 
+To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run snapshot-test`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`.
 
 Use Jest to test the presence of:
 
@@ -96,8 +96,6 @@ const propTypes = {
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 ```
-
-
 
 #### TDD with Jest
 

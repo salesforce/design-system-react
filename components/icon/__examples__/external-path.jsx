@@ -6,7 +6,7 @@ import IconSettings from '~/components/icon-settings';
 const Example = createReactClass({
 	displayName: 'IconExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Icon
@@ -17,7 +17,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

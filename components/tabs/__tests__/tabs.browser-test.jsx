@@ -65,7 +65,7 @@ const TabsDemoComponent = createReactClass({
 		onSelect: PropTypes.func,
 	},
 
-	render () {
+	render() {
 		const { className, id, ...attributes } = this.props;
 
 		// Delete all known props, so they don't get added to DOM
@@ -133,33 +133,33 @@ describe('Tabs', () => {
 		);
 		after(unmountComponent);
 
-		it('Has a main wrapper with the proper class name.', function () {
+		it('Has a main wrapper with the proper class name.', function() {
 			const myTabsWrapper = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.wrapper}`
 			);
 			expect(myTabsWrapper.hasClass(COMPONENT_CSS_CLASSES.wrapper)).to.be.true;
 		});
 
-		it('Has exactly one (1) tabs component, and has with the proper class name.', function () {
+		it('Has exactly one (1) tabs component, and has with the proper class name.', function() {
 			const myTabs = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(myTabs.hasClass(COMPONENT_CSS_CLASSES.base)).to.be.true;
 			expect(myTabs).to.have.length(1);
 		});
 
-		it('Has the custom id (this-is-an-id-for-testing) we supplied.', function () {
+		it('Has the custom id (this-is-an-id-for-testing) we supplied.', function() {
 			const myTabs = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(myTabs)
 				.attr('id')
 				.to.equal(id);
 		});
 
-		it('Has exactly one (1) nav component, and has with the proper class name.', function () {
+		it('Has exactly one (1) nav component, and has with the proper class name.', function() {
 			const myTabsNav = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.nav}`);
 			expect(myTabsNav.hasClass(COMPONENT_CSS_CLASSES.nav)).to.be.true;
 			expect(myTabsNav).to.have.length(1);
 		});
 
-		it(`Nav component builds proper ID (${id}-tabs__nav) because it inherits Tabs id property and appends "-slds-tabs__nav" to it.`, function () {
+		it(`Nav component builds proper ID (${id}-tabs__nav) because it inherits Tabs id property and appends "-slds-tabs__nav" to it.`, function() {
 			const myTabsNav = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.nav}`);
 			expect(myTabsNav)
 				.attr('id')
@@ -168,49 +168,49 @@ describe('Tabs', () => {
 
 		it(`Has exactly four (4) <Tab /> components, each with the proper class name (${
 			COMPONENT_CSS_CLASSES.item
-		}).`, function () {
+		}).`, function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.item}`)
-				.forEach(function (node) {
+				.forEach(function(node) {
 					expect(node.hasClass(COMPONENT_CSS_CLASSES.item)).to.equal(true);
 				});
 			expect(myTabsListItems).to.have.length(4);
 		});
 
-		it('Has only one (1) tab with ".slds-disabled" class on it.', function () {
+		it('Has only one (1) tab with ".slds-disabled" class on it.', function() {
 			const myTabsListItem = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
 			);
 			expect(myTabsListItem).to.have.length(1);
 		});
 
-		it('Tab components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--tab-<index>" to it.', function () {
+		it('Tab components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--tab-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.item}`)
-				.forEach(function (node, index) {
+				.forEach(function(node, index) {
 					expect(node).to.have.attr('id', `${id}-slds-tabs--tab-${index}`);
 				});
 		});
 
-		it('TabPanel components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--panel-<index>" to it.', function () {
+		it('TabPanel components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--panel-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.panel}`)
-				.forEach(function (node, index) {
+				.forEach(function(node, index) {
 					expect(node).to.have.attr('id', `${id}-slds-tabs--panel-${index}`);
 				});
 		});
 
-		it('Has the proper disabled class on the second tab.', function () {
+		it('Has the proper disabled class on the second tab.', function() {
 			const myTabsListItem = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
 			);
 			expect(myTabsListItem.hasClass('slds-disabled')).to.equal(true);
 		});
 
-		it('Has the same number of tabs as panels.', function () {
+		it('Has the same number of tabs as panels.', function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
@@ -238,10 +238,10 @@ describe('Tabs', () => {
 		);
 		after(unmountComponent);
 
-		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs--panel-<index>" to it.', function () {
+		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs--panel-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.item}`)
-				.forEach(function (node, index) {
+				.forEach(function(node, index) {
 					expect(node).to.have.attr(
 						'aria-controls',
 						`${id}-slds-tabs--panel-${index}`
@@ -249,10 +249,10 @@ describe('Tabs', () => {
 				});
 		});
 
-		it('TabPanel components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs--tab-<index>" to it.', function () {
+		it('TabPanel components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs--tab-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.panel}`)
-				.forEach(function (node, index) {
+				.forEach(function(node, index) {
 					expect(node).to.have.attr(
 						'aria-labelledby',
 						`${id}-slds-tabs--tab-${index}`
@@ -260,7 +260,7 @@ describe('Tabs', () => {
 				});
 		});
 
-		it('Has the aria-disabled attribute on the second tab.', function () {
+		it('Has the aria-disabled attribute on the second tab.', function() {
 			const myTabsListItem = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
 			);
@@ -269,7 +269,7 @@ describe('Tabs', () => {
 				.equal('true');
 		});
 
-		it('Has a tabindex of -1 on the second tab.', function () {
+		it('Has a tabindex of -1 on the second tab.', function() {
 			const myTabsListItem = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
 			);
@@ -285,7 +285,7 @@ describe('Tabs', () => {
 		before(mountComponent(<TabsDemoComponent id={id} />));
 		after(unmountComponent);
 
-		it('New panel renders when a tab is clicked ', function () {
+		it('New panel renders when a tab is clicked ', function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
@@ -316,7 +316,7 @@ describe('Tabs', () => {
 		before(mountComponent(<TabsDemoComponent id={id} />));
 		after(unmountComponent);
 
-		it('Disabled tab does not reveal new content ', function () {
+		it('Disabled tab does not reveal new content ', function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
@@ -345,7 +345,7 @@ describe('Tabs', () => {
 		before(mountComponent(<TabsDemoComponent id={id} />));
 		after(unmountComponent);
 
-		it('Can be tabbed into', function () {
+		it('Can be tabbed into', function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
@@ -385,7 +385,7 @@ describe('Tabs', () => {
 		before(mountComponent(<TabsDemoComponent id={id} />));
 		after(unmountComponent);
 
-		it('Disabled tab can NOT be tabbed into', function () {
+		it('Disabled tab can NOT be tabbed into', function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
@@ -422,7 +422,7 @@ describe('Tabs', () => {
 	describe('Interactions intercept tab selection', () => {
 		const id = 'this-is-an-id-for-testing--tab-intercept';
 
-		function interceptTabSelect () {
+		function interceptTabSelect() {
 			return false;
 		}
 
@@ -433,7 +433,7 @@ describe('Tabs', () => {
 		);
 		after(unmountComponent);
 
-		it('Maintains the same tab selection when onSelect function returns false', function () {
+		it('Maintains the same tab selection when onSelect function returns false', function() {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);

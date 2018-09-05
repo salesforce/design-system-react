@@ -22,12 +22,12 @@ chai.use(chaiEnzyme());
 /* Re-usable demo component.
  */
 class RadioButtonGroupExample extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { checked: 'Tue' };
 	}
 
-	render () {
+	render() {
 		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 		return (
 			<RadioButtonGroup
@@ -65,7 +65,7 @@ RadioButtonGroupExample.defaultProps = {
 
 /* RadioButtonGroup rendering tests
  */
-describe('RadioButtonGroup', function () {
+describe('RadioButtonGroup', function() {
 	let mountNode;
 	let wrapper;
 

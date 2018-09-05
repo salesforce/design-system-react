@@ -6,7 +6,7 @@ import Timepicker from '~/components/time-picker'; // `~` is replaced with desig
 const Example = createReactClass({
 	displayName: 'TimepickerExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Timepicker

@@ -6,7 +6,7 @@ import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with desig
 const Example = createReactClass({
 	displayName: 'MediaObjectExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown

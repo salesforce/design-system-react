@@ -27,7 +27,7 @@ const PanelFilterHeader = ({
 	onRequestSave,
 	saveLabel,
 }) =>
-	(modified ? (
+	modified ? (
 		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
 			<Button label={cancelLabel} onClick={onRequestCancel} variant="neutral" />
 			<Button label={saveLabel} onClick={onRequestSave} variant="brand" />
@@ -47,7 +47,7 @@ const PanelFilterHeader = ({
 				variant="icon"
 			/>
 		</div>
-	));
+	);
 
 PanelFilterHeader.displayName = 'SLDSPanelFilterHeader';
 

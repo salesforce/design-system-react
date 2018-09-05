@@ -130,7 +130,7 @@ const defaultProps = {
 /**
  * Check if `steps` prop is valid
  */
-function checkSteps (steps) {
+function checkSteps(steps) {
 	const isStepsDefined = steps !== undefined;
 	const isLabelDefined = (step) => step.label !== undefined;
 	const stepLabelsDefined = Array.isArray(steps) && steps.every(isLabelDefined);
@@ -142,7 +142,7 @@ function checkSteps (steps) {
  * Check if an item is from an array of items when 'items' is an array;
  * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
  */
-function findStep (item, items) {
+function findStep(item, items) {
 	if (Array.isArray(items)) {
 		return !!find(items, item);
 	}
@@ -153,27 +153,27 @@ function findStep (item, items) {
  * Progress Indicator is a component that communicates to the user the progress of a particular process.
  */
 class ProgressIndicator extends React.Component {
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 	}
 
 	/**
 	 * Get the progress indicator's HTML id. Generate a new one if no ID present.
 	 */
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getSteps () {
+	getSteps() {
 		// check if passed steps are valid
 		return checkSteps(this.props.steps) ? this.props.steps : defaultSteps;
 	}
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const assistiveText = {
 			...defaultProps.assistiveText,

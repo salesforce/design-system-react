@@ -46,7 +46,7 @@ describe('Card: ', () => {
 	};
 
 	const renderCard = (instance) =>
-		function () {
+		function() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
@@ -55,7 +55,7 @@ describe('Card: ', () => {
 			);
 		};
 
-	function removeCard () {
+	function removeCard() {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
 	}
@@ -84,17 +84,17 @@ describe('Card: ', () => {
 
 		afterEach(removeCard);
 
-		it('has a header', function () {
+		it('has a header', function() {
 			const header = getHeader(this.dom);
 			header.should.not.be.undefined;
 		});
 
-		it('has a body', function () {
+		it('has a body', function() {
 			const body = getBody(this.dom);
 			body.should.not.be.undefined;
 		});
 
-		it('has the correct heading text', function () {
+		it('has the correct heading text', function() {
 			const heading = getHeader(this.dom).querySelectorAll(
 				`#${requiredProps.id}${cardIdSuffixes.heading}`
 			)[0];
@@ -131,32 +131,32 @@ describe('Card: ', () => {
 
 		afterEach(removeCard);
 
-		it('has a header', function () {
+		it('has a header', function() {
 			const header = getHeader(this.dom);
 			header.should.not.be.undefined;
 		});
 
-		it('renders custom styles', function () {
+		it('renders custom styles', function() {
 			const card = getCard(this.dom);
 			card.style.backgroundColor.should.equal('rgb(18, 49, 35)');
 		});
 
-		it('renders custom classes on card', function () {
+		it('renders custom classes on card', function() {
 			const card = getCard(this.dom);
 			card.className.should.contain('this-is-a-custom-card-class');
 		});
 
-		it('renders custom classes on body', function () {
+		it('renders custom classes on body', function() {
 			const body = getBody(this.dom);
 			body.className.should.contain('this-is-a-custom-body-class');
 		});
 
-		it('has a body', function () {
+		it('has a body', function() {
 			const body = getBody(this.dom);
 			body.should.not.be.undefined;
 		});
 
-		it('has an icon', function () {
+		it('has an icon', function() {
 			const header = getHeader(this.dom);
 			const icon = header.querySelectorAll(
 				`.${mediaObjectCssClasses.figure}`
@@ -164,19 +164,19 @@ describe('Card: ', () => {
 			icon.should.not.be.undefined;
 		});
 
-		it('has the default filter and correct ID', function () {
+		it('has the default filter and correct ID', function() {
 			const filter = getFilter(this.dom);
 			filter.should.not.be.undefined;
 		});
 
-		it('has a footer and correct child ID', function () {
+		it('has a footer and correct child ID', function() {
 			const footer = getFooter(this.dom);
 			footer.should.not.be.undefined;
 			const footerChildren = footer.querySelectorAll('#sampleFooter')[0];
 			footerChildren.should.not.be.undefined;
 		});
 
-		it('has header actions and correct child ID', function () {
+		it('has header actions and correct child ID', function() {
 			const headerActions = getHeaderActions(this.dom);
 			headerActions.should.not.be.undefined;
 			const headerActionsChildren = headerActions.querySelectorAll(
@@ -204,7 +204,7 @@ describe('Card: ', () => {
 
 		afterEach(removeCard);
 
-		it('has header with unique ID', function () {
+		it('has header with unique ID', function() {
 			const heading = getCard(this.dom).querySelectorAll('#custom-heading')[0];
 			heading.id.should.not.be.undefined;
 		});
@@ -219,17 +219,17 @@ describe('Card: ', () => {
 
 		afterEach(removeCard);
 
-		it('has a header', function () {
+		it('has a header', function() {
 			const header = getHeader(this.dom);
 			header.should.not.be.undefined;
 		});
 
-		it('has a body', function () {
+		it('has a body', function() {
 			const body = getBody(this.dom);
 			body.should.not.be.undefined;
 		});
 
-		it('has body heading based on heading of Card', function () {
+		it('has body heading based on heading of Card', function() {
 			const emptyBodyheading = getEmptyBodyHeading(this.dom);
 			emptyBodyheading.should.not.be.undefined;
 			emptyBodyheading.textContent.should.equal(requiredProps.heading);

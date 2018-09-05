@@ -22,11 +22,11 @@ const defaultProps = {};
 
 class DetailRow extends Component {
 	// eslint-disable-next-line class-methods-use-this
-	_getClassNames (className) {
+	_getClassNames(className) {
 		return classnames('slds-grid slds-page-header__detail-row', className);
 	}
 
-	render () {
+	render() {
 		const { children, className, details } = this.props;
 		const classes = this._getClassNames(className);
 

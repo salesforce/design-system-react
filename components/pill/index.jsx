@@ -115,14 +115,14 @@ const propTypes = {
  * A pill represents an object that can be viewed with or without an icon.
  */
 class Pill extends React.Component {
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(PILL, componentDoc);
 	}
 
 	getHref = () =>
-		(typeof this.props.href === 'string'
+		typeof this.props.href === 'string'
 			? this.props.href
-			: 'javascript:void(0);'); // eslint-disable-line no-script-url
+			: 'javascript:void(0);'; // eslint-disable-line no-script-url
 
 	/**
 	 * Removes focus from the component.
@@ -256,7 +256,7 @@ class Pill extends React.Component {
 		return null;
 	};
 
-	render () {
+	render() {
 		let role;
 		switch (this.props.variant) {
 			case 'link':

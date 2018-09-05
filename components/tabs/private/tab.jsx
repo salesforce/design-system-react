@@ -78,7 +78,7 @@ const Tab = createReactClass({
 		variant: PropTypes.oneOf(['default', 'scoped']),
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			focus: false,
 			selected: false,
@@ -88,21 +88,21 @@ const Tab = createReactClass({
 		};
 	},
 
-	componentDidMount () {
+	componentDidMount() {
 		this.checkFocus();
 	},
 
-	componentDidUpdate () {
+	componentDidUpdate() {
 		this.checkFocus();
 	},
 
-	checkFocus () {
+	checkFocus() {
 		if (this.props.selected && this.props.focus && this.node) {
 			this.node.focus();
 		}
 	},
 
-	render () {
+	render() {
 		const {
 			selected,
 			disabled,

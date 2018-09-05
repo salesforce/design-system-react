@@ -33,14 +33,14 @@ const DemoCard = createReactClass({
 		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			filter: null,
 			items: this.props.items,
 		};
 	},
 
-	handleFilterChange (event, ...rest) {
+	handleFilterChange(event, ...rest) {
 		action('filter')(event, ...rest);
 
 		const filter =
@@ -51,7 +51,7 @@ const DemoCard = createReactClass({
 		});
 	},
 
-	handleDeleteAllItems (...rest) {
+	handleDeleteAllItems(...rest) {
 		action('delete all')(...rest);
 
 		this.setState({
@@ -60,7 +60,7 @@ const DemoCard = createReactClass({
 		});
 	},
 
-	handleAddItem (...rest) {
+	handleAddItem(...rest) {
 		action('add')(...rest);
 
 		this.setState({
@@ -68,7 +68,7 @@ const DemoCard = createReactClass({
 		});
 	},
 
-	render () {
+	render() {
 		let items = this.state.items;
 		if (this.state.filter) {
 			items = items.filter((item) => this.state.filter.test(item.name));

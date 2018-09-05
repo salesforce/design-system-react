@@ -11,11 +11,11 @@ const should = chai.should();
 
 const { Simulate } = TestUtils;
 
-describe('Inline Edit: ', function () {
+describe('Inline Edit: ', function() {
 	const sampleValue = 'Sample value';
 
 	const renderInlineEdit = (instance) =>
-		function () {
+		function() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
@@ -24,7 +24,7 @@ describe('Inline Edit: ', function () {
 			);
 		};
 
-	function removeInlineEdit () {
+	function removeInlineEdit() {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
 	}
@@ -37,7 +37,7 @@ describe('Inline Edit: ', function () {
 
 	const getTrigger = (dom) => getStatic(dom).querySelector('.slds-button');
 
-	describe('Structure', function () {
+	describe('Structure', function() {
 		beforeEach(
 			renderInlineEdit(
 				<InlineEdit id="inline-edit-standard" value={sampleValue} />
@@ -46,7 +46,7 @@ describe('Inline Edit: ', function () {
 
 		afterEach(removeInlineEdit);
 
-		it('renders static by default', function () {
+		it('renders static by default', function() {
 			const wrapper = getWrapper(this.dom);
 			const input = getInput(this.dom);
 			const staticElement = getStatic(this.dom);
@@ -58,7 +58,7 @@ describe('Inline Edit: ', function () {
 			should.exist(trigger);
 		});
 
-		it('renders the correct value', function () {
+		it('renders the correct value', function() {
 			const staticElement = getStatic(this.dom);
 			const value = staticElement.textContent;
 

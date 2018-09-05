@@ -109,7 +109,7 @@ const Trigger = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
 		const {
 			assistiveText,

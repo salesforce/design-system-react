@@ -5,7 +5,7 @@ import Slider from '~/components/slider';
 const Example = createReactClass({
 	displayName: 'SliderExample',
 
-	render () {
+	render() {
 		return <Slider id="large-id" label="Slider Label" size="large" />;
 	},
 });

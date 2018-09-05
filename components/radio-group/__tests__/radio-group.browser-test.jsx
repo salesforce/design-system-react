@@ -22,12 +22,12 @@ chai.use(chaiEnzyme());
 /* Re-usable demo component.
  */
 class RadioGroupExample extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { checked: 'Radio Label One' };
 	}
 
-	render () {
+	render() {
 		const values = ['Radio Label One', 'Radio Label Two'];
 		return (
 			<RadioGroup
@@ -65,7 +65,7 @@ RadioGroupExample.defaultProps = {
 
 /* RadioGroup rendering tests
  */
-describe('RadioGroup', function () {
+describe('RadioGroup', function() {
 	let mountNode;
 	let wrapper;
 

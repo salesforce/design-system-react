@@ -10,10 +10,10 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props, jsonDoc) {
+	checkProps = function(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		sunsetProperty(

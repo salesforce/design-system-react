@@ -9,7 +9,7 @@ import Dropdown from '~/components/menu-dropdown';
 const Example = createReactClass({
 	displayName: 'TooltipExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup className="slds-p-bottom--medium">

@@ -57,13 +57,13 @@ const defaultProps = {
  * The Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
  */
 class Notification extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {};
 		this.timeout = null;
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		checkProps('Notification', this.props);
 
 		if (this.props.duration) {
@@ -73,7 +73,7 @@ class Notification extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.duration) {
 			if (this.timeout) {
 				clearTimeout(this.timeout);
@@ -89,7 +89,7 @@ class Notification extends React.Component {
 		}
 	}
 
-	componentDidUpdate (prevProps) {
+	componentDidUpdate(prevProps) {
 		if (prevProps.isOpen !== this.props.isOpen) {
 			const btn = this.dismissBtnRef;
 			if (btn) btn.focus();
@@ -108,7 +108,7 @@ class Notification extends React.Component {
 		}
 	};
 
-	getClassName () {
+	getClassName() {
 		return classNames(this.props.className, 'slds-notify', {
 			[`slds-notify--${this.props.variant}`]: this.props.variant,
 			[`slds-theme--${this.props.theme}`]: this.props.theme,
@@ -122,11 +122,11 @@ class Notification extends React.Component {
 	 * Bummer, I know.
 	 */
 	// eslint-disable-next-line class-methods-use-this
-	blankContent () {
+	blankContent() {
 		return <div />;
 	}
 
-	renderAlertContent () {
+	renderAlertContent() {
 		return (
 			<h2 id="dialogTitle">
 				{this.renderIcon()}
@@ -135,7 +135,7 @@ class Notification extends React.Component {
 		);
 	}
 
-	renderClose () {
+	renderClose() {
 		if (this.props.dismissible) {
 			let size = null;
 			if (this.props.variant === 'toast') size = 'large';
@@ -161,7 +161,7 @@ class Notification extends React.Component {
 		return null;
 	}
 
-	renderContent () {
+	renderContent() {
 		return (
 			<div>
 				<span className="slds-assistive-text">{this.props.theme}</span>
@@ -172,7 +172,7 @@ class Notification extends React.Component {
 		);
 	}
 
-	renderIcon () {
+	renderIcon() {
 		if (this.props.iconName) {
 			let classes = '';
 
@@ -196,7 +196,7 @@ class Notification extends React.Component {
 		return null;
 	}
 
-	renderToastContent () {
+	renderToastContent() {
 		return (
 			<section className="notify__content slds-grid">
 				{this.renderIcon()}
@@ -209,7 +209,7 @@ class Notification extends React.Component {
 		);
 	}
 
-	render () {
+	render() {
 		// TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
 		// Need to find a better way to do this than using width:0 to override slds-notify-container.
 		let styles;

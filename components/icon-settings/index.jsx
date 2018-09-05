@@ -23,7 +23,7 @@ import { ICON_SETTINGS } from '../../utilities/constants';
  * such as `/assets/icons`.
  */
 class IconSettings extends React.Component {
-	getChildContext () {
+	getChildContext() {
 		return {
 			iconPath: this.props.iconPath,
 			actionSprite: this.props.actionSprite,
@@ -34,7 +34,7 @@ class IconSettings extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return this.props.children;
 	}
 }

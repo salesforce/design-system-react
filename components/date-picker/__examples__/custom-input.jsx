@@ -7,13 +7,13 @@ import Input from '~/components/input';
 const Example = createReactClass({
 	displayName: 'DatepickerExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 		};
 	},
 
-	render () {
+	render() {
 		return (
 			<Datepicker
 				isOpen={this.state.isOpen}

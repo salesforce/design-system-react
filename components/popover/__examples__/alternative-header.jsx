@@ -70,7 +70,7 @@ const panelContent = (
 const Example = createReactClass({
 	displayName: 'PopoverExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

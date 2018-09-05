@@ -15,7 +15,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe('SLDSMenuPicklist: ', function () {
+describe('SLDSMenuPicklist: ', function() {
 	let body;
 
 	const options = [
@@ -39,7 +39,7 @@ describe('SLDSMenuPicklist: ', function () {
 		);
 	};
 
-	function removePicklist () {
+	function removePicklist() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}

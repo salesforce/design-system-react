@@ -91,7 +91,7 @@ const defaultProps = {
  */
 
 class Toast extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isInitialRender: true,
@@ -99,12 +99,12 @@ class Toast extends React.Component {
 		this.timeout = null;
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TOAST, this.props, componentDoc);
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		if (this.props.duration) {
 			this.timeout = setTimeout(() => {
 				this.onClose();
@@ -112,7 +112,7 @@ class Toast extends React.Component {
 		}
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		DOMElementFocus.returnFocusToStoredElement();
 	}
 
@@ -138,7 +138,7 @@ class Toast extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},

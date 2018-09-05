@@ -9,16 +9,16 @@ import {
 	canUseViewport,
 } from '../execution-environment';
 
-describe('Execution Environment: ', function () {
-	it('Window and Document/DOM exists, elements can be created', function () {
+describe('Execution Environment: ', function() {
+	it('Window and Document/DOM exists, elements can be created', function() {
 		expect(canUseDOM).to.be.true;
 	});
 
-	it('Event Listeners can be created', function () {
+	it('Event Listeners can be created', function() {
 		expect(canUseEventListeners).to.be.true;
 	});
 
-	it('Viewport exists', function () {
+	it('Viewport exists', function() {
 		expect(canUseViewport).to.be.true;
 	});
 });

@@ -25,7 +25,7 @@ const opportunityTypeOptions = [
 const Example = createReactClass({
 	displayName: 'ModalExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			isOpen: false,
 			leadSourceSelection: [leadSourceOptions[0]],
@@ -33,11 +33,11 @@ const Example = createReactClass({
 		};
 	},
 
-	toggleOpen () {
+	toggleOpen() {
 		this.setState({ isOpen: !this.state.isOpen });
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

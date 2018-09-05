@@ -38,9 +38,9 @@ const Breadcrumb = (props) => {
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
 			: {
-				...defaultProps.assistiveText,
-				...props.assistiveText,
-			}.label;
+					...defaultProps.assistiveText,
+					...props.assistiveText,
+				}.label;
 
 	return (
 		<nav role="navigation" aria-label={assistiveText}>

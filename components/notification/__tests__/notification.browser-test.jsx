@@ -12,7 +12,7 @@ import SLDSNotification from '../../notification';
 import IconSettings from '../../icon-settings';
 
 describe('SLDSNotification: ', () => {
-	const generateNotification = function (notificationInstance) {
+	const generateNotification = function(notificationInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
 				{notificationInstance}

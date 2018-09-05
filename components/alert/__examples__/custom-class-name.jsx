@@ -5,7 +5,7 @@ import Icon from '~/components/icon'; // `~` is replaced with design-system-reac
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<AlertContainer className="this-is-the-container">

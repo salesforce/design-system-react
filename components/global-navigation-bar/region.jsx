@@ -109,7 +109,7 @@ const Region = createReactClass({
 		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
 	},
 
-	render () {
+	render() {
 		let region;
 		const dividerClass = this.props.dividerPosition
 			? `slds-context-bar__item--divider-${this.props.dividerPosition}`

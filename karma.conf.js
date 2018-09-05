@@ -19,7 +19,7 @@ webpackConfig.externals = {
 };
 
 // Karma configuration
-const configExport = function (config) {
+const configExport = function(config) {
 	config.set({
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',

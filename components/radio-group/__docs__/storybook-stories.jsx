@@ -10,18 +10,18 @@ import Radio from '../../radio-group/radio';
 import { RADIO_GROUP } from '../../../utilities/constants';
 
 class RadioGroupExample extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {};
 		this.onChange = this.onChange.bind(this);
 	}
 
-	onChange (event) {
+	onChange(event) {
 		this.setState({ checked: event.target.value });
 		action('onChange')(event);
 	}
 
-	render () {
+	render() {
 		const values = ['Radio Label One', 'Radio Label Two'];
 		return (
 			<div>

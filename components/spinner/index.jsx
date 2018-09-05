@@ -66,9 +66,9 @@ const Spinner = (props) => {
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
 			: {
-				...defaultProps.assistiveText,
-				...props.assistiveText,
-			}.label;
+					...defaultProps.assistiveText,
+					...props.assistiveText,
+				}.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-input__spinner': isInput,

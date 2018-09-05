@@ -24,7 +24,7 @@ CustomDataTableCell.displayName = DataTableCell.displayName;
 const Example = createReactClass({
 	displayName: 'DataTableExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			sortColumn: 'opportunityName',
 			sortColumnDirection: {
@@ -77,16 +77,16 @@ const Example = createReactClass({
 		};
 	},
 
-	handleChanged (event, data) {
+	handleChanged(event, data) {
 		this.setState({ selection: data.selection });
 		console.log(event, data);
 	},
 
-	handleRowAction (item, action) {
+	handleRowAction(item, action) {
 		console.log(item, action);
 	},
 
-	handleSort (sortColumn, ...rest) {
+	handleSort(sortColumn, ...rest) {
 		if (this.props.log) {
 			this.props.log('sort')(sortColumn, ...rest);
 		}
@@ -122,7 +122,7 @@ const Example = createReactClass({
 		this.setState(newState);
 	},
 
-	render () {
+	render() {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">

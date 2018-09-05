@@ -5,7 +5,7 @@ import IconSettings from '~/components/icon-settings'; // `~` is replaced with d
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			expandedPanels: {},
@@ -29,7 +29,7 @@ class Example extends React.Component {
 		};
 	}
 
-	menuDropdown (selectedItem) {
+	menuDropdown(selectedItem) {
 		return (
 			<Dropdown
 				align="right"
@@ -69,7 +69,7 @@ class Example extends React.Component {
 		);
 	}
 
-	togglePanel (event, data) {
+	togglePanel(event, data) {
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
@@ -85,7 +85,7 @@ class Example extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">

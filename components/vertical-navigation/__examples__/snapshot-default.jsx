@@ -11,7 +11,7 @@ import { sampleReportCategories } from '~/utilities/sample-data/vertical-navigat
 const Example = createReactClass({
 	displayName: 'NavigationExample',
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<VerticalNavigation

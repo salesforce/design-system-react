@@ -65,7 +65,7 @@ const DataTableRowActions = createReactClass({
 		dropdown: PropTypes.node,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			assistiveText: { icon: 'Actions' },
 			noHint: false,
@@ -73,11 +73,11 @@ const DataTableRowActions = createReactClass({
 		};
 	},
 
-	handleClick (e) {
+	handleClick(e) {
 		EventUtil.trap(e);
 	},
 
-	handleSelect (selection) {
+	handleSelect(selection) {
 		if (isFunction(this.props.onAction)) {
 			this.props.onAction(this.props.item, selection);
 		}
@@ -87,7 +87,7 @@ const DataTableRowActions = createReactClass({
 	},
 
 	// ### Render
-	render () {
+	render() {
 		// i18n
 		const defaultDropdownProps = {
 			align: 'right',

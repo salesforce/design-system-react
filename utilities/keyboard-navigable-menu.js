@@ -21,7 +21,7 @@ import KEYS from './key-code';
 
 const noop = () => {};
 
-export function KeyBuffer () {
+export function KeyBuffer() {
 	this.buffer = '';
 
 	return (key) => {
@@ -39,11 +39,11 @@ export function KeyBuffer () {
 	};
 }
 
-export function itemIsSelectable (item) {
+export function itemIsSelectable(item) {
 	return item.type !== 'header' && item.type !== 'divider' && !item.disabled;
 }
 
-export function getNavigableItems (items) {
+export function getNavigableItems(items) {
 	const navigableItems = [];
 	navigableItems.indexes = [];
 	navigableItems.keyBuffer = new KeyBuffer();
@@ -64,7 +64,7 @@ export function getNavigableItems (items) {
 	return navigableItems;
 }
 
-export function keyboardNavigate ({
+export function keyboardNavigate({
 	componentContext,
 	currentFocusedIndex,
 	isOpen,
@@ -156,11 +156,11 @@ export function keyboardNavigate ({
 	return focusedIndex;
 }
 
-function getMenu (componentRef) {
+function getMenu(componentRef) {
 	return ReactDOM.findDOMNode(componentRef).querySelector('ul.dropdown__list'); // eslint-disable-line react/no-find-dom-node
 }
 
-function getMenuItem (menuItemId, context = document) {
+function getMenuItem(menuItemId, context = document) {
 	let menuItem;
 
 	if (menuItemId) {
@@ -171,18 +171,18 @@ function getMenuItem (menuItemId, context = document) {
 }
 
 export const KeyboardNavigableMixin = {
-	componentWillMount () {
+	componentWillMount() {
 		this.navigableItems = getNavigableItems(this.props.options);
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.options) {
 			this.navigableItems = getNavigableItems(nextProps.options);
 		}
 	},
 
 	// Handling open / close toggling is optional, and a default implementation is provided for handling focus, but selection _must_ be handled
-	handleKeyboardNavigate ({
+	handleKeyboardNavigate({
 		event,
 		isOpen = true,
 		keyCode,
@@ -206,7 +206,7 @@ export const KeyboardNavigableMixin = {
 	},
 
 	// This is a bit of an anti-pattern, but it has the upside of being a nice default. Component authors can always override to only set state and do their own focusing in their subcomponents.
-	handleKeyboardFocus (focusedIndex) {
+	handleKeyboardFocus(focusedIndex) {
 		if (this.state.focusedIndex !== focusedIndex) {
 			this.setState({ focusedIndex });
 		}
@@ -223,7 +223,7 @@ export const KeyboardNavigableMixin = {
 		}
 	},
 
-	getListItemId (index) {
+	getListItemId(index) {
 		let menuItemId;
 
 		if (index !== undefined) {
@@ -234,11 +234,11 @@ export const KeyboardNavigableMixin = {
 		return menuItemId;
 	},
 
-	focusMenuItem (menuItem) {
+	focusMenuItem(menuItem) {
 		menuItem.getElementsByTagName('a')[0].focus();
 	},
 
-	scrollToMenuItem (menu, menuItem) {
+	scrollToMenuItem(menu, menuItem) {
 		if (menu && menuItem) {
 			const menuHeight = menu.offsetHeight;
 

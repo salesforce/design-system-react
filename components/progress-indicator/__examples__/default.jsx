@@ -18,7 +18,7 @@ const steps = [
  * This example allows you to select the next step and only the next step. Typically, Progress Indicator should be paired with a modal and form errors should be explained outside of this component.
  */
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			steps,
@@ -39,7 +39,7 @@ class Example extends React.Component {
 		});
 	};
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div

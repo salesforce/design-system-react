@@ -45,7 +45,7 @@ const PILLS = [
 	},
 ];
 
-function noop () {}
+function noop() {}
 
 const Example = createReactClass({
 	displayName: 'PillWithIconListboxExample',
@@ -54,35 +54,35 @@ const Example = createReactClass({
 		action: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			action: () => noop,
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return this.getAllOn();
 	},
 
-	onClick (event) {
+	onClick(event) {
 		this.props.action('onClick')(event);
 	},
 
-	onRemove (event, pill) {
+	onRemove(event, pill) {
 		this.props.action('onRemove')(event);
 		this.setState({
 			[pill]: false,
 		});
 	},
 
-	getAllOn () {
+	getAllOn() {
 		return PILLS.reduce((result, item, index) => {
 			result['pill' + index] = true;
 			return result;
 		}, {});
 	},
 
-	renderListItem (icon, index) {
+	renderListItem(icon, index) {
 		if (this.state['pill' + index]) {
 			return (
 				<li className="slds-listbox-item" role="presentation" key={index}>
@@ -108,7 +108,7 @@ const Example = createReactClass({
 		return null;
 	},
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

@@ -84,7 +84,7 @@ DropdownCustomContent.displayName = 'DropdownCustomContent';
  * you will create in the React Storybook for manual testing.
  */
 class DemoComponent extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown {...defaultProps} {...this.props}>
@@ -117,7 +117,7 @@ const getNodes = ({ wrapper }) => ({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSMenuDropdown', function () {
+describe('SLDSMenuDropdown', function() {
 	let wrapper;
 
 	describe('Styling', () => {
@@ -127,7 +127,7 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('has correct CSS classes and style', function () {
+		it('has correct CSS classes and style', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -150,14 +150,14 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('has content with custom ID is present', function () {
+		it('has content with custom ID is present', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.customContent.length).to.equal(1);
 		});
 
-		it('closes when custom content is clicked', function () {
+		it('closes when custom content is clicked', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -166,7 +166,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(closedNodes.customContent.length).to.equal(0);
 		});
 
-		it("has additional ListItem from list child's options prop", function () {
+		it("has additional ListItem from list child's options prop", function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			const buttonId = nodes.trigger.prop('id');
 			nodes.button.simulate('click', {});
@@ -184,7 +184,7 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('does not expand on hover', function () {
+		it('does not expand on hover', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('mouseEnter', {});
@@ -192,7 +192,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(hoverNodes.menu.length).to.equal(0);
 		});
 
-		it('expands/contracts on click', function () {
+		it('expands/contracts on click', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
@@ -203,7 +203,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(closedNodes.menu.length).to.equal(0);
 		});
 
-		it('preserves click behavior', function () {
+		it('preserves click behavior', function() {
 			onClick.reset();
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
@@ -226,7 +226,7 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('selects an item on click', function () {
+		it('selects an item on click', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
@@ -244,7 +244,7 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('<ul> has role menu & aria-labelledby', function () {
+		it('<ul> has role menu & aria-labelledby', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -253,7 +253,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(openNodes.menu.find('ul')).attr('aria-labelledby', nodeId);
 		});
 
-		it('<a> inside <li> has role menuitem', function () {
+		it('<a> inside <li> has role menuitem', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -268,7 +268,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(match).to.be.true;
 		});
 
-		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function () {
+		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -296,7 +296,7 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('<button> has assistiveText', function () {
+		it('<button> has assistiveText', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.button.find('.slds-assistive-text').text()).to.equal(
 				'more options'
@@ -319,7 +319,7 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('opens menu with enter', function () {
+		it('opens menu with enter', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.ENTER);
@@ -327,7 +327,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(openNodes.menu.length).to.equal(1);
 		});
 
-		it('opens menu with down arrow key', function () {
+		it('opens menu with down arrow key', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.DOWN);
@@ -335,7 +335,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(openNodes.menu.length).to.equal(1);
 		});
 
-		it('selects an item with keyboard', function () {
+		it('selects an item with keyboard', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -345,7 +345,7 @@ describe('SLDSMenuDropdown', function () {
 			expect(selected.value).to.equal('B0');
 		});
 
-		it('closes Menu on esc', function () {
+		it('closes Menu on esc', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
@@ -360,12 +360,12 @@ describe('SLDSMenuDropdown', function () {
 		});
 	});
 
-	describe('multiple selection', function () {
+	describe('multiple selection', function() {
 		beforeEach(mountComponent(<DemoComponent multiple checkmark />));
 
 		afterEach(unmountComponent);
 
-		it('selects multiple items and renders checkmarks', function () {
+		it('selects multiple items and renders checkmarks', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			let openNodes = getNodes({ wrapper: this.wrapper });
@@ -398,7 +398,7 @@ describe('SLDSMenuDropdown', function () {
 			);
 		};
 
-		function removeDropdownTrigger () {
+		function removeDropdownTrigger() {
 			ReactDOM.unmountComponentAtNode(body);
 			document.body.removeChild(body);
 		}
@@ -482,7 +482,7 @@ describe('SLDSMenuDropdown', function () {
 			);
 		};
 
-		function removeDropdownTrigger () {
+		function removeDropdownTrigger() {
 			ReactDOM.unmountComponentAtNode(body);
 			document.body.removeChild(body);
 		}

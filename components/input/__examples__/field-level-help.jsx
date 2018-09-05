@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

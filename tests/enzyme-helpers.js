@@ -7,7 +7,7 @@ configure({ adapter: new Adapter() });
 	Setup and takedown
  */
 
-function createMountNode ({ context, mountNodeId }) {
+function createMountNode({ context, mountNodeId }) {
 	const internalmountNodeId = mountNodeId || 'mount-node';
 	context.dom = document.createElement('div');
 	const mountNode = document.body.appendChild(context.dom);
@@ -16,19 +16,19 @@ function createMountNode ({ context, mountNodeId }) {
 }
 
 const mountComponent = (instance) =>
-	function () {
+	function() {
 		this.dom = document.createElement('div');
 		const mountNode = document.body.appendChild(this.dom);
 		mountNode.id = 'mount-node';
 		this.wrapper = mount(instance, { attachTo: mountNode });
 	};
 
-function unmountComponent () {
+function unmountComponent() {
 	this.wrapper.unmount();
 	document.body.removeChild(this.dom);
 }
 
-function destroyMountNode ({ wrapper, mountNode }) {
+function destroyMountNode({ wrapper, mountNode }) {
 	wrapper.unmount();
 	document.body.removeChild(mountNode);
 }

@@ -4,7 +4,7 @@ import IconSettings from '~/components/icon-settings';
 import Checkbox from '~/components/checkbox';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

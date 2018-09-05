@@ -21,7 +21,7 @@ const {
 } = TestUtils;
 
 describe('SLDSLookup: ', () => {
-	const generateLookup = function (lookupInstance) {
+	const generateLookup = function(lookupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>
 		);
@@ -35,10 +35,10 @@ describe('SLDSLookup: ', () => {
 		iconName: 'account',
 		isInline: true,
 		label: 'Account',
-		onChange (newValue) {
+		onChange(newValue) {
 			console.log('New search term: ', newValue);
 		},
-		onSelect (item) {
+		onSelect(item) {
 			console.log(item, ' Selected');
 		},
 		options: [

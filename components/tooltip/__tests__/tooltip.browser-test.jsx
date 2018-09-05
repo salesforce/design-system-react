@@ -14,7 +14,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe('SLDSTooltip: ', function () {
+describe('SLDSTooltip: ', function() {
 	let body;
 
 	const defaultTrigger = <SLDSButton label="Hover me for tooltip" />;

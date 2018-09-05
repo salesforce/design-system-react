@@ -116,7 +116,7 @@ const defaultProps = {
  * The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.
  */
 class PageHeader extends Component {
-	_getClassNames (className) {
+	_getClassNames(className) {
 		return classnames(
 			'slds-page-header',
 			{
@@ -126,7 +126,7 @@ class PageHeader extends Component {
 		);
 	}
 
-	render () {
+	render() {
 		/**
 		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
 		 * Example: const {foo, ...bar} = this.props;

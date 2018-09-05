@@ -39,7 +39,7 @@ const TextTruncate = createReactClass({
 		wrapper: PropTypes.func,
 	},
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return {
 			line: 1,
 			text: '',
@@ -47,27 +47,27 @@ const TextTruncate = createReactClass({
 		};
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {};
 	},
 
-	componentDidMount () {
+	componentDidMount() {
 		window.addEventListener('resize', this.onResize, false);
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		this.update(nextProps);
 	},
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		window.removeEventListener('resize', this.onResize, false);
 	},
 
-	onResize () {
+	onResize() {
 		this.update(this.props);
 	},
 
-	getRenderText (ref, nextProps) {
+	getRenderText(ref, nextProps) {
 		if (!ref) {
 			return;
 		}
@@ -216,11 +216,11 @@ const TextTruncate = createReactClass({
 		this.setState({ renderText });
 	},
 
-	update (nextProps) {
+	update(nextProps) {
 		this.getRenderText(this.scope, nextProps);
 	},
 
-	render () {
+	render() {
 		const { containerClassName } = this.props;
 
 		// inline style override
