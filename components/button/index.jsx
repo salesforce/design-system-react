@@ -207,6 +207,10 @@ const Button = createReactClass({
 			'success',
 			'icon',
 		]),
+		/**
+		 * Custom styles to be passed to the component
+		 */
+		style: PropTypes.object,
 	},
 
 	getDefaultProps() {
@@ -337,7 +341,8 @@ const Button = createReactClass({
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
 				type={this.props.type}
-				{...getDataIds(this.props)}
+				style={this.props.style}
+        {...getDataIds(this.props)}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 

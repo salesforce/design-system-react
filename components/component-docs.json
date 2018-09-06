@@ -1495,6 +1495,13 @@
                     "value": "'neutral'",
                     "computed": false
                 }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component"
             }
         },
         "route": "buttons",
