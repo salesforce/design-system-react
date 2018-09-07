@@ -207,20 +207,23 @@ const Dialog = createReactClass({
 		}
 	},
 
+	componentWillUpdate() {
+		if (this.popper) {
+			this.popper.scheduleUpdate();
+		}
+	},
+
 	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&
+			prevState.triggerPopperJS === false &&
 			(this.props.position === 'absolute' ||
 				this.props.position === 'overflowBoundaryElement') &&
 			this.dialogContent &&
-			this.props.onRequestTargetElement() &&
-			(prevState.triggerPopperJS === false ||
-				this.prevDialogContentHeight !== this.dialogContent.clientHeight)
+			this.props.onRequestTargetElement()
 		) {
 			this.createPopper();
 		}
-		this.prevDialogContentHeight =
-			this.dialogContent && this.dialogContent.clientHeight;
 	},
 
 	componentWillUnmount() {
