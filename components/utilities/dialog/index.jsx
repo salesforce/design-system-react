@@ -207,6 +207,12 @@ const Dialog = createReactClass({
 		}
 	},
 
+	componentWillUpdate() {
+		if (this.popper) {
+			this.popper.scheduleUpdate();
+		}
+	},
+
 	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&
