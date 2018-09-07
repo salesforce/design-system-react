@@ -31,6 +31,28 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.23
+
+**Major Features**
+
+* Adds new `BrandBrand` component
+
+**Minor Features**
+
+* Adds new `style` prop to `Button` component
+* Allows passing node as avatar in `GlobalHeaderProfile`
+
+**Bugfixes**
+
+* Fixes popper position when its props update in `Dialog` components
+* Replaces `Tooltip` with `PopoverTooltip` internally
+
+**Maintenance**
+
+* Removes `prettier-eslint`
+* Allows linking to doc site from dev console warning messages
+* Improves instructions on adding a new component to DSR
+
 ## Release 0.8.22
 
 **Bugfixes**
