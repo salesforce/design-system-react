@@ -8,6 +8,9 @@ import { expect } from 'chai';
 
 import SLDSModal from '../../modal';
 import IconSettings from '../../icon-settings';
+import Settings from '../../settings';
+
+Settings.setAppElement('#mocha');
 
 const { Simulate } = TestUtils;
 
@@ -23,7 +26,7 @@ describe('SLDSModal: ', function() {
 
 	const defaultProps = {
 		align: 'top',
-		children: <div>hello</div>,
+		children: <div key>hello</div>,
 	};
 
 	const renderModal = (modalInstance) => {
@@ -213,8 +216,12 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<div className="toes">Toe 1</div>,
-				<div className="toes">Toe 2</div>,
+				<div key="test-content1" className="toes">
+					Toe 1
+				</div>,
+				<div key="test-content2" className="toes">
+					Toe 2
+				</div>,
 			];
 			getModal({
 				isOpen: true,
@@ -235,8 +242,12 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<button className="cancel">Cancel</button>,
-				<button className="save">Save</button>,
+				<button key="test-content1" className="cancel">
+					Cancel
+				</button>,
+				<button key="test-content2" className="save">
+					Save
+				</button>,
 			];
 			getModal({
 				isOpen: true,
