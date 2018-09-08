@@ -97,14 +97,14 @@ cp -r styles .tmp-commonjs/styles
 
 npx babel \
     .tmp-es/icons \
-    --out-dir .tmp-commonjs/icons
+    --out-dir .tmp-commonjs/icons \
     --copy-files \
     --plugins transform-es2015-modules-commonjs
 
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/utilities \
-    --out-dir .tmp-commonjs/utilities
+    --out-dir .tmp-commonjs/utilities \
     --copy-files \
     --plugins transform-es2015-modules-commonjs
 
@@ -133,8 +133,8 @@ npx babel \
 NODE_ENV=esm \
 npx babel \
     .tmp-es/icons \
-    --out-dir .tmp-esm/icons
-    --copy-files \
+    --out-dir .tmp-esm/icons \
+    --copy-files
 
 # NPM module structure
 # You module bundler will decide whether to use `module` or `lib` as an entry point.
