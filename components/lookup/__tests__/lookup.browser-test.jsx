@@ -36,10 +36,10 @@ describe('SLDSLookup: ', () => {
 		isInline: true,
 		label: 'Account',
 		onChange(newValue) {
-			console.log('New search term: ', newValue);
+			// console.log('New search term: ', newValue);
 		},
 		onSelect(item) {
-			console.log(item, ' Selected');
+			// console.log(item, ' Selected');
 		},
 		options: [
 			{ label: 'Paddy"s Pub' },
