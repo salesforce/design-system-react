@@ -122,7 +122,7 @@ const MenuDropdown = createReactClass({
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop.
+		 * This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop. by default this component has the `assistiveText` prop shape `{ icon: [String] }`
 		 */
 		assistiveText: PropTypes.object,
 		/**

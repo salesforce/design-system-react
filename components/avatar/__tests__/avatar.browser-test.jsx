@@ -165,7 +165,10 @@ describe('SLDSAvatar: ', function() {
 		it('renders expected assistiveText', () => {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
-					<SLDSAvatar variant="entity" assistiveText="entity icon avatar" />
+					<SLDSAvatar
+						variant="entity"
+						assistiveText={{ icon: 'entity icon avatar' }}
+					/>
 				</IconSettings>,
 				{ attachTo: mountNode }
 			);

@@ -284,7 +284,7 @@ describe('SLDSMenuDropdown', function() {
 		beforeEach(
 			mountComponent(
 				<DemoComponent
-					assistiveText="more options"
+					assistiveText={{ icon: 'more options' }}
 					buttonVariant="icon"
 					checkmark
 					iconCategory="utility"

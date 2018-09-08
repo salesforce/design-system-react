@@ -278,7 +278,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconLeft: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 						onClick={clickCallback}
@@ -332,7 +332,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 						onClick={clickCallback}
@@ -400,7 +400,7 @@ describe('SLDSInput', () => {
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 					/>
@@ -447,7 +447,7 @@ describe('SLDSInput', () => {
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 					/>
