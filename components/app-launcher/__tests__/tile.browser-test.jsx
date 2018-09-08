@@ -172,8 +172,11 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			});
 		});
 
-		afterEach(() => {
-			cleanDom();
+		afterEach((done) => {
+			setTimeout(function() {
+				cleanDom();
+				done();
+			}, 100);
 		});
 
 		it('renders more link', () => {
@@ -201,12 +204,12 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			// this is a hack that waits for the tooltip to render through PopperJS
 			setTimeout(function() {
 				expect(
-					handles.more
-						.find('mark')
+					handles.tile
+						.find('.slds-popover__body mark')
 						.at(0)
 						.text()
 				).to.equal('enter');
-			}, 500);
+			}, 100);
 		});
 	});
 
