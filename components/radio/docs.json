@@ -1,0 +1,11 @@
+{
+    "component": "radio",
+    "status": "prod",
+    "display-name": "Radios",
+    "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+    },
+    "SLDS-component-path": "/components/radio-group/",
+    "url-slug": "radios"
+}
