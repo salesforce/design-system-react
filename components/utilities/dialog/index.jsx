@@ -355,6 +355,7 @@ const Dialog = createReactClass({
 				boundariesElement:
 					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
+			hide: { enabled: false },
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			flip: {
 				enabled: !this.props.hasStaticAlignment,
