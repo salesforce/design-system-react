@@ -3392,7 +3392,7 @@ exports[`DOM snapshots SLDSGlobalHeader Open on Hybrid 1`] = `
               className="slds-button__icon slds-global-header__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#Notification"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
               />
             </svg>
             <span
@@ -3631,7 +3631,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               className="slds-button__icon slds-global-header__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#Notification"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
               />
             </svg>
             <span
@@ -3870,7 +3870,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               className="slds-button__icon slds-global-header__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#Notification"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
               />
             </svg>
             <span
