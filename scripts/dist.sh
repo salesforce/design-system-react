@@ -87,8 +87,9 @@ echo "## Transpiling with Babel"
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/components \
-    --plugins transform-es2015-modules-commonjs \
     --out-dir .tmp-commonjs/components \
+    --copy-files \
+    --plugins transform-es2015-modules-commonjs \
     --ignore site-stories.js,__docs__,__examples__,__tests__
 
 cp -r assets .tmp-commonjs/assets
@@ -96,20 +97,23 @@ cp -r styles .tmp-commonjs/styles
 
 npx babel \
     .tmp-es/icons \
-    --plugins transform-es2015-modules-commonjs \
-    --out-dir .tmp-commonjs/icons
+    --out-dir .tmp-commonjs/icons \
+    --copy-files \
+    --plugins transform-es2015-modules-commonjs
 
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/utilities \
-    --plugins transform-es2015-modules-commonjs \
-    --out-dir .tmp-commonjs/utilities
+    --out-dir .tmp-commonjs/utilities \
+    --copy-files \
+    --plugins transform-es2015-modules-commonjs
 
 # ES6 module transpilation
 NODE_ENV=esm \
 npx babel \
     .tmp-es/components \
     --out-dir .tmp-esm/components \
+    --copy-files \
     --source-maps \
     --ignore site-stories.js,__docs__,__examples__,__tests__
 
@@ -122,14 +126,15 @@ cp -r icons .tmp-esm/icons
 NODE_ENV=esm \
 npx babel \
     .tmp-es/utilities \
-    --source-maps \
-    --out-dir .tmp-esm/utilities
+    --out-dir .tmp-esm/utilities \
+    --copy-files \
+    --source-maps
 
 NODE_ENV=esm \
 npx babel \
     .tmp-es/icons \
-    --out-dir .tmp-esm/icons
-
+    --out-dir .tmp-esm/icons \
+    --copy-files
 
 # NPM module structure
 # You module bundler will decide whether to use `module` or `lib` as an entry point.
