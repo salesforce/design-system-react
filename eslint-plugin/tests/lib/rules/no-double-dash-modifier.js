@@ -26,6 +26,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-double-dash-modifier', rule, {
+	/* eslint-disable no-template-curly-in-string */
 	valid: [
 		{
 			code: '<div className="slds-p-around_medium"/>',
@@ -124,4 +125,5 @@ ruleTester.run('no-double-dash-modifier', rule, {
 			parserOptions,
 		},
 	],
+	/* eslint-enable no-template-curly-in-string */
 });
