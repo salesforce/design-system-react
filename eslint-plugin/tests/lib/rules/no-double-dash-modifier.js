@@ -39,6 +39,14 @@ ruleTester.run('no-double-dash-modifier', rule, {
 			code: '<div className="some-other-bem--modifier"/>',
 			parserOptions,
 		},
+		{
+			code: '<div className={`slds-button_icon-${iconVariant}`}/>',
+			parserOptions,
+		},
+		{
+			code: '<div className={`slds-dropdown_${position}`}/>',
+			parserOptions,
+		},
 	],
 
 	invalid: [
@@ -75,6 +83,42 @@ ruleTester.run('no-double-dash-modifier', rule, {
 						'SLDS modifier CSS classes should use a single ' +
 						'underscore instead of double-hyphen: ' +
 						'"slds-p-around--medium".',
+				},
+			],
+			parserOptions,
+		},
+		{
+			code: '{[`slds-button__icon--${props.size}`]}',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-button__icon--".',
+				},
+			],
+			parserOptions,
+		},
+		{
+			code: '<div className={`slds-button--icon-${iconVariant}`}/>',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-button--icon-".',
+				},
+			],
+			parserOptions,
+		},
+		{
+			code: '<div className={`slds-dropdown--${position}`}/>',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-dropdown--".',
 				},
 			],
 			parserOptions,
