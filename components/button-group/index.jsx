@@ -18,7 +18,7 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	 * CSS classes added to `slds-button-group` or `slds-checkbox--button-group` tag
+	 * CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,

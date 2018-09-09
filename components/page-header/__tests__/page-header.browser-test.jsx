@@ -156,14 +156,14 @@ describe('PageHeader: ', function() {
 		it('field content does NOT show PopoverTooltip if text is NOT truncated', () => {
 			const wrapper = mount(<IconSettings iconPath="/assets/icons"><PageHeader {...defaultPropsRecordHome} />)
 			wrapper.update();
-			const nonTruncatedText = wrapper.find('.slds-text-body--regular').at(1);
+			const nonTruncatedText = wrapper.find('.slds-text-body_regular').at(1);
 			expect(nonTruncatedText.node.tabIndex).to.equal(-1);
 		});
 
 		it('field content shows PopoverTooltip if text truncates', () => {
 			const wrapper = mount(<IconSettings iconPath="/assets/icons"><PageHeader {...defaultPropsRecordHome} />)
 			wrapper.update();
-			const truncatedText = wrapper.find('.slds-text-body--regular').first();
+			const truncatedText = wrapper.find('.slds-text-body_regular').first();
 			expect(truncatedText.node.tabIndex).to.equal(0);
 		});
 		*/

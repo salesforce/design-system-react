@@ -76,7 +76,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 	// APP LAUNCHER -----
 	// tabs?
 	// if you pass a isOpen prop, you must control the component with it (this.state.isOpen will now work)
-	// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
+	// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around_medium
 
 	describe('App Launcher', () => {
 		let onClose;

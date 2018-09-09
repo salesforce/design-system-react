@@ -56,7 +56,7 @@ const TabsDemoComponent = createReactClass({
 			PropTypes.string,
 		]),
 		/**
-		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
+		 * HTML `id` attribute of primary element that has `.slds-tabs_default` on it. Optional: If one is not supplied, a `shortid` will be created.
 		 */
 		id: PropTypes.string,
 		/**

@@ -59,7 +59,7 @@ function isTabDisabled(node) {
 const displayName = TABS;
 const propTypes = {
 	/**
-	 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
+	 * HTML `id` attribute of primary element that has `.slds-tabs_default` on it. Optional: If one is not supplied, a `shortid` will be created.
 	 */
 	id: PropTypes.string,
 
@@ -74,13 +74,13 @@ const propTypes = {
 	 * <Tabs>
 	 * 	<TabsPanel label="Tab 1">
 	 * 		<div>
-	 * 			<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+	 * 			<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 	 * 			<p>They show when you click the first tab.</p>
 	 * 		</div>
 	 * 	</TabsPanel>
 	 * 	<TabsPanel label="Tab 2">
 	 * 		<div>
-	 * 			<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+	 * 			<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 	 * 			<p>They show when you click the second tab.</p>
 	 * 		</div>
 	 * 	</TabsPanel>

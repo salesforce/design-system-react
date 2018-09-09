@@ -60,7 +60,7 @@ const InputIcon = (props) => {
 				aria-hidden
 				category={category}
 				className={classNames('slds-input__icon slds-icon-text-default', {
-					[`slds-input__icon--${iconPosition}`]: iconPosition,
+					[`slds-input__icon_${iconPosition}`]: iconPosition,
 				})}
 				name={name}
 				path={path}

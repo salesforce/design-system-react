@@ -32,7 +32,7 @@ TabsList.displayName = TABS_LIST;
 
 TabsList.propTypes = {
 	/**
-	 * Inherits the `id` from the parent `<Tabs />` component and appends `-tabs__nav`. Becomes the HTML `id` attribute of UL element that has the class `.slds-tabs--default__nav` on it.
+	 * Inherits the `id` from the parent `<Tabs />` component and appends `-tabs__nav`. Becomes the HTML `id` attribute of UL element that has the class `.slds-tabs_default__nav` on it.
 	 */
 	id: PropTypes.string,
 

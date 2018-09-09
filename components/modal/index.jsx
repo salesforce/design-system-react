@@ -258,8 +258,8 @@ class Modal extends React.Component {
 				className={classNames({
 					'slds-modal': true,
 					'slds-fade-in-open': true,
-					'slds-modal--large': this.props.size === 'large',
-					'slds-modal--prompt': this.isPrompt(),
+					'slds-modal_large': this.props.size === 'large',
+					'slds-modal_prompt': this.isPrompt(),
 				})}
 				onClick={this.dismissModalOnClickOutside}
 				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
