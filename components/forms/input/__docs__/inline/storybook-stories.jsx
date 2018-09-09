@@ -40,13 +40,13 @@ const DemoInlineEdit = createReactClass({
 
 storiesOf(FORMS_INLINE_EDIT, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
 	.add('Base', () => (
 		<section>
-			<h1 className="slds-text-title_caps slds-p-vertical--medium">
+			<h1 className="slds-text-title_caps slds-p-vertical_medium">
 				Base Inline Edit Input
 			</h1>
 			<DemoInlineEdit name="inline-edit-standard" id="inline-edit-standard" />
@@ -54,7 +54,7 @@ storiesOf(FORMS_INLINE_EDIT, module)
 	))
 	.add('Disabled', () => (
 		<section>
-			<h1 className="slds-text-title_caps slds-p-vertical--medium">
+			<h1 className="slds-text-title_caps slds-p-vertical_medium">
 				Disabled Inline Edit Input
 			</h1>
 			<DemoInlineEdit

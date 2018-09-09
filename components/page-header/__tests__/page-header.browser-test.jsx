@@ -133,7 +133,7 @@ describe('PageHeader: ', function() {
 				</IconSettings>
 			);
 			const field1Title = wrapper.find('.slds-text-title').first();
-			const field1Content = wrapper.find('.slds-text-body--regular').first();
+			const field1Content = wrapper.find('.slds-text-body_regular').first();
 			expect(field1Title.text()).to.equal('Description');
 			expect(field1Content.text()).to.equal(
 				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
@@ -148,7 +148,7 @@ describe('PageHeader: ', function() {
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
-			const field1Content = wrapper.find('.slds-text-body--regular').first();
+			const field1Content = wrapper.find('.slds-text-body_regular').first();
 			expect(field1Content.hasClass('slds-truncate')).to.equal(true);
 		});
 

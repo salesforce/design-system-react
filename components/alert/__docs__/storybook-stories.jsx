@@ -14,7 +14,7 @@ import CustomClassNames from '../__examples__/custom-class-name';
 
 storiesOf(ALERT, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Info', () => <Info />)
 	.add('Warning', () => <Warning />)

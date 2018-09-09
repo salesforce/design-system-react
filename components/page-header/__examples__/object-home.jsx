@@ -49,7 +49,7 @@ const Example = createReactClass({
 					<DropdownTrigger>
 						<Button
 							assistiveText={{ icon: 'List View Controls' }}
-							className="slds-m-right--xx-small"
+							className="slds-m-right_xx-small"
 							iconCategory="utility"
 							iconName="settings"
 							iconVariant="more"
@@ -72,7 +72,7 @@ const Example = createReactClass({
 					<DropdownTrigger>
 						<Button
 							assistiveText={{ icon: 'Change view' }}
-							className="slds-m-right--xx-small"
+							className="slds-m-right_xx-small"
 							iconCategory="utility"
 							iconName="table"
 							iconVariant="more"
@@ -126,7 +126,7 @@ const Example = createReactClass({
 					label="Leads"
 					navRight={navRight}
 					title={
-						<h1 className="slds-page-header__title slds-p-right--x-small">
+						<h1 className="slds-page-header__title slds-p-right_x-small">
 							<Dropdown
 								options={[
 									{ label: 'Menu Item One', value: 'A0' },
@@ -138,7 +138,7 @@ const Example = createReactClass({
 							>
 								<DropdownTrigger>
 									<Button
-										className="slds-button--reset slds-type-focus"
+										className="slds-button_reset slds-type-focus"
 										iconCategory="utility"
 										iconName="down"
 										iconPosition="right"

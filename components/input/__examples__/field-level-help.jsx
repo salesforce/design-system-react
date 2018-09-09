@@ -13,7 +13,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
-					<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
 						Field Level Help
 					</h1>
 					<Input

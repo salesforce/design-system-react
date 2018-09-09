@@ -40,34 +40,34 @@ const mapPropToPopperPlacement = (propString) => {
 const getNubbinClassName = (align, popperData = {}) => {
 	if (popperData.flipped) {
 		return classNames({
-			'slds-nubbin--top': align === 'top',
-			'slds-nubbin--top-left': align === 'top left',
-			'slds-nubbin--top-right': align === 'top right',
-			'slds-nubbin--bottom': align === 'bottom',
-			'slds-nubbin--bottom-left': align === 'bottom left',
-			'slds-nubbin--bottom-right': align === 'bottom right',
-			'slds-nubbin--left': align === 'left',
-			'slds-nubbin--left-bottom': align === 'left bottom',
-			'slds-nubbin--left-top': align === 'left top',
-			'slds-nubbin--right': align === 'right',
-			'slds-nubbin--right-bottom': align === 'right bottom',
-			'slds-nubbin--right-top': align === 'right top',
+			'slds-nubbin_top': align === 'top',
+			'slds-nubbin_top-left': align === 'top left',
+			'slds-nubbin_top-right': align === 'top right',
+			'slds-nubbin_bottom': align === 'bottom',
+			'slds-nubbin_bottom-left': align === 'bottom left',
+			'slds-nubbin_bottom-right': align === 'bottom right',
+			'slds-nubbin_left': align === 'left',
+			'slds-nubbin_left-bottom': align === 'left bottom',
+			'slds-nubbin_left-top': align === 'left top',
+			'slds-nubbin_right': align === 'right',
+			'slds-nubbin_right-bottom': align === 'right bottom',
+			'slds-nubbin_right-top': align === 'right top',
 		});
 	}
 
 	return classNames({
-		'slds-nubbin--top': align === 'bottom',
-		'slds-nubbin--top-left': align === 'bottom left',
-		'slds-nubbin--top-right': align === 'bottom right',
-		'slds-nubbin--bottom': align === 'top',
-		'slds-nubbin--bottom-left': align === 'top left',
-		'slds-nubbin--bottom-right': align === 'top right',
-		'slds-nubbin--left': align === 'right',
-		'slds-nubbin--left-bottom': align === 'right bottom',
-		'slds-nubbin--left-top': align === 'right top',
-		'slds-nubbin--right': align === 'left',
-		'slds-nubbin--right-bottom': align === 'left bottom',
-		'slds-nubbin--right-top': align === 'left top',
+		'slds-nubbin_top': align === 'bottom',
+		'slds-nubbin_top-left': align === 'bottom left',
+		'slds-nubbin_top-right': align === 'bottom right',
+		'slds-nubbin_bottom': align === 'top',
+		'slds-nubbin_bottom-left': align === 'top left',
+		'slds-nubbin_bottom-right': align === 'top right',
+		'slds-nubbin_left': align === 'right',
+		'slds-nubbin_left-bottom': align === 'right bottom',
+		'slds-nubbin_left-top': align === 'right top',
+		'slds-nubbin_right': align === 'left',
+		'slds-nubbin_right-bottom': align === 'left bottom',
+		'slds-nubbin_right-top': align === 'left top',
 	});
 };
 

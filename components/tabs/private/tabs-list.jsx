@@ -19,8 +19,8 @@ const TabsList = ({ id, className, children, variant }) => (
 	<ul
 		id={`${id}-slds-tabs__nav`}
 		className={classNames(className, {
-			'slds-tabs--default__nav': variant === 'default',
-			'slds-tabs--scoped__nav': variant === 'scoped',
+			'slds-tabs_default__nav': variant === 'default',
+			'slds-tabs_scoped__nav': variant === 'scoped',
 		})}
 		role="tablist"
 	>

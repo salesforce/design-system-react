@@ -40,20 +40,20 @@ const searchIconClickable = (
 
 storiesOf(INPUT, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
 				<ol>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							1. Base Input with visible label
 						</h1>
 						<Input id="base-id" label="My Label" placeholder="My placeholder" />
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							2. Base Input with hidden label (assistive text)
 						</h1>
 						<Input
@@ -70,8 +70,8 @@ storiesOf(INPUT, module)
 		<IconSettings iconPath="/assets/icons">
 			<section>
 				<ol>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							1. Base Input with left icon
 						</h1>
 						<Input
@@ -81,8 +81,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							2. Base Input with Clickable left icon
 						</h1>
 						<Input
@@ -92,8 +92,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							3. Base Input with right icon
 						</h1>
 						<Input
@@ -103,8 +103,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							4. Base Input with Clickable right icon
 						</h1>
 						<Input
@@ -114,8 +114,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							5. Base Input with left and right icons
 						</h1>
 						<Input
@@ -126,8 +126,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							6. Base Input with Clickable left and right icon
 						</h1>
 						<Input
@@ -138,8 +138,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							7. Base Input with left and clickable right icon
 						</h1>
 						<Input
@@ -150,8 +150,8 @@ storiesOf(INPUT, module)
 							placeholder="My placeholder"
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							8. Base Input with left, clickable right icon, and loading spinner
 						</h1>
 						<Input
@@ -172,7 +172,7 @@ storiesOf(INPUT, module)
 	.add('Fixed Text', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Input with Fixed Text
 				</h1>
 				<Input
@@ -189,7 +189,7 @@ storiesOf(INPUT, module)
 	.add('Read Only', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Read only Input
 				</h1>
 				<Input
@@ -205,7 +205,7 @@ storiesOf(INPUT, module)
 	.add('Static Input', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Static Input
 				</h1>
 				<Input
@@ -221,7 +221,7 @@ storiesOf(INPUT, module)
 	.add('Disabled Input', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Disabled Input
 				</h1>
 				<Input
@@ -237,12 +237,12 @@ storiesOf(INPUT, module)
 	.add('Required Input in Error State', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Example Button
 				</h1>
 				<Button label="Test" />
 
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Required Input with Error
 				</h1>
 				<Input

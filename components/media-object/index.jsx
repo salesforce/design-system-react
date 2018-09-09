@@ -62,7 +62,7 @@ const MediaObject = createReactClass({
 				className={classnames(
 					cssClasses.base,
 					{
-						'slds-media--center': this.props.verticalCenter,
+						'slds-media_center': this.props.verticalCenter,
 						'slds-has-flexi-truncate': this.props.canTruncate,
 					},
 					this.props.className

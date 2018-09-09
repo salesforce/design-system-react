@@ -72,7 +72,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('ul has proper classes', () => {
 			should.exist(
-				handles.section.find('ul.slds-grid.slds-grid--pull-padded.slds-wrap')
+				handles.section.find('ul.slds-grid.slds-grid_pull-padded.slds-wrap')
 			);
 		});
 
@@ -82,10 +82,10 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('renders li with proper classes', () => {
 			const li = handles.section.find('li').at(0);
-			expect(li).to.have.className('slds-col--padded');
+			expect(li).to.have.className('slds-col_padded');
 			expect(li).to.have.className('slds-grow-none');
-			expect(li).to.have.className('slds-size--1-of-1');
-			expect(li).to.have.className('slds-medium-size--1-of-3');
+			expect(li).to.have.className('slds-size_1-of-1');
+			expect(li).to.have.className('slds-medium-size_1-of-3');
 		});
 
 		it('renders custom section title', () => {
@@ -112,7 +112,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		it('does not render toggle if toggleable is false', () => {
 			should.not.exist(
 				handles.section.find(
-					'.slds-button .slds-button--icon .slds-m-right--small'
+					'.slds-button .slds-button_icon .slds-m-right_small'
 				)
 			);
 		});
@@ -142,7 +142,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		it('renders li with proper classes for small tiles', () => {
 			should.exist(
 				handles.section.find(
-					'.slds-col--padded .slds-grow-none .slds-size--xx-small'
+					'.slds-col_padded .slds-grow-none .slds-size_xx-small'
 				)
 			);
 		});

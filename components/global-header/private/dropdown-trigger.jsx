@@ -111,7 +111,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		const { avatar } = this.props;
 		if (typeof avatar === 'string') {
 			return (
-				<span className="slds-avatar slds-avatar--circle slds-avatar--medium">
+				<span className="slds-avatar slds-avatar_circle slds-avatar_medium">
 					<img src={avatar} alt="" />
 				</span>
 			);
@@ -144,10 +144,10 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 			<li
 				aria-haspopup="true"
 				className={classnames(
-					'slds-dropdown-trigger slds-dropdown-trigger--click',
+					'slds-dropdown-trigger slds-dropdown-trigger_click',
 					{
 						'slds-is-open': isOpen,
-						'slds-p-around--xx-small': globalAction,
+						'slds-p-around_xx-small': globalAction,
 					},
 					className
 				)}
@@ -164,7 +164,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					className={classnames({
-						'slds-global-header__button--icon-actions': globalAction,
+						'slds-global-header__button_icon-actions': globalAction,
 					})}
 					iconClassName={classnames({
 						'slds-global-header__icon-actions': globalAction,

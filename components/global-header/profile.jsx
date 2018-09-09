@@ -36,7 +36,7 @@ const GlobalHeaderProfile = (props) => {
 		<MenuDropdown menuPosition="relative" nubbinPosition="top right" {...rest}>
 			<GlobalHeaderTrigger
 				avatar={avatar || defaultAvatar}
-				className={classnames('slds-m-left--x-small', buttonClassName)}
+				className={classnames('slds-m-left_x-small', buttonClassName)}
 			/>
 			{children}
 		</MenuDropdown>

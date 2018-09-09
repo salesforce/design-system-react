@@ -48,7 +48,7 @@ const ObjectHome = (props) => (
 					figure={props.icon}
 				/>
 			</div>
-			<div className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small">
+			<div className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small">
 				{props.navRight}
 			</div>
 		</div>

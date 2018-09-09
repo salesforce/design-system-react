@@ -91,14 +91,14 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Default Fluid Layout
 					</h3>
 					<DataTable items={this.state.items} id="DataTableExample-1-default">
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Striped
 					</h3>
 
@@ -110,7 +110,7 @@ const Example = createReactClass({
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						No Row Hover
 					</h3>
 
@@ -122,7 +122,7 @@ const Example = createReactClass({
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Column Bordered
 					</h3>
 

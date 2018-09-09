@@ -319,8 +319,8 @@ class Tabs extends React.Component {
 		let result = null;
 
 		result = children.map((child, index) => {
-			const tabId = `${parentId}-slds-tabs--tab-${index}`;
-			const id = `${parentId}-slds-tabs--panel-${index}`;
+			const tabId = `${parentId}-slds-tabs_tab-${index}`;
+			const id = `${parentId}-slds-tabs_panel-${index}`;
 			const selected = selectedIndex === index;
 			const variant = this.getVariant();
 
@@ -346,8 +346,8 @@ class Tabs extends React.Component {
 			// `parentId` gets consumed by TabsList, adding a suffix of `-tabs__nav`
 			<TabsList id={parentId} variant={this.getVariant()}>
 				{children.map((child, index) => {
-					const id = `${parentId}-slds-tabs--tab-${index}`;
-					const panelId = `${parentId}-slds-tabs--panel-${index}`;
+					const id = `${parentId}-slds-tabs_tab-${index}`;
+					const panelId = `${parentId}-slds-tabs_panel-${index}`;
 					const selected = this.getSelectedIndex() === index;
 					const focus = selected && this.state.focus;
 					const variant = this.getVariant();
@@ -391,8 +391,8 @@ class Tabs extends React.Component {
 				id={id}
 				className={classNames(
 					{
-						'slds-tabs--default': variant === 'default',
-						'slds-tabs--scoped': variant === 'scoped',
+						'slds-tabs_default': variant === 'default',
+						'slds-tabs_scoped': variant === 'scoped',
 					},
 					className
 				)}

@@ -111,7 +111,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('app launcher title can be set', () => {
 			expect(handles.appLauncher).to.contain(
-				<h2 className="slds-text-heading--medium">App Launcher!</h2>
+				<h2 className="slds-text-heading_medium">App Launcher!</h2>
 			);
 		});
 
@@ -140,7 +140,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		it('renders modal content', () => {
 			should.exist(
 				handles.modal.find(
-					'.slds-modal__content .slds-app-launcher__content .slds-p-around--medium'
+					'.slds-modal__content .slds-app-launcher__content .slds-p-around_medium'
 				)
 			);
 		});

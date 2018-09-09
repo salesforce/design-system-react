@@ -79,7 +79,7 @@ describe('SLDSMenuPicklist: ', function() {
 			expect(getMenu(document.body)).to.equal(null);
 			Simulate.click(btn, {});
 			expect(getMenu(document.body).className).to.include(
-				'slds-dropdown--left'
+				'slds-dropdown_left'
 			);
 			Simulate.click(btn, {});
 			expect(getMenu(document.body)).to.equal(null);

@@ -13,7 +13,7 @@ import HeadingWithMessage from '../__examples__/heading-message.jsx';
 
 storiesOf(ILLUSTRATION, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Small Image and Text', () => <SmallImageWithText />)
 	.add('Large Image and Text', () => <LargeImageWithText />)

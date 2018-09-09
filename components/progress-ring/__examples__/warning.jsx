@@ -6,14 +6,14 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<ProgressRing value={20} theme="warning" />
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<ProgressRing value={20} theme="warning" hasIcon />
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<ProgressRing value={100} theme="warning" />
 					</div>
 				</div>

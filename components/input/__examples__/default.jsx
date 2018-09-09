@@ -9,15 +9,15 @@ const Example = createReactClass({
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<section className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Base Input with visible label
 						</h1>
 						<Input id="base-id" label="My Label" placeholder="My placeholder" />
 					</div>
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Base Input with hidden label (assistive text)
 						</h1>
 						<Input
@@ -26,8 +26,8 @@ const Example = createReactClass({
 							placeholder="My placeholder"
 						/>
 					</div>
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Base Input with Fixed Text
 						</h1>
 						<Input

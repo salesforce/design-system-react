@@ -32,8 +32,8 @@ const TabPanel = ({
 		className={classNames(className, {
 			'slds-show': selected,
 			'slds-hide': !selected,
-			'slds-tabs--default__content': variant === 'default',
-			'slds-tabs--scoped__content': variant === 'scoped',
+			'slds-tabs_default__content': variant === 'default',
+			'slds-tabs_scoped__content': variant === 'scoped',
 		})}
 		id={id}
 		role="tabpanel"

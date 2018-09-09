@@ -43,7 +43,7 @@ describe('SLDSNotification: ', () => {
 				/>
 			);
 			const alert = notification.getElementsByTagName('div')[0];
-			expect(alert.className).to.include('slds-notify--toast');
+			expect(alert.className).to.include('slds-notify_toast');
 		});
 
 		it('renders theme', () => {
@@ -51,7 +51,7 @@ describe('SLDSNotification: ', () => {
 				<SLDSNotification variant="toast" theme="error" isOpen />
 			);
 			const alert = notification.getElementsByTagName('div')[0];
-			expect(alert.className).to.include('slds-theme--error');
+			expect(alert.className).to.include('slds-theme_error');
 		});
 
 		it('renders icon', () => {

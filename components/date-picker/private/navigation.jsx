@@ -92,7 +92,7 @@ const DatepickerMonthNavigation = createReactClass({
 		return (
 			<div className="slds-datepicker__filter slds-grid">
 				<div
-					className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+					className="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
 					style={{ flex: 1.75 }}
 				>
 					<div className="slds-align-middle">

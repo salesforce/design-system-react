@@ -126,11 +126,11 @@ const Tab = createReactClass({
 
 		return (
 			<li
-				className={classNames('slds-text-title--caps', className, {
+				className={classNames('slds-text-title_caps', className, {
 					[activeTabClassName]: selected,
 					[disabledTabClassName]: disabled,
-					'slds-tabs--default__item': variant === 'default',
-					'slds-tabs--scoped__item': variant === 'scoped',
+					'slds-tabs_default__item': variant === 'default',
+					'slds-tabs_scoped__item': variant === 'scoped',
 				})}
 				role="tab"
 				ref={(node) => {
@@ -147,8 +147,8 @@ const Tab = createReactClass({
 					className={classNames({
 						[activeTabClassName]: selected,
 						[disabledTabClassName]: disabled,
-						'slds-tabs--default__link': variant === 'default',
-						'slds-tabs--scoped__link': variant === 'scoped',
+						'slds-tabs_default__link': variant === 'default',
+						'slds-tabs_scoped__link': variant === 'scoped',
 					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="presentation"

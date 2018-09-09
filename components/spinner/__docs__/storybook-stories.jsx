@@ -18,7 +18,7 @@ const inverseContainer = {
 
 storiesOf(SPINNER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -42,7 +42,7 @@ storiesOf(SPINNER, module)
 	)
 
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium" style={inverseContainer}>
+		<div className="slds-p-around_medium" style={inverseContainer}>
 			{getStory()}
 		</div>
 	))

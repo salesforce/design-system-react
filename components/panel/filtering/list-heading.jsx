@@ -25,14 +25,14 @@ import { PANEL_FILTER_LIST_HEADING } from '../../../utilities/constants';
  */
 const PanelFilterListHeading = ({ heading, isLocked, lockedHeading }) => (
 	<h3
-		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small', {
+		className={classNames('slds-text-body_small', 'slds-m-vertical_x-small', {
 			'slds-grid': isLocked,
 		})}
 	>
 		{isLocked ? lockedHeading : heading}
 		{isLocked ? (
 			<Icon
-				className="slds-m-left--x-small"
+				className="slds-m-left_x-small"
 				assistiveText={{ label: 'locked' }}
 				category="utility"
 				name="lock"
