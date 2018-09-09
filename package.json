@@ -155,6 +155,7 @@
 		"eslint-config-airbnb": "16.1.0",
 		"eslint-config-prettier": "^3.0.1",
 		"eslint-loader": "^1.6.0",
+		"eslint-plugin-design-system-react": "file:eslint-plugin",
 		"eslint-plugin-filenames": "^1.2.0",
 		"eslint-plugin-import": "^2.11.0",
 		"eslint-plugin-json": "^1.2.0",
