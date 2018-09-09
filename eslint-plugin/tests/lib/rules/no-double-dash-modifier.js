@@ -53,6 +53,7 @@ ruleTester.run('no-double-dash-modifier', rule, {
 	invalid: [
 		{
 			code: '<div className="slds-p-around--medium"/>',
+			output: '<div className="slds-p-around_medium"/>',
 			errors: [
 				{
 					message:
@@ -65,6 +66,7 @@ ruleTester.run('no-double-dash-modifier', rule, {
 		},
 		{
 			code: '<div className="slds-p-around--medium slds-m-around--medium"/>',
+			output: '<div className="slds-p-around_medium slds-m-around_medium"/>',
 			errors: [
 				{
 					message:
@@ -78,6 +80,8 @@ ruleTester.run('no-double-dash-modifier', rule, {
 		{
 			code:
 				'<div className="another-class slds-p-around--medium and-another"/>',
+			output:
+				'<div className="another-class slds-p-around_medium and-another"/>',
 			errors: [
 				{
 					message:
@@ -90,6 +94,7 @@ ruleTester.run('no-double-dash-modifier', rule, {
 		},
 		{
 			code: '{[`slds-button__icon--${props.size}`]}',
+			output: '{[`slds-button__icon_${props.size}`]}',
 			errors: [
 				{
 					message:
@@ -102,6 +107,7 @@ ruleTester.run('no-double-dash-modifier', rule, {
 		},
 		{
 			code: '<div className={`slds-button--icon-${iconVariant}`}/>',
+			output: '<div className={`slds-button_icon-${iconVariant}`}/>',
 			errors: [
 				{
 					message:
@@ -114,6 +120,7 @@ ruleTester.run('no-double-dash-modifier', rule, {
 		},
 		{
 			code: '<div className={`slds-dropdown--${position}`}/>',
+			output: '<div className={`slds-dropdown_${position}`}/>',
 			errors: [
 				{
 					message:
