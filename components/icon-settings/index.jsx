@@ -26,6 +26,7 @@ class IconSettings extends React.Component {
 	getChildContext() {
 		return {
 			iconPath: this.props.iconPath,
+			onRequestIconPath: this.props.onRequestIconPath,
 			actionSprite: this.props.actionSprite,
 			customSprite: this.props.customSprite,
 			doctypeSprite: this.props.doctypeSprite,
@@ -43,6 +44,7 @@ IconSettings.displayName = ICON_SETTINGS;
 
 IconSettings.childContextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
 	actionSprite: PropTypes.string,
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,
@@ -56,6 +58,11 @@ IconSettings.propTypes = {
 	 * example: `/assets/icons`
 	 */
 	iconPath: PropTypes.string,
+	/**
+	 * Function to allow developers to return a custom icon path
+	 * example: `(category, name) => { return "#" + category + "_" + name }`
+	 */
+	onRequestIconPath: PropTypes.func,
 	/**
 	 * Path to the action sprite
 	 * example: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';
