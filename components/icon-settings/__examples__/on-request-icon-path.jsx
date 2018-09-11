@@ -30,7 +30,7 @@ const Example = createReactClass({
 	},
 	render() {
 		return (
-			<IconSettings onRequestIconPath={(category, name) => `#${name}`}>
+			<IconSettings onRequestIconPath={({category, name}) => `#${name}`}>
 				<div
 					ref={(el) => {
 						this.spriteInlineContainer = el;
