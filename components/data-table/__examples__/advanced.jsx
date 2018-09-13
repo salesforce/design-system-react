@@ -150,7 +150,7 @@ const Example = createReactClass({
 							property="opportunityName"
 							sortable
 							sortDirection={this.state.sortColumnDirection.opportunityName}
-							width="10rem"
+							width="30rem"
 						>
 							<CustomDataTableCell />
 						</DataTableColumn>
@@ -159,7 +159,11 @@ const Example = createReactClass({
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn
+							width="5rem"
+							label="Close Date"
+							property="closeDate"
+						/>
 						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
