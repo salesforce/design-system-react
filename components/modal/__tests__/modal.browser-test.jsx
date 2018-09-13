@@ -10,13 +10,22 @@ import SLDSModal from '../../modal';
 import IconSettings from '../../icon-settings';
 import Settings from '../../settings';
 
-Settings.setAppElement('#mocha');
-
 const { Simulate } = TestUtils;
 
 describe('SLDSModal: ', function() {
 	let container;
 	let renderedNode;
+
+	// set "app node" fixture, so no warnings are triggered.
+	let appNode = document.createElement('span');
+	appNode.id = 'app';
+	document.body.appendChild(appNode);
+	Settings.setAppElement('#app');
+
+	after(() => {
+		document.body.removeChild(appNode);
+		appNode = null;
+	});
 
 	afterEach(() => {
 		ReactDOM.unmountComponentAtNode(container);
@@ -31,6 +40,7 @@ describe('SLDSModal: ', function() {
 
 	const renderModal = (modalInstance) => {
 		container = document.createElement('div');
+
 		const opener = (
 			<button>
 				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
