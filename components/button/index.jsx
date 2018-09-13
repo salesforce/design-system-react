@@ -15,6 +15,7 @@ import componentDoc from './docs.json';
 import Tooltip from '../tooltip';
 
 import { BUTTON } from '../../utilities/constants';
+import { getDataIds } from '../../utilities/common';
 
 const defaultProps = {
 	assistiveText: { icon: '' },
@@ -51,6 +52,10 @@ const Button = createReactClass({
 		 * True if Button triggers a menu or popup to open/close.
 		 */
 		'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+		/**
+		 * Data attrs
+		 */
+		'data-*': PropTypes.shape({}),
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -337,6 +342,7 @@ const Button = createReactClass({
 				title={this.props.title}
 				type={this.props.type}
 				style={this.props.style}
+        {...getDataIds(this.props)}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 

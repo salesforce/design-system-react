@@ -52,6 +52,9 @@ describe('SLDSButton: ', () => {
 				id: 'custom-id',
 				text: 'Brand',
 				theme: 'brand',
+				'data-*': {
+					id: 'custom-data-id',
+				},
 				style: { background: 'rgb(18, 49, 35)' },
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
@@ -72,6 +75,10 @@ describe('SLDSButton: ', () => {
 		it('renders custom id', () => {
 			expect(btn.getAttribute('id')).to.equal('custom-id');
 		});
+
+		it('renders custom data-id', () => {
+			expect(btn.dataset.id).to.equal('custom-data-id');
+    });
 
 		it('renders custom styles', function() {
 			btn.style.backgroundColor.should.equal('rgb(18, 49, 35)');

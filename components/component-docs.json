@@ -1115,6 +1115,14 @@
                 "required": false,
                 "description": "True if Button triggers a menu or popup to open/close."
             },
+            "data-*": {
+                "type": {
+                    "name": "shape",
+                    "value": {}
+                },
+                "required": false,
+                "description": "Data attrs"
+            },
             "assistiveText": {
                 "type": {
                     "name": "shape",
