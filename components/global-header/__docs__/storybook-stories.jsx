@@ -106,7 +106,7 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderButton
 			assistiveText={{ icon: 'Notifications' }}
-			iconCatefory="utility"
+			iconCategory="utility"
 			iconName="notification"
 			onClick={action('Notifications Clicked')}
 		/>
