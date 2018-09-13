@@ -1,0 +1,7 @@
+{
+    "component": "time-picker",
+    "status": "prod",
+    "display-name": "Timepickers",
+    "SLDS-component-path": "/components/timepicker",
+    "url-slug": "timepickers"
+}
