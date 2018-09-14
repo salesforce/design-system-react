@@ -503,9 +503,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "width": Object {
-                  "width": "10rem",
-                },
+                "width": "10rem",
               }
             }
           >
@@ -555,9 +553,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
-                "width": Object {
-                  "width": "8rem",
-                },
+                "width": "8rem",
               }
             }
           >
@@ -582,11 +578,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <span
               className="slds-p-horizontal_x-small"
@@ -609,11 +601,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <span
               className="slds-p-horizontal_x-small"
@@ -636,11 +624,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-sort="none"
             className="slds-is-sortable slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <a
               className="slds-th__action slds-text-link_reset"
@@ -679,11 +663,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <span
               className="slds-p-horizontal_x-small"
@@ -706,11 +686,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <span
               className="slds-p-horizontal_x-small"
@@ -1334,6 +1310,577 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
+<div
+  className="slds-p-around--medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
+    <h3
+      className="slds-text-heading--medium slds-m-vertical--medium"
+    >
+      Basic Fixed Layout
+    </h3>
+    <table
+      className="slds-table slds-table--fixed-layout slds-table_resizable-cols slds-table_bordered"
+      id="DataTableExample-1-default"
+      role="grid"
+    >
+      <thead>
+        <tr
+          className="slds-line-height_reset"
+        >
+          <th
+            aria-label="Opportunity Name"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Opportunity Name"
+              >
+                Opportunity Name
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Account Name"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Account Name"
+              >
+                Account Name
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Close Date"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Close Date"
+              >
+                Close Date
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Stage"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Stage"
+              >
+                Stage
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Confidence"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Confidence"
+              >
+                Confidence
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Amount"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Amount"
+              >
+                Amount
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Contact"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Contact"
+              >
+                Contact
+              </span>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="jrogers@cloudhub.com"
+            >
+              jrogers@cloudhub.com
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Cloudhub + Anypoint Connectors"
+            >
+              Cloudhub + Anypoint Connectors
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="jrogers@cloudhub.com"
+            >
+              jrogers@cloudhub.com
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "5em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "6em",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="jrogers@cloudhub.com"
+            >
+              jrogers@cloudhub.com
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
 <div
   className="slds-p-around--medium"
@@ -1364,11 +1911,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1382,11 +1925,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1400,11 +1939,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1418,11 +1953,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1436,11 +1967,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1454,11 +1981,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1472,11 +1995,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1803,11 +2322,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1821,11 +2336,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1839,11 +2350,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1857,11 +2364,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1875,11 +2378,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1893,11 +2392,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -1911,11 +2406,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2242,11 +2733,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2260,11 +2747,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2278,11 +2761,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2296,11 +2775,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2314,11 +2789,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2332,11 +2803,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2350,11 +2817,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2681,11 +3144,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2699,11 +3158,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2717,11 +3172,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2735,11 +3186,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2753,11 +3200,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2771,11 +3214,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
@@ -2789,11 +3228,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
             aria-sort="none"
             className="slds-text-title_caps"
             scope="col"
-            style={
-              Object {
-                "width": null,
-              }
-            }
+            style={null}
           >
             <div
               className="slds-truncate"
