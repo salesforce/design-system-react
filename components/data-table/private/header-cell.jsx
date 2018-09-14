@@ -183,7 +183,7 @@ const DataTableHeaderCell = createReactClass({
 					'slds-text-title_caps'
 				)}
 				scope="col"
-				style={{ width: width ? { width } : null }}
+				style={width ? { width } : null}
 			>
 				{this.props.fixedLayout ? (
 					fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
