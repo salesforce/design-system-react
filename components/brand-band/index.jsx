@@ -92,7 +92,7 @@ BrandBand.displayName = BRAND_BAND;
 
 BrandBand.propTypes = {
 	/**
-	 * Content to be injected inside inside the brand band, if any
+	 * Primary application grid layout or a white background component such as a `Card` should be passed into this component.
 	 */
 	children: PropTypes.node,
 
