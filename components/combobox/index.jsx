@@ -7,5 +7,5 @@ import onClickOutside from 'react-onclickoutside';
 import Combobox from './combobox';
 
 export default onClickOutside(Combobox, {
-	excludeScrollbar: true
+	excludeScrollbar: true,
 });
