@@ -27,12 +27,7 @@ const columns = [
 		width="5em"
 	/>,
 
-	<DataTableColumn
-		key="stage"
-		label="Stage"
-		property="stage"
-		width="5em"
-	/>,
+	<DataTableColumn key="stage" label="Stage" property="stage" width="5em" />,
 
 	<DataTableColumn
 		key="confidence"
@@ -41,12 +36,7 @@ const columns = [
 		width="5em"
 	/>,
 
-	<DataTableColumn
-		key="amount"
-		label="Amount"
-		property="amount"
-		width="5em"
-	/>,
+	<DataTableColumn key="amount" label="Amount" property="amount" width="5em" />,
 
 	<DataTableColumn
 		key="contact"
