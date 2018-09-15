@@ -10,7 +10,7 @@ import BasicFixedLayout from '../__examples__/basic-fixed-layout';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

@@ -54,14 +54,14 @@ const defaultProps = {
 /* eslint-disable react/prop-types */
 const DropdownCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
-		<div className="slds-m-around--medium">
-			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+		<div className="slds-m-around_medium">
+			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
+				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
 				<div className="slds-tile__detail">
 					<p className="slds-truncate">
 						<a
 							id="custom-dropdown-menu-content-link"
-							className="slds-m-right--medium"
+							className="slds-m-right_medium"
 							href="javascript:void(0);"
 							onClick={props.onClick}
 						>

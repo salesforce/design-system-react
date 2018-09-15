@@ -72,6 +72,14 @@
 				// TODO: This should be removed.
 				"react/display-name": "off"
 			}
+		},
+		{
+			// ESLint Plugin
+			"files": ["eslint-plugin/**/*.js"],
+			"rules": {
+				"import/no-extraneous-dependencies": "off",
+				"no-double-dash-modifier": "off"
+			}
 		}
 	],
 	// Please review Prettier settings for style linting
@@ -186,6 +194,9 @@
 		"jsx-a11y/label-has-for": "off",
 		// TODO: Should be removed. All mouse interactions should be able
 		// to be done with the keyboard.
-		"jsx-a11y/click-events-have-key-events": "off"
+		"jsx-a11y/click-events-have-key-events": "off",
+
+		// Enforce single underscore modifiers for BEM class names
+		"no-double-dash-modifier": "error"
 	}
 }

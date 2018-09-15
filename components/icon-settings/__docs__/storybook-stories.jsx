@@ -9,7 +9,7 @@ import OnRequestIconPath from '../__examples__/on-request-icon-path';
 
 storiesOf(ICON_SETTINGS, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base: Icon path', () => <IconPath />)
 	.add('Base: Sprite imports', () => <Sprite />)

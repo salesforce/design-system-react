@@ -158,7 +158,7 @@ const headerTitle = (
 			>
 				<DropdownTrigger>
 					<Button
-						className="slds-button--reset slds-type-focus"
+						className="slds-button_reset slds-type-focus"
 						iconCategory="utility"
 						iconName="down"
 						iconPosition="right"

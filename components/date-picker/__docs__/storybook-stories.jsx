@@ -13,7 +13,7 @@ import WeekdayPicker from '../__examples__/weekday-picker';
 
 storiesOf(DATE_PICKER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

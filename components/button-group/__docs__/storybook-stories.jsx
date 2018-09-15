@@ -12,7 +12,7 @@ import CheckboxError from '../__examples__/checkbox-error';
 
 storiesOf(BUTTON_GROUP, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

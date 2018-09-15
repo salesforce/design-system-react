@@ -29,8 +29,8 @@ class DefaultFooter extends React.Component {
 	};
 
 	render() {
-		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
-		if (this.props.isActive) className += ' slds-theme--shade';
+		let className = 'slds-lookup__item-action slds-lookup__item-action_label';
+		if (this.props.isActive) className += ' slds-theme_shade';
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */

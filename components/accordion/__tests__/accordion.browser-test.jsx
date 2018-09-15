@@ -160,7 +160,7 @@ describe('Accordion', function() {
 				attachTo: mountNode,
 			});
 			const panelContentActions = wrapper.find(
-				'div .slds-dropdown-trigger .slds-dropdown-trigger--click'
+				'div .slds-dropdown-trigger .slds-dropdown-trigger_click'
 			);
 			expect(panelContentActions, 'panel dropdown component exists').to.exist;
 		});

@@ -18,7 +18,7 @@ import SizesLarge from '../__examples__/sizes-large';
 
 storiesOf(SLIDER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Slider', () => <Base />)
 	.add('Disabled', () => <Disabled />)

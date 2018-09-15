@@ -18,7 +18,7 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	 * CSS classes added to `slds-button-group` or `slds-checkbox--button-group` tag
+	 * CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
@@ -60,7 +60,7 @@ const ButtonGroup = (props) => {
 			let newChild;
 			if (index === zeroIndexLength) {
 				newChild = React.cloneElement(child, {
-					triggerClassName: 'slds-button--last',
+					triggerClassName: 'slds-button_last',
 				});
 			}
 
@@ -89,7 +89,7 @@ const ButtonGroup = (props) => {
 				<div className="slds-form-element__control">
 					<div
 						className={classNames(
-							'slds-checkbox--button-group',
+							'slds-checkbox_button-group',
 							props.className
 						)}
 					>

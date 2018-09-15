@@ -6,10 +6,10 @@ exports[`Breadcrumb Base Snapshot 1`] = `
   role="navigation"
 >
   <ol
-    className="slds-breadcrumb slds-list--horizontal"
+    className="slds-breadcrumb slds-list_horizontal"
   >
     <li
-      className="slds-breadcrumb__item slds-text-title--caps"
+      className="slds-breadcrumb__item slds-text-title_caps"
     >
       <a
         href="javascript:void(0);"
@@ -19,7 +19,7 @@ exports[`Breadcrumb Base Snapshot 1`] = `
       </a>
     </li>
     <li
-      className="slds-breadcrumb__item slds-text-title--caps"
+      className="slds-breadcrumb__item slds-text-title_caps"
     >
       <a
         href="javascript:void(0);"

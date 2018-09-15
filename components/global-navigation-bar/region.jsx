@@ -66,7 +66,7 @@ const renderTertiary = (dividerClass, className, children) => (
 	<div
 		className={classNames(
 			'slds-context-bar__tertiary',
-			'slds-col--bump-left',
+			'slds-col_bump-left',
 			dividerClass,
 			className
 		)}
@@ -112,7 +112,7 @@ const Region = createReactClass({
 	render() {
 		let region;
 		const dividerClass = this.props.dividerPosition
-			? `slds-context-bar__item--divider-${this.props.dividerPosition}`
+			? `slds-context-bar__item_divider-${this.props.dividerPosition}`
 			: null;
 
 		switch (this.props.region) {

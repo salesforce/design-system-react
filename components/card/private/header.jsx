@@ -30,7 +30,7 @@ const renderFilter = (filter, id) => {
 	});
 
 	return (
-		<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
+		<div className="slds-input-has-icon slds-input-has-icon_left slds-size_1-of-3">
 			{clonedFilter}
 		</div>
 	);
@@ -51,7 +51,7 @@ const CardHeader = (props) => {
 	const heading = (
 		<h2
 			id={props.headingId}
-			className="slds-text-heading--small slds-truncate"
+			className="slds-text-heading_small slds-truncate"
 			title={title}
 		>
 			{props.heading}
@@ -88,8 +88,8 @@ const CardHeader = (props) => {
 			<div
 				id={props.headerActionsId}
 				className={classnames('slds-no-flex', {
-					'slds-size--1-of-3': hasFilter,
-					'slds-text-align--right': hasFilter,
+					'slds-size_1-of-3': hasFilter,
+					'slds-text-align_right': hasFilter,
 				})}
 			>
 				{props.headerActions}

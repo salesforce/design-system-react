@@ -307,7 +307,7 @@ const RenderBranch = (children, props) => {
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
-					className="slds-m-right--small"
+					className="slds-m-right_small"
 					role="presentation"
 					aria-controls={props.htmlId}
 					onClick={(event) => {

@@ -281,7 +281,7 @@ describe('SLDSLookup: ', () => {
 			const focusedItem = lookup
 				.getElementsByTagName('ul')[0]
 				.getElementsByTagName('li')[0];
-			expect(focusedItem.className).to.have.string('slds-theme--shade');
+			expect(focusedItem.className).to.have.string('slds-theme_shade');
 		});
 
 		it('isOpen=false prevents dropdown from opening', () => {

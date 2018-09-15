@@ -157,9 +157,9 @@ const Filter = createReactClass({
 					{assistiveText.editFilterHeading}
 				</h4>
 				{this.props.children}
-				<div className="slds-m-top--small slds-text-align--right">
+				<div className="slds-m-top_small slds-text-align_right">
 					<Button
-						className="slds-col--bump-left"
+						className="slds-col_bump-left"
 						label="Done"
 						onClick={this.handleChange}
 					/>
@@ -239,7 +239,7 @@ const Filter = createReactClass({
 				className={classNames(
 					'slds-filters__item',
 					'slds-grid',
-					'slds-grid--vertical-align-center',
+					'slds-grid_vertical-align-center',
 					{
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
@@ -251,7 +251,7 @@ const Filter = createReactClass({
 				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
 					<Popover {...popoverProps}>
 						<button
-							className="slds-button--reset slds-grow slds-has-blur-focus"
+							className="slds-button_reset slds-grow slds-has-blur-focus"
 							onClick={this.handleFilterClick}
 							aria-describedby={
 								this.props.isError ? `${this.getId()}-error` : undefined
@@ -261,7 +261,7 @@ const Filter = createReactClass({
 								{assistiveText.editFilter}
 							</span>
 							{this.props.property ? (
-								<p className="slds-text-body--small">{this.props.property}</p>
+								<p className="slds-text-body_small">{this.props.property}</p>
 							) : null}
 							<p>{this.props.predicate}</p>
 						</button>
@@ -271,10 +271,10 @@ const Filter = createReactClass({
 						aria-describedby={
 							this.props.isError ? `${this.getId()}-error` : undefined
 						}
-						className="slds-button--reset slds-grow slds-has-blur-focus"
+						className="slds-button_reset slds-grow slds-has-blur-focus"
 						disabled
 					>
-						<p className="slds-text-body--small">{this.props.property}</p>
+						<p className="slds-text-body_small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>
 					</button>
 				)}

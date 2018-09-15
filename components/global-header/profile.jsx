@@ -31,12 +31,12 @@ const GlobalHeaderProfile = (props) => {
 	/* eslint-enable max-len */
 
 	return (
-		// `slds-m-right--x-small` is present to prevent dropdown menu with a
+		// `slds-m-right_x-small` is present to prevent dropdown menu with a
 		// "top right" nubbin from jumping offscreen
 		<MenuDropdown menuPosition="relative" nubbinPosition="top right" {...rest}>
 			<GlobalHeaderTrigger
 				avatar={avatar || defaultAvatar}
-				className={classnames('slds-m-left--x-small', buttonClassName)}
+				className={classnames('slds-m-left_x-small', buttonClassName)}
 			/>
 			{children}
 		</MenuDropdown>

@@ -19,13 +19,13 @@ import { GLOBAL_HEADER } from '../../../utilities/constants';
 
 const HeaderProfileCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
-		<div className="slds-m-around--medium">
-			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+		<div className="slds-m-around_medium">
+			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
+				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
 				<div className="slds-tile__detail">
 					<p className="slds-truncate">
 						<a
-							className="slds-m-right--medium"
+							className="slds-m-right_medium"
 							href="javascript:void(0)"
 							onClick={props.onClick}
 						>
@@ -60,7 +60,7 @@ const GlobalHeaderDemo = (props) => (
 			options={[{ label: 'Email' }, { label: 'Mobile' }]}
 		/>
 		<GlobalHeaderButton
-			className="slds-m-right--small"
+			className="slds-m-right_small"
 			iconVariant={null}
 			label="Feedback"
 			onClick={action('Feedback Clicked')}
@@ -121,7 +121,7 @@ const GlobalHeaderDemo = (props) => (
 
 storiesOf(GLOBAL_HEADER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

@@ -30,7 +30,7 @@ const Example = createReactClass({
 						options={[{ label: 'Email' }, { label: 'Mobile' }]}
 					/>
 					<GlobalHeaderButton
-						className="slds-m-right--small"
+						className="slds-m-right_small"
 						iconVariant={null}
 						label="Feedback"
 						onClick={() => {

@@ -84,7 +84,7 @@ const PanelFilterGroup = (props) => {
 			<div className="slds-filters__body">
 				{errorLabel ? (
 					<div
-						className="slds-text-color--error slds-m-bottom--x-small"
+						className="slds-text-color_error slds-m-bottom_x-small"
 						role="alert"
 					>
 						{errorLabel}

@@ -156,7 +156,7 @@ class Alert extends React.Component {
 		}
 
 		const clonedIcon = React.cloneElement(icon, {
-			containerClassName: 'slds-m-right--x-small',
+			containerClassName: 'slds-m-right_x-small',
 			inverse: true,
 			size: 'x-small',
 		});

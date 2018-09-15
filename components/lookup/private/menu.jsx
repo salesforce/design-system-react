@@ -99,7 +99,7 @@ class Menu extends React.Component {
 		if (this.state.filteredItems.length === 0) {
 			return (
 				<li className="slds-lookup__message" aria-live="polite">
-					<span className="slds-m-left--x-large slds-p-vertical--medium">
+					<span className="slds-m-left_x-large slds-p-vertical_medium">
 						{this.props.emptyMessage}
 					</span>
 				</li>

@@ -122,7 +122,7 @@ const AppLauncherSection = createReactClass({
 							iconCategory="utility"
 							iconName="switch"
 							onClick={this.toggleOpen}
-							className="slds-m-right--small"
+							className="slds-m-right_small"
 							variant="icon"
 						/>
 					) : null}
@@ -131,17 +131,17 @@ const AppLauncherSection = createReactClass({
 				<div className="slds-section__content">
 					<ul
 						className={classNames(
-							'slds-grid slds-grid--pull-padded slds-wrap',
+							'slds-grid slds-grid_pull-padded slds-wrap',
 							sectionIsOpenClass
 						)}
 					>
 						{React.Children.map(this.props.children, (child) => (
 							<li
 								className={classNames(
-									'slds-col--padded slds-grow-none',
+									'slds-col_padded slds-grow-none',
 									child.props.size === 'small'
-										? 'slds-size--xx-small'
-										: 'slds-size--1-of-1 slds-medium-size--1-of-3'
+										? 'slds-size_xx-small'
+										: 'slds-size_1-of-1 slds-medium-size_1-of-3'
 								)}
 							>
 								{child}

@@ -95,7 +95,7 @@ const Manager = createReactClass({
 				>
 					{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 					<div className="slds-modal__header">
-						<h2 className="slds-text-heading--medium">{this.props.title}</h2>
+						<h2 className="slds-text-heading_medium">{this.props.title}</h2>
 						<Button
 							className="slds-button slds-modal__close"
 							onClick={this.closeModal}
@@ -141,7 +141,7 @@ const Manager = createReactClass({
 				onRequestClose={this.closeModal}
 				style={customStyles}
 				overlayClassName={`slds-modal-backdrop${
-					this.state.revealed ? ' slds-modal-backdrop--open' : ''
+					this.state.revealed ? ' slds-modal-backdrop_open' : ''
 				}`}
 			>
 				{this.getModal()}

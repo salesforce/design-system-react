@@ -83,7 +83,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('renders tile with proper classes', () => {
 			should.exist(
-				handles.tile.find('.slds-app-launcher__tile .slds-text-link--reset')
+				handles.tile.find('.slds-app-launcher__tile .slds-text-link_reset')
 			);
 		});
 
@@ -100,7 +100,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders description heading', () => {
-			expect(handles.tile.find('.slds-text-heading--label').text()).to.equal(
+			expect(handles.tile.find('.slds-text-heading_label').text()).to.equal(
 				'Sub Heading '
 			);
 		});
@@ -193,7 +193,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			// this test causes the tooltip to 'flash' on the testing page http://localhost:8001/
 			handles.more.simulate('mouseenter');
 			// uses portal mount
-			should.exist(document.querySelector('.slds-popover--tooltip'));
+			should.exist(document.querySelector('.slds-popover_tooltip'));
 			handles.more.simulate('mouseleave');
 		});
 
@@ -226,8 +226,8 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		it('renders text icon with proper classes', () => {
 			const icon = handles.icon.find('span');
 			expect(icon).to.have.className('slds-avatar');
-			expect(icon).to.have.className('slds-avatar--large');
-			expect(icon).to.have.className('slds-align--absolute-center');
+			expect(icon).to.have.className('slds-avatar_large');
+			expect(icon).to.have.className('slds-align_absolute-center');
 			expect(icon).to.have.className('slds-icon-custom-27');
 		});
 
@@ -278,15 +278,15 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders small tile with proper classes', () => {
-			should.exist(handles.tile.find('.slds-app-launcher__tile--small'));
+			should.exist(handles.tile.find('.slds-app-launcher__tile_small'));
 		});
 
 		it('renders small icon with proper classes', () => {
-			should.exist(handles.tile.find('.slds-app-launcher__tile-figure--small'));
+			should.exist(handles.tile.find('.slds-app-launcher__tile-figure_small'));
 		});
 
 		it('small tile body has proper classes', () => {
-			should.exist(handles.body.find('.slds-app-launcher__tile-body--small'));
+			should.exist(handles.body.find('.slds-app-launcher__tile-body_small'));
 		});
 
 		it('small tile body has <p> tag with truncate class', () => {

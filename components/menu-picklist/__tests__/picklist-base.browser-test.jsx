@@ -78,9 +78,7 @@ describe('SLDSMenuPicklist: ', function() {
 		it('expands/contracts the dropdown on click', () => {
 			expect(getMenu(document.body)).to.equal(null);
 			Simulate.click(btn, {});
-			expect(getMenu(document.body).className).to.include(
-				'slds-dropdown--left'
-			);
+			expect(getMenu(document.body).className).to.include('slds-dropdown_left');
 			Simulate.click(btn, {});
 			expect(getMenu(document.body)).to.equal(null);
 		});

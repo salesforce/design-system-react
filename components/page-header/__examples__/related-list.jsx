@@ -13,10 +13,8 @@ const Example = createReactClass({
 	render() {
 		const navRight = (
 			<div className="slds-button-group" role="group">
-				<button className="slds-button slds-button--neutral">
-					Add Contact
-				</button>
-				<div className="slds-button--last">
+				<button className="slds-button slds-button_neutral">Add Contact</button>
+				<div className="slds-button_last">
 					<Button
 						iconCategory="utility"
 						iconName="down"
@@ -46,7 +44,7 @@ const Example = createReactClass({
 					<DropdownTrigger>
 						<Button
 							assistiveText={{ icon: 'Change view' }}
-							className="slds-m-right--xx-small"
+							className="slds-m-right_xx-small"
 							iconCategory="utility"
 							iconName="table"
 							iconVariant="more"
@@ -60,7 +58,7 @@ const Example = createReactClass({
 						iconName="chart"
 						variant="icon"
 						iconVariant="border"
-						className="slds-m-left--xx-small"
+						className="slds-m-left_xx-small"
 						assistiveText={{ icon: 'Chart' }}
 					/>
 					<Button
@@ -68,7 +66,7 @@ const Example = createReactClass({
 						iconName="filterList"
 						variant="icon"
 						iconVariant="border"
-						className="slds-m-left--xx-small"
+						className="slds-m-left_xx-small"
 						assistiveText={{ icon: 'Filter List' }}
 					/>
 					<Dropdown
