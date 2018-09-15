@@ -184,9 +184,7 @@ class PageHeader extends Component {
 			}
 			if (type === 'string') {
 				return (
-					<p className="slds-text-title_caps slds-line-height_reset">
-						{label}
-					</p>
+					<p className="slds-text-title_caps slds-line-height_reset">{label}</p>
 				);
 			}
 			return label;

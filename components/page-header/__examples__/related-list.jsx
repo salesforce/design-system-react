@@ -13,9 +13,7 @@ const Example = createReactClass({
 	render() {
 		const navRight = (
 			<div className="slds-button-group" role="group">
-				<button className="slds-button slds-button_neutral">
-					Add Contact
-				</button>
+				<button className="slds-button slds-button_neutral">Add Contact</button>
 				<div className="slds-button_last">
 					<Button
 						iconCategory="utility"

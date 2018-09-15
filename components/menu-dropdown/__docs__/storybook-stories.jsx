@@ -123,10 +123,7 @@ const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div
-				className="slds-col slds-size_1-of-3"
-				style={{ minHeight: '500px' }}
-			>
+			<div className="slds-col slds-size_1-of-3" style={{ minHeight: '500px' }}>
 				<Dropdown
 					{...props}
 					isOpen

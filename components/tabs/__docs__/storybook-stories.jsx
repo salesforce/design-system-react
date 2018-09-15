@@ -31,9 +31,7 @@ const getTabs = () => (
 		<h2 className="slds-text-heading_large">Base Tabs Demo</h2>
 		<Tabs id="main-tabs-demo" className="custom-class-is-custom" foo="baz">
 			<Panel label="Tab 1">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 1 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It&quot;s awesome.</p>
 				<p>
@@ -45,15 +43,11 @@ const getTabs = () => (
 				</p>
 			</Panel>
 			<Panel label="Tab 2">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 2 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
 			</Panel>
 			<Panel label="Tab 3">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 3 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re quite spectacular.</p>
 			</Panel>
 		</Tabs>
@@ -93,17 +87,13 @@ const getTabsNested = () => (
 		<h2 className="slds-text-heading_large">Nested Tabs Demo</h2>
 		<Tabs id="nested-tabs-demo">
 			<Panel label="Tab 1">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 1 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>
 					And they&rsquo;re <a href="#amazing">amazing</a>.
 				</p>
 			</Panel>
 			<Panel label="Tab 2">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 2 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
 
 				<Input
@@ -121,9 +111,7 @@ const getTabsNested = () => (
 				/>
 			</Panel>
 			<Panel label="Tab 3 (has children)">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 3 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re tabceptionish.</p>
 				<div className="slds-box slds-m-vertical_large">
 					<Tabs defaultSelectedIndex={0}>
@@ -171,9 +159,7 @@ const getTabsScoped = () => (
 		<h2 className="slds-text-heading_large">Scoped Tabs Demo</h2>
 		<Tabs id="scoped-tabs-demo" variant="scoped">
 			<Panel label="Tab 1">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 1 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It&quot;s awesome.</p>
 				<p>
@@ -185,15 +171,11 @@ const getTabsScoped = () => (
 				</p>
 			</Panel>
 			<Panel label="Tab 2">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 2 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
 			</Panel>
 			<Panel label="Tab 3">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 3 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re quite spectacular.</p>
 			</Panel>
 		</Tabs>
@@ -494,9 +476,7 @@ const getTabsDisabled = () => (
 		<h2 className="slds-text-heading_large">Disabled Tabs Demo</h2>
 		<Tabs id="disabled-tabs-demo">
 			<Panel label="Tab 1">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 1 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It&quot;s awesome.</p>
 				<p>
@@ -508,21 +488,15 @@ const getTabsDisabled = () => (
 				</p>
 			</Panel>
 			<Panel label="Tab 2" disabled>
-				<h2 className="slds-text-heading_medium">
-					This is my tab 2 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
 			</Panel>
 			<Panel label="Tab 3">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 3 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re quite spectacular.</p>
 			</Panel>
 			<Panel label="Tab 4">
-				<h2 className="slds-text-heading_medium">
-					This is my tab 3 contents!
-				</h2>
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
 				<p>
 					Note that using your arrow keys you can loop <em>around the tabs</em>!
 					🎉
