@@ -17,7 +17,7 @@
 		"link": "./scripts/npm-link.sh",
 		"lint": "npm run lint:style && npm run lint:quality",
 		"lint:docs": "npx prettylint \"*.md\"",
-		"lint:fix": "npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix",
+		"lint:fix": "npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix --rulesdir eslint-plugin/lib/rules \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx prettier --debug-check \"**/*.{js,jsx}\" && npx prettylint \"*.json\"",
 		"lint:quality": "npx eslint --rulesdir eslint-plugin/lib/rules \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
