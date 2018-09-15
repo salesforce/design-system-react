@@ -18,7 +18,7 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-icon slds-icon--small"
+        className="slds-icon slds-icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
@@ -42,7 +42,7 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      className="slds-button slds-button--icon-inverse slds-notify__close"
+      className="slds-button slds-button_icon-inverse slds-notify__close"
       disabled={false}
       onClick={[Function]}
       title="Close"
@@ -50,7 +50,7 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon--large"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -68,11 +68,11 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
 
 exports[`Toast Custom Class Name HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container this-is-the-container\\">
-  <div class=\\"slds-notify slds-notify_toast slds-theme_info this-is-the-alert\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
+  <div class=\\"slds-notify slds-notify_toast slds-theme_info this-is-the-alert\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
     <div
       class=\\"slds-notify__content\\">
       <h2 class=\\"slds-text-heading_small\\">26 potential duplicate leads were found. <a href=\\"javascript:void(0);\\">Select Leads to Merge</a></h2>
-  </div><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  </div><button class=\\"slds-button slds-button_icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;
 
@@ -94,7 +94,7 @@ exports[`Toast Error DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-icon slds-icon--small"
+        className="slds-icon slds-icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
@@ -113,7 +113,7 @@ exports[`Toast Error DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      className="slds-button slds-button--icon-inverse slds-notify__close"
+      className="slds-button slds-button_icon-inverse slds-notify__close"
       disabled={false}
       onClick={[Function]}
       title="Close"
@@ -121,7 +121,7 @@ exports[`Toast Error DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon--large"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -139,11 +139,11 @@ exports[`Toast Error DOM Snapshot 1`] = `
 
 exports[`Toast Error HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
+  <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
     <div
       class=\\"slds-notify__content\\">
       <h2 class=\\"slds-text-heading_small\\">Can’t save lead “Sally Wong” because another lead has the same name. </h2>
-  </div><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  </div><button class=\\"slds-button slds-button_icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;
 
@@ -165,7 +165,7 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-icon slds-icon--small"
+        className="slds-icon slds-icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
@@ -187,7 +187,7 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
       </p>
     </div>
     <button
-      className="slds-button slds-button--icon-inverse slds-notify__close"
+      className="slds-button slds-button_icon-inverse slds-notify__close"
       disabled={false}
       onClick={[Function]}
       title="Close"
@@ -195,7 +195,7 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon--large"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -213,12 +213,12 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
 
 exports[`Toast Error With details HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
+  <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
     <div
       class=\\"slds-notify__content\\">
       <h2 class=\\"slds-text-heading_small\\">You&#x27;ve encountered some errors when trying to save edits to Samuel Smith. </h2>
       <p>Here&#x27;s some detail of what happened, being very descriptive and transparent.</p>
-  </div><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  </div><button class=\\"slds-button slds-button_icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;
 
@@ -240,7 +240,7 @@ exports[`Toast Info DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-icon slds-icon--small"
+        className="slds-icon slds-icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
@@ -265,7 +265,7 @@ exports[`Toast Info DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      className="slds-button slds-button--icon-inverse slds-notify__close"
+      className="slds-button slds-button_icon-inverse slds-notify__close"
       disabled={false}
       onClick={[Function]}
       title="Close"
@@ -273,7 +273,7 @@ exports[`Toast Info DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon--large"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -291,11 +291,11 @@ exports[`Toast Info DOM Snapshot 1`] = `
 
 exports[`Toast Info HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_toast slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
+  <div class=\\"slds-notify slds-notify_toast slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
     <div
       class=\\"slds-notify__content\\">
       <h2 class=\\"slds-text-heading_small\\">26 potential duplicate leads were found. <a href=\\"javascript:void(0);\\">Select Leads to Merge</a></h2>
-  </div><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  </div><button class=\\"slds-button slds-button_icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;
 
@@ -317,7 +317,7 @@ exports[`Toast Success DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-icon slds-icon--small"
+        className="slds-icon slds-icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
@@ -342,7 +342,7 @@ exports[`Toast Success DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      className="slds-button slds-button--icon-inverse slds-notify__close"
+      className="slds-button slds-button_icon-inverse slds-notify__close"
       disabled={false}
       onClick={[Function]}
       title="Close"
@@ -350,7 +350,7 @@ exports[`Toast Success DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon--large"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -368,11 +368,11 @@ exports[`Toast Success DOM Snapshot 1`] = `
 
 exports[`Toast Success HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_toast slds-theme_success\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">success</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#success\\"></use></svg></span>
+  <div class=\\"slds-notify slds-notify_toast slds-theme_success\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">success</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#success\\"></use></svg></span>
     <div
       class=\\"slds-notify__content\\">
       <h2 class=\\"slds-text-heading_small\\">Account <a href=\\"javascript:void(0);\\">ACME - 100</a> widgets was created. </h2>
-  </div><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  </div><button class=\\"slds-button slds-button_icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;
 
@@ -394,7 +394,7 @@ exports[`Toast Warning DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-icon slds-icon--small"
+        className="slds-icon slds-icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
@@ -413,7 +413,7 @@ exports[`Toast Warning DOM Snapshot 1`] = `
       </h2>
     </div>
     <button
-      className="slds-button slds-button--icon-inverse slds-notify__close"
+      className="slds-button slds-button_icon-inverse slds-notify__close"
       disabled={false}
       onClick={[Function]}
       title="Close"
@@ -421,7 +421,7 @@ exports[`Toast Warning DOM Snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon--large"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -439,10 +439,10 @@ exports[`Toast Warning DOM Snapshot 1`] = `
 
 exports[`Toast Warning HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_toast slds-theme_warning\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">warning</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span>
+  <div class=\\"slds-notify slds-notify_toast slds-theme_warning\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">warning</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span>
     <div
       class=\\"slds-notify__content\\">
       <h2 class=\\"slds-text-heading_small\\">Can’t share file “report-q3.pdf” with the selected users. </h2>
-  </div><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  </div><button class=\\"slds-button slds-button_icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;

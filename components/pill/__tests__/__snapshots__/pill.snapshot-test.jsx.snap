@@ -47,7 +47,7 @@ exports[`Bare DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -90,7 +90,7 @@ exports[`Bare DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -124,11 +124,11 @@ exports[`Bare HTML Snapshot 1`] = `
     <div class=\\"slds-pill_container\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-listbox_inline\\" role=\\"listbox\\" aria-label=\\"Selected Options:\\" aria-orientation=\\"horizontal\\">
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill slds-pill_bare\\"><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"
-            role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
           </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill slds-pill_bare\\"><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"
-            role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
           </span>
         </li>
       </ul>
@@ -187,7 +187,7 @@ exports[`Icon, Avatar, Error DOM Snapshot 1`] = `
         title="Remove"
       >
         <svg
-          className="slds-icon slds-icon--x-small slds-icon-text-default"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
           style={
             Object {
               "cursor": "pointer",
@@ -250,7 +250,7 @@ exports[`Icon, Avatar, Error DOM Snapshot 1`] = `
         title="Remove"
       >
         <svg
-          className="slds-icon slds-icon--x-small slds-icon-text-default"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
           style={
             Object {
               "cursor": "pointer",
@@ -314,7 +314,7 @@ exports[`Icon, Avatar, Error DOM Snapshot 1`] = `
         title="Remove"
       >
         <svg
-          className="slds-icon slds-icon--x-small slds-icon-text-default"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
           style={
             Object {
               "cursor": "pointer",
@@ -340,16 +340,16 @@ exports[`Icon, Avatar, Error HTML Snapshot 1`] = `
 "<div class=\\"slds-grid slds-grid_pull-padded-medium\\">
   <div class=\\"slds-p-horizontal_medium\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\" title=\\"Account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg></span></span>
     <a
-      href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+      href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
       </span>
   </div>
   <div class=\\"slds-p-horizontal_medium\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><span class=\\"slds-pill__icon_container\\"><div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><img alt=\\"\\" src=\\"https://lightningdesignsystem.com/assets/images/avatar2.jpg\\" title=\\"User avatar\\"/></span></div>
-  </span><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+  </span><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
   </span>
 </div>
 <div class=\\"slds-p-horizontal_medium\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link slds-has-error\\"><span class=\\"slds-pill__icon_container\\"><span title=\\"Error\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon-text-error slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span></span>
   <a
-    href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+    href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
     </span>
 </div>
 </div>"
@@ -387,7 +387,7 @@ exports[`Linked, Unlinked, Truncated DOM Snapshot 1`] = `
         title="Remove"
       >
         <svg
-          className="slds-icon slds-icon--x-small slds-icon-text-default"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
           style={
             Object {
               "cursor": "pointer",
@@ -433,7 +433,7 @@ exports[`Linked, Unlinked, Truncated DOM Snapshot 1`] = `
         title="Remove"
       >
         <svg
-          className="slds-icon slds-icon--x-small slds-icon-text-default"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
           style={
             Object {
               "cursor": "pointer",
@@ -491,7 +491,7 @@ exports[`Linked, Unlinked, Truncated DOM Snapshot 1`] = `
             title="Remove"
           >
             <svg
-              className="slds-icon slds-icon--x-small slds-icon-text-default"
+              className="slds-icon slds-icon_x-small slds-icon-text-default"
               style={
                 Object {
                   "cursor": "pointer",
@@ -518,18 +518,18 @@ exports[`Linked, Unlinked, Truncated DOM Snapshot 1`] = `
 exports[`Linked, Unlinked, Truncated HTML Snapshot 1`] = `
 "<div class=\\"slds-grid slds-grid_pull-padded-medium\\">
   <div class=\\"slds-p-horizontal_medium\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\"
-      title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+      title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
     </span>
   </div>
   <div class=\\"slds-p-horizontal_medium\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\"
-      title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+      title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
     </span>
   </div>
   <div class=\\"slds-p-horizontal_medium\\">
     <div style=\\"width:220px;position:relative\\">
       <div class=\\"slds-pill_container\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Pill label that is longer than the area that contains it\\"><span class=\\"slds-pill__label\\">Pill label that is longer than the area that contains it</span></a>
         <span
-          class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+          class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
           </span>
       </div>
     </div>
@@ -584,7 +584,7 @@ exports[`Listbox Of Pill Options DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -627,7 +627,7 @@ exports[`Listbox Of Pill Options DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -660,10 +660,10 @@ exports[`Listbox Of Pill Options HTML Snapshot 1`] = `
   <div class=\\"slds-grid slds-grid_vertical-align-start\\">
     <div class=\\"slds-pill_container\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-listbox_inline\\" role=\\"listbox\\" aria-label=\\"Selected Options:\\" aria-orientation=\\"horizontal\\">
-        <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+        <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
           </span>
         </li>
-        <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+        <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
           </span>
         </li>
       </ul>
@@ -735,7 +735,7 @@ exports[`Listbox Of Pill Options With Avatar DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -794,7 +794,7 @@ exports[`Listbox Of Pill Options With Avatar DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -828,11 +828,11 @@ exports[`Listbox Of Pill Options With Avatar HTML Snapshot 1`] = `
     <div class=\\"slds-pill_container\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-listbox_inline\\" role=\\"listbox\\" aria-label=\\"Selected Options:\\" aria-orientation=\\"horizontal\\">
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><img alt=\\"\\" src=\\"https://lightningdesignsystem.com/assets/images/avatar2.jpg\\" title=\\"User avatar\\"/></span></div>
-    </span><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+    </span><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
     </span>
     </li>
     <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span tabindex=\\"0\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><img alt=\\"\\" src=\\"https://lightningdesignsystem.com/assets/images/avatar2.jpg\\" title=\\"User avatar\\"/></span></div>
-  </span><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+  </span><span class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
   </span>
   </li>
   </ul>
@@ -896,7 +896,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -956,7 +956,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1015,7 +1015,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1075,7 +1075,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1135,7 +1135,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1195,7 +1195,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1255,7 +1255,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1315,7 +1315,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1375,7 +1375,7 @@ exports[`Listbox Of Pill Options With Icon DOM Snapshot 1`] = `
               title="Remove"
             >
               <svg
-                className="slds-icon slds-icon--x-small slds-icon-text-default"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
                 style={
                   Object {
                     "cursor": "pointer",
@@ -1407,47 +1407,47 @@ exports[`Listbox Of Pill Options With Icon HTML Snapshot 1`] = `
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-listbox_inline\\" role=\\"listbox\\" aria-label=\\"Selected Options:\\" aria-orientation=\\"horizontal\\">
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-case\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#case\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#retweet\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-solution\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#solution\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-custom-notification\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#custom_notification\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-email\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#email\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-endorsement\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#endorsement\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-recent\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#recent\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
         <li class=\\"slds-listbox-item\\" role=\\"presentation\\"><span role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-custom-custom31\\" title=\\"Title\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/custom-sprite/svg/symbols.svg#custom31\\"></use></svg></span></span>
           <span
-            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+            class=\\"slds-pill__label\\" title=\\"Full pill label verbiage mirrored here\\">Pill Label</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
         </li>
       </ul>
@@ -1501,7 +1501,7 @@ exports[`Pill Container DOM Snapshot 1`] = `
             title="Remove"
           >
             <svg
-              className="slds-icon slds-icon--x-small slds-icon-text-default"
+              className="slds-icon slds-icon_x-small slds-icon-text-default"
               style={
                 Object {
                   "cursor": "pointer",
@@ -1544,7 +1544,7 @@ exports[`Pill Container DOM Snapshot 1`] = `
             title="Remove"
           >
             <svg
-              className="slds-icon slds-icon--x-small slds-icon-text-default"
+              className="slds-icon slds-icon_x-small slds-icon-text-default"
               style={
                 Object {
                   "cursor": "pointer",
@@ -1587,7 +1587,7 @@ exports[`Pill Container DOM Snapshot 1`] = `
             title="Remove"
           >
             <svg
-              className="slds-icon slds-icon--x-small slds-icon-text-default"
+              className="slds-icon slds-icon_x-small slds-icon-text-default"
               style={
                 Object {
                   "cursor": "pointer",
@@ -1669,11 +1669,11 @@ exports[`Pill Container HTML Snapshot 1`] = `
   <div class=\\"slds-grid slds-grid_vertical-align-start slds-p-horizontal_xx-small\\">
     <div class=\\"slds-p-horizontal_xx-small\\">
       <div class=\\"slds-pill_container\\"><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\"
-          title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+          title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
         </span><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\"
-          title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+          title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
         </span><span role=\\"button\\" class=\\"slds-pill slds-pill_link\\"><a href=\\"javascript:void(0);\\" class=\\"slds-pill__action\\" title=\\"Full pill label verbiage mirrored here\\"><span class=\\"slds-pill__label\\">Pill Label</span></a><span class=\\"slds-icon_container slds-pill__remove\\"
-          title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
+          title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove</span></span>
         </span>
       </div>
     </div>
