@@ -1,6 +1,6 @@
-# eslint-plugin-design-system-react
+# eslint-plugin-slds-bem-deprecation-react
 
-ESLint plugin for Salesforce Lightning Design System in React.
+This rule aims to better align JavaScirpt UI component libraries that depend on the Salesforce Lightning Design System CSS Framwork.
 
 ## Installation
 
@@ -10,42 +10,34 @@ You'll first need to install [ESLint](http://eslint.org):
 $ npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-design-system-react`:
+Next, install `@salesforce/eslint-plugin-slds-bem-deprecation-react`:
 
 ```
-$ npm install eslint-plugin-design-system-react --save-dev
+$ npm install @salesforce/eslint-plugin-slds-bem-deprecation-react --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-design-system-react` globally.
+**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `@salesforce/eslint-plugin-slds-bem-deprecation-react` globally.
 
 ## Usage
 
-Add `design-system-react` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `@salesforce/eslint-plugin-slds-bem-deprecation-react` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
-    "plugins": [
-        "design-system-react"
-    ]
+	"plugins": ["@salesforce/eslint-plugin-slds-bem-deprecation-react"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "design-system-react/rule-name": 2
-    }
+	"rules": {
+		"design-system-react/rule-name": 2
+	}
 }
 ```
 
 ## Supported Rules
 
 * Fill in provided rules here
-
-
-
-
-
