@@ -155,8 +155,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
 
 exports[`DataTable Basic Fixed Layout HTML Snapshot 1`] = `
 "<div style=\\"overflow:auto\\">
-  <h3 class=\\"slds-text-heading--medium slds-m-vertical--medium\\">Basic Fixed Layout</h3>
-  <table class=\\"slds-table slds-table--fixed-layout slds-table_resizable-cols slds-table_bordered\\" id=\\"DataTableExample-1-default\\" role=\\"grid\\">
+  <h3 class=\\"slds-text-heading_medium slds-m-vertical_medium\\">Basic Fixed Layout</h3>
+  <table class=\\"slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered\\" id=\\"DataTableExample-1-default\\" role=\\"grid\\">
     <thead>
       <tr class=\\"slds-line-height_reset\\">
         <th aria-label=\\"Opportunity Name\\" aria-sort=\\"none\\" class=\\"slds-text-title_caps\\" scope=\\"col\\" style=\\"width:6em\\"><span class=\\"slds-p-horizontal_x-small\\" style=\\"display:flex\\"><span class=\\"slds-truncate\\" title=\\"Opportunity Name\\">Opportunity Name</span></span>

@@ -362,10 +362,10 @@ exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
 }
       </style>
       <div
-        className="slds-box slds-theme--default"
+        className="slds-box slds-theme_default"
       >
         <h3
-          className="slds-text-heading--label slds-truncate"
+          className="slds-text-heading_label slds-truncate"
         >
           My App
         </h3>
@@ -1321,7 +1321,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
 
 exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
 <div
-  className="slds-p-around--medium"
+  className="slds-p-around_medium"
 >
   <div
     style={
@@ -1331,12 +1331,12 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
     }
   >
     <h3
-      className="slds-text-heading--medium slds-m-vertical--medium"
+      className="slds-text-heading_medium slds-m-vertical_medium"
     >
       Basic Fixed Layout
     </h3>
     <table
-      className="slds-table slds-table--fixed-layout slds-table_resizable-cols slds-table_bordered"
+      className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
       id="DataTableExample-1-default"
       role="grid"
     >
