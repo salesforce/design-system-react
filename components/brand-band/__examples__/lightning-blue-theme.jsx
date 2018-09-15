@@ -3,7 +3,17 @@ import BrandBand from '~/components/brand-band'; // `~` is replaced with design-
 
 class Example extends React.Component {
 	render() {
-		return <BrandBand id="brand-band-lightning-blue" theme="lightning-blue" />;
+		return (
+			<BrandBand
+				id="brand-band-lightning-blue"
+				className="slds-p-around_small"
+				theme="lightning-blue"
+			>
+				<div className="slds-box slds-theme--default">
+					<h3 className="slds-text-heading--label slds-truncate">My App</h3>
+				</div>
+			</BrandBand>
+		);
 	}
 }
 

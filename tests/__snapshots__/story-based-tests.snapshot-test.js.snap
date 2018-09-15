@@ -350,7 +350,7 @@ exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
     }
   >
     <div
-      className="slds-brand-band slds-brand-band_medium"
+      className="slds-brand-band slds-brand-band_medium slds-p-around_small"
       id="brand-band-lightning-blue"
     >
       <style>
@@ -361,6 +361,15 @@ exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
 	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
 }
       </style>
+      <div
+        className="slds-box slds-theme--default"
+      >
+        <h3
+          className="slds-text-heading--label slds-truncate"
+        >
+          My App
+        </h3>
+      </div>
     </div>
   </div>
 </div>
