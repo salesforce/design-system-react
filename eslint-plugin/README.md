@@ -41,3 +41,7 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * `no-double-dash-modifier`
+
+## Licenses
+
+* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)

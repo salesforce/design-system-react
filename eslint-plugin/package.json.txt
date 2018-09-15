@@ -5,7 +5,16 @@
   "keywords": [
     "eslint",
     "eslintplugin",
-    "eslint-plugin"
+    "eslint-plugin",
+	"react",
+	"slds",
+	"salesforce",
+	"salesforce-ux",
+	"lightning",
+	"design system",
+	"lightning design system",
+	"salesforce-lightning",
+	"salesforce lightning design system"
   ],
   "author": {
     "name": "Kevin Gao",
