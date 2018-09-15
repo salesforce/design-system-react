@@ -12,7 +12,12 @@
 			"modules": true
 		}
 	},
-	"plugins": ["filenames", "json", "prefer-object-spread"],
+	"plugins": [
+		"filenames",
+		"json",
+		"prefer-object-spread",
+		"@salesforce/slds-react"
+	],
 	"env": {
 		"browser": true
 	},
@@ -78,7 +83,7 @@
 			"files": ["eslint-plugin/**/*.js"],
 			"rules": {
 				"import/no-extraneous-dependencies": "off",
-				"no-double-dash-modifier": "off"
+				"@salesforce/slds-react/no-double-dash-modifier": "off"
 			}
 		}
 	],
@@ -197,6 +202,6 @@
 		"jsx-a11y/click-events-have-key-events": "off",
 
 		// Enforce single underscore modifiers for BEM class names
-		"no-double-dash-modifier": "error"
+		"@salesforce/slds-react/no-double-dash-modifier": "error"
 	}
 }
