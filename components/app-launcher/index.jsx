@@ -205,15 +205,15 @@ const AppLauncher = createReactClass({
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
 
 		const customModalHeader = (
-			<div className="slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
-				<h2 className="slds-text-heading--medium">{this.props.title}</h2>
+			<div className="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+				<h2 className="slds-text-heading_medium">{this.props.title}</h2>
 
 				{this.renderSearch()}
 
 				{this.props.modalHeaderButton ? (
 					this.props.modalHeaderButton
 				) : (
-					<span className="slds-size--1-of-7" />
+					<span className="slds-size_1-of-7" />
 				)}
 			</div>
 		);
@@ -255,7 +255,7 @@ const AppLauncher = createReactClass({
 				</div>
 				<Modal
 					ariaHideApp={this.props.ariaHideApp}
-					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around--medium"
+					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around_medium"
 					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}

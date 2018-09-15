@@ -5,7 +5,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					Inline Help
 				</h1>
 				<Input

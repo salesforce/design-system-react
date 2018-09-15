@@ -9,8 +9,8 @@ const Example = createReactClass({
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Lead' }}
 							category="standard"
@@ -18,7 +18,7 @@ const Example = createReactClass({
 							name="lead"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Lock' }}
 							category="utility"
@@ -26,7 +26,7 @@ const Example = createReactClass({
 							name="lock"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Lock' }}
 							category="utility"
@@ -34,7 +34,7 @@ const Example = createReactClass({
 							name="lock"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Warning' }}
 							category="utility"
@@ -42,7 +42,7 @@ const Example = createReactClass({
 							name="warning"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ lable: 'Warning' }}
 							category="utility"

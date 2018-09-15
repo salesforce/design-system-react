@@ -150,12 +150,12 @@ class ButtonStateful extends React.Component {
 
 	getClassName(active) {
 		return classNames(this.props.className, 'slds-button', {
-			'slds-button--neutral': this.props.variant !== 'icon',
-			'slds-button--inverse': this.props.variant === 'inverse',
+			'slds-button_neutral': this.props.variant !== 'icon',
+			'slds-button_inverse': this.props.variant === 'inverse',
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
-			'slds-max-small-button--stretch': this.props.responsive,
-			'slds-button--icon-border': this.props.variant === 'icon',
+			'slds-max-small-button_stretch': this.props.responsive,
+			'slds-button_icon-border': this.props.variant === 'icon',
 		});
 	}
 
@@ -224,7 +224,7 @@ class ButtonStateful extends React.Component {
 						disabled={disabled}
 						name={iconName}
 						size={iconSize}
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{iconAssistiveText ? (
 						<span className="slds-assistive-text">{iconAssistiveText}</span>
@@ -255,7 +255,7 @@ class ButtonStateful extends React.Component {
 						name={stateOne.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateOne.label}
 				</span>
@@ -265,7 +265,7 @@ class ButtonStateful extends React.Component {
 						name={stateTwo.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateTwo.label}
 				</span>
@@ -275,7 +275,7 @@ class ButtonStateful extends React.Component {
 						name={stateThree.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateThree.label}
 				</span>

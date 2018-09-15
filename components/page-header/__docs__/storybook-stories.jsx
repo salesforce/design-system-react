@@ -145,7 +145,7 @@ const objectHomeContentRight = (
 			iconName="settings"
 			variant="icon"
 			iconVariant="more"
-			className="slds-m-left--xx-small"
+			className="slds-m-left_xx-small"
 			assistiveText={{ icon: 'Settings' }}
 		/>
 		<SLDSButton
@@ -153,7 +153,7 @@ const objectHomeContentRight = (
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
-			className="slds-m-left--xx-small"
+			className="slds-m-left_xx-small"
 			assistiveText={{ icon: 'Table' }}
 		/>
 		<SLDSButtonGroup>
@@ -169,7 +169,7 @@ const objectHomeContentRight = (
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
-				className="slds-m-left--xx-small"
+				className="slds-m-left_xx-small"
 				assistiveText={{ icon: 'Filter List' }}
 			/>
 			<SLDSMenuDropdown
@@ -217,7 +217,7 @@ const relatedListContentRight = (
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
-			className="slds-m-left--xx-small"
+			className="slds-m-left_xx-small"
 			assistiveText={{ icon: 'Table' }}
 		/>
 		<SLDSButtonGroup>
@@ -226,7 +226,7 @@ const relatedListContentRight = (
 				iconName="chart"
 				variant="icon"
 				iconVariant="border"
-				className="slds-m-left--xx-small"
+				className="slds-m-left_xx-small"
 				assistiveText={{ icon: 'Chart' }}
 			/>
 			<SLDSButton
@@ -234,7 +234,7 @@ const relatedListContentRight = (
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
-				className="slds-m-left--xx-small"
+				className="slds-m-left_xx-small"
 				assistiveText={{ icon: 'Filter List' }}
 			/>
 			<SLDSMenuDropdown
@@ -284,7 +284,7 @@ const relatedListTrail = [
 
 storiesOf(PAGE_HEADER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

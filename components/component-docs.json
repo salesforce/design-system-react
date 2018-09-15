@@ -1803,7 +1803,7 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes added to `slds-button-group` or `slds-checkbox--button-group` tag"
+                "description": "CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag"
             },
             "labels": {
                 "type": {
@@ -5531,7 +5531,7 @@
                         },
                         "className": {
                             "defaultValue": {
-                                "value": "'slds-context-bar__label-action slds-text-body--regular'",
+                                "value": "'slds-context-bar__label-action slds-text-body_regular'",
                                 "computed": false
                             },
                             "required": false
@@ -6215,6 +6215,13 @@
                 "required": false,
                 "description": "Path to the root icon folder\nexample: `/assets/icons`"
             },
+            "onRequestIconPath": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN. `({category, name}) => { return \\`#${name}\\` }`"
+            },
             "actionSprite": {
                 "type": {
                     "name": "string"
@@ -6255,6 +6262,12 @@
             "iconPath": {
                 "type": {
                     "name": "string"
+                },
+                "required": false
+            },
+            "onRequestIconPath": {
+                "type": {
+                    "name": "func"
                 },
                 "required": false
             },
@@ -10884,7 +10897,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created."
+                "description": "HTML `id` attribute of primary element that has `.slds-tabs_default` on it. Optional: If one is not supplied, a `shortid` will be created."
             },
             "children": {
                 "type": {
@@ -10905,7 +10918,7 @@
                     ]
                 },
                 "required": true,
-                "description": "The `children` are the actual tabs and panels to be displayed.\n\nNote that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.\n\nThe component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.\n\n```\n<Tabs>\n\t<TabsPanel label=\"Tab 1\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t\t<p>They show when you click the first tab.</p>\n\t\t</div>\n\t</TabsPanel>\n\t<TabsPanel label=\"Tab 2\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 2 contents!</h2>\n\t\t\t<p>They show when you click the second tab.</p>\n\t\t</div>\n\t</TabsPanel>\n</Tabs>\n```"
+                "description": "The `children` are the actual tabs and panels to be displayed.\n\nNote that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.\n\nThe component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.\n\n```\n<Tabs>\n\t<TabsPanel label=\"Tab 1\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 1 contents!</h2>\n\t\t\t<p>They show when you click the first tab.</p>\n\t\t</div>\n\t</TabsPanel>\n\t<TabsPanel label=\"Tab 2\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 2 contents!</h2>\n\t\t\t<p>They show when you click the second tab.</p>\n\t\t</div>\n\t</TabsPanel>\n</Tabs>\n```"
             },
             "className": {
                 "type": {
@@ -10978,7 +10991,7 @@
         "dependencies": [
             {
                 "panel": {
-                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\n\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\n\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\n\n```\n<TabsPanel label=\"Tab 1\">\n\t<div>\n\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t<p>They show when you click the first tab.</p>\n\t</div>\n</TabsPanel>\n```",
+                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\n\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\n\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\n\n```\n<TabsPanel label=\"Tab 1\">\n\t<div>\n\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 1 contents!</h2>\n\t\t<p>They show when you click the first tab.</p>\n\t</div>\n</TabsPanel>\n```",
                     "methods": [],
                     "props": {
                         "label": {

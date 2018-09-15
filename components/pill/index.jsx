@@ -243,7 +243,7 @@ class Pill extends React.Component {
 					<UtilityIcon
 						style={{ cursor: 'pointer' }} // remove when fixed by SLDS CSS
 						category="utility"
-						className="slds-icon slds-icon--x-small slds-icon-text-default"
+						className="slds-icon slds-icon_x-small slds-icon-text-default"
 						name="close"
 					/>
 					<span className="slds-assistive-text">

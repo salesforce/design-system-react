@@ -317,7 +317,7 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

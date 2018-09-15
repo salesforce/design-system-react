@@ -58,7 +58,7 @@ const Icon = (props) => {
 			className={classNames(
 				{
 					'slds-icon_container': category !== 'utility',
-					'slds-icon_container--circle': category === 'action',
+					'slds-icon_container_circle': category === 'action',
 					[`slds-icon-${category}-${kababCaseName}`]:
 						category !== 'utility' && category !== 'doctype' && !path,
 				},
@@ -70,11 +70,11 @@ const Icon = (props) => {
 				aria-hidden="true"
 				category={category}
 				className={classNames(className, 'slds-icon', {
-					'slds-icon--xx-small': size === 'xx-small',
-					'slds-icon--x-small': size === 'x-small',
-					'slds-icon--small': size === 'small',
+					'slds-icon_xx-small': size === 'xx-small',
+					'slds-icon_x-small': size === 'x-small',
+					'slds-icon_small': size === 'small',
 					// medium intentially not present
-					'slds-icon--large': size === 'large',
+					'slds-icon_large': size === 'large',
 					// if category is `utility` and `inverse` is false (default), icon will be dark // return true
 					// if category is `utility` and `inverse` is true, icon will be light // return false
 					// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false

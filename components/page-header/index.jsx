@@ -120,7 +120,7 @@ class PageHeader extends Component {
 		return classnames(
 			'slds-page-header',
 			{
-				'slds-page-header--object-home': this.props.variant === 'objectHome',
+				'slds-page-header_object-home': this.props.variant === 'objectHome',
 			},
 			className
 		);
@@ -177,16 +177,14 @@ class PageHeader extends Component {
 
 			if (trail.length > 0) {
 				return (
-					<nav className="slds-m-bottom--xx-small" role="navigation">
+					<nav className="slds-m-bottom_xx-small" role="navigation">
 						<Breadcrumb trail={trail} />
 					</nav>
 				);
 			}
 			if (type === 'string') {
 				return (
-					<p className="slds-text-title--caps slds-line-height--reset">
-						{label}
-					</p>
+					<p className="slds-text-title_caps slds-line-height_reset">{label}</p>
 				);
 			}
 			return label;

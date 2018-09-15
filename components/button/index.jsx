@@ -245,16 +245,16 @@ const Button = createReactClass({
 		return classNames(
 			{
 				'slds-button': this.props.variant !== 'link',
-				[`slds-button--${this.props.variant}`]: showButtonVariant,
-				'slds-button--inverse': plainInverseBtn,
-				'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
-				'slds-button--icon-border-inverse': borderInverseIcon,
-				[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
-				'slds-global-header__button--icon': iconGlobalHeader,
+				[`slds-button_${this.props.variant}`]: showButtonVariant,
+				'slds-button_inverse': plainInverseBtn,
+				'slds-button_icon-inverse': plainInverseIcon || moreInverseIcon,
+				'slds-button_icon-border-inverse': borderInverseIcon,
+				[`slds-button_icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+				'slds-global-header__button_icon': iconGlobalHeader,
 				// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
-				[`slds-button--icon-${this.props.iconSize}`]:
+				[`slds-button_icon-${this.props.iconSize}`]:
 					iconVariant && this.props.iconSize !== 'medium',
-				'slds-button--reset': this.props.variant === 'link',
+				'slds-button_reset': this.props.variant === 'link',
 				'slds-text-link': this.props.variant === 'link',
 			},
 			this.props.className

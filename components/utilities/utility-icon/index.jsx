@@ -55,6 +55,8 @@ const UtilityIcon = (
 	if (path) {
 		// Use `path` prop of Icon if present
 		modifiedPath = path;
+	} else if (context.onRequestIconPath) {
+		modifiedPath = context.onRequestIconPath({ category, name });
 	} else if (context[`${category}Sprite`]) {
 		// Use category sprite file from IconSettings if present
 		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
@@ -105,6 +107,7 @@ UtilityIcon.defaultProps = {
 
 UtilityIcon.contextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
 	actionSprite: PropTypes.string,
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,

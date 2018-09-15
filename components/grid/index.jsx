@@ -18,7 +18,7 @@ class Grid extends React.Component {
 	getClassName() {
 		const flavor = this.props.flavor;
 		return classNames(this.props.className, 'slds-grid', {
-			[`slds-grid--${flavor}`]: flavor,
+			[`slds-grid_${flavor}`]: flavor,
 		});
 	}
 

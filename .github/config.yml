@@ -21,8 +21,8 @@ newPRWelcomeComment: >
 # Comment to be posted to on pull requests merged by a first time user
 firstPRMergeComment: >
   Congrats on merging your first pull request to Design System React! :tada:
- 
-  On behalf of Salesforce's customers, partners, product specialists and employees, we would like offer sincere thanks and appreciation for helping make our user experience better. We look forward to working with you more in the future.
-  
-  ![Alt Text](https://media.giphy.com/media/lcYFNTaz4U9jy/giphy.gif)
 
+  On behalf of Salesforce's customers, partners, product specialists and employees, we would like offer sincere thanks and appreciation for helping make our user experience better. We look forward to working with you more in the future.
+
+  **This definitely calls for a high five!**
+  ![Alt High Five](https://media.giphy.com/media/lcYFNTaz4U9jy/giphy.gif)

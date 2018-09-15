@@ -9,8 +9,8 @@ const Example = createReactClass({
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Picklist
 							label="Contacts"
 							onSelect={(option, data) => {
@@ -27,7 +27,7 @@ const Example = createReactClass({
 							placeholder="Select a contact"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Picklist
 							label="Option selected"
 							onSelect={(option, data) => {
@@ -45,7 +45,7 @@ const Example = createReactClass({
 							value="C0"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Picklist
 							disabled
 							label="Disabled"

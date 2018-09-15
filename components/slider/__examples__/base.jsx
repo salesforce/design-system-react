@@ -33,14 +33,14 @@ const Example = createReactClass({
 		return (
 			<section>
 				<ol>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							1. Base Input with label
 						</h1>
 						<DemoSlider id="base-id" label="My Label" value={0} />
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							2. Base Input with no label (assistive text)
 						</h1>
 						<DemoSlider
@@ -49,8 +49,8 @@ const Example = createReactClass({
 							value={0}
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							3. Base Input with min and max.
 						</h1>
 						<DemoSlider
@@ -61,8 +61,8 @@ const Example = createReactClass({
 							value={200}
 						/>
 					</li>
-					<li className="slds-p-bottom--large">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							4. Base Input with min, max and step.
 						</h1>
 						<DemoSlider

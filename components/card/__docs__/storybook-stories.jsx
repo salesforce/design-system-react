@@ -84,7 +84,7 @@ const DemoCard = createReactClass({
 		}
 
 		return (
-			<div className="slds-grid slds-grid--vertical">
+			<div className="slds-grid slds-grid_vertical">
 				<Card
 					id="ExampleCard"
 					filter={
@@ -121,14 +121,14 @@ const DemoCard = createReactClass({
 
 const SetHeightCard = () => (
 	<Card
-		bodyClassName="slds-grow slds-scrollable--y"
-		className="slds-grid slds-grid--vertical"
+		bodyClassName="slds-grow slds-scrollable_y"
+		className="slds-grid slds-grid_vertical"
 		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
 		heading="Card with set height"
 		icon={<Icon category="standard" name="document" size="small" />}
 		style={{ height: '300px' }}
 	>
-		<div className="slds-card__body--inner">
+		<div className="slds-card__body_inner">
 			<div>asdf</div>
 			<div>asdf</div>
 			<div>asdf</div>
@@ -150,7 +150,7 @@ SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
 storiesOf(CARD, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -162,7 +162,7 @@ storiesOf(CARD, module)
 				<MediaObject
 					body={
 						<InlineEdit
-							className="slds-text-heading--small slds-truncate"
+							className="slds-text-heading_small slds-truncate"
 							name="inline-edit-standard"
 							value="Write your own heading"
 							id="inline-edit-standard"

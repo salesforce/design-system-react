@@ -2,10 +2,10 @@
 
 exports[`Checkbox Base DOM Snapshot 1`] = `
 <div
-  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center"
+  className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
 >
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -26,7 +26,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -39,7 +39,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element slds-has-error"
@@ -60,7 +60,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--error"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -78,7 +78,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -100,7 +100,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--disabled"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -113,7 +113,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element is-required"
@@ -141,7 +141,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--required"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -154,7 +154,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -175,7 +175,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--assistive-text"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-assistive-text"
@@ -188,7 +188,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -210,7 +210,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--checked"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -223,7 +223,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -246,7 +246,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--checked-disabled"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -259,7 +259,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -280,7 +280,7 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
             htmlFor="checkbox-base-example--indeterminate"
           >
             <span
-              className="slds-checkbox--faux"
+              className="slds-checkbox_faux"
             />
             <span
               className="slds-form-element__label"
@@ -296,32 +296,32 @@ exports[`Checkbox Base DOM Snapshot 1`] = `
 `;
 
 exports[`Checkbox Base HTML Snapshot 1`] = `
-"<div class=\\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\\">
-  <div class=\\"slds-col--padded\\">
+"<div class=\\"slds-grid slds-grid_pull-padded slds-grid_vertical-align-center\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox</span></label>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox</span></label>
         </span>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element slds-has-error\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example--error\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--error\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox</span></label>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example--error\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--error\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox</span></label>
         </span>
       </div>
       <div class=\\"slds-form-element__help\\">This field has an error</div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" disabled=\\"\\" id=\\"checkbox-base-example--disabled\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--disabled\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox (disabled)</span></label>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" disabled=\\"\\" id=\\"checkbox-base-example--disabled\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--disabled\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox (disabled)</span></label>
         </span>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element is-required\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><abbr class=\\"slds-required\\" title=\\"required\\">*</abbr><input type=\\"checkbox\\" id=\\"checkbox-base-example--required\\" required=\\"\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--required\\"><span class=\\"slds-checkbox--faux\\"></span>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><abbr class=\\"slds-required\\" title=\\"required\\">*</abbr><input type=\\"checkbox\\" id=\\"checkbox-base-example--required\\" required=\\"\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--required\\"><span class=\\"slds-checkbox_faux\\"></span>
         <span
           class=\\"slds-form-element__label\\">Checkbox (required)</span>
           </label>
@@ -329,23 +329,23 @@ exports[`Checkbox Base HTML Snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example--assistive-text\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--assistive-text\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-assistive-text\\">Checkbox (with assistive text)</span></label>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example--assistive-text\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--assistive-text\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-assistive-text\\">Checkbox (with assistive text)</span></label>
         </span>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" checked=\\"\\" id=\\"checkbox-base-example--checked\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--checked\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox (checked)</span></label>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" checked=\\"\\" id=\\"checkbox-base-example--checked\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--checked\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox (checked)</span></label>
         </span>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" disabled=\\"\\" checked=\\"\\" id=\\"checkbox-base-example--checked-disabled\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--checked-disabled\\"><span class=\\"slds-checkbox--faux\\"></span>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" disabled=\\"\\" checked=\\"\\" id=\\"checkbox-base-example--checked-disabled\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--checked-disabled\\"><span class=\\"slds-checkbox_faux\\"></span>
         <span
           class=\\"slds-form-element__label\\">Checkbox (checked + disabled)</span>
           </label>
@@ -353,9 +353,9 @@ exports[`Checkbox Base HTML Snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\">
-      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example--indeterminate\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--indeterminate\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox (indeterminate)</span></label>
+      <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"checkbox-base-example--indeterminate\\"/><label class=\\"slds-checkbox__label\\" for=\\"checkbox-base-example--indeterminate\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-form-element__label\\">Checkbox (indeterminate)</span></label>
         </span>
       </div>
     </div>
@@ -365,20 +365,20 @@ exports[`Checkbox Base HTML Snapshot 1`] = `
 
 exports[`Checkbox Toggle DOM Snapshot 1`] = `
 <div
-  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center"
+  className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
 >
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example"
       >
         <span
-          className="slds-form-element__label slds-m-bottom--none"
+          className="slds-form-element__label slds-m-bottom_none"
         >
           Toggle
         </span>
@@ -390,19 +390,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -411,17 +411,17 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element slds-has-error"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example--error"
       >
         <span
-          className="slds-form-element__label slds-m-bottom--none"
+          className="slds-form-element__label slds-m-bottom_none"
         >
           Toggle
         </span>
@@ -433,19 +433,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example--error-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -459,17 +459,17 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example--disabled"
       >
         <span
-          className="slds-form-element__label slds-m-bottom--none"
+          className="slds-form-element__label slds-m-bottom_none"
         >
           Toggle (disabled)
         </span>
@@ -482,19 +482,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example--disabled-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -503,13 +503,13 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element is-required"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example--required"
       >
         <abbr
@@ -519,7 +519,7 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
           *
         </abbr>
         <span
-          className="slds-form-element__label slds-m-bottom--none"
+          className="slds-form-element__label slds-m-bottom_none"
         >
           Toggle (required)
         </span>
@@ -532,19 +532,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example--required-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -553,13 +553,13 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example--assitive-text"
       >
         <span
@@ -575,19 +575,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example--assitive-text-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -596,17 +596,17 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example--checked"
       >
         <span
-          className="slds-form-element__label slds-m-bottom--none"
+          className="slds-form-element__label slds-m-bottom_none"
         >
           Toggle (checked)
         </span>
@@ -619,19 +619,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example--checked-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -640,17 +640,17 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
     >
       <label
-        className="slds-checkbox--toggle slds-grid"
+        className="slds-checkbox_toggle slds-grid"
         htmlFor="checkbox-toggle-example--checked-disabled"
       >
         <span
-          className="slds-form-element__label slds-m-bottom--none"
+          className="slds-form-element__label slds-m-bottom_none"
         >
           Toggle (checked + disabled)
         </span>
@@ -664,19 +664,19 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
         />
         <span
           aria-live="assertive"
-          className="slds-checkbox--faux_container"
+          className="slds-checkbox_faux_container"
           id="checkbox-toggle-example--checked-disabled-desc"
         >
           <span
-            className="slds-checkbox--faux"
+            className="slds-checkbox_faux"
           />
           <span
-            className="slds-checkbox--on"
+            className="slds-checkbox_on"
           >
             Enabled
           </span>
           <span
-            className="slds-checkbox--off"
+            className="slds-checkbox_off"
           >
             Disabled
           </span>
@@ -688,30 +688,30 @@ exports[`Checkbox Toggle DOM Snapshot 1`] = `
 `;
 
 exports[`Checkbox Toggle HTML Snapshot 1`] = `
-"<div class=\\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\\">
-  <div class=\\"slds-col--padded\\">
-    <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example\\"><span class=\\"slds-form-element__label slds-m-bottom--none\\">Toggle</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example-desc\\" id=\\"checkbox-toggle-example\\"/><span id=\\"checkbox-toggle-example-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label></div>
+"<div class=\\"slds-grid slds-grid_pull-padded slds-grid_vertical-align-center\\">
+  <div class=\\"slds-col_padded\\">
+    <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example\\"><span class=\\"slds-form-element__label slds-m-bottom_none\\">Toggle</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example-desc\\" id=\\"checkbox-toggle-example\\"/><span id=\\"checkbox-toggle-example-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label></div>
   </div>
-  <div class=\\"slds-col--padded\\">
-    <div class=\\"slds-form-element slds-has-error\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example--error\\"><span class=\\"slds-form-element__label slds-m-bottom--none\\">Toggle</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--error-desc\\" id=\\"checkbox-toggle-example--error\\"/><span id=\\"checkbox-toggle-example--error-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label>
+  <div class=\\"slds-col_padded\\">
+    <div class=\\"slds-form-element slds-has-error\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example--error\\"><span class=\\"slds-form-element__label slds-m-bottom_none\\">Toggle</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--error-desc\\" id=\\"checkbox-toggle-example--error\\"/><span id=\\"checkbox-toggle-example--error-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label>
       <div
         class=\\"slds-form-element__help\\">This field has an error</div>
   </div>
 </div>
-<div class=\\"slds-col--padded\\">
-  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example--disabled\\"><span class=\\"slds-form-element__label slds-m-bottom--none\\">Toggle (disabled)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--disabled-desc\\" disabled=\\"\\" id=\\"checkbox-toggle-example--disabled\\"/><span id=\\"checkbox-toggle-example--disabled-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label></div>
+<div class=\\"slds-col_padded\\">
+  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example--disabled\\"><span class=\\"slds-form-element__label slds-m-bottom_none\\">Toggle (disabled)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--disabled-desc\\" disabled=\\"\\" id=\\"checkbox-toggle-example--disabled\\"/><span id=\\"checkbox-toggle-example--disabled-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label></div>
 </div>
-<div class=\\"slds-col--padded\\">
-  <div class=\\"slds-form-element is-required\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example--required\\"><abbr class=\\"slds-required\\" title=\\"required\\">*</abbr><span class=\\"slds-form-element__label slds-m-bottom--none\\">Toggle (required)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--required-desc\\" id=\\"checkbox-toggle-example--required\\" required=\\"\\"/><span id=\\"checkbox-toggle-example--required-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label></div>
+<div class=\\"slds-col_padded\\">
+  <div class=\\"slds-form-element is-required\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example--required\\"><abbr class=\\"slds-required\\" title=\\"required\\">*</abbr><span class=\\"slds-form-element__label slds-m-bottom_none\\">Toggle (required)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--required-desc\\" id=\\"checkbox-toggle-example--required\\" required=\\"\\"/><span id=\\"checkbox-toggle-example--required-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label></div>
 </div>
-<div class=\\"slds-col--padded\\">
-  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example--assitive-text\\"><span class=\\"slds-assistive-text\\">Toggle (with assistive text)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--assitive-text-desc\\" id=\\"checkbox-toggle-example--assitive-text\\"/><span id=\\"checkbox-toggle-example--assitive-text-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label></div>
+<div class=\\"slds-col_padded\\">
+  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example--assitive-text\\"><span class=\\"slds-assistive-text\\">Toggle (with assistive text)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--assitive-text-desc\\" id=\\"checkbox-toggle-example--assitive-text\\"/><span id=\\"checkbox-toggle-example--assitive-text-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label></div>
 </div>
-<div class=\\"slds-col--padded\\">
-  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example--checked\\"><span class=\\"slds-form-element__label slds-m-bottom--none\\">Toggle (checked)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--checked-desc\\" id=\\"checkbox-toggle-example--checked\\" checked=\\"\\"/><span id=\\"checkbox-toggle-example--checked-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label></div>
+<div class=\\"slds-col_padded\\">
+  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example--checked\\"><span class=\\"slds-form-element__label slds-m-bottom_none\\">Toggle (checked)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--checked-desc\\" id=\\"checkbox-toggle-example--checked\\" checked=\\"\\"/><span id=\\"checkbox-toggle-example--checked-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label></div>
 </div>
-<div class=\\"slds-col--padded\\">
-  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox--toggle slds-grid\\" for=\\"checkbox-toggle-example--checked-disabled\\"><span class=\\"slds-form-element__label slds-m-bottom--none\\">Toggle (checked + disabled)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--checked-disabled-desc\\" disabled=\\"\\" id=\\"checkbox-toggle-example--checked-disabled\\" checked=\\"\\"/><span id=\\"checkbox-toggle-example--checked-disabled-desc\\" class=\\"slds-checkbox--faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox--faux\\"></span><span class=\\"slds-checkbox--on\\">Enabled</span><span class=\\"slds-checkbox--off\\">Disabled</span></span></label></div>
+<div class=\\"slds-col_padded\\">
+  <div class=\\"slds-form-element\\"><label class=\\"slds-checkbox_toggle slds-grid\\" for=\\"checkbox-toggle-example--checked-disabled\\"><span class=\\"slds-form-element__label slds-m-bottom_none\\">Toggle (checked + disabled)</span><input type=\\"checkbox\\" aria-describedby=\\"checkbox-toggle-example--checked-disabled-desc\\" disabled=\\"\\" id=\\"checkbox-toggle-example--checked-disabled\\" checked=\\"\\"/><span id=\\"checkbox-toggle-example--checked-disabled-desc\\" class=\\"slds-checkbox_faux_container\\" aria-live=\\"assertive\\"><span class=\\"slds-checkbox_faux\\"></span><span class=\\"slds-checkbox_on\\">Enabled</span><span class=\\"slds-checkbox_off\\">Disabled</span></span></label></div>
 </div>
 </div>"
 `;

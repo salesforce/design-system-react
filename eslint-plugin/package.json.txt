@@ -1,0 +1,29 @@
+{
+  "name": "eslint-plugin-slds-bem-deprecation-react",
+  "version": "0.0.0",
+  "description": "ESLint plugin. This rule aims to better align JavaScirpt UI component libraries that depend on the Salesforce Lightning Design System CSS Framwork.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": {
+    "name": "Kevin Gao",
+    "email": "kgao@salesforce.com"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "dependencies": {
+    "requireindex": "~1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "~3.9.1",
+    "mocha": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "SEE LICENSE IN README.md"
+}

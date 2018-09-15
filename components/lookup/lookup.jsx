@@ -700,7 +700,7 @@ const Lookup = createReactClass({
 		) : null;
 		const labelClassName = this.props.iconName
 			? 'slds-pill__label'
-			: 'slds-pill__label slds-m-left--x-small';
+			: 'slds-pill__label slds-m-left_x-small';
 
 		// i18n
 		return (
@@ -719,7 +719,7 @@ const Lookup = createReactClass({
 					<span className={labelClassName}>{selectedItem}</span>
 					<Button
 						assistiveText={{ icon: 'Press delete to remove' }}
-						className="slds-pill__remove slds-button--icon-bare"
+						className="slds-pill__remove slds-button_icon-bare"
 						iconCategory="utility"
 						iconName="close"
 						onClick={this.handleDeleteSelected}
@@ -771,7 +771,7 @@ const Lookup = createReactClass({
 
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
-			[`slds-input-has-icon slds-input-has-icon--${
+			[`slds-input-has-icon slds-input-has-icon_${
 				this.props.iconPosition
 			}`]: !this.isSelected(),
 		};

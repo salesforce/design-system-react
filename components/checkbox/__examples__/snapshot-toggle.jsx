@@ -6,15 +6,15 @@ import Checkbox from '~/components/checkbox';
 class Example extends React.Component {
 	render() {
 		return (
-			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-				<div className="slds-col--padded">
+			<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+				<div className="slds-col_padded">
 					<Checkbox
 						label="Toggle"
 						id="checkbox-toggle-example"
 						variant="toggle"
 					/>
 				</div>
-				<div className="slds-col--padded">
+				<div className="slds-col_padded">
 					<Checkbox
 						label="Toggle"
 						id="checkbox-toggle-example--error"
@@ -22,7 +22,7 @@ class Example extends React.Component {
 						variant="toggle"
 					/>
 				</div>
-				<div className="slds-col--padded">
+				<div className="slds-col_padded">
 					<Checkbox
 						label="Toggle (disabled)"
 						id="checkbox-toggle-example--disabled"
@@ -30,7 +30,7 @@ class Example extends React.Component {
 						disabled
 					/>
 				</div>
-				<div className="slds-col--padded">
+				<div className="slds-col_padded">
 					<Checkbox
 						label="Toggle (required)"
 						id="checkbox-toggle-example--required"
@@ -38,7 +38,7 @@ class Example extends React.Component {
 						required
 					/>
 				</div>
-				<div className="slds-col--padded">
+				<div className="slds-col_padded">
 					<Checkbox
 						assistiveText={{
 							label: 'Toggle (with assistive text)',
@@ -47,7 +47,7 @@ class Example extends React.Component {
 						variant="toggle"
 					/>
 				</div>
-				<div className="slds-col--padded">
+				<div className="slds-col_padded">
 					<Checkbox
 						label="Toggle (checked)"
 						id="checkbox-toggle-example--checked"
@@ -55,7 +55,7 @@ class Example extends React.Component {
 						checked
 					/>
 				</div>
-				<div className="slds-col--padded">
+				<div className="slds-col_padded">
 					<Checkbox
 						id="checkbox-toggle-example--checked-disabled"
 						label="Toggle (checked + disabled)"

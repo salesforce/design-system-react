@@ -302,7 +302,7 @@ const DataTable = createReactClass({
 				className={classNames(
 					'slds-table',
 					{
-						'slds-table--fixed-layout': this.props.fixedLayout,
+						'slds-table_fixed-layout': this.props.fixedLayout,
 						'slds-table_resizable-cols': this.props.fixedLayout,
 						'slds-table_bordered': !this.props.unborderedRow,
 						'slds-table_cell-buffer':

@@ -91,7 +91,7 @@ const DataTableRowActions = createReactClass({
 		// i18n
 		const defaultDropdownProps = {
 			align: 'right',
-			buttonClassName: 'slds-button--icon-x-small',
+			buttonClassName: 'slds-button_icon-x-small',
 			buttonVariant: 'icon',
 			iconCategory: 'utility',
 			iconName: 'down',

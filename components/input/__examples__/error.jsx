@@ -10,8 +10,8 @@ const Example = createReactClass({
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Input
 							id="unique-id-4"
 							label="Input Label"
@@ -20,7 +20,7 @@ const Example = createReactClass({
 							placeholder="Placeholder Text"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Input
 							iconLeft={
 								<InputIcon

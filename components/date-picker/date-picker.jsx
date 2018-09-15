@@ -344,10 +344,10 @@ class Datepicker extends React.Component {
 				contentsClassName={classNames(
 					'slds-datepicker slds-dropdown',
 					{
-						'slds-dropdown--right':
+						'slds-dropdown_right':
 							this.props.menuPosition === 'relative' &&
 							this.props.align === 'right',
-						'slds-dropdown--left':
+						'slds-dropdown_left':
 							this.props.menuPosition === 'relative' &&
 							this.props.align === 'left',
 					},
@@ -581,7 +581,7 @@ class Datepicker extends React.Component {
 			<div
 				className={classNames(
 					'slds-dropdown-trigger',
-					'slds-dropdown-trigger--click',
+					'slds-dropdown-trigger_click',
 					'ignore-react-onclickoutside',
 					{
 						'slds-is-open': this.getIsOpen(),

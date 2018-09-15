@@ -48,7 +48,7 @@ const Example = createReactClass({
 						isOpen={this.state.isOpen}
 						body="Are you sure you want to continue with your action?"
 						footer={
-							<div className="slds-text-align--right">
+							<div className="slds-text-align_right">
 								<Button label="Cancel" onClick={this.handleCancel} />
 								<Button
 									variant="brand"

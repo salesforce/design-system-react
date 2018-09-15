@@ -56,7 +56,7 @@ const GlobalNavigationBarLink = (props) => {
 		<li
 			className={classNames('slds-context-bar__item', {
 				'slds-is-active': active,
-				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
+				[`slds-context-bar__item_divider-${dividerPosition}`]: dividerPosition,
 			})}
 			id={id}
 			style={listItemstyle}

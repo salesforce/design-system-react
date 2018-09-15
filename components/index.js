@@ -25,6 +25,9 @@ export AppLauncher from './app-launcher';
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
+export SLDSBrandBand from './brand-band';
+export BrandBand from './brand-band';
+
 export SLDSButton from './button';
 export Button from './button';
 
