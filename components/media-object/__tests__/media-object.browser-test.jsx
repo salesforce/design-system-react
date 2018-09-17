@@ -50,7 +50,6 @@ describe(`${MEDIA_OBJECT}: `, () => {
 			expect(container.hasClass('this-is-a-container-test')).to.be.true;
 
 			const body = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.body}`);
-			// console.log(body.text());
 			const bodyText = body.text();
 			expect(bodyText).to.equal(
 				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.'
