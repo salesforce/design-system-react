@@ -2728,6 +2728,738 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCheckbox Checkbox (assistive text) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-form-element"
+    >
+      <div
+        className="slds-form-element__control"
+      >
+        <span
+          className="slds-checkbox"
+        >
+          <input
+            id="HyYxvNpa2O7"
+            name="checkbox-example-base-assistiveText"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="HyYxvNpa2O7"
+          >
+            <span
+              className="slds-checkbox_faux"
+            />
+            <span
+              className="slds-form-element__label"
+            >
+              Checkbox Label
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              This is my checkbox.
+							There are many like it, but this one is mine.
+							My checkbox is my best friend.
+							It is my life.
+							I must master it as I must master my life.
+							Without me, my checkbox is useless. Without my checkbox, I am useless.
+							I must make my checkbox true.
+							I must make it truer than my radio button who is trying to... 
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
+    <div
+      className="slds-box slds-text-longform slds-m-top_large"
+    >
+      <p>
+        This example has assistive text. In Safari on Mac you can turn assistive text on by using the keyboard combination:
+        <strong>
+          Command + F5
+        </strong>
+        .
+      </p>
+      <p>
+        Once you have enabled it, use your tab key to focus on the checkbox input, and the system should read you what is supplied to the checkbox as the 
+        <code>
+          assistiveText
+        </code>
+        property.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox (checked) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <div
+      className="slds-form-element__control"
+    >
+      <span
+        className="slds-checkbox"
+      >
+        <input
+          checked={true}
+          id="ryqgPVap3dm"
+          name="checkbox-example-base-checked"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          className="slds-checkbox__label"
+          htmlFor="ryqgPVap3dm"
+        >
+          <span
+            className="slds-checkbox_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Checkbox Label
+          </span>
+        </label>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox (default, indeterminate, required, disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <input
+              id="ByHlwETp3_m"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="ByHlwETp3_m"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Default
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Default
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <input
+              id="B1Uew4Tp2dm"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="B1Uew4Tp2dm"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Indeterminate
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Indeterminate
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element is-required"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            <input
+              id="HyvgvN6a3Om"
+              onChange={[Function]}
+              required={true}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="HyvgvN6a3Om"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Required
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Indeterminate
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <input
+              disabled={true}
+              id="HyugDE6T3_Q"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="HyugDE6T3_Q"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Disabled
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Disabled
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox (indeterminate) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Indeterminate
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Check
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Uncheck
+    </button>
+    <p>
+      <strong>
+        Current State:
+      </strong>
+       
+      Indeterminate
+    </p>
+    <div
+      className="slds-form-element"
+    >
+      <div
+        className="slds-form-element__control"
+      >
+        <span
+          className="slds-checkbox"
+        >
+          <input
+            checked={true}
+            id="S1iePE6a2dX"
+            name="checkbox-example-standard-indeterminate"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="S1iePE6a2dX"
+          >
+            <span
+              className="slds-checkbox_faux"
+            />
+            <span
+              className="slds-form-element__label"
+            >
+              Checkbox Label
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Checkbox (indeterminate)
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
+    <div
+      className="slds-box slds-text-longform slds-m-top_large"
+    >
+      <p>
+        This example has an 
+        <em>
+          indeterminate
+        </em>
+         checkbox.
+      </p>
+      <p>
+        It is set by providing the 
+        <code>
+          indeterminate
+        </code>
+         prop as
+         
+        <code>
+          <strong>
+            true
+          </strong>
+        </code>
+        .
+      </p>
+      <p>
+        Once it is clicked, there is no way to make it go 
+        <em>
+          back
+        </em>
+         to the indeterminate state,
+         
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button"
+        >
+          it must be done programatically, through JavaScript
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (assistive text) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-checkbox_toggle slds-grid"
+        htmlFor="SJg-vVTTnu7"
+      >
+        <span
+          className="slds-form-element__label slds-m-bottom_none"
+        >
+          Checkbox Label
+        </span>
+        <span
+          className="slds-assistive-text"
+        >
+          This is my checkbox.
+							There are many like it, but this one is mine.
+							My checkbox is my best friend.
+							It is my life.
+							I must master it as I must master my life.
+							Without me, my checkbox is useless. Without my checkbox, I am useless.
+							I must make my checkbox true.
+							I must make it truer than my radio button who is trying to... 
+        </span>
+        <input
+          aria-describedby="SJg-vVTTnu7-desc"
+          id="SJg-vVTTnu7"
+          name="checkbox-example-base-assistiveText"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          aria-live="assertive"
+          className="slds-checkbox_faux_container"
+          id="SJg-vVTTnu7-desc"
+        >
+          <span
+            className="slds-checkbox_faux"
+          />
+          <span
+            className="slds-checkbox_on"
+          >
+            Enabled
+          </span>
+          <span
+            className="slds-checkbox_off"
+          >
+            Disabled
+          </span>
+        </span>
+      </label>
+    </div>
+    <div
+      className="slds-box slds-text-longform slds-m-top_large"
+    >
+      <p>
+        This example has assistive text. In Safari on Mac you can turn assistive text on by using the keyboard combination:
+        <strong>
+          Command + F5
+        </strong>
+        .
+      </p>
+      <p>
+        Once you have enabled it, use your tab key to focus on the checkbox input, and the system should read you what is supplied to the checkbox as the 
+        <code>
+          assistiveText
+        </code>
+        property.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (checked) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-checkbox_toggle slds-grid"
+      htmlFor="S1bZvNp6n_Q"
+    >
+      <span
+        className="slds-form-element__label slds-m-bottom_none"
+      >
+        Checkbox Label
+      </span>
+      <input
+        aria-describedby="S1bZvNp6n_Q-desc"
+        checked={true}
+        id="S1bZvNp6n_Q"
+        name="checkbox-example-toggle-checked"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        aria-live="assertive"
+        className="slds-checkbox_faux_container"
+        id="S1bZvNp6n_Q-desc"
+      >
+        <span
+          className="slds-checkbox_faux"
+        />
+        <span
+          className="slds-checkbox_on"
+        >
+          Enabled
+        </span>
+        <span
+          className="slds-checkbox_off"
+        >
+          Disabled
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (disabled) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-checkbox_toggle slds-grid"
+      htmlFor="Hky-DNTand7"
+    >
+      <span
+        className="slds-form-element__label slds-m-bottom_none"
+      >
+        Checkbox Toggle Label
+      </span>
+      <input
+        aria-describedby="Hky-DNTand7-desc"
+        disabled={true}
+        id="Hky-DNTand7"
+        name="checkbox-example-toggle-disabled"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        aria-live="assertive"
+        className="slds-checkbox_faux_container"
+        id="Hky-DNTand7-desc"
+      >
+        <span
+          className="slds-checkbox_faux"
+        />
+        <span
+          className="slds-checkbox_on"
+        >
+          Enabled
+        </span>
+        <span
+          className="slds-checkbox_off"
+        >
+          Disabled
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (required) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element is-required"
+  >
+    <label
+      className="slds-checkbox_toggle slds-grid"
+      htmlFor="SkClwEpp3u7"
+    >
+      <abbr
+        className="slds-required"
+        title="required"
+      >
+        *
+      </abbr>
+      <span
+        className="slds-form-element__label slds-m-bottom_none"
+      >
+        Checkbox Toggle Label
+      </span>
+      <input
+        aria-describedby="SkClwEpp3u7-desc"
+        id="SkClwEpp3u7"
+        name="checkbox-example-toggle-required"
+        onBlur={[Function]}
+        onChange={[Function]}
+        required={true}
+        type="checkbox"
+      />
+      <span
+        aria-live="assertive"
+        className="slds-checkbox_faux_container"
+        id="SkClwEpp3u7-desc"
+      >
+        <span
+          className="slds-checkbox_faux"
+        />
+        <span
+          className="slds-checkbox_on"
+        >
+          Enabled
+        </span>
+        <span
+          className="slds-checkbox_off"
+        >
+          Disabled
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (with error) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element slds-has-error"
+  >
+    <label
+      className="slds-checkbox_toggle slds-grid"
+      htmlFor="rkaeDNa63OQ"
+    >
+      <span
+        className="slds-form-element__label slds-m-bottom_none"
+      >
+        Checkbox Toggle Label
+      </span>
+      <input
+        aria-describedby="rkaeDNa63OQ-desc"
+        id="rkaeDNa63OQ"
+        name="checkbox-example-toggle-error"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        aria-live="assertive"
+        className="slds-checkbox_faux_container"
+        id="rkaeDNa63OQ-desc"
+      >
+        <span
+          className="slds-checkbox_faux"
+        />
+        <span
+          className="slds-checkbox_on"
+        >
+          Enabled
+        </span>
+        <span
+          className="slds-checkbox_off"
+        >
+          Disabled
+        </span>
+      </span>
+    </label>
+    <div
+      className="slds-form-element__help"
+    >
+      This field has an error.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-checkbox_toggle slds-grid"
+      htmlFor="B1hxw4Tph_7"
+    >
+      <span
+        className="slds-form-element__label slds-m-bottom_none"
+      >
+        Checkbox Toggle Label
+      </span>
+      <input
+        aria-describedby="B1hxw4Tph_7-desc"
+        id="B1hxw4Tph_7"
+        name="checkbox-example-toggle"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        aria-live="assertive"
+        className="slds-checkbox_faux_container"
+        id="B1hxw4Tph_7-desc"
+      >
+        <span
+          className="slds-checkbox_faux"
+        />
+        <span
+          className="slds-checkbox_on"
+        >
+          Enabled
+        </span>
+        <span
+          className="slds-checkbox_off"
+        >
+          Disabled
+        </span>
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
 <div
   className="slds-p-around--medium"
