@@ -15,6 +15,7 @@ class Example extends React.Component {
 							assistiveText={{
 								label: 'Default',
 							}}
+							id="checkbox-example"
 							labels={{
 								label: 'Default',
 							}}
@@ -28,6 +29,7 @@ class Example extends React.Component {
 							assistiveText={{
 								label: 'Indeterminate',
 							}}
+							id="checkbox-example-indeterminate"
 							indeterminate
 							labels={{
 								label: 'Indeterminate',
@@ -42,6 +44,7 @@ class Example extends React.Component {
 							assistiveText={{
 								label: 'Indeterminate',
 							}}
+							id="checkbox-example-required"
 							labels={{
 								label: 'Required',
 							}}
@@ -56,6 +59,7 @@ class Example extends React.Component {
 							assistiveText={{
 								label: 'Disabled',
 							}}
+							id="checkbox-example-disabled"
 							labels={{
 								label: 'Disabled',
 							}}

@@ -2743,14 +2743,14 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (assistive text) 1`] = `
           className="slds-checkbox"
         >
           <input
-            id="HyYxvNpa2O7"
+            id="checkbox-example-base-assistiveText"
             name="checkbox-example-base-assistiveText"
             onChange={[Function]}
             type="checkbox"
           />
           <label
             className="slds-checkbox__label"
-            htmlFor="HyYxvNpa2O7"
+            htmlFor="checkbox-example-base-assistiveText"
           >
             <span
               className="slds-checkbox_faux"
@@ -2813,14 +2813,14 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (checked) 1`] = `
       >
         <input
           checked={true}
-          id="ryqgPVap3dm"
+          id="checkbox-example-base-checked"
           name="checkbox-example-base-checked"
           onChange={[Function]}
           type="checkbox"
         />
         <label
           className="slds-checkbox__label"
-          htmlFor="ryqgPVap3dm"
+          htmlFor="checkbox-example-base-checked"
         >
           <span
             className="slds-checkbox_faux"
@@ -2857,13 +2857,13 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (default, indeterminate, required, 
             className="slds-checkbox"
           >
             <input
-              id="ByHlwETp3_m"
+              id="checkbox-example"
               onChange={[Function]}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="ByHlwETp3_m"
+              htmlFor="checkbox-example"
             >
               <span
                 className="slds-checkbox_faux"
@@ -2896,13 +2896,13 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (default, indeterminate, required, 
             className="slds-checkbox"
           >
             <input
-              id="B1Uew4Tp2dm"
+              id="checkbox-example-indeterminate"
               onChange={[Function]}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="B1Uew4Tp2dm"
+              htmlFor="checkbox-example-indeterminate"
             >
               <span
                 className="slds-checkbox_faux"
@@ -2941,14 +2941,14 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (default, indeterminate, required, 
               *
             </abbr>
             <input
-              id="HyvgvN6a3Om"
+              id="checkbox-example-required"
               onChange={[Function]}
               required={true}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="HyvgvN6a3Om"
+              htmlFor="checkbox-example-required"
             >
               <span
                 className="slds-checkbox_faux"
@@ -2982,13 +2982,13 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (default, indeterminate, required, 
           >
             <input
               disabled={true}
-              id="HyugDE6T3_Q"
+              id="checkbox-example-disabled"
               onChange={[Function]}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="HyugDE6T3_Q"
+              htmlFor="checkbox-example-disabled"
             >
               <span
                 className="slds-checkbox_faux"
@@ -3059,14 +3059,14 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (indeterminate) 1`] = `
         >
           <input
             checked={true}
-            id="S1iePE6a2dX"
+            id="checkbox-example-standard-indeterminate"
             name="checkbox-example-standard-indeterminate"
             onChange={[Function]}
             type="checkbox"
           />
           <label
             className="slds-checkbox__label"
-            htmlFor="S1iePE6a2dX"
+            htmlFor="checkbox-example-standard-indeterminate"
           >
             <span
               className="slds-checkbox_faux"
@@ -3138,7 +3138,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (assistive text) 1`] = `
     >
       <label
         className="slds-checkbox_toggle slds-grid"
-        htmlFor="SJg-vVTTnu7"
+        htmlFor="checkbox-example-base-assistiveText"
       >
         <span
           className="slds-form-element__label slds-m-bottom_none"
@@ -3158,8 +3158,8 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (assistive text) 1`] = `
 							I must make it truer than my radio button who is trying to... 
         </span>
         <input
-          aria-describedby="SJg-vVTTnu7-desc"
-          id="SJg-vVTTnu7"
+          aria-describedby="checkbox-example-base-assistiveText-desc"
+          id="checkbox-example-base-assistiveText"
           name="checkbox-example-base-assistiveText"
           onChange={[Function]}
           type="checkbox"
@@ -3167,7 +3167,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (assistive text) 1`] = `
         <span
           aria-live="assertive"
           className="slds-checkbox_faux_container"
-          id="SJg-vVTTnu7-desc"
+          id="checkbox-example-base-assistiveText-desc"
         >
           <span
             className="slds-checkbox_faux"
@@ -3216,7 +3216,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (checked) 1`] = `
   >
     <label
       className="slds-checkbox_toggle slds-grid"
-      htmlFor="S1bZvNp6n_Q"
+      htmlFor="checkbox-example-toggle-checked"
     >
       <span
         className="slds-form-element__label slds-m-bottom_none"
@@ -3224,9 +3224,9 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (checked) 1`] = `
         Checkbox Label
       </span>
       <input
-        aria-describedby="S1bZvNp6n_Q-desc"
+        aria-describedby="checkbox-example-toggle-checked-desc"
         checked={true}
-        id="S1bZvNp6n_Q"
+        id="checkbox-example-toggle-checked"
         name="checkbox-example-toggle-checked"
         onChange={[Function]}
         type="checkbox"
@@ -3234,7 +3234,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (checked) 1`] = `
       <span
         aria-live="assertive"
         className="slds-checkbox_faux_container"
-        id="S1bZvNp6n_Q-desc"
+        id="checkbox-example-toggle-checked-desc"
       >
         <span
           className="slds-checkbox_faux"
@@ -3264,7 +3264,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (disabled) 1`] = `
   >
     <label
       className="slds-checkbox_toggle slds-grid"
-      htmlFor="Hky-DNTand7"
+      htmlFor="checkbox-example-toggle-disabled"
     >
       <span
         className="slds-form-element__label slds-m-bottom_none"
@@ -3272,9 +3272,9 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (disabled) 1`] = `
         Checkbox Toggle Label
       </span>
       <input
-        aria-describedby="Hky-DNTand7-desc"
+        aria-describedby="checkbox-example-toggle-disabled-desc"
         disabled={true}
-        id="Hky-DNTand7"
+        id="checkbox-example-toggle-disabled"
         name="checkbox-example-toggle-disabled"
         onBlur={[Function]}
         onChange={[Function]}
@@ -3283,7 +3283,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (disabled) 1`] = `
       <span
         aria-live="assertive"
         className="slds-checkbox_faux_container"
-        id="Hky-DNTand7-desc"
+        id="checkbox-example-toggle-disabled-desc"
       >
         <span
           className="slds-checkbox_faux"
@@ -3313,7 +3313,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (required) 1`] = `
   >
     <label
       className="slds-checkbox_toggle slds-grid"
-      htmlFor="SkClwEpp3u7"
+      htmlFor="checkbox-example-toggle-required"
     >
       <abbr
         className="slds-required"
@@ -3327,8 +3327,8 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (required) 1`] = `
         Checkbox Toggle Label
       </span>
       <input
-        aria-describedby="SkClwEpp3u7-desc"
-        id="SkClwEpp3u7"
+        aria-describedby="checkbox-example-toggle-required-desc"
+        id="checkbox-example-toggle-required"
         name="checkbox-example-toggle-required"
         onBlur={[Function]}
         onChange={[Function]}
@@ -3338,7 +3338,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (required) 1`] = `
       <span
         aria-live="assertive"
         className="slds-checkbox_faux_container"
-        id="SkClwEpp3u7-desc"
+        id="checkbox-example-toggle-required-desc"
       >
         <span
           className="slds-checkbox_faux"
@@ -3368,7 +3368,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (with error) 1`] = `
   >
     <label
       className="slds-checkbox_toggle slds-grid"
-      htmlFor="rkaeDNa63OQ"
+      htmlFor="checkbox-example-toggle-error"
     >
       <span
         className="slds-form-element__label slds-m-bottom_none"
@@ -3376,8 +3376,8 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (with error) 1`] = `
         Checkbox Toggle Label
       </span>
       <input
-        aria-describedby="rkaeDNa63OQ-desc"
-        id="rkaeDNa63OQ"
+        aria-describedby="checkbox-example-toggle-error-desc"
+        id="checkbox-example-toggle-error"
         name="checkbox-example-toggle-error"
         onBlur={[Function]}
         onChange={[Function]}
@@ -3386,7 +3386,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (with error) 1`] = `
       <span
         aria-live="assertive"
         className="slds-checkbox_faux_container"
-        id="rkaeDNa63OQ-desc"
+        id="checkbox-example-toggle-error-desc"
       >
         <span
           className="slds-checkbox_faux"
@@ -3421,7 +3421,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
   >
     <label
       className="slds-checkbox_toggle slds-grid"
-      htmlFor="B1hxw4Tph_7"
+      htmlFor="checkbox-example-toggle"
     >
       <span
         className="slds-form-element__label slds-m-bottom_none"
@@ -3429,8 +3429,8 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
         Checkbox Toggle Label
       </span>
       <input
-        aria-describedby="B1hxw4Tph_7-desc"
-        id="B1hxw4Tph_7"
+        aria-describedby="checkbox-example-toggle-desc"
+        id="checkbox-example-toggle"
         name="checkbox-example-toggle"
         onBlur={[Function]}
         onChange={[Function]}
@@ -3439,7 +3439,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
       <span
         aria-live="assertive"
         className="slds-checkbox_faux_container"
-        id="B1hxw4Tph_7-desc"
+        id="checkbox-example-toggle-desc"
       >
         <span
           className="slds-checkbox_faux"

@@ -52,7 +52,7 @@ export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
 
 /*
- * The following components are not compatible Jest testing because
+ * The following components are not compatible Jest testing because they
  * need a real DOM. These components should be updated to allow testing
  * with Jest. This is typically done by gaurding references to `document`.
  */
