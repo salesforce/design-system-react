@@ -797,7 +797,7 @@ const MenuDropdown = createReactClass({
 
 		const positions = DropdownToDialogNubbinMapping[align].split(' ');
 		positionClassName = classNames(
-			positions.map((position) => `slds-dropdown--${position}`)
+			positions.map((position) => `slds-dropdown_${position}`)
 		);
 
 		// FOR BACKWARDS COMPATIBILITY

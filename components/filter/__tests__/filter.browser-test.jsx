@@ -147,7 +147,7 @@ describe('SLDSFilter', function() {
 
 			setTimeout(() => {
 				const filterButton = wrapper.find(
-					'.slds-filters__item .slds-button--reset'
+					'.slds-filters__item .slds-button_reset'
 				);
 				filterButton.simulate('click', {});
 				expect(onFilterClicked).to.be.true;

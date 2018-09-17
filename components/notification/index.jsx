@@ -110,9 +110,9 @@ class Notification extends React.Component {
 
 	getClassName() {
 		return classNames(this.props.className, 'slds-notify', {
-			[`slds-notify--${this.props.variant}`]: this.props.variant,
-			[`slds-theme--${this.props.theme}`]: this.props.theme,
-			'slds-theme--alert-texture': this.props.texture,
+			[`slds-notify_${this.props.variant}`]: this.props.variant,
+			[`slds-theme_${this.props.theme}`]: this.props.theme,
+			'slds-theme_alert-texture': this.props.texture,
 		});
 	}
 
@@ -177,9 +177,9 @@ class Notification extends React.Component {
 			let classes = '';
 
 			if (this.props.variant === 'alert') {
-				classes = 'slds-m-right--x-small';
+				classes = 'slds-m-right_x-small';
 			} else if (this.props.variant === 'toast') {
-				classes = 'slds-m-right--small slds-col slds-no-flex';
+				classes = 'slds-m-right_small slds-col slds-no-flex';
 			}
 
 			return (
@@ -201,7 +201,7 @@ class Notification extends React.Component {
 			<section className="notify__content slds-grid">
 				{this.renderIcon()}
 				<div className="slds-col slds-align-middle">
-					<h2 id="dialogTitle" className="slds-text-heading--small">
+					<h2 id="dialogTitle" className="slds-text-heading_small">
 						{this.props.content}
 					</h2>
 				</div>

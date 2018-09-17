@@ -76,7 +76,7 @@ describe(`${MEDIA_OBJECT}: `, () => {
 
 		it('has media vertical center class', function() {
 			const container = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			expect(container.hasClass('slds-media--center')).to.be.true;
+			expect(container.hasClass('slds-media_center')).to.be.true;
 		});
 
 		it('can truncate within Flexbox layout', function() {

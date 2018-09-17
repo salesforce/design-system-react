@@ -3,3 +3,7 @@ package.json
 package-lock.json
 components/component-docs.json
 icons
+
+# Publishing and dist build
+storybook-based-tests
+.tmp*

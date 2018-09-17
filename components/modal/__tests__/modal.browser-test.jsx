@@ -122,7 +122,7 @@ describe('SLDSModal: ', function() {
 		});
 
 		it('adds the large class', () => {
-			expect(modal.className).to.include('slds-modal--large');
+			expect(modal.className).to.include('slds-modal_large');
 		});
 
 		it('adds custom classname from modal container prop', () => {
@@ -203,16 +203,16 @@ describe('SLDSModal: ', function() {
 
 		it('adds the footer', () => {
 			const footer = modal.querySelector('.slds-modal__footer');
-			expect(footer.className).to.include('slds-theme--default');
+			expect(footer.className).to.include('slds-theme_default');
 		});
 
 		it('adds the prompt class', () => {
-			expect(modal.className).to.include('slds-modal--prompt');
+			expect(modal.className).to.include('slds-modal_prompt');
 		});
 
 		it('adds the prompt theme class', () => {
 			expect(modal.querySelector('.slds-modal__header').className).to.include(
-				'slds-theme--warning'
+				'slds-theme_warning'
 			);
 		});
 
@@ -242,7 +242,7 @@ describe('SLDSModal: ', function() {
 		});
 
 		it('adds the footer', () => {
-			const footer = modal.querySelector('.slds-modal__footer--directional');
+			const footer = modal.querySelector('.slds-modal__footer_directional');
 			expect(footer.className).to.include('slds-modal__footer');
 		});
 	});

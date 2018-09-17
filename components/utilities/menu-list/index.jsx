@@ -79,7 +79,7 @@ const List = createReactClass({
 	render() {
 		let lengthClassName;
 		if (this.props.length) {
-			lengthClassName = `slds-dropdown--length-${this.props.length}`;
+			lengthClassName = `slds-dropdown_length-${this.props.length}`;
 		}
 		return (
 			<ul

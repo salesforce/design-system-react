@@ -36,24 +36,24 @@ const AppLauncherTile = (props) => {
 					: null
 			}
 			className={classNames(
-				'slds-app-launcher__tile slds-text-link--reset',
-				{ 'slds-app-launcher__tile--small': smallTile },
+				'slds-app-launcher__tile slds-text-link_reset',
+				{ 'slds-app-launcher__tile_small': smallTile },
 				props.className
 			)}
 		>
 			<div
 				className={classNames('slds-app-launcher__tile-figure', {
-					'slds-app-launcher__tile-figure--small': smallTile,
+					'slds-app-launcher__tile-figure_small': smallTile,
 				})}
 			>
 				{props.iconNode || (
-					<span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">
+					<span className="slds-avatar slds-avatar_large slds-align_absolute-center slds-icon-custom-27">
 						{props.iconText}
 					</span>
 				)}
 			</div>
 			{smallTile ? (
-				<div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
+				<div className="slds-app-launcher__tile-body slds-app-launcher__tile-body_small">
 					<p className="slds-truncate">
 						<Highlighter className="slds-text-link" search={props.search}>
 							{props.title}
@@ -95,7 +95,7 @@ const AppLauncherTile = (props) => {
 								{props.descriptionHeading && (
 									// inline style override
 									<span
-										className="slds-text-heading--label"
+										className="slds-text-heading_label"
 										style={{ letterSpacing: '0.025rem' }}
 									>
 										{props.descriptionHeading}{' '}

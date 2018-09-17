@@ -61,7 +61,7 @@ describe('SLDSTooltip: ', function() {
 	const generateTooltip = (props, kids) =>
 		renderTooltip(createTooltip(props, kids));
 
-	const getTip = (dom) => dom.querySelector('.slds-popover--tooltip');
+	const getTip = (dom) => dom.querySelector('.slds-popover_tooltip');
 
 	describe('component basic props render', () => {
 		let rootNode;
@@ -107,7 +107,7 @@ describe('SLDSTooltip: ', function() {
 			});
 
 			it('adds nubbin', () => {
-				expect(tip.className).to.include('slds-nubbin--bottom');
+				expect(tip.className).to.include('slds-nubbin_bottom');
 			});
 
 			it('closes', (done) => {

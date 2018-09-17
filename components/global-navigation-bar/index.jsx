@@ -62,8 +62,8 @@ const GlobalNavigationBar = (props) => (
 		className={classNames(
 			'slds-context-bar',
 			{
-				[`slds-context-bar--theme-${props.cloud}`]: props.cloud,
-				[`slds-context-bar--theme-${props.theme}`]: props.theme,
+				[`slds-context-bar_theme-${props.cloud}`]: props.cloud,
+				[`slds-context-bar_theme-${props.theme}`]: props.theme,
 			},
 			props.className
 		)}

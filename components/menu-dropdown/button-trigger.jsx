@@ -148,7 +148,7 @@ const Trigger = createReactClass({
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className={classnames(
-					`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
+					`slds-dropdown-trigger slds-dropdown-trigger_${openOn}`,
 					{
 						'slds-is-open': isOpen,
 					},

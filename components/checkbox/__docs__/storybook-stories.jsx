@@ -83,7 +83,7 @@ class CheckboxIndeterminate extends React.Component {
 					indeterminate={this.state.indeterminate}
 					onChange={this.handleChange}
 				/>
-				<div className="slds-box slds-text-longform slds-m-top--large">
+				<div className="slds-box slds-text-longform slds-m-top_large">
 					<p>
 						This example has an <em>indeterminate</em> checkbox.
 					</p>
@@ -108,7 +108,7 @@ class CheckboxIndeterminate extends React.Component {
 
 storiesOf(CHECKBOX, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -132,7 +132,7 @@ storiesOf(CHECKBOX, module)
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
 			/>
-			<div className="slds-box slds-text-longform slds-m-top--large">
+			<div className="slds-box slds-text-longform slds-m-top_large">
 				<p>
 					This example has assistive text. In Safari on Mac you can turn
 					assistive text on by using the keyboard combination:
@@ -221,7 +221,7 @@ storiesOf(CHECKBOX, module)
 				onChange={action('change')}
 				variant="toggle"
 			/>
-			<div className="slds-box slds-text-longform slds-m-top--large">
+			<div className="slds-box slds-text-longform slds-m-top_large">
 				<p>
 					This example has assistive text. In Safari on Mac you can turn
 					assistive text on by using the keyboard combination:

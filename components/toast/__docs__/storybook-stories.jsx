@@ -15,7 +15,7 @@ import CustomClassNames from '../__examples__/custom-class-name';
 
 storiesOf(TOAST, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Info', () => <Info />)
 	.add('Success', () => <Success />)

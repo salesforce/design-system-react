@@ -34,14 +34,10 @@ const defaultProps = {
 class Title extends Component {
 	// eslint-disable-next-line class-methods-use-this
 	_getClassNames(truncate, align, className) {
-		return classnames(
-			'slds-page-header__title slds-m-right--small',
-			className,
-			{
-				'slds-truncate': truncate,
-				[`slds-align-${align}`]: align,
-			}
-		);
+		return classnames('slds-page-header__title slds-m-right_small', className, {
+			'slds-truncate': truncate,
+			[`slds-align-${align}`]: align,
+		});
 	}
 
 	render() {

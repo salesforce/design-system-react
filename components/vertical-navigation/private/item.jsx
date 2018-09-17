@@ -28,7 +28,7 @@ const Item = (props) => (
 		<a
 			data-id={props.item.id}
 			href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
-			className="slds-navigation-list--vertical__action slds-text-link--reset"
+			className="slds-navigation-list_vertical__action slds-text-link_reset"
 			aria-describedby={props.categoryId}
 			onClick={(event) => {
 				handleClick(event, props);

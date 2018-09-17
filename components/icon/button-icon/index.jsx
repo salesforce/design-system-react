@@ -32,11 +32,11 @@ const ButtonIcon = (props) => {
 			className={classNames(
 				'slds-button__icon',
 				{
-					[`slds-button__icon--${props.size}`]:
+					[`slds-button__icon_${props.size}`]:
 						props.size && props.size !== 'medium',
-					'slds-button__icon--inverse-hint': props.inverse && props.hint,
-					'slds-button__icon--hint': props.hint && !props.inverse,
-					[`slds-button__icon--${props.position}`]: props.position,
+					'slds-button__icon_inverse-hint': props.inverse && props.hint,
+					'slds-button__icon_hint': props.hint && !props.inverse,
+					[`slds-button__icon_${props.position}`]: props.position,
 				},
 				props.className
 			)} // iconClassName has been deprecated

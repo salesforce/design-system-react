@@ -13,7 +13,7 @@ storiesOf(PANEL, module)
 			className="slds-grid"
 			style={{ backgroundColor: '#ccc', padding: '20px' }}
 		>
-			<div className="slds-col--bump-left" style={{ width: '420px' }}>
+			<div className="slds-col_bump-left" style={{ width: '420px' }}>
 				<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 			</div>
 		</div>

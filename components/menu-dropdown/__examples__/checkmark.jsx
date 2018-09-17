@@ -9,8 +9,8 @@ const Example = createReactClass({
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<span>Checkmark </span>
 						<Dropdown
 							assistiveText={{ icon: 'Checkmark' }}
@@ -29,7 +29,7 @@ const Example = createReactClass({
 							value="A0"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<span>Checkmark with right icon </span>
 						<Dropdown
 							assistiveText={{ icon: 'Checkmark with right icon' }}

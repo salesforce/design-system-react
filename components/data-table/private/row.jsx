@@ -81,7 +81,7 @@ const DataTableRow = createReactClass({
 				{this.props.canSelectRows ? (
 					<td
 						role={this.props.fixedLayout ? 'gridcell' : null}
-						className="slds-text-align--right"
+						className="slds-text-align_right"
 						data-label="Select Row"
 						style={{ width: '3.25rem' }}
 					>

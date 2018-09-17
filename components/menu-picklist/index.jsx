@@ -408,7 +408,7 @@ const MenuPicklist = createReactClass({
 	renderInlineMenu() {
 		return !this.props.disabled && this.state.isOpen ? (
 			<div
-				className="slds-dropdown slds-dropdown--left"
+				className="slds-dropdown slds-dropdown_left"
 				// inline style override
 				style={{
 					maxHeight: '20em',
@@ -426,7 +426,7 @@ const MenuPicklist = createReactClass({
 			<Dialog
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
-				contentsClassName="slds-dropdown slds-dropdown--left"
+				contentsClassName="slds-dropdown slds-dropdown_left"
 				context={this.context}
 				flippable
 				onClose={this.handleCancel}
@@ -469,7 +469,7 @@ const MenuPicklist = createReactClass({
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div
 				className={classNames(
-					'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+					'slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click',
 					{ 'slds-is-open': this.state.isOpen },
 					this.props.className
 				)}
@@ -480,7 +480,7 @@ const MenuPicklist = createReactClass({
 					aria-describedby={this.getErrorId()}
 					aria-expanded={this.state.isOpen}
 					aria-haspopup="true"
-					className="slds-button slds-button--neutral slds-picklist__label"
+					className="slds-button slds-button_neutral slds-picklist__label"
 					disabled={this.props.disabled}
 					id={this.getId()}
 					onClick={!this.props.disabled ? this.handleClick : undefined}

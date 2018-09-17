@@ -273,7 +273,7 @@ const Menu = (props) => {
 					role="status"
 					aria-live="polite"
 				>
-					<span className="slds-m-left--x-large slds-p-vertical--medium">
+					<span className="slds-m-left_x-large slds-p-vertical_medium">
 						{props.labels.noOptionsFound}
 					</span>
 				</li>

@@ -7,7 +7,7 @@ import OneItem from '../__examples__/one-item';
 
 storiesOf(BREADCRUMB, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('2 Items', () => <Base />)
 	.add('1 Item', () => <OneItem />);

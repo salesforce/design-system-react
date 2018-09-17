@@ -27,7 +27,7 @@ chai.use(chaiEnzyme());
 
 const COMPONENT_CSS_CLASSES = {
 	base: 'slds-context-bar',
-	themePrefix: 'slds-context-bar--theme-',
+	themePrefix: 'slds-context-bar_theme-',
 };
 
 const REGION_CSS_CLASSES = {
@@ -69,7 +69,7 @@ describe('Global Navigation Bar: ', () => {
 		it('Primary region DOES not have divider on right', function() {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
 			expect(primary).to.not.have.className(
-				'slds-context-bar__item--divider-right'
+				'slds-context-bar__item_divider-right'
 			);
 		});
 	});
@@ -181,13 +181,13 @@ describe('Global Navigation Bar: ', () => {
 		it('Primary region has divider on right due to secondary region', function() {
 			expect(
 				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
-			).to.have.className('slds-context-bar__item--divider-right');
+			).to.have.className('slds-context-bar__item_divider-right');
 		});
 
 		it('Secondary region application is a nav HTML element and has divider on right side', function() {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
-			expect(nav).to.have.className('slds-context-bar__item--divider-right');
+			expect(nav).to.have.className('slds-context-bar__item_divider-right');
 		});
 
 		it('displays active items as active', function() {
