@@ -3,7 +3,7 @@ import Accordion from '~/components/accordion'; // `~` is replaced with design-s
 import Panel from '~/components/accordion/panel'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings'; // `~` is replaced with design-system-react at runtime
 
-export default class Example extends React.Component {
+class Example extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -56,3 +56,4 @@ export default class Example extends React.Component {
 }
 
 Example.displayName = 'AccordionExample'; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example;
