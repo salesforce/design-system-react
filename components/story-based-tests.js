@@ -23,7 +23,7 @@ export BrandBand from '../components/brand-band/__docs__/storybook-stories';
 export Breadcrumb from '../components/breadcrumb/__docs__/storybook-stories';
 export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
-// export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
+export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
 // export Card from '../components/card/__docs__/storybook-stories';
 // export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 // export Combobox from '../components/combobox/__docs__/storybook-stories';
