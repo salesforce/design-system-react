@@ -22,6 +22,7 @@ const Example = createReactClass({
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
+						id="page-header-dropdown-object-home-nav-right"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -38,6 +39,7 @@ const Example = createReactClass({
 			<div>
 				<Dropdown
 					align="right"
+					id="page-header-dropdown-object-home-content-right"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -61,6 +63,7 @@ const Example = createReactClass({
 					assistiveText={{ icon: 'Change view' }}
 					iconName="settings"
 					iconVariant="more"
+					id="page-header-dropdown-object-home-content-right-2"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -128,6 +131,7 @@ const Example = createReactClass({
 					title={
 						<h1 className="slds-page-header__title slds-p-right--x-small">
 							<Dropdown
+								id="page-header-dropdown-object-home-header"
 								options={[
 									{ label: 'Menu Item One', value: 'A0' },
 									{ label: 'Menu Item Two', value: 'B0' },

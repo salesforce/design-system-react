@@ -35,7 +35,7 @@ export Input from '../components/input/__docs__/storybook-stories';
 export Icon from '../components/icon/__docs__/storybook-stories';
 export Illustration from '../components/illustration/__docs__/storybook-stories';
 export MediaObject from '../components/media-object/__docs__/storybook-stories';
-// export PageHeader from '../components/page-header/__docs__/storybook-stories';
+export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';

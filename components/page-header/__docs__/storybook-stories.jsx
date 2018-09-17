@@ -101,6 +101,7 @@ const recordHomeContentRight = (
 				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
+				id="page-header-dropdown-record-home-content-right"
 				onSelect={action('select')}
 				openOn="click"
 				align="right"
@@ -117,7 +118,7 @@ const customTooltip = () => {
 	const content =
 		'here is a super long description that will truncate and the rest of it will show in the tooltip.';
 	return (
-		<Tooltip align="top" content={content}>
+		<Tooltip align="top" content={content} id="page-header-truncate-tooltip">
 			<p tabIndex="0" className="slds-truncate">
 				{content}
 			</p>
@@ -177,6 +178,7 @@ const objectHomeContentRight = (
 				buttonVariant="icon"
 				iconName="sort"
 				iconVariant="more"
+				id="page-header-dropdown-object-home-content-right"
 				onSelect={action('select')}
 				openOn="click"
 				align="right"
@@ -200,6 +202,7 @@ const objectHomeNavRight = (
 			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
+			id="page-header-dropdown-object-home-nav-right"
 			onSelect={action('select')}
 			options={[
 				{ label: 'Refresh List', value: 'A0' },
@@ -242,6 +245,7 @@ const relatedListContentRight = (
 				buttonVariant="icon"
 				iconName="sort"
 				iconVariant="more"
+				id="page-header-dropdown-related-list-content-right"
 				onSelect={action('select')}
 				openOn="click"
 				align="right"
@@ -265,6 +269,7 @@ const relatedListNavRight = (
 			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
+			id="page-header-dropdown-related-list-nav-right"
 			onSelect={action('select')}
 			openOn="click"
 			align="right"
