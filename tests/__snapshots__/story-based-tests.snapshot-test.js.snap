@@ -1026,6 +1026,66 @@ exports[`DOM snapshots SLDSBrandBand Small 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSBreadcrumb 1 Item 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <nav
+    aria-label="Breadcrumbs"
+    role="navigation"
+  >
+    <ol
+      className="slds-breadcrumb slds-list_horizontal"
+    >
+      <li
+        className="slds-breadcrumb__item slds-text-title_caps"
+      >
+        <a
+          href="javascript:void(0);"
+        >
+          Parent Entity
+        </a>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <nav
+    aria-label="Two item breadcrumb"
+    role="navigation"
+  >
+    <ol
+      className="slds-breadcrumb slds-list_horizontal"
+    >
+      <li
+        className="slds-breadcrumb__item slds-text-title_caps"
+      >
+        <a
+          href="javascript:void(0);"
+          id="parent-entity"
+        >
+          Parent Entity
+        </a>
+      </li>
+      <li
+        className="slds-breadcrumb__item slds-text-title_caps"
+      >
+        <a
+          href="javascript:void(0);"
+        >
+          Parent Record Name
+        </a>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
 exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
 <div
   className="slds-p-around--medium"
