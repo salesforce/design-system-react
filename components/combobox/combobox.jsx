@@ -445,6 +445,16 @@ class Combobox extends React.Component {
 	handleInputBlur = (event) => {
 		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
 		setTimeout(() => {
+			const activeElement = document.activeElement;
+			// this detects if the scrollbar of the lookup menu is clicked on IE11
+			if (
+				activeElement.tagName === 'DIV' &&
+				activeElement.id === 'combobox-unique-id-listbox'
+			) {
+				if (this.inputRef) {
+					this.inputRef.focus();
+				}
+			} else {
 			this.handleClose(event);
 		}, 200);
 
