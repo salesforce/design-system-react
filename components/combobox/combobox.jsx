@@ -449,7 +449,7 @@ class Combobox extends React.Component {
 			// this detects if the scrollbar of the lookup menu is clicked on IE11
 			if (
 				activeElement.tagName === 'DIV' &&
-				activeElement.id === 'combobox-unique-id-listbox'
+				activeElement.id === `${this.getId()}-listbox`
 			) {
 				if (this.inputRef) {
 					this.inputRef.focus();
