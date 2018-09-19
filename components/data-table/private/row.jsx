@@ -3,7 +3,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -25,13 +24,13 @@ import {
 /**
  * Used internally, provides row rendering to the DataTable.
  */
-const DataTableRow = createReactClass({
+class DataTableRow extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_ROW,
+	static displayName = DATA_TABLE_ROW;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
 			columnSort: PropTypes.string,
@@ -56,15 +55,11 @@ const DataTableRow = createReactClass({
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
 		selection: PropTypes.array,
-	},
+	};
 
-	isSelected() {
-		return !!find(this.props.selection, this.props.item);
-	},
+	isSelected = () => !!find(this.props.selection, this.props.item);
 
-	handleToggle(e, { checked }) {
-		return this.props.onToggle(this.props.item, checked, e);
-	},
+	handleToggle = (e, { checked }) => this.props.onToggle(this.props.item, checked, e);
 
 	// ### Render
 	render() {
@@ -125,7 +120,7 @@ const DataTableRow = createReactClass({
 					: null}
 			</tr>
 		);
-	},
-});
+	}
+}
 
 export default DataTableRow;
