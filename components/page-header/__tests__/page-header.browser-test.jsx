@@ -36,7 +36,7 @@ const recordHomeContentRight = (
 			<SLDSButton label="Delete" />
 			<SLDSButton label="Clone" />
 			<SLDSMenuDropdown
-				assistiveText="More Options"
+				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				iconCategory="utility"
 				iconName="down"

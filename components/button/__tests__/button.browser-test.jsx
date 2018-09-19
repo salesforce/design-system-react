@@ -183,6 +183,10 @@ describe('SLDSButton: ', () => {
 			svgHref = use.getAttribute('xlink:href');
 		});
 
+		after(() => {
+			removeButton(use);
+		});
+
 		it('renders svg', () => {
 			expect(svgHref).to.equal(
 				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'

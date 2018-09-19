@@ -718,7 +718,7 @@ const Lookup = createReactClass({
 					{renderIcon}
 					<span className={labelClassName}>{selectedItem}</span>
 					<Button
-						assistiveText="Press delete to remove"
+						assistiveText={{ icon: 'Press delete to remove' }}
 						className="slds-pill__remove slds-button_icon-bare"
 						iconCategory="utility"
 						iconName="close"

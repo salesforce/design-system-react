@@ -203,14 +203,19 @@ describe('SLDSInput', () => {
 		let input2;
 
 		beforeEach(() => {
-			component1 = getInput({ label: 'Input One' });
-			component2 = getInput({ label: 'Input Two' });
+			component1 = getInput({
+				className: 'input-one',
+				label: 'Input One',
+			});
+			component2 = getInput({ className: 'input-two', label: 'Input Two' });
 			input1 = findRenderedDOMComponentWithTag(component1, 'input');
 			input2 = findRenderedDOMComponentWithTag(component2, 'input');
 		});
 
 		afterEach(() => {
-			removeInput();
+			const inputNodes = document.querySelectorAll('.slds-form-element');
+			inputNodes[0].parentNode.remove(inputNodes[0]);
+			inputNodes[1].parentNode.remove(inputNodes[1]);
 		});
 
 		it('each input has unique generated id', () => {
@@ -278,7 +283,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconLeft: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 						onClick={clickCallback}
@@ -332,7 +337,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 						onClick={clickCallback}
@@ -400,7 +405,7 @@ describe('SLDSInput', () => {
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 					/>
@@ -447,7 +452,7 @@ describe('SLDSInput', () => {
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 					/>
