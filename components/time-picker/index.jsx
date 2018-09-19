@@ -26,6 +26,31 @@ import { TIME_PICKER } from '../../utilities/constants';
 
 import componentDoc from './docs.json';
 
+const getOptions = ({ props }) => {
+	const baseDate = new Date();
+	const options = [];
+
+	baseDate.setHours(0);
+	baseDate.setMinutes(0);
+	baseDate.setSeconds(0);
+	baseDate.setMilliseconds(0);
+
+	const curDate = new Date(baseDate);
+
+	while (baseDate.getDate() === curDate.getDate()) {
+		const formatted = props.formatter(curDate);
+
+		options.push({
+			label: formatted,
+			value: new Date(curDate),
+		});
+
+		curDate.setMinutes(curDate.getMinutes() + props.stepInMinutes);
+	}
+
+	return options;
+};
+
 /**
  *  Component description.
  */
@@ -130,7 +155,7 @@ class Timepicker extends React.Component {
 	state = {
 		value: this.props.value,
 		strValue: this.props.strValue,
-		options: this.getOptions(),
+		options: getOptions({ props: this.props }),
 	};
 
 	componentWillMount() {
@@ -151,31 +176,6 @@ class Timepicker extends React.Component {
 			}
 		}
 	}
-
-	getOptions = () => {
-		const baseDate = new Date();
-		const options = [];
-
-		baseDate.setHours(0);
-		baseDate.setMinutes(0);
-		baseDate.setSeconds(0);
-		baseDate.setMilliseconds(0);
-
-		const curDate = new Date(baseDate);
-
-		while (baseDate.getDate() === curDate.getDate()) {
-			const formatted = this.props.formatter(curDate);
-
-			options.push({
-				label: formatted,
-				value: new Date(curDate),
-			});
-
-			curDate.setMinutes(curDate.getMinutes() + this.props.stepInMinutes);
-		}
-
-		return options;
-	};
 
 	parseDate = (strValue) => {
 		const newDate = this.props.parser(strValue);
