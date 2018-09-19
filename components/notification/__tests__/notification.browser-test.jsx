@@ -24,7 +24,7 @@ describe('SLDSNotification: ', () => {
 	describe('component renders', () => {
 		it('notification renders', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="success" isOpen />
+				<SLDSNotification variant="toast" theme="success" isOpen content="hi" />
 			);
 			expect(notification).to.not.equal(undefined);
 		});
@@ -40,6 +40,7 @@ describe('SLDSNotification: ', () => {
 					isOpen
 					texture
 					animated
+					content="hi"
 				/>
 			);
 			const alert = notification.getElementsByTagName('div')[0];
@@ -48,7 +49,7 @@ describe('SLDSNotification: ', () => {
 
 		it('renders theme', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="error" isOpen />
+				<SLDSNotification variant="toast" theme="error" isOpen content="hi" />
 			);
 			const alert = notification.getElementsByTagName('div')[0];
 			expect(alert.className).to.include('slds-theme_error');
@@ -85,6 +86,7 @@ describe('SLDSNotification: ', () => {
 					iconName="notification"
 					onDismiss={onClick}
 					isOpen
+					content="hi"
 				/>
 			);
 			const dismissBtn = notification.getElementsByTagName('button')[0];

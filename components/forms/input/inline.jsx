@@ -16,7 +16,7 @@ import isFunction from 'lodash.isfunction';
 
 // ## Children
 import Button from '../../button';
-import Input from './index';
+import Input from '../../input/index';
 import InputIcon from '../../icon/input-icon';
 
 // ### Event Helpers

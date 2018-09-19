@@ -93,10 +93,6 @@ const MenuPicklist = createReactClass({
 		 */
 		listItemRenderer: PropTypes.func,
 		/**
-		 * Allows multiple items to be selected. Items will be shown in pills. Clicking the item does not close the menu.
-		 */
-		multiple: PropTypes.bool,
-		/**
 		 * Triggered when the trigger button is clicked to open.
 		 */
 		onClick: PropTypes.func,
@@ -487,7 +483,7 @@ const MenuPicklist = createReactClass({
 					className="slds-button slds-button_neutral slds-picklist__label"
 					disabled={this.props.disabled}
 					id={this.getId()}
-					onClick={!this.props.disabled && this.handleClick}
+					onClick={!this.props.disabled ? this.handleClick : undefined}
 					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
 					type="button"
@@ -515,6 +511,9 @@ const MenuPicklist = createReactClass({
 							index: selectedPill,
 						}}
 						events={{
+							onRequestFocus: () => {},
+							onRequestFocusOnNextPill: () => {},
+							onRequestFocusOnPreviousPill: () => {},
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
 								const index = data.index;
