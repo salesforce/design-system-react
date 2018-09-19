@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
+import shortid from 'shortid';
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
@@ -64,7 +64,7 @@ const DemoCard = createReactClass({
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items],
+			items: [{ name: `New item #${shortid.generate()}` }, ...this.state.items],
 		});
 	},
 
