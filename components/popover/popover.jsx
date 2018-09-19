@@ -239,7 +239,9 @@ const Popover = createReactClass({
 	getIsOpen() {
 		return (
 			!this.props.disabled &&
-			!!(this.props.isOpen ? this.props.isOpen : this.state.isOpen)
+			!!(typeof this.props.isOpen === 'boolean'
+				? this.props.isOpen
+				: this.state.isOpen)
 		);
 	},
 

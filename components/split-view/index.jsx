@@ -113,7 +113,7 @@ class SplitView extends React.Component {
 	}
 
 	setIsOpen({ isOpen }) {
-		if (isOpen) {
+		if (typeof this.props.isOpen === 'boolean') {
 			this.setState({
 				isOpen,
 			});

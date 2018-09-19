@@ -435,7 +435,9 @@ const MenuDropdown = createReactClass({
 	},
 
 	getIsOpen() {
-		return !!(this.props.isOpen ? this.props.isOpen : this.state.isOpen);
+		return !!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 	},
 
 	getIndexByValue(value, options) {

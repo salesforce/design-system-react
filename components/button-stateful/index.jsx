@@ -163,7 +163,7 @@ class ButtonStateful extends React.Component {
 
 	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!this.props.active) {
+		if (typeof this.props.active !== 'boolean') {
 			this.setState({ active: !this.state.active });
 		}
 	};
@@ -197,7 +197,7 @@ class ButtonStateful extends React.Component {
 						...this.props.assistiveText,
 					}.icon;
 
-		const isActive = active && this.state.active;
+		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
 		if (variant === 'icon') {
 			return (
