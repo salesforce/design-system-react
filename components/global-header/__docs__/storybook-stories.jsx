@@ -91,12 +91,14 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderButton
 			assistiveText={{ icon: 'Help and Training' }}
+			iconCategory="utility"
 			iconName="question"
 			onClick={action('Help Clicked')}
 		/>
 		<GlobalHeaderDropdown
 			openOn={props.openOn}
 			assistiveText={{ icon: 'Setup' }}
+			iconCategory="utility"
 			iconName="setup"
 			id="global-header-dropdown-example"
 			onSelect={action('Action Selected')}
@@ -104,7 +106,8 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderButton
 			assistiveText={{ icon: 'Notifications' }}
-			iconName="Notification"
+			iconCategory="utility"
+			iconName="notification"
 			onClick={action('Notifications Clicked')}
 		/>
 		<GlobalHeaderProfile
@@ -131,6 +134,7 @@ storiesOf(GLOBAL_HEADER, module)
 		<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
 			<GlobalHeaderDropdown
 				assistiveText={{ icon: 'Setup' }}
+				iconCategory="utility"
 				iconName="setup"
 				id="global-header-dropdown-example"
 				onSelect={action('Action Selected')}

@@ -8,12 +8,24 @@ import { expect } from 'chai';
 
 import SLDSModal from '../../modal';
 import IconSettings from '../../icon-settings';
+import Settings from '../../settings';
 
 const { Simulate } = TestUtils;
 
 describe('SLDSModal: ', function() {
 	let container;
 	let renderedNode;
+
+	// set "app node" fixture, so no warnings are triggered.
+	let appNode = document.createElement('span');
+	appNode.id = 'app';
+	document.body.appendChild(appNode);
+	Settings.setAppElement('#app');
+
+	after(() => {
+		document.body.removeChild(appNode);
+		appNode = null;
+	});
 
 	afterEach(() => {
 		ReactDOM.unmountComponentAtNode(container);
@@ -23,11 +35,12 @@ describe('SLDSModal: ', function() {
 
 	const defaultProps = {
 		align: 'top',
-		children: <div>hello</div>,
+		children: <div key>hello</div>,
 	};
 
 	const renderModal = (modalInstance) => {
 		container = document.createElement('div');
+
 		const opener = (
 			<button>
 				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
@@ -213,8 +226,12 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<div className="toes">Toe 1</div>,
-				<div className="toes">Toe 2</div>,
+				<div key="test-content1" className="toes">
+					Toe 1
+				</div>,
+				<div key="test-content2" className="toes">
+					Toe 2
+				</div>,
 			];
 			getModal({
 				isOpen: true,
@@ -235,8 +252,12 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<button className="cancel">Cancel</button>,
-				<button className="save">Save</button>,
+				<button key="test-content1" className="cancel">
+					Cancel
+				</button>,
+				<button key="test-content2" className="save">
+					Save
+				</button>,
 			];
 			getModal({
 				isOpen: true,
