@@ -6,7 +6,7 @@ import Pill from '~/components/pill';
 import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
-function noop() {}
+const noop = () => undefined;
 
 const Example = createReactClass({
 	displayName: 'PillWithAvatarListboxExample',

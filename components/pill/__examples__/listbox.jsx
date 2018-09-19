@@ -5,7 +5,7 @@ import createReactClass from 'create-react-class';
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
-function noop() {}
+const noop = () => undefined;
 
 const Example = createReactClass({
 	displayName: 'PillListboxExample',

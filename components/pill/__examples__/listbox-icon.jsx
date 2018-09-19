@@ -45,7 +45,7 @@ const PILLS = [
 	},
 ];
 
-function noop() {}
+const noop = () => undefined;
 
 const Example = createReactClass({
 	displayName: 'PillWithIconListboxExample',
