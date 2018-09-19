@@ -201,7 +201,7 @@ class Tabs extends React.Component {
 	}
 
 	getSelectedIndex() {
-		return isNumber(this.props.selectedIndex)
+		return Number.isInteger(this.props.selectedIndex)
 			? this.props.selectedIndex
 			: this.state.selectedIndex;
 	}
