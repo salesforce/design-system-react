@@ -457,7 +457,8 @@ class Combobox extends React.Component {
 					this.inputRef.focus();
 				}
 			} else {
-			this.handleClose(event);
+				this.handleClose(event);
+			}
 		}, 200);
 
 		if (this.props.events.onBlur) {
