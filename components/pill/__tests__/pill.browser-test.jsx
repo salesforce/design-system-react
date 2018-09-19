@@ -246,9 +246,9 @@ describe('SLDSPill', () => {
 					labels={{
 						label: LABEL,
 						title: LABEL_TITLE,
+						removeTitle: 'Remove',
 					}}
 					variant="option"
-					removeTitle="Remove"
 					onRemove={onRemove}
 				/>
 			)

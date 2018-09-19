@@ -276,7 +276,13 @@ const Dialog = createReactClass({
 
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
-		return { ...popperData.style, left, top, right, position };
+		return {
+			...popperData.style,
+			left: !isNaN(left) ? left : 0,
+			top: !isNaN(top) ? top : 0,
+			right: !isNaN(right) ? right : 0,
+			position,
+		};
 	},
 
 	// Render
@@ -355,6 +361,7 @@ const Dialog = createReactClass({
 				boundariesElement:
 					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
+			hide: { enabled: false },
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			flip: {
 				enabled: !this.props.hasStaticAlignment,

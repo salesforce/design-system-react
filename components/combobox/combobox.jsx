@@ -34,6 +34,7 @@ import { COMBOBOX } from '../../utilities/constants';
 import componentDoc from './docs.json';
 
 let currentOpenDropdown;
+const documentDefined = typeof document !== 'undefined';
 
 const propTypes = {
 	/**
@@ -444,7 +445,19 @@ class Combobox extends React.Component {
 	handleInputBlur = (event) => {
 		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
 		setTimeout(() => {
-			this.handleClose(event);
+			const activeElement = documentDefined ? document.activeElement : false;
+			// detect if the scrollbar of the combobox-autocomplete/lookup menu is clicked in IE11. If it is, return focus to input, and do not close menu.
+			if (
+				activeElement &&
+				activeElement.tagName === 'DIV' &&
+				activeElement.id === `${this.getId()}-listbox`
+			) {
+				if (this.inputRef) {
+					this.inputRef.focus();
+				}
+			} else {
+				this.handleClose(event);
+			}
 		}, 200);
 
 		if (this.props.events.onBlur) {

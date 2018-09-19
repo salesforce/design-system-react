@@ -156,8 +156,8 @@ export Modal from './modal';
 export SLDSModalTrigger from './modal/trigger';
 export ModalTrigger from './modal/trigger';
 
-export SLDSNavigation from './navigation';
-export Navigation from './navigation';
+export SLDSNavigation from './vertical-navigation';
+export Navigation from './vertical-navigation';
 
 export SLDSNotification from './notification';
 export Notification from './notification';

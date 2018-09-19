@@ -286,30 +286,4 @@ describe('SLDSMenuPicklist: ', function() {
 			expect(getMenu(body)).to.equal(null);
 		});
 	});
-
-	describe('multiple selection', () => {
-		let cmp;
-		let btn;
-
-		beforeEach(() => {
-			cmp = getPicklist({
-				multiple: true,
-			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-			Simulate.click(btn, {});
-		});
-
-		afterEach(() => {
-			removePicklist();
-		});
-
-		it('selects multiple items and renders pills', () => {
-			clickOnItem(cmp, 0);
-			clickOnItem(cmp, 1);
-			expect(btn.textContent).to.equal('Multiple Options Selected');
-
-			const listbox = findRenderedDOMComponentWithClass(cmp, 'slds-listbox');
-			expect(listbox.childNodes.length).to.equal(2);
-		});
-	});
 });

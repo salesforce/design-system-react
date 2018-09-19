@@ -41,6 +41,10 @@ app.use(
 		)
 	)
 );
+app.use(
+	'/assets/images',
+	express.static(path.join(__dirname, '../assets/images'))
+);
 
 // Provide access to node_modules for JS libraries
 app.use(

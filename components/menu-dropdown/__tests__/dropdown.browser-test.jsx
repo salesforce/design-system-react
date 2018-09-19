@@ -284,7 +284,7 @@ describe('SLDSMenuDropdown', function() {
 		beforeEach(
 			mountComponent(
 				<DemoComponent
-					assistiveText="more options"
+					assistiveText={{ icon: 'more options' }}
 					buttonVariant="icon"
 					checkmark
 					iconCategory="utility"
@@ -424,8 +424,12 @@ describe('SLDSMenuDropdown', function() {
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
-		afterEach(() => {
-			removeDropdownTrigger(btn);
+		afterEach((done) => {
+			// due to hover-close delay, removal from DOM must be delayed
+			setTimeout(() => {
+				removeDropdownTrigger(btn);
+				done();
+			}, 100);
 		});
 
 		it('gives the button correct aria properties', () => {

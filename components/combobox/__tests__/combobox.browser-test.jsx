@@ -146,9 +146,12 @@ class DemoComponent extends React.Component {
 									...this.state.selection,
 									{
 										label: value,
+										id: 'another-account',
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{
+													label: 'Account',
+												}}
 												category="standard"
 												name="account"
 											/>
