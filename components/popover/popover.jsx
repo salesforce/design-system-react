@@ -16,9 +16,6 @@ import PropTypes from 'prop-types';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -242,7 +239,7 @@ const Popover = createReactClass({
 	getIsOpen() {
 		return (
 			!this.props.disabled &&
-			!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen)
+			!!(this.props.isOpen ? this.props.isOpen : this.state.isOpen)
 		);
 	},
 

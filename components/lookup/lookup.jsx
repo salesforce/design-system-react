@@ -15,7 +15,6 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
-import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
 
@@ -330,9 +329,7 @@ const Lookup = createReactClass({
 	},
 
 	getIsOpen() {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
+		return !!(this.props.isOpen ? this.props.isOpen : this.state.isOpen);
 	},
 
 	getListLength(qty) {

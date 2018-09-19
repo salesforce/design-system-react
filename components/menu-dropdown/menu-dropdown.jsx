@@ -19,9 +19,6 @@ import requiredIf from 'react-required-if';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -438,9 +435,7 @@ const MenuDropdown = createReactClass({
 	},
 
 	getIsOpen() {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
+		return !!(this.props.isOpen ? this.props.isOpen : this.state.isOpen);
 	},
 
 	getIndexByValue(value, options) {

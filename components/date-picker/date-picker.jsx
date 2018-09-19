@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -372,9 +369,7 @@ class Datepicker extends React.Component {
 	}
 
 	getIsOpen() {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
+		return !!(this.props.isOpen ? this.props.isOpen : this.state.isOpen);
 	}
 
 	setInputRef(component) {
