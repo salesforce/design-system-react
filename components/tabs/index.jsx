@@ -21,9 +21,6 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### isNumber
-import isNumber from 'lodash.isnumber';
-
 // Child components
 import TabsList from './private/tabs-list';
 import Tab from './private/tab';
