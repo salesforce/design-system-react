@@ -659,7 +659,8 @@
 			"component": "spinner",
 			"status": "prod",
 			"display-name": "Spinners",
-			"SLDS-component-path": "/components/spinner"
+			"SLDS-component-path": "/components/spinner",
+			"url-slug": "spinners"
 		},
 		{
 			"component": "tabs",
@@ -675,7 +676,7 @@
 					"component": "panel"
 				}
 			],
-			"url-slug": "tabss"
+			"url-slug": "tabs"
 		},
 		{
 			"component": "textarea",
