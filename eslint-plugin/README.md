@@ -1,6 +1,6 @@
-# eslint-plugin-slds-bem-deprecation-react
+# @salesforce/eslint-plugin-slds-react
 
-This rule aims to better align JavaScirpt UI component libraries that depend on the Salesforce Lightning Design System CSS Framwork.
+This rule aims to better align React UI component libraries that depend on the Salesforce Lightning Design System CSS Framework.
 
 ## Installation
 
@@ -10,21 +10,21 @@ You'll first need to install [ESLint](http://eslint.org):
 $ npm i eslint --save-dev
 ```
 
-Next, install `@salesforce/eslint-plugin-slds-bem-deprecation-react`:
+Next, install `@salesforce/eslint-plugin-slds-react`:
 
 ```
-$ npm install @salesforce/eslint-plugin-slds-bem-deprecation-react --save-dev
+$ npm install @salesforce/eslint-plugin-slds-react --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `@salesforce/eslint-plugin-slds-bem-deprecation-react` globally.
+**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `@salesforce/eslint-plugin-slds-react` globally.
 
 ## Usage
 
-Add `@salesforce/eslint-plugin-slds-bem-deprecation-react` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `@salesforce/eslint-plugin-slds-react` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
-	"plugins": ["@salesforce/eslint-plugin-slds-bem-deprecation-react"]
+	"plugins": ["@salesforce/eslint-plugin-slds-react"]
 }
 ```
 
@@ -33,11 +33,15 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
 	"rules": {
-		"design-system-react/rule-name": 2
+		"slds-react/rule-no-double-dash-modifier": 2
 	}
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
+* `no-double-dash-modifier`
+
+## Licenses
+
+* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)

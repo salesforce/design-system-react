@@ -1,23 +1,22 @@
-# Warns against using the deprecated, double-dash style for BEM notation. See https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm. (no-double-dash-modifier)
+# No Double Dash BEM Modifier
 
-Please describe the origin of the rule here.
-
+Warns against using the deprecated, double-dash style for BEM notation. See https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm. (no-double-dash-modifier)
 
 ## Rule Details
 
-This rule aims to better align JavaScirpt UI component libraries that depend on the Salesforce Lightning Design System CSS Framwork.
+This rule aims to better align JavaScirpt UI component libraries that depend on the Salesforce Lightning Design System CSS Framework.
 
-Examples of **incorrect** code for this rule:
+Examples of **incorrect** JSX for this rule:
 
-```js
+```html
 <div className="slds-theme--default">
 	<h3 className="slds-text-heading--label">Heading</h3>
 	</div>
 ```
 
-Examples of **correct** code for this rule:
+Examples of **correct** JSX for this rule:
 
-```js
+```html
 <div className="slds-theme_default">
 	<h3 className="slds-text-heading_label">Heading</h3>
 </div>
