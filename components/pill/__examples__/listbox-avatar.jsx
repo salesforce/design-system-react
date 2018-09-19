@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import createReactClass from 'create-react-class';
 
 import Pill from '~/components/pill';
 import Avatar from '~/components/avatar';
@@ -8,26 +7,24 @@ import IconSettings from '~/components/icon-settings';
 
 function noop() {}
 
-const Example = createReactClass({
-	displayName: 'PillWithAvatarListboxExample',
+class Example extends React.Component {
+	static displayName = 'PillWithAvatarListboxExample';
 
-	propTypes: {
+	static propTypes = {
 		action: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			action: () => noop,
-		};
-	},
+	static defaultProps = {
+		action: () => noop,
+	};
 
-	onClick(event) {
+	onClick = (event) => {
 		this.props.action('onClick')(event);
-	},
+	};
 
-	onRemove(event) {
+	onRemove = (event) => {
 		this.props.action('onRemove')(event);
-	},
+	};
 
 	render() {
 		return (
@@ -96,7 +93,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

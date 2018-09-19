@@ -1,21 +1,19 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'ModalExample',
+class Example extends React.Component {
+	static displayName = 'ModalExample';
 
-	getInitialState() {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
-	toggleOpen() {
+	toggleOpen = () => {
 		this.setState({ isOpen: !this.state.isOpen });
-	},
+	};
 
 	render() {
 		return (
@@ -57,7 +55,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

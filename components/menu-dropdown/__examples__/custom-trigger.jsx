@@ -1,14 +1,14 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button/'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'DropdownExample',
+class Example extends React.Component {
+    static displayName = 'DropdownExample';
 
-	render() {
+    render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown
@@ -33,7 +33,7 @@ const Example = createReactClass({
 				</Dropdown>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

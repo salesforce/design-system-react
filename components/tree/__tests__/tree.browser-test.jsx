@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 import isFunction from 'lodash.isfunction';

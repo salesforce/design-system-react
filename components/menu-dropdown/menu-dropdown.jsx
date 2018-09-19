@@ -456,9 +456,8 @@ class MenuDropdown extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen = () => !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
+	getIsOpen = () =>
+		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 
 	getIndexByValue = (value, options) => {
 		let foundIndex = -1;
@@ -479,9 +478,8 @@ class MenuDropdown extends React.Component {
 
 	getValueByIndex = (index) => this.props.options[index];
 
-	getListItemRenderer = () => this.props.listItemRenderer
-			? this.props.listItemRenderer
-			: ListItemLabel;
+	getListItemRenderer = () =>
+		this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
 
 	getListItemId = (index) => {
 		let menuItemId;
@@ -500,9 +498,7 @@ class MenuDropdown extends React.Component {
 		}
 	};
 
-	getMenu = () => 
-		 ReactDOM.findDOMNode(this.list) // eslint-disable-line react/no-find-dom-node
-	;
+	getMenu = () => ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
 
 	getMenuItem = (index) => {
 		if (index !== undefined && this.listItems) {
@@ -825,27 +821,27 @@ class MenuDropdown extends React.Component {
 	};
 
 	renderDefaultMenuContent = (customListProps) => (
-			<List
-				key={`${this.getId()}-dropdown-list`}
-				checkmark={this.props.checkmark}
-				getListItemId={this.getListItemId}
-				itemRefs={this.saveRefToListItem}
-				itemRenderer={this.getListItemRenderer()}
-				onCancel={this.handleCancel}
-				onSelect={this.handleSelect}
-				options={this.props.options}
-				ref={this.saveRefToList}
-				selectedIndex={
-					!this.props.multiple ? this.state.selectedIndex : undefined
-				}
-				selectedIndices={
-					this.props.multiple ? this.state.selectedIndices : undefined
-				}
-				triggerId={this.getId()}
-				length={this.props.length}
-				{...customListProps}
-			/>
-		);
+		<List
+			key={`${this.getId()}-dropdown-list`}
+			checkmark={this.props.checkmark}
+			getListItemId={this.getListItemId}
+			itemRefs={this.saveRefToListItem}
+			itemRenderer={this.getListItemRenderer()}
+			onCancel={this.handleCancel}
+			onSelect={this.handleSelect}
+			options={this.props.options}
+			ref={this.saveRefToList}
+			selectedIndex={
+				!this.props.multiple ? this.state.selectedIndex : undefined
+			}
+			selectedIndices={
+				this.props.multiple ? this.state.selectedIndices : undefined
+			}
+			triggerId={this.getId()}
+			length={this.props.length}
+			{...customListProps}
+		/>
+	);
 
 	renderMenuContent = (customContent) => {
 		let customContentWithListPropInjection = [];

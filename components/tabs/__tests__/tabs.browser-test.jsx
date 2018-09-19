@@ -1,6 +1,6 @@
 // Import your external dependencies
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import TestUtils from 'react-dom/test-utils';
 import chai, { expect } from 'chai';
@@ -42,11 +42,11 @@ const COMPONENT_CSS_CLASSES = {
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const TabsDemoComponent = createReactClass({
-	displayName: 'TabsDemoComponent',
+class TabsDemoComponent extends React.Component {
+	static displayName = 'TabsDemoComponent';
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Class names to be added to the container element and is passed along to its children.
 		 */
@@ -63,7 +63,7 @@ const TabsDemoComponent = createReactClass({
 		 * Function that triggers when a tab is selected.
 		 */
 		onSelect: PropTypes.func,
-	},
+	};
 
 	render() {
 		const { className, id, ...attributes } = this.props;
@@ -113,8 +113,8 @@ const TabsDemoComponent = createReactClass({
 				</Tabs>
 			</div>
 		);
-	},
-});
+	}
+}
 
 describe('Tabs', () => {
 	// BASIC STRUCTURE

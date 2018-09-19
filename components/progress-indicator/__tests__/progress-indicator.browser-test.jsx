@@ -13,7 +13,7 @@
 
 // Import your external dependencies
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
@@ -45,16 +45,15 @@ const defaultProps = {
 
 const mockCallback = sinon.spy();
 
-const DemoComponent = createReactClass({
-	displayName: 'ProgressIndicatorDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'ProgressIndicatorDemoComponent';
+
+	static propTypes = {
 		onStepClick: mockCallback,
 		onStepFocus: mockCallback,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	render() {
 		return (
@@ -62,8 +61,8 @@ const DemoComponent = createReactClass({
 				<SLDSProgressIndicator {...this.props} />
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 const steps = [
 	{ id: 0, label: 'tooltip label #1' },

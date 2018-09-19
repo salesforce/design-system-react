@@ -10,7 +10,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -50,10 +50,10 @@ const defaultProps = {
  * </SLDSGlobalHeader>
  * ```
  */
-const GlobalHeader = createReactClass({
-	displayName: GLOBAL_HEADER,
+class GlobalHeader extends React.Component {
+	static displayName = GLOBAL_HEADER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -84,25 +84,23 @@ const GlobalHeader = createReactClass({
 		 * Required for accessibility. Should jump the user to the primary navigation.
 		 */
 		onSkipToNav: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	componentWillMount() {
 		checkProps(GLOBAL_HEADER, this.props, componentDoc);
-	},
+	}
 
-	handleSkipToContent(e) {
+	handleSkipToContent = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToContent(e);
-	},
+	};
 
-	handleSkipToNav(e) {
+	handleSkipToNav = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToNav(e);
-	},
+	};
 
 	render() {
 		let tools;
@@ -164,7 +162,7 @@ const GlobalHeader = createReactClass({
 			</header>
 		);
 		/* eslint-enable max-len, no-script-url */
-	},
-});
+	}
+}
 
 export default GlobalHeader;
