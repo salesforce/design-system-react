@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import { storiesOf, action } from '@storybook/react';
 
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
@@ -46,8 +46,8 @@ const modalContent = (
 	/>
 );
 
-const Example = createReactClass({
-	displayName: 'ProgressIndicatorModal',
+class Example extends React.Component {
+	static displayName = 'ProgressIndicatorModal';
 
 	render() {
 		return (
@@ -63,7 +63,7 @@ const Example = createReactClass({
 				})}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

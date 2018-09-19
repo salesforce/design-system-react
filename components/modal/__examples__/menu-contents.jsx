@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -22,20 +22,18 @@ const opportunityTypeOptions = [
 	{ id: 5, label: 'Upgrade', value: 'E0' },
 ];
 
-const Example = createReactClass({
-	displayName: 'ModalExample',
+class Example extends React.Component {
+	static displayName = 'ModalExample';
 
-	getInitialState() {
-		return {
-			isOpen: false,
-			leadSourceSelection: [leadSourceOptions[0]],
-			opportunityTypeSelection: [opportunityTypeOptions[0]],
-		};
-	},
+	state = {
+		isOpen: false,
+		leadSourceSelection: [leadSourceOptions[0]],
+		opportunityTypeSelection: [opportunityTypeOptions[0]],
+	};
 
-	toggleOpen() {
+	toggleOpen = () => {
 		this.setState({ isOpen: !this.state.isOpen });
-	},
+	};
 
 	render() {
 		return (
@@ -170,7 +168,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

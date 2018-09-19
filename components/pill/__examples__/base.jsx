@@ -1,59 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import createReactClass from 'create-react-class';
 
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
 function noop() {}
 
-const Example = createReactClass({
-	displayName: 'BasePillExample',
+class Example extends React.Component {
+	static displayName = 'BasePillExample';
 
-	propTypes: {
+	static propTypes = {
 		action: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			action: () => noop,
-		};
-	},
+	static defaultProps = {
+		action: () => noop,
+	};
 
-	getInitialState() {
-		return {
-			linked: true,
-			unlinked: true,
-			truncated: true,
-		};
-	},
+	state = {
+		linked: true,
+		unlinked: true,
+		truncated: true,
+	};
 
-	onClick(event) {
+	onClick = (event) => {
 		this.props.action('onClick')(event);
-	},
+	};
 
-	onRemoveLinked(event) {
+	onRemoveLinked = (event) => {
 		this.props.action('onRemove')(event);
 		this.setState({
 			linked: false,
 		});
-	},
+	};
 
-	onRemoveUnlinked(event) {
+	onRemoveUnlinked = (event) => {
 		this.props.action('onRemove')(event);
 		this.setState({
 			unlinked: false,
 		});
-	},
+	};
 
-	onRemoveTruncated(event) {
+	onRemoveTruncated = (event) => {
 		this.props.action('onRemove')(event);
 		this.setState({
 			truncated: false,
 		});
-	},
+	};
 
-	renderLinked() {
+	renderLinked = () => {
 		if (this.state.linked) {
 			return (
 				<Pill
@@ -68,9 +63,9 @@ const Example = createReactClass({
 			);
 		}
 		return null;
-	},
+	};
 
-	renderUnlinked() {
+	renderUnlinked = () => {
 		if (this.state.unlinked) {
 			return (
 				<Pill
@@ -84,9 +79,9 @@ const Example = createReactClass({
 			);
 		}
 		return null;
-	},
+	};
 
-	renderTruncated() {
+	renderTruncated = () => {
 		if (this.state.truncated) {
 			return (
 				<div style={{ width: '220px', position: 'relative' }}>
@@ -105,7 +100,7 @@ const Example = createReactClass({
 			);
 		}
 		return null;
-	},
+	};
 
 	render() {
 		return (
@@ -121,7 +116,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example;

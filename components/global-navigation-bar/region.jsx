@@ -9,7 +9,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -74,15 +74,16 @@ const renderTertiary = (dividerClass, className, children) => (
 		<ul className="slds-grid">{children}</ul>
 	</div>
 );
+
 /* eslint-enable react/display-name */
 
 /**
  * Regions make up a GlobalNavigation Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
  */
-const Region = createReactClass({
-	displayName: GLOBAL_NAVIGATION_BAR_REGION,
+class Region extends React.Component {
+	static displayName = GLOBAL_NAVIGATION_BAR_REGION;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Contents of region. Expects `GlobalNavigationBarLink`, `GlobalNavigationBarDropdown`, `GlobalNavigationBarApplicationName`, `AppSwitcher`, but could be any component. This is the place to pass in an Object Switcher until that is supported.
 		 */
@@ -107,7 +108,7 @@ const Region = createReactClass({
 		 * Region wrap children in styling specific to that region.
 		 */
 		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
-	},
+	};
 
 	render() {
 		let region;
@@ -143,8 +144,8 @@ const Region = createReactClass({
 		}
 
 		return region;
-	},
-});
+	}
+}
 
 export default Region;
 export { regions };

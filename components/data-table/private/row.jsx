@@ -59,7 +59,8 @@ class DataTableRow extends React.Component {
 
 	isSelected = () => !!find(this.props.selection, this.props.item);
 
-	handleToggle = (e, { checked }) => this.props.onToggle(this.props.item, checked, e);
+	handleToggle = (e, { checked }) =>
+		this.props.onToggle(this.props.item, checked, e);
 
 	// ### Render
 	render() {

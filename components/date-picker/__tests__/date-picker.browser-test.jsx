@@ -1,6 +1,6 @@
 // Import your external dependencies
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -27,19 +27,15 @@ const defaultProps = {
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = createReactClass({
-	displayName: 'DatepickerDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'DatepickerDemoComponent';
+
+	static propTypes = {
 		isOpen: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
-
-	getInitialState() {
-		return {};
-	},
+	static defaultProps = defaultProps;
+	state = {};
 
 	// event handlers
 
@@ -49,8 +45,8 @@ const DemoComponent = createReactClass({
 				<Datepicker {...this.props} />
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.

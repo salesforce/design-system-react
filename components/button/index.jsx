@@ -307,53 +307,55 @@ class Button extends React.Component {
 	};
 
 	renderButton = () => (
-			<button
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-expanded={this.props['aria-expanded']}
-				aria-haspopup={this.props['aria-haspopup']}
-				className={this.getClassName()}
-				disabled={this.props.disabled}
-				id={this.props.id}
-				onBlur={this.props.onBlur}
-				onClick={this.handleClick}
-				onFocus={this.props.onFocus}
-				onKeyDown={this.props.onKeyDown}
-				onKeyPress={this.props.onKeyPress}
-				onKeyUp={this.props.onKeyUp}
-				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref={(component) => {
-					if (this.props.buttonRef) {
-						this.props.buttonRef(component);
-					}
-				}}
-				tabIndex={this.props.tabIndex}
-				title={this.props.title}
-				type={this.props.type}
-				style={this.props.style}
-			>
-				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
-
-				{this.props.iconName || this.props.iconPath
-					? this.renderIcon(this.props.iconName)
-					: null}
-				{this.props.iconVariant === 'more' ? (
-					<ButtonIcon category="utility" name="down" size="x-small" />
-				) : null}
-
-				{this.props.iconPosition === 'left' || !this.props.iconPosition
-					? this.renderLabel()
-					: null}
-				{
-					this.props.children // eslint-disable-line react/prop-types
+		<button
+			aria-controls={this.props['aria-controls']}
+			aria-describedby={this.props['aria-describedby']}
+			aria-expanded={this.props['aria-expanded']}
+			aria-haspopup={this.props['aria-haspopup']}
+			className={this.getClassName()}
+			disabled={this.props.disabled}
+			id={this.props.id}
+			onBlur={this.props.onBlur}
+			onClick={this.handleClick}
+			onFocus={this.props.onFocus}
+			onKeyDown={this.props.onKeyDown}
+			onKeyPress={this.props.onKeyPress}
+			onKeyUp={this.props.onKeyUp}
+			onMouseDown={this.props.onMouseDown}
+			onMouseEnter={this.props.onMouseEnter}
+			onMouseLeave={this.props.onMouseLeave}
+			ref={(component) => {
+				if (this.props.buttonRef) {
+					this.props.buttonRef(component);
 				}
-			</button>
-		);
+			}}
+			tabIndex={this.props.tabIndex}
+			title={this.props.title}
+			type={this.props.type}
+			style={this.props.style}
+		>
+			{this.props.iconPosition === 'right' ? this.renderLabel() : null}
+
+			{this.props.iconName || this.props.iconPath
+				? this.renderIcon(this.props.iconName)
+				: null}
+			{this.props.iconVariant === 'more' ? (
+				<ButtonIcon category="utility" name="down" size="x-small" />
+			) : null}
+
+			{this.props.iconPosition === 'left' || !this.props.iconPosition
+				? this.renderLabel()
+				: null}
+			{
+				this.props.children // eslint-disable-line react/prop-types
+			}
+		</button>
+	);
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
-	renderTooltip = () => <Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>;
+	renderTooltip = () => (
+		<Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>
+	);
 
 	render() {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
