@@ -49,9 +49,8 @@ const defaultFilter = (term, item) => {
 	);
 };
 
-const normalizeSearchTerm = (string) => {
-	return (string || '').toString().replace(/^\s+/, '');
-},
+const normalizeSearchTerm = (string) =>
+	(string || '').toString().replace(/^\s+/, '');
 
 /**
  * ** Lookup is deprecated. Please use an auto-complete Combobox instead.**
@@ -61,9 +60,9 @@ const normalizeSearchTerm = (string) => {
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  */
 const Lookup = class extends React.Component {
-    static displayName = LOOKUP;
+	static displayName = LOOKUP;
 
-    static propTypes = {
+	static propTypes = {
 		/**
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
@@ -206,24 +205,24 @@ const Lookup = class extends React.Component {
 		selectedItem: PropTypes.number,
 	};
 
-    static defaultProps = {
-        constrainToScrollParent: true,
-        filterWith: defaultFilter,
-        iconPosition: 'right',
-        searchTerm: '',
-        menuPosition: 'absolute',
-    };
+	static defaultProps = {
+		constrainToScrollParent: true,
+		filterWith: defaultFilter,
+		iconPosition: 'right',
+		searchTerm: '',
+		menuPosition: 'absolute',
+	};
 
-    state = {
-        currentFocus: null,
-        focusIndex: null,
-        items: [],
-        listLength: this.props.options.length,
-        searchTerm: normalizeSearchTerm(this.props.searchTerm),
-        selectedIndex: this.props.selectedItem,
-    };
+	state = {
+		currentFocus: null,
+		focusIndex: null,
+		items: [],
+		listLength: this.props.options.length,
+		searchTerm: normalizeSearchTerm(this.props.searchTerm),
+		selectedIndex: this.props.selectedItem,
+	};
 
-    componentWillMount() {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(LOOKUP, this.props);
 
@@ -231,11 +230,11 @@ const Lookup = class extends React.Component {
 		this.pills = [];
 	}
 
-    componentDidMount() {
+	componentDidMount() {
 		this.modifyItems(this.props.options);
 	}
 
-    componentWillReceiveProps(newProps) {
+	componentWillReceiveProps(newProps) {
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}
@@ -247,7 +246,7 @@ const Lookup = class extends React.Component {
 		}
 	}
 
-    componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (
 			!isNaN(parseInt(prevState.selectedIndex, 10)) &&
 			isNaN(parseInt(this.state.selectedIndex, 10))
@@ -265,14 +264,13 @@ const Lookup = class extends React.Component {
 		}
 	}
 
-    getClassName = () => {
-		return classNames(this.props.className, 'slds-form-element slds-lookup', {
+	getClassName = () =>
+		classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.isSelected(),
 			'slds-is-open': this.getIsOpen(),
 		});
-	};
 
-    setFirstIndex = () => {
+	setFirstIndex = () => {
 		let nextFocusIndex = 0;
 		let filteredItem = this.state.items[0];
 
@@ -287,7 +285,7 @@ const Lookup = class extends React.Component {
 		this.setState({ focusIndex: nextFocusIndex });
 	};
 
-    getHeader = () => {
+	getHeader = () => {
 		const Header = this.props.headerRenderer;
 		const headerActive = this.state.focusIndex === 0;
 
@@ -306,7 +304,7 @@ const Lookup = class extends React.Component {
 		);
 	};
 
-    getFooter = () => {
+	getFooter = () => {
 		const Footer = this.props.footerRenderer;
 		const numFocusable = this.getNumFocusableItems();
 		const footerActive = this.state.focusIndex === numFocusable;
@@ -325,23 +323,20 @@ const Lookup = class extends React.Component {
 		);
 	};
 
-    setFocus = (id) => {
+	setFocus = (id) => {
 		this.setState({ currentFocus: id });
 	};
 
-    getIsOpen = () => {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
-	};
+	getIsOpen = () =>
+		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 
-    getListLength = (qty) => {
+	getListLength = (qty) => {
 		if (qty !== this.state.listLength) {
 			this.setState({ listLength: qty });
 		}
 	};
 
-    getNumFocusableItems = () => {
+	getNumFocusableItems = () => {
 		let offset = 0;
 
 		if (this.footerComponent) {
@@ -355,10 +350,10 @@ const Lookup = class extends React.Component {
 		return this.state.listLength - 1 + offset;
 	};
 
-    // =================================================
-    // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
-    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
-    increaseIndex = () => {
+	// =================================================
+	// Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
+	// Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
+	increaseIndex = () => {
 		const numFocusable = this.getNumFocusableItems();
 		let nextFocusIndex =
 			this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
@@ -373,7 +368,7 @@ const Lookup = class extends React.Component {
 		this.setState({ focusIndex: nextFocusIndex });
 	};
 
-    decreaseIndex = () => {
+	decreaseIndex = () => {
 		const numFocusable = this.getNumFocusableItems();
 		let prevFocusIndex =
 			this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
@@ -388,16 +383,16 @@ const Lookup = class extends React.Component {
 		this.setState({ focusIndex: prevFocusIndex });
 	};
 
-    // =================================================
-    // Select menu item (onClick or on key enter/space)
-    selectItem = (itemId) => {
+	// =================================================
+	// Select menu item (onClick or on key enter/space)
+	selectItem = (itemId) => {
 		if (itemId) {
 			const index = itemId.replace('item-', '');
 			this.selectItemByIndex(index);
 		}
 	};
 
-    selectItemByIndex = (index) => {
+	selectItemByIndex = (index) => {
 		if (index >= 0 && index < this.state.items.length) {
 			if (this.props.onRequestClose) {
 				this.props.onRequestClose();
@@ -414,7 +409,7 @@ const Lookup = class extends React.Component {
 		}
 	};
 
-    handleDeleteSelected = () => {
+	handleDeleteSelected = () => {
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		}
@@ -430,9 +425,9 @@ const Lookup = class extends React.Component {
 		}
 	};
 
-    // =================================================
-    // Event Listeners on Input
-    handleClose = () => {
+	// =================================================
+	// Event Listeners on Input
+	handleClose = () => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
@@ -443,36 +438,36 @@ const Lookup = class extends React.Component {
 		});
 	};
 
-    handleClickOutside = () => {
+	handleClickOutside = () => {
 		this.handleClose();
 	};
 
-    handleEscape = (event) => {
+	handleEscape = (event) => {
 		if (this.getIsOpen() && event) {
 			EventUtil.trap(event);
 		}
 		this.handleClose();
 	};
 
-    handleCancel = () => {
+	handleCancel = () => {
 		this.handleClose();
 	};
 
-    handleClick = () => {
+	handleClick = () => {
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		}
 		this.setState({ isOpen: true });
 	};
 
-    handleBlur = (event) => {
+	handleBlur = (event) => {
 		if (this.props.onBlur) {
 			const target = event.target || event.currentTarget;
 			this.props.onBlur(target.value);
 		}
 	};
 
-    handleFocus = (event) => {
+	handleFocus = (event) => {
 		if (this.props.onFocus) {
 			const target = event.target || event.currentTarget;
 			this.props.onFocus(target.value);
@@ -483,15 +478,15 @@ const Lookup = class extends React.Component {
 		this.setState({ isOpen: true });
 	};
 
-    handleChange = (event) => {
+	handleChange = (event) => {
 		const target = event.target || event.currentTarget;
-		this.setState({ searchTerm: this.normalizeSearchTerm(target.value) });
+		this.setState({ searchTerm: normalizeSearchTerm(target.value) });
 		if (this.props.onChange) {
 			this.props.onChange(target.value);
 		}
 	};
 
-    handleKeyDown = (event) => {
+	handleKeyDown = (event) => {
 		if (event.keyCode) {
 			// If user hits esc key or tab key, close menu
 			if (event.keyCode === KEYS.ESCAPE) {
@@ -546,7 +541,7 @@ const Lookup = class extends React.Component {
 		}
 	};
 
-    handlePillKeyDown = (event) => {
+	handlePillKeyDown = (event) => {
 		if (event.keyCode) {
 			if (event.keyCode === KEYS.DELETE || event.keyCode === KEYS.BACKSPACE) {
 				EventUtil.trapImmediate(event);
@@ -555,22 +550,20 @@ const Lookup = class extends React.Component {
 		}
 	};
 
-    inputRefId = () => {
-		return `${this.props.label}Lookup`;
-	};
+	inputRefId = () => `${this.props.label}Lookup`;
 
-    focusInput = () => {
+	focusInput = () => {
 		this.focusOnRender = true;
 	};
 
-    isSelected = () => {
+	isSelected = () => {
 		const hasSelection =
 			!isNaN(parseInt(this.state.selectedIndex, 10)) &&
 			this.state.selectedIndex >= 0;
 		return hasSelection;
 	};
 
-    modifyItems = (itemsToModify) => {
+	modifyItems = (itemsToModify) => {
 		const items = itemsToModify.map((item, index) => ({
 			id: `item-${index}`,
 			label: item.label,
@@ -580,37 +573,35 @@ const Lookup = class extends React.Component {
 		this.setState({ items });
 	};
 
-    // =================================================
-    // Rendering Things
-    renderMenuContent = () => {
-		return (
-			<Menu
-				ref={(menu) => {
-					this.menuComponent = menu;
-				}}
-				emptyMessage={this.props.emptyMessage}
-				filterWith={this.props.filterWith}
-				focusIndex={this.state.focusIndex}
-				footer={this.props.footerRenderer ? this.getFooter() : null}
-				getListLength={this.getListLength}
-				header={this.props.headerRenderer ? this.getHeader() : null}
-				iconCategory={this.props.iconCategory}
-				iconInverse={this.props.iconInverse}
-				iconName={this.props.iconName}
-				items={this.state.items}
-				label={this.props.label}
-				listItemLabelRenderer={this.props.listItemLabelRenderer}
-				listLength={this.state.listLength}
-				onSelect={this.selectItem}
-				searchTerm={this.state.searchTerm}
-				sectionDividerRenderer={this.props.sectionDividerRenderer}
-				setFocus={this.setFocus}
-			/>
-		);
-	};
+	// =================================================
+	// Rendering Things
+	renderMenuContent = () => (
+		<Menu
+			ref={(menu) => {
+				this.menuComponent = menu;
+			}}
+			emptyMessage={this.props.emptyMessage}
+			filterWith={this.props.filterWith}
+			focusIndex={this.state.focusIndex}
+			footer={this.props.footerRenderer ? this.getFooter() : null}
+			getListLength={this.getListLength}
+			header={this.props.headerRenderer ? this.getHeader() : null}
+			iconCategory={this.props.iconCategory}
+			iconInverse={this.props.iconInverse}
+			iconName={this.props.iconName}
+			items={this.state.items}
+			label={this.props.label}
+			listItemLabelRenderer={this.props.listItemLabelRenderer}
+			listLength={this.state.listLength}
+			onSelect={this.selectItem}
+			searchTerm={this.state.searchTerm}
+			sectionDividerRenderer={this.props.sectionDividerRenderer}
+			setFocus={this.setFocus}
+		/>
+	);
 
-    renderInlineMenu = () => {
-		return this.getIsOpen() ? (
+	renderInlineMenu = () =>
+		this.getIsOpen() ? (
 			<div
 				className="ignore-react-onclickoutside slds-lookup__menu"
 				role="listbox"
@@ -618,9 +609,8 @@ const Lookup = class extends React.Component {
 				{this.renderMenuContent()}
 			</div>
 		) : null;
-	};
 
-    renderSeparateMenu = () => {
+	renderSeparateMenu = () => {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
 			? 'relative'
@@ -644,47 +634,45 @@ const Lookup = class extends React.Component {
 		) : null;
 	};
 
-    renderInput = () => {
-		return (
-			<Input
-				aria-activedescendant={
-					this.state.currentFocus ? this.state.currentFocus : ''
+	renderInput = () => (
+		<Input
+			aria-activedescendant={
+				this.state.currentFocus ? this.state.currentFocus : ''
+			}
+			aria-autocomplete="list"
+			aria-describedby={this.props.describedById}
+			aria-expanded={!!this.getIsOpen()}
+			assistiveText={this.props.assistiveText}
+			className="slds-lookup__search-input"
+			disabled={this.props.disabled}
+			iconRight={
+				<InputIcon
+					assistiveText={{ icon: 'Search' }}
+					category="utility"
+					name="search"
+				/>
+			}
+			id={this.inputRefId()}
+			onBlur={this.handleBlur}
+			onChange={this.handleChange}
+			onClick={this.handleClick}
+			onFocus={this.handleFocus}
+			onKeyDown={this.handleKeyDown}
+			inputRef={(component) => {
+				this.input = component;
+				if (this.focusOnRender) {
+					this.input.focus();
+					this.focusOnRender = false;
 				}
-				aria-autocomplete="list"
-				aria-describedby={this.props.describedById}
-				aria-expanded={!!this.getIsOpen()}
-				assistiveText={this.props.assistiveText}
-				className="slds-lookup__search-input"
-				disabled={this.props.disabled}
-				iconRight={
-					<InputIcon
-						assistiveText={{ icon: 'Search' }}
-						category="utility"
-						name="search"
-					/>
-				}
-				id={this.inputRefId()}
-				onBlur={this.handleBlur}
-				onChange={this.handleChange}
-				onClick={this.handleClick}
-				onFocus={this.handleFocus}
-				onKeyDown={this.handleKeyDown}
-				inputRef={(component) => {
-					this.input = component;
-					if (this.focusOnRender) {
-						this.input.focus();
-						this.focusOnRender = false;
-					}
-				}}
-				placeholder={this.props.placeholder}
-				role="combobox"
-				type="text"
-				value={this.state.searchTerm}
-			/>
-		);
-	};
+			}}
+			placeholder={this.props.placeholder}
+			role="combobox"
+			type="text"
+			value={this.state.searchTerm}
+		/>
+	);
 
-    renderSelectedItem = () => {
+	renderSelectedItem = () => {
 		const selectedItem = this.props.options[this.state.selectedIndex].label;
 		const renderIcon = this.props.iconName ? (
 			<Icon
@@ -727,7 +715,7 @@ const Lookup = class extends React.Component {
 		);
 	};
 
-    renderLabel = () => {
+	renderLabel = () => {
 		let inputLabel;
 		const required = this.props.required ? (
 			<span className="slds-required">*</span>
@@ -755,7 +743,7 @@ const Lookup = class extends React.Component {
 		return inputLabel;
 	};
 
-    render() {
+	render() {
 		let isInline;
 		/* eslint-disable react/prop-types */
 		if (this.props.isInline) {
