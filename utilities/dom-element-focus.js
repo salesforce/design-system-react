@@ -26,9 +26,16 @@ const handleScopedKeyDown = (event) => {
 // PUBLIC methods
 
 const ElementFocus = {
-	focusAncestor: () => {
+	focusAncestor: ({ isPortal }) => {
 		if (canUseDOM) {
-			ancestor.focus();
+			// When a portal is used (that is attaching a separate React mount, such as with Popover) programatic focusing within that portal may cause the window to scroll down to the DOM insertion point at the end of `body`. The following prevents the scrolling from occuring.
+			if (isPortal) {
+				const offset = window.pageYOffset;
+				ancestor.focus({ preventScroll: true });
+				window.scrollTo(window.pageXOffset, offset);
+			} else {
+				ancestor.focus();
+			}
 		}
 	},
 	hasOrAncestorHasFocus: () =>
