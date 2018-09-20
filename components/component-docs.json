@@ -866,7 +866,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content to be injected inside inside the brand band, if any"
+                "description": "Primary application grid layout or a white background component such as a `Card` should be passed into this component."
             },
             "className": {
                 "type": {
@@ -5231,11 +5231,7 @@
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).",
-                            "defaultValue": {
-                                "value": "'12px 16px'",
-                                "computed": false
-                            }
+                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
                         },
                         "onSelect": {
                             "type": {
@@ -5385,11 +5381,7 @@
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).",
-                            "defaultValue": {
-                                "value": "'-12px -18px'",
-                                "computed": false
-                            }
+                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
                         },
                         "onSelect": {
                             "type": {
@@ -6529,6 +6521,18 @@
                 "returns": null
             },
             {
+                "name": "getListItemId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "setFocus",
                 "docblock": null,
                 "modifiers": [],
@@ -6723,6 +6727,58 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyboardNavigate",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{\n    event,\n    isOpen = true,\n    keyCode,\n    onFocus = this.handleKeyboardFocus,\n    onSelect,\n    target,\n    toggleOpen = noop,\n}",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyboardFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "focusedIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "focusMenuItem",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "menuItem",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "scrollToMenuItem",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "menu",
+                        "type": null
+                    },
+                    {
+                        "name": "menuItem",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -7354,6 +7410,14 @@
                 },
                 "required": false,
                 "description": "Whether this dropdown supports multi select."
+            }
+        },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
             }
         },
         "route": "dropdown-menus",

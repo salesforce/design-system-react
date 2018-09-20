@@ -31,6 +31,30 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.26
+
+**Bugfixes**
+
+* Fixes DataTable fixed layout width prop issue
+
+* Do not dismiss combobox lookup menu when clicking on menu scrollbar
+
+**Minor Features**
+
+* Adds additional helpful instruction for the pr template
+
+**Maintenance**
+
+* Converts Dropdown to ES6 class
+
+* Removes find dom node from Dropdown
+
+* Creates local ESLint plugin and rule to disallow double-dash (`--`) modifier class names
+
+* Makes eslint plugin for SLDS external
+
+* Removes Mocha console errors
+
 ## Release 0.8.25
 
 **Minor Features**
