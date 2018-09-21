@@ -21,6 +21,8 @@ if [ "$GIT_SSH_KEY" != "" ]; then
 	npm install --unsafe-perm
 
 	if [ "$IS_BUILD_SERVER" = "true" ]; then
+		echo "## This is a build server."
+		echo "Cloning"
 		# setup git environment
 		git clone "${ORIGIN:-git@github.com:salesforce-ux/design-system-react.git}"
 		cd design-system-react
@@ -28,7 +30,10 @@ if [ "$GIT_SSH_KEY" != "" ]; then
 		git config --global user.name "Build Server"
 		git remote -v
 
+		echo "NPM install for inside repo"
 		npm install  --unsafe-perm
+		echo "Running release script on branch: "
+		echo "${TARGET_BRANCH:-master}"
 		./node_modules/.bin/babel-node ./scripts/release.js --remote=origin --buildserver=true
 	fi
 
