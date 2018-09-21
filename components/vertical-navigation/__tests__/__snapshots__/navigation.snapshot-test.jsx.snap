@@ -6,11 +6,11 @@ exports[`Navigation
 		variant
 	DOM Snapshot 1`] = `
 <div
-  className="slds-grid slds-grid--vertical slds-navigation-list--vertical slds-navigation-list--vertical-inverse CUSTOM-CLASSNAME"
+  className="slds-grid slds-grid_vertical slds-navigation-list_vertical slds-navigation-list_vertical-inverse CUSTOM-CLASSNAME"
   id="CUSTOM-ID"
 >
   <h2
-    className="slds-text-title--caps slds-p-around--medium"
+    className="slds-text-title_caps slds-p-around_medium"
     id="CUSTOM-ID-reports"
   >
     Reports
@@ -21,7 +21,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="recent_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -34,7 +34,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="my_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -47,7 +47,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="private_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -60,7 +60,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="public_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -73,7 +73,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="all_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -83,7 +83,7 @@ exports[`Navigation
     </li>
   </ul>
   <h2
-    className="slds-text-title--caps slds-p-around--medium"
+    className="slds-text-title_caps slds-p-around_medium"
     id="CUSTOM-ID-folders"
   >
     Folders
@@ -94,7 +94,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-folders"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="my_folders"
         href="http://www.google.com"
         onClick={[Function]}
@@ -107,7 +107,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-folders"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="shared_folders"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -120,7 +120,7 @@ exports[`Navigation
     >
       <a
         aria-describedby="CUSTOM-ID-folders"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="all_folders"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -134,11 +134,11 @@ exports[`Navigation
 
 exports[`Navigation Default DOM Snapshot 1`] = `
 <div
-  className="slds-grid slds-grid--vertical slds-navigation-list--vertical"
+  className="slds-grid slds-grid_vertical slds-navigation-list_vertical"
   id="sample-navigation"
 >
   <h2
-    className="slds-text-title--caps slds-p-around--medium"
+    className="slds-text-title_caps slds-p-around_medium"
     id="sample-navigation-reports"
   >
     Reports
@@ -149,7 +149,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="recent_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -162,7 +162,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="my_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -175,7 +175,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="private_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -188,7 +188,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="public_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -201,7 +201,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="all_reports"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -211,7 +211,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     </li>
   </ul>
   <h2
-    className="slds-text-title--caps slds-p-around--medium"
+    className="slds-text-title_caps slds-p-around_medium"
     id="sample-navigation-folders"
   >
     Folders
@@ -222,7 +222,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-folders"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="my_folders"
         href="http://www.google.com"
         onClick={[Function]}
@@ -235,7 +235,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-folders"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="shared_folders"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -248,7 +248,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     >
       <a
         aria-describedby="sample-navigation-folders"
-        className="slds-navigation-list--vertical__action slds-text-link--reset"
+        className="slds-navigation-list_vertical__action slds-text-link_reset"
         data-id="all_folders"
         href="javascript:void(0);"
         onClick={[Function]}
@@ -261,20 +261,20 @@ exports[`Navigation Default DOM Snapshot 1`] = `
 `;
 
 exports[`Navigation Default HTML Snapshot 1`] = `
-"<div id=\\"sample-navigation\\" class=\\"slds-grid slds-grid--vertical slds-navigation-list--vertical\\">
-  <h2 id=\\"sample-navigation-reports\\" class=\\"slds-text-title--caps slds-p-around--medium\\">Reports</h2>
+"<div id=\\"sample-navigation\\" class=\\"slds-grid slds-grid_vertical slds-navigation-list_vertical\\">
+  <h2 id=\\"sample-navigation-reports\\" class=\\"slds-text-title_caps slds-p-around_medium\\">Reports</h2>
   <ul>
-    <li class=\\"slds-is-active\\"><a data-id=\\"recent_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-reports\\">Recent</a></li>
-    <li class=\\"\\"><a data-id=\\"my_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-reports\\">Created by Me</a></li>
-    <li class=\\"\\"><a data-id=\\"private_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-reports\\">Private Reports</a></li>
-    <li class=\\"\\"><a data-id=\\"public_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-reports\\">Public Reports</a></li>
-    <li class=\\"\\"><a data-id=\\"all_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-reports\\">All Reports</a></li>
+    <li class=\\"slds-is-active\\"><a data-id=\\"recent_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Recent</a></li>
+    <li class=\\"\\"><a data-id=\\"my_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Created by Me</a></li>
+    <li class=\\"\\"><a data-id=\\"private_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Private Reports</a></li>
+    <li class=\\"\\"><a data-id=\\"public_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Public Reports</a></li>
+    <li class=\\"\\"><a data-id=\\"all_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">All Reports</a></li>
   </ul>
-  <h2 id=\\"sample-navigation-folders\\" class=\\"slds-text-title--caps slds-p-around--medium\\">Folders</h2>
+  <h2 id=\\"sample-navigation-folders\\" class=\\"slds-text-title_caps slds-p-around_medium\\">Folders</h2>
   <ul>
-    <li class=\\"\\"><a data-id=\\"my_folders\\" href=\\"http://www.google.com\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-folders\\">Created by Me</a></li>
-    <li class=\\"\\"><a data-id=\\"shared_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-folders\\">Shared with Me</a></li>
-    <li class=\\"\\"><a data-id=\\"all_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list--vertical__action slds-text-link--reset\\" aria-describedby=\\"sample-navigation-folders\\">All Folders</a></li>
+    <li class=\\"\\"><a data-id=\\"my_folders\\" href=\\"http://www.google.com\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-folders\\">Created by Me</a></li>
+    <li class=\\"\\"><a data-id=\\"shared_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-folders\\">Shared with Me</a></li>
+    <li class=\\"\\"><a data-id=\\"all_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-folders\\">All Folders</a></li>
   </ul>
 </div>"
 `;

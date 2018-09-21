@@ -303,7 +303,7 @@ const DatepickerCalendar = createReactClass({
 								<a
 									href="javascript:void(0)" // eslint-disable-line no-script-url
 									tabIndex="0"
-									className="slds-show--inline-block slds-p-bottom--x-small"
+									className="slds-show_inline-block slds-p-bottom_x-small"
 									onClick={(event) => {
 										this.handleSelectDate(event, { date: new Date() });
 									}}

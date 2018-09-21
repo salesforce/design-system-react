@@ -59,7 +59,7 @@ const DataTableHead = createReactClass({
 							scope="col"
 							style={{ width: '3.25rem' }}
 						>
-							<div className="slds-th__action slds-th__action--form">
+							<div className="slds-th__action slds-th__action_form">
 								<Checkbox
 									assistiveText={{
 										label: this.props.assistiveText.selectAllRows,

@@ -97,16 +97,16 @@ const ListItem = createReactClass({
 
 		if (position === 'left') {
 			if (this.props.checkmark) {
-				classnames.push('slds-icon--selected');
+				classnames.push('slds-icon_selected');
 				iconProps = {
 					category: 'utility',
 					name: 'check',
 				};
 			}
 
-			classnames.push('slds-m-right--x-small');
+			classnames.push('slds-m-right_x-small');
 		} else {
-			classnames.push('slds-m-left--small');
+			classnames.push('slds-m-left_small');
 		}
 
 		if (iconProps) {
@@ -149,8 +149,8 @@ const ListItem = createReactClass({
 						className={classNames(
 							'slds-dropdown__header',
 							{
-								'slds-has-divider--top-space': this.props.divider === 'top',
-								'slds-has-divider--bottom-space':
+								'slds-has-divider_top-space': this.props.divider === 'top',
+								'slds-has-divider_bottom-space':
 									this.props.divider === 'bottom',
 							},
 							this.props.className
@@ -158,7 +158,7 @@ const ListItem = createReactClass({
 						onMouseDown={this.handleMouseDown}
 						role="separator"
 					>
-						<span className="slds-text-title--caps">{this.props.label}</span>
+						<span className="slds-text-title_caps">{this.props.label}</span>
 					</li>
 				);
 			}

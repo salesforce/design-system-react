@@ -61,7 +61,7 @@ const PanelFilterList = createReactClass({
 					{child.props.errorLabel ? (
 						<p
 							id={`${id}-error`}
-							className="slds-text-color--error slds-m-top--xx-small"
+							className="slds-text-color_error slds-m-top_xx-small"
 						>
 							{child.props.errorLabel}
 						</p>
@@ -71,7 +71,7 @@ const PanelFilterList = createReactClass({
 		});
 
 		return (
-			<ol className="slds-list--vertical slds-list--vertical-space">
+			<ol className="slds-list_vertical slds-list_vertical-space">
 				{children}
 			</ol>
 		);

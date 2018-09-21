@@ -28,7 +28,7 @@ const Example = createReactClass({
 						size="large"
 						title="Modal header"
 					>
-						<section className="slds-p-around--medium">
+						<section className="slds-p-around_medium">
 							<p>
 								Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
 								ullamco deserunt aute id consequat veniam incididunt duis in

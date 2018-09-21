@@ -13,7 +13,7 @@ const getIconButton = (props) => getButton({ variant: 'icon', ...props });
 
 storiesOf(BUTTON, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -52,7 +52,7 @@ storiesOf(BUTTON, module)
 	)
 	.addDecorator((getStory) => (
 		<div
-			className="slds-p-around--medium slds-hint-parent"
+			className="slds-p-around_medium slds-hint-parent"
 			style={{ backgroundColor: '#16325c' }}
 		>
 			{getStory()}

@@ -26,7 +26,7 @@ const PanelFilterFooter = ({
 	<div className="slds-filters__footer slds-grid slds-shrink-none">
 		<Button label={addFilterLabel} onClick={onClickAdd} variant="link" />
 		<Button
-			className="slds-col--bump-left"
+			className="slds-col_bump-left"
 			label={removeAllLabel}
 			onClick={onClickRemoveAll}
 			variant="link"

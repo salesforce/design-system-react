@@ -35,8 +35,8 @@ const leadSourceTypes = [
 ];
 
 const modalContent = (
-	<section className="slds-p-around--large">
-		<div className="slds-form-element slds-m-bottom--large">
+	<section className="slds-p-around_large">
+		<div className="slds-form-element slds-m-bottom_large">
 			<label className="slds-form-element__label" htmlFor="opptyName">
 				Opportunity Name
 			</label>
@@ -49,7 +49,7 @@ const modalContent = (
 				/>
 			</div>
 		</div>
-		<div className="slds-form-element slds-m-bottom--large">
+		<div className="slds-form-element slds-m-bottom_large">
 			<label className="slds-form-element__label" htmlFor="description">
 				Opportunity Description
 			</label>
@@ -62,7 +62,7 @@ const modalContent = (
 			</div>
 		</div>
 
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -75,7 +75,7 @@ const modalContent = (
 				/>
 			</div>
 		</div>
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -88,7 +88,7 @@ const modalContent = (
 				/>
 			</div>
 		</div>
-		<div className="slds-m-bottom--large">
+		<div className="slds-m-bottom_large">
 			<Datepicker
 				onDateChange={() => {
 					action('date is selected');
@@ -96,11 +96,11 @@ const modalContent = (
 			/>
 		</div>
 
-		<div className="slds-form-element slds-m-bottom--large">
+		<div className="slds-form-element slds-m-bottom_large">
 			<ComboboxBase />
 		</div>
 
-		<div className="slds-m-bottom--large">
+		<div className="slds-m-bottom_large">
 			<Combobox
 				events={{
 					onSelect: (event, data) =>
@@ -117,7 +117,7 @@ const modalContent = (
 			/>
 		</div>
 
-		<div className="slds-m-bottom--large">
+		<div className="slds-m-bottom_large">
 			<Timepicker
 				onDateChange={() => {
 					action('time is selected');
@@ -125,7 +125,7 @@ const modalContent = (
 			/>
 		</div>
 
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -139,7 +139,7 @@ const modalContent = (
 			</div>
 		</div>
 
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -152,7 +152,7 @@ const modalContent = (
 				/>
 			</div>
 		</div>
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -165,7 +165,7 @@ const modalContent = (
 				/>
 			</div>
 		</div>
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -178,7 +178,7 @@ const modalContent = (
 				/>
 			</div>
 		</div>
-		<div className="slds-form-element slds-m-vertical--large">
+		<div className="slds-form-element slds-m-vertical_large">
 			<label className="slds-form-element__label" htmlFor="amount">
 				Amount
 			</label>
@@ -196,7 +196,7 @@ const modalContent = (
 
 storiesOf(MODAL, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -267,12 +267,12 @@ storiesOf(MODAL, module)
 			isOpen: true,
 			title: 'Delete state - Default',
 			children: (
-				<div className="slds-p-around--medium">
+				<div className="slds-p-around_medium">
 					Are you sure you want to delete the Default State? This action cannot
 					be undone. Are you sure you want to delete the Default State? This
 					action cannot be undone. Are you sure you want to delete the Default
 					State? This action cannot be undone.{' '}
-					<Button className="slds-m-around--medium">Ok, got it!</Button>
+					<Button className="slds-m-around_medium">Ok, got it!</Button>
 				</div>
 			), // eslint-disable-line max-len
 			prompt: 'error',

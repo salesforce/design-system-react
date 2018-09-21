@@ -8,8 +8,8 @@ import Icon from '~/components/icon';
 const panelContent = (
 	<div>
 		<dl className="slds-popover__body-list">
-			<dt className="slds-m-bottom--small">
-				<div className="slds-media slds-media--center">
+			<dt className="slds-m-bottom_small">
+				<div className="slds-media slds-media_center">
 					<div className="slds-media__figure">
 						<Icon
 							assistiveText={{ label: 'Opportunity Icon' }}
@@ -22,7 +22,7 @@ const panelContent = (
 					<div className="slds-media__body">
 						<p
 							id="ALTERNATIVE-HEADING"
-							className="slds-text-heading--small slds-hyphenate"
+							className="slds-text-heading_small slds-hyphenate"
 						>
 							Opportunities (1+)
 						</p>
@@ -34,23 +34,23 @@ const panelContent = (
 					<a href="javascript:void(0);">Tesla - Mule ESB</a>
 				</p>
 				<div className="slds-tile__detail">
-					<dl className="slds-dl--horizontal slds-text-body--small">
-						<dt className="slds-dl--horizontal__label">
+					<dl className="slds-dl_horizontal slds-text-body_small">
+						<dt className="slds-dl_horizontal__label">
 							<p className="slds-truncate" title="Value">
 								Value
 							</p>
 						</dt>
-						<dd className="slds-dl--horizontal__detail slds-tile__meta">
+						<dd className="slds-dl_horizontal__detail slds-tile__meta">
 							<p className="slds-truncate" title="$500,000">
 								$500,000
 							</p>
 						</dd>
-						<dt className="slds-dl--horizontal__label">
+						<dt className="slds-dl_horizontal__label">
 							<p className="slds-truncate" title="Close Date">
 								Close Date
 							</p>
 						</dt>
-						<dd className="slds-dl--horizontal__detail slds-tile__meta">
+						<dd className="slds-dl_horizontal__detail slds-tile__meta">
 							<p className="slds-truncate" title="Dec 15, 2015">
 								Dec 15, 2015
 							</p>
@@ -58,7 +58,7 @@ const panelContent = (
 					</dl>
 				</div>
 			</dd>
-			<dd className="slds-m-top--x-small slds-text-align--right">
+			<dd className="slds-m-top_x-small slds-text-align_right">
 				<a href="javascript:void(0);" title="View all Opportunities">
 					View All
 				</a>

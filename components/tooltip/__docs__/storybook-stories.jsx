@@ -55,7 +55,7 @@ const getPopoverTooltipAlign = (props) => {
 storiesOf(POPOVER_TOOLTIP, module)
 	.addDecorator((getStory) => (
 		<div
-			className="slds-p-around--medium slds-m-horizontal--x-large"
+			className="slds-p-around_medium slds-m-horizontal_x-large"
 			style={{
 				margin: '150px auto',
 				width: '500px',

@@ -218,7 +218,7 @@ const InnerInput = (props) => {
 				'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
 				'slds-input-has-fixed-addon':
 					props.fixedTextLeft || props.fixedTextRight,
-				'slds-has-divider--bottom': props.isStatic,
+				'slds-has-divider_bottom': props.isStatic,
 			})}
 			{...containerProps}
 		>

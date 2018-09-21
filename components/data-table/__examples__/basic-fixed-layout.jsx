@@ -90,7 +90,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Basic Fixed Layout
 					</h3>
 					<DataTable

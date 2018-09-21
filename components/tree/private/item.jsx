@@ -170,7 +170,7 @@ const Item = (props) => {
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
-					className="slds-m-right--small slds-is-disabled"
+					className="slds-m-right_small slds-is-disabled"
 					disabled
 				/>
 				{/* eslint-disable no-script-url */}

@@ -131,7 +131,7 @@ const GlobalHeader = createReactClass({
 				{this.props.onSkipToNav ? (
 					<a
 						href="javascript:void(0);"
-						className="slds-assistive-text slds-assistive-text--focus"
+						className="slds-assistive-text slds-assistive-text_focus"
 						onClick={this.handleSkipToNav}
 					>
 						{this.props.skipToNavAssistiveText || assistiveText.skipToNav}
@@ -140,14 +140,14 @@ const GlobalHeader = createReactClass({
 				{this.props.onSkipToContent ? (
 					<a
 						href="javascript:void(0);"
-						className="slds-assistive-text slds-assistive-text--focus"
+						className="slds-assistive-text slds-assistive-text_focus"
 						onClick={this.handleSkipToContent}
 					>
 						{this.props.skipToContentAssistiveText ||
 							assistiveText.skipToContent}
 					</a>
 				) : null}
-				<div className="slds-global-header slds-grid slds-grid--align-spread">
+				<div className="slds-global-header slds-grid slds-grid_align-spread">
 					<div className="slds-global-header__item">
 						<div
 							className="slds-global-header__logo"
@@ -155,7 +155,7 @@ const GlobalHeader = createReactClass({
 						/>
 					</div>
 					{search}
-					<ul className="slds-global-header__item slds-grid slds-grid--vertical-align-center">
+					<ul className="slds-global-header__item slds-grid slds-grid_vertical-align-center">
 						{tools}
 						{profile}
 					</ul>

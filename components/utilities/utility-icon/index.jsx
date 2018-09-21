@@ -56,7 +56,7 @@ const UtilityIcon = (
 		// Use `path` prop of Icon if present
 		modifiedPath = path;
 	} else if (context.onRequestIconPath) {
-		modifiedPath = context.onRequestIconPath({category, name});
+		modifiedPath = context.onRequestIconPath({ category, name });
 	} else if (context[`${category}Sprite`]) {
 		// Use category sprite file from IconSettings if present
 		modifiedPath = `${context[`${category}Sprite`]}#${name}`;

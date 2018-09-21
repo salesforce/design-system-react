@@ -9,7 +9,7 @@ const Example = createReactClass({
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-x-small-buttons--horizontal">
+				<div className="slds-x-small-buttons_horizontal">
 					<ButtonStateful />
 
 					<div
@@ -18,7 +18,7 @@ const Example = createReactClass({
 							padding: '10px',
 							display: 'inline-block',
 						}}
-						className="slds-m-horizontal--small"
+						className="slds-m-horizontal_small"
 					>
 						<ButtonStateful
 							inverse

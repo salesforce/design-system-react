@@ -28,15 +28,15 @@ const PanelFilterHeader = ({
 	saveLabel,
 }) =>
 	modified ? (
-		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
+		<div className="slds-filters__header slds-grid slds-has-divider_bottom-space slds-grid_align-spread">
 			<Button label={cancelLabel} onClick={onRequestCancel} variant="neutral" />
 			<Button label={saveLabel} onClick={onRequestSave} variant="brand" />
 		</div>
 	) : (
-		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
-			<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
+		<div className="slds-filters__header slds-grid slds-has-divider_bottom-space">
+			<h2 className="slds-align-middle slds-text-heading_small">{heading}</h2>
 			<Button
-				className="slds-col--bump-left"
+				className="slds-col_bump-left"
 				assistiveText={{ icon: assistiveText.closeButton }}
 				iconCategory="utility"
 				iconName="forward"

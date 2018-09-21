@@ -76,7 +76,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 	// APP LAUNCHER -----
 	// tabs?
 	// if you pass a isOpen prop, you must control the component with it (this.state.isOpen will now work)
-	// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
+	// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around_medium
 
 	describe('App Launcher', () => {
 		let onClose;
@@ -88,7 +88,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 				modalClassName: 'custom-modal-class',
 				modalHeaderButton: <Button label="App Exchange" />,
 				onClose,
-				search: <Search assistiveText="Find an app" />,
+				search: <Search assistiveText={{ icon: 'Find an app' }} />,
 				title: 'App Launcher!',
 			});
 		});
@@ -111,7 +111,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('app launcher title can be set', () => {
 			expect(handles.appLauncher).to.contain(
-				<h2 className="slds-text-heading--medium">App Launcher!</h2>
+				<h2 className="slds-text-heading_medium">App Launcher!</h2>
 			);
 		});
 
@@ -140,7 +140,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		it('renders modal content', () => {
 			should.exist(
 				handles.modal.find(
-					'.slds-modal__content .slds-app-launcher__content .slds-p-around--medium'
+					'.slds-modal__content .slds-app-launcher__content .slds-p-around_medium'
 				)
 			);
 		});

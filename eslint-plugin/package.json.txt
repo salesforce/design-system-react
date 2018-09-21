@@ -1,0 +1,38 @@
+{
+  "name": "@salesforce/eslint-plugin-slds-react",
+  "version": "0.0.1",
+  "description": "ESLint plugin that aligns React UI components with the Salesforce Lightning Design System CSS Framework.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "react",
+    "slds",
+    "salesforce",
+    "salesforce-ux",
+    "lightning",
+    "design system",
+    "lightning design system",
+    "salesforce-lightning",
+    "salesforce lightning design system"
+  ],
+  "author": {
+    "name": "Kevin Gao",
+    "email": "kgao@salesforce.com"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "dependencies": {
+    "requireindex": "~1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "~3.9.1",
+    "mocha": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "SEE LICENSE IN README.md"
+}

@@ -9,7 +9,7 @@ import CustomItemList from '../__examples__/custom-Item-list';
 
 storiesOf(SPLIT_VIEW, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base: Open', () => <Base />)
 	.add('Base: Closed', () => <Base isOpen={false} />)

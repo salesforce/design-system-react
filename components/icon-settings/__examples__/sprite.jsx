@@ -21,8 +21,8 @@ const Example = createReactClass({
 				doctypeSprite={doctypeSprite}
 				customSprite={customSprite}
 			>
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Account' }}
 							category="standard"
@@ -30,7 +30,7 @@ const Example = createReactClass({
 							size="small"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Announcement' }}
 							category="utility"
@@ -38,7 +38,7 @@ const Example = createReactClass({
 							size="small"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'Description' }}
 							category="action"
@@ -46,7 +46,7 @@ const Example = createReactClass({
 							size="small"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'XML' }}
 							category="doctype"
@@ -54,7 +54,7 @@ const Example = createReactClass({
 							size="small"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Icon
 							assistiveText={{ label: 'custom5' }}
 							category="custom"

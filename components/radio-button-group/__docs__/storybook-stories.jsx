@@ -25,7 +25,7 @@ class RadioButtonGroupExample extends React.Component {
 		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 		return (
 			<div>
-				<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
 					{this.props.heading}
 				</h1>
 				<RadioButtonGroup
@@ -65,7 +65,7 @@ RadioButtonGroupExample.defaultProps = {
 
 storiesOf(RADIO_BUTTON_GROUP, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => <RadioButtonGroupExample heading="Base" />)
 	.add('Disabled', () => (

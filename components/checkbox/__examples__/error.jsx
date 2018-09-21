@@ -7,15 +7,15 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Checkbox
 							assistiveText="Error state"
 							errorText="This field is required"
 							label="Checkbox Label"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Checkbox
 							assistiveText={{
 								label: 'Indeterminate',
@@ -24,10 +24,10 @@ class Example extends React.Component {
 							label="Indeterminate"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Checkbox assistiveText="Indeterminate" label="Required" required />
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Checkbox assistiveText="Disabled" label="Disabled" disabled />
 					</div>
 				</div>

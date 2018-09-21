@@ -169,7 +169,9 @@ describe('Tree: ', () => {
 
 	describe('Assistive Technology', () => {
 		beforeEach(
-			mountComponent(<DefaultExample log={() => {}} assistiveText="Foods" />)
+			mountComponent(
+				<DefaultExample log={() => {}} assistiveText={{ label: 'Foods' }} />
+			)
 		);
 
 		afterEach(unmountComponent);

@@ -32,8 +32,8 @@ const TabPanel = ({
 		className={classNames(className, {
 			'slds-show': selected,
 			'slds-hide': !selected,
-			'slds-tabs--default__content': variant === 'default',
-			'slds-tabs--scoped__content': variant === 'scoped',
+			'slds-tabs_default__content': variant === 'default',
+			'slds-tabs_scoped__content': variant === 'scoped',
 		})}
 		id={id}
 		role="tabpanel"
@@ -58,11 +58,11 @@ TabPanel.propTypes = {
 	 * ```
 	 * <Tabs>
 	 * 	<TabsPanel label="Tab 1">
-	 * 		<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+	 * 		<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 	 * 		<p>They show when you click the first tab.</p>
 	 * 	</TabsPanel>
 	 * 	<TabsPanel label="Tab 2">
-	 * 		<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+	 * 		<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 	 * 		<p>They show when you click the second tab.</p>
 	 * 	</TabsPanel>
 	 * </Tabs>

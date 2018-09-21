@@ -54,8 +54,8 @@ const Example = createReactClass({
 						onRequestClose={this.toggleOpen}
 						title="New Opportunity"
 					>
-						<section className="slds-p-around--large">
-							<div className="slds-form-element slds-m-bottom--large">
+						<section className="slds-p-around_large">
+							<div className="slds-form-element slds-m-bottom_large">
 								<label className="slds-form-element__label" htmlFor="opptyName">
 									Opportunity Name
 								</label>
@@ -68,7 +68,7 @@ const Example = createReactClass({
 									/>
 								</div>
 							</div>
-							<div className="slds-form-element slds-m-bottom--large">
+							<div className="slds-form-element slds-m-bottom_large">
 								<label
 									className="slds-form-element__label"
 									htmlFor="description"
@@ -83,7 +83,7 @@ const Example = createReactClass({
 									/>
 								</div>
 							</div>
-							<div className="slds-form-element slds-m-bottom--large">
+							<div className="slds-form-element slds-m-bottom_large">
 								<Lookup
 									emptyMessage="No items found"
 									hasError={false}
@@ -108,7 +108,7 @@ const Example = createReactClass({
 									sectionDividerRenderer={Lookup.DefaultSectionDivider}
 								/>
 							</div>
-							<div className="slds-m-bottom--large">
+							<div className="slds-m-bottom_large">
 								<Combobox
 									events={{
 										onSelect: (event, data) => {
@@ -130,7 +130,7 @@ const Example = createReactClass({
 									variant="readonly"
 								/>
 							</div>
-							<div className="slds-m-bottom--large">
+							<div className="slds-m-bottom_large">
 								<Combobox
 									events={{
 										onSelect: (event, data) => {
@@ -152,7 +152,7 @@ const Example = createReactClass({
 									variant="readonly"
 								/>
 							</div>
-							<div className="slds-form-element slds-m-bottom--large">
+							<div className="slds-form-element slds-m-bottom_large">
 								<label className="slds-form-element__label" htmlFor="amount">
 									Amount
 								</label>

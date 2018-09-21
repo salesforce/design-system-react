@@ -4,10 +4,10 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
 <section>
   <ol>
     <li
-      className="slds-p-bottom--large"
+      className="slds-p-bottom_large"
     >
       <h1
-        className="slds-text-title_caps slds-p-vertical--medium"
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
         1. Base Input with label
       </h1>
@@ -63,10 +63,10 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
       </div>
     </li>
     <li
-      className="slds-p-bottom--large"
+      className="slds-p-bottom_large"
     >
       <h1
-        className="slds-text-title_caps slds-p-vertical--medium"
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
         2. Base Input with no label (assistive text)
       </h1>
@@ -122,10 +122,10 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
       </div>
     </li>
     <li
-      className="slds-p-bottom--large"
+      className="slds-p-bottom_large"
     >
       <h1
-        className="slds-text-title_caps slds-p-vertical--medium"
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
         3. Base Input with min and max.
       </h1>
@@ -181,10 +181,10 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
       </div>
     </li>
     <li
-      className="slds-p-bottom--large"
+      className="slds-p-bottom_large"
     >
       <h1
-        className="slds-text-title_caps slds-p-vertical--medium"
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
         4. Base Input with min, max and step.
       </h1>
@@ -246,32 +246,32 @@ exports[`Base label, no label, min/max, min/max/step DOM Snapshot 1`] = `
 exports[`Base label, no label, min/max, min/max/step HTML Snapshot 1`] = `
 "<section>
   <ol>
-    <li class=\\"slds-p-bottom--large\\">
-      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">1. Base Input with label</h1>
+    <li class=\\"slds-p-bottom_large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical_medium\\">1. Base Input with label</h1>
       <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"base-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
         <div class=\\"slds-form-element__control\\">
           <div class=\\"slds-slider\\"><input type=\\"range\\" id=\\"base-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"100\\" step=\\"1\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
         </div>
       </div>
     </li>
-    <li class=\\"slds-p-bottom--large\\">
-      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">2. Base Input with no label (assistive text)</h1>
+    <li class=\\"slds-p-bottom_large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical_medium\\">2. Base Input with no label (assistive text)</h1>
       <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label slds-assistive-text\\" for=\\"assistiveText-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
         <div class=\\"slds-form-element__control\\">
           <div class=\\"slds-slider\\"><input type=\\"range\\" id=\\"assistiveText-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"100\\" step=\\"1\\" value=\\"0\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
         </div>
       </div>
     </li>
-    <li class=\\"slds-p-bottom--large\\">
-      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">3. Base Input with min and max.</h1>
+    <li class=\\"slds-p-bottom_large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical_medium\\">3. Base Input with min and max.</h1>
       <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"min-max-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 400</span></span></label>
         <div class=\\"slds-form-element__control\\">
           <div class=\\"slds-slider\\"><input type=\\"range\\" id=\\"min-max-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"400\\" step=\\"1\\" value=\\"200\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">200</span></div>
         </div>
       </div>
     </li>
-    <li class=\\"slds-p-bottom--large\\">
-      <h1 class=\\"slds-text-title_caps slds-p-vertical--medium\\">4. Base Input with min, max and step.</h1>
+    <li class=\\"slds-p-bottom_large\\">
+      <h1 class=\\"slds-text-title_caps slds-p-vertical_medium\\">4. Base Input with min, max and step.</h1>
       <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"min-max-step-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">My Label</span><span class=\\"slds-slider-label__range\\">0 - 400</span></span></label>
         <div class=\\"slds-form-element__control\\">
           <div class=\\"slds-slider\\"><input type=\\"range\\" id=\\"min-max-step-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"400\\" step=\\"100\\" value=\\"200\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">200</span></div>
@@ -413,10 +413,10 @@ exports[`Error HTML Snapshot 1`] = `
 
 exports[`Sizes DOM Snapshot 1`] = `
 <div
-  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center"
+  className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
 >
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -469,7 +469,7 @@ exports[`Sizes DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -522,7 +522,7 @@ exports[`Sizes DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -575,7 +575,7 @@ exports[`Sizes DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-col--padded"
+    className="slds-col_padded"
   >
     <div
       className="slds-form-element"
@@ -631,29 +631,29 @@ exports[`Sizes DOM Snapshot 1`] = `
 `;
 
 exports[`Sizes HTML Snapshot 1`] = `
-"<div class=\\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\\">
-  <div class=\\"slds-col--padded\\">
+"<div class=\\"slds-grid slds-grid_pull-padded slds-grid_vertical-align-center\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"x-small-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
         <div class=\\"slds-slider slds-size_x-small\\"><input type=\\"range\\" id=\\"x-small-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"100\\" step=\\"1\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"small-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
         <div class=\\"slds-slider slds-size_small\\"><input type=\\"range\\" id=\\"small-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"100\\" step=\\"1\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"medium-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
         <div class=\\"slds-slider slds-size_medium\\"><input type=\\"range\\" id=\\"medium-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"100\\" step=\\"1\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>
       </div>
     </div>
   </div>
-  <div class=\\"slds-col--padded\\">
+  <div class=\\"slds-col_padded\\">
     <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"large-id\\"><span class=\\"slds-slider-label\\"><span class=\\"slds-slider-label__label\\">Slider Label</span><span class=\\"slds-slider-label__range\\">0 - 100</span></span></label>
       <div class=\\"slds-form-element__control\\">
         <div class=\\"slds-slider slds-size_large\\"><input type=\\"range\\" id=\\"large-id\\" class=\\"slds-slider__range\\" min=\\"0\\" max=\\"100\\" step=\\"1\\" /><span class=\\"slds-slider__value\\" aria-hidden=\\"true\\">0</span></div>

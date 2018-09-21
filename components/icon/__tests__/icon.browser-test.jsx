@@ -73,7 +73,7 @@ describe('SLDSIcon: ', function() {
 
 		it('renders icon size class', function() {
 			svg = this.wrapper.find('svg');
-			expect(svg.hasClass('slds-icon--large')).to.be.true;
+			expect(svg.hasClass('slds-icon_large')).to.be.true;
 		});
 	});
 
@@ -113,7 +113,7 @@ describe('SLDSIcon: ', function() {
 
 		it('renders icon size class', function() {
 			svg = this.wrapper.find('svg');
-			expect(svg.hasClass('slds-icon--small')).to.be.true;
+			expect(svg.hasClass('slds-icon_small')).to.be.true;
 		});
 	});
 
@@ -132,7 +132,7 @@ describe('SLDSIcon: ', function() {
 						name="announcement"
 						size="large"
 						title="custom title"
-						className="slds-m-around--x-small"
+						className="slds-m-around_x-small"
 					/>
 				</IconSettings>
 			)
@@ -151,7 +151,7 @@ describe('SLDSIcon: ', function() {
 		});
 
 		it('renders round container', function() {
-			expect(this.wrapper).to.have.className('slds-icon_container--circle');
+			expect(this.wrapper).to.have.className('slds-icon_container_circle');
 		});
 
 		it('renders icon name class on svg', function() {
@@ -161,7 +161,7 @@ describe('SLDSIcon: ', function() {
 
 		it('renders icon size class', function() {
 			svg = this.wrapper.find('svg');
-			expect(svg.hasClass('slds-icon--large')).to.be.true;
+			expect(svg.hasClass('slds-icon_large')).to.be.true;
 		});
 
 		it('renders title', function() {
@@ -191,7 +191,7 @@ describe('SLDSIcon: ', function() {
 
 		it('medium size does not render size class', function() {
 			// also tests that all '_' are replaced with '-'
-			expect(this.wrapper.hasClass('slds-icon--medium')).to.be.false;
+			expect(this.wrapper.hasClass('slds-icon_medium')).to.be.false;
 		});
 
 		it('utility icons do not render name class on svg', function() {

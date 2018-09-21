@@ -102,10 +102,10 @@ const VerticalNavigation = createReactClass({
 				id={rootId}
 				className={classNames(
 					'slds-grid',
-					'slds-grid--vertical',
-					'slds-navigation-list--vertical',
+					'slds-grid_vertical',
+					'slds-navigation-list_vertical',
 					{
-						'slds-navigation-list--vertical-inverse': variant === 'shade',
+						'slds-navigation-list_vertical-inverse': variant === 'shade',
 					},
 					this.props.className
 				)}
@@ -117,7 +117,7 @@ const VerticalNavigation = createReactClass({
 						<h2
 							id={categoryId}
 							key={`${categoryId}-header`}
-							className="slds-text-title--caps slds-p-around--medium"
+							className="slds-text-title_caps slds-p-around_medium"
 						>
 							{category.label}
 						</h2>,

@@ -28,12 +28,12 @@ chai.use(chaiEnzyme());
 const { Simulate } = TestUtils;
 
 const COMPONENT_CSS_CLASSES = {
-	wrapper: 'slds-tabs--default--wrapper',
-	base: 'slds-tabs--default',
-	nav: 'slds-tabs--default__nav',
-	item: 'slds-tabs--default__item',
-	link: 'slds-tabs--default__link',
-	content: 'slds-tabs--default__content',
+	wrapper: 'slds-tabs_default_wrapper',
+	base: 'slds-tabs_default',
+	nav: 'slds-tabs_default__nav',
+	item: 'slds-tabs_default__item',
+	link: 'slds-tabs_default__link',
+	content: 'slds-tabs_default__content',
 	testClass: 'this-is-a-css-class-name',
 };
 
@@ -56,7 +56,7 @@ const TabsDemoComponent = createReactClass({
 			PropTypes.string,
 		]),
 		/**
-		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
+		 * HTML `id` attribute of primary element that has `.slds-tabs_default` on it. Optional: If one is not supplied, a `shortid` will be created.
 		 */
 		id: PropTypes.string,
 		/**
@@ -77,7 +77,7 @@ const TabsDemoComponent = createReactClass({
 		return (
 			<div
 				className={classNames(
-					'slds-m-top--large',
+					'slds-m-top_large',
 					`${COMPONENT_CSS_CLASSES.wrapper}`
 				)}
 			>
@@ -187,19 +187,19 @@ describe('Tabs', () => {
 			expect(myTabsListItem).to.have.length(1);
 		});
 
-		it('Tab components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--tab-<index>" to it.', function() {
+		it('Tab components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs_tab-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.item}`)
 				.forEach(function(node, index) {
-					expect(node).to.have.attr('id', `${id}-slds-tabs--tab-${index}`);
+					expect(node).to.have.attr('id', `${id}-slds-tabs_tab-${index}`);
 				});
 		});
 
-		it('TabPanel components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--panel-<index>" to it.', function() {
+		it('TabPanel components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs_panel-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.panel}`)
 				.forEach(function(node, index) {
-					expect(node).to.have.attr('id', `${id}-slds-tabs--panel-${index}`);
+					expect(node).to.have.attr('id', `${id}-slds-tabs_panel-${index}`);
 				});
 		});
 
@@ -238,24 +238,24 @@ describe('Tabs', () => {
 		);
 		after(unmountComponent);
 
-		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs--panel-<index>" to it.', function() {
+		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs_panel-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.item}`)
 				.forEach(function(node, index) {
 					expect(node).to.have.attr(
 						'aria-controls',
-						`${id}-slds-tabs--panel-${index}`
+						`${id}-slds-tabs_panel-${index}`
 					);
 				});
 		});
 
-		it('TabPanel components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs--tab-<index>" to it.', function() {
+		it('TabPanel components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs_tab-<index>" to it.', function() {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.panel}`)
 				.forEach(function(node, index) {
 					expect(node).to.have.attr(
 						'aria-labelledby',
-						`${id}-slds-tabs--tab-${index}`
+						`${id}-slds-tabs_tab-${index}`
 					);
 				});
 		});
@@ -289,8 +289,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			let myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
+			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			let myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -299,8 +299,8 @@ describe('Tabs', () => {
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(true);
 
 			myTabsListItems.at(2).simulate('click');
-			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
+			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -320,8 +320,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			const mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
+			const myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			const mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -349,8 +349,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			let myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
+			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			let myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -368,8 +368,8 @@ describe('Tabs', () => {
 				keyCode: 39,
 				which: 39,
 			});
-			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-2`);
+			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			myThirdPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-2`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -389,8 +389,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			let mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
+			let myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			let mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
@@ -408,8 +408,8 @@ describe('Tabs', () => {
 				keyCode: 39,
 				which: 39,
 			});
-			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
+			myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -437,8 +437,8 @@ describe('Tabs', () => {
 			const myTabsListItems = this.wrapper.find(
 				`.${COMPONENT_CSS_CLASSES.item}`
 			);
-			const myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-0`);
-			const mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs--panel-1`);
+			const myFirstPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-0`);
+			const mySecondPanel = this.wrapper.find(`div#${id}-slds-tabs_panel-1`);
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);

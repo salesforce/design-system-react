@@ -24,7 +24,7 @@ import DefaultExample from '../__examples__/default';
 
 storiesOf(TREE, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => (
 		<DefaultExample nodes={sampleNodesDynamicHashMap.base} action={action} />

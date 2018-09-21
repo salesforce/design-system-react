@@ -474,7 +474,7 @@ const Popover = createReactClass({
 					iconCategory="utility"
 					iconName="close"
 					iconSize="small"
-					className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
+					className="slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
 					onClick={this.handleCancel}
 					variant="icon"
 				/>
@@ -483,7 +483,7 @@ const Popover = createReactClass({
 					<header className="slds-popover__header">
 						<h2
 							id={`${this.getId()}-dialog-heading`}
-							className="slds-text-heading--small"
+							className="slds-text-heading_small"
 						>
 							{this.props.heading}
 						</h2>
