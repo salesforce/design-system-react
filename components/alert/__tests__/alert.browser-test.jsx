@@ -32,6 +32,7 @@ class DemoComponent extends Component {
 					<AlertContainer>
 						{this.state.isOpen ? (
 							<Alert
+								style={this.props.style}
 								dismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
@@ -79,6 +80,18 @@ describe('SLDSAlert: ', function() {
 			// If applicable, use second parameter to pass the data object
 			link.simulate('click', {});
 			expect(onClickHeadingLink.calledOnce).to.be.true;
+		});
+	});
+
+	describe('Basic Alert Props Render', function() {
+		beforeEach(
+			mountComponent(<DemoComponent style={{ backgroundColor: 'rgb(18, 49, 35)' }} />)
+		);
+
+		afterEach(unmountComponent);
+
+		it('render custom styles', function() {
+			expect(this.wrapper.find('.slds-notify').prop('style').backgroundColor).to.equal('rgb(18, 49, 35)');
 		});
 	});
 });
