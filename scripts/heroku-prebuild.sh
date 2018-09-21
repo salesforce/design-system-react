@@ -30,6 +30,11 @@ if [ "$GIT_SSH_KEY" != "" ]; then
 		git config --global user.name "Build Server"
 		git remote -v
 
+		if [ "${TARGET_BRANCH}" != "master" ]; then
+			echo "git checkout ${TARGET_BRANCH}"
+			git checkout "${TARGET_BRANCH}"
+		fi
+
 		echo "NPM install for inside repo"
 		npm install  --unsafe-perm
 		echo "Running release script on branch: "
