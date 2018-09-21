@@ -866,7 +866,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content to be injected inside inside the brand band, if any"
+                "description": "Primary application grid layout or a white background component such as a `Card` should be passed into this component."
             },
             "className": {
                 "type": {
