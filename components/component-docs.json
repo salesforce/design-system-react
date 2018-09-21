@@ -11770,6 +11770,13 @@
                 "required": false,
                 "description": "Triggered by close button. _Tested with Mocha testing._"
             },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component. _Tested with Mocha testing._"
+            },
             "variant": {
                 "type": {
                     "name": "enum",
