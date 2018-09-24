@@ -85,13 +85,17 @@ describe('SLDSAlert: ', function() {
 
 	describe('Basic Alert Props Render', function() {
 		beforeEach(
-			mountComponent(<DemoComponent style={{ backgroundColor: 'rgb(18, 49, 35)' }} />)
+			mountComponent(
+				<DemoComponent style={{ backgroundColor: 'rgb(18, 49, 35)' }} />
+			)
 		);
 
 		afterEach(unmountComponent);
 
 		it('render custom styles', function() {
-			expect(this.wrapper.find('.slds-notify').prop('style').backgroundColor).to.equal('rgb(18, 49, 35)');
+			expect(
+				this.wrapper.find('.slds-notify').prop('style').backgroundColor
+			).to.equal('rgb(18, 49, 35)');
 		});
 	});
 });
