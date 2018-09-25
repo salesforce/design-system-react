@@ -308,7 +308,7 @@ const DataTable = createReactClass({
 						'slds-table_cell-buffer':
 							!this.props.fixedLayout && !this.props.unbufferedCell,
 						'slds-max-medium-table_stacked': this.props.stacked,
-						'slds-max-medium-table_stacked-horizontalviewports': this.props
+						'slds-max-medium-table_stacked-horizontal': this.props
 							.stackedHorizontal,
 						'slds-table_striped': this.props.striped,
 						'slds-table_col-bordered': this.props.columnBordered,
