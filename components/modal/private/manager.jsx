@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import ReactDOM from 'react-dom';
 
 import Modal from 'react-modal';
@@ -34,20 +34,16 @@ const customStyles = {
 // This component should be deprecated and appears to have
 // been created in order to do modals in portals.
 
-const Manager = createReactClass({
-	getDefaultProps() {
-		return {
-			title: '',
-			isOpen: false,
-		};
-	},
+class Manager extends React.Component {
+	static defaultProps = {
+		title: '',
+		isOpen: false,
+	};
 
-	getInitialState() {
-		return {
-			isOpen: this.props.isOpen,
-			revealed: false,
-		};
-	},
+	state = {
+		isOpen: this.props.isOpen,
+		revealed: false,
+	};
 
 	componentDidMount() {
 		if (!this.state.revealed) {
@@ -56,7 +52,7 @@ const Manager = createReactClass({
 			});
 		}
 		this.updateBodyScroll();
-	},
+	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.state.isOpen !== prevState.isOpen) {
@@ -64,7 +60,8 @@ const Manager = createReactClass({
 
 			if (!this.state.isOpen) {
 				if (!this.isUnmounting) {
-					const el = this.getDOMNode().parentNode;
+					// eslint-disable-next-line react/no-find-dom-node
+					const el = ReactDOM.findDOMNode(this).parentNode;
 					if (el && el.getAttribute('data-slds-modal')) {
 						ReactDOM.unmountComponentAtNode(el);
 						document.body.removeChild(el);
@@ -72,14 +69,13 @@ const Manager = createReactClass({
 				}
 			}
 		}
-	},
+	}
 
 	componentWillUnmount() {
 		this.isUnmounting = true;
-	},
+	}
 
-	getModal() {
-		return (
+	getModal = () => (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className={`slds-modal${
@@ -110,21 +106,20 @@ const Manager = createReactClass({
 				</div>
 			</div>
 		);
-	},
 
-	openModal() {
+	openModal = () => {
 		this.setState({ isOpen: true });
-	},
+	};
 
-	closeModal() {
+	closeModal = () => {
 		this.setState({ isOpen: false });
-	},
+	};
 
-	handleSubmitModal() {
+	handleSubmitModal = () => {
 		this.closeModal();
-	},
+	};
 
-	updateBodyScroll() {
+	updateBodyScroll = () => {
 		if (window && document && document.body) {
 			if (this.state.isOpen) {
 				document.body.style.overflow = 'hidden';
@@ -132,7 +127,7 @@ const Manager = createReactClass({
 				document.body.style.overflow = 'inherit';
 			}
 		}
-	},
+	};
 
 	render() {
 		return (
@@ -147,7 +142,7 @@ const Manager = createReactClass({
 				{this.getModal()}
 			</Modal>
 		);
-	},
-});
+	}
+}
 
 export default Manager;

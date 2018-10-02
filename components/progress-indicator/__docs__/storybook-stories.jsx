@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
@@ -38,8 +38,8 @@ const manySteps = [
 	{ id: 'i', label: 'tooltip label #9' },
 ];
 
-const ExampleProgressIndicator = createReactClass({
-	displayName: 'ProgressIndicatorDefault',
+class ExampleProgressIndicator extends React.Component {
+	static displayName = 'ProgressIndicatorDefault';
 
 	render() {
 		return (
@@ -57,8 +57,8 @@ const ExampleProgressIndicator = createReactClass({
 				/>
 			</div>
 		);
-	},
-});
+	}
+}
 
 storiesOf(PROGRESS_INDICATOR, module)
 	.addDecorator((getStory) => (

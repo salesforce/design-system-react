@@ -9,7 +9,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -27,16 +27,16 @@ import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';
 /**
  *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
  */
-const GlobalHeaderDropdownTrigger = createReactClass({
+class GlobalHeaderDropdownTrigger extends React.Component {
 	// TODO: Make this a stateless component, however dropdowns break when this component becomes stateless.
 
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_TRIGGER,
+	static displayName = MENU_DROPDOWN_TRIGGER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * An image URL or avatar node to display for the user profile.
 		 */
@@ -105,9 +105,9 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		 * The ref of the actual triggering button.
 		 */
 		triggerRef: PropTypes.func,
-	},
+	};
 
-	renderAvatar() {
+	renderAvatar = () => {
 		const { avatar } = this.props;
 		if (typeof avatar === 'string') {
 			return (
@@ -117,7 +117,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 			);
 		}
 		return avatar || null;
-	},
+	};
 
 	// ### Render
 	render() {
@@ -178,7 +178,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 				{menu}
 			</li>
 		);
-	},
-});
+	}
+}
 
 export default GlobalHeaderDropdownTrigger;

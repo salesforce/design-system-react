@@ -1,20 +1,18 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import InlineEdit from '~/components/forms/input/inline'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'InlineEditExample',
+class Example extends React.Component {
+	static displayName = 'InlineEditExample';
 
-	getInitialState() {
-		return {
-			value: 'Edit me inline',
-		};
-	},
+	state = {
+		value: 'Edit me inline',
+	};
 
-	handleChange(eventProps) {
+	handleChange = (eventProps) => {
 		this.setState({ value: eventProps.value });
-	},
+	};
 
 	render() {
 		return (
@@ -44,7 +42,7 @@ const Example = createReactClass({
 				</section>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

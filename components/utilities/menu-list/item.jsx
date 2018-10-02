@@ -9,7 +9,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -30,10 +30,10 @@ import { LIST_ITEM } from '../../../utilities/constants';
 /**
  * Component description.
  */
-const ListItem = createReactClass({
-	displayName: LIST_ITEM,
+class ListItem extends React.Component {
+	static displayName = LIST_ITEM;
 
-	propTypes: {
+	static propTypes = {
 		'aria-disabled': PropTypes.bool,
 		className: PropTypes.oneOfType([
 			PropTypes.array,
@@ -61,21 +61,19 @@ const ListItem = createReactClass({
 		}),
 		type: PropTypes.string,
 		value: PropTypes.any,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			data: {},
-			href: 'javascript:void(0);', // eslint-disable-line no-script-url
-			inverted: false,
-			isSelected: false,
-			label: '',
-			labelRenderer: ListItemLabelRenderer,
-			value: null,
-		};
-	},
+	static defaultProps = {
+		data: {},
+		href: 'javascript:void(0);', // eslint-disable-line no-script-url
+		inverted: false,
+		isSelected: false,
+		label: '',
+		labelRenderer: ListItemLabelRenderer,
+		value: null,
+	};
 
-	getLabel() {
+	getLabel = () => {
 		const Label = this.props.labelRenderer;
 		return (
 			<Label
@@ -89,9 +87,9 @@ const ListItem = createReactClass({
 				value={this.props.value}
 			/>
 		);
-	},
+	};
 
-	getIcon(position) {
+	getIcon = (position) => {
 		const classnames = ['slds-icon-text-default'];
 		let iconProps = this.props[`${position}Icon`];
 
@@ -121,9 +119,9 @@ const ListItem = createReactClass({
 		}
 
 		return null;
-	},
+	};
 
-	handleClick(event) {
+	handleClick = (event) => {
 		if (
 			this.props.type !== 'link' ||
 			this.props.href === 'javascript:void(0);' // eslint-disable-line no-script-url
@@ -135,11 +133,11 @@ const ListItem = createReactClass({
 		if (this.props.onSelect) {
 			this.props.onSelect(this.props.index);
 		}
-	},
+	};
 
-	handleMouseDown(event) {
+	handleMouseDown = (event) => {
 		EventUtil.trapImmediate(event);
-	},
+	};
 
 	render() {
 		switch (this.props.type) {
@@ -206,7 +204,7 @@ const ListItem = createReactClass({
 				);
 			}
 		}
-	},
-});
+	}
+}
 
 export default ListItem;

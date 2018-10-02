@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -49,19 +49,15 @@ const getNodes = ({ wrapper }) => ({
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = createReactClass({
-	displayName: 'PopoverDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'PopoverDemoComponent';
+
+	static propTypes = {
 		isOpen: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
-
-	getInitialState() {
-		return {};
-	},
+	static defaultProps = defaultProps;
+	state = {};
 
 	// event handlers
 
@@ -76,8 +72,8 @@ const DemoComponent = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.
