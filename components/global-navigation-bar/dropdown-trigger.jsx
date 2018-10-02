@@ -15,6 +15,8 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
+import colors from '../../utilities/design-tokens/dist/salesforce-skin.common.js';
+
 import checkProps from './check-props';
 import componentDoc from './docs.json';
 
@@ -139,8 +141,8 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		} = this.props;
 
 		const listItemstyle = {};
-		// TODO: This should eventually exist in a CSS class. Feature has been filed.
-		const hoverBackgroundColor = '#f7f9fb';
+		// Uses design token to get correct color
+		const hoverBackgroundColor = colors.brandPrimaryTransparent10;
 
 		if (active) {
 			listItemstyle.backgroundColor = activeBackgroundColor;
