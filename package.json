@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.25",
+	"version": "0.8.26",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -10,6 +10,7 @@
 	"scripts": {
 		"build-docs": "npx babel-node ./scripts/build-docs.js",
 		"build-and-test-docs": "npm run build-docs && npx babel-node ./tests/component-docs-test.js",
+		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
@@ -653,7 +654,8 @@
 			"component": "spinner",
 			"status": "prod",
 			"display-name": "Spinners",
-			"SLDS-component-path": "/components/spinner"
+			"SLDS-component-path": "/components/spinner",
+			"url-slug": "spinners"
 		},
 		{
 			"component": "tabs",
@@ -669,7 +671,7 @@
 					"component": "panel"
 				}
 			],
-			"url-slug": "tabss"
+			"url-slug": "tabs"
 		},
 		{
 			"component": "textarea",

@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
@@ -9,8 +9,8 @@ import utilitySprite from '@salesforce-ux/design-system/assets/icons/utility-spr
 import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 import doctypeSprite from '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';
 
-const Example = createReactClass({
-	displayName: 'IconSettingsExample',
+class Example extends React.Component {
+	static displayName = 'IconSettingsExample';
 
 	render() {
 		return (
@@ -65,7 +65,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

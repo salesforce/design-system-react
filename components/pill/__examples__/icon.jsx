@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import createReactClass from 'create-react-class';
 
 import Pill from '~/components/pill';
 import Icon from '~/components/icon';
@@ -9,37 +8,33 @@ import IconSettings from '~/components/icon-settings';
 
 const noop = () => undefined;
 
-const Example = createReactClass({
-	displayName: 'PillWithIconExample',
+class Example extends React.Component {
+	static displayName = 'PillWithIconExample';
 
-	propTypes: {
+	static propTypes = {
 		action: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			action: () => noop,
-		};
-	},
+	static defaultProps = {
+		action: () => noop,
+	};
 
-	getInitialState() {
-		return {
-			pill1: true,
-			pill2: true,
-			pill3: true,
-		};
-	},
+	state = {
+		pill1: true,
+		pill2: true,
+		pill3: true,
+	};
 
-	onClick(event) {
+	onClick = (event) => {
 		this.props.action('onClick')(event);
-	},
+	};
 
-	onRemove(event, pill) {
+	onRemove = (event, pill) => {
 		this.props.action('onRemove')(event);
 		this.setState({
 			[pill]: false,
 		});
-	},
+	};
 
 	render() {
 		return (
@@ -106,7 +101,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

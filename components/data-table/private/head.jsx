@@ -3,7 +3,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ## Children
@@ -16,13 +15,13 @@ import { DATA_TABLE_HEAD } from '../../../utilities/constants';
 /**
  * Used internally, provides header row rendering to the DataTable.
  */
-const DataTableHead = createReactClass({
+class DataTableHead extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_HEAD,
+	static displayName = DATA_TABLE_HEAD;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
 			columnSort: PropTypes.string,
@@ -44,9 +43,9 @@ const DataTableHead = createReactClass({
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
 		showRowActions: PropTypes.bool,
-	},
+	};
 
-	componentWillMount() {},
+	componentWillMount() {}
 
 	// ### Render
 	render() {
@@ -94,7 +93,7 @@ const DataTableHead = createReactClass({
 				</tr>
 			</thead>
 		);
-	},
-});
+	}
+}
 
 export default DataTableHead;

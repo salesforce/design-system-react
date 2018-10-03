@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 import chai, { expect } from 'chai';
@@ -19,13 +19,13 @@ import Illustration from '../../illustration';
 
 chai.use(chaiEnzyme());
 
-const DemoIllustration = createReactClass({
-	displayName: 'DemoIllustration',
+class DemoIllustration extends React.Component {
+	static displayName = 'DemoIllustration';
 
 	render() {
 		return <Illustration {...this.props} />;
-	},
-});
+	}
+}
 
 describe('SLDSIllustration: ', function() {
 	describe('Image with heading and message render', function() {

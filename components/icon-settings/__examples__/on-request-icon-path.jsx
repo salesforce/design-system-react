@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
@@ -17,8 +17,9 @@ const sprites = {
 	doctype,
 };
 
-const Example = createReactClass({
-	displayName: 'IconSettingsExample',
+class Example extends React.Component {
+	static displayName = 'IconSettingsExample';
+
 	componentDidMount() {
 		Promise.all(
 			Object.keys(sprites).map((category) =>
@@ -27,7 +28,8 @@ const Example = createReactClass({
 		).then((texts) => {
 			this.spriteInlineContainer.innerHTML = texts.join('');
 		});
-	},
+	}
+
 	render() {
 		return (
 			<IconSettings onRequestIconPath={({ category, name }) => `#${name}`}>
@@ -80,7 +82,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

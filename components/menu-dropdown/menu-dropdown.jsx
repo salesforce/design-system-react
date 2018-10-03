@@ -456,11 +456,10 @@ class MenuDropdown extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen() {
-		return !!(typeof this.props.isOpen === 'boolean'
+getIsOpen = () =>
+		!!(typeof this.props.isOpen === 'boolean'
 			? this.props.isOpen
 			: this.state.isOpen);
-	}
 
 	getIndexByValue = (value, options) => {
 		let foundIndex = -1;

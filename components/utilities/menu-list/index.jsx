@@ -7,7 +7,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -22,10 +22,10 @@ import { LIST } from '../../../utilities/constants';
 /**
  * Component description.
  */
-const List = createReactClass({
-	displayName: LIST,
+class List extends React.Component {
+	static displayName = LIST;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Determines whether or not to show a checkmark for selected items.
 		 */
@@ -66,15 +66,13 @@ const List = createReactClass({
 		 * The id of the element which triggered this list (in a menu context).
 		 */
 		triggerId: PropTypes.string,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			length: '5',
-			options: [],
-			selectedIndex: -1,
-		};
-	},
+	static defaultProps = {
+		length: '5',
+		options: [],
+		selectedIndex: -1,
+	};
 
 	render() {
 		let lengthClassName;
@@ -117,7 +115,7 @@ const List = createReactClass({
 				})}
 			</ul>
 		);
-	},
-});
+	}
+}
 
 export default List;
