@@ -15,7 +15,6 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
-import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
 
@@ -328,7 +327,9 @@ const Lookup = class extends React.Component {
 	};
 
 	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
 	getListLength = (qty) => {
 		if (qty !== this.state.listLength) {

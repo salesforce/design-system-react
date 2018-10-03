@@ -5,7 +5,7 @@ import Pill from '~/components/pill';
 import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
-function noop() {}
+const noop = () => undefined;
 
 class Example extends React.Component {
 	static displayName = 'PillWithAvatarListboxExample';

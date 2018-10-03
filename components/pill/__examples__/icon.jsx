@@ -6,7 +6,7 @@ import Icon from '~/components/icon';
 import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
-function noop() {}
+const noop = () => undefined;
 
 class Example extends React.Component {
 	static displayName = 'PillWithIconExample';

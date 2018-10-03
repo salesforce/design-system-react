@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
-function noop() {}
+const noop = () => undefined;
 
 class Example extends React.Component {
 	static displayName = 'BarePillListboxExample';

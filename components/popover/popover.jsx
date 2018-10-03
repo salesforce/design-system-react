@@ -16,9 +16,6 @@ import PropTypes from 'prop-types';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -235,7 +232,9 @@ class Popover extends React.Component {
 
 	getIsOpen = () => (
 			!this.props.disabled &&
-			!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen)
+			!!(typeof this.props.isOpen === 'boolean'
+				? this.props.isOpen
+				: this.state.isOpen)
 		);
 
 	getMenu = () => 

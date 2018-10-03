@@ -44,7 +44,7 @@ const PILLS = [
 	},
 ];
 
-function noop() {}
+const noop = () => undefined;
 
 const getAllOn = () =>
 	PILLS.reduce((result, item, index) => {

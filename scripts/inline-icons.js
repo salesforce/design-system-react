@@ -4,7 +4,6 @@ import async from 'async';
 import fs from 'fs-extra';
 import path from 'path';
 import xml2js from 'xml2js';
-import omit from 'lodash.omit';
 
 console.log('# Building the inline SVG icons');
 
@@ -47,30 +46,39 @@ const inlineIcons = (spriteType, done) => {
 		"let icons = {}; if ('__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__') { icons = {",
 	];
 
+	const createIconFile = (symbol) => {
+		const { id, ...data } = symbol;
+		return [license, `export default ${JSON.stringify(data)};`, ''];
+	};
+
 	parseXml(text, (error, sprite) => {
 		if (error) throw error;
-
-		let viewBox;
+		let viewBoxForOuterArray;
 		async.each(
 			sprite.svg.symbol,
 			(symbol, iconDone) => {
-				let data = omit(symbol, ['id']);
 				const iconName = symbol.id.toLowerCase();
 
-				const icon = [license, `export default ${JSON.stringify(data)};`, ''];
+				outputFile(
+					`${spriteType}/${iconName}`,
+					createIconFile(symbol),
+					iconDone
+				);
 
-				outputFile(`${spriteType}/${iconName}`, icon, iconDone);
-
-				if (!viewBox) viewBox = data.viewBox;
-				data = omit(data, ['viewBox']);
-				index.push(`${iconName}:${JSON.stringify(data)},`);
+				// create sprite file of icons
+				const { id, ...data } = symbol;
+				if (typeof viewBoxForOuterArray === 'undefined') {
+					viewBoxForOuterArray = symbol.viewBox;
+				}
+				const { viewBox, ...dataWithoutViewBox } = data;
+				index.push(`${iconName}:${JSON.stringify(dataWithoutViewBox)},`);
 			},
 			(err) => {
 				if (err) console.error(err);
 			}
 		);
 
-		index.push(`viewBox:'${viewBox}'`);
+		index.push(`viewBox:'${viewBoxForOuterArray}'`);
 		index.push('}; } export default icons;');
 		index.push('');
 		outputFile(`${spriteType}/index`, index, done);
