@@ -48,6 +48,7 @@ const RecordHome = (props) => (
 					}
 					className="slds-no-space slds-grow"
 					figure={props.icon}
+					verticalCenter
 				/>
 			</div>
 			<div className="slds-col slds-no-flex slds-grid slds-align-top">
