@@ -456,7 +456,7 @@ class MenuDropdown extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-getIsOpen = () =>
+	getIsOpen = () =>
 		!!(typeof this.props.isOpen === 'boolean'
 			? this.props.isOpen
 			: this.state.isOpen);
