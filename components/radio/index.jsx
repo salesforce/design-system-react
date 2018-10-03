@@ -7,6 +7,7 @@ import shortid from 'shortid';
 import classNames from 'classnames';
 
 import { RADIO } from '../../utilities/constants';
+import getDataProps from '../../utilities/getDataProps';
 
 const propTypes = {
 	/**
@@ -52,6 +53,14 @@ const propTypes = {
 	 * Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).
 	 */
 	variant: PropTypes.oneOf(['base', 'button-group']),
+	/**
+	 * Ref to be passed to radio input
+	 */
+	radioRef: PropTypes.func,
+	/**
+	 * Class name to be passed to radio input wrapper ( `span` element)
+	 */
+	className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -73,13 +82,17 @@ class Radio extends React.Component {
 	}
 
 	render() {
+		const dataProps = getDataProps(this.props);
 		return (
 			<span
-				className={classNames({
-					'slds-radio': this.props.variant === 'base',
-					'slds-button slds-radio_button':
-						this.props.variant === 'button-group',
-				})}
+				className={classNames(
+					{
+						'slds-radio': this.props.variant === 'base',
+						'slds-button slds-radio_button':
+							this.props.variant === 'button-group',
+					},
+					this.props.className
+				)}
 			>
 				<input
 					type="radio"
@@ -91,6 +104,12 @@ class Radio extends React.Component {
 					onChange={this.props.onChange}
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
+					{...dataProps}
+					ref={(input) => {
+						if (this.props.radioRef) {
+							this.props.radioRef(input);
+						}
+					}}
 				/>
 				{this.props.variant === 'button-group' ? (
 					<label className="slds-radio_button__label" htmlFor={this.getId()}>

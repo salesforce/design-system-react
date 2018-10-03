@@ -9681,6 +9681,20 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "radioRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Ref to be passed to radio input"
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Class name to be passed to radio input wrapper ( `span` element)"
             }
         },
         "route": "radios",
