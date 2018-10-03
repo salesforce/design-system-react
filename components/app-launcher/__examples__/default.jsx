@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import AppLauncher from '~/components/app-launcher'; // `~` is replaced with design-system-react at runtime
 import AppLauncherTile from '~/components/app-launcher/tile';
 import AppLauncherSection from '~/components/app-launcher/section';
@@ -12,8 +12,8 @@ import Button from '~/components/button';
 import Search from '~/components/input/search';
 import IconSettings from '~/components/icon-settings';
 
-const Example = createReactClass({
-	displayName: 'AppLauncherExample',
+class Example extends React.Component {
+	static displayName = 'AppLauncherExample';
 
 	render() {
 		const search = (
@@ -68,7 +68,7 @@ const Example = createReactClass({
 				</GlobalNavigationBar>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -74,6 +74,10 @@ const propTypes = {
 	 */
 	onRequestClose: PropTypes.func,
 	/**
+	 * Custom styles to be passed to the component. _Tested with Mocha testing._
+	 */
+	style: PropTypes.object,
+	/**
 	 * The type of Toast. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
@@ -186,6 +190,7 @@ class Toast extends React.Component {
 					this.props.className
 				)}
 				role="alert"
+				style={this.props.style}
 			>
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}

@@ -1,23 +1,21 @@
 /* eslint-disable indent */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../../../../components/icon-settings';
 
 import { FORMS_INLINE_EDIT } from '../../../../../utilities/constants';
 import InlineEdit from '../../inline';
 
-const DemoInlineEdit = createReactClass({
-	displayName: 'DemoInlineEdit',
+class DemoInlineEdit extends React.Component {
+	static displayName = 'DemoInlineEdit';
 
-	getInitialState() {
-		return {
-			value: 'Edit me inline',
-		};
-	},
+	state = {
+		value: 'Edit me inline',
+	};
 
-	handleChange(eventProps, ...rest) {
+	handleChange = (eventProps, ...rest) => {
 		action('change')(rest);
 
 		if (eventProps.value === '') {
@@ -25,7 +23,7 @@ const DemoInlineEdit = createReactClass({
 		} else {
 			this.setState({ value: eventProps.value });
 		}
-	},
+	};
 
 	render() {
 		return (
@@ -35,8 +33,8 @@ const DemoInlineEdit = createReactClass({
 				onChange={this.handleChange}
 			/>
 		);
-	},
-});
+	}
+}
 
 storiesOf(FORMS_INLINE_EDIT, module)
 	.addDecorator((getStory) => (

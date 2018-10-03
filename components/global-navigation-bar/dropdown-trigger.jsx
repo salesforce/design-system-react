@@ -9,11 +9,13 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
+
+import colors from '../../utilities/design-tokens/dist/salesforce-skin.common.js';
 
 import checkProps from './check-props';
 import componentDoc from './docs.json';
@@ -26,14 +28,14 @@ import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 /**
  *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
  */
-const GlobalNavigationDropdownTrigger = createReactClass({
+class GlobalNavigationDropdownTrigger extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_TRIGGER,
+	static displayName = MENU_DROPDOWN_TRIGGER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Whether the item is active or not.
 		 */
@@ -110,11 +112,11 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		 * The ref of the actual triggering button.
 		 */
 		triggerRef: PropTypes.func,
-	},
+	};
 
 	componentWillMount() {
 		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
-	},
+	}
 
 	// ### Render
 	render() {
@@ -139,8 +141,8 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		} = this.props;
 
 		const listItemstyle = {};
-		// TODO: This should eventually exist in a CSS class. Feature has been filed.
-		const hoverBackgroundColor = '#f7f9fb';
+		// Uses design token to get correct color
+		const hoverBackgroundColor = colors.brandPrimaryTransparent10;
 
 		if (active) {
 			listItemstyle.backgroundColor = activeBackgroundColor;
@@ -194,7 +196,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 				{menu}
 			</li>
 		);
-	},
-});
+	}
+}
 
 export default GlobalNavigationDropdownTrigger;

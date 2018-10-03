@@ -10,7 +10,7 @@ import requiredIf from 'react-required-if';
 
 import classNames from 'classnames';
 
-import isBoolean from 'lodash.isboolean';
+// ### isFunction
 import isFunction from 'lodash.isfunction';
 
 import shortid from 'shortid';
@@ -457,7 +457,9 @@ class MenuDropdown extends React.Component {
 	getId = () => this.props.id || this.generatedId;
 
 	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
 	getIndexByValue = (value, options) => {
 		let foundIndex = -1;

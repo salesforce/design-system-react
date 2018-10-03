@@ -1,7 +1,7 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
+import shortid from 'shortid';
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
@@ -24,23 +24,21 @@ const sampleItems = [
 	{ name: 'Cloud City' },
 ];
 
-const DemoCard = createReactClass({
-	displayName: 'DemoCard',
+class DemoCard extends React.Component {
+	static displayName = 'DemoCard';
 
-	propTypes: {
+	static propTypes = {
 		items: PropTypes.array,
 		header: PropTypes.node,
 		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-	},
+	};
 
-	getInitialState() {
-		return {
-			filter: null,
-			items: this.props.items,
-		};
-	},
+	state = {
+		filter: null,
+		items: this.props.items,
+	};
 
-	handleFilterChange(event, ...rest) {
+	handleFilterChange = (event, ...rest) => {
 		action('filter')(event, ...rest);
 
 		const filter =
@@ -49,24 +47,24 @@ const DemoCard = createReactClass({
 		this.setState({
 			filter,
 		});
-	},
+	};
 
-	handleDeleteAllItems(...rest) {
+	handleDeleteAllItems = (...rest) => {
 		action('delete all')(...rest);
 
 		this.setState({
 			filter: null,
 			items: [],
 		});
-	},
+	};
 
-	handleAddItem(...rest) {
+	handleAddItem = (...rest) => {
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items],
+			items: [{ name: `New item #${shortid.generate()}` }, ...this.state.items],
 		});
-	},
+	};
 
 	render() {
 		let items = this.state.items;
@@ -116,8 +114,8 @@ const DemoCard = createReactClass({
 				</Card>
 			</div>
 		);
-	},
-});
+	}
+}
 
 const SetHeightCard = () => (
 	<Card

@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 import chai, { expect } from 'chai';
@@ -20,13 +20,13 @@ chai.use(chaiEnzyme());
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
 
-const DemoIcon = createReactClass({
-	displayName: 'DemoIcon',
+class DemoIcon extends React.Component {
+	static displayName = 'DemoIcon';
 
 	render() {
 		return <Icon {...this.props} />;
-	},
-});
+	}
+}
 
 describe('SLDSIcon: ', function() {
 	describe('Standard Icon Props Render', function() {

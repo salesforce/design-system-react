@@ -9,7 +9,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -23,10 +23,10 @@ import { TAB } from '../../../utilities/constants';
  */
 // import '!style-loader!css-loader!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
 
-const Tab = createReactClass({
-	displayName: TAB,
+class Tab extends React.Component {
+	static displayName = TAB;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * CSS classes to be added to the tab.
 		 */
@@ -76,31 +76,29 @@ const Tab = createReactClass({
 		 * If the Tabs should be scopped, defaults to false
 		 */
 		variant: PropTypes.oneOf(['default', 'scoped']),
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			focus: false,
-			selected: false,
-			activeTabClassName: 'slds-active',
-			disabledTabClassName: 'slds-disabled',
-			variant: 'default',
-		};
-	},
+	static defaultProps = {
+		focus: false,
+		selected: false,
+		activeTabClassName: 'slds-active',
+		disabledTabClassName: 'slds-disabled',
+		variant: 'default',
+	};
 
 	componentDidMount() {
 		this.checkFocus();
-	},
+	}
 
 	componentDidUpdate() {
 		this.checkFocus();
-	},
+	}
 
-	checkFocus() {
+	checkFocus = () => {
 		if (this.props.selected && this.props.focus && this.node) {
 			this.node.focus();
 		}
-	},
+	};
 
 	render() {
 		const {
@@ -159,7 +157,7 @@ const Tab = createReactClass({
 				</a>
 			</li>
 		);
-	},
-});
+	}
+}
 
 export default Tab;

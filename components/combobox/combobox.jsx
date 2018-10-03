@@ -12,7 +12,6 @@ import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
 
-import isBoolean from 'lodash.isboolean';
 import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
@@ -383,7 +382,7 @@ class Combobox extends React.Component {
 		this.state.activeOption && this.state.activeOptionIndex !== -1;
 
 	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean' ? this.props.isOpen : this.state.isOpen);
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
