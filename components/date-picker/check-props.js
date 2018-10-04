@@ -14,11 +14,21 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.children,
+			'children',
+			'input',
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
+			)}`
+		);
+
+		deprecatedProperty(
+			COMPONENT,
 			props.onFocus,
 			'onFocus',
 			undefined,
-			`Please see children prop description and add your own \`Input\` with this prop as a child of Datepicker. ${createDocUrl(
-				'children'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
 			)}`
 		);
 
@@ -27,14 +37,14 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onBlur,
 			'onBlur',
 			undefined,
-			`Please see children prop description and add your own \`Input\` with this prop as a child of Datepicker. ${createDocUrl(
-				'children'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
 			)}`
 		);
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.abbrWeekDayLabels,
 			'abbrWeekDayLabels',
 			'abbreviatedWeekDayLabels',
 			`Prop name has changed. ${createDocUrl('labels')}`
@@ -42,7 +52,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.onDateChange,
 			'onDateChange',
 			'onChange',
 			`Please see prop description for \`onChange\`. Parameters have changed. The callback receives an event and a data object of the shape: \`{date: [Date object], formattedDate: [string], timezoneOffset: [number]}\` ${createDocUrl(
@@ -52,11 +62,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.onKeyDown,
 			'onKeyDown',
 			undefined,
-			`Please see children prop description and add your own \`Input\` as a child of Datepicker. ${createDocUrl(
-				'children'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
 			)}`
 		);
 
