@@ -6,6 +6,8 @@ import Datepicker from '../../date-picker';
 import { DATE_PICKER } from '../../../utilities/constants';
 
 import Default from '../__examples__/default';
+import ErrorDatepicker from '../__examples__/error';
+import Required from '../__examples__/required';
 import IsoWeekdays from '../__examples__/iso-weekday';
 import CustomInput from '../__examples__/custom-input';
 import SnaphotDefault from '../__examples__/snapshot-default';
@@ -18,6 +20,8 @@ storiesOf(DATE_PICKER, module)
 		</div>
 	))
 	.add('Default', () => <Default action={action} />)
+	.add('Error', () => <ErrorDatepicker action={action} />)
+	.add('Required', () => <Required action={action} />)
 	.add('ISO weekdays', () => <IsoWeekdays action={action} />)
 	.add('Custom Input', () => <CustomInput action={action} />)
 	.add('Inline menu', () => <Datepicker menuPosition="relative" />)

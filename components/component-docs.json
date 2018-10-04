@@ -4257,6 +4257,35 @@
                 },
                 "required": false,
                 "description": "Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._"
+            },
+            "errorText": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "inputStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Style object to be added to `input` node"
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Highlights the input as a required field (does not perform any validation)."
             }
         },
         "context": {
@@ -4895,6 +4924,13 @@
                 },
                 "required": false,
                 "description": "ARIA role"
+            },
+            "inputStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Style object to be added to `input` node"
             },
             "type": {
                 "type": {
