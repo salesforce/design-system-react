@@ -250,6 +250,10 @@ class Input extends React.Component {
 		 */
 		role: PropTypes.string,
 		/**
+		 * Style object to be added to `input` node
+		 */
+		inputStyle: PropTypes.object,
+		/**
 		 * The `<Input>` element includes support for all HTML5 types.
 		 */
 		type: PropTypes.oneOf([
@@ -438,6 +442,7 @@ class Input extends React.Component {
 					assistiveText={this.props.assistiveText}
 					type={this.props.type}
 					value={this.props.value}
+					style={this.props.inputStyle}
 				/>
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">

@@ -170,6 +170,18 @@ const propTypes = {
 	 * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
 	 */
 	value: PropTypes.instanceOf(Date),
+	/**
+	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
+	 */
+	errorText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+	/**
+	 * Style object to be added to `input` node
+	 */
+	inputStyle: PropTypes.object,
+	/**
+	 * Highlights the input as a required field (does not perform any validation).
+	 */
+	required: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -564,6 +576,12 @@ class Datepicker extends React.Component {
 			value:
 				(this.props.children && this.props.children.props.value) ||
 				this.state.inputValue,
+			errorText:
+				(this.props.children && this.props.children.props.errorText) ||
+				this.props.errorText,
+			inputStyle:
+				(this.props.children && this.props.children.props.inputStyle) ||
+				this.props.inputStyle,
 		};
 
 		const clonedInput = this.props.children ? (
