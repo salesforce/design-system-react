@@ -1,4 +1,5 @@
 import React from 'react';
+impoort PropTypes from 'prop-types';
 
 const Swatch = ({color}) => {
 	const style = {
@@ -19,7 +20,7 @@ const Swatch = ({color}) => {
 }
 
 Swatch.propTypes = {
-	color: React.PropTypes.string.isRequired
+	color: PropTypes.string.isRequired
 }
 
 export default Swatch;
