@@ -160,15 +160,6 @@ class ColorPicker extends React.Component {
 
 		this.generatedId = this.props.id || shortid.generate();
 
-		this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this);
-		this.handleHexInputChange = this.handleHexInputChange.bind(this);
-		this.handleSaturationValueChange = this.handleSaturationValueChange.bind(
-			this
-		);
-		this.handleSubmitButtonClick = this.handleSubmitButtonClick.bind(this);
-		this.handleSwatchButtonClick = this.handleSwatchButtonClick.bind(this);
-		this.handleSwatchSelect = this.handleSwatchSelect.bind(this);
-
 		this.state = {
 			currentColor: this.props.value || '',
 			disabled: this.props.disabled,
@@ -299,7 +290,7 @@ class ColorPicker extends React.Component {
 		}
 	}
 
-	handleCancelButtonClick () {
+	handleCancelButtonClick = () => {
 		this.setState({
 			isOpen: false,
 			workingColor: ColorUtils.getNewColor({
@@ -316,7 +307,7 @@ class ColorPicker extends React.Component {
 		};
 	}
 
-	handleHexInputChange (event) {
+	handleHexInputChange = (event) => {
 		const currentColor = event.target.value;
 		const isValid = ColorUtils.isValidHex(event.target.value);
 		this.setState({
@@ -349,14 +340,14 @@ class ColorPicker extends React.Component {
 		};
 	}
 
-	handleSaturationValueChange (event, { saturation, value }) {
+	handleSaturationValueChange = (event, { saturation, value }) => {
 		this.setWorkingColor(event, {
 			saturation,
 			value,
 		});
 	}
 
-	handleSubmitButtonClick (event) {
+	handleSubmitButtonClick = (event) => {
 		this.setState({
 			isOpen: false,
 			currentColor: this.state.workingColor.hex,
@@ -370,7 +361,7 @@ class ColorPicker extends React.Component {
 		}
 	}
 
-	handleSwatchButtonClick () {
+	handleSwatchButtonClick = () => {
 		this.setState({
 			isOpen: !this.state.isOpen,
 			workingColor: ColorUtils.getNewColor({
@@ -379,7 +370,7 @@ class ColorPicker extends React.Component {
 		});
 	}
 
-	handleSwatchSelect (event, { hex }) {
+	handleSwatchSelect = (event, { hex }) => {
 		this.setWorkingColor(event, {
 			hex,
 		});
