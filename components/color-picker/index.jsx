@@ -87,12 +87,15 @@ const propTypes = {
 	 */
 	swatchColors: PropTypes.arrayOf(PropTypes.string),
 	/**
-	 * Selects which tabs are present for the colorpicker
+	 * Selects which tabs are present for the colorpicker.
+	 * 	base: Both swatch and custom tabs are present
+	 *  swatches: Only swatch tab is present
+	 *  custom: Only custom tab is present
 	 */
 	variant: PropTypes.oneOf([
 		'base',
+		'swatches',
 		'custom',
-		'swatches'
 	]),
 };
 
