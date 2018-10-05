@@ -3,7 +3,7 @@ import assign from 'lodash.assign';
 const HEX_REGEX = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 
 const ColorUtils = {
-	getNewColor (options, oldColor) {
+	getNewColor(options, oldColor) {
 		if (options.hex) {
 			if (!this.isValidHex(options.hex)) {
 				return assign({}, oldColor, {
@@ -63,7 +63,7 @@ const ColorUtils = {
 		};
 	},
 
-	getDeltaColor (options, oldColor) {
+	getDeltaColor(options, oldColor) {
 		const limitValue = (value) => Math.min(Math.max(value, 0), 100);
 
 		return this.getNewColor(
@@ -77,11 +77,11 @@ const ColorUtils = {
 		);
 	},
 
-	isValidHex (value) {
+	isValidHex(value) {
 		return !value || HEX_REGEX.test(this.toSixDigitHex(value));
 	},
 
-	getRgbErrors (rgb) {
+	getRgbErrors(rgb) {
 		const hasError = (value) =>
 			isNaN(value) ||
 			Math.floor(value) !== Number(value) ||
@@ -94,15 +94,15 @@ const ColorUtils = {
 		}, {});
 	},
 
-	getHsvFromHex (hex) {
+	getHsvFromHex(hex) {
 		return this.getHsvFromRgb(this.getRgbFromHex(hex));
 	},
 
-	getHexFromHsv ({ hue, saturation, value }) {
+	getHexFromHsv({ hue, saturation, value }) {
 		return this.getHexFromRgb(this.getRgbFromHsv({ hue, saturation, value }));
 	},
 
-	getHsvFromRgb ({ red, green, blue }) {
+	getHsvFromRgb({ red, green, blue }) {
 		const redRatio = red / 255;
 		const greenRatio = green / 255;
 		const blueRatio = blue / 255;
@@ -133,7 +133,7 @@ const ColorUtils = {
 		return { hue, saturation, value };
 	},
 
-	getRgbFromHsv ({ hue, saturation, value }) {
+	getRgbFromHsv({ hue, saturation, value }) {
 		const hueRatio = hue / 360;
 		const satRatio = saturation / 100;
 		const valRatio = value / 100;
@@ -187,15 +187,15 @@ const ColorUtils = {
 		};
 	},
 
-	getHexFromRgb ({ red, green, blue }) {
-		function getHex (color) {
+	getHexFromRgb({ red, green, blue }) {
+		function getHex(color) {
 			return `0${Math.round(color).toString(16)}`.substr(-2);
 		}
 		return `#${getHex(red)}${getHex(green)}${getHex(blue)}`;
 	},
 
-	getRgbFromHex (hex) {
-		const result = HEX_REGEX.exec(hex);
+	getRgbFromHex(hex) {
+		const result = HEX_REGEX.exec(this.toSixDigitHex(hex));
 		return {
 			red: parseInt(result[1], 16),
 			green: parseInt(result[2], 16),
@@ -203,13 +203,13 @@ const ColorUtils = {
 		};
 	},
 
-	toSixDigitHex (value) {
+	toSixDigitHex(value) {
 		const shortHandHex = /^#([a-f\d])([a-f\d])([a-f\d])$/i;
 		const match = shortHandHex.exec(value);
 		if (match) {
 			return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${
 				match[3]
-			}`;
+				}`;
 		}
 
 		return value;
