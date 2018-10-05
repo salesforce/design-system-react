@@ -152,7 +152,7 @@ const defaultProps = {
 		'#b67e11',
 		'#b85d0d',
 	],
-	tabSelector: 'swatches'
+	tabSelector: 'swatches',
 	variant: 'base'
 };
 
