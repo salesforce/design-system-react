@@ -172,8 +172,6 @@
 		"react/no-unused-state": "off",
 		// TODO: Should be removed
 		"react/prop-types": "off",
-		// TODO: Should be removed
-		"react/prefer-es6-class": "off",
 		// Used to prevent usage of any, array, and object but may be too strict currently
 		"react/forbid-prop-types": "off",
 		// TODO: Should be removed
