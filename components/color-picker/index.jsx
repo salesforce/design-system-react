@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
+import shortid from 'shortid';
 
 import checkProps from './check-props';
 
@@ -87,10 +87,15 @@ const propTypes = {
 	 */
 	swatchColors: PropTypes.arrayOf(PropTypes.string),
 	/**
+	 * Determines which tab is visible when dialog opens. Use this prop with `base` variant only.
+	 * Defaults to `swatch` tab.
+	 */
+	tabSelector: PropTypes.oneOf('swatches, custom'),
+	/**
 	 * Selects which tabs are present for the colorpicker.
-	 * 	base: Both swatch and custom tabs are present
-	 *  swatches: Only swatch tab is present
-	 *  custom: Only custom tab is present
+	 * * `base`: both swatches and custom tabs are present
+	 * * `swatches`: only swatch tab is present
+	 * * `custom`: only custom tab is present
 	 */
 	variant: PropTypes.oneOf([
 		'base',
@@ -147,6 +152,7 @@ const defaultProps = {
 		'#b67e11',
 		'#b85d0d',
 	],
+	tabSelector: 'swatches'
 	variant: 'base'
 };
 
@@ -253,7 +259,7 @@ class ColorPicker extends React.Component {
 				onRequestTargetElement={() => this.wrapper}
 			>
 				<div className="slds-popover__body">
-					<Tabs>
+					<Tabs defaultSelectedIndex={this.props.tabSelector === 'custom' ? 1:0}>
 						{this.getDefaultTab()}
 						{this.getCustomTab()}
 					</Tabs>

@@ -54,4 +54,5 @@ storiesOf(COLOR_PICKER, module)
 			variant="swatches"
 		/>
 	))
-	.add('Hidden Input', () => <ColorPicker onChange={handleChange} hideInput />);
+	.add('Hidden Input', () => <ColorPicker onChange={handleChange} hideInput />)
+	.add('Custom Tab Selected', () => <ColorPicker onChange={handleChange} tabSelector="custom" />);
