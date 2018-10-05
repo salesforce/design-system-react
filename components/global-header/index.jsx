@@ -10,7 +10,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -50,10 +50,10 @@ const defaultProps = {
  * </SLDSGlobalHeader>
  * ```
  */
-const GlobalHeader = createReactClass({
-	displayName: GLOBAL_HEADER,
+class GlobalHeader extends React.Component {
+	static displayName = GLOBAL_HEADER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -84,25 +84,23 @@ const GlobalHeader = createReactClass({
 		 * Required for accessibility. Should jump the user to the primary navigation.
 		 */
 		onSkipToNav: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	componentWillMount() {
 		checkProps(GLOBAL_HEADER, this.props, componentDoc);
-	},
+	}
 
-	handleSkipToContent(e) {
+	handleSkipToContent = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToContent(e);
-	},
+	};
 
-	handleSkipToNav(e) {
+	handleSkipToNav = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToNav(e);
-	},
+	};
 
 	render() {
 		let tools;
@@ -131,7 +129,7 @@ const GlobalHeader = createReactClass({
 				{this.props.onSkipToNav ? (
 					<a
 						href="javascript:void(0);"
-						className="slds-assistive-text slds-assistive-text--focus"
+						className="slds-assistive-text slds-assistive-text_focus"
 						onClick={this.handleSkipToNav}
 					>
 						{this.props.skipToNavAssistiveText || assistiveText.skipToNav}
@@ -140,14 +138,14 @@ const GlobalHeader = createReactClass({
 				{this.props.onSkipToContent ? (
 					<a
 						href="javascript:void(0);"
-						className="slds-assistive-text slds-assistive-text--focus"
+						className="slds-assistive-text slds-assistive-text_focus"
 						onClick={this.handleSkipToContent}
 					>
 						{this.props.skipToContentAssistiveText ||
 							assistiveText.skipToContent}
 					</a>
 				) : null}
-				<div className="slds-global-header slds-grid slds-grid--align-spread">
+				<div className="slds-global-header slds-grid slds-grid_align-spread">
 					<div className="slds-global-header__item">
 						<div
 							className="slds-global-header__logo"
@@ -155,7 +153,7 @@ const GlobalHeader = createReactClass({
 						/>
 					</div>
 					{search}
-					<ul className="slds-global-header__item slds-grid slds-grid--vertical-align-center">
+					<ul className="slds-global-header__item slds-grid slds-grid_vertical-align-center">
 						{tools}
 						{profile}
 					</ul>
@@ -164,7 +162,7 @@ const GlobalHeader = createReactClass({
 			</header>
 		);
 		/* eslint-enable max-len, no-script-url */
-	},
-});
+	}
+}
 
 export default GlobalHeader;

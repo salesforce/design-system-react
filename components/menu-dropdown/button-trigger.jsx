@@ -6,7 +6,7 @@
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -23,14 +23,14 @@ import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 /**
  *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
  */
-const Trigger = createReactClass({
+class Trigger extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_TRIGGER,
+	static displayName = MENU_DROPDOWN_TRIGGER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the triggering button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to allow functionality and accessibility.
 		 * ```
@@ -106,7 +106,7 @@ const Trigger = createReactClass({
 			PropTypes.object,
 			PropTypes.string,
 		]),
-	},
+	};
 
 	// ### Render
 	render() {
@@ -148,7 +148,7 @@ const Trigger = createReactClass({
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className={classnames(
-					`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
+					`slds-dropdown-trigger slds-dropdown-trigger_${openOn}`,
 					{
 						'slds-is-open': isOpen,
 					},
@@ -176,7 +176,7 @@ const Trigger = createReactClass({
 				{menu}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Trigger;

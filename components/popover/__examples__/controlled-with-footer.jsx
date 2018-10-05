@@ -1,44 +1,42 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
 import { action, decorateAction } from '@storybook/addon-actions';
 
-const Example = createReactClass({
-	displayName: 'PopoverExample',
+class Example extends React.Component {
+	static displayName = 'PopoverExample';
 
-	getInitialState() {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
-	handleOpen() {
+	handleOpen = () => {
 		this.setState({ isOpen: true });
-	},
+	};
 
-	handleCancel() {
+	handleCancel = () => {
 		this.setState({ isOpen: false });
-	},
+	};
 
-	handleApply() {
+	handleApply = () => {
 		this.setState({ isOpen: false });
-	},
+	};
 
-	handleRequestClose(event, data) {
+	handleRequestClose = (event, data) => {
 		if (this.props.log) {
 			this.props.log('onRequestClose');
 		}
 		this.setState({ isOpen: false });
-	},
+	};
 
-	handleClose(event, data) {
+	handleClose = (event, data) => {
 		if (this.props.log) {
 			this.props.log('onClose')(event, data);
 		}
-	},
+	};
 
 	render() {
 		return (
@@ -48,7 +46,7 @@ const Example = createReactClass({
 						isOpen={this.state.isOpen}
 						body="Are you sure you want to continue with your action?"
 						footer={
-							<div className="slds-text-align--right">
+							<div className="slds-text-align_right">
 								<Button label="Cancel" onClick={this.handleCancel} />
 								<Button
 									variant="brand"
@@ -66,7 +64,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

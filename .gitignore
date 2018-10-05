@@ -122,7 +122,7 @@ tramp
 
 # cask packages
 .cask/
-dist/
+/dist/
 
 # Flycheck
 flycheck_*.el

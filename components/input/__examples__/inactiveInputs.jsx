@@ -1,17 +1,17 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'InactiveInputExamples',
+class Example extends React.Component {
+	static displayName = 'InactiveInputExamples';
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<section className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Disabled Input
 						</h1>
 						<Input
@@ -21,8 +21,8 @@ const Example = createReactClass({
 							value="Disabled value"
 						/>
 					</div>
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							ReadOnly Input
 						</h1>
 						<Input
@@ -32,8 +32,8 @@ const Example = createReactClass({
 							value="Read Only Value"
 						/>
 					</div>
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Static Input
 						</h1>
 						<Input
@@ -46,7 +46,7 @@ const Example = createReactClass({
 				</section>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

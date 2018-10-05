@@ -8,12 +8,24 @@ import { expect } from 'chai';
 
 import SLDSModal from '../../modal';
 import IconSettings from '../../icon-settings';
+import Settings from '../../settings';
 
 const { Simulate } = TestUtils;
 
 describe('SLDSModal: ', function() {
 	let container;
 	let renderedNode;
+
+	// set "app node" fixture, so no warnings are triggered.
+	let appNode = document.createElement('span');
+	appNode.id = 'app';
+	document.body.appendChild(appNode);
+	Settings.setAppElement('#app');
+
+	after(() => {
+		document.body.removeChild(appNode);
+		appNode = null;
+	});
 
 	afterEach(() => {
 		ReactDOM.unmountComponentAtNode(container);
@@ -23,11 +35,12 @@ describe('SLDSModal: ', function() {
 
 	const defaultProps = {
 		align: 'top',
-		children: <div>hello</div>,
+		children: <div key>hello</div>,
 	};
 
 	const renderModal = (modalInstance) => {
 		container = document.createElement('div');
+
 		const opener = (
 			<button>
 				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
@@ -109,7 +122,7 @@ describe('SLDSModal: ', function() {
 		});
 
 		it('adds the large class', () => {
-			expect(modal.className).to.include('slds-modal--large');
+			expect(modal.className).to.include('slds-modal_large');
 		});
 
 		it('adds custom classname from modal container prop', () => {
@@ -190,16 +203,16 @@ describe('SLDSModal: ', function() {
 
 		it('adds the footer', () => {
 			const footer = modal.querySelector('.slds-modal__footer');
-			expect(footer.className).to.include('slds-theme--default');
+			expect(footer.className).to.include('slds-theme_default');
 		});
 
 		it('adds the prompt class', () => {
-			expect(modal.className).to.include('slds-modal--prompt');
+			expect(modal.className).to.include('slds-modal_prompt');
 		});
 
 		it('adds the prompt theme class', () => {
 			expect(modal.querySelector('.slds-modal__header').className).to.include(
-				'slds-theme--warning'
+				'slds-theme_warning'
 			);
 		});
 
@@ -213,8 +226,12 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<div className="toes">Toe 1</div>,
-				<div className="toes">Toe 2</div>,
+				<div key="test-content1" className="toes">
+					Toe 1
+				</div>,
+				<div key="test-content2" className="toes">
+					Toe 2
+				</div>,
 			];
 			getModal({
 				isOpen: true,
@@ -225,7 +242,7 @@ describe('SLDSModal: ', function() {
 		});
 
 		it('adds the footer', () => {
-			const footer = modal.querySelector('.slds-modal__footer--directional');
+			const footer = modal.querySelector('.slds-modal__footer_directional');
 			expect(footer.className).to.include('slds-modal__footer');
 		});
 	});
@@ -235,8 +252,12 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<button className="cancel">Cancel</button>,
-				<button className="save">Save</button>,
+				<button key="test-content1" className="cancel">
+					Cancel
+				</button>,
+				<button key="test-content2" className="save">
+					Save
+				</button>,
 			];
 			getModal({
 				isOpen: true,

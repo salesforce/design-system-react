@@ -122,7 +122,9 @@ describe('SLDS TEXTAREA **************************************************', () 
 		});
 
 		afterEach(() => {
-			removeTextarea();
+			const inputNodes = document.querySelectorAll('.slds-form-element');
+			inputNodes[0].parentNode.remove(inputNodes[0]);
+			inputNodes[1].parentNode.remove(inputNodes[1]);
 		});
 
 		it('each textarea has unique generated id', () => {

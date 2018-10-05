@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -344,10 +341,10 @@ class Datepicker extends React.Component {
 				contentsClassName={classNames(
 					'slds-datepicker slds-dropdown',
 					{
-						'slds-dropdown--right':
+						'slds-dropdown_right':
 							this.props.menuPosition === 'relative' &&
 							this.props.align === 'right',
-						'slds-dropdown--left':
+						'slds-dropdown_left':
 							this.props.menuPosition === 'relative' &&
 							this.props.align === 'left',
 					},
@@ -372,7 +369,7 @@ class Datepicker extends React.Component {
 	}
 
 	getIsOpen() {
-		return !!(isBoolean(this.props.isOpen)
+		return !!(typeof this.props.isOpen === 'boolean'
 			? this.props.isOpen
 			: this.state.isOpen);
 	}
@@ -581,7 +578,7 @@ class Datepicker extends React.Component {
 			<div
 				className={classNames(
 					'slds-dropdown-trigger',
-					'slds-dropdown-trigger--click',
+					'slds-dropdown-trigger_click',
 					'ignore-react-onclickoutside',
 					{
 						'slds-is-open': this.getIsOpen(),

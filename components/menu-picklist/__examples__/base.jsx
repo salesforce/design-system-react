@@ -1,16 +1,16 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Picklist from '~/components/menu-picklist'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'PicklistExample',
+class Example extends React.Component {
+    static displayName = 'PicklistExample';
 
-	render() {
+    render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Picklist
 							label="Contacts"
 							onSelect={(option, data) => {
@@ -27,7 +27,7 @@ const Example = createReactClass({
 							placeholder="Select a contact"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Picklist
 							label="Option selected"
 							onSelect={(option, data) => {
@@ -45,7 +45,7 @@ const Example = createReactClass({
 							value="C0"
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Picklist
 							disabled
 							label="Disabled"
@@ -67,7 +67,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

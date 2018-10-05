@@ -85,7 +85,7 @@ const SelectedListBox = (props) =>
 		>
 			<ul
 				className={classNames('slds-listbox', {
-					'slds-listbox--inline': props.isInline,
+					'slds-listbox_inline': props.isInline,
 					'slds-listbox_horizontal': !props.isInline,
 					'slds-p-top_xxx-small': !props.isInline,
 				})}

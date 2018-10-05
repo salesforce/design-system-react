@@ -1,7 +1,7 @@
 /* eslint-disable indent, jsx-a11y/no-noninteractive-tabindex */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import { storiesOf, action } from '@storybook/react';
 import { PAGE_HEADER } from '../../../utilities/constants';
 import IconSettings from '../../icon-settings';
@@ -33,29 +33,27 @@ const recordHomeDetails2 = [
 	{ label: 'Field 3', content: 'Description (2-line truncation)' },
 ];
 
-const DemoPageHeader = createReactClass({
-	displayName: 'DemoPageHeader',
+class DemoPageHeader extends React.Component {
+	static displayName = 'DemoPageHeader';
 
-	getInitialState() {
-		return {
-			recordHomeDetails: recordHomeDetails2,
-		};
-	},
+	state = {
+		recordHomeDetails: recordHomeDetails2,
+	};
 
-	changeDescription() {
+	changeDescription = () => {
 		if (this.state.recordHomeDetails[0].content === 'hi') {
 			this.setState({ recordHomeDetails: recordHomeDetails1 });
 		} else {
 			this.setState({ recordHomeDetails: recordHomeDetails2 });
 		}
-	},
+	};
 
-	handleSelect(selectedItem, ...rest) {
+	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
 			currentSelected: this.state.options.indexOf(selectedItem),
 		});
-	},
+	};
 
 	render() {
 		const defaultProps = {
@@ -76,8 +74,9 @@ const DemoPageHeader = createReactClass({
 				<SLDSPageHeader {...defaultProps} />
 			</div>
 		);
-	},
-});
+	}
+}
+
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
 const recordHomeContentRight = (
@@ -145,7 +144,7 @@ const objectHomeContentRight = (
 			iconName="settings"
 			variant="icon"
 			iconVariant="more"
-			className="slds-m-left--xx-small"
+			className="slds-m-left_xx-small"
 			assistiveText={{ icon: 'Settings' }}
 		/>
 		<SLDSButton
@@ -153,7 +152,7 @@ const objectHomeContentRight = (
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
-			className="slds-m-left--xx-small"
+			className="slds-m-left_xx-small"
 			assistiveText={{ icon: 'Table' }}
 		/>
 		<SLDSButtonGroup>
@@ -169,7 +168,7 @@ const objectHomeContentRight = (
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
-				className="slds-m-left--xx-small"
+				className="slds-m-left_xx-small"
 				assistiveText={{ icon: 'Filter List' }}
 			/>
 			<SLDSMenuDropdown
@@ -217,7 +216,7 @@ const relatedListContentRight = (
 			iconName="table"
 			variant="icon"
 			iconVariant="more"
-			className="slds-m-left--xx-small"
+			className="slds-m-left_xx-small"
 			assistiveText={{ icon: 'Table' }}
 		/>
 		<SLDSButtonGroup>
@@ -226,7 +225,7 @@ const relatedListContentRight = (
 				iconName="chart"
 				variant="icon"
 				iconVariant="border"
-				className="slds-m-left--xx-small"
+				className="slds-m-left_xx-small"
 				assistiveText={{ icon: 'Chart' }}
 			/>
 			<SLDSButton
@@ -234,7 +233,7 @@ const relatedListContentRight = (
 				iconName="filterList"
 				variant="icon"
 				iconVariant="border"
-				className="slds-m-left--xx-small"
+				className="slds-m-left_xx-small"
 				assistiveText={{ icon: 'Filter List' }}
 			/>
 			<SLDSMenuDropdown
@@ -284,7 +283,7 @@ const relatedListTrail = [
 
 storiesOf(PAGE_HEADER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

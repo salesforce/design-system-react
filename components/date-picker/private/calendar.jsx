@@ -2,15 +2,15 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import Week from './week';
 import DateUtil from '../../../utilities/date';
 
-const DatepickerCalendar = createReactClass({
-	displayName: 'SLDSDatepickerCalendar',
+class DatepickerCalendar extends React.Component {
+	static displayName = 'SLDSDatepickerCalendar';
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Three letter abbreviations of the days of the week, starting on Sunday.
 		 */
@@ -75,21 +75,19 @@ const DatepickerCalendar = createReactClass({
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
 		weekDayLabels: PropTypes.array.isRequired,
-	},
+	};
 
-	getInitialState() {
-		return {
-			focusedDate: this.props.initialDateForCalendarRender,
-			calendarHasFocus: true,
-			todayFocus: false,
-		};
-	},
+	state = {
+		focusedDate: this.props.initialDateForCalendarRender,
+		calendarHasFocus: true,
+		todayFocus: false,
+	};
 
 	componentDidUpdate(prevProps) {
 		this.setCalendarRenderSeedDate(prevProps);
-	},
+	}
 
-	setCalendarRenderSeedDate(prevProps) {
+	setCalendarRenderSeedDate = (prevProps) => {
 		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
 		if (
 			!DateUtil.isEqual(
@@ -103,22 +101,22 @@ const DatepickerCalendar = createReactClass({
 				triggerCallback: true,
 			});
 		}
-	},
+	};
 
-	handleSelectDate(event, { date }) {
+	handleSelectDate = (event, { date }) => {
 		if (!this.props.dateDisabled({ date })) {
 			this.setState({ selected: date });
 			this.props.onSelectDate(event, { date });
 		}
-	},
+	};
 
-	handleRequestClose(event) {
+	handleRequestClose = (event) => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose(event, {});
 		}
-	},
+	};
 
-	handleKeyboardNavigateToPreviousDay(event, { date }) {
+	handleKeyboardNavigateToPreviousDay = (event, { date }) => {
 		const prevDate = DateUtil.addDays(date, -1);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.props.onChangeMonth(event, prevDate);
@@ -129,9 +127,9 @@ const DatepickerCalendar = createReactClass({
 				triggerCallback: true,
 			});
 		}
-	},
+	};
 
-	handleKeyboardNavigateToNextDay(event, { date }) {
+	handleKeyboardNavigateToNextDay = (event, { date }) => {
 		const nextDate = DateUtil.addDays(date, 1);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.props.onChangeMonth(event, nextDate);
@@ -142,9 +140,9 @@ const DatepickerCalendar = createReactClass({
 				triggerCallback: true,
 			});
 		}
-	},
+	};
 
-	handleKeyboardNavigateToPreviousWeek(event, { date }) {
+	handleKeyboardNavigateToPreviousWeek = (event, { date }) => {
 		const prevDate = DateUtil.addDays(date, -7);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.props.onChangeMonth(event, prevDate);
@@ -155,9 +153,9 @@ const DatepickerCalendar = createReactClass({
 				triggerCallback: true,
 			});
 		}
-	},
+	};
 
-	handleKeyboardNavigateToNextWeek(event, { date }) {
+	handleKeyboardNavigateToNextWeek = (event, { date }) => {
 		const nextDate = DateUtil.addDays(date, 7);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.props.onChangeMonth(event, nextDate);
@@ -168,9 +166,9 @@ const DatepickerCalendar = createReactClass({
 				triggerCallback: true,
 			});
 		}
-	},
+	};
 
-	renderWeeks() {
+	renderWeeks = () => {
 		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
 
 		const firstDayOfMonth = DateUtil.firstDayOfMonth(
@@ -241,7 +239,7 @@ const DatepickerCalendar = createReactClass({
 		}
 
 		return weeks;
-	},
+	};
 
 	render() {
 		const sunday = (
@@ -303,7 +301,7 @@ const DatepickerCalendar = createReactClass({
 								<a
 									href="javascript:void(0)" // eslint-disable-line no-script-url
 									tabIndex="0"
-									className="slds-show--inline-block slds-p-bottom--x-small"
+									className="slds-show_inline-block slds-p-bottom_x-small"
 									onClick={(event) => {
 										this.handleSelectDate(event, { date: new Date() });
 									}}
@@ -318,7 +316,7 @@ const DatepickerCalendar = createReactClass({
 				</table>
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default DatepickerCalendar;

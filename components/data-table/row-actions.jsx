@@ -5,7 +5,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### isFunction
@@ -23,13 +22,13 @@ import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
-const DataTableRowActions = createReactClass({
+class DataTableRowActions extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_ROW_ACTIONS,
+	static displayName = DATA_TABLE_ROW_ACTIONS;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Description of the menu for screenreaders.
 		 */
@@ -63,35 +62,33 @@ const DataTableRowActions = createReactClass({
 		 * **Note:** onAction will not be overridden, both `DropDown`'s onSelect(dropDownActionOption) and onAction(rowItem, dropdownActionOption) will be called with appropriate parameters
 		 */
 		dropdown: PropTypes.node,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			assistiveText: { icon: 'Actions' },
-			noHint: false,
-			options: [],
-		};
-	},
+	static defaultProps = {
+		assistiveText: { icon: 'Actions' },
+		noHint: false,
+		options: [],
+	};
 
-	handleClick(e) {
+	handleClick = (e) => {
 		EventUtil.trap(e);
-	},
+	};
 
-	handleSelect(selection) {
+	handleSelect = (selection) => {
 		if (isFunction(this.props.onAction)) {
 			this.props.onAction(this.props.item, selection);
 		}
 		if (this.props.dropdown && isFunction(this.props.dropdown.props.onSelect)) {
 			this.props.dropdown.props.onSelect(selection);
 		}
-	},
+	};
 
 	// ### Render
 	render() {
 		// i18n
 		const defaultDropdownProps = {
 			align: 'right',
-			buttonClassName: 'slds-button--icon-x-small',
+			buttonClassName: 'slds-button_icon-x-small',
 			buttonVariant: 'icon',
 			iconCategory: 'utility',
 			iconName: 'down',
@@ -123,7 +120,7 @@ const DataTableRowActions = createReactClass({
 				<Dropdown {...dropdownProps} />
 			</td>
 		);
-	},
-});
+	}
+}
 
 export default DataTableRowActions;

@@ -7,7 +7,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 
 import PropTypes from 'prop-types';
 
@@ -38,13 +37,13 @@ const defaultProps = {
 /**
  * App Launcher Sections allow users to categorize App Tiles as well as toggle their display
  */
-const AppLauncherSection = createReactClass({
+class AppLauncherSection extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: APP_LAUNCHER_SECTION,
+	static displayName = APP_LAUNCHER_SECTION;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -73,29 +72,25 @@ const AppLauncherSection = createReactClass({
 		 * Callback for when section is toggled. Passes "isOpen" bool. Forces `toggleable` to true
 		 */
 		onToggleClick: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
-	getInitialState() {
-		return {
-			isOpen: true,
-		};
-	},
+	state = {
+		isOpen: true,
+	};
 
 	componentWillMount() {
 		checkProps(APP_LAUNCHER_SECTION, this.props, componentDoc);
-	},
+	}
 
-	toggleOpen(event) {
+	toggleOpen = (event) => {
 		this.setState({ isOpen: !this.state.isOpen });
 
 		if (isFunction(this.props.onToggleClick)) {
 			this.props.onToggleClick(event, {});
 		}
-	},
+	};
 
 	render() {
 		const isOpen =
@@ -122,7 +117,7 @@ const AppLauncherSection = createReactClass({
 							iconCategory="utility"
 							iconName="switch"
 							onClick={this.toggleOpen}
-							className="slds-m-right--small"
+							className="slds-m-right_small"
 							variant="icon"
 						/>
 					) : null}
@@ -131,17 +126,17 @@ const AppLauncherSection = createReactClass({
 				<div className="slds-section__content">
 					<ul
 						className={classNames(
-							'slds-grid slds-grid--pull-padded slds-wrap',
+							'slds-grid slds-grid_pull-padded slds-wrap',
 							sectionIsOpenClass
 						)}
 					>
 						{React.Children.map(this.props.children, (child) => (
 							<li
 								className={classNames(
-									'slds-col--padded slds-grow-none',
+									'slds-col_padded slds-grow-none',
 									child.props.size === 'small'
-										? 'slds-size--xx-small'
-										: 'slds-size--1-of-1 slds-medium-size--1-of-3'
+										? 'slds-size_xx-small'
+										: 'slds-size_1-of-1 slds-medium-size_1-of-3'
 								)}
 							>
 								{child}
@@ -151,7 +146,7 @@ const AppLauncherSection = createReactClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default AppLauncherSection;

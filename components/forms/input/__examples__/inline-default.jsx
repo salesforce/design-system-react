@@ -1,27 +1,25 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import InlineEdit from '~/components/forms/input/inline'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'InlineEditExample',
+class Example extends React.Component {
+	static displayName = 'InlineEditExample';
 
-	getInitialState() {
-		return {
-			value: 'Edit me inline',
-		};
-	},
+	state = {
+		value: 'Edit me inline',
+	};
 
-	handleChange(eventProps) {
+	handleChange = (eventProps) => {
 		this.setState({ value: eventProps.value });
-	},
+	};
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+				<section className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Base Input with visible label
 						</h1>
 						<InlineEdit
@@ -30,8 +28,8 @@ const Example = createReactClass({
 							onChange={this.handleChange}
 						/>
 					</div>
-					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+					<div className="slds-col_padded">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							Disabled Base Input
 						</h1>
 						<InlineEdit
@@ -44,7 +42,7 @@ const Example = createReactClass({
 				</section>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

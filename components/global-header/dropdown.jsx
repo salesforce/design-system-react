@@ -115,8 +115,6 @@ GlobalHeaderDropdown.defaultProps = {
 	buttonVariant: 'icon',
 	iconVariant: 'global-header',
 	nubbinPosition: 'top right',
-	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
-	offset: '12px 16px',
 };
 
 export default GlobalHeaderDropdown;

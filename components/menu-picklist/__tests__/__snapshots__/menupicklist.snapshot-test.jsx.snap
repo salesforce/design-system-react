@@ -18,13 +18,13 @@ exports[`MenuPicklist
     Contacts
   </label>
   <div
-    className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click"
+    className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"
     onKeyDown={[Function]}
     onMouseDown={[Function]}
   >
     <button
       aria-haspopup="true"
-      className="slds-button slds-button--neutral slds-picklist__label"
+      className="slds-button slds-button_neutral slds-picklist__label"
       id="sample-menu-picklist"
       onClick={[Function]}
       tabIndex={0}
@@ -78,13 +78,13 @@ exports[`MenuPicklist Default DOM Snapshot 1`] = `
     Contacts
   </label>
   <div
-    className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click"
+    className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"
     onKeyDown={[Function]}
     onMouseDown={[Function]}
   >
     <button
       aria-haspopup="true"
-      className="slds-button slds-button--neutral slds-picklist__label"
+      className="slds-button slds-button_neutral slds-picklist__label"
       id="sample-menu-picklist"
       onClick={[Function]}
       tabIndex={0}
@@ -124,7 +124,7 @@ exports[`MenuPicklist Default DOM Snapshot 1`] = `
 
 exports[`MenuPicklist Default HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"sample-menu-picklist\\" style=\\"width:100%\\">Contacts</label>
-    <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-menu-picklist\\" tabindex=\\"0\\" type=\\"button\\"><span class=\\"slds-truncate\\">Option C</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
+    <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button_neutral slds-picklist__label\\" id=\\"sample-menu-picklist\\" tabindex=\\"0\\" type=\\"button\\"><span class=\\"slds-truncate\\">Option C</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
     <div
         id=\\"listbox-selections-unique-id\\" orientation=\\"horizontal\\" role=\\"listbox\\">
         <ul class=\\"slds-listbox slds-listbox_inline slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\"></ul>

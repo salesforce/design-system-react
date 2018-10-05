@@ -62,17 +62,17 @@ const propSets = {
 				id: 'app-launcher-trigger',
 				noTruncate: true,
 				triggerName: (
-					<div className="slds-grid slds-grid--align-spread">
+					<div className="slds-grid slds-grid_align-spread">
 						<div>Marketing Cloud</div>
 						<div>
 							<Icon
 								category="utility"
-								className="slds-m-left--small slds-m-right--small"
+								className="slds-m-left_small slds-m-right_small"
 								name="email"
 								size="x-small"
 							/>
 							<span
-								className="context-bar__label-action slds-text-body--regular"
+								className="context-bar__label-action slds-text-body_regular"
 								style={{ fontWeight: 'normal' }}
 							>
 								Email Studio

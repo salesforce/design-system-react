@@ -10,7 +10,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### shortid
@@ -24,21 +24,21 @@ import { PANEL_FILTER_LIST } from '../../../utilities/constants';
 /**
  * A list of Filters. This is a higher order component for filters that decorates the filter to work within a Filtering Panel. It also adds support for a Filter error label.
  */
-const PanelFilterList = createReactClass({
-	displayName: PANEL_FILTER_LIST,
+class PanelFilterList extends React.Component {
+	static displayName = PANEL_FILTER_LIST;
 
-	propTypes() {
+	static propTypes() {
 		return {
 			/**
 			 * Pass in `Filter` components
 			 */
 			children: PropTypes.node,
 		};
-	},
+	}
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
-	},
+	}
 
 	render() {
 		const children = React.Children.map(this.props.children, (child, index) => {
@@ -61,7 +61,7 @@ const PanelFilterList = createReactClass({
 					{child.props.errorLabel ? (
 						<p
 							id={`${id}-error`}
-							className="slds-text-color--error slds-m-top--xx-small"
+							className="slds-text-color_error slds-m-top_xx-small"
 						>
 							{child.props.errorLabel}
 						</p>
@@ -71,11 +71,11 @@ const PanelFilterList = createReactClass({
 		});
 
 		return (
-			<ol className="slds-list--vertical slds-list--vertical-space">
+			<ol className="slds-list_vertical slds-list_vertical-space">
 				{children}
 			</ol>
 		);
-	},
-});
+	}
+}
 
 export default PanelFilterList;

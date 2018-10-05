@@ -1,26 +1,24 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'ModalExample',
+class Example extends React.Component {
+	static displayName = 'ModalExample';
 
-	getInitialState() {
-		return {
-			noHeaderIsOpen: false,
-			noFooterIsOpen: false,
-		};
-	},
+	state = {
+		noHeaderIsOpen: false,
+		noFooterIsOpen: false,
+	};
 
-	toggleNoHeaderIsOpen() {
+	toggleNoHeaderIsOpen = () => {
 		this.setState({ noHeaderIsOpen: !this.state.noHeaderIsOpen });
-	},
+	};
 
-	toggleNofooterIsOpen() {
+	toggleNofooterIsOpen = () => {
 		this.setState({ noFooterIsOpen: !this.state.noFooterIsOpen });
-	},
+	};
 
 	render() {
 		const modal = this.state.noHeaderIsOpen ? (
@@ -29,7 +27,7 @@ const Example = createReactClass({
 				isOpen={this.state.noHeaderIsOpen}
 				onRequestClose={this.toggleNoHeaderIsOpen}
 			>
-				<section className="slds-p-around--medium">
+				<section className="slds-p-around_medium">
 					<p>
 						Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
 						ullamco deserunt aute id consequat veniam incididunt duis in sint
@@ -54,7 +52,7 @@ const Example = createReactClass({
 				onRequestClose={this.toggleNofooterIsOpen}
 				title="Modal Header"
 			>
-				<section className="slds-p-around--medium">
+				<section className="slds-p-around_medium">
 					<p>
 						Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
 						ullamco deserunt aute id consequat veniam incididunt duis in sint
@@ -83,7 +81,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

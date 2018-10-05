@@ -14,8 +14,8 @@ import AssistiveTextFilter from '../__examples__/assistive-text';
 /* eslint-disable react/prop-types */
 
 const CustomAlignment = ({ children, align }) => (
-	<div className="slds-grid slds-m-around--xx-large">
-		<div className={`slds-col--bump-${align}`} style={{ width: '420px' }}>
+	<div className="slds-grid slds-m-around_xx-large">
+		<div className={`slds-col_bump-${align}`} style={{ width: '420px' }}>
 			{children}
 		</div>
 	</div>
@@ -25,7 +25,7 @@ CustomAlignment.defaultProps = { align: 'left' };
 
 storiesOf(FILTER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

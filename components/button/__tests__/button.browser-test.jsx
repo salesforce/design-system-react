@@ -66,7 +66,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders correct variant styles', () => {
-			expect(btn.className).to.include('slds-button--neutral');
+			expect(btn.className).to.include('slds-button_neutral');
 		});
 
 		it('renders custom id', () => {
@@ -104,7 +104,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders icon', () => {
-			expect(svg.className.baseVal).to.include('slds-button__icon--right');
+			expect(svg.className.baseVal).to.include('slds-button__icon_right');
 		});
 	});
 
@@ -181,6 +181,10 @@ describe('SLDSButton: ', () => {
 			});
 			use = findRenderedDOMComponentWithTag(cmp, 'use');
 			svgHref = use.getAttribute('xlink:href');
+		});
+
+		after(() => {
+			removeButton(use);
 		});
 
 		it('renders svg', () => {

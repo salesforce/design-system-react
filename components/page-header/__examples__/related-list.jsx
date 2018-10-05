@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -7,16 +7,14 @@ import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'PageHeaderExample';
 
 	render() {
 		const navRight = (
 			<div className="slds-button-group" role="group">
-				<button className="slds-button slds-button--neutral">
-					Add Contact
-				</button>
-				<div className="slds-button--last">
+				<button className="slds-button slds-button_neutral">Add Contact</button>
+				<div className="slds-button_last">
 					<Button
 						iconCategory="utility"
 						iconName="down"
@@ -46,7 +44,7 @@ const Example = createReactClass({
 					<DropdownTrigger>
 						<Button
 							assistiveText={{ icon: 'Change view' }}
-							className="slds-m-right--xx-small"
+							className="slds-m-right_xx-small"
 							iconCategory="utility"
 							iconName="table"
 							iconVariant="more"
@@ -60,7 +58,7 @@ const Example = createReactClass({
 						iconName="chart"
 						variant="icon"
 						iconVariant="border"
-						className="slds-m-left--xx-small"
+						className="slds-m-left_xx-small"
 						assistiveText={{ icon: 'Chart' }}
 					/>
 					<Button
@@ -68,7 +66,7 @@ const Example = createReactClass({
 						iconName="filterList"
 						variant="icon"
 						iconVariant="border"
-						className="slds-m-left--xx-small"
+						className="slds-m-left_xx-small"
 						assistiveText={{ icon: 'Filter List' }}
 					/>
 					<Dropdown
@@ -107,7 +105,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

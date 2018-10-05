@@ -53,7 +53,7 @@ class DetailBlock extends Component {
 	// eslint-disable-next-line class-methods-use-this
 	_getClassNames(className, flavor) {
 		return classnames('slds-page-header__detail-block', className, {
-			[`slds-size--${flavor}`]: flavor,
+			[`slds-size_${flavor}`]: flavor,
 		});
 	}
 
@@ -98,7 +98,7 @@ class DetailBlock extends Component {
 		const renderContent = () => {
 			const type = typeof content;
 			if (type === 'string') {
-				const labelClasses = classnames('slds-text-body--regular', {
+				const labelClasses = classnames('slds-text-body_regular', {
 					'slds-truncate': truncate,
 				});
 				return (
@@ -120,7 +120,7 @@ class DetailBlock extends Component {
 		 * Render the content with a tooltip (for content that truncates)
 		 */
 		const renderContentWithTooltip = () => {
-			const labelClasses = classnames('slds-text-body--regular', {
+			const labelClasses = classnames('slds-text-body_regular', {
 				'slds-truncate': truncate,
 			});
 			return (

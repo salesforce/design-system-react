@@ -1,10 +1,10 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Datepicker from '~/components/date-picker';
 
-const Example = createReactClass({
-	displayName: 'DatepickerExample',
+class Example extends React.Component {
+	static displayName = 'DatepickerExample';
 
 	render() {
 		return (
@@ -20,7 +20,7 @@ const Example = createReactClass({
 				}}
 			/>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

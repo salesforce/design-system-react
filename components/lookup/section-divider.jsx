@@ -10,8 +10,8 @@ const propTypes = {
 };
 
 const DefaultSectionDivider = (props) => (
-	<li className="slds-p-around--x-small slds-lookup__divider" tabIndex="-1">
-		<span className="slds-m-left--x-small">
+	<li className="slds-p-around_x-small slds-lookup__divider" tabIndex="-1">
+		<span className="slds-m-left_x-small">
 			<strong>{props.data.label}</strong>
 		</span>
 	</li>

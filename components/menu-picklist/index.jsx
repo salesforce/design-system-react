@@ -1,15 +1,18 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Picklist Component
+/* eslint-disable react/prefer-es6-class */
+
+// # Picklist Component [DEPRECATED]
 
 // Implements the [Picklist design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-picklist) in React.
 // Based on SLDS v2.1.0-rc.2
 
-// ### React
 import React from 'react';
+import ReactDOM from 'react-dom';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+import isFunction from 'lodash.isfunction';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -33,14 +36,51 @@ import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
 import Pill from '../utilities/pill';
 
-// ### Traits
-
-// #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
-
 import EventUtil from '../../utilities/event';
+import KeyBuffer from '../../utilities/key-buffer';
+import keyboardNavigate from '../../utilities/keyboard-navigate';
 import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
+
+const noop = () => {};
+
+const itemIsSelectable = (item) =>
+	item.type !== 'header' && item.type !== 'divider' && !item.disabled;
+
+const getNavigableItems = (items) => {
+	const navigableItems = [];
+	navigableItems.indexes = [];
+	navigableItems.keyBuffer = new KeyBuffer();
+
+	if (Array.isArray(items)) {
+		items.forEach((item, index) => {
+			if (itemIsSelectable(item)) {
+				navigableItems.push({
+					index,
+					text: `${item.label}`.toLowerCase(),
+				});
+
+				navigableItems.indexes.push(index);
+			}
+		});
+	}
+
+	return navigableItems;
+};
+
+function getMenuItem(menuItemId, context = document) {
+	let menuItem;
+
+	if (menuItemId) {
+		menuItem = context.getElementById(menuItemId);
+	}
+
+	return menuItem;
+}
+
+function getMenu(componentRef) {
+	return ReactDOM.findDOMNode(componentRef).querySelector('ul.dropdown__list'); // eslint-disable-line react/no-find-dom-node
+}
 
 /**
  * ** MenuPicklist is deprecated. Please use a read-only Combobox instead.**
@@ -93,10 +133,6 @@ const MenuPicklist = createReactClass({
 		 */
 		listItemRenderer: PropTypes.func,
 		/**
-		 * Allows multiple items to be selected. Items will be shown in pills. Clicking the item does not close the menu.
-		 */
-		multiple: PropTypes.bool,
-		/**
 		 * Triggered when the trigger button is clicked to open.
 		 */
 		onClick: PropTypes.func,
@@ -129,8 +165,6 @@ const MenuPicklist = createReactClass({
 		 */
 		initValueIndex: PropTypes.number,
 	},
-
-	mixins: [KeyboardNavigable],
 
 	getDefaultProps() {
 		return {
@@ -180,6 +214,8 @@ const MenuPicklist = createReactClass({
 				selectedIndices: currentIndices,
 			});
 		}
+
+		this.navigableItems = getNavigableItems(this.props.options);
 	},
 
 	componentWillReceiveProps(nextProps) {
@@ -203,11 +239,24 @@ const MenuPicklist = createReactClass({
 				}
 			}
 		}
+
+		if (nextProps.options) {
+			this.navigableItems = getNavigableItems(nextProps.options);
+		}
 	},
 
 	componentWillUnmount() {
 		this.isUnmounting = true;
 		window.removeEventListener('click', this.closeOnClick, false);
+	},
+
+	getListItemId(index) {
+		let menuItemId;
+		if (index !== undefined) {
+			const menuId = isFunction(this.getId) ? this.getId() : this.props.id;
+			menuItemId = `${menuId}-item-${index}`;
+		}
+		return menuItemId;
 	},
 
 	getId() {
@@ -349,6 +398,64 @@ const MenuPicklist = createReactClass({
 		this.handleClose();
 	},
 
+	// Handling open / close toggling is optional, and a default implementation is provided for handling focus, but selection _must_ be handled
+	handleKeyboardNavigate({
+		event,
+		isOpen = true,
+		keyCode,
+		onFocus = this.handleKeyboardFocus,
+		onSelect,
+		target,
+		toggleOpen = noop,
+	}) {
+		keyboardNavigate({
+			componentContext: this,
+			currentFocusedIndex: this.state.focusedIndex,
+			event,
+			isOpen,
+			keyCode,
+			navigableItems: this.navigableItems,
+			onFocus,
+			onSelect,
+			target,
+			toggleOpen,
+		});
+	},
+	// This is a bit of an anti-pattern, but it has the upside of being a nice default. Component authors can always override to only set state and do their own focusing in their subcomponents.
+	handleKeyboardFocus(focusedIndex) {
+		if (this.state.focusedIndex !== focusedIndex) {
+			this.setState({ focusedIndex });
+		}
+		const menu = isFunction(this.getMenu) ? this.getMenu() : getMenu(this);
+		const menuItem = isFunction(this.getMenuItem)
+			? this.getMenuItem(focusedIndex, menu)
+			: getMenuItem(this.getListItemId(focusedIndex));
+		if (menuItem) {
+			this.focusMenuItem(menuItem);
+			this.scrollToMenuItem(menu, menuItem);
+		}
+	},
+	focusMenuItem(menuItem) {
+		menuItem.getElementsByTagName('a')[0].focus();
+	},
+	scrollToMenuItem(menu, menuItem) {
+		if (menu && menuItem) {
+			const menuHeight = menu.offsetHeight;
+			const menuTop = menu.scrollTop;
+			const menuItemTop = menuItem.offsetTop - menu.offsetTop;
+			if (menuItemTop < menuTop) {
+				menu.scrollTop = menuItemTop;
+			} else {
+				const menuBottom = menuTop + menuHeight + menu.offsetTop;
+				const menuItemBottom =
+					menuItemTop + menuItem.offsetHeight + menu.offsetTop;
+				if (menuItemBottom > menuBottom) {
+					menu.scrollTop = menuItemBottom - menuHeight - menu.offsetTop;
+				}
+			}
+		}
+	},
+
 	closeOnClick(event) {
 		if (!event[this.getClickEventName()] && this.state.isOpen) {
 			this.handleClose();
@@ -412,7 +519,7 @@ const MenuPicklist = createReactClass({
 	renderInlineMenu() {
 		return !this.props.disabled && this.state.isOpen ? (
 			<div
-				className="slds-dropdown slds-dropdown--left"
+				className="slds-dropdown slds-dropdown_left"
 				// inline style override
 				style={{
 					maxHeight: '20em',
@@ -430,7 +537,7 @@ const MenuPicklist = createReactClass({
 			<Dialog
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
-				contentsClassName="slds-dropdown slds-dropdown--left"
+				contentsClassName="slds-dropdown slds-dropdown_left"
 				context={this.context}
 				flippable
 				onClose={this.handleCancel}
@@ -473,7 +580,7 @@ const MenuPicklist = createReactClass({
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div
 				className={classNames(
-					'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+					'slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click',
 					{ 'slds-is-open': this.state.isOpen },
 					this.props.className
 				)}
@@ -484,10 +591,10 @@ const MenuPicklist = createReactClass({
 					aria-describedby={this.getErrorId()}
 					aria-expanded={this.state.isOpen}
 					aria-haspopup="true"
-					className="slds-button slds-button--neutral slds-picklist__label"
+					className="slds-button slds-button_neutral slds-picklist__label"
 					disabled={this.props.disabled}
 					id={this.getId()}
-					onClick={!this.props.disabled && this.handleClick}
+					onClick={!this.props.disabled ? this.handleClick : undefined}
 					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
 					type="button"
@@ -515,6 +622,9 @@ const MenuPicklist = createReactClass({
 							index: selectedPill,
 						}}
 						events={{
+							onRequestFocus: () => {},
+							onRequestFocusOnNextPill: () => {},
+							onRequestFocusOnPreviousPill: () => {},
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
 								const index = data.index;

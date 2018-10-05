@@ -9,6 +9,6 @@ import { storiesOf, action } from '@storybook/react';
 
 storiesOf('Inital Blank Story', module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Placeholder', () => null);

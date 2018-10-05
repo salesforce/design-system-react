@@ -9,12 +9,13 @@ import Offline from '../__examples__/offline';
 import Dismissable from '../__examples__/dismissable';
 import CloseAlert from '../__examples__/close-alert';
 import CustomClassNames from '../__examples__/custom-class-name';
+import CustomStyles from '../__examples__/custom-style';
 
 /* eslint-disable react/display-name */
 
 storiesOf(ALERT, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Info', () => <Info />)
 	.add('Warning', () => <Warning />)
@@ -22,4 +23,5 @@ storiesOf(ALERT, module)
 	.add('Offline', () => <Offline />)
 	.add('Dismissable', () => <Dismissable />)
 	.add('Close alert', () => <CloseAlert />)
-	.add('Custom Class Names', () => <CustomClassNames />);
+	.add('Custom Class Names', () => <CustomClassNames />)
+	.add('Custom Styles', () => <CustomStyles />);

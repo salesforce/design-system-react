@@ -3,7 +3,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -27,13 +27,13 @@ import {
 /**
  * Used internally, renders each individual column heading.
  */
-const DataTableHeaderCell = createReactClass({
+class DataTableHeaderCell extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_HEADER_CELL,
+	static displayName = DATA_TABLE_HEADER_CELL;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
 			columnSort: PropTypes.string,
@@ -71,26 +71,24 @@ const DataTableHeaderCell = createReactClass({
 		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 		 */
 		width: PropTypes.string,
-	},
+	};
 
-	getInitialState() {
-		return {
-			sortDirection: null,
-		};
-	},
+	state = {
+		sortDirection: null,
+	};
 
 	componentDidMount() {
 		checkProps(DATA_TABLE_COLUMN, this.props);
-	},
+	}
 
 	componentDidUpdate(prevProps) {
 		// reset sort state when another column is sorted
 		if (prevProps.isSorted === true && this.props.isSorted === false) {
 			this.setState({ sortDirection: null }); // eslint-disable-line react/no-did-update-set-state
 		}
-	},
+	}
 
-	handleSort(e) {
+	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
 		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
@@ -106,7 +104,7 @@ const DataTableHeaderCell = createReactClass({
 		if (isFunction(this.props.onSort)) {
 			this.props.onSort(data, e);
 		}
-	},
+	};
 
 	// ### Render
 	render() {
@@ -183,7 +181,7 @@ const DataTableHeaderCell = createReactClass({
 					'slds-text-title_caps'
 				)}
 				scope="col"
-				style={{ width: width ? { width } : null }}
+				style={width ? { width } : null}
 			>
 				{this.props.fixedLayout ? (
 					fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
@@ -197,7 +195,7 @@ const DataTableHeaderCell = createReactClass({
 				)}
 			</th>
 		);
-	},
-});
+	}
+}
 
 export default DataTableHeaderCell;

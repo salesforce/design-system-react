@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
 import Card from '~/components/card';
@@ -15,37 +15,35 @@ const sampleItems = [
 	{ name: 'Cloud City' },
 ];
 
-const Example = createReactClass({
-	displayName: 'CardExample',
+class Example extends React.Component {
+	static displayName = 'CardExample';
 
-	getInitialState() {
-		return {
-			items: sampleItems,
-			isFiltering: false,
-		};
-	},
+	state = {
+		items: sampleItems,
+		isFiltering: false,
+	};
 
-	handleFilterChange(event) {
+	handleFilterChange = (event) => {
 		const filteredItems = sampleItems.filter((item) =>
 			RegExp(event.target.value, 'i').test(item.name)
 		);
 		this.setState({ isFiltering: true, items: filteredItems });
-	},
+	};
 
-	handleDeleteAllItems() {
+	handleDeleteAllItems = () => {
 		this.setState({ isFiltering: false, items: [] });
-	},
+	};
 
-	handleAddItem() {
+	handleAddItem = () => {
 		this.setState({ items: sampleItems });
-	},
+	};
 
 	render() {
 		const isEmpty = this.state.items.length === 0;
 
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--vertical">
+				<div className="slds-grid slds-grid_vertical">
 					<Card
 						id="ExampleCard"
 						filter={
@@ -86,7 +84,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

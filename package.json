@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.24",
+	"version": "0.8.26",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -10,6 +10,7 @@
 	"scripts": {
 		"build-docs": "npx babel-node ./scripts/build-docs.js",
 		"build-and-test-docs": "npm run build-docs && npx babel-node ./tests/component-docs-test.js",
+		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
@@ -17,7 +18,7 @@
 		"link": "./scripts/npm-link.sh",
 		"lint": "npm run lint:style && npm run lint:quality",
 		"lint:docs": "npx prettylint \"*.md\"",
-		"lint:fix": "npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix",
+		"lint:fix": "npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx prettier --debug-check \"**/*.{js,jsx}\" && npx prettylint \"*.json\"",
 		"lint:quality": "npx eslint \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
@@ -86,21 +87,14 @@
 		"classnames": "^2.2.5",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
-		"lodash.compact": "^3.0.0",
 		"lodash.escaperegexp": "^4.1.1",
 		"lodash.find": "^4.3.0",
 		"lodash.findindex": "^4.3.0",
-		"lodash.flatten": "^4.2.0",
-		"lodash.isboolean": "^3.0.3",
 		"lodash.isdate": "^4.0.1",
 		"lodash.isequal": "^4.2.0",
 		"lodash.isfunction": "^3.0.8",
-		"lodash.isnumber": "^3.0.3",
 		"lodash.memoize": "^4.1.1",
-		"lodash.omit": "^4.3.0",
-		"lodash.partial": "^4.1.3",
 		"lodash.reject": "^4.3.0",
-		"lodash.uniqueid": "^4.0.0",
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
 		"react-highlighter": "^0.4.0",
@@ -159,6 +153,7 @@
 		"eslint-plugin-import": "^2.11.0",
 		"eslint-plugin-json": "^1.2.0",
 		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"eslint-plugin-prefer-object-spread": "^1.2.1",
 		"eslint-plugin-react": "^7.7.0",
 		"express": "^4.15.5",
@@ -671,7 +666,8 @@
 			"component": "spinner",
 			"status": "prod",
 			"display-name": "Spinners",
-			"SLDS-component-path": "/components/spinner"
+			"SLDS-component-path": "/components/spinner",
+			"url-slug": "spinners"
 		},
 		{
 			"component": "tabs",
@@ -687,7 +683,7 @@
 					"component": "panel"
 				}
 			],
-			"url-slug": "tabss"
+			"url-slug": "tabs"
 		},
 		{
 			"component": "textarea",

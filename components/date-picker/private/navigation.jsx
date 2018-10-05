@@ -2,17 +2,17 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import YearPicklist from './year-picklist';
 import Button from '../../button';
 
 import DateUtil from '../../../utilities/date';
 
-const DatepickerMonthNavigation = createReactClass({
-	displayName: 'SLDSDatepickerMonthNavigation',
+class DatepickerMonthNavigation extends React.Component {
+	static displayName = 'SLDSDatepickerMonthNavigation';
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Label for button to go to the next month
 		 */
@@ -53,46 +53,42 @@ const DatepickerMonthNavigation = createReactClass({
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
 		 */
 		relativeYearTo: PropTypes.number,
-	},
+	};
 
-	getMonthLabel() {
-		return this.props.monthLabels[
+	getMonthLabel = () => this.props.monthLabels[
 			new Date(this.props.initialDateForCalendarRender).getMonth()
 		];
-	},
 
-	getYearLabel() {
-		return new Date(this.props.initialDateForCalendarRender).getFullYear();
-	},
+	getYearLabel = () => new Date(this.props.initialDateForCalendarRender).getFullYear();
 
-	handleClick(event) {
+	handleClick = (event) => {
 		event.preventDefault();
 		event.stopPropagation();
-	},
+	};
 
-	handleYearSelect(initialDateForCalendarRender) {
+	handleYearSelect = (initialDateForCalendarRender) => {
 		this.props.onChangeMonth(undefined, initialDateForCalendarRender);
-	},
+	};
 
-	previousMonthClicked() {
+	previousMonthClicked = () => {
 		this.props.onChangeMonth(
 			undefined,
 			DateUtil.addMonths(this.props.initialDateForCalendarRender, -1)
 		);
-	},
+	};
 
-	nextMonthClicked() {
+	nextMonthClicked = () => {
 		this.props.onChangeMonth(
 			undefined,
 			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1)
 		);
-	},
+	};
 
 	render() {
 		return (
 			<div className="slds-datepicker__filter slds-grid">
 				<div
-					className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+					className="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
 					style={{ flex: 1.75 }}
 				>
 					<div className="slds-align-middle">
@@ -140,7 +136,7 @@ const DatepickerMonthNavigation = createReactClass({
 				/>
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default DatepickerMonthNavigation;

@@ -44,12 +44,12 @@ const Breadcrumb = (props) => {
 
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
-			<ol className="slds-breadcrumb slds-list--horizontal">
+			<ol className="slds-breadcrumb slds-list_horizontal">
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
 						key={index} // There isn't any better reasonable way to identity these
-						className="slds-breadcrumb__item slds-text-title--caps"
+						className="slds-breadcrumb__item slds-text-title_caps"
 					>
 						{crumb}
 					</li>

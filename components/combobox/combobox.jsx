@@ -12,7 +12,6 @@ import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
 
-import isBoolean from 'lodash.isboolean';
 import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
@@ -35,6 +34,7 @@ import { COMBOBOX } from '../../utilities/constants';
 import componentDoc from './docs.json';
 
 let currentOpenDropdown;
+const documentDefined = typeof document !== 'undefined';
 
 const propTypes = {
 	/**
@@ -382,7 +382,7 @@ class Combobox extends React.Component {
 		this.state.activeOption && this.state.activeOptionIndex !== -1;
 
 	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean' ? this.props.isOpen : this.state.isOpen);
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
@@ -445,7 +445,19 @@ class Combobox extends React.Component {
 	handleInputBlur = (event) => {
 		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
 		setTimeout(() => {
-			this.handleClose(event);
+			const activeElement = documentDefined ? document.activeElement : false;
+			// detect if the scrollbar of the combobox-autocomplete/lookup menu is clicked in IE11. If it is, return focus to input, and do not close menu.
+			if (
+				activeElement &&
+				activeElement.tagName === 'DIV' &&
+				activeElement.id === `${this.getId()}-listbox`
+			) {
+				if (this.inputRef) {
+					this.inputRef.focus();
+				}
+			} else {
+				this.handleClose(event);
+			}
 		}, 200);
 
 		if (this.props.events.onBlur) {

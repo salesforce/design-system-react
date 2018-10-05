@@ -78,9 +78,7 @@ describe('SLDSMenuPicklist: ', function() {
 		it('expands/contracts the dropdown on click', () => {
 			expect(getMenu(document.body)).to.equal(null);
 			Simulate.click(btn, {});
-			expect(getMenu(document.body).className).to.include(
-				'slds-dropdown--left'
-			);
+			expect(getMenu(document.body).className).to.include('slds-dropdown_left');
 			Simulate.click(btn, {});
 			expect(getMenu(document.body)).to.equal(null);
 		});
@@ -286,32 +284,6 @@ describe('SLDSMenuPicklist: ', function() {
 				which: 27,
 			});
 			expect(getMenu(body)).to.equal(null);
-		});
-	});
-
-	describe('multiple selection', () => {
-		let cmp;
-		let btn;
-
-		beforeEach(() => {
-			cmp = getPicklist({
-				multiple: true,
-			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-			Simulate.click(btn, {});
-		});
-
-		afterEach(() => {
-			removePicklist();
-		});
-
-		it('selects multiple items and renders pills', () => {
-			clickOnItem(cmp, 0);
-			clickOnItem(cmp, 1);
-			expect(btn.textContent).to.equal('Multiple Options Selected');
-
-			const listbox = findRenderedDOMComponentWithClass(cmp, 'slds-listbox');
-			expect(listbox.childNodes.length).to.equal(2);
 		});
 	});
 });

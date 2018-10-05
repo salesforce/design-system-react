@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Pill from '~/components/pill'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon';
@@ -7,14 +7,14 @@ import Avatar from '~/components/avatar';
 
 function noop() {}
 
-const Example = createReactClass({
-	displayName: 'PillExample',
+class Example extends React.Component {
+	static displayName = 'PillExample';
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<Pill
 							labels={{
 								label: 'Pill Label',
@@ -25,7 +25,7 @@ const Example = createReactClass({
 							onRemove={noop}
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Pill
 							labels={{
 								label: 'Pill Label',
@@ -35,7 +35,7 @@ const Example = createReactClass({
 							onRemove={noop}
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Pill
 							labels={{
 								label: 'Pill Label',
@@ -47,7 +47,7 @@ const Example = createReactClass({
 							onRemove={noop}
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Pill
 							labels={{
 								label: 'Pill Label',
@@ -65,7 +65,7 @@ const Example = createReactClass({
 							onRemove={noop}
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Pill
 							labels={{
 								label: 'Pill Label',
@@ -85,7 +85,7 @@ const Example = createReactClass({
 							onRemove={noop}
 						/>
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<Pill
 							labels={{
 								label: 'Pill Label',
@@ -105,7 +105,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

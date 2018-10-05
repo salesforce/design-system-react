@@ -192,7 +192,7 @@ describe('Card: ', () => {
 			heading: (
 				<span
 					id="custom-heading"
-					className="slds-text-heading--small slds-truncate"
+					className="slds-text-heading_small slds-truncate"
 					style={{ color: 'red' }}
 				>
 					To Wanda! This is custom!

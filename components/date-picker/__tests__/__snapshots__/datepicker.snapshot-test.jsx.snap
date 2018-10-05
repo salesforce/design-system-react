@@ -17,7 +17,7 @@ exports[`Datepicker
 		weekDayLabels
 	DOM Snapshot 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open CUSTOM-TRIGGER-CLASSNAME"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open CUSTOM-TRIGGER-CLASSNAME"
 >
   <div
     className="slds-form-element"
@@ -38,7 +38,7 @@ exports[`Datepicker
       <button
         aria-expanded={true}
         aria-haspopup={true}
-        className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
+        className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -60,7 +60,7 @@ exports[`Datepicker
     </div>
   </div>
   <div
-    className="slds-datepicker slds-dropdown slds-dropdown--right CUSTOM-CLASSNAME"
+    className="slds-datepicker slds-dropdown slds-dropdown_right CUSTOM-CLASSNAME"
     onKeyDown={[Function]}
     style={Object {}}
   >
@@ -74,7 +74,7 @@ exports[`Datepicker
         className="slds-datepicker__filter slds-grid"
       >
         <div
-          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+          className="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
           style={
             Object {
               "flex": 1.75,
@@ -85,7 +85,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              className="slds-button slds-button--icon-container"
+              className="slds-button slds-button_icon-container"
               disabled={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -124,7 +124,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              className="slds-button slds-button--icon-container"
+              className="slds-button slds-button_icon-container"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -847,7 +847,7 @@ exports[`Datepicker
                 role="gridcell"
               >
                 <a
-                  className="slds-show--inline-block slds-p-bottom--x-small"
+                  className="slds-show_inline-block slds-p-bottom_x-small"
                   href="javascript:void(0)"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -869,7 +869,7 @@ exports[`Datepicker
 	isIsoWeekday
 	DOM Snapshot 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
 >
   <div
     className="slds-form-element"
@@ -890,7 +890,7 @@ exports[`Datepicker
       <button
         aria-expanded={true}
         aria-haspopup={true}
-        className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
+        className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -912,7 +912,7 @@ exports[`Datepicker
     </div>
   </div>
   <div
-    className="slds-datepicker slds-dropdown slds-dropdown--left"
+    className="slds-datepicker slds-dropdown slds-dropdown_left"
     onKeyDown={[Function]}
     style={Object {}}
   >
@@ -926,7 +926,7 @@ exports[`Datepicker
         className="slds-datepicker__filter slds-grid"
       >
         <div
-          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+          className="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
           style={
             Object {
               "flex": 1.75,
@@ -937,7 +937,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              className="slds-button slds-button--icon-container"
+              className="slds-button slds-button_icon-container"
               disabled={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -976,7 +976,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
-              className="slds-button slds-button--icon-container"
+              className="slds-button slds-button_icon-container"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -1699,7 +1699,7 @@ exports[`Datepicker
                 role="gridcell"
               >
                 <a
-                  className="slds-show--inline-block slds-p-bottom--x-small"
+                  className="slds-show_inline-block slds-p-bottom_x-small"
                   href="javascript:void(0)"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1719,7 +1719,7 @@ exports[`Datepicker
 
 exports[`Datepicker Default DOM Snapshot 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
 >
   <div
     className="slds-form-element"
@@ -1740,7 +1740,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
       <button
         aria-expanded={true}
         aria-haspopup={true}
-        className="slds-button slds-button--icon slds-input__icon slds-input__icon_right"
+        className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1762,7 +1762,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="slds-datepicker slds-dropdown slds-dropdown--left"
+    className="slds-datepicker slds-dropdown slds-dropdown_left"
     onKeyDown={[Function]}
     style={Object {}}
   >
@@ -1776,7 +1776,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         className="slds-datepicker__filter slds-grid"
       >
         <div
-          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+          className="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
           style={
             Object {
               "flex": 1.75,
@@ -1787,7 +1787,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
             className="slds-align-middle"
           >
             <button
-              className="slds-button slds-button--icon-container"
+              className="slds-button slds-button_icon-container"
               disabled={false}
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -1826,7 +1826,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
             className="slds-align-middle"
           >
             <button
-              className="slds-button slds-button--icon-container"
+              className="slds-button slds-button_icon-container"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -2549,7 +2549,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
                 role="gridcell"
               >
                 <a
-                  className="slds-show--inline-block slds-p-bottom--x-small"
+                  className="slds-show_inline-block slds-p-bottom_x-small"
                   href="javascript:void(0)"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -2568,18 +2568,18 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
 `;
 
 exports[`Datepicker Default HTML Snapshot 1`] = `
-"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open\\">
+"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\">
   <div class=\\"slds-form-element\\">
-    <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon_right\\"><input type=\\"text\\" class=\\"slds-input\\" id=\\"sample-datepicker\\" placeholder=\\"Pick a Date\\" value=\\"7/23/2014\\" /><button aria-expanded=\\"true\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon slds-input__icon slds-input__icon_right\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#event\\"></use></svg><span class=\\"slds-assistive-text\\">Open Calendar</span></button></div>
+    <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon_right\\"><input type=\\"text\\" class=\\"slds-input\\" id=\\"sample-datepicker\\" placeholder=\\"Pick a Date\\" value=\\"7/23/2014\\" /><button aria-expanded=\\"true\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon slds-input__icon slds-input__icon_right\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#event\\"></use></svg><span class=\\"slds-assistive-text\\">Open Calendar</span></button></div>
   </div>
-  <div class=\\"slds-datepicker slds-dropdown slds-dropdown--left\\">
+  <div class=\\"slds-datepicker slds-dropdown slds-dropdown_left\\">
     <div class=\\"\\" aria-hidden=\\"false\\" data-selection=\\"single\\">
       <div class=\\"slds-datepicker__filter slds-grid\\">
-        <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\" style=\\"flex:1.75\\">
-          <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
+        <div class=\\"slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow\\" style=\\"flex:1.75\\">
+          <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button_icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
           <h2
             id=\\"sample-datepicker-month\\" class=\\"slds-align-middle\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">July <span class=\\"slds-assistive-text\\">2014</span></h2>
-            <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
+            <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button_icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
         </div>
         <div class=\\"slds-form-element slds-align-content-center\\">
           <div class=\\"slds-form-element\\">
@@ -2657,7 +2657,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
               <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
             </tr>
             <tr>
-              <td colSpan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
+              <td colSpan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show_inline-block slds-p-bottom_x-small\\">Today</a></td>
             </tr>
           </tbody>
         </table>

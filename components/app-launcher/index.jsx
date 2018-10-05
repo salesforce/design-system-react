@@ -2,20 +2,13 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # App Launcher Component
-
 // Based on SLDS v2.1.0-rc.2
 
-// ## Dependencies
-
-// ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
-// ### classNames
 import classNames from 'classnames';
 
-// ### isFunction
 import isFunction from 'lodash.isfunction';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -25,7 +18,6 @@ import componentDoc from './docs.json';
 // ## Children
 import Modal from '../modal';
 
-// ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
 
 const defaultProps = {
@@ -69,13 +61,13 @@ const defaultProps = {
  * settings.setAppElement('#mount');
  * ```
  */
-const AppLauncher = createReactClass({
+class AppLauncher extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: APP_LAUNCHER,
+	static displayName = APP_LAUNCHER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -132,40 +124,36 @@ const AppLauncher = createReactClass({
 		 * Callback when the App Launcher icon is clicked
 		 */
 		triggerOnClick: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
-	getInitialState() {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(APP_LAUNCHER, this.props, componentDoc);
-	},
+	}
 
-	openAppLauncher(event) {
+	openAppLauncher = (event) => {
 		this.setState({ isOpen: true });
 
 		if (isFunction(this.props.triggerOnClick)) {
 			this.props.triggerOnClick(event, {});
 		}
-	},
+	};
 
-	closeAppLauncher(event) {
+	closeAppLauncher = (event) => {
 		this.setState({ isOpen: false });
 
 		if (isFunction(this.props.onClose)) {
 			this.props.onClose(event, {});
 		}
-	},
+	};
 
-	renderSearch() {
+	renderSearch = () => {
 		let returnVal;
 
 		if (this.props.search) {
@@ -195,7 +183,7 @@ const AppLauncher = createReactClass({
 		}
 
 		return returnVal;
-	},
+	};
 
 	render() {
 		const isOpen =
@@ -205,15 +193,15 @@ const AppLauncher = createReactClass({
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
 
 		const customModalHeader = (
-			<div className="slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
-				<h2 className="slds-text-heading--medium">{this.props.title}</h2>
+			<div className="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+				<h2 className="slds-text-heading_medium">{this.props.title}</h2>
 
 				{this.renderSearch()}
 
 				{this.props.modalHeaderButton ? (
 					this.props.modalHeaderButton
 				) : (
-					<span className="slds-size--1-of-7" />
+					<span className="slds-size_1-of-7" />
 				)}
 			</div>
 		);
@@ -255,7 +243,7 @@ const AppLauncher = createReactClass({
 				</div>
 				<Modal
 					ariaHideApp={this.props.ariaHideApp}
-					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around--medium"
+					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around_medium"
 					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
@@ -281,7 +269,7 @@ const AppLauncher = createReactClass({
 				) : null}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default AppLauncher;

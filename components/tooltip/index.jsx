@@ -124,7 +124,7 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		tooltipTipLearnMoreIcon: 'this link',
-		triggerLearnMoreIcon: 'Learn More',
+		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
 	content: <span>Tooltip</span>,
@@ -210,7 +210,7 @@ class Tooltip extends React.Component {
 			<Dialog
 				closeOnTabKey
 				hasNubbin
-				contentsClassName={classNames('slds-popover', 'slds-popover--tooltip', {
+				contentsClassName={classNames('slds-popover', 'slds-popover_tooltip', {
 					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
 				})}
 				align={align}
@@ -236,7 +236,7 @@ class Tooltip extends React.Component {
 			<div className="slds-popover__body">
 				{this.props.content}
 				{this.props.variant === 'learnMore' ? (
-					<div className="slds-m-top_x-small">
+					<div className="slds-m-top_x-small" aria-hidden="true">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon
 							assistiveText={{

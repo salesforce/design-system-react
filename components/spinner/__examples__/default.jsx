@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import Spinner from '~/components/slider';
 
 class Example extends React.Component {

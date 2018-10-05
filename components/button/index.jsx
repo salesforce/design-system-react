@@ -5,7 +5,6 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import requiredIf from 'react-required-if';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -31,10 +30,10 @@ const defaultProps = {
  * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.
  * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
  */
-const Button = createReactClass({
-	displayName: BUTTON,
+class Button extends React.Component {
+	static displayName = BUTTON;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
 		 */
@@ -206,18 +205,16 @@ const Button = createReactClass({
 		 * Custom styles to be passed to the component
 		 */
 		style: PropTypes.object,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(BUTTON, this.props, componentDoc);
-	},
+	}
 
-	getClassName() {
+	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
 		let iconVariant = this.props.iconVariant;
@@ -245,29 +242,29 @@ const Button = createReactClass({
 		return classNames(
 			{
 				'slds-button': this.props.variant !== 'link',
-				[`slds-button--${this.props.variant}`]: showButtonVariant,
-				'slds-button--inverse': plainInverseBtn,
-				'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
-				'slds-button--icon-border-inverse': borderInverseIcon,
-				[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
-				'slds-global-header__button--icon': iconGlobalHeader,
+				[`slds-button_${this.props.variant}`]: showButtonVariant,
+				'slds-button_inverse': plainInverseBtn,
+				'slds-button_icon-inverse': plainInverseIcon || moreInverseIcon,
+				'slds-button_icon-border-inverse': borderInverseIcon,
+				[`slds-button_icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+				'slds-global-header__button_icon': iconGlobalHeader,
 				// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
-				[`slds-button--icon-${this.props.iconSize}`]:
+				[`slds-button_icon-${this.props.iconSize}`]:
 					iconVariant && this.props.iconSize !== 'medium',
-				'slds-button--reset': this.props.variant === 'link',
+				'slds-button_reset': this.props.variant === 'link',
 				'slds-text-link': this.props.variant === 'link',
 			},
 			this.props.className
 		);
-	},
+	};
 
-	handleClick(event) {
+	handleClick = (event) => {
 		if (this.props.onClick) {
 			this.props.onClick(event, {});
 		}
-	},
+	};
 
-	renderIcon(name) {
+	renderIcon = (name) => {
 		const iconSize =
 			this.props.iconSize === '' || this.props.iconVariant
 				? null
@@ -290,9 +287,9 @@ const Button = createReactClass({
 				size={iconSize}
 			/>
 		);
-	},
+	};
 
-	renderLabel() {
+	renderLabel = () => {
 		const iconOnly = this.props.iconName || this.props.iconPath;
 		const assistiveTextIcon =
 			typeof this.props.assistiveText === 'string'
@@ -307,69 +304,62 @@ const Button = createReactClass({
 		) : (
 			this.props.label
 		);
-	},
+	};
 
-	renderButton() {
-		return (
-			<button
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-expanded={this.props['aria-expanded']}
-				aria-haspopup={this.props['aria-haspopup']}
-				className={this.getClassName()}
-				disabled={this.props.disabled}
-				id={this.props.id}
-				onBlur={this.props.onBlur}
-				onClick={this.handleClick}
-				onFocus={this.props.onFocus}
-				onKeyDown={this.props.onKeyDown}
-				onKeyPress={this.props.onKeyPress}
-				onKeyUp={this.props.onKeyUp}
-				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref={(component) => {
-					if (this.props.buttonRef) {
-						this.props.buttonRef(component);
-					}
-				}}
-				tabIndex={this.props.tabIndex}
-				title={this.props.title}
-				type={this.props.type}
-				style={this.props.style}
-			>
-				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
-
-				{this.props.iconName || this.props.iconPath
-					? this.renderIcon(this.props.iconName)
-					: null}
-				{this.props.iconVariant === 'more' ? (
-					<ButtonIcon
-						category="utility"
-						name="down"
-						size="x-small"
-						className={this.props.iconClassName}
-					/>
-				) : null}
-
-				{this.props.iconPosition === 'left' || !this.props.iconPosition
-					? this.renderLabel()
-					: null}
-				{
-					this.props.children // eslint-disable-line react/prop-types
+	renderButton = () => (
+		<button
+			aria-controls={this.props['aria-controls']}
+			aria-describedby={this.props['aria-describedby']}
+			aria-expanded={this.props['aria-expanded']}
+			aria-haspopup={this.props['aria-haspopup']}
+			className={this.getClassName()}
+			disabled={this.props.disabled}
+			id={this.props.id}
+			onBlur={this.props.onBlur}
+			onClick={this.handleClick}
+			onFocus={this.props.onFocus}
+			onKeyDown={this.props.onKeyDown}
+			onKeyPress={this.props.onKeyPress}
+			onKeyUp={this.props.onKeyUp}
+			onMouseDown={this.props.onMouseDown}
+			onMouseEnter={this.props.onMouseEnter}
+			onMouseLeave={this.props.onMouseLeave}
+			ref={(component) => {
+				if (this.props.buttonRef) {
+					this.props.buttonRef(component);
 				}
-			</button>
-		);
-	},
+			}}
+			tabIndex={this.props.tabIndex}
+			title={this.props.title}
+			type={this.props.type}
+			style={this.props.style}
+		>
+			{this.props.iconPosition === 'right' ? this.renderLabel() : null}
+
+			{this.props.iconName || this.props.iconPath
+				? this.renderIcon(this.props.iconName)
+				: null}
+			{this.props.iconVariant === 'more' ? (
+				<ButtonIcon category="utility" name="down" size="x-small" className={this.props.iconClassName} />
+			) : null}
+
+			{this.props.iconPosition === 'left' || !this.props.iconPosition
+				? this.renderLabel()
+				: null}
+			{
+				this.props.children // eslint-disable-line react/prop-types
+			}
+		</button>
+	);
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
-	renderTooltip() {
-		return <Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>;
-	},
+	renderTooltip = () => (
+		<Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>
+	);
 
 	render() {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
-	},
-});
+	}
+}
 
 export default Button;

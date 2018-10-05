@@ -25,6 +25,9 @@ export AppLauncher from './app-launcher';
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
+export SLDSBrandBand from './brand-band';
+export BrandBand from './brand-band';
+
 export SLDSButton from './button';
 export Button from './button';
 
@@ -156,8 +159,8 @@ export Modal from './modal';
 export SLDSModalTrigger from './modal/trigger';
 export ModalTrigger from './modal/trigger';
 
-export SLDSNavigation from './navigation';
-export Navigation from './navigation';
+export SLDSNavigation from './vertical-navigation';
+export Navigation from './vertical-navigation';
 
 export SLDSNotification from './notification';
 export Notification from './notification';

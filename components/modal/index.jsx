@@ -13,9 +13,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -258,8 +255,8 @@ class Modal extends React.Component {
 				className={classNames({
 					'slds-modal': true,
 					'slds-fade-in-open': true,
-					'slds-modal--large': this.props.size === 'large',
-					'slds-modal--prompt': this.isPrompt(),
+					'slds-modal_large': this.props.size === 'large',
+					'slds-modal_prompt': this.isPrompt(),
 				})}
 				onClick={this.dismissModalOnClickOutside}
 				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
@@ -320,7 +317,7 @@ class Modal extends React.Component {
 
 	dismissModalOnClickOutside() {
 		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
+		const dismissOnClickOutside = this.props.dismissOnClickOutside
 			? this.props.dismissOnClickOutside
 			: this.props.dismissible;
 
@@ -334,8 +331,8 @@ class Modal extends React.Component {
 		const hasFooter = this.props.footer;
 		const footerClass = {
 			'slds-modal__footer': true,
-			'slds-modal__footer--directional': this.props.directional,
-			'slds-theme--default': this.isPrompt(),
+			'slds-modal__footer_directional': this.props.directional,
+			'slds-theme_default': this.isPrompt(),
 		};
 
 		if (hasFooter) {
@@ -392,15 +389,15 @@ class Modal extends React.Component {
 					{this.props.toast}
 					<h2
 						className={classNames({
-							'slds-text-heading--small': this.isPrompt(),
-							'slds-text-heading--medium': !this.isPrompt(),
+							'slds-text-heading_small': this.isPrompt(),
+							'slds-text-heading_medium': !this.isPrompt(),
 						})}
 						id={this.getId()}
 					>
 						{this.props.title}
 					</h2>
 					{this.props.tagline ? (
-						<p className="slds-m-top--x-small">{this.props.tagline}</p>
+						<p className="slds-m-top_x-small">{this.props.tagline}</p>
 					) : null}
 				</div>
 			);
@@ -412,9 +409,9 @@ class Modal extends React.Component {
 				className={classNames(
 					'slds-modal__header',
 					{
-						'slds-modal__header--empty': headerEmpty,
-						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-						'slds-theme--alert-texture': this.isPrompt(),
+						'slds-modal__header_empty': headerEmpty,
+						[`slds-theme_${this.props.prompt}`]: this.isPrompt(),
+						'slds-theme_alert-texture': this.isPrompt(),
 					},
 					this.props.headerClassName
 				)}
@@ -476,7 +473,7 @@ class Modal extends React.Component {
 				)}
 			>
 				{this.getModal()}
-				<div className="slds-backdrop slds-backdrop--open" />
+				<div className="slds-backdrop slds-backdrop_open" />
 			</ReactModal>
 		);
 	}
