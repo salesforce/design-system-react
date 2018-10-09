@@ -274,9 +274,9 @@ class Dialog extends React.Component {
 		const right = 'inherit';
 		return {
 			...popperData.style,
-			left: !isNaN(left) ? left : 0,
-			top: !isNaN(top) ? top : 0,
-			right: !isNaN(right) ? right : 0,
+			left,
+			top,
+			right,
 			position,
 		};
 	};
