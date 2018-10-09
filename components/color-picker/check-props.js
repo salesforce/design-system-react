@@ -4,10 +4,10 @@
 
 import isPrototype from '../../utilities/warning/component-is-prototype';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT) {
+	checkProps = function(COMPONENT) {
 		isPrototype(COMPONENT);
 	};
 }

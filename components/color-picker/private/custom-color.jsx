@@ -9,7 +9,7 @@ import HsvColor from './hsv-color';
 class CustomColor extends React.Component {
 	static displayName = 'SLDSCustomColor';
 
-	render () {
+	render() {
 		return (
 			<div className="slds-color-picker__custom">
 				<HsvColor

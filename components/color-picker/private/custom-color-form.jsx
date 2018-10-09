@@ -6,7 +6,7 @@ import Input from '../../forms/input';
 class CustomColorForm extends React.Component {
 	static displayName = 'SLDSCustomColorForm';
 
-	render () {
+	render() {
 		return (
 			<div className="slds-color-picker__custom-inputs">
 				<Input
