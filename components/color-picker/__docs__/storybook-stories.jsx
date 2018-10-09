@@ -16,17 +16,19 @@ storiesOf(COLOR_PICKER, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Default', () => <ColorPicker onChange={handleChange} />)
+	.add('Default', () => <ColorPicker events={{ onChange: handleChange }} />)
 	.add('Custom Only', () => (
-		<ColorPicker onChange={handleChange} variant="custom" />
+		<ColorPicker events={{ onChange: handleChange }} variant="custom" />
 	))
 	.add('Swatch Only', () => (
-		<ColorPicker onChange={handleChange} variant="swatches" />
+		<ColorPicker events={{ onChange: handleChange }} variant="swatches" />
 	))
 	.add('Predefined Colors', () => (
 		<ColorPicker
 			value="#000000"
-			onChange={handleChange}
+			events={{
+				onChange: handleChange
+			}}
 			swatchColors={[
 				'',
 				'#000000',
@@ -43,7 +45,9 @@ storiesOf(COLOR_PICKER, module)
 	.add('Predefined Colors Only', () => (
 		<ColorPicker
 			value="#000000"
-			onChange={handleChange}
+			events={{
+				onChange: handleChange
+			}}
 			swatchColors={[
 				'',
 				'#000000',
@@ -58,7 +62,7 @@ storiesOf(COLOR_PICKER, module)
 			variant="swatches"
 		/>
 	))
-	.add('Hidden Input', () => <ColorPicker onChange={handleChange} hideInput />)
+	.add('Hidden Input', () => <ColorPicker events={{ onChange: handleChange }} hideInput />)
 	.add('Custom Tab Selected', () => (
-		<ColorPicker onChange={handleChange} tabSelector="custom" />
+		<ColorPicker events={{ onChange: handleChange }} tabSelector="custom" />
 	));

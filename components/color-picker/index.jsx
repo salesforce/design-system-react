@@ -31,9 +31,21 @@ const propTypes = {
 		saturationValueGrid: PropTypes.string,
 	}),
 	/**
-	 * Current color in hexadecimal string, including # sign (eg: "#000000")
+	 * CSS classes to be added to tag with `.slds-color-picker`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 	 */
-	value: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * CSS classes to be added to tag with `.slds-popover`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
+	 */
+	classNameMenu: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Unique ID for component
 	 */
@@ -86,12 +98,6 @@ const propTypes = {
 		submitButton: PropTypes.string,
 	}),
 	/**
-	 * onChange is triggered when done is clicked within the Popover. It receives
-	 * the event object that originally triggered the change, as well as an object
-	 * in the shape `{color: [string] }`, which is a hex representation of the color.
-	 */
-	onChange: PropTypes.func,
-	/**
 	 * An array of hex color values which is used to set the options of the
 	 * swatch tab of the colorpicker popover.
 	 */
@@ -108,6 +114,10 @@ const propTypes = {
 	 * * `custom`: only custom tab is present
 	 */
 	variant: PropTypes.oneOf(['base', 'swatches', 'custom']),
+	/**
+	 * Current color in hexadecimal string, including # sign (eg: "#000000")
+	 */
+	value: PropTypes.string,
 };
 
 const defaultProps = {
@@ -262,7 +272,13 @@ class ColorPicker extends React.Component {
 		return this.state.isOpen ? (
 			<Dialog
 				align="bottom left"
-				contentsClassName="slds-color-picker__selector slds-popover"
+				contentsClassName={
+					classNames(
+						"slds-color-picker__selector",
+						"slds-popover",
+						this.props.classNameMenu
+					)
+				}
 				position="absolute"
 				onRequestTargetElement={() => this.wrapper}
 			>
@@ -399,7 +415,9 @@ class ColorPicker extends React.Component {
 			: this.state.currentColor;
 		return (
 			<div
-				className="slds-color-picker"
+				className={
+					classNames("slds-color-picker", this.props.className)
+				}
 				ref={(node) => {
 					this.wrapper = node;
 				}}
@@ -431,8 +449,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-						''
-					)}
+							''
+						)}
 				</div>
 			</div>
 		);
