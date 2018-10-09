@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Swatch = ({color}) => {
+const Swatch = ({ color }) => {
 	const style = {
 		backgroundColor: color,
 	};
@@ -17,10 +17,10 @@ const Swatch = ({color}) => {
 			<span className="slds-assistive-text">{color}</span>
 		</span>
 	);
-}
+};
 
 Swatch.propTypes = {
-	color: PropTypes.string.isRequired
-}
+	color: PropTypes.string.isRequired,
+};
 
 export default Swatch;

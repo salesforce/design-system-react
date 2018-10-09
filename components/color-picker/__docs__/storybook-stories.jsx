@@ -12,13 +12,17 @@ const handleChange = (event, data) => {
 
 storiesOf(COLOR_PICKER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
 	.add('Default', () => <ColorPicker onChange={handleChange} />)
-	.add('Custom Only', () => <ColorPicker onChange={handleChange} variant="custom" />)
-	.add('Swatch Only', () => <ColorPicker onChange={handleChange} variant="swatches" />)
+	.add('Custom Only', () => (
+		<ColorPicker onChange={handleChange} variant="custom" />
+	))
+	.add('Swatch Only', () => (
+		<ColorPicker onChange={handleChange} variant="swatches" />
+	))
 	.add('Predefined Colors', () => (
 		<ColorPicker
 			value="#000000"
@@ -55,4 +59,6 @@ storiesOf(COLOR_PICKER, module)
 		/>
 	))
 	.add('Hidden Input', () => <ColorPicker onChange={handleChange} hideInput />)
-	.add('Custom Tab Selected', () => <ColorPicker onChange={handleChange} tabSelector="custom" />);
+	.add('Custom Tab Selected', () => (
+		<ColorPicker onChange={handleChange} tabSelector="custom" />
+	));

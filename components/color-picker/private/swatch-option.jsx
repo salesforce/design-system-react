@@ -10,7 +10,7 @@ const handleClick = (event, { hex, onSelect }) => {
 class SwatchOption extends React.Component {
 	static displayName = 'SLDSSwatchOption';
 
-	render () {
+	render() {
 		return (
 			<li className="slds-color-picker__swatch" role="presentation">
 				<a

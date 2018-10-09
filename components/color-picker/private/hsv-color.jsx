@@ -46,7 +46,7 @@ const handleKeyDown = (event, { onSaturationNavigate, onValueNavigate }) => {
 class HsvColor extends React.Component {
 	static displayName = 'SLDSHsvColor';
 
-	render () {
+	render() {
 		return (
 			<div>
 				<p
@@ -76,7 +76,9 @@ class HsvColor extends React.Component {
 						onKeyDown={(event) => {
 							handleKeyDown(event, { ...this.props });
 						}}
-						ref={(rangeIndicator) => { this.rangeIndicator = rangeIndicator; }}
+						ref={(rangeIndicator) => {
+							this.rangeIndicator = rangeIndicator;
+						}}
 						role="button"
 						style={{
 							bottom: `${this.props.color.hsv.value}%`,

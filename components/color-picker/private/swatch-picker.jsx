@@ -5,7 +5,7 @@ import SwatchOption from './swatch-option';
 class SwatchPicker extends React.Component {
 	static displayName = 'SLDSSwatchPicker';
 
-	render () {
+	render() {
 		return (
 			<ul className="slds-color-picker__swatches" role="listbox">
 				{this.props.swatchColors.map((color) => (
