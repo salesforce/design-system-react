@@ -65,6 +65,10 @@ const propTypes = {
 		onWorkingColorChange: PropTypes.func,
 	}),
 	/**
+	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
+	 */
+	hasStaticAlignment: PropTypes.bool,
+	/**
 	 * Hides the text input
 	 */
 	hideInput: PropTypes.bool,
@@ -279,6 +283,7 @@ class ColorPicker extends React.Component {
 						this.props.classNameMenu
 					)
 				}
+				hasStaticAlignment={this.props.hasStaticAlignment}
 				position="absolute"
 				onRequestTargetElement={() => this.wrapper}
 			>
