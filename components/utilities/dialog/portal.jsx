@@ -47,6 +47,11 @@ class Portal extends Component {
 		const parentParentNode = this.getPortalParentNode();
 
 		this.portalNode = document.createElement(this.props.renderTag);
+		this.portalNode.setAttribute(
+			'style',
+			'display: block; height: 0px; width: 0px;'
+		);
+		this.portalNode.setAttribute('className', 'design-system-react-portal');
 		parentParentNode.appendChild(this.portalNode);
 		this.portalNodeInstance = this.props.onMount
 			? this.props.onMount(undefined, { portal: this.portalNode })

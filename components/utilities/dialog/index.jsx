@@ -331,7 +331,9 @@ class Dialog extends React.Component {
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
+				DOMElementFocus.focusAncestor({
+					isPortal: this.props.position === 'overflowBoundaryElement',
+				});
 			}
 		}
 
