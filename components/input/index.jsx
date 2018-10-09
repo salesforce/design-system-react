@@ -246,6 +246,10 @@ class Input extends React.Component {
 		 */
 		required: PropTypes.bool,
 		/**
+		 * styles to be added to input
+		 */
+		styleInput: PropTypes.object,
+		/**
 		 * ARIA role
 		 */
 		role: PropTypes.string,
@@ -438,6 +442,7 @@ class Input extends React.Component {
 					assistiveText={this.props.assistiveText}
 					type={this.props.type}
 					value={this.props.value}
+					style={this.props.styleInput}
 				/>
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">
