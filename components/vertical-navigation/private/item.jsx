@@ -24,11 +24,15 @@ const handleClick = (event, props) => {
 };
 
 const Item = (props) => (
-	<li className={classNames({ 'slds-is-active': props.isSelected })}>
+	<li
+		className={classNames('slds-nav-vertical__item', {
+			'slds-is-active': props.isSelected,
+		})}
+	>
 		<a
 			data-id={props.item.id}
 			href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
-			className="slds-navigation-list_vertical__action slds-text-link_reset"
+			className="slds-nav-vertical__action"
 			aria-describedby={props.categoryId}
 			onClick={(event) => {
 				handleClick(event, props);

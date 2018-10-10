@@ -274,9 +274,9 @@ class Dialog extends React.Component {
 		const right = 'inherit';
 		return {
 			...popperData.style,
-			left: !isNaN(left) ? left : 0,
-			top: !isNaN(top) ? top : 0,
-			right: !isNaN(right) ? right : 0,
+			left,
+			top,
+			right,
 			position,
 		};
 	};
@@ -331,7 +331,9 @@ class Dialog extends React.Component {
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
+				DOMElementFocus.focusAncestor({
+					isPortal: this.props.position === 'overflowBoundaryElement',
+				});
 			}
 		}
 

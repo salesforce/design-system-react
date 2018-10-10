@@ -94,14 +94,12 @@ class VerticalNavigation extends React.Component {
 		const rootId = this.getId();
 		const variant = this.getVariant();
 		return (
-			<div
+			<nav
 				id={rootId}
 				className={classNames(
-					'slds-grid',
-					'slds-grid_vertical',
-					'slds-navigation-list_vertical',
+					'slds-nav-vertical',
 					{
-						'slds-navigation-list_vertical-inverse': variant === 'shade',
+						'slds-nav-vertical_shade': variant === 'shade',
 					},
 					this.props.className
 				)}
@@ -109,28 +107,32 @@ class VerticalNavigation extends React.Component {
 				{this.props.categories.map((category) => {
 					const categoryId = `${rootId}-${category.id}`;
 					const selectedId = this.getSelectedId();
-					return [
-						<h2
-							id={categoryId}
+					return (
+						<div
 							key={`${categoryId}-header`}
-							className="slds-text-title_caps slds-p-around_medium"
+							className="slds-nav-vertical__section"
 						>
-							{category.label}
-						</h2>,
-						<ul key={categoryId}>
-							{category.items.map((item) => (
-								<Item
-									key={item.id}
-									item={item}
-									isSelected={item.id === selectedId}
-									categoryId={categoryId}
-									onSelect={this.props.onSelect}
-								/>
-							))}
-						</ul>,
-					];
+							<h2
+								id={categoryId}
+								className="slds-nav-vertical__title slds-text-title_caps"
+							>
+								{category.label}
+							</h2>
+							<ul key={categoryId}>
+								{category.items.map((item) => (
+									<Item
+										key={item.id}
+										item={item}
+										isSelected={item.id === selectedId}
+										categoryId={categoryId}
+										onSelect={this.props.onSelect}
+									/>
+								))}
+							</ul>
+						</div>
+					);
 				})}
-			</div>
+			</nav>
 		);
 	}
 }
