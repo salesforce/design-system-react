@@ -56,7 +56,9 @@ class VerticalNavigation extends React.Component {
 		 */
 		onSelect: PropTypes.func,
 		/**
-		 * Determines component style. _Tested with snapshot testing._
+		 * Determines component style:
+		 *     * Use `shade` when the component is placed on an existing background that is not lightly colored.
+		 * _Tested with snapshot testing._
 		 */
 		variant: PropTypes.oneOf(['default', 'shade']),
 	};
@@ -71,7 +73,7 @@ class VerticalNavigation extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getVariant = () => this.props.variant === 'shade' ? 'shade' : 'default';
+	getVariant = () => (this.props.variant === 'shade' ? 'shade' : 'default');
 
 	getSelectedId = () => {
 		const categories = this.props.categories;

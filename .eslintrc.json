@@ -91,7 +91,7 @@
 	"rules": {
 		// Creates consistent filename case: "kabob case"
 		"filenames/match-regex": [2, "^[a-z\\-\\.]+$", true],
-		// ALl imported files are JSX or JS
+		// All imported files are JSX or JS
 		"import/extensions": "off",
 		// `~` is used by examples for "root" npm package in documentation site
 		"import/no-unresolved": [2, { "ignore": ["^[~]"] }],
