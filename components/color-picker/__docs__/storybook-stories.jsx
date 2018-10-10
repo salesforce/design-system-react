@@ -27,7 +27,7 @@ storiesOf(COLOR_PICKER, module)
 		<ColorPicker
 			value="#000000"
 			events={{
-				onChange: handleChange
+				onChange: handleChange,
 			}}
 			swatchColors={[
 				'',
@@ -46,7 +46,7 @@ storiesOf(COLOR_PICKER, module)
 		<ColorPicker
 			value="#000000"
 			events={{
-				onChange: handleChange
+				onChange: handleChange,
 			}}
 			swatchColors={[
 				'',
@@ -62,7 +62,9 @@ storiesOf(COLOR_PICKER, module)
 			variant="swatches"
 		/>
 	))
-	.add('Hidden Input', () => <ColorPicker events={{ onChange: handleChange }} hideInput />)
+	.add('Hidden Input', () => (
+		<ColorPicker events={{ onChange: handleChange }} hideInput />
+	))
 	.add('Custom Tab Selected', () => (
 		<ColorPicker events={{ onChange: handleChange }} tabSelector="custom" />
 	));
