@@ -409,10 +409,10 @@ class ColorPicker extends React.Component {
 			colorErrorMessage: isValid ? '' : this.props.labels.invalidColor,
 		});
 
-		if (this.props.events.onChange && isValid) {
-			// TODO should be triggered irrespective of isValid or not.
+		if (this.props.events.onChange) {
 			this.props.events.onChange(event, {
 				color: currentColor,
+				isValid
 			});
 		}
 	};
@@ -449,9 +449,10 @@ class ColorPicker extends React.Component {
 			colorErrorMessage: '',
 		});
 
-		if (this.props.onChange) {
-			this.props.onChange(event, {
+		if (this.props.events.onChange) {
+			this.props.events.onChange(event, {
 				color: this.state.workingColor.hex,
+				isValid: true
 			});
 		}
 	};
