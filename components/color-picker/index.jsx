@@ -10,7 +10,6 @@ import Swatch from './private/swatch';
 import SwatchPicker from './private/swatch-picker';
 
 import Button from '../button';
-import Dialog from '../utilities/dialog';
 import Input from '../forms/input';
 import Tabs from '../tabs';
 import TabsPanel from '../tabs/panel';
@@ -503,8 +502,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-						''
-					)}
+							''
+						)}
 				</div>
 			</div>
 		);
