@@ -90,22 +90,35 @@ describe('SLDSColorPicker', function() {
 	});
 
 	describe('Swatch toggle button', () => {
-		it('opens popover when clicked', function() {
-			wrapper = mount(<ColorPicker />, { attachTo: mountNode });
+		it('opens popover when clicked and expects onRequestOpen and onOpen to be fired once', function() {
+			const onRequestOpenSpy = sinon.spy();
+			const onOpenSpy = sinon.spy();
+
+			wrapper = mount(
+				<ColorPicker onRequestOpen={onRequestOpenSpy} onOpen={onOpenSpy} />,
+				{ attachTo: mountNode }
+			);
 
 			const button = wrapper.find(selectors.toggle).first();
 			button.simulate('click');
 
 			expect(wrapper.find(selectors.popover).exists()).to.be.true;
+			expect(onRequestOpenSpy.calledOnce).to.be.true;
+			expect(onOpenSpy.calledOnce).to.be.true;
 		});
 
 		it('closes popover when clicked and popover is open', function() {
-			wrapper = mount(<ColorPicker isOpen />, { attachTo: mountNode });
+			const onCloseSpy = sinon.spy();
+			wrapper = mount(<ColorPicker isOpen onClose={onCloseSpy} />, {
+				attachTo: mountNode,
+			});
 
 			const button = wrapper.find(selectors.toggle).first();
 			button.simulate('click');
+			wrapper.update();
 
 			expect(wrapper.find(selectors.popover).exists()).to.be.false;
+			expect(onCloseSpy.calledOnce).to.be.true;
 		});
 	});
 
@@ -175,7 +188,8 @@ describe('SLDSColorPicker', function() {
 		});
 
 		describe('Cancel button', function() {
-			it('does not trigger onChange', function() {
+			it('does not trigger onChange but triggers onRequestClose', function() {
+				const onRequestCloseSpy = sinon.spy();
 				wrapper = mount(
 					<ColorPicker
 						isOpen
@@ -184,6 +198,7 @@ describe('SLDSColorPicker', function() {
 						onChange={(event, { color }) => {
 							expect().fail();
 						}}
+						onRequestClose={onRequestCloseSpy}
 					/>,
 					{ attachTo: mountNode }
 				);
@@ -193,6 +208,12 @@ describe('SLDSColorPicker', function() {
 
 				const cancel = wrapper.find(selectors.cancel).first();
 				cancel.simulate('click');
+
+				expect(
+					onRequestCloseSpy.calledWithExactly(sinon.match.any, {
+						trigger: 'cancel',
+					})
+				).to.be.true;
 			});
 		});
 

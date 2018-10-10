@@ -14,6 +14,7 @@ import Dialog from '../utilities/dialog';
 import Input from '../forms/input';
 import Tabs from '../tabs';
 import TabsPanel from '../tabs/panel';
+import Popover from '../popover';
 
 import ColorUtils from '../../utilities/color';
 
@@ -56,12 +57,21 @@ const propTypes = {
 	disabled: PropTypes.bool,
 	/**
 	 * Event Callbacks
-	 * * `onChange`: Triggered when done is clicked within the Popover. It receives the event object that originally triggered the change, as well as an object in the shape `{color: [string]}`, which is a hex representation of the color.
-	 * * `onWorkingColorChange`: Triggered when working color changes (color inside the custom tab menu). It receives the event object that originally triggered the change, and object of shape `{color: [string]}`, which is a hex representation of the color.
-	 * _Tested with Mocha testing._
+	 * * `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
+	 * * `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
+	 * * `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.
+	 * * `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
+	 * 						This function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.
+	 * * `onRequestOpen`: Function called when the color-picker menu would like show.
+	 * * `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab menu). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
+	 * _Tested with Mocha framework._
 	 */
 	events: PropTypes.shape({
 		onChange: PropTypes.func,
+		onClose: PropTypes.func,
+		onOpen: PropTypes.func,
+		onRequestClose: PropTypes.func,
+		onRequestOpen: PropTypes.func,
 		onWorkingColorChange: PropTypes.func,
 	}),
 	/**
@@ -235,9 +245,13 @@ class ColorPicker extends React.Component {
 		return this.props.hideInput ? null : (
 			<Input
 				aria-describedby={`color-picker-summary-error-${this.generatedId}`}
-				className={classNames('slds-color-picker__summary-input', {
-					'slds-has-error': !!this.state.colorErrorMessage,
-				})}
+				className={classNames(
+					'slds-color-picker__summary-input',
+					'slds-align-top',
+					{
+						'slds-has-error': !!this.state.colorErrorMessage,
+					}
+				)}
 				disabled={this.props.disabled}
 				id={`color-picker-summary-input-${this.generatedId}`}
 				maxLength="7"
@@ -284,48 +298,58 @@ class ColorPicker extends React.Component {
 		);
 	}
 
-	getDialog() {
-		return this.state.isOpen ? (
-			<Dialog
+	getPopover(activeColor) {
+		const popoverBody = (
+			<Tabs defaultSelectedIndex={this.props.tabSelector === 'custom' ? 1 : 0}>
+				{this.getDefaultTab()}
+				{this.getCustomTab()}
+			</Tabs>
+		);
+		const popoverFooter = (
+			<div className="slds-color-picker__selector-footer">
+				<Button
+					className="slds-color-picker__selector-cancel"
+					label={this.props.labels.cancelButton}
+					onClick={this.handleCancel}
+					variant="neutral"
+				/>
+				<Button
+					className="slds-color-picker__selector-submit"
+					disabled={this.state.workingColor.errors}
+					label={this.props.labels.submitButton}
+					onClick={this.handleSubmitButtonClick}
+					variant="brand"
+				/>
+			</div>
+		);
+		return (
+			<Popover
 				align="bottom left"
-				contentsClassName={
-					classNames(
-						"slds-color-picker__selector",
-						"slds-popover",
-						this.props.classNameMenu
-					)
-				}
+				body={popoverBody}
+				className={classNames(
+					'slds-color-picker__selector',
+					this.props.classNameMenu
+				)}
+				footer={popoverFooter}
 				hasStaticAlignment={this.props.hasStaticAlignment}
+				isOpen={this.state.isOpen}
+				onClose={this.props.onClose}
+				onOpen={this.props.onOpen}
+				onRequestClose={this.handleOnRequestClose}
 				position={this.props.menuPosition}
-				onRequestTargetElement={() => this.wrapper}
 			>
-				<div className="slds-popover__body">
-					<Tabs
-						defaultSelectedIndex={this.props.tabSelector === 'custom' ? 1 : 0}
-					>
-						{this.getDefaultTab()}
-						{this.getCustomTab()}
-					</Tabs>
-				</div>
-				<footer className="slds-popover__footer">
-					<div className="slds-color-picker__selector-footer">
-						<Button
-							className="slds-color-picker__selector-cancel"
-							label={this.props.labels.cancelButton}
-							onClick={this.handleCancelButtonClick}
-							variant="neutral"
-						/>
-						<Button
-							className="slds-color-picker__selector-submit"
-							disabled={this.state.workingColor.errors}
-							label={this.props.labels.submitButton}
-							onClick={this.handleSubmitButtonClick}
-							variant="brand"
-						/>
-					</div>
-				</footer>
-			</Dialog>
-		) : null;
+				<Button
+					className="slds-color-picker__summary-button"
+					disabled={this.props.disabled}
+					iconClassName="slds-m-left_xx-small"
+					iconPosition="right"
+					iconVariant="more"
+					label={<Swatch color={activeColor} />}
+					onClick={this.handleSwatchButtonClick}
+					variant="icon"
+				/>
+			</Popover>
+		);
 	}
 
 	setWorkingColor(event, color) {
@@ -339,7 +363,29 @@ class ColorPicker extends React.Component {
 		}
 	}
 
-	handleCancelButtonClick = () => {
+	handleOnRequestClose = (event, { trigger }) => {
+		if (trigger === 'clickOutside' || trigger === 'cancel') {
+			this.handleCancelState();
+		}
+
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose(event, { trigger });
+		}
+	};
+
+	handleClickOutside = (event) => {
+		this.handleCancelButtonClick(event);
+	};
+
+	handleCancel = (event) => {
+		this.handleCancelState();
+
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose(event, { trigger: 'cancel' });
+		}
+	};
+
+	handleCancelState = (event) => {
 		this.setState({
 			isOpen: false,
 			workingColor: ColorUtils.getNewColor({
@@ -418,6 +464,9 @@ class ColorPicker extends React.Component {
 				hex: this.state.currentColor,
 			}),
 		});
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 	};
 
 	handleSwatchSelect = (event, { hex }) => {
@@ -432,9 +481,7 @@ class ColorPicker extends React.Component {
 			: this.state.currentColor;
 		return (
 			<div
-				className={
-					classNames("slds-color-picker", this.props.className)
-				}
+				className={classNames('slds-color-picker', this.props.className)}
 				ref={(node) => {
 					this.wrapper = node;
 				}}
@@ -446,18 +493,8 @@ class ColorPicker extends React.Component {
 					>
 						{this.props.labels.label}
 					</span>
-					<Button
-						className="slds-color-picker__summary-button"
-						disabled={this.props.disabled}
-						iconClassName="slds-m-left_xx-small"
-						iconPosition="right"
-						iconVariant="more"
-						label={<Swatch color={activeColor} />}
-						onClick={this.handleSwatchButtonClick}
-						variant="icon"
-					/>
+					{this.getPopover(activeColor)}
 					{this.getInput(activeColor)}
-					{this.getDialog()}
 					{!this.state.isOpen && this.state.colorErrorMessage ? (
 						<p
 							className="slds-form-error"
@@ -466,8 +503,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-							''
-						)}
+						''
+					)}
 				</div>
 			</div>
 		);

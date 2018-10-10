@@ -176,7 +176,7 @@ class Popover extends React.Component {
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
+		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
 		 */
 		onRequestClose: PropTypes.func,
 		/**
@@ -230,17 +230,15 @@ class Popover extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen = () => (
-			!this.props.disabled &&
-			!!(typeof this.props.isOpen === 'boolean'
-				? this.props.isOpen
-				: this.state.isOpen)
-		);
+	getIsOpen = () =>
+		!this.props.disabled &&
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
-	getMenu = () => 
+	getMenu = () =>
 		// needed by keyboard navigation
-		 this.dialog
-	;
+		this.dialog;
 
 	setMenuRef = (component) => {
 		this.dialog = component;
