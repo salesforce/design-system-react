@@ -230,17 +230,15 @@ class Popover extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen = () => (
-			!this.props.disabled &&
-			!!(typeof this.props.isOpen === 'boolean'
-				? this.props.isOpen
-				: this.state.isOpen)
-		);
+	getIsOpen = () =>
+		!this.props.disabled &&
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
-	getMenu = () => 
+	getMenu = () =>
 		// needed by keyboard navigation
-		 this.dialog
-	;
+		this.dialog;
 
 	setMenuRef = (component) => {
 		this.dialog = component;

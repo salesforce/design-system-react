@@ -7,9 +7,9 @@ import IconSettings from '~/components/icon-settings';
 import MenuPicklist from '~/components/menu-picklist';
 
 class Example extends React.Component {
-    static displayName = 'MenuPicklistExample';
+	static displayName = 'MenuPicklistExample';
 
-    render() {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<MenuPicklist

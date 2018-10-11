@@ -382,7 +382,9 @@ class Combobox extends React.Component {
 		this.state.activeOption && this.state.activeOptionIndex !== -1;
 
 	getIsOpen = () =>
-		!!(typeof this.props.isOpen === 'boolean' ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
