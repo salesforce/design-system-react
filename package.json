@@ -19,7 +19,7 @@
 		"lint": "npm run lint:style && npm run lint:quality",
 		"lint:docs": "npx prettylint \"*.md\"",
 		"lint:fix": "npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
-		"lint:style": "npx prettier --debug-check \"**/*.{js,jsx}\" && npx prettylint \"*.json\"",
+		"lint:style": "npx prettier --list-different \"**/*.{js,jsx}\" && npx prettylint \"*.json\"",
 		"lint:quality": "npx eslint \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
 		"publish:edge": "npx babel-node scripts/publish-to-git.js --tag=edge",
