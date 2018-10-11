@@ -55,7 +55,6 @@ describe('SLDSColorPicker', function () {
 				<ColorPicker
 					events={{
 						onChange: (event, { color, isValid }) => {
-							debugger
 							expect(color).to.equal('#ff0000');
 							expect(isValid).to.be.true;
 						}
@@ -122,9 +121,8 @@ describe('SLDSColorPicker', function () {
 
 			const button = wrapper.find(selectors.toggle).first();
 			button.simulate('click');
-
-			//expect(wrapper.find(selectors.popover).exists()).to.be.false; // TODO Fix this - functionality works, test issue...
 			expect(onCloseSpy.calledOnce).to.be.true;
+			//expect(wrapper.find(selectors.popover).exists()).to.be.false; // TODO Fix this - functionality works, test issue...
 		});
 	});
 
@@ -181,7 +179,6 @@ describe('SLDSColorPicker', function () {
 						swatchColors={['#ff0000']}
 						events={{
 							onChange: (event, { color, isValid }) => {
-								debugger;
 								expect(color).to.equal('#ff0000');
 								expect(isValid).to.be.true;
 								done();

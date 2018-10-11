@@ -384,7 +384,7 @@ class ColorPicker extends React.Component {
 		}
 	};
 
-	handleCancelState = (event) => {
+	handleCancelState = () => {
 		this.setState({
 			isOpen: false,
 			workingColor: ColorUtils.getNewColor({
