@@ -1,0 +1,7 @@
+{
+    "component": "button-group",
+    "status": "prod",
+    "display-name": "Button Groups",
+    "SLDS-component-path": "/components/button-groups",
+    "url-slug": "button-groups"
+}
