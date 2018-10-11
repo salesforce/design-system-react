@@ -100,7 +100,7 @@ const propTypes = {
 		weekDays: PropTypes.array,
 	}),
 	/**
-	 * A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread] for more information on this methodology.
+	 * A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology.
 	 */
 	input: PropTypes.node,
 	/**
