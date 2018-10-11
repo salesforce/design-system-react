@@ -4,9 +4,9 @@ import IconSettings from '~/components/icon-settings';
 import Lookup from '~/components/lookup'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-    static displayName = 'LookupExample';
+	static displayName = 'LookupExample';
 
-    render() {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Lookup

@@ -55,11 +55,13 @@ class DatepickerMonthNavigation extends React.Component {
 		relativeYearTo: PropTypes.number,
 	};
 
-	getMonthLabel = () => this.props.monthLabels[
+	getMonthLabel = () =>
+		this.props.monthLabels[
 			new Date(this.props.initialDateForCalendarRender).getMonth()
 		];
 
-	getYearLabel = () => new Date(this.props.initialDateForCalendarRender).getFullYear();
+	getYearLabel = () =>
+		new Date(this.props.initialDateForCalendarRender).getFullYear();
 
 	handleClick = (event) => {
 		event.preventDefault();

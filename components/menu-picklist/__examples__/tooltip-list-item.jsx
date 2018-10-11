@@ -15,9 +15,9 @@ const ListItemRenderer = (props) => (
 );
 
 class Example extends React.Component {
-    static displayName = 'PicklistExample';
+	static displayName = 'PicklistExample';
 
-    render() {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Picklist

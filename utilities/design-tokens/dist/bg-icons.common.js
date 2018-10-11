@@ -1,3 +1,3 @@
 module.exports = {
-  folder: "rgb(99, 163, 238)",
+	folder: 'rgb(99, 163, 238)',
 };
