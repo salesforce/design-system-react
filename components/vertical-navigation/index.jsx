@@ -56,7 +56,9 @@ class VerticalNavigation extends React.Component {
 		 */
 		onSelect: PropTypes.func,
 		/**
-		 * Determines component style. _Tested with snapshot testing._
+		 * Determines component style:
+		 *     * Use `shade` when the component is placed on an existing background that is not lightly colored.
+		 * _Tested with snapshot testing._
 		 */
 		variant: PropTypes.oneOf(['default', 'shade']),
 	};
@@ -71,7 +73,7 @@ class VerticalNavigation extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getVariant = () => this.props.variant === 'shade' ? 'shade' : 'default';
+	getVariant = () => (this.props.variant === 'shade' ? 'shade' : 'default');
 
 	getSelectedId = () => {
 		const categories = this.props.categories;
@@ -92,14 +94,12 @@ class VerticalNavigation extends React.Component {
 		const rootId = this.getId();
 		const variant = this.getVariant();
 		return (
-			<div
+			<nav
 				id={rootId}
 				className={classNames(
-					'slds-grid',
-					'slds-grid_vertical',
-					'slds-navigation-list_vertical',
+					'slds-nav-vertical',
 					{
-						'slds-navigation-list_vertical-inverse': variant === 'shade',
+						'slds-nav-vertical_shade': variant === 'shade',
 					},
 					this.props.className
 				)}
@@ -107,28 +107,32 @@ class VerticalNavigation extends React.Component {
 				{this.props.categories.map((category) => {
 					const categoryId = `${rootId}-${category.id}`;
 					const selectedId = this.getSelectedId();
-					return [
-						<h2
-							id={categoryId}
+					return (
+						<div
 							key={`${categoryId}-header`}
-							className="slds-text-title_caps slds-p-around_medium"
+							className="slds-nav-vertical__section"
 						>
-							{category.label}
-						</h2>,
-						<ul key={categoryId}>
-							{category.items.map((item) => (
-								<Item
-									key={item.id}
-									item={item}
-									isSelected={item.id === selectedId}
-									categoryId={categoryId}
-									onSelect={this.props.onSelect}
-								/>
-							))}
-						</ul>,
-					];
+							<h2
+								id={categoryId}
+								className="slds-nav-vertical__title slds-text-title_caps"
+							>
+								{category.label}
+							</h2>
+							<ul key={categoryId}>
+								{category.items.map((item) => (
+									<Item
+										key={item.id}
+										item={item}
+										isSelected={item.id === selectedId}
+										categoryId={categoryId}
+										onSelect={this.props.onSelect}
+									/>
+								))}
+							</ul>
+						</div>
+					);
 				})}
-			</div>
+			</nav>
 		);
 	}
 }

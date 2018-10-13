@@ -5239,6 +5239,13 @@
                 "required": false,
                 "description": "Highlights the input as a required field (does not perform any validation)."
             },
+            "styleInput": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "styles to be added to input"
+            },
             "role": {
                 "type": {
                     "name": "string"

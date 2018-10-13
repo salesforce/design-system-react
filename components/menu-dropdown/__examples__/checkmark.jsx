@@ -4,9 +4,9 @@ import IconSettings from '~/components/icon-settings';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-    static displayName = 'MediaObjectExample';
+	static displayName = 'MediaObjectExample';
 
-    render() {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">

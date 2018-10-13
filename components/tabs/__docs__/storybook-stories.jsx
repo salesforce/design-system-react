@@ -221,26 +221,26 @@ class DemoTabsConditional extends React.Component {
 	};
 
 	renderPaneA = (disabled) => (
-			<Panel label="Tab A" disabled={disabled}>
-				<p>This is tab A.</p>
-				<div>
-					<Checkbox
-						assistiveText={{ label: 'Disable tab B' }}
-						checked={this.state.disableB}
-						onChange={this.handleCheckClickedDisable}
-						label="Disable tab B"
-						name="disableB"
-					/>
-					<Checkbox
-						assistiveText={{ label: 'Disable tab C' }}
-						checked={this.state.disableC}
-						onChange={this.handleCheckClickedDisable}
-						label="Disable tab C"
-						name="disableC"
-					/>
-				</div>
-			</Panel>
-		);
+		<Panel label="Tab A" disabled={disabled}>
+			<p>This is tab A.</p>
+			<div>
+				<Checkbox
+					assistiveText={{ label: 'Disable tab B' }}
+					checked={this.state.disableB}
+					onChange={this.handleCheckClickedDisable}
+					label="Disable tab B"
+					name="disableB"
+				/>
+				<Checkbox
+					assistiveText={{ label: 'Disable tab C' }}
+					checked={this.state.disableC}
+					onChange={this.handleCheckClickedDisable}
+					label="Disable tab C"
+					name="disableC"
+				/>
+			</div>
+		</Panel>
+	);
 
 	render() {
 		return (

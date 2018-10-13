@@ -4,9 +4,9 @@ import IconSettings from '~/components/icon-settings';
 import Picklist from '~/components/menu-picklist'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-    static displayName = 'PicklistExample';
+	static displayName = 'PicklistExample';
 
-    render() {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">

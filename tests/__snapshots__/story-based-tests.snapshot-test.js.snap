@@ -5421,6 +5421,53 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSInput Custom style 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          Input with custom style
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="custom-style"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="custom-style"
+              placeholder="My placeholder"
+              style={
+                Object {
+                  "background": "#efffff",
+                  "height": 30,
+                  "width": 130,
+                }
+              }
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
 exports[`DOM snapshots SLDSInput Disabled Input 1`] = `
 <div
   className="slds-p-around_medium"

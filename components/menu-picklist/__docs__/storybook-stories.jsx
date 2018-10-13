@@ -30,13 +30,13 @@ const getPicklist = (props) => (
 );
 
 class MultipleExample extends React.Component {
-    static displayName = 'MultiplePicklistExample';
+	static displayName = 'MultiplePicklistExample';
 
-    state = {
-        selectedIndexes: new Set(),
-    };
+	state = {
+		selectedIndexes: new Set(),
+	};
 
-    handleSelect = (selectedItem, data) => {
+	handleSelect = (selectedItem, data) => {
 		this.setState((prevState, props) => ({
 			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
 				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
@@ -44,7 +44,7 @@ class MultipleExample extends React.Component {
 		}));
 	};
 
-    render() {
+	render() {
 		console.log(this.state.selectedIndexes);
 
 		return (
