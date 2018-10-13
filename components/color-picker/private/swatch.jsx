@@ -8,7 +8,7 @@ const Swatch = ({ color }) => {
 
 	if (!color) {
 		style.backgroundImage =
-			'linear-gradient(45deg, white 40%, red 0, red 60%, white 0)';
+			'linear-gradient(-45deg, white 40%, red 0, red 60%, white 0)';
 		style.border = '1px solid #cccccc';
 	}
 
