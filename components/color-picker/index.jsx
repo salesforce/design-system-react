@@ -124,6 +124,7 @@ const propTypes = {
 	/**
 	 * An array of hex color values which is used to set the options of the
 	 * swatch tab of the colorpicker popover.
+	 * To specify transparent, use empty string as a value.
 	 */
 	swatchColors: PropTypes.arrayOf(PropTypes.string),
 	/**
@@ -192,7 +193,7 @@ const defaultProps = {
 		'#0b7477',
 		'#0b6b50',
 		'#b67e11',
-		'#b85d0d',
+		'',
 	],
 	tabSelector: 'swatches',
 	variant: 'base',
