@@ -208,14 +208,15 @@ class ColorPicker extends React.Component {
 		super(props);
 
 		this.generatedId = this.props.id || shortid.generate();
-
+		const workingColor = ColorUtils.getNewColor({
+			hex: this.props.value || this.props.swatchColors[0],
+		});
 		this.state = {
-			currentColor: this.props.value || '',
+			currentColor: this.props.value || this.props.swatchColors[0],
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
-			workingColor: ColorUtils.getNewColor({
-				hex: this.props.value,
-			}),
+			workingColor,
+			previousWorkingColor: workingColor
 		};
 	}
 
@@ -283,12 +284,14 @@ class ColorPicker extends React.Component {
 						assistiveText={this.props.assistiveText}
 						id={this.generatedId}
 						color={this.state.workingColor}
+						previousColor={this.state.previousWorkingColor}
 						labels={this.props.labels}
 						onBlueChange={this.handleColorChange('blue')}
 						onGreenChange={this.handleColorChange('green')}
 						onHexChange={this.handleColorChange('hex')}
 						onHueChange={this.handleColorChange('hue')}
 						onRedChange={this.handleColorChange('red')}
+						onSwatchChange={this.onSwatchChange}
 						onSaturationValueChange={this.handleSaturationValueChange}
 						onSaturationNavigate={this.handleNavigate('saturation')}
 						onValueNavigate={this.handleNavigate('value')}
@@ -356,11 +359,18 @@ class ColorPicker extends React.Component {
 		const newColor = ColorUtils.getNewColor(color, this.state.workingColor);
 		this.setState({
 			workingColor: newColor,
+			previousWorkingColor: this.state.workingColor
 		});
 
 		if (this.props.events.onWorkingColorChange) {
 			this.props.events.onWorkingColorChange(event, { color: newColor });
 		}
+	}
+
+	onSwatchChange = (event) => {
+		this.setWorkingColor(event, {
+			hex: event.target.value
+		});
 	}
 
 	handleOnRequestClose = (event, { trigger }) => {
@@ -386,11 +396,13 @@ class ColorPicker extends React.Component {
 	};
 
 	handleCancelState = () => {
+		const workingColor = ColorUtils.getNewColor({
+			hex: this.state.currentColor,
+		});
 		this.setState({
 			isOpen: false,
-			workingColor: ColorUtils.getNewColor({
-				hex: this.state.currentColor,
-			}),
+			workingColor,
+			previousWorkingColor: workingColor
 		});
 	};
 
@@ -428,6 +440,7 @@ class ColorPicker extends React.Component {
 			);
 			this.setState({
 				workingColor: newColor,
+				previousWorkingColor: this.state.workingColor
 			});
 
 			if (this.props.events.onWorkingColorChange) {
@@ -435,6 +448,8 @@ class ColorPicker extends React.Component {
 			}
 		};
 	}
+
+
 
 	handleSaturationValueChange = (event, { saturation, value }) => {
 		this.setWorkingColor(event, {
@@ -448,8 +463,7 @@ class ColorPicker extends React.Component {
 			isOpen: false,
 			currentColor: this.state.workingColor.hex,
 			colorErrorMessage: '',
-		});
-
+		})
 		if (this.props.events.onChange) {
 			this.props.events.onChange(event, {
 				color: this.state.workingColor.hex,
@@ -459,11 +473,13 @@ class ColorPicker extends React.Component {
 	};
 
 	handleSwatchButtonClick = () => {
+		const workingColor = ColorUtils.getNewColor({
+			hex: this.state.currentColor,
+		});
 		this.setState({
 			isOpen: !this.state.isOpen,
-			workingColor: ColorUtils.getNewColor({
-				hex: this.state.currentColor,
-			}),
+			workingColor,
+			previousWorkingColor: workingColor
 		});
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
