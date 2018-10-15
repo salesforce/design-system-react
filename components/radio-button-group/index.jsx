@@ -122,7 +122,7 @@ class RadioButtonGroup extends React.Component {
 						this.props.className
 					)}
 				>
-					<div className="slds-radio_button-group">{children}</div>
+					<div style={this.props.style} className="slds-radio_button-group">{children}</div>
 					{this.labels.error ? (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}

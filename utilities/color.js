@@ -51,14 +51,14 @@ const ColorUtils = {
 		return {
 			hex: '',
 			hsv: {
-				hue: 0,
-				saturation: 0,
-				value: 0,
+				hue: '',
+				saturation: '',
+				value: '',
 			},
 			rgb: {
-				red: 0,
-				green: 0,
-				blue: 0,
+				red: '',
+				green: '',
+				blue: '',
 			},
 		};
 	},
