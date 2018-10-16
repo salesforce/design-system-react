@@ -93,18 +93,34 @@ class Radio extends React.Component {
 		let radio;
 
 		if (this.props.variant === 'swatch') {
-			radio = <label style={{ border: '1px' }} className="slds-radio_button__label" htmlFor={this.getId()}>
-				<span className="slds-radio_faux"><Swatch style={this.props.style} inFocus={this.props.checked} color={this.props.value} /></span>
-			</label>
+			radio = (
+				<label
+					style={{ border: '1px' }}
+					className="slds-radio_button__label"
+					htmlFor={this.getId()}
+				>
+					<span className="slds-radio_faux">
+						<Swatch
+							style={this.props.style}
+							inFocus={this.props.checked}
+							color={this.props.value}
+						/>
+					</span>
+				</label>
+			);
 		} else if (this.props.variant === 'button-group')
-			radio = <label className="slds-radio_button__label" htmlFor={this.getId()}>
-				<span className="slds-radio_faux">{this.props.label}</span>
-			</label>
+			radio = (
+				<label className="slds-radio_button__label" htmlFor={this.getId()}>
+					<span className="slds-radio_faux">{this.props.label}</span>
+				</label>
+			);
 		else {
-			radio = <label className="slds-radio__label" htmlFor={this.getId()}>
-				<span className="slds-radio_faux" />
-				<span className="slds-form-element__label">{this.props.label}</span>
-			</label>
+			radio = (
+				<label className="slds-radio__label" htmlFor={this.getId()}>
+					<span className="slds-radio_faux" />
+					<span className="slds-form-element__label">{this.props.label}</span>
+				</label>
+			);
 		}
 
 		let style;
@@ -118,7 +134,7 @@ class Radio extends React.Component {
 					{
 						'slds-radio': this.props.variant === 'base',
 						'slds-button slds-radio_button':
-							this.props.variant === 'button-group'
+							this.props.variant === 'button-group',
 					},
 					this.props.className
 				)}

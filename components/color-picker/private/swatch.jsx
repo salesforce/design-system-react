@@ -5,7 +5,7 @@ const Swatch = ({ color, style }) => {
 	const innerStyle = {
 		backgroundColor: color,
 		border: '1px solid #cccccc',
-		...style
+		...style,
 	};
 
 	if (!color) {

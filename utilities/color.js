@@ -5,7 +5,11 @@ const HEX_REGEX = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 const ColorUtils = {
 	getNewColor(options, customHexValidator, oldColor = {}) {
 		if (options.hex) {
-			if (customHexValidator ? !customHexValidator(options.hex) : !this.isValidHex(options.hex)) {
+			if (
+				customHexValidator
+					? !customHexValidator(options.hex)
+					: !this.isValidHex(options.hex)
+			) {
 				return assign({}, oldColor, {
 					hex: options.hex,
 					errors: assign({}, oldColor && oldColor.errors, {
@@ -210,7 +214,7 @@ const ColorUtils = {
 		if (match) {
 			return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${
 				match[3]
-				}`;
+			}`;
 		}
 
 		return value;
