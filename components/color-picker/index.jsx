@@ -70,6 +70,8 @@ const propTypes = {
 	 * * `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
 	 * 						This function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.
 	 * * `onRequestOpen`: Function called when the color-picker menu would like show.
+	 * * `onValidateColor`: Function called when validating HEX color on outer input. If callback returns false, errorText is shown if set.
+	 * * `onValidateWorkingColor`: Function called when validating HEX color on custom tab menu inner input. If callback returns false, errorTextMenu is shown if set.
 	 * * `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab menu). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
 	 * _Tested with Mocha framework._
 	 */
@@ -79,6 +81,8 @@ const propTypes = {
 		onOpen: PropTypes.func,
 		onRequestClose: PropTypes.func,
 		onRequestOpen: PropTypes.func,
+		onValidateColor: PropTypes.func,
+		onValidateWorkingColor: PropTypes.func,
 		onWorkingColorChange: PropTypes.func,
 	}),
 	/**
@@ -218,7 +222,7 @@ class ColorPicker extends React.Component {
 		this.generatedId = this.props.id || shortid.generate();
 		const workingColor = ColorUtils.getNewColor({
 			hex: this.props.value || this.props.swatchColors[0],
-		});
+		}, this.props.events.onValidateWorkingColor);
 		this.state = {
 			currentColor: this.props.value || this.props.swatchColors[0],
 			disabled: this.props.disabled,
@@ -241,7 +245,7 @@ class ColorPicker extends React.Component {
 			nextState.currentColor = nextProps.value;
 			nextState.workingColor = ColorUtils.getNewColor({
 				hex: nextProps.value,
-			});
+			}, this.props.events.onValidateWorkingColor);
 		}
 
 		if (nextProps.disabled !== undefined) {
@@ -366,7 +370,7 @@ class ColorPicker extends React.Component {
 	}
 
 	setWorkingColor(event, color) {
-		const newColor = ColorUtils.getNewColor(color, this.state.workingColor);
+		const newColor = ColorUtils.getNewColor(color, this.props.events.onValidateWorkingColor, this.state.workingColor);
 		this.setState({
 			workingColor: newColor,
 			previousWorkingColor: this.state.workingColor
@@ -408,7 +412,7 @@ class ColorPicker extends React.Component {
 	handleCancelState = () => {
 		const workingColor = ColorUtils.getNewColor({
 			hex: this.state.currentColor,
-		});
+		}, this.props.events.onValidateWorkingColor);
 		this.setState({
 			isOpen: false,
 			workingColor,
@@ -426,7 +430,7 @@ class ColorPicker extends React.Component {
 
 	handleHexInputChange = (event) => {
 		const currentColor = event.target.value;
-		const isValid = ColorUtils.isValidHex(event.target.value);
+		const isValid = this.props.events.onValidateColor ? this.props.events.onValidateColor(event.target.value) : ColorUtils.isValidHex(event.target.value);
 		this.setState({
 			currentColor,
 			colorErrorMessage: isValid ? '' : this.props.labels.invalidColor,
@@ -446,6 +450,7 @@ class ColorPicker extends React.Component {
 			colorProperties[property] = delta;
 			const newColor = ColorUtils.getDeltaColor(
 				colorProperties,
+				this.props.events.onValidateWorkingColor,
 				this.state.workingColor
 			);
 			this.setState({
@@ -485,7 +490,7 @@ class ColorPicker extends React.Component {
 	handleSwatchButtonClick = () => {
 		const workingColor = ColorUtils.getNewColor({
 			hex: this.state.currentColor,
-		});
+		}, this.props.events.onValidateWorkingColor);
 		this.setState({
 			isOpen: !this.state.isOpen,
 			workingColor,
