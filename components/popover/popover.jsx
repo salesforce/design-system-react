@@ -29,6 +29,7 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 import Button from '../button';
+import Icon from '../icon';
 
 // ### Children
 import Dialog from '../utilities/dialog';
@@ -74,6 +75,7 @@ const defaultProps = {
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
+	variant: 'base',
 };
 
 /**
@@ -199,6 +201,10 @@ class Popover extends React.Component {
 		 */
 		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 		/**
+		 * Allows the Popover content body to scroll.
+		 */
+		scrollable: PropTypes.bool,
+		/**
 		 * CSS classes to be added to wrapping trigger `div` around the button.
 		 */
 		triggerClassName: PropTypes.oneOfType([
@@ -206,6 +212,10 @@ class Popover extends React.Component {
 			PropTypes.object,
 			PropTypes.string,
 		]),
+		/**
+		 * Determines the type of the popover.
+		 */
+		variant: PropTypes.oneOf(['base', 'error']),
 	};
 
 	static defaultProps = defaultProps;
@@ -435,6 +445,7 @@ class Popover extends React.Component {
 					this.props.contentsClassName,
 					'ignore-react-onclickoutside',
 					'slds-popover',
+					{ 'slds-popover_error': props.variant === 'error' },
 					props.className
 				)}
 				context={this.context}
@@ -463,20 +474,35 @@ class Popover extends React.Component {
 					assistiveText={{ icon: closeButtonAssistiveText }}
 					iconCategory="utility"
 					iconName="close"
-					iconSize="small"
 					className="slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
 					onClick={this.handleCancel}
 					variant="icon"
+					inverse
 				/>
 
-				{this.props.heading ? (
+				{this.props.heading && this.props.variant === 'error' ? (
 					<header className="slds-popover__header">
-						<h2
-							id={`${this.getId()}-dialog-heading`}
-							className="slds-text-heading_small"
-						>
-							{this.props.heading}
-						</h2>
+						<div className="slds-media slds-media_center slds-has-flexi-truncate ">
+							<div className="slds-media__figure">
+								<span className="slds-icon_container slds-icon-utility-error">
+									<Icon
+										category="utility"
+										size="x-small"
+										name="error"
+										inverse
+									/>
+								</span>
+							</div>
+							<div className="slds-media__body">
+								<h2
+									className="slds-truncate slds-text-heading_medium"
+									id="dialog-heading-id-1"
+									title="Resolve error"
+								>
+									{props.heading}
+								</h2>
+							</div>
+						</div>
 					</header>
 				) : null}
 

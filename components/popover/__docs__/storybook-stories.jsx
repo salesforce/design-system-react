@@ -76,7 +76,6 @@ storiesOf(POPOVER, module)
 			className="slds-p-around_medium slds-m-horizontal_x-large"
 			style={{
 				margin: '300px auto',
-				textAlign: 'center',
 				width: '500px',
 			}}
 		>

@@ -14,9 +14,18 @@ class Example extends React.Component {
 				<div>
 					<Popover
 						align="top left"
-						body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-						heading="Header Title"
+						body={
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore.{' '}
+								<a href="javascript:void(0);" title="Learn More">
+									Learn More
+								</a>
+							</p>
+						}
+						heading="Resolve error"
 						isOpen
+						variant="error"
 					>
 						<Button label="Trigger Popover" />
 					</Popover>
