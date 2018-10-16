@@ -32,14 +32,15 @@ class CustomColor extends React.Component {
 					onHexChange={this.props.onHexChange}
 					onRedChange={this.props.onRedChange}
 				/>
-				{this.props.color.errors ? (
+				{this.props.errorTextMenu || this.props.color.errors ? (
 					<p
 						className="slds-form-error slds-color-picker__input-custom-error"
 						id={`color-picker-custom-error-${this.props.id}`}
 					>
-						{this.props.color.errors.hex
+						{this.props.errorTextMenu ? this.props.errorTextMenu : (
+							this.props.color.errors.hex
 							? this.props.labels.invalidColor
-							: this.props.labels.invalidComponent}
+							: this.props.labels.invalidComponent)}
 					</p>
 				) : (
 						''

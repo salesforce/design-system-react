@@ -55,6 +55,14 @@ const propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
+	 * Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error.
+	 */
+	errorText: PropTypes.string,
+	/**
+	 * Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error.
+	 */
+	errorTextMenu: PropTypes.string,
+	/**
 	 * Event Callbacks
 	 * * `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
 	 * * `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
@@ -216,7 +224,8 @@ class ColorPicker extends React.Component {
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
 			workingColor,
-			previousWorkingColor: workingColor
+			previousWorkingColor: workingColor,
+			colorErrorMessage: this.props.errorText
 		};
 	}
 
@@ -284,6 +293,7 @@ class ColorPicker extends React.Component {
 						assistiveText={this.props.assistiveText}
 						id={this.generatedId}
 						color={this.state.workingColor}
+						errorTextMenu={this.props.errorTextMenu}
 						previousColor={this.state.previousWorkingColor}
 						labels={this.props.labels}
 						onBlueChange={this.handleColorChange('blue')}

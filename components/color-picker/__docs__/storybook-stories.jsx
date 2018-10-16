@@ -67,4 +67,10 @@ storiesOf(COLOR_PICKER, module)
 	))
 	.add('Custom Tab Selected', () => (
 		<ColorPicker events={{ onChange: handleChange }} tabSelector="custom" />
-	));
+	))
+	.add('Outer Input in Error State', () => (
+		<ColorPicker value="#invalid" events={{ onChange: handleChange }} errorText="Hex is invalid. Please update this field." />
+	))
+	.add('Inner Input in Error State ', () => (
+		<ColorPicker events={{ onChange: handleChange }} errorTextMenu="Hex is invalid. Please update this field." />
+	));;
