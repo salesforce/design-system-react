@@ -8,6 +8,7 @@ import IconSettings from '../../icon-settings';
 
 import { POPOVER } from '../../../utilities/constants';
 import Header from '../__examples__/header';
+import Error from '../__examples__/error';
 import AlternativeHeader from '../__examples__/alternative-header';
 import ControlledWithFooter from '../__examples__/controlled-with-footer';
 
@@ -123,4 +124,5 @@ storiesOf(POPOVER, module)
 			containerStyle: { background: containerBackgroundColor },
 			style: { background: popoverBackgroundColor },
 		})
-	);
+	)
+	.add('Error', () => <Error />);
