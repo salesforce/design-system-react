@@ -10,6 +10,16 @@ class CustomColor extends React.Component {
 	static displayName = 'SLDSCustomColor';
 
 	render() {
+		let errorText;
+
+		if (this.props.errorTextMenu) {
+			errorText = this.props.errorTextMenu;
+		} else if (this.props.color.errors.hex) {
+			errorText = this.props.labels.invalidColor;
+		} else {
+			errorText = this.props.labels.invalidComponent;
+		}
+
 		return (
 			<div className="slds-color-picker__custom">
 				<HsvColor
@@ -37,14 +47,11 @@ class CustomColor extends React.Component {
 						className="slds-form-error slds-color-picker__input-custom-error"
 						id={`color-picker-custom-error-${this.props.id}`}
 					>
-						{this.props.errorTextMenu ? this.props.errorTextMenu : (
-							this.props.color.errors.hex
-							? this.props.labels.invalidColor
-							: this.props.labels.invalidComponent)}
+						{errorText}
 					</p>
 				) : (
-						''
-					)}
+					''
+				)}
 			</div>
 		);
 	}
