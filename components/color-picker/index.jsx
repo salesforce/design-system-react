@@ -155,6 +155,10 @@ const propTypes = {
 	 * Current color in hexadecimal string, including # sign (eg: "#000000")
 	 */
 	value: PropTypes.string,
+	/**
+	 * Current working color in hexadecimal string, including # sign (eg: "#000000")
+	 */
+	valueWorking: PropTypes.string,
 };
 
 const defaultProps = {
@@ -221,7 +225,7 @@ class ColorPicker extends React.Component {
 
 		this.generatedId = this.props.id || shortid.generate();
 		const workingColor = ColorUtils.getNewColor({
-			hex: this.props.value || this.props.swatchColors[0],
+			hex: this.props.valueWorking || this.props.value || this.props.swatchColors[0],
 		}, this.props.events.onValidateWorkingColor);
 		this.state = {
 			currentColor: this.props.value || this.props.swatchColors[0],
@@ -243,8 +247,11 @@ class ColorPicker extends React.Component {
 
 		if (nextProps.value) {
 			nextState.currentColor = nextProps.value;
+		}
+
+		if (nextProps.valueWorking) {
 			nextState.workingColor = ColorUtils.getNewColor({
-				hex: nextProps.value,
+				hex: nextProps.valueWorking,
 			}, this.props.events.onValidateWorkingColor);
 		}
 
@@ -255,7 +262,7 @@ class ColorPicker extends React.Component {
 		this.setState(nextState);
 	}
 
-	getInput(activeColor) {
+	getInput() {
 		return this.props.hideInput ? null : (
 			<Input
 				aria-describedby={`color-picker-summary-error-${this.generatedId}`}
@@ -270,7 +277,7 @@ class ColorPicker extends React.Component {
 				id={`color-picker-summary-input-${this.generatedId}`}
 				maxLength="7"
 				onChange={this.handleHexInputChange}
-				value={activeColor}
+				value={this.state.currentColor}
 			/>
 		);
 	}
@@ -315,7 +322,7 @@ class ColorPicker extends React.Component {
 		);
 	}
 
-	getPopover(activeColor) {
+	getPopover() {
 		const popoverBody = (
 			<Tabs defaultSelectedIndex={this.props.tabSelector === 'custom' ? 1 : 0}>
 				{this.getDefaultTab()}
@@ -361,7 +368,7 @@ class ColorPicker extends React.Component {
 					iconClassName="slds-m-left_xx-small"
 					iconPosition="right"
 					iconVariant="more"
-					label={<Swatch color={activeColor} />}
+					label={<Swatch color={this.state.currentColor} />}
 					onClick={this.handleSwatchButtonClick}
 					variant="icon"
 				/>
@@ -489,7 +496,7 @@ class ColorPicker extends React.Component {
 
 	handleSwatchButtonClick = () => {
 		const workingColor = ColorUtils.getNewColor({
-			hex: this.state.currentColor,
+			hex: this.state.workingColor.hex,
 		}, this.props.events.onValidateWorkingColor);
 		this.setState({
 			isOpen: !this.state.isOpen,
@@ -508,9 +515,6 @@ class ColorPicker extends React.Component {
 	};
 
 	render() {
-		const activeColor = this.state.isOpen
-			? this.state.workingColor.hex
-			: this.state.currentColor;
 		return (
 			<div
 				className={classNames('slds-color-picker', this.props.className)}
@@ -525,8 +529,8 @@ class ColorPicker extends React.Component {
 					>
 						{this.props.labels.label}
 					</span>
-					{this.getPopover(activeColor)}
-					{this.getInput(activeColor)}
+					{this.getPopover()}
+					{this.getInput()}
 					{!this.state.isOpen && this.state.colorErrorMessage ? (
 						<p
 							className="slds-form-error"

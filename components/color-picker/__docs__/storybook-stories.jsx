@@ -84,4 +84,8 @@ storiesOf(COLOR_PICKER, module)
 	.add('Custom Validator', () => (
 		// Custom validator that supports only 6 digits HEX.
 		<ColorPicker events={{ onChange: handleChange, onValidateColor: customOuterInputValidator, onValidateWorkingColor:customOuterInputValidator}} />
+	))
+	.add('Value and ValueWorking props', () => (
+		// Custom validator that supports only 6 digits HEX.
+		<ColorPicker valueWorking="#ffff00" events={{ onChange: handleChange }} />
 	));
