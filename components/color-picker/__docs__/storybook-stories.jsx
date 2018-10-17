@@ -72,7 +72,7 @@ storiesOf(COLOR_PICKER, module)
 		<ColorPicker events={{ onChange: handleChange }} hideInput />
 	))
 	.add('Custom Tab Selected', () => (
-		<ColorPicker events={{ onChange: handleChange }} tabSelector="custom" />
+		<ColorPicker events={{ onChange: handleChange }} selectedTab="custom" />
 	))
 	.add('HEX color Outer Input in Error State', () => (
 		<ColorPicker
@@ -98,6 +98,5 @@ storiesOf(COLOR_PICKER, module)
 		/>
 	))
 	.add('Value and ValueWorking props', () => (
-		// Custom validator that supports only 6 digits HEX.
 		<ColorPicker valueWorking="#ffff00" events={{ onChange: handleChange }} />
 	));
