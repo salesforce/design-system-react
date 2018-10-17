@@ -10,7 +10,7 @@ const Swatch = ({ color, style }) => {
 
 	if (!color) {
 		innerStyle.backgroundImage =
-			'linear-gradient(-45deg, white 47%, red 0, red 53%, white 0)';
+			'linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)';
 	}
 
 	return (
