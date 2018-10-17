@@ -64,13 +64,19 @@ class HsvColor extends React.Component {
 		this.props.onSwatchChange(event);
 	};
 
-	isTransparent = () => this.props.color.hex === ''
+	isTransparent = () => this.props.color.hex === '';
 
 	render() {
 		const style = { border: 'none', borderRadius: 'unset' };
-		const swatchStyle = this.isTransparent() ? { ...unselectedStyle } : { ...selectedStyle };
-		const transparentSwatchStyle = this.isTransparent() ? { ...selectedStyle } : { ...unselectedStyle };
-		const workingColor = this.isTransparent() ? this.props.previousColor : this.props.color;
+		const swatchStyle = this.isTransparent()
+			? { ...unselectedStyle }
+			: { ...selectedStyle };
+		const transparentSwatchStyle = this.isTransparent()
+			? { ...selectedStyle }
+			: { ...unselectedStyle };
+		const workingColor = this.isTransparent()
+			? this.props.previousColor
+			: this.props.color;
 
 		return (
 			<div>

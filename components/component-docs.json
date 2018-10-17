@@ -2386,12 +2386,7 @@
                 "name": "getInput",
                 "docblock": null,
                 "modifiers": [],
-                "params": [
-                    {
-                        "name": "activeColor",
-                        "type": null
-                    }
-                ],
+                "params": [],
                 "returns": null
             },
             {
@@ -2409,7 +2404,7 @@
                 "returns": null
             },
             {
-                "name": "getDialog",
+                "name": "getPopover",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2432,7 +2427,59 @@
                 "returns": null
             },
             {
-                "name": "handleCancelButtonClick",
+                "name": "handleSwatchChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleOnRequestClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ trigger }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleClickOutside",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleCancel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleCancelState",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2548,12 +2595,41 @@
                     "computed": false
                 }
             },
-            "value": {
+            "className": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "Current color in hexadecimal string, including # sign (eg: \"#000000\")"
+                "description": "CSS classes to be added to tag with `.slds-color-picker`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "classNameMenu": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-popover`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
             },
             "id": {
                 "type": {
@@ -2569,11 +2645,49 @@
                 "required": false,
                 "description": "Disables the input and button"
             },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "errorTextMenu": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error."
+            },
             "events": {
                 "type": {
                     "name": "shape",
                     "value": {
                         "onChange": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onOpen": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestOpen": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onValidateColor": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onValidateWorkingColor": {
                             "name": "func",
                             "required": false
                         },
@@ -2584,11 +2698,18 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onChange`: Triggered when done is clicked within the Popover. It receives the event object that originally triggered the change, as well as an object in the shape `{color: [string]}`, which is a hex representation of the color.\n* `onWorkingColorChange`: Triggered when working color changes (color inside the custom tab menu). It receives the event object that originally triggered the change, and object of shape `{color: [string]}`, which is a hex representation of the color.\n_Tested with Mocha testing._",
+                "description": "Event Callbacks\n* `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n* `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.\n* `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.\n* `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.\n\t\t\t\t\t\tThis function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.\n* `onRequestOpen`: Function called when the color-picker menu would like show.\n* `onValidateColor`: Function called when validating HEX color on outer input. If callback returns false, errorText is shown if set.\n* `onValidateWorkingColor`: Function called when validating HEX color on custom tab menu inner input. If callback returns false, errorTextMenu is shown if set.\n* `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab menu). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n_Tested with Mocha framework._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
                 }
+            },
+            "hasStaticAlignment": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
             },
             "hideInput": {
                 "type": {
@@ -2657,12 +2778,30 @@
                     "computed": false
                 }
             },
-            "onChange": {
+            "menuPosition": {
                 "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "onChange is triggered when done is clicked within the Popover. It receives\nthe event object that originally triggered the change, as well as an object\nin the shape `{color: [string] }`, which is a hex representation of the color."
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "swatchColors": {
                 "type": {
@@ -2672,7 +2811,7 @@
                     }
                 },
                 "required": false,
-                "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.",
+                "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.\nTo specify transparent, use empty string as a value.",
                 "defaultValue": {
                     "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n]",
                     "computed": false
@@ -2715,6 +2854,20 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current color in hexadecimal string, including # sign (eg: \"#000000\")"
+            },
+            "valueWorking": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current working color in hexadecimal string, including # sign (eg: \"#000000\")"
             }
         },
         "route": "color-pickers",
@@ -4540,14 +4693,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function called when the calendar dialog would like hide. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
+                "description": "Function called when the calendar dialog would like hide. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
             },
             "onRequestOpen": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function called when the calendar dialog would like show. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
+                "description": "Function called when the calendar dialog would like show. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
             },
             "parser": {
                 "type": {
@@ -9281,7 +9434,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something."
+                "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
             "position": {
                 "type": {
@@ -10050,6 +10203,10 @@
                         {
                             "value": "'button-group'",
                             "computed": false
+                        },
+                        {
+                            "value": "'swatch'",
+                            "computed": false
                         }
                     ]
                 },
@@ -10793,6 +10950,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -12892,7 +13066,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines component style. _Tested with snapshot testing._",
+                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false
