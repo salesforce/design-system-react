@@ -17,7 +17,7 @@ class CustomColor extends React.Component {
 		} else if (this.props.color.errors && this.props.color.errors.hex) {
 			errorText = this.props.labels.invalidColor;
 		} else {
-			errorText = this.props.labels.invalidComponent
+			errorText = this.props.labels.invalidComponent;
 		}
 
 		return (

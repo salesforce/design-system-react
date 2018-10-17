@@ -137,7 +137,11 @@ class HsvColor extends React.Component {
 						}
 						onChange={this.props.onHueChange}
 					/>
-					<RadioButtonGroup style={style} onChange={this.handleSwatchChange}>
+					<RadioButtonGroup
+						assistiveText={{ label: 'Toggle Transparency' }}
+						style={style}
+						onChange={this.handleSwatchChange}
+					>
 						<Radio
 							label="Working color"
 							style={swatchStyle}
