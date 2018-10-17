@@ -32,10 +32,10 @@
 		"static:build": "npx build-storybook -o ./storybook",
 		"storyshots:build": "npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"storyshots:start": "node app --folder=storybook-based-tests",
-		"test": "set NODE_ENV=test&&npm run lint && npm run test:karma && npm run snapshot-test && npm run build-and-test-docs", 
+		"test": "export NODE_ENV=test || SET NODE_ENV=test&&npm run lint && npm run test:karma && npm run snapshot-test && npm run build-and-test-docs",
 		"test-concurrent": "NODE_ENV=test npx concurrently \"npm run lint\" \"npx karma start --single-run\" \"npm run snapshot-test\" \"npm run build-and-test-docs\"",
 		"test:fix": "NODE_ENV=test scripts/local-qa.sh",
-		"test:karma": "set NODE_ENV=test&&npx karma start --single-run",
+		"test:karma": "export NODE_ENV=test || SET NODE_ENV=test&&npx karma start --single-run",
 		"travis-ci": "NODE_ENV=test scripts/travis-ci.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
