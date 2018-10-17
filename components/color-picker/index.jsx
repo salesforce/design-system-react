@@ -520,7 +520,7 @@ class ColorPicker extends React.Component {
 		this.setState({
 			isOpen: !this.state.isOpen,
 			workingColor,
-			previousWorkingColor: workingColor,
+			previousWorkingColor: this.state.previousWorkingColor,
 		});
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
