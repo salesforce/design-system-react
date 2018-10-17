@@ -64,18 +64,13 @@ class HsvColor extends React.Component {
 		this.props.onSwatchChange(event);
 	};
 
+	isTransparent = () => this.props.color.hex === ''
+
 	render() {
 		const style = { border: 'none', borderRadius: 'unset' };
-		let swatchStyle;
-		let transparentSwatchStyle;
-
-		if (this.props.color.hex === '') {
-			transparentSwatchStyle = { ...selectedStyle };
-			swatchStyle = { ...unselectedStyle };
-		} else {
-			transparentSwatchStyle = { ...unselectedStyle };
-			swatchStyle = { ...selectedStyle };
-		}
+		const swatchStyle = this.isTransparent() ? { ...unselectedStyle } : { ...selectedStyle };
+		const transparentSwatchStyle = this.isTransparent() ? { ...selectedStyle } : { ...unselectedStyle };
+		const workingColor = this.isTransparent() ? this.props.previousColor : this.props.color;
 
 		return (
 			<div>
@@ -88,7 +83,7 @@ class HsvColor extends React.Component {
 				<div
 					className="slds-color-picker__custom-range"
 					style={{
-						background: `hsl(${this.props.color.hsv.hue}, 100%, 50%)`,
+						background: `hsl(${workingColor.hsv.hue}, 100%, 50%)`,
 					}}
 					onClick={(event) => {
 						handleClick(event, this.rangeIndicator, {
@@ -111,8 +106,8 @@ class HsvColor extends React.Component {
 						}}
 						role="button"
 						style={{
-							bottom: `${this.props.color.hsv.value}%`,
-							left: `${this.props.color.hsv.saturation}%`,
+							bottom: `${workingColor.hsv.value}%`,
+							left: `${workingColor.hsv.saturation}%`,
 						}}
 						tabIndex={0}
 					/>
@@ -130,11 +125,7 @@ class HsvColor extends React.Component {
 						max="360"
 						className="slds-color-picker__hue-slider"
 						id={`color-picker-input-range-${this.props.id}`}
-						value={
-							this.props.color.hex !== ''
-								? this.props.color.hsv.hue
-								: this.props.previousColor.hsv.hue
-						}
+						value={workingColor.hsv.hue}
 						onChange={this.props.onHueChange}
 					/>
 					<RadioButtonGroup
@@ -147,12 +138,8 @@ class HsvColor extends React.Component {
 							style={swatchStyle}
 							variant="swatch"
 							key="working-color"
-							value={
-								this.props.color.hex !== ''
-									? this.props.color.hex
-									: this.props.previousColor.hex
-							}
-							checked={this.props.color.hex !== ''}
+							value={workingColor.hex}
+							checked={!this.isTransparent()}
 						/>
 						<Radio
 							label="Transparent"
@@ -160,7 +147,7 @@ class HsvColor extends React.Component {
 							variant="swatch"
 							key="transparent"
 							value="" // transparent
-							checked={this.props.color.hex === ''}
+							checked={this.isTransparent()}
 						/>
 					</RadioButtonGroup>
 				</div>
