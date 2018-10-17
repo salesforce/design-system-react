@@ -15,6 +15,13 @@ import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility**
+	 * * `label`: This label appears in the legend.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
+	/**
 	 * Children are expected to be Radio components.
 	 */
 	children: PropTypes.node.isRequired,
@@ -58,7 +65,7 @@ const propTypes = {
 	errorId: PropTypes.string,
 };
 
-const defaultProps = { labels: {} };
+const defaultProps = { labels: {}, assistiveText: {} };
 
 /**
  * A styled select list that can have a single entry checked at any one time.
@@ -108,13 +115,21 @@ class RadioButtonGroup extends React.Component {
 					'slds-has-error': this.labels.error,
 				})}
 			>
-				<legend className="slds-form-element__legend slds-form-element__label">
+				<legend
+					className={classNames(
+						'slds-form-element__legend',
+						'slds-form-element__label',
+						this.props.assistiveText.label ? 'slds-assistive-text' : ''
+					)}
+				>
 					{this.props.required ? (
 						<abbr className="slds-required" title="required">
 							*
 						</abbr>
 					) : null}
-					{this.labels.label}
+					{this.props.assistiveText.label
+						? this.props.assistiveText.label
+						: this.labels.label}
 				</legend>
 				<div
 					className={classNames(
