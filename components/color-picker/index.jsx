@@ -47,11 +47,11 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * Unique ID for component
+	 * Unique ID for component.
 	 */
 	id: PropTypes.string,
 	/**
-	 * Disables the input and button
+	 * Disables the input and button.
 	 */
 	disabled: PropTypes.bool,
 	/**
@@ -59,7 +59,7 @@ const propTypes = {
 	 */
 	errorText: PropTypes.string,
 	/**
-	 * Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error.
+	 * Message to display when the custom tab input is in an error state. When this is present, also visually highlights the component as in error.
 	 */
 	errorTextMenu: PropTypes.string,
 	/**
@@ -70,9 +70,9 @@ const propTypes = {
 	 * * `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
 	 * 						This function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.
 	 * * `onRequestOpen`: Function called when the color-picker menu would like show.
-	 * * `onValidateColor`: Function called when validating HEX color on outer input. If callback returns false, errorText is shown if set.
-	 * * `onValidateWorkingColor`: Function called when validating HEX color on custom tab menu inner input. If callback returns false, errorTextMenu is shown if set.
-	 * * `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab menu). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
+	 * * `onValidateColor`: Function that overwrites default color validator and called when validating HEX color on outer input change. If callback returns false, errorText is shown if set.
+	 * * `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextMenu is shown if set.
+	 * * `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
 	 * _Tested with Mocha framework._
 	 */
 	events: PropTypes.shape({
@@ -143,12 +143,13 @@ const propTypes = {
 	 * Determines which tab is visible when dialog opens. Use this prop with `base` variant only.
 	 * Defaults to `swatch` tab.
 	 */
-	tabSelector: PropTypes.oneOf('swatches, custom'),
+	selectedTab: PropTypes.oneOf('swatches, custom'),
 	/**
 	 * Selects which tabs are present for the colorpicker.
 	 * * `base`: both swatches and custom tabs are present
 	 * * `swatches`: only swatch tab is present
 	 * * `custom`: only custom tab is present
+	 * _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['base', 'swatches', 'custom']),
 	/**
@@ -211,7 +212,7 @@ const defaultProps = {
 		'#b67e11',
 		'#b85d0d',
 	],
-	tabSelector: 'swatches',
+	selectedTab: 'swatches',
 	variant: 'base',
 };
 
@@ -333,7 +334,7 @@ class ColorPicker extends React.Component {
 
 	getPopover() {
 		const popoverBody = (
-			<Tabs defaultSelectedIndex={this.props.tabSelector === 'custom' ? 1 : 0}>
+			<Tabs defaultSelectedIndex={this.props.selectedTab === 'custom' ? 1 : 0}>
 				{this.getDefaultTab()}
 				{this.getCustomTab()}
 			</Tabs>
@@ -348,7 +349,7 @@ class ColorPicker extends React.Component {
 				/>
 				<Button
 					className="slds-color-picker__selector-submit"
-					disabled={this.state.workingColor.errors}
+					disabled={Object.keys(this.state.workingColor.errors || {}).length > 0}
 					label={this.props.labels.submitButton}
 					onClick={this.handleSubmitButtonClick}
 					variant="brand"

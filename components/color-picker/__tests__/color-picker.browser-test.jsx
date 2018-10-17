@@ -93,6 +93,43 @@ describe('SLDSColorPicker', function() {
 				},
 			});
 		});
+
+		it('fires onValidateColor when input changes', function() {
+			const customValidator = sinon.spy();
+
+			wrapper = mount(
+				<ColorPicker
+					events={{
+						onValidateColor: (hex) => {
+							customValidator(hex);
+						},
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const input = wrapper.find(selectors.summaryInput).first();
+
+			input.simulate('change', {
+				target: {
+					value: '#FFFFFF',
+				},
+			});
+
+			expect(customValidator.calledWithExactly('#FFFFFF')).to.be.true;
+		});
+
+		it('value prop is set in input', () => {
+			wrapper = mount(
+				<ColorPicker
+					value="#FFFFFF"
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const input = wrapper.find(selectors.summaryInput).first();
+			expect(input.instance().value).to.equal('#FFFFFF');
+		});
 	});
 
 	describe('Swatch toggle button', () => {
@@ -459,6 +496,44 @@ describe('SLDSColorPicker', function() {
 						},
 					});
 				});
+
+				it('fires onValidateWorkingColor when set', () => {
+					const spyCustomColorValidator = sinon.spy();
+					const customColorValidator = (hex) => {
+						spyCustomColorValidator(hex);
+						return true;
+					};
+
+					wrapper = mount(
+						<ColorPicker
+							isOpen
+							events={{ onValidateWorkingColor: customColorValidator}}
+						/>,
+						{ attachTo: mountNode }
+					);
+
+					const hexInput = wrapper.find(selectors.customHex).first();
+					hexInput.find('input').simulate('change', {
+						target: {
+							value: '#00ff00',
+						},
+					});
+
+					expect(spyCustomColorValidator.calledWith('#00ff00')).to.be.true;
+				})
+
+				it('valueWorking is set in custom tab inner input', () => {
+					wrapper = mount(
+						<ColorPicker
+							isOpen
+							valueWorking="#00ff00"
+						/>,
+						{ attachTo: mountNode }
+					);
+
+					const hexInput = wrapper.find(selectors.customHex).first();
+					expect(hexInput.find('input').instance().value).to.equal("#00ff00");
+				})
 			});
 
 			describe('RGB input', function() {

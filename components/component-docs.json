@@ -2636,14 +2636,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Unique ID for component"
+                "description": "Unique ID for component."
             },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Disables the input and button"
+                "description": "Disables the input and button."
             },
             "errorText": {
                 "type": {
@@ -2657,7 +2657,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error."
+                "description": "Message to display when the custom tab input is in an error state. When this is present, also visually highlights the component as in error."
             },
             "events": {
                 "type": {
@@ -2698,7 +2698,7 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n* `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.\n* `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.\n* `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.\n\t\t\t\t\t\tThis function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.\n* `onRequestOpen`: Function called when the color-picker menu would like show.\n* `onValidateColor`: Function called when validating HEX color on outer input. If callback returns false, errorText is shown if set.\n* `onValidateWorkingColor`: Function called when validating HEX color on custom tab menu inner input. If callback returns false, errorTextMenu is shown if set.\n* `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab menu). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n_Tested with Mocha framework._",
+                "description": "Event Callbacks\n* `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n* `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.\n* `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.\n* `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.\n\t\t\t\t\t\tThis function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.\n* `onRequestOpen`: Function called when the color-picker menu would like show.\n* `onValidateColor`: Function that overwrites default color validator and called when validating HEX color on outer input change. If callback returns false, errorText is shown if set.\n* `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextMenu is shown if set.\n* `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n_Tested with Mocha framework._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -2817,7 +2817,7 @@
                     "computed": false
                 }
             },
-            "tabSelector": {
+            "selectedTab": {
                 "type": {
                     "name": "enum",
                     "computed": true,
@@ -2849,7 +2849,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Selects which tabs are present for the colorpicker.\n* `base`: both swatches and custom tabs are present\n* `swatches`: only swatch tab is present\n* `custom`: only custom tab is present",
+                "description": "Selects which tabs are present for the colorpicker.\n* `base`: both swatches and custom tabs are present\n* `swatches`: only swatch tab is present\n* `custom`: only custom tab is present\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
