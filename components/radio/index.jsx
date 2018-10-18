@@ -127,10 +127,10 @@ class Radio extends React.Component {
 			<span
 				className={classNames(
 					{
-						'slds-radio': this.props.variant === 'base' || this.props.variant === 'swatch',
+						'slds-radio':
+							this.props.variant === 'base' || this.props.variant === 'swatch',
 						'slds-button slds-radio_button':
-							this.props.variant === 'button-group'
-
+							this.props.variant === 'button-group',
 					},
 					this.props.className
 				)}

@@ -340,7 +340,10 @@ class ColorPicker extends React.Component {
 
 	getPopover() {
 		const popoverBody = (
-			<Tabs id={`color-picker-tabs-${this.generatedId}`} defaultSelectedIndex={this.props.selectedTab === 'custom' ? 1 : 0}>
+			<Tabs
+				id={`color-picker-tabs-${this.generatedId}`}
+				defaultSelectedIndex={this.props.selectedTab === 'custom' ? 1 : 0}
+			>
 				{this.getDefaultTab()}
 				{this.getCustomTab()}
 			</Tabs>
@@ -571,8 +574,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-							''
-						)}
+						''
+					)}
 				</div>
 			</div>
 		);

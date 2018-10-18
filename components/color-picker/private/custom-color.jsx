@@ -51,8 +51,8 @@ class CustomColor extends React.Component {
 						{errorText}
 					</p>
 				) : (
-						''
-					)}
+					''
+				)}
 			</div>
 		);
 	}
