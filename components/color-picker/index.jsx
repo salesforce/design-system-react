@@ -102,6 +102,8 @@ const propTypes = {
 	 * * `blueAbbreviated`: One letter abbreviation of blue color component
 	 * * `cancelButton`: Text for cancel button on popover
 	 * * `customTab`: Text for custom tab of popover
+	 * * `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch
+	 * * `customTabTransparentSwatch`: Label for custom tab active transparent swatch
 	 * * `greenAbbreviated`: One letter abbreviation of green color component
 	 * * `hexLabel`: Label for input of hexadecimal color
 	 * * `invalidColor`: Error message when hex color input is invalid
@@ -114,6 +116,8 @@ const propTypes = {
 		blueAbbreviated: PropTypes.string,
 		cancelButton: PropTypes.string,
 		customTab: PropTypes.string,
+		customTabActiveWorkingColorSwatch: PropTypes.string,
+		customTabTransparentSwatch: PropTypes.string,
 		greenAbbreviated: PropTypes.string,
 		hexLabel: PropTypes.string,
 		invalidColor: PropTypes.string,
@@ -173,6 +177,8 @@ const defaultProps = {
 		blueAbbreviated: 'B',
 		cancelButton: 'Cancel',
 		customTab: 'Custom',
+		customTabActiveWorkingColorSwatch: 'Working Color',
+		customTabTransparentSwatch: 'Transparent',
 		greenAbbreviated: 'G',
 		hexLabel: 'Hex',
 		invalidColor: 'The color entered is invalid',
@@ -334,7 +340,7 @@ class ColorPicker extends React.Component {
 
 	getPopover() {
 		const popoverBody = (
-			<Tabs defaultSelectedIndex={this.props.selectedTab === 'custom' ? 1 : 0}>
+			<Tabs id={`color-picker-tabs-${this.generatedId}`} defaultSelectedIndex={this.props.selectedTab === 'custom' ? 1 : 0}>
 				{this.getDefaultTab()}
 				{this.getCustomTab()}
 			</Tabs>
@@ -343,6 +349,7 @@ class ColorPicker extends React.Component {
 			<div className="slds-color-picker__selector-footer">
 				<Button
 					className="slds-color-picker__selector-cancel"
+					id={`color-picker-footer-cancel-${this.generatedId}`}
 					label={this.props.labels.cancelButton}
 					onClick={this.handleCancel}
 					variant="neutral"
@@ -352,6 +359,7 @@ class ColorPicker extends React.Component {
 					disabled={
 						Object.keys(this.state.workingColor.errors || {}).length > 0
 					}
+					id={`color-picker-footer-submit-${this.generatedId}`}
 					label={this.props.labels.submitButton}
 					onClick={this.handleSubmitButtonClick}
 					variant="brand"
@@ -368,6 +376,7 @@ class ColorPicker extends React.Component {
 				)}
 				footer={popoverFooter}
 				hasStaticAlignment={this.props.hasStaticAlignment}
+				id={`slds-color-picker__selector-${this.generatedId}`}
 				isOpen={this.state.isOpen}
 				onClose={this.props.onClose}
 				onOpen={this.props.onOpen}
@@ -380,6 +389,7 @@ class ColorPicker extends React.Component {
 					iconClassName="slds-m-left_xx-small"
 					iconPosition="right"
 					iconVariant="more"
+					id={`slds-color-picker__summary-button-${this.generatedId}`}
 					label={<Swatch color={this.state.currentColor} />}
 					onClick={this.handleSwatchButtonClick}
 					variant="icon"
@@ -561,8 +571,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-						''
-					)}
+							''
+						)}
 				</div>
 			</div>
 		);

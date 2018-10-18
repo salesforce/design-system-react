@@ -140,20 +140,24 @@ class HsvColor extends React.Component {
 						onChange={this.handleSwatchChange}
 					>
 						<Radio
-							label="Working color"
-							style={swatchStyle}
-							variant="swatch"
-							key="working-color"
-							value={workingColor.hex}
 							checked={!this.isTransparent()}
+							id={`color-picker-active-working-color-swatch-${this.props.id}`}
+							key="working-color"
+							label={this.props.labels.customTabActiveWorkingColorSwatch}
+							name="color-picker-active-working-color-swatch"
+							style={swatchStyle}
+							value={workingColor.hex}
+							variant="swatch"
 						/>
 						<Radio
-							label="Transparent"
-							style={transparentSwatchStyle}
-							variant="swatch"
-							key="transparent"
-							value="" // transparent
 							checked={this.isTransparent()}
+							id={`color-picker-transparent-swatch-${this.props.id}`}
+							key="transparent"
+							label={this.props.labels.customTabTransparentSwatch}
+							name="color-picker-transparent-swatch"
+							style={transparentSwatchStyle}
+							value="" // transparent
+							variant="swatch"
 						/>
 					</RadioButtonGroup>
 				</div>

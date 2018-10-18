@@ -25,13 +25,14 @@ class CustomColor extends React.Component {
 				<HsvColor
 					assistiveText={this.props.assistiveText}
 					color={this.props.color}
-					previousColor={this.props.previousColor}
 					id={this.props.id}
+					labels={this.props.labels}
 					onHueChange={this.props.onHueChange}
 					onSaturationValueChange={this.props.onSaturationValueChange}
 					onSaturationNavigate={this.props.onSaturationNavigate}
 					onValueNavigate={this.props.onValueNavigate}
 					onSwatchChange={this.props.onSwatchChange}
+					previousColor={this.props.previousColor}
 				/>
 				<CustomColorForm
 					color={this.props.color}
@@ -50,8 +51,8 @@ class CustomColor extends React.Component {
 						{errorText}
 					</p>
 				) : (
-					''
-				)}
+						''
+					)}
 			</div>
 		);
 	}
