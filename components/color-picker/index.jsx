@@ -349,7 +349,9 @@ class ColorPicker extends React.Component {
 				/>
 				<Button
 					className="slds-color-picker__selector-submit"
-					disabled={Object.keys(this.state.workingColor.errors || {}).length > 0}
+					disabled={
+						Object.keys(this.state.workingColor.errors || {}).length > 0
+					}
 					label={this.props.labels.submitButton}
 					onClick={this.handleSubmitButtonClick}
 					variant="brand"

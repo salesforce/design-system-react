@@ -12,9 +12,7 @@ const handleChange = (event, data) => {
 	action('onChange')(event, data, ...dataAsArray);
 };
 
-const customOuterInputValidator = (hex) =>
-	// Example of custom validator which support hex color with strictly 6 digits.
-	!hex || HEX_REGEX_6_DIGITS.test(hex);
+const customOuterInputValidator = (hex) => !hex || HEX_REGEX_6_DIGITS.test(hex);
 
 storiesOf(COLOR_PICKER, module)
 	.addDecorator((getStory) => (
@@ -74,21 +72,21 @@ storiesOf(COLOR_PICKER, module)
 	.add('Custom Tab Selected', () => (
 		<ColorPicker events={{ onChange: handleChange }} selectedTab="custom" />
 	))
-	.add('HEX color Outer Input in Error State', () => (
+	.add('Outer Input in Error State', () => (
 		<ColorPicker
 			value="#invalid"
 			events={{ onChange: handleChange }}
 			errorText="Hex is invalid. Please correct this field."
 		/>
 	))
-	.add('HEX color Working input in Error State', () => (
+	.add('Working Color Input in Error State', () => (
 		<ColorPicker
 			events={{ onChange: handleChange }}
 			errorTextMenu="Hex is invalid. Please correct this field."
 		/>
 	))
 	.add('Custom Validator', () => (
-		// Custom validator that supports only 6 digits HEX.
+		// Example of a custom validator that support hex color with strictly 6 digits.
 		<ColorPicker
 			events={{
 				onChange: handleChange,
@@ -96,7 +94,4 @@ storiesOf(COLOR_PICKER, module)
 				onValidateWorkingColor: customOuterInputValidator,
 			}}
 		/>
-	))
-	.add('Value and ValueWorking props', () => (
-		<ColorPicker valueWorking="#ffff00" events={{ onChange: handleChange }} />
 	));

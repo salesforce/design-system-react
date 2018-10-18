@@ -18,9 +18,7 @@ test('ColorPicker Menu Open DOM Snapshot', () => {
 });
 
 test('ColorPicker Menu Disabled DOM Snapshot', () => {
-	const domTree = renderer
-		.create(<ColorPicker disabled />)
-		.toJSON();
+	const domTree = renderer.create(<ColorPicker disabled />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
@@ -32,15 +30,11 @@ test('ColorPicker Error Text', () => {
 });
 
 test('ColorPicker Custom Variant', () => {
-	const domTree = renderer
-		.create(<ColorPicker variant="custom" />)
-		.toJSON();
+	const domTree = renderer.create(<ColorPicker variant="custom" />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
 test('ColorPicker Swatches Variant', () => {
-	const domTree = renderer
-		.create(<ColorPicker variant="swatches" />)
-		.toJSON();
+	const domTree = renderer.create(<ColorPicker variant="swatches" />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });

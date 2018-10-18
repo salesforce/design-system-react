@@ -120,12 +120,7 @@ describe('SLDSColorPicker', function() {
 		});
 
 		it('value prop is set in input', () => {
-			wrapper = mount(
-				<ColorPicker
-					value="#FFFFFF"
-				/>,
-				{ attachTo: mountNode }
-			);
+			wrapper = mount(<ColorPicker value="#FFFFFF" />, { attachTo: mountNode });
 
 			const input = wrapper.find(selectors.summaryInput).first();
 			expect(input.instance().value).to.equal('#FFFFFF');
@@ -159,7 +154,6 @@ describe('SLDSColorPicker', function() {
 			const button = wrapper.find(selectors.toggle).first();
 			button.simulate('click');
 			expect(onCloseSpy.calledOnce).to.be.true;
-			// expect(wrapper.find(selectors.popover).exists()).to.be.false; // TODO Fix this - functionality works, test issue...
 		});
 	});
 
@@ -507,7 +501,7 @@ describe('SLDSColorPicker', function() {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
-							events={{ onValidateWorkingColor: customColorValidator}}
+							events={{ onValidateWorkingColor: customColorValidator }}
 						/>,
 						{ attachTo: mountNode }
 					);
@@ -520,20 +514,16 @@ describe('SLDSColorPicker', function() {
 					});
 
 					expect(spyCustomColorValidator.calledWith('#00ff00')).to.be.true;
-				})
+				});
 
 				it('valueWorking is set in custom tab inner input', () => {
-					wrapper = mount(
-						<ColorPicker
-							isOpen
-							valueWorking="#00ff00"
-						/>,
-						{ attachTo: mountNode }
-					);
+					wrapper = mount(<ColorPicker isOpen valueWorking="#00ff00" />, {
+						attachTo: mountNode,
+					});
 
 					const hexInput = wrapper.find(selectors.customHex).first();
-					expect(hexInput.find('input').instance().value).to.equal("#00ff00");
-				})
+					expect(hexInput.find('input').instance().value).to.equal('#00ff00');
+				});
 			});
 
 			describe('RGB input', function() {
