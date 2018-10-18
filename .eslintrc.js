@@ -91,7 +91,7 @@ module.exports = {
 	rules: {
 		'linebreak-style': [
 			2,
-			process.env.OS.match(/Windows/) ? 'windows' : 'unix',
+			process.env.OS && process.env.OS.match(/Windows/) ? 'windows' : 'unix',
 		],
 		// Creates consistent filename case: "kabob case"
 		'filenames/match-regex': [2, '^[a-z\\-\\.]+$', true],
