@@ -88,7 +88,7 @@ echo "
 RUN_LINT='npm run lint'
 SKIP_LINT=false
 # Mocha framework tests that focus on user interaction
-START_KARMA='node_modules/.bin/karma start --single-run'
+START_KARMA='npm run test:unit'
 SKIP_START_KARMA=false
 # Jest markup & image snapshot tests
 SNAPSHOT_TESTS='npm run test:snapshot'
