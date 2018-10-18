@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Swatch = ({ color, style }) => {
+const Swatch = ({ color, style, label }) => {
 	const innerStyle = {
 		backgroundColor: color,
 		border: '1px solid #cccccc',
@@ -15,7 +15,7 @@ const Swatch = ({ color, style }) => {
 
 	return (
 		<span className="slds-swatch" style={innerStyle}>
-			<span className="slds-assistive-text">{color}</span>
+			<span className="slds-assistive-text">{label || color}</span>
 		</span>
 	);
 };

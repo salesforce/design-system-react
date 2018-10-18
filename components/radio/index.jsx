@@ -99,10 +99,10 @@ class Radio extends React.Component {
 					className="slds-radio_button__label"
 					htmlFor={this.getId()}
 				>
-					<span className="slds-radio_faux">
+					<span>
 						<Swatch
+							label={this.props.label}
 							style={this.props.style}
-							inFocus={this.props.checked}
 							color={this.props.value}
 						/>
 					</span>
@@ -123,18 +123,14 @@ class Radio extends React.Component {
 			);
 		}
 
-		let style;
-		if (this.props.variant === 'swatch') {
-			style = { visibility: 'hidden', width: 0, height: 0 };
-		}
-
 		return (
 			<span
 				className={classNames(
 					{
-						'slds-radio': this.props.variant === 'base',
+						'slds-radio': this.props.variant === 'base' || this.props.variant === 'swatch',
 						'slds-button slds-radio_button':
-							this.props.variant === 'button-group',
+							this.props.variant === 'button-group'
+
 					},
 					this.props.className
 				)}
@@ -155,7 +151,6 @@ class Radio extends React.Component {
 							this.props.refs.input(input);
 						}
 					}}
-					style={style}
 				/>
 				{radio}
 			</span>

@@ -9,7 +9,7 @@ exports[`ColorPicker Base DOM Snapshot 1`] = `
   >
     <span
       className="slds-color-picker__summary-label"
-      htmlFor="color-picker-summary-input-SkaneSrim"
+      htmlFor="color-picker-summary-input-color-picker"
     />
     <div
       style={
@@ -21,7 +21,7 @@ exports[`ColorPicker Base DOM Snapshot 1`] = `
       <button
         className="slds-button slds-button_icon-more slds-color-picker__summary-button"
         disabled={false}
-        id="Skga3lrrj7"
+        id="slds-color-picker__summary-button-color-picker"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -59,9 +59,9 @@ exports[`ColorPicker Base DOM Snapshot 1`] = `
         className="slds-form-element__control"
       >
         <input
-          aria-describedby="color-picker-summary-error-SkaneSrim"
+          aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
-          id="color-picker-summary-input-SkaneSrim"
+          id="color-picker-summary-input-color-picker"
           maxLength="7"
           onChange={[Function]}
           type="text"
@@ -83,7 +83,7 @@ exports[`ColorPicker Custom Variant 1`] = `
   >
     <span
       className="slds-color-picker__summary-label"
-      htmlFor="color-picker-summary-input-rJmeahgBSi7"
+      htmlFor="color-picker-summary-input-color-picker"
     />
     <div
       style={
@@ -95,7 +95,7 @@ exports[`ColorPicker Custom Variant 1`] = `
       <button
         className="slds-button slds-button_icon-more slds-color-picker__summary-button"
         disabled={false}
-        id="BJEgT2eSSsX"
+        id="slds-color-picker__summary-button-color-picker"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -133,9 +133,9 @@ exports[`ColorPicker Custom Variant 1`] = `
         className="slds-form-element__control"
       >
         <input
-          aria-describedby="color-picker-summary-error-rJmeahgBSi7"
+          aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
-          id="color-picker-summary-input-rJmeahgBSi7"
+          id="color-picker-summary-input-color-picker"
           maxLength="7"
           onChange={[Function]}
           type="text"
@@ -157,7 +157,7 @@ exports[`ColorPicker Error Text 1`] = `
   >
     <span
       className="slds-color-picker__summary-label"
-      htmlFor="color-picker-summary-input-BJgxp2xSrj7"
+      htmlFor="color-picker-summary-input-color-picker"
     />
     <div
       style={
@@ -169,7 +169,7 @@ exports[`ColorPicker Error Text 1`] = `
       <button
         className="slds-button slds-button_icon-more slds-color-picker__summary-button"
         disabled={false}
-        id="SJWga3lrHj7"
+        id="slds-color-picker__summary-button-color-picker"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -207,9 +207,9 @@ exports[`ColorPicker Error Text 1`] = `
         className="slds-form-element__control"
       >
         <input
-          aria-describedby="color-picker-summary-error-BJgxp2xSrj7"
+          aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
-          id="color-picker-summary-input-BJgxp2xSrj7"
+          id="color-picker-summary-input-color-picker"
           maxLength="7"
           onChange={[Function]}
           type="text"
@@ -219,7 +219,7 @@ exports[`ColorPicker Error Text 1`] = `
     </div>
     <p
       className="slds-form-error"
-      id="color-picker-summary-error-BJgxp2xSrj7"
+      id="color-picker-summary-error-color-picker"
     >
       Outer input in error mode
     </p>
@@ -236,7 +236,7 @@ exports[`ColorPicker Menu Disabled DOM Snapshot 1`] = `
   >
     <span
       className="slds-color-picker__summary-label"
-      htmlFor="color-picker-summary-input-Hy6p2eHBsX"
+      htmlFor="color-picker-summary-input-color-picker"
     />
     <div
       style={
@@ -248,7 +248,7 @@ exports[`ColorPicker Menu Disabled DOM Snapshot 1`] = `
       <button
         className="slds-button slds-button_icon-more slds-color-picker__summary-button"
         disabled={true}
-        id="rkAT2xBHsm"
+        id="slds-color-picker__summary-button-color-picker"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -286,10 +286,10 @@ exports[`ColorPicker Menu Disabled DOM Snapshot 1`] = `
         className="slds-form-element__control"
       >
         <input
-          aria-describedby="color-picker-summary-error-Hy6p2eHBsX"
+          aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
           disabled={true}
-          id="color-picker-summary-input-Hy6p2eHBsX"
+          id="color-picker-summary-input-color-picker"
           maxLength="7"
           onChange={[Function]}
           type="text"
@@ -311,7 +311,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
   >
     <span
       className="slds-color-picker__summary-label"
-      htmlFor="color-picker-summary-input-SkGp2erHo7"
+      htmlFor="color-picker-summary-input-color-picker"
     />
     <div
       style={
@@ -323,7 +323,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
       <button
         className="slds-button slds-button_icon-more slds-color-picker__summary-button"
         disabled={false}
-        id="SJXThlrBjm"
+        id="slds-color-picker__summary-button-color-picker"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -354,10 +354,10 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
         </svg>
       </button>
       <div
-        aria-describedby="SJXThlrBjm-dialog-body"
-        aria-labelledby="SJXThlrBjm-dialog-heading"
+        aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
+        aria-labelledby="slds-color-picker__selector-color-picker-dialog-heading"
         className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
-        id="SJXThlrBjm-popover"
+        id="slds-color-picker__selector-color-picker-popover"
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
@@ -391,25 +391,25 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
         </button>
         <div
           className="slds-popover__body"
-          id="SJXThlrBjm-dialog-body"
+          id="slds-color-picker__selector-color-picker-dialog-body"
         >
           <div
             className="slds-tabs_default"
             data-tabs={true}
-            id="HyNaherBoQ"
+            id="color-picker-tabs-color-picker"
             onClick={[Function]}
             onKeyDown={[Function]}
           >
             <ul
               className="slds-tabs_default__nav"
-              id="HyNaherBoQ-slds-tabs__nav"
+              id="color-picker-tabs-color-picker-slds-tabs__nav"
               role="tablist"
             >
               <li
-                aria-controls="HyNaherBoQ-slds-tabs_panel-0"
+                aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
                 aria-selected="true"
                 className="slds-text-title_caps slds-active slds-tabs_default__item"
-                id="HyNaherBoQ-slds-tabs_tab-0"
+                id="color-picker-tabs-color-picker-slds-tabs_tab-0"
                 role="tab"
                 tabIndex="0"
                 title="Default"
@@ -424,10 +424,10 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 </a>
               </li>
               <li
-                aria-controls="HyNaherBoQ-slds-tabs_panel-1"
+                aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
                 aria-selected="false"
                 className="slds-text-title_caps slds-tabs_default__item"
-                id="HyNaherBoQ-slds-tabs_tab-1"
+                id="color-picker-tabs-color-picker-slds-tabs_tab-1"
                 role="tab"
                 tabIndex={null}
                 title="Custom"
@@ -443,9 +443,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
               </li>
             </ul>
             <div
-              aria-labelledby="HyNaherBoQ-slds-tabs_tab-0"
+              aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-0"
               className="slds-show slds-tabs_default__content"
-              id="HyNaherBoQ-slds-tabs_panel-0"
+              id="color-picker-tabs-color-picker-slds-tabs_panel-0"
               role="tabpanel"
             >
               <ul
@@ -1211,9 +1211,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
               </ul>
             </div>
             <div
-              aria-labelledby="HyNaherBoQ-slds-tabs_tab-1"
+              aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-1"
               className="slds-hide slds-tabs_default__content"
-              id="HyNaherBoQ-slds-tabs_panel-1"
+              id="color-picker-tabs-color-picker-slds-tabs_panel-1"
               role="tabpanel"
             >
               <div
@@ -1222,7 +1222,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <div>
                   <p
                     className="slds-assistive-text"
-                    id="color-picker-instructions-SkGp2erHo7"
+                    id="color-picker-instructions-color-picker"
                   >
                     Use arrow keys to select a saturation and brightness, on an x and y axis.
                   </p>
@@ -1238,7 +1238,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                   >
                     <a
                       aria-atomic="true"
-                      aria-describedby="color-picker-instructions-SkGp2erHo7"
+                      aria-describedby="color-picker-instructions-color-picker"
                       aria-live="assertive"
                       className="slds-color-picker__range-indicator"
                       onKeyDown={[Function]}
@@ -1257,13 +1257,13 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                   >
                     <label
                       className="slds-assistive-text"
-                      htmlFor="color-picker-input-range-SkGp2erHo7"
+                      htmlFor="color-picker-input-range-color-picker"
                     >
                       Select Hue
                     </label>
                     <input
                       className="slds-color-picker__hue-slider"
-                      id="color-picker-input-range-SkGp2erHo7"
+                      id="color-picker-input-range-color-picker"
                       max="360"
                       min="0"
                       onChange={[Function]}
@@ -1291,35 +1291,26 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                           }
                         >
                           <span
-                            className=""
+                            className="slds-radio"
                           >
                             <input
                               checked={true}
-                              id="S1LThgrHsX"
-                              name="HyHa2gSHoX"
+                              id="color-picker-active-working-color-swatch-color-picker"
+                              name="rk7VWB_Uo7"
                               onChange={[Function]}
-                              style={
-                                Object {
-                                  "height": 0,
-                                  "visibility": "hidden",
-                                  "width": 0,
-                                }
-                              }
                               type="radio"
                               value="#e3abec"
                             />
                             <label
                               className="slds-radio_button__label"
-                              htmlFor="S1LThgrHsX"
+                              htmlFor="color-picker-active-working-color-swatch-color-picker"
                               style={
                                 Object {
                                   "border": "1px",
                                 }
                               }
                             >
-                              <span
-                                className="slds-radio_faux"
-                              >
+                              <span>
                                 <span
                                   className="slds-swatch"
                                   style={
@@ -1334,42 +1325,33 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                                   <span
                                     className="slds-assistive-text"
                                   >
-                                    #e3abec
+                                    Working Color
                                   </span>
                                 </span>
                               </span>
                             </label>
                           </span>
                           <span
-                            className=""
+                            className="slds-radio"
                           >
                             <input
                               checked={false}
-                              id="H1Da2grSjX"
-                              name="HyHa2gSHoX"
+                              id="color-picker-transparent-swatch-color-picker"
+                              name="rk7VWB_Uo7"
                               onChange={[Function]}
-                              style={
-                                Object {
-                                  "height": 0,
-                                  "visibility": "hidden",
-                                  "width": 0,
-                                }
-                              }
                               type="radio"
                               value=""
                             />
                             <label
                               className="slds-radio_button__label"
-                              htmlFor="H1Da2grSjX"
+                              htmlFor="color-picker-transparent-swatch-color-picker"
                               style={
                                 Object {
                                   "border": "1px",
                                 }
                               }
                             >
-                              <span
-                                className="slds-radio_faux"
-                              >
+                              <span>
                                 <span
                                   className="slds-swatch"
                                   style={
@@ -1384,7 +1366,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                                   <span
                                     className="slds-assistive-text"
                                   >
-                                    
+                                    Transparent
                                   </span>
                                 </span>
                               </span>
@@ -1403,7 +1385,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                   >
                     <label
                       className="slds-form-element__label"
-                      htmlFor="color-picker-input-hex-SkGp2erHo7"
+                      htmlFor="color-picker-input-hex-color-picker"
                     >
                       Hex
                     </label>
@@ -1411,9 +1393,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                       className="slds-form-element__control"
                     >
                       <input
-                        aria-describedby="color-picker-custom-error-SkGp2erHo7"
+                        aria-describedby="color-picker-custom-error-color-picker"
                         className="slds-input"
-                        id="color-picker-input-hex-SkGp2erHo7"
+                        id="color-picker-input-hex-color-picker"
                         maxLength="7"
                         onChange={[Function]}
                         type="text"
@@ -1426,7 +1408,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                   >
                     <label
                       className="slds-form-element__label"
-                      htmlFor="color-picker-input-r-SkGp2erHo7"
+                      htmlFor="color-picker-input-r-color-picker"
                     >
                       R
                     </label>
@@ -1434,9 +1416,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                       className="slds-form-element__control"
                     >
                       <input
-                        aria-describedby="color-picker-custom-error-SkGp2erHo7"
+                        aria-describedby="color-picker-custom-error-color-picker"
                         className="slds-input"
-                        id="color-picker-input-r-SkGp2erHo7"
+                        id="color-picker-input-r-color-picker"
                         maxLength="3"
                         onChange={[Function]}
                         type="text"
@@ -1449,7 +1431,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                   >
                     <label
                       className="slds-form-element__label"
-                      htmlFor="color-picker-input-g-SkGp2erHo7"
+                      htmlFor="color-picker-input-g-color-picker"
                     >
                       G
                     </label>
@@ -1457,9 +1439,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                       className="slds-form-element__control"
                     >
                       <input
-                        aria-describedby="color-picker-custom-error-SkGp2erHo7"
+                        aria-describedby="color-picker-custom-error-color-picker"
                         className="slds-input"
-                        id="color-picker-input-g-SkGp2erHo7"
+                        id="color-picker-input-g-color-picker"
                         maxLength="3"
                         onChange={[Function]}
                         type="text"
@@ -1472,7 +1454,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                   >
                     <label
                       className="slds-form-element__label"
-                      htmlFor="color-picker-input-b-SkGp2erHo7"
+                      htmlFor="color-picker-input-b-color-picker"
                     >
                       B
                     </label>
@@ -1480,9 +1462,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                       className="slds-form-element__control"
                     >
                       <input
-                        aria-describedby="color-picker-custom-error-SkGp2erHo7"
+                        aria-describedby="color-picker-custom-error-color-picker"
                         className="slds-input"
-                        id="color-picker-input-b-SkGp2erHo7"
+                        id="color-picker-input-b-color-picker"
                         maxLength="3"
                         onChange={[Function]}
                         type="text"
@@ -1505,6 +1487,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
             <button
               className="slds-button slds-button_neutral slds-color-picker__selector-cancel"
               disabled={false}
+              id="color-picker-footer-cancel-color-picker"
               onClick={[Function]}
               type="button"
             >
@@ -1513,6 +1496,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
             <button
               className="slds-button slds-button_brand slds-color-picker__selector-submit"
               disabled={false}
+              id="color-picker-footer-submit-color-picker"
               onClick={[Function]}
               type="button"
             >
@@ -1529,9 +1513,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
         className="slds-form-element__control"
       >
         <input
-          aria-describedby="color-picker-summary-error-SkGp2erHo7"
+          aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
-          id="color-picker-summary-input-SkGp2erHo7"
+          id="color-picker-summary-input-color-picker"
           maxLength="7"
           onChange={[Function]}
           type="text"
@@ -1553,7 +1537,7 @@ exports[`ColorPicker Swatches Variant 1`] = `
   >
     <span
       className="slds-color-picker__summary-label"
-      htmlFor="color-picker-summary-input-ByIlaneHSiQ"
+      htmlFor="color-picker-summary-input-color-picker"
     />
     <div
       style={
@@ -1565,7 +1549,7 @@ exports[`ColorPicker Swatches Variant 1`] = `
       <button
         className="slds-button slds-button_icon-more slds-color-picker__summary-button"
         disabled={false}
-        id="SkPg63eBSoX"
+        id="slds-color-picker__summary-button-color-picker"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -1603,9 +1587,9 @@ exports[`ColorPicker Swatches Variant 1`] = `
         className="slds-form-element__control"
       >
         <input
-          aria-describedby="color-picker-summary-error-ByIlaneHSiQ"
+          aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
-          id="color-picker-summary-input-ByIlaneHSiQ"
+          id="color-picker-summary-input-color-picker"
           maxLength="7"
           onChange={[Function]}
           type="text"
