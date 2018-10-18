@@ -1296,7 +1296,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                             <input
                               checked={true}
                               id="color-picker-active-working-color-swatch-color-picker"
-                              name="rk7VWB_Uo7"
+                              name="color-picker-swatch-toggle-button-group"
                               onChange={[Function]}
                               type="radio"
                               value="#e3abec"
@@ -1337,7 +1337,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                             <input
                               checked={false}
                               id="color-picker-transparent-swatch-color-picker"
-                              name="rk7VWB_Uo7"
+                              name="color-picker-swatch-toggle-button-group"
                               onChange={[Function]}
                               type="radio"
                               value=""
