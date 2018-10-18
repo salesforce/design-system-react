@@ -6,7 +6,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 
 1. Fork this repository (button in upper right). Install [git](https://git-scm.com/) and clone your fork locally with `git clone git@github.com:[YOUR-USER]/design-system-react.git`. Create a [topic branch](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) locally such as `menu-alignment-fix`.
 1. Install [Node and NPM](https://nodejs.org/en/). `npm install` to install development dependencies.
-1. `npm start` to start [Storybook](https://storybook.js.org/). View stories at [http://localhost:9001](http://localhost:9001). Modify the source code to update component stories in the sidebar. 
+1. `npm start` to start [Storybook](https://storybook.js.org/). View stories at [http://localhost:9001](http://localhost:9001). Modify the source code to update component stories in the sidebar.
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm contribution is within project scope.
 
 ## Adding a new prop
@@ -29,7 +29,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
    1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
    1. Then import `__docs__` examples file into the documentation site by adding them to `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
    1. Review the [tests readme](/tests/README.md)
-   1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here. `npm run snapshot-test` will run these tests by themselves
+   1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here. `npm run test:snapshot` will run these tests by themselves
    1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries. These tests can be viewed at `http://localhost:8001`
 1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has a an empty string in it` error if they do not.
 1. Push to your username's forked repository.
@@ -46,7 +46,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
   * You can enable this behavior at save in your editor, too. For instance, in Visual Studio Code, run the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and set `"editor.formatOnSave": true` and `prettier.eslintIntegration: true`.
 * If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
 * Add enough Storybook stories and testing examples to show use of all component prop and values--if they are enumerated. All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) should be created as a Storybook story _and_ imported into the documentation site examples.
-* Prop description tables on the documentation site are generated from `propType` comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
+* Prop description tables on the documentation site are generated from `propType` comments within the component. Use `npm run build:docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
 * All props descriptions should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 
 ## The review process

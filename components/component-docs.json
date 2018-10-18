@@ -12549,7 +12549,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines component style. _Tested with snapshot testing._",
+                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false

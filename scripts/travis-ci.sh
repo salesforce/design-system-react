@@ -6,13 +6,13 @@
 source ./scripts/test.sh
 
 # Test that your NPM module dependendencies are not missing.
-# [commented out until alpha dependencies for image storyshots 
+# [commented out until alpha dependencies for image storyshots
 # and Babel are worked out]
 # VALIDATE_NPM_MODULES='npm run validate'
 # SKIP_VALIDATE_NPM_MODULES=false
 
 # Prettier THEN ESlint on files within components and utilities folders.
-# Prettier by itself will not work. 
+# Prettier by itself will not work.
 # Prettier ONLY on JSON and markdown files.
 RUN_LINT='npm run lint'
 SKIP_LINT=false
@@ -20,10 +20,10 @@ SKIP_LINT=false
 START_KARMA='node_modules/.bin/karma start --single-run'
 SKIP_START_KARMA=false
 # Jest markup & image snapshot tests
-SNAPSHOT_TESTS='npm run snapshot-test'
+SNAPSHOT_TESTS='npm run test:snapshot'
 SKIP_SNAPSHOT_TESTS=false
 # React DocGen library build of source code PropType comments into a JSON file for documentation site
-DOCGEN='npm run build-and-test-docs'
+DOCGEN='npm run build:docs && npm run test:docs'
 SKIP_DOCGEN=false
 
 numArgs=$#
@@ -34,7 +34,7 @@ if (( numArgs >= 0 )); then
 		#	VALIDATE_NPM_MODULES="echo ✂    ︎ skipping ${VALIDATE_NPM_MODULES}"
 		[ "$1" == "--fix" ] &&
 			# Prettier THEN ESlint on files within components and utilities folders.
-			# Prettier by itself will not work. 
+			# Prettier by itself will not work.
 			# Prettier ONLY on JSON and markdown files.
 			RUN_LINT='npm run lint:fix'
 		[ "$1" == "--skip-prettier" ] ||
