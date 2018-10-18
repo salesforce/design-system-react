@@ -135,6 +135,7 @@ class HsvColor extends React.Component {
 						onChange={this.props.onHueChange}
 					/>
 					<RadioButtonGroup
+						name="color-picker-swatch-toggle-button-group"
 						assistiveText={{ label: 'Toggle Transparency' }}
 						style={style}
 						onChange={this.handleSwatchChange}
@@ -144,7 +145,6 @@ class HsvColor extends React.Component {
 							id={`color-picker-active-working-color-swatch-${this.props.id}`}
 							key="working-color"
 							label={this.props.labels.customTabActiveWorkingColorSwatch}
-							name="color-picker-active-working-color-swatch"
 							style={swatchStyle}
 							value={workingColor.hex}
 							variant="swatch"
@@ -154,7 +154,6 @@ class HsvColor extends React.Component {
 							id={`color-picker-transparent-swatch-${this.props.id}`}
 							key="transparent"
 							label={this.props.labels.customTabTransparentSwatch}
-							name="color-picker-transparent-swatch"
 							style={transparentSwatchStyle}
 							value="" // transparent
 							variant="swatch"
