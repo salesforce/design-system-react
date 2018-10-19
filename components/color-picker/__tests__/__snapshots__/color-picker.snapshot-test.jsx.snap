@@ -10,7 +10,9 @@ exports[`ColorPicker Base DOM Snapshot 1`] = `
     <span
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
-    />
+    >
+      Choose Color
+    </span>
     <div
       style={
         Object {
@@ -62,7 +64,6 @@ exports[`ColorPicker Base DOM Snapshot 1`] = `
           aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
           id="color-picker-summary-input-color-picker"
-          maxLength="7"
           onChange={[Function]}
           type="text"
           value="#e3abec"
@@ -84,7 +85,9 @@ exports[`ColorPicker Custom Variant 1`] = `
     <span
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
-    />
+    >
+      Choose Color
+    </span>
     <div
       style={
         Object {
@@ -136,7 +139,6 @@ exports[`ColorPicker Custom Variant 1`] = `
           aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
           id="color-picker-summary-input-color-picker"
-          maxLength="7"
           onChange={[Function]}
           type="text"
           value="#e3abec"
@@ -158,7 +160,9 @@ exports[`ColorPicker Error Text 1`] = `
     <span
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
-    />
+    >
+      Choose Color
+    </span>
     <div
       style={
         Object {
@@ -210,7 +214,6 @@ exports[`ColorPicker Error Text 1`] = `
           aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
           id="color-picker-summary-input-color-picker"
-          maxLength="7"
           onChange={[Function]}
           type="text"
           value="#e3abec"
@@ -237,7 +240,9 @@ exports[`ColorPicker Menu Disabled DOM Snapshot 1`] = `
     <span
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
-    />
+    >
+      Choose Color
+    </span>
     <div
       style={
         Object {
@@ -290,7 +295,6 @@ exports[`ColorPicker Menu Disabled DOM Snapshot 1`] = `
           className="slds-input"
           disabled={true}
           id="color-picker-summary-input-color-picker"
-          maxLength="7"
           onChange={[Function]}
           type="text"
           value="#e3abec"
@@ -312,7 +316,9 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
     <span
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
-    />
+    >
+      Choose Color
+    </span>
     <div
       style={
         Object {
@@ -450,13 +456,22 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
             >
               <ul
                 className="slds-color-picker__swatches"
+                onKeyDown={[Function]}
                 role="listbox"
               >
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={
+                    Object {
+                      "border": "1px solid #9e9e9e",
+                      "boxShadow": "rgb(117, 112, 112) 1px 1px 1px",
+                      "margin": "3px",
+                    }
+                  }
                 >
                   <a
+                    aria-selected={true}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
@@ -482,12 +497,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -509,12 +526,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -536,12 +555,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -563,12 +584,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -590,12 +613,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -617,12 +642,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -644,12 +671,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -671,12 +700,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -698,12 +729,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -725,12 +758,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -752,12 +787,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -779,12 +816,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -806,12 +845,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -833,12 +874,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -860,12 +903,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -887,12 +932,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -914,12 +961,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -941,12 +990,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -968,12 +1019,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -995,12 +1048,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1022,12 +1077,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1049,12 +1106,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1076,12 +1135,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1103,12 +1164,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1130,12 +1193,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1157,12 +1222,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1184,12 +1251,14 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                 <li
                   className="slds-color-picker__swatch"
                   role="presentation"
+                  style={Object {}}
                 >
                   <a
+                    aria-selected={false}
                     className="slds-color-picker__swatch-trigger"
                     onClick={[Function]}
                     role="option"
-                    tabIndex={0}
+                    tabIndex={-1}
                   >
                     <span
                       className="slds-swatch"
@@ -1516,7 +1585,6 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
           aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
           id="color-picker-summary-input-color-picker"
-          maxLength="7"
           onChange={[Function]}
           type="text"
           value="#e3abec"
@@ -1538,7 +1606,9 @@ exports[`ColorPicker Swatches Variant 1`] = `
     <span
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
-    />
+    >
+      Choose Color
+    </span>
     <div
       style={
         Object {
@@ -1590,7 +1660,6 @@ exports[`ColorPicker Swatches Variant 1`] = `
           aria-describedby="color-picker-summary-error-color-picker"
           className="slds-input"
           id="color-picker-summary-input-color-picker"
-          maxLength="7"
           onChange={[Function]}
           type="text"
           value="#e3abec"
