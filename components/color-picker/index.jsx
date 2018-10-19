@@ -61,7 +61,7 @@ const propTypes = {
 	/**
 	 * Message to display when the custom tab input is in an error state. When this is present, also visually highlights the component as in error.
 	 */
-	errorTextMenu: PropTypes.string,
+	errorTextWorkingColor: PropTypes.string,
 	/**
 	 * Event Callbacks
 	 * * `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
@@ -71,7 +71,7 @@ const propTypes = {
 	 * 						This function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.
 	 * * `onRequestOpen`: Function called when the color-picker menu would like show.
 	 * * `onValidateColor`: Function that overwrites default color validator and called when validating HEX color on outer input change. If callback returns false, errorText is shown if set.
-	 * * `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextMenu is shown if set.
+	 * * `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextWorkingColor is shown if set.
 	 * * `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
 	 * _Tested with Mocha framework._
 	 */
@@ -122,6 +122,7 @@ const propTypes = {
 		hexLabel: PropTypes.string,
 		invalidColor: PropTypes.string,
 		invalidComponent: PropTypes.string,
+		label: PropTypes.string,
 		redAbbreviated: PropTypes.string,
 		swatchTab: PropTypes.string,
 		submitButton: PropTypes.string,
@@ -147,7 +148,7 @@ const propTypes = {
 	 * Determines which tab is visible when dialog opens. Use this prop with `base` variant only.
 	 * Defaults to `swatch` tab.
 	 */
-	selectedTab: PropTypes.oneOf('swatches, custom'),
+	defaultSelectedTab: PropTypes.oneOf('swatches, custom'),
 	/**
 	 * Selects which tabs are present for the colorpicker.
 	 * * `base`: both swatches and custom tabs are present
@@ -183,6 +184,7 @@ const defaultProps = {
 		hexLabel: 'Hex',
 		invalidColor: 'The color entered is invalid',
 		invalidComponent: 'The value needs to be an integer from 0-255',
+		label: 'Choose Color',
 		redAbbreviated: 'R',
 		submitButton: 'Done',
 		swatchTab: 'Default',
@@ -218,10 +220,13 @@ const defaultProps = {
 		'#b67e11',
 		'#b85d0d',
 	],
-	selectedTab: 'swatches',
+	defaultSelectedTab: 'swatches',
 	variant: 'base',
 };
 
+/**
+ * The Unified Color Picker component allows for a fully accessible and configurable color picker, allowing the user to pick from a set of predefined colors (swatches), or to pick a custom color using a HSB selection interface. It can be configured to show one or both of those color selection interfaces. View [component blueprint guidelines](https://lightningdesignsystem.com/components/color-picker/).
+ */
 class ColorPicker extends React.Component {
 	static displayName = COLOR_PICKER;
 	static propTypes = propTypes;
@@ -291,7 +296,6 @@ class ColorPicker extends React.Component {
 				)}
 				disabled={this.props.disabled}
 				id={`color-picker-summary-input-${this.generatedId}`}
-				maxLength="7"
 				onChange={this.handleHexInputChange}
 				value={this.state.currentColor}
 			/>
@@ -303,7 +307,7 @@ class ColorPicker extends React.Component {
 			(this.props.variant === 'base' || this.props.variant === 'swatches') && (
 				<TabsPanel label={this.props.labels.swatchTab}>
 					<SwatchPicker
-						color={this.props.workingColor}
+						color={this.state.workingColor}
 						onSelect={this.handleSwatchSelect}
 						swatchColors={this.props.swatchColors}
 					/>
@@ -320,7 +324,7 @@ class ColorPicker extends React.Component {
 						assistiveText={this.props.assistiveText}
 						id={this.generatedId}
 						color={this.state.workingColor}
-						errorTextMenu={this.props.errorTextMenu}
+						errorTextWorkingColor={this.props.errorTextWorkingColor}
 						previousColor={this.state.previousWorkingColor}
 						labels={this.props.labels}
 						onBlueChange={this.handleColorChange('blue')}
@@ -342,7 +346,9 @@ class ColorPicker extends React.Component {
 		const popoverBody = (
 			<Tabs
 				id={`color-picker-tabs-${this.generatedId}`}
-				defaultSelectedIndex={this.props.selectedTab === 'custom' ? 1 : 0}
+				defaultSelectedIndex={
+					this.props.defaultSelectedTab === 'custom' ? 1 : 0
+				}
 			>
 				{this.getDefaultTab()}
 				{this.getCustomTab()}

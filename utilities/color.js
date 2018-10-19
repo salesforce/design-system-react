@@ -15,6 +15,16 @@ const ColorUtils = {
 					errors: assign({}, oldColor && oldColor.errors, {
 						hex: true,
 					}),
+					hsv: {
+						hue: '',
+						saturation: '',
+						value: '',
+					},
+					rgb: {
+						red: '',
+						green: '',
+						blue: '',
+					},
 				});
 			}
 
