@@ -70,7 +70,10 @@ storiesOf(COLOR_PICKER, module)
 		<ColorPicker events={{ onChange: handleChange }} hideInput />
 	))
 	.add('Custom Tab Selected', () => (
-		<ColorPicker events={{ onChange: handleChange }} selectedTab="custom" />
+		<ColorPicker
+			events={{ onChange: handleChange }}
+			defaultSelectedTab="custom"
+		/>
 	))
 	.add('Outer Input in Error State', () => (
 		<ColorPicker
@@ -82,7 +85,7 @@ storiesOf(COLOR_PICKER, module)
 	.add('Working Color Input in Error State', () => (
 		<ColorPicker
 			events={{ onChange: handleChange }}
-			errorTextMenu="Hex is invalid. Please correct this field."
+			errorTextWorkingColor="Hex is invalid. Please correct this field."
 		/>
 	))
 	.add('Custom Validator', () => (
@@ -94,4 +97,5 @@ storiesOf(COLOR_PICKER, module)
 				onValidateWorkingColor: customOuterInputValidator,
 			}}
 		/>
-	));
+	))
+	.add('Color Picker Disabled', () => <ColorPicker disabled />);

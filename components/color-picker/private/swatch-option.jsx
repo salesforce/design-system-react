@@ -1,18 +1,25 @@
 import React from 'react';
-
 import Swatch from './swatch';
 
 const handleClick = (event, { hex, onSelect }) => {
 	event.preventDefault();
 	onSelect(event, { hex });
 };
-
+const selectedStyle = {
+	border: '1px solid #9e9e9e',
+	boxShadow: 'rgb(117, 112, 112) 1px 1px 1px',
+	margin: '3px',
+};
 class SwatchOption extends React.Component {
 	static displayName = 'SLDSSwatchOption';
 
 	render() {
 		return (
-			<li className="slds-color-picker__swatch" role="presentation">
+			<li
+				className="slds-color-picker__swatch"
+				style={this.props.selectedColor ? selectedStyle : {}}
+				role="presentation"
+			>
 				<a
 					aria-selected={
 						this.props.workingColor &&
@@ -25,8 +32,9 @@ class SwatchOption extends React.Component {
 							onSelect: this.props.onSelect,
 						});
 					}}
+					ref={this.props.swatchOptionRef}
 					role="option"
-					tabIndex={0}
+					tabIndex={this.props.selectedColor ? 0 : -1}
 				>
 					<Swatch color={this.props.color} />
 				</a>
