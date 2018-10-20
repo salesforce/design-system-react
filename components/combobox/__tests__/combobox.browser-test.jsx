@@ -358,6 +358,21 @@ describe('SLDSCombobox', function() {
 				index: 0,
 			}).simulate('keydown', keyObjects.DELETE);
 		});
+
+		it('selects a menu item and scrolls when a key is pressed in read-only mode', () => {
+			wrapper = mount(<DemoComponent variant="readonly" />, { attachTo: mountNode });
+			let nodes = getNodes({ wrapper });
+
+			nodes.input.simulate('click', {});
+			nodes = getNodes({ wrapper });
+			nodes.input.simulate('keyDown', letterKeyObjects.S);
+
+			const menuListItem = nodes.menuListbox.find('#combobox-unique-id-listbox-option-2');
+			expect(menuListItem.instance().className.search('slds-has-focus') > -1).to.eql(true);
+
+			const scrollTop = nodes.menuListbox.instance().scrollTop;
+			expect(scrollTop === 0 || scrollTop === 40).to.eql(true);	// done because menu and menu item size in phantomjs is weird
+		});
 	});
 
 	describe('Variant-specific', () => {

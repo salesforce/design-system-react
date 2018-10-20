@@ -289,6 +289,7 @@ class Combobox extends React.Component {
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
 		};
+
 		this.menuKeyBuffer = new KeyBuffer();
 		this.menuRef = React.createRef();
 	}
