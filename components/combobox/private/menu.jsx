@@ -76,6 +76,13 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	menuItem: PropTypes.func,
+	/**
+	 * Accepts a ref function or object (React.createRef() or otherwise) to store the menu DOM reference once available
+	 */
+	menuRef: PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.object
+	]),
 	/*
 	 * Sets a maximum width that the menu will be if `inheritWidthOf` is menu.
 	 */
@@ -104,7 +111,9 @@ const propTypes = {
 	assistiveText: PropTypes.object,
 };
 
-const defaultProps = {};
+const defaultProps = {
+	menuRef: () => {}
+};
 
 const Menu = (props) => {
 	let maxWidth = props.inheritWidthOf === 'menu' ? 'inherit' : undefined;
@@ -258,6 +267,7 @@ const Menu = (props) => {
 				},
 				props.classNameMenu
 			)}
+			ref={props.menuRef}
 			role="presentation"
 			style={{
 				width: props.inheritWidthOf === 'menu' ? 'auto' : undefined,

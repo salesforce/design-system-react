@@ -27,7 +27,9 @@ import Label from '../forms/private/label';
 import SelectedListBox from './private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
+import KeyBuffer from '../../utilities/key-buffer';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
+import menuJump from '../../utilities/menu-jump';
 
 import checkProps from './check-props';
 
@@ -287,6 +289,8 @@ class Combobox extends React.Component {
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
 		};
+		this.menuKeyBuffer = new KeyBuffer();
+		this.menuRef = React.createRef();
 	}
 
 	/**
@@ -501,15 +505,19 @@ class Combobox extends React.Component {
 	 */
 
 	handleKeyDown = (event) => {
+		const callbacks = {
+			[KEYS.DOWN]: { callback: this.handleKeyDownDown },
+			[KEYS.ENTER]: { callback: this.handleInputSubmit },
+			[KEYS.ESCAPE]: { callback: this.handleClose },
+			[KEYS.UP]: { callback: this.handleKeyDownUp }
+		};
+
+		if (this.props.variant === 'readonly') {
+			callbacks.other = { callback: this.handleKeyDownOther };
+		}
+
 		// Helper function that takes an object literal of callbacks that are triggered with a key event
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.DOWN]: { callback: this.handleKeyDownDown },
-				[KEYS.ENTER]: { callback: this.handleInputSubmit },
-				[KEYS.ESCAPE]: { callback: this.handleClose },
-				[KEYS.UP]: { callback: this.handleKeyDownUp },
-			},
-		});
+		mapKeyEventCallbacks(event, { callbacks });
 	};
 
 	handleKeyDownDown = (event) => {
@@ -527,6 +535,23 @@ class Combobox extends React.Component {
 			this.handleNavigateListboxMenu(event, { direction: 'previous' });
 		}
 	};
+
+	handleKeyDownOther = (event) => {
+		const activeOptionIndex = menuJump({
+			container: this.menuRef.current,
+			key: event.key,
+			keyBuffer: this.menuKeyBuffer,
+			keyCode: event.keyCode,
+			options: this.props.options
+		});
+
+		if (activeOptionIndex !== undefined) {
+			this.setState({
+				activeOption: this.props.options[activeOptionIndex],
+				activeOptionIndex
+			});
+		}
+	}
 
 	handleNavigateListboxMenu = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };
@@ -1085,6 +1110,7 @@ class Combobox extends React.Component {
 				labels={labels}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
+				menuRef={this.menuRef}
 				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}
