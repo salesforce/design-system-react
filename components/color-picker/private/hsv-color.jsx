@@ -135,7 +135,7 @@ class HsvColor extends React.Component {
 						onChange={this.props.onHueChange}
 					/>
 					<RadioButtonGroup
-						name="color-picker-swatch-toggle-button-group"
+						name={`${this.props.id}-color-picker-swatch-toggle-button-group`}
 						assistiveText={{ label: 'Toggle Transparency' }}
 						style={style}
 						onChange={this.handleSwatchChange}
