@@ -124,7 +124,7 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		tooltipTipLearnMoreIcon: 'this link',
-		triggerLearnMoreIcon: 'Learn More',
+		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
 	content: <span>Tooltip</span>,
@@ -236,7 +236,7 @@ class Tooltip extends React.Component {
 			<div className="slds-popover__body">
 				{this.props.content}
 				{this.props.variant === 'learnMore' ? (
-					<div className="slds-m-top_x-small">
+					<div className="slds-m-top_x-small" aria-hidden="true">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon
 							assistiveText={{

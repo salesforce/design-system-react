@@ -9,7 +9,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -47,10 +47,10 @@ const defaultProps = {
 /**
  * The HTML `input` with a label and error messaging.
  */
-const Input = createReactClass({
-	displayName: INPUT,
+class Input extends React.Component {
+	static displayName = INPUT;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
 		 */
@@ -246,6 +246,10 @@ const Input = createReactClass({
 		 */
 		required: PropTypes.bool,
 		/**
+		 * styles to be added to input
+		 */
+		styleInput: PropTypes.object,
+		/**
 		 * ARIA role
 		 */
 		role: PropTypes.string,
@@ -272,11 +276,9 @@ const Input = createReactClass({
 		 * The input is a controlled component, and will always display this value.
 		 */
 		value: PropTypes.string,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
@@ -286,18 +288,14 @@ const Input = createReactClass({
 		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
-	},
+	}
 
-	getId() {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getErrorId() {
-		return this.props['aria-describedby'] || this.generatedErrorId;
-	},
+	getErrorId = () => this.props['aria-describedby'] || this.generatedErrorId;
 
 	// This is convuluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
-	getIconRender(position, iconPositionProp) {
+	getIconRender = (position, iconPositionProp) => {
 		let icon;
 
 		// Remove at next breaking change
@@ -337,7 +335,7 @@ const Input = createReactClass({
 		}
 
 		return icon;
-	},
+	};
 
 	render() {
 		// Remove at next breaking change
@@ -444,6 +442,7 @@ const Input = createReactClass({
 					assistiveText={this.props.assistiveText}
 					type={this.props.type}
 					value={this.props.value}
+					style={this.props.styleInput}
 				/>
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">
@@ -453,7 +452,7 @@ const Input = createReactClass({
 				{this.props.children}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Input;

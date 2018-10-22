@@ -4,12 +4,18 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 
 ## Setup
 
+1. Fork this repository (button in upper right). Install [git](https://git-scm.com/) and clone your fork locally with `git clone git@github.com:[YOUR-USER]/design-system-react.git`. Create a [topic branch](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) locally such as `menu-alignment-fix`.
+1. Install [Node and NPM](https://nodejs.org/en/). `npm install` to install development dependencies.
+1. `npm start` to start [Storybook](https://storybook.js.org/). View stories at [http://localhost:9001](http://localhost:9001). Modify the source code to update component stories in the sidebar. 
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm contribution is within project scope.
-1. Fork this repository, clone your fork locally `git clone git@github.com:[YOUR-USER]/design-system-react.git`. Create a topic branch locally.
-1. `npm install` to install development dependencies.
-1. `npm start` to start [Storybook](https://storybook.js.org/). Change source code to update component stories. Webpack will hot module replace your code. View stories at [http://localhost:9001](http://localhost:9001).
 
-## Add a new component
+## Adding a new prop
+1. This library is open to `data`, `ref`, `style`, and `className` on any element within reason, but especially open to it for the “primary part of a component” such as form elements such as `input` or a clickable elements such as `button`, since these are often used for testing purposes or form submission. This is probably a better way to write unit tests, anyway, since SLDS class changes are not considered breaking changes.
+    1. `ref` callbacks should be within an `object` named refs with typically a key name of the HTML tag name. These should be tested with a Mocha callback.
+	 1. `style` props should be `style[SUFFIX]` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
+	 1. `className` props should be `className[SUFFIX]` and be `PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
+
+## How to add a new component
 
 1. Create a new issue or add to an existing one.
    1. **List out all public props**, so that props can be consistent across the library. You are proposing an API that hopefully will never have to be changed.

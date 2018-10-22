@@ -56,7 +56,7 @@ If you are new to React, you may be trained to design components in a more compl
 
 ### Limit side effects
 
-* <a name="be-functional" href="#be-functional">#</a> **Be functional.**  `const getKittenNames = (cats) => cats.filter(isKitten).map(getName)` is a great example of how to get a list of kitten names from a `cats` collection without a `for`, `while`, or `until` loop while only modifying variables within the functional scope.
+* <a name="be-functional" href="#be-functional">#</a> **Be functional.** `const getKittenNames = (cats) => cats.filter(isKitten).map(getName)` is a great example of how to get a list of kitten names from a `cats` collection without a `for`, `while`, or `until` loop while only modifying variables within the functional scope.
 
 * <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
 
@@ -103,6 +103,8 @@ If you are new to React, you may be trained to design components in a more compl
 
 * <a name="boolean-falsey-defaults" href="#boolean-falsey-defaults">#</a> **Use falsey defaults.** HTML defaults many attributes to true if no value is provided, such as `checked` instead of `checked="true"`. To maintain JSX's HTML-like syntax, please avoid asking a developer to use `propName={false}`. This may require using the opposite word, such as `isInline` instead of `isModal`.
 
+* <a name="use-design-tokens" href="#use-design-tokens">#</a> **Use design tokens for inline styles.** Inline styles should be kept to a minimum. The best option is file a bug either in the internal bug system or at the [SLDS repository](https://github.com/salesforce-ux/design-system). This library contains a copy of design tokens available on the [SLDS site](https://www.lightningdesignsystem.com/design-tokens/). See `utilities/design-tokens/README.md` for more details.
+
 ### Use "the good parts"
 
 * <a name="do-not-mutate-data" href="#do-not-mutate-data">#</a> **Do not mutate data.** React tries to [optimize and prevent re-rendering the DOM when possible](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data). Many times this is not what you want. Avoid solitary use of `push`, `pop`, `shift`, `unshift`, `sort`, `reverse`, `splice` and `delete` when mutating arrays. If you ever have to ask yourself, why isn't my component rendering with new props, this is likely the reason. Use the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) on objects and arrays--or [`Array.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) on arrays instead of directly modifying these variables that are accessed by reference. You may consider exploring some new ES6 types such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) which are collections that help store unique values of any type.
@@ -147,6 +149,7 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
 * For more specifics about testing please review the [testing module walkthough](../tests/README.md).
 
 ## Notes on documentation site examples
+
 * Documentation site code is located in a [private repository](https://github.com/salesforce-ux/design-system-react-site).
 * The NPM module for this library is used for component documentation. Therefore, changes to documentation require a new version to be published.
 * Documentation site examples use [CodeMirror](https://codemirror.net/) to `eval()` site examples from the NPM module. `import` and `export` statements are ignored by CodeMirror. Exports from `components/index.js` are the only variables available to code examples. Do not `import` any other variables or the site examples will not work.
@@ -183,18 +186,24 @@ User input will have no effect on the rendered element because React has declare
 
 ```javascript
 class MyForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: 'Hello!' };
-  }
+	constructor(props) {
+		super(props);
+		this.state = { value: 'Hello!' };
+	}
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value });
-  };
+	handleChange = (event) => {
+		this.setState({ value: event.target.value });
+	};
 
-  render() {
-    return <input type="text" value={this.state.value} onChange={this.handleChange} />;
-  }
+	render() {
+		return (
+			<input
+				type="text"
+				value={this.state.value}
+				onChange={this.handleChange}
+			/>
+		);
+	}
 }
 ```
 
@@ -202,7 +211,7 @@ In this example, we are accepting the value provided by the user and updating th
 
 ```javascript
 handleChange = (event) => {
-  this.setState({ value: event.target.value.substr(0, 140) });
+	this.setState({ value: event.target.value.substr(0, 140) });
 };
 ```
 
@@ -234,10 +243,10 @@ import checkProps from './check-props';
 import { EXTERNAL_CONSTANT } from '../../utilities/constants';
 
 const propTypes = {
-  /**
-   * The description of this prop (will appear in the documentation site).
-   */
-  title: PropTypes.string.isRequired
+	/**
+	 * The description of this prop (will appear in the documentation site).
+	 */
+	title: PropTypes.string.isRequired,
 };
 
 // These values will also be visible in the documentation site.
@@ -247,37 +256,37 @@ const defaultProps = {};
  * The description of this component (will appear in the documentation site).
  */
 class DemoComponent extends React.Component {
-  static displayName = EXTERNAL_CONSTANT_NAME;
-  static propTypes = propTypes;
-  static defaultProps = defaultProps;
+	static displayName = EXTERNAL_CONSTANT_NAME;
+	static propTypes = propTypes;
+	static defaultProps = defaultProps;
 
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    // useful for unique DOM IDs
-    this.generatedId = this.props.id || shortid.generate();
+		// useful for unique DOM IDs
+		this.generatedId = this.props.id || shortid.generate();
 
-    // initial state
-    this.state = {};
-  }
+		// initial state
+		this.state = {};
+	}
 
-  componentWillMount() {
-    // Not required. This function issues console warnings to developers about props and is helpful in upgrading. All breaking changes to props must have a warning for developers when they upgrade.
-    checkProps(EXTERNAL_CONSTANT, this.props);
-  }
+	componentWillMount() {
+		// Not required. This function issues console warnings to developers about props and is helpful in upgrading. All breaking changes to props must have a warning for developers when they upgrade.
+		checkProps(EXTERNAL_CONSTANT, this.props);
+	}
 
-  // Class property bound to instance. Class methods that are not React lifecycle methods should use "fat-arrow" syntax if `this` binding is needed.
-  toggleOpen = (event, { eventDataKey }) => {
-    // you can use `this` here
-  };
+	// Class property bound to instance. Class methods that are not React lifecycle methods should use "fat-arrow" syntax if `this` binding is needed.
+	toggleOpen = (event, { eventDataKey }) => {
+		// you can use `this` here
+	};
 
-  // Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
-  renderSubComponent = () => null;
+	// Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
+	renderSubComponent = () => null;
 
-  // Render should be last
-  render() {
-    return null;
-  }
+	// Render should be last
+	render() {
+		return null;
+	}
 }
 
 export default DemoComponent;
@@ -315,7 +324,7 @@ Some props accept an existing Design System React component such as the `dropdow
 
 In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developers or the "grandparent" takes precedence and merges in last.
 
-This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and decreases library maintainability. 
+This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and increases library maintainability.
 
 ## Prefer Ternary to Sub-render
 
@@ -386,42 +395,42 @@ Do not name a DOM callback prop of a library component `ref`. `ref` is a reserve
 ```javascript
 // bad
 function CustomTextInput(props) {
-  return (
-    <div>
-      <input ref={props.ref} />
-    </div>
-  );
+	return (
+		<div>
+			<input ref={props.ref} />
+		</div>
+	);
 }
 
 class Parent extends React.Component {
-  render() {
-    return <CustomTextInput ref={(el) => (this.inputElement = el)} />;
-  }
+	render() {
+		return <CustomTextInput ref={(el) => (this.inputElement = el)} />;
+	}
 }
 ```
 
 ```javascript
 // good
 function CustomTextInput(props) {
-  return (
-    <div>
-      <input ref={props.refs.input} />
-    </div>
-  );
+	return (
+		<div>
+			<input ref={props.refs.input} />
+		</div>
+	);
 }
 
 class Parent extends React.Component {
-  render() {
-    return (
-      <CustomTextInput
-        refs={{
-          input: (el) => {
-            this.inputElement = el;
-          }
-        }}
-      />
-    );
-  }
+	render() {
+		return (
+			<CustomTextInput
+				refs={{
+					input: (el) => {
+						this.inputElement = el;
+					},
+				}}
+			/>
+		);
+	}
 }
 ```
 
@@ -517,6 +526,7 @@ Some syntax samples are from the [Planning Center](https://github.com/planningce
 This preset enables a module bundler, such as Webpack, to transpile Design System React. Using this will make it easier to upgrade in the future without having to manually reconfigure your Babel settings to be compatible with new language features Design System React may use.
 
 # Open source benefits
+
 * More efficient and effective development
   * Faster Time-to-Market
   * Reduced development costs
@@ -538,5 +548,4 @@ This preset enables a module bundler, such as Webpack, to transpile Design Syste
   * Community-based learning
   * Openness and availability of knowledge
 * Higher employee motivation
-  * Shareable work
-		* Opportuntity to lead engineering community
+  * Shareable work \* Opportuntity to lead engineering community

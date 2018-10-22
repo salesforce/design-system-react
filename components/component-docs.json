@@ -250,6 +250,13 @@
                 "required": false,
                 "description": "Triggered by close button. This is a controlled component. _Tested with Mocha testing._"
             },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component. _Tested with Mocha testing._"
+            },
             "variant": {
                 "type": {
                     "name": "enum",
@@ -4901,6 +4908,13 @@
                 "required": false,
                 "description": "Highlights the input as a required field (does not perform any validation)."
             },
+            "styleInput": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "styles to be added to input"
+            },
             "role": {
                 "type": {
                     "name": "string"
@@ -8233,7 +8247,9 @@
                         {
                             "name": "propTypes",
                             "docblock": null,
-                            "modifiers": [],
+                            "modifiers": [
+                                "static"
+                            ],
                             "params": [],
                             "returns": null
                         }
@@ -9016,6 +9032,14 @@
                 "required": false
             }
         },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            }
+        },
         "route": "popovers",
         "display-name": "Popovers",
         "SLDS-component-path": "/components/popovers",
@@ -9609,6 +9633,24 @@
                 "required": false,
                 "description": "This is a controlled component. This radio is checked according to this value."
             },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class name to be passed to radio input wrapper ( `span` element)"
+            },
             "defaultChecked": {
                 "type": {
                     "name": "bool"
@@ -9686,6 +9728,19 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "refs": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "input": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Ref callback that will pass in the radio's `input` tag"
             }
         },
         "route": "radios",
@@ -9716,7 +9771,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "isOpen",
+                        "name": "{ isOpen }",
                         "type": null
                     }
                 ],
@@ -11439,13 +11494,6 @@
         "description": "Component description.",
         "methods": [
             {
-                "name": "getOptions",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "parseDate",
                 "docblock": null,
                 "modifiers": [],
@@ -11782,6 +11830,13 @@
                 "required": false,
                 "description": "Triggered by close button. _Tested with Mocha testing._"
             },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component. _Tested with Mocha testing._"
+            },
             "variant": {
                 "type": {
                     "name": "enum",
@@ -12004,7 +12059,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to \"complete the sentence\" for assistive tech users.\n* `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.",
                 "defaultValue": {
-                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Learn More',\n}",
+                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Help',\n}",
                     "computed": false
                 }
             },

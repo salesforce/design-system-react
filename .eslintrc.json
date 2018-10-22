@@ -91,7 +91,7 @@
 	"rules": {
 		// Creates consistent filename case: "kabob case"
 		"filenames/match-regex": [2, "^[a-z\\-\\.]+$", true],
-		// ALl imported files are JSX or JS
+		// All imported files are JSX or JS
 		"import/extensions": "off",
 		// `~` is used by examples for "root" npm package in documentation site
 		"import/no-unresolved": [2, { "ignore": ["^[~]"] }],
@@ -172,8 +172,6 @@
 		"react/no-unused-state": "off",
 		// TODO: Should be removed
 		"react/prop-types": "off",
-		// TODO: Should be removed
-		"react/prefer-es6-class": "off",
 		// Used to prevent usage of any, array, and object but may be too strict currently
 		"react/forbid-prop-types": "off",
 		// TODO: Should be removed

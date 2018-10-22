@@ -1,10 +1,10 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import ButtonGroup from '~/components/button-group';
 import Checkbox from '~/components/checkbox';
 
-const Example = createReactClass({
-	displayName: 'ButtonGroupExample',
+class Example extends React.Component {
+	static displayName = 'ButtonGroupExample';
 
 	render() {
 		return (
@@ -22,7 +22,7 @@ const Example = createReactClass({
 				<Checkbox id="ButtonGroupExampleFri" label="Fri" />
 			</ButtonGroup>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

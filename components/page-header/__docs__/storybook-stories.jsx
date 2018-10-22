@@ -1,7 +1,7 @@
 /* eslint-disable indent, jsx-a11y/no-noninteractive-tabindex */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import { storiesOf, action } from '@storybook/react';
 import { PAGE_HEADER } from '../../../utilities/constants';
 import IconSettings from '../../icon-settings';
@@ -33,29 +33,27 @@ const recordHomeDetails2 = [
 	{ label: 'Field 3', content: 'Description (2-line truncation)' },
 ];
 
-const DemoPageHeader = createReactClass({
-	displayName: 'DemoPageHeader',
+class DemoPageHeader extends React.Component {
+	static displayName = 'DemoPageHeader';
 
-	getInitialState() {
-		return {
-			recordHomeDetails: recordHomeDetails2,
-		};
-	},
+	state = {
+		recordHomeDetails: recordHomeDetails2,
+	};
 
-	changeDescription() {
+	changeDescription = () => {
 		if (this.state.recordHomeDetails[0].content === 'hi') {
 			this.setState({ recordHomeDetails: recordHomeDetails1 });
 		} else {
 			this.setState({ recordHomeDetails: recordHomeDetails2 });
 		}
-	},
+	};
 
-	handleSelect(selectedItem, ...rest) {
+	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
 			currentSelected: this.state.options.indexOf(selectedItem),
 		});
-	},
+	};
 
 	render() {
 		const defaultProps = {
@@ -76,8 +74,9 @@ const DemoPageHeader = createReactClass({
 				<SLDSPageHeader {...defaultProps} />
 			</div>
 		);
-	},
-});
+	}
+}
+
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
 const recordHomeContentRight = (
@@ -117,7 +116,7 @@ const customTooltip = () => {
 	const content =
 		'here is a super long description that will truncate and the rest of it will show in the tooltip.';
 	return (
-		<Tooltip align="top" content={content}>
+		<Tooltip align="top" content={content} triggerStyle={{ display: 'inline' }}>
 			<p tabIndex="0" className="slds-truncate">
 				{content}
 			</p>

@@ -66,6 +66,25 @@ storiesOf(INPUT, module)
 			</section>
 		</IconSettings>
 	))
+	.add('Custom style', () => (
+		<IconSettings iconPath="/assets/icons">
+			<section>
+				<ol>
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
+							Input with custom style
+						</h1>
+						<Input
+							styleInput={{ width: 130, height: 30, background: '#efffff' }}
+							id="custom-style"
+							label="My Label"
+							placeholder="My placeholder"
+						/>
+					</li>
+				</ol>
+			</section>
+		</IconSettings>
+	))
 	.add('Base with Icons', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
