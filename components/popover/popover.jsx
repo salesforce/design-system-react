@@ -179,7 +179,7 @@ const Popover = createReactClass({
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
+		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
 		 */
 		onRequestClose: PropTypes.func,
 		/**
