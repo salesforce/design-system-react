@@ -510,7 +510,7 @@ class Combobox extends React.Component {
 			[KEYS.DOWN]: { callback: this.handleKeyDownDown },
 			[KEYS.ENTER]: { callback: this.handleInputSubmit },
 			[KEYS.ESCAPE]: { callback: this.handleClose },
-			[KEYS.UP]: { callback: this.handleKeyDownUp }
+			[KEYS.UP]: { callback: this.handleKeyDownUp },
 		};
 
 		if (this.props.variant === 'readonly') {
@@ -543,16 +543,16 @@ class Combobox extends React.Component {
 			key: event.key,
 			keyBuffer: this.menuKeyBuffer,
 			keyCode: event.keyCode,
-			options: this.props.options
+			options: this.props.options,
 		});
 
 		if (activeOptionIndex !== undefined) {
 			this.setState({
 				activeOption: this.props.options[activeOptionIndex],
-				activeOptionIndex
+				activeOptionIndex,
 			});
 		}
-	}
+	};
 
 	handleNavigateListboxMenu = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };

@@ -10,7 +10,7 @@ const menuJump = ({
 	keyBuffer,
 	keyCode,
 	options,
-	scrollToFocusedIndex = true
+	scrollToFocusedIndex = true,
 }) => {
 	let ch = key || String.fromCharCode(keyCode);
 
@@ -36,7 +36,8 @@ const menuJump = ({
 		const itemLabel = item.label.toLowerCase();
 
 		if (
-			(focusedIndex === undefined && itemLabel.substr(0, pattern.length) === pattern) ||
+			(focusedIndex === undefined &&
+				itemLabel.substr(0, pattern.length) === pattern) ||
 			(consecutive > 0 && itemLabel.substr(0, 1) === ch)
 		) {
 			consecutive -= 1;
@@ -46,7 +47,9 @@ const menuJump = ({
 
 	// Scrolls the container to the appropriate item. Assumes container is positioned (absolute, relative, etc)
 	if (scrollToFocusedIndex && focusedIndex !== undefined) {
-		const domItem = container.querySelector(`${itemTag}:nth-child(${focusedIndex+1})`);
+		const domItem = container.querySelector(
+			`${itemTag}:nth-child(${focusedIndex + 1})`
+		);
 		container.scrollTop = domItem.offsetTop;
 	}
 

@@ -79,10 +79,7 @@ const propTypes = {
 	/**
 	 * Accepts a ref function or object (React.createRef() or otherwise) to store the menu DOM reference once available
 	 */
-	menuRef: PropTypes.oneOfType([
-		PropTypes.func,
-		PropTypes.object
-	]),
+	menuRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 	/*
 	 * Sets a maximum width that the menu will be if `inheritWidthOf` is menu.
 	 */
@@ -112,7 +109,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	menuRef: () => {}
+	menuRef: () => {},
 };
 
 const Menu = (props) => {
