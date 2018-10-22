@@ -31,6 +31,35 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.28
+
+**Major Features**
+
+* Adds Color Picker
+
+## Release 0.8.27
+
+This version reverts CSS class changes in 0.8.26 that align with the modified-BEM structure that [Salesforce Lightning Design System](https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm) switched to in June 2017. These changes are were promised to be backwards compatible for 18 months.\*\* .
+
+Please use the upcoming 0.9.x for components that use the modified BEM (that is the `className` contains `--` instead of `_`).
+
+## Release 0.8.26
+
+This release contains CSS class modifications that are compatible with Salesforce Lightning Design System, but may result in if consumers are reaching into components and querying the DOM for CSS classes. Please use 0.8.27 if you do not want these updates to align better with Salesforce Lightning Design System.
+
+**Bugfixes**
+
+* Fixes `DataTable`'s fixed-layout column width not being applied
+* Do not dismiss combobox lookup menu when clicking on menu scrollbar
+
+**Maintenance**
+
+* Adds additional helpful instruction for the pr template
+* Converts Dropdown to ES6 class
+* Removes `findDomode` from Dropdown
+* Creates ESLint plugin and rule to disallow double-dash (`--`) modifier class names
+* Removes Mocha console errors
+
 ## Release 0.8.25
 
 **Minor Features**
