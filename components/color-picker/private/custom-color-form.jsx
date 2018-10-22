@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import Input from '../../forms/input';
+import Input from '../../input';
 
 class CustomColorForm extends React.Component {
 	static displayName = 'SLDSCustomColorForm';
