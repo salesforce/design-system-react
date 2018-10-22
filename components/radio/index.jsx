@@ -128,7 +128,6 @@ class Radio extends React.Component {
 					onChange={this.props.onChange}
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
-					style={style}
 				/>
 				{radio}
 			</span>
