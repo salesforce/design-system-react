@@ -20,19 +20,36 @@ storiesOf(COLOR_PICKER, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Default', () => <ColorPicker events={{ onChange: handleChange }} />)
+	.add('Default', () => (
+		<ColorPicker
+			labels={{ label: 'Choose Color' }}
+			events={{ onChange: handleChange }}
+			id="default-color-picker"
+		/>
+	))
 	.add('Custom Only', () => (
-		<ColorPicker events={{ onChange: handleChange }} variant="custom" />
+		<ColorPicker
+			events={{ onChange: handleChange }}
+			id="custom-only-color-picker"
+			labels={{ label: 'Choose Color' }}
+			variant="custom"
+		/>
 	))
 	.add('Swatch Only', () => (
-		<ColorPicker events={{ onChange: handleChange }} variant="swatches" />
+		<ColorPicker
+			events={{ onChange: handleChange }}
+			id="swatch-only-color-picker"
+			labels={{ label: 'Choose Color' }}
+			variant="swatches"
+		/>
 	))
 	.add('Predefined Colors', () => (
 		<ColorPicker
-			value="#000000"
 			events={{
 				onChange: handleChange,
 			}}
+			id="predefined-color-picker"
+			labels={{ label: 'Choose Color' }}
 			swatchColors={[
 				'',
 				'#000000',
@@ -44,6 +61,7 @@ storiesOf(COLOR_PICKER, module)
 				'#00ffff',
 				'#ffffff',
 			]}
+			value="#000000"
 		/>
 	))
 	.add('Predefined Colors Only', () => (
@@ -52,6 +70,8 @@ storiesOf(COLOR_PICKER, module)
 			events={{
 				onChange: handleChange,
 			}}
+			id="predefined-only-color-picker"
+			labels={{ label: 'Choose Color' }}
 			swatchColors={[
 				'',
 				'#000000',
@@ -67,25 +87,36 @@ storiesOf(COLOR_PICKER, module)
 		/>
 	))
 	.add('Hidden Input', () => (
-		<ColorPicker events={{ onChange: handleChange }} hideInput />
+		<ColorPicker
+			events={{ onChange: handleChange }}
+			hideInput
+			id="hidden-input-color-picker"
+			labels={{ label: 'Choose Color' }}
+		/>
 	))
 	.add('Custom Tab Selected', () => (
 		<ColorPicker
-			events={{ onChange: handleChange }}
 			defaultSelectedTab="custom"
+			events={{ onChange: handleChange }}
+			id="Custom-tab-default-color-picker"
+			labels={{ label: 'Choose Color' }}
 		/>
 	))
 	.add('Outer Input in Error State', () => (
 		<ColorPicker
-			value="#invalid"
 			events={{ onChange: handleChange }}
 			errorText="Hex is invalid. Please correct this field."
+			id="outer-input-error-state-color-picker"
+			labels={{ label: 'Choose Color' }}
+			value="#invalid"
 		/>
 	))
 	.add('Working Color Input in Error State', () => (
 		<ColorPicker
 			events={{ onChange: handleChange }}
 			errorTextWorkingColor="Hex is invalid. Please correct this field."
+			id="working-color-error-state-color-picker"
+			labels={{ label: 'Choose Color' }}
 		/>
 	))
 	.add('Custom Validator', () => (
@@ -96,6 +127,10 @@ storiesOf(COLOR_PICKER, module)
 				onValidateColor: customOuterInputValidator,
 				onValidateWorkingColor: customOuterInputValidator,
 			}}
+			id="custom-validator-color-picker"
+			labels={{ label: 'Choose Color' }}
 		/>
 	))
-	.add('Color Picker Disabled', () => <ColorPicker disabled />);
+	.add('Color Picker Disabled', () => (
+		<ColorPicker disabled labels={{ label: 'Choose Color' }} />
+	));

@@ -7,12 +7,13 @@ exports[`ColorPicker Base DOM Snapshot 1`] = `
   <div
     className="slds-color-picker__summary"
   >
-    <span
+    <label
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
+      id="color-picker-label-color-picker"
     >
       Choose Color
-    </span>
+    </label>
     <div
       style={
         Object {
@@ -82,12 +83,13 @@ exports[`ColorPicker Custom Variant 1`] = `
   <div
     className="slds-color-picker__summary"
   >
-    <span
+    <label
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
+      id="color-picker-label-color-picker"
     >
       Choose Color
-    </span>
+    </label>
     <div
       style={
         Object {
@@ -157,12 +159,13 @@ exports[`ColorPicker Error Text 1`] = `
   <div
     className="slds-color-picker__summary"
   >
-    <span
+    <label
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
+      id="color-picker-label-color-picker"
     >
       Choose Color
-    </span>
+    </label>
     <div
       style={
         Object {
@@ -237,12 +240,13 @@ exports[`ColorPicker Menu Disabled DOM Snapshot 1`] = `
   <div
     className="slds-color-picker__summary"
   >
-    <span
+    <label
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
+      id="color-picker-label-color-picker"
     >
       Choose Color
-    </span>
+    </label>
     <div
       style={
         Object {
@@ -313,12 +317,13 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
   <div
     className="slds-color-picker__summary"
   >
-    <span
+    <label
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
+      id="color-picker-label-color-picker"
     >
       Choose Color
-    </span>
+    </label>
     <div
       style={
         Object {
@@ -361,7 +366,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
       </button>
       <div
         aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
-        aria-labelledby="slds-color-picker__selector-color-picker-dialog-heading"
+        aria-labelledby="color-picker-label-color-picker"
         className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
         id="slds-color-picker__selector-color-picker-popover"
         onKeyDown={[Function]}
@@ -1365,7 +1370,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                             <input
                               checked={true}
                               id="color-picker-active-working-color-swatch-color-picker"
-                              name="color-picker-swatch-toggle-button-group"
+                              name="color-picker-color-picker-swatch-toggle-button-group"
                               onChange={[Function]}
                               type="radio"
                               value="#e3abec"
@@ -1406,7 +1411,7 @@ exports[`ColorPicker Menu Open DOM Snapshot 1`] = `
                             <input
                               checked={false}
                               id="color-picker-transparent-swatch-color-picker"
-                              name="color-picker-swatch-toggle-button-group"
+                              name="color-picker-color-picker-swatch-toggle-button-group"
                               onChange={[Function]}
                               type="radio"
                               value=""
@@ -1603,12 +1608,13 @@ exports[`ColorPicker Swatches Variant 1`] = `
   <div
     className="slds-color-picker__summary"
   >
-    <span
+    <label
       className="slds-color-picker__summary-label"
       htmlFor="color-picker-summary-input-color-picker"
+      id="color-picker-label-color-picker"
     >
       Choose Color
-    </span>
+    </label>
     <div
       style={
         Object {

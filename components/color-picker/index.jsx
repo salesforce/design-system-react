@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import shortid from 'shortid';
+import assign from 'lodash.assign';
 
 import checkProps from './check-props';
 
@@ -10,7 +11,7 @@ import Swatch from './private/swatch';
 import SwatchPicker from './private/swatch-picker';
 
 import Button from '../button';
-import Input from '../forms/input';
+import Input from '../input';
 import Tabs from '../tabs';
 import TabsPanel from '../tabs/panel';
 import Popover from '../popover';
@@ -108,6 +109,7 @@ const propTypes = {
 	 * * `hexLabel`: Label for input of hexadecimal color
 	 * * `invalidColor`: Error message when hex color input is invalid
 	 * * `invalidComponent`: Error message when a component input is invalid
+	 * * `label`: An `input` label as for a `form`
 	 * * `redAbbreviated`: One letter abbreviation of red color component
 	 * * `swatchTab`: Label for swatch tab of popover
 	 * * `submitButton`: Text for submit/done button of popover
@@ -148,7 +150,7 @@ const propTypes = {
 	 * Determines which tab is visible when dialog opens. Use this prop with `base` variant only.
 	 * Defaults to `swatch` tab.
 	 */
-	defaultSelectedTab: PropTypes.oneOf('swatches, custom'),
+	defaultSelectedTab: PropTypes.oneOf(['swatches', 'custom']),
 	/**
 	 * Selects which tabs are present for the colorpicker.
 	 * * `base`: both swatches and custom tabs are present
@@ -184,7 +186,6 @@ const defaultProps = {
 		hexLabel: 'Hex',
 		invalidColor: 'The color entered is invalid',
 		invalidComponent: 'The value needs to be an integer from 0-255',
-		label: 'Choose Color',
 		redAbbreviated: 'R',
 		submitButton: 'Done',
 		swatchTab: 'Default',
@@ -283,7 +284,7 @@ class ColorPicker extends React.Component {
 		this.setState(nextState);
 	}
 
-	getInput() {
+	getInput({ labels }) {
 		return this.props.hideInput ? null : (
 			<Input
 				aria-describedby={`color-picker-summary-error-${this.generatedId}`}
@@ -296,16 +297,18 @@ class ColorPicker extends React.Component {
 				)}
 				disabled={this.props.disabled}
 				id={`color-picker-summary-input-${this.generatedId}`}
-				onChange={this.handleHexInputChange}
+				onChange={(event) => {
+					this.handleHexInputChange(event, { labels });
+				}}
 				value={this.state.currentColor}
 			/>
 		);
 	}
 
-	getDefaultTab() {
+	getDefaultTab({ labels }) {
 		return (
 			(this.props.variant === 'base' || this.props.variant === 'swatches') && (
-				<TabsPanel label={this.props.labels.swatchTab}>
+				<TabsPanel label={labels.swatchTab}>
 					<SwatchPicker
 						color={this.state.workingColor}
 						onSelect={this.handleSwatchSelect}
@@ -316,17 +319,17 @@ class ColorPicker extends React.Component {
 		);
 	}
 
-	getCustomTab() {
+	getCustomTab({ labels }) {
 		return (
 			(this.props.variant === 'base' || this.props.variant === 'custom') && (
-				<TabsPanel label={this.props.labels.customTab}>
+				<TabsPanel label={labels.customTab}>
 					<CustomColor
 						assistiveText={this.props.assistiveText}
 						id={this.generatedId}
 						color={this.state.workingColor}
 						errorTextWorkingColor={this.props.errorTextWorkingColor}
 						previousColor={this.state.previousWorkingColor}
-						labels={this.props.labels}
+						labels={labels}
 						onBlueChange={this.handleColorChange('blue')}
 						onGreenChange={this.handleColorChange('green')}
 						onHexChange={this.handleColorChange('hex')}
@@ -342,7 +345,7 @@ class ColorPicker extends React.Component {
 		);
 	}
 
-	getPopover() {
+	getPopover({ labels }) {
 		const popoverBody = (
 			<Tabs
 				id={`color-picker-tabs-${this.generatedId}`}
@@ -350,8 +353,8 @@ class ColorPicker extends React.Component {
 					this.props.defaultSelectedTab === 'custom' ? 1 : 0
 				}
 			>
-				{this.getDefaultTab()}
-				{this.getCustomTab()}
+				{this.getDefaultTab({ labels })}
+				{this.getCustomTab({ labels })}
 			</Tabs>
 		);
 		const popoverFooter = (
@@ -359,7 +362,7 @@ class ColorPicker extends React.Component {
 				<Button
 					className="slds-color-picker__selector-cancel"
 					id={`color-picker-footer-cancel-${this.generatedId}`}
-					label={this.props.labels.cancelButton}
+					label={labels.cancelButton}
 					onClick={this.handleCancel}
 					variant="neutral"
 				/>
@@ -369,7 +372,7 @@ class ColorPicker extends React.Component {
 						Object.keys(this.state.workingColor.errors || {}).length > 0
 					}
 					id={`color-picker-footer-submit-${this.generatedId}`}
-					label={this.props.labels.submitButton}
+					label={labels.submitButton}
 					onClick={this.handleSubmitButtonClick}
 					variant="brand"
 				/>
@@ -377,6 +380,7 @@ class ColorPicker extends React.Component {
 		);
 		return (
 			<Popover
+				ariaLabelledby={`color-picker-label-${this.generatedId}`}
 				align="bottom left"
 				body={popoverBody}
 				className={classNames(
@@ -473,14 +477,14 @@ class ColorPicker extends React.Component {
 		};
 	}
 
-	handleHexInputChange = (event) => {
+	handleHexInputChange = (event, { labels }) => {
 		const currentColor = event.target.value;
 		const isValid = this.props.events.onValidateColor
 			? this.props.events.onValidateColor(event.target.value)
 			: ColorUtils.isValidHex(event.target.value);
 		this.setState({
 			currentColor,
-			colorErrorMessage: isValid ? '' : this.props.labels.invalidColor,
+			colorErrorMessage: isValid ? '' : labels.invalidColor,
 		});
 
 		if (this.props.events.onChange) {
@@ -556,6 +560,8 @@ class ColorPicker extends React.Component {
 	};
 
 	render() {
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+
 		return (
 			<div
 				className={classNames('slds-color-picker', this.props.className)}
@@ -564,14 +570,15 @@ class ColorPicker extends React.Component {
 				}}
 			>
 				<div className="slds-color-picker__summary">
-					<span
+					<label
 						className="slds-color-picker__summary-label"
 						htmlFor={`color-picker-summary-input-${this.generatedId}`}
+						id={`color-picker-label-${this.generatedId}`}
 					>
-						{this.props.labels.label}
-					</span>
-					{this.getPopover()}
-					{this.getInput()}
+						{labels.label}
+					</label>
+					{this.getPopover({ labels })}
+					{this.getInput({ labels })}
 					{!this.state.isOpen && this.state.colorErrorMessage ? (
 						<p
 							className="slds-form-error"
