@@ -8,6 +8,7 @@ import classNames from 'classnames';
 
 import { RADIO } from '../../utilities/constants';
 import getDataProps from '../../utilities/get-data-props';
+import Swatch from '../../components/color-picker/private/swatch';
 
 const propTypes = {
 	/**
@@ -59,7 +60,7 @@ const propTypes = {
 	/**
 	 * Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).
 	 */
-	variant: PropTypes.oneOf(['base', 'button-group']),
+	variant: PropTypes.oneOf(['base', 'button-group', 'swatch']),
 	/**
 	 * Ref callback that will pass in the radio's `input` tag
 	 */
@@ -88,11 +89,46 @@ class Radio extends React.Component {
 
 	render() {
 		const dataProps = getDataProps(this.props);
+
+		let radio;
+
+		if (this.props.variant === 'swatch') {
+			radio = (
+				<label
+					style={{ border: '1px' }}
+					className="slds-radio_button__label"
+					htmlFor={this.getId()}
+				>
+					<span>
+						<Swatch
+							label={this.props.label}
+							style={this.props.style}
+							color={this.props.value}
+						/>
+					</span>
+				</label>
+			);
+		} else if (this.props.variant === 'button-group')
+			radio = (
+				<label className="slds-radio_button__label" htmlFor={this.getId()}>
+					<span className="slds-radio_faux">{this.props.label}</span>
+				</label>
+			);
+		else {
+			radio = (
+				<label className="slds-radio__label" htmlFor={this.getId()}>
+					<span className="slds-radio_faux" />
+					<span className="slds-form-element__label">{this.props.label}</span>
+				</label>
+			);
+		}
+
 		return (
 			<span
 				className={classNames(
 					{
-						'slds-radio': this.props.variant === 'base',
+						'slds-radio':
+							this.props.variant === 'base' || this.props.variant === 'swatch',
 						'slds-button slds-radio_button':
 							this.props.variant === 'button-group',
 					},
@@ -116,16 +152,7 @@ class Radio extends React.Component {
 						}
 					}}
 				/>
-				{this.props.variant === 'button-group' ? (
-					<label className="slds-radio_button__label" htmlFor={this.getId()}>
-						<span className="slds-radio_faux">{this.props.label}</span>
-					</label>
-				) : (
-					<label className="slds-radio__label" htmlFor={this.getId()}>
-						<span className="slds-radio_faux" />
-						<span className="slds-form-element__label">{this.props.label}</span>
-					</label>
-				)}
+				{radio}
 			</span>
 		);
 	}

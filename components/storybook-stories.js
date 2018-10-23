@@ -21,6 +21,7 @@ export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
 export Card from '../components/card/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
+export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';

@@ -139,11 +139,11 @@ const propTypes = {
 	 */
 	onOpen: PropTypes.func,
 	/**
-	 * Function called when the calendar dialog would like hide. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
+	 * Function called when the calendar dialog would like hide. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
 	 */
 	onRequestClose: PropTypes.func,
 	/**
-	 * Function called when the calendar dialog would like show. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
+	 * Function called when the calendar dialog would like show. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
 	 */
 	onRequestOpen: PropTypes.func,
 	/**

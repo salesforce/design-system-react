@@ -56,6 +56,9 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
+export SLDSColorPicker from './color-picker';
+export ColorPicker from './color-picker';
+
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
