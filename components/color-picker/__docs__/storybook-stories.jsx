@@ -117,6 +117,7 @@ storiesOf(COLOR_PICKER, module)
 			errorTextWorkingColor="Hex is invalid. Please correct this field."
 			id="working-color-error-state-color-picker"
 			labels={{ label: 'Choose Color' }}
+			valueWorking="#f"
 		/>
 	))
 	.add('Custom Validator', () => (
