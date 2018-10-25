@@ -17,6 +17,7 @@ const documentationSiteLiveExamples = {
 	'button-stateful': require('@salesforce/design-system-react/components/button-stateful/__docs__/site-stories.js'),
 	card: require('@salesforce/design-system-react/components/card/__docs__/site-stories.js'),
 	combobox: require('@salesforce/design-system-react/components/combobox/__docs__/site-stories.js'),
+	'color-picker': require('@salesforce/design-system-react/components/color-picker/__docs__/site-stories.js'),
 	filter: require('@salesforce/design-system-react/components/filter/__docs__/site-stories.js'),
 	checkbox: require('@salesforce/design-system-react/components/checkbox/__docs__/site-stories.js'),
 	'data-table': require('@salesforce/design-system-react/components/data-table/__docs__/site-stories.js'),

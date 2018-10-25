@@ -2386,28 +2386,48 @@
                 "name": "getInput",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "getDefaultTab",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "getCustomTab",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "getPopover",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2504,6 +2524,10 @@
                 "params": [
                     {
                         "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ labels }",
                         "type": null
                     }
                 ],
@@ -2784,9 +2808,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
+                "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: An `input` label as for a `form`\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
                 "defaultValue": {
-                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    label: \"Choose Color\",\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n}",
+                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n}",
                     "computed": false
                 }
             },
@@ -2832,8 +2856,16 @@
             "defaultSelectedTab": {
                 "type": {
                     "name": "enum",
-                    "computed": true,
-                    "value": "'swatches, custom'"
+                    "value": [
+                        {
+                            "value": "'swatches'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "Determines which tab is visible when dialog opens. Use this prop with `base` variant only.\nDefaults to `swatch` tab.",
