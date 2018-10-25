@@ -470,7 +470,7 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={true}
           id="slds-color-picker__summary-button-color-picker"
           onClick={[Function]}
@@ -498,7 +498,7 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -554,7 +554,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-color-picker"
           onClick={[Function]}
@@ -582,7 +582,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -592,7 +592,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
         <div
           aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
           aria-labelledby="color-picker-label-color-picker"
-          className="absolute-positioned slds-nubbin--top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
+          className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
           id="slds-color-picker__selector-color-picker-popover"
           onKeyDown={[Function]}
           onMouseEnter={null}
@@ -608,14 +608,14 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           tabIndex="-1"
         >
           <button
-            className="slds-button slds-button--icon slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
+            className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
             disabled={false}
             onClick={[Function]}
             type="button"
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon slds-button__icon--small"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -632,28 +632,28 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
             id="slds-color-picker__selector-color-picker-dialog-body"
           >
             <div
-              className="slds-tabs--default"
+              className="slds-tabs_default"
               data-tabs={true}
               id="color-picker-tabs-color-picker"
               onClick={[Function]}
               onKeyDown={[Function]}
             >
               <ul
-                className="slds-tabs--default__nav"
+                className="slds-tabs_default__nav"
                 id="color-picker-tabs-color-picker-slds-tabs__nav"
                 role="tablist"
               >
                 <li
-                  aria-controls="color-picker-tabs-color-picker-slds-tabs--panel-0"
+                  aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
                   aria-selected="true"
-                  className="slds-text-title--caps slds-active slds-tabs--default__item"
-                  id="color-picker-tabs-color-picker-slds-tabs--tab-0"
+                  className="slds-text-title_caps slds-active slds-tabs_default__item"
+                  id="color-picker-tabs-color-picker-slds-tabs_tab-0"
                   role="tab"
                   tabIndex="0"
                   title="Default"
                 >
                   <a
-                    className="slds-active slds-tabs--default__link"
+                    className="slds-active slds-tabs_default__link"
                     href="javascript:void(0);"
                     role="presentation"
                     tabIndex="-1"
@@ -662,16 +662,16 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                   </a>
                 </li>
                 <li
-                  aria-controls="color-picker-tabs-color-picker-slds-tabs--panel-1"
+                  aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
                   aria-selected="false"
-                  className="slds-text-title--caps slds-tabs--default__item"
-                  id="color-picker-tabs-color-picker-slds-tabs--tab-1"
+                  className="slds-text-title_caps slds-tabs_default__item"
+                  id="color-picker-tabs-color-picker-slds-tabs_tab-1"
                   role="tab"
                   tabIndex={null}
                   title="Custom"
                 >
                   <a
-                    className="slds-tabs--default__link"
+                    className="slds-tabs_default__link"
                     href="javascript:void(0);"
                     role="presentation"
                     tabIndex="-1"
@@ -681,9 +681,9 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 </li>
               </ul>
               <div
-                aria-labelledby="color-picker-tabs-color-picker-slds-tabs--tab-0"
-                className="slds-show slds-tabs--default__content"
-                id="color-picker-tabs-color-picker-slds-tabs--panel-0"
+                aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-0"
+                className="slds-show slds-tabs_default__content"
+                id="color-picker-tabs-color-picker-slds-tabs_panel-0"
                 role="tabpanel"
               >
                 <ul
@@ -1506,9 +1506,9 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 </ul>
               </div>
               <div
-                aria-labelledby="color-picker-tabs-color-picker-slds-tabs--tab-1"
-                className="slds-hide slds-tabs--default__content"
-                id="color-picker-tabs-color-picker-slds-tabs--panel-1"
+                aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-1"
+                className="slds-hide slds-tabs_default__content"
+                id="color-picker-tabs-color-picker-slds-tabs_panel-1"
                 role="tabpanel"
               >
                 <div
@@ -1780,7 +1780,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
               className="slds-color-picker__selector-footer"
             >
               <button
-                className="slds-button slds-button--neutral slds-color-picker__selector-cancel"
+                className="slds-button slds-button_neutral slds-color-picker__selector-cancel"
                 disabled={false}
                 id="color-picker-footer-cancel-color-picker"
                 onClick={[Function]}
@@ -1789,7 +1789,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 Cancel
               </button>
               <button
-                className="slds-button slds-button--brand slds-color-picker__selector-submit"
+                className="slds-button slds-button_brand slds-color-picker__selector-submit"
                 disabled={false}
                 id="color-picker-footer-submit-color-picker"
                 onClick={[Function]}
@@ -1848,7 +1848,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-custom-only-color-picker"
           onClick={[Function]}
@@ -1876,7 +1876,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -1931,7 +1931,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-Custom-tab-default-color-picker"
           onClick={[Function]}
@@ -1959,7 +1959,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2014,7 +2014,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-custom-validator-color-picker"
           onClick={[Function]}
@@ -2042,7 +2042,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2097,7 +2097,7 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-default-color-picker"
           onClick={[Function]}
@@ -2125,7 +2125,7 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2180,7 +2180,7 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-hidden-input-color-picker"
           onClick={[Function]}
@@ -2208,7 +2208,7 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2247,7 +2247,7 @@ exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-outer-input-error-state-color-picker"
           onClick={[Function]}
@@ -2274,7 +2274,7 @@ exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2334,7 +2334,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-predefined-color-picker"
           onClick={[Function]}
@@ -2361,7 +2361,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2416,7 +2416,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-predefined-only-color-picker"
           onClick={[Function]}
@@ -2443,7 +2443,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2498,7 +2498,7 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-swatch-only-color-picker"
           onClick={[Function]}
@@ -2526,7 +2526,7 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2581,7 +2581,7 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
         }
       >
         <button
-          className="slds-button slds-button--icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-working-color-error-state-color-picker"
           onClick={[Function]}
@@ -2609,7 +2609,7 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
           </span>
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon--x-small slds-m-left_xx-small"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
