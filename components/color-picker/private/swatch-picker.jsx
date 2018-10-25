@@ -79,9 +79,10 @@ class SwatchPicker extends React.Component {
 	};
 
 	render() {
-		const isColorInSwatch = this.props.swatchColors.includes(
+		const isSelectedColorInSwatch = this.props.swatchColors.includes(
 			this.props.color.hex
 		);
+
 		return (
 			<ul
 				className="slds-color-picker__swatches"
@@ -92,20 +93,21 @@ class SwatchPicker extends React.Component {
 					});
 				}}
 			>
-				{this.props.swatchColors.map((color, index) => {
-					const selectedColor =
-						color === this.props.color.hex || (!isColorInSwatch && index === 0);
-					return (
-						<SwatchOption
-							color={color}
-							key={color}
-							onSelect={this.props.onSelect}
-							swatchOptionRef={this.addRef(color)}
-							workingColor={this.props.color}
-							selectedColor={selectedColor}
-						/>
-					);
-				})}
+				{this.props.swatchColors.map((color, index) => (
+					<SwatchOption
+						color={color}
+						key={color}
+						onSelect={this.props.onSelect}
+						swatchOptionRef={this.addRef(color)}
+						workingColor={this.props.color}
+						tabIndex={
+							(this.props.color && this.props.color.hex === color) ||
+							(index === 0 && !isSelectedColorInSwatch)
+								? 0
+								: -1
+						}
+					/>
+				))}
 			</ul>
 		);
 	}

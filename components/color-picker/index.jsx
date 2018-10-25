@@ -20,14 +20,18 @@ import ColorUtils from '../../utilities/color';
 
 import { COLOR_PICKER } from '../../utilities/constants';
 
+import componentDoc from './docs.json';
+
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
+	 * * `label`: Visually hidden label but read out loud by screen readers.
 	 * * `hueSlider`: Instructions for hue selection input
 	 * * `saturationValueGrid`: Instructions for using the grid for saturation
 	 * and value selection
 	 */
 	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
 		hueSlider: PropTypes.string,
 		saturationValueGrid: PropTypes.string,
 	}),
@@ -239,15 +243,12 @@ class ColorPicker extends React.Component {
 		this.generatedId = this.props.id || shortid.generate();
 		const workingColor = ColorUtils.getNewColor(
 			{
-				hex:
-					this.props.valueWorking ||
-					this.props.value ||
-					this.props.swatchColors[0],
+				hex: this.props.valueWorking || this.props.value,
 			},
 			this.props.events.onValidateWorkingColor
 		);
 		this.state = {
-			currentColor: this.props.value || this.props.swatchColors[0],
+			currentColor: this.props.value != null ? this.props.value : '',
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
 			workingColor,
@@ -257,7 +258,7 @@ class ColorPicker extends React.Component {
 	}
 
 	componentWillMount() {
-		checkProps(COLOR_PICKER, this.props);
+		checkProps(COLOR_PICKER, this.props, componentDoc);
 	}
 
 	// use getDerivedStateFromProps when available
@@ -484,6 +485,12 @@ class ColorPicker extends React.Component {
 			: ColorUtils.isValidHex(event.target.value);
 		this.setState({
 			currentColor,
+			workingColor: ColorUtils.getNewColor(
+				{
+					hex: currentColor,
+				},
+				this.props.events.onValidateWorkingColor
+			),
 			colorErrorMessage: isValid ? '' : labels.invalidColor,
 		});
 
@@ -571,11 +578,16 @@ class ColorPicker extends React.Component {
 			>
 				<div className="slds-color-picker__summary">
 					<label
-						className="slds-color-picker__summary-label"
+						className={classNames(
+							'slds-color-picker__summary-label',
+							this.props.assistiveText.label ? 'slds-assistive-text' : ''
+						)}
 						htmlFor={`color-picker-summary-input-${this.generatedId}`}
 						id={`color-picker-label-${this.generatedId}`}
 					>
-						{labels.label}
+						{this.props.assistiveText.label
+							? this.props.assistiveText.label
+							: labels.label}
 					</label>
 					{this.getPopover({ labels })}
 					{this.getInput({ labels })}

@@ -8,7 +8,10 @@ let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function(COMPONENT, props) {
-		if (!props.context[`${props.category}Sprite`] && !props.context.onRequestIconPath) {
+		if (
+			!props.context[`${props.category}Sprite`] &&
+			!props.context.onRequestIconPath
+		) {
 			const modifiedPath = props.path || props.context.iconPath;
 			urlExists(
 				COMPONENT,
