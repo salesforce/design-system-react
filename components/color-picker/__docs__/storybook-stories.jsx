@@ -134,14 +134,17 @@ storiesOf(COLOR_PICKER, module)
 		/>
 	))
 	.add('Color Picker Disabled', () => (
-		<ColorPicker id="color-picker" disabled labels={{ label: 'Choose Color' }} />
+		<ColorPicker
+			id="color-picker"
+			disabled
+			labels={{ label: 'Choose Color' }}
+		/>
 	))
 	.add('ColorPicker Menu Open', () => (
 		<ColorPicker
-				id="color-picker"
-				classNameMenu="test_class_name_menu"
-				isOpen
-				labels={{ label: 'Choose Color' }}
-			/>
+			id="color-picker"
+			classNameMenu="test_class_name_menu"
+			isOpen
+			labels={{ label: 'Choose Color' }}
+		/>
 	));
-

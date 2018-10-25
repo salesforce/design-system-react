@@ -243,13 +243,12 @@ class ColorPicker extends React.Component {
 		this.generatedId = this.props.id || shortid.generate();
 		const workingColor = ColorUtils.getNewColor(
 			{
-				hex:
-					this.props.valueWorking || this.props.value
+				hex: this.props.valueWorking || this.props.value,
 			},
 			this.props.events.onValidateWorkingColor
 		);
 		this.state = {
-			currentColor: this.props.value != null ? this.props.value : "",
+			currentColor: this.props.value != null ? this.props.value : '',
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
 			workingColor,
@@ -579,11 +578,16 @@ class ColorPicker extends React.Component {
 			>
 				<div className="slds-color-picker__summary">
 					<label
-						className={classNames('slds-color-picker__summary-label', this.props.assistiveText.label ? 'slds-assistive-text' : '')}
+						className={classNames(
+							'slds-color-picker__summary-label',
+							this.props.assistiveText.label ? 'slds-assistive-text' : ''
+						)}
 						htmlFor={`color-picker-summary-input-${this.generatedId}`}
 						id={`color-picker-label-${this.generatedId}`}
 					>
-						{this.props.assistiveText.label ? this.props.assistiveText.label : labels.label}
+						{this.props.assistiveText.label
+							? this.props.assistiveText.label
+							: labels.label}
 					</label>
 					{this.getPopover({ labels })}
 					{this.getInput({ labels })}
@@ -595,8 +599,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-							''
-						)}
+						''
+					)}
 				</div>
 			</div>
 		);

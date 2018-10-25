@@ -5,7 +5,6 @@ import RadioButtonGroup from '../../../components/radio-button-group';
 import Radio from '../../../components/radio-button-group/radio';
 import ColorUtils from '../../../utilities/color';
 
-
 const handleClick = (event, rangeIndicator, { onSaturationValueChange }) => {
 	const rect = event.currentTarget.getBoundingClientRect();
 	rangeIndicator.focus();
@@ -78,8 +77,12 @@ class HsvColor extends React.Component {
 			: { ...unselectedStyle };
 
 		// when working color is transparent: either use the previous color or default to black
-		const fallbackWorkingColor = this.props.previousColor.hex ? this.props.previousColor : ColorUtils.getNewColor({ hex: '#000000' });
-		const workingColor = this.isTransparent() ? fallbackWorkingColor : this.props.color;
+		const fallbackWorkingColor = this.props.previousColor.hex
+			? this.props.previousColor
+			: ColorUtils.getNewColor({ hex: '#000000' });
+		const workingColor = this.isTransparent()
+			? fallbackWorkingColor
+			: this.props.color;
 
 		return (
 			<div>
