@@ -100,7 +100,12 @@ class SwatchPicker extends React.Component {
 						onSelect={this.props.onSelect}
 						swatchOptionRef={this.addRef(color)}
 						workingColor={this.props.color}
-						tabIndex={(this.props.color && this.props.color.hex === color) || (index === 0 && !isSelectedColorInSwatch) ? 0 : -1}
+						tabIndex={
+							(this.props.color && this.props.color.hex === color) ||
+							(index === 0 && !isSelectedColorInSwatch)
+								? 0
+								: -1
+						}
 					/>
 				))}
 			</ul>
