@@ -244,12 +244,12 @@ class ColorPicker extends React.Component {
 		const workingColor = ColorUtils.getNewColor(
 			{
 				hex:
-					this.props.valueWorking || this.props.value || '#000000'
+					this.props.valueWorking || this.props.value
 			},
 			this.props.events.onValidateWorkingColor
 		);
 		this.state = {
-			currentColor: this.props.value,
+			currentColor: this.props.value != null ? this.props.value : "",
 			disabled: this.props.disabled,
 			isOpen: this.props.isOpen,
 			workingColor,
@@ -486,6 +486,12 @@ class ColorPicker extends React.Component {
 			: ColorUtils.isValidHex(event.target.value);
 		this.setState({
 			currentColor,
+			workingColor: ColorUtils.getNewColor(
+				{
+					hex: currentColor,
+				},
+				this.props.events.onValidateWorkingColor
+			),
 			colorErrorMessage: isValid ? '' : labels.invalidColor,
 		});
 
