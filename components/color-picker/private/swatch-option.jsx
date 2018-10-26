@@ -17,7 +17,12 @@ class SwatchOption extends React.Component {
 		return (
 			<li
 				className="slds-color-picker__swatch"
-				style={this.props.selectedColor ? selectedStyle : {}}
+				style={
+					this.props.workingColor &&
+					this.props.workingColor.hex === this.props.color
+						? selectedStyle
+						: {}
+				}
 				role="presentation"
 			>
 				<a
@@ -34,7 +39,7 @@ class SwatchOption extends React.Component {
 					}}
 					ref={this.props.swatchOptionRef}
 					role="option"
-					tabIndex={this.props.selectedColor ? 0 : -1}
+					tabIndex={this.props.tabIndex}
 				>
 					<Swatch color={this.props.color} />
 				</a>
