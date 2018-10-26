@@ -2602,6 +2602,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
                         "hueSlider": {
                             "name": "string",
                             "required": false
@@ -2613,7 +2617,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `hueSlider`: Instructions for hue selection input\n* `saturationValueGrid`: Instructions for using the grid for saturation\nand value selection",
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `hueSlider`: Instructions for hue selection input\n* `saturationValueGrid`: Instructions for using the grid for saturation\nand value selection",
                 "defaultValue": {
                     "value": "{\n    saturationValueGrid:\n        'Use arrow keys to select a saturation and brightness, on an x and y axis.',\n    hueSlider: 'Select Hue',\n}",
                     "computed": false
