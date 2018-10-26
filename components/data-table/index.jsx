@@ -47,7 +47,6 @@ const defaultProps = {
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
 	},
-	id: shortid.generate(),
 	selection: [],
 };
 
@@ -175,9 +174,18 @@ class DataTable extends React.Component {
 
 	static defaultProps = defaultProps;
 
+	constructor(props) {
+		super(props);
+		this.generatedId = shortid.generate();
+	}
+
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props, componentDoc);
+	}
+
+	getId() {
+		return this.props.id || this.generatedId;
 	}
 
 	handleToggleAll = (e, { checked }) => {
@@ -304,7 +312,7 @@ class DataTable extends React.Component {
 					},
 					this.props.className
 				)}
-				id={this.props.id}
+				id={this.getId()}
 				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
@@ -313,7 +321,7 @@ class DataTable extends React.Component {
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
-					id={`${this.props.id}-${DATA_TABLE_HEAD}`}
+					id={`${this.getId()}-${DATA_TABLE_HEAD}`}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
@@ -322,8 +330,9 @@ class DataTable extends React.Component {
 					{numRows > 0
 						? this.props.items.map((item) => {
 								const rowId =
-									`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
-									shortid.generate();
+									this.getId() && item.id
+										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+										: shortid.generate();
 								return (
 									<DataTableRow
 										assistiveText={assistiveText}
