@@ -291,7 +291,7 @@ class Combobox extends React.Component {
 		};
 
 		this.menuKeyBuffer = new KeyBuffer();
-		this.menuRef;
+		this.menuRef = undefined;
 	}
 
 	/**
@@ -550,7 +550,7 @@ class Combobox extends React.Component {
 		if (activeOptionIndex !== undefined) {
 			menuItemSelectScroll({
 				container: this.menuRef,
-				focusedIndex: activeOptionIndex
+				focusedIndex: activeOptionIndex,
 			});
 
 			this.setState({
@@ -572,7 +572,7 @@ class Combobox extends React.Component {
 
 			menuItemSelectScroll({
 				container: this.menuRef,
-				focusedIndex: newIndex
+				focusedIndex: newIndex,
 			});
 
 			return {
@@ -1122,7 +1122,9 @@ class Combobox extends React.Component {
 				labels={labels}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
-				menuRef={(ref) => { this.menuRef = ref; }}
+				menuRef={(ref) => {
+					this.menuRef = ref;
+				}}
 				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}

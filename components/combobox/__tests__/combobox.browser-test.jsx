@@ -387,7 +387,9 @@ describe('SLDSCombobox', function() {
 				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
-			let i, menuListItem, scrollTop;
+			let i;
+			let menuListItem;
+			let scrollTop;
 
 			nodes.input.simulate('click', {});
 			nodes = getNodes({ wrapper });
