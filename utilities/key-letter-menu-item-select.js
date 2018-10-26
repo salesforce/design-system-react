@@ -1,16 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-// import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 
-const menuJump = ({
-	container,
-	itemTag = 'li',
+// Determines the focusedIndex of a menu item following keyboard letter presses
+const keyLetterMenuItemSelect = ({
 	key,
 	keyBuffer,
 	keyCode,
-	options,
-	scrollToFocusedIndex = true,
+	options
 }) => {
 	let ch = key || String.fromCharCode(keyCode);
 
@@ -33,11 +30,11 @@ const menuJump = ({
 	}
 
 	options.forEach((item, index) => {
-		const itemLabel = item.label.toLowerCase();
+		const itemLabel = String(item.label).toLowerCase();
 
 		if (
 			(focusedIndex === undefined &&
-				itemLabel.substr(0, pattern.length) === pattern) ||
+			itemLabel.substr(0, pattern.length) === pattern) ||
 			(consecutive > 0 && itemLabel.substr(0, 1) === ch)
 		) {
 			consecutive -= 1;
@@ -45,15 +42,7 @@ const menuJump = ({
 		}
 	});
 
-	// Scrolls the container to the appropriate item. Assumes container is positioned (absolute, relative, etc)
-	if (scrollToFocusedIndex && focusedIndex !== undefined) {
-		const domItem = container.querySelector(
-			`${itemTag}:nth-child(${focusedIndex + 1})`
-		);
-		container.scrollTop = domItem.offsetTop;
-	}
-
 	return focusedIndex;
 };
 
-export default menuJump;
+export default keyLetterMenuItemSelect;

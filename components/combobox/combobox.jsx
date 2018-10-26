@@ -27,8 +27,9 @@ import SelectedListBox from './private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
+import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
-import menuJump from '../../utilities/menu-jump';
+import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
 
 import checkProps from './check-props';
 
@@ -290,7 +291,7 @@ class Combobox extends React.Component {
 		};
 
 		this.menuKeyBuffer = new KeyBuffer();
-		this.menuRef = React.createRef();
+		this.menuRef;
 	}
 
 	/**
@@ -539,8 +540,7 @@ class Combobox extends React.Component {
 	};
 
 	handleKeyDownOther = (event) => {
-		const activeOptionIndex = menuJump({
-			container: this.menuRef.current,
+		const activeOptionIndex = keyLetterMenuItemSelect({
 			key: event.key,
 			keyBuffer: this.menuKeyBuffer,
 			keyCode: event.keyCode,
@@ -548,6 +548,11 @@ class Combobox extends React.Component {
 		});
 
 		if (activeOptionIndex !== undefined) {
+			menuItemSelectScroll({
+				container: this.menuRef,
+				focusedIndex: activeOptionIndex
+			});
+
 			this.setState({
 				activeOption: this.props.options[activeOptionIndex],
 				activeOptionIndex,
@@ -563,6 +568,11 @@ class Combobox extends React.Component {
 				activeOptionIndex: prevState.activeOptionIndex,
 				offset: offsets[direction],
 				options: this.props.options,
+			});
+
+			menuItemSelectScroll({
+				container: this.menuRef,
+				focusedIndex: newIndex
 			});
 
 			return {
@@ -1112,7 +1122,7 @@ class Combobox extends React.Component {
 				labels={labels}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
-				menuRef={this.menuRef}
+				menuRef={(ref) => { this.menuRef = ref; }}
 				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}
