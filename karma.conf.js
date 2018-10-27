@@ -23,6 +23,14 @@ const configExport = function(config) {
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
 
+		// needed for TravisCI
+		customLaunchers: {
+			ChromeHeadlessNoSandbox: {
+				base: 'ChromeHeadless',
+				flags: ['--no-sandbox'],
+			},
+		},
+
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 		frameworks: ['mocha', 'chai-sinon'],
@@ -63,7 +71,7 @@ const configExport = function(config) {
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['ChromeHeadless'],
+		browsers: ['ChromeHeadless', 'ChromeHeadlessNoSandbox'],
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
