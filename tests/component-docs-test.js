@@ -36,7 +36,7 @@ deepMap(docs, (value) => {
 	if (value === '') {
 		console.log('EMPTY STRING FOUND!');
 		console.log(
-			'`components/component-docs.json` has a an empty string in it. All component and component PropTypes should have a description. Please `npm run build-docs` and review `components/component-docs.json` for empty strings, "".'
+			'`components/component-docs.json` has a an empty string in it. All component and component PropTypes should have a description. Please `npm run build:docs` and review `components/component-docs.json` for empty strings, "".'
 		);
 		console.log(
 			'* All descriptions must start with `/**` and be placed directly above a PropType or the class declaration.'
