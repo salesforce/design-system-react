@@ -5,7 +5,6 @@ const karmaWebpack = require('karma-webpack');
 const karmaMocha = require('karma-mocha');
 const karmaChaiSinon = require('karma-chai-sinon');
 const karmaSourcemapLoader = require('karma-sourcemap-loader');
-const karmaPhantomjsLauncher = require('karma-phantomjs-launcher');
 const karmaChromeLauncher = require('karma-chrome-launcher');
 const karmaSpecReporter = require('karma-spec-reporter');
 const karmaCoverage = require('karma-coverage');
@@ -29,13 +28,7 @@ const configExport = function(config) {
 		frameworks: ['mocha', 'chai-sinon'],
 
 		// list of files / patterns to load in the browser
-		files: [
-			require.resolve('@babel/polyfill/dist/polyfill.js'),
-			'tests/fixtures/phantomjs-shims.js',
-			'./node_modules/phantomjs-polyfill-find-index/findIndex-polyfill.js',
-			'./node_modules/phantomjs-polyfill-includes/includes-polyfill.js',
-			'tests/browser-tests.js',
-		],
+		files: ['tests/browser-tests.js'],
 
 		// list of files to exclude
 		exclude: [],
@@ -66,11 +59,11 @@ const configExport = function(config) {
 		logLevel: config.LOG_INFO,
 
 		// enable / disable watching file and executing tests whenever any file changes
-		autoWatch: true,
+		autoWatch: false,
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['PhantomJS'],
+		browsers: ['ChromeHeadless'],
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
@@ -83,7 +76,6 @@ const configExport = function(config) {
 			karmaMocha,
 			karmaChaiSinon,
 			karmaSourcemapLoader,
-			karmaPhantomjsLauncher,
 			karmaChromeLauncher,
 			karmaSpecReporter,
 			karmaCoverage,
