@@ -548,10 +548,12 @@ class Combobox extends React.Component {
 		});
 
 		if (activeOptionIndex !== undefined) {
-			menuItemSelectScroll({
-				container: this.menuRef,
-				focusedIndex: activeOptionIndex,
-			});
+			if (this.state.isOpen) {
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: activeOptionIndex,
+				});
+			}
 
 			this.setState({
 				activeOption: this.props.options[activeOptionIndex],
@@ -570,10 +572,12 @@ class Combobox extends React.Component {
 				options: this.props.options,
 			});
 
-			menuItemSelectScroll({
-				container: this.menuRef,
-				focusedIndex: newIndex,
-			});
+			if (this.state.isOpen) {
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: newIndex,
+				});
+			}
 
 			return {
 				activeOption: this.props.options[newIndex],

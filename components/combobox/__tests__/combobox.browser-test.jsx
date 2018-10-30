@@ -365,7 +365,7 @@ describe('SLDSCombobox', function() {
 			});
 			let nodes = getNodes({ wrapper });
 
-			nodes.input.simulate('click', {});
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes = getNodes({ wrapper });
 			for (let i = 0; i < 3; i++) {
 				nodes.input.simulate('keyDown', letterKeyObjects.A);
@@ -391,7 +391,7 @@ describe('SLDSCombobox', function() {
 			let menuListItem;
 			let scrollTop;
 
-			nodes.input.simulate('click', {});
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes = getNodes({ wrapper });
 
 			for (i = 0; i < 8; i++) {
