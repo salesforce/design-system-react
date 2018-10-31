@@ -12,6 +12,7 @@ import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only'
 import InlineSingle from '../__examples__/inline-single';
 import InlineMultiple from '../__examples__/inline-multiple';
 import BaseCustomMenuItem from '../__examples__/base-custom-menu-item';
+import BaseCustomMenuItemDisabled from '../__examples__/base-custom-menu-item-disabled';
 import ReadOnly from '../__examples__/readonly-single';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
@@ -44,6 +45,7 @@ storiesOf(COMBOBOX, module)
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)
+	.add('Base Custom Menu Item Disabled', () => <BaseCustomMenuItemDisabled action={action} />)
 	.add('Base Menu Sub Headers', () => <BaseMenuSubHeader action={action} />)
 	.add('Base Menu Separator', () => <BaseMenuSeparator action={action} />)
 	.add('Base Inherit Menu Width', () => (

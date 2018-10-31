@@ -77,6 +77,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-1"
@@ -102,6 +103,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-2"
@@ -127,6 +129,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-3"
@@ -152,6 +155,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-4"
@@ -177,6 +181,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-5"
@@ -202,6 +207,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-6"
@@ -227,6 +233,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-7"
@@ -252,6 +259,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-8"
@@ -289,49 +297,49 @@ exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Paddy&#x27;s Pub</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Paddy&#x27;s Pub</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Boston, MA</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Tyrell Corp</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Tyrell Corp</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco, CA</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Paper St. Soap Company</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Paper St. Soap Company</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Beloit, WI</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Nakatomi Investments</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Nakatomi Investments</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Chicago, IL</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme Landscaping</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme Landscaping</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\"> </span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme Construction</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme Construction</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Grand Marais, MN</span>
                 </span>
@@ -521,6 +529,7 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-1"
@@ -569,6 +578,7 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-2"
@@ -630,11 +640,11 @@ exports[`Base Open Custom Class Name HTML Snapshot 1`] = `
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid this-is-the-menu\\" role=\\"presentation\\">
             <li class=\\"slds-dropdown__header slds-truncate\\" title=\\"Accounts\\" role=\\"separator\\"><span class=\\"slds-text-title_caps this-is-the-menu-sub-header\\">Accounts</span></li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
               </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
               </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
               </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
               </span>
             </li>
@@ -717,6 +727,7 @@ exports[`Base Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-1"
@@ -765,6 +776,7 @@ exports[`Base Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-2"
@@ -825,11 +837,11 @@ exports[`Base Open HTML Snapshot 1`] = `
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
               </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
               </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
               </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
               </span>
             </li>
@@ -923,6 +935,7 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-2"
@@ -963,7 +976,7 @@ exports[`Base Open Menu Inherit Width Of Menu HTML Snapshot 1`] = `
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\" style=\\"width:auto;max-width:500px\\">
             <li class=\\"slds-dropdown__header slds-truncate\\" title=\\"Accounts\\" role=\\"separator\\"><span class=\\"slds-text-title_caps\\">Accounts</span></li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span>
                 </span>
@@ -1059,6 +1072,7 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                 id="combobox-unique-id-listbox-option-2"
@@ -1099,7 +1113,7 @@ exports[`Base Open Menu Sub Header HTML Snapshot 1`] = `
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
             <li class=\\"slds-dropdown__header slds-truncate\\" title=\\"Accounts\\" role=\\"separator\\"><span class=\\"slds-text-title_caps\\">Accounts</span></li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
               <span
                 class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span>
                 </span>
@@ -2186,6 +2200,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-1"
@@ -2254,6 +2269,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-2"
@@ -2322,6 +2338,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-3"
@@ -2390,6 +2407,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-4"
@@ -2458,6 +2476,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-5"
@@ -2526,6 +2545,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-6"
@@ -2594,6 +2614,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-7"
@@ -2662,6 +2683,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-8"
@@ -2744,7 +2766,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
         </div>
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme\\"> Acme</span></span>
@@ -2752,7 +2774,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Salesforce.com, Inc.\\"> Salesforce.com, Inc.</span></span>
@@ -2760,7 +2782,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paddy&#x27;s Pub\\"> Paddy&#x27;s Pub</span></span>
@@ -2768,7 +2790,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Tyrell Corp\\"> Tyrell Corp</span></span>
@@ -2776,7 +2798,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paper St. Soap Company\\"> Paper St. Soap Company</span></span>
@@ -2784,7 +2806,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Nakatomi Investments\\"> Nakatomi Investments</span></span>
@@ -2792,7 +2814,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Landscaping\\"> Acme Landscaping</span></span>
@@ -2800,7 +2822,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
                 </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Construction\\"> Acme Construction</span></span>
@@ -3060,6 +3082,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={true}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected"
                 id="combobox-unique-id-listbox-option-1"
@@ -3104,6 +3127,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-2"
@@ -3143,6 +3167,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-3"
@@ -3182,6 +3207,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-4"
@@ -3221,6 +3247,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-5"
@@ -3260,6 +3287,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-6"
@@ -3299,6 +3327,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-7"
@@ -3338,6 +3367,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
               role="presentation"
             >
               <span
+                aria-disabled={false}
                 aria-selected={false}
                 className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
                 id="combobox-unique-id-listbox-option-8"
@@ -3391,43 +3421,43 @@ exports[`Readonly Single Selection Selected Open HTML Snapshot 1`] = `
         </div>
         <div role=\\"listbox\\" id=\\"combobox-unique-id-listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"true\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"true\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme\\"><span class=\\"slds-assistive-text\\">Current Selection:</span> Acme</span>
                 </span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Salesforce.com, Inc.\\"> Salesforce.com, Inc.</span></span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paddy&#x27;s Pub\\"> Paddy&#x27;s Pub</span></span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Tyrell Corp\\"> Tyrell Corp</span></span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paper St. Soap Company\\"> Paper St. Soap Company</span></span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Nakatomi Investments\\"> Nakatomi Investments</span></span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Landscaping\\"> Acme Landscaping</span></span>
                 </span>
             </li>
-            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-disabled=\\"false\\" aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
                 class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Construction\\"> Acme Construction</span></span>
                 </span>

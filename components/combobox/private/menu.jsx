@@ -142,12 +142,12 @@ const Menu = (props) => {
 					</span>
 				</li>
 			) : (
-				<li
-					className="slds-has-divider_top-space"
-					role="separator"
-					key={`menu-separator-${optionData.id}`}
-				/>
-			);
+					<li
+						className="slds-has-divider_top-space"
+						role="separator"
+						key={`menu-separator-${optionData.id}`}
+					/>
+				);
 		}
 
 		return (
@@ -160,14 +160,21 @@ const Menu = (props) => {
 					{
 						'icon-title-subtitle': (
 							<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+								aria-disabled={!!optionData.disabled}
 								aria-selected={active}
 								id={`${props.inputId}-listbox-option-${optionData.id}`}
 								className={classNames(
 									'slds-media slds-listbox__option',
 									'slds-listbox__option_entity slds-listbox__option_has-meta',
-									{ 'slds-has-focus': active }
+									{
+										'slds-has-focus': active,
+										'slds-disabled-text': optionData.disabled
+									}
 								)}
 								onClick={(event) => {
+									if (optionData.disabled) {
+										return;
+									}
 									props.onSelect(event, { option: optionData });
 								}}
 								role="option"
@@ -182,19 +189,20 @@ const Menu = (props) => {
 										option={optionData}
 									/>
 								) : (
-									<span className="slds-media__body">
-										<span className="slds-listbox__option-text slds-listbox__option-text_entity">
-											{optionData.label}
+										<span className="slds-media__body">
+											<span className="slds-listbox__option-text slds-listbox__option-text_entity">
+												{optionData.label}
+											</span>
+											<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
+												{optionData.subTitle}
+											</span>
 										</span>
-										<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
-											{optionData.subTitle}
-										</span>
-									</span>
-								)}
+									)}
 							</span>
 						),
 						checkbox: (
 							<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+								aria-disabled={!!optionData.disabled}
 								aria-selected={selected}
 								id={`${props.inputId}-listbox-option-${optionData.id}`}
 								className={classNames(
@@ -203,9 +211,13 @@ const Menu = (props) => {
 									{
 										'slds-has-focus': active,
 										'slds-is-selected': selected,
+										'slds-disabled-text': optionData.disabled
 									}
 								)}
 								onClick={(event) => {
+									if (optionData.disabled) {
+										return;
+									}
 									props.onSelect(event, {
 										selection: props.selection,
 										option: optionData,
@@ -229,15 +241,15 @@ const Menu = (props) => {
 											option={optionData}
 										/>
 									) : (
-										<span className="slds-truncate" title={optionData.label}>
-											{selected ? (
-												<span className="slds-assistive-text">
-													{props.assistiveText.optionSelectedInMenu}
-												</span>
-											) : null}{' '}
-											{optionData.label}
-										</span>
-									)}
+											<span className="slds-truncate" title={optionData.label}>
+												{selected ? (
+													<span className="slds-assistive-text">
+														{props.assistiveText.optionSelectedInMenu}
+													</span>
+												) : null}{' '}
+												{optionData.label}
+											</span>
+										)}
 								</span>
 							</span>
 						),
@@ -268,16 +280,16 @@ const Menu = (props) => {
 			{menuOptions.length ? (
 				menuOptions
 			) : (
-				<li
-					className="slds-listbox__item slds-listbox__status"
-					role="status"
-					aria-live="polite"
-				>
-					<span className="slds-m-left--x-large slds-p-vertical--medium">
-						{props.labels.noOptionsFound}
-					</span>
-				</li>
-			)}
+					<li
+						className="slds-listbox__item slds-listbox__status"
+						role="status"
+						aria-live="polite"
+					>
+						<span className="slds-m-left--x-large slds-p-vertical--medium">
+							{props.labels.noOptionsFound}
+						</span>
+					</li>
+				)}
 		</ul>
 	);
 };
