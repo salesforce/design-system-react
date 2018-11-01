@@ -22,16 +22,19 @@ const propTypes = {
 };
 
 const Base = (props) => (
-	<MediaObject
-		body={
-			<div>
-				{props.title}
-				{props.info}
-			</div>
-		}
-		figure={props.icon}
-		verticalCenter
-	/>
+	<div className="slds-page-header__row">
+		<div className="slds-page-header__col-title">
+			<MediaObject
+				body={
+					<div>
+						{props.title}
+						{props.info}
+					</div>
+				}
+				figure={props.icon}
+			/>
+		</div>
+	</div>
 );
 
 Base.displayName = displayName;

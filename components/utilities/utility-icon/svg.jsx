@@ -59,16 +59,16 @@ class Svg extends React.Component {
 	};
 
 	getSVG = ({ viewBox, ...rest }, props) => (
-			<svg
-				aria-hidden={props['aria-hidden']}
-				className={props.className}
-				viewBox={viewBox}
-				name={props.name}
-				style={props.style}
-			>
-				{this.getShapes(rest)}
-			</svg>
-		);
+		<svg
+			aria-hidden={props['aria-hidden']}
+			className={props.className}
+			viewBox={viewBox}
+			name={props.name}
+			style={props.style}
+		>
+			{this.getShapes(rest)}
+		</svg>
+	);
 
 	render() {
 		const { data, ...props } = this.props;

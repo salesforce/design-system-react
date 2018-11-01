@@ -117,17 +117,22 @@ class Toast extends React.Component {
 	}
 
 	componentWillUnmount() {
+		this.clearTimeout();
 		DOMElementFocus.returnFocusToStoredElement();
 	}
 
 	onClose = () => {
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-			this.timeout = null;
-		}
+		this.clearTimeout();
 
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
+		}
+	};
+
+	clearTimeout = () => {
+		if (this.timeout) {
+			clearTimeout(this.timeout);
+			this.timeout = null;
 		}
 	};
 

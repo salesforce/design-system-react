@@ -324,7 +324,7 @@ Some props accept an existing Design System React component such as the `dropdow
 
 In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developers or the "grandparent" takes precedence and merges in last.
 
-This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and decreases library maintainability.
+This pattern creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist and reduces duplication of `PropType` documentation and increases library maintainability.
 
 ## Prefer Ternary to Sub-render
 

@@ -6,9 +6,9 @@ import DropdownTrigger from '~/components/menu-dropdown/button-trigger'; // `~` 
 import Button from '~/components/button/'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-    static displayName = 'DropdownExample';
+	static displayName = 'DropdownExample';
 
-    render() {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown

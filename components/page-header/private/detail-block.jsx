@@ -124,7 +124,11 @@ class DetailBlock extends Component {
 				'slds-truncate': truncate,
 			});
 			return (
-				<Tooltip align="top" content={content}>
+				<Tooltip
+					align="top"
+					content={content}
+					triggerStyle={{ display: 'inline' }}
+				>
 					<p tabIndex="0" className={labelClasses}>
 						{content}
 					</p>
