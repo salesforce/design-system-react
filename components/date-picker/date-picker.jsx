@@ -139,11 +139,11 @@ const propTypes = {
 	 */
 	onOpen: PropTypes.func,
 	/**
-	 * Function called when the calendar dialog would like hide. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
+	 * Function called when the calendar dialog would like hide. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
 	 */
 	onRequestClose: PropTypes.func,
 	/**
-	 * Function called when the calendar dialog would like show. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
+	 * Function called when the calendar dialog would like show. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
 	 */
 	onRequestOpen: PropTypes.func,
 	/**
@@ -374,56 +374,74 @@ class Datepicker extends React.Component {
 			: this.state.isOpen);
 	}
 
-	getDefaultInputProps = ({ assistiveText }) => ({
-		iconRight: (
-			<InputIcon
-				// Remove || for assistiveText at next breaking change
-				assistiveText={{
-					icon:
-						this.props.assistiveTextOpenCalendar || assistiveText.openCalendar, // eslint-disable-line react/prop-types
-				}}
-				aria-haspopup
-				aria-expanded={this.getIsOpen()}
-				category="utility"
-				name="event"
-				onClick={this.openDialog}
-				type="button"
-			/>
-		),
-		inputRef: (component) => {
-			this.setInputRef(component);
-		},
-		id: this.getId(),
-		onChange: this.handleInputChange,
-		onClick: () => {
-			this.openDialog();
-		},
-		onKeyDown: this.handleKeyDown,
-		value: this.state.inputValue,
-	});
+	getInputProps = ({ assistiveText, labels }) => {
+		/**
+		 * 1. DEFAULT: Use default props or state if present.
+		 * 2. DEPRECATED API: Use old "first-level" props that have been deprecated.
+		 * 3. DEPRECATED API: If `children` is present, use props from single child which should be an `<Input/>`
+		 * 4. CURRENT API: Use composition with props spread merge from `input` prop.
+		 * */
 
-	// eslint-disable react/prop-types
-	getTopLevelDeprecatedComponentProps = ({ props, labels }) => ({
-		disabled: props.disabled,
-		label: props.label || labels.label,
-		onBlur: props.onBlur,
-		onFocus: props.onFocus,
-		placeholder: props.placeholder || labels.placeholder,
-		required: props.required,
-	});
-	// eslint-enable react/prop-types
+		const defaultInputProps = {
+			iconRight: (
+				<InputIcon
+					// Remove || for assistiveText at next breaking change
+					assistiveText={{
+						icon:
+							this.props.assistiveTextOpenCalendar ||
+							assistiveText.openCalendar, // eslint-disable-line react/prop-types
+					}}
+					aria-haspopup
+					aria-expanded={this.getIsOpen()}
+					category="utility"
+					name="event"
+					onClick={this.openDialog}
+					type="button"
+				/>
+			),
+			inputRef: (component) => {
+				this.setInputRef(component);
+			},
+			id: this.getId(),
+			onChange: this.handleInputChange,
+			onClick: () => {
+				this.openDialog();
+			},
+			onKeyDown: this.handleKeyDown,
+			value: this.state.inputValue,
+		};
 
-	getChildrenPropInputProps = ({ childrenProps }) => ({
-		...childrenProps,
-		onClick: () => {
-			this.openDialog();
-			if (childrenProps && childrenProps.onClick) {
-				childrenProps.onClick();
-			}
-		},
-	});
+		// eslint-disable react/prop-types
+		const topLevelDeprecatedComponentProps = {
+			disabled: this.props.disabled,
+			label: this.props.label || labels.label,
+			onBlur: this.props.onBlur,
+			onFocus: this.props.onFocus,
+			placeholder: this.props.placeholder || labels.placeholder,
+			required: this.props.required,
+		};
+		// eslint-enable react/prop-types
 
-	getInputRenderProps = () => this.props.input && this.props.input.props;
+		const childrenProps = this.props.children && this.props.children.props;
+		const childrenPropInputProps = {
+			...childrenProps,
+			onClick: () => {
+				this.openDialog();
+				if (childrenProps && childrenProps.onClick) {
+					childrenProps.onClick();
+				}
+			},
+		};
+
+		const inputRenderProps = this.props.input && this.props.input.props;
+
+		return {
+			...defaultInputProps,
+			...topLevelDeprecatedComponentProps,
+			...childrenPropInputProps,
+			...inputRenderProps,
+		};
+	};
 
 	setInputRef(component) {
 		this.inputRef = component;
@@ -560,32 +578,15 @@ class Datepicker extends React.Component {
 			this.props.assistiveText
 		);
 
-		/**
-		 * 1. DEFAULT: Use default props or state if present.
-		 * 2. DEPRECATED API: Use old "first-level" props that have been deprecated.
-		 * 3. DEPRECATED API: If `children` is present, use props from single child which should be an `<Input/>`
-		 * 4. CURRENT API: Use composition with props spread merge from `input` prop.
-		 * */
-		const finalInputProps = {
-			...this.getDefaultInputProps({ assistiveText }),
-			...this.getTopLevelDeprecatedComponentProps({
-				props: this.props,
-				labels,
-			}),
-			...(this.props.children &&
-				this.getChildrenPropInputProps({
-					props: this.props.children.props,
-				})),
-			...this.getInputRenderProps(),
-		};
+		const inputProps = this.getInputProps({ assistiveText, labels });
 
 		// `children` prop is a deprecated API. Future breaking change should limit Datepicker to only `Input` usage and not a random child node.
-		const finalInputToRender = this.props.children ? (
+		const inputToRender = this.props.children ? (
 			React.cloneElement(this.props.children, {
-				...finalInputProps,
+				...inputProps,
 			})
 		) : (
-			<Input {...finalInputProps} />
+			<Input {...inputProps} />
 		);
 
 		return (
@@ -600,7 +601,7 @@ class Datepicker extends React.Component {
 					this.props.triggerClassName
 				)}
 			>
-				{finalInputToRender}
+				{inputToRender}
 				{this.getDialog({ labels, assistiveText })}
 			</div>
 		);
