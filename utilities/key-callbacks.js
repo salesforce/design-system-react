@@ -25,6 +25,11 @@ const mapKeyEventCallbacks = (
 			EventUtil.trapEvent(event);
 		}
 		callbacks[event.keyCode].callback(event, callbacks[event.keyCode].data);
+	} else if (event.keyCode && callbacks.other) {
+		if (stopPropagation) {
+			EventUtil.trapEvent(event);
+		}
+		callbacks.other.callback(event, callbacks.other.data);
 	}
 };
 

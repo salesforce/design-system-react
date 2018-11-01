@@ -3114,6 +3114,18 @@
                 "returns": null
             },
             {
+                "name": "handleKeyDownOther",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleNavigateListboxMenu",
                 "docblock": null,
                 "modifiers": [],
