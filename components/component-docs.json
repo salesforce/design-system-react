@@ -6905,7 +6905,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
+                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/icons` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
             },
             "internalIllustration": {
                 "type": {
@@ -12263,6 +12263,13 @@
         "methods": [
             {
                 "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "clearTimeout",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
