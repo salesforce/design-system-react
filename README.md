@@ -131,7 +131,7 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/READ
 If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
 
 ## Security
-Please report any security issue as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigiliant and have their security department review all third-party dependencies.
+Please report any security issue as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigilant and have their security department review all third-party dependencies.
 
 ## Contributors
 Thank you to all the contributors to this open source project, but special thanks to the following: 
