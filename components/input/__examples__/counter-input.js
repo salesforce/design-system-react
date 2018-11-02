@@ -7,7 +7,8 @@ class Example extends React.Component {
 		super(props);
 
 		this.state = {
-			value: 10
+			counter2value: 10,
+			counter3value: 10
 		};
 	}
 
@@ -16,19 +17,81 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<h1 className="slds-text-title_caps slds-p-vertical_medium">
-						Counter Input
+						1. Simple counter input
+					</h1>
+					<Input label="My Label" variant="counter" />
+				</div>
+				<div>
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
+						2. Controlled counter input
 					</h1>
 					<Input
-						label="Input label"
+						label="My Label"
+						onChange={(event, data) => {
+							this.setState({ counter2value: data.value });
+						}}
+						value={this.state.counter2value}
+						variant="counter"
+					/>
+				</div>
+				<div>
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
+						3. Controlled counter input with min/max values and custom step size
+					</h1>
+					<Input
+						label="My Label"
 						minValue={2}
 						maxValue={30}
 						onChange={(event, data) => {
-							const value = data.value;
-							this.setState({ value });
+							this.setState({ counter3value: data.value });
 						}}
 						step={2}
-						value={this.state.value}
+						value={this.state.counter3value}
 						variant="counter"
+					/>
+				</div>
+				<div>
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
+						4. Counter input with floating step size
+					</h1>
+					<Input
+						defaultValue={10.0}
+						label="My Label"
+						step={0.1}
+						variant="counter"
+					/>
+				</div>
+				<div>
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
+						5. Disabled counter input
+					</h1>
+					<Input
+						disabled
+						label="My Label"
+						variant="counter"
+						value="10"
+					/>
+				</div>
+				<div>
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
+						6. Static counter input
+					</h1>
+					<Input
+						isStatic
+						label="My Label"
+						variant="counter"
+						value="10"
+					/>
+				</div>
+				<div>
+					<h1 className="slds-text-title_caps slds-p-vertical_medium">
+						7. Readonly counter input
+					</h1>
+					<Input
+						label="My Label"
+						readOnly
+						variant="counter"
+						value="10"
 					/>
 				</div>
 			</IconSettings>

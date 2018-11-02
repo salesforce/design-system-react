@@ -341,6 +341,7 @@ class Input extends React.Component {
 			<Button
 				assistiveText={{ icon: `${direction} ${COUNTER}` }}
 				className={classNames('slds-button_icon-small', `slds-input__button_${direction.toLowerCase()}`)}
+				disabled={this.props.disabled}
 				iconCategory="utility"
 				iconName={(direction === DECREMENT) ? 'ban' : 'new'}
 				onKeyDown={(event) => {
@@ -446,6 +447,8 @@ class Input extends React.Component {
 			}
 
 			if (minOverflow > 0) {
+				// Default browser inputs of type number with a min attribute alter the value upon change as needed so that
+				// with enough decrements it can reach the exact min value. This behavior is reflected here
 				value = (direction === DECREMENT) ? value - minOverflow : value + (step - minOverflow);
 			} else {
 				value = (direction === DECREMENT) ? value - step : value + step;
@@ -525,13 +528,13 @@ class Input extends React.Component {
 			((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName)
 		) {
 			iconLeft = this.getIconRender('left', 'iconLeft');
-		} else if (this.props.variant === COUNTER) {
+		} else if (this.props.variant === COUNTER && !this.props.isStatic && !this.props.readOnly) {
 			iconLeft = this.getCounterButtonIcon(DECREMENT);
 		}
 
 		if (!!this.props.iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName)) {
 			iconRight = this.getIconRender('right', 'iconRight');
-		} else if (this.props.variant === COUNTER) {
+		} else if (this.props.variant === COUNTER && !this.props.isStatic && !this.props.readOnly) {
 			iconRight = this.getCounterButtonIcon(INCREMENT);
 		}
 
@@ -563,7 +566,8 @@ class Input extends React.Component {
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
 					className={classNames({
-						'slds-input_counter': this.props.variant === COUNTER
+						'slds-input_counter': this.props.variant === COUNTER,
+						'slds-p-horizontal_none': this.props.variant === COUNTER && this.props.readOnly
 					})}
 					containerProps={{
 						className: 'slds-form-element__control',

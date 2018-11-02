@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Spinner from '../../../components/spinner';
 
+const COUNTER = 'counter';
+
 const propTypes = {
 	'aria-activedescendant': PropTypes.string,
 	'aria-autocomplete': PropTypes.string,
@@ -194,6 +196,10 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * Which UX pattern of input? The default is `base` while other option is `counter`
+	 */
+	variant: PropTypes.oneOf(['base', COUNTER]),
+	/**
 	 * This is the initial value of an uncontrolled form element and is present only to provide
 	 * compatibility with hybrid framework applications that are not entirely React. It should only
 	 * be used in an application without centralized state (Redux, Flux). "Controlled components"
@@ -230,10 +236,10 @@ const InnerInput = (props) => {
 	return (
 		<div
 			className={classNames(containerClassName, {
-				'slds-input-has-icon': props.iconLeft || props.iconRight,
+				'slds-input-has-icon': props.variant !== COUNTER && (props.iconLeft || props.iconRight),
 				'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
 				'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
-				'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
+				'slds-input-has-icon_left-right': props.variant !== COUNTER && props.iconLeft && props.iconRight,
 				'slds-input-has-fixed-addon':
 					props.fixedTextLeft || props.fixedTextRight,
 				'slds-has-divider_bottom': props.isStatic,
@@ -317,7 +323,10 @@ const InnerInput = (props) => {
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			{props.isStatic && (
 				<span
-					className="slds-form-element__static slds-grid slds-grid_align-spread"
+					className={classNames('slds-form-element__static', 'slds-grid', {
+						'slds-grid_align-center': props.variant === COUNTER,
+						'slds-grid_align-spread': props.variant !== COUNTER
+					})}
 					onClick={props.onClick}
 				>
 					{props.value}
