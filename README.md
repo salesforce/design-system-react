@@ -126,15 +126,12 @@ open http://localhost:9001 http://localhost:8001
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
 
-## Licenses
-
-* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
-* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
-* The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
-
 ## Got feedback?
 
 If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
+
+## Security
+Please report any security issue as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigiliant and have their security department review all third-party dependencies.
 
 ## Contributors
 Thank you to all the contributors to this open source project, but special thanks to the following: 
@@ -148,3 +145,9 @@ Thank you to all the contributors to this open source project, but special thank
 * [@donnieberg](https://github.com/donnieberg) Donielle Berg
 * [@tweettypography](https://github.com/tweettypography) David Brainer
 * [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
+
+## Licenses
+
+* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
+* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
+* The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
