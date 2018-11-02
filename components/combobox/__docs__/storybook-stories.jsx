@@ -4,13 +4,17 @@ import { storiesOf, action } from '@storybook/react';
 import { COMBOBOX } from '../../../utilities/constants';
 
 import Base from '../__examples__/base';
+import Disabled from '../__examples__/disabled';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
 import BaseMenuSeparator from '../__examples__/base-menu-separator';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
+import InlineSingleEntityCombobox from '../__examples__/inline-single-entity-combobox';
+import InlineSingleSearchAddEntities from '../__examples__/inline-single-search-add-entities';
 import InlineMultiple from '../__examples__/inline-multiple';
+import InlineMultipleLoading from '../__examples__/inline-multiple-loading';
 import BaseCustomMenuItem from '../__examples__/base-custom-menu-item';
 import ReadOnly from '../__examples__/readonly-single';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
@@ -32,17 +36,31 @@ import SnapshotReadonlyMultipleSelectionSingleItemSelected from '../__examples__
 import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__examples__/snapshot/readonly-multiple-selection-multiple-items-selected';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
 import SnapshotBaseLabelRequired from '../__examples__/snapshot/base-label-required';
+import SnapshotInlineMultipleOpenLoading from '../__examples__/snapshot/inline-multiple-open-loading';
+import SnapshotBaseDisabled from '../__examples__/snapshot/disabled';
+import SnapshotInlineSingleSearchAddEntitiesOpen from '../__examples__/snapshot/inline-single-search-add-entities-open';
+import SnapshotInlineSingleEntityCombobox from '../__examples__/snapshot/inline-single-entity-combobox';
 
 storiesOf(COMBOBOX, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => <Base action={action} />)
+	.add('Disabled', () => <Disabled action={action} />)
 	.add('Base Pre-defined Options Only', () => (
 		<PredefinedOptionsOnly action={action} />
 	))
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
+	.add('Inline Single Entity Selection', () => (
+		<InlineSingleEntityCombobox action={action} />
+	))
+	.add('Inline Single Search/Add Entities', () => (
+		<InlineSingleSearchAddEntities action={action} />
+	))
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
+	.add('Inline Multiple Selection Loading', () => (
+		<InlineMultipleLoading action={action} />
+	))
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)
 	.add('Base Menu Sub Headers', () => <BaseMenuSubHeader action={action} />)
 	.add('Base Menu Separator', () => <BaseMenuSeparator action={action} />)
@@ -106,4 +124,14 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Snapshot Readonly Single Selection Custom Menu Item', () => (
 		<SnapshotReadonlySingleSelectionCustomMenuItemOpen action={action} />
+	))
+	.add('Snapshot Base Disabled', () => <SnapshotBaseDisabled action={action} />)
+	.add('Snapshot Inline Single Search/Add Entities Open', () => (
+		<SnapshotInlineSingleSearchAddEntitiesOpen action={action} />
+	))
+	.add('Snapshot Inline Single Entity Selection', () => (
+		<SnapshotInlineSingleEntityCombobox action={action} />
+	))
+	.add('Snapshot Inline Multiple Open Loading', () => (
+		<SnapshotInlineMultipleOpenLoading action={action} />
 	));

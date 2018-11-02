@@ -100,6 +100,28 @@ const propTypes = {
 	 * Selected options
 	 */
 	selection: PropTypes.array,
+	/*
+	 * Add loading spiner below the options
+	 */
+	loading: PropTypes.bool,
+	/*
+	 * Object for creating Add item below the options
+	 */
+	optionsAddItem: PropTypes.shape({
+		id: PropTypes.string,
+		icon: PropTypes.node,
+		label: PropTypes.string,
+		onClick: PropTypes.func,
+	}),
+	/*
+	 * Object for creating Search item on top of the options
+	 */
+	optionsSearchEntity: PropTypes.shape({
+		id: PropTypes.string,
+		icon: PropTypes.node,
+		label: PropTypes.string,
+		onClick: PropTypes.func,
+	}),
 	/**
 	 * Changes styles of the menu option
 	 */
@@ -113,6 +135,7 @@ const defaultProps = {
 };
 
 const Menu = (props) => {
+	const { optionsAddItem, optionsSearchEntity } = props;
 	let maxWidth = props.inheritWidthOf === 'menu' ? 'inherit' : undefined;
 	maxWidth =
 		props.inheritWidthOf === 'menu' && props.maxWidth
@@ -272,6 +295,24 @@ const Menu = (props) => {
 				position: props.menuPosition !== 'relative' ? 'relative' : undefined,
 			}}
 		>
+			{optionsSearchEntity ? (
+				<li role="presentation" className="slds-listbox__item">
+					<div
+						onClick={(event) => optionsSearchEntity.onClick(event)}
+						aria-selected="false"
+						id={optionsSearchEntity.id}
+						className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+						role="option"
+					>
+						<span className="slds-media__figure ">
+							{optionsSearchEntity.icon}
+						</span>
+						<span className="slds-media__body">
+							{optionsSearchEntity.label}
+						</span>
+					</div>
+				</li>
+			) : null}
 			{menuOptions.length ? (
 				menuOptions
 			) : (
@@ -285,6 +326,34 @@ const Menu = (props) => {
 					</span>
 				</li>
 			)}
+			{optionsAddItem ? (
+				<li role="presentation" className="slds-listbox__item">
+					<div
+						aria-selected="false"
+						onClick={(event) => optionsAddItem.onClick(event)}
+						id={optionsAddItem.id}
+						className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+						role="option"
+					>
+						<span className="slds-media__figure ">{optionsAddItem.icon}</span>
+						<span className="slds-media__body">{optionsAddItem.label}</span>
+					</div>
+				</li>
+			) : null}
+			{props.loading ? (
+				<li role="presentation" className="slds-listbox__item">
+					<div className="slds-align_absolute-center slds-p-top_medium">
+						<div
+							role="status"
+							className="slds-spinner slds-spinner_x-small slds-spinner_inline"
+						>
+							<span className="slds-assistive-text">Loading</span>
+							<div className="slds-spinner__dot-a" />
+							<div className="slds-spinner__dot-b" />
+						</div>
+					</div>
+				</li>
+			) : null}
 		</ul>
 	);
 };

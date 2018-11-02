@@ -3811,6 +3811,84 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Default value of input. Provide uncontroled behaviour"
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Provided to input to make it disabled"
+            },
+            "loading": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add loading spiner below the options"
+            },
+            "optionsAddItem": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "id": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "icon": {
+                            "name": "node",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "onClick": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Object for creating Add item below the options"
+            },
+            "optionsSearchEntity": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "id": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "icon": {
+                            "name": "node",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "onClick": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Object for creating Search item on top of the options"
+            },
+            "entityCombobox": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "Element which should be Combobox for creating grouped comboboxes"
             }
         },
         "context": {
@@ -12263,6 +12341,13 @@
         "methods": [
             {
                 "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "clearTimeout",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],

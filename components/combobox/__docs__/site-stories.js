@@ -13,6 +13,10 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/readonly-single.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/readonly-multiple.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/required-input-error-state.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/disabled.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-entity-combobox.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-search-add-entities.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-multiple-loading.jsx'),
 ];
 
 module.exports = siteStories;

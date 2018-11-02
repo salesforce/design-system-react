@@ -250,6 +250,40 @@ const propTypes = {
 	 * Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly']),
+	/**
+	 * Default value of input. Provide uncontroled behaviour
+	 */
+	defaultValue: PropTypes.string,
+	/**
+	 * Provided to input to make it disabled
+	 */
+	disabled: PropTypes.bool,
+	/**
+	 * Add loading spiner below the options
+	 */
+	loading: PropTypes.bool,
+	/**
+	 * Object for creating Add item below the options
+	 */
+	optionsAddItem: PropTypes.shape({
+		id: PropTypes.string,
+		icon: PropTypes.node,
+		label: PropTypes.string,
+		onClick: PropTypes.func,
+	}),
+	/**
+	 * Object for creating Search item on top of the options
+	 */
+	optionsSearchEntity: PropTypes.shape({
+		id: PropTypes.string,
+		icon: PropTypes.node,
+		label: PropTypes.string,
+		onClick: PropTypes.func,
+	}),
+	/**
+	 * Element which should be Combobox for creating grouped comboboxes
+	 */
+	entityCombobox: PropTypes.element,
 };
 
 const defaultProps = {
@@ -829,6 +863,8 @@ class Combobox extends React.Component {
 						}}
 						onChange={this.handleInputChange}
 						placeholder={labels.placeholder}
+						defaultValue={props.defaultValue}
+						disabled={props.disabled}
 						readOnly={
 							!!(props.predefinedOptionsOnly && this.state.activeOption)
 						}
@@ -929,6 +965,8 @@ class Combobox extends React.Component {
 								: null
 						}
 						aria-describedby={this.getErrorId()}
+						disabled={props.disabled}
+						defaultValue={props.defaultValue}
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
@@ -1019,6 +1057,8 @@ class Combobox extends React.Component {
 						role="combobox"
 					>
 						<InnerInput
+							disabled={props.disabled}
+							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
 							aria-controls={`${this.getId()}-listbox`}
 							aria-activedescendant={
@@ -1124,6 +1164,7 @@ class Combobox extends React.Component {
 						: null
 				}
 				labels={labels}
+				loading={this.props.loading}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {
@@ -1135,6 +1176,8 @@ class Combobox extends React.Component {
 				clearActiveOption={this.clearActiveOption}
 				selection={this.props.selection}
 				variant={menuVariant[this.props.variant]}
+				optionsAddItem={this.props.optionsAddItem}
+				optionsSearchEntity={this.props.optionsSearchEntity}
 			/>
 		);
 	};
@@ -1169,6 +1212,8 @@ class Combobox extends React.Component {
 						role="combobox"
 					>
 						<InnerInput
+							disabled={props.disabled}
+							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
 							aria-controls={`${this.getId()}-listbox`}
 							aria-activedescendant={
@@ -1273,6 +1318,8 @@ class Combobox extends React.Component {
 						role="combobox"
 					>
 						<InnerInput
+							disabled={props.disabled}
+							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
 							aria-controls={`${this.getId()}-listbox`}
 							aria-activedescendant={
@@ -1358,22 +1405,48 @@ class Combobox extends React.Component {
 		};
 		const variantExists = subRenders[this.props.variant][multipleOrSingle];
 
-		return (
+		const mainCombobox = (
 			<div
 				className={classNames('slds-form-element', props.classNameContainer)}
 			>
-				<Label
-					assistiveText={this.props.assistiveText}
-					htmlFor={this.getId()}
-					label={labels.label}
-					required={props.required}
-				/>
+				{props.entityCombobox ? null : (
+					<Label
+						assistiveText={this.props.assistiveText}
+						htmlFor={this.getId()}
+						label={labels.label}
+						required={props.required}
+					/>
+				)}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters
 						)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
+		);
+
+		return props.entityCombobox ? (
+			<div className="slds-form-element">
+				<Label
+					assistiveText={props.assistiveText}
+					htmlFor={this.getId()}
+					label={labels.label}
+					required={props.required}
+				/>
+				<div className="slds-form-element__control">
+					<div className="slds-combobox-group">
+						<div className="slds-combobox_object-switcher slds-combobox-addon_start">
+							{props.entityCombobox}
+						</div>
+
+						<div className="slds-combobox_container slds-combobox-addon_end">
+							{mainCombobox}
+						</div>
+					</div>
+				</div>
+			</div>
+		) : (
+			mainCombobox
 		);
 	}
 }

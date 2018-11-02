@@ -22,6 +22,10 @@ import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__example
 
 import SnapshotBaseCustomMenuItemOpen from '../__examples__/snapshot/base-custom-menu-item-open';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
+import SnapshotInlineMultipleOpenLoading from '../__examples__/snapshot/inline-multiple-open-loading';
+import SnapshotDisabled from '../__examples__/snapshot/disabled';
+import SnapshotInlineSingleSearchAddEntitiesOpen from '../__examples__/snapshot/inline-single-search-add-entities-open';
+import SnapshotInlineSingleEntityCombobox from '../__examples__/snapshot/inline-single-entity-combobox';
 
 testDOMandHTML({
 	name: 'Base Open',
@@ -129,4 +133,24 @@ testDOMandHTML({
 	name: 'Readonly Single Selection Custom Menu Item Open',
 	test,
 	Component: SnapshotReadonlySingleSelectionCustomMenuItemOpen,
+});
+testDOMandHTML({
+	name: 'Inline Multiple Open Loading',
+	test,
+	Component: SnapshotInlineMultipleOpenLoading,
+});
+testDOMandHTML({
+	name: 'Base Disabled',
+	test,
+	Component: SnapshotDisabled,
+});
+testDOMandHTML({
+	name: 'Snapshot Inline Single Search/Add Entities Open',
+	test,
+	Component: SnapshotInlineSingleSearchAddEntitiesOpen,
+});
+testDOMandHTML({
+	name: 'Snapshot Inline Single Entity Selection',
+	test,
+	Component: SnapshotInlineSingleEntityCombobox,
 });
