@@ -135,3 +135,16 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/READ
 ## Got feedback?
 
 If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
+
+## Contributors
+Thank you to all the contributors to this open source project, but special thanks to the following: 
+
+### Active Key Contributors
+* [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
+* [@futuremint](https://github.com/futuremint) David Woodward
+* [@garygong](https://github.com/garygong) Gary Gong
+
+### Former Key Contributors
+* [@donnieberg](https://github.com/donnieberg) Donielle Berg
+* [@tweettypography](https://github.com/tweettypography) David Brainer
+* [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
