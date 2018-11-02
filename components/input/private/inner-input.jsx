@@ -130,7 +130,15 @@ const propTypes = {
 	 */
 	placeholder: PropTypes.string,
 	minLength: PropTypes.string,
+	/**
+	 * Specifies minimum accepted value for an input of type "number"
+	 */
+	minValue: PropTypes.number,
 	maxLength: PropTypes.string,
+	/**
+	 * Specifies maximum accepted value for an input of type "number"
+	 */
+	maxValue: PropTypes.number,
 	/**
 	 * Name of the submitted form parameter.
 	 */
@@ -147,6 +155,10 @@ const propTypes = {
 	 * `role` to be added to `input` node
 	 */
 	role: PropTypes.string,
+	/**
+	 * Determines the step size upon increment or decrement. Can be set to decimal values.
+	 */
+	step: PropTypes.number,
 	/**
 	 * Style object to be added to `input` node
 	 */
@@ -177,7 +189,10 @@ const propTypes = {
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+	]),
 	/**
 	 * This is the initial value of an uncontrolled form element and is present only to provide
 	 * compatibility with hybrid framework applications that are not entirely React. It should only
@@ -245,7 +260,9 @@ const InnerInput = (props) => {
 					className={classNames('slds-input', props.className)}
 					disabled={props.disabled}
 					id={props.id}
+					min={props.minValue}
 					minLength={props.minLength}
+					max={props.maxValue}
 					maxLength={props.maxLength}
 					name={props.name}
 					onBlur={props.onBlur}
@@ -264,6 +281,7 @@ const InnerInput = (props) => {
 					ref={props.inputRef}
 					required={props.required}
 					role={props.role}
+					step={props.step}
 					style={props.style}
 					tabIndex={props.tabIndex}
 					type={props.type}
