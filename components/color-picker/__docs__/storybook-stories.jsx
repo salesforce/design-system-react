@@ -5,6 +5,8 @@ import IconSettings from '../../icon-settings';
 import ColorPicker from '../../color-picker';
 import { COLOR_PICKER } from '../../../utilities/constants';
 
+import Default from '../__examples__/default';
+
 const HEX_REGEX_6_DIGITS = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 
 const handleChange = (event, data) => {
@@ -147,4 +149,5 @@ storiesOf(COLOR_PICKER, module)
 			isOpen
 			labels={{ label: 'Choose Color' }}
 		/>
-	));
+	))
+	.add('Doc site Default', () => <Default />);

@@ -18,6 +18,8 @@ import GlobalNavigationBarRegion from '../../global-navigation-bar/region';
 import IconSettings from '../../icon-settings';
 import SLDSSettings from '../../SLDSSettings';
 
+import DefaultExample from '../__examples__/default';
+
 SLDSSettings.setAppElement('#root'); // used by Modal component
 
 const standardTileDemoStyles = {
@@ -545,4 +547,5 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Section', () => <DemoAppLauncherSection />)
 	.add('Section with small tiles', () => (
 		<DemoAppLauncherSectionWithSmallTiles />
-	));
+	))
+	.add('Doc site example', () => <DefaultExample />);

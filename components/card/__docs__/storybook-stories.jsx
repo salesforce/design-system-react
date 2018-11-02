@@ -18,6 +18,8 @@ import Icon from '../../icon';
 import MediaObject from '../../media-object';
 import InlineEdit from '../../forms/input/inline';
 
+import RelatedListWithTable from '../__examples__/related-list-with-table';
+
 const sampleItems = [
 	{ name: 'Cloudhub' },
 	{ name: 'Cloudhub + Anypoint Connectors' },
@@ -177,4 +179,5 @@ storiesOf(CARD, module)
 			heading={<span style={{ color: 'red' }}>To Wanda! This is custom!</span>}
 		/>
 	))
-	.add('Set height card', () => <SetHeightCard />);
+	.add('Set height card', () => <SetHeightCard />)
+	.add('Doc site Related List With Table', () => <RelatedListWithTable />);

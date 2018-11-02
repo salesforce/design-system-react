@@ -17,6 +17,8 @@ import AppLauncher from '../../app-launcher';
 import AppLauncherSection from '../../app-launcher/section';
 import AppLauncherTile from '../../app-launcher/tile';
 
+import Default from '../__examples__/default';
+
 // aliased to allow copy and paste from component tests
 const buttonClicked = action;
 const dropdownItemClicked = action;
@@ -350,6 +352,7 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.hybrid.props,
 			propSets.base.primaryRegionProps
 		)
-	);
+	)
+	.add('Doc site Default', () => <Default />);
 
 export default getGlobalNavigationBar;

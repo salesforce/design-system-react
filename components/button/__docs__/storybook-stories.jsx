@@ -7,6 +7,10 @@ import IconSettings from '../../icon-settings';
 import { BUTTON } from '../../../utilities/constants';
 import Button from '../../button';
 
+import BaseNeutral from '../__examples__/base-neutral';
+import BrandDisabled from '../__examples__/brand-disabled-destructive-inverse';
+import ButtonIcons from '../__examples__/button-icons';
+
 const getButton = (props) => <Button {...props} onClick={action('click')} />;
 
 const getIconButton = (props) => getButton({ variant: 'icon', ...props });
@@ -95,4 +99,7 @@ storiesOf(BUTTON, module)
 			hint: true,
 			inverse: true,
 		})
-	);
+	)
+	.add('Doc site Base Neutral', () => <BaseNeutral />)
+	.add('Doc site Brand Disabled', () => <BrandDisabled />)
+	.add('Doc site Button Icons', () => <ButtonIcons />);
