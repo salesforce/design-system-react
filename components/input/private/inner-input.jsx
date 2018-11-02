@@ -200,7 +200,10 @@ const propTypes = {
 	 * with centralized state is highly recommended.
 	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 	 */
-	defaultValue: PropTypes.string,
+	defaultValue: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+	]),
 };
 
 const defaultProps = {

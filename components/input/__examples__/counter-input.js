@@ -18,26 +18,17 @@ class Example extends React.Component {
 					<h1 className="slds-text-title_caps slds-p-vertical_medium">
 						Counter Input
 					</h1>
-					<input
-						onChange={(event) => {
-							this.setState({ value: event.target.value });
-						}}
-						type="number"
-						step="2"
-						value={this.state.value}
-					/>
 					<Input
 						label="Input label"
-						minValue={6}
-						maxValue={200}
-						onChange={(event, val) => {
-							const value = val !== undefined ? val : event.target.value;
-							console.log('value: ', value);
+						minValue={2}
+						maxValue={30}
+						onChange={(event, data) => {
+							const value = data.value;
 							this.setState({ value });
 						}}
 						step={2}
-						type="number"
 						value={this.state.value}
+						variant="counter"
 					/>
 				</div>
 			</IconSettings>

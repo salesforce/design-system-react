@@ -41,10 +41,12 @@ const defaultProps = {
 	assistiveText: {
 		fieldLevelHelpButton: 'Help',
 	},
-	onDecrement: () => {},
-	onIncrement: () => {},
 	type: 'text',
 };
+
+const COUNTER = 'counter';
+const DECREMENT = 'Decrement';
+const INCREMENT = 'Increment';
 
 /**
  * The HTML `input` with a label and error messaging.
@@ -126,7 +128,10 @@ class Input extends React.Component {
 		 * "Controlled components" with centralized state is highly recommended.
 		 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 		 */
-		defaultValue: PropTypes.string,
+		defaultValue: PropTypes.oneOfType([
+			PropTypes.number,
+			PropTypes.string,
+		]),
 		/**
 		 * Disables the input and prevents editing the contents.
 		 */
@@ -184,7 +189,7 @@ class Input extends React.Component {
 		 */
 		onBlur: PropTypes.func,
 		/**
-		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
+		 * This callback fires when the input changes. Passes in `event, { value }`.
 		 */
 		onChange: PropTypes.func,
 		/**
@@ -192,17 +197,9 @@ class Input extends React.Component {
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * Triggered each time a counter input is decremented via the decrement button
-		 */
-		onDecrement: PropTypes.func,
-		/**
 		 * Triggered when component is focused.
 		 */
 		onFocus: PropTypes.func,
-		/**
-		 * Triggered each time a counter input is incremented via the increment button
-		 */
-		onIncrement: PropTypes.func,
 		/**
 		 * Similar to `onchange`. Triggered when an element gets user input.
 		 */
@@ -301,6 +298,10 @@ class Input extends React.Component {
 			PropTypes.number,
 			PropTypes.string,
 		]),
+		/**
+		 * Which UX pattern of input? The default is `base` while other option is `counter`
+		 */
+		variant: PropTypes.oneOf(['base', COUNTER]),
 	};
 
 	static defaultProps = defaultProps;
@@ -338,10 +339,10 @@ class Input extends React.Component {
 
 		return (
 			<Button
-				assistiveText={{ icon: `${direction} counter` }}
+				assistiveText={{ icon: `${direction} ${COUNTER}` }}
 				className={classNames('slds-button_icon-small', `slds-input__button_${direction.toLowerCase()}`)}
 				iconCategory="utility"
-				iconName={(direction === 'Decrement') ? 'ban' : 'new'}
+				iconName={(direction === DECREMENT) ? 'ban' : 'new'}
 				onKeyDown={(event) => {
 					if (event.keyCode == 13) {
 						this.performStep(direction, event);
@@ -401,36 +402,73 @@ class Input extends React.Component {
 		return icon;
 	};
 
+	handleChange = (event) => {
+		if (this.props.onChange) {
+			const data = {
+				value: event.target.value
+			};
+
+			if (this.props.variant === COUNTER) {
+				data.number = Number(data.value);
+			}
+
+			this.props.onChange(event, data);
+		}
+	}
+
 	performStep = (direction, event) => {
 		clearTimeout(this.stepping.timeout);
 
-		const step = Number(this.props.step) || 1;
-		let value;
+		const maxValue = this.props.maxValue;
+		const minValue = this.props.minValue;
+		const step = (this.props.step !== undefined) ? Number(this.props.step) : 1;
+		let value = 0;
+		let valueChanged = false;
 
 		if (this.props.value !== undefined) {
 			value = Number(this.props.value);
 		} else if (this.inputRef) {
-			value = Number(this.inputRef);
+			value = Number(this.inputRef.value);
 		}
 
-		value = (direction === 'Decrement') ? value - step : value + step;
+		if (direction === DECREMENT && maxValue !== undefined && value > maxValue) {
+			value = maxValue;
+			valueChanged = true;
+		} else if (direction === INCREMENT && minValue !== undefined && value < minValue) {
+			value = minValue;
+			valueChanged = true;
+		} else {
+			const decimalPlaces = (String(step).search(/\./) >= 0) ? String(step).split('.')[1].length : 0;
+			let minOverflow = 0;
 
-		if (
-			!(this.props.maxValue !== undefined && value > this.props.maxValue) &&
-			!(this.props.minValue !== undefined && value < this.props.minValue)
-		) {
-			// TODO: should this be handled using default props or a check to see if the handler is there?
-			this.props[`on${direction}`](event, value);
+			if (minValue !== undefined) {
+				minOverflow = (value - minValue) % step;
+			}
 
-			// TODO: is this appropriate?
+			if (minOverflow > 0) {
+				value = (direction === DECREMENT) ? value - minOverflow : value + (step - minOverflow);
+			} else {
+				value = (direction === DECREMENT) ? value - step : value + step;
+			}
+
+			value = value.toFixed(decimalPlaces);
+
+			if (
+				!(maxValue !== undefined && value > maxValue) &&
+				!(minValue !== undefined && value < minValue)
+			) {
+				valueChanged = true;
+			}
+		}
+
+		if (valueChanged) {
 			if (this.props.value === undefined) {
-				this.inputRef = value;
+				this.inputRef.value = String(value);
 			} else if (this.props.onChange) {
-				/* this is not working. 'change' event doesn't either
-				 const inputEvent = new Event('input', { bubbles: true });
-				 this.inputRef.dispatchEvent(inputEvent);
-				 */
-				this.props.onChange(event, value); // this I'm not sure of...
+				this.props.onChange(event, {
+					number: value,
+					value: String(value)
+				});
 			}
 		}
 
@@ -452,7 +490,7 @@ class Input extends React.Component {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
 		};
-		const inputRef = this.props.type === 'number' ? this.setInputRef : this.props.inputRef;
+		const inputRef = this.props.variant === COUNTER ? this.setInputRef : this.props.inputRef;
 		let fieldLevelHelpTooltip;
 		let iconLeft = null;
 		let iconRight = null;
@@ -487,14 +525,14 @@ class Input extends React.Component {
 			((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName)
 		) {
 			iconLeft = this.getIconRender('left', 'iconLeft');
-		} else if (this.props.type === 'number') {
-			iconLeft = this.getCounterButtonIcon('Decrement');
+		} else if (this.props.variant === COUNTER) {
+			iconLeft = this.getCounterButtonIcon(DECREMENT);
 		}
 
 		if (!!this.props.iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName)) {
 			iconRight = this.getIconRender('right', 'iconRight');
-		} else if (this.props.type === 'number') {
-			iconRight = this.getCounterButtonIcon('Increment');
+		} else if (this.props.variant === COUNTER) {
+			iconRight = this.getCounterButtonIcon(INCREMENT);
 		}
 
 		return (
@@ -502,17 +540,13 @@ class Input extends React.Component {
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': this.props.errorText,
-						'slds-text-align_center': this.props.type === 'number'
+						'slds-has-error': this.props.errorText
 					},
 					this.props.className
 				)}
 			>
 				<Label
 					assistiveText={this.props.assistiveText}
-					className={classNames({
-						'slds-m-right_none': this.props.type === 'number'
-					})}
 					htmlFor={this.props.isStatic ? undefined : this.getId()}
 					label={this.props.label}
 					required={this.props.required}
@@ -529,7 +563,7 @@ class Input extends React.Component {
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
 					className={classNames({
-						'slds-input_counter': this.props.type === 'number'
+						'slds-input_counter': this.props.variant === COUNTER
 					})}
 					containerProps={{
 						className: 'slds-form-element__control',
@@ -551,7 +585,7 @@ class Input extends React.Component {
 					maxValue={this.props.maxValue}
 					name={this.props.name}
 					onBlur={this.props.onBlur}
-					onChange={this.props.onChange}
+					onChange={this.handleChange}
 					onClick={this.props.onClick}
 					onFocus={this.props.onFocus}
 					onInput={this.props.onInput}
@@ -567,8 +601,9 @@ class Input extends React.Component {
 					required={this.props.required}
 					role={this.props.role}
 					assistiveText={this.props.assistiveText}
-					type={this.props.type}
+					type={(this.props.variant === COUNTER) ? 'number' : this.props.type}
 					value={this.props.value}
+					variant={this.props.variant}
 					step={this.props.step}
 					style={this.props.styleInput}
 				/>
