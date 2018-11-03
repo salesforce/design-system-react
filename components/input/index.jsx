@@ -433,10 +433,10 @@ class Input extends React.Component {
 		}
 
 		if (direction === DECREMENT && maxValue !== undefined && value > maxValue) {
-			value = maxValue;
+			value = Number(maxValue);
 			valueChanged = true;
 		} else if (direction === INCREMENT && minValue !== undefined && value < minValue) {
-			value = minValue;
+			value = Number(minValue);
 			valueChanged = true;
 		} else {
 			const decimalPlaces = (String(step).search(/\./) >= 0) ? String(step).split('.')[1].length : 0;
@@ -454,7 +454,7 @@ class Input extends React.Component {
 				value = (direction === DECREMENT) ? value - step : value + step;
 			}
 
-			value = value.toFixed(decimalPlaces);
+			value = Number(value.toFixed(decimalPlaces));
 
 			if (
 				!(maxValue !== undefined && value > maxValue) &&
@@ -465,7 +465,7 @@ class Input extends React.Component {
 		}
 
 		if (valueChanged) {
-			if (this.props.value === undefined) {
+			if (this.props.value === undefined && this.inputRef) {
 				this.inputRef.value = String(value);
 			} else if (this.props.onChange) {
 				this.props.onChange(event, {
