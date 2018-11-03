@@ -1397,6 +1397,13 @@
                 "required": false,
                 "description": "Triggered when a mouse arrow no longer hovers"
             },
+            "onMouseUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a mouse button is released"
+            },
             "responsive": {
                 "type": {
                     "name": "bool"
@@ -5076,6 +5083,18 @@
                 "returns": null
             },
             {
+                "name": "getCounterButtonIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getIconRender",
                 "docblock": null,
                 "modifiers": [],
@@ -5086,6 +5105,46 @@
                     },
                     {
                         "name": "iconPositionProp",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "performStep",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    },
+                    {
+                        "name": "event",
                         "type": null
                     }
                 ],
@@ -5208,7 +5267,15 @@
             },
             "defaultValue": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
@@ -5348,7 +5415,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided."
+                "description": "This callback fires when the input changes. Passes in `event, { value }`."
             },
             "onClick": {
                 "type": {
@@ -5427,12 +5494,26 @@
                 "required": false,
                 "description": "Sets the minimum number of characters that an `<input>` can accept."
             },
+            "minValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies minimum accepted value for a counter input"
+            },
             "maxLength": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "Sets the maximum number of characters that an `<input>` can accept."
+            },
+            "maxValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies maximum accepted value for a counter input"
             },
             "name": {
                 "type": {
@@ -5455,19 +5536,26 @@
                 "required": false,
                 "description": "Highlights the input as a required field (does not perform any validation)."
             },
-            "styleInput": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "styles to be added to input"
-            },
             "role": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "ARIA role"
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Determines the step size upon increment or decrement. Can be set to decimal values."
+            },
+            "styleInput": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "styles to be added to input"
             },
             "type": {
                 "type": {
@@ -5540,10 +5628,35 @@
             },
             "value": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'counter'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Which UX pattern of input? The default is `base` while other option is `counter`"
             }
         },
         "route": "inputs",
@@ -12263,6 +12376,13 @@
         "methods": [
             {
                 "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "clearTimeout",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
