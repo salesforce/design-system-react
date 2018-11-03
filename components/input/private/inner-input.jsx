@@ -191,10 +191,7 @@ const propTypes = {
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string,
-	]),
+	value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/**
 	 * Which UX pattern of input? The default is `base` while other option is `counter`
 	 */
@@ -206,10 +203,7 @@ const propTypes = {
 	 * with centralized state is highly recommended.
 	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 	 */
-	defaultValue: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string,
-	]),
+	defaultValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 const defaultProps = {
@@ -236,10 +230,12 @@ const InnerInput = (props) => {
 	return (
 		<div
 			className={classNames(containerClassName, {
-				'slds-input-has-icon': props.variant !== COUNTER && (props.iconLeft || props.iconRight),
+				'slds-input-has-icon':
+					props.variant !== COUNTER && (props.iconLeft || props.iconRight),
 				'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
 				'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
-				'slds-input-has-icon_left-right': props.variant !== COUNTER && props.iconLeft && props.iconRight,
+				'slds-input-has-icon_left-right':
+					props.variant !== COUNTER && props.iconLeft && props.iconRight,
 				'slds-input-has-fixed-addon':
 					props.fixedTextLeft || props.fixedTextRight,
 				'slds-has-divider_bottom': props.isStatic,
@@ -325,7 +321,7 @@ const InnerInput = (props) => {
 				<span
 					className={classNames('slds-form-element__static', 'slds-grid', {
 						'slds-grid_align-center': props.variant === COUNTER,
-						'slds-grid_align-spread': props.variant !== COUNTER
+						'slds-grid_align-spread': props.variant !== COUNTER,
 					})}
 					onClick={props.onClick}
 				>

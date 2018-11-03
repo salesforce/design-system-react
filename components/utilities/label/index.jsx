@@ -67,7 +67,11 @@ const Label = (props) => {
 				{labelText}
 			</label>
 		),
-		static: <span className={classNames('slds-form-element__label', props.className)}>{labelText}</span>,
+		static: (
+			<span className={classNames('slds-form-element__label', props.className)}>
+				{labelText}
+			</span>
+		),
 	};
 
 	return labelText ? subRenders[props.variant] : null;

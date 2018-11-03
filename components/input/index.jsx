@@ -128,10 +128,7 @@ class Input extends React.Component {
 		 * "Controlled components" with centralized state is highly recommended.
 		 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 		 */
-		defaultValue: PropTypes.oneOfType([
-			PropTypes.number,
-			PropTypes.string,
-		]),
+		defaultValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 		/**
 		 * Disables the input and prevents editing the contents.
 		 */
@@ -294,10 +291,7 @@ class Input extends React.Component {
 		/**
 		 * The input is a controlled component, and will always display this value.
 		 */
-		value: PropTypes.oneOfType([
-			PropTypes.number,
-			PropTypes.string,
-		]),
+		value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 		/**
 		 * Which UX pattern of input? The default is `base` while other option is `counter`
 		 */
@@ -313,7 +307,7 @@ class Input extends React.Component {
 			currentDelay: 500,
 			initialDelay: 500,
 			speedDelay: 75,
-			timeout: {}
+			timeout: {},
 		};
 	}
 
@@ -340,12 +334,15 @@ class Input extends React.Component {
 		return (
 			<Button
 				assistiveText={{ icon: `${direction} ${COUNTER}` }}
-				className={classNames('slds-button_icon-small', `slds-input__button_${direction.toLowerCase()}`)}
+				className={classNames(
+					'slds-button_icon-small',
+					`slds-input__button_${direction.toLowerCase()}`
+				)}
 				disabled={this.props.disabled}
 				iconCategory="utility"
-				iconName={(direction === DECREMENT) ? 'ban' : 'new'}
+				iconName={direction === DECREMENT ? 'ban' : 'new'}
 				onKeyDown={(event) => {
-					if (event.keyCode == 13) {
+					if (event.keyCode === 13) {
 						this.performStep(direction, event);
 					}
 				}}
@@ -358,7 +355,7 @@ class Input extends React.Component {
 				variant="icon"
 			/>
 		);
-	}
+	};
 
 	// This is convoluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
 	getIconRender = (position, iconPositionProp) => {
@@ -403,10 +400,17 @@ class Input extends React.Component {
 		return icon;
 	};
 
+	setInputRef = (ref) => {
+		this.inputRef = ref;
+		if (this.props.inputRef) {
+			this.props.inputRef(ref);
+		}
+	};
+
 	handleChange = (event) => {
 		if (this.props.onChange) {
 			const data = {
-				value: event.target.value
+				value: event.target.value,
 			};
 
 			if (this.props.variant === COUNTER) {
@@ -415,14 +419,14 @@ class Input extends React.Component {
 
 			this.props.onChange(event, data);
 		}
-	}
+	};
 
 	performStep = (direction, event) => {
 		clearTimeout(this.stepping.timeout);
 
 		const maxValue = this.props.maxValue;
 		const minValue = this.props.minValue;
-		const step = (this.props.step !== undefined) ? Number(this.props.step) : 1;
+		const step = this.props.step !== undefined ? Number(this.props.step) : 1;
 		let value = 0;
 		let valueChanged = false;
 
@@ -435,11 +439,16 @@ class Input extends React.Component {
 		if (direction === DECREMENT && maxValue !== undefined && value > maxValue) {
 			value = Number(maxValue);
 			valueChanged = true;
-		} else if (direction === INCREMENT && minValue !== undefined && value < minValue) {
+		} else if (
+			direction === INCREMENT &&
+			minValue !== undefined &&
+			value < minValue
+		) {
 			value = Number(minValue);
 			valueChanged = true;
 		} else {
-			const decimalPlaces = (String(step).search(/\./) >= 0) ? String(step).split('.')[1].length : 0;
+			const decimalPlaces =
+				String(step).search(/\./) >= 0 ? String(step).split('.')[1].length : 0;
 			let minOverflow = 0;
 
 			if (minValue !== undefined) {
@@ -449,9 +458,12 @@ class Input extends React.Component {
 			if (minOverflow > 0) {
 				// Default browser inputs of type number with a min attribute alter the value upon change as needed so that
 				// with enough decrements it can reach the exact min value. This behavior is reflected here
-				value = (direction === DECREMENT) ? value - minOverflow : value + (step - minOverflow);
+				value =
+					direction === DECREMENT
+						? value - minOverflow
+						: value + (step - minOverflow);
 			} else {
-				value = (direction === DECREMENT) ? value - step : value + step;
+				value = direction === DECREMENT ? value - step : value + step;
 			}
 
 			value = Number(value.toFixed(decimalPlaces));
@@ -470,7 +482,7 @@ class Input extends React.Component {
 			} else if (this.props.onChange) {
 				this.props.onChange(event, {
 					number: value,
-					value: String(value)
+					value: String(value),
 				});
 			}
 		}
@@ -479,21 +491,15 @@ class Input extends React.Component {
 			this.stepping.currentDelay = this.stepping.speedDelay;
 			this.performStep(direction);
 		}, this.stepping.currentDelay);
-	}
-
-	setInputRef = (ref) => {
-		this.inputRef = ref;
-		if (this.props.inputRef) {
-			this.props.inputRef(ref);
-		}
-	}
+	};
 
 	render() {
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
 		};
-		const inputRef = this.props.variant === COUNTER ? this.setInputRef : this.props.inputRef;
+		const inputRef =
+			this.props.variant === COUNTER ? this.setInputRef : this.props.inputRef;
 		let fieldLevelHelpTooltip;
 		let iconLeft = null;
 		let iconRight = null;
@@ -524,17 +530,31 @@ class Input extends React.Component {
 
 		// Remove at next breaking change
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		if (!!this.props.iconLeft ||
-			((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName)
+		if (
+			!!this.props.iconLeft ||
+			((this.props.iconPosition === 'left' ||
+				this.props.iconPosition === undefined) &&
+				!!this.props.iconName)
 		) {
 			iconLeft = this.getIconRender('left', 'iconLeft');
-		} else if (this.props.variant === COUNTER && !this.props.isStatic && !this.props.readOnly) {
+		} else if (
+			this.props.variant === COUNTER &&
+			!this.props.isStatic &&
+			!this.props.readOnly
+		) {
 			iconLeft = this.getCounterButtonIcon(DECREMENT);
 		}
 
-		if (!!this.props.iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName)) {
+		if (
+			!!this.props.iconRight ||
+			(this.props.iconPosition === 'right' && !!this.props.iconName)
+		) {
 			iconRight = this.getIconRender('right', 'iconRight');
-		} else if (this.props.variant === COUNTER && !this.props.isStatic && !this.props.readOnly) {
+		} else if (
+			this.props.variant === COUNTER &&
+			!this.props.isStatic &&
+			!this.props.readOnly
+		) {
 			iconRight = this.getCounterButtonIcon(INCREMENT);
 		}
 
@@ -543,7 +563,7 @@ class Input extends React.Component {
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': this.props.errorText
+						'slds-has-error': this.props.errorText,
 					},
 					this.props.className
 				)}
@@ -567,7 +587,8 @@ class Input extends React.Component {
 					aria-required={this.props['aria-required']}
 					className={classNames({
 						'slds-input_counter': this.props.variant === COUNTER,
-						'slds-p-horizontal_none': this.props.variant === COUNTER && this.props.readOnly
+						'slds-p-horizontal_none':
+							this.props.variant === COUNTER && this.props.readOnly,
 					})}
 					containerProps={{
 						className: 'slds-form-element__control',
@@ -605,7 +626,7 @@ class Input extends React.Component {
 					required={this.props.required}
 					role={this.props.role}
 					assistiveText={this.props.assistiveText}
-					type={(this.props.variant === COUNTER) ? 'number' : this.props.type}
+					type={this.props.variant === COUNTER ? 'number' : this.props.type}
 					value={this.props.value}
 					variant={this.props.variant}
 					step={this.props.step}

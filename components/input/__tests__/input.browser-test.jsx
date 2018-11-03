@@ -18,7 +18,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe.only('SLDSInput', () => {
+describe('SLDSInput', () => {
 	const defaultProps = {
 		placeholder: 'Placeholder Text',
 	};
@@ -509,7 +509,7 @@ describe.only('SLDSInput', () => {
 		});
 	});
 
-	describe.only('Counter Input', () => {
+	describe('Counter Input', () => {
 		let changeOccurred;
 		let component;
 		let decrement;
@@ -527,30 +527,56 @@ describe.only('SLDSInput', () => {
 					onChangeData = data;
 				},
 				value: 1,
-				variant: 'counter'
+				variant: 'counter',
 			});
-			decrement = findRenderedDOMComponentWithClass(component, 'slds-input__button_decrement');
-			increment = findRenderedDOMComponentWithClass(component, 'slds-input__button_increment');
+			decrement = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_decrement'
+			);
+			increment = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_increment'
+			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			onChangeData = {};
 			TestUtils.Simulate.mouseDown(increment);
 			TestUtils.Simulate.mouseUp(increment);
-			expect(onChangeData.number === 2 && onChangeData.value === '2').to.be.true;
+			expect(onChangeData.number === 2 && onChangeData.value === '2').to.be
+				.true;
 
 			onChangeData = {};
-			TestUtils.Simulate.keyDown(increment, { key: 'Enter', keyCode: 13, which: 13 });
-			TestUtils.Simulate.keyUp(increment, { key: 'Enter', keyCode: 13, which: 13 });
-			expect(onChangeData.number === 2 && onChangeData.value === '2').to.be.true;
+			TestUtils.Simulate.keyDown(increment, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			TestUtils.Simulate.keyUp(increment, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			expect(onChangeData.number === 2 && onChangeData.value === '2').to.be
+				.true;
 
 			TestUtils.Simulate.mouseDown(decrement);
 			TestUtils.Simulate.mouseUp(decrement);
-			expect(onChangeData.number === 0 && onChangeData.value === '0').to.be.true;
+			expect(onChangeData.number === 0 && onChangeData.value === '0').to.be
+				.true;
 
 			onChangeData = {};
-			TestUtils.Simulate.keyDown(decrement, { key: 'Enter', keyCode: 13, which: 13 });
-			TestUtils.Simulate.keyUp(decrement, { key: 'Enter', keyCode: 13, which: 13 });
-			expect(onChangeData.number === 0 && onChangeData.value === '0').to.be.true;
+			TestUtils.Simulate.keyDown(decrement, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			TestUtils.Simulate.keyUp(decrement, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			expect(onChangeData.number === 0 && onChangeData.value === '0').to.be
+				.true;
 		});
 
 		it('respects min and max values', () => {
@@ -561,10 +587,16 @@ describe.only('SLDSInput', () => {
 					changeOccurred = true;
 				},
 				value: 1,
-				variant: 'counter'
+				variant: 'counter',
 			});
-			decrement = findRenderedDOMComponentWithClass(component, 'slds-input__button_decrement');
-			increment = findRenderedDOMComponentWithClass(component, 'slds-input__button_increment');
+			decrement = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_decrement'
+			);
+			increment = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_increment'
+			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			changeOccurred = false;
@@ -585,20 +617,28 @@ describe.only('SLDSInput', () => {
 				},
 				step: 0.1,
 				value: 1,
-				variant: 'counter'
+				variant: 'counter',
 			});
-			decrement = findRenderedDOMComponentWithClass(component, 'slds-input__button_decrement');
-			increment = findRenderedDOMComponentWithClass(component, 'slds-input__button_increment');
+			decrement = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_decrement'
+			);
+			increment = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_increment'
+			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			onChangeData = {};
 			TestUtils.Simulate.mouseDown(increment);
 			TestUtils.Simulate.mouseUp(increment);
-			expect(onChangeData.number === 1.1 && onChangeData.value === '1.1').to.be.true;
+			expect(onChangeData.number === 1.1 && onChangeData.value === '1.1').to.be
+				.true;
 
 			TestUtils.Simulate.mouseDown(decrement);
 			TestUtils.Simulate.mouseUp(decrement);
-			expect(onChangeData.number === 0.9 && onChangeData.value === '0.9').to.be.true;
+			expect(onChangeData.number === 0.9 && onChangeData.value === '0.9').to.be
+				.true;
 		});
 	});
 });

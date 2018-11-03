@@ -8,7 +8,7 @@ class Example extends React.Component {
 
 		this.state = {
 			counter2value: 10,
-			counter3value: 10
+			counter3value: 10,
 		};
 	}
 
@@ -65,34 +65,19 @@ class Example extends React.Component {
 					<h1 className="slds-text-title_caps slds-p-vertical_medium">
 						5. Disabled counter input
 					</h1>
-					<Input
-						disabled
-						label="My Label"
-						variant="counter"
-						value="10"
-					/>
+					<Input disabled label="My Label" variant="counter" value="10" />
 				</div>
 				<div>
 					<h1 className="slds-text-title_caps slds-p-vertical_medium">
 						6. Static counter input
 					</h1>
-					<Input
-						isStatic
-						label="My Label"
-						variant="counter"
-						value="10"
-					/>
+					<Input isStatic label="My Label" variant="counter" value="10" />
 				</div>
 				<div>
 					<h1 className="slds-text-title_caps slds-p-vertical_medium">
 						7. Readonly counter input
 					</h1>
-					<Input
-						label="My Label"
-						readOnly
-						variant="counter"
-						value="10"
-					/>
+					<Input label="My Label" readOnly variant="counter" value="10" />
 				</div>
 			</IconSettings>
 		);
