@@ -456,8 +456,8 @@ class Input extends React.Component {
 			}
 
 			if (minOverflow > 0) {
-				// Default browser inputs of type number with a min attribute alter the value upon change as needed so that
-				// with enough decrements it can reach the exact min value. This behavior is reflected here
+				// Default browser inputs of type number with a min attribute alter the value upon change as needed so
+				// that with enough decrements it can reach the exact min value. This behavior is reflected here
 				value =
 					direction === DECREMENT
 						? value - minOverflow
