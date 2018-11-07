@@ -8039,7 +8039,43 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
     <h1
       className="slds-text-title_caps slds-p-vertical_medium"
     >
-      6. Static counter input
+      6. Readonly counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-6"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <input
+          className="slds-input slds-text-align_left slds-input_counter slds-p-horizontal_none"
+          id="counter-input-6"
+          onChange={[Function]}
+          readOnly={true}
+          type="number"
+          value="10"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Counter Static Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      1. Static counter input
     </h1>
     <div
       className="slds-form-element"
@@ -8053,39 +8089,10 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
         className="slds-form-element__control slds-has-divider_bottom"
       >
         <span
-          className="slds-form-element__static slds-grid slds-grid_align-center"
+          className="slds-form-element__static slds-grid"
         >
           10
         </span>
-      </div>
-    </div>
-  </div>
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      7. Readonly counter input
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-7"
-      >
-        My Label
-      </label>
-      <div
-        className="slds-form-element__control"
-      >
-        <input
-          className="slds-input slds-input_counter slds-p-horizontal_none"
-          id="counter-input-7"
-          onChange={[Function]}
-          readOnly={true}
-          type="number"
-          value="10"
-        />
       </div>
     </div>
   </div>

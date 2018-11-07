@@ -5236,7 +5236,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.\n* `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.",
                 "defaultValue": {
-                    "value": "{\n    fieldLevelHelpButton: 'Help',\n}",
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    fieldLevelHelpButton: 'Help',\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
             },
