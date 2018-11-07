@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
+import Tooltip from '../../tooltip';
 
 import Icon from '../../icon';
 
@@ -66,6 +67,7 @@ const propTypes = {
 	labels: PropTypes.shape({
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
 			.isRequired,
+		optionDisabledTooltipLabel: PropTypes.string
 	}),
 	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component and is passed in the following props:
@@ -150,110 +152,131 @@ const Menu = (props) => {
 				);
 		}
 
+		const ariaProps = {
+			'aria-disabled': !!optionData.disabled,
+			'aria-selected': active
+		};
+
+		const tooltipId = `${props.inputId}-listbox-option-help-${optionData.id}`;
+		if (optionData.disabled) {
+			ariaProps['aria-describedby'] = tooltipId;
+		}
+
+		const menuItem = {
+			'icon-title-subtitle': (
+				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+					{...ariaProps}
+					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					className={classNames(
+						'slds-media slds-listbox__option',
+						'slds-listbox__option_entity slds-listbox__option_has-meta',
+						{
+							'slds-has-focus': active,
+							'slds-disabled-text': optionData.disabled
+						}
+					)}
+					onClick={(event) => {
+						if (optionData.disabled) {
+							return;
+						}
+						props.onSelect(event, { option: optionData });
+					}}
+					role="option"
+				>
+					{optionData.icon && !props.menuItem ? (
+						<span className="slds-media__figure">{optionData.icon}</span>
+					) : null}
+					{props.menuItem ? (
+						<MenuItem
+							assistiveText={props.assistiveText}
+							selected={selected}
+							option={optionData}
+						/>
+					) : (
+							<span className="slds-media__body">
+								<span className="slds-listbox__option-text slds-listbox__option-text_entity">
+									{optionData.label}
+								</span>
+								<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
+									{optionData.subTitle}
+								</span>
+							</span>
+						)}
+				</span>
+			),
+			checkbox: (
+				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+					{...ariaProps}
+					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					className={classNames(
+						'slds-media slds-listbox__option',
+						' slds-listbox__option_plain slds-media_small slds-media_center',
+						{
+							'slds-has-focus': active,
+							'slds-is-selected': selected,
+							'slds-disabled-text': optionData.disabled
+						}
+					)}
+					onClick={(event) => {
+						if (optionData.disabled) {
+							return;
+						}
+						props.onSelect(event, {
+							selection: props.selection,
+							option: optionData,
+						});
+					}}
+					role="option"
+				>
+					<span className="slds-media__figure">
+						<Icon
+							className="slds-listbox__icon-selected"
+							category="utility"
+							name="check"
+							size="x-small"
+						/>
+					</span>
+					<span className="slds-media__body">
+						{props.menuItem ? (
+							<MenuItem
+								assistiveText={props.assistiveText}
+								selected={selected}
+								option={optionData}
+							/>
+						) : (
+								<span className="slds-truncate" title={optionData.label}>
+									{selected ? (
+										<span className="slds-assistive-text">
+											{props.assistiveText.optionSelectedInMenu}
+										</span>
+									) : null}{' '}
+									{optionData.label}
+								</span>
+							)}
+					</span>
+				</span>
+			),
+		};
+
 		return (
 			<li
 				className="slds-listbox__item"
 				key={`menu-option-${optionData.id}`}
 				role="presentation"
 			>
-				{
-					{
-						'icon-title-subtitle': (
-							<span // eslint-disable-line jsx-a11y/no-static-element-interactions
-								aria-disabled={!!optionData.disabled}
-								aria-selected={active}
-								id={`${props.inputId}-listbox-option-${optionData.id}`}
-								className={classNames(
-									'slds-media slds-listbox__option',
-									'slds-listbox__option_entity slds-listbox__option_has-meta',
-									{
-										'slds-has-focus': active,
-										'slds-disabled-text': optionData.disabled
-									}
-								)}
-								onClick={(event) => {
-									if (optionData.disabled) {
-										return;
-									}
-									props.onSelect(event, { option: optionData });
-								}}
-								role="option"
-							>
-								{optionData.icon && !props.menuItem ? (
-									<span className="slds-media__figure">{optionData.icon}</span>
-								) : null}
-								{props.menuItem ? (
-									<MenuItem
-										assistiveText={props.assistiveText}
-										selected={selected}
-										option={optionData}
-									/>
-								) : (
-										<span className="slds-media__body">
-											<span className="slds-listbox__option-text slds-listbox__option-text_entity">
-												{optionData.label}
-											</span>
-											<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
-												{optionData.subTitle}
-											</span>
-										</span>
-									)}
-							</span>
-						),
-						checkbox: (
-							<span // eslint-disable-line jsx-a11y/no-static-element-interactions
-								aria-disabled={!!optionData.disabled}
-								aria-selected={selected}
-								id={`${props.inputId}-listbox-option-${optionData.id}`}
-								className={classNames(
-									'slds-media slds-listbox__option',
-									' slds-listbox__option_plain slds-media_small slds-media_center',
-									{
-										'slds-has-focus': active,
-										'slds-is-selected': selected,
-										'slds-disabled-text': optionData.disabled
-									}
-								)}
-								onClick={(event) => {
-									if (optionData.disabled) {
-										return;
-									}
-									props.onSelect(event, {
-										selection: props.selection,
-										option: optionData,
-									});
-								}}
-								role="option"
-							>
-								<span className="slds-media__figure">
-									<Icon
-										className="slds-listbox__icon-selected"
-										category="utility"
-										name="check"
-										size="x-small"
-									/>
-								</span>
-								<span className="slds-media__body">
-									{props.menuItem ? (
-										<MenuItem
-											assistiveText={props.assistiveText}
-											selected={selected}
-											option={optionData}
-										/>
-									) : (
-											<span className="slds-truncate" title={optionData.label}>
-												{selected ? (
-													<span className="slds-assistive-text">
-														{props.assistiveText.optionSelectedInMenu}
-													</span>
-												) : null}{' '}
-												{optionData.label}
-											</span>
-										)}
-								</span>
-							</span>
-						),
-					}[props.variant]
+				{optionData.disabled ?
+					<Tooltip
+						id={tooltipId}
+						position="absolute"
+						align="top left"
+						triggerStyle={{width: '100%'}}
+						content={props.labels.optionDisabledTooltipLabel}
+					>
+						{
+							menuItem[props.variant]
+						}
+					</Tooltip>
+					: menuItem[props.variant]
 				}
 			</li>
 		);

@@ -145,6 +145,7 @@ const propTypes = {
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		optionDisabledTooltipLabel: PropTypes.string,
 		placeholder: PropTypes.string,
 		placeholderReadOnly: PropTypes.string,
 		removePillTitle: PropTypes.string,
@@ -260,6 +261,7 @@ const defaultProps = {
 	events: {},
 	labels: {
 		noOptionsFound: 'No matches found.',
+		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
