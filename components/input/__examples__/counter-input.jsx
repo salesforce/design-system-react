@@ -78,22 +78,10 @@ class Example extends React.Component {
 				</div>
 				<div>
 					<h1 className="slds-text-title_caps slds-p-vertical_medium">
-						6. Static counter input
+						6. Readonly counter input
 					</h1>
 					<Input
-						isStatic
 						id="counter-input-6"
-						label="My Label"
-						variant="counter"
-						value="10"
-					/>
-				</div>
-				<div>
-					<h1 className="slds-text-title_caps slds-p-vertical_medium">
-						7. Readonly counter input
-					</h1>
-					<Input
-						id="counter-input-7"
 						label="My Label"
 						readOnly
 						variant="counter"

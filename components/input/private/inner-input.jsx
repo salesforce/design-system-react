@@ -262,7 +262,14 @@ const InnerInput = (props) => {
 					aria-owns={props['aria-owns']}
 					aria-required={props['aria-required']}
 					autoComplete={props.autoComplete}
-					className={classNames('slds-input', props.className)}
+					className={classNames(
+						'slds-input',
+						{
+							'slds-text-align_left':
+								props.variant === COUNTER && props.readOnly,
+						},
+						props.className
+					)}
 					disabled={props.disabled}
 					id={props.id}
 					min={props.minValue}
@@ -320,7 +327,6 @@ const InnerInput = (props) => {
 			{props.isStatic && (
 				<span
 					className={classNames('slds-form-element__static', 'slds-grid', {
-						'slds-grid_align-center': props.variant === COUNTER,
 						'slds-grid_align-spread': props.variant !== COUNTER,
 					})}
 					onClick={props.onClick}

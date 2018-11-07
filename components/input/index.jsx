@@ -37,16 +37,18 @@ import checkProps from './check-props';
 import { INPUT } from '../../utilities/constants';
 import componentDoc from './docs.json';
 
-const defaultProps = {
-	assistiveText: {
-		fieldLevelHelpButton: 'Help',
-	},
-	type: 'text',
-};
-
 const COUNTER = 'counter';
 const DECREMENT = 'Decrement';
 const INCREMENT = 'Increment';
+
+const defaultProps = {
+	assistiveText: {
+		decrement: `${DECREMENT} ${COUNTER}`,
+		fieldLevelHelpButton: 'Help',
+		increment: `${INCREMENT} ${COUNTER}`,
+	},
+	type: 'text',
+};
 
 /**
  * The HTML `input` with a label and error messaging.
@@ -333,7 +335,9 @@ class Input extends React.Component {
 
 		return (
 			<Button
-				assistiveText={{ icon: `${direction} ${COUNTER}` }}
+				assistiveText={{
+					icon: this.props.assistiveText[direction.toLowerCase()],
+				}}
 				className={classNames(
 					'slds-button_icon-small',
 					`slds-input__button_${direction.toLowerCase()}`
