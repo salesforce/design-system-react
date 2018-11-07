@@ -12,7 +12,7 @@ const filter = ({ inputValue, limit = 10, options, selection }) =>
 				? option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'))
 				: false;
 			const isSeparator = option.type === 'separator';
-			const notAlreadySelected = !selection.includes(option);
+			const notAlreadySelected = !selection.some((sel) => sel.id === option.id);
 
 			return (
 				(!inputValue || isSeparator || searchTermFound) && notAlreadySelected
