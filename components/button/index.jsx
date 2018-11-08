@@ -170,6 +170,10 @@ class Button extends React.Component {
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
+		 * Triggered when a mouse button is released
+		 */
+		onMouseUp: PropTypes.func,
+		/**
 		 * If true, button scales to 100% width on small form factors.
 		 */
 		responsive: PropTypes.bool,
@@ -324,6 +328,7 @@ class Button extends React.Component {
 			onMouseDown={this.props.onMouseDown}
 			onMouseEnter={this.props.onMouseEnter}
 			onMouseLeave={this.props.onMouseLeave}
+			onMouseUp={this.props.onMouseUp}
 			ref={(component) => {
 				if (this.props.buttonRef) {
 					this.props.buttonRef(component);

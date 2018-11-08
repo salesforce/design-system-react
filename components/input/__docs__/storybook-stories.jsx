@@ -8,6 +8,8 @@ import Input from '../';
 import Tooltip from '../../tooltip';
 import InputIcon from '../../icon/input-icon';
 
+import CounterInput from '../__examples__/counter-input';
+import CounterStaticInput from '../__examples__/counter-static-input';
 import InlineHelpInput from '../__examples__/inline-help';
 import FieldLevelHelpInput from '../__examples__/field-level-help';
 
@@ -153,7 +155,7 @@ storiesOf(INPUT, module)
 							id="with-clickable-left-and-right-icon"
 							label="My label"
 							iconLeft={searchIconClickable}
-							iconRight={clearIcon}
+							iconRight={clearIconClickable}
 							placeholder="My placeholder"
 						/>
 					</li>
@@ -280,4 +282,6 @@ storiesOf(INPUT, module)
 	.add('Field Level Help', () => <FieldLevelHelpInput />)
 	.add('Field Level Help, Tooltip Open', () => (
 		<FieldLevelHelpInput tooltipOpen />
-	));
+	))
+	.add('Counter Input', () => <CounterInput />)
+	.add('Counter Static Input', () => <CounterStaticInput />);

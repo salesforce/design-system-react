@@ -7148,6 +7148,7 @@ exports[`DOM snapshots SLDSInput Base 1`] = `
             <input
               className="slds-input"
               id="base-id"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7177,6 +7178,7 @@ exports[`DOM snapshots SLDSInput Base 1`] = `
             <input
               className="slds-input"
               id="assistiveLabel-id"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7225,6 +7227,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7274,6 +7277,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-clickable-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7303,6 +7307,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-right-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7340,6 +7345,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-right-clickable-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7397,6 +7403,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-and-right-icons"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7454,17 +7461,30 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-clickable-left-and-right-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
-            <svg
-              aria-hidden={true}
-              className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
             >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                clear
+              </span>
+            </button>
           </div>
         </div>
       </li>
@@ -7499,6 +7519,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-and-clickable-right-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7558,6 +7579,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input"
               id="with-left-clickable-right-and-spinner"
               name="right-clickable-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -7615,6 +7637,468 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSInput Counter Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      1. Simple counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-1"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Decrement counter
+          </span>
+        </button>
+        <input
+          className="slds-input slds-input_counter"
+          id="counter-input-1"
+          onChange={[Function]}
+          type="number"
+        />
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Increment counter
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      2. Controlled counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-2"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Decrement counter
+          </span>
+        </button>
+        <input
+          className="slds-input slds-input_counter"
+          id="counter-input-2"
+          onChange={[Function]}
+          type="number"
+          value={10}
+        />
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Increment counter
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      3. Controlled counter input with min/max values and custom step size
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-3"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Decrement counter
+          </span>
+        </button>
+        <input
+          className="slds-input slds-input_counter"
+          id="counter-input-3"
+          max={30}
+          min={2}
+          onChange={[Function]}
+          step={2}
+          type="number"
+          value={10}
+        />
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Increment counter
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      4. Counter input with floating step size
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-4"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Decrement counter
+          </span>
+        </button>
+        <input
+          className="slds-input slds-input_counter"
+          defaultValue={10}
+          id="counter-input-4"
+          onChange={[Function]}
+          step={0.1}
+          type="number"
+        />
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Increment counter
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      5. Disabled counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-5"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+          disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Decrement counter
+          </span>
+        </button>
+        <input
+          className="slds-input slds-input_counter"
+          disabled={true}
+          id="counter-input-5"
+          onChange={[Function]}
+          type="number"
+          value="10"
+        />
+        <button
+          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+          disabled={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Increment counter
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      6. Readonly counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="counter-input-6"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <input
+          className="slds-input slds-text-align_left slds-input_counter slds-p-horizontal_none"
+          id="counter-input-6"
+          onChange={[Function]}
+          readOnly={true}
+          type="number"
+          value="10"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Counter Static Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      1. Static counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <span
+        className="slds-form-element__label"
+      >
+        My Label
+      </span>
+      <div
+        className="slds-form-element__control slds-has-divider_bottom"
+      >
+        <span
+          className="slds-form-element__static slds-grid"
+        >
+          10
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSInput Custom style 1`] = `
 <div
   className="slds-p-around_medium"
@@ -7644,6 +8128,7 @@ exports[`DOM snapshots SLDSInput Custom style 1`] = `
             <input
               className="slds-input"
               id="custom-style"
+              onChange={[Function]}
               placeholder="My placeholder"
               style={
                 Object {
@@ -7689,6 +8174,7 @@ exports[`DOM snapshots SLDSInput Disabled Input 1`] = `
           disabled={true}
           id="disabled-input"
           name="disabled-input"
+          onChange={[Function]}
           type="text"
           value="Disabled value"
         />
@@ -7759,6 +8245,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
         <input
           className="slds-input"
           id="field-level-help"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -7846,6 +8333,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
         <input
           className="slds-input"
           id="field-level-help"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -7885,6 +8373,7 @@ exports[`DOM snapshots SLDSInput Fixed Text 1`] = `
           className="slds-input"
           id="fixed-text"
           name="fixed-text"
+          onChange={[Function]}
           placeholder="My placeholder"
           type="text"
         />
@@ -7919,6 +8408,7 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
         <input
           className="slds-input"
           id="inline-help"
+          onChange={[Function]}
           type="text"
         />
         <div
@@ -7958,6 +8448,7 @@ exports[`DOM snapshots SLDSInput Read Only 1`] = `
           className="slds-input"
           id="read-only"
           name="read-only"
+          onChange={[Function]}
           readOnly={true}
           type="text"
           value="Read Only Value"
@@ -8014,6 +8505,7 @@ exports[`DOM snapshots SLDSInput Required Input in Error State 1`] = `
           className="slds-input"
           id="required-input-error"
           name="required-input-error"
+          onChange={[Function]}
           placeholder="My placeholder"
           required={true}
           type="text"

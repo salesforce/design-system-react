@@ -10,6 +10,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/inactiveInputs.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/inline-help.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/field-level-help.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/input/__examples__/counter-input.jsx'),
 ];
 
 module.exports = siteStories;

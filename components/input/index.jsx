@@ -37,9 +37,15 @@ import checkProps from './check-props';
 import { INPUT } from '../../utilities/constants';
 import componentDoc from './docs.json';
 
+const COUNTER = 'counter';
+const DECREMENT = 'Decrement';
+const INCREMENT = 'Increment';
+
 const defaultProps = {
 	assistiveText: {
+		decrement: `${DECREMENT} ${COUNTER}`,
 		fieldLevelHelpButton: 'Help',
+		increment: `${INCREMENT} ${COUNTER}`,
 	},
 	type: 'text',
 };
@@ -124,7 +130,7 @@ class Input extends React.Component {
 		 * "Controlled components" with centralized state is highly recommended.
 		 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 		 */
-		defaultValue: PropTypes.string,
+		defaultValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 		/**
 		 * Disables the input and prevents editing the contents.
 		 */
@@ -182,7 +188,7 @@ class Input extends React.Component {
 		 */
 		onBlur: PropTypes.func,
 		/**
-		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
+		 * This callback fires when the input changes. Passes in `event, { value }`.
 		 */
 		onChange: PropTypes.func,
 		/**
@@ -230,9 +236,17 @@ class Input extends React.Component {
 		 */
 		minLength: PropTypes.string,
 		/**
+		 * Specifies minimum accepted value for a counter input
+		 */
+		minValue: PropTypes.number,
+		/**
 		 * Sets the maximum number of characters that an `<input>` can accept.
 		 */
 		maxLength: PropTypes.string,
+		/**
+		 * Specifies maximum accepted value for a counter input
+		 */
+		maxValue: PropTypes.number,
 		/**
 		 * Name of the submitted form parameter.
 		 */
@@ -246,13 +260,17 @@ class Input extends React.Component {
 		 */
 		required: PropTypes.bool,
 		/**
-		 * styles to be added to input
-		 */
-		styleInput: PropTypes.object,
-		/**
 		 * ARIA role
 		 */
 		role: PropTypes.string,
+		/**
+		 * Determines the step size upon increment or decrement. Can be set to decimal values.
+		 */
+		step: PropTypes.number,
+		/**
+		 * styles to be added to input
+		 */
+		styleInput: PropTypes.object,
 		/**
 		 * The `<Input>` element includes support for all HTML5 types.
 		 */
@@ -275,10 +293,25 @@ class Input extends React.Component {
 		/**
 		 * The input is a controlled component, and will always display this value.
 		 */
-		value: PropTypes.string,
+		value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+		/**
+		 * Which UX pattern of input? The default is `base` while other option is `counter`
+		 */
+		variant: PropTypes.oneOf(['base', COUNTER]),
 	};
 
 	static defaultProps = defaultProps;
+
+	constructor(props) {
+		super(props);
+		this.inputRef = null;
+		this.stepping = {
+			currentDelay: 500,
+			initialDelay: 500,
+			speedDelay: 75,
+			timeout: {},
+		};
+	}
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
@@ -294,7 +327,41 @@ class Input extends React.Component {
 
 	getErrorId = () => this.props['aria-describedby'] || this.generatedErrorId;
 
-	// This is convuluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
+	getCounterButtonIcon = (direction) => {
+		const stopStepping = () => {
+			clearTimeout(this.stepping.timeout);
+			this.stepping.currentDelay = this.stepping.initialDelay;
+		};
+
+		return (
+			<Button
+				assistiveText={{
+					icon: this.props.assistiveText[direction.toLowerCase()],
+				}}
+				className={classNames(
+					'slds-button_icon-small',
+					`slds-input__button_${direction.toLowerCase()}`
+				)}
+				disabled={this.props.disabled}
+				iconCategory="utility"
+				iconName={direction === DECREMENT ? 'ban' : 'new'}
+				onKeyDown={(event) => {
+					if (event.keyCode === 13) {
+						this.performStep(direction, event);
+					}
+				}}
+				onKeyUp={stopStepping}
+				onMouseDown={(event) => {
+					this.performStep(direction, event);
+				}}
+				onMouseLeave={stopStepping}
+				onMouseUp={stopStepping}
+				variant="icon"
+			/>
+		);
+	};
+
+	// This is convoluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
 	getIconRender = (position, iconPositionProp) => {
 		let icon;
 
@@ -337,22 +404,110 @@ class Input extends React.Component {
 		return icon;
 	};
 
+	setInputRef = (ref) => {
+		this.inputRef = ref;
+		if (this.props.inputRef) {
+			this.props.inputRef(ref);
+		}
+	};
+
+	handleChange = (event) => {
+		if (this.props.onChange) {
+			const data = {
+				value: event.target.value,
+			};
+
+			if (this.props.variant === COUNTER) {
+				data.number = Number(data.value);
+			}
+
+			this.props.onChange(event, data);
+		}
+	};
+
+	performStep = (direction, event) => {
+		clearTimeout(this.stepping.timeout);
+
+		const maxValue = this.props.maxValue;
+		const minValue = this.props.minValue;
+		const step = this.props.step !== undefined ? Number(this.props.step) : 1;
+		let value = 0;
+		let valueChanged = false;
+
+		if (this.props.value !== undefined) {
+			value = Number(this.props.value);
+		} else if (this.inputRef) {
+			value = Number(this.inputRef.value);
+		}
+
+		if (direction === DECREMENT && maxValue !== undefined && value > maxValue) {
+			value = Number(maxValue);
+			valueChanged = true;
+		} else if (
+			direction === INCREMENT &&
+			minValue !== undefined &&
+			value < minValue
+		) {
+			value = Number(minValue);
+			valueChanged = true;
+		} else {
+			const decimalPlaces =
+				String(step).search(/\./) >= 0 ? String(step).split('.')[1].length : 0;
+			let minOverflow = 0;
+
+			if (minValue !== undefined) {
+				minOverflow = (value - minValue) % step;
+			}
+
+			if (minOverflow > 0) {
+				// Default browser inputs of type number with a min attribute alter the value upon change as needed so
+				// that with enough decrements it can reach the exact min value. This behavior is reflected here
+				value =
+					direction === DECREMENT
+						? value - minOverflow
+						: value + (step - minOverflow);
+			} else {
+				value = direction === DECREMENT ? value - step : value + step;
+			}
+
+			value = Number(value.toFixed(decimalPlaces));
+
+			if (
+				!(maxValue !== undefined && value > maxValue) &&
+				!(minValue !== undefined && value < minValue)
+			) {
+				valueChanged = true;
+			}
+		}
+
+		if (valueChanged) {
+			if (this.props.value === undefined && this.inputRef) {
+				this.inputRef.value = String(value);
+			} else if (this.props.onChange) {
+				this.props.onChange(event, {
+					number: value,
+					value: String(value),
+				});
+			}
+		}
+
+		this.stepping.timeout = setTimeout(() => {
+			this.stepping.currentDelay = this.stepping.speedDelay;
+			this.performStep(direction);
+		}, this.stepping.currentDelay);
+	};
+
 	render() {
-		// Remove at next breaking change
-		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon =
-			!!this.props.iconLeft ||
-			((this.props.iconPosition === 'left' ||
-				this.props.iconPosition === undefined) &&
-				!!this.props.iconName);
-		const hasRightIcon =
-			!!this.props.iconRight ||
-			(this.props.iconPosition === 'right' && !!this.props.iconName);
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
 		};
+		const inputRef =
+			this.props.variant === COUNTER ? this.setInputRef : this.props.inputRef;
 		let fieldLevelHelpTooltip;
+		let iconLeft = null;
+		let iconRight = null;
+
 		if (
 			(this.props.label ||
 				(this.props.assistiveText && this.props.assistiveText.label)) &&
@@ -375,6 +530,36 @@ class Input extends React.Component {
 				...this.props.fieldLevelHelpTooltip.props,
 			};
 			fieldLevelHelpTooltip = <Tooltip {...tooltipProps} />;
+		}
+
+		// Remove at next breaking change
+		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
+		if (
+			!!this.props.iconLeft ||
+			((this.props.iconPosition === 'left' ||
+				this.props.iconPosition === undefined) &&
+				!!this.props.iconName)
+		) {
+			iconLeft = this.getIconRender('left', 'iconLeft');
+		} else if (
+			this.props.variant === COUNTER &&
+			!this.props.isStatic &&
+			!this.props.readOnly
+		) {
+			iconLeft = this.getCounterButtonIcon(DECREMENT);
+		}
+
+		if (
+			!!this.props.iconRight ||
+			(this.props.iconPosition === 'right' && !!this.props.iconName)
+		) {
+			iconRight = this.getIconRender('right', 'iconRight');
+		} else if (
+			this.props.variant === COUNTER &&
+			!this.props.isStatic &&
+			!this.props.readOnly
+		) {
+			iconRight = this.getCounterButtonIcon(INCREMENT);
 		}
 
 		return (
@@ -404,6 +589,11 @@ class Input extends React.Component {
 					aria-expanded={this.props['aria-expanded']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
+					className={classNames({
+						'slds-input_counter': this.props.variant === COUNTER,
+						'slds-p-horizontal_none':
+							this.props.variant === COUNTER && this.props.readOnly,
+					})}
 					containerProps={{
 						className: 'slds-form-element__control',
 					}}
@@ -413,18 +603,18 @@ class Input extends React.Component {
 					fixedTextRight={this.props.fixedTextRight}
 					hasSpinner={this.props.hasSpinner}
 					id={this.getId()}
-					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
-					iconRight={
-						hasRightIcon ? this.getIconRender('right', 'iconRight') : null
-					}
+					iconLeft={iconLeft}
+					iconRight={iconRight}
 					inlineEditTrigger={this.props.inlineEditTrigger}
 					inlineHelpText={this.props.inlineHelpText}
 					isStatic={this.props.isStatic}
 					minLength={this.props.minLength}
+					minValue={this.props.minValue}
 					maxLength={this.props.maxLength}
+					maxValue={this.props.maxValue}
 					name={this.props.name}
 					onBlur={this.props.onBlur}
-					onChange={this.props.onChange}
+					onChange={this.handleChange}
 					onClick={this.props.onClick}
 					onFocus={this.props.onFocus}
 					onInput={this.props.onInput}
@@ -435,13 +625,15 @@ class Input extends React.Component {
 					onSelect={this.props.onSelect}
 					onSubmit={this.props.onSubmit}
 					placeholder={this.props.placeholder}
-					inputRef={this.props.inputRef}
+					inputRef={inputRef}
 					readOnly={this.props.readOnly}
 					required={this.props.required}
 					role={this.props.role}
 					assistiveText={this.props.assistiveText}
-					type={this.props.type}
+					type={this.props.variant === COUNTER ? 'number' : this.props.type}
 					value={this.props.value}
+					variant={this.props.variant}
+					step={this.props.step}
 					style={this.props.styleInput}
 				/>
 				{this.props.errorText && (
