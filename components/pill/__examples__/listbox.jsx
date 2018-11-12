@@ -1,28 +1,44 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Pill from '~/components/pill';
+import ListboxOfPillOptions from '~/components/pill/listbox-of-pill-options';
 import IconSettings from '~/components/icon-settings';
-
-const noop = () => undefined;
 
 class Example extends React.Component {
 	static displayName = 'PillListboxExample';
 
-	static propTypes = {
-		action: PropTypes.func,
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			options: [
+				{
+					id: '1',
+					label: 'Pill Label 1',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					id: '2',
+					label: 'Pill Label 2',
+					title: 'Full pill label verbiage mirrored here',
+				},
+			],
+		};
+	}
+
+	onClickPill = (event, item) => {
+		if (window && window.console && window.console.log) {
+			console.log('onClickPill: ', event, item);
+		}
 	};
 
-	static defaultProps = {
-		action: () => noop,
-	};
-
-	onClick = (event) => {
-		this.props.action('onClick')(event);
-	};
-
-	onRemove = (event) => {
-		this.props.action('onRemove')(event);
+	onRemovePill = (event, item) => {
+		const options = this.state.options.filter(
+			(option) => option.id !== item.id
+		);
+		this.setState({ options });
+		if (window && window.console && window.console.log) {
+			console.log('onRemovePill: ', event, item);
+		}
 	};
 
 	render() {
@@ -33,47 +49,11 @@ class Example extends React.Component {
 						<h3 className="slds-text-heading_small">Static Examples</h3>
 					</div>
 					<div className="slds-grid slds-grid_vertical-align-start">
-						<div className="slds-pill_container">
-							<ul
-								className="slds-listbox slds-listbox_horizontal slds-listbox_inline"
-								role="listbox"
-								aria-label="Selected Options:"
-								aria-orientation="horizontal"
-							>
-								<li className="slds-listbox-item" role="presentation">
-									<Pill
-										labels={{
-											label: 'Pill Label',
-											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove',
-										}}
-										assistiveText={{
-											remove: 'Press delete or backspace to remove',
-										}}
-										variant="option"
-										tabIndex="0"
-										onClick={this.onClick}
-										onRemove={this.onRemove}
-									/>
-								</li>
-								<li className="slds-listbox-item" role="presentation">
-									<Pill
-										labels={{
-											label: 'Pill Label',
-											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove',
-										}}
-										assistiveText={{
-											remove: 'Press delete or backspace to remove',
-										}}
-										variant="option"
-										tabIndex="0"
-										onClick={this.onClick}
-										onRemove={this.onRemove}
-									/>
-								</li>
-							</ul>
-						</div>
+						<ListboxOfPillOptions
+							options={this.state.options}
+							onClickPill={this.onClickPill}
+							onRemovePill={this.onRemovePill}
+						/>
 					</div>
 				</div>
 			</IconSettings>

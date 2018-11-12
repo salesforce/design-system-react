@@ -243,6 +243,10 @@ const propTypes = {
 		})
 	).isRequired,
 	/**
+	 * This callback exposes the selected listbox reference / DOM node to parent components.
+	 */
+	selectedListboxRef: PropTypes.func,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -292,6 +296,7 @@ class Combobox extends React.Component {
 
 		this.menuKeyBuffer = new KeyBuffer();
 		this.menuRef = undefined;
+		this.selectedListboxRef = null;
 	}
 
 	/**
@@ -418,6 +423,13 @@ class Combobox extends React.Component {
 		}
 	};
 
+	setSelectedListboxRef = (ref) => {
+		this.selectedListboxRef = ref;
+		if (this.props.selectedListboxRef) {
+			this.props.selectedListboxRef(ref);
+		}
+	};
+
 	handleBlurPill = () => {
 		this.setState({ listboxHasFocus: false });
 	};
@@ -512,6 +524,7 @@ class Combobox extends React.Component {
 			[KEYS.DOWN]: { callback: this.handleKeyDownDown },
 			[KEYS.ENTER]: { callback: this.handleInputSubmit },
 			[KEYS.ESCAPE]: { callback: this.handleClose },
+			[KEYS.TAB]: { callback: this.handleKeyDownTab },
 			[KEYS.UP]: { callback: this.handleKeyDownUp },
 		};
 
@@ -530,6 +543,16 @@ class Combobox extends React.Component {
 		}
 
 		this.handleNavigateListboxMenu(event, { direction: 'next' });
+	};
+
+	handleKeyDownTab = () => {
+		if (this.selectedListboxRef) {
+			this.setState({
+				activeSelectedOption: this.props.selection[0],
+				activeSelectedOptionIndex: 0,
+				listboxHasFocus: true,
+			});
+		}
 	};
 
 	handleKeyDownUp = (event) => {
@@ -860,6 +883,7 @@ class Combobox extends React.Component {
 				}}
 				id={this.getId()}
 				labels={labels}
+				selectedListboxRef={this.setSelectedListboxRef}
 				selection={props.selection}
 				listboxHasFocus={this.state.listboxHasFocus}
 			/>
@@ -898,6 +922,7 @@ class Combobox extends React.Component {
 						}}
 						id={this.getId()}
 						labels={labels}
+						selectedListboxRef={this.setSelectedListboxRef}
 						selection={props.selection}
 						listboxHasFocus={this.state.listboxHasFocus}
 					/>
@@ -1228,6 +1253,7 @@ class Combobox extends React.Component {
 					}}
 					id={this.getId()}
 					labels={labels}
+					selectedListboxRef={this.setSelectedListboxRef}
 					selection={props.selection}
 					listboxHasFocus={this.state.listboxHasFocus}
 					variant={this.props.variant}

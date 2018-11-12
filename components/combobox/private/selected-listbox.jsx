@@ -23,10 +23,12 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `removePill`: Aids in keyboard interaction with Pills.
+	 * * `selectedListboxLabel`: Used to identify the listbox
 	 */
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		removePill: PropTypes.string,
+		selectedListboxLabel: PropTypes.string,
 	}),
 	/*
 	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
@@ -59,6 +61,10 @@ const propTypes = {
 	 */
 	renderAtSelectionLength: PropTypes.number,
 	/**
+	 * This callback exposes the selected listbox reference / DOM node to parent components.
+	 */
+	selectedListboxRef: PropTypes.func,
+	/**
 	 * Accepts an array of item objects.
 	 */
 	selection: PropTypes.array,
@@ -80,6 +86,11 @@ const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
 			id={`${props.id}-selected-listbox`}
+			ref={(ref) => {
+				if (props.selectedListboxRef) {
+					props.selectedListboxRef(ref);
+				}
+			}}
 			role="listbox"
 			aria-orientation="horizontal"
 		>

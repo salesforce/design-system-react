@@ -3006,6 +3006,18 @@
                 "returns": null
             },
             {
+                "name": "setSelectedListboxRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleBlurPill",
                 "docblock": null,
                 "modifiers": [],
@@ -3106,6 +3118,13 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -3787,6 +3806,13 @@
                     "computed": false
                 }
             },
+            "selectedListboxRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback exposes the selected listbox reference / DOM node to parent components."
+            },
             "value": {
                 "type": {
                     "name": "string"
@@ -4424,6 +4450,18 @@
                 "returns": null
             },
             {
+                "name": "getInputProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "setInputRef",
                 "docblock": null,
                 "modifiers": [],
@@ -4579,13 +4617,6 @@
                     "computed": false
                 }
             },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._"
-            },
             "className": {
                 "type": {
                     "name": "union",
@@ -4691,6 +4722,13 @@
                     "computed": false
                 }
             },
+            "input": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
+            },
             "isOpen": {
                 "type": {
                     "name": "bool"
@@ -4763,14 +4801,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function called when the calendar dialog would like hide. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
+                "description": "Function called when the calendar dialog would like hide. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
             },
             "onRequestOpen": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function called when the calendar dialog would like show. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
+                "description": "Function called when the calendar dialog would like show. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
             },
             "parser": {
                 "type": {

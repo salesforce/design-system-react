@@ -1,122 +1,130 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Pill from '~/components/pill';
-import Icon from '~/components/icon';
+import ListboxOfPillOptions from '~/components/pill/listbox-of-pill-options';
 import IconSettings from '~/components/icon-settings';
-
-const PILLS = [
-	{
-		category: 'standard',
-		name: 'account',
-	},
-	{
-		category: 'standard',
-		name: 'case',
-	},
-	{
-		category: 'utility',
-		name: 'retweet',
-	},
-	{
-		category: 'standard',
-		name: 'solution',
-	},
-	{
-		category: 'standard',
-		name: 'custom_notification',
-	},
-	{
-		category: 'standard',
-		name: 'email',
-	},
-	{
-		category: 'standard',
-		name: 'endorsement',
-	},
-	{
-		category: 'standard',
-		name: 'recent',
-	},
-	{
-		category: 'custom',
-		name: 'custom31',
-	},
-];
-
-const noop = () => undefined;
-
-const getAllOn = () =>
-	PILLS.reduce((result, item, index) => {
-		result['pill' + index] = true;
-		return result;
-	}, {});
 
 class Example extends React.Component {
 	static displayName = 'PillWithIconListboxExample';
 
-	static propTypes = {
-		action: PropTypes.func,
-	};
+	constructor(props) {
+		super(props);
 
-	static defaultProps = {
-		action: () => noop,
-	};
+		this.state = {
+			options: [
+				{
+					icon: {
+						category: 'standard',
+						name: 'account',
+					},
+					id: '1',
+					label: 'Pill Label 1',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'standard',
+						name: 'case',
+					},
+					id: '2',
+					label: 'Pill Label 2',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'utility',
+						name: 'retweet',
+					},
+					id: '3',
+					label: 'Pill Label 3',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'standard',
+						name: 'solution',
+					},
+					id: '4',
+					label: 'Pill Label 4',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'standard',
+						name: 'custom_notification',
+					},
+					id: '5',
+					label: 'Pill Label 5',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'standard',
+						name: 'email',
+					},
+					id: '6',
+					label: 'Pill Label 6',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'standard',
+						name: 'endorsement',
+					},
+					id: '7',
+					label: 'Pill Label 7',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'standard',
+						name: 'recent',
+					},
+					id: '8',
+					label: 'Pill Label 8',
+					title: 'Full pill label verbiage mirrored here',
+				},
+				{
+					icon: {
+						category: 'custom',
+						name: 'custom31',
+					},
+					id: '9',
+					label: 'Pill Label 9',
+					title: 'Full pill label verbiage mirrored here',
+				},
+			],
+		};
+	}
 
-	state = getAllOn();
-
-	onClick = (event) => {
-		this.props.action('onClick')(event);
-	};
-
-	onRemove = (event, pill) => {
-		this.props.action('onRemove')(event);
-		this.setState({
-			[pill]: false,
-		});
-	};
-
-	renderListItem = (icon, index) => {
-		if (this.state['pill' + index]) {
-			return (
-				<li className="slds-listbox-item" role="presentation" key={index}>
-					<Pill
-						labels={{
-							label: 'Pill Label',
-							title: 'Full pill label verbiage mirrored here',
-							removeTitle: 'Remove',
-						}}
-						assistiveText={{
-							remove: 'Press delete or backspace to remove',
-						}}
-						variant="option"
-						icon={
-							<Icon title="Title" category={icon.category} name={icon.name} />
-						}
-						onClick={this.onClick}
-						onRemove={() => this.onRemove(event, 'pill' + index)}
-					/>
-				</li>
-			);
+	onClickPill = (event, item) => {
+		if (window && window.console && window.console.log) {
+			console.log('onClickPill: ', event, item);
 		}
-		return null;
+	};
+
+	onRemovePill = (event, item) => {
+		const options = this.state.options.filter(
+			(option) => option.id !== item.id
+		);
+		this.setState({ options });
+		if (window && window.console && window.console.log) {
+			console.log('onRemovePill: ', event, item);
+		}
 	};
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
+					<div className="slds-p-vertical_medium">
+						<h3 className="slds-text-heading_small">Static Examples</h3>
+					</div>
 					<div className="slds-grid slds-grid_vertical-align-start">
-						<div className="slds-pill_container">
-							<ul
-								className="slds-listbox slds-listbox_horizontal slds-listbox_inline"
-								role="listbox"
-								aria-label="Selected Options:"
-								aria-orientation="horizontal"
-							>
-								{PILLS.map(this.renderListItem)}
-							</ul>
-						</div>
+						<ListboxOfPillOptions
+							options={this.state.options}
+							onClickPill={this.onClickPill}
+							onRemovePill={this.onRemovePill}
+						/>
 					</div>
 				</div>
 			</IconSettings>
