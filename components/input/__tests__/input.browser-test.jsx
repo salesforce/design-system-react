@@ -603,11 +603,13 @@ describe('SLDSInput', () => {
 			TestUtils.Simulate.mouseDown(increment);
 			TestUtils.Simulate.mouseUp(increment);
 			expect(changeOccurred).to.be.false;
+			expect(increment.disabled).to.be.true;
 
 			changeOccurred = false;
 			TestUtils.Simulate.mouseDown(decrement);
 			TestUtils.Simulate.mouseUp(decrement);
 			expect(changeOccurred).to.be.false;
+			expect(decrement.disabled).to.be.true;
 		});
 
 		it('acknowledges custom step values', () => {
