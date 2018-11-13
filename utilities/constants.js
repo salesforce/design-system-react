@@ -24,6 +24,7 @@ export const CARD_EMPTY = 'SLDSCardEmpty';
 export const CARD_FILTER = 'SLDSCardFilter';
 export const CARD_FOOTER = 'SLDSCardFooter';
 export const CARD_HEADER = 'SLDSCardHeader';
+export const CAROUSEL = 'SLDSCarousel';
 export const COLOR_PICKER = 'SLDSColorPicker';
 export const COMBOBOX = 'SLDSCombobox';
 export const DATA_TABLE = 'SLDSDataTable';
