@@ -327,11 +327,33 @@ class Input extends React.Component {
 
 	getErrorId = () => this.props['aria-describedby'] || this.generatedErrorId;
 
+	getValueAsNumber = () => {
+		let value = 0;
+
+		if (this.props.value !== undefined) {
+			value = Number(this.props.value);
+		} else if (this.inputRef) {
+			value = Number(this.inputRef.value);
+		}
+
+		return value;
+	};
+
 	getCounterButtonIcon = (direction) => {
-		const stopStepping = () => {
-			clearTimeout(this.stepping.timeout);
-			this.stepping.currentDelay = this.stepping.initialDelay;
-		};
+		const value = this.getValueAsNumber();
+		let disabled = false;
+
+		if (
+			this.props.disabled ||
+			(direction === INCREMENT &&
+				this.props.maxValue !== undefined &&
+				value >= this.props.maxValue) ||
+			(direction === DECREMENT &&
+				this.props.minValue !== undefined &&
+				value <= this.props.minValue)
+		) {
+			disabled = true;
+		}
 
 		return (
 			<Button
@@ -342,7 +364,7 @@ class Input extends React.Component {
 					'slds-button_icon-small',
 					`slds-input__button_${direction.toLowerCase()}`
 				)}
-				disabled={this.props.disabled}
+				disabled={disabled}
 				iconCategory="utility"
 				iconName={direction === DECREMENT ? 'ban' : 'new'}
 				onKeyDown={(event) => {
@@ -350,12 +372,12 @@ class Input extends React.Component {
 						this.performStep(direction, event);
 					}
 				}}
-				onKeyUp={stopStepping}
+				onKeyUp={this.stopStepping}
 				onMouseDown={(event) => {
 					this.performStep(direction, event);
 				}}
-				onMouseLeave={stopStepping}
-				onMouseUp={stopStepping}
+				onMouseLeave={this.stopStepping}
+				onMouseUp={this.stopStepping}
 				variant="icon"
 			/>
 		);
@@ -431,14 +453,8 @@ class Input extends React.Component {
 		const maxValue = this.props.maxValue;
 		const minValue = this.props.minValue;
 		const step = this.props.step !== undefined ? Number(this.props.step) : 1;
-		let value = 0;
+		let value = this.getValueAsNumber();
 		let valueChanged = false;
-
-		if (this.props.value !== undefined) {
-			value = Number(this.props.value);
-		} else if (this.inputRef) {
-			value = Number(this.inputRef.value);
-		}
 
 		if (direction === DECREMENT && maxValue !== undefined && value > maxValue) {
 			value = Number(maxValue);
@@ -481,8 +497,12 @@ class Input extends React.Component {
 		}
 
 		if (valueChanged) {
+			/*
+			* Use of `this.forceUpdate` is an anti-pattern. This code only executes if this `input` element is uncontrolled which this library believes is an anti-pattern, also. This code is only present to allow for the edge case of uncontrolled use of an `input`.
+			*/
 			if (this.props.value === undefined && this.inputRef) {
 				this.inputRef.value = String(value);
+				this.forceUpdate();
 			} else if (this.props.onChange) {
 				this.props.onChange(event, {
 					number: value,
@@ -491,10 +511,24 @@ class Input extends React.Component {
 			}
 		}
 
-		this.stepping.timeout = setTimeout(() => {
-			this.stepping.currentDelay = this.stepping.speedDelay;
-			this.performStep(direction);
-		}, this.stepping.currentDelay);
+		if (
+			(direction === INCREMENT &&
+				maxValue !== undefined &&
+				value >= maxValue) ||
+			(direction === DECREMENT && minValue !== undefined && value <= minValue)
+		) {
+			this.stopStepping();
+		} else {
+			this.stepping.timeout = setTimeout(() => {
+				this.stepping.currentDelay = this.stepping.speedDelay;
+				this.performStep(direction);
+			}, this.stepping.currentDelay);
+		}
+	};
+
+	stopStepping = () => {
+		clearTimeout(this.stepping.timeout);
+		this.stepping.currentDelay = this.stepping.initialDelay;
 	};
 
 	render() {
