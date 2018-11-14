@@ -390,7 +390,7 @@ class Combobox extends React.Component {
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
 		let nextIndex = activeOptionIndex + offset;
-		while (options.length > nextIndex && nextIndex >= 0 && (options[nextIndex].type === 'separator' || options[nextIndex].disabled)) {
+		while (options.length > nextIndex && nextIndex >= 0 && options[nextIndex].type === 'separator') {
 			nextIndex += offset;
 		}
 		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
