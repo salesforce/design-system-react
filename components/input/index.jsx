@@ -497,6 +497,9 @@ class Input extends React.Component {
 		}
 
 		if (valueChanged) {
+			/*
+			* Use of `this.forceUpdate` is an anti-pattern. This code only executes if this `input` element is uncontrolled which this library believes is an anti-pattern, also. This code is only present to allow for the edge case of uncontrolled use of an `input`.
+			*/
 			if (this.props.value === undefined && this.inputRef) {
 				this.inputRef.value = String(value);
 				this.forceUpdate();
