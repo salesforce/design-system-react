@@ -96,19 +96,19 @@ class Example extends React.Component {
 		};
 	}
 
-	onClickPill = (event, item) => {
+	onClickPill = (event, data) => {
 		if (window && window.console && window.console.log) {
-			console.log('onClickPill: ', event, item);
+			console.log('onClickPill: ', event, data);
 		}
 	};
 
-	onRemovePill = (event, item) => {
+	onRemovePill = (event, data) => {
 		const options = this.state.options.filter(
-			(option) => option.id !== item.id
+			(option) => option.id !== data.option.id
 		);
 		this.setState({ options });
 		if (window && window.console && window.console.log) {
-			console.log('onRemovePill: ', event, item);
+			console.log('onRemovePill: ', event, data);
 		}
 	};
 

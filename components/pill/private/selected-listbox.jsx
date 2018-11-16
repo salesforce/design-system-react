@@ -5,8 +5,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import isEqual from 'lodash.isequal';
+import isReactComponent from '~/utilities/isReactComponent';
 
+import Avatar from '~/components/avatar';
+import Icon from '~/components/icon';
 import Pill from '../../utilities/pill';
 
 const propTypes = {
@@ -41,13 +43,17 @@ const propTypes = {
 		onRequestRemove: PropTypes.func.isRequired,
 	}),
 	/**
-	 * HTML id for Combobox
+	 * HTML id for component main container
 	 */
 	id: PropTypes.string,
 	/**
 	 * Adds inline (inside of input) styling
 	 */
 	isInline: PropTypes.bool,
+	/**
+	 * Determines whether component renders as a pill container with associated styling and behavior
+	 */
+	isPillContainer: PropTypes.bool,
 	/*
 	 * Pill Label
 	 */
@@ -82,10 +88,60 @@ const defaultProps = {
 	renderAtSelectionLength: 1,
 };
 
+const getAvatar = (option) => {
+	const avatarObject = option.avatar;
+	let avatar = null;
+
+	if (avatarObject) {
+		if (isReactComponent(avatarObject)) {
+			avatar = React.cloneElement(avatarObject, {
+				containerClassName: 'slds-pill__icon_container',
+			});
+		} else if (avatarObject.imgSrc) {
+			avatar = (
+				<Avatar
+					imgSrc={avatarObject.imgSrc}
+					title={avatarObject.title || option.label}
+					variant={avatarObject.variant || 'user'}
+				/>
+			);
+		}
+	}
+
+	return avatar;
+};
+
+const getIcon = (option) => {
+	const iconObject = option.icon;
+	let icon = null;
+
+	if (iconObject) {
+		if (isReactComponent(iconObject)) {
+			icon = React.cloneElement(iconObject, {
+				containerClassName: 'slds-pill__icon_container',
+			});
+		} else if (iconObject.category && iconObject.name) {
+			icon = (
+				<Icon
+					category={iconObject.category}
+					name={iconObject.name}
+					title={iconObject.title || option.label}
+				/>
+			);
+		}
+	}
+
+	return icon;
+};
+
 const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
-			id={`${props.id}-selected-listbox`}
+			className={
+				classNames({ 'slds-pill_container': props.isPillContainer }) ||
+				undefined
+			}
+			id={props.id}
 			ref={(ref) => {
 				if (props.selectedListboxRef) {
 					props.selectedListboxRef(ref);
@@ -105,8 +161,7 @@ const SelectedListBox = (props) =>
 			>
 				{props.selection.map((option, renderIndex) => {
 					const setActiveBasedOnstateFromParent =
-						renderIndex === props.activeOptionIndex &&
-						isEqual(option, props.activeOption);
+						renderIndex === props.activeOptionIndex;
 					const listboxRenderedForFirstTime =
 						(props.activeOptionIndex === -1 && renderIndex === 0) ||
 						(props.variant === 'readonly' &&
@@ -114,11 +169,8 @@ const SelectedListBox = (props) =>
 							renderIndex === 0);
 					const active =
 						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
-					const icon = option.icon
-						? React.cloneElement(option.icon, {
-								containerClassName: 'slds-pill__icon_container',
-							})
-						: null;
+					const icon = getIcon(option);
+					const avatar = !icon ? getAvatar(option) : null;
 
 					return (
 						<li
@@ -131,6 +183,7 @@ const SelectedListBox = (props) =>
 								assistiveText={{
 									remove: props.assistiveText.removePill,
 								}}
+								avatar={avatar}
 								events={{
 									onBlur: props.events.onBlurPill,
 									onClick: (event, data) => {

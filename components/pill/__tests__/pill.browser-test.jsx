@@ -11,7 +11,7 @@ import { expect } from 'chai';
 
 const { Simulate } = TestUtils;
 
-describe('SLDSPill', () => {
+describe.only('SLDSPill', () => {
 	const LABEL = 'Pill Label';
 	const LABEL_TITLE = 'Full pill label verbiage mirrored here';
 
@@ -308,7 +308,7 @@ describe('SLDSPill', () => {
 		});
 	});
 
-	describe('Listbox of Pill Options', () => {
+	describe.only('Listbox of Pill Options', () => {
 		let clickData = {};
 		let removeData = {};
 
@@ -367,10 +367,10 @@ describe('SLDSPill', () => {
 				);
 
 				Simulate.click(pill.getDOMNode());
-				expect(clickData.id).to.eql(`${currentPill}`);
+				expect(clickData.option.id).to.eql(`${currentPill}`);
 
 				Simulate.click(pill.find('.slds-pill__remove').getDOMNode());
-				expect(removeData.id).to.eql(`${currentPill}`);
+				expect(removeData.option.id).to.eql(`${currentPill}`);
 
 				if (currentPill === 2) {
 					expect(

@@ -25,6 +25,11 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		remove: PropTypes.string,
 	}),
+	/**
+	 * SLDSAvatar component to show on the left of the pill.
+	 * _Tested with Mocha framework._
+	 */
+	avatar: PropTypes.element,
 	/*
 	 * Pills are often used for selection of a type of entity such as days in a daypicker. This prop allows you to pass in data that will be passed back to the event handler.
 	 */
@@ -92,9 +97,9 @@ const handleKeyDown = (event, { events, data }) => {
 	});
 };
 
-const handleClickRemove = (event, { events, eventData }) => {
+const handleClickRemove = (event, { events, data }) => {
 	EventUtil.trap(event);
-	events.onRequestRemove(event, eventData);
+	events.onRequestRemove(event, data);
 };
 
 const Pill = (props) => {
@@ -107,6 +112,7 @@ const Pill = (props) => {
 
 	return (
 		<SLDSPill
+			avatar={props.avatar}
 			tabIndex={props.tabIndex || '0'}
 			icon={props.icon}
 			variant="option"
@@ -121,7 +127,7 @@ const Pill = (props) => {
 					? (event) => {
 							if (props.events.onClick) {
 								props.events.onClick(event, {
-									option: props.eventData,
+									...props.eventData,
 								});
 							}
 						}
@@ -131,7 +137,7 @@ const Pill = (props) => {
 				EventUtil.trap(event);
 				handleClickRemove(event, {
 					events: props.events,
-					eventData: props.eventData,
+					data: props.eventData,
 				});
 			}}
 			onKeyDown={(event) => {

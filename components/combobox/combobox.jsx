@@ -23,7 +23,7 @@ import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
-import SelectedListBox from './private/selected-listbox';
+import SelectedListBox from '../pill/private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
@@ -881,7 +881,7 @@ class Combobox extends React.Component {
 					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
 					onRequestRemove: this.handleRemoveSelectedOption,
 				}}
-				id={this.getId()}
+				id={`${this.getId()}-selected-listbox`}
 				labels={labels}
 				selectedListboxRef={this.setSelectedListboxRef}
 				selection={props.selection}
@@ -920,7 +920,7 @@ class Combobox extends React.Component {
 							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
 							onRequestRemove: this.handleRemoveSelectedOption,
 						}}
-						id={this.getId()}
+						id={`${this.getId()}-selected-listbox`}
 						labels={labels}
 						selectedListboxRef={this.setSelectedListboxRef}
 						selection={props.selection}
@@ -1251,7 +1251,7 @@ class Combobox extends React.Component {
 						onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
 						onRequestRemove: this.handleRemoveSelectedOption,
 					}}
-					id={this.getId()}
+					id={`${this.getId()}-selected-listbox`}
 					labels={labels}
 					selectedListboxRef={this.setSelectedListboxRef}
 					selection={props.selection}

@@ -6,9 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '~/components/avatar';
-import Icon from '~/components/icon';
-import Pill from '~/components/pill';
+import SelectedListBox from '~/components/pill/private/selected-listbox';
 
 import { LISTBOX_OF_PILL_OPTIONS } from '../../utilities/constants';
 
@@ -50,82 +48,159 @@ const propTypes = {
 /**
  * A ListboxOfPillOptions is a container that holds one or more pills
  */
-const ListboxOfPillOptions = (props) => (
-	<div
-		className="slds-pill_container"
-		id={`${props.id}-listbox-of-pill-options`}
-	>
-		<ul
-			aria-label={props.assistiveText.listboxLabel}
-			aria-orientation="horizontal"
-			className="slds-listbox slds-listbox_horizontal"
-			role="listbox"
-		>
-			{props.options.map((item, itemIndex) => {
-				let avatar = null;
-				let icon = null;
+class ListboxOfPillOptions extends React.Component {
+	constructor(props) {
+		super(props);
 
-				if (item.icon) {
-					icon = (
-						<Icon
-							category={item.icon.category}
-							name={item.icon.name}
-							title={item.icon.title || item.label}
-						/>
-					);
-				} else if (item.avatar) {
-					avatar = (
-						<Avatar
-							imgSrc={item.avatar.imgSrc}
-							title={item.avatar.title || item.label}
-							variant={item.avatar.variant || 'user'}
-						/>
-					);
-				}
+		this.state = {
+			// seeding initial state with this.props.options[0]
+			activeSelectedOption:
+				(this.props.options && this.props.options[0]) || undefined,
+			activeSelectedOptionIndex: 0,
+			listboxHasFocus: false,
+		};
 
-				return (
-					<li
-						className="slds-listbox-item"
-						key={`${props.id}-list-item-${item.id}`}
-						role="presentation"
-					>
-						<Pill
-							assistiveText={{
-								remove: 'Press delete or backspace to remove',
-							}}
-							avatar={avatar}
-							bare={item.isBare}
-							icon={icon}
-							labels={{
-								label: item.label,
-								title: item.title,
-								removeTitle: props.labels.removePillTitle,
-							}}
-							onClick={(event) => {
-								if (props.onClickPill) {
-									props.onClickPill(event, {
-										...item,
-										...{ index: itemIndex },
-									});
-								}
-							}}
-							onRemove={(event) => {
-								if (props.onRemovePill) {
-									props.onRemovePill(event, {
-										...item,
-										...{ index: itemIndex },
-									});
-								}
-							}}
-							tabIndex="0"
-							variant="option"
-						/>
-					</li>
-				);
-			})}
-		</ul>
-	</div>
-);
+		this.activeSelectedOptionRef = null;
+	}
+
+	componentDidUpdate() {
+		if (
+			this.props.options &&
+			!this.props.options[this.state.activeSelectedOptionIndex]
+		) {
+			this.resetActiveSelectedOption();
+		}
+	}
+
+	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
+		// used by menu listbox and selected options listbox
+		const nextIndex = activeOptionIndex + offset;
+		const skipIndex =
+			options.length > nextIndex &&
+			nextIndex >= 0 &&
+			options[nextIndex].type === 'separator';
+		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
+		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		return hasNewIndex ? newIndex : activeOptionIndex;
+	};
+
+	handleBlurPill = () => {
+		this.setState({ listboxHasFocus: false });
+	};
+
+	handleClickPill = (event, data) => {
+		this.setState({
+			activeSelectedOption: data.option,
+			activeSelectedOptionIndex: data.index,
+		});
+		if (this.props.onClickPill) {
+			this.props.onClickPill(event, {
+				index: data.index,
+				option: data.option,
+			});
+		}
+	};
+
+	handleNavigateListboxOfPills = (event, { direction }) => {
+		const offsets = { next: 1, previous: -1 };
+		this.setState((prevState) => {
+			const options = this.props.options;
+			const isLastOptionAndRightIsPressed =
+				prevState.activeSelectedOptionIndex + 1 === options.length &&
+				direction === 'next';
+			const isFirstOptionAndLeftIsPressed =
+				prevState.activeSelectedOptionIndex === 0 && direction === 'previous';
+			let newState;
+
+			if (isLastOptionAndRightIsPressed) {
+				newState = {
+					activeSelectedOption: options[0],
+					activeSelectedOptionIndex: 0,
+					listboxHasFocus: true,
+				};
+			} else if (isFirstOptionAndLeftIsPressed) {
+				newState = {
+					activeSelectedOption: options[options.length - 1],
+					activeSelectedOptionIndex: options.length - 1,
+					listboxHasFocus: true,
+				};
+			} else {
+				const newIndex = this.getNewActiveOptionIndex({
+					activeOptionIndex: prevState.activeSelectedOptionIndex,
+					offset: offsets[direction],
+					options,
+				});
+				newState = {
+					activeSelectedOption: options[newIndex],
+					activeSelectedOptionIndex: newIndex,
+					listboxHasFocus: true,
+				};
+			}
+
+			return newState;
+		});
+	};
+
+	handleRequestFocusListboxOfPills = (event, { ref }) => {
+		if (ref) {
+			this.activeSelectedOptionRef = ref;
+			this.activeSelectedOptionRef.focus();
+		}
+	};
+
+	handleRequestRemove = (event, data) => {
+		if (this.props.onRemovePill) {
+			this.props.onRemovePill(event, {
+				index: data.index,
+				option: data.option,
+			});
+		}
+	};
+
+	resetActiveSelectedOption = () => {
+		const options = this.props.options;
+		let activeSelectedOptionIndex = this.state.activeSelectedOptionIndex;
+
+		while (
+			!options[activeSelectedOptionIndex] &&
+			activeSelectedOptionIndex > 0
+		) {
+			activeSelectedOptionIndex--;
+		}
+
+		this.setState({
+			activeSelectedOption: options[activeSelectedOptionIndex] || undefined,
+			activeSelectedOptionIndex,
+		});
+	};
+
+	render() {
+		return (
+			<SelectedListBox
+				activeOption={this.state.activeSelectedOption}
+				activeOptionIndex={this.state.activeSelectedOptionIndex}
+				assistiveText={{
+					removePill: this.props.assistiveText.removePill,
+					selectedListboxLabel: this.props.assistiveText.listboxLabel,
+				}}
+				events={{
+					onBlurPill: this.handleBlurPill,
+					onClickPill: this.handleClickPill,
+					onRequestFocus: this.handleRequestFocusListboxOfPills,
+					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
+					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+					onRequestRemove: this.handleRequestRemove,
+				}}
+				id={`${this.props.id}-listbox-of-pill-options`}
+				isPillContainer
+				labels={this.props.labels}
+				listboxHasFocus={this.state.listboxHasFocus}
+				renderAtSelectionLength={0}
+				selection={this.props.options}
+			/>
+		);
+	}
+}
 
 ListboxOfPillOptions.displayName = LISTBOX_OF_PILL_OPTIONS;
 
