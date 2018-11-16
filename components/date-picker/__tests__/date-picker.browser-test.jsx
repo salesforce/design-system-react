@@ -81,7 +81,7 @@ describe('SLDSDatepicker', function() {
 	describe('Optional props', () => {
 		const customPlaceholder = 'With custom Input';
 		const optionalProps = {
-			children: <Input placeholder={customPlaceholder} value="" />,
+			input: <Input placeholder={customPlaceholder} />,
 		};
 
 		afterEach(() => wrapper.unmount());

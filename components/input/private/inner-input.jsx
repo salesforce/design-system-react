@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Spinner from '../../../components/spinner';
 
+const COUNTER = 'counter';
+
 const propTypes = {
 	'aria-activedescendant': PropTypes.string,
 	'aria-autocomplete': PropTypes.string,
@@ -130,7 +132,15 @@ const propTypes = {
 	 */
 	placeholder: PropTypes.string,
 	minLength: PropTypes.string,
+	/**
+	 * Specifies minimum accepted value for an input of type "number"
+	 */
+	minValue: PropTypes.number,
 	maxLength: PropTypes.string,
+	/**
+	 * Specifies maximum accepted value for an input of type "number"
+	 */
+	maxValue: PropTypes.number,
 	/**
 	 * Name of the submitted form parameter.
 	 */
@@ -147,6 +157,10 @@ const propTypes = {
 	 * `role` to be added to `input` node
 	 */
 	role: PropTypes.string,
+	/**
+	 * Determines the step size upon increment or decrement. Can be set to decimal values.
+	 */
+	step: PropTypes.number,
 	/**
 	 * Style object to be added to `input` node
 	 */
@@ -177,7 +191,11 @@ const propTypes = {
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	/**
+	 * Which UX pattern of input? The default is `base` while other option is `counter`
+	 */
+	variant: PropTypes.oneOf(['base', COUNTER]),
 	/**
 	 * This is the initial value of an uncontrolled form element and is present only to provide
 	 * compatibility with hybrid framework applications that are not entirely React. It should only
@@ -185,7 +203,7 @@ const propTypes = {
 	 * with centralized state is highly recommended.
 	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 	 */
-	defaultValue: PropTypes.string,
+	defaultValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 const defaultProps = {
@@ -212,10 +230,12 @@ const InnerInput = (props) => {
 	return (
 		<div
 			className={classNames(containerClassName, {
-				'slds-input-has-icon': props.iconLeft || props.iconRight,
+				'slds-input-has-icon':
+					props.variant !== COUNTER && (props.iconLeft || props.iconRight),
 				'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
 				'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
-				'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
+				'slds-input-has-icon_left-right':
+					props.variant !== COUNTER && props.iconLeft && props.iconRight,
 				'slds-input-has-fixed-addon':
 					props.fixedTextLeft || props.fixedTextRight,
 				'slds-has-divider_bottom': props.isStatic,
@@ -242,10 +262,19 @@ const InnerInput = (props) => {
 					aria-owns={props['aria-owns']}
 					aria-required={props['aria-required']}
 					autoComplete={props.autoComplete}
-					className={classNames('slds-input', props.className)}
+					className={classNames(
+						'slds-input',
+						{
+							'slds-text-align_left':
+								props.variant === COUNTER && props.readOnly,
+						},
+						props.className
+					)}
 					disabled={props.disabled}
 					id={props.id}
+					min={props.minValue}
 					minLength={props.minLength}
+					max={props.maxValue}
 					maxLength={props.maxLength}
 					name={props.name}
 					onBlur={props.onBlur}
@@ -264,6 +293,7 @@ const InnerInput = (props) => {
 					ref={props.inputRef}
 					required={props.required}
 					role={props.role}
+					step={props.step}
 					style={props.style}
 					tabIndex={props.tabIndex}
 					type={props.type}
@@ -296,7 +326,9 @@ const InnerInput = (props) => {
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			{props.isStatic && (
 				<span
-					className="slds-form-element__static slds-grid slds-grid_align-spread"
+					className={classNames('slds-form-element__static', 'slds-grid', {
+						'slds-grid_align-spread': props.variant !== COUNTER,
+					})}
 					onClick={props.onClick}
 				>
 					{props.value}
