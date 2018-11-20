@@ -32,7 +32,10 @@ class DataTableHead extends React.Component {
 		}),
 		allSelected: PropTypes.bool,
 		indeterminateSelected: PropTypes.bool,
-		canSelectRows: PropTypes.bool,
+		canSelectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['multiple', 'single']),
+		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -58,18 +61,20 @@ class DataTableHead extends React.Component {
 							scope="col"
 							style={{ width: '3.25rem' }}
 						>
-							<div className="slds-th__action slds-th__action_form">
-								<Checkbox
-									assistiveText={{
-										label: this.props.assistiveText.selectAllRows,
-									}}
-									checked={this.props.allSelected}
-									indeterminate={this.props.indeterminateSelected}
-									id={`${this.props.id}-SelectAll`}
-									name="SelectAll"
-									onChange={this.props.onToggleAll}
-								/>
-							</div>
+							{this.props.canSelectRows !== 'single' ? (
+								<div className="slds-th__action slds-th__action_form">
+									<Checkbox
+										assistiveText={{
+											label: this.props.assistiveText.selectAllRows,
+										}}
+										checked={this.props.allSelected}
+										indeterminate={this.props.indeterminateSelected}
+										id={`${this.props.id}-SelectAll`}
+										name="SelectAll"
+										onChange={this.props.onToggleAll}
+									/>
+								</div>
+							) : null}
 						</th>
 					) : null}
 					{this.props.columns.map((column) => (

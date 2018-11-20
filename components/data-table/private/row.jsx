@@ -13,6 +13,7 @@ import find from 'lodash.find';
 
 // ## Children
 import Checkbox from '../../checkbox';
+import Radio from '../../radio';
 
 // ## Constants
 import {
@@ -39,7 +40,10 @@ class DataTableRow extends React.Component {
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
 		}),
-		canSelectRows: PropTypes.bool,
+		canSelectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['multiple', 'single']),
+		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -55,6 +59,7 @@ class DataTableRow extends React.Component {
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
 		selection: PropTypes.array,
+		tableId: PropTypes.string,
 	};
 
 	isSelected = () => !!find(this.props.selection, this.props.item);
@@ -78,18 +83,33 @@ class DataTableRow extends React.Component {
 					<td
 						role={this.props.fixedLayout ? 'gridcell' : null}
 						className="slds-text-align_right"
-						data-label="Select Row"
+						data-label={this.props.canSelectRows === 'single' ? `${this.props.tableId}-SelectRow` : 'Select Row'}
 						style={{ width: '3.25rem' }}
 					>
-						<Checkbox
-							assistiveText={{
-								label: this.props.assistiveText.selectRow,
-							}}
-							checked={isSelected}
-							id={`${this.props.id}-SelectRow`}
-							name="SelectRow"
-							onChange={this.handleToggle}
-						/>
+						{this.props.canSelectRows === 'single' ? (
+							<Radio
+								assistiveText={{
+									label: this.props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								className="slds-m-right_x-small"
+								deselectable
+								id={`${this.props.id}-SelectRow`}
+								label=""
+								name={`${this.props.tableId}-SelectRow`}
+								onChange={this.handleToggle}
+							/>
+						) : (
+							<Checkbox
+								assistiveText={{
+									label: this.props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								id={`${this.props.id}-SelectRow`}
+								name="SelectRow"
+								onChange={this.handleToggle}
+							/>
+						)}
 					</td>
 				) : null}
 				{this.props.columns.map((column) => {

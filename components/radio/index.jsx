@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import classNames from 'classnames';
 
+import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
@@ -33,6 +34,10 @@ const propTypes = {
 	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
 	 */,
 	defaultChecked: PropTypes.bool,
+	/**
+	 * Controls whether the radio button can be deselected. If used in a radio group, this allows no radios to be selected
+	 */
+	deselectable: PropTypes.bool,
 	/**
 	 * Disable this radio input.
 	 */
@@ -78,14 +83,28 @@ const defaultProps = {
  * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
  */
 class Radio extends React.Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.generatedId = shortid.generate();
+		this.preventDuplicateChangeEvent = false;
 	}
 
-	getId() {
+	getId () {
 		return this.props.id || this.generatedId;
 	}
+
+	handleChange = (event, preventDuplicateChangeEvent) => {
+		if (!this.preventDuplicateChangeEvent) {
+			this.preventDuplicateChangeEvent = Boolean(preventDuplicateChangeEvent);
+			if (this.props.onChange) {
+				this.props.onChange(event, {
+					checked: !this.props.checked
+				});
+			}
+		} else {
+			this.preventDuplicateChangeEvent = false;
+		}
+	};
 
 	render() {
 		const dataProps = getDataProps(this.props);
@@ -130,7 +149,7 @@ class Radio extends React.Component {
 						this.props.variant === 'base' || this.props.variant === 'swatch',
 					'slds-button slds-radio_button':
 						this.props.variant === 'button-group',
-				})}
+				}, this.props.className)}
 			>
 				<input
 					type="radio"
@@ -139,7 +158,27 @@ class Radio extends React.Component {
 					value={this.props.value}
 					checked={this.props.checked}
 					defaultChecked={this.props.defaultChecked}
-					onChange={this.props.onChange}
+					onChange={(event) => {
+						this.handleChange(event);
+					}}
+					onClick={(event) => {
+						if (this.props.checked && this.props.deselectable) {
+							this.handleChange(event);
+						}
+					}}
+					onKeyPress={(event) => {
+						const charCode = event.charCode;
+
+						if (charCode === KEYS.SPACE && this.props.checked && this.props.deselectable) {
+							this.handleChange(event, true);
+						} else if (
+							charCode === KEYS.ENTER &&
+							(this.props.checked && this.props.deselectable) ||
+							!this.props.checked
+						) {
+							this.handleChange(event);
+						}
+					}}
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
 					{...dataProps}

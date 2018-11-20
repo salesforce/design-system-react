@@ -147,9 +147,12 @@ class DataTable extends React.Component {
 		 */
 		selection: PropTypes.array,
 		/**
-		 * True if rows should be selectable.
+		 * `multiple` or `single` selection of rows. This used to be a boolean. `selectRows` without text will result in `multiple` row selection in order to be backward compatible.
 		 */
-		selectRows: PropTypes.bool,
+		selectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['multiple', 'single']),
+		]),
 		/**
 		 * A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.
 		 */
@@ -208,22 +211,39 @@ class DataTable extends React.Component {
 		if (typeof this.props.onChange === 'function') {
 			let selection;
 
-			if (selected) {
-				selection = [...this.props.selection, item];
+			if (this.props.selectRows === 'single') {
+				if (selected) {
+					selection = [item];
+				} else {
+					selection = reject(this.props.selection, item);
+				}
 			} else {
-				selection = reject(this.props.selection, item);
+				if (selected) {
+					selection = [...this.props.selection, item];
+				} else {
+					selection = reject(this.props.selection, item);
+				}
 			}
 
 			this.props.onChange(selection, e);
 		}
+		// DEPRECATED CODE ENDS HERE
 
 		if (typeof this.props.onRowChange === 'function') {
 			let selection;
 
-			if (selected) {
-				selection = [...this.props.selection, item];
+			if (this.props.selectRows === 'single') {
+				if (selected) {
+					selection = [item];
+				} else {
+					selection = reject(this.props.selection, item);
+				}
 			} else {
-				selection = reject(this.props.selection, item);
+				if (selected) {
+					selection = [...this.props.selection, item];
+				} else {
+					selection = reject(this.props.selection, item);
+				}
 			}
 
 			this.props.onRowChange(e, { selection });
@@ -234,7 +254,7 @@ class DataTable extends React.Component {
 	render() {
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
-		const canSelectRows = this.props.selectRows && numRows > 0;
+		const canSelectRows = (this.props.selectRows && numRows > 0) ? this.props.selectRows : false;
 		const allSelected = canSelectRows && numRows === numSelected;
 		const indeterminateSelected =
 			canSelectRows && numRows !== numSelected && numSelected !== 0;
@@ -345,6 +365,7 @@ class DataTable extends React.Component {
 										onToggle={this.handleRowToggle}
 										selection={this.props.selection}
 										rowActions={RowActions}
+										tableId={this.getId()}
 									/>
 								);
 							})
