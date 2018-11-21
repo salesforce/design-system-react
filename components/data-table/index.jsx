@@ -217,13 +217,11 @@ class DataTable extends React.Component {
 				} else {
 					selection = reject(this.props.selection, item);
 				}
-			} else {
-				if (selected) {
+			} else if (selected) {
 					selection = [...this.props.selection, item];
 				} else {
 					selection = reject(this.props.selection, item);
 				}
-			}
 
 			this.props.onChange(selection, e);
 		}
@@ -238,13 +236,11 @@ class DataTable extends React.Component {
 				} else {
 					selection = reject(this.props.selection, item);
 				}
-			} else {
-				if (selected) {
+			} else if (selected) {
 					selection = [...this.props.selection, item];
 				} else {
 					selection = reject(this.props.selection, item);
 				}
-			}
 
 			this.props.onRowChange(e, { selection });
 		}
@@ -252,9 +248,11 @@ class DataTable extends React.Component {
 
 	// ### Render
 	render() {
+		const ariaProps = {};
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
-		const canSelectRows = (this.props.selectRows && numRows > 0) ? this.props.selectRows : false;
+		const canSelectRows =
+			this.props.selectRows && numRows > 0 ? this.props.selectRows : false;
 		const allSelected = canSelectRows && numRows === numSelected;
 		const indeterminateSelected =
 			canSelectRows && numRows !== numSelected && numSelected !== 0;
@@ -313,8 +311,13 @@ class DataTable extends React.Component {
 			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
 		}
 
+		if (this.props.selectRows && this.props.selectRows !== 'single') {
+			ariaProps['aria-multiselectable'] = 'true';
+		}
+
 		return (
 			<table
+				{...ariaProps}
 				className={classNames(
 					'slds-table',
 					{

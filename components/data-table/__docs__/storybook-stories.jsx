@@ -18,4 +18,6 @@ storiesOf(DATA_TABLE, module)
 	.add('Basic (Fluid Layout)', () => <Basic />)
 	.add('Basic (Fixed Layout)', () => <BasicFixedLayout />)
 	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />)
-	.add('Advanced Single Select (Fixed Layout)', () => <AdvancedSingleSelect log={action} />);
+	.add('Advanced Single Select (Fixed Layout)', () => (
+		<AdvancedSingleSelect log={action} />
+	));

@@ -19,7 +19,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe('DataTable: ', function() {
+describe.only('DataTable: ', function() {
 	const items = [
 		{
 			id: '8IKZHZZV80',
@@ -143,7 +143,7 @@ describe('DataTable: ', function() {
 			);
 		});
 
-		it('has checkboxes only when selectRows is true', function() {
+		it('has checkboxes when selectRows is true or "multiple"', function() {
 			let checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(7);
 			removeTable.call(this);
@@ -157,10 +157,37 @@ describe('DataTable: ', function() {
 			).call(this);
 			checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(0);
+			removeTable.call(this);
+
+			renderTable(
+				<DataTable {...defaultProps} selectRows="multiple">
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+			checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
+			checkboxes.should.have.length(7);
+		});
+
+		it('has radios only when selectRows is "single"', function() {
+			const checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
+			checkboxes.should.have.length(7);
+			removeTable.call(this);
+
+			renderTable(
+				<DataTable {...defaultProps} selectRows="single">
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+			const radios = getTable(this.dom).querySelectorAll('.slds-radio');
+			radios.should.have.length(6);
 		});
 	});
 
-	describe('Selectable', function() {
+	describe('Selectable - Multiple', function() {
 		const defaultSelection = [
 			{
 				id: '8IKZHZZV80',
@@ -281,6 +308,90 @@ describe('DataTable: ', function() {
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
 			Simulate.change(checkAll, { target: { checked: false } });
+		});
+	});
+
+	describe('Selectable - Single', function() {
+		const defaultSelection = [
+			{
+				id: '8IKZHZZV80',
+				name: 'Cloudhub',
+				count: 100976,
+				lastModified: 'Yesterday',
+			},
+		];
+
+		afterEach(removeTable);
+
+		it('can start with a row selected', function() {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={defaultSelection}
+					selectRows="single"
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
+			const selectedRows = tbody.querySelectorAll('tr.slds-is-selected');
+			selectedRows.should.have.length(1);
+			const radios = tbody.querySelectorAll('.slds-radio input:checked');
+			radios.should.have.length(1);
+		});
+
+		it('can deselect a row', function(done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(0);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={defaultSelection}
+					selectRows="single"
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
+			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
+			const radio = selectedRow.querySelectorAll('.slds-radio input')[0];
+			Simulate.change(radio, { target: { checked: false } });
+		});
+
+		it('can select a row', function(done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(1);
+				selection[0].id.should.equal('5GJOOOPWU7');
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={defaultSelection}
+					selectRows="single"
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const secondRow = getRow(this.dom, 2);
+			const radio = secondRow.querySelectorAll('.slds-radio input')[0];
+
+			Simulate.change(radio, { target: { checked: true } });
 		});
 	});
 

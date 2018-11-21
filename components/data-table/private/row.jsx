@@ -69,11 +69,17 @@ class DataTableRow extends React.Component {
 
 	// ### Render
 	render() {
+		const ariaProps = {};
 		const isSelected = this.isSelected();
+
+		if (this.props.canSelectRows) {
+			ariaProps['aria-selected'] = isSelected ? 'true' : 'false';
+		}
 
 		// i18n
 		return (
 			<tr
+				{...ariaProps}
 				className={classNames({
 					'slds-hint-parent': this.props.rowActions,
 					'slds-is-selected': this.props.canSelectRows && isSelected,
@@ -83,7 +89,11 @@ class DataTableRow extends React.Component {
 					<td
 						role={this.props.fixedLayout ? 'gridcell' : null}
 						className="slds-text-align_right"
-						data-label={this.props.canSelectRows === 'single' ? `${this.props.tableId}-SelectRow` : 'Select Row'}
+						data-label={
+							this.props.canSelectRows === 'single'
+								? `${this.props.tableId}-SelectRow`
+								: 'Select Row'
+						}
 						style={{ width: '3.25rem' }}
 					>
 						{this.props.canSelectRows === 'single' ? (

@@ -83,13 +83,13 @@ const defaultProps = {
  * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
  */
 class Radio extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.generatedId = shortid.generate();
 		this.preventDuplicateChangeEvent = false;
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
@@ -98,7 +98,7 @@ class Radio extends React.Component {
 			this.preventDuplicateChangeEvent = Boolean(preventDuplicateChangeEvent);
 			if (this.props.onChange) {
 				this.props.onChange(event, {
-					checked: !this.props.checked
+					checked: !this.props.checked,
 				});
 			}
 		} else {
@@ -144,12 +144,15 @@ class Radio extends React.Component {
 
 		return (
 			<span
-				className={classNames({
-					'slds-radio':
-						this.props.variant === 'base' || this.props.variant === 'swatch',
-					'slds-button slds-radio_button':
-						this.props.variant === 'button-group',
-				}, this.props.className)}
+				className={classNames(
+					{
+						'slds-radio':
+							this.props.variant === 'base' || this.props.variant === 'swatch',
+						'slds-button slds-radio_button':
+							this.props.variant === 'button-group',
+					},
+					this.props.className
+				)}
 			>
 				<input
 					type="radio"
@@ -169,11 +172,15 @@ class Radio extends React.Component {
 					onKeyPress={(event) => {
 						const charCode = event.charCode;
 
-						if (charCode === KEYS.SPACE && this.props.checked && this.props.deselectable) {
+						if (
+							charCode === KEYS.SPACE &&
+							this.props.checked &&
+							this.props.deselectable
+						) {
 							this.handleChange(event, true);
 						} else if (
-							charCode === KEYS.ENTER &&
-							(this.props.checked && this.props.deselectable) ||
+							(charCode === KEYS.ENTER &&
+								(this.props.checked && this.props.deselectable)) ||
 							!this.props.checked
 						) {
 							this.handleChange(event);
