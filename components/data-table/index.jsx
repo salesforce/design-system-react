@@ -211,17 +211,14 @@ class DataTable extends React.Component {
 		if (typeof this.props.onChange === 'function') {
 			let selection;
 
-			if (this.props.selectRows === 'single') {
-				if (selected) {
-					selection = [item];
-				} else {
-					selection = reject(this.props.selection, item);
-				}
-			} else if (selected) {
-					selection = [...this.props.selection, item];
-				} else {
-					selection = reject(this.props.selection, item);
-				}
+			if (selected) {
+				selection =
+					this.props.selectRows === 'single'
+						? [item]
+						: [...this.props.selection, item];
+			} else {
+				selection = reject(this.props.selection, item);
+			}
 
 			this.props.onChange(selection, e);
 		}
@@ -230,17 +227,14 @@ class DataTable extends React.Component {
 		if (typeof this.props.onRowChange === 'function') {
 			let selection;
 
-			if (this.props.selectRows === 'single') {
-				if (selected) {
-					selection = [item];
-				} else {
-					selection = reject(this.props.selection, item);
-				}
-			} else if (selected) {
-					selection = [...this.props.selection, item];
-				} else {
-					selection = reject(this.props.selection, item);
-				}
+			if (selected) {
+				selection =
+					this.props.selectRows === 'single'
+						? [item]
+						: [...this.props.selection, item];
+			} else {
+				selection = reject(this.props.selection, item);
+			}
 
 			this.props.onRowChange(e, { selection });
 		}

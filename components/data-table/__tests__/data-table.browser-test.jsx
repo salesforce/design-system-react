@@ -19,7 +19,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe.only('DataTable: ', function() {
+describe('DataTable: ', function() {
 	const items = [
 		{
 			id: '8IKZHZZV80',
