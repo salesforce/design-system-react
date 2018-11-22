@@ -42,31 +42,30 @@ const propTypes = {
 	/**
 	 * Accepts an array of pill item objects.
 	 */
-	options: PropTypes.arrayOf(PropTypes.shape({
-		avatar: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.shape({
-				imgSrc: PropTypes.string,
-				title: PropTypes.string,
-				variant: PropTypes.string,
-			}),
-		]),
-		bare: PropTypes.bool,
-		error: PropTypes.bool,
-		icon: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.shape({
-				category: PropTypes.string,
-				name: PropTypes.string,
-			}),
-		]),
-		id: PropTypes.string,
-		label: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.string,
-		]),
-		title: PropTypes.string,
-	})),
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			avatar: PropTypes.oneOfType([
+				PropTypes.node,
+				PropTypes.shape({
+					imgSrc: PropTypes.string,
+					title: PropTypes.string,
+					variant: PropTypes.string,
+				}),
+			]),
+			bare: PropTypes.bool,
+			error: PropTypes.bool,
+			icon: PropTypes.oneOfType([
+				PropTypes.node,
+				PropTypes.shape({
+					category: PropTypes.string,
+					name: PropTypes.string,
+				}),
+			]),
+			id: PropTypes.string,
+			label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+			title: PropTypes.string,
+		})
+	),
 	/**
 	 * Function called when a pill is clicked
 	 */
@@ -107,8 +106,8 @@ class PillContainer extends React.Component {
 	componentDidUpdate() {
 		if (
 			(this.props.options &&
-			this.props.options.length > 0 &&
-			!this.props.options[this.state.activeSelectedOptionIndex]) ||
+				this.props.options.length > 0 &&
+				!this.props.options[this.state.activeSelectedOptionIndex]) ||
 			this.preserveFocus
 		) {
 			this.resetActiveSelectedOption();
@@ -222,7 +221,7 @@ class PillContainer extends React.Component {
 		this.setState({
 			activeSelectedOption: options[activeSelectedOptionIndex] || undefined,
 			activeSelectedOptionIndex,
-			listboxHasFocus: !!(options[activeSelectedOptionIndex]),
+			listboxHasFocus: !!options[activeSelectedOptionIndex],
 		});
 	};
 

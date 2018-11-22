@@ -1191,7 +1191,7 @@ exports[`Base Selected DOM Snapshot 1`] = `
               className="slds-pill__icon_container"
             >
               <span
-                className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                className="slds-icon_container slds-icon-standard-account"
               >
                 <svg
                   aria-hidden="true"
@@ -1257,7 +1257,7 @@ exports[`Base Selected HTML Snapshot 1`] = `
     </div>
     <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
           </span><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
           </span>
         </li>
@@ -1385,7 +1385,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -1451,7 +1451,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -1554,11 +1554,11 @@ exports[`Inline Multiple Selection Selected HTML Snapshot 1`] = `
     <div class=\\"slds-combobox_container slds-has-inline-listbox\\">
       <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
         <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
             </span><span class=\\"slds-pill__label\\" title=\\"Acme\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
             </span>
           </li>
-          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
             </span><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
             </span>
           </li>

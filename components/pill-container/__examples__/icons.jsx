@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PillContainer from '~/components/pill-container';
 
@@ -12,82 +13,63 @@ class Example extends React.Component {
 		this.state = {
 			options: [
 				{
-					icon: {
-						category: 'standard',
-						name: 'account',
-					},
+					icon: <Icon category="standard" name="account" title="Account" />,
 					id: '1',
 					label: 'Pill Label 1',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'standard',
-						name: 'case',
-					},
+					icon: <Icon category="standard" name="case" title="Case" />,
 					id: '2',
 					label: 'Pill Label 2',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'utility',
-						name: 'retweet',
-					},
+					icon: <Icon category="utility" name="retweet" title="Retweet" />,
 					id: '3',
 					label: 'Pill Label 3',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'standard',
-						name: 'solution',
-					},
+					icon: <Icon category="standard" name="solution" title="Solution" />,
 					id: '4',
 					label: 'Pill Label 4',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'standard',
-						name: 'custom_notification',
-					},
+					icon: (
+						<Icon
+							category="standard"
+							name="custom_notification"
+							title="Custom Notification"
+						/>
+					),
 					id: '5',
 					label: 'Pill Label 5',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'standard',
-						name: 'email',
-					},
+					icon: <Icon category="standard" name="email" title="Email" />,
 					id: '6',
 					label: 'Pill Label 6',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'standard',
-						name: 'endorsement',
-					},
+					icon: (
+						<Icon category="standard" name="endorsement" title="Endorsement" />
+					),
 					id: '7',
 					label: 'Pill Label 7',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'standard',
-						name: 'recent',
-					},
+					icon: <Icon category="standard" name="recent" title="Recent" />,
 					id: '8',
 					label: 'Pill Label 8',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					icon: {
-						category: 'custom',
-						name: 'custom31',
-					},
+					icon: <Icon category="custom" name="custom31" title="Custom 31" />,
 					id: '9',
 					label: 'Pill Label 9',
 					title: 'Full pill label verbiage mirrored here',

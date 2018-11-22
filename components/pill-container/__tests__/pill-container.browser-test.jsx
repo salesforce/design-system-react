@@ -1,6 +1,8 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
+import Avatar from '~/components/avatar';
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import SLDSPillContainer from '~/components/pill-container';
 import { mountComponent, unmountComponent } from '~/tests/enzyme-helpers';
@@ -9,9 +11,9 @@ import { expect } from 'chai';
 const { Simulate } = TestUtils;
 
 describe('SLDSPillContainer', () => {
-	describe('Pill Container', () => {
+	describe('Base', () => {
 		let clickData = {};
-		let removeData = {};
+		let requestRemoveData = {};
 
 		beforeEach(
 			mountComponent(
@@ -24,22 +26,54 @@ describe('SLDSPillContainer', () => {
 								title: 'Full pill label verbiage mirrored here',
 							},
 							{
+								icon: (
+									<Icon category="standard" name="account" title="Account" />
+								),
+								id: '2',
+								label: 'Pill Label 2',
+								title: 'Full pill label verbiage mirrored here',
+							},
+							{
 								icon: {
 									category: 'standard',
 									name: 'account',
 								},
-								id: '2',
-								label: 'Pill Label 2',
+								id: '3',
+								label: 'Pill Label 3',
+								title: 'Full pill label verbiage mirrored here',
+							},
+							{
+								avatar: (
+									<Avatar
+										imgSrc="https://lightningdesignsystem.com/assets/images/avatar1.jpg"
+										title="User 4"
+										variant="user"
+									/>
+								),
+								id: '4',
+								label: 'Pill Label 4',
 								title: 'Full pill label verbiage mirrored here',
 							},
 							{
 								avatar: {
 									imgSrc:
 										'https://lightningdesignsystem.com/assets/images/avatar1.jpg',
-									title: 'User 3',
+									title: 'User 5',
 								},
-								id: '3',
-								label: 'Pill Label 3',
+								id: '5',
+								label: 'Pill Label 5',
+								title: 'Full pill label verbiage mirrored here',
+							},
+							{
+								bare: true,
+								id: '6',
+								label: 'Pill Label 6',
+								title: 'Full pill label verbiage mirrored here',
+							},
+							{
+								error: true,
+								id: '7',
+								label: 'Pill Label 7',
 								title: 'Full pill label verbiage mirrored here',
 							},
 						]}
@@ -47,7 +81,7 @@ describe('SLDSPillContainer', () => {
 							clickData = data;
 						}}
 						onRequestRemovePill={(event, data) => {
-							removeData = data;
+							requestRemoveData = data;
 						}}
 					/>
 				</IconSettings>
@@ -56,7 +90,7 @@ describe('SLDSPillContainer', () => {
 
 		afterEach(unmountComponent);
 
-		it('Renders the Pill Container correctly', function() {
+		it('Renders the base Pill Container correctly', function() {
 			let currentPill = 1;
 
 			expect(this.wrapper.find('.slds-pill_container').length).to.eql(1);
@@ -71,17 +105,21 @@ describe('SLDSPillContainer', () => {
 				expect(clickData.option.id).to.eql(`${currentPill}`);
 
 				Simulate.click(pill.find('.slds-pill__remove').getDOMNode());
-				expect(removeData.option.id).to.eql(`${currentPill}`);
+				expect(requestRemoveData.option.id).to.eql(`${currentPill}`);
 
-				if (currentPill === 2) {
+				if (currentPill === 2 || currentPill === 3) {
 					expect(
 						pill.find('.slds-icon_container.slds-icon-standard-account').length
 					).to.eql(1);
-				} else if (currentPill === 3) {
+				} else if (currentPill === 4 || currentPill === 5) {
 					expect(
 						pill.find('.slds-avatar.slds-avatar_circle.slds-avatar_medium')
 							.length
 					).to.eql(1);
+				} else if (currentPill === 6) {
+					expect(pill.find('.slds-pill_bare').length).to.eql(1);
+				} else if (currentPill === 7) {
+					expect(pill.find('.slds-has-error').length).to.eql(1);
 				}
 
 				currentPill++;

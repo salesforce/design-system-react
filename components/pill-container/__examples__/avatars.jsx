@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 import PillContainer from '~/components/pill-container';
 
@@ -12,21 +13,25 @@ class Example extends React.Component {
 		this.state = {
 			options: [
 				{
-					avatar: {
-						imgSrc:
-							'https://lightningdesignsystem.com/assets/images/avatar1.jpg',
-						title: 'User 1',
-					},
+					avatar: (
+						<Avatar
+							imgSrc="https://lightningdesignsystem.com/assets/images/avatar1.jpg"
+							title="User 1"
+							variant="user"
+						/>
+					),
 					id: '1',
 					label: 'Pill Label 1',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
-					avatar: {
-						imgSrc:
-							'https://lightningdesignsystem.com/assets/images/avatar2.jpg',
-						title: 'User 2',
-					},
+					avatar: (
+						<Avatar
+							imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+							title="User 2"
+							variant="user"
+						/>
+					),
 					id: '2',
 					label: 'Pill Label 2',
 					title: 'Full pill label verbiage mirrored here',

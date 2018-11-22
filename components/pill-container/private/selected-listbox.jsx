@@ -109,13 +109,8 @@ const getAvatar = (option) => {
 	let avatar = null;
 
 	if (avatarObject) {
-		if (isReactComponent(avatarObject)) {
-			avatar = React.cloneElement(avatarObject, {
-				containerClassName: 'slds-pill__icon_container',
-			});
-		} else if (avatarObject instanceof HTMLElement && avatarObject.className) {
+		if (isReactComponent(avatarObject) || avatarObject instanceof HTMLElement) {
 			avatar = avatarObject;
-			avatar.className = `${avatar.className} slds-pill__icon_container`;
 		} else if (avatarObject.imgSrc) {
 			avatar = (
 				<Avatar
@@ -135,13 +130,8 @@ const getIcon = (option) => {
 	let icon = null;
 
 	if (iconObject) {
-		if (isReactComponent(iconObject)) {
-			icon = React.cloneElement(iconObject, {
-				containerClassName: 'slds-pill__icon_container',
-			});
-		} else if (iconObject instanceof HTMLElement && iconObject.className) {
+		if (isReactComponent(iconObject) || iconObject instanceof HTMLElement) {
 			icon = iconObject;
-			icon.className = `${icon.className} slds-pill__icon_container`;
 		} else if (iconObject.category && iconObject.name) {
 			icon = (
 				<Icon
@@ -160,10 +150,13 @@ const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
 			className={
-				classNames({
-					'slds-pill_container': props.isPillContainer,
-					'slds-pill_container--bare': props.isBare,
-				}, props.className) || undefined
+				classNames(
+					{
+						'slds-pill_container': props.isPillContainer,
+						'slds-pill_container_bare': props.isBare,
+					},
+					props.className
+				) || undefined
 			}
 			id={props.id}
 			ref={(ref) => {
