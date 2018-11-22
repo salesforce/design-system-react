@@ -40,9 +40,9 @@ const propTypes = {
 	 */
 	onClickPill: PropTypes.func,
 	/**
-	 * Function called when a pill is 'removed' via the delete key or 'X' icon click
+	 * Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click
 	 */
-	onRemovePill: PropTypes.func,
+	onRequestRemovePill: PropTypes.func,
 };
 
 /**
@@ -61,14 +61,18 @@ class PillContainer extends React.Component {
 		};
 
 		this.activeSelectedOptionRef = null;
+		this.preserveFocus = false;
 	}
 
 	componentDidUpdate() {
 		if (
-			this.props.options &&
-			!this.props.options[this.state.activeSelectedOptionIndex]
+			(this.props.options &&
+			this.props.options.length > 0 &&
+			!this.props.options[this.state.activeSelectedOptionIndex]) ||
+			this.preserveFocus
 		) {
 			this.resetActiveSelectedOption();
+			this.preserveFocus = false;
 		}
 	}
 
@@ -85,13 +89,18 @@ class PillContainer extends React.Component {
 	};
 
 	handleBlurPill = () => {
-		this.setState({ listboxHasFocus: false });
+		if (!this.preserveFocus) {
+			this.setState({ listboxHasFocus: false });
+		} else {
+			this.preserveFocus = false;
+		}
 	};
 
 	handleClickPill = (event, data) => {
 		this.setState({
 			activeSelectedOption: data.option,
 			activeSelectedOptionIndex: data.index,
+			listboxHasFocus: true,
 		});
 		if (this.props.onClickPill) {
 			this.props.onClickPill(event, {
@@ -137,6 +146,7 @@ class PillContainer extends React.Component {
 				};
 			}
 
+			this.preserveFocus = true;
 			return newState;
 		});
 	};
@@ -149,8 +159,9 @@ class PillContainer extends React.Component {
 	};
 
 	handleRequestRemove = (event, data) => {
-		if (this.props.onRemovePill) {
-			this.props.onRemovePill(event, {
+		if (this.props.onRequestRemovePill) {
+			this.preserveFocus = true;
+			this.props.onRequestRemovePill(event, {
 				index: data.index,
 				option: data.option,
 			});
@@ -171,6 +182,7 @@ class PillContainer extends React.Component {
 		this.setState({
 			activeSelectedOption: options[activeSelectedOptionIndex] || undefined,
 			activeSelectedOptionIndex,
+			listboxHasFocus: !!(options[activeSelectedOptionIndex]),
 		});
 	};
 

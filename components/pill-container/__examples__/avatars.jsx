@@ -41,13 +41,13 @@ class Example extends React.Component {
 		}
 	};
 
-	onRemovePill = (event, data) => {
+	onRequestRemovePill = (event, data) => {
 		const options = this.state.options.filter(
 			(option) => option.id !== data.option.id
 		);
 		this.setState({ options });
 		if (window && window.console && window.console.log) {
-			console.log('onRemovePill: ', event, data);
+			console.log('onRequestRemovePill: ', event, data);
 		}
 	};
 
@@ -62,7 +62,7 @@ class Example extends React.Component {
 						<PillContainer
 							options={this.state.options}
 							onClickPill={this.onClickPill}
-							onRemovePill={this.onRemovePill}
+							onRequestRemovePill={this.onRequestRemovePill}
 						/>
 					</div>
 				</div>

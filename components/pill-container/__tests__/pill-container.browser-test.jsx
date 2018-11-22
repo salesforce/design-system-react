@@ -46,7 +46,7 @@ describe('SLDSPillContainer', () => {
 						onClickPill={(event, data) => {
 							clickData = data;
 						}}
-						onRemovePill={(event, data) => {
+						onRequestRemovePill={(event, data) => {
 							removeData = data;
 						}}
 					/>
