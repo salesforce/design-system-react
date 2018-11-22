@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ListboxOfPillOptions from '~/components/pill/listbox-of-pill-options';
 import IconSettings from '~/components/icon-settings';
+import PillContainer from '~/components/pill-container';
 
 class Example extends React.Component {
 	static displayName = 'PillWithIconListboxExample';
@@ -120,7 +120,7 @@ class Example extends React.Component {
 						<h3 className="slds-text-heading_small">Static Examples</h3>
 					</div>
 					<div className="slds-grid slds-grid_vertical-align-start">
-						<ListboxOfPillOptions
+						<PillContainer
 							options={this.state.options}
 							onClickPill={this.onClickPill}
 							onRemovePill={this.onRemovePill}

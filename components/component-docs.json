@@ -3168,7 +3168,7 @@
                 "returns": null
             },
             {
-                "name": "handleNavigateListboxOfPills",
+                "name": "handleNavigateSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3200,7 +3200,7 @@
                 "returns": null
             },
             {
-                "name": "handlePillClickListboxOfPills",
+                "name": "handlePillClickSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3217,7 +3217,7 @@
             },
             {
                 "name": "handleRemoveSelectedOption",
-                "docblock": "Selected options with listbox of pills event methods",
+                "docblock": "Selected options with selected listbox event methods",
                 "modifiers": [],
                 "params": [
                     {
@@ -3228,7 +3228,7 @@
                     }
                 ],
                 "returns": null,
-                "description": "Selected options with listbox of pills event methods"
+                "description": "Selected options with selected listbox event methods"
             },
             {
                 "name": "handleRequestClose",
@@ -3247,7 +3247,7 @@
                 "returns": null
             },
             {
-                "name": "handleRequestFocusListboxOfPills",
+                "name": "handleRequestFocusSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [

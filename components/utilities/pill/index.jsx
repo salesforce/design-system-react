@@ -14,7 +14,7 @@ import SLDSPill from '../../../components/pill';
 
 const propTypes = {
 	/**
-	 * Pill is the active pill within a listbox of pills. This will request focus on the DOM node.
+	 * Pill is the active pill within a pill container. This will request focus on the DOM node.
 	 */
 	active: PropTypes.bool,
 	/**

@@ -23,7 +23,7 @@ import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
-import SelectedListBox from '../pill/private/selected-listbox';
+import SelectedListBox from '../pill-container/private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
@@ -609,7 +609,7 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handleNavigateListboxOfPills = (event, { direction }) => {
+	handleNavigateSelectedListbox = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
@@ -670,7 +670,7 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handlePillClickListboxOfPills = (event, { option, index }) => {
+	handlePillClickSelectedListbox = (event, { option, index }) => {
 		// this is clicking the span, not the remove button
 		this.setState({
 			activeSelectedOption: option,
@@ -680,7 +680,7 @@ class Combobox extends React.Component {
 	};
 
 	/**
-	 * Selected options with listbox of pills event methods
+	 * Selected options with selected listbox event methods
 	 */
 
 	handleRemoveSelectedOption = (event, { option, index }) => {
@@ -730,7 +730,7 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleRequestFocusListboxOfPills = (event, { ref }) => {
+	handleRequestFocusSelectedListbox = (event, { ref }) => {
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
 			this.activeSelectedOptionRef.focus();
@@ -875,10 +875,10 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				events={{
 					onBlurPill: this.handleBlurPill,
-					onClickPill: this.handlePillClickListboxOfPills,
-					onRequestFocus: this.handleRequestFocusListboxOfPills,
-					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+					onClickPill: this.handlePillClickSelectedListbox,
+					onRequestFocus: this.handleRequestFocusSelectedListbox,
+					onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+					onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 					onRequestRemove: this.handleRemoveSelectedOption,
 				}}
 				id={`${this.getId()}-selected-listbox`}
@@ -914,10 +914,10 @@ class Combobox extends React.Component {
 						assistiveText={assistiveText}
 						events={{
 							onBlurPill: this.handleBlurPill,
-							onClickPill: this.handlePillClickListboxOfPills,
-							onRequestFocus: this.handleRequestFocusListboxOfPills,
-							onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+							onClickPill: this.handlePillClickSelectedListbox,
+							onRequestFocus: this.handleRequestFocusSelectedListbox,
+							onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+							onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 							onRequestRemove: this.handleRemoveSelectedOption,
 						}}
 						id={`${this.getId()}-selected-listbox`}
@@ -1245,10 +1245,10 @@ class Combobox extends React.Component {
 					assistiveText={assistiveText}
 					events={{
 						onBlurPill: this.handleBlurPill,
-						onClickPill: this.handlePillClickListboxOfPills,
-						onRequestFocus: this.handleRequestFocusListboxOfPills,
-						onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-						onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+						onClickPill: this.handlePillClickSelectedListbox,
+						onRequestFocus: this.handleRequestFocusSelectedListbox,
+						onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+						onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 						onRequestRemove: this.handleRemoveSelectedOption,
 					}}
 					id={`${this.getId()}-selected-listbox`}

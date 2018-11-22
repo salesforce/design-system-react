@@ -1,14 +1,14 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Listbox of Pill Options Component
+// # Pill Container Component
 // Implements the [Listbox of Pill Options design pattern](https://www.lightningdesignsystem.com/components/pills/?variant=listbox-of-pill-options) in React.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SelectedListBox from '~/components/pill/private/selected-listbox';
+import SelectedListBox from '~/components/pill-container/private/selected-listbox';
 
-import { LISTBOX_OF_PILL_OPTIONS } from '../../utilities/constants';
+import { PILL_CONTAINER } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -21,7 +21,7 @@ const propTypes = {
 		removePill: PropTypes.string,
 	}),
 	/**
-	 * HTML id for Listbox of Pill Options
+	 * HTML id for Pill Container
 	 */
 	id: PropTypes.string,
 	/**
@@ -46,9 +46,9 @@ const propTypes = {
 };
 
 /**
- * A ListboxOfPillOptions is a container that holds one or more pills
+ * A PillContainer is a container that holds one or more pills
  */
-class ListboxOfPillOptions extends React.Component {
+class PillContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -101,7 +101,7 @@ class ListboxOfPillOptions extends React.Component {
 		}
 	};
 
-	handleNavigateListboxOfPills = (event, { direction }) => {
+	handleNavigatePillContainer = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };
 		this.setState((prevState) => {
 			const options = this.props.options;
@@ -141,7 +141,7 @@ class ListboxOfPillOptions extends React.Component {
 		});
 	};
 
-	handleRequestFocusListboxOfPills = (event, { ref }) => {
+	handleRequestFocusPillContainer = (event, { ref }) => {
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
 			this.activeSelectedOptionRef.focus();
@@ -186,9 +186,9 @@ class ListboxOfPillOptions extends React.Component {
 				events={{
 					onBlurPill: this.handleBlurPill,
 					onClickPill: this.handleClickPill,
-					onRequestFocus: this.handleRequestFocusListboxOfPills,
-					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+					onRequestFocus: this.handleRequestFocusPillContainer,
+					onRequestFocusOnNextPill: this.handleNavigatePillContainer,
+					onRequestFocusOnPreviousPill: this.handleNavigatePillContainer,
 					onRequestRemove: this.handleRequestRemove,
 				}}
 				id={`${this.props.id}-listbox-of-pill-options`}
@@ -202,9 +202,9 @@ class ListboxOfPillOptions extends React.Component {
 	}
 }
 
-ListboxOfPillOptions.displayName = LISTBOX_OF_PILL_OPTIONS;
+PillContainer.displayName = PILL_CONTAINER;
 
-ListboxOfPillOptions.defaultProps = {
+PillContainer.defaultProps = {
 	assistiveText: {
 		listboxLabel: 'Selected Options:',
 		removePill: 'Press delete or backspace to remove',
@@ -214,6 +214,6 @@ ListboxOfPillOptions.defaultProps = {
 	},
 };
 
-ListboxOfPillOptions.propTypes = propTypes;
+PillContainer.propTypes = propTypes;
 
-export default ListboxOfPillOptions;
+export default PillContainer;

@@ -180,6 +180,9 @@ export PageHeader from './page-header';
 export SLDSPill from './pill';
 export Pill from './pill';
 
+export SLDSPillContainer from './pill-container';
+export PillContainer from './pill-container';
+
 export SLDSPopover from './popover';
 export Popover from './popover';
 
