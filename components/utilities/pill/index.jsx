@@ -30,6 +30,11 @@ const propTypes = {
 	 * _Tested with Mocha framework._
 	 */
 	avatar: PropTypes.element,
+	/**
+	 * Applies the bare style to the component.
+	 * _Tested with Mocha framework._
+	 */
+	bare: PropTypes.bool,
 	/*
 	 * Pills are often used for selection of a type of entity such as days in a daypicker. This prop allows you to pass in data that will be passed back to the event handler.
 	 */
@@ -44,6 +49,11 @@ const propTypes = {
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
 		onRequestRemove: PropTypes.func.isRequired,
 	}),
+	/**
+	 * Applies the error style to the component.
+	 * _Tested with Mocha framework._
+	 */
+	hasError: PropTypes.bool,
 	/*
 	 * The icon next to the pill label.
 	 */
@@ -113,6 +123,8 @@ const Pill = (props) => {
 	return (
 		<SLDSPill
 			avatar={props.avatar}
+			bare={props.bare}
+			hasError={props.hasError}
 			tabIndex={props.tabIndex || '0'}
 			icon={props.icon}
 			variant="option"

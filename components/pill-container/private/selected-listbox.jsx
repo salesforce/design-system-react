@@ -32,6 +32,14 @@ const propTypes = {
 		removePill: PropTypes.string,
 		selectedListboxLabel: PropTypes.string,
 	}),
+	/**
+	 * CSS classes to be added to the top-level `div` tag.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/*
 	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
 	 */
@@ -46,6 +54,10 @@ const propTypes = {
 	 * HTML id for component main container
 	 */
 	id: PropTypes.string,
+	/**
+	 * Determines whether component renders as a bare pill container with associated styling and behavior
+	 */
+	isBare: PropTypes.bool,
 	/**
 	 * Adds inline (inside of input) styling
 	 */
@@ -75,6 +87,10 @@ const propTypes = {
 	 */
 	selection: PropTypes.array,
 	/**
+	 * Custom styles to be passed to the top-level `div` tag
+	 */
+	style: PropTypes.object,
+	/**
 	 * Requests that the active option set focus on render
 	 */
 	listboxHasFocus: PropTypes.bool,
@@ -97,6 +113,9 @@ const getAvatar = (option) => {
 			avatar = React.cloneElement(avatarObject, {
 				containerClassName: 'slds-pill__icon_container',
 			});
+		} else if (avatarObject instanceof HTMLElement && avatarObject.className) {
+			avatar = avatarObject;
+			avatar.className = `${avatar.className} slds-pill__icon_container`;
 		} else if (avatarObject.imgSrc) {
 			avatar = (
 				<Avatar
@@ -120,6 +139,9 @@ const getIcon = (option) => {
 			icon = React.cloneElement(iconObject, {
 				containerClassName: 'slds-pill__icon_container',
 			});
+		} else if (iconObject instanceof HTMLElement && iconObject.className) {
+			icon = iconObject;
+			icon.className = `${icon.className} slds-pill__icon_container`;
 		} else if (iconObject.category && iconObject.name) {
 			icon = (
 				<Icon
@@ -138,8 +160,10 @@ const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
 			className={
-				classNames({ 'slds-pill_container': props.isPillContainer }) ||
-				undefined
+				classNames({
+					'slds-pill_container': props.isPillContainer,
+					'slds-pill_container--bare': props.isBare,
+				}, props.className) || undefined
 			}
 			id={props.id}
 			ref={(ref) => {
@@ -148,6 +172,7 @@ const SelectedListBox = (props) =>
 				}
 			}}
 			role="listbox"
+			style={props.style}
 			aria-orientation="horizontal"
 		>
 			<ul
@@ -184,6 +209,8 @@ const SelectedListBox = (props) =>
 									remove: props.assistiveText.removePill,
 								}}
 								avatar={avatar}
+								bare={option.bare}
+								error={option.error}
 								events={{
 									onBlur: props.events.onBlurPill,
 									onClick: (event, data) => {
@@ -205,6 +232,7 @@ const SelectedListBox = (props) =>
 									onRequestFocus: props.events.onRequestFocus,
 								}}
 								eventData={{ option }}
+								hasError={option.error}
 								icon={icon}
 								labels={{
 									label: option.label,

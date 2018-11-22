@@ -21,7 +21,15 @@ const propTypes = {
 		removePill: PropTypes.string,
 	}),
 	/**
-	 * HTML id for Pill Container
+	 * CSS classes to be added to the pill container
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * HTML id for pill container
 	 */
 	id: PropTypes.string,
 	/**
@@ -34,7 +42,31 @@ const propTypes = {
 	/**
 	 * Accepts an array of pill item objects.
 	 */
-	options: PropTypes.array,
+	options: PropTypes.arrayOf(PropTypes.shape({
+		avatar: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.shape({
+				imgSrc: PropTypes.string,
+				title: PropTypes.string,
+				variant: PropTypes.string,
+			}),
+		]),
+		bare: PropTypes.bool,
+		error: PropTypes.bool,
+		icon: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.shape({
+				category: PropTypes.string,
+				name: PropTypes.string,
+			}),
+		]),
+		id: PropTypes.string,
+		label: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string,
+		]),
+		title: PropTypes.string,
+	})),
 	/**
 	 * Function called when a pill is clicked
 	 */
@@ -43,6 +75,14 @@ const propTypes = {
 	 * Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click
 	 */
 	onRequestRemovePill: PropTypes.func,
+	/**
+	 * Custom styles to be passed to the pill container
+	 */
+	style: PropTypes.object,
+	/**
+	 * Specifies the type of pill container. Can be `base` or `bare`
+	 */
+	variant: PropTypes.oneOf(['base', 'bare']),
 };
 
 /**
@@ -195,6 +235,7 @@ class PillContainer extends React.Component {
 					removePill: this.props.assistiveText.removePill,
 					selectedListboxLabel: this.props.assistiveText.listboxLabel,
 				}}
+				className={this.props.className}
 				events={{
 					onBlurPill: this.handleBlurPill,
 					onClickPill: this.handleClickPill,
@@ -204,11 +245,13 @@ class PillContainer extends React.Component {
 					onRequestRemove: this.handleRequestRemove,
 				}}
 				id={`${this.props.id}-listbox-of-pill-options`}
+				isBare={this.props.variant === 'bare'}
 				isPillContainer
 				labels={this.props.labels}
 				listboxHasFocus={this.state.listboxHasFocus}
 				renderAtSelectionLength={0}
 				selection={this.props.options}
+				style={this.props.style}
 			/>
 		);
 	}

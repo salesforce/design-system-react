@@ -12,14 +12,14 @@ class Example extends React.Component {
 		this.state = {
 			options: [
 				{
+					bare: true,
 					id: '1',
-					isBare: true,
 					label: 'Pill Label 1',
 					title: 'Full pill label verbiage mirrored here',
 				},
 				{
+					bare: true,
 					id: '2',
-					isBare: true,
 					label: 'Pill Label 2',
 					title: 'Full pill label verbiage mirrored here',
 				},
@@ -55,6 +55,7 @@ class Example extends React.Component {
 							options={this.state.options}
 							onClickPill={this.onClickPill}
 							onRequestRemovePill={this.onRequestRemovePill}
+							variant="bare"
 						/>
 					</div>
 				</div>
