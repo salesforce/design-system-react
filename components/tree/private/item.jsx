@@ -37,13 +37,13 @@ const handleSelect = ({ event, props, fromFocus }) => {
 
 const findNextNode = (flattenedNodes, node) => {
 	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
-	const index = findIndex(nodes, (item) => item.id === node.id);
+	const index = findIndex(nodes, { id: node.id });
 	return flattenedNodes[(index + 1) % flattenedNodes.length];
 };
 
 const findPreviousNode = (flattenedNodes, node) => {
 	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
-	let index = findIndex(nodes, (item) => item.id === node.id) - 1;
+	let index = findIndex(nodes, { id: node.id }) - 1;
 	if (index < 0) {
 		index += flattenedNodes.length;
 	}
@@ -84,7 +84,7 @@ const handleKeyDownUp = (event, props) => {
 
 const handleKeyDownLeft = (event, props) => {
 	const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
-	const index = findIndex(nodes, (item) => item.id === props.parent.id);
+	const index = findIndex(nodes, { id: props.parent.id });
 	if (index !== -1) {
 		props.onExpand({
 			event,
