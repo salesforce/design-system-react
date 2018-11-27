@@ -4023,11 +4023,11 @@
                             "name": "enum",
                             "value": [
                                 {
-                                    "value": "'multiple'",
+                                    "value": "'checkbox'",
                                     "computed": false
                                 },
                                 {
-                                    "value": "'single'",
+                                    "value": "'radio'",
                                     "computed": false
                                 }
                             ]
@@ -4035,7 +4035,7 @@
                     ]
                 },
                 "required": false,
-                "description": "`multiple` or `single` selection of rows. This used to be a boolean. `selectRows` without text will result in `multiple` row selection in order to be backward compatible."
+                "description": "Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility"
             },
             "stacked": {
                 "type": {

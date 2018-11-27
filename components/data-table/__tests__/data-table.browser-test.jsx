@@ -143,7 +143,7 @@ describe('DataTable: ', function() {
 			);
 		});
 
-		it('has checkboxes when selectRows is true or "multiple"', function() {
+		it('has checkboxes when selectRows is true or "checkbox"', function() {
 			let checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(7);
 			removeTable.call(this);
@@ -160,7 +160,7 @@ describe('DataTable: ', function() {
 			removeTable.call(this);
 
 			renderTable(
-				<DataTable {...defaultProps} selectRows="multiple">
+				<DataTable {...defaultProps} selectRows="checkbox">
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
@@ -170,13 +170,13 @@ describe('DataTable: ', function() {
 			checkboxes.should.have.length(7);
 		});
 
-		it('has radios only when selectRows is "single"', function() {
+		it('has radios only when selectRows is "radio"', function() {
 			const checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(7);
 			removeTable.call(this);
 
 			renderTable(
-				<DataTable {...defaultProps} selectRows="single">
+				<DataTable {...defaultProps} selectRows="radio">
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
@@ -187,7 +187,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('Selectable - Multiple', function() {
+	describe('Selectable - Checkbox', function() {
 		const defaultSelection = [
 			{
 				id: '8IKZHZZV80',
@@ -311,7 +311,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('Selectable - Single', function() {
+	describe('Selectable - Radio', function() {
 		const defaultSelection = [
 			{
 				id: '8IKZHZZV80',
@@ -328,7 +328,7 @@ describe('DataTable: ', function() {
 				<DataTable
 					{...defaultProps}
 					selection={defaultSelection}
-					selectRows="single"
+					selectRows="radio"
 				>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
@@ -343,31 +343,6 @@ describe('DataTable: ', function() {
 			radios.should.have.length(1);
 		});
 
-		it('can deselect a row', function(done) {
-			this.onRowChange = (event, { selection }) => {
-				selection.should.have.length(0);
-				done();
-			};
-
-			renderTable(
-				<DataTable
-					{...defaultProps}
-					selection={defaultSelection}
-					selectRows="single"
-					onRowChange={this.onRowChange}
-				>
-					{columns.map((columnProps) => (
-						<DataTableColumn {...columnProps} key={columnProps.property} />
-					))}
-				</DataTable>
-			).call(this);
-
-			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
-			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
-			const radio = selectedRow.querySelectorAll('.slds-radio input')[0];
-			Simulate.change(radio, { target: { checked: false } });
-		});
-
 		it('can select a row', function(done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(1);
@@ -379,7 +354,7 @@ describe('DataTable: ', function() {
 				<DataTable
 					{...defaultProps}
 					selection={defaultSelection}
-					selectRows="single"
+					selectRows="radio"
 					onRowChange={this.onRowChange}
 				>
 					{columns.map((columnProps) => (

@@ -128,7 +128,7 @@ class Example extends React.Component {
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
-						selectRows="single"
+						selectRows="radio"
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}

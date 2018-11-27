@@ -42,7 +42,7 @@ class DataTableRow extends React.Component {
 		}),
 		canSelectRows: PropTypes.oneOfType([
 			PropTypes.bool,
-			PropTypes.oneOf(['multiple', 'single']),
+			PropTypes.oneOf(['checkbox', 'radio']),
 		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
@@ -90,20 +90,19 @@ class DataTableRow extends React.Component {
 						role={this.props.fixedLayout ? 'gridcell' : null}
 						className="slds-text-align_right"
 						data-label={
-							this.props.canSelectRows === 'single'
+							this.props.canSelectRows === 'radio'
 								? `${this.props.tableId}-SelectRow`
 								: 'Select Row'
 						}
 						style={{ width: '3.25rem' }}
 					>
-						{this.props.canSelectRows === 'single' ? (
+						{this.props.canSelectRows === 'radio' ? (
 							<Radio
 								assistiveText={{
 									label: this.props.assistiveText.selectRow,
 								}}
 								checked={isSelected}
 								className="slds-m-right_x-small"
-								deselectable
 								id={`${this.props.id}-SelectRow`}
 								label=""
 								name={`${this.props.tableId}-SelectRow`}

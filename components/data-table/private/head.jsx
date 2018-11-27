@@ -34,7 +34,7 @@ class DataTableHead extends React.Component {
 		indeterminateSelected: PropTypes.bool,
 		canSelectRows: PropTypes.oneOfType([
 			PropTypes.bool,
-			PropTypes.oneOf(['multiple', 'single']),
+			PropTypes.oneOf(['checkbox', 'radio']),
 		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
@@ -61,7 +61,7 @@ class DataTableHead extends React.Component {
 							scope="col"
 							style={{ width: '3.25rem' }}
 						>
-							{this.props.canSelectRows !== 'single' ? (
+							{this.props.canSelectRows !== 'radio' ? (
 								<div className="slds-th__action slds-th__action_form">
 									<Checkbox
 										assistiveText={{

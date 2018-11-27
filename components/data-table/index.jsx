@@ -147,11 +147,11 @@ class DataTable extends React.Component {
 		 */
 		selection: PropTypes.array,
 		/**
-		 * `multiple` or `single` selection of rows. This used to be a boolean. `selectRows` without text will result in `multiple` row selection in order to be backward compatible.
+		 * Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility
 		 */
 		selectRows: PropTypes.oneOfType([
 			PropTypes.bool,
-			PropTypes.oneOf(['multiple', 'single']),
+			PropTypes.oneOf(['checkbox', 'radio']),
 		]),
 		/**
 		 * A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.
@@ -213,7 +213,7 @@ class DataTable extends React.Component {
 
 			if (selected) {
 				selection =
-					this.props.selectRows === 'single'
+					this.props.selectRows === 'radio'
 						? [item]
 						: [...this.props.selection, item];
 			} else {
@@ -229,7 +229,7 @@ class DataTable extends React.Component {
 
 			if (selected) {
 				selection =
-					this.props.selectRows === 'single'
+					this.props.selectRows === 'radio'
 						? [item]
 						: [...this.props.selection, item];
 			} else {
@@ -305,7 +305,7 @@ class DataTable extends React.Component {
 			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
 		}
 
-		if (this.props.selectRows && this.props.selectRows !== 'single') {
+		if (this.props.selectRows && this.props.selectRows !== 'radio') {
 			ariaProps['aria-multiselectable'] = 'true';
 		}
 
