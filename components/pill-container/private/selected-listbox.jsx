@@ -41,10 +41,11 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/*
-	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 * Callbacks for various pill events such as click, focus, etc
 	 */
 	events: PropTypes.shape({
 		onClickPill: PropTypes.func.isRequired,
+		onPillFocus: PropTypes.func.isRequired,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
@@ -55,7 +56,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Determines whether component renders as a bare pill container with associated styling and behavior
+	 * Determines whether component renders as a bare pill container with associated styling for child pills
 	 */
 	isBare: PropTypes.bool,
 	/**
@@ -153,7 +154,6 @@ const SelectedListBox = (props) =>
 				classNames(
 					{
 						'slds-pill_container': props.isPillContainer,
-						'slds-pill_container_bare': props.isBare,
 					},
 					props.className
 				) || undefined
@@ -178,15 +178,6 @@ const SelectedListBox = (props) =>
 				aria-label={props.assistiveText.selectedListboxLabel}
 			>
 				{props.selection.map((option, renderIndex) => {
-					const setActiveBasedOnStateFromParent =
-						renderIndex === props.activeOptionIndex;
-					const listboxRenderedForFirstTime =
-						(props.activeOptionIndex === -1 && renderIndex === 0) ||
-						(props.variant === 'readonly' &&
-							props.selection.length !== 1 &&
-							renderIndex === 0);
-					const active =
-						setActiveBasedOnStateFromParent || listboxRenderedForFirstTime;
 					const icon = getIcon(option);
 					const avatar = !icon ? getAvatar(option) : null;
 
@@ -197,12 +188,15 @@ const SelectedListBox = (props) =>
 							key={`${props.id}-list-item-${option.id}`}
 						>
 							<Pill
-								active={active}
+								active={
+									renderIndex === props.activeOptionIndex &&
+									props.listboxHasFocus
+								}
 								assistiveText={{
 									remove: props.assistiveText.removePill,
 								}}
 								avatar={avatar}
-								bare={option.bare}
+								bare={option.bare || props.isBare}
 								error={option.error}
 								events={{
 									onBlur: props.events.onBlurPill,
@@ -212,6 +206,7 @@ const SelectedListBox = (props) =>
 											index: renderIndex,
 										});
 									},
+									onFocus: props.events.onPillFocus,
 									onRequestFocusOnNextPill:
 										props.events.onRequestFocusOnNextPill,
 									onRequestFocusOnPreviousPill:
@@ -232,7 +227,7 @@ const SelectedListBox = (props) =>
 									removeTitle: props.labels.removePillTitle,
 								}}
 								requestFocus={props.listboxHasFocus}
-								tabIndex={active ? 0 : -1}
+								tabIndex={renderIndex === props.activeOptionIndex ? 0 : -1}
 							/>
 						</li>
 					);

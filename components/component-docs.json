@@ -3216,6 +3216,13 @@
                 "returns": null
             },
             {
+                "name": "handlePillFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleRemoveSelectedOption",
                 "docblock": "Selected options with selected listbox event methods",
                 "modifiers": [],

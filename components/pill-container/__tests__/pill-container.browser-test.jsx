@@ -7,8 +7,65 @@ import IconSettings from '~/components/icon-settings';
 import SLDSPillContainer from '~/components/pill-container';
 import { mountComponent, unmountComponent } from '~/tests/enzyme-helpers';
 import { expect } from 'chai';
+import { keyObjects } from '../../../utilities/key-code';
 
 const { Simulate } = TestUtils;
+
+const options = [
+	{
+		id: '1',
+		label: 'Pill Label 1',
+		title: 'Full pill label verbiage mirrored here',
+	},
+	{
+		icon: <Icon category="standard" name="account" title="Account" />,
+		id: '2',
+		label: 'Pill Label 2',
+		title: 'Full pill label verbiage mirrored here',
+	},
+	{
+		icon: {
+			category: 'standard',
+			name: 'account',
+		},
+		id: '3',
+		label: 'Pill Label 3',
+		title: 'Full pill label verbiage mirrored here',
+	},
+	{
+		avatar: (
+			<Avatar
+				imgSrc="https://lightningdesignsystem.com/assets/images/avatar1.jpg"
+				title="User 4"
+				variant="user"
+			/>
+		),
+		id: '4',
+		label: 'Pill Label 4',
+		title: 'Full pill label verbiage mirrored here',
+	},
+	{
+		avatar: {
+			imgSrc: 'https://lightningdesignsystem.com/assets/images/avatar1.jpg',
+			title: 'User 5',
+		},
+		id: '5',
+		label: 'Pill Label 5',
+		title: 'Full pill label verbiage mirrored here',
+	},
+	{
+		bare: true,
+		id: '6',
+		label: 'Pill Label 6',
+		title: 'Full pill label verbiage mirrored here',
+	},
+	{
+		error: true,
+		id: '7',
+		label: 'Pill Label 7',
+		title: 'Full pill label verbiage mirrored here',
+	},
+];
 
 describe('SLDSPillContainer', () => {
 	describe('Base', () => {
@@ -19,64 +76,7 @@ describe('SLDSPillContainer', () => {
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSPillContainer
-						options={[
-							{
-								id: '1',
-								label: 'Pill Label 1',
-								title: 'Full pill label verbiage mirrored here',
-							},
-							{
-								icon: (
-									<Icon category="standard" name="account" title="Account" />
-								),
-								id: '2',
-								label: 'Pill Label 2',
-								title: 'Full pill label verbiage mirrored here',
-							},
-							{
-								icon: {
-									category: 'standard',
-									name: 'account',
-								},
-								id: '3',
-								label: 'Pill Label 3',
-								title: 'Full pill label verbiage mirrored here',
-							},
-							{
-								avatar: (
-									<Avatar
-										imgSrc="https://lightningdesignsystem.com/assets/images/avatar1.jpg"
-										title="User 4"
-										variant="user"
-									/>
-								),
-								id: '4',
-								label: 'Pill Label 4',
-								title: 'Full pill label verbiage mirrored here',
-							},
-							{
-								avatar: {
-									imgSrc:
-										'https://lightningdesignsystem.com/assets/images/avatar1.jpg',
-									title: 'User 5',
-								},
-								id: '5',
-								label: 'Pill Label 5',
-								title: 'Full pill label verbiage mirrored here',
-							},
-							{
-								bare: true,
-								id: '6',
-								label: 'Pill Label 6',
-								title: 'Full pill label verbiage mirrored here',
-							},
-							{
-								error: true,
-								id: '7',
-								label: 'Pill Label 7',
-								title: 'Full pill label verbiage mirrored here',
-							},
-						]}
+						options={options}
 						onClickPill={(event, data) => {
 							clickData = data;
 						}}
@@ -123,6 +123,59 @@ describe('SLDSPillContainer', () => {
 				}
 
 				idOfCurrentPill++;
+			});
+		});
+
+		it('Handles keyboard navigation properly', function() {
+			const getFocusedPillLabel = () =>
+				document.activeElement.querySelector('.slds-pill__label').innerText;
+			let i = 1;
+
+			Simulate.focus(
+				this.wrapper
+					.find('.slds-pill_container')
+					.find('.slds-pill')
+					.first()
+					.getDOMNode()
+			);
+
+			for (i = 1; i < 7; i++) {
+				Simulate.keyDown(document.activeElement, keyObjects.RIGHT);
+				expect(getFocusedPillLabel()).to.eql(options[i].label);
+			}
+
+			Simulate.keyDown(document.activeElement, keyObjects.RIGHT);
+			expect(getFocusedPillLabel()).to.eql(options[0].label);
+
+			Simulate.keyDown(document.activeElement, keyObjects.LEFT);
+			expect(getFocusedPillLabel()).to.eql(options[6].label);
+
+			for (i = 0; i < 3; i++) {
+				Simulate.keyDown(document.activeElement, keyObjects.LEFT);
+			}
+			Simulate.keyDown(document.activeElement, keyObjects.DELETE);
+			expect(requestRemoveData.option.label).to.eql(options[3].label);
+
+			Simulate.keyDown(document.activeElement, keyObjects.LEFT);
+			Simulate.keyDown(document.activeElement, keyObjects.BACKSPACE);
+			expect(requestRemoveData.option.label).to.eql(options[2].label);
+		});
+	});
+
+	describe('Bare', () => {
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<SLDSPillContainer options={options} variant="bare" />
+				</IconSettings>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('Renders the bare Pill Container correctly', function() {
+			this.wrapper.find('ul.slds-listbox .slds-pill').forEach((pill) => {
+				expect(pill.find('.slds-pill_bare').length).to.eql(1);
 			});
 		});
 	});

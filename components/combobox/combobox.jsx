@@ -285,13 +285,14 @@ class Combobox extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: false,
 			activeOption: undefined,
 			activeOptionIndex: -1,
 			// seeding initial state with this.props.selection[0]
 			activeSelectedOption:
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
+			listboxHasFocus: false,
+			isOpen: false,
 		};
 
 		this.menuKeyBuffer = new KeyBuffer();
@@ -524,11 +525,11 @@ class Combobox extends React.Component {
 			[KEYS.DOWN]: { callback: this.handleKeyDownDown },
 			[KEYS.ENTER]: { callback: this.handleInputSubmit },
 			[KEYS.ESCAPE]: { callback: this.handleClose },
-			[KEYS.TAB]: { callback: this.handleKeyDownTab },
 			[KEYS.UP]: { callback: this.handleKeyDownUp },
 		};
 
 		if (this.props.variant === 'readonly') {
+			callbacks[KEYS.TAB] = { callback: this.handleKeyDownTab };
 			callbacks.other = { callback: this.handleKeyDownOther };
 		}
 
@@ -548,8 +549,6 @@ class Combobox extends React.Component {
 	handleKeyDownTab = () => {
 		if (this.selectedListboxRef) {
 			this.setState({
-				activeSelectedOption: this.props.selection[0],
-				activeSelectedOptionIndex: 0,
 				listboxHasFocus: true,
 			});
 		}
@@ -677,6 +676,12 @@ class Combobox extends React.Component {
 			activeSelectedOptionIndex: index,
 			listboxHasFocus: true,
 		});
+	};
+
+	handlePillFocus = () => {
+		if (!this.state.listboxHasFocus) {
+			this.setState({ listboxHasFocus: true });
+		}
 	};
 
 	/**
@@ -876,6 +881,7 @@ class Combobox extends React.Component {
 				events={{
 					onBlurPill: this.handleBlurPill,
 					onClickPill: this.handlePillClickSelectedListbox,
+					onPillFocus: this.handlePillFocus,
 					onRequestFocus: this.handleRequestFocusSelectedListbox,
 					onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
 					onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
@@ -915,6 +921,7 @@ class Combobox extends React.Component {
 						events={{
 							onBlurPill: this.handleBlurPill,
 							onClickPill: this.handlePillClickSelectedListbox,
+							onPillFocus: this.handlePillFocus,
 							onRequestFocus: this.handleRequestFocusSelectedListbox,
 							onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
 							onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
@@ -1246,6 +1253,7 @@ class Combobox extends React.Component {
 					events={{
 						onBlurPill: this.handleBlurPill,
 						onClickPill: this.handlePillClickSelectedListbox,
+						onPillFocus: this.handlePillFocus,
 						onRequestFocus: this.handleRequestFocusSelectedListbox,
 						onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
 						onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,

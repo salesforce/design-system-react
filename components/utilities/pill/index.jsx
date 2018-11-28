@@ -40,10 +40,11 @@ const propTypes = {
 	 */
 	eventData: PropTypes.object,
 	/*
-	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 * Callbacks for various pill events such as click, focus, etc
 	 */
 	events: PropTypes.shape({
 		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
@@ -145,6 +146,11 @@ const Pill = (props) => {
 						}
 					: null
 			}
+			onFocus={(event) => {
+				if (props.events.onFocus) {
+					props.events.onFocus(event);
+				}
+			}}
 			onRemove={(event) => {
 				EventUtil.trap(event);
 				handleClickRemove(event, {

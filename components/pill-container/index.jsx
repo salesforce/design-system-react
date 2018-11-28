@@ -79,7 +79,7 @@ const propTypes = {
 	 */
 	style: PropTypes.object,
 	/**
-	 * Specifies the type of pill container. Can be `base` or `bare`
+	 * Specifies the pill container styling. Can be `base` or `bare`, `bare` removes border styling from child pills
 	 */
 	variant: PropTypes.oneOf(['base', 'bare']),
 };
@@ -141,6 +141,12 @@ class PillContainer extends React.Component {
 				index: data.index,
 				option: data.option,
 			});
+		}
+	};
+
+	handlePillFocus = () => {
+		if (!this.state.listboxHasFocus) {
+			this.setState({ listboxHasFocus: true });
 		}
 	};
 
@@ -234,6 +240,7 @@ class PillContainer extends React.Component {
 				events={{
 					onBlurPill: this.handleBlurPill,
 					onClickPill: this.handleClickPill,
+					onPillFocus: this.handlePillFocus,
 					onRequestFocus: this.handleRequestFocusPillContainer,
 					onRequestFocusOnNextPill: this.handleNavigatePillContainer,
 					onRequestFocusOnPreviousPill: this.handleNavigatePillContainer,
