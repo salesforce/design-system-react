@@ -1,7 +1,7 @@
 {
-    "component": "pill-listbox",
+    "component": "pill-container",
     "status": "prototype",
-    "display-name": "Pill Listbox",
-    "SLDS-component-path": "/components/pill-listbox",
-    "url-slug": "pill-listbox"
+    "display-name": "Pill Container",
+    "SLDS-component-path": "/components/pill-container",
+    "url-slug": "pill-container"
 }

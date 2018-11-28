@@ -91,38 +91,38 @@ describe('SLDSPillContainer', () => {
 		afterEach(unmountComponent);
 
 		it('Renders the base Pill Container correctly', function() {
-			let currentPill = 1;
+			let idOfCurrentPill = 1;
 
 			expect(this.wrapper.find('.slds-pill_container').length).to.eql(1);
 			expect(this.wrapper.find('ul.slds-listbox').length).to.eql(1);
 
 			this.wrapper.find('ul.slds-listbox .slds-pill').forEach((pill) => {
 				expect(pill.find('.slds-pill__label').text()).to.eql(
-					`Pill Label ${currentPill}`
+					`Pill Label ${idOfCurrentPill}`
 				);
 
 				Simulate.click(pill.getDOMNode());
-				expect(clickData.option.id).to.eql(`${currentPill}`);
+				expect(clickData.option.id).to.eql(`${idOfCurrentPill}`);
 
 				Simulate.click(pill.find('.slds-pill__remove').getDOMNode());
-				expect(requestRemoveData.option.id).to.eql(`${currentPill}`);
+				expect(requestRemoveData.option.id).to.eql(`${idOfCurrentPill}`);
 
-				if (currentPill === 2 || currentPill === 3) {
+				if (idOfCurrentPill === 2 || idOfCurrentPill === 3) {
 					expect(
 						pill.find('.slds-icon_container.slds-icon-standard-account').length
 					).to.eql(1);
-				} else if (currentPill === 4 || currentPill === 5) {
+				} else if (idOfCurrentPill === 4 || idOfCurrentPill === 5) {
 					expect(
 						pill.find('.slds-avatar.slds-avatar_circle.slds-avatar_medium')
 							.length
 					).to.eql(1);
-				} else if (currentPill === 6) {
+				} else if (idOfCurrentPill === 6) {
 					expect(pill.find('.slds-pill_bare').length).to.eql(1);
-				} else if (currentPill === 7) {
+				} else if (idOfCurrentPill === 7) {
 					expect(pill.find('.slds-has-error').length).to.eql(1);
 				}
 
-				currentPill++;
+				idOfCurrentPill++;
 			});
 		});
 	});

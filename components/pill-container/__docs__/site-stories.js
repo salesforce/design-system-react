@@ -4,10 +4,10 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/base.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/icons.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/avatars.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/bare.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/pill-container/__examples__/base.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/pill-container/__examples__/icons.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/pill-container/__examples__/avatars.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/pill-container/__examples__/bare.jsx'),
 ];
 
 module.exports = siteStories;

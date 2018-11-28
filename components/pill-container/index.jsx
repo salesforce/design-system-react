@@ -116,15 +116,10 @@ class PillContainer extends React.Component {
 	}
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
-		// used by menu listbox and selected options listbox
 		const nextIndex = activeOptionIndex + offset;
-		const skipIndex =
-			options.length > nextIndex &&
-			nextIndex >= 0 &&
-			options[nextIndex].type === 'separator';
-		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
-		return hasNewIndex ? newIndex : activeOptionIndex;
+		return options.length > nextIndex && nextIndex >= 0
+			? nextIndex
+			: activeOptionIndex;
 	};
 
 	handleBlurPill = () => {
@@ -211,11 +206,12 @@ class PillContainer extends React.Component {
 		const options = this.props.options;
 		let activeSelectedOptionIndex = this.state.activeSelectedOptionIndex;
 
-		while (
-			!options[activeSelectedOptionIndex] &&
-			activeSelectedOptionIndex > 0
-		) {
-			activeSelectedOptionIndex--;
+		if (!options[activeSelectedOptionIndex]) {
+			if (options.length > 0 && activeSelectedOptionIndex >= options.length) {
+				activeSelectedOptionIndex = options.length - 1;
+			} else {
+				activeSelectedOptionIndex = 0;
+			}
 		}
 
 		this.setState({

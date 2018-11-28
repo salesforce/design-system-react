@@ -178,7 +178,7 @@ const SelectedListBox = (props) =>
 				aria-label={props.assistiveText.selectedListboxLabel}
 			>
 				{props.selection.map((option, renderIndex) => {
-					const setActiveBasedOnstateFromParent =
+					const setActiveBasedOnStateFromParent =
 						renderIndex === props.activeOptionIndex;
 					const listboxRenderedForFirstTime =
 						(props.activeOptionIndex === -1 && renderIndex === 0) ||
@@ -186,7 +186,7 @@ const SelectedListBox = (props) =>
 							props.selection.length !== 1 &&
 							renderIndex === 0);
 					const active =
-						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
+						setActiveBasedOnStateFromParent || listboxRenderedForFirstTime;
 					const icon = getIcon(option);
 					const avatar = !icon ? getAvatar(option) : null;
 
