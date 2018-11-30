@@ -14,7 +14,7 @@ import SLDSPill from '../../../components/pill';
 
 const propTypes = {
 	/**
-	 * Pill is the active pill within a listbox of pills. This will request focus on the DOM node.
+	 * Pill is the active pill within a pill container. This will request focus on the DOM node.
 	 */
 	active: PropTypes.bool,
 	/**
@@ -25,20 +25,36 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		remove: PropTypes.string,
 	}),
+	/**
+	 * SLDSAvatar component to show on the left of the pill.
+	 * _Tested with Mocha framework._
+	 */
+	avatar: PropTypes.element,
+	/**
+	 * Applies the bare style to the component.
+	 * _Tested with Mocha framework._
+	 */
+	bare: PropTypes.bool,
 	/*
 	 * Pills are often used for selection of a type of entity such as days in a daypicker. This prop allows you to pass in data that will be passed back to the event handler.
 	 */
 	eventData: PropTypes.object,
 	/*
-	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 * Callbacks for various pill events such as click, focus, etc
 	 */
 	events: PropTypes.shape({
 		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
 		onRequestRemove: PropTypes.func.isRequired,
 	}),
+	/**
+	 * Applies the error style to the component.
+	 * _Tested with Mocha framework._
+	 */
+	hasError: PropTypes.bool,
 	/*
 	 * The icon next to the pill label.
 	 */
@@ -92,9 +108,9 @@ const handleKeyDown = (event, { events, data }) => {
 	});
 };
 
-const handleClickRemove = (event, { events, eventData }) => {
+const handleClickRemove = (event, { events, data }) => {
 	EventUtil.trap(event);
-	events.onRequestRemove(event, eventData);
+	events.onRequestRemove(event, data);
 };
 
 const Pill = (props) => {
@@ -107,6 +123,9 @@ const Pill = (props) => {
 
 	return (
 		<SLDSPill
+			avatar={props.avatar}
+			bare={props.bare}
+			hasError={props.hasError}
 			tabIndex={props.tabIndex || '0'}
 			icon={props.icon}
 			variant="option"
@@ -121,17 +140,22 @@ const Pill = (props) => {
 					? (event) => {
 							if (props.events.onClick) {
 								props.events.onClick(event, {
-									option: props.eventData,
+									...props.eventData,
 								});
 							}
 						}
 					: null
 			}
+			onFocus={(event) => {
+				if (props.events.onFocus) {
+					props.events.onFocus(event);
+				}
+			}}
 			onRemove={(event) => {
 				EventUtil.trap(event);
 				handleClickRemove(event, {
 					events: props.events,
-					eventData: props.eventData,
+					data: props.eventData,
 				});
 			}}
 			onKeyDown={(event) => {

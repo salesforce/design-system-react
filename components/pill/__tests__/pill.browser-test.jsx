@@ -1,13 +1,14 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-import SLDSPill from '~/components/pill';
-import SLDSIcon from '~/components/icon';
-import SLDSAvatar from '~/components/avatar';
-import { mountComponent, unmountComponent } from '~/tests/enzyme-helpers';
 import { expect } from 'chai';
 
-const { Simulate } = TestUtils;
+import SLDSPill from '../../pill';
+import SLDSIcon from '../..//icon';
+import SLDSAvatar from '../..//avatar';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 
 describe('SLDSPill', () => {
 	const LABEL = 'Pill Label';

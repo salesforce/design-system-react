@@ -7,7 +7,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import isEqual from 'lodash.isequal';
 
+import Avatar from '../../avatar';
+import Icon from '../../icon';
 import Pill from '../../utilities/pill';
+
+import isReactComponent from '../../../utilities/is-react-component';
 
 const propTypes = {
 	/*
@@ -23,29 +27,48 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `removePill`: Aids in keyboard interaction with Pills.
+	 * * `selectedListboxLabel`: Used to identify the listbox
 	 */
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		removePill: PropTypes.string,
+		selectedListboxLabel: PropTypes.string,
 	}),
+	/**
+	 * CSS classes to be added to the top-level `div` tag.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/*
-	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 * Callbacks for various pill events such as click, focus, etc
 	 */
 	events: PropTypes.shape({
 		onClickPill: PropTypes.func.isRequired,
+		onPillFocus: PropTypes.func.isRequired,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
 		onRequestRemove: PropTypes.func.isRequired,
 	}),
 	/**
-	 * HTML id for Combobox
+	 * HTML id for component main container
 	 */
 	id: PropTypes.string,
+	/**
+	 * Determines whether component renders as a bare pill container with associated styling for child pills
+	 */
+	isBare: PropTypes.bool,
 	/**
 	 * Adds inline (inside of input) styling
 	 */
 	isInline: PropTypes.bool,
+	/**
+	 * Determines whether component renders as a pill container with associated styling and behavior
+	 */
+	isPillContainer: PropTypes.bool,
 	/*
 	 * Pill Label
 	 */
@@ -59,9 +82,17 @@ const propTypes = {
 	 */
 	renderAtSelectionLength: PropTypes.number,
 	/**
+	 * This callback exposes the selected listbox reference / DOM node to parent components.
+	 */
+	selectedListboxRef: PropTypes.func,
+	/**
 	 * Accepts an array of item objects.
 	 */
 	selection: PropTypes.array,
+	/**
+	 * Custom styles to be passed to the top-level `div` tag
+	 */
+	style: PropTypes.object,
 	/**
 	 * Requests that the active option set focus on render
 	 */
@@ -76,11 +107,67 @@ const defaultProps = {
 	renderAtSelectionLength: 1,
 };
 
+const getAvatar = (option) => {
+	const avatarObject = option.avatar;
+	let avatar = null;
+
+	if (avatarObject) {
+		if (isReactComponent(avatarObject) || avatarObject instanceof HTMLElement) {
+			avatar = avatarObject;
+		} else if (avatarObject.imgSrc) {
+			avatar = (
+				<Avatar
+					imgSrc={avatarObject.imgSrc}
+					title={avatarObject.title || option.label}
+					variant={avatarObject.variant || 'user'}
+				/>
+			);
+		}
+	}
+
+	return avatar;
+};
+
+const getIcon = (option) => {
+	const iconObject = option.icon;
+	let icon = null;
+
+	if (iconObject) {
+		if (isReactComponent(iconObject) || iconObject instanceof HTMLElement) {
+			icon = iconObject;
+		} else if (iconObject.category && iconObject.name) {
+			icon = (
+				<Icon
+					category={iconObject.category}
+					name={iconObject.name}
+					title={iconObject.title || option.label}
+				/>
+			);
+		}
+	}
+
+	return icon;
+};
+
 const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
-			id={`${props.id}-selected-listbox`}
+			className={
+				classNames(
+					{
+						'slds-pill_container': props.isPillContainer,
+					},
+					props.className
+				) || undefined
+			}
+			id={props.id}
+			ref={(ref) => {
+				if (props.selectedListboxRef) {
+					props.selectedListboxRef(ref);
+				}
+			}}
 			role="listbox"
+			style={props.style}
 			aria-orientation="horizontal"
 		>
 			<ul
@@ -93,21 +180,16 @@ const SelectedListBox = (props) =>
 				aria-label={props.assistiveText.selectedListboxLabel}
 			>
 				{props.selection.map((option, renderIndex) => {
+					// Makes first pill in DOM snapshots have aria-selected=true on first render
 					const setActiveBasedOnstateFromParent =
 						renderIndex === props.activeOptionIndex &&
 						isEqual(option, props.activeOption);
 					const listboxRenderedForFirstTime =
-						(props.activeOptionIndex === -1 && renderIndex === 0) ||
-						(props.variant === 'readonly' &&
-							props.selection.length !== 1 &&
-							renderIndex === 0);
+						props.activeOptionIndex === -1 && renderIndex === 0;
 					const active =
 						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
-					const icon = option.icon
-						? React.cloneElement(option.icon, {
-								containerClassName: 'slds-pill__icon_container',
-							})
-						: null;
+					const icon = getIcon(option);
+					const avatar = !icon ? getAvatar(option) : null;
 
 					return (
 						<li
@@ -120,6 +202,9 @@ const SelectedListBox = (props) =>
 								assistiveText={{
 									remove: props.assistiveText.removePill,
 								}}
+								avatar={avatar}
+								bare={option.bare || props.isBare}
+								error={option.error}
 								events={{
 									onBlur: props.events.onBlurPill,
 									onClick: (event, data) => {
@@ -128,6 +213,7 @@ const SelectedListBox = (props) =>
 											index: renderIndex,
 										});
 									},
+									onFocus: props.events.onPillFocus,
 									onRequestFocusOnNextPill:
 										props.events.onRequestFocusOnNextPill,
 									onRequestFocusOnPreviousPill:
@@ -141,6 +227,7 @@ const SelectedListBox = (props) =>
 									onRequestFocus: props.events.onRequestFocus,
 								}}
 								eventData={{ option }}
+								hasError={option.error}
 								icon={icon}
 								labels={{
 									label: option.label,
