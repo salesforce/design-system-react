@@ -1179,7 +1179,7 @@ exports[`Base Selected DOM Snapshot 1`] = `
           role="presentation"
         >
           <span
-            aria-selected={true}
+            aria-selected="true"
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1374,7 +1374,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={true}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1441,7 +1441,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1561,7 +1561,7 @@ exports[`Inline Multiple Selection Selected HTML Snapshot 1`] = `
             </span><span class=\\"slds-pill__label\\" title=\\"Acme\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
             </span>
           </li>
-          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
             </span><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
             </span>
           </li>
@@ -1912,7 +1912,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
           role="presentation"
         >
           <span
-            aria-selected={true}
+            aria-selected="true"
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1958,7 +1958,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
           role="presentation"
         >
           <span
-            aria-selected={false}
+            aria-selected="true"
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -2019,7 +2019,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected HTML Snapshot 1`] =
         <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Acme\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
           </span>
         </li>
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
           </span>
         </li>
       </ul>
