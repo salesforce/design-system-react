@@ -8975,7 +8975,7 @@
         ]
     },
     "pill": {
-        "description": "A pill represents an object that can be viewed with or without an icon.",
+        "description": "A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.",
         "methods": [
             {
                 "name": "getHref",
@@ -9221,6 +9221,303 @@
         "route": "pills",
         "display-name": "Pills",
         "SLDS-component-path": "/components/pills",
+        "dependencies": []
+    },
+    "pill-container": {
+        "description": "A `PillContainer` is a container that holds one or more pills. Use it for a list of pills in a container that resembles an `input` form field. It is not intended for navigation.",
+        "methods": [
+            {
+                "name": "getNewActiveOptionIndex",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ activeOptionIndex, offset, options }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleBlurPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleClickPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handlePillFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleNavigatePillContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ direction }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestFocusPillContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ ref }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestRemove",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "resetActiveSelectedOption",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "listboxLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removePill": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `listboxLabel`: This is a label for the listbox. The default is `Selected Options:`.\n* `removePill`: Used to remove a selected item (pill). Focus is on the pill. This is not a button. The default is `Press delete or backspace to remove`.",
+                "defaultValue": {
+                    "value": "{\n    listboxLabel: 'Selected Options:',\n    removePill: 'Press delete or backspace to remove',\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the pill container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for pill container"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "removePillTitle": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\n* `removePillTitle`: Title on `X` icon",
+                "defaultValue": {
+                    "value": "{\n    removePillTitle: 'Remove',\n}",
+                    "computed": false
+                }
+            },
+            "options": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "avatar": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "shape",
+                                        "value": {
+                                            "imgSrc": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "title": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "variant": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "bare": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "error": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "icon": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "shape",
+                                        "value": {
+                                            "category": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "name": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "id": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "title": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```"
+            },
+            "onClickPill": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a pill is clicked"
+            },
+            "onRequestRemovePill": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom style object to be passed to the pill container"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bare'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Specifies the pill styling at the container level. `bare` removes border styling from all pills."
+            }
+        },
+        "route": "pill-container",
+        "display-name": "Pill Container",
+        "SLDS-component-path": "/components/pill-container",
         "dependencies": []
     },
     "popover": {

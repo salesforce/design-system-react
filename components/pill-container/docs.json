@@ -1,6 +1,6 @@
 {
     "component": "pill-container",
-    "status": "prototype",
+    "status": "prod",
     "display-name": "Pill Container",
     "SLDS-component-path": "/components/pill-container",
     "url-slug": "pill-container"

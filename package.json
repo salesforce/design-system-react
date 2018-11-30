@@ -542,10 +542,17 @@
 		},
 		{
 			"component": "pill",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Pills",
 			"SLDS-component-path": "/components/pills",
 			"url-slug": "pills"
+		},
+		{
+			"component": "pill-container",
+			"status": "prod",
+			"display-name": "Pill Container",
+			"SLDS-component-path": "/components/pill-container",
+			"url-slug": "pill-container"
 		},
 		{
 			"component": "popover",

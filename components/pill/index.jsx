@@ -112,7 +112,7 @@ const propTypes = {
 };
 
 /**
- * A pill represents an object that can be viewed with or without an icon.
+ * A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.
  */
 class Pill extends React.Component {
 	componentWillMount() {

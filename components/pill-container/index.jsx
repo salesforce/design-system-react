@@ -99,7 +99,7 @@ const propTypes = {
 };
 
 /**
- * A PillContainer is a container that holds one or more pills
+ * A `PillContainer` is a container that holds one or more pills. Use it for a list of pills in a container that resembles an `input` form field. It is not intended for navigation.
  */
 class PillContainer extends React.Component {
 	constructor(props) {
