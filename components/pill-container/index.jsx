@@ -40,7 +40,21 @@ const propTypes = {
 		removePillTitle: PropTypes.string,
 	}),
 	/**
-	 * Accepts an array of pill item objects.
+	 * **Array of pill objects.**
+	 * Each object can contain:
+	 * * `avatar`: An `Avatar` component.
+	 * * `error`: Adds error styling
+	 * * `icon`: An `Icon` component.
+	 * * `id`: A unique identifier string.
+	 * * `label`: A primary string of text.
+	 * * `title`: Text that appears on mouse hover. Most helpful for long labels.
+	 * ```
+	 * {
+	 * 	id: '2',
+	 * 	label: 'Salesforce.com, Inc.',
+	 * 	title: 'Salesforce.com, Inc. - Want to work here?',
+	 * },
+	 * ```
 	 */
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -71,15 +85,15 @@ const propTypes = {
 	 */
 	onClickPill: PropTypes.func,
 	/**
-	 * Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click
+	 * Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click.
 	 */
 	onRequestRemovePill: PropTypes.func,
 	/**
-	 * Custom styles to be passed to the pill container
+	 * Custom style object to be passed to the pill container
 	 */
 	style: PropTypes.object,
 	/**
-	 * Specifies the pill container styling. Can be `base` or `bare`, `bare` removes border styling from child pills
+	 * Specifies the pill styling at the container level. `bare` removes border styling from all pills.
 	 */
 	variant: PropTypes.oneOf(['base', 'bare']),
 };
