@@ -1,6 +1,9 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/**
+ * This Pill component should be used within a listbox and differs from the standalone Pill component which is typically used for actions (such as a link) and not form fields. This component should be used in conjuction with `PillContainer`.
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,7 +17,7 @@ import SLDSPill from '../../../components/pill';
 
 const propTypes = {
 	/**
-	 * Pill is the active pill within a pill container. This will request focus on the DOM node.
+	 * Pill is the actively focused pill within a pill container. This will request focus on the DOM node.
 	 */
 	active: PropTypes.bool,
 	/**
@@ -133,7 +136,7 @@ const Pill = (props) => {
 			assistiveText={{
 				remove: assistiveText.remove,
 			}}
-			aria-selected={props.active}
+			aria-selected="true"
 			onBlur={props.events.onBlur}
 			onClick={
 				typeof props.events.onClick === 'function'
