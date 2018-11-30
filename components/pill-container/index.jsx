@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SelectedListBox from '~/components/pill-container/private/selected-listbox';
+import SelectedListBox from './private/selected-listbox';
 
 import { PILL_CONTAINER } from '../../utilities/constants';
 

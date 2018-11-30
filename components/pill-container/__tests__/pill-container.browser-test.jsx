@@ -1,12 +1,16 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
-import Avatar from '~/components/avatar';
-import Icon from '~/components/icon';
-import IconSettings from '~/components/icon-settings';
-import SLDSPillContainer from '~/components/pill-container';
-import { mountComponent, unmountComponent } from '~/tests/enzyme-helpers';
 import { expect } from 'chai';
+
+import Avatar from '../../avatar';
+import Icon from '../../icon';
+import IconSettings from '../../icon-settings';
+import SLDSPillContainer from '../../pill-container';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 import { keyObjects } from '../../../utilities/key-code';
 
 const { Simulate } = TestUtils;

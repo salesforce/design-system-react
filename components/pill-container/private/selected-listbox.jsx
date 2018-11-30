@@ -5,12 +5,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import isReactComponent from '~/utilities/isReactComponent';
 import isEqual from 'lodash.isequal';
 
-import Avatar from '~/components/avatar';
-import Icon from '~/components/icon';
+import Avatar from '../../avatar';
+import Icon from '../../icon';
 import Pill from '../../utilities/pill';
+
+import isReactComponent from '../../../utilities/is-react-component';
 
 const propTypes = {
 	/*

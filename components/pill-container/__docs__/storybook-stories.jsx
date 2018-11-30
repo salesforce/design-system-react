@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { PILL_CONTAINER } from '~/utilities/constants';
-import IconSettings from '~/components/icon-settings';
+import { PILL_CONTAINER } from '../../../utilities/constants';
+import IconSettings from '../../icon-settings';
 import BaseExample from '../__examples__/base';
 import IconsExample from '../__examples__/icons';
 import AvatarsExample from '../__examples__/avatars';
