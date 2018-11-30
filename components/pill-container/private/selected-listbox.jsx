@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import isReactComponent from '~/utilities/isReactComponent';
+import isEqual from 'lodash.isequal';
 
 import Avatar from '~/components/avatar';
 import Icon from '~/components/icon';
@@ -178,6 +179,14 @@ const SelectedListBox = (props) =>
 				aria-label={props.assistiveText.selectedListboxLabel}
 			>
 				{props.selection.map((option, renderIndex) => {
+					// Makes first pill in DOM snapshots have aria-selected=true on first render
+					const setActiveBasedOnstateFromParent =
+						renderIndex === props.activeOptionIndex &&
+						isEqual(option, props.activeOption);
+					const listboxRenderedForFirstTime =
+						props.activeOptionIndex === -1 && renderIndex === 0;
+					const active =
+						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
 					const icon = getIcon(option);
 					const avatar = !icon ? getAvatar(option) : null;
 
@@ -188,10 +197,7 @@ const SelectedListBox = (props) =>
 							key={`${props.id}-list-item-${option.id}`}
 						>
 							<Pill
-								active={
-									renderIndex === props.activeOptionIndex &&
-									props.listboxHasFocus
-								}
+								active={active}
 								assistiveText={{
 									remove: props.assistiveText.removePill,
 								}}
@@ -227,7 +233,7 @@ const SelectedListBox = (props) =>
 									removeTitle: props.labels.removePillTitle,
 								}}
 								requestFocus={props.listboxHasFocus}
-								tabIndex={renderIndex === props.activeOptionIndex ? 0 : -1}
+								tabIndex={active ? 0 : -1}
 							/>
 						</li>
 					);

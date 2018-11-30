@@ -30,7 +30,7 @@ exports[`Avatars DOM Snapshot 1`] = `
           role="presentation"
         >
           <span
-            aria-selected={false}
+            aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -163,7 +163,7 @@ exports[`Avatars HTML Snapshot 1`] = `
   <div class=\\"slds-grid slds-grid_vertical-align-start\\">
     <div class=\\"slds-pill_container\\" id=\\"undefined-listbox-of-pill-options\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><img alt=\\"\\" src=\\"https://lightningdesignsystem.com/assets/images/avatar1.jpg\\" title=\\"User 1\\"/></span></div>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><img alt=\\"\\" src=\\"https://lightningdesignsystem.com/assets/images/avatar1.jpg\\" title=\\"User 1\\"/></span></div>
     </span><span class=\\"slds-pill__label\\" title=\\"Pill Label 1\\">Pill Label 1</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
     </span>
     </li>
@@ -207,7 +207,7 @@ exports[`Bare DOM Snapshot 1`] = `
           role="presentation"
         >
           <span
-            aria-selected={false}
+            aria-selected={true}
             className="slds-pill slds-pill_bare"
             onBlur={[Function]}
             onClick={[Function]}
@@ -308,7 +308,7 @@ exports[`Bare HTML Snapshot 1`] = `
   <div class=\\"slds-grid slds-grid_vertical-align-start\\">
     <div class=\\"slds-pill_container\\" id=\\"undefined-listbox-of-pill-options\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill slds-pill_bare\\"><span class=\\"slds-pill__label\\" title=\\"Pill Label 1\\">Pill Label 1</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill slds-pill_bare\\"><span class=\\"slds-pill__label\\" title=\\"Pill Label 1\\">Pill Label 1</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
           </span>
         </li>
         <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill slds-pill_bare\\"><span class=\\"slds-pill__label\\" title=\\"Pill Label 2\\">Pill Label 2</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
@@ -350,7 +350,7 @@ exports[`Base DOM Snapshot 1`] = `
           role="presentation"
         >
           <span
-            aria-selected={false}
+            aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -451,7 +451,7 @@ exports[`Base HTML Snapshot 1`] = `
   <div class=\\"slds-grid slds-grid_vertical-align-start\\">
     <div class=\\"slds-pill_container\\" id=\\"undefined-listbox-of-pill-options\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Pill Label 1\\">Pill Label 1</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Pill Label 1\\">Pill Label 1</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
           </span>
         </li>
         <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Pill Label 2\\">Pill Label 2</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
@@ -493,7 +493,7 @@ exports[`Icons DOM Snapshot 1`] = `
           role="presentation"
         >
           <span
-            aria-selected={false}
+            aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1077,7 +1077,7 @@ exports[`Icons HTML Snapshot 1`] = `
   <div class=\\"slds-grid slds-grid_vertical-align-start\\">
     <div class=\\"slds-pill_container\\" id=\\"undefined-listbox-of-pill-options\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\" title=\\"Account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg></span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account\\" title=\\"Account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg></span></span>
           <span
             class=\\"slds-pill__label\\" title=\\"Pill Label 1\\">Pill Label 1</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Press delete or backspace to remove</span></span>
             </span>
