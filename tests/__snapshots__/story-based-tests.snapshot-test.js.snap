@@ -8587,7 +8587,7 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected={true}
               className="slds-pill slds-pill_bare"
               onBlur={[Function]}
               onClick={[Function]}
@@ -8714,7 +8714,7 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected={true}
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
@@ -8841,7 +8841,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected={true}
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
@@ -9000,7 +9000,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected={true}
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
