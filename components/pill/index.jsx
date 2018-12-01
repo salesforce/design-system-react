@@ -12,10 +12,6 @@ import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-import componentDoc from './docs.json';
-
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
@@ -115,10 +111,6 @@ const propTypes = {
  * A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.
  */
 class Pill extends React.Component {
-	componentWillMount() {
-		checkProps(PILL, componentDoc);
-	}
-
 	getHref = () =>
 		typeof this.props.href === 'string'
 			? this.props.href
