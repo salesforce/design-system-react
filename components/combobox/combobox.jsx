@@ -529,8 +529,15 @@ class Combobox extends React.Component {
 		};
 
 		if (this.props.variant === 'readonly') {
-			callbacks[KEYS.TAB] = { callback: this.handleKeyDownTab };
-			callbacks.other = { callback: this.handleKeyDownOther };
+			if (this.props.selection.length > 2) {
+				callbacks[KEYS.TAB] = { callback: this.handleKeyDownTab };
+			} else {
+				callbacks[KEYS.TAB] = undefined;
+			}
+			callbacks.other = {
+				callback: this.handleKeyDownOther,
+				stopPropagation: false,
+			};
 		}
 
 		// Helper function that takes an object literal of callbacks that are triggered with a key event

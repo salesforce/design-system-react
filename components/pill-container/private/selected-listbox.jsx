@@ -180,14 +180,7 @@ const SelectedListBox = (props) =>
 				aria-label={props.assistiveText.selectedListboxLabel}
 			>
 				{props.selection.map((option, renderIndex) => {
-					// Makes first pill in DOM snapshots have aria-selected=true on first render
-					const setActiveBasedOnstateFromParent =
-						renderIndex === props.activeOptionIndex &&
-						isEqual(option, props.activeOption);
-					const listboxRenderedForFirstTime =
-						props.activeOptionIndex === -1 && renderIndex === 0;
-					const active =
-						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
+					const hasTabIndex = renderIndex === props.activeOptionIndex;
 					const icon = getIcon(option);
 					const avatar = !icon ? getAvatar(option) : null;
 
@@ -198,7 +191,7 @@ const SelectedListBox = (props) =>
 							key={`${props.id}-list-item-${option.id}`}
 						>
 							<Pill
-								active={active}
+								active={hasTabIndex && props.listboxHasFocus}
 								assistiveText={{
 									remove: props.assistiveText.removePill,
 								}}
@@ -234,7 +227,7 @@ const SelectedListBox = (props) =>
 									removeTitle: props.labels.removePillTitle,
 								}}
 								requestFocus={props.listboxHasFocus}
-								tabIndex={active ? 0 : -1}
+								tabIndex={hasTabIndex ? 0 : -1}
 							/>
 						</li>
 					);
