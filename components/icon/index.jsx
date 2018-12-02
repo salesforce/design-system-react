@@ -42,6 +42,7 @@ const Icon = (props) => {
 		size,
 		style,
 		title,
+		onClick,
 	} = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
@@ -65,6 +66,7 @@ const Icon = (props) => {
 				containerClassName
 			)}
 			title={title}
+			onClick={onClick}
 		>
 			<UtilityIcon
 				aria-hidden="true"
@@ -179,6 +181,10 @@ Icon.propTypes = {
 	 * Title attribute for the icon container
 	 */
 	title: PropTypes.string,
+	/**
+	 * Click event
+	 */
+	onClick: PropTypes.func,
 };
 
 Icon.defaultProps = defaultProps;
