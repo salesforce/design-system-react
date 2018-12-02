@@ -25,7 +25,7 @@
 		"publish:upstream": "npx babel-node scripts/publish-to-git.js --remote=upstream",
 		"release:patch": "npx babel-node scripts/release.js --release=patch",
 		"release:minor": "npx babel-node scripts/release.js --release=minor",
-		"start": "npx start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
+		"start": "npx start-storybook -p 9001 --ci -s ./node_modules & node tests/browser-tests-app",
 		"static:start": "node app",
 		"static:build": "npx build-storybook -o ./storybook",
 		"storyshots:build": "npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
@@ -104,7 +104,8 @@
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.12.0",
 		"shortid": "^2.2.6",
-		"warning": "^3.0.0"
+		"warning": "^3.0.0",
+		"webpack-cli": "^3.1.2"
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.7.4",
@@ -200,8 +201,8 @@
 		"sinon-chai": "^2.14.0",
 		"string-replace-webpack-plugin": "^0.1.2",
 		"style-loader": "^0.17.0",
-		"webpack": "^3.4.1",
-		"webpack-dev-middleware": "^1.12.0",
+		"webpack": "^4.26.1",
+		"webpack-dev-middleware": "^3.4.0",
 		"webpack-hot-middleware": "^2.18.2",
 		"xml2js": "^0.4.19"
 	},
