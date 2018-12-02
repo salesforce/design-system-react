@@ -4,6 +4,7 @@ const StringReplacePlugin = require('string-replace-webpack-plugin');
 const packageJson = require('./package.json');
 
 const config = {
+	mode: 'development',
 	entry: {
 		'design-system-react': ['./components'],
 	},
@@ -38,10 +39,6 @@ const config = {
 					path.join(__dirname, 'tests'),
 					path.join(__dirname, 'utilities'),
 				],
-			},
-			{
-				test: /\.json$/,
-				loader: 'json-loader',
 			},
 			{
 				test: /\.css$/,

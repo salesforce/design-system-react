@@ -11,6 +11,7 @@ const baseConfig = require('./webpack.config');
 
 // eslint-disable-next-line prefer-object-spread/prefer-object-spread
 const config = Object.assign({}, baseConfig, {
+	mode: 'production',
 	externals: {
 		react: {
 			amd: 'react',
