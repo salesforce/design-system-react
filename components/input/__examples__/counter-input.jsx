@@ -38,7 +38,8 @@ class Example extends React.Component {
 					</div>
 					<div>
 						<h1 className="slds-text-title_caps slds-p-vertical_medium">
-							3. Controlled counter input with min/max values and custom step size
+							3. Controlled counter input with min/max values and custom step
+							size
 						</h1>
 						<Input
 							id="counter-input-3"
