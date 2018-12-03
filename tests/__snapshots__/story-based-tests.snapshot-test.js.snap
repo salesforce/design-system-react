@@ -7642,425 +7642,427 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
   className="slds-p-around_medium"
 >
   <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      1. Simple counter input
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-1"
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
-        My Label
-      </label>
+        1. Simple counter input
+      </h1>
       <div
-        className="slds-form-element__control"
+        className="slds-form-element"
       >
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-1"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Decrement counter
-          </span>
-        </button>
-        <input
-          className="slds-input slds-input_counter"
-          id="counter-input-1"
-          onChange={[Function]}
-          type="number"
-        />
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-1"
+            onChange={[Function]}
+            type="number"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            Increment counter
-          </span>
-        </button>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      2. Controlled counter input
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-2"
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
-        My Label
-      </label>
+        2. Controlled counter input
+      </h1>
       <div
-        className="slds-form-element__control"
+        className="slds-form-element"
       >
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-2"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Decrement counter
-          </span>
-        </button>
-        <input
-          className="slds-input slds-input_counter"
-          id="counter-input-2"
-          onChange={[Function]}
-          type="number"
-          value={10}
-        />
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-2"
+            onChange={[Function]}
+            type="number"
+            value={10}
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            Increment counter
-          </span>
-        </button>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      3. Controlled counter input with min/max values and custom step size
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-3"
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
-        My Label
-      </label>
+        3. Controlled counter input with min/max values and custom step size
+      </h1>
       <div
-        className="slds-form-element__control"
+        className="slds-form-element"
       >
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-3"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Decrement counter
-          </span>
-        </button>
-        <input
-          className="slds-input slds-input_counter"
-          id="counter-input-3"
-          max={30}
-          min={2}
-          onChange={[Function]}
-          step={2}
-          type="number"
-          value={10}
-        />
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-3"
+            max={30}
+            min={2}
+            onChange={[Function]}
+            step={2}
+            type="number"
+            value={10}
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            Increment counter
-          </span>
-        </button>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      4. Counter input with floating step size
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-4"
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
-        My Label
-      </label>
+        4. Counter input with floating step size
+      </h1>
       <div
-        className="slds-form-element__control"
+        className="slds-form-element"
       >
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-4"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Decrement counter
-          </span>
-        </button>
-        <input
-          className="slds-input slds-input_counter"
-          defaultValue={10}
-          id="counter-input-4"
-          onChange={[Function]}
-          step={0.1}
-          type="number"
-        />
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            defaultValue={10}
+            id="counter-input-4"
+            onChange={[Function]}
+            step={0.1}
+            type="number"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            Increment counter
-          </span>
-        </button>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      5. Disabled counter input
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-5"
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
-        My Label
-      </label>
+        5. Disabled counter input
+      </h1>
       <div
-        className="slds-form-element__control"
+        className="slds-form-element"
       >
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
-          disabled={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-5"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Decrement counter
-          </span>
-        </button>
-        <input
-          className="slds-input slds-input_counter"
-          disabled={true}
-          id="counter-input-5"
-          onChange={[Function]}
-          type="number"
-          value="10"
-        />
-        <button
-          className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
-          disabled={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          type="button"
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            disabled={true}
+            id="counter-input-5"
+            onChange={[Function]}
+            type="number"
+            value="10"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
           >
-            Increment counter
-          </span>
-        </button>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      6. Readonly counter input
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="counter-input-6"
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
       >
-        My Label
-      </label>
+        6. Readonly counter input
+      </h1>
       <div
-        className="slds-form-element__control"
+        className="slds-form-element"
       >
-        <input
-          className="slds-input slds-text-align_left slds-input_counter slds-p-horizontal_none"
-          id="counter-input-6"
-          onChange={[Function]}
-          readOnly={true}
-          type="number"
-          value="10"
-        />
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-6"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input slds-text-align_left slds-input_counter slds-p-horizontal_none"
+            id="counter-input-6"
+            onChange={[Function]}
+            readOnly={true}
+            type="number"
+            value="10"
+          />
+        </div>
       </div>
     </div>
   </div>
