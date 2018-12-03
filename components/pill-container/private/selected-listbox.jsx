@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import isEqual from 'lodash.isequal';
 
 import Avatar from '../../avatar';
 import Icon from '../../icon';
