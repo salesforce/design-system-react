@@ -122,7 +122,9 @@ class HsvColor extends React.Component {
 							left: `${workingColor.hsv.saturation}%`,
 						}}
 						tabIndex={0}
-					/>
+					>
+						<span className="slds-assistive-text">{`Saturation ${workingColor.hsv.saturation}% Brightness: ${workingColor.hsv.value}%`}</span>
+					</a>
 				</div>
 				<div className="slds-color-picker__hue-and-preview">
 					<label
