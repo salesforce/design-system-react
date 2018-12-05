@@ -131,7 +131,7 @@ const propTypes = {
 		label: PropTypes.string,
 		redAbbreviated: PropTypes.string,
 		swatchTab: PropTypes.string,
-		submitButton: PropTypes.string,
+		submitButton: PropTypes.string
 	}),
 	/**
 	 * Please select one of the following:
@@ -599,8 +599,8 @@ class ColorPicker extends React.Component {
 							{this.state.colorErrorMessage}
 						</p>
 					) : (
-						''
-					)}
+							''
+						)}
 				</div>
 			</div>
 		);
