@@ -319,6 +319,18 @@ class Example extends React.Component {
 					},
 				}));
 			}
+		} else if (this.props.noBranchSelection && data.node.type === 'branch') {
+			// OPEN BRANCH/FOLDER WHEN CLICKED
+			// Although not codified in SLDS, this takes the click callback and turns it into the expand callback, and should be used for item only selection.
+			this.setState((prevState) => ({
+				...prevState,
+				nodes: {
+					...prevState.nodes,
+					...{
+						[data.node.id]: { ...data.node, expanded: !data.node.expanded },
+					},
+				},
+			}));
 		} else {
 			// SINGLE SELECTION
 			// Take the previous state, expand it, overwrite the `nodes` key with the previous state's `nodes` key expanded with the id of the node just clicked selected and the previously selected node unselected.
