@@ -5,7 +5,7 @@ import IconSettings from '~/components/icon-settings';
 import PillContainer from '~/components/pill-container';
 
 class Example extends React.Component {
-	static displayName = 'PillWithAvatarListboxExample';
+	static displayName = 'PillContainerWithAvatarsExample';
 
 	constructor(props) {
 		super(props);
@@ -65,6 +65,7 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-grid slds-grid_vertical-align-start">
 						<PillContainer
+							id="pill-container-with-avatars"
 							options={this.state.options}
 							onClickPill={this.onClickPill}
 							onRequestRemovePill={this.onRequestRemovePill}

@@ -4,7 +4,7 @@ import IconSettings from '~/components/icon-settings';
 import PillContainer from '~/components/pill-container';
 
 class Example extends React.Component {
-	static displayName = 'BasePillListboxExample';
+	static displayName = 'BasePillContainerExample';
 
 	constructor(props) {
 		super(props);
@@ -50,6 +50,7 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-grid slds-grid_vertical-align-start">
 						<PillContainer
+							id="base-pill-container"
 							options={this.state.options}
 							onClickPill={this.onClickPill}
 							onRequestRemovePill={this.onRequestRemovePill}

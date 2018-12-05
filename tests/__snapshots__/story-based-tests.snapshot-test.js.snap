@@ -8576,7 +8576,7 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
       <div
         aria-orientation="horizontal"
         className="slds-pill_container"
-        id="undefined-listbox-of-pill-options"
+        id="bare-pill-container-listbox-of-pill-options"
         role="listbox"
       >
         <ul
@@ -8703,7 +8703,7 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
       <div
         aria-orientation="horizontal"
         className="slds-pill_container"
-        id="undefined-listbox-of-pill-options"
+        id="base-pill-container-listbox-of-pill-options"
         role="listbox"
       >
         <ul
@@ -8830,7 +8830,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
       <div
         aria-orientation="horizontal"
         className="slds-pill_container"
-        id="undefined-listbox-of-pill-options"
+        id="pill-container-with-avatars-listbox-of-pill-options"
         role="listbox"
       >
         <ul
@@ -8989,7 +8989,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
       <div
         aria-orientation="horizontal"
         className="slds-pill_container"
-        id="undefined-listbox-of-pill-options"
+        id="pill-container-with-icons-listbox-of-pill-options"
         role="listbox"
       >
         <ul
