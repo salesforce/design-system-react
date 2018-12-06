@@ -1,0 +1,15 @@
+.slds-carousel__content {
+  height: 8rem;
+}
+
+.slds-carousel__button[disabled] {
+  opacity: 0.5;
+}
+
+.slds-carousel__col-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: auto;
+}
