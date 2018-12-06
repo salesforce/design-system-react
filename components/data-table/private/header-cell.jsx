@@ -13,6 +13,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
+import CellFixed from './cell-fixed';
 import Icon from '../../icon';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -42,6 +43,7 @@ class DataTableHeaderCell extends React.Component {
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
 		}),
+		fixedHeader: PropTypes.bool,
 		id: PropTypes.string.isRequired,
 		/**
 		 * Indicates if column is sorted.
@@ -108,13 +110,14 @@ class DataTableHeaderCell extends React.Component {
 
 	// ### Render
 	render() {
-		const { isSorted, label, sortable, width } = this.props;
+		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
+
 		const fixedLayoutSubRenders = {
 			sortable: (
 				<a
@@ -122,7 +125,7 @@ class DataTableHeaderCell extends React.Component {
 					className="slds-th__action slds-text-link_reset"
 					onClick={this.handleSort}
 					role="button"
-					tabIndex="0"
+					tabIndex={fixedHeader ? -1 : 0}
 				>
 					<span className="slds-assistive-text">
 						{this.props.assistiveTextForColumnSort ||
@@ -156,7 +159,10 @@ class DataTableHeaderCell extends React.Component {
 				</a>
 			),
 			notSortable: (
-				<span className="slds-p-horizontal_x-small" style={{ display: 'flex' }}>
+				<span
+					className="slds-p-horizontal_x-small"
+					style={{ display: 'flex' }}
+				>
 					<span
 						className="slds-truncate"
 						title={labelType === 'string' ? label : undefined}
@@ -166,6 +172,17 @@ class DataTableHeaderCell extends React.Component {
 				</span>
 			),
 		};
+
+		const headerCellContent = this.props.fixedLayout ? (
+				fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
+			) : (
+				<div
+					className="slds-truncate"
+					title={labelType === 'string' ? label : undefined}
+				>
+					{label}
+				</div>
+			);
 
 		return (
 			<th
@@ -181,18 +198,37 @@ class DataTableHeaderCell extends React.Component {
 					'slds-text-title_caps'
 				)}
 				scope="col"
-				style={width ? { width } : null}
+				style={(fixedHeader || width) ? {
+					height: fixedHeader ? 0 : null,
+					lineHeight: fixedHeader ? 0 : null,
+					width: width || null,
+				} : null}
 			>
-				{this.props.fixedLayout ? (
-					fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
-				) : (
-					<div
-						className="slds-truncate"
-						title={labelType === 'string' ? label : undefined}
-					>
-						{label}
-					</div>
-				)}
+				{(fixedHeader) ? (
+					React.cloneElement(headerCellContent, {
+						style: {
+							display: 'flex',
+							height: 0,
+							overflow: 'hidden',
+							paddingBottom: 0,
+							paddingTop: 0,
+							visibility: 'hidden',
+						}
+					})
+				) : headerCellContent}
+				{(fixedHeader) ? (
+					<CellFixed>
+						{React.cloneElement(headerCellContent, {
+							style: {
+								alignItems: 'center',
+								display: 'flex',
+								flex: '1 1 auto',
+								lineHeight: 1.25,
+							},
+							tabIndex: sortable ? 0 : null,
+						})}
+					</CellFixed>
+				) : null}
 			</th>
 		);
 	}

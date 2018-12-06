@@ -8,6 +8,7 @@ import Advanced from '../__examples__/advanced';
 import AdvancedSingleSelect from '../__examples__/advanced-single-select';
 import Basic from '../__examples__/basic';
 import BasicFixedLayout from '../__examples__/basic-fixed-layout';
+import FixedHeader from '../__examples__/fixed-header';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -20,4 +21,7 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />)
 	.add('Advanced Single Select (Fixed Layout)', () => (
 		<AdvancedSingleSelect log={action} />
+	))
+	.add('Fixed Header', () => (
+		<FixedHeader />
 	));
