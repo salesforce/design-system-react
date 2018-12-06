@@ -201,7 +201,7 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<div style={{ height: '200px' /*, width: '500px', border: '1px solid red' */ }}>
+			<div style={{ height: '200px', width: '600px' }}>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
@@ -237,17 +237,18 @@ class Example extends React.Component {
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn label="Close Date" property="closeDate" />
-						<DataTableColumn label="Stage" property="stage" />
+						<DataTableColumn label="Close Date" property="closeDate" width="8rem" />
+						<DataTableColumn label="Stage" property="stage" width="8rem" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
 							label="Confidence"
 							property="confidence"
 							sortable
 							sortDirection={this.state.sortColumnDirection.confidence}
+							width="8rem"
 						/>
-						<DataTableColumn label="Amount" property="amount" />
-						<DataTableColumn label="Contact" property="contact">
+						<DataTableColumn label="Amount" property="amount" width="8rem" />
+						<DataTableColumn label="Contact" property="contact" width="8rem">
 							<CustomDataTableCell />
 						</DataTableColumn>
 						<DataTableRowActions

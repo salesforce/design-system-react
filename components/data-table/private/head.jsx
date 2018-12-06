@@ -130,6 +130,7 @@ class DataTableHead extends React.Component {
 					}}
 				>
 					{getContent('SelectAll', (fixedHeader) ? {
+						display: 'flex',
 						height: 0,
 						overflow: 'hidden',
 						paddingBottom: 0,
@@ -139,6 +140,7 @@ class DataTableHead extends React.Component {
 					{(fixedHeader) ? (
 						<CellFixed>
 							{getContent('SelectAll-fixedHeader', {
+								display: 'flex',
 								justifyContent: 'flex-end',
 								lineHeight: 1,
 								width: '100%'
