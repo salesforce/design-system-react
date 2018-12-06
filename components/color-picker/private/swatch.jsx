@@ -15,7 +15,9 @@ const Swatch = ({ color, style, label }) => {
 
 	return (
 		<span className="slds-swatch" style={innerStyle}>
-			<span className="slds-assistive-text">{label || color || "transparent"}</span>
+			<span className="slds-assistive-text">
+				{label || color || 'transparent'}
+			</span>
 		</span>
 	);
 };
