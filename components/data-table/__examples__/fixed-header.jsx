@@ -120,6 +120,36 @@ class Example extends React.Component {
 				amount: '$25,000',
 				contact: 'nathan@salesforce.com',
 			},
+			{
+				id: '4a526f0c',
+				opportunityName: 'Acme - 1,200 Widgets',
+				accountName: 'Acme',
+				closeDate: '4/10/15',
+				stage: 'Value Proposition',
+				confidence: '70%',
+				amount: '$25,000,000',
+				contact: 'jrogers@acme.com',
+			},
+			{
+				id: '9a5dbdb2',
+				opportunityName: 'Acme - 200 Widgets',
+				accountName: 'Acme',
+				closeDate: '1/31/15',
+				stage: 'Prospecting',
+				confidence: '30%',
+				amount: '$5,000,000',
+				contact: 'bob@acme.com',
+			},
+			{
+				id: '356dbb52',
+				opportunityName: 'salesforce.com - 1,000 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '1/31/15 3:45PM',
+				stage: 'Id. Decision Makers',
+				confidence: '60%',
+				amount: '$25,000',
+				contact: 'nathan@salesforce.com',
+			},
 		],
 		selection: [],
 	};
@@ -171,7 +201,7 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<div style={{ height: '200px' /*, width: '500px' */ }}>
+			<div style={{ height: '200px' /*, width: '500px', border: '1px solid red' */ }}>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
@@ -207,18 +237,17 @@ class Example extends React.Component {
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn label="Close Date" property="closeDate" width="8rem" />
-						<DataTableColumn label="Stage" property="stage" width="8rem" />
+						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
 							label="Confidence"
 							property="confidence"
 							sortable
 							sortDirection={this.state.sortColumnDirection.confidence}
-							width="8rem"
 						/>
-						<DataTableColumn label="Amount" property="amount" width="8rem" />
-						<DataTableColumn label="Contact" property="contact" width="8rem">
+						<DataTableColumn label="Amount" property="amount" />
+						<DataTableColumn label="Contact" property="contact">
 							<CustomDataTableCell />
 						</DataTableColumn>
 						<DataTableRowActions
