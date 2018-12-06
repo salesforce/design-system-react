@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 import SelectedListBox from './private/selected-listbox';
 
 import { PILL_CONTAINER } from '../../utilities/constants';
@@ -114,6 +115,7 @@ class PillContainer extends React.Component {
 		};
 
 		this.activeSelectedOptionRef = null;
+		this.generatedId = shortid.generate();
 		this.preserveFocus = false;
 	}
 
@@ -128,6 +130,8 @@ class PillContainer extends React.Component {
 			this.preserveFocus = false;
 		}
 	}
+
+	getId = () => this.props.id || this.generatedId;
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		const nextIndex = activeOptionIndex + offset;
@@ -260,7 +264,7 @@ class PillContainer extends React.Component {
 					onRequestFocusOnPreviousPill: this.handleNavigatePillContainer,
 					onRequestRemove: this.handleRequestRemove,
 				}}
-				id={`${this.props.id}-listbox-of-pill-options`}
+				id={`${this.getId()}-listbox-of-pill-options`}
 				isBare={this.props.variant === 'bare'}
 				isPillContainer
 				labels={this.props.labels}
