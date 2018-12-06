@@ -8,12 +8,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import classNames from 'classnames';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+// import classNames from 'classnames';
+
+import '../../styles/carousel/carousel.css';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
@@ -25,87 +27,132 @@ import componentDoc from './docs.json';
 
 import { CAROUSEL } from '../../utilities/constants';
 
+import CarouselItem from './item';
+
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
  */
 class Carousel extends React.Component {
 	constructor() {
+		// eslint-disable-next-line prefer-rest-params
 		super(...arguments);
 
 		this.generatedId = shortid.generate();
+		this.itemWidth = 288;
+		this.stageWidth = this.itemWidth * this.props.itemsPerPanel;
+		this.nrOfPanels = Math.ceil(this.props.items.length / this.props.itemsPerPanel);
+		this.state = {
+			translateX: -1000000,
+			currentPanel: 1,
+		}
 	}
 
 	componentDidMount() {
 		checkProps(CAROUSEL, this.props, componentDoc);
+		this.setTransalationAmount(0);
+	}
+
+	onNextPanelHandler = () => {
+		const next = this.canNotGoToNext() ? 1 : this.state.currentPanel + 1;
+		this.setCurrentPanel(next, () => {
+			this.changeTranslationAutomatically();
+		});
+	}
+
+	onPreviousPanelHandler = () => {
+		const prev = this.canNotGoToPrevious() ? this.nrOfPanels : this.state.currentPanel - 1;
+		this.setCurrentPanel(prev, () => {
+			this.changeTranslationAutomatically();
+		});
+	}
+
+	onIndicatorClickHandler = (panel) => {
+		this.setCurrentPanel(panel, () => {
+			this.changeTranslationAutomatically();
+		});
+	}
+
+	setTransalationAmount = (amount, cb) => {
+		this.setState(() => ({ translateX: amount }), cb);
+	}
+
+	setCurrentPanel = (amount, cb) => {
+		this.setState(() => ({ currentPanel: amount }), cb);
 	}
 
 	getId() {
 		return this.props.id || this.generatedId;
 	}
 
+	changeTranslationAutomatically = () => {
+		this.setTransalationAmount(-(this.stageWidth * (this.state.currentPanel - 1)));
+	}
+
+	canNotGoToNext = () => this.state.currentPanel >= this.nrOfPanels;
+
+	canNotGoToPrevious = () => this.state.currentPanel <= 1;
+
+	showIndicators = () => {
+		const indicators = [];
+		for (let ind = 1; ind <= this.nrOfPanels; ind++)
+			indicators.push(
+				<li className="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" key={ind}>
+					<a id={`indicator-id-${ind}`} className={ind === this.state.currentPanel ? "slds-carousel__indicator-action slds-is-active" : "slds-carousel__indicator-action"}
+						href="javascript:void(0);" role="tab" tabIndex="0" aria-selected={ind === this.state.currentPanel ? 'true' : null}
+						aria-controls={`panel-${ind}`} title="Visit App Exchange tab" onClick={() => { this.onIndicatorClickHandler(ind) }}>
+						<span className="slds-assistive-text">Panel {ind}</span>
+					</a>
+				</li >)
+		return indicators;
+	}
+
 	render() {
 		return (
 			<div className="slds-carousel" id={this.getId()}>
-				<div className="slds-carousel__stage">
-					<span className="slds-carousel__autoplay">
-						<button className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play">
-							{/*<svg className="slds-button__icon" aria-hidden="true">
-								<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#pause"></use>
-							</svg>*/}
-							<span className="slds-assistive-text">Stop auto-play</span>
-						</button>
-					</span>
-					<div className="slds-carousel__panels" style={{ transform: 'translateX(0%)' }}>
-						<div id="content-id-01" className="slds-carousel__panel" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-01">
-							<a href="javascript:void(0);" className="slds-carousel__panel-action slds-text-link_reset" tabIndex="0">
-								<div className="slds-carousel__image">
-									<img src="/assets/images/carousel/carousel-01.jpg" alt="Visit App Exchange" />
-								</div>
-								<div className="slds-carousel__content">
-									<h2 className="slds-carousel__content-title">Visit App Exchange</h2>
-									<p>Extend Salesforce with the #1 business marketplace.</p>
-								</div>
-							</a>
+				<div className="slds-grid_vertical slds-col slds-path__scroller">
+
+					{this.props.showAutoplay ?
+						<span className="slds-carousel__autoplay">
+							<button className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play">
+								<svg className="slds-button__icon" aria-hidden="true">
+									<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#pause" />
+								</svg>
+								<span className="slds-assistive-text">Stop auto-play</span>
+							</button>
+						</span>
+						: null}
+
+					<div className="slds-grid  slds-grid_vertical-align-center">
+						{this.props.showNavigation ?
+							<div className="slds-carousel__col-center">
+								<button className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
+								disabled={!this.props.infinite && this.canNotGoToPrevious()}
+									onClick={this.onPreviousPanelHandler}>
+									<svg className="slds-icon slds-icon-text-default" aria-hidden="true" style={{ width: '60%', height: '100%' }}>
+										<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left" />
+									</svg>
+									</button>
+							</div>
+							: null}
+						<div className="slds-carousel__stage slds-carousel__col-center" style={{ width: this.stageWidth }}>
+							<div className="slds-carousel__panels slds-is-relative" style={{ transform: `translateX(${this.state.translateX}px)` }}>
+								{this.props.items.map((item) => (<CarouselItem {...item} itemWidth={this.itemWidth} key={item.id} />))}
+							</div>
 						</div>
-						<div id="content-id-02" className="slds-carousel__panel" role="tabpanel" aria-hidden="true" aria-labelledby="indicator-id-02">
-							<a href="javascript:void(0);" className="slds-carousel__panel-action slds-text-link_reset" tabIndex="-1">
-								<div className="slds-carousel__image">
-									<img src="/assets/images/carousel/carousel-02.jpg" alt="Click to Customize"/>
-								</div>
-								<div className="slds-carousel__content">
-									<h2 className="slds-carousel__content-title">Click to Customize</h2>
-									<p>Use the Object Manager to add fields, build layouts, and more.</p>
-								</div>
-							</a>
-						</div>
-						<div id="content-id-03" className="slds-carousel__panel" role="tabpanel" aria-hidden="true" aria-labelledby="indicator-id-03">
-							<a href="javascript:void(0);" className="slds-carousel__panel-action slds-text-link_reset" tabIndex="-1">
-								<div className="slds-carousel__image">
-									<img src="/assets/images/carousel/carousel-03.jpg" alt="Download SalesforceA"/>
-								</div>
-								<div className="slds-carousel__content">
-									<h2 className="slds-carousel__content-title">Download SalesforceA</h2>
-									<p>Get the mobile app that's just for Salesforce admins.</p>
-								</div>
-							</a>
-						</div>
+						{this.props.showNavigation ?
+							<div className="slds-carousel__col-center">
+								<button className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
+								disabled={!this.props.infinite && this.canNotGoToNext()}
+									onClick={this.onNextPanelHandler}>
+									<svg className="slds-icon slds-icon-text-default" aria-hidden="true" style={{ width: '60%', height: '100%' }}>
+										<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right" />
+									</svg>
+								</button>
+							</div>
+							: null}
 					</div>
-					<ul className="slds-carousel__indicators" role="tablist">
-						<li className="slds-carousel__indicator" role="presentation">
-							<a id="indicator-id-01" className="slds-carousel__indicator-action slds-is-active" href="javascript:void(0);" role="tab" tabIndex="0" aria-selected="true" aria-controls="content-id-01" title="Visit App Exchange tab">
-								<span className="slds-assistive-text">Visit App Exchange tab</span>
-							</a>
-						</li>
-						<li className="slds-carousel__indicator" role="presentation">
-							<a id="indicator-id-02" className="slds-carousel__indicator-action" href="javascript:void(0);" role="tab" tabIndex="-1" aria-selected="false" aria-controls="content-id-02" title="Click to Customize tab">
-								<span className="slds-assistive-text">Click to Customize tab</span>
-							</a>
-						</li>
-						<li className="slds-carousel__indicator" role="presentation">
-							<a id="indicator-id-03" className="slds-carousel__indicator-action" href="javascript:void(0);" role="tab" tabIndex="-1" aria-selected="false" aria-controls="content-id-03" title="Download SalesforceA tab">
-								<span className="slds-assistive-text">Download SalesforceA tab</span>
-							</a>
-						</li>
+					<ul className="slds-carousel__indicators slds-col slds-text-align_center" role="tablist">
+						{this.showIndicators()}
 					</ul>
 				</div>
 			</div>
@@ -120,6 +167,12 @@ Carousel.propTypes = {
 	 * Content to be injected inside inside the carousel, if any
 	 */
 	children: PropTypes.node,
+	items: PropTypes.array.isRequired,
+	itemsPerPanel: PropTypes.number,
+	autoplay: PropTypes.bool,
+	showAutoplay: PropTypes.bool,
+	showNavigation: PropTypes.bool,
+	infinite: PropTypes.bool,
 
 	/**
 	 * CSS classes that are applied to the component
@@ -137,7 +190,10 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-	// Stub
+	itemsPerPanel: 3,
+	showAutoplay: false,
+	showNavigation: true,
+	infinite: false,
 };
 
 export default Carousel;
