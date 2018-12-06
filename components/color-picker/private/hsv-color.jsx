@@ -123,7 +123,9 @@ class HsvColor extends React.Component {
 						}}
 						tabIndex={0}
 					>
-						<span className="slds-assistive-text">{`Saturation ${workingColor.hsv.saturation}% Brightness: ${workingColor.hsv.value}%`}</span>
+						<span className="slds-assistive-text">{`Saturation ${
+							workingColor.hsv.saturation
+						}% Brightness: ${workingColor.hsv.value}%`}</span>
 					</a>
 				</div>
 				<div className="slds-color-picker__hue-and-preview">
@@ -161,7 +163,9 @@ class HsvColor extends React.Component {
 							checked={this.isTransparent()}
 							id={`color-picker-transparent-swatch-${this.props.id}`}
 							key="transparent"
-							label={this.props.labels.customTabTransparentSwatch || 'transparent'}
+							label={
+								this.props.labels.customTabTransparentSwatch || 'transparent'
+							}
 							style={transparentSwatchStyle}
 							value="" // transparent
 							variant="swatch"
