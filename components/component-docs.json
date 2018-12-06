@@ -8718,6 +8718,24 @@
                 "required": false,
                 "description": "The contents of the panel"
             },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to button."
+            },
             "variant": {
                 "type": {
                     "name": "enum",
