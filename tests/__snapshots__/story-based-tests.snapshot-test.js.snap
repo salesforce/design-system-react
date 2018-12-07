@@ -423,6 +423,55 @@ exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container this-is-the-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"
+      role="alert"
+      style={
+        Object {
+          "backgroundColor": "rgb(18, 49, 35)",
+        }
+      }
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Logged in as John Smith (johnsmith@acme.com).
+         
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Log out
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
 <div
   className="slds-p-around_medium"
@@ -943,10 +992,10 @@ exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
 }
       </style>
       <div
-        className="slds-box slds-theme_default"
+        className="slds-box slds-theme--default"
       >
         <h3
-          className="slds-text-heading_label slds-truncate"
+          className="slds-text-heading--label slds-truncate"
         >
           My App
         </h3>
@@ -3460,6 +3509,2204 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-color-picker"
+        id="color-picker-label-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={true}
+          id="slds-color-picker__summary-button-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-color-picker"
+            className="slds-input"
+            disabled={true}
+            id="color-picker-summary-input-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-color-picker"
+        id="color-picker-label-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+        <div
+          aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
+          aria-labelledby="color-picker-label-color-picker"
+          className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
+          id="slds-color-picker__selector-color-picker-popover"
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          role="popover"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
+          tabIndex="-1"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_small"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Close dialog
+            </span>
+          </button>
+          <div
+            className="slds-popover__body"
+            id="slds-color-picker__selector-color-picker-dialog-body"
+          >
+            <div
+              className="slds-tabs_default"
+              data-tabs={true}
+              id="color-picker-tabs-color-picker"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            >
+              <ul
+                className="slds-tabs_default__nav"
+                id="color-picker-tabs-color-picker-slds-tabs__nav"
+                role="tablist"
+              >
+                <li
+                  aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
+                  aria-selected="true"
+                  className="slds-text-title_caps slds-active slds-tabs_default__item"
+                  id="color-picker-tabs-color-picker-slds-tabs_tab-0"
+                  role="tab"
+                  tabIndex="0"
+                  title="Default"
+                >
+                  <a
+                    className="slds-active slds-tabs_default__link"
+                    href="javascript:void(0);"
+                    role="presentation"
+                    tabIndex="-1"
+                  >
+                    Default
+                  </a>
+                </li>
+                <li
+                  aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
+                  aria-selected="false"
+                  className="slds-text-title_caps slds-tabs_default__item"
+                  id="color-picker-tabs-color-picker-slds-tabs_tab-1"
+                  role="tab"
+                  tabIndex={null}
+                  title="Custom"
+                >
+                  <a
+                    className="slds-tabs_default__link"
+                    href="javascript:void(0);"
+                    role="presentation"
+                    tabIndex="-1"
+                  >
+                    Custom
+                  </a>
+                </li>
+              </ul>
+              <div
+                aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-0"
+                className="slds-show slds-tabs_default__content"
+                id="color-picker-tabs-color-picker-slds-tabs_panel-0"
+                role="tabpanel"
+              >
+                <ul
+                  className="slds-color-picker__swatches"
+                  onKeyDown={[Function]}
+                  role="listbox"
+                >
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={0}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#e3abec",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #e3abec
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#c2dbf7",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #c2dbf7
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#9fd6ff",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #9fd6ff
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#9de7da",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #9de7da
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#9df0c0",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #9df0c0
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#fff099",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #fff099
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#fed49a",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #fed49a
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#d073e0",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #d073e0
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#86baf3",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #86baf3
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#5ebbff",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #5ebbff
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#44d8be",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #44d8be
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#3be282",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #3be282
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#ffe654",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #ffe654
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#ffb758",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #ffb758
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#bd35bd",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #bd35bd
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#5779c1",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #5779c1
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#5679c0",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #5679c0
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#00aea9",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #00aea9
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#3cba4c",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #3cba4c
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#f5bc25",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #f5bc25
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#f99221",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #f99221
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#580d8c",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #580d8c
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#001970",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #001970
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#0a2399",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #0a2399
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#0b7477",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #0b7477
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#0b6b50",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #0b6b50
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#b67e11",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #b67e11
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#b85d0d",
+                            "border": "1px solid #cccccc",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #b85d0d
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-1"
+                className="slds-hide slds-tabs_default__content"
+                id="color-picker-tabs-color-picker-slds-tabs_panel-1"
+                role="tabpanel"
+              >
+                <div
+                  className="slds-color-picker__custom"
+                >
+                  <div>
+                    <p
+                      className="slds-assistive-text"
+                      id="color-picker-instructions-color-picker"
+                    >
+                      Use arrow keys to select a saturation and brightness, on an x and y axis.
+                    </p>
+                    <div
+                      className="slds-color-picker__custom-range"
+                      onClick={[Function]}
+                      role="presentation"
+                      style={
+                        Object {
+                          "background": "hsl(0, 100%, 50%)",
+                        }
+                      }
+                    >
+                      <a
+                        aria-atomic="true"
+                        aria-describedby="color-picker-instructions-color-picker"
+                        aria-live="assertive"
+                        className="slds-color-picker__range-indicator"
+                        onKeyDown={[Function]}
+                        role="button"
+                        style={
+                          Object {
+                            "bottom": "0%",
+                            "left": "0%",
+                          }
+                        }
+                        tabIndex={0}
+                      />
+                    </div>
+                    <div
+                      className="slds-color-picker__hue-and-preview"
+                    >
+                      <label
+                        className="slds-assistive-text"
+                        htmlFor="color-picker-input-range-color-picker"
+                      >
+                        Select Hue
+                      </label>
+                      <input
+                        className="slds-color-picker__hue-slider"
+                        id="color-picker-input-range-color-picker"
+                        max="360"
+                        min="0"
+                        onChange={[Function]}
+                        type="range"
+                        value={0}
+                      />
+                      <fieldset
+                        className="slds-form-element"
+                      >
+                        <legend
+                          className="slds-form-element__legend slds-form-element__label slds-assistive-text"
+                        >
+                          Toggle Transparency
+                        </legend>
+                        <div
+                          className="slds-form-element__control"
+                        >
+                          <div
+                            className="slds-radio_button-group"
+                            style={
+                              Object {
+                                "border": "none",
+                                "borderRadius": "unset",
+                              }
+                            }
+                          >
+                            <span
+                              className="slds-radio"
+                            >
+                              <input
+                                checked={false}
+                                id="color-picker-active-working-color-swatch-color-picker"
+                                name="color-picker-color-picker-swatch-toggle-button-group"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onKeyPress={[Function]}
+                                type="radio"
+                                value="#000000"
+                              />
+                              <label
+                                className="slds-radio_button__label"
+                                htmlFor="color-picker-active-working-color-swatch-color-picker"
+                                style={
+                                  Object {
+                                    "border": "1px",
+                                  }
+                                }
+                              >
+                                <span>
+                                  <span
+                                    className="slds-swatch"
+                                    style={
+                                      Object {
+                                        "backgroundColor": "#000000",
+                                        "border": "1px solid #9e9e9e",
+                                        "marginRight": "2px",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="slds-assistive-text"
+                                    >
+                                      Working Color
+                                    </span>
+                                  </span>
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              className="slds-radio"
+                            >
+                              <input
+                                checked={true}
+                                id="color-picker-transparent-swatch-color-picker"
+                                name="color-picker-color-picker-swatch-toggle-button-group"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onKeyPress={[Function]}
+                                type="radio"
+                                value=""
+                              />
+                              <label
+                                className="slds-radio_button__label"
+                                htmlFor="color-picker-transparent-swatch-color-picker"
+                                style={
+                                  Object {
+                                    "border": "1px",
+                                  }
+                                }
+                              >
+                                <span>
+                                  <span
+                                    className="slds-swatch"
+                                    style={
+                                      Object {
+                                        "backgroundColor": "",
+                                        "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                                        "border": "1px solid #9e9e9e",
+                                        "boxShadow": "rgb(117, 112, 112) 1px 1px 1px",
+                                        "marginRight": "2px",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="slds-assistive-text"
+                                    >
+                                      Transparent
+                                    </span>
+                                  </span>
+                                </span>
+                              </label>
+                            </span>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div
+                    className="slds-color-picker__custom-inputs"
+                  >
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-hex"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-hex-color-picker"
+                      >
+                        Hex
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          aria-describedby="color-picker-custom-error-color-picker"
+                          className="slds-input"
+                          id="color-picker-input-hex-color-picker"
+                          maxLength="7"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-r"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-r-color-picker"
+                      >
+                        R
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          aria-describedby="color-picker-custom-error-color-picker"
+                          className="slds-input"
+                          id="color-picker-input-r-color-picker"
+                          maxLength="3"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-g"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-g-color-picker"
+                      >
+                        G
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          aria-describedby="color-picker-custom-error-color-picker"
+                          className="slds-input"
+                          id="color-picker-input-g-color-picker"
+                          maxLength="3"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-b"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-b-color-picker"
+                      >
+                        B
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          aria-describedby="color-picker-custom-error-color-picker"
+                          className="slds-input"
+                          id="color-picker-input-b-color-picker"
+                          maxLength="3"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer
+            className="slds-popover__footer"
+          >
+            <div
+              className="slds-color-picker__selector-footer"
+            >
+              <button
+                className="slds-button slds-button_neutral slds-color-picker__selector-cancel"
+                disabled={false}
+                id="color-picker-footer-cancel-color-picker"
+                onClick={[Function]}
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                className="slds-button slds-button_brand slds-color-picker__selector-submit"
+                disabled={false}
+                id="color-picker-footer-submit-color-picker"
+                onClick={[Function]}
+                type="button"
+              >
+                Done
+              </button>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-custom-only-color-picker"
+        id="color-picker-label-custom-only-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-custom-only-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-custom-only-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-custom-only-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-Custom-tab-default-color-picker"
+        id="color-picker-label-Custom-tab-default-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-Custom-tab-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-Custom-tab-default-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-Custom-tab-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-custom-validator-color-picker"
+        id="color-picker-label-custom-validator-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-custom-validator-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-custom-validator-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-custom-validator-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker test_class_name"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-default-color-picker"
+        id="color-picker-label-default-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-default-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-hidden-input-color-picker"
+        id="color-picker-label-hidden-input-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-hidden-input-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-outer-input-error-state-color-picker"
+        id="color-picker-label-outer-input-error-state-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-outer-input-error-state-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "#invalid",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              #invalid
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top slds-has-error"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-outer-input-error-state-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-outer-input-error-state-color-picker"
+            onChange={[Function]}
+            type="text"
+            value="#invalid"
+          />
+        </div>
+      </div>
+      <p
+        className="slds-form-error"
+        id="color-picker-summary-error-outer-input-error-state-color-picker"
+      >
+        Hex is invalid. Please correct this field.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-predefined-color-picker"
+        id="color-picker-label-predefined-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-predefined-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "#000000",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              #000000
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-predefined-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-predefined-color-picker"
+            onChange={[Function]}
+            type="text"
+            value="#000000"
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-predefined-only-color-picker"
+        id="color-picker-label-predefined-only-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-predefined-only-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "#000000",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              #000000
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-predefined-only-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-predefined-only-color-picker"
+            onChange={[Function]}
+            type="text"
+            value="#000000"
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-swatch-only-color-picker"
+        id="color-picker-label-swatch-only-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-swatch-only-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-swatch-only-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-swatch-only-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-working-color-error-state-color-picker"
+        id="color-picker-label-working-color-error-state-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-working-color-error-state-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-working-color-error-state-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-working-color-error-state-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Base 1`] = `
 <div
   className="slds-p-around_medium"
@@ -3535,10 +5782,11 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={true}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex="0"
@@ -3547,7 +5795,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -3601,10 +5849,11 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex={-1}
@@ -3613,7 +5862,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -4004,10 +6253,11 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={true}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex="0"
@@ -4016,7 +6266,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -4070,10 +6320,11 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex={-1}
@@ -4082,7 +6333,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -4172,10 +6423,11 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
               role="presentation"
             >
               <span
-                aria-selected={true}
+                aria-selected="true"
                 className="slds-pill"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="option"
                 tabIndex="0"
@@ -4184,7 +6436,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
                   className="slds-pill__icon_container"
                 >
                   <span
-                    className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                    className="slds-icon_container slds-icon-standard-account"
                   >
                     <svg
                       aria-hidden="true"
@@ -4238,10 +6490,11 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
               role="presentation"
             >
               <span
-                aria-selected={false}
+                aria-selected="true"
                 className="slds-pill"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="option"
                 tabIndex={-1}
@@ -4250,7 +6503,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
                   className="slds-pill__icon_container"
                 >
                   <span
-                    className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                    className="slds-icon_container slds-icon-standard-account"
                   >
                     <svg
                       aria-hidden="true"
@@ -5545,10 +7798,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
             role="presentation"
           >
             <span
-              aria-selected={true}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex="0"
@@ -5557,7 +7811,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
                 className="slds-pill__icon_container"
               >
                 <span
-                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  className="slds-icon_container slds-icon-standard-account"
                 >
                   <svg
                     aria-hidden="true"
@@ -5713,10 +7967,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
               role="presentation"
             >
               <span
-                aria-selected={true}
+                aria-selected="true"
                 className="slds-pill"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="option"
                 tabIndex="0"
@@ -5725,7 +7980,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                   className="slds-pill__icon_container"
                 >
                   <span
-                    className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                    className="slds-icon_container slds-icon-standard-account"
                   >
                     <svg
                       aria-hidden="true"
@@ -5779,10 +8034,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
               role="presentation"
             >
               <span
-                aria-selected={false}
+                aria-selected="true"
                 className="slds-pill"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="option"
                 tabIndex={-1}
@@ -5791,7 +8047,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                   className="slds-pill__icon_container"
                 >
                   <span
-                    className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                    className="slds-icon_container slds-icon-standard-account"
                   >
                     <svg
                       aria-hidden="true"
@@ -6196,10 +8452,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
             role="presentation"
           >
             <span
-              aria-selected={true}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex="0"
@@ -6241,10 +8498,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
             role="presentation"
           >
             <span
-              aria-selected={false}
+              aria-selected="true"
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               role="option"
               tabIndex={-1}
@@ -7539,10 +9797,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
 
 exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
 <div
-  className="slds-p-around--medium"
+  className="slds-p-around_medium"
 >
   <div>
     <table
+      aria-multiselectable="true"
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
       id="DataTableExample-2"
       role="grid"
@@ -7827,11 +10086,11 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
       </thead>
       <tbody>
         <tr
+          aria-selected="false"
           className="slds-hint-parent"
         >
           <td
             className="slds-text-align_right"
-            data-label="Select Row"
             role="gridcell"
             style={
               Object {
@@ -8020,11 +10279,11 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="false"
           className="slds-hint-parent"
         >
           <td
             className="slds-text-align_right"
-            data-label="Select Row"
             role="gridcell"
             style={
               Object {
@@ -8213,11 +10472,11 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
         </tr>
         <tr
+          aria-selected="true"
           className="slds-hint-parent slds-is-selected"
         >
           <td
             className="slds-text-align_right"
-            data-label="Select Row"
             role="gridcell"
             style={
               Object {
@@ -8257,6 +10516,825 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                 </span>
               </div>
             </div>
+          </td>
+          <th
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="salesforce.com - 1,000 Widgets"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                salesforce.com - 1,000 Widgets
+              </a>
+            </div>
+          </th>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="salesforce.com"
+            >
+              salesforce.com
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="1/31/15 3:45PM"
+            >
+              1/31/15 3:45PM
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Id. Decision Makers"
+            >
+              Id. Decision Makers
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="60%"
+            >
+              60%
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$25,000"
+            >
+              $25,000
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="nathan@salesforce.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                nathan@salesforce.com
+              </a>
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Actions"
+            onClick={[Function]}
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger_click"
+              id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
+              onClick={[Function]}
+              onFocus={null}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button_icon-x-small"
+                disabled={false}
+                onClick={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_hint"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Actions
+                </span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <table
+      className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
+      id="DataTableExample-2"
+      role="grid"
+    >
+      <thead>
+        <tr
+          className="slds-line-height_reset"
+        >
+          <th
+            className="slds-text-align_right"
+            scope="col"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          />
+          <th
+            aria-label="Name"
+            aria-sort="ascending"
+            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <a
+              className="slds-th__action slds-text-link_reset"
+              href="javascript:void(0)"
+              onClick={[Function]}
+              role="button"
+              tabIndex="0"
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                sort this column
+                 
+              </span>
+              <span
+                className="slds-truncate"
+                title="Name"
+              >
+                Name
+              </span>
+              <span>
+                <svg
+                  aria-hidden="true"
+                  className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                  />
+                </svg>
+                
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="assertive"
+                className="slds-assistive-text"
+              >
+                asc
+              </span>
+            </a>
+          </th>
+          <th
+            aria-label="Account Name"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Account Name"
+              >
+                Account Name
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Close Date"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Close Date"
+              >
+                Close Date
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Stage"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Stage"
+              >
+                Stage
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Confidence"
+            aria-sort="none"
+            className="slds-is-sortable slds-text-title_caps"
+            scope="col"
+            style={null}
+          >
+            <a
+              className="slds-th__action slds-text-link_reset"
+              href="javascript:void(0)"
+              onClick={[Function]}
+              role="button"
+              tabIndex="0"
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                sort this column
+                 
+              </span>
+              <span
+                className="slds-truncate"
+                title="Confidence"
+              >
+                Confidence
+              </span>
+              <span>
+                <svg
+                  aria-hidden="true"
+                  className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                  />
+                </svg>
+                
+              </span>
+            </a>
+          </th>
+          <th
+            aria-label="Amount"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Amount"
+              >
+                Amount
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Contact"
+            aria-sort="none"
+            className="slds-text-title_caps"
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Contact"
+              >
+                Contact
+              </span>
+            </span>
+          </th>
+          <th
+            scope="col"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-th__action"
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                actions
+              </span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          aria-selected="false"
+          className="slds-hint-parent"
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <span
+              className="slds-radio slds-m-right_x-small"
+            >
+              <input
+                checked={false}
+                id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                name="DataTableExample-2-SelectRow"
+                onChange={[Function]}
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                type="radio"
+              />
+              <label
+                className="slds-radio__label"
+                htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+              >
+                <span
+                  className="slds-radio_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  
+                </span>
+              </label>
+            </span>
+          </td>
+          <th
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme - 1,200 Widgets"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Acme - 1,200 Widgets
+              </a>
+            </div>
+          </th>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme"
+            >
+              Acme
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="4/10/15"
+            >
+              4/10/15
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Value Proposition"
+            >
+              Value Proposition
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="70%"
+            >
+              70%
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$25,000,000"
+            >
+              $25,000,000
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="jrogers@acme.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@acme.com
+              </a>
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Actions"
+            onClick={[Function]}
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger_click"
+              id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
+              onClick={[Function]}
+              onFocus={null}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button_icon-x-small"
+                disabled={false}
+                onClick={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_hint"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Actions
+                </span>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          className="slds-hint-parent"
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <span
+              className="slds-radio slds-m-right_x-small"
+            >
+              <input
+                checked={false}
+                id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                name="DataTableExample-2-SelectRow"
+                onChange={[Function]}
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                type="radio"
+              />
+              <label
+                className="slds-radio__label"
+                htmlFor="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+              >
+                <span
+                  className="slds-radio_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  
+                </span>
+              </label>
+            </span>
+          </td>
+          <th
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme - 200 Widgets"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Acme - 200 Widgets
+              </a>
+            </div>
+          </th>
+          <td
+            className={null}
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme"
+            >
+              Acme
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="1/31/15"
+            >
+              1/31/15
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="30%"
+            >
+              30%
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$5,000,000"
+            >
+              $5,000,000
+            </div>
+          </td>
+          <td
+            className={null}
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="bob@acme.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                bob@acme.com
+              </a>
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Actions"
+            onClick={[Function]}
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger_click"
+              id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
+              onClick={[Function]}
+              onFocus={null}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button_icon-x-small"
+                disabled={false}
+                onClick={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_hint"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Actions
+                </span>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          className="slds-hint-parent"
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <span
+              className="slds-radio slds-m-right_x-small"
+            >
+              <input
+                checked={false}
+                id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                name="DataTableExample-2-SelectRow"
+                onChange={[Function]}
+                onClick={[Function]}
+                onKeyPress={[Function]}
+                type="radio"
+              />
+              <label
+                className="slds-radio__label"
+                htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+              >
+                <span
+                  className="slds-radio_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  
+                </span>
+              </label>
+            </span>
           </td>
           <th
             className={null}
@@ -11122,7 +14200,7 @@ exports[`DOM snapshots SLDSFilter Permanant Filter 1`] = `
 
 exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
 <div
-  className="slds-p-around--medium"
+  className="slds-p-around_medium"
 >
   <header
     className="slds-global-header_container"
@@ -12525,6 +15603,7 @@ exports[`DOM snapshots SLDSInput Base 1`] = `
             <input
               className="slds-input"
               id="base-id"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12554,6 +15633,7 @@ exports[`DOM snapshots SLDSInput Base 1`] = `
             <input
               className="slds-input"
               id="assistiveLabel-id"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12602,6 +15682,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12651,6 +15732,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-clickable-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12680,6 +15762,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-right-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12717,6 +15800,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-right-clickable-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12774,6 +15858,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-and-right-icons"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12831,17 +15916,30 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-clickable-left-and-right-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
-            <svg
-              aria-hidden={true}
-              className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
             >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                clear
+              </span>
+            </button>
           </div>
         </div>
       </li>
@@ -12876,6 +15974,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
             <input
               className="slds-input"
               id="with-left-and-clickable-right-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12935,6 +16034,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input"
               id="with-left-clickable-right-and-spinner"
               name="right-clickable-icon"
+              onChange={[Function]}
               placeholder="My placeholder"
               type="text"
             />
@@ -12992,6 +16092,518 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSInput Counter Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        1. Simple counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-1"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-1"
+            onChange={[Function]}
+            type="number"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        2. Controlled counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-2"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-2"
+            onChange={[Function]}
+            type="number"
+            value={10}
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        3. Controlled counter input with min/max values and custom step size
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-3"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-3"
+            max={30}
+            min={2}
+            onChange={[Function]}
+            step={2}
+            type="number"
+            value={10}
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        4. Counter input with floating step size
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-4"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            defaultValue={10}
+            id="counter-input-4"
+            onChange={[Function]}
+            step={0.1}
+            type="number"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        5. Disabled counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-5"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            disabled={true}
+            id="counter-input-5"
+            onChange={[Function]}
+            type="number"
+            value="10"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        6. Readonly counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-6"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input slds-text-align_left slds-input_counter slds-p-horizontal_none"
+            id="counter-input-6"
+            onChange={[Function]}
+            readOnly={true}
+            type="number"
+            value="10"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Counter Static Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      1. Static counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <span
+        className="slds-form-element__label"
+      >
+        My Label
+      </span>
+      <div
+        className="slds-form-element__control slds-has-divider_bottom"
+      >
+        <span
+          className="slds-form-element__static slds-grid"
+        >
+          10
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Custom style 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          Input with custom style
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="custom-style"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="custom-style"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              style={
+                Object {
+                  "background": "#efffff",
+                  "height": 30,
+                  "width": 130,
+                }
+              }
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
 exports[`DOM snapshots SLDSInput Disabled Input 1`] = `
 <div
   className="slds-p-around_medium"
@@ -13019,6 +16631,7 @@ exports[`DOM snapshots SLDSInput Disabled Input 1`] = `
           disabled={true}
           id="disabled-input"
           name="disabled-input"
+          onChange={[Function]}
           type="text"
           value="Disabled value"
         />
@@ -13089,6 +16702,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
         <input
           className="slds-input"
           id="field-level-help"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -13176,6 +16790,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
         <input
           className="slds-input"
           id="field-level-help"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -13215,6 +16830,7 @@ exports[`DOM snapshots SLDSInput Fixed Text 1`] = `
           className="slds-input"
           id="fixed-text"
           name="fixed-text"
+          onChange={[Function]}
           placeholder="My placeholder"
           type="text"
         />
@@ -13249,6 +16865,7 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
         <input
           className="slds-input"
           id="inline-help"
+          onChange={[Function]}
           type="text"
         />
         <div
@@ -13288,6 +16905,7 @@ exports[`DOM snapshots SLDSInput Read Only 1`] = `
           className="slds-input"
           id="read-only"
           name="read-only"
+          onChange={[Function]}
           readOnly={true}
           type="text"
           value="Read Only Value"
@@ -13344,6 +16962,7 @@ exports[`DOM snapshots SLDSInput Required Input in Error State 1`] = `
           className="slds-input"
           id="required-input-error"
           name="required-input-error"
+          onChange={[Function]}
           placeholder="My placeholder"
           required={true}
           type="text"
@@ -13468,41 +17087,49 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
     className="slds-page-header"
   >
     <div
-      className="slds-media slds-media_center"
+      className="slds-page-header__row"
     >
       <div
-        className="slds-media__figure"
+        className="slds-page-header__col-title"
       >
-        <span
-          className="slds-icon_container slds-icon-standard-opportunity"
+        <div
+          className="slds-media"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-icon"
+          <div
+            className="slds-media__figure"
           >
-            <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
-            />
-          </svg>
-          
-        </span>
-         
-      </div>
-      <div
-        className="slds-media__body"
-      >
-        <div>
-          <h1
-            className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
-            title="Rohde Corp - 80,000 Widgets"
+            <span
+              className="slds-icon_container slds-icon-standard-opportunity"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                />
+              </svg>
+              
+            </span>
+             
+          </div>
+          <div
+            className="slds-media__body"
           >
-            Rohde Corp - 80,000 Widgets
-          </h1>
-          <p
-            className="slds-page-header__info"
-          >
-            Mark Jaeckal • Unlimited Customer • 11/13/15
-          </p>
+            <div>
+              <h1
+                className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                title="Rohde Corp - 80,000 Widgets"
+              >
+                Rohde Corp - 80,000 Widgets
+              </h1>
+              <p
+                className="slds-text-body_small slds-line-height_reset"
+              >
+                Mark Jaeckal • Unlimited Customer • 11/13/15
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -13661,7 +17288,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           className="slds-col slds-align-bottom"
         >
           <p
-            className="slds-page-header__info"
+            className="slds-text-body_small slds-line-height_reset"
           >
             10 items • sorted by name
           </p>
@@ -14358,7 +17985,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           className="slds-col slds-align-bottom"
         >
           <p
-            className="slds-page-header__info"
+            className="slds-text-body_small slds-line-height_reset"
           >
             10 items • sorted by name
           </p>
@@ -14491,9 +18118,1032 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-p-vertical_medium"
+    >
+      <h3
+        className="slds-text-heading_small"
+      >
+        Static Examples
+      </h3>
+    </div>
+    <div
+      className="slds-grid slds-grid_vertical-align-start"
+    >
+      <div
+        aria-orientation="horizontal"
+        className="slds-pill_container"
+        id="bare-pill-container-listbox-of-pill-options"
+        role="listbox"
+      >
+        <ul
+          aria-label="Selected Options:"
+          className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+          role="group"
+        >
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill slds-pill_bare"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex="0"
+            >
+              <span
+                className="slds-pill__label"
+                title="Pill Label 1"
+              >
+                Pill Label 1
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill slds-pill_bare"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__label"
+                title="Pill Label 2"
+              >
+                Pill Label 2
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-p-vertical_medium"
+    >
+      <h3
+        className="slds-text-heading_small"
+      >
+        Static Examples
+      </h3>
+    </div>
+    <div
+      className="slds-grid slds-grid_vertical-align-start"
+    >
+      <div
+        aria-orientation="horizontal"
+        className="slds-pill_container"
+        id="base-pill-container-listbox-of-pill-options"
+        role="listbox"
+      >
+        <ul
+          aria-label="Selected Options:"
+          className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+          role="group"
+        >
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex="0"
+            >
+              <span
+                className="slds-pill__label"
+                title="Pill Label 1"
+              >
+                Pill Label 1
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__label"
+                title="Pill Label 2"
+              >
+                Pill Label 2
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-p-vertical_medium"
+    >
+      <h3
+        className="slds-text-heading_small"
+      >
+        Static Examples
+      </h3>
+    </div>
+    <div
+      className="slds-grid slds-grid_vertical-align-start"
+    >
+      <div
+        aria-orientation="horizontal"
+        className="slds-pill_container"
+        id="pill-container-with-avatars-listbox-of-pill-options"
+        role="listbox"
+      >
+        <ul
+          aria-label="Selected Options:"
+          className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+          role="group"
+        >
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex="0"
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <div>
+                  <span
+                    className="slds-avatar slds-avatar_circle slds-avatar_medium"
+                  >
+                    <img
+                      alt=""
+                      onError={[Function]}
+                      src="https://lightningdesignsystem.com/assets/images/avatar1.jpg"
+                      title="User 1"
+                    />
+                  </span>
+                </div>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 1"
+              >
+                Pill Label 1
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <div>
+                  <span
+                    className="slds-avatar slds-avatar_circle slds-avatar_medium"
+                  >
+                    <img
+                      alt=""
+                      onError={[Function]}
+                      src="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+                      title="User 2"
+                    />
+                  </span>
+                </div>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 2"
+              >
+                Pill Label 2
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-p-vertical_medium"
+    >
+      <h3
+        className="slds-text-heading_small"
+      >
+        Static Examples
+      </h3>
+    </div>
+    <div
+      className="slds-grid slds-grid_vertical-align-start"
+    >
+      <div
+        aria-orientation="horizontal"
+        className="slds-pill_container"
+        id="pill-container-with-icons-listbox-of-pill-options"
+        role="listbox"
+      >
+        <ul
+          aria-label="Selected Options:"
+          className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+          role="group"
+        >
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex="0"
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-account"
+                  title="Account"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 1"
+              >
+                Pill Label 1
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-case"
+                  title="Case"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 2"
+              >
+                Pill Label 2
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  title="Retweet"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon slds-icon-text-default"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#retweet"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 3"
+              >
+                Pill Label 3
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-solution"
+                  title="Solution"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#solution"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 4"
+              >
+                Pill Label 4
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-custom-notification"
+                  title="Custom Notification"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#custom_notification"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 5"
+              >
+                Pill Label 5
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-email"
+                  title="Email"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#email"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 6"
+              >
+                Pill Label 6
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-endorsement"
+                  title="Endorsement"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#endorsement"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 7"
+              >
+                Pill Label 7
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-recent"
+                  title="Recent"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#recent"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 8"
+              >
+                Pill Label 8
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-custom-custom31"
+                  title="Custom 31"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom31"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Pill Label 9"
+              >
+                Pill Label 9
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
 <div
-  className="slds-p-around--medium"
+  className="slds-p-around_medium"
 >
   <div
     style={
