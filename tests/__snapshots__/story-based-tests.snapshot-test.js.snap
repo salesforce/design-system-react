@@ -17824,7 +17824,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
             className="slds-tooltip-trigger"
             style={
               Object {
-                "display": "inline-block",
+                "display": "inline",
               }
             }
           >

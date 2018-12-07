@@ -118,7 +118,12 @@ const customTooltip = () => {
 	const content =
 		'here is a super long description that will truncate and the rest of it will show in the tooltip.';
 	return (
-		<Tooltip align="top" content={content} id="page-header-truncate-tooltip">
+		<Tooltip
+			align="top"
+			content={content}
+			id="page-header-truncate-tooltip"
+			triggerStyle={{ display: 'inline' }}
+		>
 			<p tabIndex="0" className="slds-truncate">
 				{content}
 			</p>
