@@ -2,7 +2,7 @@
 
 exports[`DataTable Advanced HTML Snapshot 1`] = `
 "<div>
-  <table class=\\"slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered\\" id=\\"DataTableExample-2\\" role=\\"grid\\">
+  <table aria-multiselectable=\\"true\\" class=\\"slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered\\" id=\\"DataTableExample-2\\" role=\\"grid\\">
     <thead>
       <tr class=\\"slds-line-height_reset\\">
         <th class=\\"slds-text-align_right\\" scope=\\"col\\" style=\\"width:3.25rem\\">
@@ -37,8 +37,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
       </tr>
     </thead>
     <tbody>
-      <tr class=\\"slds-hint-parent\\">
-        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem\\">
+      <tr aria-selected=\\"false\\" class=\\"slds-hint-parent\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" style=\\"width:3.25rem\\">
           <div class=\\"slds-form-element\\">
             <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\\"><span class=\\"slds-checkbox_faux\\"></span>
               <span
@@ -74,8 +74,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
               type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
-      <tr class=\\"slds-hint-parent\\">
-        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem\\">
+      <tr aria-selected=\\"false\\" class=\\"slds-hint-parent\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" style=\\"width:3.25rem\\">
           <div class=\\"slds-form-element\\">
             <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\\"><span class=\\"slds-checkbox_faux\\"></span>
               <span
@@ -111,8 +111,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
               type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
-      <tr class=\\"slds-hint-parent slds-is-selected\\">
-        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem\\">
+      <tr aria-selected=\\"true\\" class=\\"slds-hint-parent slds-is-selected\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" style=\\"width:3.25rem\\">
           <div class=\\"slds-form-element\\">
             <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" checked=\\"\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\\"><span class=\\"slds-checkbox_faux\\"></span>
               <span

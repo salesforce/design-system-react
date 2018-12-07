@@ -61,23 +61,12 @@ class Example extends React.Component {
 				contact: 'nathan@salesforce.com',
 			},
 		],
-		selection: [
-			{
-				id: '8IKZHZZV81',
-				opportunityName: 'salesforce.com - 1,000 Widgets',
-				accountName: 'salesforce.com',
-				closeDate: '1/31/15 3:45PM',
-				stage: 'Id. Decision Makers',
-				confidence: '60%',
-				amount: '$25,000',
-				contact: 'nathan@salesforce.com',
-			},
-		],
+		selection: [],
 	};
 
 	handleChanged = (event, data) => {
 		this.setState({ selection: data.selection });
-		console.log(event, data);
+		console.log('event: ', event, ', data: ', data);
 	};
 
 	handleRowAction = (item, action) => {
@@ -139,7 +128,7 @@ class Example extends React.Component {
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
-						selectRows="checkbox"
+						selectRows="radio"
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}

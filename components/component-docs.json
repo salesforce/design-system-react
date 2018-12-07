@@ -4047,10 +4047,28 @@
             },
             "selectRows": {
                 "type": {
-                    "name": "bool"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "bool"
+                        },
+                        {
+                            "name": "enum",
+                            "value": [
+                                {
+                                    "value": "'checkbox'",
+                                    "computed": false
+                                },
+                                {
+                                    "value": "'radio'",
+                                    "computed": false
+                                }
+                            ]
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "True if rows should be selectable."
+                "description": "Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility"
             },
             "stacked": {
                 "type": {
@@ -10639,6 +10657,22 @@
                 "modifiers": [],
                 "params": [],
                 "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "preventDuplicateChangeEvent",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -10681,6 +10715,13 @@
                 "required": false,
                 "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
+            "deselectable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Controls whether the radio button can be deselected. If used in a radio group, this allows no radios to be selected"
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -10722,7 +10763,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the radio selection changes."
+                "description": "This event fires when the radio selection changes. Passes in `event, { checked }`. If using the `deselectable` option, the event could be a click or keypress event."
             },
             "value": {
                 "type": {
