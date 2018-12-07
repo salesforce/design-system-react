@@ -89,11 +89,7 @@ class DataTableRow extends React.Component {
 					<td
 						role={this.props.fixedLayout ? 'gridcell' : null}
 						className="slds-text-align_right"
-						data-label={
-							this.props.canSelectRows === 'radio'
-								? `${this.props.tableId}-SelectRow`
-								: 'Select Row'
-						}
+						data-label={this.props.stacked ? 'Select Row' : undefined}
 						style={{ width: '3.25rem' }}
 					>
 						{this.props.canSelectRows === 'radio' ? (
