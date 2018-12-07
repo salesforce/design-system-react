@@ -139,7 +139,7 @@ class Example extends React.Component {
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
-						selectRows
+						selectRows="checkbox"
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}

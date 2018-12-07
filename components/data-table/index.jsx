@@ -147,9 +147,12 @@ class DataTable extends React.Component {
 		 */
 		selection: PropTypes.array,
 		/**
-		 * True if rows should be selectable.
+		 * Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility
 		 */
-		selectRows: PropTypes.bool,
+		selectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['checkbox', 'radio']),
+		]),
 		/**
 		 * A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.
 		 */
@@ -209,19 +212,26 @@ class DataTable extends React.Component {
 			let selection;
 
 			if (selected) {
-				selection = [...this.props.selection, item];
+				selection =
+					this.props.selectRows === 'radio'
+						? [item]
+						: [...this.props.selection, item];
 			} else {
 				selection = reject(this.props.selection, item);
 			}
 
 			this.props.onChange(selection, e);
 		}
+		// DEPRECATED CODE ENDS HERE
 
 		if (typeof this.props.onRowChange === 'function') {
 			let selection;
 
 			if (selected) {
-				selection = [...this.props.selection, item];
+				selection =
+					this.props.selectRows === 'radio'
+						? [item]
+						: [...this.props.selection, item];
 			} else {
 				selection = reject(this.props.selection, item);
 			}
@@ -232,9 +242,11 @@ class DataTable extends React.Component {
 
 	// ### Render
 	render() {
+		const ariaProps = {};
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
-		const canSelectRows = this.props.selectRows && numRows > 0;
+		const canSelectRows =
+			this.props.selectRows && numRows > 0 ? this.props.selectRows : false;
 		const allSelected = canSelectRows && numRows === numSelected;
 		const indeterminateSelected =
 			canSelectRows && numRows !== numSelected && numSelected !== 0;
@@ -293,8 +305,13 @@ class DataTable extends React.Component {
 			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
 		}
 
+		if (this.props.selectRows && this.props.selectRows !== 'radio') {
+			ariaProps['aria-multiselectable'] = 'true';
+		}
+
 		return (
 			<table
+				{...ariaProps}
 				className={classNames(
 					'slds-table',
 					{
@@ -345,6 +362,7 @@ class DataTable extends React.Component {
 										onToggle={this.handleRowToggle}
 										selection={this.props.selection}
 										rowActions={RowActions}
+										tableId={this.getId()}
 									/>
 								);
 							})
