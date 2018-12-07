@@ -10715,13 +10715,6 @@
                 "required": false,
                 "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
-            "deselectable": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Controls whether the radio button can be deselected. If used in a radio group, this allows no radios to be selected"
-            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -10763,7 +10756,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the radio selection changes. Passes in `event, { checked }`. If using the `deselectable` option, the event could be a click or keypress event."
+                "description": "This event fires when the radio selection changes. Passes in `event, { checked }`."
             },
             "value": {
                 "type": {
