@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../../../../components/icon-settings';
 
 import { FORMS_INLINE_EDIT } from '../../../../../utilities/constants';
