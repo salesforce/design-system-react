@@ -5,11 +5,7 @@
 
 // Implements the [Data Table design pattern](https://www.lightningdesignsystem.com/components/data-tables) in React.
 
-// ## Dependencies
-
-// ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### shortid
@@ -17,13 +13,8 @@ import PropTypes from 'prop-types';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-// ### classNames
 import classNames from 'classnames';
-
-// ### assign
 import assign from 'lodash.assign';
-
-// ### reject
 import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -37,7 +28,6 @@ import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
 
-// ## Constants
 import {
 	DATA_TABLE,
 	DATA_TABLE_CELL,
@@ -57,7 +47,6 @@ const defaultProps = {
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
 	},
-	id: shortid.generate(),
 	selection: [],
 };
 
@@ -65,13 +54,13 @@ const defaultProps = {
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
  */
-const DataTable = createReactClass({
+class DataTable extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE,
+	static displayName = DATA_TABLE;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -158,9 +147,12 @@ const DataTable = createReactClass({
 		 */
 		selection: PropTypes.array,
 		/**
-		 * True if rows should be selectable.
+		 * Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility
 		 */
-		selectRows: PropTypes.bool,
+		selectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['checkbox', 'radio']),
+		]),
 		/**
 		 * A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.
 		 */
@@ -181,18 +173,25 @@ const DataTable = createReactClass({
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
 		unbufferedCell: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
+
+	constructor(props) {
+		super(props);
+		this.generatedId = shortid.generate();
+	}
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props, componentDoc);
-	},
+	}
 
-	handleToggleAll(e, { checked }) {
+	getId() {
+		return this.props.id || this.generatedId;
+	}
+
+	handleToggleAll = (e, { checked }) => {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
@@ -204,41 +203,50 @@ const DataTable = createReactClass({
 			const selection = checked ? [...this.props.items] : [];
 			this.props.onRowChange(e, { selection });
 		}
-	},
+	};
 
-	handleRowToggle(item, selected, e) {
+	handleRowToggle = (item, selected, e) => {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			let selection;
 
 			if (selected) {
-				selection = [...this.props.selection, item];
+				selection =
+					this.props.selectRows === 'radio'
+						? [item]
+						: [...this.props.selection, item];
 			} else {
 				selection = reject(this.props.selection, item);
 			}
 
 			this.props.onChange(selection, e);
 		}
+		// DEPRECATED CODE ENDS HERE
 
 		if (typeof this.props.onRowChange === 'function') {
 			let selection;
 
 			if (selected) {
-				selection = [...this.props.selection, item];
+				selection =
+					this.props.selectRows === 'radio'
+						? [item]
+						: [...this.props.selection, item];
 			} else {
 				selection = reject(this.props.selection, item);
 			}
 
 			this.props.onRowChange(e, { selection });
 		}
-	},
+	};
 
 	// ### Render
 	render() {
+		const ariaProps = {};
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
-		const canSelectRows = this.props.selectRows && numRows > 0;
+		const canSelectRows =
+			this.props.selectRows && numRows > 0 ? this.props.selectRows : false;
 		const allSelected = canSelectRows && numRows === numSelected;
 		const indeterminateSelected =
 			canSelectRows && numRows !== numSelected && numSelected !== 0;
@@ -297,8 +305,13 @@ const DataTable = createReactClass({
 			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
 		}
 
+		if (this.props.selectRows && this.props.selectRows !== 'radio') {
+			ariaProps['aria-multiselectable'] = 'true';
+		}
+
 		return (
 			<table
+				{...ariaProps}
 				className={classNames(
 					'slds-table',
 					{
@@ -308,7 +321,7 @@ const DataTable = createReactClass({
 						'slds-table_cell-buffer':
 							!this.props.fixedLayout && !this.props.unbufferedCell,
 						'slds-max-medium-table_stacked': this.props.stacked,
-						'slds-max-medium-table_stacked-horizontalviewports': this.props
+						'slds-max-medium-table_stacked-horizontal': this.props
 							.stackedHorizontal,
 						'slds-table_striped': this.props.striped,
 						'slds-table_col-bordered': this.props.columnBordered,
@@ -316,7 +329,7 @@ const DataTable = createReactClass({
 					},
 					this.props.className
 				)}
-				id={this.props.id}
+				id={this.getId()}
 				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
@@ -325,7 +338,7 @@ const DataTable = createReactClass({
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
-					id={`${this.props.id}-${DATA_TABLE_HEAD}`}
+					id={`${this.getId()}-${DATA_TABLE_HEAD}`}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
@@ -334,8 +347,9 @@ const DataTable = createReactClass({
 					{numRows > 0
 						? this.props.items.map((item) => {
 								const rowId =
-									`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
-									shortid.generate();
+									this.getId() && item.id
+										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+										: shortid.generate();
 								return (
 									<DataTableRow
 										assistiveText={assistiveText}
@@ -348,6 +362,7 @@ const DataTable = createReactClass({
 										onToggle={this.handleRowToggle}
 										selection={this.props.selection}
 										rowActions={RowActions}
+										tableId={this.getId()}
 									/>
 								);
 							})
@@ -356,7 +371,7 @@ const DataTable = createReactClass({
 				</tbody>
 			</table>
 		);
-	},
-});
+	}
+}
 
 export default DataTable;

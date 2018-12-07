@@ -10,6 +10,14 @@ const propTypes = {
 	 * Assistive Text to use instead of a visible label
 	 */
 	assistiveText: PropTypes.object,
+	/**
+	 * Class names to be added to the label
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/*
 	 * Id of the input associated with this label
 	 */
@@ -42,9 +50,13 @@ const Label = (props) => {
 	const subRenders = {
 		base: (
 			<label
-				className={classNames('slds-form-element__label', {
-					'slds-assistive-text': props.assistiveText && !props.label,
-				})}
+				className={classNames(
+					'slds-form-element__label',
+					{
+						'slds-assistive-text': props.assistiveText && !props.label,
+					},
+					props.className
+				)}
 				htmlFor={props.htmlFor}
 			>
 				{props.required && (
@@ -55,7 +67,11 @@ const Label = (props) => {
 				{labelText}
 			</label>
 		),
-		static: <span className="slds-form-element__label">{labelText}</span>,
+		static: (
+			<span className={classNames('slds-form-element__label', props.className)}>
+				{labelText}
+			</span>
+		),
 	};
 
 	return labelText ? subRenders[props.variant] : null;

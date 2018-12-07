@@ -72,7 +72,7 @@ const tasks = ({ release, done }) => {
 			command: 'git add RELEASENOTES.md',
 		},
 		{ command: 'git add icons/*' },
-		{ command: 'npm run build-docs' },
+		{ command: 'npm run build:docs' },
 		{ command: 'git add components/component-docs.json' },
 		{
 			ignoreCommand: !isBuildServer,

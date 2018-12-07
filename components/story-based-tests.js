@@ -26,6 +26,7 @@ export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
 export Card from '../components/card/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
+export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
@@ -37,6 +38,7 @@ export Illustration from '../components/illustration/__docs__/storybook-stories'
 export MediaObject from '../components/media-object/__docs__/storybook-stories';
 export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
+export PillContainer from '../components/pill-container/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';

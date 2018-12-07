@@ -3,7 +3,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -14,6 +13,7 @@ import find from 'lodash.find';
 
 // ## Children
 import Checkbox from '../../checkbox';
+import Radio from '../../radio';
 
 // ## Constants
 import {
@@ -25,13 +25,13 @@ import {
 /**
  * Used internally, provides row rendering to the DataTable.
  */
-const DataTableRow = createReactClass({
+class DataTableRow extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_ROW,
+	static displayName = DATA_TABLE_ROW;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
 			columnSort: PropTypes.string,
@@ -40,7 +40,10 @@ const DataTableRow = createReactClass({
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
 		}),
-		canSelectRows: PropTypes.bool,
+		canSelectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['checkbox', 'radio']),
+		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -56,23 +59,27 @@ const DataTableRow = createReactClass({
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
 		selection: PropTypes.array,
-	},
+		tableId: PropTypes.string,
+	};
 
-	isSelected() {
-		return !!find(this.props.selection, this.props.item);
-	},
+	isSelected = () => !!find(this.props.selection, this.props.item);
 
-	handleToggle(e, { checked }) {
-		return this.props.onToggle(this.props.item, checked, e);
-	},
+	handleToggle = (e, { checked }) =>
+		this.props.onToggle(this.props.item, checked, e);
 
 	// ### Render
 	render() {
+		const ariaProps = {};
 		const isSelected = this.isSelected();
+
+		if (this.props.canSelectRows) {
+			ariaProps['aria-selected'] = isSelected ? 'true' : 'false';
+		}
 
 		// i18n
 		return (
 			<tr
+				{...ariaProps}
 				className={classNames({
 					'slds-hint-parent': this.props.rowActions,
 					'slds-is-selected': this.props.canSelectRows && isSelected,
@@ -82,18 +89,32 @@ const DataTableRow = createReactClass({
 					<td
 						role={this.props.fixedLayout ? 'gridcell' : null}
 						className="slds-text-align_right"
-						data-label="Select Row"
+						data-label={this.props.stacked ? 'Select Row' : undefined}
 						style={{ width: '3.25rem' }}
 					>
-						<Checkbox
-							assistiveText={{
-								label: this.props.assistiveText.selectRow,
-							}}
-							checked={isSelected}
-							id={`${this.props.id}-SelectRow`}
-							name="SelectRow"
-							onChange={this.handleToggle}
-						/>
+						{this.props.canSelectRows === 'radio' ? (
+							<Radio
+								assistiveText={{
+									label: this.props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								className="slds-m-right_x-small"
+								id={`${this.props.id}-SelectRow`}
+								label=""
+								name={`${this.props.tableId}-SelectRow`}
+								onChange={this.handleToggle}
+							/>
+						) : (
+							<Checkbox
+								assistiveText={{
+									label: this.props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								id={`${this.props.id}-SelectRow`}
+								name="SelectRow"
+								onChange={this.handleToggle}
+							/>
+						)}
 					</td>
 				) : null}
 				{this.props.columns.map((column) => {
@@ -125,7 +146,7 @@ const DataTableRow = createReactClass({
 					: null}
 			</tr>
 		);
-	},
-});
+	}
+}
 
 export default DataTableRow;

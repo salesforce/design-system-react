@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import IconSettings from '~/components/icon-settings';
 
@@ -19,26 +19,24 @@ const options = {
 	],
 };
 
-const Example = createReactClass({
-	displayName: 'FilterExample',
+class Example extends React.Component {
+	static displayName = 'FilterExample';
 
-	propTypes() {
+	static propTypes() {
 		return {
 			align: PropTypes.string,
 		};
-	},
+	}
 
-	getInitialState() {
-		return {
-			'show-me': {
-				comboboxSelection: [options['show-me'][0]],
-				selectedItem: options['show-me'][0],
-				isActive: true,
-			},
-		};
-	},
+	state = {
+		'show-me': {
+			comboboxSelection: [options['show-me'][0]],
+			selectedItem: options['show-me'][0],
+			isActive: true,
+		},
+	};
 
-	onChangePredicate(event, { id }) {
+	onChangePredicate = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -46,9 +44,9 @@ const Example = createReactClass({
 				selectedItem: this.state[idSuffix].comboboxSelection,
 			},
 		});
-	},
+	};
 
-	onRemove(event, { id }) {
+	onRemove = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -56,7 +54,7 @@ const Example = createReactClass({
 				isActive: false,
 			},
 		});
-	},
+	};
 
 	render() {
 		return (
@@ -95,7 +93,7 @@ const Example = createReactClass({
 				</IconSettings>
 			)
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

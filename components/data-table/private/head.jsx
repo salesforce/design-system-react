@@ -3,7 +3,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ## Children
@@ -16,13 +15,13 @@ import { DATA_TABLE_HEAD } from '../../../utilities/constants';
 /**
  * Used internally, provides header row rendering to the DataTable.
  */
-const DataTableHead = createReactClass({
+class DataTableHead extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_HEAD,
+	static displayName = DATA_TABLE_HEAD;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
 			columnSort: PropTypes.string,
@@ -33,7 +32,10 @@ const DataTableHead = createReactClass({
 		}),
 		allSelected: PropTypes.bool,
 		indeterminateSelected: PropTypes.bool,
-		canSelectRows: PropTypes.bool,
+		canSelectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['checkbox', 'radio']),
+		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -44,9 +46,9 @@ const DataTableHead = createReactClass({
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
 		showRowActions: PropTypes.bool,
-	},
+	};
 
-	componentWillMount() {},
+	componentWillMount() {}
 
 	// ### Render
 	render() {
@@ -59,18 +61,20 @@ const DataTableHead = createReactClass({
 							scope="col"
 							style={{ width: '3.25rem' }}
 						>
-							<div className="slds-th__action slds-th__action_form">
-								<Checkbox
-									assistiveText={{
-										label: this.props.assistiveText.selectAllRows,
-									}}
-									checked={this.props.allSelected}
-									indeterminate={this.props.indeterminateSelected}
-									id={`${this.props.id}-SelectAll`}
-									name="SelectAll"
-									onChange={this.props.onToggleAll}
-								/>
-							</div>
+							{this.props.canSelectRows !== 'radio' ? (
+								<div className="slds-th__action slds-th__action_form">
+									<Checkbox
+										assistiveText={{
+											label: this.props.assistiveText.selectAllRows,
+										}}
+										checked={this.props.allSelected}
+										indeterminate={this.props.indeterminateSelected}
+										id={`${this.props.id}-SelectAll`}
+										name="SelectAll"
+										onChange={this.props.onToggleAll}
+									/>
+								</div>
+							) : null}
 						</th>
 					) : null}
 					{this.props.columns.map((column) => (
@@ -94,7 +98,7 @@ const DataTableHead = createReactClass({
 				</tr>
 			</thead>
 		);
-	},
-});
+	}
+}
 
 export default DataTableHead;

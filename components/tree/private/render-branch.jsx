@@ -9,6 +9,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import findIndex from 'lodash.findindex';
 import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
@@ -110,13 +111,13 @@ const handleSelect = ({ event, props, fromFocus }) => {
 
 const findNextNode = (flattenedNodes, node) => {
 	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
-	const index = nodes.indexOf(node);
+	const index = findIndex(nodes, { id: node.id });
 	return flattenedNodes[(index + 1) % flattenedNodes.length];
 };
 
 const findPreviousNode = (flattenedNodes, node) => {
 	const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
-	let index = nodes.indexOf(node) - 1;
+	let index = findIndex(nodes, { id: node.id }) - 1;
 	if (index < 0) {
 		index += flattenedNodes.length;
 	}
@@ -172,7 +173,7 @@ const handleKeyDownLeft = (event, props) => {
 		const nodes = props.flattenedNodes.map(
 			(flattenedNode) => flattenedNode.node
 		);
-		const index = nodes.indexOf(props.parent);
+		const index = findIndex(nodes, { id: props.parent.id });
 		if (index !== -1) {
 			props.onExpand({
 				event,

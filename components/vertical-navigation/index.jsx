@@ -5,7 +5,7 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -27,10 +27,10 @@ import Item from './private/item';
 /**
  * Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.
  */
-const VerticalNavigation = createReactClass({
-	displayName: VERTICAL_NAVIGATION,
+class VerticalNavigation extends React.Component {
+	static displayName = VERTICAL_NAVIGATION;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * HTML id for component. _Tested with snapshot testing._
 		 */
@@ -56,30 +56,26 @@ const VerticalNavigation = createReactClass({
 		 */
 		onSelect: PropTypes.func,
 		/**
-		 * Determines component style. _Tested with snapshot testing._
+		 * Determines component style:
+		 *     * Use `shade` when the component is placed on an existing background that is not lightly colored.
+		 * _Tested with snapshot testing._
 		 */
 		variant: PropTypes.oneOf(['default', 'shade']),
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			variant: 'default',
-		};
-	},
+	static defaultProps = {
+		variant: 'default',
+	};
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
-	},
+	}
 
-	getId() {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getVariant() {
-		return this.props.variant === 'shade' ? 'shade' : 'default';
-	},
+	getVariant = () => (this.props.variant === 'shade' ? 'shade' : 'default');
 
-	getSelectedId() {
+	getSelectedId = () => {
 		const categories = this.props.categories;
 		let selectedId;
 		if (this.props.selectedId) {
@@ -92,20 +88,18 @@ const VerticalNavigation = createReactClass({
 			selectedId = categories[0].items[0].id;
 		}
 		return selectedId;
-	},
+	};
 
 	render() {
 		const rootId = this.getId();
 		const variant = this.getVariant();
 		return (
-			<div
+			<nav
 				id={rootId}
 				className={classNames(
-					'slds-grid',
-					'slds-grid_vertical',
-					'slds-navigation-list_vertical',
+					'slds-nav-vertical',
 					{
-						'slds-navigation-list_vertical-inverse': variant === 'shade',
+						'slds-nav-vertical_shade': variant === 'shade',
 					},
 					this.props.className
 				)}
@@ -113,30 +107,34 @@ const VerticalNavigation = createReactClass({
 				{this.props.categories.map((category) => {
 					const categoryId = `${rootId}-${category.id}`;
 					const selectedId = this.getSelectedId();
-					return [
-						<h2
-							id={categoryId}
+					return (
+						<div
 							key={`${categoryId}-header`}
-							className="slds-text-title_caps slds-p-around_medium"
+							className="slds-nav-vertical__section"
 						>
-							{category.label}
-						</h2>,
-						<ul key={categoryId}>
-							{category.items.map((item) => (
-								<Item
-									key={item.id}
-									item={item}
-									isSelected={item.id === selectedId}
-									categoryId={categoryId}
-									onSelect={this.props.onSelect}
-								/>
-							))}
-						</ul>,
-					];
+							<h2
+								id={categoryId}
+								className="slds-nav-vertical__title slds-text-title_caps"
+							>
+								{category.label}
+							</h2>
+							<ul key={categoryId}>
+								{category.items.map((item) => (
+									<Item
+										key={item.id}
+										item={item}
+										isSelected={item.id === selectedId}
+										categoryId={categoryId}
+										onSelect={this.props.onSelect}
+									/>
+								))}
+							</ul>
+						</div>
+					);
 				})}
-			</div>
+			</nav>
 		);
-	},
-});
+	}
+}
 
 export default VerticalNavigation;

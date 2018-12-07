@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -39,7 +39,7 @@ storiesOf(TREE, module)
 		/>
 	))
 	.add('No Branch Select', () => (
-		<DefaultExample action={action} multipleSelection noBranchSelection />
+		<DefaultExample action={action} noBranchSelection />
 	))
 	.add('Multiple Selection', () => (
 		<DefaultExample action={action} multipleSelection />

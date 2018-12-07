@@ -5,276 +5,296 @@ exports[`Navigation
 		id,
 		variant
 	DOM Snapshot 1`] = `
-<div
-  className="slds-grid slds-grid_vertical slds-navigation-list_vertical slds-navigation-list_vertical-inverse CUSTOM-CLASSNAME"
+<nav
+  className="slds-nav-vertical slds-nav-vertical_shade CUSTOM-CLASSNAME"
   id="CUSTOM-ID"
 >
-  <h2
-    className="slds-text-title_caps slds-p-around_medium"
-    id="CUSTOM-ID-reports"
+  <div
+    className="slds-nav-vertical__section"
   >
-    Reports
-  </h2>
-  <ul>
-    <li
-      className=""
+    <h2
+      className="slds-nav-vertical__title slds-text-title_caps"
+      id="CUSTOM-ID-reports"
     >
-      <a
-        aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="recent_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+      Reports
+    </h2>
+    <ul>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Recent
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="my_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="CUSTOM-ID-reports"
+          className="slds-nav-vertical__action"
+          data-id="recent_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Recent
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Created by Me
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="private_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="CUSTOM-ID-reports"
+          className="slds-nav-vertical__action"
+          data-id="my_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Created by Me
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Private Reports
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="public_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="CUSTOM-ID-reports"
+          className="slds-nav-vertical__action"
+          data-id="private_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Private Reports
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Public Reports
-      </a>
-    </li>
-    <li
-      className="slds-is-active"
-    >
-      <a
-        aria-describedby="CUSTOM-ID-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="all_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="CUSTOM-ID-reports"
+          className="slds-nav-vertical__action"
+          data-id="public_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Public Reports
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item slds-is-active"
       >
-        All Reports
-      </a>
-    </li>
-  </ul>
-  <h2
-    className="slds-text-title_caps slds-p-around_medium"
-    id="CUSTOM-ID-folders"
+        <a
+          aria-describedby="CUSTOM-ID-reports"
+          className="slds-nav-vertical__action"
+          data-id="all_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          All Reports
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="slds-nav-vertical__section"
   >
-    Folders
-  </h2>
-  <ul>
-    <li
-      className=""
+    <h2
+      className="slds-nav-vertical__title slds-text-title_caps"
+      id="CUSTOM-ID-folders"
     >
-      <a
-        aria-describedby="CUSTOM-ID-folders"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="my_folders"
-        href="http://www.google.com"
-        onClick={[Function]}
+      Folders
+    </h2>
+    <ul>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Created by Me
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="CUSTOM-ID-folders"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="shared_folders"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="CUSTOM-ID-folders"
+          className="slds-nav-vertical__action"
+          data-id="my_folders"
+          href="http://www.google.com"
+          onClick={[Function]}
+        >
+          Created by Me
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Shared with Me
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="CUSTOM-ID-folders"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="all_folders"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="CUSTOM-ID-folders"
+          className="slds-nav-vertical__action"
+          data-id="shared_folders"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Shared with Me
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        All Folders
-      </a>
-    </li>
-  </ul>
-</div>
+        <a
+          aria-describedby="CUSTOM-ID-folders"
+          className="slds-nav-vertical__action"
+          data-id="all_folders"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          All Folders
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 `;
 
 exports[`Navigation Default DOM Snapshot 1`] = `
-<div
-  className="slds-grid slds-grid_vertical slds-navigation-list_vertical"
+<nav
+  className="slds-nav-vertical"
   id="sample-navigation"
 >
-  <h2
-    className="slds-text-title_caps slds-p-around_medium"
-    id="sample-navigation-reports"
+  <div
+    className="slds-nav-vertical__section"
   >
-    Reports
-  </h2>
-  <ul>
-    <li
-      className="slds-is-active"
+    <h2
+      className="slds-nav-vertical__title slds-text-title_caps"
+      id="sample-navigation-reports"
     >
-      <a
-        aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="recent_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+      Reports
+    </h2>
+    <ul>
+      <li
+        className="slds-nav-vertical__item slds-is-active"
       >
-        Recent
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="my_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="sample-navigation-reports"
+          className="slds-nav-vertical__action"
+          data-id="recent_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Recent
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Created by Me
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="private_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="sample-navigation-reports"
+          className="slds-nav-vertical__action"
+          data-id="my_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Created by Me
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Private Reports
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="public_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="sample-navigation-reports"
+          className="slds-nav-vertical__action"
+          data-id="private_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Private Reports
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Public Reports
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="sample-navigation-reports"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="all_reports"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="sample-navigation-reports"
+          className="slds-nav-vertical__action"
+          data-id="public_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Public Reports
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        All Reports
-      </a>
-    </li>
-  </ul>
-  <h2
-    className="slds-text-title_caps slds-p-around_medium"
-    id="sample-navigation-folders"
+        <a
+          aria-describedby="sample-navigation-reports"
+          className="slds-nav-vertical__action"
+          data-id="all_reports"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          All Reports
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="slds-nav-vertical__section"
   >
-    Folders
-  </h2>
-  <ul>
-    <li
-      className=""
+    <h2
+      className="slds-nav-vertical__title slds-text-title_caps"
+      id="sample-navigation-folders"
     >
-      <a
-        aria-describedby="sample-navigation-folders"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="my_folders"
-        href="http://www.google.com"
-        onClick={[Function]}
+      Folders
+    </h2>
+    <ul>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Created by Me
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="sample-navigation-folders"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="shared_folders"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="sample-navigation-folders"
+          className="slds-nav-vertical__action"
+          data-id="my_folders"
+          href="http://www.google.com"
+          onClick={[Function]}
+        >
+          Created by Me
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        Shared with Me
-      </a>
-    </li>
-    <li
-      className=""
-    >
-      <a
-        aria-describedby="sample-navigation-folders"
-        className="slds-navigation-list_vertical__action slds-text-link_reset"
-        data-id="all_folders"
-        href="javascript:void(0);"
-        onClick={[Function]}
+        <a
+          aria-describedby="sample-navigation-folders"
+          className="slds-nav-vertical__action"
+          data-id="shared_folders"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Shared with Me
+        </a>
+      </li>
+      <li
+        className="slds-nav-vertical__item"
       >
-        All Folders
-      </a>
-    </li>
-  </ul>
-</div>
+        <a
+          aria-describedby="sample-navigation-folders"
+          className="slds-nav-vertical__action"
+          data-id="all_folders"
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          All Folders
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 `;
 
 exports[`Navigation Default HTML Snapshot 1`] = `
-"<div id=\\"sample-navigation\\" class=\\"slds-grid slds-grid_vertical slds-navigation-list_vertical\\">
-  <h2 id=\\"sample-navigation-reports\\" class=\\"slds-text-title_caps slds-p-around_medium\\">Reports</h2>
-  <ul>
-    <li class=\\"slds-is-active\\"><a data-id=\\"recent_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Recent</a></li>
-    <li class=\\"\\"><a data-id=\\"my_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Created by Me</a></li>
-    <li class=\\"\\"><a data-id=\\"private_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Private Reports</a></li>
-    <li class=\\"\\"><a data-id=\\"public_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">Public Reports</a></li>
-    <li class=\\"\\"><a data-id=\\"all_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-reports\\">All Reports</a></li>
-  </ul>
-  <h2 id=\\"sample-navigation-folders\\" class=\\"slds-text-title_caps slds-p-around_medium\\">Folders</h2>
-  <ul>
-    <li class=\\"\\"><a data-id=\\"my_folders\\" href=\\"http://www.google.com\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-folders\\">Created by Me</a></li>
-    <li class=\\"\\"><a data-id=\\"shared_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-folders\\">Shared with Me</a></li>
-    <li class=\\"\\"><a data-id=\\"all_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-navigation-list_vertical__action slds-text-link_reset\\" aria-describedby=\\"sample-navigation-folders\\">All Folders</a></li>
-  </ul>
-</div>"
+"<nav id=\\"sample-navigation\\" class=\\"slds-nav-vertical\\">
+  <div class=\\"slds-nav-vertical__section\\">
+    <h2 id=\\"sample-navigation-reports\\" class=\\"slds-nav-vertical__title slds-text-title_caps\\">Reports</h2>
+    <ul>
+      <li class=\\"slds-nav-vertical__item slds-is-active\\"><a data-id=\\"recent_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">Recent</a></li>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"my_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">Created by Me</a></li>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"private_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">Private Reports</a></li>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"public_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">Public Reports</a></li>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"all_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">All Reports</a></li>
+    </ul>
+  </div>
+  <div class=\\"slds-nav-vertical__section\\">
+    <h2 id=\\"sample-navigation-folders\\" class=\\"slds-nav-vertical__title slds-text-title_caps\\">Folders</h2>
+    <ul>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"my_folders\\" href=\\"http://www.google.com\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-folders\\">Created by Me</a></li>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"shared_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-folders\\">Shared with Me</a></li>
+      <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"all_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-folders\\">All Folders</a></li>
+    </ul>
+  </div>
+</nav>"
 `;

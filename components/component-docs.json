@@ -250,6 +250,13 @@
                 "required": false,
                 "description": "Triggered by close button. This is a controlled component. _Tested with Mocha testing._"
             },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component. _Tested with Mocha testing._"
+            },
             "variant": {
                 "type": {
                     "name": "enum",
@@ -1390,6 +1397,13 @@
                 "required": false,
                 "description": "Triggered when a mouse arrow no longer hovers"
             },
+            "onMouseUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a mouse button is released"
+            },
             "responsive": {
                 "type": {
                     "name": "bool"
@@ -2372,6 +2386,550 @@
         "SLDS-component-path": "/components/checkbox",
         "dependencies": []
     },
+    "color-picker": {
+        "description": "The Unified Color Picker component allows for a fully accessible and configurable color picker, allowing the user to pick from a set of predefined colors (swatches), or to pick a custom color using a HSB selection interface. It can be configured to show one or both of those color selection interfaces. View [component blueprint guidelines](https://lightningdesignsystem.com/components/color-picker/).",
+        "methods": [
+            {
+                "name": "getInput",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getDefaultTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getCustomTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getPopover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setWorkingColor",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "color",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSwatchChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleOnRequestClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ trigger }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleClickOutside",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleCancel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleCancelState",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleColorChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "property",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleHexInputChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleNavigate",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "property",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSaturationValueChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ saturation, value }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSubmitButtonClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSwatchButtonClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleSwatchSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ hex }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "hueSlider": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "saturationValueGrid": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `hueSlider`: Instructions for hue selection input\n* `saturationValueGrid`: Instructions for using the grid for saturation\nand value selection",
+                "defaultValue": {
+                    "value": "{\n    saturationValueGrid:\n        'Use arrow keys to select a saturation and brightness, on an x and y axis.',\n    hueSlider: 'Select Hue',\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-color-picker`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "classNameMenu": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-popover`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique ID for component."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and button."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the outer input is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "errorTextWorkingColor": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the custom tab input is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onChange": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onOpen": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestOpen": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onValidateColor": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onValidateWorkingColor": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onWorkingColorChange": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n* `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.\n* `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.\n* `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.\n\t\t\t\t\t\tThis function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.\n* `onRequestOpen`: Function called when the color-picker menu would like show.\n* `onValidateColor`: Function that overwrites default color validator and called when validating HEX color on outer input change. If callback returns false, errorText is shown if set.\n* `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextWorkingColor is shown if set.\n* `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n_Tested with Mocha framework._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "hasStaticAlignment": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._"
+            },
+            "hideInput": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Hides the text input"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Popover open state"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "blueAbbreviated": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "cancelButton": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "customTab": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "customTabActiveWorkingColorSwatch": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "customTabTransparentSwatch": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "greenAbbreviated": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "hexLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "invalidColor": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "invalidComponent": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "redAbbreviated": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "swatchTab": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "submitButton": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: An `input` label as for a `form`\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
+                "defaultValue": {
+                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n}",
+                    "computed": false
+                }
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
+            },
+            "swatchColors": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.\nTo specify transparent, use empty string as a value.",
+                "defaultValue": {
+                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n]",
+                    "computed": false
+                }
+            },
+            "defaultSelectedTab": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'swatches'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines which tab is visible when dialog opens. Use this prop with `base` variant only.\nDefaults to `swatch` tab.",
+                "defaultValue": {
+                    "value": "'swatches'",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'swatches'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Selects which tabs are present for the colorpicker.\n* `base`: both swatches and custom tabs are present\n* `swatches`: only swatch tab is present\n* `custom`: only custom tab is present\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current color in hexadecimal string, including # sign (eg: \"#000000\")"
+            },
+            "valueWorking": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current working color in hexadecimal string, including # sign (eg: \"#000000\")"
+            }
+        },
+        "route": "color-pickers",
+        "display-name": "Color Pickers",
+        "SLDS-component-path": "/components/color-picker",
+        "dependencies": []
+    },
     "combobox": {
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
@@ -2442,6 +3000,18 @@
                 "params": [
                     {
                         "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setSelectedListboxRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
                         "type": null
                     }
                 ],
@@ -2551,7 +3121,26 @@
                 "returns": null
             },
             {
+                "name": "handleKeyDownTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleKeyDownUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownOther",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2579,7 +3168,7 @@
                 "returns": null
             },
             {
-                "name": "handleNavigateListboxOfPills",
+                "name": "handleNavigateSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2611,7 +3200,7 @@
                 "returns": null
             },
             {
-                "name": "handlePillClickListboxOfPills",
+                "name": "handlePillClickSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2627,8 +3216,15 @@
                 "returns": null
             },
             {
+                "name": "handlePillFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleRemoveSelectedOption",
-                "docblock": "Selected options with listbox of pills event methods",
+                "docblock": "Selected options with selected listbox event methods",
                 "modifiers": [],
                 "params": [
                     {
@@ -2639,7 +3235,7 @@
                     }
                 ],
                 "returns": null,
-                "description": "Selected options with listbox of pills event methods"
+                "description": "Selected options with selected listbox event methods"
             },
             {
                 "name": "handleRequestClose",
@@ -2658,7 +3254,7 @@
                 "returns": null
             },
             {
-                "name": "handleRequestFocusListboxOfPills",
+                "name": "handleRequestFocusSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3217,6 +3813,13 @@
                     "computed": false
                 }
             },
+            "selectedListboxRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback exposes the selected listbox reference / DOM node to parent components."
+            },
             "value": {
                 "type": {
                     "name": "string"
@@ -3266,6 +3869,13 @@
     "data-table": {
         "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
         "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
             {
                 "name": "handleToggleAll",
                 "docblock": null,
@@ -3378,11 +3988,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support.",
-                "defaultValue": {
-                    "value": "shortid.generate()",
-                    "computed": true
-                }
+                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
             },
             "fixedLayout": {
                 "type": {
@@ -3441,10 +4047,28 @@
             },
             "selectRows": {
                 "type": {
-                    "name": "bool"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "bool"
+                        },
+                        {
+                            "name": "enum",
+                            "value": [
+                                {
+                                    "value": "'checkbox'",
+                                    "computed": false
+                                },
+                                {
+                                    "value": "'radio'",
+                                    "computed": false
+                                }
+                            ]
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "True if rows should be selectable."
+                "description": "Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility"
             },
             "stacked": {
                 "type": {
@@ -3851,6 +4475,18 @@
                 "returns": null
             },
             {
+                "name": "getInputProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "setInputRef",
                 "docblock": null,
                 "modifiers": [],
@@ -4006,13 +4642,6 @@
                     "computed": false
                 }
             },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._"
-            },
             "className": {
                 "type": {
                     "name": "union",
@@ -4117,6 +4746,13 @@
                     "value": "{\n    abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\n    months: [\n        'January',\n        'February',\n        'March',\n        'April',\n        'May',\n        'June',\n        'July',\n        'August',\n        'September',\n        'October',\n        'November',\n        'December',\n    ],\n    placeholder: 'Pick a Date',\n    today: 'Today',\n    weekDays: [\n        'Sunday',\n        'Monday',\n        'Tuesday',\n        'Wednesday',\n        'Thursday',\n        'Friday',\n        'Saturday',\n    ],\n}",
                     "computed": false
                 }
+            },
+            "input": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
             },
             "isOpen": {
                 "type": {
@@ -4510,6 +5146,25 @@
                 "returns": null
             },
             {
+                "name": "getValueAsNumber",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getCounterButtonIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getIconRender",
                 "docblock": null,
                 "modifiers": [],
@@ -4523,6 +5178,53 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "performStep",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    },
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "stopStepping",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             }
         ],
@@ -4611,7 +5313,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.\n* `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.",
                 "defaultValue": {
-                    "value": "{\n    fieldLevelHelpButton: 'Help',\n}",
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    fieldLevelHelpButton: 'Help',\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
             },
@@ -4642,7 +5344,15 @@
             },
             "defaultValue": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
@@ -4782,7 +5492,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided."
+                "description": "This callback fires when the input changes. Passes in `event, { value }`."
             },
             "onClick": {
                 "type": {
@@ -4861,12 +5571,26 @@
                 "required": false,
                 "description": "Sets the minimum number of characters that an `<input>` can accept."
             },
+            "minValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies minimum accepted value for a counter input"
+            },
             "maxLength": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "Sets the maximum number of characters that an `<input>` can accept."
+            },
+            "maxValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies maximum accepted value for a counter input"
             },
             "name": {
                 "type": {
@@ -4895,6 +5619,20 @@
                 },
                 "required": false,
                 "description": "ARIA role"
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Determines the step size upon increment or decrement. Can be set to decimal values."
+            },
+            "styleInput": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "styles to be added to input"
             },
             "type": {
                 "type": {
@@ -4967,10 +5705,35 @@
             },
             "value": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'counter'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Which UX pattern of input? The default is `base` while other option is `counter`"
             }
         },
         "route": "inputs",
@@ -6332,7 +7095,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
+                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/icons` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
             },
             "internalIllustration": {
                 "type": {
@@ -8221,7 +8984,9 @@
                         {
                             "name": "propTypes",
                             "docblock": null,
-                            "modifiers": [],
+                            "modifiers": [
+                                "static"
+                            ],
                             "params": [],
                             "returns": null
                         }
@@ -8242,7 +9007,7 @@
         ]
     },
     "pill": {
-        "description": "A pill represents an object that can be viewed with or without an icon.",
+        "description": "A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.",
         "methods": [
             {
                 "name": "getHref",
@@ -8488,6 +9253,310 @@
         "route": "pills",
         "display-name": "Pills",
         "SLDS-component-path": "/components/pills",
+        "dependencies": []
+    },
+    "pill-container": {
+        "description": "A `PillContainer` is a container that holds one or more pills. Use it for a list of pills in a container that resembles an `input` form field. It is not intended for navigation.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getNewActiveOptionIndex",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ activeOptionIndex, offset, options }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleBlurPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleClickPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handlePillFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleNavigatePillContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ direction }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestFocusPillContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ ref }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestRemove",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "resetActiveSelectedOption",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "listboxLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removePill": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `listboxLabel`: This is a label for the listbox. The default is `Selected Options:`.\n* `removePill`: Used to remove a selected item (pill). Focus is on the pill. This is not a button. The default is `Press delete or backspace to remove`.",
+                "defaultValue": {
+                    "value": "{\n    listboxLabel: 'Selected Options:',\n    removePill: 'Press delete or backspace to remove',\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the pill container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for pill container"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "removePillTitle": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\n* `removePillTitle`: Title on `X` icon",
+                "defaultValue": {
+                    "value": "{\n    removePillTitle: 'Remove',\n}",
+                    "computed": false
+                }
+            },
+            "options": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "avatar": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "shape",
+                                        "value": {
+                                            "imgSrc": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "title": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "variant": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "bare": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "error": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "icon": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "shape",
+                                        "value": {
+                                            "category": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "name": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "id": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "title": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```"
+            },
+            "onClickPill": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a pill is clicked"
+            },
+            "onRequestRemovePill": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom style object to be passed to the pill container"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bare'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Specifies the pill styling at the container level. `bare` removes border styling from all pills."
+            }
+        },
+        "route": "pill-container",
+        "display-name": "Pill Container",
+        "SLDS-component-path": "/components/pill-container",
         "dependencies": []
     },
     "popover": {
@@ -8922,7 +9991,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something."
+                "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
             "position": {
                 "type": {
@@ -9000,6 +10069,14 @@
                 "defaultValue": {
                     "value": "'click'",
                     "computed": false
+                },
+                "required": false
+            }
+        },
+        "context": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
                 },
                 "required": false
             }
@@ -9580,6 +10657,22 @@
                 "modifiers": [],
                 "params": [],
                 "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "preventDuplicateChangeEvent",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -9597,12 +10690,37 @@
                 "required": false,
                 "description": "This is a controlled component. This radio is checked according to this value."
             },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class name to be passed to radio input wrapper ( `span` element)"
+            },
             "defaultChecked": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
                 "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
+            "deselectable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Controls whether the radio button can be deselected. If used in a radio group, this allows no radios to be selected"
             },
             "disabled": {
                 "type": {
@@ -9645,7 +10763,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the radio selection changes."
+                "description": "This event fires when the radio selection changes. Passes in `event, { checked }`. If using the `deselectable` option, the event could be a click or keypress event."
             },
             "value": {
                 "type": {
@@ -9665,6 +10783,10 @@
                         {
                             "value": "'button-group'",
                             "computed": false
+                        },
+                        {
+                            "value": "'swatch'",
+                            "computed": false
                         }
                     ]
                 },
@@ -9674,6 +10796,19 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "refs": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "input": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Ref callback that will pass in the radio's `input` tag"
             }
         },
         "route": "radios",
@@ -9704,7 +10839,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "isOpen",
+                        "name": "{ isOpen }",
                         "type": null
                     }
                 ],
@@ -10395,6 +11530,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -11427,13 +12579,6 @@
         "description": "Component description.",
         "methods": [
             {
-                "name": "getOptions",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "parseDate",
                 "docblock": null,
                 "modifiers": [],
@@ -11641,6 +12786,13 @@
                 "returns": null
             },
             {
+                "name": "clearTimeout",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "saveButtonRef",
                 "docblock": null,
                 "modifiers": [],
@@ -11769,6 +12921,13 @@
                 },
                 "required": false,
                 "description": "Triggered by close button. _Tested with Mocha testing._"
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component. _Tested with Mocha testing._"
             },
             "variant": {
                 "type": {
@@ -11992,7 +13151,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to \"complete the sentence\" for assistive tech users.\n* `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.",
                 "defaultValue": {
-                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Learn More',\n}",
+                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Help',\n}",
                     "computed": false
                 }
             },
@@ -12494,7 +13653,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines component style. _Tested with snapshot testing._",
+                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false

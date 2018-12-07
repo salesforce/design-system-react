@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
@@ -10,30 +10,28 @@ import Footer from '../../lookup/footer';
 
 import SLDSButton from '../../button';
 
-const DemoLookup = createReactClass({
-	displayName: 'DemoLookup',
+class DemoLookup extends React.Component {
+	static displayName = 'DemoLookup';
 
-	getInitialState() {
-		return {
-			options: [
-				{ label: 'File 1' },
-				{ label: 'File 2' },
-				{ label: 'File 3' },
-				{ label: 'File 4' },
-			],
-		};
-	},
+	state = {
+		options: [
+			{ label: 'File 1' },
+			{ label: 'File 2' },
+			{ label: 'File 3' },
+			{ label: 'File 4' },
+		],
+	};
 
-	clearSelected() {
+	clearSelected = () => {
 		this.setState({ currentSelected: -1 });
-	},
+	};
 
-	handleSelect(selectedItem, ...rest) {
+	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
 			currentSelected: this.state.options.indexOf(selectedItem),
 		});
-	},
+	};
 
 	render() {
 		return (
@@ -50,29 +48,27 @@ const DemoLookup = createReactClass({
 				/>
 			</div>
 		);
-	},
-});
+	}
+}
 
-const DemoLookupAccounts = createReactClass({
-	displayName: 'DemoLookupAccounts',
+class DemoLookupAccounts extends React.Component {
+	static displayName = 'DemoLookupAccounts';
 
-	getInitialState() {
-		return {
-			options: [
-				{ label: "Paddy's Pub", subTitle: 'Boston, MA' },
-				{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
-				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
-				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
-				{ label: 'Acme Landscaping' },
-				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' },
-			],
-		};
-	},
+	state = {
+		options: [
+			{ label: "Paddy's Pub", subTitle: 'Boston, MA' },
+			{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
+			{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
+			{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
+			{ label: 'Acme Landscaping' },
+			{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' },
+		],
+	};
 
-	handleSelect(selectedItem, ...rest) {
+	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({ selectedItem });
-	},
+	};
 
 	render() {
 		return (
@@ -85,8 +81,8 @@ const DemoLookupAccounts = createReactClass({
 				options={this.state.options}
 			/>
 		);
-	},
-});
+	}
+}
 
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => (

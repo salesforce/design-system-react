@@ -12,7 +12,6 @@ import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
 
-import isBoolean from 'lodash.isboolean';
 import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
@@ -24,10 +23,13 @@ import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
-import SelectedListBox from './private/selected-listbox';
+import SelectedListBox from '../pill-container/private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
+import KeyBuffer from '../../utilities/key-buffer';
+import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
+import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
 
 import checkProps from './check-props';
 
@@ -241,6 +243,10 @@ const propTypes = {
 		})
 	).isRequired,
 	/**
+	 * This callback exposes the selected listbox reference / DOM node to parent components.
+	 */
+	selectedListboxRef: PropTypes.func,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -279,14 +285,19 @@ class Combobox extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: false,
 			activeOption: undefined,
 			activeOptionIndex: -1,
 			// seeding initial state with this.props.selection[0]
 			activeSelectedOption:
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
+			listboxHasFocus: false,
+			isOpen: false,
 		};
+
+		this.menuKeyBuffer = new KeyBuffer();
+		this.menuRef = undefined;
+		this.selectedListboxRef = null;
 	}
 
 	/**
@@ -383,7 +394,9 @@ class Combobox extends React.Component {
 		this.state.activeOption && this.state.activeOptionIndex !== -1;
 
 	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
@@ -408,6 +421,13 @@ class Combobox extends React.Component {
 		// DOM nodes are not queried.
 		if (!this.state.inputRendered) {
 			this.setState({ inputRendered: true });
+		}
+	};
+
+	setSelectedListboxRef = (ref) => {
+		this.selectedListboxRef = ref;
+		if (this.props.selectedListboxRef) {
+			this.props.selectedListboxRef(ref);
 		}
 	};
 
@@ -501,15 +521,27 @@ class Combobox extends React.Component {
 	 */
 
 	handleKeyDown = (event) => {
+		const callbacks = {
+			[KEYS.DOWN]: { callback: this.handleKeyDownDown },
+			[KEYS.ENTER]: { callback: this.handleInputSubmit },
+			[KEYS.ESCAPE]: { callback: this.handleClose },
+			[KEYS.UP]: { callback: this.handleKeyDownUp },
+		};
+
+		if (this.props.variant === 'readonly') {
+			if (this.props.selection.length > 2) {
+				callbacks[KEYS.TAB] = { callback: this.handleKeyDownTab };
+			} else {
+				callbacks[KEYS.TAB] = undefined;
+			}
+			callbacks.other = {
+				callback: this.handleKeyDownOther,
+				stopPropagation: false,
+			};
+		}
+
 		// Helper function that takes an object literal of callbacks that are triggered with a key event
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.DOWN]: { callback: this.handleKeyDownDown },
-				[KEYS.ENTER]: { callback: this.handleInputSubmit },
-				[KEYS.ESCAPE]: { callback: this.handleClose },
-				[KEYS.UP]: { callback: this.handleKeyDownUp },
-			},
-		});
+		mapKeyEventCallbacks(event, { callbacks });
 	};
 
 	handleKeyDownDown = (event) => {
@@ -521,10 +553,41 @@ class Combobox extends React.Component {
 		this.handleNavigateListboxMenu(event, { direction: 'next' });
 	};
 
+	handleKeyDownTab = () => {
+		if (this.selectedListboxRef) {
+			this.setState({
+				listboxHasFocus: true,
+			});
+		}
+	};
+
 	handleKeyDownUp = (event) => {
 		// Don't open if user is selecting text
 		if (!event.shiftKey && this.state.isOpen) {
 			this.handleNavigateListboxMenu(event, { direction: 'previous' });
+		}
+	};
+
+	handleKeyDownOther = (event) => {
+		const activeOptionIndex = keyLetterMenuItemSelect({
+			key: event.key,
+			keyBuffer: this.menuKeyBuffer,
+			keyCode: event.keyCode,
+			options: this.props.options,
+		});
+
+		if (activeOptionIndex !== undefined) {
+			if (this.state.isOpen) {
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: activeOptionIndex,
+				});
+			}
+
+			this.setState({
+				activeOption: this.props.options[activeOptionIndex],
+				activeOptionIndex,
+			});
 		}
 	};
 
@@ -538,6 +601,13 @@ class Combobox extends React.Component {
 				options: this.props.options,
 			});
 
+			if (this.state.isOpen) {
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: newIndex,
+				});
+			}
+
 			return {
 				activeOption: this.props.options[newIndex],
 				activeOptionIndex: newIndex,
@@ -545,7 +615,7 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handleNavigateListboxOfPills = (event, { direction }) => {
+	handleNavigateSelectedListbox = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
@@ -606,7 +676,7 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handlePillClickListboxOfPills = (event, { option, index }) => {
+	handlePillClickSelectedListbox = (event, { option, index }) => {
 		// this is clicking the span, not the remove button
 		this.setState({
 			activeSelectedOption: option,
@@ -615,8 +685,14 @@ class Combobox extends React.Component {
 		});
 	};
 
+	handlePillFocus = () => {
+		if (!this.state.listboxHasFocus) {
+			this.setState({ listboxHasFocus: true });
+		}
+	};
+
 	/**
-	 * Selected options with listbox of pills event methods
+	 * Selected options with selected listbox event methods
 	 */
 
 	handleRemoveSelectedOption = (event, { option, index }) => {
@@ -666,7 +742,7 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleRequestFocusListboxOfPills = (event, { ref }) => {
+	handleRequestFocusSelectedListbox = (event, { ref }) => {
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
 			this.activeSelectedOptionRef.focus();
@@ -811,14 +887,16 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				events={{
 					onBlurPill: this.handleBlurPill,
-					onClickPill: this.handlePillClickListboxOfPills,
-					onRequestFocus: this.handleRequestFocusListboxOfPills,
-					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+					onClickPill: this.handlePillClickSelectedListbox,
+					onPillFocus: this.handlePillFocus,
+					onRequestFocus: this.handleRequestFocusSelectedListbox,
+					onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+					onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 					onRequestRemove: this.handleRemoveSelectedOption,
 				}}
-				id={this.getId()}
+				id={`${this.getId()}-selected-listbox`}
 				labels={labels}
+				selectedListboxRef={this.setSelectedListboxRef}
 				selection={props.selection}
 				listboxHasFocus={this.state.listboxHasFocus}
 			/>
@@ -849,14 +927,16 @@ class Combobox extends React.Component {
 						assistiveText={assistiveText}
 						events={{
 							onBlurPill: this.handleBlurPill,
-							onClickPill: this.handlePillClickListboxOfPills,
-							onRequestFocus: this.handleRequestFocusListboxOfPills,
-							onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+							onClickPill: this.handlePillClickSelectedListbox,
+							onPillFocus: this.handlePillFocus,
+							onRequestFocus: this.handleRequestFocusSelectedListbox,
+							onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+							onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 							onRequestRemove: this.handleRemoveSelectedOption,
 						}}
-						id={this.getId()}
+						id={`${this.getId()}-selected-listbox`}
 						labels={labels}
+						selectedListboxRef={this.setSelectedListboxRef}
 						selection={props.selection}
 						listboxHasFocus={this.state.listboxHasFocus}
 					/>
@@ -1085,6 +1165,9 @@ class Combobox extends React.Component {
 				labels={labels}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
+				menuRef={(ref) => {
+					this.menuRef = ref;
+				}}
 				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}
@@ -1176,14 +1259,16 @@ class Combobox extends React.Component {
 					assistiveText={assistiveText}
 					events={{
 						onBlurPill: this.handleBlurPill,
-						onClickPill: this.handlePillClickListboxOfPills,
-						onRequestFocus: this.handleRequestFocusListboxOfPills,
-						onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-						onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+						onClickPill: this.handlePillClickSelectedListbox,
+						onPillFocus: this.handlePillFocus,
+						onRequestFocus: this.handleRequestFocusSelectedListbox,
+						onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+						onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 						onRequestRemove: this.handleRemoveSelectedOption,
 					}}
-					id={this.getId()}
+					id={`${this.getId()}-selected-listbox`}
 					labels={labels}
+					selectedListboxRef={this.setSelectedListboxRef}
 					selection={props.selection}
 					listboxHasFocus={this.state.listboxHasFocus}
 					variant={this.props.variant}

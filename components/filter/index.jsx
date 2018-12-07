@@ -12,7 +12,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### assign
@@ -39,10 +39,10 @@ import { FILTER } from '../../utilities/constants';
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
  */
-const Filter = createReactClass({
-	displayName: FILTER,
+class Filter extends React.Component {
+	static displayName = FILTER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Aligns the popover with the respective side of the trigger. That is `left` will place the `Popover` to the left of the Filter.
 		 */
@@ -114,37 +114,29 @@ const Filter = createReactClass({
 		 * The property you are filtering. For instance, if "Hair Color is PURPLE" is your filter, "Hair Color" is your filter property.
 		 */
 		property: PropTypes.node,
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			align: 'left',
-			assistiveText: {
-				editFilter: 'Edit filter:',
-				editFilterHeading: 'Choose filter criteria',
-			},
-			predicate: 'New Filter',
-		};
-	},
+	static defaultProps = {
+		align: 'left',
+		assistiveText: {
+			editFilter: 'Edit filter:',
+			editFilterHeading: 'Choose filter criteria',
+		},
+		predicate: 'New Filter',
+	};
 
-	getInitialState() {
-		return {
-			popoverIsOpen: this.props.popover
-				? this.props.popover.props.isOpen
-				: false,
-		};
-	},
+	state = {
+		popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false,
+	};
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(FILTER, componentDoc);
-	},
+	}
 
-	getId() {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getCustomPopoverProps({ assistiveText }) {
+	getCustomPopoverProps = ({ assistiveText }) => {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
@@ -189,33 +181,33 @@ const Filter = createReactClass({
 		);
 		delete popoverProps.children;
 		return popoverProps;
-	},
+	};
 
-	handleFilterClick() {
+	handleFilterClick = () => {
 		this.setState({ popoverIsOpen: true });
 
 		if (this.props.onClick) {
 			this.props.onClick();
 		}
-	},
+	};
 
-	handleClose() {
+	handleClose = () => {
 		this.setState({ popoverIsOpen: false });
-	},
+	};
 
-	handleChange(event) {
+	handleChange = (event) => {
 		this.setState({ popoverIsOpen: false });
 
 		if (this.props.onChange) {
 			this.props.onChange(event, { id: this.getId() });
 		}
-	},
+	};
 
-	handleRemove(event) {
+	handleRemove = (event) => {
 		if (this.props.onRemove) {
 			this.props.onRemove(event, { id: this.getId() });
 		}
-	},
+	};
 
 	render() {
 		/* Remove at next breaking change */
@@ -294,7 +286,7 @@ const Filter = createReactClass({
 				) : null}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Filter;

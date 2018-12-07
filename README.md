@@ -3,6 +3,7 @@
 ### Accessible, localization-friendly, presentational React components
 
 [![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan Grade](https://deepscan.io/api/projects/1475/branches/4666/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666)
+[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json)
 
 ## Install
 
@@ -12,7 +13,7 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 
 ## Getting Started
 
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please polyfill this library in order to meet your target environment needs.
+Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
 
 * [Usage](#usage)
 * [Getting started](https://react.lightningdesignsystem.com/getting-started/)
@@ -125,12 +126,28 @@ open http://localhost:9001 http://localhost:8001
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
 
+## Got feedback?
+
+If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
+
+## Security
+Please report any security issue to [security@salesforce.com](mailto:security@salesforce.com) as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigilant and have their security stakeholders review all third-party dependencies.
+
+## Contributors
+Thank you to all the contributors to this one of [many open source projects at Salesforce](https://opensource.salesforce.com/), but special thanks to the following:
+
+### Active Key Contributors
+* [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
+* [@futuremint](https://github.com/futuremint) David Woodward
+* [@garygong](https://github.com/garygong) Gary Gong
+
+### Former Key Contributors
+* [@donnieberg](https://github.com/donnieberg) Donielle Berg
+* [@tweettypography](https://github.com/tweettypography) David Brainer
+* [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
+
 ## Licenses
 
 * Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
 * All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
 * The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
-
-## Got feedback?
-
-If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).

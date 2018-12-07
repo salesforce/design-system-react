@@ -13,9 +13,6 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -166,7 +163,7 @@ class ButtonStateful extends React.Component {
 
 	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) {
+		if (typeof this.props.active !== 'boolean') {
 			this.setState({ active: !this.state.active });
 		}
 	};
@@ -200,7 +197,7 @@ class ButtonStateful extends React.Component {
 						...this.props.assistiveText,
 					}.icon;
 
-		const isActive = isBoolean(active) ? active : this.state.active;
+		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
 		if (variant === 'icon') {
 			return (

@@ -308,7 +308,7 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                 className="slds-col slds-align-bottom"
               >
                 <p
-                  className="slds-page-header__info"
+                  className="slds-text-body_small slds-line-height_reset"
                 >
                   42 items • Updated just now
                 </p>
@@ -986,7 +986,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
             </div>
             <div class=\\"slds-grid\\">
               <div class=\\"slds-col slds-align-bottom\\">
-                <p class=\\"slds-page-header__info\\">42 items • Updated just now</p>
+                <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
@@ -1254,7 +1254,7 @@ exports[`Base Open DOM Snapshot 1`] = `
                 className="slds-col slds-align-bottom"
               >
                 <p
-                  className="slds-page-header__info"
+                  className="slds-text-body_small slds-line-height_reset"
                 >
                   42 items • Updated just now
                 </p>
@@ -1931,7 +1931,7 @@ exports[`Base Open HTML Snapshot 1`] = `
             </div>
             <div class=\\"slds-grid\\">
               <div class=\\"slds-col slds-align-bottom\\">
-                <p class=\\"slds-page-header__info\\">42 items • Updated just now</p>
+                <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
@@ -2199,7 +2199,7 @@ exports[`Custom DOM Snapshot 1`] = `
                 className="slds-col slds-align-bottom"
               >
                 <p
-                  className="slds-page-header__info"
+                  className="slds-text-body_small slds-line-height_reset"
                 >
                   42 items • Updated just now
                 </p>
@@ -2614,7 +2614,7 @@ exports[`Custom HTML Snapshot 1`] = `
             </div>
             <div class=\\"slds-grid\\">
               <div class=\\"slds-col slds-align-bottom\\">
-                <p class=\\"slds-page-header__info\\">42 items • Updated just now</p>
+                <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
