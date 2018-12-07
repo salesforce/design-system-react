@@ -59,7 +59,7 @@ Panel.propTypes = {
 	 */
 	children: PropTypes.node,
 	/**
-	 * CSS classes to be added to button.
+	 * CSS classes to be added to `slds-panel`.
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
