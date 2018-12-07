@@ -38,7 +38,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
     </thead>
     <tbody>
       <tr aria-selected=\\"false\\" class=\\"slds-hint-parent\\">
-        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" style=\\"width:3.25rem\\">
           <div class=\\"slds-form-element\\">
             <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\\"><span class=\\"slds-checkbox_faux\\"></span>
               <span
@@ -75,7 +75,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
         </td>
       </tr>
       <tr aria-selected=\\"false\\" class=\\"slds-hint-parent\\">
-        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" style=\\"width:3.25rem\\">
           <div class=\\"slds-form-element\\">
             <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\\"><span class=\\"slds-checkbox_faux\\"></span>
               <span
@@ -112,7 +112,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
         </td>
       </tr>
       <tr aria-selected=\\"true\\" class=\\"slds-hint-parent slds-is-selected\\">
-        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align_right\\" style=\\"width:3.25rem\\">
           <div class=\\"slds-form-element\\">
             <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" checked=\\"\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\\"><span class=\\"slds-checkbox_faux\\"></span>
               <span

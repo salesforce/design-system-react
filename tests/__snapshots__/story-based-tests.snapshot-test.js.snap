@@ -2939,7 +2939,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
         >
           <td
             className="slds-text-align_right"
-            data-label="Select Row"
             role="gridcell"
             style={
               Object {
@@ -3133,7 +3132,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
         >
           <td
             className="slds-text-align_right"
-            data-label="Select Row"
             role="gridcell"
             style={
               Object {
@@ -3327,7 +3325,6 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
         >
           <td
             className="slds-text-align_right"
-            data-label="Select Row"
             role="gridcell"
             style={
               Object {
@@ -3779,7 +3776,6 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
         >
           <td
             className="slds-text-align_right"
-            data-label="DataTableExample-2-SelectRow"
             role="gridcell"
             style={
               Object {
@@ -3967,7 +3963,6 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
         >
           <td
             className="slds-text-align_right"
-            data-label="DataTableExample-2-SelectRow"
             role="gridcell"
             style={
               Object {
@@ -4155,7 +4150,6 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
         >
           <td
             className="slds-text-align_right"
-            data-label="DataTableExample-2-SelectRow"
             role="gridcell"
             style={
               Object {
