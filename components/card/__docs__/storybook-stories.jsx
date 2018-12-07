@@ -2,7 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { CARD } from '../../../utilities/constants';

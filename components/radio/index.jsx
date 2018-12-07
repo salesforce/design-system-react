@@ -35,10 +35,6 @@ const propTypes = {
 	 */,
 	defaultChecked: PropTypes.bool,
 	/**
-	 * Controls whether the radio button can be deselected. If used in a radio group, this allows no radios to be selected
-	 */
-	deselectable: PropTypes.bool,
-	/**
 	 * Disable this radio input.
 	 */
 	disabled: PropTypes.bool,
@@ -55,7 +51,7 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-	 * This event fires when the radio selection changes. Passes in `event, { checked }`. If using the `deselectable` option, the event could be a click or keypress event.
+	 * This event fires when the radio selection changes. Passes in `event, { checked }`.
 	 */
 	onChange: PropTypes.func,
 	/**
