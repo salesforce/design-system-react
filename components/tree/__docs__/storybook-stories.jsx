@@ -39,7 +39,7 @@ storiesOf(TREE, module)
 		/>
 	))
 	.add('No Branch Select', () => (
-		<DefaultExample action={action} multipleSelection noBranchSelection />
+		<DefaultExample action={action} noBranchSelection />
 	))
 	.add('Multiple Selection', () => (
 		<DefaultExample action={action} multipleSelection />

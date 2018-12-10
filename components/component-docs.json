@@ -4047,10 +4047,28 @@
             },
             "selectRows": {
                 "type": {
-                    "name": "bool"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "bool"
+                        },
+                        {
+                            "name": "enum",
+                            "value": [
+                                {
+                                    "value": "'checkbox'",
+                                    "computed": false
+                                },
+                                {
+                                    "value": "'radio'",
+                                    "computed": false
+                                }
+                            ]
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "True if rows should be selectable."
+                "description": "Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility"
             },
             "stacked": {
                 "type": {
@@ -9241,6 +9259,13 @@
         "description": "A `PillContainer` is a container that holds one or more pills. Use it for a list of pills in a container that resembles an `input` form field. It is not intended for navigation.",
         "methods": [
             {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getNewActiveOptionIndex",
                 "docblock": null,
                 "modifiers": [],
@@ -10632,6 +10657,22 @@
                 "modifiers": [],
                 "params": [],
                 "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "preventDuplicateChangeEvent",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -10715,7 +10756,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the radio selection changes."
+                "description": "This event fires when the radio selection changes. Passes in `event, { checked }`."
             },
             "value": {
                 "type": {
