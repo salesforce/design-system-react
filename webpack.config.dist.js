@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const packageJson = require('./package.json');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
 const license = fs.readFileSync('./LICENSE.txt', 'utf8');
@@ -36,13 +37,6 @@ const config = Object.assign({}, baseConfig, {
 
 let FILENAME = process.env.INCLUDE_ICONS ? '[name].js' : '[name]-components.js';
 if (process.env.MINIFY) {
-	config.plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			mangle: {
-				except: ['$', 'exports', 'require'],
-			},
-		})
-	);
 	FILENAME = process.env.INCLUDE_ICONS
 		? '[name].min.js'
 		: '[name]-components.min.js';

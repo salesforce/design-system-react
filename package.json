@@ -202,6 +202,7 @@
 		"sinon-chai": "^2.14.0",
 		"string-replace-webpack-plugin": "^0.1.2",
 		"style-loader": "^0.17.0",
+		"uglifyjs-webpack-plugin": "^2.0.1",
 		"webpack": "^4.26.1",
 		"webpack-dev-middleware": "^3.4.0",
 		"webpack-hot-middleware": "^2.18.2",
