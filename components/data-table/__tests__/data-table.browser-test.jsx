@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 
-import chai from 'chai';
+import chai, { expect } from 'chai';
 
 import Dropdown from '../../menu-dropdown';
 import DataTable from '../../data-table';
@@ -526,6 +526,82 @@ describe('DataTable: ', function() {
 			const secondRow = getRow(this.dom, 2);
 			const markedText = secondRow.querySelectorAll('mark')[0];
 			markedText.innerHTML.should.equal('Cloud');
+		});
+	});
+
+	describe('w/ Fixed Headers', function() {
+		afterEach(removeTable);
+
+		it('Renders a fixedHeader table as expected', function() {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					id="DataTable-FixedHeader-Test"
+					onFixedHeaderResize={(data) => {
+						expect(typeof data.scrollerRef).to.eql('object');
+						expect(
+							data.scrollerRef.className.search(
+								'slds-table_header-fixed_scroller'
+							) >= 0
+						).to.eql(true);
+						expect(typeof data.theadRef).to.eql('object');
+					}}
+					onToggleFixedHeaderListeners={(data) => {
+						expect(typeof data.attach).to.eql('boolean');
+						expect(typeof data.resizeHandler).to.eql('function');
+						expect(typeof data.scrollerRef).to.eql('object');
+						expect(
+							data.scrollerRef.className.search(
+								'slds-table_header-fixed_scroller'
+							) >= 0
+						).to.eql(true);
+					}}
+					selectRows="checkbox"
+				>
+					<DataTableColumn
+						isSorted
+						label="Name"
+						primaryColumn
+						property="name"
+						sortable
+						sortDirection="asc"
+					/>
+					<DataTableColumn label="Count" property="count" />
+					<DataTableRowActions
+						options={[
+							{
+								id: 0,
+								label: 'Add to Group',
+								value: '1',
+							},
+							{
+								id: 1,
+								label: 'Publish',
+								value: '2',
+							},
+						]}
+						onAction={() => {}}
+						dropdown={<Dropdown length="5" />}
+					/>
+				</DataTable>
+			).call(this);
+
+			expect(
+				this.dom.querySelectorAll('.slds-table_header-fixed_container').length
+			).to.eql(1);
+			expect(
+				this.dom.querySelectorAll('.slds-table_header-fixed_scroller').length
+			).to.eql(1);
+			expect(
+				this.dom
+					.querySelector('table.slds-table')
+					.className.search('slds-table_header-fixed') >= 0
+			).to.eql(true);
+			expect(this.dom.querySelectorAll('thead .slds-cell-fixed').length).to.eql(
+				4
+			);
 		});
 	});
 });

@@ -159,10 +159,7 @@ class DataTableHeaderCell extends React.Component {
 				</a>
 			),
 			notSortable: (
-				<span
-					className="slds-p-horizontal_x-small"
-					style={{ display: 'flex' }}
-				>
+				<span className="slds-p-horizontal_x-small" style={{ display: 'flex' }}>
 					<span
 						className="slds-truncate"
 						title={labelType === 'string' ? label : undefined}
@@ -174,15 +171,15 @@ class DataTableHeaderCell extends React.Component {
 		};
 
 		const headerCellContent = this.props.fixedLayout ? (
-				fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
-			) : (
-				<div
-					className="slds-truncate"
-					title={labelType === 'string' ? label : undefined}
-				>
-					{label}
-				</div>
-			);
+			fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
+		) : (
+			<div
+				className="slds-truncate"
+				title={labelType === 'string' ? label : undefined}
+			>
+				{label}
+			</div>
+		);
 
 		return (
 			<th
@@ -198,25 +195,29 @@ class DataTableHeaderCell extends React.Component {
 					'slds-text-title_caps'
 				)}
 				scope="col"
-				style={(fixedHeader || width) ? {
-					height: fixedHeader ? 0 : null,
-					lineHeight: fixedHeader ? 0 : null,
-					width: width || null,
-				} : null}
+				style={
+					fixedHeader || width
+						? {
+								height: fixedHeader ? 0 : null,
+								lineHeight: fixedHeader ? 0 : null,
+								width: width || null,
+							}
+						: null
+				}
 			>
-				{(fixedHeader) ? (
-					React.cloneElement(headerCellContent, {
-						style: {
-							display: 'flex',
-							height: 0,
-							overflow: 'hidden',
-							paddingBottom: 0,
-							paddingTop: 0,
-							visibility: 'hidden',
-						}
-					})
-				) : headerCellContent}
-				{(fixedHeader) ? (
+				{fixedHeader
+					? React.cloneElement(headerCellContent, {
+							style: {
+								display: 'flex',
+								height: 0,
+								overflow: 'hidden',
+								paddingBottom: 0,
+								paddingTop: 0,
+								visibility: 'hidden',
+							},
+						})
+					: headerCellContent}
+				{fixedHeader ? (
 					<CellFixed>
 						{React.cloneElement(headerCellContent, {
 							style: {

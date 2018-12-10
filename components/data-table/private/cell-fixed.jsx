@@ -13,7 +13,7 @@ const CellFixed = (props) => (
 		style={{
 			display: 'flex',
 			flexDirection: 'row',
-			flexWrap: 'nowrap'
+			flexWrap: 'nowrap',
 		}}
 	>
 		{props.children}

@@ -55,15 +55,13 @@ class DataTableHead extends React.Component {
 
 	getActionsHeader = () => {
 		const { fixedHeader } = this.props;
-		const getContent = (style) => {
-			return (
-				<div className="slds-th__action" style={style}>
-					<span className="slds-assistive-text">
-						{this.props.assistiveText.actionsHeader}
-					</span>
-				</div>
-			);
-		};
+		const getContent = (style) => (
+			<div className="slds-th__action" style={style}>
+				<span className="slds-assistive-text">
+					{this.props.assistiveText.actionsHeader}
+				</span>
+			</div>
+		);
 		let actionsHeader = null;
 
 		if (this.props.showRowActions) {
@@ -73,21 +71,25 @@ class DataTableHead extends React.Component {
 					style={{
 						height: fixedHeader ? 0 : null,
 						lineHeight: fixedHeader ? 0 : null,
-						width: '3.25rem'
+						width: '3.25rem',
 					}}
 				>
-					{getContent((fixedHeader ? {
-						height: 0,
-						overflow: 'hidden',
-						paddingBottom: 0,
-						paddingTop: 0,
-						visibility: 'hidden',
-					} : null))}
-					{(fixedHeader) ? (
+					{getContent(
+						fixedHeader
+							? {
+									height: 0,
+									overflow: 'hidden',
+									paddingBottom: 0,
+									paddingTop: 0,
+									visibility: 'hidden',
+								}
+							: null
+					)}
+					{fixedHeader ? (
 						<CellFixed>
 							{getContent({
 								lineHeight: 1,
-								width: '100%'
+								width: '100%',
 							})}
 						</CellFixed>
 					) : null}
@@ -100,8 +102,8 @@ class DataTableHead extends React.Component {
 
 	getSelectHeader = () => {
 		const { canSelectRows, fixedHeader } = this.props;
-		const getContent = (idSuffix, style) => {
-			return (canSelectRows !== 'radio') ? (
+		const getContent = (idSuffix, style) =>
+			canSelectRows !== 'radio' ? (
 				<div className="slds-th__action slds-th__action_form" style={style}>
 					<Checkbox
 						assistiveText={{
@@ -115,7 +117,6 @@ class DataTableHead extends React.Component {
 					/>
 				</div>
 			) : null;
-		};
 		let selectHeader = null;
 
 		if (canSelectRows) {
@@ -129,21 +130,26 @@ class DataTableHead extends React.Component {
 						width: '3.25rem',
 					}}
 				>
-					{getContent('SelectAll', (fixedHeader) ? {
-						display: 'flex',
-						height: 0,
-						overflow: 'hidden',
-						paddingBottom: 0,
-						paddingTop: 0,
-						visibility: 'hidden',
-					} : null)}
-					{(fixedHeader) ? (
+					{getContent(
+						'SelectAll',
+						fixedHeader
+							? {
+									display: 'flex',
+									height: 0,
+									overflow: 'hidden',
+									paddingBottom: 0,
+									paddingTop: 0,
+									visibility: 'hidden',
+								}
+							: null
+					)}
+					{fixedHeader ? (
 						<CellFixed>
 							{getContent('SelectAll-fixedHeader', {
 								display: 'flex',
 								justifyContent: 'flex-end',
 								lineHeight: 1,
-								width: '100%'
+								width: '100%',
 							})}
 						</CellFixed>
 					) : null}
@@ -156,8 +162,8 @@ class DataTableHead extends React.Component {
 
 	// ### Render
 	render() {
-		let actionsHeader = this.getActionsHeader();
-		let selectHeader = this.getSelectHeader();
+		const actionsHeader = this.getActionsHeader();
+		const selectHeader = this.getSelectHeader();
 
 		return (
 			<thead

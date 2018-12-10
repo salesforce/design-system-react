@@ -113,7 +113,7 @@ class DataTable extends React.Component {
 		 */
 		columnBordered: PropTypes.bool,
 		/**
-		 * Set this to `true` for a data-table with fixed headers and scrolling columns / rows
+		 * Set this to `true` for a data-table with fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with fixedLayout
 		 */
 		fixedHeader: PropTypes.bool,
 		/**
@@ -137,7 +137,7 @@ class DataTable extends React.Component {
 		 */
 		noRowHover: PropTypes.bool,
 		/**
-		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes the triggering event and a data object with `scrollerRef` and `theadRef` DOM node properties that serve as a reference to `.slds-table_header-fixed_scroller` and the `thead` elements, respectively
+		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes a data object with `scrollerRef` and `theadRef` DOM node properties that serve as a reference to `.slds-table_header-fixed_scroller` and the `thead` elements, respectively
 		 */
 		onFixedHeaderResize: PropTypes.func,
 		/**
@@ -196,19 +196,19 @@ class DataTable extends React.Component {
 		this.theadRef = null;
 	}
 
-	componentDidMount () {
+	componentWillMount() {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(DATA_TABLE, this.props, componentDoc);
+	}
+
+	componentDidMount() {
 		if (this.props.fixedHeader) {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
 		}
 	}
 
-	componentWillMount() {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATA_TABLE, this.props, componentDoc);
-	}
-
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.toggleFixedHeaderListeners(false);
 	}
 
@@ -265,11 +265,11 @@ class DataTable extends React.Component {
 		}
 	};
 
-	resizeFixedHeaders = (event) => {
+	resizeFixedHeaders = () => {
 		if (this.props.onFixedHeaderResize) {
-			this.props.onFixedHeaderResize(event, {
+			this.props.onFixedHeaderResize({
 				scrollerRef: this.scrollerRef,
-				theadRef: this.theadRef
+				theadRef: this.theadRef,
 			});
 		} else if (this.theadRef) {
 			let documentScrollLeft = 0;
@@ -279,11 +279,13 @@ class DataTable extends React.Component {
 			}
 
 			this.theadRef.querySelectorAll('th').forEach((column) => {
-				const columnLeft = column.getBoundingClientRect().left + documentScrollLeft;
+				const columnLeft =
+					column.getBoundingClientRect().left + documentScrollLeft;
 				let wrapperLeft = 0;
 
 				if (this.scrollerRef) {
-					wrapperLeft = this.scrollerRef.getBoundingClientRect().left + documentScrollLeft;
+					wrapperLeft =
+						this.scrollerRef.getBoundingClientRect().left + documentScrollLeft;
 				}
 
 				const cellFixed = column.querySelector('.slds-cell-fixed');
@@ -301,14 +303,14 @@ class DataTable extends React.Component {
 			this.props.onToggleFixedHeaderListeners({
 				attach,
 				resizeHandler: this.resizeFixedHeaders,
-				scrollerRef: this.scrollerRef
+				scrollerRef: this.scrollerRef,
 			});
 		} else {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
-			if (window) {
+			if (window && window[action]) {
 				window[action]('resize', this.resizeFixedHeaders);
 			}
-			if (this.scrollerRef) {
+			if (this.scrollerRef && this.scrollerRef[action]) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
 			}
 		}
@@ -390,11 +392,11 @@ class DataTable extends React.Component {
 					'slds-table',
 					{
 						'slds-table_fixed-layout': this.props.fixedLayout,
-						'slds-table--header-fixed': this.props.fixedHeader,
+						'slds-table_header-fixed': this.props.fixedHeader,
 						'slds-table_resizable-cols': this.props.fixedLayout,
 						'slds-table_bordered': !this.props.unborderedRow,
 						'slds-table_cell-buffer':
-						!this.props.fixedLayout && !this.props.unbufferedCell,
+							!this.props.fixedLayout && !this.props.unbufferedCell,
 						'slds-max-medium-table_stacked': this.props.stacked,
 						'slds-max-medium-table_stacked-horizontal': this.props
 							.stackedHorizontal,
@@ -425,28 +427,28 @@ class DataTable extends React.Component {
 				<tbody>
 					{numRows > 0
 						? this.props.items.map((item) => {
-							const rowId =
-								this.getId() && item.id
-									? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
-									: shortid.generate();
-							return (
-								<DataTableRow
-									assistiveText={assistiveText}
-									canSelectRows={canSelectRows}
-									columns={columns}
-									fixedLayout={this.props.fixedLayout}
-									id={rowId}
-									item={item}
-									key={rowId}
-									onToggle={this.handleRowToggle}
-									selection={this.props.selection}
-									rowActions={RowActions}
-									tableId={this.getId()}
-								/>
-							);
-						})
-					: // Someday this should be an element to render when the table is empty
-						null}
+								const rowId =
+									this.getId() && item.id
+										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+										: shortid.generate();
+								return (
+									<DataTableRow
+										assistiveText={assistiveText}
+										canSelectRows={canSelectRows}
+										columns={columns}
+										fixedLayout={this.props.fixedLayout}
+										id={rowId}
+										item={item}
+										key={rowId}
+										onToggle={this.handleRowToggle}
+										selection={this.props.selection}
+										rowActions={RowActions}
+										tableId={this.getId()}
+									/>
+								);
+							})
+						: // Someday this should be an element to render when the table is empty
+							null}
 				</tbody>
 			</table>
 		);
@@ -459,19 +461,20 @@ class DataTable extends React.Component {
 				>
 					<div
 						className="slds-table_header-fixed_scroller"
-						ref={(ref) => { this.scrollerRef = ref; }}
+						ref={(ref) => {
+							this.scrollerRef = ref;
+						}}
 						style={{
 							height: '100%',
-							overflow: 'auto'
+							overflow: 'auto',
 						}}
 					>
 						{table}
 					</div>
 				</div>
 			);
-		} else {
-			return table;
 		}
+		return table;
 	}
 }
 

@@ -23,6 +23,4 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced Single Select (Fixed Layout)', () => (
 		<AdvancedSingleSelect log={action} />
 	))
-	.add('Fixed Header', () => (
-		<FixedHeader />
-	));
+	.add('Fixed Header', () => <FixedHeader />);
