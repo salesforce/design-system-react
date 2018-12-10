@@ -50,6 +50,9 @@ const defaultProps = {
 	selection: [],
 };
 
+const document = !document ? null : document;
+const window = !window ? null : window;
+
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
