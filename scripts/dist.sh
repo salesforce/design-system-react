@@ -42,7 +42,7 @@ cp docs/README-dist.md .tmp/README.md
 echo "## Running JS steps"
 
 npx babel-node scripts/dist.js \
-    --plugins @babel/plugin-transform-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs 
 
 echo "## Copying the components"
 
@@ -89,7 +89,7 @@ npx babel \
     .tmp-es/components \
     --out-dir .tmp-commonjs/components \
     --copy-files \
-    --plugins transform-es2015-modules-commonjs \
+    --plugins @babel/plugin-transform-modules-commonjs \
     --ignore site-stories.js,__docs__,__examples__,__tests__
 
 cp -r assets .tmp-commonjs/assets
@@ -99,14 +99,14 @@ npx babel \
     .tmp-es/icons \
     --out-dir .tmp-commonjs/icons \
     --copy-files \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
 
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/utilities \
     --out-dir .tmp-commonjs/utilities \
     --copy-files \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
 
 # ES6 module transpilation
 NODE_ENV=esm \
