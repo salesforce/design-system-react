@@ -8,9 +8,8 @@ const Swatch = ({ color, style, label, labels }) => {
 		...style,
 	};
 	let assistiveText;
-
-	// transparent swatch
-	if (color === '') {
+	// falsey values output a transparent swatch
+	if (!color) {
 		innerStyle.backgroundImage =
 			'linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)';
 		assistiveText = labels && labels.swatchTabTransparentSwatch;
