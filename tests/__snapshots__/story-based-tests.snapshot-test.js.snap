@@ -493,7 +493,7 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -577,7 +577,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -1534,7 +1534,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          transparent
+                          Transparent Swatch
                         </span>
                       </span>
                     </a>
@@ -1702,9 +1702,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                                   >
                                     <span
                                       className="slds-assistive-text"
-                                    >
-                                      Transparent
-                                    </span>
+                                    />
                                   </span>
                                 </span>
                               </label>
@@ -1913,7 +1911,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -1996,7 +1994,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -2079,7 +2077,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -2162,7 +2160,7 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -2245,7 +2243,7 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -2563,7 +2561,7 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg
@@ -2646,7 +2644,7 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
             <span
               className="slds-assistive-text"
             >
-              transparent
+              Transparent Swatch
             </span>
           </span>
           <svg

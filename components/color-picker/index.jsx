@@ -408,7 +408,7 @@ class ColorPicker extends React.Component {
 					iconPosition="right"
 					iconVariant="more"
 					id={`slds-color-picker__summary-button-${this.generatedId}`}
-					label={<Swatch color={this.state.currentColor} />}
+					label={<Swatch color={this.state.currentColor} labels={labels} />}
 					onClick={this.handleSwatchButtonClick}
 					variant="icon"
 				/>
