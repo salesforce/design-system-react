@@ -46,7 +46,7 @@
 	},
 	"jest": {
 		"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
-		"testEnvironment": "node",
+		"testEnvironment": "jsdom",
 		"testPathIgnorePatterns": [
 			"/node_modules/",
 			"/preset/",
@@ -130,6 +130,7 @@
 		"@storybook/addon-a11y": "^4.0.10",
 		"@storybook/addon-actions": "^4.0.10",
 		"@storybook/addon-storyshots": "^4.0.10",
+		"@storybook/addon-storyshots-puppeteer": "^4.0.12",
 		"@storybook/addons": "^4.0.10",
 		"@storybook/react": "^4.0.10",
 		"async": "^2.0.0-rc.5",
