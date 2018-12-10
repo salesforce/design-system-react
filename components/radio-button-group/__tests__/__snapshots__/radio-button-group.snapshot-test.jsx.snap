@@ -147,13 +147,7 @@ exports[`Radio Button Group Base HTML Snapshot 1`] = `
   <fieldset class=\\"slds-form-element\\">
     <legend class=\\"slds-form-element__legend slds-form-element__label\\">Day of week</legend>
     <div class=\\"slds-form-element__control\\">
-      <div class=\\"slds-radio_button-group\\"><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Mon\\" name=\\"dayOfWeek\\" value=\\"Mon\\"/><label class=\\"slds-radio_button__label\\" for=\\"Mon\\"><span class=\\"slds-radio_faux\\">Mon</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Tue\\" name=\\"dayOfWeek\\" value=\\"Tue\\" checked=\\"\\"/><label class=\\"slds-radio_button__label\\" for=\\"Tue\\"><span class=\\"slds-radio_faux\\">Tue</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Wed\\" name=\\"dayOfWeek\\" value=\\"Wed\\"/><label class=\\"slds-radio_button__label\\" for=\\"Wed\\"><span class=\\"slds-radio_faux\\">Wed</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Thu\\" name=\\"dayOfWeek\\" value=\\"Thu\\"/><label class=\\"slds-radio_button__label\\" for=\\"Thu\\"><span class=\\"slds-radio_faux\\">Thu</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Fri\\" name=\\"dayOfWeek\\" value=\\"Fri\\"/><label class=\\"slds-radio_button__label\\" for=\\"Fri\\"><span class=\\"slds-radio_faux\\">Fri</span></label>
-        </span>
-      </div>
+      <div class=\\"slds-radio_button-group\\"><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Mon\\" name=\\"dayOfWeek\\" value=\\"Mon\\" /><label class=\\"slds-radio_button__label\\" for=\\"Mon\\"><span class=\\"slds-radio_faux\\">Mon</span></label></span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Tue\\" name=\\"dayOfWeek\\" value=\\"Tue\\" checked=\\"\\" /><label class=\\"slds-radio_button__label\\" for=\\"Tue\\"><span class=\\"slds-radio_faux\\">Tue</span></label></span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Wed\\" name=\\"dayOfWeek\\" value=\\"Wed\\" /><label class=\\"slds-radio_button__label\\" for=\\"Wed\\"><span class=\\"slds-radio_faux\\">Wed</span></label></span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Thu\\" name=\\"dayOfWeek\\" value=\\"Thu\\" /><label class=\\"slds-radio_button__label\\" for=\\"Thu\\"><span class=\\"slds-radio_faux\\">Thu</span></label></span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Fri\\" name=\\"dayOfWeek\\" value=\\"Fri\\" /><label class=\\"slds-radio_button__label\\" for=\\"Fri\\"><span class=\\"slds-radio_faux\\">Fri</span></label></span></div>
     </div>
   </fieldset>
 </div>"

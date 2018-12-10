@@ -76,10 +76,7 @@ exports[`Radio Group Base HTML Snapshot 1`] = `
 "<div>
   <fieldset class=\\"slds-form-element\\">
     <legend class=\\"slds-form-element__legend slds-form-element__label\\">Radio Group Label</legend>
-    <div class=\\"slds-form-element__control\\"><span class=\\"slds-radio\\"><input type=\\"radio\\" id=\\"Radio Label One\\" name=\\"radioGroup\\" value=\\"Radio Label One\\"/><label class=\\"slds-radio__label\\" for=\\"Radio Label One\\"><span class=\\"slds-radio_faux\\"></span><span class=\\"slds-form-element__label\\">Radio Label One</span></label>
-      </span><span class=\\"slds-radio\\"><input type=\\"radio\\" id=\\"Radio Label Two\\" name=\\"radioGroup\\" value=\\"Radio Label Two\\"/><label class=\\"slds-radio__label\\" for=\\"Radio Label Two\\"><span class=\\"slds-radio_faux\\"></span><span class=\\"slds-form-element__label\\">Radio Label Two</span></label>
-      </span>
-    </div>
+    <div class=\\"slds-form-element__control\\"><span class=\\"slds-radio\\"><input type=\\"radio\\" id=\\"Radio Label One\\" name=\\"radioGroup\\" value=\\"Radio Label One\\" /><label class=\\"slds-radio__label\\" for=\\"Radio Label One\\"><span class=\\"slds-radio_faux\\"></span><span class=\\"slds-form-element__label\\">Radio Label One</span></label></span><span class=\\"slds-radio\\"><input type=\\"radio\\" id=\\"Radio Label Two\\" name=\\"radioGroup\\" value=\\"Radio Label Two\\" /><label class=\\"slds-radio__label\\" for=\\"Radio Label Two\\"><span class=\\"slds-radio_faux\\"></span><span class=\\"slds-form-element__label\\">Radio Label Two</span></label></span></div>
   </fieldset>
 </div>"
 `;
