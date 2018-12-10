@@ -163,9 +163,7 @@ class HsvColor extends React.Component {
 							checked={this.isTransparent()}
 							id={`color-picker-transparent-swatch-${this.props.id}`}
 							key="transparent"
-							label={
-								this.props.labels.customTabTransparentSwatch || 'transparent'
-							}
+							label={this.props.labels.customTabTransparentSwatch}
 							style={transparentSwatchStyle}
 							value="" // transparent
 							variant="swatch"
