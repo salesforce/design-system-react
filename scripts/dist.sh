@@ -4,7 +4,7 @@
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
 npx babel-node scripts/inline-icons.js \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
 
 echo "# Building design-system-react"
 echo "## Preparing the .tmp directory"
@@ -42,7 +42,7 @@ cp docs/README-dist.md .tmp/README.md
 echo "## Running JS steps"
 
 npx babel-node scripts/dist.js \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
 
 echo "## Copying the components"
 
@@ -151,4 +151,4 @@ rm .tmp-npm/lib/*.map
 rm .tmp-npm/lib/*.js
 
 npx babel-node scripts/npm-transform.js \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
