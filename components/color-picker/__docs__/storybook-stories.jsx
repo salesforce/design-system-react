@@ -53,7 +53,6 @@ storiesOf(COLOR_PICKER, module)
 			id="predefined-color-picker"
 			labels={{ label: 'Choose Color' }}
 			swatchColors={[
-				'',
 				'#000000',
 				'#ff0000',
 				'#00ff00',
@@ -62,6 +61,7 @@ storiesOf(COLOR_PICKER, module)
 				'#ff00ff',
 				'#00ffff',
 				'#ffffff',
+				'',
 			]}
 			value="#000000"
 		/>
@@ -75,7 +75,6 @@ storiesOf(COLOR_PICKER, module)
 			id="predefined-only-color-picker"
 			labels={{ label: 'Choose Color' }}
 			swatchColors={[
-				'',
 				'#000000',
 				'#ff0000',
 				'#00ff00',
@@ -84,6 +83,7 @@ storiesOf(COLOR_PICKER, module)
 				'#ff00ff',
 				'#00ffff',
 				'#ffffff',
+				'',
 			]}
 			variant="swatches"
 		/>
@@ -120,6 +120,7 @@ storiesOf(COLOR_PICKER, module)
 			id="working-color-error-state-color-picker"
 			labels={{ label: 'Choose Color' }}
 			valueWorking="#f"
+			variant="custom"
 		/>
 	))
 	.add('Custom Validator', () => (

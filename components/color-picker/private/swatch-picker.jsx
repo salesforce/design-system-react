@@ -97,6 +97,7 @@ class SwatchPicker extends React.Component {
 					<SwatchOption
 						color={color}
 						key={color}
+						labels={this.props.labels}
 						onSelect={this.props.onSelect}
 						swatchOptionRef={this.addRef(color)}
 						workingColor={this.props.color}

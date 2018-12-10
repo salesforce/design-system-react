@@ -41,7 +41,7 @@ class SwatchOption extends React.Component {
 					role="option"
 					tabIndex={this.props.tabIndex}
 				>
-					<Swatch color={this.props.color} />
+					<Swatch color={this.props.color} labels={this.props.labels} />
 				</a>
 			</li>
 		);
