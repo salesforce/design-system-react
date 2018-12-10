@@ -90,7 +90,7 @@ npx babel \
     --out-dir .tmp-commonjs/components \
     --copy-files \
     --plugins @babel/plugin-transform-modules-commonjs \
-    --ignore site-stories.js,__docs__,__examples__,__tests__
+    --ignore "site-stories.js","**/__docs__","**/__examples__","**/__tests__"
 
 cp -r assets .tmp-commonjs/assets
 cp -r styles .tmp-commonjs/styles
