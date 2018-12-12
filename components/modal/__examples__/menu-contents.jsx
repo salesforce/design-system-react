@@ -60,7 +60,7 @@ class Example extends React.Component {
 								<div className="slds-form-element__control">
 									<input
 										id="opptyName"
-										className="-input"
+										className="slds-input"
 										type="text"
 										placeholder="Enter name"
 									/>
@@ -76,7 +76,7 @@ class Example extends React.Component {
 								<div className="slds-form-element__control">
 									<textarea
 										id="description"
-										className="-textarea"
+										className="slds-textarea"
 										placeholder="Enter description"
 									/>
 								</div>
@@ -157,7 +157,7 @@ class Example extends React.Component {
 								<div className="slds-form-element__control">
 									<input
 										id="amount"
-										className="-input"
+										className="slds-input"
 										type="text"
 										placeholder="Enter Amount"
 									/>
