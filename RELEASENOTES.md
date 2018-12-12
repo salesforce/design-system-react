@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.30
+
+**BugFixes**
+
+* Brings in Color Picker accessiblility fixes from master branch
+
 ## Release 0.8.29
 
 **BugFixes**
