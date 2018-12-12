@@ -13760,7 +13760,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
     style={
       Object {
         "height": "200px",
-        "width": "600px",
+        "width": "100%",
       }
     }
   >
