@@ -45,10 +45,10 @@ class Title extends Component {
 		const classes = this._getClassNames(truncate, align, className);
 
 		return (
-			<h1 className={classes} title={title}>
+			<span className={classes} title={title}>
 				{title}
 				{children}
-			</h1>
+			</span>
 		);
 	}
 }

@@ -80,7 +80,7 @@ class DemoPageHeader extends React.Component {
 
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
-const recordHomeContentRight = (
+const recordHomeNavRight = (
 	<div>
 		<SLDSButtonStateful
 			key="PageHeaderFollowButton"
@@ -181,6 +181,7 @@ const objectHomeContentRight = (
 			<SLDSMenuDropdown
 				assistiveText={{ icon: 'Sort' }}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-object-home-content-right"
@@ -248,6 +249,7 @@ const relatedListContentRight = (
 			<SLDSMenuDropdown
 				assistiveText={{ icon: 'Sort' }}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-related-list-content-right"
@@ -315,7 +317,7 @@ storiesOf(PAGE_HEADER, module)
 			label: 'Record Type',
 			title: 'Record Title',
 			variant: 'recordHome',
-			contentRight: recordHomeContentRight,
+			navRight: recordHomeNavRight,
 			details: recordHomeDetails,
 		})
 	)

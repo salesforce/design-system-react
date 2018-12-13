@@ -11,7 +11,7 @@ class Example extends React.Component {
 	static displayName = 'PageHeaderExample';
 
 	render() {
-		const contentRight = (
+		const navRight = (
 			<div>
 				<ButtonStateful
 					key="PageHeaderFollowButton"
@@ -64,7 +64,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					contentRight={contentRight}
+					navRight={navRight}
 					details={details}
 					iconAssistiveText={{ icon: 'User' }}
 					iconCategory="standard"

@@ -61,6 +61,7 @@ class Example extends React.Component {
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
 					id="page-header-dropdown-object-home-content-right-2"
@@ -129,30 +130,28 @@ class Example extends React.Component {
 					label="Leads"
 					navRight={navRight}
 					title={
-						<h1 className="slds-page-header__title slds-p-right_x-small">
-							<Dropdown
-								id="page-header-dropdown-object-home-header"
-								options={[
-									{ label: 'Menu Item One', value: 'A0' },
-									{ label: 'Menu Item Two', value: 'B0' },
-									{ label: 'Menu Item Three', value: 'C0' },
-									{ type: 'divider' },
-									{ label: 'Menu Item Four', value: 'D0' },
-								]}
-							>
-								<DropdownTrigger>
-									<Button
-										className="slds-button_reset slds-type-focus"
-										iconCategory="utility"
-										iconName="down"
-										iconPosition="right"
-										label="Dropdown"
-										responsive
-										variant="base"
-									/>
-								</DropdownTrigger>
-							</Dropdown>
-						</h1>
+						<Dropdown
+							id="page-header-dropdown-object-home-header"
+							options={[
+								{ label: 'Menu Item One', value: 'A0' },
+								{ label: 'Menu Item Two', value: 'B0' },
+								{ label: 'Menu Item Three', value: 'C0' },
+								{ type: 'divider' },
+								{ label: 'Menu Item Four', value: 'D0' },
+							]}
+						>
+							<DropdownTrigger>
+								<Button
+									className="slds-page-header__title slds-p-right_x-small slds-button_reset slds-type-focus"
+									iconCategory="utility"
+									iconName="down"
+									iconPosition="right"
+									label="Dropdown"
+									responsive
+									variant="base"
+								/>
+							</DropdownTrigger>
+						</Dropdown>
 					}
 					truncate
 					variant="objectHome"

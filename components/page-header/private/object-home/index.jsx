@@ -39,9 +39,13 @@ const ObjectHome = (props) => (
 			<div className="slds-col slds-has-flexi-truncate">
 				<MediaObject
 					body={
-						<div>
-							{props.label}
-							{props.title}
+						<div className="slds-page-header__name">
+							<div className="slds-page-header__name-title">
+								<h1>
+									{props.label}
+									{props.title}
+								</h1>
+							</div>
 						</div>
 					}
 					className="slds-no-space slds-grow"
@@ -53,7 +57,9 @@ const ObjectHome = (props) => (
 			</div>
 		</div>
 		<div className="slds-grid">
-			<div className="slds-col slds-align-bottom">{props.info}</div>
+			<div className="slds-col slds-align-bottom">
+				<p className="slds-page-header__meta-text">{props.info}</p>
+			</div>
 			<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
 				{props.contentRight}
 			</div>

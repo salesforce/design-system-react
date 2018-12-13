@@ -18,14 +18,7 @@ const propTypes = {
 };
 
 const Info = (props) => (
-	<p
-		className={classnames(
-			'slds-text-body_small slds-line-height_reset',
-			props.className
-		)}
-	>
-		{props.children}
-	</p>
+	<span className={classnames(props.className)}>{props.children}</span>
 );
 
 Info.displayName = displayName;

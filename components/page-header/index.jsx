@@ -36,9 +36,9 @@ const propTypes = {
 	/**
 	 * The type of component
 	 */
-	variant: PropTypes.string,
+	variant: PropTypes.oneOf(['base', 'objectHome', 'recordHome', 'relatedList']),
 	/**
-	 * The info property can be a string or a React element
+	 * The label property can be a string or a React element
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
@@ -90,7 +90,7 @@ const propTypes = {
 	 */
 	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * An array of buttons which appear on the component's right hand side.
+	 * An array of detail blocks (used in "recordHome" variant)
 	 */
 	details: PropTypes.array,
 	/**
@@ -98,7 +98,7 @@ const propTypes = {
 	 */
 	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * An array of react elements presumably anchor <a> elements.
+	 * An array of react elements -- presumably anchor <a> elements.
 	 */
 	trail: PropTypes.array,
 };

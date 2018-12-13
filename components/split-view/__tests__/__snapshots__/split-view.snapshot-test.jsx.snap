@@ -217,41 +217,49 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                   <div
                     className="slds-media__body"
                   >
-                    <div>
+                    <div
+                      className="slds-page-header__name"
+                    >
                       <div
-                        className="slds-media__body"
+                        className="slds-page-header__name-title"
                       >
-                        <h1
-                          className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
-                        >
+                        <h1>
                           <div
-                            className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                            id="header-title-leads"
-                            onClick={[Function]}
-                            onFocus={null}
-                            onKeyDown={[Function]}
-                            onMouseEnter={null}
-                            onMouseLeave={null}
+                            className="slds-media__body"
                           >
-                            <button
-                              aria-expanded={false}
-                              aria-haspopup={true}
-                              className="slds-button slds-button_reset slds-type-focus"
-                              disabled={false}
-                              onClick={[Function]}
-                              tabIndex="0"
-                              type="button"
+                            <h1
+                              className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
                             >
-                              My Leads
-                              <svg
-                                aria-hidden="true"
-                                className="slds-button__icon slds-button__icon_right"
+                              <div
+                                className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                                id="header-title-leads"
+                                onClick={[Function]}
+                                onFocus={null}
+                                onKeyDown={[Function]}
+                                onMouseEnter={null}
+                                onMouseLeave={null}
                               >
-                                <use
-                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                                />
-                              </svg>
-                            </button>
+                                <button
+                                  aria-expanded={false}
+                                  aria-haspopup={true}
+                                  className="slds-button slds-button_reset slds-type-focus"
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  tabIndex="0"
+                                  type="button"
+                                >
+                                  My Leads
+                                  <svg
+                                    aria-hidden="true"
+                                    className="slds-button__icon slds-button__icon_right"
+                                  >
+                                    <use
+                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                    />
+                                  </svg>
+                                </button>
+                              </div>
+                            </h1>
                           </div>
                         </h1>
                       </div>
@@ -308,9 +316,13 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                 className="slds-col slds-align-bottom"
               >
                 <p
-                  className="slds-text-body_small slds-line-height_reset"
+                  className="slds-page-header__meta-text"
                 >
-                  42 items • Updated just now
+                  <span
+                    className=""
+                  >
+                    42 items • Updated just now
+                  </span>
                 </p>
               </div>
               <div
@@ -968,10 +980,14 @@ exports[`Base Multiple HTML Snapshot 1`] = `
                 <div class=\\"slds-media slds-no-space slds-grow\\">
                   <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
                   <div class=\\"slds-media__body\\">
-                    <div>
-                      <div class=\\"slds-media__body\\">
-                        <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
-                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                    <div class=\\"slds-page-header__name\\">
+                      <div class=\\"slds-page-header__name-title\\">
+                        <h1>
+                          <div class=\\"slds-media__body\\">
+                            <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
+                              <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                            </h1>
+                          </div>
                         </h1>
                       </div>
                     </div>
@@ -986,7 +1002,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
             </div>
             <div class=\\"slds-grid\\">
               <div class=\\"slds-col slds-align-bottom\\">
-                <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
+                <p class=\\"slds-page-header__meta-text\\"><span class=\\"\\">42 items • Updated just now</span></p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
@@ -1163,41 +1179,49 @@ exports[`Base Open DOM Snapshot 1`] = `
                   <div
                     className="slds-media__body"
                   >
-                    <div>
+                    <div
+                      className="slds-page-header__name"
+                    >
                       <div
-                        className="slds-media__body"
+                        className="slds-page-header__name-title"
                       >
-                        <h1
-                          className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
-                        >
+                        <h1>
                           <div
-                            className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                            id="header-title-leads"
-                            onClick={[Function]}
-                            onFocus={null}
-                            onKeyDown={[Function]}
-                            onMouseEnter={null}
-                            onMouseLeave={null}
+                            className="slds-media__body"
                           >
-                            <button
-                              aria-expanded={false}
-                              aria-haspopup={true}
-                              className="slds-button slds-button_reset slds-type-focus"
-                              disabled={false}
-                              onClick={[Function]}
-                              tabIndex="0"
-                              type="button"
+                            <h1
+                              className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
                             >
-                              My Leads
-                              <svg
-                                aria-hidden="true"
-                                className="slds-button__icon slds-button__icon_right"
+                              <div
+                                className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                                id="header-title-leads"
+                                onClick={[Function]}
+                                onFocus={null}
+                                onKeyDown={[Function]}
+                                onMouseEnter={null}
+                                onMouseLeave={null}
                               >
-                                <use
-                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                                />
-                              </svg>
-                            </button>
+                                <button
+                                  aria-expanded={false}
+                                  aria-haspopup={true}
+                                  className="slds-button slds-button_reset slds-type-focus"
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  tabIndex="0"
+                                  type="button"
+                                >
+                                  My Leads
+                                  <svg
+                                    aria-hidden="true"
+                                    className="slds-button__icon slds-button__icon_right"
+                                  >
+                                    <use
+                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                    />
+                                  </svg>
+                                </button>
+                              </div>
+                            </h1>
                           </div>
                         </h1>
                       </div>
@@ -1254,9 +1278,13 @@ exports[`Base Open DOM Snapshot 1`] = `
                 className="slds-col slds-align-bottom"
               >
                 <p
-                  className="slds-text-body_small slds-line-height_reset"
+                  className="slds-page-header__meta-text"
                 >
-                  42 items • Updated just now
+                  <span
+                    className=""
+                  >
+                    42 items • Updated just now
+                  </span>
                 </p>
               </div>
               <div
@@ -1913,10 +1941,14 @@ exports[`Base Open HTML Snapshot 1`] = `
                 <div class=\\"slds-media slds-no-space slds-grow\\">
                   <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
                   <div class=\\"slds-media__body\\">
-                    <div>
-                      <div class=\\"slds-media__body\\">
-                        <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
-                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                    <div class=\\"slds-page-header__name\\">
+                      <div class=\\"slds-page-header__name-title\\">
+                        <h1>
+                          <div class=\\"slds-media__body\\">
+                            <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
+                              <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                            </h1>
+                          </div>
                         </h1>
                       </div>
                     </div>
@@ -1931,7 +1963,7 @@ exports[`Base Open HTML Snapshot 1`] = `
             </div>
             <div class=\\"slds-grid\\">
               <div class=\\"slds-col slds-align-bottom\\">
-                <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
+                <p class=\\"slds-page-header__meta-text\\"><span class=\\"\\">42 items • Updated just now</span></p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
@@ -2108,41 +2140,49 @@ exports[`Custom DOM Snapshot 1`] = `
                   <div
                     className="slds-media__body"
                   >
-                    <div>
+                    <div
+                      className="slds-page-header__name"
+                    >
                       <div
-                        className="slds-media__body"
+                        className="slds-page-header__name-title"
                       >
-                        <h1
-                          className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
-                        >
+                        <h1>
                           <div
-                            className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                            id="header-title-leads"
-                            onClick={[Function]}
-                            onFocus={null}
-                            onKeyDown={[Function]}
-                            onMouseEnter={null}
-                            onMouseLeave={null}
+                            className="slds-media__body"
                           >
-                            <button
-                              aria-expanded={false}
-                              aria-haspopup={true}
-                              className="slds-button slds-button_reset slds-type-focus"
-                              disabled={false}
-                              onClick={[Function]}
-                              tabIndex="0"
-                              type="button"
+                            <h1
+                              className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
                             >
-                              My Leads
-                              <svg
-                                aria-hidden="true"
-                                className="slds-button__icon slds-button__icon_right"
+                              <div
+                                className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                                id="header-title-leads"
+                                onClick={[Function]}
+                                onFocus={null}
+                                onKeyDown={[Function]}
+                                onMouseEnter={null}
+                                onMouseLeave={null}
                               >
-                                <use
-                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                                />
-                              </svg>
-                            </button>
+                                <button
+                                  aria-expanded={false}
+                                  aria-haspopup={true}
+                                  className="slds-button slds-button_reset slds-type-focus"
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  tabIndex="0"
+                                  type="button"
+                                >
+                                  My Leads
+                                  <svg
+                                    aria-hidden="true"
+                                    className="slds-button__icon slds-button__icon_right"
+                                  >
+                                    <use
+                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                    />
+                                  </svg>
+                                </button>
+                              </div>
+                            </h1>
                           </div>
                         </h1>
                       </div>
@@ -2199,9 +2239,13 @@ exports[`Custom DOM Snapshot 1`] = `
                 className="slds-col slds-align-bottom"
               >
                 <p
-                  className="slds-text-body_small slds-line-height_reset"
+                  className="slds-page-header__meta-text"
                 >
-                  42 items • Updated just now
+                  <span
+                    className=""
+                  >
+                    42 items • Updated just now
+                  </span>
                 </p>
               </div>
               <div
@@ -2596,10 +2640,14 @@ exports[`Custom HTML Snapshot 1`] = `
                 <div class=\\"slds-media slds-no-space slds-grow\\">
                   <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
                   <div class=\\"slds-media__body\\">
-                    <div>
-                      <div class=\\"slds-media__body\\">
-                        <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
-                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                    <div class=\\"slds-page-header__name\\">
+                      <div class=\\"slds-page-header__name-title\\">
+                        <h1>
+                          <div class=\\"slds-media__body\\">
+                            <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
+                              <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                            </h1>
+                          </div>
                         </h1>
                       </div>
                     </div>
@@ -2614,7 +2662,7 @@ exports[`Custom HTML Snapshot 1`] = `
             </div>
             <div class=\\"slds-grid\\">
               <div class=\\"slds-col slds-align-bottom\\">
-                <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
+                <p class=\\"slds-page-header__meta-text\\"><span class=\\"\\">42 items • Updated just now</span></p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">

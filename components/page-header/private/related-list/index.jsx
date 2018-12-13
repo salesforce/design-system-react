@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MediaObject from '../../../media-object';
 
 const displayName = 'PageHeaderRelatedList';
 const propTypes = {
@@ -36,14 +37,26 @@ class RelatedList extends Component {
 				<div className="slds-grid">
 					<div className="slds-col slds-has-flexi-truncate">
 						{this.props.label}
-						{this.props.title}
+						<MediaObject
+							body={
+								<div className="slds-page-header__name">
+									<div className="slds-page-header__name-title">
+										<h1>{this.props.title}</h1>
+									</div>
+								</div>
+							}
+							className="slds-no-space slds-grow"
+							figure={this.props.icon}
+						/>
 					</div>
 					<div className="slds-col slds-no-flex slds-grid slds-align-top">
 						{this.props.navRight}
 					</div>
 				</div>
 				<div className="slds-grid">
-					<div className="slds-col slds-align-bottom">{this.props.info}</div>
+					<div className="slds-col slds-align-bottom">
+						<p className="slds-page-header__meta-text">{this.props.info}</p>
+					</div>
 					<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
 						{this.props.contentRight}
 					</div>

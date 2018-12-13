@@ -17157,16 +17157,30 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
             className="slds-media__body"
           >
             <div>
-              <h1
-                className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
-                title="Rohde Corp - 80,000 Widgets"
+              <div
+                className="slds-page-header__name"
               >
-                Rohde Corp - 80,000 Widgets
-              </h1>
+                <div
+                  className="slds-page-header__name-title"
+                >
+                  <h1>
+                    <span
+                      className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                      title="Rohde Corp - 80,000 Widgets"
+                    >
+                      Rohde Corp - 80,000 Widgets
+                    </span>
+                  </h1>
+                </div>
+              </div>
               <p
-                className="slds-text-body_small slds-line-height_reset"
+                className="slds-page-header__name-meta slds-text-body_small slds-line-height_reset"
               >
-                Mark Jaeckal • Unlimited Customer • 11/13/15
+                <span
+                  className=""
+                >
+                  Mark Jaeckal • Unlimited Customer • 11/13/15
+                </span>
               </p>
             </div>
           </div>
@@ -17215,45 +17229,49 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
             <div
               className="slds-media__body"
             >
-              <div>
-                <p
-                  className="slds-text-title_caps slds-line-height_reset"
+              <div
+                className="slds-page-header__name"
+              >
+                <div
+                  className="slds-page-header__name-title"
                 >
-                  Leads
-                </p>
-                <h1
-                  className="slds-page-header__title slds-p-right_x-small"
-                >
-                  <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="page-header-dropdown-object-home-header"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
-                  >
-                    <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_reset slds-type-focus"
-                      disabled={false}
-                      onClick={[Function]}
-                      tabIndex="0"
-                      type="button"
+                  <h1>
+                    <p
+                      className="slds-text-title_caps slds-line-height_reset"
                     >
-                      Dropdown
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon slds-button__icon_right"
+                      Leads
+                    </p>
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="page-header-dropdown-object-home-header"
+                      onClick={[Function]}
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
+                    >
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-page-header__title slds-p-right_x-small slds-button_reset slds-type-focus"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
                       >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </h1>
+                        Dropdown
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon slds-button__icon_right"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
@@ -17328,9 +17346,13 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           className="slds-col slds-align-bottom"
         >
           <p
-            className="slds-text-body_small slds-line-height_reset"
+            className="slds-page-header__meta-text"
           >
-            10 items • sorted by name
+            <span
+              className=""
+            >
+              10 items • sorted by name
+            </span>
           </p>
         </div>
         <div
@@ -17563,24 +17585,48 @@ exports[`DOM snapshots SLDSPageHeader Record Home (field updates) 1`] = `
               <div
                 className="slds-media__body"
               >
-                <div>
-                  <p
-                    className="slds-text-title_caps slds-line-height_reset"
+                <div
+                  className="slds-page-header__name"
+                >
+                  <div
+                    className="slds-page-header__name-title"
                   >
-                    Record Type
-                  </p>
-                  <h1
-                    className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
-                    title="Record Title"
-                  >
-                    Record Title
-                  </h1>
+                    <h1>
+                      <p
+                        className="slds-text-title_caps slds-line-height_reset"
+                      >
+                        Record Type
+                      </p>
+                      <span
+                        className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                        title="Record Title"
+                      >
+                        Record Title
+                      </span>
+                    </h1>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div
-            className="slds-col slds-no-flex slds-grid slds-align-top"
+            className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="slds-grid"
+        >
+          <div
+            className="slds-col slds-align-bottom"
+          >
+            <p
+              className="slds-page-header__meta-text"
+            />
+          </div>
+          <div
+            className="slds-col slds-no-flex slds-grid slds-align-bottom"
           >
             
           </div>
@@ -17681,27 +17727,35 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
             <div
               className="slds-media__body"
             >
-              <div>
-                <p
-                  className="slds-text-title_caps slds-line-height_reset"
+              <div
+                className="slds-page-header__name"
+              >
+                <div
+                  className="slds-page-header__name-title"
                 >
-                  Record Type
-                </p>
-                <h1
-                  className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
-                  title="Record Title"
-                >
-                  Record Title
-                </h1>
+                  <h1>
+                    <p
+                      className="slds-text-title_caps slds-line-height_reset"
+                    >
+                      Record Type
+                    </p>
+                    <span
+                      className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                      title="Record Title"
+                    >
+                      Record Title
+                    </span>
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="slds-col slds-no-flex slds-grid slds-align-top"
+          className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
         >
           <div
-            className="slds-grid"
+            className="slds-col slds-no-flex slds-grid slds-align-top"
           >
             <button
               aria-live="assertive"
@@ -17816,6 +17870,22 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
           </div>
         </div>
       </div>
+      <div
+        className="slds-grid"
+      >
+        <div
+          className="slds-col slds-align-bottom"
+        >
+          <p
+            className="slds-page-header__meta-text"
+          />
+        </div>
+        <div
+          className="slds-col slds-no-flex slds-grid slds-align-bottom"
+        >
+          
+        </div>
+      </div>
       <ul
         className="slds-grid slds-page-header__detail-row"
       >
@@ -17924,45 +17994,53 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
             <div
               className="slds-media__body"
             >
-              <div>
-                <nav
-                  className="slds-m-bottom_xx-small"
-                  role="navigation"
+              <div
+                className="slds-page-header__name"
+              >
+                <div
+                  className="slds-page-header__name-title"
                 >
-                  <nav
-                    aria-label="Breadcrumbs"
-                    role="navigation"
-                  >
-                    <ol
-                      className="slds-breadcrumb slds-list_horizontal"
+                  <h1>
+                    <nav
+                      className="slds-m-bottom_xx-small"
+                      role="navigation"
                     >
-                      <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                      <nav
+                        aria-label="Breadcrumbs"
+                        role="navigation"
                       >
-                        <a
-                          href="javascript:void(0);"
+                        <ol
+                          className="slds-breadcrumb slds-list_horizontal"
                         >
-                          Accounts
-                        </a>
-                      </li>
-                      <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
-                      >
-                        <a
-                          href="javascript:void(0);"
-                        >
-                          Company One
-                        </a>
-                      </li>
-                    </ol>
-                  </nav>
-                </nav>
-                <h1
-                  className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
-                  title="Contacts"
-                >
-                  Contacts
-                </h1>
+                          <li
+                            className="slds-breadcrumb__item slds-text-title_caps"
+                          >
+                            <a
+                              href="javascript:void(0);"
+                            >
+                              Accounts
+                            </a>
+                          </li>
+                          <li
+                            className="slds-breadcrumb__item slds-text-title_caps"
+                          >
+                            <a
+                              href="javascript:void(0);"
+                            >
+                              Company One
+                            </a>
+                          </li>
+                        </ol>
+                      </nav>
+                    </nav>
+                    <span
+                      className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                      title="Contacts"
+                    >
+                      Contacts
+                    </span>
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
@@ -18025,9 +18103,13 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           className="slds-col slds-align-bottom"
         >
           <p
-            className="slds-text-body_small slds-line-height_reset"
+            className="slds-page-header__meta-text"
           >
-            10 items • sorted by name
+            <span
+              className=""
+            >
+              10 items • sorted by name
+            </span>
           </p>
         </div>
         <div

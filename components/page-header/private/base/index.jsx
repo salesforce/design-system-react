@@ -27,8 +27,14 @@ const Base = (props) => (
 			<MediaObject
 				body={
 					<div>
-						{props.title}
-						{props.info}
+						<div className="slds-page-header__name">
+							<div className="slds-page-header__name-title">
+								<h1>{props.title}</h1>
+							</div>
+						</div>
+						<p className="slds-page-header__name-meta slds-text-body_small slds-line-height_reset">
+							{props.info}
+						</p>
 					</div>
 				}
 				figure={props.icon}
