@@ -18,12 +18,14 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 
+import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
 import SelectedListBox from '../pill-container/private/selected-listbox';
+import Tooltip from '../tooltip';
 
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
@@ -124,6 +126,10 @@ const propTypes = {
 	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._
 	 */
 	errorText: PropTypes.string,
+	/**
+	 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props.
+	 */
+	fieldLevelHelpTooltip: PropTypes.node,
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -1371,6 +1377,31 @@ class Combobox extends React.Component {
 		);
 	};
 
+	renderFieldLevelHelpTooltip(fieldLevelHelpTooltip, labels, assistiveText) {
+		if ((labels.label ||
+			(assistiveText && assistiveText.label)) && this.props.fieldLevelHelpTooltip) {
+			const defaultTooltipProps = {
+				triggerClassName: 'slds-form-element__icon',
+				children: (
+					<Button
+						assistiveText={{ label: 'Help' }}
+						className="slds-m-bottom_xxx-small"
+						iconCategory="utility"
+						iconName="info"
+						variant="icon"
+					/>
+				),
+			};
+			const tooltipProps = {
+				...defaultTooltipProps,
+				...this.props.fieldLevelHelpTooltip.props,
+			};
+			return <Tooltip {...tooltipProps} />;
+		}
+
+		return null;
+	};
+
 	render() {
 		const props = this.props;
 		// Merge objects of strings with their default object
@@ -1380,7 +1411,7 @@ class Combobox extends React.Component {
 			props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-
+		const fieldLevelHelpTooltip = this.renderFieldLevelHelpTooltip(this.props.fieldLevelHelpTooltip, labels, this.props.assistiveText);
 		const subRenderParameters = { assistiveText, labels, props: this.props };
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
@@ -1409,6 +1440,7 @@ class Combobox extends React.Component {
 					label={labels.label}
 					required={props.required}
 				/>
+				{fieldLevelHelpTooltip}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters
