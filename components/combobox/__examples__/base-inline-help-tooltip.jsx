@@ -133,12 +133,14 @@ class Example extends React.Component {
 								selection: data.selection,
 							});
 						},
-                    }}
-                    fieldLevelHelpTooltip={<Tooltip
-						align="top left"
-						content="Type to search Salesforce objects..."
-						position="overflowBoundaryElement"
-					/>}
+					}}
+					fieldLevelHelpTooltip={
+						<Tooltip
+							align="top left"
+							content="Type to search Salesforce objects..."
+							position="overflowBoundaryElement"
+						/>
+					}
 					labels={{
 						label: 'Search',
 						placeholder: 'Search Salesforce',

@@ -43,10 +43,14 @@ storiesOf(COMBOBOX, module)
 	.add('Base Pre-defined Options Only', () => (
 		<PredefinedOptionsOnly action={action} />
 	))
-	.add('Base Inline Help', () => <section>
-	<h1 className="slds-text-title_caps slds-p-vertical_medium">
-		Field Level Help Tooltip
-	</h1><BaseInlineHelpTooltip action={action} /></section>)
+	.add('Base Inline Help', () => (
+		<section>
+			<h1 className="slds-text-title_caps slds-p-vertical_medium">
+				Field Level Help Tooltip
+			</h1>
+			<BaseInlineHelpTooltip action={action} />
+		</section>
+	))
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)

@@ -1378,8 +1378,10 @@ class Combobox extends React.Component {
 	};
 
 	renderFieldLevelHelpTooltip(fieldLevelHelpTooltip, labels, assistiveText) {
-		if ((labels.label ||
-			(assistiveText && assistiveText.label)) && this.props.fieldLevelHelpTooltip) {
+		if (
+			(labels.label || (assistiveText && assistiveText.label)) &&
+			this.props.fieldLevelHelpTooltip
+		) {
 			const defaultTooltipProps = {
 				triggerClassName: 'slds-form-element__icon',
 				children: (
@@ -1400,7 +1402,7 @@ class Combobox extends React.Component {
 		}
 
 		return null;
-	};
+	}
 
 	render() {
 		const props = this.props;
@@ -1411,7 +1413,11 @@ class Combobox extends React.Component {
 			props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-		const fieldLevelHelpTooltip = this.renderFieldLevelHelpTooltip(this.props.fieldLevelHelpTooltip, labels, this.props.assistiveText);
+		const fieldLevelHelpTooltip = this.renderFieldLevelHelpTooltip(
+			this.props.fieldLevelHelpTooltip,
+			labels,
+			this.props.assistiveText
+		);
 		const subRenderParameters = { assistiveText, labels, props: this.props };
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
