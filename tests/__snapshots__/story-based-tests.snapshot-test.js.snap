@@ -17127,13 +17127,13 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
     className="slds-page-header"
   >
     <div
-      className="slds-page-header__row"
+      className="slds-grid slds-page-header__row"
     >
       <div
-        className="slds-page-header__col-title"
+        className="slds-col slds-page-header__col-title"
       >
         <div
-          className="slds-media"
+          className="slds-media slds-no-space slds-grow"
         >
           <div
             className="slds-media__figure"
@@ -17171,6 +17171,11 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="slds-col slds-no-flex slds-grid slds-align-top"
+      >
+        
       </div>
     </div>
   </div>
