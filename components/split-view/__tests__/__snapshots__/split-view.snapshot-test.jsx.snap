@@ -188,10 +188,10 @@ exports[`Base Multiple DOM Snapshot 1`] = `
         >
           <div>
             <div
-              className="slds-grid"
+              className="slds-page-header__row slds-grid"
             >
               <div
-                className="slds-col slds-has-flexi-truncate"
+                className="slds-page-header__col-title slds-col slds-has-flexi-truncate"
               >
                 <div
                   className="slds-media slds-no-space slds-grow"
@@ -223,7 +223,9 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                       <div
                         className="slds-page-header__name-title"
                       >
-                        <h1>
+                        <div
+                          className="slds-page-header__title slds-m-right_small"
+                        >
                           <div
                             className="slds-media__body"
                           >
@@ -261,59 +263,63 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                               </div>
                             </h1>
                           </div>
-                        </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
+                className="slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
               >
                 <div
-                  className="slds-col slds-no-flex slds-grid slds-align-top"
+                  className="slds-page-header__controls"
                 >
                   <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="header-nav-right-more"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
+                    className="slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top"
                   >
-                    <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more"
-                      disabled={false}
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="header-nav-right-more"
                       onClick={[Function]}
-                      tabIndex="0"
-                      type="button"
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon"
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
                       >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        More Options
-                      </span>
-                    </button>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          More Options
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div
-              className="slds-grid"
+              className="slds-page-header__row slds-grid"
             >
               <div
-                className="slds-col slds-align-bottom"
+                className="slds-page-header__col-meta slds-col slds-align-bottom"
               >
                 <p
                   className="slds-page-header__meta-text"
@@ -326,27 +332,59 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                 </p>
               </div>
               <div
-                className="slds-col slds-no-flex slds-grid slds-align-bottom"
+                className="slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom"
               >
                 <div
-                  className="slds-grid"
+                  className="slds-page-header__controls"
                 >
                   <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="header-right-refresh"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
+                    className="slds-grid slds-page-header__control"
                   >
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="header-right-refresh"
+                      onClick={[Function]}
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
+                    >
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon slds-button__icon_x-small"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Checkmark with right icon
+                        </span>
+                      </button>
+                    </div>
                     <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                      className="slds-button slds-button_icon-border"
                       disabled={false}
                       onClick={[Function]}
-                      tabIndex="0"
                       type="button"
                     >
                       <svg
@@ -354,44 +392,16 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon slds-button__icon_x-small"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
                         />
                       </svg>
                       <span
                         className="slds-assistive-text"
                       >
-                        Checkmark with right icon
+                        Refresh
                       </span>
                     </button>
                   </div>
-                  <button
-                    className="slds-button slds-button_icon-border"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="slds-button__icon"
-                    >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
-                      />
-                    </svg>
-                    <span
-                      className="slds-assistive-text"
-                    >
-                      Refresh
-                    </span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -975,40 +985,44 @@ exports[`Base Multiple HTML Snapshot 1`] = `
         id=\\"master_view_base-multiple-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header_object-home slds-split-view__header slds-has-bottom-magnet\\">
           <div>
-            <div class=\\"slds-grid\\">
-              <div class=\\"slds-col slds-has-flexi-truncate\\">
+            <div class=\\"slds-page-header__row slds-grid\\">
+              <div class=\\"slds-page-header__col-title slds-col slds-has-flexi-truncate\\">
                 <div class=\\"slds-media slds-no-space slds-grow\\">
                   <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
                   <div class=\\"slds-media__body\\">
                     <div class=\\"slds-page-header__name\\">
                       <div class=\\"slds-page-header__name-title\\">
-                        <h1>
+                        <div class=\\"slds-page-header__title slds-m-right_small\\">
                           <div class=\\"slds-media__body\\">
                             <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
                               <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
                             </h1>
                           </div>
-                        </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
-                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+              <div class=\\"slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
+                <div class=\\"slds-page-header__controls\\">
+                  <div class=\\"slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top\\">
+                    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class=\\"slds-grid\\">
-              <div class=\\"slds-col slds-align-bottom\\">
+            <div class=\\"slds-page-header__row slds-grid\\">
+              <div class=\\"slds-page-header__col-meta slds-col slds-align-bottom\\">
                 <p class=\\"slds-page-header__meta-text\\"><span class=\\"\\">42 items • Updated just now</span></p>
               </div>
-              <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
-                <div class=\\"slds-grid\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
-                  <button
-                    class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+              <div class=\\"slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom\\">
+                <div class=\\"slds-page-header__controls\\">
+                  <div class=\\"slds-grid slds-page-header__control\\">
+                    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                    <button
+                      class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1150,10 +1164,10 @@ exports[`Base Open DOM Snapshot 1`] = `
         >
           <div>
             <div
-              className="slds-grid"
+              className="slds-page-header__row slds-grid"
             >
               <div
-                className="slds-col slds-has-flexi-truncate"
+                className="slds-page-header__col-title slds-col slds-has-flexi-truncate"
               >
                 <div
                   className="slds-media slds-no-space slds-grow"
@@ -1185,7 +1199,9 @@ exports[`Base Open DOM Snapshot 1`] = `
                       <div
                         className="slds-page-header__name-title"
                       >
-                        <h1>
+                        <div
+                          className="slds-page-header__title slds-m-right_small"
+                        >
                           <div
                             className="slds-media__body"
                           >
@@ -1223,59 +1239,63 @@ exports[`Base Open DOM Snapshot 1`] = `
                               </div>
                             </h1>
                           </div>
-                        </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
+                className="slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
               >
                 <div
-                  className="slds-col slds-no-flex slds-grid slds-align-top"
+                  className="slds-page-header__controls"
                 >
                   <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="header-nav-right-more"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
+                    className="slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top"
                   >
-                    <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more"
-                      disabled={false}
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="header-nav-right-more"
                       onClick={[Function]}
-                      tabIndex="0"
-                      type="button"
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon"
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
                       >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        More Options
-                      </span>
-                    </button>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          More Options
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div
-              className="slds-grid"
+              className="slds-page-header__row slds-grid"
             >
               <div
-                className="slds-col slds-align-bottom"
+                className="slds-page-header__col-meta slds-col slds-align-bottom"
               >
                 <p
                   className="slds-page-header__meta-text"
@@ -1288,27 +1308,59 @@ exports[`Base Open DOM Snapshot 1`] = `
                 </p>
               </div>
               <div
-                className="slds-col slds-no-flex slds-grid slds-align-bottom"
+                className="slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom"
               >
                 <div
-                  className="slds-grid"
+                  className="slds-page-header__controls"
                 >
                   <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="header-right-refresh"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
+                    className="slds-grid slds-page-header__control"
                   >
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="header-right-refresh"
+                      onClick={[Function]}
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
+                    >
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon slds-button__icon_x-small"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Checkmark with right icon
+                        </span>
+                      </button>
+                    </div>
                     <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                      className="slds-button slds-button_icon-border"
                       disabled={false}
                       onClick={[Function]}
-                      tabIndex="0"
                       type="button"
                     >
                       <svg
@@ -1316,44 +1368,16 @@ exports[`Base Open DOM Snapshot 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon slds-button__icon_x-small"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
                         />
                       </svg>
                       <span
                         className="slds-assistive-text"
                       >
-                        Checkmark with right icon
+                        Refresh
                       </span>
                     </button>
                   </div>
-                  <button
-                    className="slds-button slds-button_icon-border"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="slds-button__icon"
-                    >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
-                      />
-                    </svg>
-                    <span
-                      className="slds-assistive-text"
-                    >
-                      Refresh
-                    </span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -1936,40 +1960,44 @@ exports[`Base Open HTML Snapshot 1`] = `
         id=\\"master_view_base-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header_object-home slds-split-view__header slds-has-bottom-magnet\\">
           <div>
-            <div class=\\"slds-grid\\">
-              <div class=\\"slds-col slds-has-flexi-truncate\\">
+            <div class=\\"slds-page-header__row slds-grid\\">
+              <div class=\\"slds-page-header__col-title slds-col slds-has-flexi-truncate\\">
                 <div class=\\"slds-media slds-no-space slds-grow\\">
                   <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
                   <div class=\\"slds-media__body\\">
                     <div class=\\"slds-page-header__name\\">
                       <div class=\\"slds-page-header__name-title\\">
-                        <h1>
+                        <div class=\\"slds-page-header__title slds-m-right_small\\">
                           <div class=\\"slds-media__body\\">
                             <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
                               <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
                             </h1>
                           </div>
-                        </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
-                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+              <div class=\\"slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
+                <div class=\\"slds-page-header__controls\\">
+                  <div class=\\"slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top\\">
+                    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class=\\"slds-grid\\">
-              <div class=\\"slds-col slds-align-bottom\\">
+            <div class=\\"slds-page-header__row slds-grid\\">
+              <div class=\\"slds-page-header__col-meta slds-col slds-align-bottom\\">
                 <p class=\\"slds-page-header__meta-text\\"><span class=\\"\\">42 items • Updated just now</span></p>
               </div>
-              <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
-                <div class=\\"slds-grid\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
-                  <button
-                    class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+              <div class=\\"slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom\\">
+                <div class=\\"slds-page-header__controls\\">
+                  <div class=\\"slds-grid slds-page-header__control\\">
+                    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                    <button
+                      class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2111,10 +2139,10 @@ exports[`Custom DOM Snapshot 1`] = `
         >
           <div>
             <div
-              className="slds-grid"
+              className="slds-page-header__row slds-grid"
             >
               <div
-                className="slds-col slds-has-flexi-truncate"
+                className="slds-page-header__col-title slds-col slds-has-flexi-truncate"
               >
                 <div
                   className="slds-media slds-no-space slds-grow"
@@ -2146,7 +2174,9 @@ exports[`Custom DOM Snapshot 1`] = `
                       <div
                         className="slds-page-header__name-title"
                       >
-                        <h1>
+                        <div
+                          className="slds-page-header__title slds-m-right_small"
+                        >
                           <div
                             className="slds-media__body"
                           >
@@ -2184,59 +2214,63 @@ exports[`Custom DOM Snapshot 1`] = `
                               </div>
                             </h1>
                           </div>
-                        </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
+                className="slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
               >
                 <div
-                  className="slds-col slds-no-flex slds-grid slds-align-top"
+                  className="slds-page-header__controls"
                 >
                   <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="header-nav-right-more"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
+                    className="slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top"
                   >
-                    <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more"
-                      disabled={false}
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="header-nav-right-more"
                       onClick={[Function]}
-                      tabIndex="0"
-                      type="button"
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon"
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
                       >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        More Options
-                      </span>
-                    </button>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          More Options
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div
-              className="slds-grid"
+              className="slds-page-header__row slds-grid"
             >
               <div
-                className="slds-col slds-align-bottom"
+                className="slds-page-header__col-meta slds-col slds-align-bottom"
               >
                 <p
                   className="slds-page-header__meta-text"
@@ -2249,27 +2283,59 @@ exports[`Custom DOM Snapshot 1`] = `
                 </p>
               </div>
               <div
-                className="slds-col slds-no-flex slds-grid slds-align-bottom"
+                className="slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom"
               >
                 <div
-                  className="slds-grid"
+                  className="slds-page-header__controls"
                 >
                   <div
-                    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                    id="header-right-refresh"
-                    onClick={[Function]}
-                    onFocus={null}
-                    onKeyDown={[Function]}
-                    onMouseEnter={null}
-                    onMouseLeave={null}
+                    className="slds-grid slds-page-header__control"
                   >
+                    <div
+                      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                      id="header-right-refresh"
+                      onClick={[Function]}
+                      onFocus={null}
+                      onKeyDown={[Function]}
+                      onMouseEnter={null}
+                      onMouseLeave={null}
+                    >
+                      <button
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                        disabled={false}
+                        onClick={[Function]}
+                        tabIndex="0"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon slds-button__icon_x-small"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Checkmark with right icon
+                        </span>
+                      </button>
+                    </div>
                     <button
-                      aria-expanded={false}
-                      aria-haspopup={true}
-                      className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                      className="slds-button slds-button_icon-border"
                       disabled={false}
                       onClick={[Function]}
-                      tabIndex="0"
                       type="button"
                     >
                       <svg
@@ -2277,44 +2343,16 @@ exports[`Custom DOM Snapshot 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
-                        />
-                      </svg>
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon slds-button__icon_x-small"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
                         />
                       </svg>
                       <span
                         className="slds-assistive-text"
                       >
-                        Checkmark with right icon
+                        Refresh
                       </span>
                     </button>
                   </div>
-                  <button
-                    className="slds-button slds-button_icon-border"
-                    disabled={false}
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="slds-button__icon"
-                    >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
-                      />
-                    </svg>
-                    <span
-                      className="slds-assistive-text"
-                    >
-                      Refresh
-                    </span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -2635,40 +2673,44 @@ exports[`Custom HTML Snapshot 1`] = `
         id=\\"master_view_custom-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header_object-home slds-split-view__header slds-has-bottom-magnet\\">
           <div>
-            <div class=\\"slds-grid\\">
-              <div class=\\"slds-col slds-has-flexi-truncate\\">
+            <div class=\\"slds-page-header__row slds-grid\\">
+              <div class=\\"slds-page-header__col-title slds-col slds-has-flexi-truncate\\">
                 <div class=\\"slds-media slds-no-space slds-grow\\">
                   <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
                   <div class=\\"slds-media__body\\">
                     <div class=\\"slds-page-header__name\\">
                       <div class=\\"slds-page-header__name-title\\">
-                        <h1>
+                        <div class=\\"slds-page-header__title slds-m-right_small\\">
                           <div class=\\"slds-media__body\\">
                             <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
                               <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
                             </h1>
                           </div>
-                        </h1>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
-                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+              <div class=\\"slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
+                <div class=\\"slds-page-header__controls\\">
+                  <div class=\\"slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top\\">
+                    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class=\\"slds-grid\\">
-              <div class=\\"slds-col slds-align-bottom\\">
+            <div class=\\"slds-page-header__row slds-grid\\">
+              <div class=\\"slds-page-header__col-meta slds-col slds-align-bottom\\">
                 <p class=\\"slds-page-header__meta-text\\"><span class=\\"\\">42 items • Updated just now</span></p>
               </div>
-              <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
-                <div class=\\"slds-grid\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
-                  <button
-                    class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+              <div class=\\"slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom\\">
+                <div class=\\"slds-page-header__controls\\">
+                  <div class=\\"slds-grid slds-page-header__control\\">
+                    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                    <button
+                      class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+                  </div>
                 </div>
               </div>
             </div>

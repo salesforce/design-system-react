@@ -8,43 +8,41 @@ import MediaObject from '../../../media-object';
 const displayName = 'PageHeaderObjectHome';
 const propTypes = {
 	/**
-	 * Content to appear on the right hand side of the page header
+	 * Heading above title
 	 */
-	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	label: PropTypes.node,
 	/**
-	 * Icon node passed by PageHeader
+	 * Title node passed by PageHeader
 	 */
-	icon: PropTypes.node,
+	title: PropTypes.node,
 	/**
 	 * Info node passed by PageHeader
 	 */
 	info: PropTypes.node,
 	/**
-	 * Heading above title
+	 * Icon node passed by PageHeader
 	 */
-	label: PropTypes.node,
+	icon: PropTypes.node,
+	/**
+	 * Content to appear on the right hand side of the page header
+	 */
+	contentRight: PropTypes.node,
 	/**
 	 * Nav content which appears in the upper right hand corner.
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
-	 * Title node passed by PageHeader
-	 */
-	title: PropTypes.node,
+	navRight: PropTypes.node,
 };
 
 const ObjectHome = (props) => (
 	<div>
-		<div className="slds-grid">
-			<div className="slds-col slds-has-flexi-truncate">
+		<div className="slds-page-header__row slds-grid">
+			<div className="slds-page-header__col-title slds-col slds-has-flexi-truncate">
 				<MediaObject
 					body={
 						<div className="slds-page-header__name">
 							<div className="slds-page-header__name-title">
-								<h1>
-									{props.label}
-									{props.title}
-								</h1>
+								{props.label}
+								{props.title}
 							</div>
 						</div>
 					}
@@ -52,16 +50,16 @@ const ObjectHome = (props) => (
 					figure={props.icon}
 				/>
 			</div>
-			<div className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small">
-				{props.navRight}
+			<div className="slds-page-header__col-actions slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small">
+				<div className="slds-page-header__controls">{props.navRight}</div>
 			</div>
 		</div>
-		<div className="slds-grid">
-			<div className="slds-col slds-align-bottom">
+		<div className="slds-page-header__row slds-grid">
+			<div className="slds-page-header__col-meta slds-col slds-align-bottom">
 				<p className="slds-page-header__meta-text">{props.info}</p>
 			</div>
-			<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-				{props.contentRight}
+			<div className="slds-page-header__col-controls slds-col slds-no-flex slds-grid slds-align-bottom">
+				<div className="slds-page-header__controls">{props.contentRight}</div>
 			</div>
 		</div>
 	</div>

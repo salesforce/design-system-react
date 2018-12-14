@@ -121,6 +121,8 @@ class PageHeader extends Component {
 			'slds-page-header',
 			{
 				'slds-page-header_object-home': this.props.variant === 'objectHome',
+				'slds-page-header_record-home': this.props.variant === 'recordHome',
+				'slds-page-header_related-list': this.props.variant === 'relatedList',
 			},
 			className
 		);
@@ -199,7 +201,11 @@ class PageHeader extends Component {
 			if (type === 'string') {
 				return <Title title={title} />;
 			}
-			return title;
+			return (
+				<div className="slds-page-header__title slds-m-right_small">
+					{title}
+				</div>
+			);
 		};
 
 		/**
@@ -220,15 +226,23 @@ class PageHeader extends Component {
 		const renderNavRight = () => {
 			const type = typeof navRight;
 
-			if (type !== 'string') {
+			if (type === 'string') {
 				return (
-					<div
-						className="slds-col slds-no-flex slds-grid slds-align-top"
-						{...navRight.props}
-					/>
+					<div className="slds-page-header__control slds-col slds-no-flex slds-grid slds-align-top">
+						{navRight}
+					</div>
 				);
 			}
-			return navRight;
+			const { className: navRightClassName, ...otherProps } = navRight.props;
+			const navRightClasses = classnames(
+				'slds-page-header__control',
+				'slds-col',
+				'slds-no-flex',
+				'slds-grid',
+				'slds-align-top',
+				navRightClassName
+			);
+			return <div className={navRightClasses} {...otherProps} />;
 		};
 
 		/**
@@ -237,10 +251,23 @@ class PageHeader extends Component {
 		const renderContentRight = () => {
 			const type = typeof contentRight;
 
-			if (type !== 'string') {
-				return <div className="slds-grid" {...contentRight.props} />;
+			if (type === 'string') {
+				return (
+					<div className="slds-grid slds-page-header__control">
+						{contentRight}
+					</div>
+				);
 			}
-			return contentRight;
+			const {
+				className: contentRightClassName,
+				...otherProps
+			} = contentRight.props;
+			const contentRightClasses = classnames(
+				'slds-grid',
+				'slds-page-header__control',
+				contentRightClassName
+			);
+			return <div className={contentRightClasses} {...otherProps} />;
 		};
 
 		let Variant;

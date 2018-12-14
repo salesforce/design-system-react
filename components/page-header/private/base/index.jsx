@@ -8,10 +8,6 @@ import MediaObject from '../../../media-object';
 const displayName = 'PageHeaderBase';
 const propTypes = {
 	/**
-	 * Icon node passed by PageHeader
-	 */
-	icon: PropTypes.node,
-	/**
 	 * Title node passed by PageHeader
 	 */
 	title: PropTypes.node,
@@ -19,6 +15,10 @@ const propTypes = {
 	 * Info node passed by PageHeader
 	 */
 	info: PropTypes.node,
+	/**
+	 * Icon node passed by PageHeader
+	 */
+	icon: PropTypes.node,
 };
 
 const Base = (props) => (
@@ -28,9 +28,7 @@ const Base = (props) => (
 				body={
 					<div>
 						<div className="slds-page-header__name">
-							<div className="slds-page-header__name-title">
-								<h1>{props.title}</h1>
-							</div>
+							<div className="slds-page-header__name-title">{props.title}</div>
 						</div>
 						<p className="slds-page-header__name-meta slds-text-body_small slds-line-height_reset">
 							{props.info}
