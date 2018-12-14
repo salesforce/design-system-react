@@ -2812,6 +2812,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "swatchTabTransparentSwatch": {
+                            "name": "string",
+                            "required": false
+                        },
                         "submitButton": {
                             "name": "string",
                             "required": false
@@ -2821,7 +2825,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: An `input` label as for a `form`\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
                 "defaultValue": {
-                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n}",
+                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent Swatch',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n    swatchTabTransparentSwatch: 'Transparent Swatch',\n}",
                     "computed": false
                 }
             },
@@ -2860,7 +2864,7 @@
                 "required": false,
                 "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.\nTo specify transparent, use empty string as a value.",
                 "defaultValue": {
-                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n]",
+                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n    '',\n]",
                     "computed": false
                 }
             },
@@ -3382,6 +3386,26 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "renderFieldLevelHelpTooltip",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "fieldLevelHelpTooltip",
+                        "type": null
+                    },
+                    {
+                        "name": "labels",
+                        "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -3556,6 +3580,13 @@
                 },
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
+            },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
             },
             "hasStaticAlignment": {
                 "type": {
@@ -8752,7 +8783,7 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to button."
+                "description": "CSS classes to be added to `slds-panel`."
             },
             "variant": {
                 "type": {
