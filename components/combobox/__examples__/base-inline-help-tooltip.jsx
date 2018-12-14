@@ -138,6 +138,7 @@ class Example extends React.Component {
 						<Tooltip
 							align="top left"
 							content="Type to search Salesforce objects..."
+							id="field-level-help-tooltip"
 							position="overflowBoundaryElement"
 						/>
 					}
