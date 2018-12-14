@@ -176,6 +176,7 @@ class Alert extends React.Component {
 				)}
 				role="alert"
 			>
+			ABC
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}
 				</span>
