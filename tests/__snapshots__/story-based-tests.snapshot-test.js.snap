@@ -6116,7 +6116,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         }
       >
         <button
-          aria-describedby="BkNEzTFIxeV"
+          aria-describedby="field-level-help-tooltip"
           className="slds-button slds-button_icon slds-m-bottom_xxx-small"
           disabled={false}
           onBlur={[Function]}
