@@ -8,6 +8,8 @@ import IconSettings from '../../icon-settings';
 
 import { POPOVER } from '../../../utilities/constants';
 import Header from '../__examples__/header';
+import Error from '../__examples__/error';
+import Warning from '../__examples__/warning';
 import AlternativeHeader from '../__examples__/alternative-header';
 import ControlledWithFooter from '../__examples__/controlled-with-footer';
 
@@ -75,7 +77,6 @@ storiesOf(POPOVER, module)
 			className="slds-p-around_medium slds-m-horizontal_x-large"
 			style={{
 				margin: '300px auto',
-				textAlign: 'center',
 				width: '500px',
 			}}
 		>
@@ -123,4 +124,6 @@ storiesOf(POPOVER, module)
 			containerStyle: { background: containerBackgroundColor },
 			style: { background: popoverBackgroundColor },
 		})
-	);
+	)
+	.add('Error', () => <Error />)
+	.add('Warning', () => <Warning />);

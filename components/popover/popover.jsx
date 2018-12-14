@@ -29,6 +29,8 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 import Button from '../button';
+import MediaObject from '../media-object';
+import Icon from '../icon';
 
 // ### Children
 import Dialog from '../utilities/dialog';
@@ -74,6 +76,7 @@ const defaultProps = {
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
+	variant: 'base',
 };
 
 /**
@@ -206,6 +209,10 @@ class Popover extends React.Component {
 			PropTypes.object,
 			PropTypes.string,
 		]),
+		/**
+		 * Determines the type of the popover. `error` and `warning` allows the  content body to scroll. _Tested with snaphots._
+		 */
+		variant: PropTypes.oneOf(['base', 'error', 'warning']),
 	};
 
 	static defaultProps = defaultProps;
@@ -427,6 +434,17 @@ class Popover extends React.Component {
 		const closeButtonAssistiveText =
 			props.closeButtonAssistiveText || assistiveText.closeButton;
 
+		const hasDefinedHeader =
+			this.props.heading &&
+			(this.props.variant === 'error' || this.props.variant === 'warning');
+
+		const headerIcon = {
+			error: <Icon category="utility" name="error" size="x-small" inverse />,
+			warning: (
+				<Icon category="utility" name="warning" size="x-small" inverse />
+			),
+		};
+
 		return isOpen ? (
 			<Dialog
 				hasNubbin
@@ -435,6 +453,8 @@ class Popover extends React.Component {
 					this.props.contentsClassName,
 					'ignore-react-onclickoutside',
 					'slds-popover',
+					{ 'slds-popover_error': props.variant === 'error' },
+					{ 'slds-popover_warning': props.variant === 'warning' },
 					props.className
 				)}
 				context={this.context}
@@ -463,24 +483,38 @@ class Popover extends React.Component {
 					assistiveText={{ icon: closeButtonAssistiveText }}
 					iconCategory="utility"
 					iconName="close"
-					iconSize="small"
 					className="slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
 					onClick={this.handleCancel}
 					variant="icon"
+					inverse={
+						this.props.variant === 'error' || this.props.variant === 'warning'
+					}
 				/>
 
-				{this.props.heading ? (
+				{hasDefinedHeader ? (
 					<header className="slds-popover__header">
-						<h2
-							id={`${this.getId()}-dialog-heading`}
-							className="slds-text-heading_small"
-						>
-							{this.props.heading}
-						</h2>
+						<MediaObject
+							body={
+								<h2
+									className="slds-truncate slds-text-heading_medium"
+									title={props.heading}
+								>
+									{props.heading}
+								</h2>
+							}
+							figure={headerIcon[this.props.variant]}
+							verticalCenter
+						/>
 					</header>
 				) : null}
 
-				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+				<div
+					id={`${this.getId()}-dialog-body`}
+					className={classNames('slds-popover__body', {
+						'slds-popover__body_scrollable':
+							props.variant === 'error' || props.variant === 'warning',
+					})}
+				>
 					{props.body}
 				</div>
 				{this.props.footer ? (
