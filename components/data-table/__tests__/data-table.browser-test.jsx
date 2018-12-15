@@ -19,7 +19,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe('DataTable: ', function() {
+describe.only('DataTable: ', function() {
 	const items = [
 		{
 			id: '8IKZHZZV80',
@@ -529,7 +529,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('w/ Fixed Headers', function() {
+	describe.only('w/ Fixed Headers', function() {
 		afterEach(removeTable);
 
 		it('Renders a fixedHeader table as expected', function() {
@@ -539,16 +539,20 @@ describe('DataTable: ', function() {
 					fixedHeader
 					fixedLayout
 					id="DataTable-FixedHeader-Test"
-					onFixedHeaderResize={(data) => {
+					onFixedHeaderResize={(event, data) => {
+						expect(Array.isArray(data.headerRefs)).to.eql(true);
+						expect(data.headerRefs.length).to.eql(4);
+						data.headerRefs.forEach((ref) => {
+							expect(typeof ref).to.eql('object');
+						});
 						expect(typeof data.scrollerRef).to.eql('object');
 						expect(
 							data.scrollerRef.className.search(
 								'slds-table_header-fixed_scroller'
 							) >= 0
 						).to.eql(true);
-						expect(typeof data.theadRef).to.eql('object');
 					}}
-					onToggleFixedHeaderListeners={(data) => {
+					onToggleFixedHeaderListeners={(event, data) => {
 						expect(typeof data.attach).to.eql('boolean');
 						expect(typeof data.resizeHandler).to.eql('function');
 						expect(typeof data.scrollerRef).to.eql('object');

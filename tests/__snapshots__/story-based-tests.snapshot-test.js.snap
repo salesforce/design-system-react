@@ -13782,6 +13782,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
         }
       >
         <table
+          aria-multiselectable="true"
           className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
           id="DataTableExample-FixedHeaders"
           role="grid"
@@ -13790,6 +13791,119 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             <tr
               className="slds-line-height_reset"
             >
+              <th
+                className="slds-text-align_right"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-th__action slds-th__action_form"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          checked={false}
+                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                          name="SelectAll"
+                          onChange={[Function]}
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            all rows
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-th__action slds-th__action_form"
+                    style={
+                      Object {
+                        "display": "flex",
+                        "justifyContent": "flex-end",
+                        "lineHeight": 1,
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <div
+                      className="slds-form-element"
+                    >
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <span
+                          className="slds-checkbox"
+                        >
+                          <input
+                            checked={false}
+                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            name="SelectAll"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                          <label
+                            className="slds-checkbox__label"
+                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                          >
+                            <span
+                              className="slds-checkbox_faux"
+                            />
+                            <span
+                              className="slds-assistive-text"
+                            >
+                              all rows
+                            </span>
+                          </label>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
               <th
                 aria-label="Name"
                 aria-sort="ascending"
@@ -14393,8 +14507,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
           </thead>
           <tbody>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -14563,8 +14720,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -14733,8 +14933,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -14903,8 +15146,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -15073,8 +15359,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -15243,8 +15572,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -15413,8 +15785,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -15583,8 +15998,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -15753,8 +16211,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -15923,8 +16424,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -16093,8 +16637,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"
@@ -16263,8 +16850,51 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
             </tr>
             <tr
+              aria-selected="false"
               className="slds-hint-parent"
             >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
               <th
                 className={null}
                 role="gridcell"

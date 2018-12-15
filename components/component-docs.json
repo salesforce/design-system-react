@@ -3916,7 +3916,12 @@
                 "name": "resizeFixedHeaders",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -4051,7 +4056,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes a data object with `scrollerRef` and `theadRef` DOM node properties that serve as a reference to `.slds-table_header-fixed_scroller` and the `thead` elements, respectively"
+                "description": "By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`"
             },
             "onRowChange": {
                 "type": {
@@ -4072,7 +4077,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`"
+                "description": "By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`"
             },
             "selection": {
                 "type": {

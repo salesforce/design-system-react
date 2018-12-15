@@ -43,6 +43,7 @@ class DataTableHeaderCell extends React.Component {
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
 		}),
+		cellRef: PropTypes.func,
 		fixedHeader: PropTypes.bool,
 		id: PropTypes.string.isRequired,
 		/**
@@ -194,6 +195,11 @@ class DataTableHeaderCell extends React.Component {
 					},
 					'slds-text-title_caps'
 				)}
+				ref={(ref) => {
+					if (this.props.cellRef) {
+						this.props.cellRef(ref);
+					}
+				}}
 				scope="col"
 				style={
 					fixedHeader || width

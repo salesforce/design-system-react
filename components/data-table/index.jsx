@@ -50,8 +50,8 @@ const defaultProps = {
 	selection: [],
 };
 
-const document = !document ? null : document;
-const window = !window ? null : window;
+const document = !document ? null : document; // eslint-disable-line no-use-before-define
+const window = !window ? null : window; // eslint-disable-line no-use-before-define
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
@@ -140,7 +140,7 @@ class DataTable extends React.Component {
 		 */
 		noRowHover: PropTypes.bool,
 		/**
-		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes a data object with `scrollerRef` and `theadRef` DOM node properties that serve as a reference to `.slds-table_header-fixed_scroller` and the `thead` elements, respectively
+		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`
 		 */
 		onFixedHeaderResize: PropTypes.func,
 		/**
@@ -154,7 +154,7 @@ class DataTable extends React.Component {
 		 */
 		onSort: PropTypes.func,
 		/**
-		 * By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`
+		 * By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`
 		 */
 		onToggleFixedHeaderListeners: PropTypes.func,
 		/**
@@ -195,8 +195,12 @@ class DataTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.generatedId = shortid.generate();
+		this.headerRefs = {
+			action: [],
+			column: [],
+			select: [],
+		};
 		this.scrollerRef = null;
-		this.theadRef = null;
 	}
 
 	componentWillMount() {
@@ -207,6 +211,12 @@ class DataTable extends React.Component {
 	componentDidMount() {
 		if (this.props.fixedHeader) {
 			this.toggleFixedHeaderListeners(true);
+			this.resizeFixedHeaders();
+		}
+	}
+
+	componentDidUpdate() {
+		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
 		}
 	}
@@ -268,34 +278,43 @@ class DataTable extends React.Component {
 		}
 	};
 
-	resizeFixedHeaders = () => {
+	resizeFixedHeaders = (event) => {
+		const headerRefs = [].concat(
+			this.headerRefs.select,
+			this.headerRefs.column,
+			this.headerRefs.action
+		);
+
 		if (this.props.onFixedHeaderResize) {
-			this.props.onFixedHeaderResize({
+			this.props.onFixedHeaderResize(event, {
+				headerRefs,
 				scrollerRef: this.scrollerRef,
-				theadRef: this.theadRef,
 			});
-		} else if (this.theadRef) {
+		} else if (headerRefs.length > 0) {
 			let documentScrollLeft = 0;
 
 			if (document && document.documentElement) {
 				documentScrollLeft = document.documentElement.scrollLeft;
 			}
 
-			this.theadRef.querySelectorAll('th').forEach((column) => {
-				const columnLeft =
-					column.getBoundingClientRect().left + documentScrollLeft;
-				let wrapperLeft = 0;
+			headerRefs.forEach((column) => {
+				if (column) {
+					const columnLeft =
+						column.getBoundingClientRect().left + documentScrollLeft;
+					let wrapperLeft = 0;
 
-				if (this.scrollerRef) {
-					wrapperLeft =
-						this.scrollerRef.getBoundingClientRect().left + documentScrollLeft;
-				}
+					if (this.scrollerRef) {
+						wrapperLeft =
+							this.scrollerRef.getBoundingClientRect().left +
+							documentScrollLeft;
+					}
 
-				const cellFixed = column.querySelector('.slds-cell-fixed');
+					const cellFixed = column.querySelector('.slds-cell-fixed');
 
-				if (cellFixed) {
-					cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
-					cellFixed.style.width = `${column.offsetWidth}px`;
+					if (cellFixed) {
+						cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
+						cellFixed.style.width = `${column.offsetWidth}px`;
+					}
 				}
 			});
 		}
@@ -303,11 +322,14 @@ class DataTable extends React.Component {
 
 	toggleFixedHeaderListeners = (attach) => {
 		if (this.props.onToggleFixedHeaderListeners) {
-			this.props.onToggleFixedHeaderListeners({
-				attach,
-				resizeHandler: this.resizeFixedHeaders,
-				scrollerRef: this.scrollerRef,
-			});
+			this.props.onToggleFixedHeaderListeners(
+				{},
+				{
+					attach,
+					resizeHandler: this.resizeFixedHeaders,
+					scrollerRef: this.scrollerRef,
+				}
+			);
 		} else {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
 			if (window && window[action]) {
@@ -388,7 +410,14 @@ class DataTable extends React.Component {
 			ariaProps['aria-multiselectable'] = 'true';
 		}
 
-		const table = (
+		// This guarantees there are never any old header references if props change
+		this.headerRefs = {
+			action: RowActions ? this.headerRefs.action : [],
+			column: this.headerRefs.column.slice(0, columns.length),
+			select: canSelectRows ? this.headerRefs.select : [],
+		};
+
+		let component = (
 			<table
 				{...ariaProps}
 				className={classNames(
@@ -416,6 +445,17 @@ class DataTable extends React.Component {
 					assistiveText={assistiveText}
 					allSelected={allSelected}
 					fixedHeader={this.props.fixedHeader}
+					headerRefs={(ref, index) => {
+						if (index === 'action' || index === 'select') {
+							if (ref) {
+								this.headerRefs[index][0] = ref;
+							} else {
+								this.headerRefs[index] = [];
+							}
+						} else {
+							this.headerRefs.column[index] = ref;
+						}
+					}}
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
@@ -423,9 +463,6 @@ class DataTable extends React.Component {
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
-					theadRef={(ref) => {
-						this.theadRef = ref;
-					}}
 				/>
 				<tbody>
 					{numRows > 0
@@ -457,7 +494,7 @@ class DataTable extends React.Component {
 		);
 
 		if (this.props.fixedHeader) {
-			return (
+			component = (
 				<div
 					className="slds-table_header-fixed_container"
 					style={{ height: '100%' }}
@@ -472,12 +509,13 @@ class DataTable extends React.Component {
 							overflow: 'auto',
 						}}
 					>
-						{table}
+						{component}
 					</div>
 				</div>
 			);
 		}
-		return table;
+
+		return component;
 	}
 }
 

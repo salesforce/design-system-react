@@ -32,6 +32,7 @@ class DataTableHead extends React.Component {
 			selectRow: PropTypes.string,
 		}),
 		allSelected: PropTypes.bool,
+		headerRefs: PropTypes.func,
 		indeterminateSelected: PropTypes.bool,
 		canSelectRows: PropTypes.oneOfType([
 			PropTypes.bool,
@@ -48,7 +49,6 @@ class DataTableHead extends React.Component {
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
 		showRowActions: PropTypes.bool,
-		theadRef: PropTypes.func,
 	};
 
 	componentWillMount() {}
@@ -67,6 +67,11 @@ class DataTableHead extends React.Component {
 		if (this.props.showRowActions) {
 			actionsHeader = (
 				<th
+					ref={(ref) => {
+						if (this.props.headerRefs) {
+							this.props.headerRefs(ref, 'action');
+						}
+					}}
 					scope="col"
 					style={{
 						height: fixedHeader ? 0 : null,
@@ -123,6 +128,11 @@ class DataTableHead extends React.Component {
 			selectHeader = (
 				<th
 					className="slds-text-align_right"
+					ref={(ref) => {
+						if (this.props.headerRefs) {
+							this.props.headerRefs(ref, 'select');
+						}
+					}}
 					scope="col"
 					style={{
 						height: fixedHeader ? 0 : null,
@@ -166,18 +176,17 @@ class DataTableHead extends React.Component {
 		const selectHeader = this.getSelectHeader();
 
 		return (
-			<thead
-				ref={(ref) => {
-					if (this.props.theadRef) {
-						this.props.theadRef(ref);
-					}
-				}}
-			>
+			<thead>
 				<tr className="slds-line-height_reset">
 					{selectHeader}
-					{this.props.columns.map((column) => (
+					{this.props.columns.map((column, index) => (
 						<HeaderCell
 							assistiveText={this.props.assistiveText}
+							cellRef={(ref) => {
+								if (this.props.headerRefs) {
+									this.props.headerRefs(ref, index);
+								}
+							}}
 							fixedHeader={this.props.fixedHeader}
 							id={`${this.props.id}-${column.props.property}`}
 							key={`${this.props.id}-${column.props.property}`}
