@@ -201,7 +201,7 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<div style={{ height: '200px', width: '600px' }}>
+			<div style={{ height: '200px', width: '100%' }}>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
@@ -293,6 +293,7 @@ class Example extends React.Component {
 									value: '7',
 								},
 							]}
+							menuPosition="overflowBoundaryElement"
 							onAction={this.handleRowAction}
 							dropdown={<Dropdown length="7" />}
 						/>
