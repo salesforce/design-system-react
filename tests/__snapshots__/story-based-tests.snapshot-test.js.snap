@@ -3679,7 +3679,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon slds-button__icon_small"
+              className="slds-button__icon"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
