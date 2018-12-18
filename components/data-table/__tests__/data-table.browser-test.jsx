@@ -19,7 +19,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe.only('DataTable: ', function() {
+describe('DataTable: ', function() {
 	const items = [
 		{
 			id: '8IKZHZZV80',
@@ -529,7 +529,7 @@ describe.only('DataTable: ', function() {
 		});
 	});
 
-	describe.only('w/ Fixed Headers', function() {
+	describe('w/ Fixed Headers', function() {
 		afterEach(removeTable);
 
 		it('Renders a fixedHeader table as expected', function() {
