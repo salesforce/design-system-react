@@ -40,11 +40,13 @@ class Carousel extends React.Component {
 		this.generatedId = shortid.generate();
 		this.itemWidth = 288;
 		this.stageWidth = this.itemWidth * this.props.itemsPerPanel;
-		this.nrOfPanels = Math.ceil(this.props.items.length / this.props.itemsPerPanel);
+		this.nrOfPanels = Math.ceil(
+			this.props.items.length / this.props.itemsPerPanel
+		);
 		this.state = {
 			translateX: -1000000,
 			currentPanel: 1,
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -57,36 +59,40 @@ class Carousel extends React.Component {
 		this.setCurrentPanel(next, () => {
 			this.changeTranslationAutomatically();
 		});
-	}
+	};
 
 	onPreviousPanelHandler = () => {
-		const prev = this.canNotGoToPrevious() ? this.nrOfPanels : this.state.currentPanel - 1;
+		const prev = this.canNotGoToPrevious()
+			? this.nrOfPanels
+			: this.state.currentPanel - 1;
 		this.setCurrentPanel(prev, () => {
 			this.changeTranslationAutomatically();
 		});
-	}
+	};
 
 	onIndicatorClickHandler = (panel) => {
 		this.setCurrentPanel(panel, () => {
 			this.changeTranslationAutomatically();
 		});
-	}
+	};
 
 	setTransalationAmount = (amount, cb) => {
 		this.setState(() => ({ translateX: amount }), cb);
-	}
+	};
 
 	setCurrentPanel = (amount, cb) => {
 		this.setState(() => ({ currentPanel: amount }), cb);
-	}
+	};
 
 	getId() {
 		return this.props.id || this.generatedId;
 	}
 
 	changeTranslationAutomatically = () => {
-		this.setTransalationAmount(-(this.stageWidth * (this.state.currentPanel - 1)));
-	}
+		this.setTransalationAmount(
+			-(this.stageWidth * (this.state.currentPanel - 1))
+		);
+	};
 
 	canNotGoToNext = () => this.state.currentPanel >= this.nrOfPanels;
 
@@ -96,62 +102,111 @@ class Carousel extends React.Component {
 		const indicators = [];
 		for (let ind = 1; ind <= this.nrOfPanels; ind++)
 			indicators.push(
-				<li className="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" key={ind}>
-					<a id={`indicator-id-${ind}`} className={ind === this.state.currentPanel ? "slds-carousel__indicator-action slds-is-active" : "slds-carousel__indicator-action"}
-						href="javascript:void(0);" role="tab" tabIndex="0" aria-selected={ind === this.state.currentPanel ? 'true' : null}
-						aria-controls={`panel-${ind}`} title="Visit App Exchange tab" onClick={() => { this.onIndicatorClickHandler(ind) }}>
+				<li
+					className="slds-carousel__indicator slds-m-horizontal_xx-small"
+					role="presentation"
+					key={ind}
+				>
+					<a
+						id={`indicator-id-${ind}`}
+						className={
+							ind === this.state.currentPanel
+								? 'slds-carousel__indicator-action slds-is-active'
+								: 'slds-carousel__indicator-action'
+						}
+						href="javascript:void(0);"
+						role="tab"
+						tabIndex="0"
+						aria-selected={ind === this.state.currentPanel ? 'true' : null}
+						aria-controls={`panel-${ind}`}
+						title="Visit App Exchange tab"
+						onClick={() => {
+							this.onIndicatorClickHandler(ind);
+						}}
+					>
 						<span className="slds-assistive-text">Panel {ind}</span>
 					</a>
-				</li >)
+				</li>
+			);
 		return indicators;
-	}
+	};
 
 	render() {
 		return (
 			<div className="slds-carousel" id={this.getId()}>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
-
-					{this.props.showAutoplay ?
+					{this.props.showAutoplay ? (
 						<span className="slds-carousel__autoplay">
-							<button className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-pressed="false" title="Stop auto-play">
+							<button
+								className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
+								aria-pressed="false"
+								title="Stop auto-play"
+							>
 								<svg className="slds-button__icon" aria-hidden="true">
 									<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#pause" />
 								</svg>
 								<span className="slds-assistive-text">Stop auto-play</span>
 							</button>
 						</span>
-						: null}
+					) : null}
 
 					<div className="slds-grid  slds-grid_vertical-align-center">
-						{this.props.showNavigation ?
+						{this.props.showNavigation ? (
 							<div className="slds-carousel__col-center">
-								<button className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
-								disabled={!this.props.infinite && this.canNotGoToPrevious()}
-									onClick={this.onPreviousPanelHandler}>
-									<svg className="slds-icon slds-icon-text-default" aria-hidden="true" style={{ width: '60%', height: '100%' }}>
+								<button
+									className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
+									disabled={!this.props.infinite && this.canNotGoToPrevious()}
+									onClick={this.onPreviousPanelHandler}
+								>
+									<svg
+										className="slds-icon slds-icon-text-default"
+										aria-hidden="true"
+										style={{ width: '60%', height: '100%' }}
+									>
 										<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left" />
 									</svg>
-									</button>
+								</button>
 							</div>
-							: null}
-						<div className="slds-carousel__stage slds-carousel__col-center" style={{ width: this.stageWidth }}>
-							<div className="slds-carousel__panels slds-is-relative" style={{ transform: `translateX(${this.state.translateX}px)` }}>
-								{this.props.items.map((item) => (<CarouselItem {...item} itemWidth={this.itemWidth} key={item.id} />))}
+						) : null}
+						<div
+							className="slds-carousel__stage slds-carousel__col-center"
+							style={{ width: this.stageWidth }}
+						>
+							<div
+								className="slds-carousel__panels slds-is-relative"
+								style={{ transform: `translateX(${this.state.translateX}px)` }}
+							>
+								{this.props.items.map((item) => (
+									<CarouselItem
+										{...item}
+										itemWidth={this.itemWidth}
+										key={item.id}
+									/>
+								))}
 							</div>
 						</div>
-						{this.props.showNavigation ?
+						{this.props.showNavigation ? (
 							<div className="slds-carousel__col-center">
-								<button className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
-								disabled={!this.props.infinite && this.canNotGoToNext()}
-									onClick={this.onNextPanelHandler}>
-									<svg className="slds-icon slds-icon-text-default" aria-hidden="true" style={{ width: '60%', height: '100%' }}>
+								<button
+									className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
+									disabled={!this.props.infinite && this.canNotGoToNext()}
+									onClick={this.onNextPanelHandler}
+								>
+									<svg
+										className="slds-icon slds-icon-text-default"
+										aria-hidden="true"
+										style={{ width: '60%', height: '100%' }}
+									>
 										<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right" />
 									</svg>
 								</button>
 							</div>
-							: null}
+						) : null}
 					</div>
-					<ul className="slds-carousel__indicators slds-col slds-text-align_center" role="tablist">
+					<ul
+						className="slds-carousel__indicators slds-col slds-text-align_center"
+						role="tablist"
+					>
 						{this.showIndicators()}
 					</ul>
 				</div>

@@ -33,16 +33,33 @@ class CarouselItem extends React.Component {
 
 	render() {
 		return (
-			<div id={`content-id-${this.props.id}`} className="slds-carousel__panel slds-m-horizontal_xx-small"
-				role="tabpanel" aria-hidden="false" aria-labelledby={`indicator-id-${this.props.id}`} style={{ maxWidth: `${this.props.itemWidth - 8}px` }}>
-				<a href="javascript:void(0);" className="slds-carousel__panel-action slds-text-link_reset" tabIndex="0">
+			<div
+				id={`content-id-${this.props.id}`}
+				className="slds-carousel__panel slds-m-horizontal_xx-small"
+				role="tabpanel"
+				aria-hidden="false"
+				aria-labelledby={`indicator-id-${this.props.id}`}
+				style={{ maxWidth: `${this.props.itemWidth - 8}px` }}
+			>
+				<a
+					href="javascript:void(0);"
+					className="slds-carousel__panel-action slds-text-link_reset"
+					tabIndex="0"
+				>
 					<div className="slds-carousel__image">
 						<img src={this.props.image} alt="Visit App Exchange" />
 					</div>
 					<div className="slds-carousel__content">
 						<h2 className="slds-carousel__content-title">{this.props.title}</h2>
-						<p className="slds-p-bottom_x-small slds-text-body_small">{this.props.description}</p>
-						{this.props.buttonText !== undefined ? <Button label={this.props.buttonText} className="slds-button_outline-brand" /> : null}
+						<p className="slds-p-bottom_x-small slds-text-body_small">
+							{this.props.description}
+						</p>
+						{this.props.buttonText !== undefined ? (
+							<Button
+								label={this.props.buttonText}
+								className="slds-button_outline-brand"
+							/>
+						) : null}
 					</div>
 				</a>
 			</div>
