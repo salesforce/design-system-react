@@ -26,7 +26,8 @@ const mapKeyEventCallbacks = (
 		}
 		callbacks[event.keyCode].callback(event, callbacks[event.keyCode].data);
 	} else if (event.keyCode && callbacks.other) {
-		if (stopPropagation) {
+		// You will likely NOT want to stop propagation of all key presses!
+		if (callbacks.other.stopPropagation) {
 			EventUtil.trapEvent(event);
 		}
 		callbacks.other.callback(event, callbacks.other.data);

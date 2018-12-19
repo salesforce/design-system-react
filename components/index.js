@@ -99,6 +99,9 @@ export DataTable from './data-table';
 export SLDSDataTableCell from './data-table/cell';
 export DataTableCell from './data-table/cell';
 
+export SLDSDataTableHighlightCell from './data-table/highlight-cell';
+export DataTableHighlightCell from './data-table/highlight-cell';
+
 export SLDSDataTableColumn from './data-table/column';
 export DataTableColumn from './data-table/column';
 
@@ -179,6 +182,9 @@ export PageHeader from './page-header';
 
 export SLDSPill from './pill';
 export Pill from './pill';
+
+export SLDSPillContainer from './pill-container';
+export PillContainer from './pill-container';
 
 export SLDSPopover from './popover';
 export Popover from './popover';

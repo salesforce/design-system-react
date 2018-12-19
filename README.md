@@ -134,7 +134,7 @@ If you have support questions, please post a question to [StackOverflow](https:/
 Please report any security issue to [security@salesforce.com](mailto:security@salesforce.com) as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigilant and have their security stakeholders review all third-party dependencies.
 
 ## Contributors
-Thank you to all the contributors to this open source project, but special thanks to the following: 
+Thank you to all the contributors to this one of [many open source projects at Salesforce](https://opensource.salesforce.com/), but special thanks to the following:
 
 ### Active Key Contributors
 * [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon

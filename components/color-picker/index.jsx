@@ -131,6 +131,7 @@ const propTypes = {
 		label: PropTypes.string,
 		redAbbreviated: PropTypes.string,
 		swatchTab: PropTypes.string,
+		swatchTabTransparentSwatch: PropTypes.string,
 		submitButton: PropTypes.string,
 	}),
 	/**
@@ -185,7 +186,7 @@ const defaultProps = {
 		cancelButton: 'Cancel',
 		customTab: 'Custom',
 		customTabActiveWorkingColorSwatch: 'Working Color',
-		customTabTransparentSwatch: 'Transparent',
+		customTabTransparentSwatch: 'Transparent Swatch',
 		greenAbbreviated: 'G',
 		hexLabel: 'Hex',
 		invalidColor: 'The color entered is invalid',
@@ -193,6 +194,7 @@ const defaultProps = {
 		redAbbreviated: 'R',
 		submitButton: 'Done',
 		swatchTab: 'Default',
+		swatchTabTransparentSwatch: 'Transparent Swatch',
 	},
 	menuPosition: 'absolute',
 	swatchColors: [
@@ -224,6 +226,7 @@ const defaultProps = {
 		'#0b6b50',
 		'#b67e11',
 		'#b85d0d',
+		'',
 	],
 	defaultSelectedTab: 'swatches',
 	variant: 'base',
@@ -312,6 +315,7 @@ class ColorPicker extends React.Component {
 				<TabsPanel label={labels.swatchTab}>
 					<SwatchPicker
 						color={this.state.workingColor}
+						labels={labels}
 						onSelect={this.handleSwatchSelect}
 						swatchColors={this.props.swatchColors}
 					/>
@@ -404,7 +408,7 @@ class ColorPicker extends React.Component {
 					iconPosition="right"
 					iconVariant="more"
 					id={`slds-color-picker__summary-button-${this.generatedId}`}
-					label={<Swatch color={this.state.currentColor} />}
+					label={<Swatch color={this.state.currentColor} labels={labels} />}
 					onClick={this.handleSwatchButtonClick}
 					variant="icon"
 				/>

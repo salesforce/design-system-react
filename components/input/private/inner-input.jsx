@@ -97,7 +97,7 @@ const propTypes = {
 	/**
 	 * Displays help text under the input.
 	 */
-	inlineHelpText: PropTypes.string,
+	inlineHelpText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 	 */

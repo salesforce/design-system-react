@@ -24,6 +24,8 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
             id="Mon"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Mon"
           />
@@ -46,6 +48,8 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
             id="Tue"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Tue"
           />
@@ -68,6 +72,8 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
             id="Wed"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Wed"
           />
@@ -90,6 +96,8 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
             id="Thu"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Thu"
           />
@@ -112,6 +120,8 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
             id="Fri"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Fri"
           />
@@ -174,6 +184,8 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
             id="Mon"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Mon"
           />
@@ -197,6 +209,8 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
             id="Tue"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Tue"
           />
@@ -220,6 +234,8 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
             id="Wed"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Wed"
           />
@@ -243,6 +259,8 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
             id="Thu"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Thu"
           />
@@ -266,6 +284,8 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
             id="Fri"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Fri"
           />
@@ -311,6 +331,8 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
             id="Mon"
             name="radioGroup"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Mon"
           />
@@ -334,6 +356,8 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
             id="Tue"
             name="radioGroup"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Tue"
           />
@@ -357,6 +381,8 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
             id="Wed"
             name="radioGroup"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Wed"
           />
@@ -380,6 +406,8 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
             id="Thu"
             name="radioGroup"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Thu"
           />
@@ -403,6 +431,8 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
             id="Fri"
             name="radioGroup"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Fri"
           />
@@ -459,6 +489,8 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
             id="Mon"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Mon"
           />
@@ -481,6 +513,8 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
             id="Tue"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Tue"
           />
@@ -503,6 +537,8 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
             id="Wed"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Wed"
           />
@@ -525,6 +561,8 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
             id="Thu"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Thu"
           />
@@ -547,6 +585,8 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
             id="Fri"
             name="dayOfWeek"
             onChange={[Function]}
+            onClick={[Function]}
+            onKeyPress={[Function]}
             type="radio"
             value="Fri"
           />
