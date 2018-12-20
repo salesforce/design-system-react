@@ -9,8 +9,8 @@ class Example extends React.Component {
 				className="slds-p-around_small"
 				theme="lightning-blue"
 			>
-				<div className="slds-box slds-theme--default">
-					<h3 className="slds-text-heading--label slds-truncate">My App</h3>
+				<div className="slds-box slds-theme_default">
+					<h3 className="slds-text-heading_label slds-truncate">My App</h3>
 				</div>
 			</BrandBand>
 		);

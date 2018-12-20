@@ -992,10 +992,10 @@ exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
 }
       </style>
       <div
-        className="slds-box slds-theme--default"
+        className="slds-box slds-theme_default"
       >
         <h3
-          className="slds-text-heading--label slds-truncate"
+          className="slds-text-heading_label slds-truncate"
         >
           My App
         </h3>
@@ -9855,12 +9855,15 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "3.25rem",
               }
             }
           >
             <div
               className="slds-th__action slds-th__action_form"
+              style={null}
             >
               <div
                 className="slds-form-element"
@@ -9903,6 +9906,8 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "10rem",
               }
             }
@@ -9953,6 +9958,8 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "8rem",
               }
             }
@@ -10108,12 +10115,15 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "3.25rem",
               }
             }
           >
             <div
               className="slds-th__action"
+              style={null}
             >
               <span
                 className="slds-assistive-text"
@@ -10729,6 +10739,8 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "3.25rem",
               }
             }
@@ -10740,6 +10752,8 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "10rem",
               }
             }
@@ -10790,6 +10804,8 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "8rem",
               }
             }
@@ -10945,12 +10961,15 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "3.25rem",
               }
             }
           >
             <div
               className="slds-th__action"
+              style={null}
             >
               <span
                 className="slds-assistive-text"
@@ -11561,6 +11580,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "6em",
               }
             }
@@ -11588,6 +11609,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "5em",
               }
             }
@@ -11615,6 +11638,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "5em",
               }
             }
@@ -11642,6 +11667,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "5em",
               }
             }
@@ -11669,6 +11696,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "5em",
               }
             }
@@ -11696,6 +11725,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "5em",
               }
             }
@@ -11723,6 +11754,8 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
             scope="col"
             style={
               Object {
+                "height": null,
+                "lineHeight": null,
                 "width": "6em",
               }
             }
@@ -13755,6 +13788,3325 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "height": "200px",
+        "maxWidth": "1000px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-table_header-fixed_container"
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        className="slds-table_header-fixed_scroller"
+        style={
+          Object {
+            "height": "100%",
+            "overflow": "auto",
+          }
+        }
+      >
+        <table
+          aria-multiselectable="true"
+          className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
+          id="DataTableExample-FixedHeaders"
+          role="grid"
+        >
+          <thead>
+            <tr
+              className="slds-line-height_reset"
+            >
+              <th
+                className="slds-text-align_right"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-th__action slds-th__action_form"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          checked={false}
+                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                          name="SelectAll"
+                          onChange={[Function]}
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            all rows
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-th__action slds-th__action_form"
+                    style={
+                      Object {
+                        "display": "flex",
+                        "justifyContent": "flex-end",
+                        "lineHeight": 1,
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <div
+                      className="slds-form-element"
+                    >
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <span
+                          className="slds-checkbox"
+                        >
+                          <input
+                            checked={false}
+                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            name="SelectAll"
+                            onChange={[Function]}
+                            type="checkbox"
+                          />
+                          <label
+                            className="slds-checkbox__label"
+                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                          >
+                            <span
+                              className="slds-checkbox_faux"
+                            />
+                            <span
+                              className="slds-assistive-text"
+                            >
+                              all rows
+                            </span>
+                          </label>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+              <th
+                aria-label="Name"
+                aria-sort="ascending"
+                className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "10rem",
+                  }
+                }
+              >
+                <a
+                  className="slds-th__action slds-text-link_reset"
+                  href="javascript:void(0)"
+                  onClick={[Function]}
+                  role="button"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    sort this column
+                     
+                  </span>
+                  <span
+                    className="slds-truncate"
+                    title="Name"
+                  >
+                    Name
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    aria-atomic="true"
+                    aria-live="assertive"
+                    className="slds-assistive-text"
+                  >
+                    asc
+                  </span>
+                </a>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <a
+                    className="slds-th__action slds-text-link_reset"
+                    href="javascript:void(0)"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      sort this column
+                       
+                    </span>
+                    <span
+                      className="slds-truncate"
+                      title="Name"
+                    >
+                      Name
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                        />
+                      </svg>
+                      
+                    </span>
+                    <span
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      className="slds-assistive-text"
+                    >
+                      asc
+                    </span>
+                  </a>
+                </div>
+              </th>
+              <th
+                aria-label="Account Name"
+                aria-sort="none"
+                className="slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Account Name"
+                  >
+                    Account Name
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Account Name"
+                    >
+                      Account Name
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Close Date"
+                aria-sort="none"
+                className="slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Close Date"
+                  >
+                    Close Date
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Close Date"
+                    >
+                      Close Date
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Stage"
+                aria-sort="none"
+                className="slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Stage"
+                  >
+                    Stage
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Stage"
+                    >
+                      Stage
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Confidence"
+                aria-sort="none"
+                className="slds-is-sortable slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
+                }
+              >
+                <a
+                  className="slds-th__action slds-text-link_reset"
+                  href="javascript:void(0)"
+                  onClick={[Function]}
+                  role="button"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    sort this column
+                     
+                  </span>
+                  <span
+                    className="slds-truncate"
+                    title="Confidence"
+                  >
+                    Confidence
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <a
+                    className="slds-th__action slds-text-link_reset"
+                    href="javascript:void(0)"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      sort this column
+                       
+                    </span>
+                    <span
+                      className="slds-truncate"
+                      title="Confidence"
+                    >
+                      Confidence
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </div>
+              </th>
+              <th
+                aria-label="Amount"
+                aria-sort="none"
+                className="slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Amount"
+                  >
+                    Amount
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Amount"
+                    >
+                      Amount
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Contact"
+                aria-sort="none"
+                className="slds-text-title_caps"
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Contact"
+                  >
+                    Contact
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Contact"
+                    >
+                      Contact
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-th__action"
+                  style={
+                    Object {
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    actions
+                  </span>
+                </div>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-th__action"
+                    style={
+                      Object {
+                        "lineHeight": 1,
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      actions
+                    </span>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,200 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 1,200 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="4/10/15"
+                >
+                  4/10/15
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="70%"
+                >
+                  70%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000,000"
+                >
+                  $25,000,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    jrogers@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 200 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 200 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/15"
+                >
+                  1/31/15
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="30%"
+                >
+                  30%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$5,000,000"
+                >
+                  $5,000,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    bob@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 1,000 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    salesforce.com - 1,000 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/15 3:45PM"
+                >
+                  1/31/15 3:45PM
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="60%"
+                >
+                  60%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000"
+                >
+                  $25,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    nathan@salesforce.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 800 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 800 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="6/11/18"
+                >
+                  6/11/18
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="85%"
+                >
+                  85%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$970,000"
+                >
+                  $970,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    jrogers@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 744 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 744 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="4/15/17"
+                >
+                  4/15/17
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="56%"
+                >
+                  56%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$3,110,000"
+                >
+                  $3,110,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    bob@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 847 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    salesforce.com - 847 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="5/23/18 1:02PM"
+                >
+                  5/23/18 1:02PM
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="62%"
+                >
+                  62%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$18,000"
+                >
+                  $18,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    nathan@salesforce.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,621 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 1,621 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="5/16/17"
+                >
+                  5/16/17
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="70%"
+                >
+                  70%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$23,600,000"
+                >
+                  $23,600,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    jrogers@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 430 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 430 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="6/12/18"
+                >
+                  6/12/18
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="42%"
+                >
+                  42%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$4,222,222"
+                >
+                  $4,222,222
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    bob@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 677 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    salesforce.com - 677 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="7/21/17 10:11AM"
+                >
+                  7/21/17 10:11AM
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="42%"
+                >
+                  42%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$24,200"
+                >
+                  $24,200
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    nathan@salesforce.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,444 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 1,444 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="3/18/18"
+                >
+                  3/18/18
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="66%"
+                >
+                  66%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$22,000,000"
+                >
+                  $22,000,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    jrogers@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 320 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    Acme - 320 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/18"
+                >
+                  1/31/18
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="36%"
+                >
+                  36%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$4,322,000"
+                >
+                  $4,322,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    bob@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <div
+                    className="slds-form-element__control"
+                  >
+                    <span
+                      className="slds-checkbox"
+                    >
+                      <input
+                        checked={false}
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                        name="SelectRow"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          select this row
+                        </span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 4,000 Widgets"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    salesforce.com - 4,000 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="2/21/17 8:33PM"
+                >
+                  2/21/17 8:33PM
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="72%"
+                >
+                  72%
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="$15,000"
+                >
+                  $15,000
+                </div>
+              </td>
+              <td
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  <a
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                  >
+                    nathan@salesforce.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 `;

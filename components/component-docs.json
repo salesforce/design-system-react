@@ -3911,6 +3911,30 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "resizeFixedHeaders",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "toggleFixedHeaderListeners",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "attach",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -3983,12 +4007,12 @@
                 "required": false,
                 "description": "A variant which adds border to the vertical columns."
             },
-            "id": {
+            "fixedHeader": {
                 "type": {
-                    "name": "string"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
+                "description": "Set this to `true` for a data-table with fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with fixedLayout"
             },
             "fixedLayout": {
                 "type": {
@@ -3996,6 +4020,13 @@
                 },
                 "required": false,
                 "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows)"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
             },
             "items": {
                 "type": {
@@ -4020,6 +4051,13 @@
                 "required": false,
                 "description": "A variant which removes hover style on rows"
             },
+            "onFixedHeaderResize": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`"
+            },
             "onRowChange": {
                 "type": {
                     "name": "func"
@@ -4033,6 +4071,13 @@
                 },
                 "required": false,
                 "description": "This function fires when the table should be sorted."
+            },
+            "onToggleFixedHeaderListeners": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`"
             },
             "selection": {
                 "type": {
