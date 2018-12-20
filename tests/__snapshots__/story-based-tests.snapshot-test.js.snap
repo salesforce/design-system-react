@@ -9917,7 +9917,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               href="javascript:void(0)"
               onClick={[Function]}
               role="button"
-              tabIndex={0}
+              tabIndex="0"
             >
               <span
                 className="slds-assistive-text"
@@ -10038,7 +10038,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               href="javascript:void(0)"
               onClick={[Function]}
               role="button"
-              tabIndex={0}
+              tabIndex="0"
             >
               <span
                 className="slds-assistive-text"
@@ -10763,7 +10763,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               href="javascript:void(0)"
               onClick={[Function]}
               role="button"
-              tabIndex={0}
+              tabIndex="0"
             >
               <span
                 className="slds-assistive-text"
@@ -10884,7 +10884,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               href="javascript:void(0)"
               onClick={[Function]}
               role="button"
-              tabIndex={0}
+              tabIndex="0"
             >
               <span
                 className="slds-assistive-text"
@@ -13800,6 +13800,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
     style={
       Object {
         "height": "200px",
+        "maxWidth": "1000px",
         "width": "100%",
       }
     }
@@ -13972,7 +13973,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       "visibility": "hidden",
                     }
                   }
-                  tabIndex={-1}
+                  tabIndex="0"
                 >
                   <span
                     className="slds-assistive-text"
@@ -14283,7 +14284,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       "visibility": "hidden",
                     }
                   }
-                  tabIndex={-1}
+                  tabIndex="0"
                 >
                   <span
                     className="slds-assistive-text"
