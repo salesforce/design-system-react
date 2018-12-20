@@ -126,7 +126,7 @@ class DataTableHeaderCell extends React.Component {
 					className="slds-th__action slds-text-link_reset"
 					onClick={this.handleSort}
 					role="button"
-					tabIndex={fixedHeader ? -1 : 0}
+					tabIndex="0"
 				>
 					<span className="slds-assistive-text">
 						{this.props.assistiveTextForColumnSort ||
