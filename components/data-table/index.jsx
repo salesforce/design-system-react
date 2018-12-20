@@ -116,11 +116,11 @@ class DataTable extends React.Component {
 		 */
 		columnBordered: PropTypes.bool,
 		/**
-		 * Set this to `true` for a data-table with fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with fixedLayout
+		 * Use this to enable fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with `fixedLayout`. Since scrolling is enabled, columns are not truncated unless a width is set. Due to `overflow:hidden` elements, any dialog components will need a separate render tree (portal) such as with `menuPosition: overflowBoundaryElement` in order to break out of the container.
 		 */
 		fixedHeader: PropTypes.bool,
 		/**
-		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
+		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
@@ -298,6 +298,7 @@ class DataTable extends React.Component {
 			}
 
 			headerRefs.forEach((column) => {
+				console.log(column);
 				if (column) {
 					const columnLeft =
 						column.getBoundingClientRect().left + documentScrollLeft;

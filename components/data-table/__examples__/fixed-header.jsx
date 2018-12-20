@@ -201,7 +201,7 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<div style={{ height: '200px', width: '100%' }}>
+			<div style={{ height: '200px', width: '100%', maxWidth: '1000px' }}>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
