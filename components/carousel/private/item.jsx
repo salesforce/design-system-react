@@ -8,14 +8,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/carousel/carousel.css';
+import '../../../styles/carousel/carousel.css';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-import componentDoc from './docs.json';
+import checkProps from './../check-props';
+import componentDoc from './../docs.json';
 
-import { CAROUSEL_ITEM } from '../../utilities/constants';
-import Button from './../button';
+import { CAROUSEL_ITEM } from '../../../utilities/constants';
+import Button from './../../button';
 
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -54,12 +54,12 @@ class CarouselItem extends React.Component {
 						<p className="slds-p-bottom_x-small slds-text-body_small">
 							{this.props.description}
 						</p>
-						{this.props.buttonText !== undefined ? (
+						{this.props.buttonText &&
 							<Button
 								label={this.props.buttonText}
 								className="slds-button_outline-brand"
 							/>
-						) : null}
+						}
 					</div>
 				</a>
 			</div>

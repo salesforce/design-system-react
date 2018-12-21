@@ -1,6 +1,7 @@
 import React from 'react';
 // `~` is replaced with design-system-react at runtime
 import Carousel from '~/components/carousel';
+import CarouselItem from '~/components/carousel/private/item';
 
 class Example extends React.Component {
 	static displayName = 'CheckboxExample';
@@ -59,9 +60,18 @@ class Example extends React.Component {
 			},
 		];
 
+        const itemsComponents = items.map((item) => (
+                <CarouselItem
+                    {...item}
+                    itemWidth={288}
+                    key={item.id}
+                />
+            )
+        );
+
 		return (
 			<div style={{ width: '100%', maxWidth: '100%' }}>
-				<Carousel itemsPerPanel={3} items={items} infinite />
+				<Carousel itemsPerPanel={3} items={itemsComponents} />
 			</div>
 		);
 	}
