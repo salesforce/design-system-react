@@ -54,12 +54,12 @@ class CarouselItem extends React.Component {
 						<p className="slds-p-bottom_x-small slds-text-body_small">
 							{this.props.description}
 						</p>
-						{this.props.buttonText &&
+						{this.props.buttonText && (
 							<Button
 								label={this.props.buttonText}
 								className="slds-button_outline-brand"
 							/>
-						}
+						)}
 					</div>
 				</a>
 			</div>

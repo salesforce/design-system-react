@@ -29,7 +29,7 @@ import componentDoc from './docs.json';
 import { CAROUSEL } from '../../utilities/constants';
 
 import CarouselIndicators from './private/carousel-indicators';
-import CarouselNavigators from './private/carousel-navigators';
+import CarouselNavigator from './private/carousel-navigator';
 
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -38,10 +38,10 @@ class Carousel extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const {items, itemsPerPanel} = this.props;
+		const { items, itemsPerPanel } = this.props;
 
-        this.generatedId = shortid.generate();
-        // this will be removed
+		this.generatedId = shortid.generate();
+		// this will be removed
 		this.itemWidth = 288;
 		this.stageWidth = this.itemWidth * itemsPerPanel;
 		this.nrOfPanels = Math.ceil(items.length / itemsPerPanel);
@@ -70,7 +70,7 @@ class Carousel extends React.Component {
 	};
 
 	onIndicatorClickHandler = (panel) => {
-		this.setCurrentPanel(panel,	this.changeTranslationAutomatically);
+		this.setCurrentPanel(panel, this.changeTranslationAutomatically);
 	};
 
 	setTranslationAmount = (amount, cb) => {
@@ -92,7 +92,7 @@ class Carousel extends React.Component {
 	canNotGoToPrevious = () => this.state.currentPanel <= 1;
 
 	render() {
-		const {showAutoplay, showNavigation, infinite} = this.props;
+		const { showAutoplay, showNavigation, infinite } = this.props;
 		const id = this.props.id || this.generatedId;
 		const isPreviousBtnDisabled = !infinite && this.canNotGoToPrevious();
 		const isNextBtnDisabled = !infinite && this.canNotGoToNext();
@@ -100,7 +100,7 @@ class Carousel extends React.Component {
 		return (
 			<div className="slds-carousel" id={id}>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
-					{showAutoplay &&
+					{showAutoplay && (
 						<span className="slds-carousel__autoplay">
 							<button
 								className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
@@ -113,15 +113,15 @@ class Carousel extends React.Component {
 								<span className="slds-assistive-text">Stop auto-play</span>
 							</button>
 						</span>
-					}
+					)}
 					<div className="slds-grid  slds-grid_vertical-align-center">
-						{showNavigation &&
-							<CarouselNavigators
-                                orientation="left"
-								isDisabled = {isPreviousBtnDisabled}
-								onClick = {this.onPreviousPanelHandler }
+						{showNavigation && (
+							<CarouselNavigator
+								orientation="left"
+								isDisabled={isPreviousBtnDisabled}
+								onClick={this.onPreviousPanelHandler}
 							/>
-						}
+						)}
 						<div
 							className="slds-carousel__stage slds-carousel__col-center"
 							style={{ width: this.stageWidth }}
@@ -130,23 +130,23 @@ class Carousel extends React.Component {
 								className="slds-carousel__panels slds-is-relative"
 								style={{ transform: `translateX(${this.state.translateX}px)` }}
 							>
-							{this.props.items}
+								{this.props.items}
 							</div>
 						</div>
-						{showNavigation &&
-							<CarouselNavigators
-                                orientation='right'
-								isDisabled = {isNextBtnDisabled}
-								onClick = {this.onNextPanelHandler }
+						{showNavigation && (
+							<CarouselNavigator
+								orientation="right"
+								isDisabled={isNextBtnDisabled}
+								onClick={this.onNextPanelHandler}
 							/>
-						}
+						)}
 					</div>
 					<CarouselIndicators
-						className = { this.props.indicatorStyles }
+						className={this.props.indicatorStyles}
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={this.state.currentPanel}
-						onClick = {this.onIndicatorClickHandler}
-						/>
+						onClick={this.onIndicatorClickHandler}
+					/>
 				</div>
 			</div>
 		);
@@ -199,14 +199,14 @@ Carousel.propTypes = {
 	/**
 	 * Id of component, if desired. If not provided an id is automatically generated
 	 */
-	id: PropTypes.string
+	id: PropTypes.string,
 };
 
 Carousel.defaultProps = {
 	itemsPerPanel: 3,
 	showAutoplay: false,
 	showNavigation: true,
-	infinite: false
+	infinite: false,
 };
 
 export default Carousel;

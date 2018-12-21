@@ -1,7 +1,7 @@
 {
-    "component": "carousel",
-    "status": "prod",
-    "display-name": "Carousels",
-    "SLDS-component-path": "/components/carousel",
-    "url-slug": "carousels"
+	"component": "carousel",
+	"status": "prod",
+	"display-name": "Carousels",
+	"SLDS-component-path": "/components/carousel",
+	"url-slug": "carousels"
 }

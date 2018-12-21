@@ -60,14 +60,9 @@ class Example extends React.Component {
 			},
 		];
 
-        const itemsComponents = items.map((item) => (
-                <CarouselItem
-                    {...item}
-                    itemWidth={288}
-                    key={item.id}
-                />
-            )
-        );
+		const itemsComponents = items.map((item) => (
+			<CarouselItem {...item} itemWidth={288} key={item.id} />
+		));
 
 		return (
 			<div style={{ width: '100%', maxWidth: '100%' }}>
