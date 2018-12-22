@@ -21,6 +21,11 @@ import reject from 'lodash.reject';
 import checkProps from './check-props';
 import componentDoc from './docs.json';
 
+import {
+	canUseDOM,
+	canUseEventListeners,
+} from '../../utilities/execution-environment';
+
 // ## Children
 import DataTableCell from './cell';
 import DataTableColumn from './column';
@@ -49,9 +54,6 @@ const defaultProps = {
 	},
 	selection: [],
 };
-
-const document = !document ? null : document; // eslint-disable-line no-use-before-define
-const window = !window ? null : window; // eslint-disable-line no-use-before-define
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
@@ -293,13 +295,12 @@ class DataTable extends React.Component {
 		} else if (headerRefs.length > 0) {
 			let documentScrollLeft = 0;
 
-			if (document && document.documentElement) {
+			if (canUseDOM) {
 				documentScrollLeft = document.documentElement.scrollLeft;
 			}
 
 			headerRefs.forEach((column) => {
-				console.log(column);
-				if (column) {
+				if (column && canUseDOM) {
 					const columnLeft =
 						column.getBoundingClientRect().left + documentScrollLeft;
 					let wrapperLeft = 0;
@@ -311,10 +312,11 @@ class DataTable extends React.Component {
 					}
 
 					const cellFixed = column.querySelector('.slds-cell-fixed');
+					const linkFixed = cellFixed.firstChild;
 
 					if (cellFixed) {
 						cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
-						cellFixed.style.width = `${column.offsetWidth}px`;
+						linkFixed.style.width = `${column.offsetWidth}px`;
 					}
 				}
 			});
@@ -333,10 +335,10 @@ class DataTable extends React.Component {
 			);
 		} else {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
-			if (window && window[action]) {
+			if (canUseEventListeners) {
 				window[action]('resize', this.resizeFixedHeaders);
 			}
-			if (this.scrollerRef && this.scrollerRef[action]) {
+			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
 			}
 		}

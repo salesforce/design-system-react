@@ -201,7 +201,12 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<div style={{ height: '200px', width: '100%', maxWidth: '1000px' }}>
+			<div
+				style={{
+					height: '200px',
+					width: '100%',
+				}}
+			>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
@@ -228,31 +233,21 @@ class Example extends React.Component {
 							property="opportunityName"
 							sortable
 							sortDirection={this.state.sortColumnDirection.opportunityName}
-							width="10rem"
 						>
 							<CustomDataTableCell />
 						</DataTableColumn>
-						<DataTableColumn
-							label="Account Name"
-							property="accountName"
-							width="8rem"
-						/>
-						<DataTableColumn
-							label="Close Date"
-							property="closeDate"
-							width="8rem"
-						/>
-						<DataTableColumn label="Stage" property="stage" width="8rem" />
+						<DataTableColumn label="Account Name" property="accountName" />
+						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
 							label="Confidence"
 							property="confidence"
 							sortable
 							sortDirection={this.state.sortColumnDirection.confidence}
-							width="8rem"
 						/>
-						<DataTableColumn label="Amount" property="amount" width="8rem" />
-						<DataTableColumn label="Contact" property="contact" width="8rem">
+						<DataTableColumn label="Amount" property="amount" />
+						<DataTableColumn label="Contact" property="contact">
 							<CustomDataTableCell />
 						</DataTableColumn>
 						<DataTableRowActions

@@ -13800,7 +13800,6 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
     style={
       Object {
         "height": "200px",
-        "maxWidth": "1000px",
         "width": "100%",
       }
     }
@@ -13954,7 +13953,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "10rem",
+                    "width": null,
                   }
                 }
               >
@@ -14073,7 +14072,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "8rem",
+                    "width": null,
                   }
                 }
               >
@@ -14137,7 +14136,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "8rem",
+                    "width": null,
                   }
                 }
               >
@@ -14201,7 +14200,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "8rem",
+                    "width": null,
                   }
                 }
               >
@@ -14265,7 +14264,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "8rem",
+                    "width": null,
                   }
                 }
               >
@@ -14370,7 +14369,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "8rem",
+                    "width": null,
                   }
                 }
               >
@@ -14434,7 +14433,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   Object {
                     "height": 0,
                     "lineHeight": 0,
-                    "width": "8rem",
+                    "width": null,
                   }
                 }
               >
@@ -14596,11 +14595,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14617,11 +14612,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14633,11 +14624,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14649,11 +14636,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14665,11 +14648,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14681,11 +14660,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14697,11 +14672,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14809,11 +14780,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14830,11 +14797,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14846,11 +14809,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14862,11 +14821,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14878,11 +14833,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14894,11 +14845,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -14910,11 +14857,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15022,11 +14965,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15043,11 +14982,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15059,11 +14994,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15075,11 +15006,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15091,11 +15018,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15107,11 +15030,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15123,11 +15042,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15235,11 +15150,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15256,11 +15167,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15272,11 +15179,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15288,11 +15191,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15304,11 +15203,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15320,11 +15215,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15336,11 +15227,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15448,11 +15335,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15469,11 +15352,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15485,11 +15364,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15501,11 +15376,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15517,11 +15388,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15533,11 +15400,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15549,11 +15412,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15661,11 +15520,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15682,11 +15537,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15698,11 +15549,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15714,11 +15561,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15730,11 +15573,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15746,11 +15585,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15762,11 +15597,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15874,11 +15705,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15895,11 +15722,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15911,11 +15734,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15927,11 +15746,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15943,11 +15758,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15959,11 +15770,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -15975,11 +15782,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16087,11 +15890,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16108,11 +15907,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16124,11 +15919,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16140,11 +15931,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16156,11 +15943,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16172,11 +15955,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16188,11 +15967,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16300,11 +16075,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16321,11 +16092,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16337,11 +16104,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16353,11 +16116,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16369,11 +16128,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16385,11 +16140,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16401,11 +16152,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16513,11 +16260,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16534,11 +16277,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16550,11 +16289,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16566,11 +16301,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16582,11 +16313,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16598,11 +16325,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16614,11 +16337,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16726,11 +16445,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16747,11 +16462,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16763,11 +16474,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16779,11 +16486,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16795,11 +16498,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16811,11 +16510,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16827,11 +16522,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16939,11 +16630,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "10rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16960,11 +16647,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16976,11 +16659,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -16992,11 +16671,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -17008,11 +16683,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -17024,11 +16695,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
@@ -17040,11 +16707,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <td
                 className={null}
                 role="gridcell"
-                style={
-                  Object {
-                    "width": "8rem",
-                  }
-                }
+                style={null}
               >
                 <div
                   className="slds-truncate"
