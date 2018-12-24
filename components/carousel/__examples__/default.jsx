@@ -4,7 +4,7 @@ import Carousel from '~/components/carousel';
 import CarouselItem from '~/components/carousel/private/item';
 
 class Example extends React.Component {
-	static displayName = 'CheckboxExample';
+	static displayName = 'CarouselExample - 3 items';
 
 	render() {
 		const items = [
