@@ -10727,7 +10727,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
   <div>
     <table
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
-      id="DataTableExample-2"
+      id="DataTableExample-SingleRequiredSelect"
       role="grid"
     >
       <thead>
@@ -10999,8 +10999,8 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             >
               <input
                 checked={false}
-                id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                name="DataTableExample-2-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
                 onClick={[Function]}
                 onKeyPress={[Function]}
@@ -11008,7 +11008,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               />
               <label
                 className="slds-radio__label"
-                htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
               >
                 <span
                   className="slds-radio_faux"
@@ -11135,7 +11135,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
+              id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -11145,7 +11145,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button_icon-x-small"
+                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button_icon-x-small"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -11186,8 +11186,8 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             >
               <input
                 checked={false}
-                id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                name="DataTableExample-2-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
                 onClick={[Function]}
                 onKeyPress={[Function]}
@@ -11195,7 +11195,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               />
               <label
                 className="slds-radio__label"
-                htmlFor="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
               >
                 <span
                   className="slds-radio_faux"
@@ -11322,7 +11322,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
+              id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -11332,7 +11332,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button_icon-x-small"
+                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button_icon-x-small"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -11373,8 +11373,8 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             >
               <input
                 checked={false}
-                id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                name="DataTableExample-2-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
                 onClick={[Function]}
                 onKeyPress={[Function]}
@@ -11382,7 +11382,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               />
               <label
                 className="slds-radio__label"
-                htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
               >
                 <span
                   className="slds-radio_faux"
@@ -11509,7 +11509,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
+              id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -11519,7 +11519,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button_icon-x-small"
+                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button_icon-x-small"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
