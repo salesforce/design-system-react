@@ -124,7 +124,7 @@ class Example extends React.Component {
 						}}
 						fixedLayout
 						items={this.state.items}
-						id="DataTableExample-2"
+						id="DataTableExample-SingleRequiredSelect"
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
