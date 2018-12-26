@@ -164,7 +164,10 @@ class DataTable extends React.Component {
 		 */
 		selection: PropTypes.array,
 		/**
-		 * Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility
+		 * Specifies a row selection UX pattern.
+		 * * `checkbox`: Multiple row selection.
+		 * * `radio`: _Required_ single row selection.
+		 * _This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._
 		 */
 		selectRows: PropTypes.oneOfType([
 			PropTypes.bool,
