@@ -22,6 +22,12 @@ export AlertContainer from './alert/container';
 export SLDSAppLauncher from './app-launcher';
 export AppLauncher from './app-launcher';
 
+export SLDSAppLauncherTile from './app-launcher/tile';
+export AppLauncherTile from './app-launcher/tile';
+
+export SLDSAppLauncherSection from './app-launcher/section';
+export AppLauncherSection from './app-launcher/section';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
