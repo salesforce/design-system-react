@@ -2,6 +2,19 @@
 
 First, on behalf of the core maintainers, I'd like to thank you for wanting to contribute and make the user experience for your end-users better and improve the developer experience of this library. :+1::tada: -- [@interactivellama](https://github.com/interactivellama/)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+* [Setup](#setup)
+* [Adding a new prop](#adding-a-new-prop)
+* [How to add a new component](#how-to-add-a-new-component)
+* [Contributing Guidelines](#contributing-guidelines)
+* [The review process](#the-review-process)
+* [Testing the documentation site (internal)](#testing-the-documentation-site-internal)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Setup
 
 1. Fork this repository (button in upper right). Install [git](https://git-scm.com/) and clone your fork locally with `git clone git@github.com:[YOUR-USER]/design-system-react.git`. This library only supports use of `git-bash` in Windows. The default command prompt may not work.
@@ -11,10 +24,11 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm contribution is within project scope.
 
 ## Adding a new prop
+
 1. This library is open to `data`, `ref`, `style`, and `className` on any element within reason, but especially open to it for the “primary part of a component” such as form elements such as `input` or a clickable elements such as `button`, since these are often used for testing purposes or form submission. This is probably a better way to write unit tests, anyway, since SLDS class changes are not considered breaking changes.
-    1. `ref` callbacks should be within an `object` named refs with typically a key name of the HTML tag name. These should be tested with a Mocha callback.
-	 1. `style` props should be `style[SUFFIX]` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
-	 1. `className` props should be `className[SUFFIX]` and be `PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
+   1. `ref` callbacks should be within an `object` named refs with typically a key name of the HTML tag name. These should be tested with a Mocha callback.
+   1. `style` props should be `style[SUFFIX]` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
+   1. `className` props should be `className[SUFFIX]` and be `PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
 
 ## How to add a new component
 
