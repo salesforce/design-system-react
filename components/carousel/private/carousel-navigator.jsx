@@ -47,7 +47,7 @@ carouselNavigator.propTypes = {
 	/**
 	 * String showing the navigator's orientation left/right.
 	 */
-	orientation: PropTypes.string,
+	orientation: PropTypes.string.isRequired,
 };
 
 export default carouselNavigator;

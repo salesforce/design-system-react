@@ -92,15 +92,15 @@ class Carousel extends React.Component {
 	canNotGoToPrevious = () => this.state.currentPanel <= 1;
 
 	render() {
-		const { showAutoplay, showNavigation, infinite } = this.props;
+		const { hasAutoplay, hasNavigation, isInfinite } = this.props;
 		const id = this.props.id || this.generatedId;
-		const isPreviousBtnDisabled = !infinite && this.canNotGoToPrevious();
-		const isNextBtnDisabled = !infinite && this.canNotGoToNext();
+		const isPreviousBtnDisabled = !isInfinite && this.canNotGoToPrevious();
+		const isNextBtnDisabled = !isInfinite && this.canNotGoToNext();
 
 		return (
 			<div className="slds-carousel" id={id}>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
-					{showAutoplay && (
+					{hasAutoplay && (
 						<span className="slds-carousel__autoplay">
 							<button
 								className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
@@ -115,7 +115,7 @@ class Carousel extends React.Component {
 						</span>
 					)}
 					<div className="slds-grid  slds-grid_vertical-align-center">
-						{showNavigation && (
+						{hasNavigation && (
 							<CarouselNavigator
 								orientation="left"
 								isDisabled={isPreviousBtnDisabled}
@@ -133,7 +133,7 @@ class Carousel extends React.Component {
 								{this.props.items}
 							</div>
 						</div>
-						{showNavigation && (
+						{hasNavigation && (
 							<CarouselNavigator
 								orientation="right"
 								isDisabled={isNextBtnDisabled}
@@ -167,19 +167,19 @@ Carousel.propTypes = {
 	/**
 	 * Boolean showing whether the autoplay feature is available or not
 	 */
-	showAutoplay: PropTypes.bool,
+	hasAutoplay: PropTypes.bool,
 	/**
 	 * Interval for the autoplay iteration
 	 */
 	autoplayInterval: PropTypes.number,
 	/**
-	 * Boolean for displaying the navigation indicators left/right arrows) of the carousel
+	 * Boolean for displaying the navigation indicators (left/right arrows) of the carousel
 	 */
-	showNavigation: PropTypes.bool,
+	hasNavigation: PropTypes.bool,
 	/**
-	 * Boolean
+	 * Boolean for infinite loop navigation
 	 */
-	infinite: PropTypes.bool,
+	isInfinite: PropTypes.bool,
 	/**
 	 * CSS classes that are applied to the component
 	 */
@@ -189,13 +189,9 @@ Carousel.propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * CSS classes that are applied to carousel indicators
+	 * CSS that is applied to carousel indicators
 	 */
-	indicatorStyles: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
+	indicatorStyles: PropTypes.object,
 	/**
 	 * Id of component, if desired. If not provided an id is automatically generated
 	 */
@@ -204,9 +200,9 @@ Carousel.propTypes = {
 
 Carousel.defaultProps = {
 	itemsPerPanel: 3,
-	showAutoplay: false,
-	showNavigation: true,
-	infinite: false,
+	hasAutoplay: false,
+	hasNavigation: true,
+	isInfinite: false,
 };
 
 export default Carousel;
