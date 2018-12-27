@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 export default {
 	id: 0,
 	nodes: [

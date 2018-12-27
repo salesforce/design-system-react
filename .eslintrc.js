@@ -119,6 +119,8 @@ module.exports = {
 		//
 		'prefer-object-spread/prefer-object-spread': [2, 'always'],
 
+		'max-lines': ['error', 500],
+
 		// Can't be used because it doesn't currently recognize props used in functions
 		'react/no-unused-prop-types': 'off',
 
