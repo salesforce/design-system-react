@@ -2,8 +2,6 @@ import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
 import Tooltip from '~/components/tooltip'; // `~` is replaced with design-system-react at runtime
-import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon';
 
 class Example extends React.Component {
 	static displayName = 'TooltipExample';
