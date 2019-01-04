@@ -20,15 +20,14 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 
-import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
 import SelectedListBox from '../pill-container/private/selected-listbox';
-import Tooltip from '../tooltip';
 
+import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
@@ -1379,33 +1378,6 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderFieldLevelHelpTooltip(fieldLevelHelpTooltip, labels, assistiveText) {
-		if (
-			(labels.label || (assistiveText && assistiveText.label)) &&
-			this.props.fieldLevelHelpTooltip
-		) {
-			const defaultTooltipProps = {
-				triggerClassName: 'slds-form-element__icon',
-				children: (
-					<Button
-						assistiveText={{ label: 'Help' }}
-						className="slds-m-bottom_xxx-small"
-						iconCategory="utility"
-						iconName="info"
-						variant="icon"
-					/>
-				),
-			};
-			const tooltipProps = {
-				...defaultTooltipProps,
-				...this.props.fieldLevelHelpTooltip.props,
-			};
-			return <Tooltip {...tooltipProps} />;
-		}
-
-		return null;
-	}
-
 	render() {
 		const props = this.props;
 		// Merge objects of strings with their default object
@@ -1415,11 +1387,8 @@ class Combobox extends React.Component {
 			props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-		const fieldLevelHelpTooltip = this.renderFieldLevelHelpTooltip(
-			this.props.fieldLevelHelpTooltip,
-			labels,
-			this.props.assistiveText
-		);
+		const hasRenderedLabel =
+			labels.label || (assistiveText && assistiveText.label);
 		const subRenderParameters = { assistiveText, labels, props: this.props };
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
@@ -1448,7 +1417,11 @@ class Combobox extends React.Component {
 					label={labels.label}
 					required={props.required}
 				/>
-				{fieldLevelHelpTooltip}
+				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
+					<FieldLevelHelpTooltip
+						fieldLevelHelpTooltip={this.props.fieldLevelHelpTooltip}
+					/>
+				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters

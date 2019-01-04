@@ -6112,12 +6112,14 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "position": "static",
           }
         }
       >
         <button
           aria-describedby="field-level-help-tooltip"
-          className="slds-button slds-button_icon slds-m-bottom_xxx-small"
+          aria-disabled={true}
+          className="slds-button slds-button_icon"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -6134,6 +6136,11 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Help
+          </span>
         </button>
         <span />
       </div>
@@ -19974,6 +19981,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
       >
         <button
           aria-describedby="field-level-help-tooltip"
+          aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
           onBlur={[Function]}
@@ -19994,7 +20002,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
           <span
             className="slds-assistive-text"
           >
-            Info
+            Help
           </span>
         </button>
         <span />
@@ -20044,6 +20052,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
       >
         <button
           aria-describedby="field-level-help-tooltip"
+          aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
           onBlur={[Function]}
@@ -20064,7 +20073,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           <span
             className="slds-assistive-text"
           >
-            Info
+            Help
           </span>
         </button>
         <div
