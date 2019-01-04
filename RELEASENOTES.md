@@ -31,6 +31,18 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.9.2
+
+**Bugfixes**
+
+* `DataTable`: Adds event listeners to listen for window resize by default. This creates a behavior that truncates horizontal cells and is similar to how a `DataTable` on the Salesforce Platform works.
+
+## Release 0.9.2
+
+**Major Features**
+
+* `DataTable` supports fixed headers and this allows the table headings to be visible while the table vertically scrolls.
+
 ## Release 0.9.1
 
 **Notes**

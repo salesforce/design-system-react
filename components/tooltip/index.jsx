@@ -17,6 +17,7 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
+import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -164,8 +165,9 @@ class Tooltip extends React.Component {
 
 	getContent() {
 		let children;
+		const noChildrenProvided = React.Children.count(this.props.children) === 0;
 
-		if (React.Children.count(this.props.children) === 0) {
+		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
 				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
 					<Icon
@@ -177,6 +179,19 @@ class Tooltip extends React.Component {
 						size="x-small"
 					/>
 				</a>,
+			];
+		} else if (noChildrenProvided) {
+			children = [
+				<Button variant="icon" aria-disabled>
+					<Icon
+						category="utility"
+						name="info"
+						assistiveText={{
+							label: this.props.assistiveText.triggerLearnMoreIcon,
+						}}
+						size="x-small"
+					/>
+				</Button>,
 			];
 		} else {
 			children = this.props.children;
@@ -235,7 +250,7 @@ class Tooltip extends React.Component {
 		return (
 			<div className="slds-popover__body">
 				{this.props.content}
-				{this.props.variant === 'learnMore' ? (
+				{this.props.variant === 'learnMore' && this.props.onClickTrigger ? (
 					<div className="slds-m-top_x-small" aria-hidden="true">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon

@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.9.1",
+	"version": "0.9.3",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -19,7 +19,7 @@
 		"lint:docs": "npx prettylint \"*.md\"",
 		"lint:fix": "cross-env NODE_ENV=test npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx concurrently \"npx prettier --list-different \"**/*.{js,jsx}\"\" \"npx prettylint \"*.json\"\"",
-		"lint:quality": "npx concurrently \"npx eslint \"**/*.{js,json}\" --max-warnings=0\" \"npx eslint \"**/*.{jsx}\" --max-warnings=0\"",
+		"lint:quality": "npx concurrently \"npx eslint \"**/*.{jsx,js,json}\" --max-warnings=0\"",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
 		"publish:edge": "npx babel-node scripts/publish-to-git.js --tag=edge",
 		"publish:upstream": "npx babel-node scripts/publish-to-git.js --remote=upstream",

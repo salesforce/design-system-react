@@ -31,7 +31,7 @@ class Example extends React.Component {
 		},
 		items: [
 			{
-				id: '8IKZHZZV80',
+				id: '896a6a60',
 				opportunityName: 'Acme - 1,200 Widgets',
 				accountName: 'Acme',
 				closeDate: '4/10/15',
@@ -41,7 +41,7 @@ class Example extends React.Component {
 				contact: 'jrogers@acme.com',
 			},
 			{
-				id: '5GJOOOPWU7',
+				id: '44da9dcd',
 				opportunityName: 'Acme - 200 Widgets',
 				accountName: 'Acme',
 				closeDate: '1/31/15',
@@ -51,7 +51,7 @@ class Example extends React.Component {
 				contact: 'bob@acme.com',
 			},
 			{
-				id: '8IKZHZZV81',
+				id: 'f988a721',
 				opportunityName: 'salesforce.com - 1,000 Widgets',
 				accountName: 'salesforce.com',
 				closeDate: '1/31/15 3:45PM',
@@ -60,13 +60,103 @@ class Example extends React.Component {
 				amount: '$25,000',
 				contact: 'nathan@salesforce.com',
 			},
+			{
+				id: 'd7679cdd',
+				opportunityName: 'Acme - 800 Widgets',
+				accountName: 'Acme',
+				closeDate: '6/11/18',
+				stage: 'Value Proposition',
+				confidence: '85%',
+				amount: '$970,000',
+				contact: 'jrogers@acme.com',
+			},
+			{
+				id: '0085f7a0',
+				opportunityName: 'Acme - 744 Widgets',
+				accountName: 'Acme',
+				closeDate: '4/15/17',
+				stage: 'Prospecting',
+				confidence: '56%',
+				amount: '$3,110,000',
+				contact: 'bob@acme.com',
+			},
+			{
+				id: 'b7acc778',
+				opportunityName: 'salesforce.com - 847 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '5/23/18 1:02PM',
+				stage: 'Id. Decision Makers',
+				confidence: '62%',
+				amount: '$18,000',
+				contact: 'nathan@salesforce.com',
+			},
+			{
+				id: '17991de5',
+				opportunityName: 'Acme - 1,621 Widgets',
+				accountName: 'Acme',
+				closeDate: '5/16/17',
+				stage: 'Value Proposition',
+				confidence: '70%',
+				amount: '$23,600,000',
+				contact: 'jrogers@acme.com',
+			},
+			{
+				id: '09b2cee9',
+				opportunityName: 'Acme - 430 Widgets',
+				accountName: 'Acme',
+				closeDate: '6/12/18',
+				stage: 'Prospecting',
+				confidence: '42%',
+				amount: '$4,222,222',
+				contact: 'bob@acme.com',
+			},
+			{
+				id: 'd0035700',
+				opportunityName: 'salesforce.com - 677 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '7/21/17 10:11AM',
+				stage: 'Id. Decision Makers',
+				confidence: '42%',
+				amount: '$24,200',
+				contact: 'nathan@salesforce.com',
+			},
+			{
+				id: '4a526f0c',
+				opportunityName: 'Acme - 1,444 Widgets',
+				accountName: 'Acme',
+				closeDate: '3/18/18',
+				stage: 'Value Proposition',
+				confidence: '66%',
+				amount: '$22,000,000',
+				contact: 'jrogers@acme.com',
+			},
+			{
+				id: '9a5dbdb2',
+				opportunityName: 'Acme - 320 Widgets',
+				accountName: 'Acme',
+				closeDate: '1/31/18',
+				stage: 'Prospecting',
+				confidence: '36%',
+				amount: '$4,322,000',
+				contact: 'bob@acme.com',
+			},
+			{
+				id: '356dbb52',
+				opportunityName: 'salesforce.com - 4,000 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '2/21/17 8:33PM',
+				stage: 'Id. Decision Makers',
+				confidence: '72%',
+				amount: '$15,000',
+				contact: 'nathan@salesforce.com',
+			},
 		],
 		selection: [],
 	};
 
 	handleChanged = (event, data) => {
 		this.setState({ selection: data.selection });
-		console.log('event: ', event, ', data: ', data);
+		console.log(event, data);
 	};
 
 	handleRowAction = (item, action) => {
@@ -111,7 +201,12 @@ class Example extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div
+				style={{
+					height: '200px',
+					width: '100%',
+				}}
+			>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
@@ -122,13 +217,14 @@ class Example extends React.Component {
 							selectAllRows: 'all rows',
 							selectRow: 'select this row',
 						}}
+						fixedHeader
 						fixedLayout
 						items={this.state.items}
-						id="DataTableExample-SingleRequiredSelect"
+						id="DataTableExample-FixedHeaders"
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
-						selectRows="radio"
+						selectRows="checkbox"
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}
@@ -137,15 +233,10 @@ class Example extends React.Component {
 							property="opportunityName"
 							sortable
 							sortDirection={this.state.sortColumnDirection.opportunityName}
-							width="10rem"
 						>
 							<CustomDataTableCell />
 						</DataTableColumn>
-						<DataTableColumn
-							label="Account Name"
-							property="accountName"
-							width="8rem"
-						/>
+						<DataTableColumn label="Account Name" property="accountName" />
 						<DataTableColumn label="Close Date" property="closeDate" />
 						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
@@ -197,6 +288,7 @@ class Example extends React.Component {
 									value: '7',
 								},
 							]}
+							menuPosition="overflowBoundaryElement"
 							onAction={this.handleRowAction}
 							dropdown={<Dropdown length="7" />}
 						/>

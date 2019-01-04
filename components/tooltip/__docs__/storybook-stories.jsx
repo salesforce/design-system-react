@@ -7,6 +7,7 @@ import IconSettings from '../../icon-settings';
 import { POPOVER_TOOLTIP } from '../../../utilities/constants';
 import Tooltip from '../../tooltip';
 
+import Base from '../__examples__/base';
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
 import LearnMoreExample from '../__examples__/learn-more';
@@ -64,14 +65,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Base', () =>
-		getPopoverTooltip({
-			align: 'bottom',
-			id: 'myPopoverId',
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		})
-	)
+	.add('Base', () => <Base />)
 	.add('Learn More', () => <LearnMoreExample />)
 	.add('Button Group', () => <ButtonGroupExample />)
 	.add('Button', () => <ButtonExample />)

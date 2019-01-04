@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
