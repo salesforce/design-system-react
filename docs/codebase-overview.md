@@ -44,6 +44,7 @@ If you want to [contribute](/CONTRIBUTING.md), we hope that this overview will h
   * [React component can differ from DOM hierarchy](#react-component-can-differ-from-dom-hierarchy)
   * [Use loose coupling and weak connascence](#use-loose-coupling-and-weak-connascence)
   * [Use a single return](#use-a-single-return)
+  * [Define defaults in one location](#define-defaults-in-one-location)
   * [Use functions instead of loops](#use-functions-instead-of-loops)
   * [No mixins](#no-mixins)
   * [Use one stateful component and many stateless sub-components](#use-one-stateful-component-and-many-stateless-sub-components)
@@ -374,6 +375,10 @@ The goal should be that a contributor can understand one piece of code without u
 #### Use a single return
 
 Please do not short-circuit functions with multiple returns.
+
+#### Define defaults in one location
+
+Default props or any default variable value should be defined in one location. Many objects are merged in this library and this simplifies the logic and ensures defaults are not overriding non-defaults.
 
 #### Use functions instead of loops
 
