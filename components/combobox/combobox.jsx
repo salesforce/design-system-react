@@ -27,6 +27,7 @@ import Menu from './private/menu';
 import Label from '../forms/private/label';
 import SelectedListBox from '../pill-container/private/selected-listbox';
 
+import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
@@ -126,6 +127,10 @@ const propTypes = {
 	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._
 	 */
 	errorText: PropTypes.string,
+	/**
+	 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props.
+	 */
+	fieldLevelHelpTooltip: PropTypes.node,
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -1382,7 +1387,8 @@ class Combobox extends React.Component {
 			props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-
+		const hasRenderedLabel =
+			labels.label || (assistiveText && assistiveText.label);
 		const subRenderParameters = { assistiveText, labels, props: this.props };
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
@@ -1411,6 +1417,11 @@ class Combobox extends React.Component {
 					label={labels.label}
 					required={props.required}
 				/>
+				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
+					<FieldLevelHelpTooltip
+						fieldLevelHelpTooltip={this.props.fieldLevelHelpTooltip}
+					/>
+				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters

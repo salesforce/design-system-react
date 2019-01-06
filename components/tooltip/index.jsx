@@ -182,16 +182,15 @@ class Tooltip extends React.Component {
 			];
 		} else if (noChildrenProvided) {
 			children = [
-				<Button variant="icon" aria-disabled>
-					<Icon
-						category="utility"
-						name="info"
-						assistiveText={{
-							label: this.props.assistiveText.triggerLearnMoreIcon,
-						}}
-						size="x-small"
-					/>
-				</Button>,
+				<Button
+					aria-disabled
+					assistiveText={{
+						icon: this.props.assistiveText.triggerLearnMoreIcon,
+					}}
+					iconCategory="utility"
+					iconName="info"
+					variant="icon"
+				/>,
 			];
 		} else {
 			children = this.props.children;

@@ -3386,6 +3386,26 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "renderFieldLevelHelpTooltip",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "fieldLevelHelpTooltip",
+                        "type": null
+                    },
+                    {
+                        "name": "labels",
+                        "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -3560,6 +3580,13 @@
                 },
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
+            },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
             },
             "hasStaticAlignment": {
                 "type": {
