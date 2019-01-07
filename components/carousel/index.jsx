@@ -92,7 +92,11 @@ class Carousel extends React.Component {
 	canNotGoToPrevious = () => this.state.currentPanel <= 1;
 
 	render() {
-		const { hasAutoplay, hasNavigation, isInfinite } = this.props;
+		const {
+			hasAutoplay,
+			hasPreviousNextPanelNavigation,
+			isInfinite,
+		} = this.props;
 		const id = this.props.id || this.generatedId;
 		const isPreviousBtnDisabled = !isInfinite && this.canNotGoToPrevious();
 		const isNextBtnDisabled = !isInfinite && this.canNotGoToNext();
@@ -115,7 +119,7 @@ class Carousel extends React.Component {
 						</span>
 					)}
 					<div className="slds-grid  slds-grid_vertical-align-center">
-						{hasNavigation && (
+						{hasPreviousNextPanelNavigation && (
 							<CarouselNavigator
 								orientation="left"
 								isDisabled={isPreviousBtnDisabled}
@@ -133,7 +137,7 @@ class Carousel extends React.Component {
 								{this.props.items}
 							</div>
 						</div>
-						{hasNavigation && (
+						{hasPreviousNextPanelNavigation && (
 							<CarouselNavigator
 								orientation="right"
 								isDisabled={isNextBtnDisabled}
@@ -142,7 +146,7 @@ class Carousel extends React.Component {
 						)}
 					</div>
 					<CarouselIndicators
-						className={this.props.indicatorStyles}
+						className={{ display: 'none' }}
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={this.state.currentPanel}
 						onClick={this.onIndicatorClickHandler}
@@ -157,7 +161,17 @@ Carousel.displayName = CAROUSEL;
 
 Carousel.propTypes = {
 	/**
-	 * Content to be injected inside the carousel
+	 * Array of objects with shape, needed for building a carousel item.
+	 * A shape would have:
+	 *   - id: 0   [REQUIRED]
+	 *   - heading: "All my things! Part 0" // (Visible heading for default render)
+	 *   - description: "Card 0 description."
+	 *          // (Visible paragraph text for default render and navigation bullet text used in
+	 *              assistive text tag)   [REQUIRED]
+	 *   - imageAssistiveText: "First card accessible description."
+	 *          // (image alt text, OPTIONAL, required if `src` is present),
+	 *   - href: "https://www.salesforce.com" // (OPTIONAL, void(0) if not provided for default template
+	 *   - src: "/images/examples/carousel-01.png"
 	 */
 	items: PropTypes.array.isRequired,
 	/**
@@ -175,7 +189,7 @@ Carousel.propTypes = {
 	/**
 	 * Boolean for displaying the navigation indicators (left/right arrows) of the carousel
 	 */
-	hasNavigation: PropTypes.bool,
+	hasPreviousNextPanelNavigation: PropTypes.bool,
 	/**
 	 * Boolean for infinite loop navigation
 	 */
@@ -196,13 +210,25 @@ Carousel.propTypes = {
 	 * Id of component, if desired. If not provided an id is automatically generated
 	 */
 	id: PropTypes.string,
+	/**
+	 * Accepts a custom carousel item rendering function
+	 */
+	onRenderItem: PropTypes.func,
+	/**
+	 * Description of the menu for screenreaders.
+	 */
+	assistiveText: PropTypes.object,
 };
 
 Carousel.defaultProps = {
-	itemsPerPanel: 3,
+	itemsPerPanel: 1,
 	hasAutoplay: false,
-	hasNavigation: true,
+	hasPreviousNextPanelNavigation: false,
 	isInfinite: false,
+	assistiveText: {
+		nextPanel: 'Next Panel',
+		previousPanel: 'Previous Panel',
+	},
 };
 
 export default Carousel;
