@@ -13,7 +13,7 @@ class Example extends React.Component {
 					id={`ExampleCarouselWith${this.props.itemsPerPanel}items`}
 					itemsPerPanel={this.props.itemsPerPanel}
 					items={carouselItems}
-					hasNavigation={this.props.hasNavigation}
+					hasPreviousNextPanelNavigation={this.props.hasNavigation}
 				/>
 			</div>
 		);
@@ -22,7 +22,7 @@ class Example extends React.Component {
 
 Example.defaultProps = {
 	itemsPerPanel: 3,
-	hasNavigation: true,
+	hasNavigation: false,
 };
 
 export default Example;
