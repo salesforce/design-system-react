@@ -1,18 +1,22 @@
 import React from 'react';
 import Carousel from '~/components/carousel';
-import CarouselItem from '~/components/carousel/private/item';
-import { carouselItems } from './carousel-items';
+import CarouselItem from '~/components/carousel/private/carousel-item';
+import { ITEMS } from './carousel-items';
 
 class Example extends React.Component {
 	static displayName = 'CarouselExample - 3 items';
 
 	render() {
 		return (
-			<div style={{ width: '100%', maxWidth: '100%' }}>
+			<div
+				style={{
+					maxWidth: '1280px',
+				}}
+			>
 				<Carousel
 					id={`ExampleCarouselWith${this.props.itemsPerPanel}items`}
 					itemsPerPanel={this.props.itemsPerPanel}
-					items={carouselItems}
+					items={ITEMS}
 					hasPreviousNextPanelNavigation={this.props.hasNavigation}
 				/>
 			</div>
