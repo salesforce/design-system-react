@@ -24,12 +24,12 @@ const CarouselIndicators = (props) => (
 	>
 		{[...Array(props.noOfIndicators).keys()].map((key) => {
 			const index = key + 1;
-			const isCurrentPanel = index === props.currentIndex;
+			const isSelectedPanel = index === props.currentIndex;
 			const indicatorActionClassName = classnames(
 				'slds-carousel__indicator-action',
 				props.className,
 				{
-					'slds-is-active': isCurrentPanel,
+					'slds-is-active': isSelectedPanel,
 				}
 			);
 			return (
@@ -42,8 +42,8 @@ const CarouselIndicators = (props) => (
 						id={`indicator-id-${index}`}
 						className={indicatorActionClassName}
 						role="tab"
-						tabIndex="0"
-						aria-selected={!!props.currentIndex}
+						tabIndex={isSelectedPanel ? '0' : '-1'}
+						aria-selected={isSelectedPanel}
 						aria-controls={`panel-${index}`}
 						title={props.title || `Visit Panel ${index}`}
 						onClick={() => props.onClick(index)}

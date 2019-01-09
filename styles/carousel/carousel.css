@@ -1,15 +1,24 @@
 .slds-carousel__content {
-  height: 8rem;
+	cursor: pointer;
+	height: 100%;
 }
 
 .slds-carousel__button[disabled] {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .slds-carousel__col-center {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin: auto;
+	margin: 0 25px;
+}
+
+.slds-m-horizontal_xx-small {
+	padding: 0 8px;
+	margin: 0;
+}
+
+/* this is used for rendering Storybook Custom Example */
+.slds-carousel-custom-rendering {
+	padding: 0 8px;
+	margin: 0;
+	text-align: center;
 }

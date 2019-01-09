@@ -12,24 +12,16 @@ import PropTypes from 'prop-types';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-
-// import classNames from 'classnames';
-
 import '../../styles/carousel/carousel.css';
 
-// ### Event Helpers - TBD
-// import KEYS from '../../utilities/key-code';
-// import EventUtil from '../../utilities/event';
-
-// This component's `checkProps` which issues warnings to developers about properties when in
-// development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 import { CAROUSEL } from '../../utilities/constants';
 
 import CarouselIndicators from './private/carousel-indicators';
-import CarouselNavigator from './private/carousel-navigator';
+import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
+import CarouselItem from './private/carousel-item';
 
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -41,10 +33,8 @@ class Carousel extends React.Component {
 		const { items, itemsPerPanel } = this.props;
 
 		this.generatedId = shortid.generate();
-		// this will be removed
-		this.itemWidth = 288;
-		this.stageWidth = this.itemWidth * itemsPerPanel;
 		this.nrOfPanels = Math.ceil(items.length / itemsPerPanel);
+		this.stageItem = React.createRef();
 
 		this.state = {
 			translateX: -1000000,
@@ -55,17 +45,17 @@ class Carousel extends React.Component {
 	componentDidMount() {
 		checkProps(CAROUSEL, this.props, componentDoc);
 		this.setTranslationAmount(0);
+		this.stageWidth = this.stageItem.current.offsetWidth;
 	}
 
 	onNextPanelHandler = () => {
-		const next = this.canNotGoToNext() ? 1 : this.state.currentPanel + 1;
+		const next = this.state.currentPanel % this.nrOfPanels + 1;
 		this.setCurrentPanel(next, this.changeTranslationAutomatically);
 	};
 
 	onPreviousPanelHandler = () => {
-		const prev = this.canNotGoToPrevious()
-			? this.nrOfPanels
-			: this.state.currentPanel - 1;
+		const prev =
+			(this.state.currentPanel + this.nrOfPanels - 1) % this.nrOfPanels;
 		this.setCurrentPanel(prev, this.changeTranslationAutomatically);
 	};
 
@@ -87,9 +77,9 @@ class Carousel extends React.Component {
 		);
 	};
 
-	canNotGoToNext = () => this.state.currentPanel >= this.nrOfPanels;
+	canGoToNext = () => this.state.currentPanel < this.nrOfPanels;
 
-	canNotGoToPrevious = () => this.state.currentPanel <= 1;
+	canGoToPrevious = () => this.state.currentPanel > 1;
 
 	render() {
 		const {
@@ -98,8 +88,9 @@ class Carousel extends React.Component {
 			isInfinite,
 		} = this.props;
 		const id = this.props.id || this.generatedId;
-		const isPreviousBtnDisabled = !isInfinite && this.canNotGoToPrevious();
-		const isNextBtnDisabled = !isInfinite && this.canNotGoToNext();
+		const isPreviousBtnDisabled = !(isInfinite || this.canGoToPrevious());
+		const isNextBtnDisabled = !(isInfinite || this.canGoToNext());
+		const itemWidth = this.stageWidth / this.props.itemsPerPanel;
 
 		return (
 			<div className="slds-carousel" id={id}>
@@ -118,35 +109,46 @@ class Carousel extends React.Component {
 							</button>
 						</span>
 					)}
-					<div className="slds-grid  slds-grid_vertical-align-center">
+					<div className="slds-grid slds-grid_align-center">
 						{hasPreviousNextPanelNavigation && (
-							<CarouselNavigator
-								orientation="left"
+							<PreviousNextCarouselNavigator
+								icon="/assets/icons/utility-sprite/svg/symbols.svg#left"
+								assistiveText={this.props.assistiveText.previousPanel}
 								isDisabled={isPreviousBtnDisabled}
 								onClick={this.onPreviousPanelHandler}
 							/>
 						)}
 						<div
-							className="slds-carousel__stage slds-carousel__col-center"
-							style={{ width: this.stageWidth }}
+							ref={this.stageItem}
+							className="slds-carousel__stage slds-align_absolute-center"
 						>
 							<div
 								className="slds-carousel__panels slds-is-relative"
-								style={{ transform: `translateX(${this.state.translateX}px)` }}
+								style={{
+									transform: `translateX(${this.state.translateX}px)`,
+								}}
 							>
-								{this.props.items}
+								{this.props.items.map((item) => (
+									<CarouselItem
+										onRenderItem={this.props.onRenderItem}
+										{...item}
+										itemWidth={itemWidth}
+										key={item.id}
+									/>
+								))}
 							</div>
 						</div>
 						{hasPreviousNextPanelNavigation && (
-							<CarouselNavigator
-								orientation="right"
+							<PreviousNextCarouselNavigator
+								icon="/assets/icons/utility-sprite/svg/symbols.svg#right"
+								assistiveText={this.props.assistiveText.nextPanel}
 								isDisabled={isNextBtnDisabled}
 								onClick={this.onNextPanelHandler}
 							/>
 						)}
 					</div>
 					<CarouselIndicators
-						className={{ display: 'none' }}
+						style={this.props.indicatorStyles}
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={this.state.currentPanel}
 						onClick={this.onIndicatorClickHandler}
@@ -215,9 +217,13 @@ Carousel.propTypes = {
 	 */
 	onRenderItem: PropTypes.func,
 	/**
-	 * Description of the menu for screenreaders.
+	 * Description of the carousel items for screen-readers.
 	 */
 	assistiveText: PropTypes.object,
+	/**
+	 * Handler for clicking on a carousel item
+	 */
+	onItemClick: PropTypes.func,
 };
 
 Carousel.defaultProps = {

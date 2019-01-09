@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 import { CAROUSEL_NAVIGATORS } from '../../../utilities/constants';
 
 /**
- * carouselNavigator is used to display left or right navigators (arrows) of the carousel
+ * previousNextCarouselNavigator is used to display previous/next navigation items of the carousel
  */
-const carouselNavigator = (props) => (
-	<div className="slds-carousel__col-center">
+const previousNextCarouselNavigator = (props) => (
+	<div className="slds-carousel__col-center slds-align_absolute-center">
 		<button
 			className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
 			disabled={props.isDisabled}
@@ -22,20 +22,17 @@ const carouselNavigator = (props) => (
 				aria-hidden="true"
 				style={{ width: '60%', height: '100%' }}
 			>
-				<use
-					xlinkHref={`/assets/icons/utility-sprite/svg/symbols.svg#${
-						props.orientation
-					}`}
-				/>
+				<use xlinkHref={props.icon} />
 			</svg>
+			<span className="slds-assistive-text">{props.assistiveText}</span>
 		</button>
 	</div>
 );
 
-carouselNavigator.displayName = CAROUSEL_NAVIGATORS;
+previousNextCarouselNavigator.displayName = CAROUSEL_NAVIGATORS;
 
 // ### Prop Types
-carouselNavigator.propTypes = {
+previousNextCarouselNavigator.propTypes = {
 	/**
 	 * Determines where the navigator indicator has been disabled
 	 */
@@ -45,9 +42,13 @@ carouselNavigator.propTypes = {
 	 */
 	onClick: PropTypes.func,
 	/**
-	 * String showing the navigator's orientation left/right.
+	 * Path of the icon to be used for the previous/next navigation
 	 */
-	orientation: PropTypes.string.isRequired,
+	icon: PropTypes.string.isRequired,
+	/**
+	 * Description of the previous/next navigation icons for screen-readers.
+	 */
+	assistiveText: PropTypes.string,
 };
 
-export default carouselNavigator;
+export default previousNextCarouselNavigator;
