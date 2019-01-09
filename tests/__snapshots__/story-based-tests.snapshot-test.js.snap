@@ -992,10 +992,10 @@ exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
 }
       </style>
       <div
-        className="slds-box slds-theme--default"
+        className="slds-box slds-theme_default"
       >
         <h3
-          className="slds-text-heading--label slds-truncate"
+          className="slds-text-heading_label slds-truncate"
         >
           My App
         </h3>
@@ -17176,6 +17176,114 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
         className="slds-col slds-no-flex slds-grid slds-align-top"
       >
         
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPageHeader Base with content right 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-page-header"
+  >
+    <div
+      className="slds-grid slds-page-header__row"
+    >
+      <div
+        className="slds-col slds-page-header__col-title"
+      >
+        <div
+          className="slds-media slds-no-space slds-grow"
+        >
+          <div
+            className="slds-media__figure"
+          >
+            <span
+              className="slds-icon_container slds-icon-standard-opportunity"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                />
+              </svg>
+              
+            </span>
+             
+          </div>
+          <div
+            className="slds-media__body"
+          >
+            <div>
+              <h1
+                className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                title="Rohde Corp - 80,000 Widgets"
+              >
+                Rohde Corp - 80,000 Widgets
+              </h1>
+              <p
+                className="slds-text-body_small slds-line-height_reset"
+              >
+                Mark Jaeckal • Unlimited Customer • 11/13/15
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col slds-no-flex slds-grid slds-align-top"
+      >
+        <div
+          className="slds-col slds-no-flex slds-grid slds-align-top"
+          labels={Object {}}
+        >
+          <button
+            className="slds-button slds-button_neutral"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            New Lead
+          </button>
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click"
+            id="page-header-dropdown-object-home-nav-right"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-object-home-nav-right"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                More Options
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
