@@ -2,6 +2,8 @@
 
 First, on behalf of the core maintainers, I'd like to thank you for wanting to contribute and make the user experience for your end-users better and improve the developer experience of this library. :+1::tada: -- [@interactivellama](https://github.com/interactivellama/)
 
+If you are adding or changing component props, the first step is to propose the feature so that others have time to comment on it. Please submit a props proposal such as this one for [Dueling Picklist](https://github.com/salesforce/design-system-react/issues/1667) as an issue.
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -33,7 +35,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 ## How to add a new component
 
 1. Create a new issue or add to an existing one.
-   1. **List out all public props**, so that props can be consistent across the library. You are proposing an API that hopefully will never have to be changed.
+   1. **List out all public props**, so that props can be consistent across the library. Here is [an example](https://github.com/salesforce/design-system-react/issues/1667). You are proposing an API that hopefully will never have to be changed.
 1. Build out the component file structure
    1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
 1. Connect the newly created files
