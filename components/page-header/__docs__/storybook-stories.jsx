@@ -307,6 +307,16 @@ storiesOf(PAGE_HEADER, module)
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 		})
 	)
+	.add('Base with content right', () =>
+		getPageHeader({
+			iconAssistiveText: 'Opportunity',
+			iconCategory: 'standard',
+			iconName: 'opportunity',
+			title: 'Rohde Corp - 80,000 Widgets',
+			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
+			navRight: objectHomeNavRight,
+		})
+	)
 	.add('Record Home (truncates)', () =>
 		getPageHeader({
 			iconAssistiveText: 'User',
