@@ -34,6 +34,7 @@ const CarouselItem = (props) => (
 				href={props.href}
 				className="slds-carousel__panel-action slds-text-link_reset"
 				tabIndex="0"
+                target="_blank"
 			>
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText} />

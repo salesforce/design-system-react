@@ -22,7 +22,7 @@ import { CAROUSEL } from '../../utilities/constants';
 import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
 import CarouselItem from './private/carousel-item';
-
+import AutoPlayButton from './private/auto-play-button';
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
  */
@@ -39,6 +39,7 @@ class Carousel extends React.Component {
 		this.state = {
 			translateX: -1000000,
 			currentPanel: 1,
+			isAutoPlayOn: this.props.hasAutoplay,
 		};
 	}
 
@@ -46,6 +47,9 @@ class Carousel extends React.Component {
 		checkProps(CAROUSEL, this.props, componentDoc);
 		this.setTranslationAmount(0);
 		this.stageWidth = this.stageItem.current.offsetWidth;
+		if (this.props.hasAutoplay) {
+			this.startAutoplay();
+		}
 	}
 
 	onNextPanelHandler = () => {
@@ -63,6 +67,15 @@ class Carousel extends React.Component {
 		this.setCurrentPanel(panel, this.changeTranslationAutomatically);
 	};
 
+	onAutoPlayBtnClick = () => {
+		const { isAutoPlayOn } = this.state;
+		const actionToTake = isAutoPlayOn ? this.stopAutoplay : this.startAutoplay;
+
+		this.setState({
+			isAutoPlayOn: !isAutoPlayOn,
+		});
+		actionToTake();
+	};
 	setTranslationAmount = (amount, cb) => {
 		this.setState(() => ({ translateX: amount }), cb);
 	};
@@ -71,6 +84,22 @@ class Carousel extends React.Component {
 		this.setState(() => ({ currentPanel: amount }), cb);
 	};
 
+	startAutoplay = () => {
+		this.autoplayId = setInterval(() => {
+			if (this.canGoToNext()) {
+				this.onNextPanelHandler();
+			} else {
+				this.stopAutoplay();
+			}
+		}, this.props.autoplayInterval);
+	};
+
+	stopAutoplay = () => {
+		if (this.autoplayId) {
+			clearInterval(this.autoplayId);
+		}
+		this.setState({ isAutoPlayOn: false });
+	};
 	changeTranslationAutomatically = () => {
 		this.setTranslationAmount(
 			-(this.stageWidth * (this.state.currentPanel - 1))
@@ -96,18 +125,10 @@ class Carousel extends React.Component {
 			<div className="slds-carousel" id={id}>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
 					{hasAutoplay && (
-						<span className="slds-carousel__autoplay">
-							<button
-								className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
-								aria-pressed="false"
-								title="Stop auto-play"
-							>
-								<svg className="slds-button__icon" aria-hidden="true">
-									<use xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#pause" />
-								</svg>
-								<span className="slds-assistive-text">Stop auto-play</span>
-							</button>
-						</span>
+						<AutoPlayButton
+							isAutoPlayOn={this.state.isAutoPlayOn}
+							onClick={this.onAutoPlayBtnClick}
+						/>
 					)}
 					<div className="slds-grid slds-grid_align-center">
 						{hasPreviousNextPanelNavigation && (
@@ -235,6 +256,7 @@ Carousel.defaultProps = {
 		nextPanel: 'Next Panel',
 		previousPanel: 'Previous Panel',
 	},
+	autoplayInterval: 4000,
 };
 
 export default Carousel;

@@ -27,6 +27,7 @@ export const CARD_HEADER = 'SLDSCardHeader';
 export const CAROUSEL = 'SLDSCarousel';
 export const CAROUSEL_INDICATORS = 'SLDSCarouselIndicators';
 export const CAROUSEL_NAVIGATORS = 'SLDSCarouselNavigators';
+export const CAROUSEL_AUTOPLAY_BUTTON = 'SLDSCarouselAutoPlayButton';
 export const COLOR_PICKER = 'SLDSColorPicker';
 export const COMBOBOX = 'SLDSCombobox';
 export const DATA_TABLE = 'SLDSDataTable';
