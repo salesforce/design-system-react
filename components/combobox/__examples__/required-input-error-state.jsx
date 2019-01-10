@@ -79,7 +79,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					aria-describedby="description-unique-id"
-					id={`combobox-${Math.floor(Math.random() * (1000))}-id`}
+					id={`combobox-${Math.floor(Math.random() * 1000)}-id`}
 					disabled={this.props.disabled}
 					events={{
 						onChange: (event, { value }) => {
