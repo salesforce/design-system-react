@@ -103,6 +103,8 @@
 		"lodash.uniqueid": "^4.0.0",
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
+		"react-dnd": "^7.0.2",
+		"react-dnd-html5-backend": "^7.0.2",
 		"react-highlighter": "^0.4.0",
 		"react-modal": "3.4.4",
 		"react-onclickoutside": "^6.5.0",

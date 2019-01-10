@@ -33,6 +33,7 @@ export const DATA_TABLE_HEADER_CELL = 'SLDSDataTableHeaderCell';
 export const DATA_TABLE_ROW_ACTIONS = 'SLDSDataTableRowActions';
 export const DATA_TABLE_ROW = 'SLDSDataTableRow';
 export const DATE_PICKER = 'SLDSDatePicker';
+export const DUELING_PICKLIST = 'SLDSDuelingPicklist';
 export const DIALOG = 'SLDSDialog';
 export const FILTER = 'SLDSFilter';
 export const CHECKBOX = 'SLDSCheckbox';

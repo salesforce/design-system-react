@@ -56,6 +56,9 @@ export Checkbox from './forms/checkbox';
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
+export SLDSDuelingPicklist from './dueling-picklist';
+export DuelingPicklist from './dueling-picklist';
+
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
 export comboboxAddSubheadings from './combobox/add-subheadings';
