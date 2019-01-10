@@ -58,7 +58,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id={`combobox-${Math.floor(Math.random() * (1000))}-id`}
 					events={{
 						onSelect: (event, data) => {
 							if (this.props.action) {
