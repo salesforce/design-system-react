@@ -2,13 +2,13 @@
 
 exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
 "<div style=\\"max-width:1280px\\">
-  <div class=\\"slds-carousel\\" id=\\"ExampleCarouselWith3items\\">
+  <div class=\\"slds-carousel\\" id=\\"ExampleCarouselWithundefineditems\\">
     <div class=\\"slds-grid_vertical slds-col slds-path__scroller\\">
       <div class=\\"slds-grid slds-grid_align-center\\">
         <div class=\\"slds-carousel__stage slds-align_absolute-center\\">
           <div class=\\"slds-carousel__panels slds-is-relative\\" style=\\"transform:translateX(-1000000px)\\">
             <div id=\\"content-id-1\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-1\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-01.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 1</h2>
@@ -16,7 +16,7 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-2\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-2\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-02.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 2</h2>
@@ -24,7 +24,7 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-3\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-3\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-03.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 3</h2>
@@ -32,7 +32,7 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-4\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-4\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-02.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 4</h2>
@@ -40,7 +40,7 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-5\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-5\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-01.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 5</h2>
@@ -48,7 +48,7 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-6\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-6\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-03.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 6</h2>
@@ -56,7 +56,7 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-7\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-7\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-02.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 7</h2>
@@ -72,6 +72,14 @@ exports[`Carousel Component Default Snapshot - 1 tem, no navigation 1`] = `
           role=\\"presentation\\"><a id=\\"indicator-id-2\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-2\\" title=\\"Visit Panel 2\\"><span class=\\"slds-assistive-text\\">Panel 2</span></a></li>
         <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
           role=\\"presentation\\"><a id=\\"indicator-id-3\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-3\\" title=\\"Visit Panel 3\\"><span class=\\"slds-assistive-text\\">Panel 3</span></a></li>
+        <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
+          role=\\"presentation\\"><a id=\\"indicator-id-4\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-4\\" title=\\"Visit Panel 4\\"><span class=\\"slds-assistive-text\\">Panel 4</span></a></li>
+        <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
+          role=\\"presentation\\"><a id=\\"indicator-id-5\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-5\\" title=\\"Visit Panel 5\\"><span class=\\"slds-assistive-text\\">Panel 5</span></a></li>
+        <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
+          role=\\"presentation\\"><a id=\\"indicator-id-6\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-6\\" title=\\"Visit Panel 6\\"><span class=\\"slds-assistive-text\\">Panel 6</span></a></li>
+        <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
+          role=\\"presentation\\"><a id=\\"indicator-id-7\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-7\\" title=\\"Visit Panel 7\\"><span class=\\"slds-assistive-text\\">Panel 7</span></a></li>
       </ul>
     </div>
   </div>
@@ -86,7 +94,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
         <div class=\\"slds-carousel__stage slds-align_absolute-center\\">
           <div class=\\"slds-carousel__panels slds-is-relative\\" style=\\"transform:translateX(-1000000px)\\">
             <div id=\\"content-id-1\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-1\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-01.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 1</h2>
@@ -94,7 +102,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-2\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-2\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-02.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 2</h2>
@@ -102,7 +110,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-3\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-3\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-03.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 3</h2>
@@ -110,7 +118,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-4\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-4\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-02.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 4</h2>
@@ -118,7 +126,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-5\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-5\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-01.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 5</h2>
@@ -126,7 +134,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-6\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-6\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-03.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 6</h2>
@@ -134,7 +142,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
               </a>
             </div>
             <div id=\\"content-id-7\\" class=\\"slds-carousel__panel slds-m-horizontal_xx-small\\" role=\\"tabpanel\\" aria-hidden=\\"false\\" aria-labelledby=\\"indicator-id-7\\" style=\\"max-width:NaNpx\\">
-              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\">
+              <a href=\\"https://www.salesforce.com\\" class=\\"slds-carousel__panel-action slds-text-link_reset\\" tabindex=\\"0\\" target=\\"_blank\\">
                 <div class=\\"slds-carousel__image\\"><img src=\\"assets/images/carousel/carousel-02.jpg\\" alt=\\"Card image description\\" /></div>
                 <div class=\\"slds-carousel__content\\">
                   <h2 class=\\"slds-carousel__content-title\\">Carousel Item 7</h2>
@@ -157,7 +165,7 @@ exports[`Carousel Component Default Snapshot - 3 items and navigation 1`] = `
 `;
 
 exports[`Carousel Component With Custom Rendering 1`] = `
-"<div class=\\"slds-carousel\\" id=\\"BJZXZgqEM4\\">
+"<div class=\\"slds-carousel\\" id=\\"Custom Rendering\\">
   <div class=\\"slds-grid_vertical slds-col slds-path__scroller\\">
     <div class=\\"slds-grid slds-grid_align-center\\">
       <div class=\\"slds-carousel__stage slds-align_absolute-center\\">
@@ -213,6 +221,8 @@ exports[`Carousel Component With Custom Rendering 1`] = `
         role=\\"presentation\\"><a id=\\"indicator-id-2\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-2\\" title=\\"Visit Panel 2\\"><span class=\\"slds-assistive-text\\">Panel 2</span></a></li>
       <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
         role=\\"presentation\\"><a id=\\"indicator-id-3\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-3\\" title=\\"Visit Panel 3\\"><span class=\\"slds-assistive-text\\">Panel 3</span></a></li>
+      <li class=\\"slds-carousel__indicator slds-m-horizontal_xx-small\\"
+        role=\\"presentation\\"><a id=\\"indicator-id-4\\" class=\\"slds-carousel__indicator-action\\" role=\\"tab\\" tabindex=\\"-1\\" aria-selected=\\"false\\" aria-controls=\\"panel-4\\" title=\\"Visit Panel 4\\"><span class=\\"slds-assistive-text\\">Panel 4</span></a></li>
     </ul>
   </div>
 </div>"

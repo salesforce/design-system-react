@@ -37,7 +37,8 @@ test('Carousel Component With Custom Rendering', () => {
 
 	expect(
 		renderMarkup(Carousel, {
-			itemsPerPanel: 3,
+			id: 'Custom Rendering',
+			itemsPerPanel: 2,
 			items: ITEMS,
 			onRenderItem,
 		})
