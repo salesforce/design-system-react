@@ -1,4 +1,9 @@
 import React from 'react';
+import Column from './column';
+import Options from './options';
+import Button from './button';
+import { wrapItemAndAddIsSelected } from './utility';
+import { AriaLiveMoveContexts } from './constants';
 
 export default class Group extends React.Component {
 	getAriaLiveLabel(message) {
@@ -53,6 +58,7 @@ export default class Group extends React.Component {
 			isDisabled,
 			isReorderable,
 			isRequired,
+			isResponsive,
 			labels,
 			listboxHeight,
 			onBeginDrag,
@@ -65,6 +71,7 @@ export default class Group extends React.Component {
 			onMoveSelectionLeftClick,
 			onMoveSelectionRightClick,
 			onSelect,
+			options,
 			refs,
 			selected,
 			selection,
@@ -72,8 +79,8 @@ export default class Group extends React.Component {
 		} = this.props;
 		
 		const allOptions = [
-			wrapItemAndAddIsSelected(options, selectedItems),
-			wrapItemAndAddIsSelected(selection, selectedItems),
+			wrapItemAndAddIsSelected(options, selection),
+			wrapItemAndAddIsSelected(selected, selection),
 		];
 		
 		const maxItems = options.length > selected.length ? options.length : selected.length;
@@ -122,13 +129,13 @@ export default class Group extends React.Component {
 								onClick={onMoveSelectionRightClick}
 								assistiveText={assistiveText.moveSelectionToSelected || `Move selection to ${labels.selected}`}
 								direction='right'
-								disabled={disabled}
+								disabled={isDisabled}
 							/>
 							<Button
 								onClick={onMoveSelectionLeftClick}
 								assistiveText={assistiveText.moveSelectionToOptions || `Move selection to ${labels.options}`}
 								direction='left'
-								disabled={disabled}
+								disabled={isDisabled}
 							/>
 						</Column>
 						<Column responsive={isResponsive}>

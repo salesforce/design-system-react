@@ -3,36 +3,51 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import DuelingPicklist from '~/components/dueling-picklist';
+import duelingPicklistFilter from '~/components/dueling-picklist/filter';
 
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
 	
-	handleChange() {
-		console.log(arguments)
+	getInitialState() {
+		return {
+			options: [
+				{
+					id: '1',
+					label: 'Banana',
+				},
+				{
+					id: '2',
+					label: 'Orange',
+				},
+			],
+			selected: [
+				{
+					id: '3',
+					label: 'Apple'
+				}
+			],
+		}
+	},
+	
+	handleChange(selected) {
+		this.setState({
+			selected
+		})
 	},
 
 	render () {
+		const { selected } = this.state;
+		const options = duelingPicklistFilter({
+			options: this.state.options,
+			selected,
+		});
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<DuelingPicklist
-					options={[
-						{
-							id: 1,
-							label: 'Banana',
-						},
-						{
-							id: 2,
-							label: 'Orange',
-						},
-					]}
-					selected={[
-						{
-							id: 3,
-							label: 'Apple'
-						}
-					]}
+					options={options}
+					selected={selected}
 					events={{
-						onChange: this.handleChange.bind(this)
+						onChange: this.handleChange
 					}}
 				/>
 			</IconSettings>

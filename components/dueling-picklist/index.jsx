@@ -4,6 +4,21 @@ import Group from './private/group';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import shortid from 'shortid';
+import {
+	areItemsAtEdgeOfCategory,
+	areItemsInCategory,
+	getNewSelection,
+	getNewSelectionFromDragAndDropOntoCategory,
+	getNewSelectionFromDragAndDropOntoOption,
+	getOrderedSelection,
+	getRange,
+	moveItemsInCategory,
+	selectionChanged,
+} from './private/utility';
+import {
+	KeyCodes,
+	AriaLiveMoveContexts,
+} from './private/constants';
 
 const propTypes = {
 	/**
@@ -157,19 +172,19 @@ class DuelingPicklist extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 
-	state = {
-		selection: [],
-		firstSelected: null,
-		lastSelected: null,
-		dragAndDropWithArrowKeys: false,
-		shiftKey: null,
-		metaKey: null,
-		ariaLiveContext: null,
-	}
-
 	beginDrag = () => this.setState({ isDragging: true });	
 
-	componentDidMount() {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selection: [],
+			firstSelected: null,
+			lastSelected: null,
+			dragAndDropWithArrowKeys: false,
+			shiftKey: null,
+			metaKey: null,
+			ariaLiveContext: null,
+		}
 		this.generatedIds = {
 			picklistGroupLabel: shortid.generate(),
 			dragLiveRegion: shortid.generate(),
@@ -195,7 +210,7 @@ class DuelingPicklist extends React.Component {
 		} = this.state;
 		const prevSelected = prevProps.selected;
 
-		if (selectedChanged(selected, prevSelected)) {
+		if (selectionChanged(selected, prevSelected)) {
 			let ariaLiveContext;
 
 			if (prevSelected.length < selected.length) {
@@ -286,7 +301,7 @@ class DuelingPicklist extends React.Component {
 			this.state.selection
 		);
 
-		this.props.onChange(newSelected);
+		this.props.events.onChange(newSelected);
 	}
 
 	handleDropOntoOption = (dropTarget, sourceIsAboveTarget) => {
@@ -511,7 +526,7 @@ class DuelingPicklist extends React.Component {
 		const {
 			options,
 			selected,
-			onChange,
+			events,
 			isReorderable,
 		} = this.props;
 		if (!isReorderable) {
@@ -528,11 +543,10 @@ class DuelingPicklist extends React.Component {
 		const numSpaces = isUp ? -1 : 1;
 		const newSelected = moveItemsInCategory(selection, selected, numSpaces);
 
-		onChange(newSelected);
+		events.onChange(newSelected);
 	}
 
 	render() {
-		return <div>Hello</div>
 		return (
 			<Group
 				{...this.props}
@@ -567,7 +581,7 @@ class DuelingPicklist extends React.Component {
 	}
 
 	triggerOnChange(isLeft, shouldDeselect, newSelected) {
-		const trigger = () => this.props.onChange(newSelected);
+		const trigger = () => this.props.events.onChange(newSelected);
 
 		if (shouldDeselect) {
 			this.deselect(trigger);
