@@ -14,8 +14,8 @@ class Example extends React.Component {
 				}}
 			>
 				<Carousel
+					{...this.props}
 					id={`ExampleCarouselWith${this.props.itemsPerPanel}items`}
-					itemsPerPanel={this.props.itemsPerPanel}
 					items={ITEMS}
 					hasPreviousNextPanelNavigation={this.props.hasNavigation}
 				/>
@@ -25,7 +25,6 @@ class Example extends React.Component {
 }
 
 Example.defaultProps = {
-	itemsPerPanel: 3,
 	hasNavigation: false,
 };
 

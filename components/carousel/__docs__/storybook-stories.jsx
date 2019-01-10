@@ -57,4 +57,5 @@ storiesOf(CAROUSEL, module)
 				<Carousel itemsPerPanel={3} items={ITEMS} onRenderItem={onRenderItem} />
 			</div>
 		);
-	});
+	})
+	.add('3 Items and AutoPlay', () => <Default itemsPerPanel={3} hasAutoplay />);
