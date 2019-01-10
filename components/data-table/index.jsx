@@ -320,6 +320,9 @@ class DataTable extends React.Component {
 
 					if (cellFixed) {
 						cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
+					}
+
+					if (linkFixed) {
 						linkFixed.style.width = `${column.offsetWidth}px`;
 					}
 				}
