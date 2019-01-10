@@ -62,7 +62,3 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 ];
-
-export const carouselItems = ITEMS.map((item) => (
-	<CarouselItem {...item} itemWidth={288} key={item.id} />
-));
