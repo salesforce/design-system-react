@@ -12,7 +12,10 @@ const Example = createReactClass({
 	getInitialState() {
 		return {
 			options: fruitOptions,
-			selected: fruitOptions.slice(-2),
+			selected: fruitOptions.slice(-2).map((fruit, i) => ({
+				...fruit,
+				locked: i === 0,
+			})),
 		}
 	},
 	
@@ -34,6 +37,7 @@ const Example = createReactClass({
 					events={{
 						onChange: this.handleChange
 					}}
+					isReorderable
 				/>
 			</IconSettings>
 		);

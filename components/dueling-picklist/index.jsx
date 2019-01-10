@@ -167,7 +167,6 @@ const defaultProps = {
 	ids: {},
 }
 
-
 class DuelingPicklist extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
@@ -242,10 +241,10 @@ class DuelingPicklist extends React.Component {
 	}
 	
 	deselectLockedItems(callback) {
-		const nonLockedSelectedItems = this.state.selectedItems.filter(s => !s.locked);
-		if (nonLockedSelectedItems.length > 0) {
+		const nonLockedSelection = this.state.selection.filter(s => !s.locked);
+		if (nonLockedSelection.length > 0) {
 			this.setState({
-				selectedItems: nonLockedSelectedItems
+				selection: nonLockedSelection
 			}, callback);
 		} else {
 			callback();
@@ -265,7 +264,7 @@ class DuelingPicklist extends React.Component {
 	
 	focus = () => {
 		const option = this.state.lastSelected;
-		const selectedItems = this.state.selection.slice();
+		const selection = this.state.selection.slice();
 		const ref = this.optionRefs[option.id];
 		
 		if (ref && ref.current && ref.current !== document.activeElement) {

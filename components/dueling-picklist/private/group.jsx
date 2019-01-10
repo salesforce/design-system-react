@@ -59,6 +59,7 @@ export default class Group extends React.Component {
 			isReorderable,
 			isRequired,
 			isResponsive,
+			isViewOnly,
 			labels,
 			listboxHeight,
 			onBeginDrag,
@@ -77,6 +78,10 @@ export default class Group extends React.Component {
 			selection,
 			tooltip,
 		} = this.props;
+		
+		if (isViewOnly) {
+			return this.renderViewOnlyMode();
+		}
 		
 		const allOptions = [
 			wrapItemAndAddIsSelected(options, selection),
@@ -197,6 +202,24 @@ export default class Group extends React.Component {
 					disabled={isDisabled}
 				/>
 			</Column>
+		);
+	}
+	
+	renderViewOnlyMode() {
+		const { selected, labels } = this.props;
+		return (
+			<div className="slds-dueling-list">
+				<div className="slds-form-element">
+					<span className="slds-form-element__label">
+						{labels.selectedItems}
+					</span>
+					<div className="slds-form-element__control">
+						<span className="slds-form-element__static">
+							{selected.map(({ label }) => label).join(', ')}
+						</span>
+					</div>
+				</div>
+			</div>
 		);
 	}
 

@@ -5,6 +5,8 @@ import IconSettings from '~/components/icon-settings';
 import DuelingPicklist from '~/components/dueling-picklist';
 import duelingPicklistFilter from '~/components/dueling-picklist/filter';
 import { fruitOptions } from './constants';
+import Tooltip from '~/components/tooltip';
+import Icon from '~/components/icon';
 
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
@@ -34,10 +36,29 @@ const Example = createReactClass({
 					events={{
 						onChange: this.handleChange
 					}}
+					tooltip={this.renderTooltip()}
 				/>
 			</IconSettings>
 		);
 	},
+	
+	renderTooltip() {
+		return (
+			<Tooltip
+				align="top left"
+				content="Hello World"
+			>
+				<a href="javascript:void(0)">
+					<Icon
+						assistiveText={{ label: 'Tooltip with icon' }}
+						category="utility"
+						name="info"
+						size="x-small"
+					/>
+				</a>
+			</Tooltip>
+		)
+	}
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

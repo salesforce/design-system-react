@@ -5,6 +5,15 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/is-reorderable.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/automatic-height-minimization.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/disabled.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/view-only.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/required.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/responsive.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/manual-height.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/locked-options.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/dueling-picklist/__examples__/tooltip.jsx'),
 ];
 
 module.exports = siteStories;

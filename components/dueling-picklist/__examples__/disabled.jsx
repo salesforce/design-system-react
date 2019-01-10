@@ -34,6 +34,7 @@ const Example = createReactClass({
 					events={{
 						onChange: this.handleChange
 					}}
+					isDisabled
 				/>
 			</IconSettings>
 		);
