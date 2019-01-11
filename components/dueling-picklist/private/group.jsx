@@ -83,7 +83,7 @@ const Group = ({
 						id={ids.dragLiveRegion}
 						aria-live="assertive"
 					>
-						{getAriaLiveMessage(ariaLiveContext, assistiveText)}
+						{getAriaLiveMessage({ ariaLiveContext, assistiveText, labels, selection })}
 					</div>
 					<div className="slds-assistive-text" id={ids.optionDragLabel}>
 						{assistiveText.optionDragLabel}
@@ -169,7 +169,7 @@ const Group = ({
 	);
 };
 
-function getAriaLiveMessage (ariaLiveContext, assistiveText) {
+function getAriaLiveMessage ({ ariaLiveContext, assistiveText, labels, selection }) {
 	if (!ariaLiveContext) {
 		return null;
 	}
