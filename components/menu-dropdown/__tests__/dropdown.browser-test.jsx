@@ -382,7 +382,21 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				2
 			);
+      // item with checkmark has proper aria markup
+			expect(openNodes.menu.find('.slds-dropdown__item a')).attr('aria-checked', 'true');
 		});
+
+		it('<a> inside <li> has role menuitemcheckbox', function() {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			const anchorRole = openNodes.menu
+				.find('li a')
+				.first()
+				.prop('role');
+			expect(anchorRole).to.equal('menuitemcheckbox');
+		});
+
 	});
 
 	// Hover and hybrid hover UX patterns are not approved UX patterns due to accessibility concerns
