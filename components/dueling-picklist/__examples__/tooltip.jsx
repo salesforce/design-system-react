@@ -11,18 +11,18 @@ import Icon from '~/components/icon';
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
 
-	getInitialState() {
+	getInitialState () {
 		return {
 			options: fruitOptions,
 			selected: fruitOptions.slice(-2),
 		};
 	},
 
-	handleChange(selected) {
+	handleChange (selected) {
 		this.setState({ selected });
 	},
 
-	render() {
+	render () {
 		const { selected } = this.state;
 		const options = duelingPicklistFilter({
 			options: this.state.options,
@@ -42,7 +42,7 @@ const Example = createReactClass({
 		);
 	},
 
-	renderTooltip() {
+	renderTooltip () {
 		return (
 			<Tooltip align="top left" content="Hello World">
 				<a href="javascript:void(0)">

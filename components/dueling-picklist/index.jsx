@@ -176,7 +176,7 @@ class DuelingPicklist extends React.Component {
 
 	beginDrag = () => this.setState({ isDragging: true });
 
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.state = {
 			selection: [],
@@ -204,7 +204,7 @@ class DuelingPicklist extends React.Component {
 		);
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate (prevProps, prevState) {
 		const { selected } = this.props;
 		const { ariaLiveContext, selection } = this.state;
 		const prevSelected = prevProps.selected;
@@ -243,7 +243,7 @@ class DuelingPicklist extends React.Component {
 		}
 	};
 
-	deselectLockedItems(callback) {
+	deselectLockedItems (callback) {
 		const nonLockedSelection = this.state.selection.filter((s) => !s.locked);
 		if (nonLockedSelection.length > 0) {
 			this.setState(
@@ -259,7 +259,7 @@ class DuelingPicklist extends React.Component {
 
 	endDrag = () => this.setState({ isDragging: false });
 
-	findCategoryForOption(option) {
+	findCategoryForOption (option) {
 		const { options, selected } = this.props;
 
 		return selected.some((s) => s.id === option.item.id) ? selected : options;
@@ -276,18 +276,18 @@ class DuelingPicklist extends React.Component {
 		}
 	};
 
-	getDefaultedPropObj(propName) {
+	getDefaultedPropObj (propName) {
 		return {
 			...defaultProps[propName],
 			...this.props[propName],
 		};
 	}
 
-	getId(idName) {
+	getId (idName) {
 		return this.props.ids[idName] || this.generatedIds[idName];
 	}
 
-	getIds() {
+	getIds () {
 		return {
 			picklistGroupLabel: `${this.getId(
 				'picklistGroupLabel'
@@ -478,7 +478,7 @@ class DuelingPicklist extends React.Component {
 		);
 	};
 
-	handleVerticalArrowKeyUp(option, isUp, selectRange) {
+	handleVerticalArrowKeyUp (option, isUp, selectRange) {
 		const { selected } = this.props;
 		const { dragAndDropWithArrowKeys } = this.state;
 		const category = this.findCategoryForOption(option);
@@ -500,7 +500,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveSelectedItemsHorizontally(isLeft, shouldDeselect = true) {
+	moveSelectedItemsHorizontally (isLeft, shouldDeselect = true) {
 		const { selection } = this.state;
 		if (selection.length === 0) {
 			return;
@@ -518,7 +518,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveItemsVertically(isUp) {
+	moveItemsVertically (isUp) {
 		const { options, selected, isReorderable } = this.props;
 		if (!isReorderable) {
 			return;
@@ -537,7 +537,7 @@ class DuelingPicklist extends React.Component {
 		this.triggerOnChange(newSelected);
 	}
 
-	render() {
+	render () {
 		return (
 			<Group
 				{...this.props}
@@ -562,7 +562,7 @@ class DuelingPicklist extends React.Component {
 		);
 	}
 
-	selectAllInCategory(option) {
+	selectAllInCategory (option) {
 		const selection = this.findCategoryForOption(option);
 		this.setState({
 			selection,
@@ -571,7 +571,7 @@ class DuelingPicklist extends React.Component {
 		});
 	}
 
-	triggerOnChange(newSelected, isLeft = false, shouldDeselect = false) {
+	triggerOnChange (newSelected, isLeft = false, shouldDeselect = false) {
 		const trigger = () => this.props.events.onChange(newSelected);
 
 		if (shouldDeselect) {

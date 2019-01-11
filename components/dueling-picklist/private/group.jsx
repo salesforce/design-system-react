@@ -49,8 +49,8 @@ const Group = ({
 	const heightProp =
 		listboxHeight || hasAutomaticHeightMinimization
 			? {
-					height: listboxHeight || `${2.25 * maxItems + 1}rem`,
-				}
+				height: listboxHeight || `${2.25 * maxItems + 1}rem`,
+			}
 			: {};
 
 	return (
@@ -166,7 +166,7 @@ const Group = ({
 	);
 };
 
-function getAriaLiveMessage(ariaLiveContext, assistiveText) {
+function getAriaLiveMessage (ariaLiveContext, assistiveText) {
 	if (!ariaLiveContext) {
 		return null;
 	}
@@ -195,7 +195,7 @@ function getAriaLiveMessage(ariaLiveContext, assistiveText) {
 	}
 }
 
-function getAriaLiveLabel(message, labels, selection) {
+function getAriaLiveLabel (message, labels, selection) {
 	const itemLabels = selection.map((item) => item.label);
 
 	let words;

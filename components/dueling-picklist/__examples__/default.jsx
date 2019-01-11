@@ -9,18 +9,18 @@ import { fruitOptions } from './constants';
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
 
-	getInitialState() {
+	getInitialState () {
 		return {
 			options: fruitOptions,
 			selected: fruitOptions.slice(-2),
 		};
 	},
 
-	handleChange(selected) {
+	handleChange (selected) {
 		this.setState({ selected });
 	},
 
-	render() {
+	render () {
 		const { selected } = this.state;
 		const options = duelingPicklistFilter({
 			options: this.state.options,

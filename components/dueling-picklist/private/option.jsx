@@ -33,9 +33,9 @@ class Option extends React.Component {
 		disabled: false,
 	};
 
-	constructor(props) {
+	constructor (props) {
 		super(props);
-		this.id = 'dueling-picklist-option-' + shortid.generate();
+		this.id = `dueling-picklist-option-${shortid.generate()}`;
 	}
 
 	handleClick = (event) => {
@@ -60,7 +60,7 @@ class Option extends React.Component {
 		onSelect(option, false, false, true);
 	};
 
-	render() {
+	render () {
 		const {
 			option,
 			tabIndex,
@@ -93,9 +93,9 @@ class Option extends React.Component {
 		const events = disabled
 			? {}
 			: {
-					onClick: this.handleClick,
-					onFocus: this.handleFocus,
-				};
+				onClick: this.handleClick,
+				onFocus: this.handleFocus,
+			};
 
 		const result = (
 			<li role="presentation" className="slds-listbox__item" id={this.id}>
@@ -122,7 +122,7 @@ class Option extends React.Component {
 			: result;
 	}
 
-	renderLock() {
+	renderLock () {
 		const { option, assistiveText } = this.props;
 
 		if (!option.item.locked) {
@@ -144,13 +144,13 @@ class Option extends React.Component {
 }
 
 const optionSource = {
-	beginDrag(props) {
+	beginDrag (props) {
 		props.beginDrag();
 		return {
 			option: props.option,
 		};
 	},
-	endDrag(props) {
+	endDrag (props) {
 		props.endDrag();
 	},
 };
@@ -161,7 +161,7 @@ const optionSourceCollector = (connect, monitor) => ({
 });
 
 const optionTarget = {
-	drop(props, monitor, component) {
+	drop (props, monitor, component) {
 		const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
 		const { x, y } = hoverBoundingRect;
 		const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;

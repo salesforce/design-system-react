@@ -1,18 +1,18 @@
-export function moveItemsInCategory(selectedItems, items, numSpaces) {
+export function moveItemsInCategory (selectedItems, items, numSpaces) {
 	const ids = getIds(selectedItems);
-	let newOptions = items.filter((o) => !ids.includes(o.id));
+	const newOptions = items.filter((o) => !ids.includes(o.id));
 
 	for (let i = 0; i < selectedItems.length; i++) {
-		let selectedItem = selectedItems[i];
-		let currentIndex = items.findIndex((o) => o.id === selectedItem.id);
-		let newIndex = currentIndex + numSpaces;
+		const selectedItem = selectedItems[i];
+		const currentIndex = items.findIndex((o) => o.id === selectedItem.id);
+		const newIndex = currentIndex + numSpaces;
 		newOptions.splice(newIndex, 0, selectedItem);
 	}
 
 	return newOptions;
 }
 
-export function getRange(items, lastSelectedItem, item) {
+export function getRange (items, lastSelectedItem, item) {
 	let indexOfLastSelected = null;
 	let indexOfCurrentSelected = null;
 
@@ -34,17 +34,17 @@ export function getRange(items, lastSelectedItem, item) {
 	const last = Math.max(indexOfCurrentSelected, indexOfLastSelected);
 	return items.slice(first, last + 1);
 }
-export function getOrderedSelection(items, selectedItems) {
+export function getOrderedSelection (items, selectedItems) {
 	const ids = getIds(selectedItems);
 	return items.filter(({ id }) => ids.includes(id));
 }
 
-export function areItemsInCategory(items, category) {
+export function areItemsInCategory (items, category) {
 	const ids = getIds(items);
 	return category.some((o) => ids.includes(o.id));
 }
 
-export function areItemsAtEdgeOfCategory(isUp, items, category) {
+export function areItemsAtEdgeOfCategory (isUp, items, category) {
 	const ids = getIds(items);
 	const first = category[0];
 	const last = category.slice(-1)[0];
@@ -54,7 +54,7 @@ export function areItemsAtEdgeOfCategory(isUp, items, category) {
 	);
 }
 
-export function getNewSelectionFromDragAndDropOntoCategory(
+export function getNewSelectionFromDragAndDropOntoCategory (
 	selection,
 	selectedItems
 ) {
@@ -64,7 +64,7 @@ export function getNewSelectionFromDragAndDropOntoCategory(
 	];
 }
 
-export function getNewSelectionFromDragAndDropOntoOption(
+export function getNewSelectionFromDragAndDropOntoOption (
 	selection,
 	selectedItems,
 	dropTargetItem,
@@ -88,23 +88,22 @@ export function getNewSelectionFromDragAndDropOntoOption(
 	];
 }
 
-export function getNewSelection(isRemoving, items, selection) {
+export function getNewSelection (isRemoving, items, selection) {
 	if (isRemoving) {
 		const ids = getIds(items.filter(({ locked }) => !locked));
 		return selection.filter((o) => !ids.includes(o.id));
 	} else if (areItemsInCategory(items, selection)) {
 		return selection;
-	} else {
-		return [...selection, ...items];
 	}
+	return [...selection, ...items];
 }
 
-export function filterNonSelectedItems(category, selectedItems) {
+export function filterNonSelectedItems (category, selectedItems) {
 	const selectedIds = getIds(selectedItems);
 	return category.filter((o) => !selectedIds.includes(o.id));
 }
 
-export function selectionChanged(selection, prevSelection) {
+export function selectionChanged (selection, prevSelection) {
 	if (selection.length !== prevSelection.length) {
 		return true;
 	}
@@ -116,13 +115,13 @@ export function selectionChanged(selection, prevSelection) {
 	return false;
 }
 
-export function wrapItemAndAddIsSelected(options, selectedItems) {
+export function wrapItemAndAddIsSelected (options, selectedItems) {
 	return options.map((option) => ({
 		item: option,
 		selected: selectedItems.some((o) => o.id === option.id),
 	}));
 }
 
-function getIds(items) {
+function getIds (items) {
 	return items.map((o) => o.id);
 }

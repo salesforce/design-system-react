@@ -39,7 +39,7 @@ class Options extends React.Component {
 		dragAndDropEnabled: false,
 	};
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
+	componentDidUpdate (prevProps, prevState, snapshot) {
 		const { options, focus } = this.props;
 
 		const hasMoreItems = options.length > prevProps.options.length;
@@ -48,14 +48,14 @@ class Options extends React.Component {
 		}
 	}
 
-	anyItemsFocused() {
+	anyItemsFocused () {
 		return this.props.options.some((o) => {
 			const ref = this.props.refs[o.item.id];
 			return ref.current === document.activeElement;
 		});
 	}
 
-	render() {
+	render () {
 		const {
 			label,
 			options,
@@ -95,7 +95,7 @@ class Options extends React.Component {
 		return dragAndDropEnabled ? connectDropTarget(result) : result;
 	}
 
-	anyItemsSelected() {
+	anyItemsSelected () {
 		return this.props.options.some(({ selected, item }) => selected);
 	}
 
@@ -140,7 +140,7 @@ class Options extends React.Component {
 }
 
 const optionsTarget = {
-	drop(props, monitor, component) {
+	drop (props, monitor, component) {
 		if (monitor.isOver({ shallow: true })) {
 			const dragSource = monitor.getItem().option;
 			props.onDropIntoCategory(dragSource);
