@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Option from './option';
 import { DropTarget } from 'react-dnd';
 
-class Options extends Component {
+class Options extends React.Component {
 	static propTypes = {
 		options: PropTypes.arrayOf(
 			PropTypes.shape({

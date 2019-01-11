@@ -300,13 +300,12 @@ class DuelingPicklist extends React.Component {
 			this.state.selection
 		);
 
-		this.props.events.onChange(newSelected);
+		this.triggerOnChange(newSelected);
 	}
 
 	handleDropOntoOption = (dropTarget, sourceIsAboveTarget) => {
 		const {
 			allowReordering,
-			onChange,
 			selected,
 		} = this.props;
 		const { selection } = this.state;
@@ -318,7 +317,7 @@ class DuelingPicklist extends React.Component {
 			sourceIsAboveTarget
 		);
 
-		onChange(newSelected);
+		this.triggerOnChange(newSelected);
 	}
 
 	
@@ -475,9 +474,7 @@ class DuelingPicklist extends React.Component {
 			selection: newSelection,
 			firstSelected: newFirstSelected,
 			lastSelected: item,
-		}, () => {
-			this.focus();
-		});
+		}, this.focus);
 	}
 
 	handleVerticalArrowKeyUp(option, isUp, selectRange) {
@@ -517,7 +514,7 @@ class DuelingPicklist extends React.Component {
 		const allSelectedItemsInCategory = selection.every(a => category.some(b => a.id === b.id));
 		if (!allSelectedItemsInCategory) {
 			const newSelected = getNewSelection(isLeft, selection, selected);
-			this.triggerOnChange(isLeft, shouldDeselect, newSelected);
+			this.triggerOnChange(newSelected, isLeft, shouldDeselect);
 		}
 	}
 	
@@ -525,7 +522,6 @@ class DuelingPicklist extends React.Component {
 		const {
 			options,
 			selected,
-			events,
 			isReorderable,
 		} = this.props;
 		if (!isReorderable) {
@@ -542,7 +538,7 @@ class DuelingPicklist extends React.Component {
 		const numSpaces = isUp ? -1 : 1;
 		const newSelected = moveItemsInCategory(selection, selected, numSpaces);
 
-		events.onChange(newSelected);
+		this.triggerOnChange(newSelected);
 	}
 
 	render() {
@@ -579,7 +575,7 @@ class DuelingPicklist extends React.Component {
 		});
 	}
 
-	triggerOnChange(isLeft, shouldDeselect, newSelected) {
+	triggerOnChange(newSelected, isLeft = false, shouldDeselect = false) {
 		const trigger = () => this.props.events.onChange(newSelected);
 
 		if (shouldDeselect) {
