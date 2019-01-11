@@ -1,0 +1,2487 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoHeightMinimization DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+            style={
+              Object {
+                "height": "7.75rem",
+              }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+            style={
+              Object {
+                "height": "7.75rem",
+              }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Default DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Disabled DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options slds-is-disabled"
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={true}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options slds-is-disabled"
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={true}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`IsReorderable DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#up"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move Selection Up
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move Selection Down
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Locked DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__figure slds-media__figure_reverse"
+                  >
+                    <span
+                      className="slds-icon_container"
+                      title="Locked item"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--xx-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+                          />
+                        </svg>
+                        
+                      </span>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                         
+                        : 
+                        Item cannot be moved
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#up"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move Selection Up
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move Selection Down
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ManualHeight DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+            style={
+              Object {
+                "height": "20rem",
+              }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+            style={
+              Object {
+                "height": "20rem",
+              }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Required DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    <abbr
+      className="slds-required"
+      title="required"
+    >
+      *
+       
+    </abbr>
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Responsive DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column slds-dueling-list__column_responsive"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column slds-dueling-list__column_responsive"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tooltip DOM Snapshot 1`] = `
+<div
+  aria-labelledby="picklist-label-picklist-group-label"
+  className="slds-form-element"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  role="group"
+>
+  <span
+    className="slds-form-element__label slds-form-element__legend"
+    id="picklist-label-picklist-group-label"
+  >
+    Select Options
+  </span>
+  <div
+    className="slds-tooltip-trigger"
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <a
+      aria-describedby="tooltip"
+      href="javascript:void(0)"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon--x-small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Tooltip with icon
+        </span>
+      </span>
+    </a>
+    <span />
+  </div>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-dueling-list"
+    >
+      <div
+        aria-live="assertive"
+        className="slds-assistive-text"
+        id="drag-live-region-drag-live-region"
+      />
+      <div
+        className="slds-assistive-text"
+        id="option-drag-label-option-drag-label"
+      >
+        Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="options-label-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-0"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Apple"
+                    >
+                      Apple
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-1"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Banana"
+                    >
+                      Banana
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-2"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Orange"
+                    >
+                      Orange
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to Second Category
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button--icon-container"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Move selection to First Category
+          </span>
+        </button>
+      </div>
+      <div
+        className="slds-dueling-list__column"
+      >
+        <div>
+          <span
+            className="slds-form-element__label"
+            id="selected-label-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options "
+          >
+            <ul
+              aria-describedby="option-drag-label-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
+            >
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ViewOnly DOM Snapshot 1`] = `
+<div
+  className="slds-dueling-list"
+>
+  <div
+    className="slds-form-element"
+  >
+    <span
+      className="slds-form-element__label"
+    >
+      Selected Items
+    </span>
+    <div
+      className="slds-form-element__control"
+    >
+      <span
+        className="slds-form-element__static"
+      >
+        Pear, Watermelon
+      </span>
+    </div>
+  </div>
+</div>
+`;

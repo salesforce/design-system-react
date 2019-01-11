@@ -30,10 +30,17 @@ const renderMarkup = (Component, props) =>
 	);
 
 const testDOMandHTML = ({ name, test, Component, props }) => {
+	testDOM({ name, test, Component, props });
+	testHTML({ name, test, Component, props });
+};
+
+const testDOM = ({ name, test, Component, props }) => {
 	test(`${name} DOM Snapshot`, () => {
 		expect(renderDOM(Component, props)).toMatchSnapshot();
 	});
+};
 
+const testHTML = ({ name, test, Component, props }) => {
 	test(`${name} HTML Snapshot`, () => {
 		expect(renderMarkup(Component, props)).toMatchSnapshot();
 	});
@@ -42,4 +49,4 @@ const testDOMandHTML = ({ name, test, Component, props }) => {
 // eslint-disable-line import/prefer-default-export
 // eslint-disable-line import/prefer-default-export
 // eslint-disable-line import/prefer-default-export
-export { renderDOM, renderMarkup, testDOMandHTML };
+export { renderDOM, renderMarkup, testDOMandHTML, testDOM, testHTML };

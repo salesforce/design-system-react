@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import DuelingPicklist from '~/components/dueling-picklist';
 import duelingPicklistFilter from '~/components/dueling-picklist/filter';
-import { fruitOptions } from './constants';
+import { fruitOptions, ids } from './constants';
 
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
@@ -37,6 +37,7 @@ const Example = createReactClass({
 					events={{
 						onChange: this.handleChange,
 					}}
+					ids={ids}
 					isReorderable
 				/>
 			</IconSettings>

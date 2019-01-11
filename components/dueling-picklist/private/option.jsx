@@ -1,7 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import Icon from '~/components/icon';
 import { DragSource, DropTarget } from 'react-dnd';
 
@@ -35,7 +34,7 @@ class Option extends React.Component {
 
 	constructor (props) {
 		super(props);
-		this.id = `dueling-picklist-option-${shortid.generate()}`;
+		this.id = `dueling-picklist-option-${props.option.item.id}`;
 	}
 
 	handleClick = (event) => {

@@ -7,6 +7,7 @@ import { wrapItemAndAddIsSelected } from './utility';
 import { AriaLiveMoveContexts } from './constants';
 
 const Group = ({
+	ariaLiveContext,
 	assistiveText,
 	dragAndDropWithArrowKeys,
 	hasAutomaticHeightMinimization,
@@ -26,8 +27,10 @@ const Group = ({
 	onFocus,
 	onKeyDown,
 	onKeyUp,
+	onMoveSelectionDownClick,
 	onMoveSelectionLeftClick,
 	onMoveSelectionRightClick,
+	onMoveSelectionUpClick,
 	onSelect,
 	options,
 	refs,

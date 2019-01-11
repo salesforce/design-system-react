@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import DuelingPicklist from '~/components/dueling-picklist';
 import duelingPicklistFilter from '~/components/dueling-picklist/filter';
-import { fruitOptions } from './constants';
+import { fruitOptions, ids } from './constants';
 import Tooltip from '~/components/tooltip';
 import Icon from '~/components/icon';
 
@@ -36,6 +36,7 @@ const Example = createReactClass({
 					events={{
 						onChange: this.handleChange,
 					}}
+					ids={ids}
 					tooltip={this.renderTooltip()}
 				/>
 			</IconSettings>
@@ -44,7 +45,7 @@ const Example = createReactClass({
 
 	renderTooltip () {
 		return (
-			<Tooltip align="top left" content="Hello World">
+			<Tooltip align="top left" content="Hello World" id="tooltip">
 				<a href="javascript:void(0)">
 					<Icon
 						assistiveText={{ label: 'Tooltip with icon' }}

@@ -4,3 +4,11 @@ export const fruitOptions = 'Apple Banana Orange Pear Watermelon'
 		id: `${i}`,
 		label: fruit,
 	}));
+
+export const ids = {
+	picklistGroupLabel: 'picklist-label',
+	dragLiveRegion: 'drag-live-region',
+	optionDragLabel: 'option-drag-label',
+	optionsLabel: 'options-label',
+	selectedLabel: 'selected-label',
+}

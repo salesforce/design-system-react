@@ -21,7 +21,7 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `itemDragLabel`: Instructions on how to drag and drop with a keyboard.
+	 * * `optionDragLabel`: Instructions on how to drag and drop with a keyboard.
 	 * * `itemLocked`: Used to label locked items.
 	 * * `itemsSelected`: Used in Aria Live area to inform user that items were moved to selected.
 	 * * `itemsDeselected`: Used in Aria Live area to inform user that items were removed from selected.
@@ -33,7 +33,7 @@ const propTypes = {
 	 */
 
 	assistiveText: PropTypes.shape({
-		itemDragLabel: PropTypes.string,
+		optionDragLabel: PropTypes.string,
 		itemLocked: PropTypes.string,
 		itemsSelected: PropTypes.string,
 		itemsDeselected: PropTypes.string,
@@ -63,14 +63,14 @@ const propTypes = {
 	 * Element id prefixes (used for accessibility). If not provided, ids will be generated with shortid.
 	 * * `picklistGroupLabel`: id for labeling the `<DuelingPicklist />` component.
 	 * * `dragLiveRegion`: id for Aria Live element.
-	 * * `itemDragLabel`: id for describing how to use keyboard interactions.
+	 * * `optionDragLabel`: id for describing how to use keyboard interactions.
 	 * * `optionsLabel`: id for options listbox.
 	 * * `selectedLabel`: id for selection listbox.
 	 */
 	ids: PropTypes.shape({
 		picklistGroupLabel: PropTypes.string,
 		dragLiveRegion: PropTypes.string,
-		itemDragLabel: PropTypes.string,
+		optionDragLabel: PropTypes.string,
 		optionsLabel: PropTypes.string,
 		selectedLabel: PropTypes.string,
 	}),
@@ -160,7 +160,7 @@ const defaultProps = {
 		selectedItems: 'Selected Items',
 	},
 	assistiveText: {
-		itemDragLabel:
+		optionDragLabel:
 			'Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.',
 		moveSelectionUp: 'Move Selection Up',
 		moveSelectionDown: 'Move Selection Down',
@@ -293,7 +293,7 @@ class DuelingPicklist extends React.Component {
 				'picklistGroupLabel'
 			)}-picklist-group-label`,
 			dragLiveRegion: `${this.getId('dragLiveRegion')}-drag-live-region`,
-			itemDragLabel: `${this.getId('itemDragLabel')}-item-drag-label`,
+			optionDragLabel: `${this.getId('optionDragLabel')}-option-drag-label`,
 			optionsLabel: `${this.getId('optionsLabel')}-options-label`,
 			selectedLabel: `${this.getId('selectedLabel')}-selected-label`,
 		};
