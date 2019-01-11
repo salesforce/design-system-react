@@ -78,7 +78,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id={`combobox-${Math.floor(Math.random() * 1000)}-id`}
+					id='combobox-inline-single'
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {
