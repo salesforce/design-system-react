@@ -6,12 +6,12 @@ const Button = ({ onClick, assistiveText, direction, disabled }) => (
 	<SLDSButton
 		onClick={onClick}
 		label={assistiveText}
-		iconCategory='utility'
+		iconCategory="utility"
 		iconName={direction}
-		iconVariant='container'
-		variant='icon'
+		iconVariant="container"
+		variant="icon"
 		assistiveText={{
-			icon: assistiveText
+			icon: assistiveText,
 		}}
 		disabled={disabled}
 	/>

@@ -24,11 +24,13 @@ storiesOf(DUELING_PICKLIST, module)
 	))
 	.add('Default', () => <Default action={action} />)
 	.add('Reorderable', () => <IsReorderable action={action} />)
-	.add('Auto Height Minimization', () => <AutoHeightMinimization action={action} />)
+	.add('Auto Height Minimization', () => (
+		<AutoHeightMinimization action={action} />
+	))
 	.add('Disabled', () => <Disabled action={action} />)
 	.add('ViewOnly', () => <ViewOnly action={action} />)
 	.add('Required', () => <Required action={action} />)
 	.add('Responsive', () => <Responsive action={action} />)
 	.add('ManualHeight', () => <ManualHeight action={action} />)
 	.add('Locked', () => <Locked action={action} />)
-	.add('Tooltip', () => <Tooltip action={action} />)
+	.add('Tooltip', () => <Tooltip action={action} />);

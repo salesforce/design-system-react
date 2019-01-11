@@ -8,14 +8,14 @@ const Column = ({ children, responsive }) => {
 	}
 
 	return <div className={className} children={children} />;
-}
+};
 
 Column.propTypes = {
 	responsive: PropTypes.bool,
-}
+};
 
 Column.defaultProps = {
 	responsive: false,
-}
+};
 
 export default Column;

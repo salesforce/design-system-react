@@ -9,7 +9,7 @@ export const KeyCodes = {
 	MetaRight: 93,
 	Ctrl: 17,
 	Shift: 16,
-}
+};
 
 export const AriaLiveMoveContexts = {
 	ItemsMovedToSelection: 'ItemsMovedToSelection',

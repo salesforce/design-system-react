@@ -31,28 +31,25 @@ class Options extends React.Component {
 		onDropIntoCategory: PropTypes.func,
 		beginDrag: PropTypes.func,
 		endDrag: PropTypes.func,
-	}
-	
+	};
+
 	static defaultProps = {
 		disabled: false,
 		dragAndDropWithArrowKeys: false,
 		dragAndDropEnabled: false,
-	}
+	};
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
-		const {
-			options,
-			focus,
-		} = this.props;
+		const { options, focus } = this.props;
 
 		const hasMoreItems = options.length > prevProps.options.length;
 		if (hasMoreItems && this.anyItemsSelected() && !this.anyItemsFocused()) {
 			setImmediate(focus);
 		}
 	}
-	
+
 	anyItemsFocused() {
-		return this.props.options.some(o => {
+		return this.props.options.some((o) => {
 			const ref = this.props.refs[o.item.id];
 			return ref.current === document.activeElement;
 		});
@@ -68,10 +65,10 @@ class Options extends React.Component {
 			connectDropTarget,
 			dragAndDropEnabled,
 		} = this.props;
-		
+
 		const disabledClass = disabled ? 'slds-is-disabled' : '';
 		const styleProp = height ? { style: { height } } : {};
-		
+
 		const result = (
 			<div>
 				<span className="slds-form-element__label" id={ids.label}>
@@ -115,7 +112,7 @@ class Options extends React.Component {
 			dragAndDropEnabled,
 			disabled,
 		} = this.props;
-		const noItemsSelected = !this.anyItemsSelected()
+		const noItemsSelected = !this.anyItemsSelected();
 
 		let tabIndex = '-1';
 		if (!disabled && (option.selected || (noItemsSelected && index === 0))) {
@@ -139,7 +136,7 @@ class Options extends React.Component {
 				disabled={disabled}
 			/>
 		);
-	}
+	};
 }
 
 const optionsTarget = {
@@ -149,7 +146,7 @@ const optionsTarget = {
 			props.onDropIntoCategory(dragSource);
 		}
 	},
-}
+};
 
 const optionsCollector = (connect) => ({
 	connectDropTarget: connect.dropTarget(),

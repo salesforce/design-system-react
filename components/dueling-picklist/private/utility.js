@@ -1,10 +1,10 @@
 export function moveItemsInCategory(selectedItems, items, numSpaces) {
 	const ids = getIds(selectedItems);
-	let newOptions = items.filter(o => !ids.includes(o.id));
+	let newOptions = items.filter((o) => !ids.includes(o.id));
 
 	for (let i = 0; i < selectedItems.length; i++) {
 		let selectedItem = selectedItems[i];
-		let currentIndex = items.findIndex(o => o.id === selectedItem.id);
+		let currentIndex = items.findIndex((o) => o.id === selectedItem.id);
 		let newIndex = currentIndex + numSpaces;
 		newOptions.splice(newIndex, 0, selectedItem);
 	}
@@ -24,7 +24,7 @@ export function getRange(items, lastSelectedItem, item) {
 		if (currentId === lastSelectedItem.id) {
 			indexOfLastSelected = i;
 		}
-		
+
 		if (indexOfCurrentSelected !== null && indexOfLastSelected !== null) {
 			break;
 		}
@@ -41,7 +41,7 @@ export function getOrderedSelection(items, selectedItems) {
 
 export function areItemsInCategory(items, category) {
 	const ids = getIds(items);
-	return category.some(o => ids.includes(o.id));
+	return category.some((o) => ids.includes(o.id));
 }
 
 export function areItemsAtEdgeOfCategory(isUp, items, category) {
@@ -49,21 +49,31 @@ export function areItemsAtEdgeOfCategory(isUp, items, category) {
 	const first = category[0];
 	const last = category.slice(-1)[0];
 
-	return ids.some(id =>
-		(isUp && id === first.id) ||
-		(!isUp && id === last.id));
+	return ids.some(
+		(id) => (isUp && id === first.id) || (!isUp && id === last.id)
+	);
 }
 
-export function getNewSelectionFromDragAndDropOntoCategory(selection, selectedItems) {
+export function getNewSelectionFromDragAndDropOntoCategory(
+	selection,
+	selectedItems
+) {
 	return [
 		...filterNonSelectedItems(selection, selectedItems),
 		...selectedItems,
 	];
 }
 
-export function getNewSelectionFromDragAndDropOntoOption(selection, selectedItems, dropTargetItem, sourceIsAboveTarget) {
+export function getNewSelectionFromDragAndDropOntoOption(
+	selection,
+	selectedItems,
+	dropTargetItem,
+	sourceIsAboveTarget
+) {
 	const indexPad = sourceIsAboveTarget ? 0 : 1;
-	const dropTargetIndex = selection.findIndex(s => s.id === dropTargetItem.id);
+	const dropTargetIndex = selection.findIndex(
+		(s) => s.id === dropTargetItem.id
+	);
 
 	return [
 		...filterNonSelectedItems(
@@ -81,20 +91,17 @@ export function getNewSelectionFromDragAndDropOntoOption(selection, selectedItem
 export function getNewSelection(isRemoving, items, selection) {
 	if (isRemoving) {
 		const ids = getIds(items.filter(({ locked }) => !locked));
-		return selection.filter(o => !ids.includes(o.id));
+		return selection.filter((o) => !ids.includes(o.id));
 	} else if (areItemsInCategory(items, selection)) {
 		return selection;
 	} else {
-		return [
-			...selection,
-			...items,
-		];
+		return [...selection, ...items];
 	}
 }
 
 export function filterNonSelectedItems(category, selectedItems) {
 	const selectedIds = getIds(selectedItems);
-	return category.filter(o => !selectedIds.includes(o.id));
+	return category.filter((o) => !selectedIds.includes(o.id));
 }
 
 export function selectionChanged(selection, prevSelection) {
@@ -110,12 +117,12 @@ export function selectionChanged(selection, prevSelection) {
 }
 
 export function wrapItemAndAddIsSelected(options, selectedItems) {
-	return options.map(option => ({
+	return options.map((option) => ({
 		item: option,
-		selected: selectedItems.some(o => o.id === option.id),
+		selected: selectedItems.some((o) => o.id === option.id),
 	}));
 }
 
 function getIds(items) {
-	return items.map(o => o.id);
+	return items.map((o) => o.id);
 }

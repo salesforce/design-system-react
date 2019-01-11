@@ -3,10 +3,7 @@ import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import Icon from '~/components/icon';
-import {
-	DragSource,
-	DropTarget,
-} from 'react-dnd';
+import { DragSource, DropTarget } from 'react-dnd';
 
 class Option extends React.Component {
 	static propTypes = {
@@ -29,49 +26,39 @@ class Option extends React.Component {
 		endDrag: PropTypes.func,
 		dragAndDropEnabled: PropTypes.bool,
 		disabled: PropTypes.bool,
-	}
+	};
 
 	static defaultProps = {
 		tabIndex: null,
 		disabled: false,
-	}
+	};
 
 	constructor(props) {
 		super(props);
 		this.id = 'dueling-picklist-option-' + shortid.generate();
 	}
-	
+
 	handleClick = (event) => {
 		event.stopPropagation();
 		event.preventDefault();
 
-		const {
-			shiftKey,
-			metaKey,
-			ctrlKey,
-		} = event;
+		const { shiftKey, metaKey, ctrlKey } = event;
 
 		const selectRange = shiftKey;
 		const selectAdditionalItem = metaKey || ctrlKey;
 
-		const {
-			onSelect,
-			option,
-		} = this.props;
+		const { onSelect, option } = this.props;
 
 		onSelect(option, selectRange, selectAdditionalItem);
-	}
+	};
 
 	handleFocus = (event) => {
-		event.preventDefault()
-		event.stopPropagation()
-		const {
-			onSelect,
-			option,
-		} = this.props;
+		event.preventDefault();
+		event.stopPropagation();
+		const { onSelect, option } = this.props;
 
 		onSelect(option, false, false, true);
-	}
+	};
 
 	render() {
 		const {
@@ -86,31 +73,32 @@ class Option extends React.Component {
 			dragAndDropEnabled,
 			disabled,
 		} = this.props;
-		const {
-			selected,
-			item,
-		} = option;
-		
+		const { selected, item } = option;
 
-		let className = 'slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline';
+		let className =
+			'slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline';
 		if (!disabled && selected) {
 			className += ' slds-is-selected';
 		}
-		if (!disabled && dragAndDropEnabled && (isDragging || isDraggingWithGroup || (dragAndDropWithArrowKeys && selected))) {
+		if (
+			!disabled &&
+			dragAndDropEnabled &&
+			(isDragging ||
+				isDraggingWithGroup ||
+				(dragAndDropWithArrowKeys && selected))
+		) {
 			className += ' slds-is-grabbed';
 		}
 
-		const events = disabled ? {} : {
-			onClick: this.handleClick,
-			onFocus: this.handleFocus,
-		};
+		const events = disabled
+			? {}
+			: {
+					onClick: this.handleClick,
+					onFocus: this.handleFocus,
+				};
 
 		const result = (
-			<li
-				role="presentation"
-				className="slds-listbox__item"
-				id={this.id}
-			>
+			<li role="presentation" className="slds-listbox__item" id={this.id}>
 				<div
 					className={className}
 					aria-selected={!disabled && (selected || isDragging)}
@@ -129,14 +117,13 @@ class Option extends React.Component {
 			</li>
 		);
 
-		return !disabled && dragAndDropEnabled ? connectDragSource(connectDropTarget(result)) : result;
+		return !disabled && dragAndDropEnabled
+			? connectDragSource(connectDropTarget(result))
+			: result;
 	}
 
 	renderLock() {
-		const {
-			option,
-			assistiveText,
-		} = this.props;
+		const { option, assistiveText } = this.props;
 
 		if (!option.item.locked) {
 			return null;
@@ -146,7 +133,10 @@ class Option extends React.Component {
 			<span className="slds-media__figure slds-media__figure_reverse">
 				<span className="slds-icon_container" title={assistiveText.itemLocked}>
 					<Icon category="utility" name="lock" size="xx-small" />
-					<span className="slds-assistive-text"> : {assistiveText.lockedItemCannotBeMoved}</span>
+					<span className="slds-assistive-text">
+						{' '}
+						: {assistiveText.lockedItemCannotBeMoved}
+					</span>
 				</span>
 			</span>
 		);
@@ -158,12 +148,12 @@ const optionSource = {
 		props.beginDrag();
 		return {
 			option: props.option,
-		}
+		};
 	},
 	endDrag(props) {
 		props.endDrag();
-	}
-}
+	},
+};
 
 const optionSourceCollector = (connect, monitor) => ({
 	connectDragSource: connect.dragSource(),
@@ -181,8 +171,8 @@ const optionTarget = {
 		const sourceIsAboveTarget = hoverClientY < hoverMiddleY;
 
 		props.onDrop(dropTarget, sourceIsAboveTarget);
-	}
-}
+	},
+};
 
 const optionCollector = (connect) => ({
 	connectDropTarget: connect.dropTarget(),

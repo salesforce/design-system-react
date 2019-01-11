@@ -8,7 +8,7 @@ import { fruitOptions } from './constants';
 
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
-	
+
 	getInitialState() {
 		return {
 			options: fruitOptions,
@@ -16,18 +16,18 @@ const Example = createReactClass({
 				...fruit,
 				locked: i === 0,
 			})),
-		}
-	},
-	
-	handleChange(selected) {
-		this.setState({ selected })
+		};
 	},
 
-	render () {
+	handleChange(selected) {
+		this.setState({ selected });
+	},
+
+	render() {
 		const { selected } = this.state;
 		const options = duelingPicklistFilter({
 			options: this.state.options,
-			selected
+			selected,
 		});
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -35,7 +35,7 @@ const Example = createReactClass({
 					options={options}
 					selected={selected}
 					events={{
-						onChange: this.handleChange
+						onChange: this.handleChange,
 					}}
 					isReorderable
 				/>
