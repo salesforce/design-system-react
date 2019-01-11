@@ -5756,7 +5756,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base"
     >
       Search
     </label>
@@ -5769,7 +5769,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -5780,10 +5780,10 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -5809,7 +5809,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
       </div>
       <div
         aria-orientation="horizontal"
-        id="combobox-unique-id-selected-listbox"
+        id="combobox-base-selected-listbox"
         role="listbox"
       >
         <ul
@@ -5967,7 +5967,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base-custom-menu-item"
     >
       Search
     </label>
@@ -5980,7 +5980,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -5991,10 +5991,10 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-custom-menu-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base-custom-menu-item"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6032,7 +6032,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base-inherit-menu-width"
     >
       Search
     </label>
@@ -6045,7 +6045,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-inherit-menu-width-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -6056,10 +6056,10 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-inherit-menu-width-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base-inherit-menu-width"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6103,7 +6103,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
     >
       <label
         className="slds-form-element__label"
-        htmlFor="combobox-unique-id"
+        htmlFor="combobox-base-inline-help"
       >
         Search
       </label>
@@ -6153,7 +6153,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           <div
             aria-expanded={false}
             aria-haspopup="listbox"
-            aria-owns="combobox-unique-id-listbox"
+            aria-owns="combobox-base-inline-help-listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
             role="combobox"
           >
@@ -6164,10 +6164,10 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
-                aria-controls="combobox-unique-id-listbox"
+                aria-controls="combobox-base-inline-help-listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
-                id="combobox-unique-id"
+                id="combobox-base-inline-help"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onClick={[Function]}
@@ -6193,7 +6193,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         </div>
         <div
           aria-orientation="horizontal"
-          id="combobox-unique-id-selected-listbox"
+          id="combobox-base-inline-help-selected-listbox"
           role="listbox"
         >
           <ul
@@ -6352,7 +6352,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base-menu-separator"
     >
       Search
     </label>
@@ -6365,7 +6365,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-menu-separator-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -6376,10 +6376,10 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-menu-separator-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base-menu-separator"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6417,7 +6417,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base-menu-subheader"
     >
       Search
     </label>
@@ -6430,7 +6430,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-menu-subheader-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -6441,10 +6441,10 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-menu-subheader-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base-menu-subheader"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6482,7 +6482,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base-predefined-options"
     >
       Search
     </label>
@@ -6495,7 +6495,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-predefined-options-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -6506,10 +6506,10 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-predefined-options-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base-predefined-options"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6535,7 +6535,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
       </div>
       <div
         aria-orientation="horizontal"
-        id="combobox-unique-id-selected-listbox"
+        id="combobox-base-predefined-options-selected-listbox"
         role="listbox"
       >
         <ul
@@ -6693,7 +6693,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-inline-multiple"
     >
       Search
     </label>
@@ -6705,7 +6705,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
       >
         <div
           aria-orientation="horizontal"
-          id="combobox-unique-id-selected-listbox"
+          id="combobox-inline-multiple-selected-listbox"
           role="listbox"
         >
           <ul
@@ -6864,10 +6864,10 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-inline-multiple-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-inline-multiple"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6905,7 +6905,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-inline-single"
     >
       Search
     </label>
@@ -6928,10 +6928,10 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-inline-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-inline-single"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -6969,7 +6969,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-readonly-multiple"
     >
       Search
     </label>
@@ -6994,10 +6994,10 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-readonly-multiple-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-readonly-multiple"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -7039,7 +7039,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-readonly-single"
     >
       Search
     </label>
@@ -7064,10 +7064,10 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-readonly-single"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -7109,7 +7109,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-readonly-single-custom-item"
     >
       Search
     </label>
@@ -7134,10 +7134,10 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-readonly-single-custom-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-readonly-single-custom-item"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -7179,7 +7179,7 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-required-error-state"
     >
       <abbr
         className="slds-required"
@@ -7198,7 +7198,7 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-required-error-state-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
           role="combobox"
         >
@@ -7209,11 +7209,11 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-required-error-state-listbox"
               aria-describedby="description-unique-id"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-required-error-state"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -7261,7 +7261,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-base-custom-menu-item"
     >
       Search
     </label>
@@ -7274,7 +7274,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
         <div
           aria-expanded={true}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -7285,10 +7285,10 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-base-custom-menu-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-base-custom-menu-item"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -7311,7 +7311,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
             </svg>
           </div>
           <div
-            id="combobox-unique-id-listbox"
+            id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
@@ -7334,7 +7334,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-1"
+                  id="combobox-base-custom-menu-item-listbox-option-1"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7359,7 +7359,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-2"
+                  id="combobox-base-custom-menu-item-listbox-option-2"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7384,7 +7384,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-3"
+                  id="combobox-base-custom-menu-item-listbox-option-3"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7409,7 +7409,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-4"
+                  id="combobox-base-custom-menu-item-listbox-option-4"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7434,7 +7434,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-5"
+                  id="combobox-base-custom-menu-item-listbox-option-5"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7459,7 +7459,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-6"
+                  id="combobox-base-custom-menu-item-listbox-option-6"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7484,7 +7484,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-7"
+                  id="combobox-base-custom-menu-item-listbox-option-7"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7509,7 +7509,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-8"
+                  id="combobox-base-custom-menu-item-listbox-option-8"
                   onClick={[Function]}
                   role="option"
                 >
@@ -7545,7 +7545,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-required-error-state"
     >
       <abbr
         className="slds-required"
@@ -7564,7 +7564,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
+          aria-owns="combobox-required-error-state-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
           role="combobox"
         >
@@ -7575,11 +7575,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-required-error-state-listbox"
               aria-describedby="description-unique-id"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-required-error-state"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -8990,7 +8990,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-unique-id"
+      htmlFor="combobox-readonly-single-custom-item"
     >
       Search
     </label>
@@ -9015,10 +9015,10 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
+              aria-controls="combobox-readonly-single-custom-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
-              id="combobox-unique-id"
+              id="combobox-readonly-single-custom-item"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -9045,7 +9045,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
             </span>
           </div>
           <div
-            id="combobox-unique-id-listbox"
+            id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
@@ -9068,7 +9068,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-1"
+                  id="combobox-readonly-single-custom-item-listbox-option-1"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9136,7 +9136,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-2"
+                  id="combobox-readonly-single-custom-item-listbox-option-2"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9204,7 +9204,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-3"
+                  id="combobox-readonly-single-custom-item-listbox-option-3"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9272,7 +9272,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-4"
+                  id="combobox-readonly-single-custom-item-listbox-option-4"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9340,7 +9340,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-5"
+                  id="combobox-readonly-single-custom-item-listbox-option-5"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9408,7 +9408,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-6"
+                  id="combobox-readonly-single-custom-item-listbox-option-6"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9476,7 +9476,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-7"
+                  id="combobox-readonly-single-custom-item-listbox-option-7"
                   onClick={[Function]}
                   role="option"
                 >
@@ -9544,7 +9544,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 <span
                   aria-selected={false}
                   className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="combobox-unique-id-listbox-option-8"
+                  id="combobox-readonly-single-custom-item-listbox-option-8"
                   onClick={[Function]}
                   role="option"
                 >
