@@ -73,7 +73,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id='combobox-base-inherit-menu-width'
+					id="combobox-base-inherit-menu-width"
 					disabled={this.props.disabled}
 					inheritWidthOf="menu"
 					events={{

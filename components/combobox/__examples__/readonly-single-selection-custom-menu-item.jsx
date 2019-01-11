@@ -98,7 +98,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id='combobox-readonly-single-custom-item'
+					id="combobox-readonly-single-custom-item"
 					events={{
 						onSelect: (event, data) => {
 							if (this.props.action) {

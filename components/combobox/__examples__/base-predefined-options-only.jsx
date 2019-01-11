@@ -79,7 +79,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id='combobox-base-predefined-options'
+					id="combobox-base-predefined-options"
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {
