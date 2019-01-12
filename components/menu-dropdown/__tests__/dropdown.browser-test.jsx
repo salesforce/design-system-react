@@ -374,29 +374,16 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				1
 			);
-			openNodes.menu
-				.find('.slds-dropdown__item a')
-				.at(0)
-				.simulate('click');
+			const firstNode = openNodes.menu.find('.slds-dropdown__item a').at(0);
+			firstNode.simulate('click');
 			openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				2
 			);
-      // item with checkmark has proper aria markup
-			expect(openNodes.menu.find('.slds-dropdown__item a')).attr('aria-checked', 'true');
+			// item with checkmark has proper aria markup
+			expect(firstNode).attr('aria-checked', 'true');
+			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
-
-		it('<a> inside <li> has role menuitemcheckbox', function() {
-			const nodes = getNodes({ wrapper: this.wrapper });
-			nodes.trigger.simulate('click', {});
-			const openNodes = getNodes({ wrapper: this.wrapper });
-			const anchorRole = openNodes.menu
-				.find('li a')
-				.first()
-				.prop('role');
-			expect(anchorRole).to.equal('menuitemcheckbox');
-		});
-
 	});
 
 	// Hover and hybrid hover UX patterns are not approved UX patterns due to accessibility concerns
