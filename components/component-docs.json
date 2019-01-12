@@ -329,7 +329,7 @@
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nAlso note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.\nExample:\n```\nimport AppLauncher from 'design-system-react/components/app-launcher';\nimport AppLauncherTile from 'design-system-react/components/app-launcher/tile';\nimport AppLauncherSection from 'design-system-react/components/app-launcher/section';\n```\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
             {
                 "name": "openAppLauncher",
@@ -1022,7 +1022,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -1078,50 +1078,6 @@
             }
         ],
         "props": {
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Used if the Button triggers a tooltip. The value should match the `id` of the element with `role=\"tooltip\"`."
-            },
-            "aria-controls": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions."
-            },
-            "aria-expanded": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "bool"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed."
-            },
-            "aria-haspopup": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "bool"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "True if Button triggers a menu or popup to open/close."
-            },
             "assistiveText": {
                 "type": {
                     "name": "shape",
@@ -3386,26 +3342,6 @@
                     }
                 ],
                 "returns": null
-            },
-            {
-                "name": "renderFieldLevelHelpTooltip",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "fieldLevelHelpTooltip",
-                        "type": null
-                    },
-                    {
-                        "name": "labels",
-                        "type": null
-                    },
-                    {
-                        "name": "assistiveText",
-                        "type": null
-                    }
-                ],
-                "returns": null
             }
         ],
         "props": {
@@ -4144,7 +4080,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility"
+                "description": "Specifies a row selection UX pattern.\n* `checkbox`: Multiple row selection.\n* `radio`: _Required_ single row selection.\n_This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._"
             },
             "stacked": {
                 "type": {
@@ -5379,17 +5315,13 @@
                         "spinner": {
                             "name": "string",
                             "required": false
-                        },
-                        "fieldLevelHelpButton": {
-                            "name": "string",
-                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.\n* `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.",
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
                 "defaultValue": {
-                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    fieldLevelHelpButton: 'Help',\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
             },
@@ -5460,7 +5392,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label. The props from the component will be merged and override any default props."
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label."
             },
             "fixedTextLeft": {
                 "type": {
