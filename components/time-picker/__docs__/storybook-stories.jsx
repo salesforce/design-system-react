@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { TIME_PICKER } from '../../../utilities/constants';

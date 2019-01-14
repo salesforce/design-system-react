@@ -19,11 +19,15 @@ const propTypes = {
 	 * Info node passed by PageHeader
 	 */
 	info: PropTypes.node,
+	/**
+	 * Nav content which appears in the upper right hand corner.
+	 */
+	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const Base = (props) => (
-	<div className="slds-page-header__row">
-		<div className="slds-page-header__col-title">
+	<div className="slds-grid slds-page-header__row">
+		<div className="slds-col slds-page-header__col-title">
 			<MediaObject
 				body={
 					<div>
@@ -31,8 +35,12 @@ const Base = (props) => (
 						{props.info}
 					</div>
 				}
+				className="slds-no-space slds-grow"
 				figure={props.icon}
 			/>
+		</div>
+		<div className="slds-col slds-no-flex slds-grid slds-align-top">
+			{props.navRight}
 		</div>
 	</div>
 );

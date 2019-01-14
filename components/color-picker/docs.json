@@ -1,6 +1,6 @@
 {
 	"component": "color-picker",
-	"status": "prototype",
+	"status": "prod",
 	"display-name": "Color Pickers",
 	"SLDS-component-path": "/components/color-picker",
 	"url-slug": "color-picker"

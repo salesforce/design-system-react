@@ -32,17 +32,6 @@ class Example extends React.Component {
 							value="Read Only Value"
 						/>
 					</div>
-					<div className="slds-col_padded">
-						<h1 className="slds-text-title_caps slds-p-vertical_medium">
-							Static Input
-						</h1>
-						<Input
-							id="unique-id-3"
-							label="Input Label"
-							isStatic
-							value="Read Only Value"
-						/>
-					</div>
 				</section>
 			</IconSettings>
 		);

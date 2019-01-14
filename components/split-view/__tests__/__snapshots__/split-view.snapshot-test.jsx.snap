@@ -117,7 +117,7 @@ exports[`Base Closed DOM Snapshot 1`] = `
 exports[`Base Closed HTML Snapshot 1`] = `
 "<div style=\\"height:90vh\\">
   <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
-    <div style=\\"max-width:0\\" class=\\"slds-split-view_container slds-is-closed\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button\\" title=\\"Open split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Open split view</span></button></div>
+    <div style=\\"max-width:0\\" class=\\"slds-split-view_container slds-is-closed\\"><button class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button\\" title=\\"Open split view\\" type=\\"button\\" aria-expanded=\\"false\\" aria-controls=\\"master_view_base-example\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Open split view</span></button></div>
     <div
       style=\\"margin-left:0.75rem\\" class=\\"slds-grow slds-scrollable_y\\">
       <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
@@ -958,7 +958,7 @@ exports[`Base Multiple DOM Snapshot 1`] = `
 exports[`Base Multiple HTML Snapshot 1`] = `
 "<div style=\\"height:90vh\\">
   <div id=\\"base-multiple-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
-    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-multiple-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
+    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\" aria-expanded=\\"true\\" aria-controls=\\"master_view_base-multiple-example\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
       <article
         id=\\"master_view_base-multiple-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header_object-home slds-split-view__header slds-has-bottom-magnet\\">
@@ -971,7 +971,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
                     <div>
                       <div class=\\"slds-media__body\\">
                         <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
-                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
                         </h1>
                       </div>
                     </div>
@@ -980,7 +980,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
                 <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
                 </div>
               </div>
             </div>
@@ -990,7 +990,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
                   <button
                     class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
                 </div>
@@ -1903,7 +1903,7 @@ exports[`Base Open DOM Snapshot 1`] = `
 exports[`Base Open HTML Snapshot 1`] = `
 "<div style=\\"height:90vh\\">
   <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
-    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
+    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\" aria-expanded=\\"true\\" aria-controls=\\"master_view_base-example\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
       <article
         id=\\"master_view_base-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header_object-home slds-split-view__header slds-has-bottom-magnet\\">
@@ -1916,7 +1916,7 @@ exports[`Base Open HTML Snapshot 1`] = `
                     <div>
                       <div class=\\"slds-media__body\\">
                         <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
-                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
                         </h1>
                       </div>
                     </div>
@@ -1925,7 +1925,7 @@ exports[`Base Open HTML Snapshot 1`] = `
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
                 <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
                 </div>
               </div>
             </div>
@@ -1935,7 +1935,7 @@ exports[`Base Open HTML Snapshot 1`] = `
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
                   <button
                     class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
                 </div>
@@ -2586,7 +2586,7 @@ exports[`Custom DOM Snapshot 1`] = `
 exports[`Custom HTML Snapshot 1`] = `
 "<div style=\\"height:90vh\\">
   <div id=\\"custom-example\\" class=\\"slds-grid\\" style=\\"height:100%\\">
-    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_custom-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
+    <div style=\\"max-width:20rem\\" class=\\"slds-split-view_container slds-is-open\\"><button class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\" aria-expanded=\\"true\\" aria-controls=\\"master_view_custom-example\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Close split view</span></button>
       <article
         id=\\"master_view_custom-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
         <div class=\\"slds-page-header slds-page-header_object-home slds-split-view__header slds-has-bottom-magnet\\">
@@ -2599,7 +2599,7 @@ exports[`Custom HTML Snapshot 1`] = `
                     <div>
                       <div class=\\"slds-media__body\\">
                         <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
-                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-title-leads\\"><button class=\\"slds-button slds-button_reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
                         </h1>
                       </div>
                     </div>
@@ -2608,7 +2608,7 @@ exports[`Custom HTML Snapshot 1`] = `
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small\\">
                 <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-nav-right-more\\"><button class=\\"slds-button slds-button_icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
                 </div>
               </div>
             </div>
@@ -2618,7 +2618,7 @@ exports[`Custom HTML Snapshot 1`] = `
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
                 <div class=\\"slds-grid\\">
-                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
                   <button
                     class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
                 </div>

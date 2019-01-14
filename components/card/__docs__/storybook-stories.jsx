@@ -2,7 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { CARD } from '../../../utilities/constants';
@@ -21,10 +22,12 @@ import InlineEdit from '../../forms/input/inline';
 import RelatedListWithTable from '../__examples__/related-list-with-table';
 
 const sampleItems = [
-	{ name: 'Cloudhub' },
-	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' },
+	{ id: '0', name: 'Cloudhub' },
+	{ id: '1', name: 'Cloudhub + Anypoint Connectors' },
+	{ id: '2', name: 'Cloud City' },
 ];
+
+let currentId = 3;
 
 class DemoCard extends React.Component {
 	static displayName = 'DemoCard';
@@ -64,7 +67,10 @@ class DemoCard extends React.Component {
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: `New item #${shortid.generate()}` }, ...this.state.items],
+			items: [
+				{ id: currentId++, name: `New item #${shortid.generate()}` },
+				...this.state.items,
+			],
 		});
 	};
 
@@ -108,7 +114,7 @@ class DemoCard extends React.Component {
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
 				>
-					<DataTable id="SLDSDataTableExample-1" items={items} bordered>
+					<DataTable id="SLDSDataTableExample-1" items={items}>
 						<DataTableColumn label="Opportunity Name" property="name" truncate>
 							<DataTableHighlightCell search={this.state.filter} />
 						</DataTableColumn>

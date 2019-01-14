@@ -21,6 +21,8 @@ exports[`Radio Group Base DOM Snapshot 1`] = `
           id="Radio Label One"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label One"
         />
@@ -46,6 +48,8 @@ exports[`Radio Group Base DOM Snapshot 1`] = `
           id="Radio Label Two"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label Two"
         />
@@ -102,6 +106,8 @@ exports[`Radio Group Disabled DOM Snapshot 1`] = `
           id="Radio Label One"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label One"
         />
@@ -128,6 +134,8 @@ exports[`Radio Group Disabled DOM Snapshot 1`] = `
           id="Radio Label Two"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label Two"
         />
@@ -172,6 +180,8 @@ exports[`Radio Group Error DOM Snapshot 1`] = `
           id="Radio Label One"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label One"
         />
@@ -198,6 +208,8 @@ exports[`Radio Group Error DOM Snapshot 1`] = `
           id="Radio Label Two"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label Two"
         />
@@ -253,6 +265,8 @@ exports[`Radio Group Required DOM Snapshot 1`] = `
           id="Radio Label One"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label One"
         />
@@ -278,6 +292,8 @@ exports[`Radio Group Required DOM Snapshot 1`] = `
           id="Radio Label Two"
           name="radioGroup"
           onChange={[Function]}
+          onClick={[Function]}
+          onKeyPress={[Function]}
           type="radio"
           value="Radio Label Two"
         />

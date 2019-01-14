@@ -11,6 +11,11 @@
 4. Create environment variable, `NPM_CONFIG_PRODUCTION` and set to `false`.
 5. Create environment variable, `ORIGIN` and set to `[git@github.com:[your username]/design-system-react.git]`
 6. Create environment variable, `GIT_SSH_KEY` and set to a user's private key (base64 encoded) that has access to your repository. `openssl base64 < [PRIVATE_KEY_FILENAME] | tr -d '\n' | pbcopy`
+7. Create environment variable, `TARGET_BRANCH` and set to `master`
+
+## local release to your origin remote ()
+npx babel-node scripts/release.js --release=patch --remote=origin --buildserver=true --targetbranch=0.8.x
+
 */
 
 import async from 'async';
@@ -24,6 +29,7 @@ const argv = minimist(process.argv.slice(2));
 const rootPath = path.resolve(__dirname, '../');
 const remote = argv.remote || 'upstream';
 const isBuildServer = argv.buildserver || false;
+const targetBranch = process.env.TARGET_BRANCH || 'master';
 
 let currentVersionReleaseNotes = '';
 
@@ -35,9 +41,8 @@ const tasks = ({ release, done }) => {
 		},
 		{
 			ignoreCommand: isBuildServer,
-			message:
-				'# Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."',
-			command: 'git checkout master',
+			message: `# Checking out ${targetBranch} branch. Please ignore "RELEASENOTES.md - Your branch and 'upstream/master' have diverged."`,
+			command: `git checkout ${targetBranch}`,
 		},
 		{
 			ignoreCommand: isBuildServer,
@@ -87,7 +92,7 @@ const tasks = ({ release, done }) => {
 		},
 		{
 			ignoreCommand: isBuildServer,
-			command: 'git pull upstream master',
+			command: `git pull upstream ${targetBranch}`,
 		},
 		{
 			ignoreCommand: isBuildServer,
@@ -104,8 +109,8 @@ const tasks = ({ release, done }) => {
 			verbose: false,
 		},
 		{
-			message: `# Pushing local master branch to ${remote} remote`,
-			command: `git push ${remote} master --no-verify`,
+			message: `# Pushing local ${targetBranch} branch to ${remote} remote`,
+			command: `git push ${remote} ${targetBranch} --no-verify`,
 		},
 		{
 			message: '# Set up NPM configuration',
@@ -159,6 +164,7 @@ const releaseNotesSchema = {
 
 // START HERE
 if (isBuildServer) {
+	console.log('Looking for semver markdown file');
 	// determine semvar release type
 	fs.open('patch.md', 'r', (err, fileDescriptor) => {
 		if (!err) {

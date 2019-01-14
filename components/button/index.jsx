@@ -13,6 +13,8 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 import Tooltip from '../tooltip';
 
+import getAriaProps from '../../utilities/get-aria-props';
+
 import { BUTTON } from '../../utilities/constants';
 
 const defaultProps = {
@@ -27,29 +29,13 @@ const defaultProps = {
 
 /**
  * The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.
- * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.
- * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
+ * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
+ * Although not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.
  */
 class Button extends React.Component {
 	static displayName = BUTTON;
 
 	static propTypes = {
-		/**
-		 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
-		 */
-		'aria-describedby': PropTypes.string,
-		/**
-		 * Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions.
-		 */
-		'aria-controls': PropTypes.string,
-		/**
-		 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
-		 */
-		'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-		/**
-		 * True if Button triggers a menu or popup to open/close.
-		 */
-		'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -169,6 +155,10 @@ class Button extends React.Component {
 		 * Triggered when a mouse arrow no longer hovers
 		 */
 		onMouseLeave: PropTypes.func,
+		/**
+		 * Triggered when a mouse button is released
+		 */
+		onMouseUp: PropTypes.func,
 		/**
 		 * If true, button scales to 100% width on small form factors.
 		 */
@@ -306,56 +296,57 @@ class Button extends React.Component {
 		);
 	};
 
-	renderButton = () => (
-		<button
-			aria-controls={this.props['aria-controls']}
-			aria-describedby={this.props['aria-describedby']}
-			aria-expanded={this.props['aria-expanded']}
-			aria-haspopup={this.props['aria-haspopup']}
-			className={this.getClassName()}
-			disabled={this.props.disabled}
-			id={this.props.id}
-			onBlur={this.props.onBlur}
-			onClick={this.handleClick}
-			onFocus={this.props.onFocus}
-			onKeyDown={this.props.onKeyDown}
-			onKeyPress={this.props.onKeyPress}
-			onKeyUp={this.props.onKeyUp}
-			onMouseDown={this.props.onMouseDown}
-			onMouseEnter={this.props.onMouseEnter}
-			onMouseLeave={this.props.onMouseLeave}
-			ref={(component) => {
-				if (this.props.buttonRef) {
-					this.props.buttonRef(component);
+	renderButton = () => {
+		const ariaProps = getAriaProps(this.props);
+		return (
+			<button
+				className={this.getClassName()}
+				disabled={this.props.disabled}
+				id={this.props.id}
+				onBlur={this.props.onBlur}
+				onClick={this.handleClick}
+				onFocus={this.props.onFocus}
+				onKeyDown={this.props.onKeyDown}
+				onKeyPress={this.props.onKeyPress}
+				onKeyUp={this.props.onKeyUp}
+				onMouseDown={this.props.onMouseDown}
+				onMouseEnter={this.props.onMouseEnter}
+				onMouseLeave={this.props.onMouseLeave}
+				onMouseUp={this.props.onMouseUp}
+				ref={(component) => {
+					if (this.props.buttonRef) {
+						this.props.buttonRef(component);
+					}
+				}}
+				tabIndex={this.props.tabIndex}
+				title={this.props.title}
+				type={this.props.type}
+				style={this.props.style}
+				{...ariaProps}
+			>
+				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
+
+				{this.props.iconName || this.props.iconPath
+					? this.renderIcon(this.props.iconName)
+					: null}
+				{this.props.iconVariant === 'more' ? (
+					<ButtonIcon
+						category="utility"
+						name="down"
+						size="x-small"
+						className={this.props.iconClassName}
+					/>
+				) : null}
+
+				{this.props.iconPosition === 'left' || !this.props.iconPosition
+					? this.renderLabel()
+					: null}
+				{
+					this.props.children // eslint-disable-line react/prop-types
 				}
-			}}
-			tabIndex={this.props.tabIndex}
-			title={this.props.title}
-			type={this.props.type}
-			style={this.props.style}
-		>
-			{this.props.iconPosition === 'right' ? this.renderLabel() : null}
-
-			{this.props.iconName || this.props.iconPath
-				? this.renderIcon(this.props.iconName)
-				: null}
-			{this.props.iconVariant === 'more' ? (
-				<ButtonIcon
-					category="utility"
-					name="down"
-					size="x-small"
-					className={this.props.iconClassName}
-				/>
-			) : null}
-
-			{this.props.iconPosition === 'left' || !this.props.iconPosition
-				? this.renderLabel()
-				: null}
-			{
-				this.props.children // eslint-disable-line react/prop-types
-			}
-		</button>
-	);
+			</button>
+		);
+	};
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
 	renderTooltip = () => (

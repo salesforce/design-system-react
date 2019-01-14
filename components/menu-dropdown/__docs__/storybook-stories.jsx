@@ -3,7 +3,8 @@
 
 import React from 'react';
 
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { MENU_DROPDOWN } from '../../../utilities/constants';
@@ -326,6 +327,21 @@ storiesOf(MENU_DROPDOWN, module)
 			})}
 		</div>
 	))
+	.add('Checkmark', () =>
+		getDropdown({
+			assistiveText: { icon: 'More Options' },
+			buttonVariant: 'icon',
+			checkmark: true,
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconVariant: 'border-filled',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+			value: 'C0',
+		})
+	)
 	.add('Hover with Checkmark', () =>
 		getDropdown({
 			assistiveText: { icon: 'More Options' },

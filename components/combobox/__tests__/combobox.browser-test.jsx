@@ -1,4 +1,4 @@
-// Import your external dependencies
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';

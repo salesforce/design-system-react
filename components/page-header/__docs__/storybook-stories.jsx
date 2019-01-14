@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { PAGE_HEADER } from '../../../utilities/constants';
 import IconSettings from '../../icon-settings';
 
@@ -100,6 +101,7 @@ const recordHomeContentRight = (
 				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
+				id="page-header-dropdown-record-home-content-right"
 				onSelect={action('select')}
 				openOn="click"
 				align="right"
@@ -116,7 +118,12 @@ const customTooltip = () => {
 	const content =
 		'here is a super long description that will truncate and the rest of it will show in the tooltip.';
 	return (
-		<Tooltip align="top" content={content} triggerStyle={{ display: 'inline' }}>
+		<Tooltip
+			align="top"
+			content={content}
+			id="page-header-truncate-tooltip"
+			triggerStyle={{ display: 'inline' }}
+		>
 			<p tabIndex="0" className="slds-truncate">
 				{content}
 			</p>
@@ -176,6 +183,7 @@ const objectHomeContentRight = (
 				buttonVariant="icon"
 				iconName="sort"
 				iconVariant="more"
+				id="page-header-dropdown-object-home-content-right"
 				onSelect={action('select')}
 				openOn="click"
 				align="right"
@@ -199,6 +207,7 @@ const objectHomeNavRight = (
 			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
+			id="page-header-dropdown-object-home-nav-right"
 			onSelect={action('select')}
 			options={[
 				{ label: 'Refresh List', value: 'A0' },
@@ -241,6 +250,7 @@ const relatedListContentRight = (
 				buttonVariant="icon"
 				iconName="sort"
 				iconVariant="more"
+				id="page-header-dropdown-related-list-content-right"
 				onSelect={action('select')}
 				openOn="click"
 				align="right"
@@ -264,6 +274,7 @@ const relatedListNavRight = (
 			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
+			id="page-header-dropdown-related-list-nav-right"
 			onSelect={action('select')}
 			openOn="click"
 			align="right"
@@ -294,6 +305,16 @@ storiesOf(PAGE_HEADER, module)
 			iconName: 'opportunity',
 			title: 'Rohde Corp - 80,000 Widgets',
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
+		})
+	)
+	.add('Base with content right', () =>
+		getPageHeader({
+			iconAssistiveText: 'Opportunity',
+			iconCategory: 'standard',
+			iconName: 'opportunity',
+			title: 'Rohde Corp - 80,000 Widgets',
+			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
+			navRight: objectHomeNavRight,
 		})
 	)
 	.add('Record Home (truncates)', () =>

@@ -23,6 +23,13 @@ if (process.env.NODE_ENV !== 'production') {
 			// Deprecated and changed to another property
 			deprecatedProperty(
 				COMPONENT,
+				props.assistiveText.fieldLevelHelpButton,
+				'assistiveText.fieldLevelHelpButton',
+				undefined,
+				`Please pass a \`Tooltip\` component into \`fieldLevelHelpTooltip\` with \`assistiveText.triggerLearnMoreIcon\`.`
+			);
+			deprecatedProperty(
+				COMPONENT,
 				props.iconCategory,
 				'iconCategory',
 				undefined,

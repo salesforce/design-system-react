@@ -2,23 +2,40 @@
 
 First, on behalf of the core maintainers, I'd like to thank you for wanting to contribute and make the user experience for your end-users better and improve the developer experience of this library. :+1::tada: -- [@interactivellama](https://github.com/interactivellama/)
 
+If you are adding or changing component props, the first step is to propose the feature so that others have time to comment on it. Please submit a props proposal such as this one for [Dueling Picklist](https://github.com/salesforce/design-system-react/issues/1667) as an issue.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+* [Setup](#setup)
+* [Adding a new prop](#adding-a-new-prop)
+* [How to add a new component](#how-to-add-a-new-component)
+* [Contributing Guidelines](#contributing-guidelines)
+* [The review process](#the-review-process)
+* [Testing the documentation site (internal)](#testing-the-documentation-site-internal)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Setup
 
-1. Fork this repository (button in upper right). Install [git](https://git-scm.com/) and clone your fork locally with `git clone git@github.com:[YOUR-USER]/design-system-react.git`. Create a [topic branch](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) locally such as `menu-alignment-fix`.
+1. Fork this repository (button in upper right). Install [git](https://git-scm.com/) and clone your fork locally with `git clone git@github.com:[YOUR-USER]/design-system-react.git`. This library only supports use of `git-bash` in Windows. The default command prompt may not work.
+1. Create a [topic branch](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) locally such as `menu-alignment-fix`.
 1. Install [Node and NPM](https://nodejs.org/en/). `npm install` to install development dependencies.
 1. `npm start` to start [Storybook](https://storybook.js.org/). View stories at [http://localhost:9001](http://localhost:9001). Modify the source code to update component stories in the sidebar.
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm contribution is within project scope.
 
 ## Adding a new prop
+
 1. This library is open to `data`, `ref`, `style`, and `className` on any element within reason, but especially open to it for the “primary part of a component” such as form elements such as `input` or a clickable elements such as `button`, since these are often used for testing purposes or form submission. This is probably a better way to write unit tests, anyway, since SLDS class changes are not considered breaking changes.
-    1. `ref` callbacks should be within an `object` named refs with typically a key name of the HTML tag name. These should be tested with a Mocha callback.
-	 1. `style` props should be `style[SUFFIX]` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
-	 1. `className` props should be `className[SUFFIX]` and be `PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
+   1. `ref` callbacks should be within an `object` named refs with typically a key name of the HTML tag name. These should be tested with a Mocha callback.
+   1. `style` props should be `style[SUFFIX]` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
+   1. `className` props should be `className[SUFFIX]` and be `PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])` and be tested with a Jest DOM snapshot by adding a Story to Storybook.
 
 ## How to add a new component
 
 1. Create a new issue or add to an existing one.
-   1. **List out all public props**, so that props can be consistent across the library. You are proposing an API that hopefully will never have to be changed.
+   1. **List out all public props**, so that props can be consistent across the library. Here is [an example](https://github.com/salesforce/design-system-react/issues/1667). You are proposing an API that hopefully will never have to be changed.
 1. Build out the component file structure
    1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
 1. Connect the newly created files

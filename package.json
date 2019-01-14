@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.9.0",
+	"version": "0.9.4",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -19,7 +19,7 @@
 		"lint:docs": "npx prettylint \"*.md\"",
 		"lint:fix": "cross-env NODE_ENV=test npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx concurrently \"npx prettier --list-different \"**/*.{js,jsx}\"\" \"npx prettylint \"*.json\"\"",
-		"lint:quality": "npx concurrently \"npx eslint \"**/*.{js,json}\" --max-warnings=0\" \"npx eslint \"**/*.{jsx}\" --max-warnings=0\"",
+		"lint:quality": "npx concurrently \"npx eslint \"**/*.{jsx,js,json}\" --max-warnings=0\"",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
 		"publish:edge": "npx babel-node scripts/publish-to-git.js --tag=edge",
 		"publish:upstream": "npx babel-node scripts/publish-to-git.js --remote=upstream",
@@ -168,11 +168,10 @@
 		"json-loader": "^0.5.3",
 		"karma": "^1.7.0",
 		"karma-chai-sinon": "^0.1.5",
-		"karma-chrome-launcher": "^2.0.0",
+		"karma-chrome-launcher": "^2.2.0",
 		"karma-cli": "^1.0.0",
 		"karma-coverage": "^1.0.0",
 		"karma-mocha": "^1.0.1",
-		"karma-phantomjs-launcher": "^1.0.4",
 		"karma-sourcemap-loader": "^0.3.5",
 		"karma-spec-reporter": "^0.0.31",
 		"karma-webpack": "^3.0.0",
@@ -188,10 +187,10 @@
 		"object.entries": "^1.0.4",
 		"phantomjs-polyfill-find-index": "^1.0.1",
 		"phantomjs-polyfill-includes": "^1.0.2",
-		"phantomjs-prebuilt": "^2.1.15",
 		"prettier": "1.9.2",
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
+		"puppeteer": "^1.9.0",
 		"react": "^16.4",
 		"react-docgen": "^2.21.0",
 		"react-dom": "^16.4",
@@ -345,7 +344,7 @@
 		},
 		{
 			"component": "color-picker",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Color Pickers",
 			"SLDS-component-path": "/components/color-picker",
 			"url-slug": "color-picker"
@@ -355,8 +354,8 @@
 			"status": "prod",
 			"display-name": "Comboboxes",
 			"last-accessibility-review": {
-				"date-iso-8601": "2017/08/21",
-				"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+				"date-iso-8601": "2019/01/10",
+				"commit-sha": "ad49735c8055420c4c95872299986f5fbbb2236e"
 			},
 			"SLDS-component-path": "/components/combobox",
 			"url-slug": "comboboxes"
@@ -543,10 +542,17 @@
 		},
 		{
 			"component": "pill",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Pills",
 			"SLDS-component-path": "/components/pills",
 			"url-slug": "pills"
+		},
+		{
+			"component": "pill-container",
+			"status": "prod",
+			"display-name": "Pill Container",
+			"SLDS-component-path": "/components/pill-container",
+			"url-slug": "pill-container"
 		},
 		{
 			"component": "popover",

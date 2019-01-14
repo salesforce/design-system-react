@@ -82,6 +82,7 @@ class CheckboxIndeterminate extends React.Component {
 					assistiveText={{
 						label: 'Checkbox (indeterminate)',
 					}}
+					id="checkbox-example-standard-indeterminate"
 					label="Checkbox Label"
 					name="checkbox-example-standard-indeterminate"
 					checked={this.state.checked}
@@ -133,6 +134,7 @@ storiesOf(CHECKBOX, module)
 							I must make my checkbox true.
 							I must make it truer than my radio button who is trying to... `,
 				}}
+				id="checkbox-example-base-assistiveText"
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
@@ -155,6 +157,7 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox (checked)', () => (
 		<Checkbox
 			checked
+			id="checkbox-example-base-checked"
 			label="Checkbox Label"
 			name="checkbox-example-base-checked"
 			onChange={action('change')}
@@ -163,6 +166,7 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox (indeterminate)', () => <CheckboxIndeterminate />)
 	.add('Checkbox Toggle', () => (
 		<Checkbox
+			id="checkbox-example-toggle"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle"
 			onChange={action('change')}
@@ -174,6 +178,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (with error)', () => (
 		<Checkbox
+			id="checkbox-example-toggle-error"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-error"
 			errorText="This field has an error."
@@ -186,6 +191,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (required)', () => (
 		<Checkbox
+			id="checkbox-example-toggle-required"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-required"
 			onChange={action('change')}
@@ -198,6 +204,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (disabled)', () => (
 		<Checkbox
+			id="checkbox-example-toggle-disabled"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-disabled"
 			onChange={action('change')}
@@ -221,6 +228,7 @@ storiesOf(CHECKBOX, module)
 							I must make my checkbox true.
 							I must make it truer than my radio button who is trying to... `,
 				}}
+				id="checkbox-example-base-assistiveText"
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
@@ -244,6 +252,7 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (checked)', () => (
 		<Checkbox
 			checked
+			id="checkbox-example-toggle-checked"
 			label="Checkbox Label"
 			name="checkbox-example-toggle-checked"
 			onChange={action('change')}

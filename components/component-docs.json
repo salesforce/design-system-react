@@ -329,7 +329,7 @@
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nAlso note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.\nExample:\n```\nimport AppLauncher from 'design-system-react/components/app-launcher';\nimport AppLauncherTile from 'design-system-react/components/app-launcher/tile';\nimport AppLauncherSection from 'design-system-react/components/app-launcher/section';\n```\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
             {
                 "name": "openAppLauncher",
@@ -1022,7 +1022,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -1078,50 +1078,6 @@
             }
         ],
         "props": {
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Used if the Button triggers a tooltip. The value should match the `id` of the element with `role=\"tooltip\"`."
-            },
-            "aria-controls": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions."
-            },
-            "aria-expanded": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "bool"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed."
-            },
-            "aria-haspopup": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "bool"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "True if Button triggers a menu or popup to open/close."
-            },
             "assistiveText": {
                 "type": {
                     "name": "shape",
@@ -1396,6 +1352,13 @@
                 },
                 "required": false,
                 "description": "Triggered when a mouse arrow no longer hovers"
+            },
+            "onMouseUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a mouse button is released"
             },
             "responsive": {
                 "type": {
@@ -2805,6 +2768,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "swatchTabTransparentSwatch": {
+                            "name": "string",
+                            "required": false
+                        },
                         "submitButton": {
                             "name": "string",
                             "required": false
@@ -2814,7 +2781,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: An `input` label as for a `form`\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
                 "defaultValue": {
-                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n}",
+                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent Swatch',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n    swatchTabTransparentSwatch: 'Transparent Swatch',\n}",
                     "computed": false
                 }
             },
@@ -2853,7 +2820,7 @@
                 "required": false,
                 "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.\nTo specify transparent, use empty string as a value.",
                 "defaultValue": {
-                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n]",
+                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n    '',\n]",
                     "computed": false
                 }
             },
@@ -2999,6 +2966,18 @@
                 "returns": null
             },
             {
+                "name": "setSelectedListboxRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleBlurPill",
                 "docblock": null,
                 "modifiers": [],
@@ -3102,6 +3081,13 @@
                 "returns": null
             },
             {
+                "name": "handleKeyDownTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleKeyDownUp",
                 "docblock": null,
                 "modifiers": [],
@@ -3142,7 +3128,7 @@
                 "returns": null
             },
             {
-                "name": "handleNavigateListboxOfPills",
+                "name": "handleNavigateSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3174,7 +3160,7 @@
                 "returns": null
             },
             {
-                "name": "handlePillClickListboxOfPills",
+                "name": "handlePillClickSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3190,8 +3176,15 @@
                 "returns": null
             },
             {
+                "name": "handlePillFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleRemoveSelectedOption",
-                "docblock": "Selected options with listbox of pills event methods",
+                "docblock": "Selected options with selected listbox event methods",
                 "modifiers": [],
                 "params": [
                     {
@@ -3202,7 +3195,7 @@
                     }
                 ],
                 "returns": null,
-                "description": "Selected options with listbox of pills event methods"
+                "description": "Selected options with selected listbox event methods"
             },
             {
                 "name": "handleRequestClose",
@@ -3221,7 +3214,7 @@
                 "returns": null
             },
             {
-                "name": "handleRequestFocusListboxOfPills",
+                "name": "handleRequestFocusSelectedListbox",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3524,6 +3517,13 @@
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
             },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -3780,6 +3780,13 @@
                     "computed": false
                 }
             },
+            "selectedListboxRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback exposes the selected listbox reference / DOM node to parent components."
+            },
             "value": {
                 "type": {
                     "name": "string"
@@ -3871,6 +3878,30 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "resizeFixedHeaders",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "toggleFixedHeaderListeners",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "attach",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -3943,19 +3974,26 @@
                 "required": false,
                 "description": "A variant which adds border to the vertical columns."
             },
-            "id": {
+            "fixedHeader": {
                 "type": {
-                    "name": "string"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
+                "description": "Use this to enable fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with `fixedLayout`. Since scrolling is enabled, columns are not truncated unless a width is set. Due to `overflow:hidden` elements, any dialog components will need a separate render tree (portal) such as with `menuPosition: overflowBoundaryElement` in order to break out of the container."
             },
             "fixedLayout": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows)"
+                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
             },
             "items": {
                 "type": {
@@ -3980,6 +4018,13 @@
                 "required": false,
                 "description": "A variant which removes hover style on rows"
             },
+            "onFixedHeaderResize": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`"
+            },
             "onRowChange": {
                 "type": {
                     "name": "func"
@@ -3994,6 +4039,13 @@
                 "required": false,
                 "description": "This function fires when the table should be sorted."
             },
+            "onToggleFixedHeaderListeners": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`"
+            },
             "selection": {
                 "type": {
                     "name": "array"
@@ -4007,10 +4059,28 @@
             },
             "selectRows": {
                 "type": {
-                    "name": "bool"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "bool"
+                        },
+                        {
+                            "name": "enum",
+                            "value": [
+                                {
+                                    "value": "'checkbox'",
+                                    "computed": false
+                                },
+                                {
+                                    "value": "'radio'",
+                                    "computed": false
+                                }
+                            ]
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "True if rows should be selectable."
+                "description": "Specifies a row selection UX pattern.\n* `checkbox`: Multiple row selection.\n* `radio`: _Required_ single row selection.\n_This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._"
             },
             "stacked": {
                 "type": {
@@ -4417,6 +4487,18 @@
                 "returns": null
             },
             {
+                "name": "getInputProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "setInputRef",
                 "docblock": null,
                 "modifiers": [],
@@ -4572,13 +4654,6 @@
                     "computed": false
                 }
             },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._"
-            },
             "className": {
                 "type": {
                     "name": "union",
@@ -4684,6 +4759,13 @@
                     "computed": false
                 }
             },
+            "input": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
+            },
             "isOpen": {
                 "type": {
                     "name": "bool"
@@ -4756,14 +4838,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function called when the calendar dialog would like hide. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
+                "description": "Function called when the calendar dialog would like hide. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
             },
             "onRequestOpen": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Function called when the calendar dialog would like show. This will turn the calendar dialog into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
+                "description": "Function called when the calendar dialog would like show. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._"
             },
             "parser": {
                 "type": {
@@ -5076,6 +5158,25 @@
                 "returns": null
             },
             {
+                "name": "getValueAsNumber",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getCounterButtonIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getIconRender",
                 "docblock": null,
                 "modifiers": [],
@@ -5089,6 +5190,53 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "performStep",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    },
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "stopStepping",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             }
         ],
@@ -5167,17 +5315,13 @@
                         "spinner": {
                             "name": "string",
                             "required": false
-                        },
-                        "fieldLevelHelpButton": {
-                            "name": "string",
-                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.\n* `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.",
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
                 "defaultValue": {
-                    "value": "{\n    fieldLevelHelpButton: 'Help',\n}",
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
             },
@@ -5208,7 +5352,15 @@
             },
             "defaultValue": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
@@ -5240,7 +5392,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label. The props from the component will be merged and override any default props."
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label."
             },
             "fixedTextLeft": {
                 "type": {
@@ -5348,7 +5500,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided."
+                "description": "This callback fires when the input changes. Passes in `event, { value }`."
             },
             "onClick": {
                 "type": {
@@ -5427,12 +5579,26 @@
                 "required": false,
                 "description": "Sets the minimum number of characters that an `<input>` can accept."
             },
+            "minValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies minimum accepted value for a counter input"
+            },
             "maxLength": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "Sets the maximum number of characters that an `<input>` can accept."
+            },
+            "maxValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies maximum accepted value for a counter input"
             },
             "name": {
                 "type": {
@@ -5455,19 +5621,26 @@
                 "required": false,
                 "description": "Highlights the input as a required field (does not perform any validation)."
             },
-            "styleInput": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "styles to be added to input"
-            },
             "role": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "ARIA role"
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Determines the step size upon increment or decrement. Can be set to decimal values."
+            },
+            "styleInput": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "styles to be added to input"
             },
             "type": {
                 "type": {
@@ -5540,10 +5713,35 @@
             },
             "value": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'counter'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Which UX pattern of input? The default is `base` while other option is `counter`"
             }
         },
         "route": "inputs",
@@ -6905,7 +7103,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
+                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/icons` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
             },
             "internalIllustration": {
                 "type": {
@@ -8546,6 +8744,24 @@
                 "required": false,
                 "description": "The contents of the panel"
             },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to `slds-panel`."
+            },
             "variant": {
                 "type": {
                     "name": "enum",
@@ -8817,7 +9033,7 @@
         ]
     },
     "pill": {
-        "description": "A pill represents an object that can be viewed with or without an icon.",
+        "description": "A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.",
         "methods": [
             {
                 "name": "getHref",
@@ -9063,6 +9279,310 @@
         "route": "pills",
         "display-name": "Pills",
         "SLDS-component-path": "/components/pills",
+        "dependencies": []
+    },
+    "pill-container": {
+        "description": "A `PillContainer` is a container that holds one or more pills. Use it for a list of pills in a container that resembles an `input` form field. It is not intended for navigation.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getNewActiveOptionIndex",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ activeOptionIndex, offset, options }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleBlurPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleClickPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handlePillFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleNavigatePillContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ direction }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestFocusPillContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ ref }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestRemove",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "resetActiveSelectedOption",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "listboxLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removePill": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `listboxLabel`: This is a label for the listbox. The default is `Selected Options:`.\n* `removePill`: Used to remove a selected item (pill). Focus is on the pill. This is not a button. The default is `Press delete or backspace to remove`.",
+                "defaultValue": {
+                    "value": "{\n    listboxLabel: 'Selected Options:',\n    removePill: 'Press delete or backspace to remove',\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the pill container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for pill container"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "removePillTitle": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\n* `removePillTitle`: Title on `X` icon",
+                "defaultValue": {
+                    "value": "{\n    removePillTitle: 'Remove',\n}",
+                    "computed": false
+                }
+            },
+            "options": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "avatar": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "shape",
+                                        "value": {
+                                            "imgSrc": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "title": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "variant": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "bare": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "error": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "icon": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "shape",
+                                        "value": {
+                                            "category": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "name": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        }
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "id": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "node"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "title": {
+                                "name": "string",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```"
+            },
+            "onClickPill": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a pill is clicked"
+            },
+            "onRequestRemovePill": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a pill is requested to be 'removed' via the delete key or 'X' icon click."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom style object to be passed to the pill container"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bare'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Specifies the pill styling at the container level. `bare` removes border styling from all pills."
+            }
+        },
+        "route": "pill-container",
+        "display-name": "Pill Container",
+        "SLDS-component-path": "/components/pill-container",
         "dependencies": []
     },
     "popover": {
@@ -10163,6 +10683,22 @@
                 "modifiers": [],
                 "params": [],
                 "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "preventDuplicateChangeEvent",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -10246,7 +10782,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This event fires when the radio selection changes."
+                "description": "This event fires when the radio selection changes. Passes in `event, { checked }`."
             },
             "value": {
                 "type": {
@@ -12263,6 +12799,13 @@
         "methods": [
             {
                 "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "clearTimeout",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],

@@ -119,7 +119,7 @@ Illustration.propTypes = {
 	 */
 	heading: PropTypes.string,
 	/**
-	 * A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/assets/images/illustrations` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._
+	 * A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/icons` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
 	illustration: PropTypes.object,
 	/**

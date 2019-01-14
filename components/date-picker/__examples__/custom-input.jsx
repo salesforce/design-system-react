@@ -14,6 +14,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<Datepicker
+				input={<Input placeholder="With custom Input" />}
 				isOpen={this.state.isOpen}
 				onRequestClose={() => {
 					this.setState({ isOpen: false });
@@ -29,9 +30,7 @@ class Example extends React.Component {
 						console.log('onChange', event, data);
 					}
 				}}
-			>
-				<Input placeholder="With custom Input" value="" />
-			</Datepicker>
+			/>
 		);
 	}
 }
