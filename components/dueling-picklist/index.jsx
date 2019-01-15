@@ -503,6 +503,7 @@ class DuelingPicklist extends React.Component {
 
 		if (dragAndDropWithArrowKeys && category === selected) {
 			this.moveItemsVertically(isUp);
+			return;
 		}
 
 		const adjacentItem = category[index + (isUp ? -1 : 1)];

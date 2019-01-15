@@ -55,6 +55,7 @@ const DemoComponent = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<DuelingPicklist
+					{...this.props}
 					{...this.state}
 					options={options}
 					events={{
@@ -336,20 +337,25 @@ describe('SLDSDuelingPicklist', function() {
 						isReorderable
 					/>
 				);
+				const findSelectedOptions = () => wrapper.find('[role="listbox"]').at(1).find('[role="option"]');
+				
 				const group = wrapper.find('[role="group"]');
-				wrapper.find('[role="listbox"]').at(1).find('[role="option"]').at(0).simulate('click');
-				expect(wrapper.find('[role="listbox"]').at(1).find('[role="option"]').at(0).text()).to.equal('A');
+				findSelectedOptions().at(0).simulate('click');
+				
+				expect(findSelectedOptions().at(0).text()).to.equal('A');
+				expect(findSelectedOptions().at(0).hasClass('slds-is-grabbed')).to.equal(false);
 
 				group.simulate('keyDown', SPACE);
-				expect(wrapper.find('[role="listbox"]').at(1).find('[role="option"]').at(0).text()).to.equal('A');
+				expect(findSelectedOptions().at(0).hasClass('slds-is-grabbed')).to.equal(true);
+
 				group.simulate('keyDown', DOWN);
-				expect(wrapper.find('[role="listbox"]').at(1).find('[role="option"]').at(0).text()).to.equal('B');
-				wrapper.find('[role="listbox"]').at(1).find('[role="option"]');
+				expect(findSelectedOptions().at(1).text()).to.equal('A');
+				expect(findSelectedOptions().at(1).hasClass('slds-is-grabbed')).to.equal(true);
+
 				group.simulate('keyDown', SPACE);
-				
-				const selected = wrapper.find('[role="listbox"]').at(1).find('[role="option"]');
-				expect(selected.at(0).text()).to.equal('B');
-				expect(selected.at(1).text()).to.equal('A');
+				expect(findSelectedOptions().at(0).text()).to.equal('B');
+				expect(findSelectedOptions().at(1).text()).to.equal('A');
+				expect(findSelectedOptions().at(1).hasClass('slds-is-grabbed')).to.equal(false);
 			});
 		});
 	});
