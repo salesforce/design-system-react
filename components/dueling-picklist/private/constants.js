@@ -16,3 +16,9 @@ export const AriaLiveMoveContexts = {
 	ItemsRemovedFromSelection: 'ItemsRemovedFromSelection',
 	ItemsReorderedInSelection: 'ItemsReorderedInSelection',
 };
+
+export const AriaLiveMessages = {
+	MovedTo: 'moved to',
+	RemovedFrom: 'removed from',
+	ReorderedIn: 'reordered in',
+}

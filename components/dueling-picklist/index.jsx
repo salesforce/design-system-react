@@ -176,16 +176,17 @@ class DuelingPicklist extends React.Component {
 
 	beginDrag = () => this.setState({ isDragging: true });
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			selection: [],
 			firstSelected: null,
-			lastSelected: null,
+			lastSelectedId: null,
 			dragAndDropWithArrowKeys: false,
 			shiftKey: null,
 			metaKey: null,
 			ariaLiveContext: null,
+			focusedOptionId: null,
 		};
 		this.generatedIds = {
 			picklistGroupLabel: shortid.generate(),
@@ -204,7 +205,7 @@ class DuelingPicklist extends React.Component {
 		);
 	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		const { selected } = this.props;
 		const { ariaLiveContext, selection } = this.state;
 		const prevSelected = prevProps.selected;
@@ -233,7 +234,7 @@ class DuelingPicklist extends React.Component {
 		const newState = {
 			selection: [],
 			firstSelected: null,
-			lastSelected: null,
+			lastSelectedId: null,
 		};
 
 		if (typeof callback === 'function') {
@@ -243,7 +244,7 @@ class DuelingPicklist extends React.Component {
 		}
 	};
 
-	deselectLockedItems (callback) {
+	deselectLockedItems(callback) {
 		const nonLockedSelection = this.state.selection.filter((s) => !s.locked);
 		if (nonLockedSelection.length > 0) {
 			this.setState(
@@ -259,35 +260,46 @@ class DuelingPicklist extends React.Component {
 
 	endDrag = () => this.setState({ isDragging: false });
 
-	findCategoryForOption (option) {
+	findItem(id) {
 		const { options, selected } = this.props;
-
-		return selected.some((s) => s.id === option.item.id) ? selected : options;
+		return [...options, ...selected].find((item) => item.id === id);
 	}
 
-	focus = () => {
-		const option = this.state.lastSelected;
-		const selection = this.state.selection.slice();
-		const ref = this.optionRefs[option.id];
+	findCategory(item) {
+		const { options, selected } = this.props;
+		return selected.some((s) => s.id === item.id) ? selected : options;
+	}
+
+	focus = (preserveSelection = false) => {
+		const { lastSelectedId } = this.state;
+		const ref = this.optionRefs[lastSelectedId];
 
 		if (ref && ref.current && ref.current !== document.activeElement) {
 			ref.current.focus();
-			this.setState({ selection });
 		}
+
+		let changes = {
+			focusedOptionId: lastSelectedId,
+		};
+
+		if (!preserveSelection) {
+			changes.selection = this.state.selection.slice();
+		}
+		this.setState(changes);
 	};
 
-	getDefaultedPropObj (propName) {
+	getDefaultedPropObj(propName) {
 		return {
 			...defaultProps[propName],
 			...this.props[propName],
 		};
 	}
 
-	getId (idName) {
+	getId(idName) {
 		return this.props.ids[idName] || this.generatedIds[idName];
 	}
 
-	getIds () {
+	getIds() {
 		return {
 			picklistGroupLabel: `${this.getId(
 				'picklistGroupLabel'
@@ -334,22 +346,21 @@ class DuelingPicklist extends React.Component {
 	};
 
 	handleKeyDown = (event) => {
-		const { shiftKey, which, metaKey, ctrlKey } = event;
-
 		const { isReorderable } = this.props;
 		const {
 			firstSelected,
-			lastSelected,
+			lastSelectedId,
 			dragAndDropWithArrowKeys,
 		} = this.state;
 
-		if (!lastSelected) {
+		if (lastSelectedId === null || lastSelectedId === undefined) {
 			return;
 		}
 
+		const item = this.findItem(lastSelectedId);
+		const { shiftKey, which, metaKey, ctrlKey } = event;
 		const modifierUsed = ctrlKey || metaKey;
 
-		const option = { item: lastSelected };
 		const haltEvent = (stopPropagation = false) => {
 			event.preventDefault();
 			stopPropagation && event.stopPropagation();
@@ -359,9 +370,9 @@ class DuelingPicklist extends React.Component {
 			case KeyCodes.Space:
 				if (modifierUsed) {
 					haltEvent(true);
-					return this.deselect();
+					return this.toggleFocusedSelection();
 				}
-				if (!isReorderable) {
+				if (!this.props.isReorderable) {
 					return;
 				}
 				haltEvent(true);
@@ -369,27 +380,27 @@ class DuelingPicklist extends React.Component {
 					dragAndDropWithArrowKeys: !dragAndDropWithArrowKeys,
 				});
 			case KeyCodes.Up:
-				haltEvent();
-				return this.handleVerticalArrowKeyUp(option, true, shiftKey);
 			case KeyCodes.Down:
 				haltEvent();
-				return this.handleVerticalArrowKeyUp(option, false, shiftKey);
+				const isUp = which === KeyCodes.Up;
+				return this.handleVerticalArrowKeyUp(
+					item,
+					isUp,
+					shiftKey,
+					modifierUsed
+				);
 			case KeyCodes.Left:
-				if (modifierUsed) {
-					haltEvent();
-					this.moveSelectedItemsHorizontally(true, false);
-				}
-				return;
 			case KeyCodes.Right:
 				if (modifierUsed) {
 					haltEvent();
-					this.moveSelectedItemsHorizontally(false, false);
+					const isLeft = which === KeyCodes.Left;
+					this.moveSelectedItemsHorizontally(isLeft, false);
 				}
 				return;
 			case KeyCodes.A:
 				if (modifierUsed) {
 					haltEvent(true);
-					this.selectAllInCategory(option);
+					this.selectAllInCategory(item);
 				}
 				return;
 			case KeyCodes.MetaLeft:
@@ -423,7 +434,7 @@ class DuelingPicklist extends React.Component {
 	};
 
 	handleSelect = (
-		option,
+		item,
 		selectRange,
 		selectAdditionalItem,
 		handledFromFocus = false
@@ -431,15 +442,14 @@ class DuelingPicklist extends React.Component {
 		const {
 			selection,
 			firstSelected,
-			lastSelected,
+			lastSelectedId,
 			metaKey,
 			shiftKey,
 			ctrlKey,
 		} = this.state;
-		const { item } = option;
 
 		if (handledFromFocus) {
-			if (lastSelected && item.id === lastSelected.id) {
+			if (item.id === lastSelectedId) {
 				return;
 			}
 			if (!selectRange) {
@@ -450,15 +460,16 @@ class DuelingPicklist extends React.Component {
 			}
 		}
 
-		const category = this.findCategoryForOption(option);
+		const category = this.findCategory(item);
 		let inSameCategory = true;
-		if (lastSelected) {
-			inSameCategory = category.some((o) => o.id === lastSelected.id);
+		if (lastSelectedId) {
+			inSameCategory = category.some((o) => o.id === lastSelectedId);
 		}
 		let newSelection;
 		let newFirstSelected = firstSelected || item;
 
-		const previousSelected = firstSelected || lastSelected;
+		const previousSelected =
+			firstSelected || (lastSelectedId && this.findItem(lastSelectedId));
 		if (selectRange && previousSelected && inSameCategory) {
 			newSelection = getRange(category, previousSelected, item);
 		} else if (selectAdditionalItem && inSameCategory) {
@@ -472,17 +483,17 @@ class DuelingPicklist extends React.Component {
 			{
 				selection: newSelection,
 				firstSelected: newFirstSelected,
-				lastSelected: item,
+				lastSelectedId: item.id,
 			},
 			this.focus
 		);
 	};
 
-	handleVerticalArrowKeyUp (option, isUp, selectRange) {
+	handleVerticalArrowKeyUp(item, isUp, selectRange, moveFocus) {
 		const { selected } = this.props;
 		const { dragAndDropWithArrowKeys } = this.state;
-		const category = this.findCategoryForOption(option);
-		const index = category.findIndex((o) => o.id === option.item.id);
+		const category = this.findCategory(item);
+		const index = category.findIndex((o) => o.id === item.id);
 
 		const isFirstItem = index === 0;
 		const isLastItem = index === category.length - 1;
@@ -490,17 +501,22 @@ class DuelingPicklist extends React.Component {
 			return;
 		}
 
-		if (dragAndDropWithArrowKeys && category === selection) {
+		if (dragAndDropWithArrowKeys && category === selected) {
 			this.moveItemsVertically(isUp);
+		}
+
+		const adjacentItem = category[index + (isUp ? -1 : 1)];
+		if (moveFocus) {
+			const { id } = adjacentItem;
+			this.setState({ lastSelectedId: id, focusedOptionId: id }, () => {
+				this.focus(true);
+			});
 		} else {
-			const adjacentOption = {
-				item: category[index + (isUp ? -1 : 1)],
-			};
-			this.handleSelect(adjacentOption, selectRange, false);
+			this.handleSelect(adjacentItem, selectRange, false);
 		}
 	}
 
-	moveSelectedItemsHorizontally (isLeft, shouldDeselect = true) {
+	moveSelectedItemsHorizontally(isLeft, shouldDeselect = true) {
 		const { selection } = this.state;
 		if (selection.length === 0) {
 			return;
@@ -518,7 +534,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveItemsVertically (isUp) {
+	moveItemsVertically(isUp) {
 		const { options, selected, isReorderable } = this.props;
 		if (!isReorderable) {
 			return;
@@ -537,7 +553,7 @@ class DuelingPicklist extends React.Component {
 		this.triggerOnChange(newSelected);
 	}
 
-	render () {
+	render() {
 		return (
 			<Group
 				{...this.props}
@@ -562,16 +578,31 @@ class DuelingPicklist extends React.Component {
 		);
 	}
 
-	selectAllInCategory (option) {
-		const selection = this.findCategoryForOption(option);
+	selectAllInCategory(item) {
+		const selection = this.findCategory(item);
 		this.setState({
 			selection,
 			firstSelected: selection[0],
-			lastSelected: selection[selection.length - 1],
+			lastSelectedId: selection[selection.length - 1].id,
 		});
 	}
 
-	triggerOnChange (newSelected, isLeft = false, shouldDeselect = false) {
+	toggleFocusedSelection() {
+		const { focusedOptionId, selection } = this.state;
+		const item = this.findItem(focusedOptionId);
+		let newSelection;
+		if (selection.some(({ id }) => id === focusedOptionId)) {
+			newSelection = selection.filter(({ id }) => id !== focusedOptionId);
+		} else {
+			newSelection = selection.concat(item);
+		}
+		const category = this.findCategory(item);
+		this.setState({
+			selection: getOrderedSelection(category, newSelection),
+		});
+	}
+
+	triggerOnChange(newSelected, isLeft = false, shouldDeselect = false) {
 		const trigger = () => this.props.events.onChange(newSelected);
 
 		if (shouldDeselect) {

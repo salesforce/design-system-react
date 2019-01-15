@@ -1,4 +1,5 @@
 const keys = {
+	A: 65,
 	ENTER: 13,
 	ESCAPE: 27,
 	SPACE: 32,
@@ -14,11 +15,12 @@ const keys = {
 // Helpful for interaction/event tests. Use with simulate:
 // `nodes.input.simulate('keyDown', keyObjects.DOWN);`
 const keyObjects = {
+	A: { key: 'A', keyCode: keys.A, which: keys.A },
 	ENTER: { key: 'Enter', keyCode: keys.ENTER, which: keys.ENTER },
 	ESCAPE: { key: 'Escape', keyCode: keys.ESCAPE, which: keys.ESCAPE },
 	SPACE: { key: 'Space', keyCode: keys.SPACE, which: keys.SPACE },
 	LEFT: { key: 'Left', keyCode: keys.LEFT, which: keys.LEFT },
-	UP: { key: 'Up', keyCode: keys.UP, which: keys.ESCAPE },
+	UP: { key: 'Up', keyCode: keys.UP, which: keys.UP },
 	RIGHT: { key: 'Right', keyCode: keys.RIGHT, which: keys.RIGHT },
 	DOWN: { key: 'Down', keyCode: keys.DOWN, which: keys.DOWN },
 	TAB: { key: 'Tab', keyCode: keys.TAB, which: keys.TAB },

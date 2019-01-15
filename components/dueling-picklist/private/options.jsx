@@ -31,6 +31,7 @@ class Options extends React.Component {
 		onDropIntoCategory: PropTypes.func,
 		beginDrag: PropTypes.func,
 		endDrag: PropTypes.func,
+		focusedOptionId: PropTypes.string,
 	};
 
 	static defaultProps = {
@@ -39,10 +40,12 @@ class Options extends React.Component {
 		dragAndDropEnabled: false,
 	};
 
-	componentDidUpdate (prevProps, prevState, snapshot) {
+	componentDidUpdate (prevProps, prevState) {
 		const { options, focus } = this.props;
-
+		
 		const hasMoreItems = options.length > prevProps.options.length;
+		/** When the selected items are moved from one listbox to another,
+			they should maintain their focus */
 		if (hasMoreItems && this.anyItemsSelected() && !this.anyItemsFocused()) {
 			setImmediate(focus);
 		}
@@ -108,14 +111,17 @@ class Options extends React.Component {
 			dragAndDropWithArrowKeys,
 			beginDrag,
 			endDrag,
+			focusedOptionId,
 			isDragging,
 			dragAndDropEnabled,
 			disabled,
 		} = this.props;
 		const noItemsSelected = !this.anyItemsSelected();
+		
+		const isInFocus = option.item.id === focusedOptionId;
 
 		let tabIndex = '-1';
-		if (!disabled && (option.selected || (noItemsSelected && index === 0))) {
+		if (!disabled && (isInFocus || (noItemsSelected && index === 0))) {
 			tabIndex = '0';
 		}
 

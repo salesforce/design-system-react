@@ -48,7 +48,7 @@ class Option extends React.Component {
 
 		const { onSelect, option } = this.props;
 
-		onSelect(option, selectRange, selectAdditionalItem);
+		onSelect(option.item, selectRange, selectAdditionalItem);
 	};
 
 	handleFocus = (event) => {
@@ -56,7 +56,7 @@ class Option extends React.Component {
 		event.stopPropagation();
 		const { onSelect, option } = this.props;
 
-		onSelect(option, false, false, true);
+		onSelect(option.item, false, false, true);
 	};
 
 	render () {

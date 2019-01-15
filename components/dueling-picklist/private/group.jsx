@@ -4,12 +4,13 @@ import Options from './options';
 import Button from './button';
 import ViewOnly from './view-only';
 import { wrapItemAndAddIsSelected } from './utility';
-import { AriaLiveMoveContexts } from './constants';
+import { AriaLiveMoveContexts, AriaLiveMessages } from './constants';
 
 const Group = ({
 	ariaLiveContext,
 	assistiveText,
 	dragAndDropWithArrowKeys,
+	focusedOptionId,
 	hasAutomaticHeightMinimization,
 	ids,
 	isDragging,
@@ -101,6 +102,7 @@ const Group = ({
 							assistiveText={assistiveText}
 							refs={refs}
 							focus={onFocus}
+							focusedOptionId={focusedOptionId}
 							{...heightProp}
 						/>
 					</Column>
@@ -137,6 +139,7 @@ const Group = ({
 							assistiveText={assistiveText}
 							refs={refs}
 							focus={onFocus}
+							focusedOptionId={focusedOptionId}
 							{...heightProp}
 							dragAndDropEnabled={isReorderable}
 							onDropOntoOption={onDropOntoOption}
@@ -183,17 +186,17 @@ function getAriaLiveMessage ({ ariaLiveContext, assistiveText, labels, selection
 	switch (ariaLiveContext) {
 		case AriaLiveMoveContexts.ItemsMovedToSelection:
 			return (
-				itemsMovedToSelection || getAriaLiveLabel('moved to', labels, selection)
+				itemsMovedToSelection || getAriaLiveLabel(AriaLiveMessages.MovedTo, labels, selection)
 			);
 		case AriaLiveMoveContexts.ItemsRemovedFromSelection:
 			return (
 				itemsRemovedFromSelection ||
-				getAriaLiveLabel('removed from', labels, selection)
+				getAriaLiveLabel(AriaLiveMessages.RemovedFrom, labels, selection)
 			);
 		case AriaLiveMoveContexts.ItemsReorderedInSelection:
 			return (
 				itemsReorderedInSelection ||
-				getAriaLiveLabel('reordered in', labels, selection)
+				getAriaLiveLabel(AriaLiveMessages.ReorderedIn, labels, selection)
 			);
 	}
 }

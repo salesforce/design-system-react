@@ -35,6 +35,7 @@ const Example = createReactClass({
 						onChange: this.handleChange,
 					}}
 					ids={ids}
+					{...this.props}
 				/>
 			</IconSettings>
 		);
