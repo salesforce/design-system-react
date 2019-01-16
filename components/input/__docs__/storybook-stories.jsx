@@ -1,31 +1,36 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
 import { INPUT } from '../../../utilities/constants';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
 import Input from '../';
 import Tooltip from '../../tooltip';
 import InputIcon from '../../icon/input-icon';
-
 import CounterInput from '../__examples__/counter-input';
 import CounterStaticInput from '../__examples__/counter-static-input';
 import InlineHelpInput from '../__examples__/inline-help';
 import FieldLevelHelpInput from '../__examples__/field-level-help';
+import Default from '../__examples__/default';
+import Error from '../__examples__/error';
+import Icons from '../__examples__/icons';
+import InactiveInputs from '../__examples__/inactiveInputs';
 
 const iconClicked = action;
-
 const clearIcon = (
 	<InputIcon
-		assistiveText={{ icon: 'clear' }}
+		assistiveText={{
+			icon: 'clear',
+		}}
 		name="clear"
 		category="utility"
 	/>
 );
 const clearIconClickable = (
 	<InputIcon
-		assistiveText={{ icon: 'clear' }}
+		assistiveText={{
+			icon: 'clear',
+		}}
 		name="clear"
 		category="utility"
 		onClick={iconClicked('Clear icon clicked')}
@@ -34,13 +39,14 @@ const clearIconClickable = (
 const searchIcon = <InputIcon name="search" category="utility" />;
 const searchIconClickable = (
 	<InputIcon
-		assistiveText={{ icon: 'Search' }}
+		assistiveText={{
+			icon: 'Search',
+		}}
 		name="search"
 		category="utility"
 		onClick={iconClicked('Search icon clicked')}
 	/>
 );
-
 storiesOf(INPUT, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
@@ -60,7 +66,9 @@ storiesOf(INPUT, module)
 							2. Base Input with hidden label (assistive text)
 						</h1>
 						<Input
-							assistiveText={{ label: 'My label' }}
+							assistiveText={{
+								label: 'My label',
+							}}
 							id="assistiveLabel-id"
 							placeholder="My placeholder"
 						/>
@@ -78,7 +86,11 @@ storiesOf(INPUT, module)
 							Input with custom style
 						</h1>
 						<Input
-							styleInput={{ width: 130, height: 30, background: '#efffff' }}
+							styleInput={{
+								width: 130,
+								height: 30,
+								background: '#efffff',
+							}}
 							id="custom-style"
 							label="My Label"
 							placeholder="My placeholder"
@@ -178,7 +190,9 @@ storiesOf(INPUT, module)
 						</h1>
 						<Input
 							id="with-left-clickable-right-and-spinner"
-							assistiveText={{ spinner: 'Field data is loading' }}
+							assistiveText={{
+								spinner: 'Field data is loading',
+							}}
 							hasSpinner
 							iconLeft={searchIcon}
 							iconRight={clearIconClickable}
@@ -199,7 +213,9 @@ storiesOf(INPUT, module)
 				</h1>
 				<Input
 					id="fixed-text"
-					assistiveText={{ label: 'My Label' }}
+					assistiveText={{
+						label: 'My Label',
+					}}
 					name="fixed-text"
 					label="My Label"
 					fixedTextLeft="$"
@@ -285,4 +301,8 @@ storiesOf(INPUT, module)
 		<FieldLevelHelpInput tooltipOpen />
 	))
 	.add('Counter Input', () => <CounterInput />)
-	.add('Counter Static Input', () => <CounterStaticInput />);
+	.add('Counter Static Input', () => <CounterStaticInput />)
+	.add('Docs site Default', () => <Default />)
+	.add('Docs site Error', () => <Error />)
+	.add('Docs site Icons', () => <Icons />)
+	.add('Docs site InactiveInputs', () => <InactiveInputs />);
