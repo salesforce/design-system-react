@@ -82,6 +82,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# UXPin Merge
+.uxpin-merge/
+
 ### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/
@@ -314,6 +317,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Intellij IDE 
+# Intellij IDE
 .idea/*
 *.iml

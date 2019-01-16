@@ -37,6 +37,7 @@
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
 		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
+		"uxpin:experiment": "uxpin-merge --uxpin-domain=merge.uxpin.cloud --webpack-config=./webpack.config.js",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},
@@ -131,6 +132,7 @@
 		"@storybook/addon-storyshots": "^3.4.10",
 		"@storybook/addons": "^3.4.10",
 		"@storybook/react": "^3.4.10",
+		"@uxpin/merge-cli": "0.0.20",
 		"async": "^2.0.0-rc.5",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-eslint": "^8.2.3",
