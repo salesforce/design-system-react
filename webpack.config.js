@@ -40,6 +40,10 @@ const config = {
 				],
 			},
 			{
+				test: /\.json$/,
+				loader: 'json-loader',
+			},
+			{
 				test: /\.css$/,
 				loaders: ['style-loader', 'css-loader'],
 			},
