@@ -13,7 +13,6 @@ import SnapshotBase from '../__examples__/snapshot-base';
 import SnapshotToggle from '../__examples__/snapshot-toggle';
 import Toggle from '../__examples__/toggle';
 
-
 class CheckboxIndeterminate extends React.Component {
 	static displayName = `${CHECKBOX}_INDETERMINATE`;
 
