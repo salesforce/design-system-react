@@ -133,17 +133,15 @@ components.forEach((cmp) => {
 		const isValid = examples.every(isExampleImported);
 		if (!isValid) {
 			const missing = examples.filter((e) => !isExampleImported(e));
-			if (cmp === 'components/icon/') {
-				babel.traverse(cmpStoriesAST, createAddDocsImportVisitor(missing));
-				const newBody = generator.default(cmpStoriesAST).code; // Note, this doesn't have good formatting, run prettier on the files afterward
-				// eslint-disable-next-line no-console
-				console.log(
-					`${cmp} will get the following files added: \n\t${missing.join(
-						',\n\t'
-					)}`
-				);
-				fs.writeFileSync(storiesFor(cmp), newBody);
-			}
+			babel.traverse(cmpStoriesAST, createAddDocsImportVisitor(missing));
+			const newBody = generator.default(cmpStoriesAST).code; // Note, this doesn't have good formatting, run prettier on the files afterward
+			// eslint-disable-next-line no-console
+			console.log(
+				`${cmp} will get the following files added: \n\t${missing.join(
+					',\n\t'
+				)}`
+			);
+			fs.writeFileSync(storiesFor(cmp), newBody);
 		}
 	} catch (error) {
 		if (
