@@ -10,7 +10,7 @@ class Options extends React.Component {
 				item: PropTypes.shape({
 					id: PropTypes.string.isRequired,
 					label: PropTypes.string.isRequired,
-					locked: PropTypes.bool,
+					isLocked: PropTypes.bool,
 				}),
 				selected: PropTypes.bool.isRequired,
 			})

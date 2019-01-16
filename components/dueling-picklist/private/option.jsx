@@ -10,7 +10,7 @@ class Option extends React.Component {
 			item: PropTypes.shape({
 				id: PropTypes.string.isRequired,
 				label: PropTypes.string.isRequired,
-				locked: PropTypes.bool,
+				isLocked: PropTypes.bool,
 			}),
 			selected: PropTypes.bool.isRequired,
 		}).isRequired,
@@ -124,7 +124,7 @@ class Option extends React.Component {
 	renderLock () {
 		const { option, assistiveText } = this.props;
 
-		if (!option.item.locked) {
+		if (!option.item.isLocked) {
 			return null;
 		}
 
@@ -133,8 +133,8 @@ class Option extends React.Component {
 				<span className="slds-icon_container" title={assistiveText.itemLocked}>
 					<Icon category="utility" name="lock" size="xx-small" />
 					<span className="slds-assistive-text">
-						{' '}
-						: {assistiveText.lockedItemCannotBeMoved}
+						{': '}
+						{assistiveText.lockedItemCannotBeMoved}
 					</span>
 				</span>
 			</span>

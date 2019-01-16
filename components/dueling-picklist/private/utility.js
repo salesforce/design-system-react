@@ -90,7 +90,7 @@ export function getNewSelectionFromDragAndDropOntoOption (
 
 export function getNewSelection (isRemoving, items, selection) {
 	if (isRemoving) {
-		const ids = getIds(items.filter(({ locked }) => !locked));
+		const ids = getIds(items.filter(({ isLocked }) => !isLocked));
 		return selection.filter((o) => !ids.includes(o.id));
 	} else if (areItemsInCategory(items, selection)) {
 		return selection;

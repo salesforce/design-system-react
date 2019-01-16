@@ -14,7 +14,7 @@ const Example = createReactClass({
 			options: fruitOptions,
 			selected: fruitOptions.slice(-2).map((fruit, i) => ({
 				...fruit,
-				locked: i === 0,
+				isLocked: i === 0,
 			})),
 		};
 	},

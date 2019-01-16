@@ -246,7 +246,7 @@ class DuelingPicklist extends React.Component {
 	};
 
 	deselectLockedItems(callback) {
-		const nonLockedSelection = this.state.selection.filter((s) => !s.locked);
+		const nonLockedSelection = this.state.selection.filter((s) => !s.isLocked);
 		if (nonLockedSelection.length > 0) {
 			this.setState(
 				{
