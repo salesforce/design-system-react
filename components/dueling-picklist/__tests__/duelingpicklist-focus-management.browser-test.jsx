@@ -2,7 +2,7 @@
 import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount } from 'enzyme';
+import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
 import { keyObjects } from '../../../utilities/key-code';
 const { A, RIGHT } = keyObjects;
 
@@ -15,13 +15,17 @@ import DemoComponent from './demo-component';
 
 describe('SLDSDuelingPicklist', function() {
 	describe('Focus Management', function() {
+		beforeEach(mountComponent(
+			<DemoComponent />
+		));
+		afterEach(unmountComponent);
+
 		it('initially has no options selected and the first item in each list should have tabindex="0"', function() {
-			let wrapper = mount(<DemoComponent />);
-			const listboxes = wrapper.find('[role="listbox"]');
+			const listboxes = this.wrapper.find('[role="listbox"]');
 			const {
 				options,
 				selected,
-			} = wrapper.props();
+			} = this.wrapper.props();
 			
 			expect(options.length).to.not.equal(0);
 			expect(selected.length).to.not.equal(0);
@@ -38,56 +42,52 @@ describe('SLDSDuelingPicklist', function() {
 		});
 
 		it('Selects an option when it comes into focus', function() {
-			let wrapper = mount(<DemoComponent />);
-			const getFirstOption = () => wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0);
+			const getFirstOption = () => this.wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0);
 
 			getFirstOption().simulate('focus');
 			expect(getFirstOption()).to.have.attr('aria-selected', 'true');
 		});
 
 		it('leaves the last selected item selected and focusable when focus leaves the list', function() {
-			let wrapper = mount(<DemoComponent />);
-			const getFirstOption = () => wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0);
+			const getFirstOption = () => this.wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0);
 
 			getFirstOption().simulate('focus');
-			wrapper.find('button').first().simulate('focus');
+			this.wrapper.find('button').first().simulate('focus');
 			expect(getFirstOption()).to.have.attr('aria-selected', 'true');
 			expect(getFirstOption()).to.have.attr('tabindex', '0');
 			
 		});
 
 		it('places focus on the last selected item when focus returns to the list', function() {
-			let wrapper = mount(<DemoComponent />);
-			const getSecondOption = () => wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(1);
+			const getSecondOption = () => this.wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(1);
 
 			getSecondOption().simulate('focus');
-			wrapper.find('button').first().simulate('focus');
+			this.wrapper.find('button').first().simulate('focus');
 			getSecondOption().simulate('focus');
 			expect(getSecondOption()).to.have.attr('aria-selected', 'true');
 		});
 
 		describe('When moving items', function() {
 			it('With the move button: deselects the items and adds them to the target list. The focus should remain on the move button', function() {
-				let wrapper = mount(<DemoComponent />);
 
 				// focus on first option
-				wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0).simulate('focus');
+				this.wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0).simulate('focus');
 				// select all options
-				wrapper.find('[role="group"]').simulate('keyDown', {
+				this.wrapper.find('[role="group"]').simulate('keyDown', {
 					...A,
 					ctrlKey: true,
 				});
 				
 				// click "right" button
-				wrapper.find('button').first().simulate('click').simulate('focus');
+				this.wrapper.find('button').first().simulate('click').simulate('focus');
 				
-				const options = wrapper.find('[role="listbox"]').at(0).find('[role="option"]');
-				const selected = wrapper.find('[role="listbox"]').at(1).find('[role="option"]');
+				const options = this.wrapper.find('[role="listbox"]').at(0).find('[role="option"]');
+				const selected = this.wrapper.find('[role="listbox"]').at(1).find('[role="option"]');
 				
 				const {
 					options: optionsProp,
 					selected: selectedProp,
-				} = wrapper.props();
+				} = this.wrapper.props();
 				expect(options).to.have.lengthOf(0);
 				expect(selected).to.have.lengthOf(optionsProp.length + selectedProp.length);
 
@@ -98,21 +98,20 @@ describe('SLDSDuelingPicklist', function() {
 				});
 
 				// not sure how to check that the button is still in focus since both "click" and "focus" were simulated
-				// expect(wrapper.find('button').first().matchesElement(document.activeElement)).to.equal(true);
+				// expect(this.wrapper.find('button').first().matchesElement(document.activeElement)).to.equal(true);
 			});
 			
 			it('With a keyboard shortcut: focus remains on the item, but in the target list. Since the item is focused, it is also selected', function() {
-				let wrapper = mount(<DemoComponent />);
-				const getFirstOption = (listboxIndex = 0) => wrapper.find('[role="listbox"]').at(listboxIndex).find('[role="option"]').at(0);
+				const getFirstOption = (listboxIndex = 0) => this.wrapper.find('[role="listbox"]').at(listboxIndex).find('[role="option"]').at(0);
 
-				wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0).simulate('focus');
+				this.wrapper.find('[role="listbox"]').at(0).find('[role="option"]').at(0).simulate('focus');
 				// move option to 2nd listbox
-				wrapper.find('[role="group"]').simulate('keyDown', {
+				this.wrapper.find('[role="group"]').simulate('keyDown', {
 					...RIGHT,
 					ctrlKey: true,
 				});
 				
-				const movedOption = wrapper.find('[role="listbox"]').at(1).find('[role="option"]').last();
+				const movedOption = this.wrapper.find('[role="listbox"]').at(1).find('[role="option"]').last();
 				
 				expect(movedOption).to.have.attr('aria-selected', 'true');
 				expect(movedOption).to.have.attr('tabindex', '0');
