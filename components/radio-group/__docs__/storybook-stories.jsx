@@ -1,14 +1,12 @@
-/* eslint-disable react/display-name */
-
-import React from 'react';
+/* eslint-disable react/display-name */ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
 import RadioGroup from '../../radio-group';
 import Radio from '../../radio-group/radio';
-
 import { RADIO_GROUP } from '../../../utilities/constants';
+
+import Base from '../__examples__/base';
 
 class RadioGroupExample extends React.Component {
 	constructor(props) {
@@ -18,7 +16,9 @@ class RadioGroupExample extends React.Component {
 	}
 
 	onChange(event) {
-		this.setState({ checked: event.target.value });
+		this.setState({
+			checked: event.target.value,
+		});
 		action('onChange')(event);
 	}
 
@@ -50,7 +50,6 @@ class RadioGroupExample extends React.Component {
 		);
 	}
 }
-
 RadioGroupExample.propTypes = {
 	labels: PropTypes.shape({
 		error: PropTypes.string,
@@ -60,11 +59,11 @@ RadioGroupExample.propTypes = {
 	required: PropTypes.bool,
 	heading: PropTypes.string,
 };
-
 RadioGroupExample.defaultProps = {
-	labels: { label: 'Radio Group Label' },
+	labels: {
+		label: 'Radio Group Label',
+	},
 };
-
 storiesOf(RADIO_GROUP, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
@@ -75,6 +74,10 @@ storiesOf(RADIO_GROUP, module)
 	.add('Error', () => (
 		<RadioGroupExample
 			heading="Error"
-			labels={{ label: 'Radio Group Label', error: 'There is an error' }}
+			labels={{
+				label: 'Radio Group Label',
+				error: 'There is an error',
+			}}
 		/>
-	));
+	))
+	.add('Docs site Base', () => <Base />);
