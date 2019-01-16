@@ -1,3 +1,4 @@
+// WARNING: This script modifies source code!  Inspect all of the changes it makes before you commit anything!
 // Run this with node to find storybook files that don't import
 // all of the examples from __examples__.
 // It will rewrite insert import statements and add "add" calls to the stories
