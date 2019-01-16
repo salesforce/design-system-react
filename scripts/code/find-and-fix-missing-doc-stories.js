@@ -136,6 +136,7 @@ components.forEach((cmp) => {
 			if (cmp === 'components/icon/') {
 				babel.traverse(cmpStoriesAST, createAddDocsImportVisitor(missing));
 				const newBody = generator.default(cmpStoriesAST).code; // Note, this doesn't have good formatting, run prettier on the files afterward
+				// eslint-disable-next-line no-console
 				console.log(
 					`${cmp} will get the following files added: \n\t${missing.join(
 						',\n\t'
@@ -158,7 +159,9 @@ components.forEach((cmp) => {
 		) {
 			// console.log(`No site stories for: ${cmp}`);
 		} else {
+			// eslint-disable-next-line no-console
 			console.log(`In component: ${cmp}`);
+			// eslint-disable-next-line no-console
 			console.log(error);
 		}
 	}
