@@ -140,6 +140,7 @@ Thank you to all the contributors to this one of [many open source projects at S
 * [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
 * [@futuremint](https://github.com/futuremint) David Woodward
 * [@garygong](https://github.com/garygong) Gary Gong
+* [@interactivellama](https://github.com/interactivellama) Stephen James
 
 ### Former Key Contributors
 * [@donnieberg](https://github.com/donnieberg) Donielle Berg
