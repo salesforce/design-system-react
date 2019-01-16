@@ -92,20 +92,27 @@ const createAddDocsImportVisitor = (names) => ({
 	},
 	// The files are structured such that "add" is the last call in the chain on "storiesOf"
 	CallExpression(ePath) {
-		if (ePath.parentPath.isExpressionStatement()) {
+		if (
+			ePath.parentPath.isExpressionStatement() &&
+			ePath.node.arguments &&
+			ePath.node.arguments[0].extra &&
+			!ePath.node.arguments[0].extra.rawValue.match(/^Docs site/)
+		) {
 			let prevNode = ePath.node;
-			const newCalls = names.map((name) => {
+			let lastCall;
+			names.forEach((name) => {
 				const importName = name.replace('.jsx', '');
 				const importVar = fileToImportName(path.basename(importName));
-				const newNode = createCallAddExpression(
+				lastCall = createCallAddExpression(
 					prevNode,
 					`Docs site ${importVar}`,
 					importVar
 				);
-				prevNode = newNode;
+				prevNode = lastCall;
 				return prevNode;
 			});
-			ePath.insertAfter(newCalls);
+
+			ePath.replaceWith(lastCall);
 		}
 	},
 });
@@ -126,14 +133,16 @@ components.forEach((cmp) => {
 		const isValid = examples.every(isExampleImported);
 		if (!isValid) {
 			const missing = examples.filter((e) => !isExampleImported(e));
-			babel.traverse(cmpStoriesAST, createAddDocsImportVisitor(missing));
-			const newBody = generator.default(cmpStoriesAST).code; // Note, this doesn't have good formatting, run prettier on the files afterward
-			console.log(
-				`${cmp} will get the following files added: \n\t${missing.join(
-					',\n\t'
-				)}`
-			);
-			fs.writeFileSync(storiesFor(cmp), newBody);
+			if (cmp === 'components/icon/') {
+				babel.traverse(cmpStoriesAST, createAddDocsImportVisitor(missing));
+				const newBody = generator.default(cmpStoriesAST).code; // Note, this doesn't have good formatting, run prettier on the files afterward
+				console.log(
+					`${cmp} will get the following files added: \n\t${missing.join(
+						',\n\t'
+					)}`
+				);
+				fs.writeFileSync(storiesFor(cmp), newBody);
+			}
 		}
 	} catch (error) {
 		if (
