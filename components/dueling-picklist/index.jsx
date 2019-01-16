@@ -235,6 +235,7 @@ class DuelingPicklist extends React.Component {
 			selection: [],
 			firstSelected: null,
 			lastSelectedId: null,
+			focusedOptionId: null,
 		};
 
 		if (typeof callback === 'function') {

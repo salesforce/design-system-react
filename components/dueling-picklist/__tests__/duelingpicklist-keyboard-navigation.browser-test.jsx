@@ -1,74 +1,20 @@
 // Import your external dependencies
 import React from 'react';
-import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
-import IconSettings from '../../icon-settings';
 import { keyObjects } from '../../../utilities/key-code';
 const { DOWN, UP, RIGHT, LEFT, TAB, A, SPACE } = keyObjects;
-// Import your internal dependencies (for example):
-import DuelingPicklist from '../';
-import duelingPicklistFilter from '../filter';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
  */
 chai.use(chaiEnzyme());
 
-const options = 'Car,Truck,Van,Minivan,Race car,Tank,Scooter'
-	.split(',')
-	.map((label, i) => ({ label, id: i + '' }));
-
-const defaultSelected = options.slice(-2);
-const defaultProps = {
-	options: duelingPicklistFilter({ options, selected: defaultSelected }),
-	selected: defaultSelected,
-};
-
-/* A re-usable demo component fixture outside of `describe` sections
- * can accept props within each test and be unmounted after each tests.
- * This wrapping component will be similar to your wrapping component
- * you will create in the React Storybook for manual testing.
- */
-const DemoComponent = createReactClass({
-	displayName: 'DuelingPicklistDemoComponent',
-
-	getDefaultProps() {
-		return defaultProps;
-	},
-
-	getInitialState() {
-		return { selected: this.props.selected, options: [...this.props.options, ...this.props.selected] };
-	},
-
-	handleChange(selected) {
-		this.setState({ selected });
-	},
-
-	render() {
-		const options = duelingPicklistFilter({
-			options: this.state.options,
-			selected: this.state.selected,
-		});
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<DuelingPicklist
-					{...this.props}
-					{...this.state}
-					options={options}
-					events={{
-						onChange: this.handleChange
-					}}
-				/>
-			</IconSettings>
-		);
-	},
-});
+import DemoComponent from './demo-component';
 
 describe('SLDSDuelingPicklist', function() {
-	describe('Keyboard Interaction', function(done) {
+	describe('Keyboard Interaction', function() {
 		it('changes focus and selection with up and down', function() {
 			let wrapper = mount(<DemoComponent />);
 			const group = wrapper.find('[role="group"]');
@@ -77,7 +23,7 @@ describe('SLDSDuelingPicklist', function() {
 			const firstOption = firstListbox.find('[role="option"]').at(0);
 			const secondOption = firstListbox.find('[role="option"]').at(1);
 
-			firstOption.simulate('click');
+			firstOption.simulate('focus');
 			expect(firstOption).to.have.attr('tabindex', '0');
 			expect(secondOption).to.have.attr('tabindex', '-1');
 			expect(firstOption).to.have.attr('aria-selected', 'true');
@@ -111,7 +57,7 @@ describe('SLDSDuelingPicklist', function() {
 			expect(firstOption).to.have.attr('tabindex', '0');
 			expect(secondOption).to.have.attr('tabindex', '-1');
 			expect(thirdOption).to.have.attr('tabindex', '-1');
-			firstOption.simulate('click');
+			firstOption.simulate('focus');
 			expect(firstOption).to.have.attr('aria-selected', 'true');
 			expect(secondOption).to.have.attr('aria-selected', 'false');
 			expect(thirdOption).to.have.attr('aria-selected', 'false');
@@ -162,7 +108,7 @@ describe('SLDSDuelingPicklist', function() {
 			const thirdOption = options.at(2);
 
 			// select an option
-			firstOption.simulate('click');
+			firstOption.simulate('focus');
 			expect(firstOption).to.have.attr('tabindex', '0');
 			expect(secondOption).to.have.attr('tabindex', '-1');
 			expect(thirdOption).to.have.attr('tabindex', '-1');
@@ -195,7 +141,7 @@ describe('SLDSDuelingPicklist', function() {
 			const secondOption = options.at(1);
 			const thirdOption = options.at(2);
 
-			firstOption.simulate('click');
+			firstOption.simulate('focus');
 
 			group.simulate('keyDown', {
 				...DOWN,
@@ -236,7 +182,7 @@ describe('SLDSDuelingPicklist', function() {
 			const firstOption = options.at(0);
 			const secondOption = options.at(1);
 
-			firstOption.simulate('click');
+			firstOption.simulate('focus');
 
 			group.simulate('keyDown', {
 				...SPACE,
@@ -276,7 +222,7 @@ describe('SLDSDuelingPicklist', function() {
 				.at(0)
 				.find('[role="option"]')
 				.at(0)
-				.simulate('click');
+				.simulate('focus');
 			group.simulate('keyDown', {
 				...A,
 				ctrlKey: true,
@@ -340,7 +286,7 @@ describe('SLDSDuelingPicklist', function() {
 				const findSelectedOptions = () => wrapper.find('[role="listbox"]').at(1).find('[role="option"]');
 				
 				const group = wrapper.find('[role="group"]');
-				findSelectedOptions().at(0).simulate('click');
+				findSelectedOptions().at(0).simulate('focus');
 				
 				expect(findSelectedOptions().at(0).text()).to.equal('A');
 				expect(findSelectedOptions().at(0).hasClass('slds-is-grabbed')).to.equal(false);
