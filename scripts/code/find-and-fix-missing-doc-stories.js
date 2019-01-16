@@ -2,7 +2,7 @@
 // all of the examples from __examples__.
 // It will rewrite insert import statements and add "add" calls to the stories
 // for any that aren't imported and write out the file to "storybooks-stories.jsx".
-// Be sure to run prettier to clean up formatting of any files this script touched.
+// Be sure to run `npm run lint:fix` to clean up formatting of any files this script touched.
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const glob = require('glob');
@@ -56,7 +56,7 @@ const createCallAddExpression = (node, description, cmpName) => {
 		t.arrowFunctionExpression(
 			[],
 			t.jSXElement(
-				t.jSXOpeningElement(t.jSXIdentifier(cmpName), []),
+				t.jSXOpeningElement(t.jSXIdentifier(cmpName), [], true),
 				null,
 				[],
 				true
