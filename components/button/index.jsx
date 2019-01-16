@@ -5,7 +5,6 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import requiredIf from 'react-required-if';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
@@ -68,10 +67,7 @@ class Button extends React.Component {
 		/**
 		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
 		 */
-		iconCategory: requiredIf(
-			PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
-			(props) => !!props.iconName
-		),
+		iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 		/**
 		 * CSS classes to be added to icon.
 		 */
