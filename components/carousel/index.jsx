@@ -23,6 +23,11 @@ import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
 import CarouselItem from './private/carousel-item';
 import AutoPlayButton from './private/auto-play-button';
+
+// ### Event Helpers
+import KEYS from '../../utilities/key-code';
+import EventUtil from '../../utilities/event';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
  */
@@ -100,6 +105,7 @@ class Carousel extends React.Component {
 		}
 		this.setState({ isAutoPlayOn: false });
 	};
+
 	changeTranslationAutomatically = () => {
 		this.setTranslationAmount(
 			-(this.stageWidth * (this.state.currentPanel - 1))
@@ -110,6 +116,25 @@ class Carousel extends React.Component {
 
 	canGoToPrevious = () => this.state.currentPanel > 1;
 
+	handleKeyDown = (event) => {
+		const keyDownCallbacks = {
+			[KEYS.LEFT]: () => {
+				if (this.canGoToPrevious()) {
+					this.onPreviousPanelHandler();
+				}
+			},
+			[KEYS.RIGHT]: () => {
+				if (this.canGoToNext()) {
+					this.onNextPanelHandler();
+				}
+			},
+		};
+
+		if (keyDownCallbacks[event.keyCode]) {
+			EventUtil.trapImmediate(event);
+			keyDownCallbacks[event.keyCode](event.shiftKey ? 10 : 1);
+		}
+	};
 	render() {
 		const {
 			hasAutoplay,
@@ -122,7 +147,7 @@ class Carousel extends React.Component {
 		const itemWidth = this.stageWidth / this.props.itemsPerPanel;
 
 		return (
-			<div className="slds-carousel" id={id}>
+			<div className="slds-carousel" id={id} onKeyDown={this.handleKeyDown}>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
 					{hasAutoplay && (
 						<AutoPlayButton
