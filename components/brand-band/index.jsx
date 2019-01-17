@@ -39,10 +39,10 @@ class BrandBand extends React.Component {
 
 	injectLightningBlueStyles() {
 		return (
-			<style>{`#${this.getId()}.slds-brand-band:before {
+			<style>{`.slds-brand-band.dsr-brand-band_lightning-blue:before {
 	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
 }
-#${this.getId()}.slds-brand-band:after {
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
 	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
 }`}</style>
 		);
@@ -74,6 +74,8 @@ class BrandBand extends React.Component {
 							'slds-brand-band_large': props.size === 'large',
 
 							'slds-brand-band_none': props.image === 'none',
+
+							'dsr-brand-band_lightning-blue': props.theme === 'lightning-blue',
 						},
 						props.className
 					)}
