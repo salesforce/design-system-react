@@ -18,7 +18,7 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
 const CarouselItem = (props) => (
 	<div
 		id={`content-id-${props.id}`}
-		className="slds-carousel__panel slds-m-horizontal_xx-small"
+		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
 		aria-labelledby={`indicator-id-${props.id}`}

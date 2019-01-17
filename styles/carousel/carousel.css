@@ -1,5 +1,5 @@
 .slds-carousel__content {
-	height: 100%;
+	height: auto;
 }
 
 .slds-carousel__button[disabled] {
