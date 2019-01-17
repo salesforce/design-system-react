@@ -4,7 +4,9 @@ module.exports = {
       {
         name: 'General',
         include: [
-          'components/button/button.jsx',
+					'components/button/button.jsx',
+					'components/checkbox/checkbox.jsx',
+					'components/card/card.jsx',
         ]
       },
     ]
