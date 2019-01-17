@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 // import Card from '~/components/card';
 import '../../../styles/carousel/carousel.css';
 import { CAROUSEL_ITEM } from '../../../utilities/constants';
-import Button from './../../button';
 
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -31,10 +30,8 @@ const CarouselItem = (props) => (
 			props.onRenderItem(props)
 		) : (
 			<a
-				href={props.href}
+				href="javascript:void(0);"
 				className="slds-carousel__panel-action slds-text-link_reset"
-				tabIndex="0"
-                target="_blank"
 			>
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText} />
@@ -48,10 +45,13 @@ const CarouselItem = (props) => (
 						{props.description}
 					</p>
 					{props.CTALabel && (
-						<Button
-							label={props.CTALabel}
-							className="slds-button_outline-brand"
-						/>
+						<a
+							className="slds-button slds-button_neutral slds-button_outline-brand"
+							href={props.href}
+							target="_blank"
+						>
+							{props.CTALabel}
+						</a>
 					)}
 				</div>
 			</a>
