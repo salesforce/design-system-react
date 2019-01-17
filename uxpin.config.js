@@ -4,7 +4,7 @@ module.exports = {
       {
         name: 'General',
         include: [
-          'components/button/index.jsx',
+          'components/button/button.jsx',
         ]
       },
     ]
