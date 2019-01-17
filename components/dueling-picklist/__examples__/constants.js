@@ -11,4 +11,4 @@ export const ids = {
 	optionDragLabel: 'option-drag-label',
 	optionsLabel: 'options-label',
 	selectedLabel: 'selected-label',
-}
+};

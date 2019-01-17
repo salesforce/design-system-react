@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Option from './option';
 import { DropTarget } from 'react-dnd';
 
@@ -42,10 +43,10 @@ class Options extends React.Component {
 
 	componentDidUpdate (prevProps, prevState) {
 		const { options, focus } = this.props;
-		
+
 		const hasMoreItems = options.length > prevProps.options.length;
 		/** When the selected items are moved from one listbox to another,
-			they should maintain their focus */
+		 they should maintain their focus */
 		if (hasMoreItems && this.anyItemsSelected() && !this.anyItemsFocused()) {
 			setImmediate(focus);
 		}
@@ -69,7 +70,6 @@ class Options extends React.Component {
 			dragAndDropEnabled,
 		} = this.props;
 
-		const disabledClass = disabled ? 'slds-is-disabled' : '';
 		const styleProp = height ? { style: { height } } : {};
 
 		const result = (
@@ -78,7 +78,9 @@ class Options extends React.Component {
 					{label}
 				</span>
 				<div
-					className={`slds-dueling-list__options ${disabledClass}`}
+					className={classNames('slds-dueling-list__options', {
+						'slds-is-disabled': disabled,
+					})}
 					{...styleProp}
 				>
 					<ul
@@ -117,7 +119,7 @@ class Options extends React.Component {
 			disabled,
 		} = this.props;
 		const noItemsSelected = !this.anyItemsSelected();
-		
+
 		const isInFocus = option.item.id === focusedOptionId;
 
 		let tabIndex = '-1';

@@ -8,6 +8,9 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 import { keyObjects } from '../../../utilities/key-code';
+
+import DemoComponent from './demo-component';
+
 const { RIGHT, A, UP } = keyObjects;
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -15,15 +18,13 @@ const { RIGHT, A, UP } = keyObjects;
  */
 chai.use(chaiEnzyme());
 
-import DemoComponent from './demo-component';
-
-describe('SLDSDuelingPicklist', function() {
-	describe('Responsive', function() {
-		describe('When isResponsive is true', function() {
+describe('SLDSDuelingPicklist', function () {
+	describe('Responsive', function () {
+		describe('When isResponsive is true', function () {
 			beforeEach(mountComponent(<DemoComponent isResponsive />));
 			afterEach(unmountComponent);
 
-			it('applies the class, "slds-dueling-picklist__column_responsive", to columns when isResponsive is true', function() {
+			it('applies the class, "slds-dueling-picklist__column_responsive", to columns when isResponsive is true', function () {
 				expect(
 					this.wrapper
 						.find('.slds-dueling-list__column')
@@ -32,45 +33,51 @@ describe('SLDSDuelingPicklist', function() {
 				).to.equal(true);
 			});
 		});
-		
-		describe('When listboxHeight set', function() {
-			beforeEach(mountComponent(<DemoComponent listboxHeight="10rem" />))
+
+		describe('When listboxHeight set', function () {
+			beforeEach(mountComponent(<DemoComponent listboxHeight="10rem" />));
 			afterEach(unmountComponent);
 
-			it('sets height manually when listboxHeight set', function() {
-				expect(this.wrapper.find('.slds-dueling-list__options').first()).to.have.attr(
-					'style',
-					'height: 10rem;'
-				);
+			it('sets height manually when listboxHeight set', function () {
+				expect(
+					this.wrapper.find('.slds-dueling-list__options').first()
+				).to.have.attr('style', 'height: 10rem;');
 			});
 		});
-		
-		describe('When hasAutomaticHeightMinimization is true', function() {
+
+		describe('When hasAutomaticHeightMinimization is true', function () {
 			const options = 'A,B,C,D,E,F,G,H,I'.split(',').map((letter, i) => ({
-				id: i + '',
+				id: `${i}`,
 				label: letter,
 			}));
 
-			beforeEach(mountComponent(<DemoComponent
-				options={options}
-				selected={[]}
-				hasAutomaticHeightMinimization
-			/>));
+			beforeEach(
+				mountComponent(
+					<DemoComponent
+						options={options}
+						selected={[]}
+						hasAutomaticHeightMinimization
+					/>
+				)
+			);
 
 			afterEach(unmountComponent);
 
-			it('automatically adjusts listboxes to have minimum height without scrolling when hasAutomaticHeightMinimization is true', function() {
+			it('automatically adjusts listboxes to have minimum height without scrolling when hasAutomaticHeightMinimization is true', function () {
 				const getExpectedHeight = (numItems) => 2.25 * numItems + 1;
 				const group = this.wrapper.find('[role="group"]');
-				expect(this.wrapper.find('.slds-dueling-list__options').first()).to.have.attr(
+				expect(
+					this.wrapper.find('.slds-dueling-list__options').first()
+				).to.have.attr(
 					'style',
 					`height: ${getExpectedHeight(options.length)}rem;`
 				);
 
-				const getOptionNodes = () => this.wrapper
-					.find('[role="listbox"]')
-					.at(0)
-					.find('[role="option"]');
+				const getOptionNodes = () =>
+					this.wrapper
+						.find('[role="listbox"]')
+						.at(0)
+						.find('[role="option"]');
 
 				let optionNodes = getOptionNodes();
 
@@ -85,7 +92,9 @@ describe('SLDSDuelingPicklist', function() {
 					ctrlKey: true,
 				});
 
-				expect(this.wrapper.find('.slds-dueling-list__options').first()).to.have.attr(
+				expect(
+					this.wrapper.find('.slds-dueling-list__options').first()
+				).to.have.attr(
 					'style',
 					`height: ${getExpectedHeight(options.length - 3)}rem;`
 				);
@@ -110,7 +119,9 @@ describe('SLDSDuelingPicklist', function() {
 				});
 
 				// 1st listbox should have the height based off of height of 2nd listbox, which has all options, except 1
-				expect(this.wrapper.find('.slds-dueling-list__options').first()).to.have.attr(
+				expect(
+					this.wrapper.find('.slds-dueling-list__options').first()
+				).to.have.attr(
 					'style',
 					`height: ${getExpectedHeight(options.length - 1)}rem;`
 				);

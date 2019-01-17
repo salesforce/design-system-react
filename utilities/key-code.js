@@ -10,6 +10,9 @@ const keys = {
 	TAB: 9,
 	DELETE: 46,
 	BACKSPACE: 8,
+	METALEFT: 91,
+	METARIGHT: 93,
+	CTRL: 17,
 };
 
 // Helpful for interaction/event tests. Use with simulate:
@@ -30,6 +33,9 @@ const keyObjects = {
 		keyCode: keys.BACKSPACE,
 		which: keys.BACKSPACE,
 	},
+	METALEFT: { key: 'Meta', keyCode: keys.METALEFT, which: keys.METALEFT },
+	METARIGHT: { key: 'Meta', keyCode: keys.METARIGHT, which: keys.METARIGHT },
+	CTRL: { key: 'Control', keyCode: keys.CTRL, which: keys.CTRL },
 };
 
 export default keys;

@@ -7,6 +7,9 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 import { keyObjects } from '../../../utilities/key-code';
+
+import DemoComponent from './demo-component';
+
 const { DOWN, UP, RIGHT, LEFT, TAB, A, SPACE } = keyObjects;
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -14,15 +17,13 @@ const { DOWN, UP, RIGHT, LEFT, TAB, A, SPACE } = keyObjects;
  */
 chai.use(chaiEnzyme());
 
-import DemoComponent from './demo-component';
-
-describe('SLDSDuelingPicklist', function() {
-	describe('Keyboard Interaction', function() {
-		describe('standard DemoComponent props', function() {
+describe('SLDSDuelingPicklist', function () {
+	describe('Keyboard Interaction', function () {
+		describe('standard DemoComponent props', function () {
 			beforeEach(mountComponent(<DemoComponent />));
 			afterEach(unmountComponent);
 
-			it('changes focus and selection with up and down', function() {
+			it('changes focus and selection with up and down', function () {
 				const group = this.wrapper.find('[role="group"]');
 				const firstListbox = this.wrapper.find('[role="listbox"]').at(0);
 
@@ -48,7 +49,7 @@ describe('SLDSDuelingPicklist', function() {
 				expect(secondOption).to.have.attr('aria-selected', 'false');
 			});
 
-			it('moves focus and creates additional selections with shift + up and shift + down', function() {
+			it('moves focus and creates additional selections with shift + up and shift + down', function () {
 				const group = this.wrapper.find('[role="group"]');
 				const options = this.wrapper
 					.find('[role="listbox"]')
@@ -101,7 +102,7 @@ describe('SLDSDuelingPicklist', function() {
 				expect(thirdOption).to.have.attr('aria-selected', 'false');
 			});
 
-			it('selects all options with ctrl + a', function() {
+			it('selects all options with ctrl + a', function () {
 				const group = this.wrapper.find('[role="group"]');
 				const options = this.wrapper
 					.find('[role="listbox"]')
@@ -134,7 +135,7 @@ describe('SLDSDuelingPicklist', function() {
 				expect(thirdOption).to.have.attr('aria-selected', 'true');
 			});
 
-			it('moves focus with ctrl + down or ctrl + up, but selection remains where it is', function() {
+			it('moves focus with ctrl + down or ctrl + up, but selection remains where it is', function () {
 				const group = this.wrapper.find('[role="group"]');
 				const options = this.wrapper
 					.find('[role="listbox"]')
@@ -175,7 +176,7 @@ describe('SLDSDuelingPicklist', function() {
 				expect(thirdOption).to.have.attr('aria-selected', 'false');
 			});
 
-			it('toggles selection on the focused option with ctrl + space', function() {
+			it('toggles selection on the focused option with ctrl + space', function () {
 				const group = this.wrapper.find('[role="group"]');
 				const options = this.wrapper
 					.find('[role="listbox"]')
@@ -206,7 +207,7 @@ describe('SLDSDuelingPicklist', function() {
 			});
 		});
 
-		describe('Moving items between lists', function() {
+		describe('Moving items between lists', function () {
 			beforeEach(
 				mountComponent(
 					<DemoComponent
@@ -221,7 +222,7 @@ describe('SLDSDuelingPicklist', function() {
 			);
 			afterEach(unmountComponent);
 
-			it('moves selected items between lists with ctrl + right and ctrl + left', function() {
+			it('moves selected items between lists with ctrl + right and ctrl + left', function () {
 				const group = this.wrapper.find('[role="group"]');
 				let listboxes = this.wrapper.find('[role="listbox"]');
 
@@ -309,7 +310,7 @@ describe('SLDSDuelingPicklist', function() {
 			});
 		});
 
-		describe('When space is used to toggle drag and drop mode', function() {
+		describe('When space is used to toggle drag and drop mode', function () {
 			beforeEach(
 				mountComponent(
 					<DemoComponent
@@ -321,7 +322,7 @@ describe('SLDSDuelingPicklist', function() {
 			);
 			afterEach(unmountComponent);
 
-			it('moves the selected items within the current list with up and down arrows', function() {
+			it('moves the selected items within the current list with up and down arrows', function () {
 				const findSelectedOptions = () =>
 					this.wrapper
 						.find('[role="listbox"]')

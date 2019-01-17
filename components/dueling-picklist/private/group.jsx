@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Column from './column';
 import Options from './options';
 import Button from './button';
 import ViewOnly from './view-only';
 import { wrapItemAndAddIsSelected } from './utility';
 import { AriaLiveMoveContexts, AriaLiveMessages } from './constants';
+import { propTypes } from '../prop-types';
 
 const Group = ({
 	ariaLiveContext,
 	assistiveText,
 	dragAndDropWithArrowKeys,
+	events,
 	focusedOptionId,
 	hasAutomaticHeightMinimization,
 	ids,
@@ -21,18 +24,6 @@ const Group = ({
 	isViewOnly,
 	labels,
 	listboxHeight,
-	onBeginDrag,
-	onEndDrag,
-	onDropIntoCategory,
-	onDropOntoOption,
-	onFocus,
-	onKeyDown,
-	onKeyUp,
-	onMoveSelectionDownClick,
-	onMoveSelectionLeftClick,
-	onMoveSelectionRightClick,
-	onMoveSelectionUpClick,
-	onSelect,
 	options,
 	refs,
 	selected,
@@ -42,6 +33,21 @@ const Group = ({
 	if (isViewOnly) {
 		return <ViewOnly labels={labels} selected={selected} />;
 	}
+
+	const {
+		onBeginDrag,
+		onEndDrag,
+		onDropIntoCategory,
+		onDropOntoOption,
+		onFocus,
+		onKeyDown,
+		onKeyUp,
+		onMoveSelectionDownClick,
+		onMoveSelectionLeftClick,
+		onMoveSelectionRightClick,
+		onMoveSelectionUpClick,
+		onSelect,
+	} = events;
 
 	const allOptions = [
 		wrapItemAndAddIsSelected(options, selection),
@@ -84,7 +90,12 @@ const Group = ({
 						id={ids.dragLiveRegion}
 						aria-live="assertive"
 					>
-						{getAriaLiveMessage({ ariaLiveContext, assistiveText, labels, selection })}
+						{getAriaLiveMessage({
+							ariaLiveContext,
+							assistiveText,
+							labels,
+							selection,
+						})}
 					</div>
 					<div className="slds-assistive-text" id={ids.optionDragLabel}>
 						{assistiveText.optionDragLabel}
@@ -172,7 +183,12 @@ const Group = ({
 	);
 };
 
-function getAriaLiveMessage ({ ariaLiveContext, assistiveText, labels, selection }) {
+function getAriaLiveMessage ({
+	ariaLiveContext,
+	assistiveText,
+	labels,
+	selection,
+}) {
 	if (!ariaLiveContext) {
 		return null;
 	}
@@ -186,7 +202,8 @@ function getAriaLiveMessage ({ ariaLiveContext, assistiveText, labels, selection
 	switch (ariaLiveContext) {
 		case AriaLiveMoveContexts.ItemsMovedToSelection:
 			return (
-				itemsMovedToSelection || getAriaLiveLabel(AriaLiveMessages.MovedTo, labels, selection)
+				itemsMovedToSelection ||
+				getAriaLiveLabel(AriaLiveMessages.MovedTo, labels, selection)
 			);
 		case AriaLiveMoveContexts.ItemsRemovedFromSelection:
 			return (
@@ -215,5 +232,24 @@ function getAriaLiveLabel (message, labels, selection) {
 
 	return `${words} ${message} ${labels.selected}`;
 }
+
+Group.propTypes = {
+	...propTypes,
+	refs: PropTypes.object,
+	events: PropTypes.shape({
+		onBeginDrag: PropTypes.func.isRequired,
+		onEndDrag: PropTypes.func.isRequired,
+		onDropOntoOption: PropTypes.func.isRequired,
+		onDropIntoCategory: PropTypes.func.isRequired,
+		onKeyUp: PropTypes.func.isRequired,
+		onKeyDown: PropTypes.func.isRequired,
+		onFocus: PropTypes.func.isRequired,
+		onMoveSelectionLeftClick: PropTypes.func.isRequired,
+		onMoveSelectionRightClick: PropTypes.func.isRequired,
+		onMoveSelectionUpClick: PropTypes.func.isRequired,
+		onMoveSelectionDownClick: PropTypes.func.isRequired,
+		onSelect: PropTypes.func.isRequired,
+	}),
+};
 
 export default Group;

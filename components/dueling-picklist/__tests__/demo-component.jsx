@@ -6,7 +6,7 @@ import duelingPicklistFilter from '../filter';
 
 const options = 'Car,Truck,Van,Minivan,Race car,Tank,Scooter'
 	.split(',')
-	.map((label, i) => ({ label, id: i + '' }));
+	.map((label, i) => ({ label, id: `${i}` }));
 
 const defaultSelected = options.slice(-2);
 const defaultProps = {
@@ -22,19 +22,22 @@ const defaultProps = {
 const DemoComponent = createReactClass({
 	displayName: 'DuelingPicklistDemoComponent',
 
-	getDefaultProps() {
+	getDefaultProps () {
 		return defaultProps;
 	},
 
-	getInitialState() {
-		return { selected: this.props.selected, options: [...this.props.options, ...this.props.selected] };
+	getInitialState () {
+		return {
+			selected: this.props.selected,
+			options: [...this.props.options, ...this.props.selected],
+		};
 	},
 
-	handleChange(selected) {
+	handleChange (selected) {
 		this.setState({ selected });
 	},
 
-	render() {
+	render () {
 		const options = duelingPicklistFilter({
 			options: this.state.options,
 			selected: this.state.selected,
@@ -46,7 +49,7 @@ const DemoComponent = createReactClass({
 					{...this.state}
 					options={options}
 					events={{
-						onChange: this.handleChange
+						onChange: this.handleChange,
 					}}
 				/>
 			</IconSettings>

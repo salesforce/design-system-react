@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Group from './private/group';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -15,168 +14,23 @@ import {
 	moveItemsInCategory,
 	selectionChanged,
 } from './private/utility';
-import { KeyCodes, AriaLiveMoveContexts } from './private/constants';
+import { AriaLiveMoveContexts } from './private/constants';
+import LetterKeys from '~/utilities/letter-key-code';
+import Keys from '~/utilities/key-code';
+import { propTypes, defaultProps } from './prop-types';
 
-const propTypes = {
-	/**
-	 * **Assistive text for accessibility**
-	 * This object is merged with the default props object on every render.
-	 * * `optionDragLabel`: Instructions on how to drag and drop with a keyboard.
-	 * * `itemLocked`: Used to label locked items.
-	 * * `itemsSelected`: Used in Aria Live area to inform user that items were moved to selected.
-	 * * `itemsDeselected`: Used in Aria Live area to inform user that items were removed from selected.
-	 * * `selectedItemsReordered`: Used in Aria Live area to inform user that selected items were reordered.
-	 * * `moveSelectionDown`: Used by "down" reordering button.
-	 * * `moveSelectionUp`: Used by "up" reordering button.
-	 * * `moveSelectionToSelected`: Used by "right" button, which moves items to selected.
-	 * * `moveSelectionToOptions`: Used by "left" button, which removes items from selection.
-	 */
-
-	assistiveText: PropTypes.shape({
-		optionDragLabel: PropTypes.string,
-		itemLocked: PropTypes.string,
-		itemsSelected: PropTypes.string,
-		itemsDeselected: PropTypes.string,
-		lockedItemCannotBeMoved: PropTypes.string,
-		selectedItemsReordered: PropTypes.string,
-		moveSelectionDown: PropTypes.string,
-		moveSelectionUp: PropTypes.string,
-		moveSelectionToOptions: PropTypes.string,
-		moveSelectionToSelected: PropTypes.string,
-	}),
-
-	/**
-	 * Event Callbacks
-	 * * `onChange`: Called when items are added or removed from `selection`
-	 */
-	events: PropTypes.shape({
-		onChange: PropTypes.func.isRequired,
-	}).isRequired,
-
-	/**
-	 * When true, the height of both listboxes will be the smallest height needed to show all items without having to scroll.
-	 */
-
-	hasAutomaticHeightMinimization: PropTypes.bool,
-
-	/**
-	 * Element id prefixes (used for accessibility). If not provided, ids will be generated with shortid.
-	 * * `picklistGroupLabel`: id for labeling the `<DuelingPicklist />` component.
-	 * * `dragLiveRegion`: id for Aria Live element.
-	 * * `optionDragLabel`: id for describing how to use keyboard interactions.
-	 * * `optionsLabel`: id for options listbox.
-	 * * `selectedLabel`: id for selection listbox.
-	 */
-	ids: PropTypes.shape({
-		picklistGroupLabel: PropTypes.string,
-		dragLiveRegion: PropTypes.string,
-		optionDragLabel: PropTypes.string,
-		optionsLabel: PropTypes.string,
-		selectedLabel: PropTypes.string,
-	}),
-
-	/**
-	 * When true, all interactions are disabled.
-	 */
-	isDisabled: PropTypes.bool,
-
-	/**
-	 * When true, component renders in view mode.
-	 */
-	isViewOnly: PropTypes.bool,
-
-	/**
-	 * allows the user to reorder the second listbox of options
-	 */
-	isReorderable: PropTypes.bool,
-
-	/**
-	 * When true, a red asterisk will render, visually marking the item as required.
-	 */
-	isRequired: PropTypes.bool,
-	/**
-	 * When true, the component will be render with responsive css classes applied. Any items longer than the space available will truncate with ellipses.
-	 */
-	isResponsive: PropTypes.bool,
-
-	/**
-	 * Labels
-	 * * `group`: A `DuelingPicklist` should have a group label, similar to using a `fieldset` HTML element.
-	 * * `options`: Label for options.
-	 * * `selected`: Label for selected.
-	 * * `selectedItems`: Labels selected items in View Mode.
-	 */
-	labels: PropTypes.shape({
-		group: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-		options: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-		selected: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-		selectedItems: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-	}),
-
-	/**
-	 * Manually sets the height of both listboxes.
-	 */
-	listboxHeight: PropTypes.string,
-
-	/**
-	 * Items in the first listbox
-	 * * `label`: Item label.
-	 * * `id`: Unique id for the item.
-	 * * `isLocked`: When true, a lock icon renders on the item, and the item cannot be moved to or from selected.
-	 */
-	options: PropTypes.arrayOf(
-		PropTypes.shape({
-			label: PropTypes.string.isRequired,
-			id: PropTypes.string.isRequired,
-			isLocked: PropTypes.bool,
-		})
-	).isRequired,
-
-	/**
-	 * Items in the second listbox
-	 * * `label`: Item label.
-	 * * `id`: Unique id for the item.
-	 * * `isLocked`: When true, a lock icon renders on the item, and the item cannot be moved to or from the selection.
-	 */
-	selected: PropTypes.arrayOf(
-		PropTypes.shape({
-			label: PropTypes.string.isRequired,
-			id: PropTypes.string.isRequired,
-			isLocked: PropTypes.bool,
-		})
-	).isRequired,
-
-	/**
-	 * Component that provides contextual information next to the `group.label`
-	 */
-	tooltip: PropTypes.node,
-};
-
-const defaultProps = {
-	labels: {
-		group: 'Select Options',
-		options: 'First Category',
-		selected: 'Second Category',
-		selectedItems: 'Selected Items',
-	},
-	assistiveText: {
-		optionDragLabel:
-			'Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.',
-		moveSelectionUp: 'Move Selection Up',
-		moveSelectionDown: 'Move Selection Down',
-		itemLocked: 'Locked item',
-		lockedItemCannotBeMoved: 'Item cannot be moved',
-	},
-	ids: {},
-};
-
+/**
+ * A DuelingPicklist is used to move options between two lists and is often
+ * referred to as a multi-select. Sometimes, the list options can then be
+ * re-ordered, depending on the use case.
+ */
 class DuelingPicklist extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 
 	beginDrag = () => this.setState({ isDragging: true });
 
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.state = {
 			selection: [],
@@ -205,7 +59,7 @@ class DuelingPicklist extends React.Component {
 		);
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+	componentDidUpdate (prevProps, prevState) {
 		const { selected } = this.props;
 		const { ariaLiveContext, selection } = this.state;
 		const prevSelected = prevProps.selected;
@@ -245,7 +99,7 @@ class DuelingPicklist extends React.Component {
 		}
 	};
 
-	deselectLockedItems(callback) {
+	deselectLockedItems (callback) {
 		const nonLockedSelection = this.state.selection.filter((s) => !s.isLocked);
 		if (nonLockedSelection.length > 0) {
 			this.setState(
@@ -261,12 +115,12 @@ class DuelingPicklist extends React.Component {
 
 	endDrag = () => this.setState({ isDragging: false });
 
-	findItem(id) {
+	findItem (id) {
 		const { options, selected } = this.props;
 		return [...options, ...selected].find((item) => item.id === id);
 	}
 
-	findCategory(item) {
+	findCategory (item) {
 		const { options, selected } = this.props;
 		return selected.some((s) => s.id === item.id) ? selected : options;
 	}
@@ -279,7 +133,7 @@ class DuelingPicklist extends React.Component {
 			ref.current.focus();
 		}
 
-		let changes = {
+		const changes = {
 			focusedOptionId: lastSelectedId,
 		};
 
@@ -289,18 +143,18 @@ class DuelingPicklist extends React.Component {
 		this.setState(changes);
 	};
 
-	getDefaultedPropObj(propName) {
+	getDefaultedPropObj (propName) {
 		return {
 			...defaultProps[propName],
 			...this.props[propName],
 		};
 	}
 
-	getId(idName) {
+	getId (idName) {
 		return this.props.ids[idName] || this.generatedIds[idName];
 	}
 
-	getIds() {
+	getIds () {
 		return {
 			picklistGroupLabel: `${this.getId(
 				'picklistGroupLabel'
@@ -368,7 +222,7 @@ class DuelingPicklist extends React.Component {
 		};
 
 		switch (which) {
-			case KeyCodes.Space:
+			case Keys.SPACE:
 				if (modifierUsed) {
 					haltEvent(true);
 					return this.toggleFocusedSelection();
@@ -380,37 +234,37 @@ class DuelingPicklist extends React.Component {
 				return this.setState({
 					dragAndDropWithArrowKeys: !dragAndDropWithArrowKeys,
 				});
-			case KeyCodes.Up:
-			case KeyCodes.Down:
+			case Keys.UP:
+			case Keys.DOWN:
 				haltEvent();
-				const isUp = which === KeyCodes.Up;
+				const isUp = which === Keys.UP;
 				return this.handleVerticalArrowKeyUp(
 					item,
 					isUp,
 					shiftKey,
 					modifierUsed
 				);
-			case KeyCodes.Left:
-			case KeyCodes.Right:
+			case Keys.LEFT:
+			case Keys.RIGHT:
 				if (modifierUsed) {
 					haltEvent();
-					const isLeft = which === KeyCodes.Left;
+					const isLeft = which === Keys.LEFT;
 					this.moveSelectedItemsHorizontally(isLeft, false);
 				}
 				return;
-			case KeyCodes.A:
+			case LetterKeys.A:
 				if (modifierUsed) {
 					haltEvent(true);
 					this.selectAllInCategory(item);
 				}
 				return;
-			case KeyCodes.MetaLeft:
-			case KeyCodes.MetaRight:
-			case KeyCodes.Ctrl:
+			case Keys.METALEFT:
+			case Keys.METARIGHT:
+			case Keys.CTRL:
 				return this.setState({
 					metaKey: true,
 				});
-			case KeyCodes.Shift:
+			case Keys.SHIFT:
 				haltEvent();
 				return this.setState({
 					shiftKey: true,
@@ -490,7 +344,7 @@ class DuelingPicklist extends React.Component {
 		);
 	};
 
-	handleVerticalArrowKeyUp(item, isUp, selectRange, moveFocus) {
+	handleVerticalArrowKeyUp (item, isUp, selectRange, moveFocus) {
 		const { selected } = this.props;
 		const { dragAndDropWithArrowKeys } = this.state;
 		const category = this.findCategory(item);
@@ -518,7 +372,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveSelectedItemsHorizontally(isLeft, shouldDeselect = true) {
+	moveSelectedItemsHorizontally (isLeft, shouldDeselect = true) {
 		const { selection } = this.state;
 		if (selection.length === 0) {
 			return;
@@ -536,7 +390,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveItemsVertically(isUp) {
+	moveItemsVertically (isUp) {
 		const { options, selected, isReorderable } = this.props;
 		if (!isReorderable) {
 			return;
@@ -555,7 +409,7 @@ class DuelingPicklist extends React.Component {
 		this.triggerOnChange(newSelected);
 	}
 
-	render() {
+	render () {
 		return (
 			<Group
 				{...this.props}
@@ -564,23 +418,25 @@ class DuelingPicklist extends React.Component {
 				labels={this.getDefaultedPropObj('labels')}
 				ids={this.getIds()}
 				refs={this.optionRefs}
-				onBeginDrag={this.beginDrag}
-				onEndDrag={this.endDrag}
-				onDropOntoOption={this.handleDropOntoOption}
-				onDropIntoCategory={this.handleDropIntoCategory}
-				onKeyUp={this.handleKeyUp}
-				onKeyDown={this.handleKeyDown}
-				onFocus={this.focus}
-				onMoveSelectionLeftClick={this.handleMoveSelectedItemsLeftClick}
-				onMoveSelectionRightClick={this.handleMoveSelectedItemsRightClick}
-				onMoveSelectionUpClick={this.handleMoveItemUpClick}
-				onMoveSelectionDownClick={this.handleMoveItemDownClick}
-				onSelect={this.handleSelect}
+				events={{
+					onBeginDrag: this.beginDrag,
+					onEndDrag: this.endDrag,
+					onDropOntoOption: this.handleDropOntoOption,
+					onDropIntoCategory: this.handleDropIntoCategory,
+					onKeyUp: this.handleKeyUp,
+					onKeyDown: this.handleKeyDown,
+					onFocus: this.focus,
+					onMoveSelectionLeftClick: this.handleMoveSelectedItemsLeftClick,
+					onMoveSelectionRightClick: this.handleMoveSelectedItemsRightClick,
+					onMoveSelectionUpClick: this.handleMoveItemUpClick,
+					onMoveSelectionDownClick: this.handleMoveItemDownClick,
+					onSelect: this.handleSelect,
+				}}
 			/>
 		);
 	}
 
-	selectAllInCategory(item) {
+	selectAllInCategory (item) {
 		const selection = this.findCategory(item);
 		this.setState({
 			selection,
@@ -589,7 +445,7 @@ class DuelingPicklist extends React.Component {
 		});
 	}
 
-	toggleFocusedSelection() {
+	toggleFocusedSelection () {
 		const { focusedOptionId, selection } = this.state;
 		const item = this.findItem(focusedOptionId);
 		let newSelection;
@@ -604,7 +460,7 @@ class DuelingPicklist extends React.Component {
 		});
 	}
 
-	triggerOnChange(newSelected, isLeft = false, shouldDeselect = false) {
+	triggerOnChange (newSelected, isLeft = false, shouldDeselect = false) {
 		const trigger = () => this.props.events.onChange(newSelected);
 
 		if (shouldDeselect) {

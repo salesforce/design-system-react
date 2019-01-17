@@ -3,6 +3,7 @@ import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import Icon from '~/components/icon';
 import { DragSource, DropTarget } from 'react-dnd';
+import classNames from 'classnames';
 
 class Option extends React.Component {
 	static propTypes = {
@@ -74,21 +75,6 @@ class Option extends React.Component {
 		} = this.props;
 		const { selected, item } = option;
 
-		let className =
-			'slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline';
-		if (!disabled && selected) {
-			className += ' slds-is-selected';
-		}
-		if (
-			!disabled &&
-			dragAndDropEnabled &&
-			(isDragging ||
-				isDraggingWithGroup ||
-				(dragAndDropWithArrowKeys && selected))
-		) {
-			className += ' slds-is-grabbed';
-		}
-
 		const events = disabled
 			? {}
 			: {
@@ -99,7 +85,14 @@ class Option extends React.Component {
 		const result = (
 			<li role="presentation" className="slds-listbox__item" id={this.id}>
 				<div
-					className={className}
+					className={classNames(
+						'slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline',
+						{
+							'slds-is-selected': !disabled && selected,
+							'slds-is-grabbed':
+								!disabled && dragAndDropWithArrowKeys && selected,
+						}
+					)}
 					aria-selected={!disabled && (selected || isDragging)}
 					role="option"
 					tabIndex={tabIndex}
