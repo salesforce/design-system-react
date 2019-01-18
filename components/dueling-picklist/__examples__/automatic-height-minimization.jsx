@@ -6,13 +6,21 @@ import DuelingPicklist from '~/components/dueling-picklist';
 import duelingPicklistFilter from '~/components/dueling-picklist/filter';
 import { fruitOptions, ids } from './constants';
 
+const allFruit = [
+	...fruitOptions,
+	...'Mango,Pineapple,Grapes'.split(',').map((fruit, i) => ({
+		label: fruit,
+		id: fruitOptions.length + i,
+	})),
+];
+
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
 
 	getInitialState () {
 		return {
-			options: fruitOptions,
-			selected: fruitOptions.slice(-2),
+			options: allFruit,
+			selected: allFruit.slice(-2),
 		};
 	},
 

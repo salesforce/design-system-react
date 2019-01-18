@@ -7,10 +7,12 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 import { keyObjects } from '../../../utilities/key-code';
+import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
 
 import DemoComponent from './demo-component';
 
-const { DOWN, UP, RIGHT, LEFT, TAB, A, SPACE } = keyObjects;
+const { DOWN, UP, RIGHT, LEFT, SPACE } = keyObjects;
+const { A } = letterKeyObjects;
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme

@@ -1,5 +1,4 @@
 const keys = {
-	A: 65,
 	ENTER: 13,
 	ESCAPE: 27,
 	SPACE: 32,
@@ -13,12 +12,12 @@ const keys = {
 	METALEFT: 91,
 	METARIGHT: 93,
 	CTRL: 17,
+	SHIFT: 16,
 };
 
 // Helpful for interaction/event tests. Use with simulate:
 // `nodes.input.simulate('keyDown', keyObjects.DOWN);`
 const keyObjects = {
-	A: { key: 'A', keyCode: keys.A, which: keys.A },
 	ENTER: { key: 'Enter', keyCode: keys.ENTER, which: keys.ENTER },
 	ESCAPE: { key: 'Escape', keyCode: keys.ESCAPE, which: keys.ESCAPE },
 	SPACE: { key: 'Space', keyCode: keys.SPACE, which: keys.SPACE },
@@ -36,6 +35,7 @@ const keyObjects = {
 	METALEFT: { key: 'Meta', keyCode: keys.METALEFT, which: keys.METALEFT },
 	METARIGHT: { key: 'Meta', keyCode: keys.METARIGHT, which: keys.METARIGHT },
 	CTRL: { key: 'Control', keyCode: keys.CTRL, which: keys.CTRL },
+	SHIFT: { key: 'Shift', keyCode: keys.SHIFT, which: keys.SHIFT },
 };
 
 export default keys;

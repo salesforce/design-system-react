@@ -8,10 +8,12 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 import { keyObjects } from '../../../utilities/key-code';
+import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
 
 import DemoComponent from './demo-component';
 
-const { RIGHT, A, UP } = keyObjects;
+const { DOWN, UP, RIGHT, LEFT, SPACE } = keyObjects;
+const { A } = letterKeyObjects;
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -101,7 +103,7 @@ describe('SLDSDuelingPicklist', function () {
 
 				optionNodes = getOptionNodes();
 				// select first option
-				optionNodes.at(0).simulate('click');
+				optionNodes.at(0).simulate('focus');
 				// select all options
 				group.simulate('keyDown', {
 					...A,

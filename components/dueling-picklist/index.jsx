@@ -291,7 +291,7 @@ class DuelingPicklist extends React.Component {
 	handleSelect = (
 		item,
 		selectRange,
-		selectAdditionalItem,
+		toggleOption,
 		handledFromFocus = false
 	) => {
 		const {
@@ -310,8 +310,8 @@ class DuelingPicklist extends React.Component {
 			if (!selectRange) {
 				selectRange = shiftKey;
 			}
-			if (!selectAdditionalItem) {
-				selectAdditionalItem = metaKey || ctrlKey;
+			if (!toggleOption) {
+				toggleOption = metaKey || ctrlKey;
 			}
 		}
 
@@ -327,7 +327,7 @@ class DuelingPicklist extends React.Component {
 			firstSelected || (lastSelectedId && this.findItem(lastSelectedId));
 		if (selectRange && previousSelected && inSameCategory) {
 			newSelection = getRange(category, previousSelected, item);
-		} else if (selectAdditionalItem && inSameCategory) {
+		} else if (toggleOption && inSameCategory) {
 			newSelection = getOrderedSelection(category, selection.concat(item));
 		} else {
 			newSelection = [item];
