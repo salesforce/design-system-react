@@ -150,7 +150,7 @@ const getIcon = (option) => {
 
 const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
-		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
+		<slds-pill-container // eslint-disable-line jsx-a11y/role-supports-aria-props
 			className={
 				classNames(
 					{
@@ -232,7 +232,7 @@ const SelectedListBox = (props) =>
 					);
 				})}
 			</ul>
-		</div>
+		</slds-pill-container>
 	) : null;
 
 SelectedListBox.displayName = 'SelectedListBox';

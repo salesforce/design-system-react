@@ -818,7 +818,13 @@ class Combobox extends React.Component {
 
 	renderBase = ({ assistiveText, labels, props }) => (
 		<div className="slds-form-element__control">
-			<div className="slds-combobox_container">
+			<slds-combobox-container
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					position: 'relative',
+				}}
+			>
 				<div
 					className={classNames(
 						'slds-combobox',
@@ -887,7 +893,7 @@ class Combobox extends React.Component {
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
 					})}
 				</div>
-			</div>
+			</slds-combobox-container>
 			<SelectedListBox
 				activeOption={this.state.activeSelectedOption}
 				activeOptionIndex={this.state.activeSelectedOptionIndex}
