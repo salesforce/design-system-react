@@ -460,7 +460,7 @@ class DuelingPicklist extends React.Component {
 				{...this.state}
 				assistiveText={this.getDefaultedPropObj('assistiveText')}
 				labels={this.getDefaultedPropObj('labels')}
-				ids={this.getIds__ZZZ()}
+				ids={this.getIds()}
 				refs={this.optionRefs}
 				events={{
 					onBeginDrag: this.beginDrag,

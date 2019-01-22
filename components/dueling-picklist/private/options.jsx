@@ -103,7 +103,7 @@ class Options extends React.Component {
 				disabled={disabled}
 			/>
 		);
-	}
+	};
 
 	render () {
 		const {

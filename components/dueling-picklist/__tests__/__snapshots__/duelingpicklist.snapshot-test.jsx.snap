@@ -42,10 +42,10 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
             style={
               Object {
-                "height": "7.75rem",
+                "height": "14.5rem",
               }
             }
           >
@@ -132,6 +132,81 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
                   </span>
                 </div>
               </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-3"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Pear"
+                    >
+                      Pear
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-4"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Watermelon"
+                    >
+                      Watermelon
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                id="dueling-picklist-option-5"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Mango"
+                    >
+                      Mango
+                    </span>
+                  </span>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -191,10 +266,10 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
             style={
               Object {
-                "height": "7.75rem",
+                "height": "14.5rem",
               }
             }
           >
@@ -208,7 +283,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
+                id="dueling-picklist-option-6"
                 role="presentation"
               >
                 <div
@@ -224,16 +299,16 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
                   >
                     <span
                       className="slds-truncate"
-                      title="Pear"
+                      title="Pineapple"
                     >
-                      Pear
+                      Pineapple
                     </span>
                   </span>
                 </div>
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
+                id="dueling-picklist-option-7"
                 role="presentation"
               >
                 <div
@@ -249,9 +324,9 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
                   >
                     <span
                       className="slds-truncate"
-                      title="Watermelon"
+                      title="Grapes"
                     >
-                      Watermelon
+                      Grapes
                     </span>
                   </span>
                 </div>
@@ -307,7 +382,7 @@ exports[`Default DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -451,7 +526,7 @@ exports[`Default DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -807,7 +882,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -951,7 +1026,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -1106,7 +1181,7 @@ exports[`Locked DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -1250,7 +1325,7 @@ exports[`Locked DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -1304,7 +1379,6 @@ exports[`Locked DOM Snapshot 1`] = `
                       <span
                         className="slds-assistive-text"
                       >
-                         
                         : 
                         Item cannot be moved
                       </span>
@@ -1432,7 +1506,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
             style={
               Object {
                 "height": "20rem",
@@ -1581,7 +1655,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
             style={
               Object {
                 "height": "20rem",
@@ -1704,7 +1778,7 @@ exports[`Required DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -1848,7 +1922,7 @@ exports[`Required DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -1959,7 +2033,7 @@ exports[`Responsive DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -2103,7 +2177,7 @@ exports[`Responsive DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -2248,7 +2322,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
             First Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
@@ -2392,7 +2466,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
             Second Category
           </span>
           <div
-            className="slds-dueling-list__options "
+            className="slds-dueling-list__options"
           >
             <ul
               aria-describedby="option-drag-label-option-drag-label"
