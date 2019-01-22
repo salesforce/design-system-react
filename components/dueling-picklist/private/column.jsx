@@ -7,8 +7,9 @@ const Column = ({ children, responsive }) => (
 		className={classNames('slds-dueling-list__column', {
 			'slds-dueling-list__column_responsive': responsive,
 		})}
-		children={children}
-	/>
+	>
+		{children}
+	</div>
 );
 
 Column.propTypes = {

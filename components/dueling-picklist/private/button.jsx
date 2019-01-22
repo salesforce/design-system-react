@@ -17,4 +17,15 @@ const Button = ({ onClick, assistiveText, direction, disabled }) => (
 	/>
 );
 
+Button.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	assistiveText: PropTypes.string.isRequired,
+	direction: PropTypes.string.isRequired,
+	disabled: PropTypes.bool,
+};
+
+Button.defaultProps = {
+	disabled: false,
+};
+
 export default Button;

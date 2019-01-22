@@ -1,8 +1,10 @@
 import React from 'react';
-import Group from './private/group';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import shortid from 'shortid';
+import LetterKeys from '~/utilities/letter-key-code';
+import Keys from '~/utilities/key-code';
+import Group from './private/group';
 import {
 	areItemsAtEdgeOfCategory,
 	areItemsInCategory,
@@ -15,8 +17,6 @@ import {
 	selectionChanged,
 } from './private/utility';
 import { AriaLiveMoveContexts } from './private/constants';
-import LetterKeys from '~/utilities/letter-key-code';
-import Keys from '~/utilities/key-code';
 import { propTypes, defaultProps } from './prop-types';
 
 /**
@@ -27,8 +27,6 @@ import { propTypes, defaultProps } from './prop-types';
 class DuelingPicklist extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
-
-	beginDrag = () => this.setState({ isDragging: true });
 
 	constructor (props) {
 		super(props);
@@ -65,23 +63,27 @@ class DuelingPicklist extends React.Component {
 		const prevSelected = prevProps.selected;
 
 		if (selectionChanged(selected, prevSelected)) {
-			let ariaLiveContext;
+			let newAriaLiveContext;
 
 			if (prevSelected.length < selected.length) {
-				ariaLiveContext = AriaLiveMoveContexts.ItemsMovedToSelection;
+				newAriaLiveContext = AriaLiveMoveContexts.ItemsMovedToSelection;
 			} else if (prevSelected.length > selected.length) {
-				ariaLiveContext = AriaLiveMoveContexts.ItemsRemovedFromSelection;
+				newAriaLiveContext = AriaLiveMoveContexts.ItemsRemovedFromSelection;
 			} else {
-				ariaLiveContext = AriaLiveMoveContexts.ItemsReorderedInSelection;
+				newAriaLiveContext = AriaLiveMoveContexts.ItemsReorderedInSelection;
 			}
 
-			this.setState({ ariaLiveContext });
+			this.updateAriaLiveContext(newAriaLiveContext);
 		} else if (
 			ariaLiveContext &&
 			selectionChanged(selection, prevState.selection)
 		) {
-			this.setState({ ariaLiveContext: null });
+			this.updateAriaLiveContext(null);
 		}
+	}
+
+	updateAriaLiveContext (ariaLiveContext) {
+		this.setState({ ariaLiveContext });
 	}
 
 	deselect = (callback = null) => {
@@ -165,8 +167,9 @@ class DuelingPicklist extends React.Component {
 			selectedLabel: `${this.getId('selectedLabel')}-selected-label`,
 		};
 	}
+	beginDrag = () => this.setState({ isDragging: true });
 
-	handleDropIntoCategory = (dragSource) => {
+	handleDropIntoCategory = () => {
 		const newSelected = getNewSelectionFromDragAndDropOntoCategory(
 			this.props.selected,
 			this.state.selection
@@ -176,7 +179,7 @@ class DuelingPicklist extends React.Component {
 	};
 
 	handleDropOntoOption = (dropTarget, sourceIsAboveTarget) => {
-		const { allowReordering, selected } = this.props;
+		const { selected } = this.props;
 		const { selection } = this.state;
 
 		const newSelected = getNewSelectionFromDragAndDropOntoOption(
@@ -189,7 +192,7 @@ class DuelingPicklist extends React.Component {
 		this.triggerOnChange(newSelected);
 	};
 
-	handleKeyUp = (event) => {
+	handleKeyUp = () => {
 		const { shiftKey, metaKey } = this.state;
 
 		if (shiftKey || metaKey) {
@@ -202,11 +205,7 @@ class DuelingPicklist extends React.Component {
 
 	handleKeyDown = (event) => {
 		const { isReorderable } = this.props;
-		const {
-			firstSelected,
-			lastSelectedId,
-			dragAndDropWithArrowKeys,
-		} = this.state;
+		const { lastSelectedId, dragAndDropWithArrowKeys } = this.state;
 
 		if (lastSelectedId === null || lastSelectedId === undefined) {
 			return;
@@ -218,32 +217,32 @@ class DuelingPicklist extends React.Component {
 
 		const haltEvent = (stopPropagation = false) => {
 			event.preventDefault();
-			stopPropagation && event.stopPropagation();
+			if (stopPropagation) {
+				event.stopPropagation();
+			}
 		};
 
 		switch (which) {
 			case Keys.SPACE:
 				if (modifierUsed) {
 					haltEvent(true);
-					return this.toggleFocusedSelection();
+					this.toggleFocusedSelection();
+					break;
 				}
-				if (!this.props.isReorderable) {
-					return;
+				if (!isReorderable) {
+					break;
 				}
 				haltEvent(true);
-				return this.setState({
+				this.setState({
 					dragAndDropWithArrowKeys: !dragAndDropWithArrowKeys,
 				});
+				break;
 			case Keys.UP:
 			case Keys.DOWN:
 				haltEvent();
 				const isUp = which === Keys.UP;
-				return this.handleVerticalArrowKeyUp(
-					item,
-					isUp,
-					shiftKey,
-					modifierUsed
-				);
+				this.handleVerticalArrowKeyUp(item, isUp, shiftKey, modifierUsed);
+				break;
 			case Keys.LEFT:
 			case Keys.RIGHT:
 				if (modifierUsed) {
@@ -251,24 +250,28 @@ class DuelingPicklist extends React.Component {
 					const isLeft = which === Keys.LEFT;
 					this.moveSelectedItemsHorizontally(isLeft, false);
 				}
-				return;
+				break;
 			case LetterKeys.A:
 				if (modifierUsed) {
 					haltEvent(true);
 					this.selectAllInCategory(item);
 				}
-				return;
+				break;
 			case Keys.METALEFT:
 			case Keys.METARIGHT:
 			case Keys.CTRL:
-				return this.setState({
+				this.setState({
 					metaKey: true,
 				});
+				break;
 			case Keys.SHIFT:
 				haltEvent();
-				return this.setState({
+				this.setState({
 					shiftKey: true,
 				});
+				break;
+			default:
+				break;
 		}
 	};
 
@@ -303,15 +306,18 @@ class DuelingPicklist extends React.Component {
 			ctrlKey,
 		} = this.state;
 
+		let isSelectRange = selectRange;
+		let isToggleOption = toggleOption;
+
 		if (handledFromFocus) {
 			if (item.id === lastSelectedId) {
 				return;
 			}
-			if (!selectRange) {
-				selectRange = shiftKey;
+			if (!isSelectRange) {
+				isSelectRange = shiftKey;
 			}
-			if (!toggleOption) {
-				toggleOption = metaKey || ctrlKey;
+			if (!isToggleOption) {
+				isToggleOption = metaKey || ctrlKey;
 			}
 		}
 
@@ -325,9 +331,9 @@ class DuelingPicklist extends React.Component {
 
 		const previousSelected =
 			firstSelected || (lastSelectedId && this.findItem(lastSelectedId));
-		if (selectRange && previousSelected && inSameCategory) {
+		if (isSelectRange && previousSelected && inSameCategory) {
 			newSelection = getRange(category, previousSelected, item);
-		} else if (toggleOption && inSameCategory) {
+		} else if (isToggleOption && inSameCategory) {
 			newSelection = getOrderedSelection(category, selection.concat(item));
 		} else {
 			newSelection = [item];

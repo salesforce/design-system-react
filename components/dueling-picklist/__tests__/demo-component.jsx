@@ -38,7 +38,7 @@ const DemoComponent = createReactClass({
 	},
 
 	render () {
-		const options = duelingPicklistFilter({
+		const filteredOptions = duelingPicklistFilter({
 			options: this.state.options,
 			selected: this.state.selected,
 		});
@@ -47,7 +47,7 @@ const DemoComponent = createReactClass({
 				<DuelingPicklist
 					{...this.props}
 					{...this.state}
-					options={options}
+					options={filteredOptions}
 					events={{
 						onChange: this.handleChange,
 					}}

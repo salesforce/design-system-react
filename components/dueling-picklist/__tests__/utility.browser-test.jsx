@@ -91,13 +91,21 @@ describe('getRange', () => {
 	});
 });
 
+function testGetOrderedSelection ({ items, selectedItems, expected }) {
+	const result = getOrderedSelection(items, selectedItems, expected);
+	expect(result).to.eql(expected);
+}
+
+function shuffle (a) {
+	for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+	}
+	return a;
+}
+
 describe('getOrderedSelection', () => {
 	const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
-
-	function testGetOrderedSelection ({ items, selectedItems, expected }) {
-		const result = getOrderedSelection(items, selectedItems, expected);
-		expect(result).to.eql(expected);
-	}
 
 	it('works with 1 selected item', () => {
 		testGetOrderedSelection({
@@ -452,11 +460,3 @@ describe('selectionChanged', () => {
 		expect(selectionChanged(selection, prevSelection)).to.equal(true);
 	});
 });
-
-function shuffle (a) {
-	for (let i = a.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[a[i], a[j]] = [a[j], a[i]];
-	}
-	return a;
-}
