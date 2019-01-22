@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Option from './option';
 import { DropTarget } from 'react-dnd';
+import Option from './option';
 
 class Options extends React.Component {
 	static propTypes = {
@@ -41,7 +41,7 @@ class Options extends React.Component {
 		dragAndDropEnabled: false,
 	};
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate (prevProps) {
 		const { options, focus } = this.props;
 
 		const hasMoreItems = options.length > prevProps.options.length;
@@ -59,49 +59,8 @@ class Options extends React.Component {
 		});
 	}
 
-	render () {
-		const {
-			label,
-			options,
-			ids,
-			disabled,
-			height,
-			connectDropTarget,
-			dragAndDropEnabled,
-		} = this.props;
-
-		const styleProp = height ? { style: { height } } : {};
-
-		const result = (
-			<div>
-				<span className="slds-form-element__label" id={ids.label}>
-					{label}
-				</span>
-				<div
-					className={classNames('slds-dueling-list__options', {
-						'slds-is-disabled': disabled,
-					})}
-					{...styleProp}
-				>
-					<ul
-						className="slds-listbox slds-listbox_vertical"
-						aria-describedby={ids.describedBy}
-						aria-labelledby={ids.label}
-						aria-multiselectable
-						role="listbox"
-						aria-disabled={disabled}
-					>
-						{options.map(this.renderOption)}
-					</ul>
-				</div>
-			</div>
-		);
-
-		return dragAndDropEnabled ? connectDropTarget(result) : result;
-	}
-
 	anyItemsSelected () {
-		return this.props.options.some(({ selected, item }) => selected);
+		return this.props.options.some(({ selected }) => selected);
 	}
 
 	renderOption = (option, index) => {
@@ -144,11 +103,52 @@ class Options extends React.Component {
 				disabled={disabled}
 			/>
 		);
-	};
+	}
+
+	render () {
+		const {
+			label,
+			options,
+			ids,
+			disabled,
+			height,
+			connectDropTarget,
+			dragAndDropEnabled,
+		} = this.props;
+
+		const styleProp = height ? { style: { height } } : {};
+
+		const result = (
+			<div>
+				<span className="slds-form-element__label" id={ids.label}>
+					{label}
+				</span>
+				<div
+					className={classNames('slds-dueling-list__options', {
+						'slds-is-disabled': disabled,
+					})}
+					{...styleProp}
+				>
+					<ul
+						className="slds-listbox slds-listbox_vertical"
+						aria-describedby={ids.describedBy}
+						aria-labelledby={ids.label}
+						aria-multiselectable
+						role="listbox"
+						aria-disabled={disabled}
+					>
+						{options.map(this.renderOption)}
+					</ul>
+				</div>
+			</div>
+		);
+
+		return dragAndDropEnabled ? connectDropTarget(result) : result;
+	}
 }
 
 const optionsTarget = {
-	drop (props, monitor, component) {
+	drop (props, monitor) {
 		if (monitor.isOver({ shallow: true })) {
 			const dragSource = monitor.getItem().option;
 			props.onDropIntoCategory(dragSource);

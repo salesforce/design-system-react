@@ -60,6 +60,26 @@ class Option extends React.Component {
 		onSelect(option.item, false, false, true);
 	};
 
+	renderLock () {
+		const { option, assistiveText } = this.props;
+
+		if (!option.item.isLocked) {
+			return null;
+		}
+
+		return (
+			<span className="slds-media__figure slds-media__figure_reverse">
+				<span className="slds-icon_container" title={assistiveText.itemLocked}>
+					<Icon category="utility" name="lock" size="xx-small" />
+					<span className="slds-assistive-text">
+						{': '}
+						{assistiveText.lockedItemCannotBeMoved}
+					</span>
+				</span>
+			</span>
+		);
+	}
+
 	render () {
 		const {
 			option,
@@ -67,7 +87,6 @@ class Option extends React.Component {
 			connectDragSource,
 			connectDropTarget,
 			isDragging,
-			isDraggingWithGroup,
 			dragAndDropWithArrowKeys,
 			optionRef,
 			dragAndDropEnabled,
@@ -113,26 +132,6 @@ class Option extends React.Component {
 			? connectDragSource(connectDropTarget(result))
 			: result;
 	}
-
-	renderLock () {
-		const { option, assistiveText } = this.props;
-
-		if (!option.item.isLocked) {
-			return null;
-		}
-
-		return (
-			<span className="slds-media__figure slds-media__figure_reverse">
-				<span className="slds-icon_container" title={assistiveText.itemLocked}>
-					<Icon category="utility" name="lock" size="xx-small" />
-					<span className="slds-assistive-text">
-						{': '}
-						{assistiveText.lockedItemCannotBeMoved}
-					</span>
-				</span>
-			</span>
-		);
-	}
 }
 
 const optionSource = {
@@ -154,8 +153,8 @@ const optionSourceCollector = (connect, monitor) => ({
 
 const optionTarget = {
 	drop (props, monitor, component) {
+		// eslint-disable-next-line react/no-find-dom-node
 		const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
-		const { x, y } = hoverBoundingRect;
 		const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 		const clientOffset = monitor.getClientOffset();
 		const hoverClientY = clientOffset.y - hoverBoundingRect.top;

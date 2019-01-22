@@ -29,11 +29,6 @@ const renderMarkup = (Component, props) =>
 		'utf-8'
 	);
 
-const testDOMandHTML = ({ name, test, Component, props }) => {
-	testDOM({ name, test, Component, props });
-	testHTML({ name, test, Component, props });
-};
-
 const testDOM = ({ name, test, Component, props }) => {
 	test(`${name} DOM Snapshot`, () => {
 		expect(renderDOM(Component, props)).toMatchSnapshot();
@@ -44,6 +39,11 @@ const testHTML = ({ name, test, Component, props }) => {
 	test(`${name} HTML Snapshot`, () => {
 		expect(renderMarkup(Component, props)).toMatchSnapshot();
 	});
+};
+
+const testDOMandHTML = ({ name, test, Component, props }) => {
+	testDOM({ name, test, Component, props });
+	testHTML({ name, test, Component, props });
 };
 
 // eslint-disable-line import/prefer-default-export

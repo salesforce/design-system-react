@@ -1,3 +1,14 @@
+import { AriaLiveMoveContexts, AriaLiveMessages } from './constants';
+
+function getIds (items) {
+	return items.map((o) => o.id);
+}
+
+export function filterNonSelectedItems (category, selectedItems) {
+	const selectedIds = getIds(selectedItems);
+	return category.filter((o) => !selectedIds.includes(o.id));
+}
+
 export function moveItemsInCategory (selectedItems, items, numSpaces) {
 	const ids = getIds(selectedItems);
 	const newOptions = items.filter((o) => !ids.includes(o.id));
@@ -98,11 +109,6 @@ export function getNewSelection (isRemoving, items, selection) {
 	return [...selection, ...items];
 }
 
-export function filterNonSelectedItems (category, selectedItems) {
-	const selectedIds = getIds(selectedItems);
-	return category.filter((o) => !selectedIds.includes(o.id));
-}
-
 export function selectionChanged (selection, prevSelection) {
 	if (selection.length !== prevSelection.length) {
 		return true;
@@ -122,6 +128,54 @@ export function wrapItemAndAddIsSelected (options, selectedItems) {
 	}));
 }
 
-function getIds (items) {
-	return items.map((o) => o.id);
+function getAriaLiveLabel (message, labels, selection) {
+	const itemLabels = selection.map((item) => item.label);
+
+	let words;
+	if (itemLabels.length > 1) {
+		words = `${itemLabels.slice(0, -1).join(', ')}, and ${
+			itemLabels.slice(-1)[0]
+		}`;
+	} else {
+		words = itemLabels[0];
+	}
+
+	return `${words} ${message} ${labels.selected}`;
+}
+
+export function getAriaLiveMessage ({
+	ariaLiveContext,
+	assistiveText,
+	labels,
+	selection,
+}) {
+	if (!ariaLiveContext) {
+		return null;
+	}
+
+	const {
+		itemsMovedToSelection,
+		itemsRemovedFromSelection,
+		itemsReorderedInSelection,
+	} = assistiveText;
+
+	switch (ariaLiveContext) {
+		case AriaLiveMoveContexts.ItemsMovedToSelection:
+			return (
+				itemsMovedToSelection ||
+				getAriaLiveLabel(AriaLiveMessages.MovedTo, labels, selection)
+			);
+		case AriaLiveMoveContexts.ItemsRemovedFromSelection:
+			return (
+				itemsRemovedFromSelection ||
+				getAriaLiveLabel(AriaLiveMessages.RemovedFrom, labels, selection)
+			);
+		case AriaLiveMoveContexts.ItemsReorderedInSelection:
+			return (
+				itemsReorderedInSelection ||
+				getAriaLiveLabel(AriaLiveMessages.ReorderedIn, labels, selection)
+			);
+		default:
+			return null;
+	}
 }

@@ -4,8 +4,7 @@ import Column from './column';
 import Options from './options';
 import Button from './button';
 import ViewOnly from './view-only';
-import { wrapItemAndAddIsSelected } from './utility';
-import { AriaLiveMoveContexts, AriaLiveMessages } from './constants';
+import { wrapItemAndAddIsSelected, getAriaLiveMessage } from './utility';
 import { propTypes } from '../prop-types';
 
 const Group = ({
@@ -63,13 +62,14 @@ const Group = ({
 			}
 			: {};
 
+	const groupEvents = { onKeyUp, onKeyDown };
+
 	return (
 		<div
 			className="slds-form-element"
 			role="group"
 			aria-labelledby={ids.picklistGroupLabel}
-			onKeyUp={onKeyUp}
-			onKeyDown={onKeyDown}
+			{...groupEvents}
 		>
 			<span
 				id={ids.picklistGroupLabel}
@@ -182,56 +182,6 @@ const Group = ({
 		</div>
 	);
 };
-
-function getAriaLiveMessage ({
-	ariaLiveContext,
-	assistiveText,
-	labels,
-	selection,
-}) {
-	if (!ariaLiveContext) {
-		return null;
-	}
-
-	const {
-		itemsMovedToSelection,
-		itemsRemovedFromSelection,
-		itemsReorderedInSelection,
-	} = assistiveText;
-
-	switch (ariaLiveContext) {
-		case AriaLiveMoveContexts.ItemsMovedToSelection:
-			return (
-				itemsMovedToSelection ||
-				getAriaLiveLabel(AriaLiveMessages.MovedTo, labels, selection)
-			);
-		case AriaLiveMoveContexts.ItemsRemovedFromSelection:
-			return (
-				itemsRemovedFromSelection ||
-				getAriaLiveLabel(AriaLiveMessages.RemovedFrom, labels, selection)
-			);
-		case AriaLiveMoveContexts.ItemsReorderedInSelection:
-			return (
-				itemsReorderedInSelection ||
-				getAriaLiveLabel(AriaLiveMessages.ReorderedIn, labels, selection)
-			);
-	}
-}
-
-function getAriaLiveLabel (message, labels, selection) {
-	const itemLabels = selection.map((item) => item.label);
-
-	let words;
-	if (itemLabels.length > 1) {
-		words = `${itemLabels.slice(0, -1).join(', ')}, and ${
-			itemLabels.slice(-1)[0]
-		}`;
-	} else {
-		words = itemLabels[0];
-	}
-
-	return `${words} ${message} ${labels.selected}`;
-}
 
 Group.propTypes = {
 	...propTypes,
