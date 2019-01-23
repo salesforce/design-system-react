@@ -5409,7 +5409,7 @@
                             ],
                             "required": false
                         },
-                        "selectedItems": {
+                        "viewModeSelectedItems": {
                             "name": "union",
                             "value": [
                                 {
@@ -5424,9 +5424,9 @@
                     }
                 },
                 "required": false,
-                "description": "Labels. Tested with Mocha framework.\n* `group`: A `DuelingPicklist` should have a group label, similar to using a `fieldset` HTML element.\n* `options`: Label for options.\n* `selected`: Label for selected.\n* `selectedItems`: Labels selected items in View Mode.",
+                "description": "Labels. Tested with Mocha framework.\n* `group`: A `DuelingPicklist` should have a group label, similar to using a `fieldset` HTML element.\n* `options`: Label for options.\n* `selected`: Label for selected.\n* `viewModeSelectedItems`: Labels selected items in View Mode.",
                 "defaultValue": {
-                    "value": "{\n    group: 'Select Options',\n    options: 'First Category',\n    selected: 'Second Category',\n    selectedItems: 'Selected Items',\n}",
+                    "value": "{\n    group: 'Select Options',\n    options: 'First Category',\n    selected: 'Second Category',\n    viewModeSelectedItems: 'Selected Items',\n}",
                     "computed": false
                 }
             },

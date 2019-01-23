@@ -171,7 +171,7 @@ describe('SLDSDuelingPicklist', function() {
 				group: 'example group',
 				options: 'example options',
 				selected: 'example selected',
-				selectedItems: 'example selectedItems',
+				viewModeSelectedItems: 'example viewModeSelectedItems',
 			};
 			const ids = {
 				picklistGroupLabel: 'picklistGroupLabelExample',
@@ -209,10 +209,10 @@ describe('SLDSDuelingPicklist', function() {
 				);
 				afterEach(unmountComponent);
 
-				it('sets selectedItems label', function() {
+				it('sets viewModeSelectedItems label', function() {
 					expect(
 						this.wrapper.find('.slds-form-element__label').text()
-					).to.equal(labels.selectedItems);
+					).to.equal(labels.viewModeSelectedItems);
 				});
 			});
 		});

@@ -121,10 +121,10 @@ export function selectionChanged(selection, prevSelection) {
 	return false;
 }
 
-export function wrapItemAndAddIsSelected(options, selectedItems) {
+export function wrapItemAndAddIsSelected(options, selected) {
 	return options.map((option) => ({
 		item: option,
-		selected: selectedItems.some((o) => o.id === option.id),
+		selected: selected.some((o) => o.id === option.id),
 	}));
 }
 

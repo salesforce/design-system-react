@@ -212,7 +212,7 @@ Group.propTypes = {
 		group: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		options: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		selected: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-		selectedItems: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		viewModeSelectedItems: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	}),
 	listboxHeight: PropTypes.string,
 	options: PropTypes.arrayOf(

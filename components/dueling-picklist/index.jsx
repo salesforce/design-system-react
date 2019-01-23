@@ -107,13 +107,13 @@ const propTypes = {
 	 * * `group`: A `DuelingPicklist` should have a group label, similar to using a `fieldset` HTML element.
 	 * * `options`: Label for options.
 	 * * `selected`: Label for selected.
-	 * * `selectedItems`: Labels selected items in View Mode.
+	 * * `viewModeSelectedItems`: Labels selected items in View Mode.
 	 */
 	labels: PropTypes.shape({
 		group: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		options: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		selected: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-		selectedItems: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		viewModeSelectedItems: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	}),
 
 	/**
@@ -158,7 +158,7 @@ const defaultProps = {
 		group: 'Select Options',
 		options: 'First Category',
 		selected: 'Second Category',
-		selectedItems: 'Selected Items',
+		viewModeSelectedItems: 'Selected Items',
 	},
 	assistiveText: {
 		optionDragLabel:
