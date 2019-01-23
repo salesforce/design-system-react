@@ -1,3 +1,7 @@
+.slds-carousel__panel-action {
+	background-color: white;
+}
+
 .slds-carousel__content {
 	height: auto;
 }

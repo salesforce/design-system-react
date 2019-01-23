@@ -29,21 +29,18 @@ const CarouselItem = (props) => (
 		{props.onRenderItem ? (
 			props.onRenderItem(props)
 		) : (
-			<a
-				href="javascript:void(0);"
-				className="slds-carousel__panel-action slds-text-link_reset"
-			>
+			<span className="slds-carousel__panel-action slds-text-link_reset">
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText} />
 				</div>
 				<div className="slds-carousel__content">
 					<h2 className="slds-carousel__content-title">{props.heading}</h2>
-					<p
+					<div
 						className="slds-p-bottom_x-small slds-text-body_small"
 						style={{ minHeight: '40px' }}
 					>
 						{props.description}
-					</p>
+					</div>
 					{props.CTALabel && (
 						<a
 							className="slds-button slds-button_neutral slds-button_outline-brand"
@@ -54,7 +51,7 @@ const CarouselItem = (props) => (
 						</a>
 					)}
 				</div>
-			</a>
+			</span>
 		)}
 	</div>
 );
@@ -65,11 +62,11 @@ CarouselItem.propTypes = {
 	/**
 	 * Carousel Item's visible heading
 	 */
-	heading: PropTypes.string.isRequired,
+	heading: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 	/**
 	 * Visible paragraph text to be displayed on the carousel item
 	 */
-	description: PropTypes.string.isRequired,
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 	/**
 	 * Path of the image to be used
 	 */
@@ -77,7 +74,7 @@ CarouselItem.propTypes = {
 	/**
 	 * Image alt text
 	 */
-	imageAssistiveText: PropTypes.string.isRequired,
+	imageAssistiveText: PropTypes.string,
 	/**
 	 * Label of the button to be displayed
 	 */
@@ -99,7 +96,12 @@ CarouselItem.propTypes = {
 	 * Id of the item component.
 	 */
 	id: PropTypes.number.isRequired,
-	href: PropTypes.string,
+    href: PropTypes.string,
+    /**
+	 * Accepts a custom carousel item rendering function
+	 */
+    onRenderItem: PropTypes.func,
+    buttonLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 };
 
 CarouselItem.defaultProps = {
