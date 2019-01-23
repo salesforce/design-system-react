@@ -1,4 +1,4 @@
-/* eslint-disable no-console, react/prop-types */
+/* eslint-disable no-console, react/prop-types, react/prefer-es6-class */
 import React from 'react';
 import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
@@ -11,18 +11,18 @@ import { fruitOptions, ids } from './constants';
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			options: fruitOptions,
 			selected: fruitOptions.slice(-2),
 		};
 	},
 
-	handleChange (selected) {
+	handleChange(selected) {
 		this.setState({ selected });
 	},
 
-	render () {
+	render() {
 		const { selected } = this.state;
 		const options = duelingPicklistFilter({
 			options: this.state.options,

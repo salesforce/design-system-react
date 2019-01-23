@@ -1,3 +1,4 @@
+/* eslint-disable no-console, react/prop-types, react/prefer-es6-class */
 import React from 'react';
 import createReactClass from 'create-react-class';
 import IconSettings from '../../icon-settings';
@@ -22,22 +23,22 @@ const defaultProps = {
 const DemoComponent = createReactClass({
 	displayName: 'DuelingPicklistDemoComponent',
 
-	getDefaultProps () {
+	getDefaultProps() {
 		return defaultProps;
 	},
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			selected: this.props.selected,
 			options: [...this.props.options, ...this.props.selected],
 		};
 	},
 
-	handleChange (selected) {
+	handleChange(selected) {
 		this.setState({ selected });
 	},
 
-	render () {
+	render() {
 		const filteredOptions = duelingPicklistFilter({
 			options: this.state.options,
 			selected: this.state.selected,

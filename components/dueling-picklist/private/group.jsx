@@ -57,8 +57,8 @@ const Group = ({
 	const heightProp =
 		listboxHeight || hasAutomaticHeightMinimization
 			? {
-				height: listboxHeight || `${2.25 * maxItems + 1}rem`,
-			}
+					height: listboxHeight || `${2.25 * maxItems + 1}rem`,
+				}
 			: {};
 
 	const groupEvents = { onKeyUp, onKeyDown };

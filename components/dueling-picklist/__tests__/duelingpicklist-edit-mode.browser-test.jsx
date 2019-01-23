@@ -19,9 +19,9 @@ const { A } = letterKeyObjects;
  */
 chai.use(chaiEnzyme());
 
-describe('SLDSDuelingPicklist', function () {
-	describe('Edit Mode', function () {
-		describe('assistiveText', function () {
+describe('SLDSDuelingPicklist', function() {
+	describe('Edit Mode', function() {
+		describe('assistiveText', function() {
 			const assistiveText = {
 				optionDragLabel: 'example optionDragLabel',
 				itemLocked: 'example itemLocked',
@@ -55,13 +55,13 @@ describe('SLDSDuelingPicklist', function () {
 			);
 			afterEach(unmountComponent);
 
-			it('sets optionDragLabel', function () {
+			it('sets optionDragLabel', function() {
 				expect(
 					this.wrapper.find(`[id^="${ids.optionDragLabel}"]`).text()
 				).to.equal(assistiveText.optionDragLabel);
 			});
 
-			it('sets itemLocked to title, and lockedItemCannotBeMoved to assistive text of locked options', function () {
+			it('sets itemLocked to title, and lockedItemCannotBeMoved to assistive text of locked options', function() {
 				const iconContainer = this.wrapper
 					.find('[role="listbox"]')
 					.at(1)
@@ -74,7 +74,7 @@ describe('SLDSDuelingPicklist', function () {
 				);
 			});
 
-			it('sets itemsSelected to aria live-area when items are moved to selected', function () {
+			it('sets itemsSelected to aria live-area when items are moved to selected', function() {
 				const option = this.wrapper
 					.find('[role="listbox"]')
 					.at(0)
@@ -91,7 +91,7 @@ describe('SLDSDuelingPicklist', function () {
 				);
 			});
 
-			it('sets itemsDeselected to aria live-area when items are removed to selected', function () {
+			it('sets itemsDeselected to aria live-area when items are removed to selected', function() {
 				const option = this.wrapper
 					.find('[role="listbox"]')
 					.at(1)
@@ -108,7 +108,7 @@ describe('SLDSDuelingPicklist', function () {
 				);
 			});
 
-			it('sets selectedItemsReordered to aria live-area when selected items are reordered', function () {
+			it('sets selectedItemsReordered to aria live-area when selected items are reordered', function() {
 				const option = this.wrapper
 					.find('[role="listbox"]')
 					.at(1)
@@ -125,7 +125,7 @@ describe('SLDSDuelingPicklist', function () {
 				);
 			});
 
-			it('sets moveSelectionDown to down button', function () {
+			it('sets moveSelectionDown to down button', function() {
 				expect(
 					this.wrapper
 						.find('button')
@@ -135,7 +135,7 @@ describe('SLDSDuelingPicklist', function () {
 				).to.equal(assistiveText.moveSelectionDown);
 			});
 
-			it('sets moveSelectionUp to up button', function () {
+			it('sets moveSelectionUp to up button', function() {
 				expect(
 					this.wrapper
 						.find('button')
@@ -145,7 +145,7 @@ describe('SLDSDuelingPicklist', function () {
 				).to.equal(assistiveText.moveSelectionUp);
 			});
 
-			it('sets moveSelectionToSelected to right button', function () {
+			it('sets moveSelectionToSelected to right button', function() {
 				expect(
 					this.wrapper
 						.find('button')
@@ -155,7 +155,7 @@ describe('SLDSDuelingPicklist', function () {
 				).to.equal(assistiveText.moveSelectionToSelected);
 			});
 
-			it('sets moveSelectionToOptions to left button', function () {
+			it('sets moveSelectionToOptions to left button', function() {
 				expect(
 					this.wrapper
 						.find('button')
@@ -166,7 +166,7 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('labels', function () {
+		describe('labels', function() {
 			const labels = {
 				group: 'example group',
 				options: 'example options',
@@ -180,36 +180,36 @@ describe('SLDSDuelingPicklist', function () {
 				selectedLabel: 'selectedLabelExample',
 			};
 
-			describe('When in Edit Mode', function () {
+			describe('When in Edit Mode', function() {
 				beforeEach(mountComponent(<DemoComponent labels={labels} ids={ids} />));
 				afterEach(unmountComponent);
 
-				it('sets options label', function () {
+				it('sets options label', function() {
 					expect(
 						this.wrapper.find(`[id^="${ids.optionsLabel}"]`).text()
 					).to.equal(labels.options);
 				});
 
-				it('sets group label', function () {
+				it('sets group label', function() {
 					expect(
 						this.wrapper.find(`[id^="${ids.picklistGroupLabel}"]`).text()
 					).to.equal(labels.group);
 				});
 
-				it('sets selected label', function () {
+				it('sets selected label', function() {
 					expect(
 						this.wrapper.find(`[id^="${ids.selectedLabel}"]`).text()
 					).to.equal(labels.selected);
 				});
 			});
 
-			describe('When in View Mode', function () {
+			describe('When in View Mode', function() {
 				beforeEach(
 					mountComponent(<DemoComponent labels={labels} ids={ids} isViewOnly />)
 				);
 				afterEach(unmountComponent);
 
-				it('sets selectedItems label', function () {
+				it('sets selectedItems label', function() {
 					expect(
 						this.wrapper.find('.slds-form-element__label').text()
 					).to.equal(labels.selectedItems);
@@ -217,11 +217,11 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('Moved items', function () {
+		describe('Moved items', function() {
 			beforeEach(mountComponent(<DemoComponent />));
 			afterEach(unmountComponent);
 
-			it('updates the aria-live="assertive" div as items are moved', function () {
+			it('updates the aria-live="assertive" div as items are moved', function() {
 				const findLiveRegion = () =>
 					this.wrapper.find('[aria-live="assertive"]');
 				expect(findLiveRegion().text()).to.equal('');
@@ -268,7 +268,7 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('When items are locked', function () {
+		describe('When items are locked', function() {
 			const itemLockedText = 'item is locked and cannot be moved';
 
 			beforeEach(
@@ -287,7 +287,7 @@ describe('SLDSDuelingPicklist', function () {
 			);
 			afterEach(unmountComponent);
 
-			it('does not allow locked options to be moved to the other listbox', function () {
+			it('does not allow locked options to be moved to the other listbox', function() {
 				const group = this.wrapper.find('[role="group"]');
 				const getListboxNodes = (index) =>
 					this.wrapper
@@ -324,11 +324,11 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('When isDisabled is true', function () {
+		describe('When isDisabled is true', function() {
 			beforeEach(mountComponent(<DemoComponent isDisabled isReorderable />));
 			afterEach(unmountComponent);
 
-			it('can be disabled', function () {
+			it('can be disabled', function() {
 				this.wrapper.find('button').forEach((node) => {
 					expect(node).to.have.attr('disabled');
 				});

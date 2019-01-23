@@ -19,12 +19,12 @@ const { A } = letterKeyObjects;
  */
 chai.use(chaiEnzyme());
 
-describe('SLDSDuelingPicklist', function () {
-	describe('Focus Management', function () {
+describe('SLDSDuelingPicklist', function() {
+	describe('Focus Management', function() {
 		beforeEach(mountComponent(<DemoComponent />));
 		afterEach(unmountComponent);
 
-		it('initially has no options selected and the first item in each list should have tabindex="0"', function () {
+		it('initially has no options selected and the first item in each list should have tabindex="0"', function() {
 			const listboxes = this.wrapper.find('[role="listbox"]');
 			const { options, selected } = this.wrapper.props();
 
@@ -46,7 +46,7 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		it('Selects an option when it comes into focus', function () {
+		it('Selects an option when it comes into focus', function() {
 			const getFirstOption = () =>
 				this.wrapper
 					.find('[role="listbox"]')
@@ -58,7 +58,7 @@ describe('SLDSDuelingPicklist', function () {
 			expect(getFirstOption()).to.have.attr('aria-selected', 'true');
 		});
 
-		it('leaves the last selected item selected and focusable when focus leaves the list', function () {
+		it('leaves the last selected item selected and focusable when focus leaves the list', function() {
 			const getFirstOption = () =>
 				this.wrapper
 					.find('[role="listbox"]')
@@ -75,7 +75,7 @@ describe('SLDSDuelingPicklist', function () {
 			expect(getFirstOption()).to.have.attr('tabindex', '0');
 		});
 
-		it('places focus on the last selected item when focus returns to the list', function () {
+		it('places focus on the last selected item when focus returns to the list', function() {
 			const getSecondOption = () =>
 				this.wrapper
 					.find('[role="listbox"]')
@@ -92,8 +92,8 @@ describe('SLDSDuelingPicklist', function () {
 			expect(getSecondOption()).to.have.attr('aria-selected', 'true');
 		});
 
-		describe('When moving items', function () {
-			it('With the move button: deselects the items and adds them to the target list. The focus should remain on the move button', function () {
+		describe('When moving items', function() {
+			it('With the move button: deselects the items and adds them to the target list. The focus should remain on the move button', function() {
 				// focus on first option
 				this.wrapper
 					.find('[role="listbox"]')
@@ -142,7 +142,7 @@ describe('SLDSDuelingPicklist', function () {
 				// expect(this.wrapper.find('button').first().matchesElement(document.activeElement)).to.equal(true);
 			});
 
-			it('With a keyboard shortcut: focus remains on the item, but in the target list. Since the item is focused, it is also selected', function () {
+			it('With a keyboard shortcut: focus remains on the item, but in the target list. Since the item is focused, it is also selected', function() {
 				const getFirstOption = (listboxIndex = 0) =>
 					this.wrapper
 						.find('[role="listbox"]')
@@ -172,7 +172,7 @@ describe('SLDSDuelingPicklist', function () {
 				expect(movedOption).to.have.attr('tabindex', '0');
 			});
 
-			it('If there are already selected items in the target list, they stay selected and the new items are added below them', function () {
+			it('If there are already selected items in the target list, they stay selected and the new items are added below them', function() {
 				/** This one is difficult to understand the specs for.
 				 The specs don't seem to permit selecting options from both listboxes */
 			});

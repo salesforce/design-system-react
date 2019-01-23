@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragDropContext } from 'react-dnd';
@@ -179,7 +180,7 @@ class DuelingPicklist extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			selection: [],
@@ -208,7 +209,7 @@ class DuelingPicklist extends React.Component {
 		);
 	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		const { selected } = this.props;
 		const { ariaLiveContext, selection } = this.state;
 		const prevSelected = prevProps.selected;
@@ -233,11 +234,11 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	getId (idName) {
+	getId(idName) {
 		return this.props.ids[idName] || this.generatedIds[idName];
 	}
 
-	getIds () {
+	getIds() {
 		return {
 			picklistGroupLabel: `${this.getId(
 				'picklistGroupLabel'
@@ -249,24 +250,24 @@ class DuelingPicklist extends React.Component {
 		};
 	}
 
-	getDefaultedPropObj (propName) {
+	getDefaultedPropObj(propName) {
 		return {
 			...defaultProps[propName],
 			...this.props[propName],
 		};
 	}
 
-	findItem (id) {
+	findItem(id) {
 		const { options, selected } = this.props;
 		return [...options, ...selected].find((item) => item.id === id);
 	}
 
-	findCategory (item) {
+	findCategory(item) {
 		const { options, selected } = this.props;
 		return selected.some((s) => s.id === item.id) ? selected : options;
 	}
 
-	deselectLockedItems (callback) {
+	deselectLockedItems(callback) {
 		const nonLockedSelection = this.state.selection.filter((s) => !s.isLocked);
 		if (nonLockedSelection.length > 0) {
 			this.setState(
@@ -499,7 +500,7 @@ class DuelingPicklist extends React.Component {
 		);
 	};
 
-	handleVerticalArrowKeyUp (item, isUp, selectRange, moveFocus) {
+	handleVerticalArrowKeyUp(item, isUp, selectRange, moveFocus) {
 		const { selected } = this.props;
 		const { dragAndDropWithArrowKeys } = this.state;
 		const category = this.findCategory(item);
@@ -527,7 +528,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveSelectedItemsHorizontally (isLeft, shouldDeselect = true) {
+	moveSelectedItemsHorizontally(isLeft, shouldDeselect = true) {
 		const { selection } = this.state;
 		if (selection.length === 0) {
 			return;
@@ -545,7 +546,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	moveItemsVertically (isUp) {
+	moveItemsVertically(isUp) {
 		const { options, selected, isReorderable } = this.props;
 		if (!isReorderable) {
 			return;
@@ -564,11 +565,11 @@ class DuelingPicklist extends React.Component {
 		this.triggerOnChange(newSelected);
 	}
 
-	updateAriaLiveContext (ariaLiveContext) {
+	updateAriaLiveContext(ariaLiveContext) {
 		this.setState({ ariaLiveContext });
 	}
 
-	selectAllInCategory (item) {
+	selectAllInCategory(item) {
 		const selection = this.findCategory(item);
 		this.setState({
 			selection,
@@ -577,7 +578,7 @@ class DuelingPicklist extends React.Component {
 		});
 	}
 
-	toggleFocusedSelection () {
+	toggleFocusedSelection() {
 		const { focusedOptionId, selection } = this.state;
 		const item = this.findItem(focusedOptionId);
 		let newSelection;
@@ -592,7 +593,7 @@ class DuelingPicklist extends React.Component {
 		});
 	}
 
-	triggerOnChange (newSelected, isLeft = false, shouldDeselect = false) {
+	triggerOnChange(newSelected, isLeft = false, shouldDeselect = false) {
 		const trigger = () => this.props.events.onChange(newSelected);
 
 		if (shouldDeselect) {
@@ -604,7 +605,7 @@ class DuelingPicklist extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		return (
 			<Group
 				{...this.props}

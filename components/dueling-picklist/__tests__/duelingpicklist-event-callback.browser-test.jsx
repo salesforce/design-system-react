@@ -14,9 +14,9 @@ import DuelingPicklist from '../';
  */
 chai.use(chaiEnzyme());
 
-describe('SLDSDuelingPicklist', function () {
-	describe('Event callbacks', function () {
-		describe('onChange', function () {
+describe('SLDSDuelingPicklist', function() {
+	describe('Event callbacks', function() {
+		describe('onChange', function() {
 			const findOptions = (wrapper, listboxIndex) =>
 				wrapper
 					.find('[role="listbox"]')
@@ -49,7 +49,7 @@ describe('SLDSDuelingPicklist', function () {
 			);
 			afterEach(unmountComponent);
 
-			it('calls onChange with items that are in the second listbox when an item is added to it', function () {
+			it('calls onChange with items that are in the second listbox when an item is added to it', function() {
 				const options = findOptions(this.wrapper, 0);
 				const rightButton = this.wrapper.find('button').at(0);
 
@@ -64,7 +64,7 @@ describe('SLDSDuelingPicklist', function () {
 				]);
 			});
 
-			it('calls onChange with selected when items are removed from second listbox', function () {
+			it('calls onChange with selected when items are removed from second listbox', function() {
 				const leftButton = this.wrapper.find('button').at(1);
 				const selected = findOptions(this.wrapper, 1);
 				selected.at(0).simulate('click');

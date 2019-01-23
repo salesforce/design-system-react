@@ -14,13 +14,13 @@ import DemoComponent from './demo-component';
  */
 chai.use(chaiEnzyme());
 
-describe('SLDSDuelingPicklist', function () {
-	describe('Mouse Interaction', function () {
-		describe('standard DemoComponent props', function () {
+describe('SLDSDuelingPicklist', function() {
+	describe('Mouse Interaction', function() {
+		describe('standard DemoComponent props', function() {
 			beforeEach(mountComponent(<DemoComponent />));
 			afterEach(unmountComponent);
 
-			it('changes focus and selection when an option is clicked', function () {
+			it('changes focus and selection when an option is clicked', function() {
 				const listboxes = this.wrapper.find('[role="listbox"]');
 				const options = listboxes.at(0).find('[role="option"]');
 				const selected = listboxes.at(1).find('[role="option"]');
@@ -48,7 +48,7 @@ describe('SLDSDuelingPicklist', function () {
 				expect(selected.at(1)).to.have.attr('aria-selected', 'true');
 			});
 
-			it('moves focus and selects a range of options with shift + click', function () {
+			it('moves focus and selects a range of options with shift + click', function() {
 				const listboxes = this.wrapper.find('[role="listbox"]');
 				const options = listboxes.at(0).find('[role="option"]');
 				const selected = listboxes.at(1).find('[role="option"]');
@@ -84,7 +84,7 @@ describe('SLDSDuelingPicklist', function () {
 				expect(options.at(2)).to.have.attr('aria-selected', 'false');
 			});
 
-			it('selects additional options with ctrl + click', function () {
+			it('selects additional options with ctrl + click', function() {
 				const listboxes = this.wrapper.find('[role="listbox"]');
 				const options = listboxes.at(0).find('[role="option"]');
 				const selected = listboxes.at(1).find('[role="option"]');
@@ -103,7 +103,7 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('Moving items between lists', function () {
+		describe('Moving items between lists', function() {
 			beforeEach(
 				mountComponent(
 					<DemoComponent
@@ -118,7 +118,7 @@ describe('SLDSDuelingPicklist', function () {
 			);
 			afterEach(unmountComponent);
 
-			it('moves selected items between lists with left and right buttons', function () {
+			it('moves selected items between lists with left and right buttons', function() {
 				const listboxes = this.wrapper.find('[role="listbox"]');
 				const getOptions = (listboxIndex) =>
 					this.wrapper
@@ -158,7 +158,7 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('When isReorderable is true', function () {
+		describe('When isReorderable is true', function() {
 			beforeEach(
 				mountComponent(
 					<DemoComponent
@@ -173,7 +173,7 @@ describe('SLDSDuelingPicklist', function () {
 			);
 			afterEach(unmountComponent);
 
-			it('moves the selected items within the current list with up and down arrows', function () {
+			it('moves the selected items within the current list with up and down arrows', function() {
 				const group = this.wrapper.find('[role="group"]');
 				const selected = this.wrapper
 					.find('[role="listbox"]')

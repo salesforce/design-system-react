@@ -20,13 +20,13 @@ const { A } = letterKeyObjects;
  */
 chai.use(chaiEnzyme());
 
-describe('SLDSDuelingPicklist', function () {
-	describe('Responsive', function () {
-		describe('When isResponsive is true', function () {
+describe('SLDSDuelingPicklist', function() {
+	describe('Responsive', function() {
+		describe('When isResponsive is true', function() {
 			beforeEach(mountComponent(<DemoComponent isResponsive />));
 			afterEach(unmountComponent);
 
-			it('applies the class, "slds-dueling-picklist__column_responsive", to columns when isResponsive is true', function () {
+			it('applies the class, "slds-dueling-picklist__column_responsive", to columns when isResponsive is true', function() {
 				expect(
 					this.wrapper
 						.find('.slds-dueling-list__column')
@@ -36,18 +36,18 @@ describe('SLDSDuelingPicklist', function () {
 			});
 		});
 
-		describe('When listboxHeight set', function () {
+		describe('When listboxHeight set', function() {
 			beforeEach(mountComponent(<DemoComponent listboxHeight="10rem" />));
 			afterEach(unmountComponent);
 
-			it('sets height manually when listboxHeight set', function () {
+			it('sets height manually when listboxHeight set', function() {
 				expect(
 					this.wrapper.find('.slds-dueling-list__options').first()
 				).to.have.attr('style', 'height: 10rem;');
 			});
 		});
 
-		describe('When hasAutomaticHeightMinimization is true', function () {
+		describe('When hasAutomaticHeightMinimization is true', function() {
 			const options = 'A,B,C,D,E,F,G,H,I'.split(',').map((letter, i) => ({
 				id: `${i}`,
 				label: letter,
@@ -65,7 +65,7 @@ describe('SLDSDuelingPicklist', function () {
 
 			afterEach(unmountComponent);
 
-			it('automatically adjusts listboxes to have minimum height without scrolling when hasAutomaticHeightMinimization is true', function () {
+			it('automatically adjusts listboxes to have minimum height without scrolling when hasAutomaticHeightMinimization is true', function() {
 				const getExpectedHeight = (numItems) => 2.25 * numItems + 1;
 				const group = this.wrapper.find('[role="group"]');
 				expect(

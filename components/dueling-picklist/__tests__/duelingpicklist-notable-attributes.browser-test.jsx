@@ -19,8 +19,8 @@ const { A } = letterKeyObjects;
  */
 chai.use(chaiEnzyme());
 
-describe('SLDSDuelingPicklist', function () {
-	describe('Notable Attributes', function () {
+describe('SLDSDuelingPicklist', function() {
+	describe('Notable Attributes', function() {
 		const dragAndDropInstructions = 'Instructions for using D&D';
 		const groupLabel = 'Select the things';
 		const picklistGroupLabelIdPrefix = 'groupExample';
@@ -44,19 +44,19 @@ describe('SLDSDuelingPicklist', function () {
 		);
 		afterEach(unmountComponent);
 
-		it('sets aria-multiselectable="true" on each listbox', function () {
+		it('sets aria-multiselectable="true" on each listbox', function() {
 			this.wrapper.find('[role="listbox"]').forEach((node) => {
 				expect(node).to.have.attr('aria-multiselectable', 'true');
 			});
 		});
 
-		it('sets aria-selected="false" on each role="option"', function () {
+		it('sets aria-selected="false" on each role="option"', function() {
 			this.wrapper.find('[role="option"]').forEach((node) => {
 				expect(node).to.have.attr('aria-selected', 'false');
 			});
 		});
 
-		it('identifies the list with aria-labelledby', function () {
+		it('identifies the list with aria-labelledby', function() {
 			expect(this.wrapper.find('[role="group"]')).to.have.attr(
 				'aria-labelledby',
 				`${picklistGroupLabelIdPrefix}-picklist-group-label`
@@ -68,7 +68,7 @@ describe('SLDSDuelingPicklist', function () {
 			).to.equal(groupLabel);
 		});
 
-		it('provides operation instructions for the Drag and Drop interaction with aria-describedby', function () {
+		it('provides operation instructions for the Drag and Drop interaction with aria-describedby', function() {
 			expect(
 				this.wrapper
 					.find('[role="listbox"]')
@@ -85,7 +85,7 @@ describe('SLDSDuelingPicklist', function () {
 			).to.equal(dragAndDropInstructions);
 		});
 
-		it('sets tabindex to "0" when an item is selected, and "-1" otherwise', function () {
+		it('sets tabindex to "0" when an item is selected, and "-1" otherwise', function() {
 			const getLastOption = () =>
 				this.wrapper.find('[role="listbox"] [role="option"]').last();
 

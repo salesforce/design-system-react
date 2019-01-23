@@ -15,7 +15,7 @@ import {
 chai.use(chaiEnzyme());
 
 describe('moveItemsInCategory', () => {
-	function testMoveItemsInCategory ({
+	function testMoveItemsInCategory({
 		selectedItems,
 		options,
 		numSpaces,
@@ -56,7 +56,7 @@ describe('moveItemsInCategory', () => {
 });
 
 describe('getRange', () => {
-	function testGetRange ({ items, lastSelectedItem, item, expected }) {
+	function testGetRange({ items, lastSelectedItem, item, expected }) {
 		const result = getRange(items, lastSelectedItem, item, expected);
 		expect(result).to.eql(expected);
 	}
@@ -91,12 +91,12 @@ describe('getRange', () => {
 	});
 });
 
-function testGetOrderedSelection ({ items, selectedItems, expected }) {
+function testGetOrderedSelection({ items, selectedItems, expected }) {
 	const result = getOrderedSelection(items, selectedItems, expected);
 	expect(result).to.eql(expected);
 }
 
-function shuffle (a) {
+function shuffle(a) {
 	for (let i = a.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[a[i], a[j]] = [a[j], a[i]];
@@ -155,7 +155,7 @@ describe('getOrderedSelection', () => {
 });
 
 describe('areItemsInCategory', () => {
-	function testAreItemsInCategory ({ items, category, expected }) {
+	function testAreItemsInCategory({ items, category, expected }) {
 		const result = areItemsInCategory(items, category);
 		expect(result).to.equal(expected);
 	}
@@ -189,7 +189,7 @@ describe('areItemsInCategory', () => {
 });
 
 describe('areItemsAtEdgeOfCategory', () => {
-	function testAreItemsAtEdgeOfCategory ({ isUp, items, category, expected }) {
+	function testAreItemsAtEdgeOfCategory({ isUp, items, category, expected }) {
 		const result = areItemsAtEdgeOfCategory(isUp, items, category);
 		expect(result).to.equal(expected);
 	}
@@ -233,7 +233,7 @@ describe('areItemsAtEdgeOfCategory', () => {
 });
 
 describe('getNewSelectionFromDragAndDropOntoCategory', () => {
-	function testGetNewSelectionFromDragAndDropOntoCategory ({
+	function testGetNewSelectionFromDragAndDropOntoCategory({
 		selection,
 		selectedItems,
 		expected,
@@ -290,7 +290,7 @@ describe('getNewSelectionFromDragAndDropOntoCategory', () => {
 });
 
 describe('getNewSelectionFromDragAndDropOntoOption', () => {
-	function testGetNewSelectionFromDragAndDropOntoOption ({
+	function testGetNewSelectionFromDragAndDropOntoOption({
 		selection,
 		selectedItems,
 		dropTargetItem,
@@ -361,7 +361,7 @@ describe('getNewSelectionFromDragAndDropOntoOption', () => {
 });
 
 describe('getNewSelection', () => {
-	function testGetNewSelection ({ isRemoving, items, selection, expected }) {
+	function testGetNewSelection({ isRemoving, items, selection, expected }) {
 		const result = getNewSelection(isRemoving, items, selection);
 		expect(result).to.eql(expected);
 	}

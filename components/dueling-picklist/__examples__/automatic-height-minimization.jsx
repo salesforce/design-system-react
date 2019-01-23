@@ -1,4 +1,4 @@
-/* eslint-disable no-console, react/prop-types */
+/* eslint-disable no-console, react/prop-types, react/prefer-es6-class */
 import React from 'react';
 import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
@@ -10,25 +10,25 @@ const allFruit = [
 	...fruitOptions,
 	...'Mango,Pineapple,Grapes'.split(',').map((fruit, i) => ({
 		label: fruit,
-		id: fruitOptions.length + i + '',
+		id: `${fruitOptions.length + i}`,
 	})),
 ];
 
 const Example = createReactClass({
 	displayName: 'DuelingPicklistExample',
 
-	getInitialState () {
+	getInitialState() {
 		return {
 			options: allFruit,
 			selected: allFruit.slice(-2),
 		};
 	},
 
-	handleChange (selected) {
+	handleChange(selected) {
 		this.setState({ selected });
 	},
 
-	render () {
+	render() {
 		const { selected } = this.state;
 		const options = duelingPicklistFilter({
 			options: this.state.options,
