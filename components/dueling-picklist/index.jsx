@@ -66,11 +66,11 @@ class DuelingPicklist extends React.Component {
 			let newAriaLiveContext;
 
 			if (prevSelected.length < selected.length) {
-				newAriaLiveContext = AriaLiveMoveContexts.ItemsMovedToSelection;
+				newAriaLiveContext = AriaLiveMoveContexts.ItemsMovedToSelected;
 			} else if (prevSelected.length > selected.length) {
-				newAriaLiveContext = AriaLiveMoveContexts.ItemsRemovedFromSelection;
+				newAriaLiveContext = AriaLiveMoveContexts.ItemsRemovedFromSelected;
 			} else {
-				newAriaLiveContext = AriaLiveMoveContexts.ItemsReorderedInSelection;
+				newAriaLiveContext = AriaLiveMoveContexts.ItemsReorderedInSelected;
 			}
 
 			this.updateAriaLiveContext(newAriaLiveContext);

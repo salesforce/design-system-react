@@ -21,6 +21,202 @@ chai.use(chaiEnzyme());
 
 describe('SLDSDuelingPicklist', function () {
 	describe('Edit Mode', function () {
+		describe('assistiveText', function () {
+			const assistiveText = {
+				optionDragLabel: 'example optionDragLabel',
+				itemLocked: 'example itemLocked',
+				itemsSelected: 'example itemsSelected',
+				itemsDeselected: 'example itemsDeselected',
+				lockedItemCannotBeMoved: 'example lockedItemCannotBeMoved',
+				selectedItemsReordered: 'example selectedItemsReordered',
+				moveSelectionDown: 'example moveSelectionDown',
+				moveSelectionUp: 'example moveSelectionUp',
+				moveSelectionToOptions: 'example moveSelectionToOptions',
+				moveSelectionToSelected: 'example moveSelectionToSelected',
+			};
+			const ids = {
+				optionDragLabel: 'optionDragLabelExample',
+			};
+
+			beforeEach(
+				mountComponent(
+					<DemoComponent
+						assistiveText={assistiveText}
+						ids={ids}
+						options={[{ label: 'Apple', id: '1' }]}
+						selected={[
+							{ label: 'Locked option', isLocked: true, id: '0' },
+							{ label: 'Banana', id: '2' },
+							{ label: 'Orange', id: '3' },
+						]}
+						isReorderable
+					/>
+				)
+			);
+			afterEach(unmountComponent);
+
+			it('sets optionDragLabel', function () {
+				expect(
+					this.wrapper.find(`[id^="${ids.optionDragLabel}"]`).text()
+				).to.equal(assistiveText.optionDragLabel);
+			});
+
+			it('sets itemLocked to title, and lockedItemCannotBeMoved to assistive text of locked options', function () {
+				const iconContainer = this.wrapper
+					.find('[role="listbox"]')
+					.at(1)
+					.find('[role="option"]')
+					.at(0)
+					.find('.slds-icon_container');
+				expect(iconContainer).to.have.attr('title', assistiveText.itemLocked);
+				expect(iconContainer.find('.slds-assistive-text').text()).to.equal(
+					`: ${assistiveText.lockedItemCannotBeMoved}`
+				);
+			});
+
+			it('sets itemsSelected to aria live-area when items are moved to selected', function () {
+				const option = this.wrapper
+					.find('[role="listbox"]')
+					.at(0)
+					.find('[role="option"]')
+					.at(0);
+				option.simulate('click');
+				this.wrapper
+					.find('button')
+					.at(0)
+					.simulate('click');
+
+				expect(this.wrapper.find('[aria-live="assertive"]').text()).to.equal(
+					assistiveText.itemsSelected
+				);
+			});
+
+			it('sets itemsDeselected to aria live-area when items are removed to selected', function () {
+				const option = this.wrapper
+					.find('[role="listbox"]')
+					.at(1)
+					.find('[role="option"]')
+					.at(1);
+				option.simulate('click');
+				this.wrapper
+					.find('button')
+					.at(1)
+					.simulate('click');
+
+				expect(this.wrapper.find('[aria-live="assertive"]').text()).to.equal(
+					assistiveText.itemsDeselected
+				);
+			});
+
+			it('sets selectedItemsReordered to aria live-area when selected items are reordered', function () {
+				const option = this.wrapper
+					.find('[role="listbox"]')
+					.at(1)
+					.find('[role="option"]')
+					.at(1);
+				option.simulate('click');
+				this.wrapper
+					.find('button')
+					.at(3)
+					.simulate('click');
+
+				expect(this.wrapper.find('[aria-live="assertive"]').text()).to.equal(
+					assistiveText.selectedItemsReordered
+				);
+			});
+
+			it('sets moveSelectionDown to down button', function () {
+				expect(
+					this.wrapper
+						.find('button')
+						.at(3)
+						.find('.slds-assistive-text')
+						.text()
+				).to.equal(assistiveText.moveSelectionDown);
+			});
+
+			it('sets moveSelectionUp to up button', function () {
+				expect(
+					this.wrapper
+						.find('button')
+						.at(2)
+						.find('.slds-assistive-text')
+						.text()
+				).to.equal(assistiveText.moveSelectionUp);
+			});
+
+			it('sets moveSelectionToSelected to right button', function () {
+				expect(
+					this.wrapper
+						.find('button')
+						.at(0)
+						.find('.slds-assistive-text')
+						.text()
+				).to.equal(assistiveText.moveSelectionToSelected);
+			});
+
+			it('sets moveSelectionToOptions to left button', function () {
+				expect(
+					this.wrapper
+						.find('button')
+						.at(1)
+						.find('.slds-assistive-text')
+						.text()
+				).to.equal(assistiveText.moveSelectionToOptions);
+			});
+		});
+
+		describe('labels', function () {
+			const labels = {
+				group: 'example group',
+				options: 'example options',
+				selected: 'example selected',
+				selectedItems: 'example selectedItems',
+			};
+			const ids = {
+				picklistGroupLabel: 'picklistGroupLabelExample',
+				optionDragLabel: 'optionDragLabelExample',
+				optionsLabel: 'optionsLabelExample',
+				selectedLabel: 'selectedLabelExample',
+			};
+
+			describe('When in Edit Mode', function () {
+				beforeEach(mountComponent(<DemoComponent labels={labels} ids={ids} />));
+				afterEach(unmountComponent);
+
+				it('sets options label', function () {
+					expect(
+						this.wrapper.find(`[id^="${ids.optionsLabel}"]`).text()
+					).to.equal(labels.options);
+				});
+
+				it('sets group label', function () {
+					expect(
+						this.wrapper.find(`[id^="${ids.picklistGroupLabel}"]`).text()
+					).to.equal(labels.group);
+				});
+
+				it('sets selected label', function () {
+					expect(
+						this.wrapper.find(`[id^="${ids.selectedLabel}"]`).text()
+					).to.equal(labels.selected);
+				});
+			});
+
+			describe('When in View Mode', function () {
+				beforeEach(
+					mountComponent(<DemoComponent labels={labels} ids={ids} isViewOnly />)
+				);
+				afterEach(unmountComponent);
+
+				it('sets selectedItems label', function () {
+					expect(
+						this.wrapper.find('.slds-form-element__label').text()
+					).to.equal(labels.selectedItems);
+				});
+			});
+		});
+
 		describe('Moved items', function () {
 			beforeEach(mountComponent(<DemoComponent />));
 			afterEach(unmountComponent);

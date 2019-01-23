@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 
 export const propTypes = {
 	/**
-	 * **Assistive text for accessibility**
+	 * **Assistive text for accessibility** Tested with Mocha framework.
 	 * This object is merged with the default props object on every render.
 	 * * `optionDragLabel`: Instructions on how to drag and drop with a keyboard.
-	 * * `itemLocked`: Used to label locked items.
+	 * * `itemLocked`: Used as title for locked items.
 	 * * `itemsSelected`: Used in Aria Live area to inform user that items were moved to selected.
 	 * * `itemsDeselected`: Used in Aria Live area to inform user that items were removed from selected.
+	 * * `lockedItemCannotBeMoved`: Used to label locked items.
 	 * * `selectedItemsReordered`: Used in Aria Live area to inform user that selected items were reordered.
 	 * * `moveSelectionDown`: Used by "down" reordering button.
 	 * * `moveSelectionUp`: Used by "up" reordering button.
@@ -29,20 +30,20 @@ export const propTypes = {
 
 	/**
 	 * Event Callbacks
-	 * * `onChange`: Called when items are added or removed from `selection`
+	 * * `onChange`: Called when items are added or removed from `selection`. Tested with Mocha framework.
 	 */
 	events: PropTypes.shape({
 		onChange: PropTypes.func.isRequired,
 	}).isRequired,
 
 	/**
-	 * When true, the height of both listboxes will be the smallest height needed to show all items without having to scroll.
+	 * When true, the height of both listboxes will be the smallest height needed to show all items without having to scroll. Tested with Mocha framework.
 	 */
 
 	hasAutomaticHeightMinimization: PropTypes.bool,
 
 	/**
-	 * Element id prefixes (used for accessibility). If not provided, ids will be generated with shortid.
+	 * Element id prefixes (used for accessibility). If not provided, ids will be generated with shortid. Tested with Mocha framework.
 	 * * `picklistGroupLabel`: id for labeling the `<DuelingPicklist />` component.
 	 * * `dragLiveRegion`: id for Aria Live element.
 	 * * `optionDragLabel`: id for describing how to use keyboard interactions.
@@ -58,31 +59,31 @@ export const propTypes = {
 	}),
 
 	/**
-	 * When true, all interactions are disabled.
+	 * When true, all interactions are disabled. Tested with snapshot testing.
 	 */
 	isDisabled: PropTypes.bool,
 
 	/**
-	 * When true, component renders in view mode.
+	 * When true, component renders in view mode. Tested with Mocha framework.
 	 */
 	isViewOnly: PropTypes.bool,
 
 	/**
-	 * allows the user to reorder the second listbox of options
+	 * allows the user to reorder the second listbox of options. Tested with Mocha framework.
 	 */
 	isReorderable: PropTypes.bool,
 
 	/**
-	 * When true, a red asterisk will render, visually marking the item as required.
+	 * When true, a red asterisk will render, visually marking the item as required. Tested with snapshot testing.
 	 */
 	isRequired: PropTypes.bool,
 	/**
-	 * When true, the component will be render with responsive css classes applied. Any items longer than the space available will truncate with ellipses.
+	 * When true, the component will be render with responsive css classes applied. Any items longer than the space available will truncate with ellipses. Tested with Mocha framework.
 	 */
 	isResponsive: PropTypes.bool,
 
 	/**
-	 * Labels
+	 * Labels. Tested with Mocha framework.
 	 * * `group`: A `DuelingPicklist` should have a group label, similar to using a `fieldset` HTML element.
 	 * * `options`: Label for options.
 	 * * `selected`: Label for selected.
@@ -96,12 +97,12 @@ export const propTypes = {
 	}),
 
 	/**
-	 * Manually sets the height of both listboxes.
+	 * Manually sets the height of both listboxes. Tested with Mocha framework.
 	 */
 	listboxHeight: PropTypes.string,
 
 	/**
-	 * Items in the first listbox
+	 * Items in the first listbox. Tested with Mocha framework.
 	 * * `label`: Item label.
 	 * * `id`: Unique id for the item.
 	 */
@@ -113,7 +114,7 @@ export const propTypes = {
 	).isRequired,
 
 	/**
-	 * Items in the second listbox
+	 * Items in the second listbox. Tested with Mocha framework.
 	 * * `label`: Item label.
 	 * * `id`: Unique id for the item.
 	 * * `isLocked`: When true, a lock icon renders on the item, and the item cannot be removed from the selection.
@@ -127,7 +128,7 @@ export const propTypes = {
 	).isRequired,
 
 	/**
-	 * Component that provides contextual information next to the `group.label`
+	 * Component that provides contextual information next to the `group.label. Tested with snapshot testing.`
 	 */
 	tooltip: PropTypes.node,
 };

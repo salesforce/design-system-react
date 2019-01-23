@@ -154,25 +154,25 @@ export function getAriaLiveMessage ({
 	}
 
 	const {
-		itemsMovedToSelection,
-		itemsRemovedFromSelection,
-		itemsReorderedInSelection,
+		itemsSelected,
+		itemsDeselected,
+		selectedItemsReordered,
 	} = assistiveText;
 
 	switch (ariaLiveContext) {
-		case AriaLiveMoveContexts.ItemsMovedToSelection:
+		case AriaLiveMoveContexts.ItemsMovedToSelected:
 			return (
-				itemsMovedToSelection ||
+				itemsSelected ||
 				getAriaLiveLabel(AriaLiveMessages.MovedTo, labels, selection)
 			);
-		case AriaLiveMoveContexts.ItemsRemovedFromSelection:
+		case AriaLiveMoveContexts.ItemsRemovedFromSelected:
 			return (
-				itemsRemovedFromSelection ||
+				itemsDeselected ||
 				getAriaLiveLabel(AriaLiveMessages.RemovedFrom, labels, selection)
 			);
-		case AriaLiveMoveContexts.ItemsReorderedInSelection:
+		case AriaLiveMoveContexts.ItemsReorderedInSelected:
 			return (
-				itemsReorderedInSelection ||
+				selectedItemsReordered ||
 				getAriaLiveLabel(AriaLiveMessages.ReorderedIn, labels, selection)
 			);
 		default:
