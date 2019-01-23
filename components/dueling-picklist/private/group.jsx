@@ -5,7 +5,6 @@ import Options from './options';
 import Button from './button';
 import ViewOnly from './view-only';
 import { wrapItemAndAddIsSelected, getAriaLiveMessage } from './utility';
-import { propTypes } from '../prop-types';
 
 const Group = ({
 	ariaLiveContext,
