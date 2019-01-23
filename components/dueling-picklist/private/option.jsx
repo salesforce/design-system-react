@@ -33,11 +33,6 @@ class Option extends React.Component {
 		disabled: false,
 	};
 
-	constructor (props) {
-		super(props);
-		this.id = `dueling-picklist-option-${props.option.item.id}`;
-	}
-
 	handleClick = (event) => {
 		event.stopPropagation();
 		event.preventDefault();
@@ -102,7 +97,7 @@ class Option extends React.Component {
 			};
 
 		const result = (
-			<li role="presentation" className="slds-listbox__item" id={this.id}>
+			<li role="presentation" className="slds-listbox__item">
 				<div
 					className={classNames(
 						'slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline',

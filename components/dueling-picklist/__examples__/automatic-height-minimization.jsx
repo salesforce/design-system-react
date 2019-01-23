@@ -10,7 +10,7 @@ const allFruit = [
 	...fruitOptions,
 	...'Mango,Pineapple,Grapes'.split(',').map((fruit, i) => ({
 		label: fruit,
-		id: fruitOptions.length + i,
+		id: fruitOptions.length + i + '',
 	})),
 ];
 
