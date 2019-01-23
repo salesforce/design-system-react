@@ -4920,6 +4920,321 @@
         "SLDS-component-path": "/components/datepickers",
         "dependencies": []
     },
+    "dueling-picklist": {
+        "description": "A DuelingPicklist is used to move options between two lists and is often\nreferred to as a multi-select. Sometimes, the list options can then be\nre-ordered, depending on the use case.",
+        "displayName": "DuelingPicklist",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "idName",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getIds",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getDefaultedPropObj",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "propName",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "findItem",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "id",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "findCategory",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "item",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "deselectLockedItems",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "callback",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "beginDrag",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "deselect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "callback",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "endDrag",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "focus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "preserveSelection",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleDropIntoCategory",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleDropOntoOption",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "dropTarget",
+                        "type": null
+                    },
+                    {
+                        "name": "sourceIsAboveTarget",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleMoveItemDownClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleMoveItemUpClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleMoveSelectedItemsLeftClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleMoveSelectedItemsRightClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "item",
+                        "type": null
+                    },
+                    {
+                        "name": "selectRange",
+                        "type": null
+                    },
+                    {
+                        "name": "toggleOption",
+                        "type": null
+                    },
+                    {
+                        "name": "handledFromFocus",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleVerticalArrowKeyUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "item",
+                        "type": null
+                    },
+                    {
+                        "name": "isUp",
+                        "type": null
+                    },
+                    {
+                        "name": "selectRange",
+                        "type": null
+                    },
+                    {
+                        "name": "moveFocus",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "moveSelectedItemsHorizontally",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "isLeft",
+                        "type": null
+                    },
+                    {
+                        "name": "shouldDeselect",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "moveItemsVertically",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "isUp",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "updateAriaLiveContext",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ariaLiveContext",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "selectAllInCategory",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "item",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "toggleFocusedSelection",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "triggerOnChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "newSelected",
+                        "type": null
+                    },
+                    {
+                        "name": "isLeft",
+                        "type": null
+                    },
+                    {
+                        "name": "shouldDeselect",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "composes": [
+            "./prop-types"
+        ],
+        "route": "dueling-picklist",
+        "display-name": "Dueling Picklist",
+        "SLDS-component-path": "/components/dueling-picklist",
+        "dependencies": []
+    },
     "filter": {
         "description": "A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [

@@ -400,6 +400,15 @@
 			"url-slug": "date-pickers"
 		},
 		{
+			"component": "dueling-picklist",
+			"status": "prod",
+			"display-name": "Dueling Picklist",
+			"last-accessibility-review": {
+			},
+			"SLDS-component-path": "/components/dueling-picklist",
+			"url-slug": "dueling-picklist"
+		},
+		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
