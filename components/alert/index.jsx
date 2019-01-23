@@ -71,6 +71,10 @@ const propTypes = {
 	 */
 	onRequestClose: PropTypes.func,
 	/**
+	 * Custom styles to be passed to the component. _Tested with Mocha testing._
+	 */
+	style: PropTypes.object,
+	/**
 	 * The type of alert. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['error', 'info', 'offline', 'warning']).isRequired,
@@ -89,19 +93,19 @@ const defaultProps = {
  */
 
 class Alert extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isInitialRender: true,
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(ALERT, this.props, componentDoc);
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		DOMElementFocus.returnFocusToStoredElement();
 	}
 
@@ -116,7 +120,7 @@ class Alert extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},
@@ -156,7 +160,7 @@ class Alert extends React.Component {
 		}
 
 		const clonedIcon = React.cloneElement(icon, {
-			containerClassName: 'slds-m-right--x-small',
+			containerClassName: 'slds-m-right_x-small',
 			inverse: true,
 			size: 'x-small',
 		});
@@ -175,6 +179,7 @@ class Alert extends React.Component {
 					this.props.className
 				)}
 				role="alert"
+				style={this.props.style}
 			>
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}

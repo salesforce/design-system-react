@@ -1,12 +1,12 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Timepicker from '~/components/time-picker'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'TimepickerExample',
+class Example extends React.Component {
+	static displayName = 'TimepickerExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Timepicker
@@ -18,7 +18,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

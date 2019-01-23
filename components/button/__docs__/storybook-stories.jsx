@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { BUTTON } from '../../../utilities/constants';
@@ -13,7 +14,7 @@ const getIconButton = (props) => getButton({ variant: 'icon', ...props });
 
 storiesOf(BUTTON, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -52,7 +53,7 @@ storiesOf(BUTTON, module)
 	)
 	.addDecorator((getStory) => (
 		<div
-			className="slds-p-around--medium slds-hint-parent"
+			className="slds-p-around_medium slds-hint-parent"
 			style={{ backgroundColor: '#16325c' }}
 		>
 			{getStory()}

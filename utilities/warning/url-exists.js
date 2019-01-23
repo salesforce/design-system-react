@@ -7,7 +7,7 @@
 // This function does an "AJAX" request to warn users on how to setup their icon path.
 import warning from 'warning';
 
-let urlExists = function () {};
+let urlExists = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
@@ -34,14 +34,14 @@ if (process.env.NODE_ENV !== 'production') {
 		process.env.NODE_ENV !== 'test';
 
 	if (typeof fetch === 'function') {
-		urlExists = function (control, url, comment) {
+		urlExists = function(control, url, comment) {
 			if (shouldWarn(control)) {
 				fetch(url).then(warn(control, url, comment));
 			}
 		};
 	} else {
 		// Using XMLHttpRequest can cause problems in non-browser environments. This should be completely removed in production environment and should not execute in a testing environment.
-		urlExists = function (control, url, comment) {
+		urlExists = function(control, url, comment) {
 			if (shouldWarn(control) && XMLHttpRequest) {
 				const http = new XMLHttpRequest();
 				http.open('GET', url, false);

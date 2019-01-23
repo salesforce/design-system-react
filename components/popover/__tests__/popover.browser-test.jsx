@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -49,23 +49,19 @@ const getNodes = ({ wrapper }) => ({
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = createReactClass({
-	displayName: 'PopoverDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'PopoverDemoComponent';
+
+	static propTypes = {
 		isOpen: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps () {
-		return defaultProps;
-	},
-
-	getInitialState () {
-		return {};
-	},
+	static defaultProps = defaultProps;
+	state = {};
 
 	// event handlers
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
@@ -76,8 +72,8 @@ const DemoComponent = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.
@@ -88,13 +84,13 @@ const DemoComponent = createReactClass({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSPopover', function () {
+describe('SLDSPopover', function() {
 	let mountNode;
 	let wrapper;
 
 	// BASIC STRUCTURE
 
-	describe('Default structure and css', function () {
+	describe('Default structure and css', function() {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -124,7 +120,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-labelledby/aria-describedby on popover', function () {
+		it('has aria-labelledby/aria-describedby on popover', function() {
 			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 
 			const trigger = wrapper.find('#sample-popover');
@@ -159,7 +155,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has correct className, assistiveText, style, and footer', function () {
+		it('has correct className, assistiveText, style, and footer', function() {
 			wrapper = mount(<DemoComponent {...optionalProps} isOpen />, {
 				attachTo: mountNode,
 			});
@@ -181,7 +177,7 @@ describe('SLDSPopover', function () {
 		/* Test event callback functions using Simulate. For more information, view
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
-		describe('onClick', function () {
+		describe('onClick', function() {
 			const triggerClicked = sinon.spy();
 
 			beforeEach(() => {
@@ -192,7 +188,7 @@ describe('SLDSPopover', function () {
 				destroyMountNode({ wrapper, mountNode });
 			});
 
-			it('calls onClick handler on trigger, click on popover close closes', function (done) {
+			it('calls onClick handler on trigger, click on popover close closes', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						onClick={triggerClicked}
@@ -221,7 +217,7 @@ describe('SLDSPopover', function () {
 				trigger.simulate('click');
 			});
 
-			it('opens on click, closes on ESC', function (done) {
+			it('opens on click, closes on ESC', function(done) {
 				wrapper = mount(
 					<DemoComponent
 						onClose={() => {
@@ -250,7 +246,7 @@ describe('SLDSPopover', function () {
 		});
 	});
 
-	describe('focus has moved to dialog', function () {
+	describe('focus has moved to dialog', function() {
 		const triggerClicked = sinon.spy();
 
 		beforeEach(() => {
@@ -261,7 +257,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('focus moves to correct node on open', function (done) {
+		it('focus moves to correct node on open', function(done) {
 			wrapper = mount(
 				<DemoComponent
 					onClick={triggerClicked}
@@ -279,7 +275,7 @@ describe('SLDSPopover', function () {
 		});
 	});
 
-	describe('Disabled', function () {
+	describe('Disabled', function() {
 		const triggerClicked = sinon.spy();
 		const popoverOpened = sinon.spy();
 
@@ -291,7 +287,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onOpen is not called when disabled', function () {
+		it('onOpen is not called when disabled', function() {
 			wrapper = mount(
 				<DemoComponent
 					disabled

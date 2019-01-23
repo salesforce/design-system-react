@@ -46,7 +46,7 @@ const getMatchOptions = ({ context: { kind, story }, url }) => ({
 
 let server;
 
-describe('Image Snapshots', function imageSnapshotFunction () {
+describe('Image Snapshots', function imageSnapshotFunction() {
 	beforeAll(() => {
 		// Start Express server
 		server = app.listen(port, () => {

@@ -6,12 +6,12 @@
 // This function will deliver an warning message to the browser console if extraneous properties are defined (falsey).
 import warning from 'warning';
 
-let onlyOneOf = function () {};
+let onlyOneOf = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	onlyOneOf = function (control, selectedProps, comment) {
+	onlyOneOf = function(control, selectedProps, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		let keys = Object.keys(selectedProps);
 		keys = keys.filter((key) => selectedProps[key]);

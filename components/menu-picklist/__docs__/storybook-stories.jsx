@@ -2,8 +2,9 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@storybook/react';
+
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { MENU_PICKLIST } from '../../../utilities/constants';
@@ -29,24 +30,22 @@ const getPicklist = (props) => (
 	</div>
 );
 
-const MultipleExample = createReactClass({
-	displayName: 'MultiplePicklistExample',
+class MultipleExample extends React.Component {
+	static displayName = 'MultiplePicklistExample';
 
-	getInitialState () {
-		return {
-			selectedIndexes: new Set(),
-		};
-	},
+	state = {
+		selectedIndexes: new Set(),
+	};
 
-	handleSelect (selectedItem, data) {
+	handleSelect = (selectedItem, data) => {
 		this.setState((prevState, props) => ({
 			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
 				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
 				: Array.from(prevState.selectedIndexes.add(data.optionIndex)),
 		}));
-	},
+	};
 
-	render () {
+	render() {
 		console.log(this.state.selectedIndexes);
 
 		return (
@@ -70,12 +69,12 @@ const MultipleExample = createReactClass({
 				}}
 			/>
 		);
-	},
-});
+	}
+}
 
 storiesOf(MENU_PICKLIST, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

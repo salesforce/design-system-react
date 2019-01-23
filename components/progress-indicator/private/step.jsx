@@ -95,7 +95,7 @@ class Step extends React.Component {
 	 * buttonIcon represents the button icon used for each step.
 	 * the button is applied with different css classes under different conditions.
 	 */
-	buttonIcon (renderIcon, status, props) {
+	buttonIcon(renderIcon, status, props) {
 		const data = {
 			isSelected: props.isSelected,
 			isError: props.isError,
@@ -162,7 +162,7 @@ class Step extends React.Component {
 		return stepButton;
 	}
 
-	render () {
+	render() {
 		const renderIcon = this.props.isCompleted || this.props.isError;
 		let status = '';
 		if (this.props.isError) {

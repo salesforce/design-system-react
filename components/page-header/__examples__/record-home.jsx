@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -7,10 +7,10 @@ import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'PageHeaderExample';
 
-	render () {
+	render() {
 		const contentRight = (
 			<div>
 				<ButtonStateful
@@ -75,7 +75,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

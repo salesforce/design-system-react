@@ -17,8 +17,8 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
 * Test Mocha tests interactively in your browser.
   * Start server from terminal with `npm start`
   * Browse to [http://localhost:8001](http://localhost:8001)
-* Run snapshot tests with `npm run snapshot-test` or, for just a specific file:
-  `npm run snapshot-test components/button/`.
+* Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
+  `npm run test:snapshot components/button/`.
 
 ### React Storybook
 
@@ -28,7 +28,7 @@ Add DOM snapshot, image snapshot, and documentation site examples to Storybook f
 
 ### Style and quality linting
 
-There are two parts to code linting: style and quality. [Prettier-ESLint](https://github.com/prettier/prettier-eslint)/[Prettier](https://prettier.io/) formats JavaScript, markdown and JSON to a consistent style for increased readability. [ESLint](http://eslint.org/) checks for code quality. Many editors have `prettier-eslint` format-on-save options. However, do not use Prettier by itself or linting will not pass. Use `eslint-disable-line [RULE]` within tests for necessary exceptions.
+There are two parts to code linting: style and quality. [Prettier](https://prettier.io/) formats JavaScript, markdown and JSON to a consistent style for increased readability. [ESLint](http://eslint.org/) checks for code quality. Many editors have `prettier` format-on-save options. Use `eslint-disable-line [RULE]` within tests for necessary exceptions.
 
 * `npm run lint` will check style and quality.
 * `npm run lint:fix` will fix most style issues.
@@ -39,7 +39,7 @@ There are two parts to code linting: style and quality. [Prettier-ESLint](https:
 
 Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
 
-To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run snapshot-test`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`. 
+To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`.
 
 Use Jest to test the presence of:
 
@@ -97,8 +97,6 @@ const propTypes = {
 }
 ```
 
-
-
 #### TDD with Jest
 
 HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples.
@@ -106,8 +104,8 @@ HTML Snapshots are a great way to compare markup with the [SLDS site](https://ww
 1. Copy markup from design system site
 1. [Convert to JSX](http://magic.reactjs.net/htmltojsx.htm). _SVGs may require extra attention and hand-conversion._
 1. Copy JSX into the new component's `render` function to feed the markup into the Jest snapshot
-1. `npm run snapshot-test` _(or `npm run snapshot-test -- -u` to overwrite the existing snapshot)_
-1. Return to the component and `npm run snapshot-test -- --watch`
+1. `npm run test:snapshot` _(or `npm run test:snapshot -- -u` to overwrite the existing snapshot)_
+1. Return to the component and `npm run test:snapshot -- --watch`
 1. Modify your component until you get the markup correct.
 
 ### Mocha

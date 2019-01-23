@@ -36,7 +36,7 @@ const recordHomeContentRight = (
 			<SLDSButton label="Delete" />
 			<SLDSButton label="Clone" />
 			<SLDSMenuDropdown
-				assistiveText="More Options"
+				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				iconCategory="utility"
 				iconName="down"
@@ -67,7 +67,7 @@ const recordHomeDetails = [
 	{ label: 'Status', content: 'Status of thing you wanna know' },
 ];
 
-describe('PageHeader: ', function () {
+describe('PageHeader: ', function() {
 	const defaultPropsRecordHome = {
 		iconAssistiveText: 'User',
 		iconCategory: 'standard',
@@ -79,8 +79,8 @@ describe('PageHeader: ', function () {
 		details: recordHomeDetails,
 	};
 
-	describe('Renders basic props', function () {
-		it('renders correct Icon prop', function () {
+	describe('Renders basic props', function() {
+		it('renders correct Icon prop', function() {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
@@ -133,7 +133,7 @@ describe('PageHeader: ', function () {
 				</IconSettings>
 			);
 			const field1Title = wrapper.find('.slds-text-title').first();
-			const field1Content = wrapper.find('.slds-text-body--regular').first();
+			const field1Content = wrapper.find('.slds-text-body_regular').first();
 			expect(field1Title.text()).to.equal('Description');
 			expect(field1Content.text()).to.equal(
 				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
@@ -148,7 +148,7 @@ describe('PageHeader: ', function () {
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
-			const field1Content = wrapper.find('.slds-text-body--regular').first();
+			const field1Content = wrapper.find('.slds-text-body_regular').first();
 			expect(field1Content.hasClass('slds-truncate')).to.equal(true);
 		});
 
@@ -156,14 +156,14 @@ describe('PageHeader: ', function () {
 		it('field content does NOT show PopoverTooltip if text is NOT truncated', () => {
 			const wrapper = mount(<IconSettings iconPath="/assets/icons"><PageHeader {...defaultPropsRecordHome} />)
 			wrapper.update();
-			const nonTruncatedText = wrapper.find('.slds-text-body--regular').at(1);
+			const nonTruncatedText = wrapper.find('.slds-text-body_regular').at(1);
 			expect(nonTruncatedText.node.tabIndex).to.equal(-1);
 		});
 
 		it('field content shows PopoverTooltip if text truncates', () => {
 			const wrapper = mount(<IconSettings iconPath="/assets/icons"><PageHeader {...defaultPropsRecordHome} />)
 			wrapper.update();
-			const truncatedText = wrapper.find('.slds-text-body--regular').first();
+			const truncatedText = wrapper.find('.slds-text-body_regular').first();
 			expect(truncatedText.node.tabIndex).to.equal(0);
 		});
 		*/

@@ -30,7 +30,7 @@ const propTypes = {
 const defaultProps = {};
 
 class RelatedList extends Component {
-	render () {
+	render() {
 		return (
 			<div>
 				<div className="slds-grid">

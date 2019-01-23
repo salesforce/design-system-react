@@ -18,7 +18,7 @@ import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
  * The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.
  */
 const GlobalHeaderSearch = (props) => (
-	<div className="slds-global-header__item slds-global-header__item--search">
+	<div className="slds-global-header__item slds-global-header__item_search">
 		<Lookup iconPosition="left" {...props} />
 	</div>
 );

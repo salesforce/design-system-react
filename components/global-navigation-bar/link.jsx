@@ -18,7 +18,7 @@ import isFunction from 'lodash.isfunction';
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
-function handleClick (event, href, onClick) {
+function handleClick(event, href, onClick) {
 	event.preventDefault();
 
 	onClick(event, { href });
@@ -47,16 +47,16 @@ const GlobalNavigationBarLink = (props) => {
 
 	const listItemstyle = active
 		? {
-			backgroundColor: activeBackgroundColor,
-			borderBottomColor: activeBackgroundColor,
-		}
+				backgroundColor: activeBackgroundColor,
+				borderBottomColor: activeBackgroundColor,
+			}
 		: null;
 
 	return (
 		<li
 			className={classNames('slds-context-bar__item', {
 				'slds-is-active': active,
-				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
+				[`slds-context-bar__item_divider-${dividerPosition}`]: dividerPosition,
 			})}
 			id={id}
 			style={listItemstyle}

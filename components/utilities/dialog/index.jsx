@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 import Popper from 'popper.js';
@@ -49,10 +49,10 @@ import IconSettings from '../../icon-settings';
  *
  * This component is private.
  */
-const Dialog = createReactClass({
-	displayName: DIALOG,
+class Dialog extends React.Component {
+	static displayName = DIALOG;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Aligns the right or left side of the dialog with the respective side of the target.
 		 */
@@ -181,33 +181,35 @@ const Dialog = createReactClass({
 		 * Sets which focus UX pattern to follow. For instance, popovers trap focus and must be exited to regain focus. Dropdowns and Tooltips never have focus.
 		 */
 		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			align: 'bottom left',
-			offset: '0px 0px',
-			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
-		};
-	},
+	static defaultProps = {
+		align: 'bottom left',
+		offset: '0px 0px',
+		outsideClickIgnoreClass: 'ignore-react-onclickoutside',
+	};
 
-	getInitialState () {
-		return {
-			triggerPopperJS: false,
-			isOpen: false,
-		};
-	},
+	state = {
+		triggerPopperJS: false,
+		isOpen: false,
+	};
 
-	componentDidMount () {
+	componentDidMount() {
 		if (
 			this.props.position === 'absolute' ||
 			this.props.position === 'relative'
 		) {
 			this.handleOpen();
 		}
-	},
+	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentWillUpdate() {
+		if (this.popper) {
+			this.popper.scheduleUpdate();
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&
 			prevState.triggerPopperJS === false &&
@@ -218,9 +220,9 @@ const Dialog = createReactClass({
 		) {
 			this.createPopper();
 		}
-	},
+	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.teardownScopedFocus();
 			DOMElementFocus.returnFocusToStoredElement();
@@ -234,17 +236,17 @@ const Dialog = createReactClass({
 		}
 
 		this.handleClose(undefined, { componentWillUnmount: true });
-	},
+	}
 
-	getPropOffsetsInPixels (offsetString) {
+	getPropOffsetsInPixels = (offsetString) => {
 		const offsetArray = offsetString.split(' ');
 		return {
 			vertical: parseInt(offsetArray[0], 10),
 			horizontal: parseInt(offsetArray[1], 10),
 		};
-	},
+	};
 
-	getPopperStyles () {
+	getPopperStyles = () => {
 		const { popperData } = this.state;
 		if (!this.popper || !popperData) {
 			return {
@@ -270,39 +272,45 @@ const Dialog = createReactClass({
 
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
-		return { ...popperData.style, left, top, right, position };
-	},
+		return {
+			...popperData.style,
+			left,
+			top,
+			right,
+			position,
+		};
+	};
 
 	// Render
-	setDialogContent (component) {
+	setDialogContent = (component) => {
 		this.dialogContent = component;
 		if (!this.state.triggerPopperJS) {
 			this.setState({ triggerPopperJS: true });
 		}
-	},
+	};
 
 	/**
 	 * Events
 	 */
-	handleClickOutside () {
+	handleClickOutside = () => {
 		this.handleClose();
-	},
+	};
 
-	handleClose (event, data) {
+	handleClose = (event, data) => {
 		this.setState({ triggerPopperJS: true });
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}
-	},
+	};
 
-	handleClick (event) {
+	handleClick = (event) => {
 		if (event.nativeEvent) {
 			event.nativeEvent.preventDefault();
 			event.nativeEvent.stopPropagation();
 		}
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (event.keyCode === KEYS.TAB) {
 			if (this.props.closeOnTabKey) {
 				EventUtil.trap(event);
@@ -313,9 +321,9 @@ const Dialog = createReactClass({
 		if (this.props.onKeyDown) {
 			this.props.onKeyDown(event);
 		}
-	},
+	};
 
-	handleOpen () {
+	handleOpen = () => {
 		if (this.props.variant === 'popover' && this.dialogContent) {
 			DOMElementFocus.storeActiveElement();
 			DOMElementFocus.setupScopedFocus({
@@ -323,20 +331,22 @@ const Dialog = createReactClass({
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
+				DOMElementFocus.focusAncestor({
+					isPortal: this.props.position === 'overflowBoundaryElement',
+				});
 			}
 		}
 
 		if (this.props.onOpen) {
 			this.props.onOpen(undefined, { portal: this.dialogContent });
 		}
-	},
+	};
 
 	/**
 	 * Popper API and helper functions
 	 */
 
-	createPopper () {
+	createPopper = () => {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
 		const placement = mapPropToPopperPlacement(this.props.align);
@@ -349,6 +359,7 @@ const Dialog = createReactClass({
 				boundariesElement:
 					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
+			hide: { enabled: false },
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			flip: {
 				enabled: !this.props.hasStaticAlignment,
@@ -383,15 +394,15 @@ const Dialog = createReactClass({
 		});
 
 		this.popper.scheduleUpdate();
-	},
+	};
 
-	destroyPopper () {
+	destroyPopper = () => {
 		if (this.popper) {
 			this.popper.destroy();
 		}
-	},
+	};
 
-	render () {
+	render() {
 		let style = {};
 
 		if (
@@ -470,8 +481,8 @@ const Dialog = createReactClass({
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();
-	},
-});
+	}
+}
 
 Dialog.contextTypes = {
 	iconPath: PropTypes.string,

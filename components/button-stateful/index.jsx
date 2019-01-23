@@ -13,9 +13,6 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -139,23 +136,23 @@ const defaultProps = {
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  */
 class ButtonStateful extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { active: false };
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
 	}
 
-	getClassName (active) {
+	getClassName(active) {
 		return classNames(this.props.className, 'slds-button', {
-			'slds-button--neutral': this.props.variant !== 'icon',
-			'slds-button--inverse': this.props.variant === 'inverse',
+			'slds-button_neutral': this.props.variant !== 'icon',
+			'slds-button_inverse': this.props.variant === 'inverse',
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
-			'slds-max-small-button--stretch': this.props.responsive,
-			'slds-button--icon-border': this.props.variant === 'icon',
+			'slds-max-small-button_stretch': this.props.responsive,
+			'slds-button_icon-border': this.props.variant === 'icon',
 		});
 	}
 
@@ -166,12 +163,12 @@ class ButtonStateful extends React.Component {
 
 	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) {
+		if (typeof this.props.active !== 'boolean') {
 			this.setState({ active: !this.state.active });
 		}
 	};
 
-	render () {
+	render() {
 		const {
 			active,
 			disabled,
@@ -196,11 +193,11 @@ class ButtonStateful extends React.Component {
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...defaultProps.assistiveText,
-					...this.props.assistiveText,
-				}.icon;
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
 
-		const isActive = isBoolean(active) ? active : this.state.active;
+		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
 		if (variant === 'icon') {
 			return (
@@ -224,7 +221,7 @@ class ButtonStateful extends React.Component {
 						disabled={disabled}
 						name={iconName}
 						size={iconSize}
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{iconAssistiveText ? (
 						<span className="slds-assistive-text">{iconAssistiveText}</span>
@@ -255,7 +252,7 @@ class ButtonStateful extends React.Component {
 						name={stateOne.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateOne.label}
 				</span>
@@ -265,7 +262,7 @@ class ButtonStateful extends React.Component {
 						name={stateTwo.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateTwo.label}
 				</span>
@@ -275,7 +272,7 @@ class ButtonStateful extends React.Component {
 						name={stateThree.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateThree.label}
 				</span>

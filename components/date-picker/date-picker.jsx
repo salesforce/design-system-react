@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -5,9 +6,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
-
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -52,10 +50,6 @@ const propTypes = {
 	 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
 	 */
 	align: PropTypes.oneOf(['left', 'right']),
-	/**
-	 * Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
-	 */
-	children: PropTypes.node,
 	/**
 	 * CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`. _Tested with snapshot testing._
 	 */
@@ -106,6 +100,10 @@ const propTypes = {
 		today: PropTypes.string,
 		weekDays: PropTypes.array,
 	}),
+	/**
+	 * A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology.
+	 */
+	input: PropTypes.node,
 	/**
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 	 */
@@ -182,7 +180,7 @@ const defaultProps = {
 		openCalendar: 'Open Calendar',
 		previousMonth: 'Previous month',
 	},
-	formatter (date) {
+	formatter(date) {
 		return date
 			? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
 			: '';
@@ -216,7 +214,7 @@ const defaultProps = {
 		],
 	},
 	menuPosition: 'absolute',
-	parser (str) {
+	parser(str) {
 		return new Date(str);
 	},
 	relativeYearFrom: -10,
@@ -232,7 +230,7 @@ const defaultProps = {
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  */
 class Datepicker extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		// Please remove `strValue` on the next breaking change.
 		const formattedValue = props.formattedValue || props.strValue; // eslint-disable-line react/prop-types
@@ -261,14 +259,14 @@ class Datepicker extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATE_PICKER, this.props, componentDoc);
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentDate = this.props.value.getTime();
 			const nextDate = nextProps.value.getTime();
@@ -283,7 +281,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	getDatePicker ({ labels, assistiveText }) {
+	getDatePicker({ labels, assistiveText }) {
 		const date = this.state.formattedValue
 			? this.parseDate(this.state.formattedValue)
 			: this.state.value;
@@ -328,7 +326,7 @@ class Datepicker extends React.Component {
 		);
 	}
 
-	getDialog ({ labels, assistiveText }) {
+	getDialog({ labels, assistiveText }) {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
 			? 'relative'
@@ -344,10 +342,10 @@ class Datepicker extends React.Component {
 				contentsClassName={classNames(
 					'slds-datepicker slds-dropdown',
 					{
-						'slds-dropdown--right':
+						'slds-dropdown_right':
 							this.props.menuPosition === 'relative' &&
 							this.props.align === 'right',
-						'slds-dropdown--left':
+						'slds-dropdown_left':
 							this.props.menuPosition === 'relative' &&
 							this.props.align === 'left',
 					},
@@ -367,17 +365,86 @@ class Datepicker extends React.Component {
 		) : null;
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen)
+	getIsOpen() {
+		return !!(typeof this.props.isOpen === 'boolean'
 			? this.props.isOpen
 			: this.state.isOpen);
 	}
 
-	setInputRef (component) {
+	getInputProps = ({ assistiveText, labels }) => {
+		/**
+		 * 1. DEFAULT: Use default props or state if present.
+		 * 2. DEPRECATED API: Use old "first-level" props that have been deprecated.
+		 * 3. DEPRECATED API: If `children` is present, use props from single child which should be an `<Input/>`
+		 * 4. CURRENT API: Use composition with props spread merge from `input` prop.
+		 * */
+
+		const defaultInputProps = {
+			iconRight: (
+				<InputIcon
+					// Remove || for assistiveText at next breaking change
+					assistiveText={{
+						icon:
+							this.props.assistiveTextOpenCalendar ||
+							assistiveText.openCalendar, // eslint-disable-line react/prop-types
+					}}
+					aria-haspopup
+					aria-expanded={this.getIsOpen()}
+					category="utility"
+					name="event"
+					onClick={this.openDialog}
+					type="button"
+				/>
+			),
+			inputRef: (component) => {
+				this.setInputRef(component);
+			},
+			id: this.getId(),
+			onChange: this.handleInputChange,
+			onClick: () => {
+				this.openDialog();
+			},
+			onKeyDown: this.handleKeyDown,
+			value: this.state.inputValue,
+		};
+
+		// eslint-disable react/prop-types
+		const topLevelDeprecatedComponentProps = {
+			disabled: this.props.disabled,
+			label: this.props.label || labels.label,
+			onBlur: this.props.onBlur,
+			onFocus: this.props.onFocus,
+			placeholder: this.props.placeholder || labels.placeholder,
+			required: this.props.required,
+		};
+		// eslint-enable react/prop-types
+
+		const childrenProps = this.props.children && this.props.children.props;
+		const childrenPropInputProps = {
+			...childrenProps,
+			onClick: () => {
+				this.openDialog();
+				if (childrenProps && childrenProps.onClick) {
+					childrenProps.onClick();
+				}
+			},
+		};
+
+		const inputRenderProps = this.props.input && this.props.input.props;
+
+		return {
+			...defaultInputProps,
+			...topLevelDeprecatedComponentProps,
+			...childrenPropInputProps,
+			...inputRenderProps,
+		};
+	};
+
+	setInputRef(component) {
 		this.inputRef = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -389,7 +456,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	handleCalendarChange (event, { date }) {
+	handleCalendarChange(event, { date }) {
 		this.setState({
 			value: date,
 			formattedValue: this.props.formatter(date),
@@ -414,17 +481,17 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
-	handleClickOutside () {
+	handleClickOutside() {
 		this.handleRequestClose();
 	}
 
-	handleClose () {
+	handleClose() {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
 	}
 
-	handleInputChange (event) {
+	handleInputChange(event) {
 		this.setState({
 			formattedValue: event.target.value,
 			inputValue: event.target.value,
@@ -441,7 +508,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		// Don't open if user is selecting text
 		if (
 			event.keyCode &&
@@ -460,7 +527,7 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
-	handleOpen (event, { portal }) {
+	handleOpen(event, { portal }) {
 		if (this.props.onOpen) {
 			this.props.onOpen(event, { portal });
 		}
@@ -470,7 +537,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	handleRequestClose () {
+	handleRequestClose() {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
@@ -484,7 +551,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	openDialog () {
+	openDialog() {
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {
@@ -492,7 +559,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	parseDate (formattedValue) {
+	parseDate(formattedValue) {
 		let parsedDate = this.props.parser(formattedValue);
 		if (
 			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
@@ -503,7 +570,7 @@ class Datepicker extends React.Component {
 		return parsedDate;
 	}
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const assistiveText = assign(
@@ -512,76 +579,22 @@ class Datepicker extends React.Component {
 			this.props.assistiveText
 		);
 
-		const clonedInputProps = {
-			disabled:
-				(this.props.children && !!this.props.children.props.disabled) ||
-				this.props.disabled,
-			iconRight: (this.props.children &&
-				!!this.props.children.props.iconRight) || (
-				<InputIcon
-					// Remove || for assistiveText at next breaking change
-					assistiveText={{
-						icon:
-							this.props.assistiveTextOpenCalendar ||
-							assistiveText.openCalendar, // eslint-disable-line react/prop-types
-					}}
-					aria-haspopup
-					aria-expanded={this.getIsOpen()}
-					category="utility"
-					name="event"
-					onClick={this.openDialog}
-					type="button"
-				/>
-			),
-			id: this.getId(),
-			inputRef: (component) => {
-				this.setInputRef(component);
-			},
-			label:
-				(this.props.children && this.props.children.props.label) ||
-				this.props.label || // eslint-disable-line react/prop-types
-				labels.label,
-			onBlur:
-				(this.props.children && this.props.children.props.onBlur) ||
-				this.props.onBlur, // eslint-disable-line react/prop-types
-			onChange: this.handleInputChange,
-			onClick: () => {
-				this.openDialog();
-				if (this.props.children && this.props.children.props.onClick) {
-					this.props.children.props.onClick();
-				}
-			},
-			onFocus:
-				(this.props.children && this.props.children.props.onFocus) ||
-				this.props.onFocus, // eslint-disable-line react/prop-types
-			onKeyDown:
-				(this.props.children && this.props.children.props.onKeyDown) ||
-				this.handleKeyDown,
-			placeholder:
-				(this.props.children && this.props.children.props.placeholder) ||
-				this.props.placeholder || // eslint-disable-line react/prop-types
-				labels.placeholder,
-			required:
-				(this.props.children && this.props.children.props.required) ||
-				this.props.required, // eslint-disable-line react/prop-types
-			value:
-				(this.props.children && this.props.children.props.value) ||
-				this.state.inputValue,
-		};
+		const inputProps = this.getInputProps({ assistiveText, labels });
 
-		const clonedInput = this.props.children ? (
+		// `children` prop is a deprecated API. Future breaking change should limit Datepicker to only `Input` usage and not a random child node.
+		const inputToRender = this.props.children ? (
 			React.cloneElement(this.props.children, {
-				...clonedInputProps,
+				...inputProps,
 			})
 		) : (
-			<Input {...clonedInputProps} />
+			<Input {...inputProps} />
 		);
 
 		return (
 			<div
 				className={classNames(
 					'slds-dropdown-trigger',
-					'slds-dropdown-trigger--click',
+					'slds-dropdown-trigger_click',
 					'ignore-react-onclickoutside',
 					{
 						'slds-is-open': this.getIsOpen(),
@@ -589,7 +602,7 @@ class Datepicker extends React.Component {
 					this.props.triggerClassName
 				)}
 			>
-				{clonedInput}
+				{inputToRender}
 				{this.getDialog({ labels, assistiveText })}
 			</div>
 		);

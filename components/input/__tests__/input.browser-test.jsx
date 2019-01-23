@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable react/no-render-return-value */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -34,7 +35,7 @@ describe('SLDSInput', () => {
 		);
 	};
 
-	function removeInput () {
+	function removeInput() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}
@@ -203,14 +204,19 @@ describe('SLDSInput', () => {
 		let input2;
 
 		beforeEach(() => {
-			component1 = getInput({ label: 'Input One' });
-			component2 = getInput({ label: 'Input Two' });
+			component1 = getInput({
+				className: 'input-one',
+				label: 'Input One',
+			});
+			component2 = getInput({ className: 'input-two', label: 'Input Two' });
 			input1 = findRenderedDOMComponentWithTag(component1, 'input');
 			input2 = findRenderedDOMComponentWithTag(component2, 'input');
 		});
 
 		afterEach(() => {
-			removeInput();
+			const inputNodes = document.querySelectorAll('.slds-form-element');
+			inputNodes[0].parentNode.remove(inputNodes[0]);
+			inputNodes[1].parentNode.remove(inputNodes[1]);
 		});
 
 		it('each input has unique generated id', () => {
@@ -278,7 +284,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconLeft: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 						onClick={clickCallback}
@@ -332,7 +338,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 						onClick={clickCallback}
@@ -400,7 +406,7 @@ describe('SLDSInput', () => {
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 					/>
@@ -447,7 +453,7 @@ describe('SLDSInput', () => {
 				hasSpinner: true,
 				iconRight: (
 					<InputIcon
-						assistiveText="Passed assistive text to icon"
+						assistiveText={{ icon: 'Passed assistive text to icon' }}
 						name="search"
 						category="utility"
 					/>
@@ -501,6 +507,141 @@ describe('SLDSInput', () => {
 
 		it('renders fixed text node content', () => {
 			expect(fixedTextLeft.textContent).to.equal('$');
+		});
+	});
+
+	describe('Counter Input', () => {
+		let changeOccurred;
+		let component;
+		let decrement;
+		let increment;
+		let input;
+		let onChangeData;
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('increments and decrements as expected', () => {
+			component = getInput({
+				onChange: (event, data) => {
+					onChangeData = data;
+				},
+				value: 1,
+				variant: 'counter',
+			});
+			decrement = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_decrement'
+			);
+			increment = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_increment'
+			);
+			input = findRenderedDOMComponentWithTag(component, 'input');
+
+			onChangeData = {};
+			TestUtils.Simulate.mouseDown(increment);
+			TestUtils.Simulate.mouseUp(increment);
+			expect(onChangeData.number === 2 && onChangeData.value === '2').to.be
+				.true;
+
+			onChangeData = {};
+			TestUtils.Simulate.keyDown(increment, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			TestUtils.Simulate.keyUp(increment, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			expect(onChangeData.number === 2 && onChangeData.value === '2').to.be
+				.true;
+
+			TestUtils.Simulate.mouseDown(decrement);
+			TestUtils.Simulate.mouseUp(decrement);
+			expect(onChangeData.number === 0 && onChangeData.value === '0').to.be
+				.true;
+
+			onChangeData = {};
+			TestUtils.Simulate.keyDown(decrement, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			TestUtils.Simulate.keyUp(decrement, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13,
+			});
+			expect(onChangeData.number === 0 && onChangeData.value === '0').to.be
+				.true;
+		});
+
+		it('respects min and max values', () => {
+			component = getInput({
+				maxValue: 1,
+				minValue: 1,
+				onChange: () => {
+					changeOccurred = true;
+				},
+				value: 1,
+				variant: 'counter',
+			});
+			decrement = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_decrement'
+			);
+			increment = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_increment'
+			);
+			input = findRenderedDOMComponentWithTag(component, 'input');
+
+			changeOccurred = false;
+			TestUtils.Simulate.mouseDown(increment);
+			TestUtils.Simulate.mouseUp(increment);
+			expect(changeOccurred).to.be.false;
+			expect(increment.disabled).to.be.true;
+
+			changeOccurred = false;
+			TestUtils.Simulate.mouseDown(decrement);
+			TestUtils.Simulate.mouseUp(decrement);
+			expect(changeOccurred).to.be.false;
+			expect(decrement.disabled).to.be.true;
+		});
+
+		it('acknowledges custom step values', () => {
+			component = getInput({
+				onChange: (event, data) => {
+					onChangeData = data;
+				},
+				step: 0.1,
+				value: 1,
+				variant: 'counter',
+			});
+			decrement = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_decrement'
+			);
+			increment = findRenderedDOMComponentWithClass(
+				component,
+				'slds-input__button_increment'
+			);
+			input = findRenderedDOMComponentWithTag(component, 'input');
+
+			onChangeData = {};
+			TestUtils.Simulate.mouseDown(increment);
+			TestUtils.Simulate.mouseUp(increment);
+			expect(onChangeData.number === 1.1 && onChangeData.value === '1.1').to.be
+				.true;
+
+			TestUtils.Simulate.mouseDown(decrement);
+			TestUtils.Simulate.mouseUp(decrement);
+			expect(onChangeData.number === 0.9 && onChangeData.value === '0.9').to.be
+				.true;
 		});
 	});
 });

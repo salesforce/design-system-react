@@ -74,6 +74,10 @@ const propTypes = {
 	 */
 	onRequestClose: PropTypes.func,
 	/**
+	 * Custom styles to be passed to the component. _Tested with Mocha testing._
+	 */
+	style: PropTypes.object,
+	/**
 	 * The type of Toast. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
@@ -91,7 +95,7 @@ const defaultProps = {
  */
 
 class Toast extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isInitialRender: true,
@@ -99,12 +103,12 @@ class Toast extends React.Component {
 		this.timeout = null;
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TOAST, this.props, componentDoc);
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		if (this.props.duration) {
 			this.timeout = setTimeout(() => {
 				this.onClose();
@@ -112,18 +116,23 @@ class Toast extends React.Component {
 		}
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
+		this.clearTimeout();
 		DOMElementFocus.returnFocusToStoredElement();
 	}
 
 	onClose = () => {
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-			this.timeout = null;
-		}
+		this.clearTimeout();
 
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
+		}
+	};
+
+	clearTimeout = () => {
+		if (this.timeout) {
+			clearTimeout(this.timeout);
+			this.timeout = null;
 		}
 	};
 
@@ -138,7 +147,7 @@ class Toast extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},
@@ -186,6 +195,7 @@ class Toast extends React.Component {
 					this.props.className
 				)}
 				role="alert"
+				style={this.props.style}
 			>
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}

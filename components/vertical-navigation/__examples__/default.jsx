@@ -1,6 +1,6 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import VerticalNavigation from '~/components/vertical-navigation';
 
@@ -27,16 +27,14 @@ const sampleReportCategories = [
 	},
 ];
 
-const Example = createReactClass({
-	displayName: 'NavigationExample',
+class Example extends React.Component {
+	static displayName = 'NavigationExample';
 
-	getInitialState () {
-		return {
-			selectedId: 'recent_reports',
-		};
-	},
+	state = {
+		selectedId: 'recent_reports',
+	};
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ width: '320px' }}>
@@ -57,7 +55,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

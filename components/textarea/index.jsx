@@ -11,7 +11,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -36,10 +36,10 @@ import componentDoc from './docs.json';
 /**
  * A multi-line plain-text editing control.
  */
-const Textarea = createReactClass({
-	displayName: TEXTAREA,
+class Textarea extends React.Component {
+	static displayName = TEXTAREA;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
 		 */
@@ -204,9 +204,9 @@ const Textarea = createReactClass({
 		 * Specifies how the text in a text area is to be wrapped when submitted in a form.
 		 */
 		wrap: PropTypes.oneOf(['soft', 'hard']),
-	},
+	};
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TEXTAREA, this.props, componentDoc);
 
@@ -214,18 +214,14 @@ const Textarea = createReactClass({
 		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
-	},
+	}
 
-	getId () {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getErrorId () {
-		return this.props['aria-describedby'] || this.generatedErrorId;
-	},
+	getErrorId = () => this.props['aria-describedby'] || this.generatedErrorId;
 
 	// ### Render
-	render () {
+	render() {
 		const {
 			autoFocus,
 			children,
@@ -264,8 +260,8 @@ const Textarea = createReactClass({
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...this.props.assistiveText,
-				}.label;
+						...this.props.assistiveText,
+					}.label;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
@@ -337,7 +333,7 @@ const Textarea = createReactClass({
 				{children}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Textarea;

@@ -4,11 +4,11 @@ import Icon from '~/components/icon';
 import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<ProgressRing
 							value={20}
 							theme="expired"

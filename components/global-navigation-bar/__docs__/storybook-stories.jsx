@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { GLOBAL_NAVIGATION_BAR } from '../../../utilities/constants';
@@ -317,7 +318,7 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))

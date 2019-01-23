@@ -116,17 +116,17 @@ const defaultProps = {
  * The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.
  */
 class PageHeader extends Component {
-	_getClassNames (className) {
+	_getClassNames(className) {
 		return classnames(
 			'slds-page-header',
 			{
-				'slds-page-header--object-home': this.props.variant === 'objectHome',
+				'slds-page-header_object-home': this.props.variant === 'objectHome',
 			},
 			className
 		);
 	}
 
-	render () {
+	render() {
 		/**
 		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
 		 * Example: const {foo, ...bar} = this.props;
@@ -177,16 +177,14 @@ class PageHeader extends Component {
 
 			if (trail.length > 0) {
 				return (
-					<nav className="slds-m-bottom--xx-small" role="navigation">
+					<nav className="slds-m-bottom_xx-small" role="navigation">
 						<Breadcrumb trail={trail} />
 					</nav>
 				);
 			}
 			if (type === 'string') {
 				return (
-					<p className="slds-text-title--caps slds-line-height--reset">
-						{label}
-					</p>
+					<p className="slds-text-title_caps slds-line-height_reset">{label}</p>
 				);
 			}
 			return label;

@@ -1,24 +1,22 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import ButtonStateful from '~/components/button-stateful'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'ButtonStatefulExample',
+class Example extends React.Component {
+	static displayName = 'ButtonStatefulExample';
 
-	getInitialState () {
-		return {
-			isActive: false,
-		};
-	},
+	state = {
+		isActive: false,
+	};
 
-	handleOnclick () {
+	handleOnclick = () => {
 		this.setState({
 			isActive: !this.state.isActive,
 		});
-	},
+	};
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonStateful
@@ -29,7 +27,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

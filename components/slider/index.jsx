@@ -119,7 +119,7 @@ class Slider extends React.Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.generatedId = shortid.generate();
@@ -129,11 +129,11 @@ class Slider extends React.Component {
 		}
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getErrorId () {
+	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	}
 
@@ -149,7 +149,7 @@ class Slider extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		const labelText =
 			this.props.label ||
 			(this.props.assistiveText && this.props.assistiveText.label);

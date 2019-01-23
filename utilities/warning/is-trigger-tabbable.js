@@ -19,12 +19,12 @@ import {
 
 /* eslint-disable import/no-mutable-exports */
 
-let isTriggerTabbable = function () {};
+let isTriggerTabbable = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	isTriggerTabbable = function (COMPONENT, trigger, comment) {
+	isTriggerTabbable = function(COMPONENT, trigger, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const childTabIndex = trigger.props.tabIndex;
 		let elementIsTabbable = true;

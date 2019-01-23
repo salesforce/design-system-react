@@ -1,12 +1,12 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Textarea from '~/components/textarea'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'TextareaExample',
+class Example extends React.Component {
+	static displayName = 'TextareaExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Textarea
@@ -17,7 +17,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

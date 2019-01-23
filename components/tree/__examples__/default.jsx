@@ -268,7 +268,7 @@ class Example extends React.Component {
 	};
 
 	getNodes = (node) =>
-		(node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : []);
+		node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : [];
 
 	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified. Object and arrays are reference variables.
 	handleExpandClick = (event, data) => {
@@ -319,6 +319,18 @@ class Example extends React.Component {
 					},
 				}));
 			}
+		} else if (this.props.noBranchSelection && data.node.type === 'branch') {
+			// OPEN BRANCH/FOLDER WHEN CLICKED
+			// Although not codified in SLDS, this takes the click callback and turns it into the expand callback, and should be used for item only selection.
+			this.setState((prevState) => ({
+				...prevState,
+				nodes: {
+					...prevState.nodes,
+					...{
+						[data.node.id]: { ...data.node, expanded: !data.node.expanded },
+					},
+				},
+			}));
 		} else {
 			// SINGLE SELECTION
 			// Take the previous state, expand it, overwrite the `nodes` key with the previous state's `nodes` key expanded with the id of the node just clicked selected and the previously selected node unselected.
@@ -328,11 +340,11 @@ class Example extends React.Component {
 				// be updated
 				const selectedNode = prevState.selectedNode
 					? {
-						[prevState.selectedNode.id]: {
-							...prevState.nodes[prevState.selectedNode.id],
-							selected: false,
-						},
-					}
+							[prevState.selectedNode.id]: {
+								...prevState.nodes[prevState.selectedNode.id],
+								selected: false,
+							},
+						}
 					: {};
 				return {
 					...prevState,
@@ -362,7 +374,7 @@ class Example extends React.Component {
 		this.setState({ searchTerm: event.target.value });
 	};
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>

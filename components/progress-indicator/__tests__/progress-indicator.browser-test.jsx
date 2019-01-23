@@ -13,7 +13,7 @@
 
 // Import your external dependencies
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
@@ -45,25 +45,24 @@ const defaultProps = {
 
 const mockCallback = sinon.spy();
 
-const DemoComponent = createReactClass({
-	displayName: 'ProgressIndicatorDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'ProgressIndicatorDemoComponent';
+
+	static propTypes = {
 		onStepClick: mockCallback,
 		onStepFocus: mockCallback,
-	},
+	};
 
-	getDefaultProps () {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<SLDSProgressIndicator {...this.props} />
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 const steps = [
 	{ id: 0, label: 'tooltip label #1' },
@@ -97,33 +96,33 @@ describe('SLDSProgressIndicator: ', () => {
 		afterEach(unmountComponent);
 
 		// PROPS
-		it('has five steps by default', function () {
+		it('has five steps by default', function() {
 			const item = this.wrapper.find('.slds-progress').find('li');
 			expect(item).to.have.length(5);
 		});
 
-		it('has only one active step', function () {
+		it('has only one active step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-is-active');
 			expect(item).to.have.length(1);
 		});
 
-		it('does not have an error step', function () {
+		it('does not have an error step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-has-error');
 			expect(item).to.have.length(0);
 		});
 
-		it('has correct number of completed steps', function () {
+		it('has correct number of completed steps', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-is-completed');
 			expect(item).to.have.length(2);
 		});
 
-		it('has a white background', function () {
+		it('has a white background', function() {
 			const item = this.wrapper.find('.slds-progress_shade');
 			expect(item).to.have.length(0);
 		});
@@ -144,33 +143,33 @@ describe('SLDSProgressIndicator: ', () => {
 		afterEach(unmountComponent);
 
 		// PROPS
-		it('has 5 steps by default', function () {
+		it('has 5 steps by default', function() {
 			const item = this.wrapper.find('.slds-progress').find('li');
 			expect(item).to.have.length(5);
 		});
 
-		it('has no error step', function () {
+		it('has no error step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-has-error');
 			expect(item).to.have.length(0);
 		});
 
-		it('has 1 active step', function () {
+		it('has 1 active step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-is-active');
 			expect(item).to.have.length(1);
 		});
 
-		it('has correct number of completed steps', function () {
+		it('has correct number of completed steps', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-is-completed');
 			expect(item).to.have.length(2);
 		});
 
-		it('has a gray background', function () {
+		it('has a gray background', function() {
 			const item = this.wrapper.find('.slds-progress_shade');
 			expect(item).to.have.length(1);
 		});
@@ -192,21 +191,21 @@ describe('SLDSProgressIndicator: ', () => {
 		afterEach(unmountComponent);
 
 		// PROPS
-		it('has 1 error step', function () {
+		it('has 1 error step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-has-error');
 			expect(item).to.have.length(1);
 		});
 
-		it('has no active step', function () {
+		it('has no active step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-is-active');
 			expect(item).to.have.length(0);
 		});
 
-		it('has correct number of completed steps', function () {
+		it('has correct number of completed steps', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-is-completed');
@@ -229,14 +228,14 @@ describe('SLDSProgressIndicator: ', () => {
 		afterEach(unmountComponent);
 
 		// PROPS
-		it('has an error step', function () {
+		it('has an error step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('li.slds-has-error');
 			expect(item).to.have.length(1);
 		});
 
-		it('has a tooltip attached to every step', function () {
+		it('has a tooltip attached to every step', function() {
 			const item = this.wrapper
 				.find('.slds-progress')
 				.find('.slds-tooltip-trigger');
@@ -261,7 +260,7 @@ describe('SLDSProgressIndicator: ', () => {
 		afterEach(unmountComponent);
 
 		// EVENTS
-		it('calls onStepClick()', function () {
+		it('calls onStepClick()', function() {
 			const step = this.wrapper
 				.find('.slds-progress')
 				.find('li')
@@ -292,12 +291,12 @@ describe('SLDSProgressIndicator: ', () => {
 		afterEach(unmountComponent);
 
 		// A11Y FEATURES
-		it('specifies the role for progress bar', function () {
+		it('specifies the role for progress bar', function() {
 			const progressbarRole = this.wrapper.find('div[role="progressbar"]');
 			expect(progressbarRole).to.have.length(1);
 		});
 
-		it('renders assistive text for progress bar', function () {
+		it('renders assistive text for progress bar', function() {
 			const item = this.wrapper
 				.find('.slds-progress-bar')
 				.find('.slds-assistive-text')

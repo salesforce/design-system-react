@@ -65,7 +65,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 }));
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -74,11 +74,11 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-inline-multiple"
 					events={{
 						onChange: (event, { value }) => {
 							this.props.action('onChange')(event, value);

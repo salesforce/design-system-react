@@ -39,3 +39,7 @@ require('babel-core').transform('code', {
   presets: ['@salesforce/babel-preset-design-system-react']
 });
 ```
+
+## Licenses
+
+* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)

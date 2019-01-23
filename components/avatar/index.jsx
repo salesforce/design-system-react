@@ -89,18 +89,18 @@ const defaultProps = {
  */
 
 class Avatar extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			imgLoadError: false,
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(AVATAR, this.props, componentDoc);
 	}
 
-	buildInitials () {
+	buildInitials() {
 		const { label } = this.props;
 		const name = label.trim();
 		const nameParts = name.split(' ');
@@ -113,11 +113,11 @@ class Avatar extends React.Component {
 		return (name[0] || '').toUpperCase() + (name[1] || '').toLowerCase();
 	}
 
-	handleImageError () {
+	handleImageError() {
 		return this.setState(() => ({ imgLoadError: true }));
 	}
 
-	renderBaseAvatar () {
+	renderBaseAvatar() {
 		const { imgAlt, imgSrc, title } = this.props;
 		return (
 			<img
@@ -129,15 +129,15 @@ class Avatar extends React.Component {
 		);
 	}
 
-	renderIconAvatar () {
+	renderIconAvatar() {
 		const { variant } = this.props;
 		const iconAssistiveText =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...defaultProps.assistiveText,
-					...this.props.assistiveText,
-				}.icon;
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
 		return (
 			<UtilityIcon
 				assistiveText={{ label: iconAssistiveText }}
@@ -147,7 +147,7 @@ class Avatar extends React.Component {
 		);
 	}
 
-	renderInitialsAvatar () {
+	renderInitialsAvatar() {
 		const { initials, label, variant } = this.props;
 		return (
 			<abbr
@@ -162,7 +162,7 @@ class Avatar extends React.Component {
 		);
 	}
 
-	render () {
+	render() {
 		const { imgSrc, initials, variant, label, size } = this.props;
 
 		const renderAvatar = () => {

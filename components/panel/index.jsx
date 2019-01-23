@@ -25,24 +25,25 @@ import { PANEL } from '../../utilities/constants';
 /**
  * A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have "portal mounts" and be inline. */
 class Panel extends React.Component {
-	componentWillMount () {
+	componentWillMount() {
 		checkProps(PANEL, componentDoc);
 	}
 
-	render () {
+	render() {
 		return (
 			<div
 				className={classNames(
 					'slds-panel',
 					'slds-grid',
-					'slds-grid--vertical',
+					'slds-grid_vertical',
 					'slds-nowrap',
 					{
-						'slds-panel--filters': this.props.variant === 'filters',
-					}
+						'slds-panel_filters': this.props.variant === 'filters',
+					},
+					this.props.className
 				)}
 			>
-				<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
+				<div className="slds-form_stacked slds-grow slds-scrollable_y slds-grid slds-grid_vertical">
 					{this.props.children}
 				</div>
 			</div>
@@ -57,6 +58,14 @@ Panel.propTypes = {
 	 * The contents of the panel
 	 */
 	children: PropTypes.node,
+	/**
+	 * CSS classes to be added to `slds-panel`.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * The type of panel
 	 */

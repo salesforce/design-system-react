@@ -17,7 +17,7 @@
 // let stories = storiesOf('Dialog', module)
 // 	.addDecorator((getStory) => (
 // 		<div
-// 			className="slds-p-around--medium slds-m-horizontal--x-large"
+// 			className="slds-p-around_medium slds-m-horizontal_x-large"
 // 			style={{
 // 				margin: '300px auto',
 // 				textAlign: 'center',

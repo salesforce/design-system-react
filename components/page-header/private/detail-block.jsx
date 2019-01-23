@@ -35,29 +35,29 @@ const defaultProps = {
 };
 
 class DetailBlock extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { showTooltip: false };
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this._renderFieldTruncation();
 	}
 
-	componentDidUpdate (prevProps) {
+	componentDidUpdate(prevProps) {
 		if (this.props.content !== prevProps.content) {
 			this._renderFieldTruncation();
 		}
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	_getClassNames (className, flavor) {
+	_getClassNames(className, flavor) {
 		return classnames('slds-page-header__detail-block', className, {
-			[`slds-size--${flavor}`]: flavor,
+			[`slds-size_${flavor}`]: flavor,
 		});
 	}
 
-	_renderFieldTruncation () {
+	_renderFieldTruncation() {
 		const fieldContent = this.fieldContentRef;
 		const isTruncated =
 			fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
@@ -68,7 +68,7 @@ class DetailBlock extends Component {
 		}
 	}
 
-	render () {
+	render() {
 		const { className, content, flavor, label, truncate } = this.props;
 
 		const classes = this._getClassNames(className, flavor);
@@ -98,7 +98,7 @@ class DetailBlock extends Component {
 		const renderContent = () => {
 			const type = typeof content;
 			if (type === 'string') {
-				const labelClasses = classnames('slds-text-body--regular', {
+				const labelClasses = classnames('slds-text-body_regular', {
 					'slds-truncate': truncate,
 				});
 				return (
@@ -120,11 +120,15 @@ class DetailBlock extends Component {
 		 * Render the content with a tooltip (for content that truncates)
 		 */
 		const renderContentWithTooltip = () => {
-			const labelClasses = classnames('slds-text-body--regular', {
+			const labelClasses = classnames('slds-text-body_regular', {
 				'slds-truncate': truncate,
 			});
 			return (
-				<Tooltip align="top" content={content}>
+				<Tooltip
+					align="top"
+					content={content}
+					triggerStyle={{ display: 'inline' }}
+				>
 					<p tabIndex="0" className={labelClasses}>
 						{content}
 					</p>

@@ -34,7 +34,7 @@ describe('SLDSButton: ', () => {
 		);
 	};
 
-	function removeButton () {
+	function removeButton() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}
@@ -52,6 +52,7 @@ describe('SLDSButton: ', () => {
 				id: 'custom-id',
 				text: 'Brand',
 				theme: 'brand',
+				style: { background: 'rgb(18, 49, 35)' },
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
@@ -65,11 +66,15 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders correct variant styles', () => {
-			expect(btn.className).to.include('slds-button--neutral');
+			expect(btn.className).to.include('slds-button_neutral');
 		});
 
 		it('renders custom id', () => {
 			expect(btn.getAttribute('id')).to.equal('custom-id');
+		});
+
+		it('renders custom styles', function() {
+			btn.style.backgroundColor.should.equal('rgb(18, 49, 35)');
 		});
 	});
 
@@ -99,7 +104,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders icon', () => {
-			expect(svg.className.baseVal).to.include('slds-button__icon--right');
+			expect(svg.className.baseVal).to.include('slds-button__icon_right');
 		});
 	});
 
@@ -178,6 +183,10 @@ describe('SLDSButton: ', () => {
 			svgHref = use.getAttribute('xlink:href');
 		});
 
+		after(() => {
+			removeButton(use);
+		});
+
 		it('renders svg', () => {
 			expect(svgHref).to.equal(
 				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
@@ -190,7 +199,7 @@ describe('SLDSButton: ', () => {
 		let btn;
 		let clicked;
 
-		function setClick () {
+		function setClick() {
 			clicked = true;
 		}
 

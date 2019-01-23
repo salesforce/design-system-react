@@ -2,8 +2,9 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@storybook/react';
+
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { MENU_DROPDOWN } from '../../../utilities/constants';
@@ -54,31 +55,29 @@ const getDropdown = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')} />
 );
 
-const DropdownControlled = createReactClass({
-	displayName: 'DropdownControlled',
+class DropdownControlled extends React.Component {
+	static displayName = 'DropdownControlled';
 
-	getInitialState () {
-		return {
-			forcedState: undefined,
-			menuOptions: options,
-		};
-	},
+	state = {
+		forcedState: undefined,
+		menuOptions: options,
+	};
 
-	handleButtonClickReset () {
+	handleButtonClickReset = () => {
 		this.setState({ forcedState: undefined });
-	},
+	};
 
-	handleOpen (...params) {
+	handleOpen = (...params) => {
 		action('Force Open')(...params);
 		this.setState({ forcedState: true });
-	},
+	};
 
-	handleClose (...params) {
+	handleClose = (...params) => {
 		action('Force Closed')(...params);
 		this.setState({ forcedState: false });
-	},
+	};
 
-	toggleDisabledOption () {
+	toggleDisabledOption = () => {
 		this.setState((prevState, props) => {
 			prevState.menuOptions.splice(1, 1, {
 				disabled: false,
@@ -87,9 +86,9 @@ const DropdownControlled = createReactClass({
 			});
 			return { options: prevState.menuOptions };
 		});
-	},
+	};
 
-	render () {
+	render() {
 		return (
 			<div className="slds-grid">
 				<div className="slds-col">
@@ -116,17 +115,14 @@ const DropdownControlled = createReactClass({
 				</div>
 			</div>
 		);
-	},
-});
+	}
+}
 
 const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div
-				className="slds-col slds-size--1-of-3"
-				style={{ minHeight: '500px' }}
-			>
+			<div className="slds-col slds-size_1-of-3" style={{ minHeight: '500px' }}>
 				<Dropdown
 					{...props}
 					isOpen
@@ -183,13 +179,13 @@ const getDropdownCustomTrigger = (props) => (
 /* eslint-disable no-script-url */
 const DropdownCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
-		<div className="slds-m-around--medium">
-			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+		<div className="slds-m-around_medium">
+			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
+				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
 				<div className="slds-tile__detail">
 					<p className="slds-truncate">
 						<a
-							className="slds-m-right--medium"
+							className="slds-m-right_medium"
 							href="javascript:void(0)"
 							onClick={props.onClick}
 						>
@@ -214,7 +210,7 @@ const getDropdownCustomContent = (props) => (
 
 storiesOf(MENU_DROPDOWN, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium slds-text-align--center">
+		<div className="slds-p-around_medium slds-text-align_center">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -331,6 +327,21 @@ storiesOf(MENU_DROPDOWN, module)
 			})}
 		</div>
 	))
+	.add('Checkmark', () =>
+		getDropdown({
+			assistiveText: { icon: 'More Options' },
+			buttonVariant: 'icon',
+			checkmark: true,
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconVariant: 'border-filled',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+			value: 'C0',
+		})
+	)
 	.add('Hover with Checkmark', () =>
 		getDropdown({
 			assistiveText: { icon: 'More Options' },

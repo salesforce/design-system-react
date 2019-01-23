@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -7,10 +7,10 @@ import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'PageHeaderExample';
 
-	render () {
+	render() {
 		const navRight = (
 			<div>
 				<ButtonGroup>
@@ -22,6 +22,7 @@ const Example = createReactClass({
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
+						id="page-header-dropdown-object-home-nav-right"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -38,6 +39,7 @@ const Example = createReactClass({
 			<div>
 				<Dropdown
 					align="right"
+					id="page-header-dropdown-object-home-content-right"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -49,7 +51,7 @@ const Example = createReactClass({
 					<DropdownTrigger>
 						<Button
 							assistiveText={{ icon: 'List View Controls' }}
-							className="slds-m-right--xx-small"
+							className="slds-m-right_xx-small"
 							iconCategory="utility"
 							iconName="settings"
 							iconVariant="more"
@@ -61,6 +63,7 @@ const Example = createReactClass({
 					assistiveText={{ icon: 'Change view' }}
 					iconName="settings"
 					iconVariant="more"
+					id="page-header-dropdown-object-home-content-right-2"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -72,7 +75,7 @@ const Example = createReactClass({
 					<DropdownTrigger>
 						<Button
 							assistiveText={{ icon: 'Change view' }}
-							className="slds-m-right--xx-small"
+							className="slds-m-right_xx-small"
 							iconCategory="utility"
 							iconName="table"
 							iconVariant="more"
@@ -126,8 +129,9 @@ const Example = createReactClass({
 					label="Leads"
 					navRight={navRight}
 					title={
-						<h1 className="slds-page-header__title slds-p-right--x-small">
+						<h1 className="slds-page-header__title slds-p-right_x-small">
 							<Dropdown
+								id="page-header-dropdown-object-home-header"
 								options={[
 									{ label: 'Menu Item One', value: 'A0' },
 									{ label: 'Menu Item Two', value: 'B0' },
@@ -138,7 +142,7 @@ const Example = createReactClass({
 							>
 								<DropdownTrigger>
 									<Button
-										className="slds-button--reset slds-type-focus"
+										className="slds-button_reset slds-type-focus"
 										iconCategory="utility"
 										iconName="down"
 										iconPosition="right"
@@ -155,7 +159,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

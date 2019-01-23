@@ -21,7 +21,7 @@ const {
 } = TestUtils;
 
 describe('SLDSLookup: ', () => {
-	const generateLookup = function (lookupInstance) {
+	const generateLookup = function(lookupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>
 		);
@@ -35,11 +35,11 @@ describe('SLDSLookup: ', () => {
 		iconName: 'account',
 		isInline: true,
 		label: 'Account',
-		onChange (newValue) {
-			console.log('New search term: ', newValue);
+		onChange(newValue) {
+			// console.log('New search term: ', newValue);
 		},
-		onSelect (item) {
-			console.log(item, ' Selected');
+		onSelect(item) {
+			// console.log(item, ' Selected');
 		},
 		options: [
 			{ label: 'Paddy"s Pub' },
@@ -281,7 +281,7 @@ describe('SLDSLookup: ', () => {
 			const focusedItem = lookup
 				.getElementsByTagName('ul')[0]
 				.getElementsByTagName('li')[0];
-			expect(focusedItem.className).to.have.string('slds-theme--shade');
+			expect(focusedItem.className).to.have.string('slds-theme_shade');
 		});
 
 		it('isOpen=false prevents dropdown from opening', () => {

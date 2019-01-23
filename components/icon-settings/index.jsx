@@ -23,9 +23,10 @@ import { ICON_SETTINGS } from '../../utilities/constants';
  * such as `/assets/icons`.
  */
 class IconSettings extends React.Component {
-	getChildContext () {
+	getChildContext() {
 		return {
 			iconPath: this.props.iconPath,
+			onRequestIconPath: this.props.onRequestIconPath,
 			actionSprite: this.props.actionSprite,
 			customSprite: this.props.customSprite,
 			doctypeSprite: this.props.doctypeSprite,
@@ -34,7 +35,7 @@ class IconSettings extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return this.props.children;
 	}
 }
@@ -43,6 +44,7 @@ IconSettings.displayName = ICON_SETTINGS;
 
 IconSettings.childContextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
 	actionSprite: PropTypes.string,
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,
@@ -56,6 +58,10 @@ IconSettings.propTypes = {
 	 * example: `/assets/icons`
 	 */
 	iconPath: PropTypes.string,
+	/**
+	 * Function to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN. `({category, name}) => { return \`#${name}\` }`
+	 */
+	onRequestIconPath: PropTypes.func,
 	/**
 	 * Path to the action sprite
 	 * example: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';

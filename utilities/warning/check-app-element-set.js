@@ -5,10 +5,10 @@
 import warning from 'warning';
 import Settings from '../../components/settings';
 
-let checkAppElementIsSet = function () {};
+let checkAppElementIsSet = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkAppElementIsSet = function () {
+	checkAppElementIsSet = function() {
 		const appElement = Settings.getAppElement();
 		/* eslint-disable max-len */
 		warning(

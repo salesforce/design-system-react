@@ -13,9 +13,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -175,7 +172,7 @@ const defaultProps = {
  * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
  */
 class Modal extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isClosing: false,
@@ -189,7 +186,7 @@ class Modal extends React.Component {
 		);
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(MODAL, this.props, componentDoc);
 		if (this.props.ariaHideApp) {
@@ -197,12 +194,12 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.setReturnFocus();
 		this.updateBodyScroll();
 	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.props.isOpen !== prevProps.isOpen) {
 			this.updateBodyScroll();
 		}
@@ -226,16 +223,16 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 		this.clearBodyScroll();
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getModal () {
+	getModal() {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
 		const borderRadius =
@@ -258,8 +255,8 @@ class Modal extends React.Component {
 				className={classNames({
 					'slds-modal': true,
 					'slds-fade-in-open': true,
-					'slds-modal--large': this.props.size === 'large',
-					'slds-modal--prompt': this.isPrompt(),
+					'slds-modal_large': this.props.size === 'large',
+					'slds-modal_prompt': this.isPrompt(),
 				})}
 				onClick={this.dismissModalOnClickOutside}
 				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
@@ -289,26 +286,26 @@ class Modal extends React.Component {
 		);
 	}
 
-	setReturnFocus () {
+	setReturnFocus() {
 		this.setState({
 			returnFocusTo: documentDefined ? document.activeElement : null,
 		});
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	clearBodyScroll () {
+	clearBodyScroll() {
 		if (windowDefined && documentDefined && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
 
-	closeModal () {
+	closeModal() {
 		if (this.props.dismissible) {
 			this.dismissModal();
 		}
 	}
 
-	dismissModal () {
+	dismissModal() {
 		this.setState({ isClosing: true });
 		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
 			this.state.returnFocusTo.focus();
@@ -318,9 +315,9 @@ class Modal extends React.Component {
 		}
 	}
 
-	dismissModalOnClickOutside () {
+	dismissModalOnClickOutside() {
 		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
+		const dismissOnClickOutside = this.props.dismissOnClickOutside
 			? this.props.dismissOnClickOutside
 			: this.props.dismissible;
 
@@ -329,13 +326,13 @@ class Modal extends React.Component {
 		}
 	}
 
-	footerComponent () {
+	footerComponent() {
 		let footer = null;
 		const hasFooter = this.props.footer;
 		const footerClass = {
 			'slds-modal__footer': true,
-			'slds-modal__footer--directional': this.props.directional,
-			'slds-theme--default': this.isPrompt(),
+			'slds-modal__footer_directional': this.props.directional,
+			'slds-theme_default': this.isPrompt(),
 		};
 
 		if (hasFooter) {
@@ -352,17 +349,17 @@ class Modal extends React.Component {
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	handleModalClick (event) {
+	handleModalClick(event) {
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}
 	}
 
-	handleSubmitModal () {
+	handleSubmitModal() {
 		this.closeModal();
 	}
 
-	headerComponent () {
+	headerComponent() {
 		let headerContent = this.props.header;
 		const headerEmpty =
 			!headerContent && !this.props.title && !this.props.tagline;
@@ -392,15 +389,15 @@ class Modal extends React.Component {
 					{this.props.toast}
 					<h2
 						className={classNames({
-							'slds-text-heading--small': this.isPrompt(),
-							'slds-text-heading--medium': !this.isPrompt(),
+							'slds-text-heading_small': this.isPrompt(),
+							'slds-text-heading_medium': !this.isPrompt(),
 						})}
 						id={this.getId()}
 					>
 						{this.props.title}
 					</h2>
 					{this.props.tagline ? (
-						<p className="slds-m-top--x-small">{this.props.tagline}</p>
+						<p className="slds-m-top_x-small">{this.props.tagline}</p>
 					) : null}
 				</div>
 			);
@@ -412,9 +409,9 @@ class Modal extends React.Component {
 				className={classNames(
 					'slds-modal__header',
 					{
-						'slds-modal__header--empty': headerEmpty,
-						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-						'slds-theme--alert-texture': this.isPrompt(),
+						'slds-modal__header_empty': headerEmpty,
+						[`slds-theme_${this.props.prompt}`]: this.isPrompt(),
+						'slds-theme_alert-texture': this.isPrompt(),
 					},
 					this.props.headerClassName
 				)}
@@ -426,11 +423,11 @@ class Modal extends React.Component {
 		);
 	}
 
-	isPrompt () {
+	isPrompt() {
 		return this.props.prompt !== undefined;
 	}
 
-	updateBodyScroll () {
+	updateBodyScroll() {
 		if (windowDefined && documentDefined && document.body) {
 			if (this.props.isOpen) {
 				document.body.style.overflow = 'hidden';
@@ -440,7 +437,7 @@ class Modal extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		const customStyles = {
 			content: {
 				position: 'default',
@@ -476,7 +473,7 @@ class Modal extends React.Component {
 				)}
 			>
 				{this.getModal()}
-				<div className="slds-backdrop slds-backdrop--open" />
+				<div className="slds-backdrop slds-backdrop_open" />
 			</ReactModal>
 		);
 	}

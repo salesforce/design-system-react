@@ -1,9 +1,11 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import { COMBOBOX } from '../../../utilities/constants';
 
 import Base from '../__examples__/base';
+import BaseInlineHelpTooltip from '../__examples__/base-inline-help-tooltip';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
 import BaseMenuSeparator from '../__examples__/base-menu-separator';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
@@ -35,11 +37,19 @@ import SnapshotBaseLabelRequired from '../__examples__/snapshot/base-label-requi
 
 storiesOf(COMBOBOX, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">{getStory()}</div>
+		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => <Base action={action} />)
 	.add('Base Pre-defined Options Only', () => (
 		<PredefinedOptionsOnly action={action} />
+	))
+	.add('Base Inline Help', () => (
+		<section>
+			<h1 className="slds-text-title_caps slds-p-vertical_medium">
+				Field Level Help Tooltip
+			</h1>
+			<BaseInlineHelpTooltip action={action} />
+		</section>
 	))
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)

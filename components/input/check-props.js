@@ -11,16 +11,23 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { INPUT, SEARCH } from '../../utilities/constants';
 
-let checkProps = function () {};
+let checkProps = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props, jsonDoc) {
+	checkProps = function(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === INPUT) {
 			const iconDeprecatedMessage = `Please use \`iconLeft\` and \`iconRight\` to pass in a customized <Icon> component. ${createDocUrl()}`;
 
 			// Deprecated and changed to another property
+			deprecatedProperty(
+				COMPONENT,
+				props.assistiveText.fieldLevelHelpButton,
+				'assistiveText.fieldLevelHelpButton',
+				undefined,
+				`Please pass a \`Tooltip\` component into \`fieldLevelHelpTooltip\` with \`assistiveText.triggerLearnMoreIcon\`.`
+			);
 			deprecatedProperty(
 				COMPONENT,
 				props.iconCategory,
