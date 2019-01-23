@@ -179,6 +179,7 @@ class Step extends React.Component {
 				this.props.index}`,
 			content: this.props.step.label,
 			theme: 'info',
+			position: 'overflowBoundaryElement',
 			triggerStyle: { display: !renderIcon ? 'flex' : '' },
 		};
 
