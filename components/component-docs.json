@@ -5227,9 +5227,268 @@
                 "returns": null
             }
         ],
-        "composes": [
-            "./prop-types"
-        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "optionDragLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "itemLocked": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "itemsSelected": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "itemsDeselected": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "lockedItemCannotBeMoved": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectedItemsReordered": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "moveSelectionDown": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "moveSelectionUp": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "moveSelectionToOptions": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "moveSelectionToSelected": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility** Tested with Mocha framework.\nThis object is merged with the default props object on every render.\n* `optionDragLabel`: Instructions on how to drag and drop with a keyboard.\n* `itemLocked`: Used as title for locked items.\n* `itemsSelected`: Used in Aria Live area to inform user that items were moved to selected.\n* `itemsDeselected`: Used in Aria Live area to inform user that items were removed from selected.\n* `lockedItemCannotBeMoved`: Used to label locked items.\n* `selectedItemsReordered`: Used in Aria Live area to inform user that selected items were reordered.\n* `moveSelectionDown`: Used by \"down\" reordering button.\n* `moveSelectionUp`: Used by \"up\" reordering button.\n* `moveSelectionToSelected`: Used by \"right\" button, which moves items to selected.\n* `moveSelectionToOptions`: Used by \"left\" button, which removes items from selection.",
+                "defaultValue": {
+                    "value": "{\n    optionDragLabel:\n        'Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.',\n    moveSelectionUp: 'Move Selection Up',\n    moveSelectionDown: 'Move Selection Down',\n    itemLocked: 'Locked item',\n    lockedItemCannotBeMoved: 'Item cannot be moved',\n}",
+                    "computed": false
+                }
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onChange": {
+                            "name": "func",
+                            "required": true
+                        }
+                    }
+                },
+                "required": true,
+                "description": "Event Callbacks\n* `onChange`: Called when items are added or removed from `selection`. Tested with Mocha framework."
+            },
+            "hasAutomaticHeightMinimization": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When true, the height of both listboxes will be the smallest height needed to show all items without having to scroll. Tested with Mocha framework."
+            },
+            "ids": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "picklistGroupLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "dragLiveRegion": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "optionDragLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "optionsLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectedLabel": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Element id prefixes (used for accessibility). If not provided, ids will be generated with shortid. Tested with Mocha framework.\n* `picklistGroupLabel`: id for labeling the `<DuelingPicklist />` component.\n* `dragLiveRegion`: id for Aria Live element.\n* `optionDragLabel`: id for describing how to use keyboard interactions.\n* `optionsLabel`: id for options listbox.\n* `selectedLabel`: id for selection listbox.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "isDisabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When true, all interactions are disabled. Tested with snapshot testing."
+            },
+            "isViewOnly": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When true, component renders in view mode. Tested with Mocha framework."
+            },
+            "isReorderable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "allows the user to reorder the second listbox of options. Tested with Mocha framework."
+            },
+            "isRequired": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When true, a red asterisk will render, visually marking the item as required. Tested with snapshot testing."
+            },
+            "isResponsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When true, the component will be render with responsive css classes applied. Any items longer than the space available will truncate with ellipses. Tested with Mocha framework."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "group": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "node"
+                                },
+                                {
+                                    "name": "string"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "options": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "node"
+                                },
+                                {
+                                    "name": "string"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "selected": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "node"
+                                },
+                                {
+                                    "name": "string"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "selectedItems": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "node"
+                                },
+                                {
+                                    "name": "string"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Labels. Tested with Mocha framework.\n* `group`: A `DuelingPicklist` should have a group label, similar to using a `fieldset` HTML element.\n* `options`: Label for options.\n* `selected`: Label for selected.\n* `selectedItems`: Labels selected items in View Mode.",
+                "defaultValue": {
+                    "value": "{\n    group: 'Select Options',\n    options: 'First Category',\n    selected: 'Second Category',\n    selectedItems: 'Selected Items',\n}",
+                    "computed": false
+                }
+            },
+            "listboxHeight": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Manually sets the height of both listboxes. Tested with Mocha framework."
+            },
+            "options": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "label": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "required": true,
+                "description": "Items in the first listbox. Tested with Mocha framework.\n* `label`: Item label.\n* `id`: Unique id for the item."
+            },
+            "selected": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "label": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "isLocked": {
+                                "name": "bool",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": true,
+                "description": "Items in the second listbox. Tested with Mocha framework.\n* `label`: Item label.\n* `id`: Unique id for the item.\n* `isLocked`: When true, a lock icon renders on the item, and the item cannot be removed from the selection."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Component that provides contextual information next to the `group.label. Tested with snapshot testing.`"
+            }
+        },
         "route": "dueling-picklist",
         "display-name": "Dueling Picklist",
         "SLDS-component-path": "/components/dueling-picklist",

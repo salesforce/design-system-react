@@ -184,7 +184,52 @@ const Group = ({
 };
 
 Group.propTypes = {
-	...propTypes,
+	assistiveText: PropTypes.shape({
+		optionDragLabel: PropTypes.string,
+		itemLocked: PropTypes.string,
+		itemsSelected: PropTypes.string,
+		itemsDeselected: PropTypes.string,
+		lockedItemCannotBeMoved: PropTypes.string,
+		selectedItemsReordered: PropTypes.string,
+		moveSelectionDown: PropTypes.string,
+		moveSelectionUp: PropTypes.string,
+		moveSelectionToOptions: PropTypes.string,
+		moveSelectionToSelected: PropTypes.string,
+	}),
+	hasAutomaticHeightMinimization: PropTypes.bool,
+	ids: PropTypes.shape({
+		picklistGroupLabel: PropTypes.string,
+		dragLiveRegion: PropTypes.string,
+		optionDragLabel: PropTypes.string,
+		optionsLabel: PropTypes.string,
+		selectedLabel: PropTypes.string,
+	}),
+	isDisabled: PropTypes.bool,
+	isViewOnly: PropTypes.bool,
+	isReorderable: PropTypes.bool,
+	isRequired: PropTypes.bool,
+	isResponsive: PropTypes.bool,
+	labels: PropTypes.shape({
+		group: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		options: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		selected: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		selectedItems: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+	}),
+	listboxHeight: PropTypes.string,
+	options: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			id: PropTypes.string.isRequired,
+		})
+	).isRequired,
+	selected: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			id: PropTypes.string.isRequired,
+			isLocked: PropTypes.bool,
+		})
+	).isRequired,
+	tooltip: PropTypes.node,
 	refs: PropTypes.object,
 	events: PropTypes.shape({
 		onBeginDrag: PropTypes.func.isRequired,
