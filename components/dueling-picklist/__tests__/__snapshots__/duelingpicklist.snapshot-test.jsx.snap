@@ -59,7 +59,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -84,7 +83,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -109,7 +107,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -134,7 +131,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -159,7 +155,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -184,7 +179,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-5"
                 role="presentation"
               >
                 <div
@@ -215,7 +209,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -235,7 +229,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -283,7 +277,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-6"
                 role="presentation"
               >
                 <div
@@ -308,7 +301,6 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-7"
                 role="presentation"
               >
                 <div
@@ -394,7 +386,6 @@ exports[`Default DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -419,7 +410,6 @@ exports[`Default DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -444,7 +434,6 @@ exports[`Default DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -475,7 +464,7 @@ exports[`Default DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -495,7 +484,7 @@ exports[`Default DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -538,7 +527,6 @@ exports[`Default DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -563,7 +551,6 @@ exports[`Default DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -649,7 +636,6 @@ exports[`Disabled DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -672,7 +658,6 @@ exports[`Disabled DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -695,7 +680,6 @@ exports[`Disabled DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -724,7 +708,7 @@ exports[`Disabled DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -744,7 +728,7 @@ exports[`Disabled DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -787,7 +771,6 @@ exports[`Disabled DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -810,7 +793,6 @@ exports[`Disabled DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -894,7 +876,6 @@ exports[`IsReorderable DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -919,7 +900,6 @@ exports[`IsReorderable DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -944,7 +924,6 @@ exports[`IsReorderable DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -975,7 +954,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -995,7 +974,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1038,7 +1017,6 @@ exports[`IsReorderable DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -1063,7 +1041,6 @@ exports[`IsReorderable DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -1094,7 +1071,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1114,7 +1091,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1193,7 +1170,6 @@ exports[`Locked DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -1218,7 +1194,6 @@ exports[`Locked DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -1243,7 +1218,6 @@ exports[`Locked DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -1274,7 +1248,7 @@ exports[`Locked DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1294,7 +1268,7 @@ exports[`Locked DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1337,7 +1311,6 @@ exports[`Locked DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -1368,7 +1341,7 @@ exports[`Locked DOM Snapshot 1`] = `
                       <span>
                         <svg
                           aria-hidden="true"
-                          className="slds-icon slds-icon--xx-small slds-icon-text-default"
+                          className="slds-icon slds-icon_xx-small slds-icon-text-default"
                         >
                           <use
                             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
@@ -1388,7 +1361,6 @@ exports[`Locked DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -1419,7 +1391,7 @@ exports[`Locked DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1439,7 +1411,7 @@ exports[`Locked DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1523,7 +1495,6 @@ exports[`ManualHeight DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -1548,7 +1519,6 @@ exports[`ManualHeight DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -1573,7 +1543,6 @@ exports[`ManualHeight DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -1604,7 +1573,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1624,7 +1593,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1672,7 +1641,6 @@ exports[`ManualHeight DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -1697,7 +1665,6 @@ exports[`ManualHeight DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -1790,7 +1757,6 @@ exports[`Required DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -1815,7 +1781,6 @@ exports[`Required DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -1840,7 +1805,6 @@ exports[`Required DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -1871,7 +1835,7 @@ exports[`Required DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1891,7 +1855,7 @@ exports[`Required DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1934,7 +1898,6 @@ exports[`Required DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -1959,7 +1922,6 @@ exports[`Required DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -2045,7 +2007,6 @@ exports[`Responsive DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -2070,7 +2031,6 @@ exports[`Responsive DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -2095,7 +2055,6 @@ exports[`Responsive DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -2126,7 +2085,7 @@ exports[`Responsive DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -2146,7 +2105,7 @@ exports[`Responsive DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -2189,7 +2148,6 @@ exports[`Responsive DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -2214,7 +2172,6 @@ exports[`Responsive DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
@@ -2279,7 +2236,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
       <span>
         <svg
           aria-hidden="true"
-          className="slds-icon slds-icon--x-small slds-icon-text-default"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
         >
           <use
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
@@ -2334,7 +2291,6 @@ exports[`Tooltip DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-0"
                 role="presentation"
               >
                 <div
@@ -2359,7 +2315,6 @@ exports[`Tooltip DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-1"
                 role="presentation"
               >
                 <div
@@ -2384,7 +2339,6 @@ exports[`Tooltip DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-2"
                 role="presentation"
               >
                 <div
@@ -2415,7 +2369,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
         className="slds-dueling-list__column"
       >
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -2435,7 +2389,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button--icon-container"
+          className="slds-button slds-button_icon-container"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -2478,7 +2432,6 @@ exports[`Tooltip DOM Snapshot 1`] = `
             >
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-3"
                 role="presentation"
               >
                 <div
@@ -2503,7 +2456,6 @@ exports[`Tooltip DOM Snapshot 1`] = `
               </li>
               <li
                 className="slds-listbox__item"
-                id="dueling-picklist-option-4"
                 role="presentation"
               >
                 <div
