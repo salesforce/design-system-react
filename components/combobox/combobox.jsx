@@ -33,7 +33,6 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
-import Tooltip from '../tooltip';
 
 import checkProps from './check-props';
 
@@ -414,7 +413,11 @@ class Combobox extends React.Component {
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
 		let nextIndex = activeOptionIndex + offset;
-		while (options.length > nextIndex && nextIndex >= 0 && options[nextIndex].type === 'separator') {
+		while (
+			options.length > nextIndex &&
+			nextIndex >= 0 &&
+			options[nextIndex].type === 'separator'
+		) {
 			nextIndex += offset;
 		}
 		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
@@ -509,7 +512,6 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
-
 		if (this.state.activeOption.disabled) {
 			return;
 		}

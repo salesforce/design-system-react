@@ -14,20 +14,20 @@ const accounts = [
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
-        subTitle: 'Account • San Francisco',
-        disabled: true
+		subTitle: 'Account • San Francisco',
+		disabled: true,
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
-        subTitle: 'Account • Boston, MA',
-        disabled: true
+		subTitle: 'Account • Boston, MA',
+		disabled: true,
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
-        subTitle: 'Account • San Francisco, CA',
-        disabled: true
+		subTitle: 'Account • San Francisco, CA',
+		disabled: true,
 	},
 	{
 		id: '5',

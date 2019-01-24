@@ -29,10 +29,9 @@ const accounts = [
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-        type: 'account',
-        disabled: true,
-        tooltipContent: "This account has been removed from the system."
-
+		type: 'account',
+		disabled: true,
+		tooltipContent: 'This account has been removed from the system.',
 	},
 	{
 		id: '5',
@@ -44,9 +43,9 @@ const accounts = [
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-        type: 'account',
-        disabled: true,
-        tooltipContent: "You don't have permission to access this account."
+		type: 'account',
+		disabled: true,
+		tooltipContent: "You don't have permission to access this account.",
 	},
 	{ id: '7', label: 'Acme Landscaping', subTitle: '\u00A0', type: 'account' },
 	{
@@ -65,7 +64,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 				assistiveText={{ label: 'Account' }}
 				category="standard"
 				name={elem.type}
-				style={elem.disabled ? {backgroundColor: '#dddbda'}: {}}
+				style={elem.disabled ? { backgroundColor: '#dddbda' } : {}}
 			/>
 		),
 	},
@@ -151,8 +150,8 @@ class Example extends React.Component {
 						options: accountsWithIcon,
 						selection: this.state.selection,
 					})}
-                    selection={this.state.selection}
-                    tooltipMenuItemDisabled={<Tooltip />}
+					selection={this.state.selection}
+					tooltipMenuItemDisabled={<Tooltip />}
 					value={this.state.inputValue}
 				/>
 			</IconSettings>

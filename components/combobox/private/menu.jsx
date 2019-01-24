@@ -164,8 +164,8 @@ const Menu = (props) => {
 		const tooltipId = `${props.inputId}-listbox-option-help-${optionData.id}`;
 		if (optionData.disabled) {
 			disabledProps['aria-describedby'] = tooltipId;
-			disabledProps['aria-disabled']= !!optionData.disabled
-			disabledProps.style = {cursor: 'default'}; // Replace this with a css class name once SLDS has it.
+			disabledProps['aria-disabled'] = !!optionData.disabled;
+			disabledProps.style = { cursor: 'default' }; // Replace this with a css class name once SLDS has it.
 		}
 
 		const menuItem = {
@@ -179,9 +179,13 @@ const Menu = (props) => {
 						'slds-listbox__option_entity slds-listbox__option_has-meta',
 						{ 'slds-has-focus': active }
 					)}
-					onClick={optionData.disabled ? null : (event) => {
-						props.onSelect(event, { option: optionData });
-					}}
+					onClick={
+						optionData.disabled
+							? null
+							: (event) => {
+									props.onSelect(event, { option: optionData });
+								}
+					}
 					role="option"
 				>
 					{optionData.icon && !props.menuItem ? (
@@ -195,10 +199,21 @@ const Menu = (props) => {
 						/>
 					) : (
 						<span className="slds-media__body">
-							<span className={classNames('slds-listbox__option-text', 'slds-listbox__option-text_entity', {'slds-disabled-text': optionData.disabled})}>
+							<span
+								className={classNames(
+									'slds-listbox__option-text',
+									'slds-listbox__option-text_entity',
+									{ 'slds-disabled-text': optionData.disabled }
+								)}
+							>
 								{optionData.label}
 							</span>
-							<span className={classNames("slds-listbox__option-meta slds-listbox__option-meta_entity", {'slds-disabled-text': optionData.disabled})}>
+							<span
+								className={classNames(
+									'slds-listbox__option-meta slds-listbox__option-meta_entity',
+									{ 'slds-disabled-text': optionData.disabled }
+								)}
+							>
 								{optionData.subTitle}
 							</span>
 						</span>
@@ -218,12 +233,16 @@ const Menu = (props) => {
 							'slds-is-selected': selected,
 						}
 					)}
-					onClick={optionData.disabled ? null : (event) => {
-						props.onSelect(event, {
-							selection: props.selection,
-							option: optionData,
-						});
-					}}
+					onClick={
+						optionData.disabled
+							? null
+							: (event) => {
+									props.onSelect(event, {
+										selection: props.selection,
+										option: optionData,
+									});
+								}
+					}
 					role="option"
 				>
 					<span className="slds-media__figure">
@@ -242,7 +261,12 @@ const Menu = (props) => {
 								option={optionData}
 							/>
 						) : (
-							<span className={classNames("slds-truncate", {'slds-disabled-text': optionData.disabled})} title={optionData.label}>
+							<span
+								className={classNames('slds-truncate', {
+									'slds-disabled-text': optionData.disabled,
+								})}
+								title={optionData.label}
+							>
 								{selected ? (
 									<span className="slds-assistive-text">
 										{props.assistiveText.optionSelectedInMenu}
@@ -258,20 +282,27 @@ const Menu = (props) => {
 
 		let item;
 		if (optionData.disabled && props.tooltipMenuItemDisabled) {
-			const {content, ...userDefinedTooltipProps} = props.tooltipMenuItemDisabled.props;
+			const {
+				content,
+				...userDefinedTooltipProps
+			} = props.tooltipMenuItemDisabled.props;
 			const tooltipProps = {
-				align: "top",
+				align: 'top',
 				content: optionData.tooltipContent || content, // either use specific content defined on option or content defined on tooltip component.
 				id: tooltipId,
-				position: "absolute",
-				triggerStyle: {width: '100%'},
-				...userDefinedTooltipProps // we want to allow user defined tooltip pros to overwrite default props, if need be.
+				position: 'absolute',
+				triggerStyle: { width: '100%' },
+				...userDefinedTooltipProps, // we want to allow user defined tooltip pros to overwrite default props, if need be.
 			};
 			if (active) {
 				// allows showing the tooltip on keyboard navigation to disabled menu item
 				tooltipProps.isOpen = true;
 			}
-			item = React.cloneElement(props.tooltipMenuItemDisabled, tooltipProps, menuItem[props.variant]);
+			item = React.cloneElement(
+				props.tooltipMenuItemDisabled,
+				tooltipProps,
+				menuItem[props.variant]
+			);
 		} else {
 			item = menuItem[props.variant];
 		}
