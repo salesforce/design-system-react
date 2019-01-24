@@ -206,12 +206,16 @@ const propTypes = {
 	 * * `label`: A primary string of text for a menu item or group separator.
 	 * * `subTitle`: A secondary string of text added for clarity. (optional)
 	 * * `type`: 'separator' is the only type currently used
+	 * * `disabled`: Set to true to disable this menu item.
+	 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
 	 * ```
 	 * {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
 	 * 	type: 'account',
+	 *  disabled: true,
+	 *  tooltipContent: "You don't have permission to select this item."
 	 * },
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
@@ -223,6 +227,8 @@ const propTypes = {
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
+			disabled: PropTypes.boolean,
+			tooltipContent: PropTypes.node
 		})
 	).isRequired,
 	/**
