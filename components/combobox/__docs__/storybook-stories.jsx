@@ -8,13 +8,17 @@ import Base from '../__examples__/base';
 import BaseInlineHelpTooltip from '../__examples__/base-inline-help-tooltip';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
 import BaseMenuSeparator from '../__examples__/base-menu-separator';
+import BaseMenuItemDisabled from '../__examples__/base-menu-item-disabled';
+import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled-tooltip'
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
 import InlineMultiple from '../__examples__/inline-multiple';
 import BaseCustomMenuItem from '../__examples__/base-custom-menu-item';
+import BaseCustomMenuItemDisabled from '../__examples__/base-custom-menu-item-disabled';
 import ReadOnly from '../__examples__/readonly-single';
+import ReadOnlyMenuItemDisabled from '../__examples__/readonly-menu-item-disabled';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
@@ -51,15 +55,21 @@ storiesOf(COMBOBOX, module)
 			<BaseInlineHelpTooltip action={action} />
 		</section>
 	))
+	.add('Base Menu Item Disabled', () => <BaseMenuItemDisabled action={action} />)
+	.add('Base Menu Item Disabled With Tooltip', () => <BaseMenuItemDisabledTooltip action={action} />)
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)
+	.add('Base Custom Menu Item Disabled', () => <BaseCustomMenuItemDisabled action={action} />)
 	.add('Base Menu Sub Headers', () => <BaseMenuSubHeader action={action} />)
 	.add('Base Menu Separator', () => <BaseMenuSeparator action={action} />)
 	.add('Base Inherit Menu Width', () => (
 		<BaseInheritMenuWidth action={action} />
 	))
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
+	.add('Readonly Single Menu Item Disabled', () => (
+		<ReadOnlyMenuItemDisabled action={action} />
+	))
 	.add('Readonly Multiple Selection', () => (
 		<ReadOnlyMultiple action={action} />
 	))

@@ -33,6 +33,7 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
+import Tooltip from '../tooltip';
 
 import checkProps from './check-props';
 
@@ -254,6 +255,10 @@ const propTypes = {
 	 */
 	selectedListboxRef: PropTypes.func,
 	/**
+	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
+	 */
+	tooltipMenuItemDisabled: PropTypes.element,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -273,6 +278,7 @@ const defaultProps = {
 	events: {},
 	labels: {
 		noOptionsFound: 'No matches found.',
+		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
@@ -407,14 +413,12 @@ class Combobox extends React.Component {
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
-		const nextIndex = activeOptionIndex + offset;
-		const skipIndex =
-			options.length > nextIndex &&
-			nextIndex >= 0 &&
-			options[nextIndex].type === 'separator';
-		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
-		return hasNewIndex ? newIndex : activeOptionIndex;
+		let nextIndex = activeOptionIndex + offset;
+		while (options.length > nextIndex && nextIndex >= 0 && options[nextIndex].type === 'separator') {
+			nextIndex += offset;
+		}
+		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
+		return hasNewIndex ? nextIndex : activeOptionIndex;
 	};
 
 	getTargetElement = () => this.inputRef;
@@ -505,6 +509,11 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
+
+		if (this.state.activeOption.disabled) {
+			return;
+		}
+
 		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, {
@@ -1160,6 +1169,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
+				tooltipMenuItemDisabled={this.props.tooltipMenuItemDisabled}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}

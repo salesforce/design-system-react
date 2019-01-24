@@ -85,6 +85,10 @@ const propTypes = {
 	 */
 	maxWidth: PropTypes.string,
 	/*
+	 * Callback when option is selected with keyboard or mouse
+	 */
+	onSelect: PropTypes.func,
+	/*
 	 * Menu options
 	 */
 	options: PropTypes.array,
@@ -93,13 +97,13 @@ const propTypes = {
 	 */
 	resetActiveOption: PropTypes.func,
 	/*
-	 * Callback when option is selected with keyboard or mouse
-	 */
-	onSelect: PropTypes.func,
-	/*
 	 * Selected options
 	 */
 	selection: PropTypes.array,
+	/**
+	 * Acepts a tooltip that is displayed when hovering on disabled menu items.
+	 */
+	tooltipMenuItemDisabled: PropTypes.element,
 	/**
 	 * Changes styles of the menu option
 	 */
@@ -156,99 +160,129 @@ const Menu = (props) => {
 			);
 		}
 
+		const disabledProps = {};
+		const tooltipId = `${props.inputId}-listbox-option-help-${optionData.id}`;
+		if (optionData.disabled) {
+			disabledProps['aria-describedby'] = tooltipId;
+			disabledProps['aria-disabled']= !!optionData.disabled
+			disabledProps.style = {cursor: 'default'}; // Replace this with a css class name once SLDS has it.
+		}
+
+		const menuItem = {
+			'icon-title-subtitle': (
+				<span
+					aria-selected={active}
+					{...disabledProps}
+					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					className={classNames(
+						'slds-media slds-listbox__option',
+						'slds-listbox__option_entity slds-listbox__option_has-meta',
+						{ 'slds-has-focus': active }
+					)}
+					onClick={optionData.disabled ? null : (event) => {
+						props.onSelect(event, { option: optionData });
+					}}
+					role="option"
+				>
+					{optionData.icon && !props.menuItem ? (
+						<span className="slds-media__figure">{optionData.icon}</span>
+					) : null}
+					{props.menuItem ? (
+						<MenuItem
+							assistiveText={props.assistiveText}
+							selected={selected}
+							option={optionData}
+						/>
+					) : (
+						<span className="slds-media__body">
+							<span className={classNames('slds-listbox__option-text', 'slds-listbox__option-text_entity', {'slds-disabled-text': optionData.disabled})}>
+								{optionData.label}
+							</span>
+							<span className={classNames("slds-listbox__option-meta slds-listbox__option-meta_entity", {'slds-disabled-text': optionData.disabled})}>
+								{optionData.subTitle}
+							</span>
+						</span>
+					)}
+				</span>
+			),
+			checkbox: (
+				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+					aria-selected={active}
+					{...disabledProps}
+					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					className={classNames(
+						'slds-media slds-listbox__option',
+						' slds-listbox__option_plain slds-media_small slds-media_center',
+						{
+							'slds-has-focus': active,
+							'slds-is-selected': selected,
+						}
+					)}
+					onClick={optionData.disabled ? null : (event) => {
+						props.onSelect(event, {
+							selection: props.selection,
+							option: optionData,
+						});
+					}}
+					role="option"
+				>
+					<span className="slds-media__figure">
+						<Icon
+							className="slds-listbox__icon-selected"
+							category="utility"
+							name="check"
+							size="x-small"
+						/>
+					</span>
+					<span className="slds-media__body">
+						{props.menuItem ? (
+							<MenuItem
+								assistiveText={props.assistiveText}
+								selected={selected}
+								option={optionData}
+							/>
+						) : (
+							<span className={classNames("slds-truncate", {'slds-disabled-text': optionData.disabled})} title={optionData.label}>
+								{selected ? (
+									<span className="slds-assistive-text">
+										{props.assistiveText.optionSelectedInMenu}
+									</span>
+								) : null}{' '}
+								{optionData.label}
+							</span>
+						)}
+					</span>
+				</span>
+			),
+		};
+
+		let item;
+		if (optionData.disabled && props.tooltipMenuItemDisabled) {
+			const {content, ...userDefinedTooltipProps} = props.tooltipMenuItemDisabled.props;
+			const tooltipProps = {
+				align: "top",
+				content: optionData.tooltipContent || content, // either use specific content defined on option or content defined on tooltip component.
+				id: tooltipId,
+				position: "absolute",
+				triggerStyle: {width: '100%'},
+				...userDefinedTooltipProps // we want to allow user defined tooltip pros to overwrite default props, if need be.
+			};
+			if (active) {
+				// allows showing the tooltip on keyboard navigation to disabled menu item
+				tooltipProps.isOpen = true;
+			}
+			item = React.cloneElement(props.tooltipMenuItemDisabled, tooltipProps, menuItem[props.variant]);
+		} else {
+			item = menuItem[props.variant];
+		}
+
 		return (
 			<li
 				className="slds-listbox__item"
 				key={`menu-option-${optionData.id}`}
 				role="presentation"
 			>
-				{
-					{
-						'icon-title-subtitle': (
-							<span // eslint-disable-line jsx-a11y/no-static-element-interactions
-								aria-selected={active}
-								id={`${props.inputId}-listbox-option-${optionData.id}`}
-								className={classNames(
-									'slds-media slds-listbox__option',
-									'slds-listbox__option_entity slds-listbox__option_has-meta',
-									{ 'slds-has-focus': active }
-								)}
-								onClick={(event) => {
-									props.onSelect(event, { option: optionData });
-								}}
-								role="option"
-							>
-								{optionData.icon && !props.menuItem ? (
-									<span className="slds-media__figure">{optionData.icon}</span>
-								) : null}
-								{props.menuItem ? (
-									<MenuItem
-										assistiveText={props.assistiveText}
-										selected={selected}
-										option={optionData}
-									/>
-								) : (
-									<span className="slds-media__body">
-										<span className="slds-listbox__option-text slds-listbox__option-text_entity">
-											{optionData.label}
-										</span>
-										<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
-											{optionData.subTitle}
-										</span>
-									</span>
-								)}
-							</span>
-						),
-						checkbox: (
-							<span // eslint-disable-line jsx-a11y/no-static-element-interactions
-								aria-selected={selected}
-								id={`${props.inputId}-listbox-option-${optionData.id}`}
-								className={classNames(
-									'slds-media slds-listbox__option',
-									' slds-listbox__option_plain slds-media_small slds-media_center',
-									{
-										'slds-has-focus': active,
-										'slds-is-selected': selected,
-									}
-								)}
-								onClick={(event) => {
-									props.onSelect(event, {
-										selection: props.selection,
-										option: optionData,
-									});
-								}}
-								role="option"
-							>
-								<span className="slds-media__figure">
-									<Icon
-										className="slds-listbox__icon-selected"
-										category="utility"
-										name="check"
-										size="x-small"
-									/>
-								</span>
-								<span className="slds-media__body">
-									{props.menuItem ? (
-										<MenuItem
-											assistiveText={props.assistiveText}
-											selected={selected}
-											option={optionData}
-										/>
-									) : (
-										<span className="slds-truncate" title={optionData.label}>
-											{selected ? (
-												<span className="slds-assistive-text">
-													{props.assistiveText.optionSelectedInMenu}
-												</span>
-											) : null}{' '}
-											{optionData.label}
-										</span>
-									)}
-								</span>
-							</span>
-						),
-					}[props.variant]
-				}
+				{item}
 			</li>
 		);
 	});
