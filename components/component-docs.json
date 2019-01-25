@@ -853,14 +853,16 @@
         "description": "The brand band provides theming capability that adds personality and improves information density and contrast.",
         "methods": [
             {
-                "name": "getId",
+                "name": "injectLightningBlueStyles",
                 "docblock": null,
-                "modifiers": [],
+                "modifiers": [
+                    "static"
+                ],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "injectLightningBlueStyles",
+                "name": "getId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
