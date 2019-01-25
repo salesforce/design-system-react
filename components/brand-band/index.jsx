@@ -37,7 +37,7 @@ class BrandBand extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	injectLightningBlueStyles() {
+	static injectLightningBlueStyles () {
 		return (
 			<style>{`.slds-brand-band.dsr-brand-band_lightning-blue:before {
 	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
@@ -82,7 +82,7 @@ class BrandBand extends React.Component {
 					id={this.getId()}
 					style={props.style}
 				>
-					{props.theme === 'lightning-blue' && this.injectLightningBlueStyles()}
+					{props.theme === 'lightning-blue' && BrandBand.injectLightningBlueStyles()}
 					{props.children}
 				</div>
 			</div>
