@@ -202,7 +202,6 @@ class DuelingPicklist extends React.Component {
 			optionsLabel: shortid.generate(),
 			selectedLabel: shortid.generate(),
 		};
-
 		this.optionRefs = [...this.props.options, ...this.props.selected].reduce(
 			(acc, curr) => ({
 				...acc,
