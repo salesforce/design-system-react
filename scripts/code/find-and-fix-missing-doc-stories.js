@@ -1,9 +1,19 @@
-// WARNING: This script modifies source code!  Inspect all of the changes it makes before you commit anything!
-// Run this with node to find storybook files that don't import
-// all of the examples from __examples__.
-// It will rewrite insert import statements and add "add" calls to the stories
-// for any that aren't imported and write out the file to "storybooks-stories.jsx".
-// Be sure to run `npm run lint:fix` to clean up formatting of any files this script touched.
+// WARNING: This script modifies source code! Inspect all of the changes
+// it makes before you commit anything!
+
+/* 
+ * INJECT EXAMPLE FILES INTO STORYBOOK FILES
+ *
+ * Run this with node to find storybook files that don't import
+ * all of the examples from __examples__.
+ * 
+ * It will rewrite insert import statements and add Storybook "add" 
+ * calls to the stories for any that aren't already imported and 
+ * write out the file to "storybooks-stories.jsx". 
+ * 
+ * Be sure to run `npm run lint:fix` to clean up formatting of any 
+ * files this script touched.
+ */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const glob = require('glob');
@@ -74,8 +84,10 @@ const createDefaultImportStatement = (importVar, importPath) =>
 		t.stringLiteral(importPath)
 	);
 
+// See https://babeljs.io/docs/en/next/babel-traverse.html
 const createAddDocsImportVisitor = (names) => ({
 	// Inserts imports before the "storiesOf" expression
+	// AST node type
 	ExpressionStatement(ePath) {
 		if (ePath.parentPath.isProgram()) {
 			// Make sure this is a top-level expression statement
@@ -92,6 +104,7 @@ const createAddDocsImportVisitor = (names) => ({
 		}
 	},
 	// The files are structured such that "add" is the last call in the chain on "storiesOf"
+	// AST node type
 	CallExpression(ePath) {
 		if (
 			ePath.parentPath.isExpressionStatement() &&
@@ -118,6 +131,10 @@ const createAddDocsImportVisitor = (names) => ({
 	},
 });
 
+/*
+ * START HERE
+ */
+
 // The component storybook files
 const components = glob.sync('components/*/');
 
@@ -134,7 +151,9 @@ components.forEach((cmp) => {
 		const isValid = examples.every(isExampleImported);
 		if (!isValid) {
 			const missing = examples.filter((e) => !isExampleImported(e));
+			// babel-traverse walks the AST and modifies it
 			babel.traverse(cmpStoriesAST, createAddDocsImportVisitor(missing));
+			// babel-generator converts AST into source code
 			const newBody = generator.default(cmpStoriesAST).code; // Note, this doesn't have good formatting, run prettier on the files afterward
 			// eslint-disable-next-line no-console
 			console.log(
