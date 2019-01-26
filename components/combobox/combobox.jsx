@@ -228,7 +228,7 @@ const propTypes = {
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
 			disabled: PropTypes.boolean,
-			tooltipContent: PropTypes.node
+			tooltipContent: PropTypes.node,
 		})
 	).isRequired,
 	/**
