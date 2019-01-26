@@ -4207,13 +4207,13 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
             className="slds-checkbox"
           >
             <input
-              id="rJRWHs-bFmV"
+              id="checkbox-error-example"
               onChange={[Function]}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="rJRWHs-bFmV"
+              htmlFor="checkbox-error-example"
             >
               <span
                 className="slds-checkbox_faux"
@@ -4251,13 +4251,13 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
             className="slds-checkbox"
           >
             <input
-              id="H1kMBi-WKmN"
+              id="checkbox-indeterminate-example"
               onChange={[Function]}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="H1kMBi-WKmN"
+              htmlFor="checkbox-indeterminate-example"
             >
               <span
                 className="slds-checkbox_faux"
@@ -4296,14 +4296,14 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
               *
             </abbr>
             <input
-              id="S1lMBobZFQ4"
+              id="checkbox-indeterminate-required-example"
               onChange={[Function]}
               required={true}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="S1lMBobZFQ4"
+              htmlFor="checkbox-indeterminate-required-example"
             >
               <span
                 className="slds-checkbox_faux"
@@ -4337,13 +4337,13 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
           >
             <input
               disabled={true}
-              id="HkWzro-ZKmN"
+              id="checkbox-disabled-example"
               onChange={[Function]}
               type="checkbox"
             />
             <label
               className="slds-checkbox__label"
-              htmlFor="HkWzro-ZKmN"
+              htmlFor="checkbox-disabled-example"
             >
               <span
                 className="slds-checkbox_faux"
@@ -20335,8 +20335,8 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
         </li>
         <li
           aria-haspopup="true"
-          className="slds-dropdown-trigger slds-dropdown-trigger_click ignore-click-BJVP8iWbtmE"
-          id="BJVP8iWbtmE"
+          className="slds-dropdown-trigger slds-dropdown-trigger_click ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -20413,7 +20413,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
         <li
           aria-haspopup="true"
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small"
-          id="S1HP8oZ-Fm4"
+          id="global-header-profile-example"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -23333,7 +23333,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="S1vK8jZbKQE"
+            aria-describedby="error-4"
             className="slds-input"
             id="unique-id-4"
             onChange={[Function]}
@@ -23344,7 +23344,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
         </div>
         <div
           className="slds-form-element__help"
-          id="S1vK8jZbKQE"
+          id="error-4"
         >
           Error Message
         </div>
@@ -23358,7 +23358,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
       >
         <label
           className="slds-form-element__label"
-          htmlFor="unique-id-4"
+          htmlFor="unique-id-5"
         >
           <abbr
             className="slds-required"
@@ -23392,9 +23392,9 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
             </span>
           </button>
           <input
-            aria-describedby="HJFtIi-btX4"
+            aria-describedby="error-5"
             className="slds-input"
-            id="unique-id-4"
+            id="unique-id-5"
             onChange={[Function]}
             placeholder="Placeholder Text"
             required={true}
@@ -23403,7 +23403,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
         </div>
         <div
           className="slds-form-element__help"
-          id="HJFtIi-btX4"
+          id="error-5"
         >
           Error Message
         </div>
@@ -24534,7 +24534,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
               </button>
               <div
                 className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="r1t9Is-bFXV"
+                id="dropdown-record-home-example"
                 onClick={[Function]}
                 onFocus={null}
                 onKeyDown={[Function]}
@@ -24544,7 +24544,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-r1t9Is-bFXV"
+                  className="slds-button slds-button_icon-border-filled ignore-click-dropdown-record-home-example"
                   disabled={false}
                   onClick={[Function]}
                   tabIndex="0"
@@ -24763,7 +24763,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="B15qLsZbtQN"
+              id="content-right-dropdown"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -24848,7 +24848,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               </button>
               <div
                 className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="HyicUjWZF7V"
+                id="content-right-dropdown-2"
                 onClick={[Function]}
                 onFocus={null}
                 onKeyDown={[Function]}
@@ -24858,7 +24858,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
-                  className="slds-button slds-button_icon-more ignore-click-HyicUjWZF7V"
+                  className="slds-button slds-button_icon-more ignore-click-content-right-dropdown-2"
                   disabled={false}
                   onClick={[Function]}
                   tabIndex="0"
