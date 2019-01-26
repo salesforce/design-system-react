@@ -33,6 +33,7 @@ class Example extends React.Component {
 					assistiveText={{ icon: 'Change view' }}
 					iconName="settings"
 					iconVariant="more"
+					id="content-right-dropdown"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -75,6 +76,7 @@ class Example extends React.Component {
 						assistiveText={{ icon: 'List View Controls' }}
 						iconName="sort"
 						iconVariant="more"
+						id="content-right-dropdown-2"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
