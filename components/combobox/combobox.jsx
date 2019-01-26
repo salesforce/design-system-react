@@ -518,7 +518,7 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
-		if (this.state.activeOption.disabled) {
+		if (this.state.activeOption && this.state.activeOption.disabled) {
 			return;
 		}
 
