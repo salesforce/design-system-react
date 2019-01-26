@@ -61,6 +61,7 @@ class Example extends React.Component {
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
 					id="page-header-dropdown-object-home-content-right-2"

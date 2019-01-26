@@ -87,9 +87,17 @@ const recordHomeContentRight = (
 			disabled={false}
 			iconSize="medium"
 			responsive={false}
-			stateOne={{ iconName: 'add', label: 'Follow' }}
-			stateTwo={{ iconName: 'check', label: 'Following' }}
-			stateThree={{ iconName: 'close', label: 'Unfollow' }}
+			stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
+			stateTwo={{
+				iconCategory: 'utility',
+				iconName: 'check',
+				label: 'Following',
+			}}
+			stateThree={{
+				iconCategory: 'utility',
+				iconName: 'close',
+				label: 'Unfollow',
+			}}
 		/>
 		<SLDSButtonGroup key="">
 			<SLDSButton label="Edit" />
@@ -181,6 +189,7 @@ const objectHomeContentRight = (
 			<SLDSMenuDropdown
 				assistiveText={{ icon: 'Sort' }}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-object-home-content-right"
@@ -248,6 +257,7 @@ const relatedListContentRight = (
 			<SLDSMenuDropdown
 				assistiveText={{ icon: 'Sort' }}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-related-list-content-right"

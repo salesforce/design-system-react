@@ -24,7 +24,7 @@ class Example extends React.Component {
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
+									assistiveText={{ icon: 'Search' }}
 									name="warning"
 									category="utility"
 									color="warning"
