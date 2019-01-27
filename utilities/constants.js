@@ -78,6 +78,7 @@ export const PAGE_HEADER = 'SLDSPageHeader';
 export const PILL = 'SLDSPill';
 export const PILL_CONTAINER = 'SLDSPillContainer';
 export const POPOVER = 'SLDSPopover';
+export const POPOVER_EDIT_DIALOG = 'SLDSPopoverEditDialog';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';
 export const PROGRESS_INDICATOR_PROGRESS = 'SLDSProgressIndicatorProgress';

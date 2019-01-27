@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import Spinner from '../../../components/spinner';
+import Button from '../../../components/button';
 
 const COUNTER = 'counter';
 
@@ -195,7 +196,7 @@ const propTypes = {
 	/**
 	 * Which UX pattern of input? The default is `base` while other option is `counter`
 	 */
-	variant: PropTypes.oneOf(['base', COUNTER]),
+	variant: PropTypes.oneOf(['base', COUNTER, 'edit-dialog']),
 	/**
 	 * This is the initial value of an uncontrolled form element and is present only to provide
 	 * compatibility with hybrid framework applications that are not entirely React. It should only
@@ -226,6 +227,18 @@ const InnerInput = (props) => {
 		...defaultProps.assistiveText,
 		...props.assistiveText,
 	};
+
+	const editPencil = props.variant === 'edit-dialog' && props.editDialogPopover ? React.cloneElement(props.editDialogPopover, props.editDialogPopover.props, <Button
+		assistiveText={{icon: 'Edit: Status'}}
+		aria-controls={`${props.id}-edit-button`}
+		className="slds-button_reset"
+		iconCategory="utility"
+		iconClassName="slds-button__icon slds-button__icon_hint"
+		iconName="edit"
+		onClick={props.onTogglePopoverEditDialog}
+		variant="icon"
+		style={{verticalAlign:'middle'}}
+	/>) : null;
 
 	return (
 		<div
@@ -326,8 +339,9 @@ const InnerInput = (props) => {
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			{props.isStatic && (
 				<span
-					className={classNames('slds-form-element__static', 'slds-grid', {
-						'slds-grid_align-spread': props.variant !== COUNTER,
+					className={classNames('slds-form-element__static', {
+						'slds-grid': props.variant === 'base' || props.variant === COUNTER,
+						'slds-grid_align-spread': props.variant === 'base',
 					})}
 					onClick={props.onClick}
 				>
@@ -335,6 +349,22 @@ const InnerInput = (props) => {
 					{props.inlineEditTrigger}
 				</span>
 			)}
+			{props.variant === 'edit-dialog' && props.editDialogPopover ?
+				React.cloneElement(
+					props.editDialogPopover,
+					props.editDialogPopover.props,
+					<Button
+						assistiveText={{icon: 'Edit: Status'}}
+						aria-controls={`${props.id}-edit-button`}
+						className="slds-button_reset"
+						iconCategory="utility"
+						iconClassName="slds-button__icon slds-button__icon_hint"
+						iconName="edit"
+						onClick={props.onClickEditButton}
+						variant="icon"
+						style={{verticalAlign:'middle'}}
+					/>
+				): null}
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 
 			{props.inlineHelpText && (
