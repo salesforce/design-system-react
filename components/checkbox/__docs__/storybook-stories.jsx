@@ -260,4 +260,5 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Doc site Error', () => <Error />)
 	.add('Doc site Snapshot Base', () => <SnapshotBase />)
-	.add('Doc site Snapshot Toggle', () => <SnapshotToggle />);
+	.add('Doc site Snapshot Toggle', () => <SnapshotToggle />)
+	.add('Doc site Toggle', () => <Toggle />);
