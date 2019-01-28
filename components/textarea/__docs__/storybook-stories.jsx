@@ -1,9 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
-
 import { TEXTAREA } from '../../../utilities/constants';
 import Textarea from '../';
+import Default from '../__examples__/default';
+import Disabled from '../__examples__/disabled';
+import Error from '../__examples__/error';
 
 storiesOf(TEXTAREA, module)
 	.addDecorator((getStory) => (
@@ -30,7 +32,9 @@ storiesOf(TEXTAREA, module)
 		<Textarea
 			aria-describedby="required-1"
 			name="required-textarea"
-			assistiveText={{ label: 'Textarea Label' }}
+			assistiveText={{
+				label: 'Textarea Label',
+			}}
 			required
 			placeholder="Placeholder Text"
 		/>
@@ -44,4 +48,7 @@ storiesOf(TEXTAREA, module)
 			errorText="Error Message"
 			placeholder="Placeholder Text"
 		/>
-	));
+	))
+	.add('Docs site Default', () => <Default />)
+	.add('Docs site Disabled', () => <Disabled />)
+	.add('Docs site Error', () => <Error />);

@@ -1,22 +1,22 @@
 /* eslint-disable react/display-name */
-
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
-
 import { MODAL } from '../../../utilities/constants';
 import Modal from '../../modal';
 import Combobox from '../../combobox/';
 import Timepicker from '../../time-picker';
 import Datepicker from '../../date-picker';
 import Button from '../../button';
-
 import ComboboxBase from '../../combobox/__examples__/base';
-
 import ModalCustomParentNode from '../__examples__/modal-custom-parent-node';
-
 import SLDSSettings from '../../SLDSSettings';
+import HeaderFooter from '../__examples__/header-footer';
+import MenuContents from '../__examples__/menu-contents';
+import Prompt from '../__examples__/prompt';
+import Sizes from '../__examples__/sizes';
+import Taglines from '../__examples__/taglines';
 
 SLDSSettings.setAppElement('#root'); // used by Modal component
 
@@ -26,15 +26,33 @@ const modalFooter = [
 	<Button key="modalBCancel" label="Cancel" />,
 	<Button key="modalBSave" label="Save" variant="brand" />,
 ];
-
 const leadSourceTypes = [
-	{ id: 1, label: 'Third Party Program', value: 'A0' },
-	{ id: 2, label: 'Cold Call', value: 'B0' },
-	{ id: 3, label: 'LinkedIn', value: 'C0' },
-	{ id: 4, label: 'Direct Mail', value: 'D0' },
-	{ id: 5, label: 'Other', value: 'E0' },
+	{
+		id: 1,
+		label: 'Third Party Program',
+		value: 'A0',
+	},
+	{
+		id: 2,
+		label: 'Cold Call',
+		value: 'B0',
+	},
+	{
+		id: 3,
+		label: 'LinkedIn',
+		value: 'C0',
+	},
+	{
+		id: 4,
+		label: 'Direct Mail',
+		value: 'D0',
+	},
+	{
+		id: 5,
+		label: 'Other',
+		value: 'E0',
+	},
 ];
-
 const modalContent = (
 	<section className="slds-p-around_large">
 		<div className="slds-form-element slds-m-bottom_large">
@@ -194,7 +212,6 @@ const modalContent = (
 		</div>
 	</section>
 );
-
 storiesOf(MODAL, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -275,8 +292,14 @@ storiesOf(MODAL, module)
 					State? This action cannot be undone.{' '}
 					<Button className="slds-m-around_medium">Ok, got it!</Button>
 				</div>
-			), // eslint-disable-line max-len
+			),
+			// eslint-disable-line max-len
 			prompt: 'error',
 			onRequestClose: action('modal closed'),
 		})
-	);
+	)
+	.add('Docs site HeaderFooter', () => <HeaderFooter />)
+	.add('Docs site MenuContents', () => <MenuContents />)
+	.add('Docs site Prompt', () => <Prompt />)
+	.add('Docs site Sizes', () => <Sizes />)
+	.add('Docs site Taglines', () => <Taglines />);

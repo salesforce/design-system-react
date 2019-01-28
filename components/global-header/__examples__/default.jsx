@@ -40,6 +40,7 @@ class Example extends React.Component {
 					/>
 					<GlobalHeaderDropdown
 						assistiveText="Global Actions"
+						id="global-header-dropdown-example"
 						iconCategory="utility"
 						iconName="add"
 						onSelect={() => {
@@ -63,6 +64,7 @@ class Example extends React.Component {
 					/>
 					<GlobalHeaderProfile
 						avatar="/images/avatar2.jpg"
+						id="global-header-profile-example"
 						onClick={() => {
 							console.log('>>> onClick');
 						}}

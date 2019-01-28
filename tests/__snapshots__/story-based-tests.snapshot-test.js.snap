@@ -1165,6 +1165,357 @@ exports[`DOM snapshots SLDSButton Disabled 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSButton Doc site Base Neutral 1`] = `
+<div
+  className="slds-hint-parent"
+  style={
+    Object {
+      "backgroundColor": "#16325c",
+    }
+  }
+>
+  <div
+    className="slds-p-around_medium slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <div
+      className="slds-p-around_medium"
+    >
+      <div
+        className="-x-small-buttons--horizontal"
+      >
+        <button
+          className="slds-button"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Base
+        </button>
+        <button
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Neutral
+        </button>
+        <button
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_left"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+            />
+          </svg>
+          Neutral Icon
+        </button>
+        <button
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Responsive
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
+<div
+  className="slds-hint-parent"
+  style={
+    Object {
+      "backgroundColor": "#16325c",
+    }
+  }
+>
+  <div
+    className="slds-p-around_medium slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <div
+      className="slds-p-around_medium"
+    >
+      <div
+        className="-x-small-buttons--horizontal"
+      >
+        <button
+          className="slds-button slds-button_brand"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Brand
+        </button>
+        <button
+          className="slds-button slds-button_brand"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+        >
+          Disabled
+        </button>
+        <button
+          className="slds-button slds-button_destructive"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Destructive
+        </button>
+        <div
+          className="-m-horizontal--small"
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "display": "inline-block",
+              "padding": "10px",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_inverse"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Inverse
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
+<div
+  className="slds-hint-parent"
+  style={
+    Object {
+      "backgroundColor": "#16325c",
+    }
+  }
+>
+  <div
+    className="slds-p-around_medium slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <div
+      className="slds-p-around_medium"
+    >
+      <div
+        className="-x-small-buttons--horizontal"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Icon Bare Small
+          </span>
+        </button>
+        <button
+          className="slds-button slds-button_icon-container slds-button_icon-small"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Icon Container Small
+          </span>
+        </button>
+        <div
+          className="-m-horizontal--small"
+          style={
+            Object {
+              "backgroundColor": "#4BC076",
+              "display": "inline-block",
+              "padding": "10px",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_icon-border"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Icon Border medium
+            </span>
+          </button>
+          <button
+            className="slds-button slds-button_icon-border-filled"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Icon Border-filled medium
+            </span>
+          </button>
+        </div>
+        <button
+          className="slds-button slds-button_icon-more slds-button_icon-large"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Icon More large
+          </span>
+        </button>
+        <div
+          className="-m-horizontal--small"
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "display": "inline-block",
+              "padding": "10px",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_icon-inverse"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_large"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Icon inverse
+            </span>
+          </button>
+        </div>
+        <div
+          className="-hint-parent -m-horizontal--small"
+          style={
+            Object {
+              "backgroundColor": "#FFB75D",
+              "display": "inline-block",
+              "padding": "10px 50px",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_icon"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_large slds-button__icon_hint"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Icon hint large
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
 <div
   className="slds-p-around_medium slds-hint-parent"
@@ -1917,6 +2268,153 @@ exports[`DOM snapshots SLDSButtonStateful Disabled 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSButtonStateful Doc site Icon Button 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    aria-live="polite"
+    className="slds-button slds-not-selected slds-button_icon-border"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon_large slds-button__icon_stateful"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#like"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      not liked
+    </span>
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButtonStateful Doc site Icon Text Button 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-x-small-buttons_horizontal"
+  >
+    <button
+      aria-live="assertive"
+      className="slds-button slds-button_neutral slds-not-selected"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span
+        className="slds-text-not-selected"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+          />
+        </svg>
+        Follow
+      </span>
+      <span
+        className="slds-text-selected"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+          />
+        </svg>
+        Following
+      </span>
+      <span
+        className="slds-text-selected-focus"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        Unfollow
+      </span>
+    </button>
+    <div
+      className="slds-m-horizontal_small"
+      style={
+        Object {
+          "backgroundColor": "#16325c",
+          "display": "inline-block",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        aria-live="assertive"
+        className="slds-button slds-button_neutral slds-not-selected"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          className="slds-text-not-selected"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+            />
+          </svg>
+          Join
+        </span>
+        <span
+          className="slds-text-selected"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+            />
+          </svg>
+          Member
+        </span>
+        <span
+          className="slds-text-selected-focus"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          Leave
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSButtonStateful Icon 1`] = `
 <div
   className="slds-p-around_medium"
@@ -2371,6 +2869,186 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
         className="slds-card__footer"
       >
         Card Footer
+      </div>
+    </article>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_vertical"
+  >
+    <article
+      className="slds-card"
+      id="ExampleCard"
+    >
+      <div
+        className="slds-card__header slds-grid"
+      >
+        <div
+          className="slds-media slds-media_center slds-has-flexi-truncate"
+        >
+          <div
+            className="slds-media__figure"
+          >
+            <span
+              className="slds-icon_container slds-icon-standard-document"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_small"
+              >
+                <use
+                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                />
+              </svg>
+              
+            </span>
+             
+          </div>
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-text-heading_small slds-truncate"
+              id="ExampleCard__heading"
+              title="Releated Items"
+            >
+              Releated Items
+            </h2>
+          </div>
+        </div>
+        <div
+          className="slds-input-has-icon slds-input-has-icon_left slds-size_1-of-3"
+        >
+          <div
+            className="slds-form-element"
+          >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="ExampleCard__filter-input"
+            >
+              Find in List
+            </label>
+            <div
+              className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                />
+              </svg>
+              <input
+                className="slds-input"
+                id="ExampleCard__filter-input"
+                onChange={[Function]}
+                placeholder="Find in List"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-no-flex slds-size_1-of-3 slds-text-align_right"
+          id="ExampleCard__header-actions"
+        >
+          <button
+            className="slds-button slds-button_neutral"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Delete All Items
+          </button>
+        </div>
+      </div>
+      <div
+        className="slds-card__body"
+        id="ExampleCard__body"
+      >
+        <table
+          className="slds-table slds-table_bordered slds-table_cell-buffer"
+          id="DataTableExample-1"
+          role={null}
+        >
+          <thead>
+            <tr
+              className="slds-line-height_reset"
+            >
+              <th
+                aria-label="Opportunity Name"
+                aria-sort="none"
+                className="slds-text-title_caps"
+                scope="col"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Opportunity Name"
+                >
+                  Opportunity Name
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+            >
+              <td
+                className="slds-truncate"
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="Cloudhub"
+                >
+                  Cloudhub
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className="slds-truncate"
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="Cloudhub + Anypoint Connectors"
+                >
+                  Cloudhub + Anypoint Connectors
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className="slds-truncate"
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="Cloud City"
+                >
+                  Cloud City
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </article>
   </div>
@@ -3505,6 +4183,1159 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
         </span>
       </span>
     </label>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element slds-has-error"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <input
+              id="checkbox-error-example"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="checkbox-error-example"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Checkbox Label
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Error state
+              </span>
+            </label>
+          </span>
+        </div>
+        <div
+          className="slds-form-element__help"
+        >
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <input
+              id="checkbox-indeterminate-example"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="checkbox-indeterminate-example"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Indeterminate
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Indeterminate
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element is-required"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            <input
+              id="checkbox-indeterminate-required-example"
+              onChange={[Function]}
+              required={true}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="checkbox-indeterminate-required-example"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Required
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Indeterminate
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <span
+            className="slds-checkbox"
+          >
+            <input
+              disabled={true}
+              id="checkbox-disabled-example"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="slds-checkbox__label"
+              htmlFor="checkbox-disabled-example"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-form-element__label"
+              >
+                Disabled
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                Disabled
+              </span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Doc site Snapshot Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    >
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                id="checkbox-base-example"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                id="checkbox-base-example--error"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--error"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox
+                </span>
+              </label>
+            </span>
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            This field has an error
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                disabled={true}
+                id="checkbox-base-example--disabled"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--disabled"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox (disabled)
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element is-required"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <abbr
+                className="slds-required"
+                title="required"
+              >
+                *
+              </abbr>
+              <input
+                id="checkbox-base-example--required"
+                onChange={[Function]}
+                required={true}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--required"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox (required)
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    >
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                id="checkbox-base-example--assistive-text"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--assistive-text"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Checkbox (with assistive text)
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                checked={true}
+                id="checkbox-base-example--checked"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--checked"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox (checked)
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                checked={true}
+                disabled={true}
+                id="checkbox-base-example--checked-disabled"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--checked-disabled"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox (checked + disabled)
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <span
+              className="slds-checkbox"
+            >
+              <input
+                id="checkbox-base-example--indeterminate"
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <label
+                className="slds-checkbox__label"
+                htmlFor="checkbox-base-example--indeterminate"
+              >
+                <span
+                  className="slds-checkbox_faux"
+                />
+                <span
+                  className="slds-form-element__label"
+                >
+                  Checkbox (indeterminate)
+                </span>
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Doc site Snapshot Toggle 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    >
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example-desc"
+              id="checkbox-toggle-example"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--error"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--error-desc"
+              id="checkbox-toggle-example--error"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--error-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+          <div
+            className="slds-form-element__help"
+          >
+            This field has an error
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--disabled"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (disabled)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--disabled-desc"
+              disabled={true}
+              id="checkbox-toggle-example--disabled"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--disabled-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element is-required"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--required"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (required)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--required-desc"
+              id="checkbox-toggle-example--required"
+              onChange={[Function]}
+              required={true}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--required-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    >
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--assitive-text"
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Toggle (with assistive text)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--assitive-text-desc"
+              id="checkbox-toggle-example--assitive-text"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--assitive-text-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--checked"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (checked)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--checked-desc"
+              checked={true}
+              id="checkbox-toggle-example--checked"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--checked-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--checked-disabled"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (checked + disabled)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--checked-disabled-desc"
+              checked={true}
+              disabled={true}
+              id="checkbox-toggle-example--checked-disabled"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--checked-disabled-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCheckbox Doc site Toggle 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    >
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example-desc"
+              id="checkbox-toggle-example"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--error"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--error-desc"
+              id="checkbox-toggle-example--error"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--error-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+          <div
+            className="slds-form-element__help"
+          >
+            This field has an error
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--disabled"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (disabled)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--disabled-desc"
+              disabled={true}
+              id="checkbox-toggle-example--disabled"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--disabled-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element is-required"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--required"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (required)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--required-desc"
+              id="checkbox-toggle-example--required"
+              onChange={[Function]}
+              required={true}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--required-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    >
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--assitive-text"
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Toggle (with assistive text)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--assitive-text-desc"
+              id="checkbox-toggle-example--assitive-text"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--assitive-text-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--checked"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (checked)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--checked-desc"
+              checked={true}
+              id="checkbox-toggle-example--checked"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--checked-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div
+        className="slds-col_padded"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-checkbox_toggle slds-grid"
+            htmlFor="checkbox-toggle-example--checked-disabled"
+          >
+            <span
+              className="slds-form-element__label slds-m-bottom_none"
+            >
+              Toggle (checked + disabled)
+            </span>
+            <input
+              aria-describedby="checkbox-toggle-example--checked-disabled-desc"
+              checked={true}
+              disabled={true}
+              id="checkbox-toggle-example--checked-disabled"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <span
+              aria-live="assertive"
+              className="slds-checkbox_faux_container"
+              id="checkbox-toggle-example--checked-disabled-desc"
+            >
+              <span
+                className="slds-checkbox_faux"
+              />
+              <span
+                className="slds-checkbox_on"
+              >
+                Enabled
+              </span>
+              <span
+                className="slds-checkbox_off"
+              >
+                Disabled
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -5186,6 +7017,89 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
 >
   <div
     className="slds-color-picker test_class_name"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-default-color-picker"
+        id="color-picker-label-default-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                "border": "1px solid #cccccc",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-default-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
   >
     <div
       className="slds-color-picker__summary"
@@ -18336,6 +20250,212 @@ exports[`DOM snapshots SLDSFilter Permanant Filter 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <header
+    className="slds-global-header_container"
+  >
+    <a
+      className="slds-assistive-text slds-assistive-text_focus"
+      href="javascript:void(0);"
+      onClick={[Function]}
+    >
+      Skip to Navigation
+    </a>
+    <a
+      className="slds-assistive-text slds-assistive-text_focus"
+      href="javascript:void(0);"
+      onClick={[Function]}
+    >
+      Skip to Main Content
+    </a>
+    <div
+      className="slds-global-header slds-grid slds-grid_align-spread"
+    >
+      <div
+        className="slds-global-header__item"
+      >
+        <div
+          className="slds-global-header__logo"
+          style={
+            Object {
+              "backgroundImage": "url(/images/logo.svg)",
+            }
+          }
+        />
+      </div>
+      <div
+        className="slds-global-header__item slds-global-header__item_search"
+      >
+        <div
+          className="slds-form-element slds-lookup"
+          data-scope="single"
+          data-select="single"
+        >
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <div
+              className="slds-form-element slds-lookup__search-input"
+            >
+              <div
+                className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+              >
+                <input
+                  aria-activedescendant=""
+                  aria-autocomplete="list"
+                  aria-expanded={false}
+                  className="slds-input"
+                  id="undefinedLookup"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="Search Salesforce"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+                <svg
+                  aria-hidden={true}
+                  className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul
+        className="slds-global-header__item slds-grid slds-grid_vertical-align-center"
+      >
+        <li>
+          <button
+            className="slds-button slds-button_neutral slds-m-right_small"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Feedback
+          </button>
+        </li>
+        <li
+          aria-haspopup="true"
+          className="slds-dropdown-trigger slds-dropdown-trigger_click ignore-click-global-header-dropdown-example"
+          id="global-header-dropdown-example"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container slds-global-header__button_icon"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-global-header__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Global Actions
+            </span>
+          </button>
+        </li>
+        <li>
+          <button
+            className="slds-button slds-button_icon-container slds-global-header__button_icon"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-global-header__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Help and Training
+            </span>
+          </button>
+        </li>
+        <li>
+          <button
+            className="slds-button slds-button_icon-container slds-global-header__button_icon"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-global-header__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Setup
+            </span>
+          </button>
+        </li>
+        <li
+          aria-haspopup="true"
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small"
+          id="global-header-profile-example"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="slds-avatar slds-avatar_circle slds-avatar_medium"
+            >
+              <img
+                alt=""
+                src="/images/avatar2.jpg"
+              />
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+</div>
+`;
+
 exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
 <div
   className="slds-p-around_medium"
@@ -19476,6 +21596,317 @@ exports[`DOM snapshots SLDSIcon Color: Warning 1`] = `
       Description of icon
     </span>
   </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-account"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Account
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Announcement
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon_container_circle slds-icon-action-description"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Description
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          XML
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-custom-custom5"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          custom5
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-lead"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Lead
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Lock
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-light"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Lock
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-warning"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-error"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-case"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Case
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-case"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Case
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-case"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_large"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Case
+        </span>
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
@@ -20779,6 +23210,525 @@ exports[`DOM snapshots SLDSInput Disabled Input 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSInput Docs site Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Base Input with visible label
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="base-id"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="base-id"
+            onChange={[Function]}
+            placeholder="My placeholder"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Base Input with hidden label (assistive text)
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label slds-assistive-text"
+          htmlFor="assistiveLabel-id"
+        >
+          My label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="assistiveLabel-id"
+            onChange={[Function]}
+            placeholder="My placeholder"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Base Input with Fixed Text
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="fixed-text-id"
+        >
+          Total amount
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-fixed-addon"
+        >
+          <span
+            className="slds-form-element__addon"
+          >
+            $
+          </span>
+          <input
+            className="slds-input"
+            id="fixed-text-id"
+            onChange={[Function]}
+            placeholder="Enter amount in USD"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element slds-has-error"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-4"
+        >
+          <abbr
+            className="slds-required"
+            title="required"
+          >
+            *
+          </abbr>
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="error-4"
+            className="slds-input"
+            id="unique-id-4"
+            onChange={[Function]}
+            placeholder="Placeholder Text"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div
+          className="slds-form-element__help"
+          id="error-4"
+        >
+          Error Message
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element slds-has-error"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-5"
+        >
+          <abbr
+            className="slds-required"
+            title="required"
+          >
+            *
+          </abbr>
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+        >
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_left"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Search
+            </span>
+          </button>
+          <input
+            aria-describedby="error-5"
+            className="slds-input"
+            id="unique-id-5"
+            onChange={[Function]}
+            placeholder="Placeholder Text"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div
+          className="slds-form-element__help"
+          id="error-5"
+        >
+          Error Message
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Input with Icons
+    </h1>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-1"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+        >
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+          <input
+            className="slds-input"
+            id="unique-id-1"
+            onChange={[Function]}
+            placeholder="Static Icon on the left"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-2"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right"
+        >
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_left"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Search
+            </span>
+          </button>
+          <input
+            className="slds-input"
+            id="unique-id-2"
+            onChange={[Function]}
+            placeholder="Clickable Icons (Left and Right)"
+            type="text"
+          />
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Clear
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-3"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+        >
+          <input
+            className="slds-input"
+            id="unique-id-3"
+            onChange={[Function]}
+            placeholder="Clickable Icon on the right"
+            type="text"
+          />
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Clear
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-4"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+        >
+          <input
+            aria-describedby="loading-status-icon undefined"
+            className="slds-input"
+            id="unique-id-4"
+            onChange={[Function]}
+            placeholder="Loading Spinner Icon on the right"
+            type="text"
+          />
+          <div
+            className="slds-input__icon-group slds-input__icon-group_right"
+          >
+            <div
+              className="slds-spinner_container"
+            >
+              <div
+                aria-hidden="false"
+                className="slds-spinner slds-input__spinner slds-spinner_brand slds-spinner_x-small"
+                id="loading-status-icon"
+                role="status"
+              >
+                <span
+                  className="slds-assistive-text"
+                >
+                  Field data is loading
+                </span>
+                <div
+                  className="slds-spinner__dot-a"
+                />
+                <div
+                  className="slds-spinner__dot-b"
+                />
+              </div>
+            </div>
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Clear
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site InactiveInputs 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Disabled Input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="disabled-input-id"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            disabled={true}
+            id="disabled-input-id"
+            onChange={[Function]}
+            type="text"
+            value="Disabled value"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        ReadOnly Input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-3"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="unique-id-3"
+            onChange={[Function]}
+            readOnly={true}
+            type="text"
+            value="Read Only Value"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
 exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
 <div
   className="slds-p-around_medium"
@@ -21185,6 +24135,74 @@ exports[`DOM snapshots SLDSMediaObject Base 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSMediaObject Docs site Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-media"
+  >
+    <div
+      className="slds-media__figure"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-user"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_large"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+       
+    </div>
+    <div
+      className="slds-media__body"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMediaObject Docs site VerticallyCentered 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-media slds-media_center"
+  >
+    <div
+      className="slds-media__figure"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-user"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_large"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+       
+    </div>
+    <div
+      className="slds-media__body"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSMediaObject Figure Vertical Center 1`] = `
 <div
   className="slds-p-around_medium"
@@ -21382,6 +24400,506 @@ exports[`DOM snapshots SLDSPageHeader Base with content right 1`] = `
                 More Options
               </span>
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-page-header"
+  >
+    <div>
+      <div
+        className="slds-grid"
+      >
+        <div
+          className="slds-col slds-has-flexi-truncate"
+        >
+          <div
+            className="slds-media slds-no-space slds-grow"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-standard-user"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon"
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                  />
+                </svg>
+                
+              </span>
+               
+            </div>
+            <div
+              className="slds-media__body"
+            >
+              <div>
+                <p
+                  className="slds-text-title_caps slds-line-height_reset"
+                >
+                  Record Type
+                </p>
+                <h1
+                  className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                  title="Record Title"
+                >
+                  Record Title
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-no-flex slds-grid slds-align-top"
+        >
+          <div
+            className="slds-grid"
+          >
+            <button
+              aria-live="assertive"
+              className="slds-button slds-button_neutral slds-not-selected"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <span
+                className="slds-text-not-selected"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                  />
+                </svg>
+                Follow
+              </span>
+              <span
+                className="slds-text-selected"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                  />
+                </svg>
+                Following
+              </span>
+              <span
+                className="slds-text-selected-focus"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                Unfollow
+              </span>
+            </button>
+            <div
+              className="slds-button-group"
+              role="group"
+            >
+              <button
+                className="slds-button slds-button_neutral"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Edit
+              </button>
+              <button
+                className="slds-button slds-button_neutral"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Delete
+              </button>
+              <button
+                className="slds-button slds-button_neutral"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Clone
+              </button>
+              <div
+                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
+                id="dropdown-record-home-example"
+                onClick={[Function]}
+                onFocus={null}
+                onKeyDown={[Function]}
+                onMouseEnter={null}
+                onMouseLeave={null}
+              >
+                <button
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  className="slds-button slds-button_icon-border-filled ignore-click-dropdown-record-home-example"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    More Options
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul
+        className="slds-grid slds-page-header__detail-row"
+      >
+        <li
+          className="slds-page-header__detail-block"
+        >
+          <p
+            className="slds-text-title slds-truncate"
+            title="Field 1"
+          >
+            Field 1
+          </p>
+          <p
+            className="slds-text-body_regular slds-truncate"
+            content="Description that demonstrates truncation with content. Description that demonstrates truncation with content."
+          >
+            Description that demonstrates truncation with content. Description that demonstrates truncation with content.
+          </p>
+        </li>
+        <li
+          className="slds-page-header__detail-block"
+        >
+          <p
+            className="slds-text-title"
+            title="Field 2"
+          >
+            Field 2
+          </p>
+          <p
+            className="slds-text-body_regular"
+            content="Multiple Values"
+          >
+            Multiple Values
+          </p>
+        </li>
+        <li
+          className="slds-page-header__detail-block"
+        >
+          <p
+            className="slds-text-title"
+            title="Field 3"
+          >
+            Field 3
+          </p>
+          <a
+            href="javascript:void(0);"
+          >
+            Hyperlink
+          </a>
+        </li>
+        <li
+          className="slds-page-header__detail-block"
+        >
+          <p
+            className="slds-text-title slds-truncate"
+            title="Field 4"
+          >
+            Field 4
+          </p>
+          <p
+            className="slds-text-body_regular slds-truncate"
+            content="Description (2-line truncation)"
+          >
+            Description (2-line truncation)
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-page-header slds-page-header_object-home"
+  >
+    <div>
+      <div
+        className="slds-grid"
+      >
+        <div
+          className="slds-col slds-has-flexi-truncate"
+        >
+          <div
+            className="slds-media slds-no-space slds-grow"
+          >
+            <div
+              className="slds-media__body"
+            >
+              <div>
+                <nav
+                  className="slds-m-bottom_xx-small"
+                  role="navigation"
+                >
+                  <nav
+                    aria-label="Breadcrumbs"
+                    role="navigation"
+                  >
+                    <ol
+                      className="slds-breadcrumb slds-list_horizontal"
+                    >
+                      <li
+                        className="slds-breadcrumb__item slds-text-title_caps"
+                      >
+                        <a
+                          href="javascript:void(0);"
+                        >
+                          Accounts
+                        </a>
+                      </li>
+                      <li
+                        className="slds-breadcrumb__item slds-text-title_caps"
+                      >
+                        <a
+                          href="javascript:void(0);"
+                        >
+                          Company One
+                        </a>
+                      </li>
+                    </ol>
+                  </nav>
+                </nav>
+                <h1
+                  className="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle"
+                  title="Contacts (will truncate)"
+                >
+                  Contacts (will truncate)
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small"
+        >
+          <div
+            className="slds-button-group"
+            role="group"
+          >
+            <button
+              className="slds-button slds-button_neutral"
+            >
+              Add Contact
+            </button>
+            <div
+              className="slds-button_last"
+            >
+              <button
+                className="slds-button slds-button_icon-border-filled"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  More Actions
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-grid"
+      >
+        <div
+          className="slds-col slds-align-bottom"
+        >
+          <p
+            className="slds-text-body_small slds-line-height_reset"
+          >
+            10 items • sorted by name
+          </p>
+        </div>
+        <div
+          className="slds-col slds-no-flex slds-grid slds-align-bottom"
+        >
+          <div
+            className="slds-grid"
+          >
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger_click"
+              id="content-right-dropdown"
+              onClick={[Function]}
+              onFocus={null}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="slds-button slds-button_icon-more slds-m-right_xx-small"
+                disabled={false}
+                onClick={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#table"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_x-small"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Change view
+                </span>
+              </button>
+            </div>
+            <div
+              className="slds-button-group"
+              role="group"
+            >
+              <button
+                className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Chart
+                </span>
+              </button>
+              <button
+                className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Filter List
+                </span>
+              </button>
+              <div
+                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
+                id="content-right-dropdown-2"
+                onClick={[Function]}
+                onFocus={null}
+                onKeyDown={[Function]}
+                onMouseEnter={null}
+                onMouseLeave={null}
+              >
+                <button
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  className="slds-button slds-button_icon-more ignore-click-content-right-dropdown-2"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon slds-button__icon_x-small"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    List View Controls
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
