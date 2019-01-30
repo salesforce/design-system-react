@@ -1,32 +1,35 @@
-/* eslint-disable no-console, react/prop-types, react/prefer-es6-class */
+/* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import DuelingPicklist from '~/components/dueling-picklist';
 import duelingPicklistFilter from '~/components/dueling-picklist/filter';
-import { fruitOptions, ids } from './constants';
 
-const allFruit = [
-	...fruitOptions,
-	...'Mango,Pineapple,Grapes'.split(',').map((fruit, i) => ({
+const fruitOptions = 'Apple,Banana,Orange,Pear,Watermelon,Mango,Pineapple,Grapes'
+	.split(',')
+	.map((fruit, i) => ({
+		id: `${i}`,
 		label: fruit,
-		id: `${fruitOptions.length + i}`,
-	})),
-];
+	}));
 
-const Example = createReactClass({
-	displayName: 'DuelingPicklistExample',
+const ids = {
+	picklistGroupLabel: 'picklist-label',
+	dragLiveRegion: 'drag-live-region',
+	optionDragLabel: 'option-drag-label',
+	optionsLabel: 'options-label',
+	selectedLabel: 'selected-label',
+};
 
-	getInitialState() {
-		return {
-			options: allFruit,
-			selected: allFruit.slice(-2),
-		};
-	},
+class Example extends React.Component {
+	static displayName = 'DuelingPicklistExample';
 
-	handleChange(selected) {
+	state = {
+		options: fruitOptions,
+		selected: fruitOptions.slice(-2),
+	};
+
+	handleChange = (selected) => {
 		this.setState({ selected });
-	},
+	};
 
 	render() {
 		const { selected } = this.state;
@@ -47,7 +50,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
