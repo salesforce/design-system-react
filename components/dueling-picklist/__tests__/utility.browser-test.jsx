@@ -10,6 +10,7 @@ import {
 	getNewSelectionFromDragAndDropOntoOption,
 	getNewSelection,
 	selectionChanged,
+	getHeightForListboxBasedOnNumberOfOptions,
 } from '~/components/dueling-picklist/private/utility';
 
 chai.use(chaiEnzyme());
@@ -458,5 +459,14 @@ describe('selectionChanged', () => {
 		const selection = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 		const prevSelection = [{ id: 1 }, { id: 3 }, { id: 2 }, { id: 4 }];
 		expect(selectionChanged(selection, prevSelection)).to.equal(true);
+	});
+});
+
+describe('getHeightForListboxBasedOnNumberOfOptions()', function() {
+	it('calculates height based off of the number of items. *Warning* - may change with style updates', function() {
+		expect(getHeightForListboxBasedOnNumberOfOptions(1)).to.equal('3.25rem');
+		expect(getHeightForListboxBasedOnNumberOfOptions(2)).to.equal('5.5rem');
+		expect(getHeightForListboxBasedOnNumberOfOptions(3)).to.equal('7.75rem');
+		expect(getHeightForListboxBasedOnNumberOfOptions(10)).to.equal('23.5rem');
 	});
 });

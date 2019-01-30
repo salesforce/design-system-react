@@ -26,10 +26,10 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `optionDragLabel`: Instructions on how to drag and drop with a keyboard.
 	 * * `itemLocked`: Used as title for locked items.
-	 * * `itemsSelected`: Used in Aria Live area to inform user that items were moved to selected.
-	 * * `itemsDeselected`: Used in Aria Live area to inform user that items were removed from selected.
+	 * * `itemsSelected`: Used in ARIA Live area to inform user that items were moved to selected.
+	 * * `itemsDeselected`: Used in ARIA Live area to inform user that items were removed from selected.
 	 * * `lockedItemCannotBeMoved`: Used to label locked items.
-	 * * `selectedItemsReordered`: Used in Aria Live area to inform user that selected items were reordered.
+	 * * `selectedItemsReordered`: Used in ARIA Live area to inform user that selected items were reordered.
 	 * * `moveSelectionDown`: Used by "down" reordering button.
 	 * * `moveSelectionUp`: Used by "up" reordering button.
 	 * * `moveSelectionToSelected`: Used by "right" button, which moves items to selected.
@@ -65,7 +65,7 @@ const propTypes = {
 	/**
 	 * Element id prefixes (used for accessibility). If not provided, ids will be generated with shortid. Tested with Mocha framework.
 	 * * `picklistGroupLabel`: id for labeling the `<DuelingPicklist />` component.
-	 * * `dragLiveRegion`: id for Aria Live element.
+	 * * `dragLiveRegion`: id for ARIA Live element.
 	 * * `optionDragLabel`: id for describing how to use keyboard interactions.
 	 * * `optionsLabel`: id for options listbox.
 	 * * `selectedLabel`: id for selection listbox.

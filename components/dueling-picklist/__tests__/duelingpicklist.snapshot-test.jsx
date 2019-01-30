@@ -1,4 +1,3 @@
-/* eslint-env jest */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { renderMarkup, testDOM } from '../../../tests/snapshot-helpers';

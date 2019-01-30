@@ -11,6 +11,7 @@ import { keyObjects } from '../../../utilities/key-code';
 import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
 
 import DemoComponent from './demo-component';
+import { getHeightForListboxBasedOnNumberOfOptions } from '../private/utility';
 
 const { DOWN, UP, RIGHT, LEFT, SPACE } = keyObjects;
 const { A } = letterKeyObjects;
@@ -66,13 +67,14 @@ describe('SLDSDuelingPicklist', function() {
 			afterEach(unmountComponent);
 
 			it('automatically adjusts listboxes to have minimum height without scrolling when hasAutomaticHeightMinimization is true', function() {
-				const getExpectedHeight = (numItems) => 2.25 * numItems + 1;
 				const group = this.wrapper.find('[role="group"]');
 				expect(
 					this.wrapper.find('.slds-dueling-list__options').first()
 				).to.have.attr(
 					'style',
-					`height: ${getExpectedHeight(options.length)}rem;`
+					`height: ${getHeightForListboxBasedOnNumberOfOptions(
+						options.length
+					)};`
 				);
 
 				const getOptionNodes = () =>
@@ -98,7 +100,9 @@ describe('SLDSDuelingPicklist', function() {
 					this.wrapper.find('.slds-dueling-list__options').first()
 				).to.have.attr(
 					'style',
-					`height: ${getExpectedHeight(options.length - 3)}rem;`
+					`height: ${getHeightForListboxBasedOnNumberOfOptions(
+						options.length - 3
+					)};`
 				);
 
 				optionNodes = getOptionNodes();
@@ -125,7 +129,9 @@ describe('SLDSDuelingPicklist', function() {
 					this.wrapper.find('.slds-dueling-list__options').first()
 				).to.have.attr(
 					'style',
-					`height: ${getExpectedHeight(options.length - 1)}rem;`
+					`height: ${getHeightForListboxBasedOnNumberOfOptions(
+						options.length - 1
+					)};`
 				);
 			});
 		});

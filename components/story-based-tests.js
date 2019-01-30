@@ -31,6 +31,7 @@ export Combobox from '../components/combobox/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 // export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
+export DuelingPicklist from '../components/dueling-picklist/__docs__/storybook-stories';
 export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
 export Icon from '../components/icon/__docs__/storybook-stories';

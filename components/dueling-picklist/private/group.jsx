@@ -4,7 +4,11 @@ import Column from './column';
 import Options from './options';
 import Button from './button';
 import ViewOnly from './view-only';
-import { wrapItemAndAddIsSelected, getAriaLiveMessage } from './utility';
+import {
+	wrapItemAndAddIsSelected,
+	getAriaLiveMessage,
+	getHeightForListboxBasedOnNumberOfOptions,
+} from './utility';
 
 const Group = ({
 	ariaLiveContext,
@@ -57,7 +61,9 @@ const Group = ({
 	const heightProp =
 		listboxHeight || hasAutomaticHeightMinimization
 			? {
-					height: listboxHeight || `${2.25 * maxItems + 1}rem`,
+					height:
+						listboxHeight ||
+						getHeightForListboxBasedOnNumberOfOptions(maxItems),
 				}
 			: {};
 

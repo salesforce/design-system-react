@@ -4,6 +4,18 @@ function getIds(items) {
 	return items.map((o) => o.id);
 }
 
+// MAGIC NUMBER BELOW - MAY CHANGE WITH STYLES
+const HEIGHT_OF_AN_OPTION = 2.25;
+
+/*
+ * Calculates the height, in rems, based off of the maximum number of items in a
+ * listbox. MAY CHANGE WITH STYLES.
+ * Formula used: (2.25rem * maxItems) + 1rem
+*/
+export function getHeightForListboxBasedOnNumberOfOptions(maxItems) {
+	return `${HEIGHT_OF_AN_OPTION * maxItems + 1}rem`;
+}
+
 export function filterNonSelectedItems(category, selectedItems) {
 	const selectedIds = getIds(selectedItems);
 	return category.filter((o) => !selectedIds.includes(o.id));
