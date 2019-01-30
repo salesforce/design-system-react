@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { DropTarget } from 'react-dnd';
 import Option from './option';
+import { getColumnClassName } from './utility';
 
 class Options extends React.Component {
 	static propTypes = {
@@ -28,6 +29,7 @@ class Options extends React.Component {
 		height: PropTypes.string,
 		dragAndDropWithArrowKeys: PropTypes.bool,
 		dragAndDropEnabled: PropTypes.bool,
+		isResponsive: PropTypes.bool,
 		onDropOntoOption: PropTypes.func,
 		onDropIntoCategory: PropTypes.func,
 		beginDrag: PropTypes.func,
@@ -114,12 +116,13 @@ class Options extends React.Component {
 			height,
 			connectDropTarget,
 			dragAndDropEnabled,
+			isResponsive,
 		} = this.props;
 
 		const styleProp = height ? { style: { height } } : {};
 
 		const result = (
-			<div>
+			<div className={getColumnClassName(isResponsive)}>
 				<span className="slds-form-element__label" id={ids.label}>
 					{label}
 				</span>

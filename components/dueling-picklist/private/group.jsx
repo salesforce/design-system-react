@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Column from './column';
 import Options from './options';
 import Button from './button';
 import ViewOnly from './view-only';
@@ -8,6 +7,7 @@ import {
 	wrapItemAndAddIsSelected,
 	getAriaLiveMessage,
 	getHeightForListboxBasedOnNumberOfOptions,
+	getColumnClassName,
 } from './utility';
 
 const Group = ({
@@ -105,24 +105,23 @@ const Group = ({
 					<div className="slds-assistive-text" id={ids.optionDragLabel}>
 						{assistiveText.optionDragLabel}
 					</div>
-					<Column responsive={isResponsive}>
-						<Options
-							options={allOptions[0]}
-							ids={{
-								label: ids.optionsLabel,
-								describedBy: ids.optionDragLabel,
-							}}
-							label={labels.options}
-							onSelect={onSelect}
-							disabled={isDisabled}
-							assistiveText={assistiveText}
-							refs={refs}
-							focus={onFocus}
-							focusedOptionId={focusedOptionId}
-							{...heightProp}
-						/>
-					</Column>
-					<Column>
+					<Options
+						options={allOptions[0]}
+						ids={{
+							label: ids.optionsLabel,
+							describedBy: ids.optionDragLabel,
+						}}
+						label={labels.options}
+						onSelect={onSelect}
+						disabled={isDisabled}
+						assistiveText={assistiveText}
+						refs={refs}
+						focus={onFocus}
+						focusedOptionId={focusedOptionId}
+						{...heightProp}
+						isResponsive={isResponsive}
+					/>
+					<div className={getColumnClassName(isResponsive)}>
 						<Button
 							onClick={onMoveSelectionRightClick}
 							assistiveText={
@@ -141,33 +140,32 @@ const Group = ({
 							direction="left"
 							disabled={isDisabled}
 						/>
-					</Column>
-					<Column responsive={isResponsive}>
-						<Options
-							options={allOptions[1]}
-							ids={{
-								label: ids.selectedLabel,
-								describedBy: ids.optionDragLabel,
-							}}
-							label={labels.selected}
-							onSelect={onSelect}
-							disabled={isDisabled}
-							assistiveText={assistiveText}
-							refs={refs}
-							focus={onFocus}
-							focusedOptionId={focusedOptionId}
-							{...heightProp}
-							dragAndDropEnabled={isReorderable}
-							onDropOntoOption={onDropOntoOption}
-							onDropIntoCategory={onDropIntoCategory}
-							dragAndDropWithArrowKeys={dragAndDropWithArrowKeys}
-							beginDrag={onBeginDrag}
-							endDrag={onEndDrag}
-							isDragging={isDragging}
-						/>
-					</Column>
+					</div>
+					<Options
+						options={allOptions[1]}
+						ids={{
+							label: ids.selectedLabel,
+							describedBy: ids.optionDragLabel,
+						}}
+						label={labels.selected}
+						onSelect={onSelect}
+						disabled={isDisabled}
+						assistiveText={assistiveText}
+						refs={refs}
+						focus={onFocus}
+						focusedOptionId={focusedOptionId}
+						{...heightProp}
+						dragAndDropEnabled={isReorderable}
+						onDropOntoOption={onDropOntoOption}
+						onDropIntoCategory={onDropIntoCategory}
+						dragAndDropWithArrowKeys={dragAndDropWithArrowKeys}
+						beginDrag={onBeginDrag}
+						endDrag={onEndDrag}
+						isDragging={isDragging}
+						isResponsive={isResponsive}
+					/>
 					{isReorderable && (
-						<Column>
+						<div className={getColumnClassName(isResponsive)}>
 							<Button
 								onClick={onMoveSelectionUpClick}
 								assistiveText={assistiveText.moveSelectionUp}
@@ -180,7 +178,7 @@ const Group = ({
 								direction="down"
 								disabled={isDisabled}
 							/>
-						</Column>
+						</div>
 					)}
 				</div>
 			</div>

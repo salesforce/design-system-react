@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { AriaLiveMoveContexts, AriaLiveMessages } from './constants';
 
 function getIds(items) {
@@ -190,4 +191,10 @@ export function getAriaLiveMessage({
 		default:
 			return null;
 	}
+}
+
+export function getColumnClassName(isResponsive) {
+	return classNames('slds-dueling-list__column', {
+		'slds-dueling-list__column_responsive': isResponsive,
+	});
 }
