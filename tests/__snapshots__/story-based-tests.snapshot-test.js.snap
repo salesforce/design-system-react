@@ -17894,175 +17894,173 @@ exports[`DOM snapshots SLDSDuelingPicklist Auto Height Minimization 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-1-options-label"
-            >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-              style={
-                Object {
-                  "height": "14.5rem",
-                }
+          <span
+            className="slds-form-element__label"
+            id="options-label-1-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+            style={
+              Object {
+                "height": "14.5rem",
               }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-1-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-1-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              <ul
-                aria-describedby="option-drag-label-1-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-1-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Mango"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Mango"
-                      >
-                        Mango
-                      </span>
+                      Mango
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -18112,79 +18110,77 @@ exports[`DOM snapshots SLDSDuelingPicklist Auto Height Minimization 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-1-selected-label"
-            >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-              style={
-                Object {
-                  "height": "14.5rem",
-                }
+          <span
+            className="slds-form-element__label"
+            id="selected-label-1-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+            style={
+              Object {
+                "height": "14.5rem",
               }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-1-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-1-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              <ul
-                aria-describedby="option-drag-label-1-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-1-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pineapple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pineapple"
-                      >
-                        Pineapple
-                      </span>
+                      Pineapple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Grapes"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Grapes"
-                      >
-                        Grapes
-                      </span>
+                      Grapes
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -18230,98 +18226,96 @@ exports[`DOM snapshots SLDSDuelingPicklist Default 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-2-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-2-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-2-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-2-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-2-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-2-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -18371,74 +18365,72 @@ exports[`DOM snapshots SLDSDuelingPicklist Default 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-2-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-2-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-2-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-2-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-2-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-2-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -18484,92 +18476,90 @@ exports[`DOM snapshots SLDSDuelingPicklist Disabled 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-3-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-3-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options slds-is-disabled"
+          >
+            <ul
+              aria-describedby="option-drag-label-3-option-drag-label"
+              aria-disabled={true}
+              aria-labelledby="options-label-3-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options slds-is-disabled"
-            >
-              <ul
-                aria-describedby="option-drag-label-3-option-drag-label"
-                aria-disabled={true}
-                aria-labelledby="options-label-3-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -18619,70 +18609,68 @@ exports[`DOM snapshots SLDSDuelingPicklist Disabled 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-3-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-3-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options slds-is-disabled"
+          >
+            <ul
+              aria-describedby="option-drag-label-3-option-drag-label"
+              aria-disabled={true}
+              aria-labelledby="selected-label-3-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options slds-is-disabled"
-            >
-              <ul
-                aria-describedby="option-drag-label-3-option-drag-label"
-                aria-disabled={true}
-                aria-labelledby="selected-label-3-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -18728,98 +18716,96 @@ exports[`DOM snapshots SLDSDuelingPicklist Locked 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-5-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-5-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-5-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-5-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-5-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-5-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -18869,100 +18855,98 @@ exports[`DOM snapshots SLDSDuelingPicklist Locked 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-5-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-5-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-5-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-5-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-5-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-5-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
+                  </span>
+                  <span
+                    className="slds-media__figure slds-media__figure_reverse"
+                  >
                     <span
-                      className="slds-media__figure slds-media__figure_reverse"
+                      className="slds-icon_container"
+                      title="Locked item"
                     >
-                      <span
-                        className="slds-icon_container"
-                        title="Locked item"
-                      >
-                        <span>
-                          <svg
-                            aria-hidden="true"
-                            className="slds-icon slds-icon_xx-small slds-icon-text-default"
-                          >
-                            <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
-                            />
-                          </svg>
-                          
-                        </span>
-                        <span
-                          className="slds-assistive-text"
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon_xx-small slds-icon-text-default"
                         >
-                          : 
-                          Item cannot be moved
-                        </span>
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+                          />
+                        </svg>
+                        
+                      </span>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        : 
+                        Item cannot be moved
                       </span>
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -19052,103 +19036,101 @@ exports[`DOM snapshots SLDSDuelingPicklist ManualHeight 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-6-options-label"
-            >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-              style={
-                Object {
-                  "height": "20rem",
-                }
+          <span
+            className="slds-form-element__label"
+            id="options-label-6-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+            style={
+              Object {
+                "height": "20rem",
               }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-6-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-6-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              <ul
-                aria-describedby="option-drag-label-6-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-6-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -19198,79 +19180,77 @@ exports[`DOM snapshots SLDSDuelingPicklist ManualHeight 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-6-selected-label"
-            >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-              style={
-                Object {
-                  "height": "20rem",
-                }
+          <span
+            className="slds-form-element__label"
+            id="selected-label-6-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+            style={
+              Object {
+                "height": "20rem",
               }
+            }
+          >
+            <ul
+              aria-describedby="option-drag-label-6-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-6-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              <ul
-                aria-describedby="option-drag-label-6-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-6-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -19316,98 +19296,96 @@ exports[`DOM snapshots SLDSDuelingPicklist Reorderable 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-4-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-4-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-4-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-4-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-4-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-4-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -19457,74 +19435,72 @@ exports[`DOM snapshots SLDSDuelingPicklist Reorderable 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-4-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-4-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-4-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-4-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-4-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-4-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -19621,98 +19597,96 @@ exports[`DOM snapshots SLDSDuelingPicklist Required 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-7-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-7-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-7-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-7-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-7-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-7-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -19762,74 +19736,72 @@ exports[`DOM snapshots SLDSDuelingPicklist Required 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-7-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-7-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-7-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-7-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-7-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-7-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -19875,102 +19847,100 @@ exports[`DOM snapshots SLDSDuelingPicklist Responsive 1`] = `
         <div
           className="slds-dueling-list__column slds-dueling-list__column_responsive"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-8-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-8-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-8-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-8-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-8-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-8-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
-          className="slds-dueling-list__column"
+          className="slds-dueling-list__column slds-dueling-list__column_responsive"
         >
           <button
             className="slds-button slds-button_icon-container"
@@ -20016,74 +19986,72 @@ exports[`DOM snapshots SLDSDuelingPicklist Responsive 1`] = `
         <div
           className="slds-dueling-list__column slds-dueling-list__column_responsive"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-8-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-8-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-8-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-8-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-8-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-8-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -20163,98 +20131,96 @@ exports[`DOM snapshots SLDSDuelingPicklist Tooltip 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="options-label-9-options-label"
+          <span
+            className="slds-form-element__label"
+            id="options-label-9-options-label"
+          >
+            First Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-9-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="options-label-9-options-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              First Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-9-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="options-label-9-options-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Apple"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Apple"
-                      >
-                        Apple
-                      </span>
+                      Apple
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Banana"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Banana"
-                      >
-                        Banana
-                      </span>
+                      Banana
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Orange"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Orange"
-                      >
-                        Orange
-                      </span>
+                      Orange
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div
@@ -20304,74 +20270,72 @@ exports[`DOM snapshots SLDSDuelingPicklist Tooltip 1`] = `
         <div
           className="slds-dueling-list__column"
         >
-          <div>
-            <span
-              className="slds-form-element__label"
-              id="selected-label-9-selected-label"
+          <span
+            className="slds-form-element__label"
+            id="selected-label-9-selected-label"
+          >
+            Second Category
+          </span>
+          <div
+            className="slds-dueling-list__options"
+          >
+            <ul
+              aria-describedby="option-drag-label-9-option-drag-label"
+              aria-disabled={false}
+              aria-labelledby="selected-label-9-selected-label"
+              aria-multiselectable={true}
+              className="slds-listbox slds-listbox_vertical"
+              role="listbox"
             >
-              Second Category
-            </span>
-            <div
-              className="slds-dueling-list__options"
-            >
-              <ul
-                aria-describedby="option-drag-label-9-option-drag-label"
-                aria-disabled={false}
-                aria-labelledby="selected-label-9-selected-label"
-                aria-multiselectable={true}
-                className="slds-listbox slds-listbox_vertical"
-                role="listbox"
+              <li
+                className="slds-listbox__item"
+                role="presentation"
               >
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="0"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="0"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Pear"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Pear"
-                      >
-                        Pear
-                      </span>
+                      Pear
                     </span>
-                  </div>
-                </li>
-                <li
-                  className="slds-listbox__item"
-                  role="presentation"
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  role="option"
+                  tabIndex="-1"
                 >
-                  <div
-                    aria-selected={false}
-                    className="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_inline"
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    role="option"
-                    tabIndex="-1"
+                  <span
+                    className="slds-media__body"
                   >
                     <span
-                      className="slds-media__body"
+                      className="slds-truncate"
+                      title="Watermelon"
                     >
-                      <span
-                        className="slds-truncate"
-                        title="Watermelon"
-                      >
-                        Watermelon
-                      </span>
+                      Watermelon
                     </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
