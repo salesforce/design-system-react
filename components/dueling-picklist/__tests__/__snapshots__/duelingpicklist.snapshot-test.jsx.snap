@@ -2,7 +2,7 @@
 
 exports[`AutoHeightMinimization DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-1-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -10,7 +10,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-1-picklist-group-label"
   >
     Select Options
   </span>
@@ -23,11 +23,11 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-1-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-1-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -37,7 +37,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-1-options-label"
           >
             First Category
           </span>
@@ -50,9 +50,9 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             }
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-1-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-1-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -255,7 +255,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-1-selected-label"
           >
             Second Category
           </span>
@@ -268,9 +268,9 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
             }
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-1-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-1-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -334,7 +334,7 @@ exports[`AutoHeightMinimization DOM Snapshot 1`] = `
 
 exports[`Default DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-2-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -342,7 +342,7 @@ exports[`Default DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-2-picklist-group-label"
   >
     Select Options
   </span>
@@ -355,11 +355,11 @@ exports[`Default DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-2-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-2-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -369,7 +369,7 @@ exports[`Default DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-2-options-label"
           >
             First Category
           </span>
@@ -377,9 +377,9 @@ exports[`Default DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-2-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-2-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -510,7 +510,7 @@ exports[`Default DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-2-selected-label"
           >
             Second Category
           </span>
@@ -518,9 +518,9 @@ exports[`Default DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-2-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-2-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -584,7 +584,7 @@ exports[`Default DOM Snapshot 1`] = `
 
 exports[`Disabled DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-3-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -592,7 +592,7 @@ exports[`Disabled DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-3-picklist-group-label"
   >
     Select Options
   </span>
@@ -605,11 +605,11 @@ exports[`Disabled DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-3-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-3-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -619,7 +619,7 @@ exports[`Disabled DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-3-options-label"
           >
             First Category
           </span>
@@ -627,9 +627,9 @@ exports[`Disabled DOM Snapshot 1`] = `
             className="slds-dueling-list__options slds-is-disabled"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-3-option-drag-label"
               aria-disabled={true}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-3-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -754,7 +754,7 @@ exports[`Disabled DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-3-selected-label"
           >
             Second Category
           </span>
@@ -762,9 +762,9 @@ exports[`Disabled DOM Snapshot 1`] = `
             className="slds-dueling-list__options slds-is-disabled"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-3-option-drag-label"
               aria-disabled={true}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-3-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -824,7 +824,7 @@ exports[`Disabled DOM Snapshot 1`] = `
 
 exports[`IsReorderable DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-4-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -832,7 +832,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-4-picklist-group-label"
   >
     Select Options
   </span>
@@ -845,11 +845,11 @@ exports[`IsReorderable DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-4-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-4-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -859,7 +859,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-4-options-label"
           >
             First Category
           </span>
@@ -867,9 +867,9 @@ exports[`IsReorderable DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-4-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-4-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1000,7 +1000,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-4-selected-label"
           >
             Second Category
           </span>
@@ -1008,9 +1008,9 @@ exports[`IsReorderable DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-4-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-4-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1118,7 +1118,7 @@ exports[`IsReorderable DOM Snapshot 1`] = `
 
 exports[`Locked DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-5-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -1126,7 +1126,7 @@ exports[`Locked DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-5-picklist-group-label"
   >
     Select Options
   </span>
@@ -1139,11 +1139,11 @@ exports[`Locked DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-5-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-5-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -1153,7 +1153,7 @@ exports[`Locked DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-5-options-label"
           >
             First Category
           </span>
@@ -1161,9 +1161,9 @@ exports[`Locked DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-5-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-5-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1294,7 +1294,7 @@ exports[`Locked DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-5-selected-label"
           >
             Second Category
           </span>
@@ -1302,9 +1302,9 @@ exports[`Locked DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-5-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-5-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1438,7 +1438,7 @@ exports[`Locked DOM Snapshot 1`] = `
 
 exports[`ManualHeight DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-6-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -1446,7 +1446,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-6-picklist-group-label"
   >
     Select Options
   </span>
@@ -1459,11 +1459,11 @@ exports[`ManualHeight DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-6-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-6-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -1473,7 +1473,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-6-options-label"
           >
             First Category
           </span>
@@ -1486,9 +1486,9 @@ exports[`ManualHeight DOM Snapshot 1`] = `
             }
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-6-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-6-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1619,7 +1619,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-6-selected-label"
           >
             Second Category
           </span>
@@ -1632,9 +1632,9 @@ exports[`ManualHeight DOM Snapshot 1`] = `
             }
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-6-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-6-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1698,7 +1698,7 @@ exports[`ManualHeight DOM Snapshot 1`] = `
 
 exports[`Required DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-7-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -1706,7 +1706,7 @@ exports[`Required DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-7-picklist-group-label"
   >
     <abbr
       className="slds-required"
@@ -1726,11 +1726,11 @@ exports[`Required DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-7-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-7-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -1740,7 +1740,7 @@ exports[`Required DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-7-options-label"
           >
             First Category
           </span>
@@ -1748,9 +1748,9 @@ exports[`Required DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-7-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-7-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1881,7 +1881,7 @@ exports[`Required DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-7-selected-label"
           >
             Second Category
           </span>
@@ -1889,9 +1889,9 @@ exports[`Required DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-7-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-7-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -1955,7 +1955,7 @@ exports[`Required DOM Snapshot 1`] = `
 
 exports[`Responsive DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-8-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -1963,7 +1963,7 @@ exports[`Responsive DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-8-picklist-group-label"
   >
     Select Options
   </span>
@@ -1976,11 +1976,11 @@ exports[`Responsive DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-8-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-8-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -1990,7 +1990,7 @@ exports[`Responsive DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-8-options-label"
           >
             First Category
           </span>
@@ -1998,9 +1998,9 @@ exports[`Responsive DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-8-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-8-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -2131,7 +2131,7 @@ exports[`Responsive DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-8-selected-label"
           >
             Second Category
           </span>
@@ -2139,9 +2139,9 @@ exports[`Responsive DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-8-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-8-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -2205,7 +2205,7 @@ exports[`Responsive DOM Snapshot 1`] = `
 
 exports[`Tooltip DOM Snapshot 1`] = `
 <div
-  aria-labelledby="picklist-label-picklist-group-label"
+  aria-labelledby="picklist-label-9-picklist-group-label"
   className="slds-form-element"
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -2213,7 +2213,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
 >
   <span
     className="slds-form-element__label slds-form-element__legend"
-    id="picklist-label-picklist-group-label"
+    id="picklist-label-9-picklist-group-label"
   >
     Select Options
   </span>
@@ -2260,11 +2260,11 @@ exports[`Tooltip DOM Snapshot 1`] = `
       <div
         aria-live="assertive"
         className="slds-assistive-text"
-        id="drag-live-region-drag-live-region"
+        id="drag-live-region-9-drag-live-region"
       />
       <div
         className="slds-assistive-text"
-        id="option-drag-label-option-drag-label"
+        id="option-drag-label-9-option-drag-label"
       >
         Press space bar when on an item, to move it within the list. CMD plus left and right arrow keys, to move items between lists.
       </div>
@@ -2274,7 +2274,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="options-label-options-label"
+            id="options-label-9-options-label"
           >
             First Category
           </span>
@@ -2282,9 +2282,9 @@ exports[`Tooltip DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-9-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="options-label-options-label"
+              aria-labelledby="options-label-9-options-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"
@@ -2415,7 +2415,7 @@ exports[`Tooltip DOM Snapshot 1`] = `
         <div>
           <span
             className="slds-form-element__label"
-            id="selected-label-selected-label"
+            id="selected-label-9-selected-label"
           >
             Second Category
           </span>
@@ -2423,9 +2423,9 @@ exports[`Tooltip DOM Snapshot 1`] = `
             className="slds-dueling-list__options"
           >
             <ul
-              aria-describedby="option-drag-label-option-drag-label"
+              aria-describedby="option-drag-label-9-option-drag-label"
               aria-disabled={false}
-              aria-labelledby="selected-label-selected-label"
+              aria-labelledby="selected-label-9-selected-label"
               aria-multiselectable={true}
               className="slds-listbox slds-listbox_vertical"
               role="listbox"

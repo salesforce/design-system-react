@@ -12,11 +12,11 @@ const fruitOptions = 'Apple,Banana,Orange,Pear,Watermelon'
 	}));
 
 const ids = {
-	picklistGroupLabel: 'picklist-label',
-	dragLiveRegion: 'drag-live-region',
-	optionDragLabel: 'option-drag-label',
-	optionsLabel: 'options-label',
-	selectedLabel: 'selected-label',
+	picklistGroupLabel: 'picklist-label-7',
+	dragLiveRegion: 'drag-live-region-7',
+	optionDragLabel: 'option-drag-label-7',
+	optionsLabel: 'options-label-7',
+	selectedLabel: 'selected-label-7',
 };
 
 class Example extends React.Component {
