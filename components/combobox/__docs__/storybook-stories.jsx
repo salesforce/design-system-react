@@ -9,6 +9,7 @@ import BaseInlineHelpTooltip from '../__examples__/base-inline-help-tooltip';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
 import BaseMenuSeparator from '../__examples__/base-menu-separator';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
+import Dialog from '../__examples__/dialog.jsx';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
@@ -59,6 +60,7 @@ storiesOf(COMBOBOX, module)
 	.add('Base Inherit Menu Width', () => (
 		<BaseInheritMenuWidth action={action} />
 	))
+	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
 	.add('Readonly Multiple Selection', () => (
 		<ReadOnlyMultiple action={action} />
