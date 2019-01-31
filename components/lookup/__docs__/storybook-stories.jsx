@@ -1,32 +1,40 @@
 import React from 'react';
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
-
 import { LOOKUP } from '../../../utilities/constants';
 import Lookup from '../../lookup';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
-
 import SLDSButton from '../../button';
+
+import Default from '../__examples__/default';
+import Files from '../__examples__/files';
+import WithSelection from '../__examples__/with-selection';
 
 class DemoLookup extends React.Component {
 	static displayName = 'DemoLookup';
-
 	state = {
 		options: [
-			{ label: 'File 1' },
-			{ label: 'File 2' },
-			{ label: 'File 3' },
-			{ label: 'File 4' },
+			{
+				label: 'File 1',
+			},
+			{
+				label: 'File 2',
+			},
+			{
+				label: 'File 3',
+			},
+			{
+				label: 'File 4',
+			},
 		],
 	};
-
 	clearSelected = () => {
-		this.setState({ currentSelected: -1 });
+		this.setState({
+			currentSelected: -1,
+		});
 	};
-
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
@@ -54,21 +62,38 @@ class DemoLookup extends React.Component {
 
 class DemoLookupAccounts extends React.Component {
 	static displayName = 'DemoLookupAccounts';
-
 	state = {
 		options: [
-			{ label: "Paddy's Pub", subTitle: 'Boston, MA' },
-			{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
-			{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
-			{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
-			{ label: 'Acme Landscaping' },
-			{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' },
+			{
+				label: "Paddy's Pub",
+				subTitle: 'Boston, MA',
+			},
+			{
+				label: 'Tyrell Corp',
+				subTitle: 'San Francisco, CA',
+			},
+			{
+				label: 'Paper St. Soap Company',
+				subTitle: 'Beloit, WI',
+			},
+			{
+				label: 'Nakatomi Investments',
+				subTitle: 'Chicago, IL',
+			},
+			{
+				label: 'Acme Landscaping',
+			},
+			{
+				label: 'Acme Construction',
+				subTitle: 'Grand Marais, MN',
+			},
 		],
 	};
-
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
-		this.setState({ selectedItem });
+		this.setState({
+			selectedItem,
+		});
 	};
 
 	render() {
@@ -84,7 +109,6 @@ class DemoLookupAccounts extends React.Component {
 		);
 	}
 }
-
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -114,4 +138,7 @@ storiesOf(LOOKUP, module)
 	))
 	.add('Custom Empty Message Content', () => (
 		<DemoLookup emptyMessage={<span>No matches.</span>} isInline />
-	));
+	))
+	.add('Docs site Default', () => <Default />)
+	.add('Docs site Files', () => <Files />)
+	.add('Docs site WithSelection', () => <WithSelection />);

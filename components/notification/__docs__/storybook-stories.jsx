@@ -1,9 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
-
 import { NOTIFICATION } from '../../../utilities/constants';
 import Notification from '../../notification';
+import Alerts from '../__examples__/alerts';
+import Toasts from '../__examples__/toasts';
+import WithinModal from '../__examples__/within-modal';
 
 storiesOf(NOTIFICATION, module)
 	.addDecorator((getStory) => (
@@ -42,4 +44,7 @@ storiesOf(NOTIFICATION, module)
 			theme="error"
 			variant="toast"
 		/>
-	));
+	))
+	.add('Docs site Alerts', () => <Alerts />)
+	.add('Docs site Toasts', () => <Toasts />)
+	.add('Docs site WithinModal', () => <WithinModal />);
