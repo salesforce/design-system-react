@@ -8,7 +8,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import assign from 'lodash.assign';
 import Button from '../button';
-import classNames from 'classnames';
 import MenuDropdown from '../menu-dropdown';
 import MenuDropdownTrigger from '../menu-dropdown/button-trigger';
 
@@ -17,10 +16,10 @@ import { GLOBAL_HEADER_TASK } from '../../utilities/constants';
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
-	 * * `triggerButtonIcon`: Assistive text for the GlobalHeaderTask trigger button icon. The default is `Global Actions`.
+	 * * `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.
 	 */
 	assistiveText: PropTypes.shape({
-		triggerButtonIcon: PropTypes.string
+		triggerButton: PropTypes.string
 	}),
 	/**
 	 * A `MenuDropdown` component. The props from this menu dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the menu dropdown.
@@ -45,8 +44,8 @@ class GlobalHeaderTask extends React.Component {
 			<MenuDropdown {...menuDropdownProps}>
 				<MenuDropdownTrigger>
 					<Button
-						assistiveText={{ icon: this.props.assistiveText.triggerButtonIcon }}
-						className={classNames('slds-button_icon', 'slds-global-actions__task', 'slds-global-actions__item-action')}
+						assistiveText={{ icon: this.props.assistiveText.triggerButton }}
+						className="slds-button_icon slds-global-actions__task slds-global-actions__item-action"
 						iconCategory="utility"
 						iconName="add"
 						iconSize="small"
@@ -64,7 +63,7 @@ GlobalHeaderTask.displayName = GLOBAL_HEADER_TASK;
 
 GlobalHeaderTask.defaultProps = {
 	assistiveText: {
-		triggerButtonIcon: 'Global Actions'
+		triggerButton: 'Global Actions'
 	}
 };
 
