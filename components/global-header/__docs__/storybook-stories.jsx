@@ -8,6 +8,7 @@ import GlobalHeader from '../../global-header';
 import GlobalHeaderButton from '../../global-header/button';
 import GlobalHeaderDropdown from '../../global-header/dropdown';
 import GlobalHeaderHelp from '../../global-header/help';
+import GlobalHeaderNotifications from '../../global-header/notifications';
 import GlobalHeaderProfile from '../../global-header/profile';
 import GlobalHeaderSearch from '../../global-header/search';
 import GlobalHeaderSetup from '../../global-header/setup';
@@ -87,6 +88,7 @@ const GlobalHeaderDemo = (props) => (
 		/>
 		<GlobalHeaderHelp />
 		<GlobalHeaderSetup />
+		<GlobalHeaderNotifications notificationCount={5} />
 	</GlobalHeader>
 );
 
