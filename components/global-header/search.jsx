@@ -8,18 +8,18 @@
 // ### React
 import React from 'react';
 
-// ### Lookup
-import Lookup from '../lookup';
+// ### Combobox
+import Combobox from '../combobox';
 
 // ## Constants
 import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
 
 /**
- * The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.
+ * The Global Header Search component is currently just a Combobox. In the future this component will be far more robust and adhere to SLDS standards
  */
 const GlobalHeaderSearch = (props) => (
 	<div className="slds-global-header__item slds-global-header__item_search">
-		<Lookup iconPosition="left" {...props} />
+		<Combobox {...props} />
 	</div>
 );
 

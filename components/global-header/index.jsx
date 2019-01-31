@@ -153,7 +153,7 @@ class GlobalHeader extends React.Component {
 						/>
 					</div>
 					{search}
-					<ul className="slds-global-header__item slds-grid slds-grid_vertical-align-center">
+					<ul className="slds-global-header__item">
 						{tools}
 						{profile}
 					</ul>

@@ -58,70 +58,10 @@ const GlobalHeaderDemo = (props) => (
 		}}
 	>
 		<GlobalHeaderSearch
+			labels={{ placeholder: 'Search Salesforce' }}
 			onSelect={action('Search Selected')}
-			placeholder="Search Salesforce"
-			options={[{ label: 'Email' }, { label: 'Mobile' }]}
+			options={[{ id: 'email', label: 'Email' }, { id: 'mobile', label: 'Mobile' }]}
 		/>
-		<GlobalHeaderButton
-			className="slds-m-right_small"
-			iconVariant={null}
-			label="Feedback"
-			onClick={action('Feedback Clicked')}
-			variant="neutral"
-		/>
-		<GlobalHeaderDropdown
-			openOn={props.openOn}
-			assistiveText={{ icon: 'Global Actions' }}
-			globalAction
-			iconCategory="utility"
-			iconName="add"
-			id="global-header-dropdown-example"
-			onSelect={action('Action Selected')}
-			options={[
-				{
-					label: 'New Note',
-					rightIcon: { category: 'standard', name: 'note', size: 'small' },
-				},
-				{
-					label: 'Log a Call',
-					rightIcon: {
-						category: 'standard',
-						name: 'log_a_call',
-						size: 'small',
-					},
-				},
-			]}
-		/>
-		<GlobalHeaderButton
-			assistiveText={{ icon: 'Help and Training' }}
-			iconCategory="utility"
-			iconName="question"
-			onClick={action('Help Clicked')}
-		/>
-		<GlobalHeaderDropdown
-			openOn={props.openOn}
-			assistiveText={{ icon: 'Setup' }}
-			iconCategory="utility"
-			iconName="setup"
-			id="global-header-dropdown-example"
-			onSelect={action('Action Selected')}
-			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
-		/>
-		<GlobalHeaderButton
-			assistiveText={{ icon: 'Notifications' }}
-			iconCategory="utility"
-			iconName="notification"
-			onClick={action('Notifications Clicked')}
-		/>
-		<GlobalHeaderProfile
-			id="global-header-dropdown-profile-example"
-			openOn={props.openOn}
-			onClick={action('Profile Clicked')}
-			onSelect={action('Profile Selected')}
-			avatar={props.avatar}
-		>
-			<HeaderProfileCustomContent />
-		</GlobalHeaderProfile>
 	</GlobalHeader>
 );
 
@@ -132,26 +72,27 @@ storiesOf(GLOBAL_HEADER, module)
 		</div>
 	))
 	.add('Search + Navigation', () => <GlobalHeaderDemo />)
-	.add('Open on Hybrid', () => <GlobalHeaderDemo openOn="hybrid" />)
-	.add('Fewer Elements', () => (
-		<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
-			<GlobalHeaderDropdown
-				assistiveText={{ icon: 'Setup' }}
-				iconCategory="utility"
-				iconName="setup"
-				id="global-header-dropdown-example"
-				onSelect={action('Action Selected')}
-				options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
-			/>
-			<GlobalHeaderProfile
-				id="global-header-dropdown-profile-example"
-				onClick={action('Profile Clicked')}
-				onSelect={action('Profile Selected')}
-				options={[{ label: 'Profile Menu' }]}
-			/>
-		</GlobalHeader>
-	))
-	.add('With custom <Avatar/>', () => (
-		<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
-	))
-	.add('Doc site Default', () => <Default />);
+	// .add('Open on Hybrid', () => <GlobalHeaderDemo openOn="hybrid" />)
+	// .add('Fewer Elements', () => (
+	// 	<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
+	// 		<GlobalHeaderDropdown
+	// 			assistiveText={{ icon: 'Setup' }}
+	// 			iconCategory="utility"
+	// 			iconName="setup"
+	// 			id="global-header-dropdown-example"
+	// 			onSelect={action('Action Selected')}
+	// 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
+	// 		/>
+	// 		<GlobalHeaderProfile
+	// 			id="global-header-dropdown-profile-example"
+	// 			onClick={action('Profile Clicked')}
+	// 			onSelect={action('Profile Selected')}
+	// 			options={[{ label: 'Profile Menu' }]}
+	// 		/>
+	// 	</GlobalHeader>
+	// ))
+	// .add('With custom <Avatar/>', () => (
+	// 	<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
+	// ))
+	// .add('Doc site Default', () => <Default />)
+;

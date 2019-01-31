@@ -18,24 +18,24 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				`${COMPONENT} has been deprecated in favor of more-specific global header subcomponents. Please see docs for updated examples.`
 			);
-		} else {
-			const createDocUrl = getComponentDocFn(jsonDoc);
-
-			deprecatedProperty(
-				COMPONENT,
-				props.skipToContentAssistiveText,
-				'skipToContentAssistiveText',
-				"assistiveText['skipToContent']",
-				createDocUrl('assistiveText')
-			);
-			deprecatedProperty(
-				COMPONENT,
-				props.skipToNavAssistiveText,
-				'skipToNavAssistiveText',
-				"assistiveText['skipToNav']",
-				createDocUrl('assistiveText')
-			);
 		}
+
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.skipToContentAssistiveText,
+			'skipToContentAssistiveText',
+			"assistiveText['skipToContent']",
+			createDocUrl('assistiveText')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.skipToNavAssistiveText,
+			'skipToNavAssistiveText',
+			"assistiveText['skipToNav']",
+			createDocUrl('assistiveText')
+		);
 	};
 }
 
