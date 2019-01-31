@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # Global Header Help Component
-// Implements the [Pill design pattern](https://www.lightningdesignsystem.com/components/global-header/#Help) in React.
+// Implements the [Global Header Help design pattern](https://www.lightningdesignsystem.com/components/global-header/#Help) in React.
 
 import React from 'react';
 import PropTypes from 'prop-types';

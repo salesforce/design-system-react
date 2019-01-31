@@ -1,8 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Global Header Task Component
-// Implements the [Global Header Task design pattern](https://www.lightningdesignsystem.com/components/global-header/#Task) in React.
+// # Global Header Setup Component
+// Implements the [Global Header Setup design pattern](https://www.lightningdesignsystem.com/components/global-header/#Setup) in React.
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -11,12 +11,12 @@ import Button from '../button';
 import MenuDropdown from '../menu-dropdown';
 import MenuDropdownTrigger from '../menu-dropdown/button-trigger';
 
-import { GLOBAL_HEADER_TASK } from '../../utilities/constants';
+import { GLOBAL_HEADER_SETUP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
-	 * * `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.
+	 * * `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.
 	 */
 	assistiveText: PropTypes.shape({
 		triggerButton: PropTypes.string
@@ -28,9 +28,9 @@ const propTypes = {
 };
 
 /**
- * A GlobalHeaderTask component.
+ * A GlobalHeaderSetup component.
  */
-class GlobalHeaderTask extends React.Component {
+class GlobalHeaderSetup extends React.Component {
 	render() {
 		const menuDropdownProps = assign({
 			align: 'right',
@@ -45,9 +45,10 @@ class GlobalHeaderTask extends React.Component {
 				<MenuDropdownTrigger>
 					<Button
 						assistiveText={{ icon: this.props.assistiveText.triggerButton }}
-						className="slds-button_icon slds-global-actions__task slds-global-actions__item-action"
+						className="slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
 						iconCategory="utility"
-						iconName="add"
+						iconClassName="slds-global-header__icon"
+						iconName="setup"
 						iconSize="small"
 						iconVariant="container"
 						variant="icon"
@@ -59,14 +60,14 @@ class GlobalHeaderTask extends React.Component {
 	}
 }
 
-GlobalHeaderTask.displayName = GLOBAL_HEADER_TASK;
+GlobalHeaderSetup.displayName = GLOBAL_HEADER_SETUP;
 
-GlobalHeaderTask.defaultProps = {
+GlobalHeaderSetup.defaultProps = {
 	assistiveText: {
-		triggerButton: 'Global Actions'
+		triggerButton: 'Setup'
 	}
 };
 
-GlobalHeaderTask.propTypes = propTypes;
+GlobalHeaderSetup.propTypes = propTypes;
 
-export default GlobalHeaderTask;
+export default GlobalHeaderSetup;

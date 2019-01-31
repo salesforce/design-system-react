@@ -10,6 +10,7 @@ import GlobalHeaderDropdown from '../../global-header/dropdown';
 import GlobalHeaderHelp from '../../global-header/help';
 import GlobalHeaderProfile from '../../global-header/profile';
 import GlobalHeaderSearch from '../../global-header/search';
+import GlobalHeaderSetup from '../../global-header/setup';
 import GlobalHeaderTask from '../../global-header/task';
 
 import MenuDropdown from '../../menu-dropdown';
@@ -85,6 +86,7 @@ const GlobalHeaderDemo = (props) => (
 			)}
 		/>
 		<GlobalHeaderHelp />
+		<GlobalHeaderSetup />
 	</GlobalHeader>
 );
 
