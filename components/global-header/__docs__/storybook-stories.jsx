@@ -9,6 +9,9 @@ import GlobalHeaderButton from '../../global-header/button';
 import GlobalHeaderDropdown from '../../global-header/dropdown';
 import GlobalHeaderProfile from '../../global-header/profile';
 import GlobalHeaderSearch from '../../global-header/search';
+import GlobalHeaderTask from '../../global-header/task';
+
+import MenuDropdown from '../../menu-dropdown';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
@@ -61,6 +64,24 @@ const GlobalHeaderDemo = (props) => (
 			labels={{ placeholder: 'Search Salesforce' }}
 			onSelect={action('Search Selected')}
 			options={[{ id: 'email', label: 'Email' }, { id: 'mobile', label: 'Mobile' }]}
+		/>
+		<GlobalHeaderTask
+			menuDropdown={(
+				<MenuDropdown>
+					<ul className="slds-dropdown__list" role="menu">
+						<li className="slds-dropdown__item" role="presentation">
+							<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+								<span className="slds-truncate" title="New Event">New Event</span>
+							</a>
+						</li>
+						<li className="slds-dropdown__item" role="presentation">
+							<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+								<span className="slds-truncate" title="New Note">New Note</span>
+							</a>
+						</li>
+					</ul>
+				</MenuDropdown>
+			)}
 		/>
 	</GlobalHeader>
 );

@@ -23,8 +23,13 @@ import EventUtil from '../../utilities/event';
 // ## Constants
 import {
 	GLOBAL_HEADER,
+	GLOBAL_HEADER_FAVORITES,
+	GLOBAL_HEADER_HELP,
+	GLOBAL_HEADER_NOTIFICATIONS,
 	GLOBAL_HEADER_PROFILE,
 	GLOBAL_HEADER_SEARCH,
+	GLOBAL_HEADER_SETUP,
+	GLOBAL_HEADER_TASK,
 	GLOBAL_HEADER_TOOL,
 } from '../../utilities/constants';
 
@@ -103,25 +108,37 @@ class GlobalHeader extends React.Component {
 	};
 
 	render() {
-		let tools;
-		let search;
-		let profile;
-
-		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type.displayName === GLOBAL_HEADER_TOOL) {
-				if (!tools) tools = [];
-				tools.push(child);
-			} else if (child && child.type.displayName === GLOBAL_HEADER_SEARCH) {
-				search = child;
-			} else if (child && child.type.displayName === GLOBAL_HEADER_PROFILE) {
-				profile = child;
-			}
-		});
-
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
 		};
+		let actions = {
+			[GLOBAL_HEADER_FAVORITES]: [],
+			[GLOBAL_HEADER_HELP]: [],
+			[GLOBAL_HEADER_NOTIFICATIONS]: [],
+			[GLOBAL_HEADER_PROFILE]: [],
+			[GLOBAL_HEADER_SETUP]: [],
+			[GLOBAL_HEADER_TASK]: [],
+			[GLOBAL_HEADER_TOOL]: []	// this supports deprecated global header button and dropdown components
+		};
+		let search;
+
+		React.Children.forEach(this.props.children, (child) => {
+			if (child) {
+				if (child.type.displayName === GLOBAL_HEADER_SEARCH) {
+					search = child;
+				} else if (actions[child.type.displayName]) {
+					actions[child.type.displayName].push(child);
+				}
+			}
+		});
+
+		actions = [].concat(
+			actions[GLOBAL_HEADER_FAVORITES], actions[GLOBAL_HEADER_TASK],
+			actions[GLOBAL_HEADER_HELP], actions[GLOBAL_HEADER_SETUP],
+			actions[GLOBAL_HEADER_NOTIFICATIONS], actions[GLOBAL_HEADER_TOOL],
+			actions[GLOBAL_HEADER_PROFILE]
+		);
 
 		/* eslint-disable max-len, no-script-url */
 		return (
@@ -153,10 +170,15 @@ class GlobalHeader extends React.Component {
 						/>
 					</div>
 					{search}
-					<ul className="slds-global-header__item">
-						{tools}
-						{profile}
-					</ul>
+					<div className="slds-global-header__item">
+						<ul className="slds-global-actions">
+							{actions.map((actionItem, index) => (
+								<li className="slds-global-actions__item" key={`actions-item-${index}`}>
+									{actionItem}
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 				{this.props.navigation}
 			</header>
