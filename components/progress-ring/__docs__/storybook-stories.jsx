@@ -6,6 +6,7 @@ import Complete from '../__examples__/complete';
 import Warning from '../__examples__/warning';
 import Expired from '../__examples__/expired';
 import CustomIcon from '../__examples__/customIcon';
+import Examples from '../__examples__/examples';
 
 storiesOf(PROGRESS_RING, module)
 	.addDecorator((getStory) => (
@@ -15,4 +16,5 @@ storiesOf(PROGRESS_RING, module)
 	.add('Theme: Complete', () => <Complete />)
 	.add('Theme: Warning', () => <Warning />)
 	.add('Theme: Expired', () => <Expired />)
-	.add('Custom Icon', () => <CustomIcon />);
+	.add('Custom Icon', () => <CustomIcon />)
+	.add('Docs site Examples', () => <Examples />);
