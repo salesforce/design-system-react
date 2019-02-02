@@ -8,7 +8,7 @@ import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 class Example extends React.Component {
-	static displayName = 'PageHeaderExample';
+	static displayName = 'ObjectHomePageHeaderExample';
 
 	render() {
 		const navRight = (
