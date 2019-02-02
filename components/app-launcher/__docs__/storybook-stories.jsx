@@ -22,7 +22,14 @@ import SLDSSettings from '../../SLDSSettings';
 
 import DefaultExample from '../__examples__/default';
 
-SLDSSettings.setAppElement('#root'); // used by Modal component
+import { canUseDOM } from '../../../utilities/execution-environment';
+
+// used by Modal component
+if (canUseDOM && document.querySelector('#root')) {
+	SLDSSettings.setAppElement('#root');
+} else {
+	SLDSSettings.setAppElement(document.createElement('div'));
+}
 
 const standardTileDemoStyles = {
 	width: '20rem',
