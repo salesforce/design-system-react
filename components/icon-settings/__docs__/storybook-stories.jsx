@@ -12,5 +12,5 @@ storiesOf(ICON_SETTINGS, module)
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base: Icon path', () => <IconPath />)
-	.add('Base: Sprite imports RemoveTest', () => <Sprite />)
-	.add('Base: OnRequestIconPath RemoveTest', () => <OnRequestIconPath />);
+	.add('Base: Sprite imports NoTest', () => <Sprite />)
+	.add('Base: OnRequestIconPath NoTest', () => <OnRequestIconPath />);
