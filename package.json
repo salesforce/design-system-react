@@ -35,7 +35,8 @@
 		"test:docs": "npx babel-node ./tests/component-docs-test.js",
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
-		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest",
+		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
+		"test:a11y": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
@@ -45,28 +46,7 @@
 		"url": "git+ssh://git@github.com/salesforce/design-system-react.git"
 	},
 	"jest": {
-		"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
-		"testEnvironment": "jsdom",
-		"testPathIgnorePatterns": [
-			"/node_modules/",
-			"/preset/",
-			"/.tmp-amd/",
-			"/.tmp-commonjs/",
-			"/.tmp-es/",
-			"/.tmp-npm/"
-		],
-		"transform": {
-			"^.+\\.jsx?$": "babel-jest",
-			"^.+\\.svg$": "jest-svg-transformer"
-		},
-		"transformIgnorePatterns": [
-			"/node_modules/",
-			"/preset/",
-			"/.tmp-amd/",
-			"/.tmp-commonjs/",
-			"/.tmp-es/",
-			"/.tmp-npm/"
-		]
+		"preset": "./tests/snapshots-config.json"
 	},
 	"keywords": [
 		"react",

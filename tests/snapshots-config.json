@@ -1,0 +1,20 @@
+{
+	"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
+	"testEnvironment": "node",
+	"testPathIgnorePatterns": [
+		"/node_modules/",
+		"/preset/",
+		"/.tmp-amd/",
+		"/.tmp-commonjs/",
+		"/.tmp-es/",
+		"/.tmp-npm/"
+	],
+	"transformIgnorePatterns": [
+		"/node_modules/",
+		"/preset/",
+		"/.tmp-amd/",
+		"/.tmp-commonjs/",
+		"/.tmp-es/",
+		"/.tmp-npm/"
+	]
+}

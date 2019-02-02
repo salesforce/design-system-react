@@ -8,12 +8,13 @@
  * https://github.com/storybooks/storybook/tree/master/addons/storyshots
  */
 
+// Ran in Jest Node environment
+
 import express from 'express';
 import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
 import path from 'path';
 
-// Express server setup. `npm run storyshots:build` must
-// be run first.
+// Express server setup. `npm run storyshots:build` must be run first.
 const rootPath = path.resolve(__dirname, '../');
 const app = express();
 const port = process.env.PORT || 8002;
@@ -30,6 +31,7 @@ app.use(express.static(`${rootPath}/storybook-based-tests`));
 // Create DOM snapshot tests from Storybook stories
 initStoryshots({
 	configPath: '.storybook-based-tests',
+	storyNameRegex: /^((?!.*?(NoTest)).)*$/,
 	suite: 'DOM snapshots',
 });
 
@@ -66,6 +68,7 @@ describe('Image Snapshots', function imageSnapshotFunction() {
 	// snapshot tests.
 	initStoryshots({
 		configPath: '.storybook-based-tests',
+		storyNameRegex: /^((?!.*?(NoTest)).)*$/,
 		suite: 'Image storyshots',
 		test: imageSnapshot({
 			storybookUrl: `http://localhost:${port}`,
