@@ -48,12 +48,7 @@ components.map((node) => {
 		}
 	}
 
-	console.log(
-		`\n================================================================================\n[ ${inputPath.replace(
-			dirName,
-			'.'
-		)} ] `
-	);
+	console.log(`[ ${inputPath.replace(dirName, '.')} ] `);
 
 	const src = fs.readFileSync(inputPath, 'utf8');
 	const doc = parse(src);
