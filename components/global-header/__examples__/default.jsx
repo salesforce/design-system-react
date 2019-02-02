@@ -39,7 +39,7 @@ class Example extends React.Component {
 						variant="neutral"
 					/>
 					<GlobalHeaderDropdown
-						assistiveText="Global Actions"
+						assistiveText={{ icon: 'Global Actions' }}
 						id="global-header-dropdown-example"
 						iconCategory="utility"
 						iconName="add"
@@ -50,6 +50,7 @@ class Example extends React.Component {
 					/>
 					<GlobalHeaderButton
 						assistiveText={{ icon: 'Help and Training' }}
+						iconCategory="utility"
 						iconName="question"
 						onClick={() => {
 							console.log('>>> onClick');
@@ -57,6 +58,7 @@ class Example extends React.Component {
 					/>
 					<GlobalHeaderButton
 						assistiveText={{ icon: 'Setup' }}
+						iconCategory="utility"
 						iconName="settings"
 						onClick={() => {
 							console.log('>>> onClick');

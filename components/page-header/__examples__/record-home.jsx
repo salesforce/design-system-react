@@ -8,7 +8,7 @@ import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
 
 class Example extends React.Component {
-	static displayName = 'PageHeaderExample';
+	static displayName = 'RecordHomePageHeaderExample';
 
 	render() {
 		const contentRight = (

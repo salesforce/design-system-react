@@ -30,6 +30,7 @@ const recordHomeDetails1 = [
 		content: 'Description (2-line truncation)',
 	},
 ];
+
 const recordHomeDetails2 = [
 	{
 		label: 'Field 1',
@@ -105,10 +106,12 @@ const recordHomeContentRight = (
 				label: 'Follow',
 			}}
 			stateTwo={{
+				iconCategory: 'utility',
 				iconName: 'check',
 				label: 'Following',
 			}}
 			stateThree={{
+				iconCategory: 'utility',
 				iconName: 'close',
 				label: 'Unfollow',
 			}}
@@ -232,6 +235,7 @@ const objectHomeContentRight = (
 					icon: 'Sort',
 				}}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-object-home-content-right"
@@ -328,6 +332,7 @@ const relatedListContentRight = (
 					icon: 'Sort',
 				}}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-related-list-content-right"
