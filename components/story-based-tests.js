@@ -2,13 +2,13 @@
  * STORY-BASED SNAPSHOT TESTING
  *
  * Please add stories below to use Storybook Stories (http://localhost:9001)
- * as the basis for DOM and image snapshots to allow markup and visual regression
- * testing. All new components should be added below to enable DOM and image
- * snapshots. With enough Storybook story examples, these two methods should be
- * significant to fully test components with the exception of callback testing.
- * Pleaes test callback props with the Mocha framework (http://localhost:8001).
- * `tests/story-based-tests.snapshot-test.js` looks at this file and uses the
- * following stories to create snapshots.
+ * as the basis for DOM and image snapshots to allow markup and visual
+ *  regression testing. All new components should be added below to enable 
+ * DOM and image snapshots. With enough Storybook story examples, these two
+ * methods should be significant to fully test components with the exception
+ * of callback testing. Pleaes test callback props with the Mocha framework
+ * (http://localhost:8001). `tests/story-based-tests.snapshot-test.js` looks
+ * at this file and uses the following stories to create snapshots.
  *
  * This library is transitioning to story-based testing, but not all components
  * are able to be tested without a DOM. This file should eventually go away and
