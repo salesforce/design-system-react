@@ -15,7 +15,8 @@ import { GLOBAL_HEADER_NOTIFICATIONS } from '../../utilities/constants';
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
-	 * * `triggerButton`: Assistive text for the GlobalHeaderNotifications trigger button. The default is `Help and Training`.
+	 * * `newNotifications`: Assistive text for when there are new notifications. The default is '${notificationCount} new notifications'. '${notificationCount}' will be replaced with the notificationCount prior to rendering.
+	 * * `noNotifications`: Assistive text for when there are no new notifications.
 	 */
 	assistiveText: PropTypes.shape({
 		newNotifications: PropTypes.string,
@@ -38,7 +39,7 @@ class GlobalHeaderNotifications extends React.Component {
 	render() {
 		const notificationCount = this.props.notificationCount;
 		const popoverProps = assign({
-			align: 'bottom',
+			align: 'bottom right',
 			body: (<span></span>),
 			heading: 'Notifications',
 			triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click'

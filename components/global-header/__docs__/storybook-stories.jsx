@@ -5,8 +5,7 @@ import IconSettings from '../../icon-settings';
 
 import Avatar from '../../avatar';
 import GlobalHeader from '../../global-header';
-import GlobalHeaderButton from '../../global-header/button';
-import GlobalHeaderDropdown from '../../global-header/dropdown';
+import GlobalHeaderFavorites from '../../global-header/favorites';
 import GlobalHeaderHelp from '../../global-header/help';
 import GlobalHeaderNotifications from '../../global-header/notifications';
 import GlobalHeaderProfile from '../../global-header/profile';
@@ -51,46 +50,80 @@ const HeaderProfileCustomContent = (props) => (
 );
 
 /* eslint-disable react/display-name */
-const GlobalHeaderDemo = (props) => (
-	<GlobalHeader
-		onSkipToContent={action('Skip to Main Content')}
-		onSkipToNav={action('Skip to Navigation')}
-		// Add back for visual review with navigation present.
-		// The presence of React Modal in App Launcher in Global Navigation prevents Jest (node) testing.
-		// navigation={globalNavigationBar(props)}
-		assistiveText={{
-			skipToContent: 'Skip to Main Content',
-			skipToNavAssistiveText: 'Skip to Navigation',
-		}}
-	>
-		<GlobalHeaderSearch
-			labels={{ placeholder: 'Search Salesforce' }}
-			onSelect={action('Search Selected')}
-			options={[{ id: 'email', label: 'Email' }, { id: 'mobile', label: 'Mobile' }]}
-		/>
-		<GlobalHeaderTask
-			menuDropdown={(
-				<MenuDropdown>
-					<ul className="slds-dropdown__list" role="menu">
-						<li className="slds-dropdown__item" role="presentation">
-							<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-								<span className="slds-truncate" title="New Event">New Event</span>
-							</a>
-						</li>
-						<li className="slds-dropdown__item" role="presentation">
-							<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-								<span className="slds-truncate" title="New Note">New Note</span>
-							</a>
-						</li>
-					</ul>
-				</MenuDropdown>
-			)}
-		/>
-		<GlobalHeaderHelp />
-		<GlobalHeaderSetup />
-		<GlobalHeaderNotifications notificationCount={5} />
-	</GlobalHeader>
-);
+class GlobalHeaderDemo extends React.Component {
+	constructor (props) {
+		super(props);
+		this.state = {
+			favoritesActionSelected: false
+		};
+	}
+
+	render () {
+		return (
+			<GlobalHeader
+				onSkipToContent={action('Skip to Main Content')}
+				onSkipToNav={action('Skip to Navigation')}
+				// Add back for visual review with navigation present.
+				// The presence of React Modal in App Launcher in Global Navigation prevents Jest (node) testing.
+				// navigation={globalNavigationBar(props)}
+				assistiveText={{
+					skipToContent: 'Skip to Main Content',
+					skipToNavAssistiveText: 'Skip to Navigation',
+				}}
+			>
+				<GlobalHeaderSearch
+					labels={{ placeholder: 'Search Salesforce' }}
+					onSelect={action('Search Selected')}
+					options={[{ id: 'email', label: 'Email' }, { id: 'mobile', label: 'Mobile' }]}
+				/>
+				<GlobalHeaderFavorites
+					actionSelected={this.state.favoritesActionSelected}
+					onToggleActionSelected={(event, data) => {
+						this.setState({ favoritesActionSelected: !data.actionSelected });
+					}}
+				/>
+				<GlobalHeaderTask
+					menuDropdown={(
+						<MenuDropdown>
+							<ul className="slds-dropdown__list" role="menu">
+								<li className="slds-dropdown__item" role="presentation">
+									<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+										<span className="slds-truncate" title="New Event">Settings One</span>
+									</a>
+								</li>
+								<li className="slds-dropdown__item" role="presentation">
+									<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+										<span className="slds-truncate" title="New Note">Settings Two</span>
+									</a>
+								</li>
+							</ul>
+						</MenuDropdown>
+					)}
+				/>
+				<GlobalHeaderHelp />
+				<GlobalHeaderSetup
+					menuDropdown={(
+						<MenuDropdown>
+							<ul className="slds-dropdown__list" role="menu">
+								<li className="slds-dropdown__item" role="presentation">
+									<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+										<span className="slds-truncate" title="New Event">New Event</span>
+									</a>
+								</li>
+								<li className="slds-dropdown__item" role="presentation">
+									<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+										<span className="slds-truncate" title="New Note">New Note</span>
+									</a>
+								</li>
+							</ul>
+						</MenuDropdown>
+					)}
+				/>
+				<GlobalHeaderNotifications notificationCount={5} />
+			</GlobalHeader>
+		);
+	}
+}
 
 storiesOf(GLOBAL_HEADER, module)
 	.addDecorator((getStory) => (
