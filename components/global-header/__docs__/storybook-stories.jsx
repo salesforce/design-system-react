@@ -120,6 +120,7 @@ class GlobalHeaderDemo extends React.Component {
 					)}
 				/>
 				<GlobalHeaderNotifications notificationCount={5} />
+				<GlobalHeaderProfile />
 			</GlobalHeader>
 		);
 	}

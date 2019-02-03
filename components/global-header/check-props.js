@@ -5,9 +5,14 @@
 import componentIsDeprecated from '../../utilities/warning/component-is-deprecated';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 
 // ## Constants
-import { GLOBAL_HEADER_BUTTON, GLOBAL_HEADER_DROPDOWN } from '../../utilities/constants';
+import {
+	GLOBAL_HEADER_BUTTON,
+	GLOBAL_HEADER_DROPDOWN,
+	GLOBAL_HEADER_PROFILE
+} from '../../utilities/constants';
 
 let checkProps = function() {};
 
@@ -17,6 +22,48 @@ if (process.env.NODE_ENV !== 'production') {
 			componentIsDeprecated(
 				COMPONENT,
 				`${COMPONENT} has been deprecated in favor of more-specific global header subcomponents. Please see docs for updated examples.`
+			);
+		}
+
+		if (COMPONENT === GLOBAL_HEADER_PROFILE) {
+			const popoverExtraMessage = 'Use the `popover` attribute to provide a `Popover` component with content inside the `body` attribute instead.';
+
+			sunsetProperty(
+				COMPONENT,
+				props.align,
+				'align'
+			);
+
+			sunsetProperty(
+				COMPONENT,
+				props.children,
+				'children',
+				popoverExtraMessage
+			);
+
+			sunsetProperty(
+				COMPONENT,
+				props.nubbinPosition,
+				'nubbinPosition'
+			);
+
+			sunsetProperty(
+				COMPONENT,
+				props.offset,
+				'offset'
+			);
+
+			sunsetProperty(
+				COMPONENT,
+				props.onSelect,
+				'onSelect'
+			);
+
+			sunsetProperty(
+				COMPONENT,
+				props.options,
+				'options',
+				popoverExtraMessage
 			);
 		}
 
