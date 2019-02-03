@@ -13,7 +13,7 @@ import GlobalHeaderSearch from '../../global-header/search';
 import GlobalHeaderSetup from '../../global-header/setup';
 import GlobalHeaderTask from '../../global-header/task';
 
-import MenuDropdown from '../../menu-dropdown';
+import Dropdown from '../../menu-dropdown';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
@@ -83,8 +83,8 @@ class GlobalHeaderDemo extends React.Component {
 					}}
 				/>
 				<GlobalHeaderTask
-					menuDropdown={(
-						<MenuDropdown>
+					dropdown={(
+						<Dropdown>
 							<ul className="slds-dropdown__list" role="menu">
 								<li className="slds-dropdown__item" role="presentation">
 									<a href="javascript:void(0);" role="menuitem" tabIndex="0">
@@ -97,13 +97,13 @@ class GlobalHeaderDemo extends React.Component {
 									</a>
 								</li>
 							</ul>
-						</MenuDropdown>
+						</Dropdown>
 					)}
 				/>
 				<GlobalHeaderHelp />
 				<GlobalHeaderSetup
-					menuDropdown={(
-						<MenuDropdown>
+					dropdown={(
+						<Dropdown>
 							<ul className="slds-dropdown__list" role="menu">
 								<li className="slds-dropdown__item" role="presentation">
 									<a href="javascript:void(0);" role="menuitem" tabIndex="0">
@@ -116,7 +116,7 @@ class GlobalHeaderDemo extends React.Component {
 									</a>
 								</li>
 							</ul>
-						</MenuDropdown>
+						</Dropdown>
 					)}
 				/>
 				<GlobalHeaderNotifications notificationCount={5} />

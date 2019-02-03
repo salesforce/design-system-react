@@ -15,11 +15,13 @@ import { GLOBAL_HEADER_NOTIFICATIONS } from '../../utilities/constants';
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
-	 * * `newNotifications`: Assistive text for when there are new notifications. The default is '${notificationCount} new notifications'. '${notificationCount}' will be replaced with the notificationCount prior to rendering.
+	 * * `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.
+	 * * `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.
 	 * * `noNotifications`: Assistive text for when there are no new notifications.
 	 */
 	assistiveText: PropTypes.shape({
-		newNotifications: PropTypes.string,
+		newNotificationsAfter: PropTypes.string,
+		newNotificationsBefore: PropTypes.string,
 		noNotifications: PropTypes.string
 	}),
 	/**
@@ -49,8 +51,7 @@ class GlobalHeaderNotifications extends React.Component {
 		delete popoverProps.children;
 
 		if (notificationCount > 0) {
-			notificationsAssistiveText = this.props.assistiveText.newNotifications;
-			notificationsAssistiveText = notificationsAssistiveText.replace('${notificationCount}', notificationCount);
+			notificationsAssistiveText = `${this.props.assistiveText.newNotificationsBefore}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
 		}
 
 		return (
@@ -84,7 +85,8 @@ GlobalHeaderNotifications.displayName = GLOBAL_HEADER_NOTIFICATIONS;
 
 GlobalHeaderNotifications.defaultProps = {
 	assistiveText: {
-		newNotifications: '${notificationCount} new notifications',
+		newNotificationsAfter: ' new notifications',
+		newNotificationsBefore: '',
 		noNotifications: 'no new notifications'
 	},
 	notificationCount: 0

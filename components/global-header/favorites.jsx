@@ -100,8 +100,8 @@ class GlobalHeaderFavorites extends React.Component {
 							iconSize="small"
 							iconVariant="border"
 							style={{	// this is needed because the popover trigger wrapper janks up the default styles
-								'border-left': '0',
-								'border-radius': '0 .25rem .25rem 0'
+								borderLeft: '0',
+								borderRadius: '0 .25rem .25rem 0'
 							}}
 							variant="icon"
 						/>
