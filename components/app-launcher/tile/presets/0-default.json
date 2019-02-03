@@ -1,0 +1,14 @@
+{
+	"rootId": "tile827421747",
+	"elements": {
+		"tile827421747": {
+			"name": "Tile",
+			"props": {
+				"title": "Call Center",
+				"iconText": "CC",
+				"description": "The key to call center and contact center is not to use too many words!",
+				"descriptionHeading": "Call Center"
+			}
+		}
+	}
+  }

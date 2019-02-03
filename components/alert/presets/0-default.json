@@ -1,0 +1,15 @@
+{
+	"rootId": "card3703996384",
+	"elements": {
+	  "card3703996384": {
+		"name": "Alert",
+		"props": {
+			"dismissible": true,
+			"labels": {
+				"heading": "Logged in as John Smith (johnsmith@acme.com).",
+				"headingLink": "Log out"
+			}
+		}
+	  }
+	}
+  }

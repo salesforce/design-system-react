@@ -1,3 +1,3 @@
-import Button from "./checkbox.jsx";
+import Checkbox from "./checkbox.jsx";
 
-export { Button as default }
+export { Checkbox as default }

@@ -1,0 +1,45 @@
+{
+	"rootId": "applauncher3703996384",
+	"elements": {
+	  "applauncher3703996384": {
+		"name": "AppLauncher",
+		"props": {
+			"triggerName": "App Name",
+			"children": [{
+				"uxpinPresetElementId": "section2379554241"
+			}]
+		}
+		},
+		"section2379554241": {
+			"name": "Section",
+			"props": {
+				"title": "Tile Section",
+				"children": [
+					{
+						"uxpinPresetElementId": "tile251235177"
+					},
+					{
+						"uxpinPresetElementId": "tile827421747"
+					}
+				]
+			}
+		},
+		"tile251235177": {
+			"name": "Tile",
+			"props": {
+				"title": "Marketing Cloud",
+				"iconText": "MC",
+				"description": "Send emails, track emails, read emails! Emails!"
+			}
+		},
+		"tile827421747": {
+			"name": "Tile",
+			"props": {
+				"title": "Call Center",
+				"iconText": "CC",
+				"description": "The key to call center and contact center is not to use too many words!",
+				"descriptionHeading": "Call Center"
+			}
+		}
+	}
+  }

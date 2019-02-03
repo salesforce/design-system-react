@@ -1,0 +1,46 @@
+{
+	"rootId": "card3703996384",
+	"elements": {
+	  "card3703996384": {
+		"name": "Accordion",
+		"props": {
+			"children": [
+				{
+					"uxpinPresetElementId": "panel2379554241"
+				},
+				{
+					"uxpinPresetElementId": "panel2395295330"
+				},
+				{
+					"uxpinPresetElementId": "panel3333362042"
+				}
+			]
+		}
+		},
+		"panel2379554241": {
+			"name": "Panel",
+			"props": {
+				"expanded": true,
+				"summary": "Panel 1. Merge",
+				"children": "Merge is a revolution"
+			}
+		},
+		"panel2395295330": {
+			"name": "Panel",
+			"props": {
+				"expanded": false,
+				"summary": "Panel 2. Merge",
+				"children": "Merge is a revolution"
+			}
+		},
+		"panel3333362042": {
+			"name": "Panel",
+			"props": {
+				"expanded": false,
+				"summary": "Panel 3. Merge",
+				"children": "Merge is a revolution"
+			}
+		}
+	}
+  }
+

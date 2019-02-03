@@ -1,0 +1,36 @@
+{
+	"rootId": "section2379554241",
+	"elements": {
+		"section2379554241": {
+			"name": "Section",
+			"props": {
+				"title": "Tile Section",
+				"children": [
+					{
+						"uxpinPresetElementId": "tile251235177"
+					},
+					{
+						"uxpinPresetElementId": "tile827421747"
+					}
+				]
+			}
+		},
+		"tile251235177": {
+			"name": "Tile",
+			"props": {
+				"title": "Marketing Cloud",
+				"iconText": "MC",
+				"description": "Send emails, track emails, read emails! Emails!"
+			}
+		},
+		"tile827421747": {
+			"name": "Tile",
+			"props": {
+				"title": "Call Center",
+				"iconText": "CC",
+				"description": "The key to call center and contact center is not to use too many words!",
+				"descriptionHeading": "Call Center"
+			}
+		}
+	}
+  }

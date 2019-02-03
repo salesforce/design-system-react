@@ -9,9 +9,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Button from '../button';
+import Button from '../../button';
 
-import { ACCORDION_PANEL } from '../../utilities/constants';
+import { ACCORDION_PANEL } from '../../../utilities/constants';
 
 const propTypes = {
 	/**

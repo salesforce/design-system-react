@@ -8,13 +8,13 @@ import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
-import Truncate from '../utilities/truncate';
+import Truncate from '../../utilities/truncate';
 
 // ## Children
-import Highlighter from '../utilities/highlighter';
-import Tooltip from '../tooltip';
+import Highlighter from '../../utilities/highlighter';
+import Tooltip from '../../tooltip';
 
-import { APP_LAUNCHER_TILE } from '../../utilities/constants';
+import { APP_LAUNCHER_TILE } from '../../../utilities/constants';
 
 const handleClick = (event, href, onClick) => {
 	event.preventDefault();
