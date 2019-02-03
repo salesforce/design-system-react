@@ -32,6 +32,9 @@ const propTypes = {
  */
 class GlobalHeaderSetup extends React.Component {
 	render() {
+		const buttonAriaProps = {
+			'aria-haspopup': true
+		};
 		const dropdownProps = assign({
 			align: 'right',
 			nubbinPosition: 'top right'
@@ -51,7 +54,9 @@ class GlobalHeaderSetup extends React.Component {
 						iconName="setup"
 						iconSize="small"
 						iconVariant="container"
+						title={this.props.assistiveText.triggerButton}
 						variant="icon"
+						{...buttonAriaProps}
 					/>
 				</DropdownTrigger>
 				{dropdownChildren}

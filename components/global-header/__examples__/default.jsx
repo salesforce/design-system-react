@@ -1,14 +1,50 @@
 import React from 'react';
 
-import IconSettings from '~/components/icon-settings';
+import Dropdown from '~/components/menu-dropdown';
 import GlobalHeader from '~/components/global-header'; // `~` is replaced with design-system-react at runtime
-import GlobalHeaderButton from '~/components/global-header/button';
-import GlobalHeaderDropdown from '~/components/global-header/dropdown';
+import GlobalHeaderFavorites from '~/components/global-header/favorites';
+import GlobalHeaderHelp from '~/components/global-header/help';
+import GlobalHeaderNotifications from '~/components/global-header/notifications';
 import GlobalHeaderProfile from '~/components/global-header/profile';
 import GlobalHeaderSearch from '~/components/global-header/search';
+import GlobalHeaderSetup from '~/components/global-header/setup';
+import GlobalHeaderTask from '~/components/global-header/task';
+import IconSettings from '~/components/icon-settings';
+import Popover from '~/components/popover';
+
+const HeaderProfileCustomContent = (props) => (
+	<div id="custom-popover-content">
+		<div className="slds-m-around_medium">
+			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
+				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
+				<div className="slds-tile__detail">
+					<p className="slds-truncate">
+						<a
+							className="slds-m-right_medium"
+							href="javascript:void(0)"
+							onClick={props.onClick}
+						>
+							Settings
+						</a>
+						<a href="javascript:void(0)" onClick={props.onClick}>
+							Log Out
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+);
 
 class Example extends React.Component {
 	static displayName = 'GlobalHeaderExample';
+
+	constructor (props) {
+		super(props);
+		this.state = {
+			favoritesActionSelected: false
+		};
+	}
 
 	render() {
 		return (
@@ -23,55 +59,59 @@ class Example extends React.Component {
 					}}
 				>
 					<GlobalHeaderSearch
-						placeholder="Search Salesforce"
+						labels={{ placeholder: 'Search Salesforce' }}
 						onSelect={() => {
 							console.log('>>> onSelect');
 						}}
-						options={[{ label: 'Email' }, { label: 'Mobile' }]}
+						options={[{ id: 'email', label: 'Email' }, { id: 'mobile', label: 'Mobile' }]}
 					/>
-					<GlobalHeaderButton
-						className="slds-m-right_small"
-						iconVariant={null}
-						label="Feedback"
-						onClick={() => {
-							console.log('>>> onClick');
-						}}
-						variant="neutral"
-					/>
-					<GlobalHeaderDropdown
-						assistiveText="Global Actions"
-						id="global-header-dropdown-example"
-						iconCategory="utility"
-						iconName="add"
-						onSelect={() => {
-							console.log('>>> onSelect');
-						}}
-						options={[{ label: 'New Note' }, { label: 'Log a Call' }]}
-					/>
-					<GlobalHeaderButton
-						assistiveText={{ icon: 'Help and Training' }}
-						iconName="question"
-						onClick={() => {
-							console.log('>>> onClick');
+					<GlobalHeaderFavorites
+						actionSelected={this.state.favoritesActionSelected}
+						onToggleActionSelected={(event, data) => {
+							this.setState({ favoritesActionSelected: !data.actionSelected });
 						}}
 					/>
-					<GlobalHeaderButton
-						assistiveText={{ icon: 'Setup' }}
-						iconName="settings"
-						onClick={() => {
-							console.log('>>> onClick');
-						}}
+					<GlobalHeaderTask
+						dropdown={(
+							<Dropdown>
+								<ul className="slds-dropdown__list" role="menu">
+									<li className="slds-dropdown__item" role="presentation">
+										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+											<span className="slds-truncate" title="New Event">Settings One</span>
+										</a>
+									</li>
+									<li className="slds-dropdown__item" role="presentation">
+										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+											<span className="slds-truncate" title="New Note">Settings Two</span>
+										</a>
+									</li>
+								</ul>
+							</Dropdown>
+						)}
 					/>
+					<GlobalHeaderHelp />
+					<GlobalHeaderSetup
+						dropdown={(
+							<Dropdown>
+								<ul className="slds-dropdown__list" role="menu">
+									<li className="slds-dropdown__item" role="presentation">
+										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+											<span className="slds-truncate" title="New Event">New Event</span>
+										</a>
+									</li>
+									<li className="slds-dropdown__item" role="presentation">
+										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+											<span className="slds-truncate" title="New Note">New Note</span>
+										</a>
+									</li>
+								</ul>
+							</Dropdown>
+						)}
+					/>
+					<GlobalHeaderNotifications notificationCount={5} />
 					<GlobalHeaderProfile
-						avatar="/images/avatar2.jpg"
-						id="global-header-profile-example"
-						onClick={() => {
-							console.log('>>> onClick');
-						}}
-						onSelect={() => {
-							console.log('>>> onSelect');
-						}}
-						options={[{ label: 'Profile Menu' }]}
+						popover={<Popover body={<HeaderProfileCustomContent />} />}
+						userName="Art Vandelay"
 					/>
 				</GlobalHeader>
 			</IconSettings>

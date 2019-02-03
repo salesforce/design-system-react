@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import IconSettings from '../../icon-settings';
 
 import Avatar from '../../avatar';
+import Dropdown from '../../menu-dropdown';
 import GlobalHeader from '../../global-header';
 import GlobalHeaderFavorites from '../../global-header/favorites';
 import GlobalHeaderHelp from '../../global-header/help';
@@ -12,8 +12,8 @@ import GlobalHeaderProfile from '../../global-header/profile';
 import GlobalHeaderSearch from '../../global-header/search';
 import GlobalHeaderSetup from '../../global-header/setup';
 import GlobalHeaderTask from '../../global-header/task';
-
-import Dropdown from '../../menu-dropdown';
+import IconSettings from '../../icon-settings';
+import Popover from '../../popover';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
@@ -26,7 +26,7 @@ import Default from '../__examples__/default';
 /* eslint-disable react/display-name */
 
 const HeaderProfileCustomContent = (props) => (
-	<div id="custom-dropdown-menu-content">
+	<div id="custom-popover-content">
 		<div className="slds-m-around_medium">
 			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
 				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
@@ -120,7 +120,11 @@ class GlobalHeaderDemo extends React.Component {
 					)}
 				/>
 				<GlobalHeaderNotifications notificationCount={5} />
-				<GlobalHeaderProfile />
+				<GlobalHeaderProfile
+					avatar={this.props.avatar}
+					popover={<Popover body={<HeaderProfileCustomContent />} />}
+					userName="Art Vandelay"
+				/>
 			</GlobalHeader>
 		);
 	}
@@ -133,27 +137,33 @@ storiesOf(GLOBAL_HEADER, module)
 		</div>
 	))
 	.add('Search + Navigation', () => <GlobalHeaderDemo />)
-	// .add('Open on Hybrid', () => <GlobalHeaderDemo openOn="hybrid" />)
-	// .add('Fewer Elements', () => (
-	// 	<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
-	// 		<GlobalHeaderDropdown
-	// 			assistiveText={{ icon: 'Setup' }}
-	// 			iconCategory="utility"
-	// 			iconName="setup"
-	// 			id="global-header-dropdown-example"
-	// 			onSelect={action('Action Selected')}
-	// 			options={[{ label: 'Global Setup' }, { label: 'Permissions' }]}
-	// 		/>
-	// 		<GlobalHeaderProfile
-	// 			id="global-header-dropdown-profile-example"
-	// 			onClick={action('Profile Clicked')}
-	// 			onSelect={action('Profile Selected')}
-	// 			options={[{ label: 'Profile Menu' }]}
-	// 		/>
-	// 	</GlobalHeader>
-	// ))
-	// .add('With custom <Avatar/>', () => (
-	// 	<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
-	// ))
-	// .add('Doc site Default', () => <Default />)
-;
+	.add('Fewer Elements', () => (
+		<GlobalHeader logoSrc="/assets/images/global-header/logo.svg">
+			<GlobalHeaderSetup
+				dropdown={(
+					<Dropdown>
+						<ul className="slds-dropdown__list" role="menu">
+							<li className="slds-dropdown__item" role="presentation">
+								<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+									<span className="slds-truncate" title="New Event">New Event</span>
+								</a>
+							</li>
+							<li className="slds-dropdown__item" role="presentation">
+								<a href="javascript:void(0);" role="menuitem" tabIndex="0">
+									<span className="slds-truncate" title="New Note">New Note</span>
+								</a>
+							</li>
+						</ul>
+					</Dropdown>
+				)}
+			/>
+			<GlobalHeaderProfile
+				popover={<Popover body={<HeaderProfileCustomContent />} />}
+				userName="Art Vandelay"
+			/>
+		</GlobalHeader>
+	))
+	.add('With custom <Avatar/>', () => (
+		<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
+	))
+	.add('Doc site Default', () => <Default />);

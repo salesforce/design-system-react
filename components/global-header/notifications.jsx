@@ -39,6 +39,9 @@ const propTypes = {
  */
 class GlobalHeaderNotifications extends React.Component {
 	render() {
+		const buttonAriaProps = {
+			'aria-live': 'assertive'
+		};
 		const notificationCount = this.props.notificationCount;
 		const popoverProps = assign({
 			align: 'bottom right',
@@ -52,6 +55,8 @@ class GlobalHeaderNotifications extends React.Component {
 
 		if (notificationCount > 0) {
 			notificationsAssistiveText = `${this.props.assistiveText.newNotificationsBefore}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
+		} else {
+			buttonAriaProps['aria-atomic'] = 'true';
 		}
 
 		return (
@@ -65,7 +70,9 @@ class GlobalHeaderNotifications extends React.Component {
 						iconName="notification"
 						iconSize="small"
 						iconVariant="container"
+						title={notificationsAssistiveText}
 						variant="icon"
+						{...buttonAriaProps}
 					/>
 					{(notificationCount > 0) ? (
 						<span

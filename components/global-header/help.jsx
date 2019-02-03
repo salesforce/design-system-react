@@ -31,6 +31,9 @@ const propTypes = {
  */
 class GlobalHeaderHelp extends React.Component {
 	render() {
+		const buttonAriaProps = {
+			'aria-haspopup': true
+		};
 		const popoverProps = assign({
 			align: 'bottom',
 			body: (<span></span>),
@@ -50,7 +53,9 @@ class GlobalHeaderHelp extends React.Component {
 					iconName="question"
 					iconSize="small"
 					iconVariant="container"
+					title={this.props.assistiveText.triggerButton}
 					variant="icon"
+					{...buttonAriaProps}
 				/>
 			</Popover>
 		);

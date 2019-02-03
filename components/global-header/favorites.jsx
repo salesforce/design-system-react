@@ -64,7 +64,7 @@ class GlobalHeaderFavorites extends React.Component {
 		delete popoverProps.children;
 
 		if (this.props.actionSelected) {
-			actionAriaProps['aria-pressed'] = true;
+			actionAriaProps['aria-pressed'] = 'true';
 		}
 
 		return (
@@ -88,6 +88,7 @@ class GlobalHeaderFavorites extends React.Component {
 								this.toggleActionSelected(event);
 							}
 						}}
+						title={this.props.assistiveText.action}
 						variant="icon"
 						{...actionAriaProps}
 					/>
@@ -103,6 +104,7 @@ class GlobalHeaderFavorites extends React.Component {
 								borderLeft: '0',
 								borderRadius: '0 .25rem .25rem 0'
 							}}
+							title={this.props.assistiveText.more}
 							variant="icon"
 						/>
 					</Popover>
