@@ -25,6 +25,7 @@ import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
+import Popover from '../popover';
 import SelectedListBox from '../pill-container/private/selected-listbox';
 
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
@@ -48,6 +49,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.
+	 * * `popoverHeading`: Used by popover variant, assistive text for the Popover heading.
 	 * * `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.
 	 * * `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.
 	 * * `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.
@@ -56,6 +58,7 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
+		popoverHeading: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
 		removePill: PropTypes.string,
 		selectedListboxLabel: PropTypes.string,
@@ -65,6 +68,10 @@ const propTypes = {
 	 * This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._
 	 */
 	'aria-describedby': PropTypes.string,
+	/**
+	 * Contents of popover. That is the contents of the Combobox's dialog.
+	 */
+	children: PropTypes.node,
 	/**
 	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 	 */
@@ -224,7 +231,7 @@ const propTypes = {
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
 		})
-	).isRequired,
+	),
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
@@ -233,6 +240,10 @@ const propTypes = {
 	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
+	/**
+	 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Combobox's Popover dialog to be a controlled component. _Tested with Mocha framework._
+	 */
+	popover: PropTypes.bool,
 	/**
 	 * Applies label styling for a required form element. _Tested with snapshot testing._
 	 */
@@ -260,7 +271,7 @@ const propTypes = {
 	/**
 	 * Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly']),
+	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
 };
 
 const defaultProps = {
@@ -387,6 +398,67 @@ class Combobox extends React.Component {
 		) : null;
 	}
 
+	getCustomPopoverProps = ({ assistiveText }) => {
+		/*
+		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
+		 */
+		const popoverBody = (
+			<div>
+				<h4
+					className="slds-assistive-text"
+					id={`${this.getId()}-popover-heading`}
+				>
+					{assistiveText.popoverHeading}
+				</h4>
+				{this.props.children}
+			</div>
+		);
+
+		const popoverFooter = (
+			<div>
+				<button
+					className="slds-button slds-button_neutral"
+					id="cancel-button"
+					onClick={this.handleClose}
+				>
+					Cancel
+				</button>
+				<button
+					className="slds-button slds-button_brand"
+					ref={this.lastTab}
+					id="done-button"
+					onClick={this.handleClose}
+				>
+					Done
+				</button>
+			</div>
+		);
+
+		const defaultPopoverProps = {
+			ariaLabelledby: `${this.getId()}-popover-heading`,
+			align: 'bottom',
+			body: popoverBody,
+			className: 'slds-popover_full-width',
+			footer: popoverFooter,
+			hasNubbin: false,
+			heading: assistiveText.popoverHeading,
+			id: `${this.getId()}-popover`,
+			isOpen: this.state.isOpen,
+			noTriggerStyles: true,
+			onOpen: this.handleOpen,
+			onClose: this.handleClose,
+			onRequestClose: this.handleClose,
+		};
+
+		/* Mixin passed popover's props if there is any to override the default popover props */
+		const popoverProps = assign(
+			defaultPopoverProps,
+			this.props.popover ? this.props.popover.props : {}
+		);
+		delete popoverProps.children;
+		return popoverProps;
+	};
+
 	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	}
@@ -483,7 +555,7 @@ class Combobox extends React.Component {
 				if (this.inputRef) {
 					this.inputRef.focus();
 				}
-			} else {
+			} else if (!this.props.popover) {
 				this.handleClose(event);
 			}
 		}, 200);
@@ -627,7 +699,7 @@ class Combobox extends React.Component {
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
 				prevState.activeSelectedOptionIndex + 1 ===
-					this.props.selection.length && direction === 'next';
+				this.props.selection.length && direction === 'next';
 			const isFirstOptionAndLeftIsPressed =
 				prevState.activeSelectedOptionIndex === 0 && direction === 'previous';
 			let newState;
@@ -848,7 +920,7 @@ class Combobox extends React.Component {
 								: null
 						}
 						aria-describedby={this.getErrorId()}
-						autoComplete="off"
+						autoComplete="list"
 						className="slds-combobox__input"
 						containerProps={{
 							className: 'slds-combobox__form-element',
@@ -879,7 +951,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 					/>
@@ -919,6 +991,86 @@ class Combobox extends React.Component {
 			)}
 		</div>
 	);
+
+	renderPopover = ({ assistiveText, labels, props }) => {
+		const popoverProps = this.getCustomPopoverProps({ assistiveText });
+		return (
+			<Popover {...popoverProps}>
+				<div className="slds-form-element__control">
+					<div className="slds-combobox_container">
+						<div
+							className={classNames(
+								'slds-combobox',
+								'slds-dropdown-trigger',
+								'slds-dropdown-trigger_click',
+								'ignore-react-onclickoutside',
+								{
+									'slds-is-open': this.getIsOpen(),
+								},
+								{
+									'slds-has-error': props.errorText,
+								},
+								props.className
+							)}
+							aria-expanded={this.getIsOpen()}
+							aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
+							// used on menu's listbox
+							aria-owns={`${this.getId()}-dialog`} // eslint-disable-line jsx-a11y/aria-proptypes
+							role="combobox"
+						>
+							<InnerInput
+								aria-autocomplete="none"
+								aria-controls={`${this.getId()}-dialog`}
+								aria-describedby={this.getErrorId()}
+								autoComplete="off"
+								className="slds-combobox__input"
+								containerProps={{
+									className: 'slds-combobox__form-element',
+									role: 'none',
+								}}
+								iconRight={
+									<InputIcon
+										category="utility"
+										name="search"
+										title={labels.inputIconTitle}
+									/>
+								}
+								id={this.getId()}
+								onFocus={this.handleInputFocus}
+								onBlur={this.handleInputBlur}
+								onKeyDown={this.handleKeyDown}
+								inputRef={this.setInputRef}
+								onClick={() => {
+									this.openDialog();
+								}}
+								onChange={this.handleInputChange}
+								placeholder={labels.placeholder}
+								readOnly
+								required={props.required}
+								role="textbox"
+								value={
+									props.predefinedOptionsOnly
+										? (this.state.activeOption && this.state.activeOption.label) ||
+										props.value
+										: props.value
+								}
+							/>
+						</div>
+					</div>
+					{props.errorText && (
+						<div className="slds-has-error">
+							<div
+								id={this.getErrorId()}
+								className="slds-form-element__help slds-has-error"
+							>
+								{props.errorText}
+							</div>
+						</div>
+					)}
+				</div>
+			</Popover>
+		);
+	}
 
 	renderInlineMultiple = ({ assistiveText, labels, props }) => (
 		<div className="slds-form-element__control">
@@ -1008,7 +1160,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 					/>
@@ -1029,8 +1181,8 @@ class Combobox extends React.Component {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
-						containerClassName: 'slds-combobox__input-entity-icon',
-					})
+					containerClassName: 'slds-combobox__input-entity-icon',
+				})
 				: null;
 
 		const value =
@@ -1070,8 +1222,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1100,8 +1252,8 @@ class Combobox extends React.Component {
 										}}
 									/>
 								) : (
-									<InputIcon category="utility" name="search" />
-								)
+										<InputIcon category="utility" name="search" />
+									)
 							}
 							iconLeft={iconLeft}
 							id={this.getId()}
@@ -1127,8 +1279,8 @@ class Combobox extends React.Component {
 							value={
 								props.predefinedOptionsOnly
 									? (this.state.activeOption &&
-											this.state.activeOption.label) ||
-										props.value
+										this.state.activeOption.label) ||
+									props.value
 									: value
 							}
 						/>
@@ -1189,7 +1341,7 @@ class Combobox extends React.Component {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
-					`${props.selection.length} options selected`
+				`${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1220,8 +1372,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1326,8 +1478,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1396,6 +1548,10 @@ class Combobox extends React.Component {
 				multiple: this.renderBase, // same
 				single: this.renderBase,
 			},
+			popover: {
+				multiple: this.renderPopover, // same
+				single: this.renderPopover,
+			},
 			'inline-listbox': {
 				multiple: this.renderInlineMultiple,
 				single: this.renderInlineSingle,
@@ -1406,7 +1562,6 @@ class Combobox extends React.Component {
 			},
 		};
 		const variantExists = subRenders[this.props.variant][multipleOrSingle];
-
 		return (
 			<div
 				className={classNames('slds-form-element', props.classNameContainer)}
@@ -1424,8 +1579,8 @@ class Combobox extends React.Component {
 				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
-							subRenderParameters
-						)
+						subRenderParameters
+					)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);
