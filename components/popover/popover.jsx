@@ -222,7 +222,6 @@ class Popover extends React.Component {
 
 	state = {
 		isOpen: false,
-		noTriggerStyles: false,
 	};
 
 	componentWillMount() {

@@ -241,7 +241,7 @@ const propTypes = {
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
 	/**
-	 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Combobox's Popover dialog to be a controlled component. _Tested with Mocha framework._
+	 * Specifies if the combobox is a popover variant.
 	 */
 	popover: PropTypes.bool,
 	/**
