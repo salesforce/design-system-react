@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 		const childrenWithoutSelectedDisplayName = [];
 
 		React.Children.forEach(children, (child) => {
-			if (child && child.type.displayName !== displayName) {
+			if (child && child.type && child.type.displayName !== displayName) {
 				childrenWithoutSelectedDisplayName.push(child);
 			}
 		});
@@ -32,12 +32,14 @@ if (process.env.NODE_ENV !== 'production') {
 		if (!hasWarned[control]) {
 			const hasChildrenWithoutSelectedDisplayName =
 				childrenWithoutSelectedDisplayName.length > 0;
-			/* eslint-disable max-len */
-			warning(
-				hasChildrenWithoutSelectedDisplayName,
-				`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`
-			);
-			/* eslint-enable max-len */
+			if (hasChildrenWithoutSelectedDisplayName) {
+				/* eslint-disable max-len */
+				warning(
+					false,
+					`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`
+				);
+				/* eslint-enable max-len */
+			}
 			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;
 		}
 	};
