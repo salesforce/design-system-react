@@ -1014,7 +1014,6 @@ class Combobox extends React.Component {
 							)}
 							aria-expanded={this.getIsOpen()}
 							aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-							// used on menu's listbox
 							aria-owns={`${this.getId()}-dialog`} // eslint-disable-line jsx-a11y/aria-proptypes
 							role="combobox"
 						>
@@ -1029,11 +1028,7 @@ class Combobox extends React.Component {
 									role: 'none',
 								}}
 								iconRight={
-									<InputIcon
-										category="utility"
-										name="search"
-										title={labels.inputIconTitle}
-									/>
+									<InputIcon category="utility" name="down" />
 								}
 								id={this.getId()}
 								onFocus={this.handleInputFocus}
