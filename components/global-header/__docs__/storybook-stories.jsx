@@ -109,9 +109,7 @@ class GlobalHeaderDemo extends React.Component {
 						</Dropdown>
 					}
 				/>
-				<GlobalHeaderHelp
-					popover={<Popover id="header-help-popover-id" />}
-				/>
+				<GlobalHeaderHelp popover={<Popover id="header-help-popover-id" />} />
 				<GlobalHeaderSetup
 					dropdown={
 						<Dropdown id="header-task-dropdown-id">
@@ -142,7 +140,12 @@ class GlobalHeaderDemo extends React.Component {
 					avatar={this.props.avatar}
 					buttonClassName="custom-button-class"
 					className="custom-popover-class"
-					popover={<Popover body={<HeaderProfileCustomContent />} id="header-profile-popover-id" />}
+					popover={
+						<Popover
+							body={<HeaderProfileCustomContent />}
+							id="header-profile-popover-id"
+						/>
+					}
 					userName="Art Vandelay"
 				/>
 			</GlobalHeader>
@@ -182,7 +185,12 @@ storiesOf(GLOBAL_HEADER, module)
 				}
 			/>
 			<GlobalHeaderProfile
-				popover={<Popover body={<HeaderProfileCustomContent />} id="header-profile-popover-id" />}
+				popover={
+					<Popover
+						body={<HeaderProfileCustomContent />}
+						id="header-profile-popover-id"
+					/>
+				}
 				userName="Art Vandelay"
 			/>
 		</GlobalHeader>

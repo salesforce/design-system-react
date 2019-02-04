@@ -74,7 +74,7 @@ class Example extends React.Component {
 						onToggleActionSelected={(event, data) => {
 							this.setState({ favoritesActionSelected: !data.actionSelected });
 						}}
-						popover={<Popover id="header-favorites-popover-id"/>}
+						popover={<Popover id="header-favorites-popover-id" />}
 					/>
 					<GlobalHeaderTask
 						dropdown={
@@ -98,7 +98,7 @@ class Example extends React.Component {
 							</Dropdown>
 						}
 					/>
-					<GlobalHeaderHelp popover={<Popover id="header-help-popover-id"/>} />
+					<GlobalHeaderHelp popover={<Popover id="header-help-popover-id" />} />
 					<GlobalHeaderSetup
 						dropdown={
 							<Dropdown id="header-setup-dropdown-id">
@@ -126,7 +126,12 @@ class Example extends React.Component {
 						popover={<Popover id="header-notifications-popover-id" />}
 					/>
 					<GlobalHeaderProfile
-						popover={<Popover body={<HeaderProfileCustomContent />} id="header-profile-popover-id" />}
+						popover={
+							<Popover
+								body={<HeaderProfileCustomContent />}
+								id="header-profile-popover-id"
+							/>
+						}
 						userName="Art Vandelay"
 					/>
 				</GlobalHeader>
