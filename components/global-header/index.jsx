@@ -10,7 +10,6 @@
 
 // ### React
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)

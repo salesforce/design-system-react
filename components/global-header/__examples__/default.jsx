@@ -59,6 +59,7 @@ class Example extends React.Component {
 					}}
 				>
 					<GlobalHeaderSearch
+						id="header-search-custom-id"
 						labels={{ placeholder: 'Search Salesforce' }}
 						onSelect={() => {
 							console.log('>>> onSelect');
@@ -73,10 +74,11 @@ class Example extends React.Component {
 						onToggleActionSelected={(event, data) => {
 							this.setState({ favoritesActionSelected: !data.actionSelected });
 						}}
+						popover={<Popover id="header-favorites-popover-id"/>}
 					/>
 					<GlobalHeaderTask
 						dropdown={
-							<Dropdown>
+							<Dropdown id="header-task-dropdown-id">
 								<ul className="slds-dropdown__list" role="menu">
 									<li className="slds-dropdown__item" role="presentation">
 										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
@@ -96,10 +98,10 @@ class Example extends React.Component {
 							</Dropdown>
 						}
 					/>
-					<GlobalHeaderHelp />
+					<GlobalHeaderHelp popover={<Popover id="header-help-popover-id"/>} />
 					<GlobalHeaderSetup
 						dropdown={
-							<Dropdown>
+							<Dropdown id="header-setup-dropdown-id">
 								<ul className="slds-dropdown__list" role="menu">
 									<li className="slds-dropdown__item" role="presentation">
 										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
@@ -119,9 +121,12 @@ class Example extends React.Component {
 							</Dropdown>
 						}
 					/>
-					<GlobalHeaderNotifications notificationCount={5} />
+					<GlobalHeaderNotifications
+						notificationCount={5}
+						popover={<Popover id="header-notifications-popover-id" />}
+					/>
 					<GlobalHeaderProfile
-						popover={<Popover body={<HeaderProfileCustomContent />} />}
+						popover={<Popover body={<HeaderProfileCustomContent />} id="header-profile-popover-id" />}
 						userName="Art Vandelay"
 					/>
 				</GlobalHeader>

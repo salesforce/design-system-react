@@ -3,12 +3,9 @@
 /* eslint-disable import/no-mutable-exports */
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
-import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
-
-import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 let checkProps = function() {};
 
