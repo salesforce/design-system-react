@@ -18,12 +18,12 @@ const propTypes = {
 	 * * `triggerButton`: Assistive text for the GlobalHeaderHelp trigger button. The default is `Help and Training`.
 	 */
 	assistiveText: PropTypes.shape({
-		triggerButton: PropTypes.string
+		triggerButton: PropTypes.string,
 	}),
 	/**
 	 * A `Popover` component. The props from this popover will be merged and override any default props.
 	 */
-	popover: PropTypes.node
+	popover: PropTypes.node,
 };
 
 /**
@@ -32,14 +32,17 @@ const propTypes = {
 class GlobalHeaderHelp extends React.Component {
 	render() {
 		const buttonAriaProps = {
-			'aria-haspopup': true
+			'aria-haspopup': true,
 		};
-		const popoverProps = assign({
-			align: 'bottom',
-			body: (<span></span>),
-			heading: 'Help and Training',
-			triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click'
-		}, this.props.popover ? this.props.popover.props : {});
+		const popoverProps = assign(
+			{
+				align: 'bottom',
+				body: <span />,
+				heading: 'Help and Training',
+				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
+			},
+			this.props.popover ? this.props.popover.props : {}
+		);
 
 		delete popoverProps.children;
 
@@ -66,8 +69,8 @@ GlobalHeaderHelp.displayName = GLOBAL_HEADER_HELP;
 
 GlobalHeaderHelp.defaultProps = {
 	assistiveText: {
-		triggerButton: 'Help and Training'
-	}
+		triggerButton: 'Help and Training',
+	},
 };
 
 GlobalHeaderHelp.propTypes = propTypes;

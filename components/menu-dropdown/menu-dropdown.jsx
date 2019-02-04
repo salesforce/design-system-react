@@ -862,6 +862,7 @@ class MenuDropdown extends React.Component {
 				customContentWithListPropInjection.push(clonedCustomContent);
 			}
 		});
+
 		if (customContentWithListPropInjection.length === 0) {
 			customContentWithListPropInjection = null;
 		}
@@ -959,7 +960,7 @@ class MenuDropdown extends React.Component {
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;
-			} else {
+			} else if (child) {
 				customContent.push(child);
 			}
 		});

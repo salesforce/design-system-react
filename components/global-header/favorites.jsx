@@ -7,9 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import assign from 'lodash.assign';
-import Button from '../button';
 import classnames from 'classnames';
-import EventUtil from "../../utilities/event";
+
+import Button from '../button';
+import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 import Popover from '../popover';
 
@@ -22,7 +23,7 @@ const propTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		action: PropTypes.string,
-		more: PropTypes.string
+		more: PropTypes.string,
 	}),
 	/**
 	 * Disables the favorites action (star) button
@@ -39,7 +40,7 @@ const propTypes = {
 	/**
 	 * A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props.
 	 */
-	popover: PropTypes.node
+	popover: PropTypes.node,
 };
 
 /**
@@ -48,23 +49,28 @@ const propTypes = {
 class GlobalHeaderFavorites extends React.Component {
 	toggleActionSelected = (event) => {
 		if (this.props.onToggleActionSelected) {
-			this.props.onToggleActionSelected(event, { actionSelected: this.props.actionSelected });
+			this.props.onToggleActionSelected(event, {
+				actionSelected: this.props.actionSelected || false,
+			});
 		}
 	};
 
-	render () {
+	render() {
 		const actionAriaProps = {};
-		const popoverProps = assign({
-			align: 'bottom',
-			body: (<span></span>),
-			heading: 'My Favorites',
-			triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click'
-		}, this.props.popover ? this.props.popover.props : {});
+		const popoverProps = assign(
+			{
+				align: 'bottom',
+				body: <span />,
+				heading: 'My Favorites',
+				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
+			},
+			this.props.popover ? this.props.popover.props : {}
+		);
 
 		delete popoverProps.children;
 
 		if (this.props.actionSelected) {
-			actionAriaProps['aria-pressed'] = 'true';
+			actionAriaProps['aria-pressed'] = true;
 		}
 
 		return (
@@ -72,10 +78,13 @@ class GlobalHeaderFavorites extends React.Component {
 				<div className="slds-button-group">
 					<Button
 						assistiveText={{ icon: this.props.assistiveText.action }}
-						className={classnames('slds-button_icon slds-global-actions__favorites-action', {
-							'slds-is-disabled': this.props.actionDisabled,
-							'slds-is-selected': this.props.actionSelected
-						})}
+						className={classnames(
+							'slds-button_icon slds-global-actions__favorites-action',
+							{
+								'slds-is-disabled': this.props.actionDisabled,
+								'slds-is-selected': this.props.actionSelected,
+							}
+						)}
 						disabled={this.props.actionDisabled}
 						iconCategory="utility"
 						iconName="favorite"
@@ -100,9 +109,10 @@ class GlobalHeaderFavorites extends React.Component {
 							iconName="down"
 							iconSize="small"
 							iconVariant="border"
-							style={{	// this is needed because the popover trigger wrapper janks up the default styles
+							style={{
+								// this is needed because the popover trigger wrapper janks up the default styles
 								borderLeft: '0',
-								borderRadius: '0 .25rem .25rem 0'
+								borderRadius: '0 .25rem .25rem 0',
 							}}
 							title={this.props.assistiveText.more}
 							variant="icon"
@@ -119,8 +129,8 @@ GlobalHeaderFavorites.displayName = GLOBAL_HEADER_FAVORITES;
 GlobalHeaderFavorites.defaultProps = {
 	assistiveText: {
 		action: 'Toggle Favorite',
-		more: 'View Favorites'
-	}
+		more: 'View Favorites',
+	},
 };
 
 GlobalHeaderFavorites.propTypes = propTypes;

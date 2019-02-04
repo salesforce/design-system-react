@@ -39,10 +39,10 @@ const HeaderProfileCustomContent = (props) => (
 class Example extends React.Component {
 	static displayName = 'GlobalHeaderExample';
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
-			favoritesActionSelected: false
+			favoritesActionSelected: false,
 		};
 	}
 
@@ -63,7 +63,10 @@ class Example extends React.Component {
 						onSelect={() => {
 							console.log('>>> onSelect');
 						}}
-						options={[{ id: 'email', label: 'Email' }, { id: 'mobile', label: 'Mobile' }]}
+						options={[
+							{ id: 'email', label: 'Email' },
+							{ id: 'mobile', label: 'Mobile' },
+						]}
 					/>
 					<GlobalHeaderFavorites
 						actionSelected={this.state.favoritesActionSelected}
@@ -72,41 +75,49 @@ class Example extends React.Component {
 						}}
 					/>
 					<GlobalHeaderTask
-						dropdown={(
+						dropdown={
 							<Dropdown>
 								<ul className="slds-dropdown__list" role="menu">
 									<li className="slds-dropdown__item" role="presentation">
 										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Event">Settings One</span>
+											<span className="slds-truncate" title="New Event">
+												Settings One
+											</span>
 										</a>
 									</li>
 									<li className="slds-dropdown__item" role="presentation">
 										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Note">Settings Two</span>
+											<span className="slds-truncate" title="New Note">
+												Settings Two
+											</span>
 										</a>
 									</li>
 								</ul>
 							</Dropdown>
-						)}
+						}
 					/>
 					<GlobalHeaderHelp />
 					<GlobalHeaderSetup
-						dropdown={(
+						dropdown={
 							<Dropdown>
 								<ul className="slds-dropdown__list" role="menu">
 									<li className="slds-dropdown__item" role="presentation">
 										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Event">New Event</span>
+											<span className="slds-truncate" title="New Event">
+												New Event
+											</span>
 										</a>
 									</li>
 									<li className="slds-dropdown__item" role="presentation">
 										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Note">New Note</span>
+											<span className="slds-truncate" title="New Note">
+												New Note
+											</span>
 										</a>
 									</li>
 								</ul>
 							</Dropdown>
-						)}
+						}
 					/>
 					<GlobalHeaderNotifications notificationCount={5} />
 					<GlobalHeaderProfile

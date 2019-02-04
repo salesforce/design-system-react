@@ -22,7 +22,7 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		newNotificationsAfter: PropTypes.string,
 		newNotificationsBefore: PropTypes.string,
-		noNotifications: PropTypes.string
+		noNotifications: PropTypes.string,
 	}),
 	/**
 	 * Dictates the number of notifications shown in the new notifications badge.
@@ -31,7 +31,7 @@ const propTypes = {
 	/**
 	 * A `Popover` component. The props from this popover will be merged and override any default props.
 	 */
-	popover: PropTypes.node
+	popover: PropTypes.node,
 };
 
 /**
@@ -40,23 +40,28 @@ const propTypes = {
 class GlobalHeaderNotifications extends React.Component {
 	render() {
 		const buttonAriaProps = {
-			'aria-live': 'assertive'
+			'aria-live': 'assertive',
 		};
 		const notificationCount = this.props.notificationCount;
-		const popoverProps = assign({
-			align: 'bottom right',
-			body: (<span></span>),
-			heading: 'Notifications',
-			triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click'
-		}, this.props.popover ? this.props.popover.props : {});
+		const popoverProps = assign(
+			{
+				align: 'bottom right',
+				body: <span />,
+				heading: 'Notifications',
+				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
+			},
+			this.props.popover ? this.props.popover.props : {}
+		);
 		let notificationsAssistiveText = this.props.assistiveText.noNotifications;
 
 		delete popoverProps.children;
 
 		if (notificationCount > 0) {
-			notificationsAssistiveText = `${this.props.assistiveText.newNotificationsBefore}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
+			notificationsAssistiveText = `${
+				this.props.assistiveText.newNotificationsBefore
+			}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
 		} else {
-			buttonAriaProps['aria-atomic'] = 'true';
+			buttonAriaProps['aria-atomic'] = true;
 		}
 
 		return (
@@ -74,14 +79,16 @@ class GlobalHeaderNotifications extends React.Component {
 						variant="icon"
 						{...buttonAriaProps}
 					/>
-					{(notificationCount > 0) ? (
+					{notificationCount > 0 ? (
 						<span
 							aria-hidden="true"
 							className="slds-notification-badge slds-incoming-notification slds-show-notification"
 						>
 							{notificationCount}
 						</span>
-					) : <span aria-hidden="true" className="slds-notification-badge" />}
+					) : (
+						<span aria-hidden="true" className="slds-notification-badge" />
+					)}
 				</div>
 			</Popover>
 		);
@@ -94,9 +101,9 @@ GlobalHeaderNotifications.defaultProps = {
 	assistiveText: {
 		newNotificationsAfter: ' new notifications',
 		newNotificationsBefore: '',
-		noNotifications: 'no new notifications'
+		noNotifications: 'no new notifications',
 	},
-	notificationCount: 0
+	notificationCount: 0,
 };
 
 GlobalHeaderNotifications.propTypes = propTypes;

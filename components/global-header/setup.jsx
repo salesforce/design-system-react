@@ -19,12 +19,12 @@ const propTypes = {
 	 * * `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.
 	 */
 	assistiveText: PropTypes.shape({
-		triggerButton: PropTypes.string
+		triggerButton: PropTypes.string,
 	}),
 	/**
 	 * A `Dropdown` component. The props from this dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the dropdown.
 	 */
-	dropdown: PropTypes.node
+	dropdown: PropTypes.node,
 };
 
 /**
@@ -33,12 +33,15 @@ const propTypes = {
 class GlobalHeaderSetup extends React.Component {
 	render() {
 		const buttonAriaProps = {
-			'aria-haspopup': true
+			'aria-haspopup': true,
 		};
-		const dropdownProps = assign({
-			align: 'right',
-			nubbinPosition: 'top right'
-		}, this.props.dropdown ? this.props.dropdown.props : {});
+		const dropdownProps = assign(
+			{
+				align: 'right',
+				nubbinPosition: 'top right',
+			},
+			this.props.dropdown ? this.props.dropdown.props : {}
+		);
 		const dropdownChildren = dropdownProps.children || null;
 
 		delete dropdownProps.children;
@@ -69,8 +72,8 @@ GlobalHeaderSetup.displayName = GLOBAL_HEADER_SETUP;
 
 GlobalHeaderSetup.defaultProps = {
 	assistiveText: {
-		triggerButton: 'Setup'
-	}
+		triggerButton: 'Setup',
+	},
 };
 
 GlobalHeaderSetup.propTypes = propTypes;

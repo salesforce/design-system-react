@@ -17,7 +17,10 @@ import Button from '../button';
 import checkProps from './check-props';
 
 // ## Constants
-import { GLOBAL_HEADER_BUTTON, GLOBAL_HEADER_TOOL } from '../../utilities/constants';
+import {
+	GLOBAL_HEADER_BUTTON,
+	GLOBAL_HEADER_TOOL,
+} from '../../utilities/constants';
 
 /**
  * A helper component that renders a Button in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden if text-based buttons are required.

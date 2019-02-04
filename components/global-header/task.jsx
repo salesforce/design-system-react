@@ -19,12 +19,12 @@ const propTypes = {
 	 * * `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.
 	 */
 	assistiveText: PropTypes.shape({
-		triggerButton: PropTypes.string
+		triggerButton: PropTypes.string,
 	}),
 	/**
 	 * A `Dropdown` component. The props from this dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the dropdown.
 	 */
-	dropdown: PropTypes.node
+	dropdown: PropTypes.node,
 };
 
 /**
@@ -33,12 +33,15 @@ const propTypes = {
 class GlobalHeaderTask extends React.Component {
 	render() {
 		const buttonAriaProps = {
-			'aria-haspopup': true
+			'aria-haspopup': true,
 		};
-		const dropdownProps = assign({
-			align: 'right',
-			nubbinPosition: 'top right'
-		}, this.props.dropdown ? this.props.dropdown.props : {});
+		const dropdownProps = assign(
+			{
+				align: 'right',
+				nubbinPosition: 'top right',
+			},
+			this.props.dropdown ? this.props.dropdown.props : {}
+		);
 		const dropdownChildren = dropdownProps.children || null;
 
 		delete dropdownProps.children;
@@ -68,8 +71,8 @@ GlobalHeaderTask.displayName = GLOBAL_HEADER_TASK;
 
 GlobalHeaderTask.defaultProps = {
 	assistiveText: {
-		triggerButton: 'Global Actions'
-	}
+		triggerButton: 'Global Actions',
+	},
 };
 
 GlobalHeaderTask.propTypes = propTypes;

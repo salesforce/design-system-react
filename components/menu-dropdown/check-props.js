@@ -42,15 +42,6 @@ if (process.env.NODE_ENV !== 'production') {
 			createDocUrl()
 		);
 
-		if (!props.options) {
-			hasChildrenWithoutDisplayNameOf(
-				COMPONENT,
-				props.children,
-				MENU_DROPDOWN_TRIGGER,
-				createDocUrl('children')
-			);
-		}
-
 		deprecatedProperty(
 			COMPONENT,
 			props.isInline,

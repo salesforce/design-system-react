@@ -19,7 +19,10 @@ import GlobalHeaderTrigger from './private/dropdown-trigger';
 import checkProps from './check-props';
 
 // ## Constants
-import { GLOBAL_HEADER_DROPDOWN, GLOBAL_HEADER_TOOL } from '../../utilities/constants';
+import {
+	GLOBAL_HEADER_DROPDOWN,
+	GLOBAL_HEADER_TOOL,
+} from '../../utilities/constants';
 
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).

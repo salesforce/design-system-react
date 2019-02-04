@@ -119,7 +119,7 @@ class GlobalHeader extends React.Component {
 			[GLOBAL_HEADER_PROFILE]: [],
 			[GLOBAL_HEADER_SETUP]: [],
 			[GLOBAL_HEADER_TASK]: [],
-			[GLOBAL_HEADER_TOOL]: []	// this supports deprecated global header button and dropdown components
+			[GLOBAL_HEADER_TOOL]: [], // support for deprecated GlobalHeaderButton and GlobalHeaderDropdown
 		};
 		let search;
 
@@ -134,9 +134,12 @@ class GlobalHeader extends React.Component {
 		});
 
 		actions = [].concat(
-			actions[GLOBAL_HEADER_FAVORITES], actions[GLOBAL_HEADER_TASK],
-			actions[GLOBAL_HEADER_HELP], actions[GLOBAL_HEADER_SETUP],
-			actions[GLOBAL_HEADER_NOTIFICATIONS], actions[GLOBAL_HEADER_TOOL],
+			actions[GLOBAL_HEADER_FAVORITES],
+			actions[GLOBAL_HEADER_TASK],
+			actions[GLOBAL_HEADER_HELP],
+			actions[GLOBAL_HEADER_SETUP],
+			actions[GLOBAL_HEADER_NOTIFICATIONS],
+			actions[GLOBAL_HEADER_TOOL], // support for deprecated GlobalHeaderButton and GlobalHeaderDropdown
 			actions[GLOBAL_HEADER_PROFILE]
 		);
 
@@ -173,7 +176,10 @@ class GlobalHeader extends React.Component {
 					<div className="slds-global-header__item">
 						<ul className="slds-global-actions">
 							{actions.map((actionItem, index) => (
-								<li className="slds-global-actions__item" key={`actions-item-${index}`}>
+								<li
+									className="slds-global-actions__item"
+									key={`actions-item-${index}`} /* eslint-disable-line react/no-array-index-key */
+								>
 									{actionItem}
 								</li>
 							))}
