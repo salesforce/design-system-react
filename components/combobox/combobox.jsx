@@ -372,32 +372,6 @@ class Combobox extends React.Component {
 		}
 	}
 
-	getDialog({ menuRenderer }) {
-		// FOR BACKWARDS COMPATIBILITY
-		const menuPosition = this.props.isInline
-			? 'relative'
-			: this.props.menuPosition; // eslint-disable-line react/prop-types
-
-		return !this.props.disabled && this.getIsOpen() ? (
-			<Dialog
-				align="bottom left"
-				context={this.context}
-				hasStaticAlignment={this.props.hasStaticAlignment}
-				inheritWidthOf={this.props.inheritWidthOf}
-				onClose={this.handleClose}
-				onOpen={this.handleOpen}
-				onRequestTargetElement={this.getTargetElement}
-				position={menuPosition}
-				containerProps={{
-					id: `${this.getId()}-listbox`,
-					role: 'listbox',
-				}}
-			>
-				{menuRenderer}
-			</Dialog>
-		) : null;
-	}
-
 	getCustomPopoverProps = ({ assistiveText }) => {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
@@ -458,6 +432,32 @@ class Combobox extends React.Component {
 		delete popoverProps.children;
 		return popoverProps;
 	};
+
+	getDialog({ menuRenderer }) {
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		return !this.props.disabled && this.getIsOpen() ? (
+			<Dialog
+				align="bottom left"
+				context={this.context}
+				hasStaticAlignment={this.props.hasStaticAlignment}
+				inheritWidthOf={this.props.inheritWidthOf}
+				onClose={this.handleClose}
+				onOpen={this.handleOpen}
+				onRequestTargetElement={this.getTargetElement}
+				position={menuPosition}
+				containerProps={{
+					id: `${this.getId()}-listbox`,
+					role: 'listbox',
+				}}
+			>
+				{menuRenderer}
+			</Dialog>
+		) : null;
+	}
 
 	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
@@ -699,7 +699,7 @@ class Combobox extends React.Component {
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
 				prevState.activeSelectedOptionIndex + 1 ===
-					this.props.selection.length && direction === 'next';
+				this.props.selection.length && direction === 'next';
 			const isFirstOptionAndLeftIsPressed =
 				prevState.activeSelectedOptionIndex === 0 && direction === 'previous';
 			let newState;
@@ -951,7 +951,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 					/>
@@ -991,80 +991,6 @@ class Combobox extends React.Component {
 			)}
 		</div>
 	);
-
-	renderPopover = ({ assistiveText, labels, props }) => {
-		const popoverProps = this.getCustomPopoverProps({ assistiveText });
-		return (
-			<Popover {...popoverProps}>
-				<div className="slds-form-element__control">
-					<div className="slds-combobox_container">
-						<div
-							className={classNames(
-								'slds-combobox',
-								'slds-dropdown-trigger',
-								'slds-dropdown-trigger_click',
-								'ignore-react-onclickoutside',
-								{
-									'slds-is-open': this.getIsOpen(),
-								},
-								{
-									'slds-has-error': props.errorText,
-								},
-								props.className
-							)}
-							aria-expanded={this.getIsOpen()}
-							aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-							aria-owns={`${this.getId()}-dialog`} // eslint-disable-line jsx-a11y/aria-proptypes
-							role="combobox"
-						>
-							<InnerInput
-								aria-autocomplete="none"
-								aria-controls={`${this.getId()}-dialog`}
-								aria-describedby={this.getErrorId()}
-								autoComplete="off"
-								className="slds-combobox__input"
-								containerProps={{
-									className: 'slds-combobox__form-element',
-									role: 'none',
-								}}
-								iconRight={<InputIcon category="utility" name="down" />}
-								id={this.getId()}
-								onFocus={this.handleInputFocus}
-								onBlur={this.handleInputBlur}
-								onKeyDown={this.handleKeyDown}
-								inputRef={this.setInputRef}
-								onClick={() => {
-									this.openDialog();
-								}}
-								onChange={this.handleInputChange}
-								placeholder={labels.placeholder}
-								readOnly
-								required={props.required}
-								role="textbox"
-								value={
-									props.predefinedOptionsOnly
-										? (this.state.activeOption &&
-												this.state.activeOption.label) ||
-											props.value
-										: props.value
-								}
-							/>
-						</div>
-					</div>
-					{props.errorText && (
-						<div className="slds-has-error">
-							<div
-								id={this.getErrorId()}
-								className="slds-form-element__help slds-has-error"
-							>
-								{props.errorText}
-							</div>
-						</div>
-					)}
-				</div>
-			</Popover>
-		);
-	};
 
 	renderInlineMultiple = ({ assistiveText, labels, props }) => (
 		<div className="slds-form-element__control">
@@ -1154,7 +1080,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 					/>
@@ -1175,8 +1101,8 @@ class Combobox extends React.Component {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
-						containerClassName: 'slds-combobox__input-entity-icon',
-					})
+					containerClassName: 'slds-combobox__input-entity-icon',
+				})
 				: null;
 
 		const value =
@@ -1216,8 +1142,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1246,8 +1172,8 @@ class Combobox extends React.Component {
 										}}
 									/>
 								) : (
-									<InputIcon category="utility" name="search" />
-								)
+										<InputIcon category="utility" name="search" />
+									)
 							}
 							iconLeft={iconLeft}
 							id={this.getId()}
@@ -1273,8 +1199,8 @@ class Combobox extends React.Component {
 							value={
 								props.predefinedOptionsOnly
 									? (this.state.activeOption &&
-											this.state.activeOption.label) ||
-										props.value
+										this.state.activeOption.label) ||
+									props.value
 									: value
 							}
 						/>
@@ -1331,11 +1257,85 @@ class Combobox extends React.Component {
 		);
 	};
 
+	renderPopover = ({ assistiveText, labels, props }) => {
+		const popoverProps = this.getCustomPopoverProps({ assistiveText });
+		return (
+			<Popover {...popoverProps}>
+				<div className="slds-form-element__control">
+					<div className="slds-combobox_container">
+						<div
+							className={classNames(
+								'slds-combobox',
+								'slds-dropdown-trigger',
+								'slds-dropdown-trigger_click',
+								'ignore-react-onclickoutside',
+								{
+									'slds-is-open': this.getIsOpen(),
+								},
+								{
+									'slds-has-error': props.errorText,
+								},
+								props.className
+							)}
+							aria-expanded={this.getIsOpen()}
+							aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
+							aria-owns={`${this.getId()}-dialog`} // eslint-disable-line jsx-a11y/aria-proptypes
+							role="combobox"
+						>
+							<InnerInput
+								aria-autocomplete="none"
+								aria-controls={`${this.getId()}-dialog`}
+								aria-describedby={this.getErrorId()}
+								autoComplete="off"
+								className="slds-combobox__input"
+								containerProps={{
+									className: 'slds-combobox__form-element',
+									role: 'none',
+								}}
+								iconRight={<InputIcon category="utility" name="down" />}
+								id={this.getId()}
+								onFocus={this.handleInputFocus}
+								onBlur={this.handleInputBlur}
+								onKeyDown={this.handleKeyDown}
+								inputRef={this.setInputRef}
+								onClick={() => {
+									this.openDialog();
+								}}
+								onChange={this.handleInputChange}
+								placeholder={labels.placeholder}
+								readOnly
+								required={props.required}
+								role="textbox"
+								value={
+									props.predefinedOptionsOnly
+										? (this.state.activeOption &&
+											this.state.activeOption.label) ||
+										props.value
+										: props.value
+								}
+							/>
+						</div>
+					</div>
+					{props.errorText && (
+						<div className="slds-has-error">
+							<div
+								id={this.getErrorId()}
+								className="slds-form-element__help slds-has-error"
+							>
+								{props.errorText}
+							</div>
+						</div>
+					)}
+				</div>
+			</Popover>
+		);
+	};
+
 	renderReadOnlyMultiple = ({ assistiveText, labels, props }) => {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
-					`${props.selection.length} options selected`
+				`${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1366,8 +1366,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1472,8 +1472,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1542,13 +1542,13 @@ class Combobox extends React.Component {
 				multiple: this.renderBase, // same
 				single: this.renderBase,
 			},
-			popover: {
-				multiple: this.renderPopover, // same
-				single: this.renderPopover,
-			},
 			'inline-listbox': {
 				multiple: this.renderInlineMultiple,
 				single: this.renderInlineSingle,
+			},
+			popover: {
+				multiple: this.renderPopover, // same
+				single: this.renderPopover,
 			},
 			readonly: {
 				multiple: this.renderReadOnlyMultiple,
@@ -1573,8 +1573,8 @@ class Combobox extends React.Component {
 				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
-							subRenderParameters
-						)
+						subRenderParameters
+					)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);
