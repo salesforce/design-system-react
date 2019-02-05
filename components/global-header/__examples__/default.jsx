@@ -12,8 +12,70 @@ import GlobalHeaderTask from '~/components/global-header/task';
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover';
 
+/* eslint-disable max-len */
+/* eslint-disable no-script-url */
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+
+const ipsum =
+	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum fermentum eros, vel porta metus dignissim vitae. Fusce finibus sed magna vitae tempus. Suspendisse condimentum, arcu eu viverra vulputate, mauris odio dictum velit, in dictum lorem augue id augue. Proin nec leo convallis, aliquet mi ut, interdum nunc.';
+
+const HeaderNotificationsCustomContent = (props) => (
+	<ul id="header-notifications-custom-popover-content">
+		{props.items.map((item) => (
+			<li
+				className={`slds-global-header__notification ${
+					item.unread ? 'slds-global-header__notification_unread' : ''
+				}`}
+				key={`notification-item-${item.id}`}
+			>
+				<div className="slds-media slds-has-flexi-truncate slds-p-around_x-small">
+					<div className="slds-media__figure">
+						<span className="slds-avatar slds-avatar_small">
+							<img
+								alt={item.name}
+								src={`/assets/images/${item.avatar}.jpg`}
+								title={`${item.name} avatar"`}
+							/>
+						</span>
+					</div>
+					<div className="slds-media__body">
+						<div className="slds-grid slds-grid_align-spread">
+							<a
+								href="javascript:void(0);"
+								className="slds-text-link_reset slds-has-flexi-truncate"
+							>
+								<h3
+									className="slds-truncate"
+									title={`${item.name} ${item.action}`}
+								>
+									<strong>{`${item.name} ${item.action}`}</strong>
+								</h3>
+								<p className="slds-truncate" title={item.comment}>
+									{item.comment}
+								</p>
+								<p className="slds-m-top_x-small slds-text-color_weak">
+									{item.timePosted}{' '}
+									{item.unread ? (
+										<abbr
+											className="slds-text-link slds-m-horizontal_xxx-small"
+											title="unread"
+										>
+											●
+										</abbr>
+									) : null}
+								</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		))}
+	</ul>
+);
+
 const HeaderProfileCustomContent = (props) => (
-	<div id="custom-popover-content">
+	<div id="header-profile-custom-popover-content">
 		<div className="slds-m-around_medium">
 			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
 				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
@@ -74,56 +136,81 @@ class Example extends React.Component {
 						onToggleActionSelected={(event, data) => {
 							this.setState({ favoritesActionSelected: !data.actionSelected });
 						}}
-						popover={<Popover id="header-favorites-popover-id" />}
+						popover={
+							<Popover
+								body={<div>{ipsum}</div>}
+								id="header-favorites-popover-id"
+							/>
+						}
 					/>
 					<GlobalHeaderTask
 						dropdown={
-							<Dropdown id="header-task-dropdown-id">
-								<ul className="slds-dropdown__list" role="menu">
-									<li className="slds-dropdown__item" role="presentation">
-										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Event">
-												Settings One
-											</span>
-										</a>
-									</li>
-									<li className="slds-dropdown__item" role="presentation">
-										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Note">
-												Settings Two
-											</span>
-										</a>
-									</li>
-								</ul>
-							</Dropdown>
+							<Dropdown
+								id="header-task-dropdown-id"
+								options={[
+									{ id: 'taskOptionOne', label: 'Task Option One' },
+									{ id: 'taskOptionTwo', label: 'Task Option Two' },
+								]}
+							/>
 						}
 					/>
-					<GlobalHeaderHelp popover={<Popover id="header-help-popover-id" />} />
+					<GlobalHeaderHelp
+						popover={
+							<Popover body={<div>{ipsum}</div>} id="header-help-popover-id" />
+						}
+					/>
 					<GlobalHeaderSetup
 						dropdown={
-							<Dropdown id="header-setup-dropdown-id">
-								<ul className="slds-dropdown__list" role="menu">
-									<li className="slds-dropdown__item" role="presentation">
-										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Event">
-												New Event
-											</span>
-										</a>
-									</li>
-									<li className="slds-dropdown__item" role="presentation">
-										<a href="javascript:void(0);" role="menuitem" tabIndex="0">
-											<span className="slds-truncate" title="New Note">
-												New Note
-											</span>
-										</a>
-									</li>
-								</ul>
-							</Dropdown>
+							<Dropdown
+								id="header-setup-dropdown-id"
+								options={[
+									{ id: 'setupOptionOne', label: 'Setup Option One' },
+									{ id: 'setupOptionTwo', label: 'Setup Option Two' },
+								]}
+							/>
 						}
 					/>
 					<GlobalHeaderNotifications
 						notificationCount={5}
-						popover={<Popover id="header-notifications-popover-id" />}
+						popover={
+							<Popover
+								body={
+									<HeaderNotificationsCustomContent
+										items={[
+											{
+												action: 'mentioned you',
+												avatar: 'avatar2',
+												comment:
+													'@jrogers Could I please have a review on my presentation deck',
+												id: 1,
+												name: 'Val Handerly',
+												timePosted: '10 hours ago',
+												unread: true,
+											},
+											{
+												action: 'commented on your post',
+												avatar: 'avatar3',
+												comment: 'I totally agree with your sentiment',
+												id: 2,
+												name: 'Jon Rogers',
+												timePosted: '13 hours ago',
+												unread: true,
+											},
+											{
+												action: 'mentioned you',
+												avatar: 'avatar2',
+												comment:
+													"@jrogers Here's the conversation I mentioned to you",
+												id: 3,
+												name: 'Rebecca Stone',
+												timePosted: '1 day ago',
+											},
+										]}
+									/>
+								}
+								id="header-notifications-popover-id"
+							/>
+						}
 					/>
 					<GlobalHeaderProfile
 						popover={
