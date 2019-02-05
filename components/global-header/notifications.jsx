@@ -66,30 +66,28 @@ class GlobalHeaderNotifications extends React.Component {
 
 		return (
 			<Popover {...popoverProps}>
-				<div>
-					<Button
-						assistiveText={{ icon: notificationsAssistiveText }}
-						className="slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
-						iconCategory="utility"
-						iconClassName="slds-global-header__icon"
-						iconName="notification"
-						iconSize="small"
-						iconVariant="container"
-						title={notificationsAssistiveText}
-						variant="icon"
-						{...buttonAriaProps}
-					/>
-					{notificationCount > 0 ? (
-						<span
-							aria-hidden="true"
-							className="slds-notification-badge slds-incoming-notification slds-show-notification"
-						>
-							{notificationCount}
-						</span>
-					) : (
-						<span aria-hidden="true" className="slds-notification-badge" />
-					)}
-				</div>
+				<Button
+					assistiveText={{ icon: notificationsAssistiveText }}
+					className="slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+					iconCategory="utility"
+					iconClassName="slds-global-header__icon"
+					iconName="notification"
+					iconSize="small"
+					iconVariant="container"
+					title={notificationsAssistiveText}
+					variant="icon"
+					{...buttonAriaProps}
+				/>
+				{notificationCount > 0 ? (
+					<span
+						aria-hidden="true"
+						className="slds-notification-badge slds-incoming-notification slds-show-notification"
+					>
+						{notificationCount}
+					</span>
+				) : (
+					<span aria-hidden="true" className="slds-notification-badge" />
+				)}
 			</Popover>
 		);
 	}
