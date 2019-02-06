@@ -162,8 +162,10 @@ const Menu = (props) => {
 
 		const disabledProps = {};
 		const tooltipId = `${props.inputId}-listbox-option-help-${optionData.id}`;
-		if (optionData.disabled) {
+		if (optionData.disabled && props.tooltipMenuItemDisabled && active) {
 			disabledProps['aria-describedby'] = tooltipId;
+		}
+		if (optionData.disabled) {
 			disabledProps['aria-disabled'] = !!optionData.disabled;
 			disabledProps.style = { cursor: 'default' }; // Replace this with a css class name once SLDS has it.
 		}
