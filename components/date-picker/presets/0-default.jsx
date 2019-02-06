@@ -4,6 +4,6 @@ import Datepicker from '../date-picker.jsx';
 
 export default (
 	<Datepicker
-		key="0"
+		uxpId="0"
 	/>
 );

@@ -3,5 +3,5 @@ import * as React from 'react';
 import Avatar from '../avatar';
 
 export default (
-	<Avatar key="0" />
+	<Avatar uxpId="0" />
 );

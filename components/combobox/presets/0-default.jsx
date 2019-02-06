@@ -4,7 +4,7 @@ import Combobox from '../combobox.jsx';
 
 export default (
 	<Combobox
-		key="0"
+		uxpId="0"
 		options={
 			[
 			{

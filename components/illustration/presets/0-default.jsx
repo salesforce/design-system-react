@@ -4,7 +4,7 @@ import Illustration from '../illustration';
 
 export default (
 	<Illustration
-		key="0"
+		uxpId="0"
 		heading="Lorem ipsum dolor"
 		messageBody="Lorem ipsum dolor sit amet, consectetur"
 		name="No Access"

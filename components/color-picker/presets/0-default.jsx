@@ -4,6 +4,6 @@ import ColorPicker from '../color-picker.jsx';
 
 export default (
 	<ColorPicker
-		key="0"
+		uxpId="0"
 	/>
 );

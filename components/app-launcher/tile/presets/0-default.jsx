@@ -7,6 +7,6 @@ export default (
 		title="Marketing Cloud"
 		iconText="MC"
 		description="Send emails, track emails, red emails!"
-		key="0"
+		uxpId="0"
 	/>
 );

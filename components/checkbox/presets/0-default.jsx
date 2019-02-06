@@ -4,6 +4,6 @@ import Checkbox from '../checkbox.jsx';
 
 export default (
 	<Checkbox
-		key="0"
+		uxpId="0"
 	/>
 );

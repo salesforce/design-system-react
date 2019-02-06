@@ -2,4 +2,4 @@
 import * as React from 'react';
 import Icon from '../icon.jsx';
 
-export default <Icon key="0" name="announcement" />;
+export default <Icon uxpId="0" name="announcement" />;

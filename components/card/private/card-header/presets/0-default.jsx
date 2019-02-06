@@ -3,7 +3,7 @@ import * as React from 'react';
 import CardHeader from '../card-header.jsx';
 
 export default (
-	<CardHeader key="0">
+	<CardHeader uxpId="0">
 		Card Header
 	</CardHeader>
 );

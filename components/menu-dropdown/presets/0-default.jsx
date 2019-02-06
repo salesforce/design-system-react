@@ -4,7 +4,7 @@ import MenuDropdown from '../menu-dropdown.jsx';
 
 export default (
 	<MenuDropdown
-		key="0"
+		uxpId="0"
 		iconName="down"
 		iconPosition="left"
 	/>

@@ -8,6 +8,6 @@ export default (
 		iconName="download"
 		iconPosition="left"
 		iconSize="small"
-		key="0"
+		uxpId="0"
 	/>
 );

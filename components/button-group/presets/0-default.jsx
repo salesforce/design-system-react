@@ -4,9 +4,9 @@ import ButtonGroup from '../button-group';
 import Button from '../../button'
 
 export default (
-	<ButtonGroup key="0">
-		<Button label="Refresh" key="1" />
-		<Button label="Edit" key="2" />
-		<Button label="Save" key="3" />
+	<ButtonGroup uxpId="0">
+		<Button label="Refresh" uxpId="1" />
+		<Button label="Edit" uxpId="2" />
+		<Button label="Save" uxpId="3" />
 	</ButtonGroup>
 );

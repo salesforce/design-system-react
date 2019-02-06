@@ -3,5 +3,5 @@ import * as React from 'react';
 import Alert from '../alert';
 
 export default (
-	<Alert dismissible labels={{ heading: '', headingLink: 'Log out' }} key="0" />
+	<Alert dismissible labels={{ heading: '', headingLink: 'Log out' }} uxpId="0" />
 );

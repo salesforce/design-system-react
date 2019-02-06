@@ -4,7 +4,7 @@ import Breadcrumb from '../breadcrumb';
 
 export default (
 	<Breadcrumb
-		key="0"
+		uxpId="0"
 		items={
 			[
 				{

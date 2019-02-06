@@ -3,5 +3,5 @@ import * as React from 'react';
 import BrandBand from '../brand-band';
 
 export default (
-	<BrandBand key="0" />
+	<BrandBand uxpId="0" />
 );

@@ -6,6 +6,6 @@ export default (
 	<Card
 		header="<CardHeader icon={<Avatar variant='entity' />} heading='Merge' />"
 		footer="Merge"
-		key="0"
+		uxpId="0"
 	/>
 );
