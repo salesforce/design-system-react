@@ -1,0 +1,11 @@
+{
+	"rootId": "cardfooter3269613971",
+	"elements": {
+	  "cardfooter3269613971": {
+		"name": "CardFooter",
+		"props": {
+			"children": "Card Footer"
+		}
+	  }
+	}
+  }

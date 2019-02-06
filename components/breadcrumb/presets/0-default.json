@@ -1,0 +1,27 @@
+{
+	"rootId": "breadcrumb2135237044",
+	"elements": {
+	  "breadcrumb2135237044": {
+		"name": "Breadcrumb",
+		"props": {
+			 "items": [
+				 {
+					"label": "Item 1",
+					"href": "#",
+					"id": "breadcrumb1"
+				 },
+				 {
+					"label": "Item 2",
+					"href": "#",
+					"id": "breadcrumb2"
+				 },
+				 {
+					"label": "Item 3",
+					"href": "#",
+					"id": "breadcrumb3"
+				 }
+			 ]
+			}
+		}
+	  }
+	}

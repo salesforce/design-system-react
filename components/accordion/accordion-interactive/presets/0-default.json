@@ -1,0 +1,28 @@
+{
+	"rootId": "accordionInteractive3703996384",
+	"elements": {
+	  "accordionInteractive3703996384": {
+		"name": "AccordionInteractive",
+		"props": {
+			"items":
+				[
+				{
+					"id": "1",
+					"summary": "Accordion Summary",
+					"details": "Accordion details - A"
+				},
+				{
+					"id": "2",
+					"summary": "Accordion Summary",
+					"details": "Accordion details - B"
+				},
+				{
+					"id": "3",
+					"summary": "Accordion Summary",
+					"details": "Accordion details - C"
+				}
+			]
+		}
+	  }
+	}
+  }

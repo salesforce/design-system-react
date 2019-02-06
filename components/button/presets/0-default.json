@@ -1,0 +1,15 @@
+{
+	"rootId": "button3703996384",
+	"elements": {
+		"button3703996384": {
+			"name": "Button",
+			"props": {
+				"label": "Merge",
+				"iconName": "download",
+				"iconPosition": "left",
+				"iconSize": "small",
+				"style": { "font-family": "Salesforce Sans", "width": "inherit" }
+			}
+		}
+	}
+}

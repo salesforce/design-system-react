@@ -601,6 +601,7 @@ class Datepicker extends React.Component {
 					},
 					this.props.triggerClassName
 				)}
+				style={this.props.style}
 			>
 				{inputToRender}
 				{this.getDialog({ labels, assistiveText })}

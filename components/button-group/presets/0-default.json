@@ -1,0 +1,39 @@
+{
+	"rootId": "buttongroup593347994",
+	"elements": {
+	  "buttongroup593347994": {
+		"name": "ButtonGroup",
+		"props": {
+				"children": [
+					{
+						"uxpinPresetElementId": "button2379554241"
+					},
+					{
+						"uxpinPresetElementId": "button274875691"
+					},
+					{
+						"uxpinPresetElementId": "button3480744554"
+					}
+				]
+			}
+		},
+		"button2379554241": {
+			"name": "Button",
+			"props": {
+				"label": "Refresh"
+			}
+		},
+		"button274875691": {
+			"name": "Button",
+			"props": {
+				"label": "Edit"
+			}
+		},
+		"button3480744554": {
+			"name": "Button",
+			"props": {
+				"label": "Save"
+			}
+		}
+	  }
+	}

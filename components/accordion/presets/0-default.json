@@ -18,7 +18,7 @@
 		}
 		},
 		"panel2379554241": {
-			"name": "Panel",
+			"name": "AccordionPanel",
 			"props": {
 				"expanded": true,
 				"summary": "Panel 1. Merge",
@@ -26,7 +26,7 @@
 			}
 		},
 		"panel2395295330": {
-			"name": "Panel",
+			"name": "AccordionPanel",
 			"props": {
 				"expanded": false,
 				"summary": "Panel 2. Merge",
@@ -34,7 +34,7 @@
 			}
 		},
 		"panel3333362042": {
-			"name": "Panel",
+			"name": "AccordionPanel",
 			"props": {
 				"expanded": false,
 				"summary": "Panel 3. Merge",

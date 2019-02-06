@@ -118,6 +118,7 @@ const propTypes = {
 	 * Different types of buttons
 	 */
 	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
+	style: PropTypes.object
 };
 
 // i18n
@@ -245,6 +246,7 @@ class ButtonStateful extends React.Component {
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
+				style={this.props.style}
 			>
 				<span className="slds-text-not-selected">
 					<ButtonIcon

@@ -6,6 +6,7 @@ import escapeRegExp from 'lodash.escaperegexp';
  * SLDS recommends auto-complete/search inputs menus have a limit of 10 items.
  */
 const filter = ({ inputValue, limit = 10, options, selection }) => {
+	console.log(options, selection)
 	const inputValueRegExp = new RegExp(escapeRegExp(inputValue), 'ig');
 	return options
 		.filter((option) => {

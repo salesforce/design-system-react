@@ -2,7 +2,7 @@
 	"rootId": "accordionPanel3703996384",
 	"elements": {
 	  "accordionPanel3703996384": {
-		"name": "Panel",
+		"name": "AccordionPanel",
 		"props": {
 			"expanded": true,
 			"summary": "Panel 1. Merge",

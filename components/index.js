@@ -10,8 +10,8 @@ export IconSettings from './icon-settings';
 export SLDSAccordion from './accordion';
 export Accordion from './accordion';
 
-export SLDSAccordionPanel from './accordion/panel';
-export AccordionPanel from './accordion/panel';
+export SLDSAccordionPanel from './accordion/accordion-panel';
+export AccordionPanel from './accordion/accordion-panel';
 
 export SLDSAlert from './alert';
 export Alert from './alert';
@@ -108,8 +108,8 @@ export DataTableCell from './data-table/cell';
 export SLDSDataTableHighlightCell from './data-table/highlight-cell';
 export DataTableHighlightCell from './data-table/highlight-cell';
 
-export SLDSDataTableColumn from './data-table/column';
-export DataTableColumn from './data-table/column';
+export SLDSDataTableColumn from './data-table/data-table-column';
+export DataTableColumn from './data-table/data-table-column';
 
 export SLDSDataTableRowActions from './data-table/row-actions';
 export DataTableRowActions from './data-table/row-actions';

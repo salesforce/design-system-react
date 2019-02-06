@@ -1,0 +1,13 @@
+{
+	"rootId": "datepicker1141882535",
+	"elements": {
+	  "datepicker1141882535": {
+		"name": "Datepicker",
+		"props": {
+			"style": {
+				"fontFamily": "Salesforce Sans"
+			}
+		}
+	  }
+	}
+  }

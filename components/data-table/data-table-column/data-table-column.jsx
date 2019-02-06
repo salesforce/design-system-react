@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // ## Constants
-import { DATA_TABLE_COLUMN } from '../../utilities/constants';
+import { DATA_TABLE_COLUMN } from '../../../utilities/constants';
 
 // extends is used below so that react-docgen can detect the component
 

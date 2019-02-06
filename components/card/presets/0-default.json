@@ -1,10 +1,12 @@
 {
 	"rootId": "card3703996384",
 	"elements": {
-	  "card3703996384": {
-		"name": "Card",
-		"props": {
+		"card3703996384": {
+			"name": "Card",
+			"props": {
+				"header": "<CardHeader icon={<Avatar variant='entity' />} heading='Merge' />",
+				"footer": "Merge"
+			}
 		}
-	  }
 	}
-  }
+}

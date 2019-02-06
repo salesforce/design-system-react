@@ -1,0 +1,15 @@
+{
+	"rootId": "buttonstateful1318611470",
+	"elements": {
+		"buttonstateful1318611470": {
+			"name": "ButtonStateful",
+			"props": {
+				"label": "Merge",
+				"iconName": "download",
+				"iconPosition": "left",
+				"iconSize": "small",
+				"style": { "font-family": "Salesforce Sans", "width": "inherit" }
+			}
+		}
+	}
+}

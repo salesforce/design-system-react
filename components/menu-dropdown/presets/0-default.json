@@ -1,0 +1,18 @@
+{
+	"rootId": "dropdown1141882535",
+	"elements": {
+		"dropdown1141882535": {
+			"name": "MenuDropdown",
+			"props": {
+				"iconName": "down",
+				"options": [
+					{ "label": "Menu Item One", "value": "A0" },
+					{ "label": "Menu Item Two", "value": "B0" },
+					{ "label": "Menu Item Three", "value": "C0" },
+					{ "type": "divider" },
+					{ "label": "Menu Item Four", "value": "D0" }
+				]
+			}
+		}
+	}
+}

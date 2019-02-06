@@ -1,0 +1,20 @@
+{
+	"rootId": "combobox528448281",
+	"elements": {
+	  "combobox528448281": {
+		"name": "Combobox",
+		"props": {
+			"options": [
+				{
+					"id": "1",
+					"label": "Merge 1"
+				},
+				{
+					"id": "2",
+					"label": "Merge 2"
+				}
+			]
+		}
+	  }
+	}
+  }

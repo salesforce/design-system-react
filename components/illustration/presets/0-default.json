@@ -1,0 +1,14 @@
+{
+	"rootId": "illustration1431446725",
+	"elements": {
+	  "illustration1431446725": {
+		"name": "Illustration",
+		"props": {
+			"heading": "Lorem ipsum dolor",
+			"messageBody": "Lorem ipsum dolor sit amet, consectetur",
+			"name": "No Access",
+			"path": "https://react.lightningdesignsystem.com/images/diamond.svg"
+		}
+	  }
+	}
+  }
