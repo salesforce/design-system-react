@@ -10,9 +10,9 @@ import DataTableColumn from '~/components/data-table/column';
 import Icon from '~/components/icon';
 
 const sampleItems = [
-	{ name: 'Cloudhub' },
-	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' },
+	{ id: '1', name: 'Cloudhub' },
+	{ id: '2', name: 'Cloudhub + Anypoint Connectors' },
+	{ id: '3', name: 'Cloud City' },
 ];
 
 class Example extends React.Component {
@@ -69,11 +69,7 @@ class Example extends React.Component {
 							) : null
 						}
 					>
-						<DataTable
-							items={this.state.items}
-							id="DataTableExample-1"
-							bordered
-						>
+						<DataTable items={this.state.items} id="DataTableExample-1">
 							<DataTableColumn
 								label="Opportunity Name"
 								property="name"
