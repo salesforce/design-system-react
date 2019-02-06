@@ -28,12 +28,10 @@ if (process.env.NODE_ENV !== 'production') {
 			} else {
 				componentType = specificTest.type.displayName;
 			}
+		} else if (typeof props[propName].type === 'string') {
+			componentType = props[propName].type;
 		} else {
-			if (typeof props[propName].type === 'string') {
-				componentType = props[propName].type;
-			} else {
-				componentType = props[propName].type.displayName;
-			}
+			componentType = props[propName].type.displayName;
 		}
 
 		const allowedComponentFound = allowedComponents.indexOf(componentType) > -1;

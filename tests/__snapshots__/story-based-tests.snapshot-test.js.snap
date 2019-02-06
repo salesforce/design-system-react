@@ -20549,43 +20549,39 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                 }
               }
             >
-              <div
+              <button
+                aria-live="assertive"
+                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+                disabled={false}
                 id="header-notifications-popover-id"
                 onClick={[Function]}
                 onFocus={null}
                 onMouseEnter={null}
                 onMouseLeave={null}
                 tabIndex="0"
+                title="5 new notifications"
+                type="button"
               >
-                <button
-                  aria-live="assertive"
-                  className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
-                  disabled={false}
-                  onClick={[Function]}
-                  title="5 new notifications"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon slds-global-header__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    5 new notifications
-                  </span>
-                </button>
-                <span
+                <svg
                   aria-hidden="true"
-                  className="slds-notification-badge slds-incoming-notification slds-show-notification"
+                  className="slds-button__icon slds-global-header__icon"
                 >
-                  5
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  5 new notifications
                 </span>
-              </div>
+              </button>
+              <span
+                aria-hidden="true"
+                className="slds-notification-badge slds-incoming-notification slds-show-notification"
+              >
+                5
+              </span>
             </div>
           </li>
           <li
@@ -20995,7 +20991,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
           >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="header-task-dropdown-id"
+              id="header-setup-dropdown-id"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -21039,43 +21035,39 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                 }
               }
             >
-              <div
+              <button
+                aria-live="assertive"
+                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+                disabled={false}
                 id="header-notifications-popover-id"
                 onClick={[Function]}
                 onFocus={null}
                 onMouseEnter={null}
                 onMouseLeave={null}
                 tabIndex="0"
+                title="5 new notifications"
+                type="button"
               >
-                <button
-                  aria-live="assertive"
-                  className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
-                  disabled={false}
-                  onClick={[Function]}
-                  title="5 new notifications"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon slds-global-header__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    5 new notifications
-                  </span>
-                </button>
-                <span
+                <svg
                   aria-hidden="true"
-                  className="slds-notification-badge slds-incoming-notification slds-show-notification"
+                  className="slds-button__icon slds-global-header__icon"
                 >
-                  5
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  5 new notifications
                 </span>
-              </div>
+              </button>
+              <span
+                aria-hidden="true"
+                className="slds-notification-badge slds-incoming-notification slds-show-notification"
+              >
+                5
+              </span>
             </div>
           </li>
           <li
@@ -21376,7 +21368,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
           >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="header-task-dropdown-id"
+              id="header-setup-dropdown-id"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -21420,43 +21412,39 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                 }
               }
             >
-              <div
+              <button
+                aria-live="assertive"
+                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+                disabled={false}
                 id="header-notifications-popover-id"
                 onClick={[Function]}
                 onFocus={null}
                 onMouseEnter={null}
                 onMouseLeave={null}
                 tabIndex="0"
+                title="5 new notifications"
+                type="button"
               >
-                <button
-                  aria-live="assertive"
-                  className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
-                  disabled={false}
-                  onClick={[Function]}
-                  title="5 new notifications"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon slds-global-header__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    5 new notifications
-                  </span>
-                </button>
-                <span
+                <svg
                   aria-hidden="true"
-                  className="slds-notification-badge slds-incoming-notification slds-show-notification"
+                  className="slds-button__icon slds-global-header__icon"
                 >
-                  5
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  5 new notifications
                 </span>
-              </div>
+              </button>
+              <span
+                aria-hidden="true"
+                className="slds-notification-badge slds-incoming-notification slds-show-notification"
+              >
+                5
+              </span>
             </div>
           </li>
           <li
