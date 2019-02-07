@@ -100,6 +100,17 @@ const propTypes = {
 	 * Determines component style.
 	 */
 	variant: PropTypes.oneOf(['base', 'modal']),
+	/**
+	 * Please select one of the following:
+	 * * `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+	 * * `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+	 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+	 */
+	tooltipPosition: PropTypes.oneOf([
+		'absolute',
+		'overflowBoundaryElement',
+		'relative',
+	]),
 };
 
 const defaultSteps = [
@@ -201,6 +212,11 @@ class ProgressIndicator extends React.Component {
 			}
 		}
 
+		// Set default tooltipPosition
+		const tooltipPosition =
+			this.props.tooltipPosition ||
+			(this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
+
 		/** 2. return DOM */
 		return (
 			<Progress
@@ -228,6 +244,7 @@ class ProgressIndicator extends React.Component {
 						onFocus={this.props.onStepFocus}
 						step={step}
 						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
+						tooltipPosition={tooltipPosition}
 					/>
 				))}
 			</Progress>
