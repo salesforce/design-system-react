@@ -3587,7 +3587,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -3694,12 +3694,21 @@
                             "type": {
                                 "name": "string",
                                 "required": false
+                            },
+                            "disabled": {
+                                "name": "custom",
+                                "raw": "PropTypes.boolean",
+                                "required": false
+                            },
+                            "tooltipContent": {
+                                "name": "node",
+                                "required": false
                             }
                         }
                     }
                 },
                 "required": true,
-                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
+                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -3786,6 +3795,13 @@
                 },
                 "required": false,
                 "description": "This callback exposes the selected listbox reference / DOM node to parent components."
+            },
+            "tooltipMenuItemDisabled": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "Accepts a tooltip that is displayed when hovering on disabled menu items."
             },
             "value": {
                 "type": {

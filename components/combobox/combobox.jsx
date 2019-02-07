@@ -206,12 +206,16 @@ const propTypes = {
 	 * * `label`: A primary string of text for a menu item or group separator.
 	 * * `subTitle`: A secondary string of text added for clarity. (optional)
 	 * * `type`: 'separator' is the only type currently used
+	 * * `disabled`: Set to true to disable this menu item.
+	 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
 	 * ```
 	 * {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
 	 * 	type: 'account',
+	 *  disabled: true,
+	 *  tooltipContent: "You don't have permission to select this item."
 	 * },
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
@@ -223,6 +227,8 @@ const propTypes = {
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
+			disabled: PropTypes.boolean,
+			tooltipContent: PropTypes.node,
 		})
 	).isRequired,
 	/**
@@ -254,6 +260,10 @@ const propTypes = {
 	 */
 	selectedListboxRef: PropTypes.func,
 	/**
+	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
+	 */
+	tooltipMenuItemDisabled: PropTypes.element,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -273,6 +283,7 @@ const defaultProps = {
 	events: {},
 	labels: {
 		noOptionsFound: 'No matches found.',
+		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
@@ -413,7 +424,7 @@ class Combobox extends React.Component {
 			nextIndex >= 0 &&
 			options[nextIndex].type === 'separator';
 		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
 
@@ -505,6 +516,10 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
+		if (this.state.activeOption && this.state.activeOption.disabled) {
+			return;
+		}
+
 		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, {
@@ -1160,6 +1175,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
+				tooltipMenuItemDisabled={this.props.tooltipMenuItemDisabled}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
