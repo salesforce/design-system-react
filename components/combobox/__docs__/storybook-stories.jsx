@@ -9,6 +9,7 @@ import BaseInlineHelpTooltip from '../__examples__/base-inline-help-tooltip';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
 import BaseMenuSeparator from '../__examples__/base-menu-separator';
 import BaseMenuItemDisabled from '../__examples__/base-menu-item-disabled';
+import BaseMenuItemDisabledTooltipOpen from '../__examples__/base-menu-item-disabled-tooltip-open';
 import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled-tooltip';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
@@ -60,6 +61,9 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Base Menu Item Disabled With Tooltip', () => (
 		<BaseMenuItemDisabledTooltip action={action} />
+	))
+	.add('Base Menu Item Disabled With Tooltip Open', () => (
+		<BaseMenuItemDisabledTooltipOpen action={action} />
 	))
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
