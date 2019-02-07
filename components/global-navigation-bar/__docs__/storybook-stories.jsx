@@ -66,17 +66,7 @@ const dropdownCollection = [
 		iconCategory: 'utility',
 		iconName: 'side_list',
 		href: 'http://www.google.com',
-	},
-	{
-		type: 'divider',
-	},
-	{
-		label: 'Menu Item Five',
-		value: '5',
-		iconCategory: 'utility',
-		iconName: 'side_list',
-		href: 'http://www.google.com',
-	},
+	}
 ];
 
 /* eslint-disable react/display-name */
@@ -101,6 +91,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
+				active
 				href="https://www.lightningdesignsystem.com/"
 				label="Home"
 				id="home-link"
@@ -125,27 +116,12 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Menu Item"
 			/>
 			<GlobalNavigationBarLink
-				active
 				label="Menu Item"
 				onClick={linkClicked('Link clicked')}
 			/>
 			<GlobalNavigationBarLink
 				label="Menu Item"
 				onClick={linkClicked('Link clicked')}
-			/>
-		</GlobalNavigationBarRegion>
-		<GlobalNavigationBarRegion region="tertiary">
-			<GlobalNavigationBarButton
-				label="Button"
-				onClick={buttonClicked('Button clicked')}
-			/>
-			<GlobalNavigationBarLink
-				label="Actions"
-				onClick={buttonClicked('Link clicked')}
-			/>
-			<GlobalNavigationBarLabel
-				dividerPosition="left"
-				label="Vandelay Enterprises"
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>

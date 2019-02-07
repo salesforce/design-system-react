@@ -208,7 +208,10 @@ class AppLauncher extends React.Component {
 		const triggerAssistiveText =
 			this.props.triggerAssistiveText || assistiveText.trigger;
 		return (
-			<div className="slds-context-bar__item slds-no-hover" style={style}>
+			<div
+				className="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover"
+				style={style}
+			>
 				<div className="slds-context-bar__icon-action">
 					<button
 						aria-haspopup="true"
@@ -250,13 +253,12 @@ class AppLauncher extends React.Component {
 					{this.props.children}
 				</Modal>
 				{this.props.triggerName ? (
-					<span
-						className={classNames(
-							'slds-context-bar__label-action slds-context-bar__app-name',
-							{ 'slds-truncate': !this.props.noTruncate }
+					<span className="slds-context-bar__label-action slds-context-bar__app-name">
+						{(this.props.noTruncate) ? this.props.triggerName : (
+							<span className="slds-truncate">
+								{this.props.triggerName}
+							</span>
 						)}
-					>
-						{this.props.triggerName}
 					</span>
 				) : null}
 			</div>
