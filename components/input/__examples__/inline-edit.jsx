@@ -5,31 +5,35 @@ import PopoverEditDialog from '~/components/popover/popover-edit-dialog';
 class Example extends React.Component {
     constructor(props) {
         super(props);
+        const defaultFirstName = 'John';
+        const defaultLastName = 'Smith';
         this.state = {
             isOpen: false,
-            inputValue1: null, // stores firstName in edit input field
-            inputValue2: null, // stores lastName in edit input field
-            fullName: "John Smith"
+            input1: defaultFirstName, // stores firstName in edit input field
+            input2: defaultLastName, // stores lastName in edit input field
+            prevInput1: '',
+            prevInput2: '',
+            fullName: `${defaultFirstName} ${defaultLastName}`// concatenated to facilitate code example - up to the consumer to have this or not.
         };
     }
 
     onChange = (inputName) => (event, {value}) => {
-        if (inputName === 'input1') {
-            this.setState({inputValue1: value});
+        if (inputName === 'first-name') {
+            this.setState({input1: value});
         } else {
-            this.setState({inputValue2: value});
+            this.setState({input2: value});
         }
     }
 
 	handleOpen = () => {
-		this.setState({ isOpen: true });
+		this.setState({ isOpen: true, prevInput1: this.state.input1, prevInput2: this.state.input2 });
     };
 
     handleRequestClose = (event, data) => {
 		if (this.props.log) {
-			this.props.log('onRequestClose');
+			this.props.log('handleRequestClose');
 		}
-		this.setState({ isOpen: false });
+		this.setState({ isOpen: false, input1: this.state.prevInput1, input2: this.state.prevInput2 });
 	};
 
 	handleClose = (event, data) => {
@@ -45,8 +49,8 @@ class Example extends React.Component {
         // Content of EditDialogPopover that is shown when clicking on edit (pencil icon)
         const editDialogPopoverBody =
             <div className="slds-col_padded">
-                <Input id="first-name" label="First Name" value={this.state.inputValue1} onChange={this.onChange('input1')}/>
-                <Input id="last-name" label="Last Name" value={this.state.inputValue2} onChange={this.onChange('input2')}/>
+                <Input id="first-name" label="First Name" value={this.state.input1} onChange={this.onChange('first-name')}/>
+                <Input id="last-name" label="Last Name" value={this.state.input2} onChange={this.onChange('last-name')}/>
             </div>;
 
 		return (

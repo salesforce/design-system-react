@@ -29,6 +29,8 @@ export default class PopoverEditDialog extends React.Component {
 		const {onCancel, onSave, ...restProps} = this.props;
 		return (
 			<Popover
+				classNameBody={["slds-p-left_small", "slds-p-top_medium", "slds-p-right_small"]}
+				classNameFooter={["slds-p-top_xx-small", "slds-p-bottom_xx-small"]}
 				footer={
 					<div className="slds-text-align_right">
 						<Button label="Cancel" onClick={onCancel} />

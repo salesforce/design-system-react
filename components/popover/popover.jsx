@@ -125,6 +125,22 @@ class Popover extends React.Component {
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it.
+		 */
+		classNameBody: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it.
+		 */
+		classNameFooter: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
 		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
 		 */
 		className: PropTypes.oneOfType([
@@ -481,11 +497,11 @@ class Popover extends React.Component {
 					</header>
 				) : null}
 
-				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+				<div id={`${this.getId()}-dialog-body`} className={classNames("slds-popover__body", this.props.classNameBody)}>
 					{props.body}
 				</div>
 				{this.props.footer ? (
-					<footer className="slds-popover__footer">{this.props.footer}</footer>
+					<footer className={classNames("slds-popover__footer", this.props.classNameFooter)}>{this.props.footer}</footer>
 				) : null}
 			</Dialog>
 		) : null;
