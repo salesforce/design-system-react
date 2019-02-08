@@ -14,7 +14,9 @@ newPRWelcomeComment: >
     
   This is a community-driven project, and we can't do it without your participation. Please check out our [contributing guidelines](https://github.com/salesforce/design-system-react/blob/master/CONTRIBUTING.md) and review the Contributor Checklist if you haven't already, to make sure everything is squared away. TravisCI will take about 10 minutes to run through the same items that are on the Contributor checklist with a pass/fail check below. Please fix any issues that cause TravisCI to fail or ask for clarification--we try, but sometimes the errors can be unclear.
 
-  A maintainer will try to respond within 7 days. If you haven’t heard anything by then, please bump this thread.
+  A maintainer will try to respond within 7 days. If you haven’t heard anything by then, please bump this thread. To ensure codebase quality, large code line changes may take more than 2 weeks to review, but may take longer depending on the number of pull requests in the queue. Feel free to ask for a status update at any time--you won't be bothering anyone.
+
+  Once feedback has been given, please reply to the feedback giver once the feedback on been addressed, so that they can continue the review.
 
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 
