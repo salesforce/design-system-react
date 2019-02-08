@@ -5660,6 +5660,13 @@
                 "required": false,
                 "description": "styles to be added to input"
             },
+            "styleContainer": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component container"
+            },
             "type": {
                 "type": {
                     "name": "enum",
@@ -7943,6 +7950,18 @@
                         },
                         {
                             "value": "'10'",
+                            "computed": false
+                        },
+                        {
+                            "value": "5",
+                            "computed": false
+                        },
+                        {
+                            "value": "7",
+                            "computed": false
+                        },
+                        {
+                            "value": "10",
                             "computed": false
                         }
                     ]
