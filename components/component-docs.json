@@ -5151,6 +5151,13 @@
                 "returns": null
             },
             {
+                "name": "getIsStatic",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getErrorId",
                 "docblock": null,
                 "modifiers": [],
@@ -5736,6 +5743,10 @@
                         },
                         {
                             "value": "'counter'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'edit-dialog'",
                             "computed": false
                         }
                     ]
@@ -9908,6 +9919,42 @@
                 },
                 "required": true,
                 "description": "The contents of the popover. This should also accept arrays."
+            },
+            "classNameBody": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it."
+            },
+            "classNameFooter": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it."
             },
             "className": {
                 "type": {
