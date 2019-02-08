@@ -80,7 +80,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
-				active
+				active={props.homeActive !== false}
 				href="https://www.lightningdesignsystem.com/"
 				label="Home"
 				id="home-link"
@@ -105,6 +105,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Menu Item"
 			/>
 			<GlobalNavigationBarLink
+				active={props.homeActive === false}
 				label="Menu Item"
 				onClick={linkClicked('Link clicked')}
 			/>
@@ -171,15 +172,19 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 				label="Admin"
 				onClick={linkClicked('Admin Link clicked')}
 			/>
-			<GlobalNavigationBarLink
-				label="Audience Builder"
-				onClick={linkClicked('Audience Builder Link clicked')}
-			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarButton
+				label="Button"
+				onClick={buttonClicked('Button clicked')}
+			/>
 			<GlobalNavigationBarLink
 				label="Actions"
 				onClick={linkClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLabel
+				dividerPosition="left"
+				label="Vandelay Enterprises"
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
@@ -247,15 +252,19 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (
 				label="Admin"
 				onClick={linkClicked('Admin Link clicked')}
 			/>
-			<GlobalNavigationBarLink
-				label="Audience Builder"
-				onClick={linkClicked('Audience Builder Link clicked')}
-			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarButton
+				label="Button"
+				onClick={buttonClicked('Button clicked')}
+			/>
 			<GlobalNavigationBarLink
 				label="Actions"
 				onClick={linkClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLabel
+				dividerPosition="left"
+				label="Vandelay Enterprises"
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>

@@ -41,6 +41,7 @@ const propSets = {
 	},
 	hybrid: {
 		props: {
+			homeActive: false,
 			openOn: 'hybrid',
 		},
 		primaryRegionProps: {
@@ -56,6 +57,7 @@ const propSets = {
 			cloud: 'marketing',
 		},
 		primaryRegionProps: {
+			dividerPosition: 'right',
 			truncate: false,
 			appLauncher: {
 				assistiveText: { trigger: 'Open App Launcher' },
