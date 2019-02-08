@@ -39,7 +39,7 @@ storiesOf(BUTTON, module)
 			assistiveText: { icon: 'Icon' },
 			iconSize: 'large',
 			iconCategory: 'utility',
-			iconName: 'edit',
+			iconName: 'answer',
 			title: 'chat',
 		})
 	)
