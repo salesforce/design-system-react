@@ -1262,7 +1262,7 @@ exports[`DOM snapshots SLDSButton Icon large 1`] = `
       className="slds-button__icon slds-button__icon_large"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#answer"
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
       />
     </svg>
     <span
@@ -1993,7 +1993,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
                 className="slds-form-element__control slds-has-divider_bottom"
               >
                 <span
-                  className="slds-form-element__static slds-grid slds-grid_align-spread"
+                  className="slds-form-element__static"
                   onClick={[Function]}
                 >
                   Write your own heading
@@ -20980,6 +20980,77 @@ exports[`DOM snapshots SLDSInput Fixed Text 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSInput Inline Edit 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Inline Edit
+    </h1>
+    <div
+      className="slds-form-element slds-form-element_edit slds-form-element_readonly slds-hint-parent"
+    >
+      <span
+        className="slds-form-element__label"
+      >
+        Full Name
+      </span>
+      <div
+        className="slds-form-element__control slds-has-divider_bottom"
+      >
+        <span
+          className="slds-form-element__static"
+        >
+          John Smith
+        </span>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <button
+            aria-controls="inline-edit-edit-button"
+            className="slds-button slds-button_icon slds-button_reset"
+            disabled={false}
+            id="BkWYH-Ts9E4"
+            onClick={[Function]}
+            onFocus={null}
+            onMouseEnter={null}
+            onMouseLeave={null}
+            style={
+              Object {
+                "verticalAlign": "middle",
+              }
+            }
+            tabIndex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon slds-button__icon_hint"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Edit: Status
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSInput Inline Help 1`] = `
 <div
   className="slds-p-around_medium"
@@ -21141,7 +21212,7 @@ exports[`DOM snapshots SLDSInput Static Input 1`] = `
         className="slds-form-element__control slds-has-divider_bottom"
       >
         <span
-          className="slds-form-element__static slds-grid slds-grid_align-spread"
+          className="slds-form-element__static"
         >
           Static value
         </span>
