@@ -1,0 +1,21 @@
+{
+    "component": "global-header",
+    "status": "prototype",
+    "display-name": "Global Header",
+    "SLDS-component-path": "/components/global-header#flavor-base",
+    "dependencies": [
+        {
+            "component": "button"
+        },
+        {
+            "component": "dropdown"
+        },
+        {
+            "component": "profile"
+        },
+        {
+            "component": "search"
+        }
+    ],
+    "url-slug": "global-header"
+}
