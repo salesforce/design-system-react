@@ -32,6 +32,7 @@ const GlobalNavigationBarLink = (props) => {
 	const {
 		active,
 		activeBackgroundColor,
+		assistiveText,
 		className,
 		dividerPosition,
 		href,
@@ -74,8 +75,10 @@ const GlobalNavigationBarLink = (props) => {
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				tabIndex={tabIndex}
+				title={label}
 			>
-				<span className="slds-truncate">{label}</span>
+				{(active) ? <span className="slds-assistive-text">{assistiveText.activeDescriptor}</span> : null}
+				<span className="slds-truncate" title={label}>{label}</span>
 			</a>
 		</li>
 	);
@@ -93,6 +96,13 @@ GlobalNavigationBarLink.propTypes = {
 	 * Allows alignment of active item with active application background color. If application background is dark, text color may need to be `#fff`. This can be done with the style prop.
 	 */
 	activeBackgroundColor: PropTypes.string,
+	/**
+	 * **Assistive text for accessibility.**
+	 * * `activeDescriptor`: The text that appears alongside a link that is currently active.
+	 */
+	assistiveText: PropTypes.shape({
+		activeDescriptor: PropTypes.string
+	}),
 	/**
 	 * Class names to be added to the anchor element
 	 */
@@ -156,6 +166,9 @@ GlobalNavigationBarLink.propTypes = {
 };
 
 GlobalNavigationBarLink.defaultProps = {
+	assistiveText: {
+		activeDescriptor: 'Current page:'
+	},
 	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 };
 
