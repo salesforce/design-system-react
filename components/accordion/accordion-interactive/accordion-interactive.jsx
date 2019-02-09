@@ -14,6 +14,7 @@ export default class AccordionInteractive extends React.Component {
 	}
 
 	componentDidMount() {
+		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({items: this.props.items})
 	}
 
@@ -29,6 +30,7 @@ export default class AccordionInteractive extends React.Component {
 			const dataAsArray = Object.keys(data).map((id) => data[id]);
 			this.props.action('onClick')(event, ...dataAsArray);
 		} else if (console) {
+			// eslint-disable-next-line no-console
 			console.log('[onSelect] (event, data)', event, data);
 		}
 	}
@@ -37,7 +39,7 @@ export default class AccordionInteractive extends React.Component {
 	render() {
 		return (
 			<Accordion id="base-example-accordion" style={this.props.style}>
-			{this.state.items.map((item, i) => (
+			{this.state.items.map(item => (
 				<AccordionPanel
 					expanded={!!this.state.expandedPanels[item.id]}
 					id={item.id}

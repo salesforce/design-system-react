@@ -47,7 +47,7 @@ module.exports = {
 					'components/tabs/tabs-panel/tabs-panel.jsx',
 					'components/progress-indicator/progress-indicator.jsx',
 					'components/progress-indicator/progress-indicator-interactive/progress-indicator-interactive.jsx',
-
+					'components/tooltip/tooltip.jsx',
         ]
       },
     ]
