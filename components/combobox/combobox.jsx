@@ -1410,6 +1410,7 @@ class Combobox extends React.Component {
 		return (
 			<div
 				className={classNames('slds-form-element', props.classNameContainer)}
+				style={this.props.style}
 			>
 				<Label
 					assistiveText={this.props.assistiveText}

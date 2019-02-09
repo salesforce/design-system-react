@@ -5,5 +5,6 @@ import ColorPicker from '../color-picker.jsx';
 export default (
 	<ColorPicker
 		uxpId="0"
+		style={{"fontFamily": "Salesforce Sans"}}
 	/>
 );

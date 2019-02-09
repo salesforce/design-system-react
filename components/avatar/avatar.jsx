@@ -177,7 +177,7 @@ class Avatar extends React.Component {
 		};
 
 		return (
-			<div>
+			<div style={this.props.style}>
 				<span
 					className={classNames('slds-avatar', {
 						'slds-avatar_circle': variant === 'user',

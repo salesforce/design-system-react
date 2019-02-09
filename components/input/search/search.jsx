@@ -12,18 +12,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // ## Children
-import Input from './index';
-import InputIcon from '../icon/input-icon';
+import Input from '../input';
+import InputIcon from '../../icon/input-icon';
 
-import checkProps from './check-props';
-import componentDoc from './docs.json';
+import checkProps from '../check-props';
+import componentDoc from '../docs.json';
 
 // ### Event Helpers
-import KEYS from '../../utilities/key-code';
-import EventUtil from '../../utilities/event';
+import KEYS from '../../../utilities/key-code';
+import EventUtil from '../../../utilities/event';
 
 // ## Constants
-import { SEARCH } from '../../utilities/constants';
+import { SEARCH } from '../../../utilities/constants';
 
 const handleKeyDown = (event, onSearch) => {
 	if (event.keyCode === KEYS.ENTER) {
@@ -50,6 +50,7 @@ const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
 				}.label;
 	return (
 		<Input
+			style={props.style}
 			assistiveText={{ label: assistiveText }}
 			iconLeft={
 				<InputIcon

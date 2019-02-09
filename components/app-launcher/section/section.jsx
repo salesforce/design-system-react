@@ -105,7 +105,7 @@ class AppLauncherSection extends React.Component {
 		};
 
 		return (
-			<div className={classNames('slds-section', iconIsOpenClass)}>
+			<div className={classNames('slds-section', iconIsOpenClass)} style={this.props.style}>
 				<div className="slds-section__title">
 					{this.props.toggleable || this.props.onToggleClick ? (
 						<Button

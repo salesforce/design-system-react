@@ -79,6 +79,7 @@ const ButtonGroup = (props) => {
 	if (props.variant === 'checkbox') {
 		return (
 			<fieldset
+				style={this.props.style}
 				className={classNames('slds-form-element', {
 					'slds-has-error': labels.error,
 				})}

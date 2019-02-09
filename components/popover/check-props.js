@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				props,
 				'children',
-				['SLDSButton', 'a', 'button'],
+				['SLDSButton', 'a', 'button', 'Button'],
 				createDocUrl()
 			);
 		}

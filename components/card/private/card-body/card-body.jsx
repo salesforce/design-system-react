@@ -13,7 +13,7 @@ import classNames from 'classnames';
 import { CARD_BODY } from '../../../../utilities/constants';
 
 const CardBody = (props) => (
-	<div className={classNames('slds-card__body', props.className)} id={props.id}>
+	<div className={classNames('slds-card__body', props.className)} id={props.id} style={props.style}>
 		{props.children}
 	</div>
 );

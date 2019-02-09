@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
-import { TAB_PANEL } from '../../../utilities/constants';
+import { TAB_PANEL } from '../../../../utilities/constants';
 
 /**
  * The containers of content that are shown and hidden by `Tabs`.

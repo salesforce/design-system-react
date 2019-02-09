@@ -54,6 +54,7 @@ class Accordion extends Component {
 			<ul
 				name={this.props.id || this.generatedId}
 				className={classNames('slds-accordion', this.props.className)}
+				style={this.props.style}
 			>
 				{this.props.children}
 			</ul>

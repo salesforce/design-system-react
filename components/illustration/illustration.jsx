@@ -40,6 +40,9 @@ const Illustration = ({
 	path,
 	size,
 	style,
+	url,
+	imgUrlStyle,
+	imgUrlAlt
 }) => {
 	checkProps(
 		'Illustration',
@@ -87,7 +90,7 @@ const Illustration = ({
 				'slds-illustration_large': size === 'large',
 			})}
 		>
-			{illustrationSvg}
+			{url ? <img src={url} alt={imgUrlAlt} style={imgUrlStyle} /> : illustrationSvg}
 			<div className="slds-text-longform">
 				{heading ? (
 					<h3 className="slds-text-heading_medium">{heading}</h3>
@@ -114,6 +117,18 @@ Illustration.propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * An option to load image from URL. Load content into <img> html element
+	 */
+	url: PropTypes.string,
+	/**
+	 * Style object from images loaded from URL
+	 */
+	imgUrlStyle: PropTypes.object,
+	/**
+	 * Alt attribute
+	 */
+	imgUrlAlt: PropTypes.string,
 	/**
 	 * A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */

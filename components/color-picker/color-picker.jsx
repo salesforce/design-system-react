@@ -386,6 +386,7 @@ class ColorPicker extends React.Component {
 		);
 		return (
 			<Popover
+				style={this.props.style}
 				ariaLabelledby={`color-picker-label-${this.generatedId}`}
 				align="bottom left"
 				body={popoverBody}

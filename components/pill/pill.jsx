@@ -263,6 +263,7 @@ class Pill extends React.Component {
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<span
+				style={this.props.style}
 				{...this.restProps()}
 				role={role}
 				className={classNames(

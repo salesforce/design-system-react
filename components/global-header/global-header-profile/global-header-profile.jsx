@@ -13,11 +13,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 // ### Dropdown
-import MenuDropdown from '../menu-dropdown';
-import GlobalHeaderTrigger from './private/dropdown-trigger';
+import MenuDropdown from '../../menu-dropdown';
+import GlobalHeaderTrigger from '../private/dropdown-trigger';
 
 // ## Constants
-import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
+import { GLOBAL_HEADER_PROFILE } from '../../../utilities/constants';
 
 /**
  * A helper component that renders a MenuDropdown for the user profile.

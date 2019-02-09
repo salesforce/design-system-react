@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Accordion from '../accordion';
 import AccordionPanel from '../accordion-panel';
@@ -36,7 +36,7 @@ export default class AccordionInteractive extends React.Component {
 
 	render() {
 		return (
-			<Accordion id="base-example-accordion">
+			<Accordion id="base-example-accordion" style={this.props.style}>
 			{this.state.items.map((item, i) => (
 				<AccordionPanel
 					expanded={!!this.state.expandedPanels[item.id]}
@@ -44,6 +44,7 @@ export default class AccordionInteractive extends React.Component {
 					key={item.id}
 					onTogglePanel={() => this.togglePanel(event, item)}
 					summary={item.summary}
+					style={this.props.style}
 				>
 					{item.details}
 				</AccordionPanel>

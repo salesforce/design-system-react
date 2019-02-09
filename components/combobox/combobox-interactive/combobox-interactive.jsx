@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Combobox from '../combobox';
-import comboboxFilterAndLimit from '../filter';
-
 
 export default class ComboboxInteractive extends React.Component {
 	constructor(props) {
@@ -31,6 +29,7 @@ export default class ComboboxInteractive extends React.Component {
 					}}
 					selection={this.state.selection}
 					options={this.props.options}
+					style={this.props.style}
 				/>
 			);
 	}

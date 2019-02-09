@@ -21,5 +21,8 @@ export default (
 			}
 		]
 		}
+		style={{
+			"fontFamily": "Salesforce Sans"
+		}}
 	/>
 );

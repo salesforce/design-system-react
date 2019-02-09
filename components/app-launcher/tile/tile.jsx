@@ -29,6 +29,7 @@ const AppLauncherTile = (props) => {
 
 	return (
 		<a
+			style={props.style}
 			href={props.href} // eslint-disable-line no-script-url
 			onClick={
 				isFunction(props.onClick)

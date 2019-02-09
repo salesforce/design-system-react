@@ -55,8 +55,9 @@ const AccordionPanel = ({
 	summary,
 	title,
 	onTogglePanel,
+	style
 }) => (
-	<li className="slds-accordion__list-item">
+	<li className="slds-accordion__list-item" style={style}>
 		<section
 			className={classNames('slds-accordion__section', {
 				'slds-is-open': expanded,

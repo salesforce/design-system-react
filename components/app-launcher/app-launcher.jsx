@@ -151,6 +151,7 @@ class AppLauncher extends React.Component {
 		if (this.props.search) {
 			returnVal = (
 				<div
+					stylw={this.props.style}
 					className="slds-app-launcher__header-search"
 					ref={(component) => {
 						if (component) {

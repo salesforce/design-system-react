@@ -3,7 +3,7 @@ import * as React from 'react';
 import CardBody from '../card-body.jsx';
 
 export default (
-	<CardBody uxpId="0">
+	<CardBody uxpId="0" style={{ fontFamily: 'Salesforce Sans' }}>
 		Merge
 	</CardBody>
 );

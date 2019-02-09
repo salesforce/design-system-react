@@ -5,6 +5,7 @@ import Breadcrumb from '../breadcrumb';
 export default (
 	<Breadcrumb
 		uxpId="0"
+		style={{"fontFamily": "Salesforce Sans"}}
 		items={
 			[
 				{

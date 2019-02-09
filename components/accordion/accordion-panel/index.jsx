@@ -1,3 +1,3 @@
-import AccordionPanel from "./accordion-panel.jsx";
+import AccordionPanel from "./accordion-panel";
 
 export { AccordionPanel as default }

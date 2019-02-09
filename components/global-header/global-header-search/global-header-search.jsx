@@ -9,10 +9,10 @@
 import React from 'react';
 
 // ### Lookup
-import Lookup from '../lookup';
+import Lookup from '../../lookup';
 
 // ## Constants
-import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
+import { GLOBAL_HEADER_SEARCH } from '../../../utilities/constants';
 
 /**
  * The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.

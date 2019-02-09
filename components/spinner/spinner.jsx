@@ -78,7 +78,7 @@ const Spinner = (props) => {
 	});
 
 	return (
-		<div className={classNames(containerClassName, 'slds-spinner_container')}>
+		<div className={classNames(containerClassName, 'slds-spinner_container')} style={props.style}>
 			<div
 				aria-hidden="false"
 				className={spinnerClassName}

@@ -82,7 +82,7 @@ const CardHeader = (props) => {
 	const hasFilter = props.filter ? true : null;
 
 	return (
-		<div className={classnames('slds-card__header', 'slds-grid')}>
+		<div className={classnames('slds-card__header', 'slds-grid')} style={props.style}>
 			{Header}
 			{props.filter ? renderFilter(props.filter, props.filterId) : null}
 			<div

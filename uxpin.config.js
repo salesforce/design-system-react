@@ -28,7 +28,26 @@ module.exports = {
 					'components/date-picker/date-picker.jsx',
 					'components/menu-dropdown/menu-dropdown.jsx',
 					'components/icon/icon.jsx',
-					'components/illustration/illustration.jsx'
+					'components/illustration/illustration.jsx',
+					'components/input/input.jsx',
+					'components/input/search/search.jsx',
+					'components/slider/slider.jsx',
+					'components/pill/pill.jsx',
+					'components/pill-container/pill-container.jsx',
+					'components/radio/radio.jsx',
+					'components/radio-button-group/radio-button-group.jsx',
+					'components/radio-group/radio-group.jsx',
+					'components/progress-ring/progress-ring.jsx',
+					'components/spinner/spinner.jsx',
+					'components/time-picker/time-picker.jsx',
+					'components/toast/toast.jsx',
+					'components/textarea/textarea.jsx',
+					'components/media-object/media-object.jsx',
+					'components/tabs/tabs.jsx',
+					'components/tabs/tabs-panel/tabs-panel.jsx',
+					'components/progress-indicator/progress-indicator.jsx',
+					'components/progress-indicator/progress-indicator-interactive/progress-indicator-interactive.jsx',
+
         ]
       },
     ]
@@ -37,12 +56,11 @@ module.exports = {
 };
 
 /*
-
-
-					'components/accordion/accordion.jsx',
-					'components/accordion/panel/panel.jsx',
-
-					'components/app-launcher/app-launcher.jsx',
-					'components/app-launcher/section/section.jsx',
-					'components/app-launcher/tile/tile.jsx',
+** Currently unsupported components:
+** 'components/global-header/global-header.jsx',
+** 'components/global-header/global-header-button/global-header-button.jsx',
+** 'components/global-header/global-header-dropdown/global-header-dropdown.jsx',
+** 'components/global-header/global-header-search/global-header-search.jsx',
+** 'components/global-header/global-header-profile/global-header-profile.jsx'
+** 'components/popover/popover.jsx',
 */

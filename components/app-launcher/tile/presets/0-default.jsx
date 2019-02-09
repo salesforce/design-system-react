@@ -8,5 +8,6 @@ export default (
 		iconText="MC"
 		description="Send emails, track emails, red emails!"
 		uxpId="0"
+		style={{"fontFamily": "Salesforce Sans"}}
 	/>
 );

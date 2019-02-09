@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 // ### Dropdown
-import Button from '../button';
+import Button from '../../button';
 
 // ### Children
 import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';

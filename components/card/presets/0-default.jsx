@@ -7,5 +7,6 @@ export default (
 		header="<CardHeader icon={<Avatar variant='entity' />} heading='Merge' />"
 		footer="Merge"
 		uxpId="0"
+		style={{"fontFamily": "Salesforce Sans"}}
 	/>
 );

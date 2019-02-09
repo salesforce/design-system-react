@@ -38,6 +38,7 @@
 		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
 		"uxpin:experiment": "uxpin-merge --uxpin-domain=merge.uxpin.cloud --webpack-config=./webpack.config.uxpin.js --wrapper=./utilities/uxpin-wrapper.jsx",
+		"uxpin:test": "uxpin-merge server --uxpin-domain=merge.uxpin.cloud --webpack-config=./webpack.config.uxpin.js --wrapper=./utilities/uxpin-wrapper.jsx",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},

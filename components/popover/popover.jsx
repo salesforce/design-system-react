@@ -119,11 +119,11 @@ class Popover extends React.Component {
 		/**
 		 * The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
 		 */
-		children: PropTypes.node.isRequired,
+		children: PropTypes.node,
 		/**
 		 * The contents of the popover. This should also accept arrays.
 		 */
-		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
+		body: PropTypes.node,
 		/**
 		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
 		 */

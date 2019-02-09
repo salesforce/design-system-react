@@ -9,5 +9,9 @@ export default (
 		iconPosition="left"
 		iconSize="small"
 		uxpId="0"
+		style={{
+			"FontFamily": "Salesforce Sans",
+			"width": "inherit"
+		}}
 	/>
 );

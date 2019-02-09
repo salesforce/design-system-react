@@ -5,7 +5,7 @@ import Section from '../section/section';
 import Tile from '../tile/tile';
 
 export default (
-	<AppLauncher triggerName="App Name" uxpId="0">
+	<AppLauncher triggerName="App Name" uxpId="0" style={{"fontFamily": "Salesforce Sans"}}>
 		<Section title="Merge" uxpId="1">
 			<Tile
 				title="Marketing Cloud"

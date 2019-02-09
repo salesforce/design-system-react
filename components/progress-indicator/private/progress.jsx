@@ -68,6 +68,7 @@ class Progress extends React.Component {
 					{ 'slds-progress_shade': this.props.variant === 'modal' },
 					this.props.className
 				)}
+				style={{"maxWidth": "100%"}}
 			>
 				<ol className="slds-progress__list">{this.props.children}</ol>
 				<ProgressBar
