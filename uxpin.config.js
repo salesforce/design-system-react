@@ -48,6 +48,7 @@ module.exports = {
 					'components/progress-indicator/progress-indicator.jsx',
 					'components/progress-indicator/progress-indicator-interactive/progress-indicator-interactive.jsx',
 					'components/tooltip/tooltip.jsx',
+					'components/tree/tree/tree.jsx',
         ]
       },
     ]

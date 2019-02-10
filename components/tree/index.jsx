@@ -251,6 +251,7 @@ class Tree extends React.Component {
 		return (
 			<div
 				id={this.props.id}
+				style={this.props.style}
 				className={classNames(
 					'slds-tree_container',
 					this.props.className
