@@ -2,14 +2,15 @@
 import * as React from 'react';
 
 import GlobalHeader from '../global-header';
-import GlobalHeaderButton from '../global-header-button';
-import GlobalHeaderDropdown from '../global-header-dropdown';
-import GlobalHeaderProfile from '../global-header-profile';
-import GlobalHeaderSearch from '../global-header-search';
+import GlobalHeaderButton from '../global-header-button/global-header-button';
+import GlobalHeaderDropdown from '../global-header-dropdown/global-header-dropdown';
+import GlobalHeaderProfile from '../global-header-profile/global-header-profile';
+import GlobalHeaderSearch from '../global-header-search/global-header-search';
 
 export default (
 	<GlobalHeader uxpId="0">
 		<GlobalHeaderSearch
+			uxpId="01"
 			placeholder="Search Salesforce"
 			options={[{ label: 'Email' }, { label: 'Mobile' }]}
 		/>

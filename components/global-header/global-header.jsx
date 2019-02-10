@@ -25,7 +25,7 @@ import {
 	GLOBAL_HEADER,
 	GLOBAL_HEADER_PROFILE,
 	GLOBAL_HEADER_SEARCH,
-	GLOBAL_HEADER_TOOL,
+	GLOBAL_HEADER_DROPDOWN,
 } from '../../utilities/constants';
 
 const defaultProps = {
@@ -108,12 +108,24 @@ class GlobalHeader extends React.Component {
 		let profile;
 
 		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type.displayName === GLOBAL_HEADER_TOOL) {
+			if (
+				(child &&
+					child.type.WrappedComponent.displayName === GLOBAL_HEADER_DROPDOWN) ||
+				(child && child.type.displayName === GLOBAL_HEADER_DROPDOWN)
+			) {
 				if (!tools) tools = [];
 				tools.push(child);
-			} else if (child && child.type.displayName === GLOBAL_HEADER_SEARCH) {
+			} else if (
+				(child &&
+					child.type.WrappedComponent.displayName === GLOBAL_HEADER_SEARCH) ||
+				(child && child.type.displayName === GLOBAL_HEADER_SEARCH)
+			) {
 				search = child;
-			} else if (child && child.type.displayName === GLOBAL_HEADER_PROFILE) {
+			} else if (
+				(child &&
+					child.type.WrappedComponent.displayName === GLOBAL_HEADER_PROFILE) ||
+				(child && child.type.displayName === GLOBAL_HEADER_PROFILE)
+			) {
 				profile = child;
 			}
 		});

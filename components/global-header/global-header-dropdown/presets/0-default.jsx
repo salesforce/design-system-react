@@ -5,9 +5,9 @@ import GlobalHeaderDropdown from '../global-header-dropdown';
 export default (
 	<GlobalHeaderDropdown
 		uxpId="0"
-		assistiveText="Global Actions"
-		iconCategory="utility"
+		id="global-header-dropdown"
 		iconName="add"
-		options={[{ label: 'New Note' }, { label: 'Log a Call' }]}
+		iconCategory="utility"
+		options={[{ 'label': 'New Note' }, { 'label': 'Log a Call' }]}
 	/>
 );

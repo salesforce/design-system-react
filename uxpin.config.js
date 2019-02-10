@@ -49,6 +49,12 @@ module.exports = {
 					'components/progress-indicator/progress-indicator-interactive/progress-indicator-interactive.jsx',
 					'components/tooltip/tooltip.jsx',
 					'components/tree/tree/tree.jsx',
+					'components/modal/modal.jsx',
+					'components/global-header/global-header.jsx',
+					'components/global-header/global-header-button/global-header-button.jsx',
+					'components/global-header/global-header-dropdown/global-header-dropdown.jsx',
+					'components/global-header/global-header-search/global-header-search.jsx',
+					'components/global-header/global-header-profile/global-header-profile.jsx'
         ]
       },
     ]

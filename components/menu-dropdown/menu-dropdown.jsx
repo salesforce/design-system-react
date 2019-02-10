@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import requiredIf from 'react-required-if';
 
 import classNames from 'classnames';
 
@@ -211,13 +210,6 @@ const propTypes = {
 	 * Delay on menu closing in milliseconds.
 	 */
 	hoverCloseDelay: PropTypes.number,
-	/**
-	 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
-	 */
-	iconCategory: requiredIf(
-		PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
-		(props) => !!props.iconName
-	),
 	/**
 	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	 */
