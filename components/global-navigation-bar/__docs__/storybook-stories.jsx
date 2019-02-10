@@ -32,7 +32,7 @@ const dropdownCollection = [
 		value: '0',
 		leftIcon: {
 			category: 'utility',
-			name: 'add'
+			name: 'add',
 		},
 		href: 'http://www.google.com',
 	},
@@ -55,7 +55,7 @@ const dropdownCollection = [
 		label: 'Menu Item Three',
 		value: '3',
 		href: 'http://www.google.com',
-	}
+	},
 ];
 
 /* eslint-disable react/display-name */

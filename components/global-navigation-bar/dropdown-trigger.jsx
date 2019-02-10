@@ -180,7 +180,9 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<a className="slds-context-bar__label-action" title={label}>
-					<span className="slds-truncate" title={label}>{label}</span>
+					<span className="slds-truncate" title={label}>
+						{label}
+					</span>
 				</a>
 				<div className="slds-context-bar__icon-action slds-p-left_none">
 					<Button

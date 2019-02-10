@@ -83,11 +83,7 @@ class Example extends React.Component {
 						</AppLauncher>
 					</GlobalNavigationBarRegion>
 					<GlobalNavigationBarRegion region="secondary" navigation>
-						<GlobalNavigationBarLink
-							active
-							label="Home"
-							id="home-link"
-						/>
+						<GlobalNavigationBarLink active label="Home" id="home-link" />
 						<GlobalNavigationBarDropdown
 							assistiveText={{ icon: 'Open menu item submenu' }}
 							id="primaryDropdown"

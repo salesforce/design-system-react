@@ -43,6 +43,9 @@ const GlobalNavigationBarLink = (props) => {
 		onFocus,
 		onKeyDown,
 		onKeyPress,
+		onKeyUp,
+		onMouseEnter,
+		onMouseLeave,
 		tabIndex,
 	} = props;
 
@@ -74,11 +77,20 @@ const GlobalNavigationBarLink = (props) => {
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
+				onKeyUp={onKeyUp}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
 				tabIndex={tabIndex}
 				title={label}
 			>
-				{(active) ? <span className="slds-assistive-text">{assistiveText.activeDescriptor}</span> : null}
-				<span className="slds-truncate" title={label}>{label}</span>
+				{active ? (
+					<span className="slds-assistive-text">
+						{assistiveText.activeDescriptor}
+					</span>
+				) : null}
+				<span className="slds-truncate" title={label}>
+					{label}
+				</span>
 			</a>
 		</li>
 	);
@@ -101,7 +113,7 @@ GlobalNavigationBarLink.propTypes = {
 	 * * `activeDescriptor`: The text that appears alongside a link that is currently active.
 	 */
 	assistiveText: PropTypes.shape({
-		activeDescriptor: PropTypes.string
+		activeDescriptor: PropTypes.string,
 	}),
 	/**
 	 * Class names to be added to the anchor element
@@ -167,7 +179,7 @@ GlobalNavigationBarLink.propTypes = {
 
 GlobalNavigationBarLink.defaultProps = {
 	assistiveText: {
-		activeDescriptor: 'Current page:'
+		activeDescriptor: 'Current page:',
 	},
 	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 };

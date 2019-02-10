@@ -254,10 +254,10 @@ class AppLauncher extends React.Component {
 				</Modal>
 				{this.props.triggerName ? (
 					<span className="slds-context-bar__label-action slds-context-bar__app-name">
-						{(this.props.noTruncate) ? this.props.triggerName : (
-							<span className="slds-truncate">
-								{this.props.triggerName}
-							</span>
+						{this.props.noTruncate ? (
+							this.props.triggerName
+						) : (
+							<span className="slds-truncate">{this.props.triggerName}</span>
 						)}
 					</span>
 				) : null}

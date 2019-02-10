@@ -6,24 +6,32 @@ import Icon from '../../../components/icon';
 
 const dropdownCollection = [
 	{
+		label: 'Main action',
+		value: '0',
+		leftIcon: {
+			category: 'utility',
+			name: 'add',
+		},
+		href: 'http://www.google.com',
+	},
+	{
+		label: 'Menu Header',
+		type: 'header',
+		divider: 'top',
+	},
+	{
 		label: 'Menu Item One',
 		value: '1',
-		iconCategory: 'utility',
-		iconName: 'table',
 		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Two',
 		value: '2',
-		iconCategory: 'utility',
-		iconName: 'kanban',
 		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Three',
 		value: '3',
-		iconCategory: 'utility',
-		iconName: 'side_list',
 		href: 'http://www.google.com',
 	},
 ];
