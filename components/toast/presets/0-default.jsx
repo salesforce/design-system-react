@@ -8,5 +8,6 @@ export default (
 		heading: 'Can’t share file “report-q3.pdf” with the selected users.',
 	}}
 	variant="warning"
+	style={{"width": "100%"}}
 />
 );
