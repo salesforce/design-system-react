@@ -471,13 +471,19 @@ class Dialog extends React.Component {
 		const subRenders = {
 			absolute: () => contents,
 			relative: () => contents,
-			overflowBoundaryElement: () => (
-				<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
-					<IconSettings iconPath={this.context.iconPath}>
-						{contents}
-					</IconSettings>
-				</Portal>
-			),
+			overflowBoundaryElement: () => {
+				const iconSettingsContext = Object.keys(IconSettings.childContextTypes)
+					.filter((key) => !!this.context[key])
+					.reduce(
+						(context, key) => ({ ...context, ...{ [key]: this.context[key] } }),
+						{}
+					);
+				return (
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						<IconSettings {...iconSettingsContext}>{contents}</IconSettings>
+					</Portal>
+				);
+			},
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();
