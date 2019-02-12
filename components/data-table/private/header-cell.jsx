@@ -26,7 +26,7 @@ import {
 } from '../../../utilities/constants';
 
 const defaultProps = {
-	defaultSortDirection: 'asc'
+	firstSortDirection: 'asc'
 };
 
 /**
@@ -77,7 +77,7 @@ class DataTableHeaderCell extends React.Component {
 		/**
 		 * The default sort direction for the first time if the column is not sorted.
 		 */
-		defaultSortDirection: PropTypes.oneOf(['asc', 'desc']),
+		firstSortDirection: PropTypes.oneOf(['asc', 'desc']),
 		/**
 		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 		 */
@@ -104,7 +104,7 @@ class DataTableHeaderCell extends React.Component {
 	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
-		const sortDirection = oldSortDirection ? (oldSortDirection === 'asc' ? 'desc' : 'asc') : (this.props.defaultSortDirection)
+		const sortDirection = oldSortDirection ? (oldSortDirection === 'asc' ? 'desc' : 'asc') : (this.props.firstSortDirection)
 		const data = {
 			property: this.props.property,
 			sortDirection,
@@ -124,7 +124,7 @@ class DataTableHeaderCell extends React.Component {
 		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = (!this.props.sortDirection && !this.state.sortDirection && this.state.sortable) ? this.props.defaultSortDirection : (this.props.sortDirection || this.state.sortDirection);
+		const sortDirection = (!this.props.sortDirection && !this.state.sortDirection && this.state.sortable) ? this.props.firstSortDirection : (this.props.sortDirection || this.state.sortDirection);
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
