@@ -396,7 +396,7 @@ describe('DataTable: ', function() {
 			Simulate.click(sortButton, {});
 		});
 
-		it('first clicked on sortable column header should result in sort specifid in defaultSortDirection if given', function(done) {
+		it('first clicked on sortable column header should result in sort specifid in firstSortDirection if given', function(done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
 				data.sortDirection.should.equal('desc');
@@ -406,7 +406,7 @@ describe('DataTable: ', function() {
 			renderTable(
 				<DataTable {...defaultProps} fixedLayout onSort={this.onSort}>
 					{columns.map((columnProps) => (
-						<DataTableColumn {...columnProps} defaultSortDirection='desc' key={columnProps.property} />
+						<DataTableColumn {...columnProps} firstSortDirection='desc' key={columnProps.property} />
 					))}
 				</DataTable>
 			).call(this);

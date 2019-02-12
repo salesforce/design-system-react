@@ -79,9 +79,9 @@ DataTableColumn.propTypes = {
 	 */
 	width: PropTypes.string,
 	/**
-	 * The default sort direction for the first time if the column is not sorted
+	 * The default sort direction for the first time if the column is not sorted and sortDirection not given
 	 */
-	defaultSortDirection: PropTypes.oneOf(['asc', 'desc'])
+	firstSortDirection: PropTypes.oneOf(['asc', 'desc'])
 };
 
 export default DataTableColumn;
