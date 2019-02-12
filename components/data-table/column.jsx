@@ -78,6 +78,10 @@ DataTableColumn.propTypes = {
 	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 	 */
 	width: PropTypes.string,
+	/**
+	 * The default sort direction for the first time if the column is not sorted
+	 */
+	defaultSortDirection: PropTypes.oneOf(['asc', 'desc'])
 };
 
 export default DataTableColumn;
