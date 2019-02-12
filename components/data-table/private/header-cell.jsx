@@ -75,7 +75,7 @@ class DataTableHeaderCell extends React.Component {
 		 */
 		sortDirection: PropTypes.oneOf(['desc', 'asc']),
 		/**
-		 * The default sort direction for the first time if the column is not sorted.
+		 * The default sort direction for the first time if the column is not sorted and sortDirection not given
 		 */
 		firstSortDirection: PropTypes.oneOf(['asc', 'desc']),
 		/**
