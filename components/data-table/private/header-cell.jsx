@@ -25,9 +25,9 @@ import {
 	DATA_TABLE_COLUMN,
 } from '../../../utilities/constants';
 
-const defaultProps = {
-	firstSortDirection: 'asc'
-};
+// const defaultProps = {
+// 	firstSortDirection: 'asc'
+// };
 
 /**
  * Used internally, renders each individual column heading.
@@ -84,7 +84,7 @@ class DataTableHeaderCell extends React.Component {
 		width: PropTypes.string,
 	};
 
-	static defaultProps = defaultProps;
+	// static defaultProps = defaultProps;
 
 	state = {
 		sortDirection: null,
@@ -104,10 +104,16 @@ class DataTableHeaderCell extends React.Component {
 	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
-		var sortDirection = this.props.firstSortDirection
-		if (oldSortDirection) {
-			sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc'
-		}
+		const sortDirection = (function(sortDirection, firstDirection) {
+			switch(sortDirection) {
+				case 'asc':
+					return 'desc'
+				case 'desc':
+					return 'asc'
+				case null:
+					return (firstDirection) ? firstDirection : 'asc'
+			}
+		})(oldSortDirection, this.props.firstSortDirection)
 		const data = {
 			property: this.props.property,
 			sortDirection,
@@ -127,7 +133,8 @@ class DataTableHeaderCell extends React.Component {
 		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = (!this.props.sortDirection && !this.state.sortDirection && this.props.sortable) ? this.props.firstSortDirection : (this.props.sortDirection || this.state.sortDirection);
+		// const sortDirection = (!this.props.sortDirection && !this.state.sortDirection && this.props.sortable) ? this.props.firstSortDirection : (this.props.sortDirection || this.state.sortDirection);
+		const sortDirection = this.props.sortDirection || this.state.sortDirection || this.props.firstSortDirection
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
