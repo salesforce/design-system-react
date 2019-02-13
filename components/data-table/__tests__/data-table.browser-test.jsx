@@ -406,7 +406,11 @@ describe('DataTable: ', function() {
 			renderTable(
 				<DataTable {...defaultProps} fixedLayout onSort={this.onSort}>
 					{columns.map((columnProps) => (
-						<DataTableColumn {...columnProps} firstSortDirection='desc' key={columnProps.property} />
+						<DataTableColumn
+							{...columnProps}
+							firstSortDirection="desc"
+							key={columnProps.property}
+						/>
 					))}
 				</DataTable>
 			).call(this);

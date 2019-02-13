@@ -99,7 +99,7 @@ class DataTableHeaderCell extends React.Component {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
 		const sortDirection = (function(direction, firstDirection) {
-			switch(direction) {
+			switch (direction) {
 				case 'asc':
 					return 'desc';
 				case 'desc':
@@ -109,8 +109,8 @@ class DataTableHeaderCell extends React.Component {
 				default:
 					return 'asc';
 			}
-			return
-		})(oldSortDirection, this.props.firstSortDirection)
+			
+		})(oldSortDirection, this.props.firstSortDirection);
 		const data = {
 			property: this.props.property,
 			sortDirection,
@@ -130,7 +130,10 @@ class DataTableHeaderCell extends React.Component {
 		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = this.props.sortDirection || this.state.sortDirection || this.props.firstSortDirection;
+		const sortDirection =
+			this.props.sortDirection ||
+			this.state.sortDirection ||
+			this.props.firstSortDirection;
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
