@@ -109,7 +109,6 @@ class DataTableHeaderCell extends React.Component {
 				default:
 					return 'asc';
 			}
-			
 		})(oldSortDirection, this.props.firstSortDirection);
 		const data = {
 			property: this.props.property,
