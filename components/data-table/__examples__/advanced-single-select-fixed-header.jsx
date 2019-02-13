@@ -131,12 +131,12 @@ class Example extends React.Component {
 						selectRows="radio"
 					>
 						<DataTableColumn
-							isSorted={this.state.sortColumn === 'opportunityName'}
+							isSorted={false}
 							label="Name"
 							primaryColumn
 							property="opportunityName"
 							sortable
-							sortDirection={this.state.sortColumnDirection.opportunityName}
+							sortDirection={null}
 							width="10rem"
 						>
 							<CustomDataTableCell />

@@ -25,6 +25,10 @@ import {
 	DATA_TABLE_COLUMN,
 } from '../../../utilities/constants';
 
+const defaultProps = {
+	firstSortDirection: 'asc'
+};
+
 /**
  * Used internally, renders each individual column heading.
  */
@@ -71,10 +75,16 @@ class DataTableHeaderCell extends React.Component {
 		 */
 		sortDirection: PropTypes.oneOf(['desc', 'asc']),
 		/**
+		 * The default sort direction for the first time if the column is not sorted and sortDirection not given
+		 */
+		firstSortDirection: PropTypes.oneOf(['asc', 'desc']),
+		/**
 		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 		 */
 		width: PropTypes.string,
 	};
+
+	static defaultProps = defaultProps;
 
 	state = {
 		sortDirection: null,
@@ -94,7 +104,11 @@ class DataTableHeaderCell extends React.Component {
 	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
-		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
+		// var sortDirection = this.props.firstSortDirection
+		// if (oldSortDirection) {
+		// 	sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc'
+		// }
+		const sortDirection = oldSortDirection ? (oldSortDirection === 'asc' ? 'desc' : 'asc') : (this.props.firstSortDirection)
 		const data = {
 			property: this.props.property,
 			sortDirection,
@@ -114,7 +128,7 @@ class DataTableHeaderCell extends React.Component {
 		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		const sortDirection = (!this.props.sortDirection && !this.state.sortDirection) ? this.props.firstSortDirection : (this.props.sortDirection || this.state.sortDirection);
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
@@ -144,7 +158,7 @@ class DataTableHeaderCell extends React.Component {
 						name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
 						size="x-small"
 					/>
-					{sortDirection ? (
+					{(sortDirection && this.state.sortable) ? (
 						<span
 							className="slds-assistive-text"
 							aria-live="assertive"
