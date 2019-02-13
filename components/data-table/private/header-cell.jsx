@@ -127,7 +127,7 @@ class DataTableHeaderCell extends React.Component {
 		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = this.props.sortDirection || this.state.sortDirection || this.props.firstSortDirection
+		const sortDirection = this.props.sortDirection || this.state.sortDirection || this.props.firstSortDirection;
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
