@@ -98,15 +98,18 @@ class DataTableHeaderCell extends React.Component {
 	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
-		const sortDirection = (function(sortDirection, firstDirection) {
-			switch(sortDirection) {
+		const sortDirection = (function(direction, firstDirection) {
+			switch(direction) {
 				case 'asc':
-					return 'desc'
+					return 'desc';
 				case 'desc':
-					return 'asc'
+					return 'asc';
 				case null:
-					return (firstDirection) ? firstDirection : 'asc'
+					return firstDirection || 'asc';
+				default:
+					return 'asc';
 			}
+			return
 		})(oldSortDirection, this.props.firstSortDirection)
 		const data = {
 			property: this.props.property,
