@@ -57,6 +57,6 @@
 		}
 	},
 	"ignore": [
-		"preset/**",
-	],
+		"preset/**"
+	]
 }

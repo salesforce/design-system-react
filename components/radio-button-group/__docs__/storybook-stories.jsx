@@ -1,24 +1,26 @@
-/* eslint-disable react/display-name */
-
-import React from 'react';
+/* eslint-disable react/display-name */ import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
 import RadioButtonGroup from '../../radio-button-group';
 import Radio from '../../radio-button-group/radio';
-
 import { RADIO_BUTTON_GROUP } from '../../../utilities/constants';
+
+import Base from '../__examples__/base';
 
 class RadioButtonGroupExample extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { checked: 'Tue' };
+		this.state = {
+			checked: 'Tue',
+		};
 		this.onChange = this.onChange.bind(this);
 	}
 
 	onChange(event) {
-		this.setState({ checked: event.target.value });
+		this.setState({
+			checked: event.target.value,
+		});
 		action('onChange')(event);
 	}
 
@@ -49,7 +51,6 @@ class RadioButtonGroupExample extends React.Component {
 		);
 	}
 }
-
 RadioButtonGroupExample.propTypes = {
 	labels: PropTypes.shape({
 		error: PropTypes.string,
@@ -59,11 +60,11 @@ RadioButtonGroupExample.propTypes = {
 	required: PropTypes.bool,
 	heading: PropTypes.string,
 };
-
 RadioButtonGroupExample.defaultProps = {
-	labels: { label: 'Day of week' },
+	labels: {
+		label: 'Day of week',
+	},
 };
-
 storiesOf(RADIO_BUTTON_GROUP, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
@@ -78,6 +79,10 @@ storiesOf(RADIO_BUTTON_GROUP, module)
 	.add('Error', () => (
 		<RadioButtonGroupExample
 			heading="Error"
-			labels={{ label: 'Day of week', error: 'There is an error' }}
+			labels={{
+				label: 'Day of week',
+				error: 'There is an error',
+			}}
 		/>
-	));
+	))
+	.add('Docs site Base', () => <Base />);

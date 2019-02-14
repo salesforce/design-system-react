@@ -853,14 +853,16 @@
         "description": "The brand band provides theming capability that adds personality and improves information density and contrast.",
         "methods": [
             {
-                "name": "getId",
+                "name": "injectLightningBlueStyles",
                 "docblock": null,
-                "modifiers": [],
+                "modifiers": [
+                    "static"
+                ],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "injectLightningBlueStyles",
+                "name": "getId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -3587,7 +3589,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -3694,12 +3696,21 @@
                             "type": {
                                 "name": "string",
                                 "required": false
+                            },
+                            "disabled": {
+                                "name": "custom",
+                                "raw": "PropTypes.boolean",
+                                "required": false
+                            },
+                            "tooltipContent": {
+                                "name": "node",
+                                "required": false
                             }
                         }
                     }
                 },
                 "required": true,
-                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
+                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -3786,6 +3797,13 @@
                 },
                 "required": false,
                 "description": "This callback exposes the selected listbox reference / DOM node to parent components."
+            },
+            "tooltipMenuItemDisabled": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "Accepts a tooltip that is displayed when hovering on disabled menu items."
             },
             "value": {
                 "type": {
@@ -6216,6 +6234,13 @@
                 "required": false,
                 "description": "styles to be added to input"
             },
+            "styleContainer": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component container"
+            },
             "type": {
                 "type": {
                     "name": "enum",
@@ -8499,6 +8524,18 @@
                         },
                         {
                             "value": "'10'",
+                            "computed": false
+                        },
+                        {
+                            "value": "5",
+                            "computed": false
+                        },
+                        {
+                            "value": "7",
+                            "computed": false
+                        },
+                        {
+                            "value": "10",
                             "computed": false
                         }
                     ]
@@ -11124,6 +11161,27 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "tooltipPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing."
             }
         },
         "route": "progress-indicators",

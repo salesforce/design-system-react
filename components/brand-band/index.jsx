@@ -28,6 +28,17 @@ import { BRAND_BAND } from '../../utilities/constants';
  * The brand band provides theming capability that adds personality and improves information density and contrast.
  */
 class BrandBand extends React.Component {
+	static injectLightningBlueStyles() {
+		return (
+			<style>{`.slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}`}</style>
+		);
+	}
+
 	constructor(props) {
 		super(props);
 		this.generatedId = shortid.generate();
@@ -35,17 +46,6 @@ class BrandBand extends React.Component {
 
 	getId() {
 		return this.props.id || this.generatedId;
-	}
-
-	injectLightningBlueStyles() {
-		return (
-			<style>{`#${this.getId()}.slds-brand-band:before {
-	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
-}
-#${this.getId()}.slds-brand-band:after {
-	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
-}`}</style>
-		);
 	}
 
 	render() {
@@ -74,13 +74,16 @@ class BrandBand extends React.Component {
 							'slds-brand-band_large': props.size === 'large',
 
 							'slds-brand-band_none': props.image === 'none',
+
+							'dsr-brand-band_lightning-blue': props.theme === 'lightning-blue',
 						},
 						props.className
 					)}
 					id={this.getId()}
 					style={props.style}
 				>
-					{props.theme === 'lightning-blue' && this.injectLightningBlueStyles()}
+					{props.theme === 'lightning-blue' &&
+						BrandBand.injectLightningBlueStyles()}
 					{props.children}
 				</div>
 			</div>

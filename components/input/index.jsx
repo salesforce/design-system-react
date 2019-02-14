@@ -270,6 +270,10 @@ class Input extends React.Component {
 		 */
 		styleInput: PropTypes.object,
 		/**
+		 * Custom styles to be passed to the component container
+		 */
+		styleContainer: PropTypes.object,
+		/**
 		 * The `<Input>` element includes support for all HTML5 types.
 		 */
 		type: PropTypes.oneOf([
@@ -581,6 +585,7 @@ class Input extends React.Component {
 					},
 					this.props.className
 				)}
+				style={this.props.styleContainer}
 			>
 				<Label
 					assistiveText={assistiveText}
