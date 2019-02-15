@@ -146,8 +146,13 @@ class Popover extends React.Component {
 		 */
 		hasStaticAlignment: PropTypes.bool,
 		/**
+		 * Removes display:inline-block from the trigger.
+		 */
+		hasNoTriggerStyles: PropTypes.bool,
+		/**
 		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
 		 */
+		// change to noNubbin or something (prefer true -> false)
 		hasNubbin: PropTypes.bool,
 		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
@@ -161,10 +166,6 @@ class Popover extends React.Component {
 		 * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) You will want this if Popover is to be a controlled component.
 		 */
 		isOpen: PropTypes.bool,
-		/**
-		 * Removes display:inline-block from the trigger.
-		 */
-		noTriggerStyles: PropTypes.bool,
 		/**
 		 * This function is passed onto the triggering `Button`. Triggered when the trigger button is clicked. You will want this if Popover is to be a controlled component.
 		 */
@@ -522,33 +523,33 @@ class Popover extends React.Component {
 
 		const clonedTrigger = this.props.children
 			? React.cloneElement(this.props.children, {
-					id: this.getId(),
-					onClick:
-						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
-							? (event) => {
-									this.handleClick(event, {
-										triggerOnClickCallback: this.props.children.props.onClick,
-									});
-								}
-							: this.children.props.onClick,
-					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
-					onMouseDown: this.props.onMouseDown,
-					onMouseEnter:
-						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-							? this.handleMouseEnter
-							: null,
-					onMouseLeave:
-						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-							? this.handleMouseLeave
-							: null,
-					tabIndex: this.props.children.props.tabIndex || '0',
-					...this.props.children.props,
-				})
+				id: this.getId(),
+				onClick:
+					this.props.openOn === 'click' || this.props.openOn === 'hybrid'
+						? (event) => {
+							this.handleClick(event, {
+								triggerOnClickCallback: this.props.children.props.onClick,
+							});
+						}
+						: this.children.props.onClick,
+				onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
+				onMouseDown: this.props.onMouseDown,
+				onMouseEnter:
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseEnter
+						: null,
+				onMouseLeave:
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseLeave
+						: null,
+				tabIndex: this.props.children.props.tabIndex || '0',
+				...this.props.children.props,
+			})
 			: null;
 
 		this.renderOverlay(this.getIsOpen());
 		const containerStyles = {
-			display: this.props.noTriggerStyles ? 'inherit' : 'inline-block',
+			display: this.props.hasNoTriggerStyles ? undefined : 'inline-block',
 		};
 		return (
 			<div
