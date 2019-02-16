@@ -13,7 +13,7 @@
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
+import initStoryshots from '@storybook/addon-storyshots';
 
 // Add aXe to Jest expect
 expect.extend(toHaveNoViolations);
@@ -36,6 +36,26 @@ jest.mock('popper.js', () => {
 		}
 	};
 });
+
+console.log(`
+★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+QUEUEING: STORY-BASED STATIC DOM ACCESSIBILITY TESTING
+★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+
+EXECUTING /tests/story-based-accessibility-tests.js
+BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
+
+This script uses Jest to call aXe https://github.com/dequelabs/axe-core on each 
+Storybook story found at http://localhost:9001. This is static testing of the 
+DOM on load. If you need an open menu tested, then you will need to open the 
+menu with the \`isOpen\` prop.
+
+This test suite may take more than 10 minutes to run through the 70+ rules on 
+each Storybook story. If a test fails, you will see the story name 
+followed by the HTML element with the issue.
+
+For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
+`);
 
 describe('aXe Testing', function aXeFunction() {
 	initStoryshots({

@@ -28,10 +28,31 @@ app.use(
 );
 app.use(express.static(`${rootPath}/storybook-based-tests`));
 
+console.log(`
+★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+QUEUEING: STORY-BASED DOM SNAPSHOT TESTING
+★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+
+EXECUTING /tests/story-based-tests.snapshot-test.js
+BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
+
+This script uses Jest to call Storyshots 
+https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 
+Storybook story found at http://localhost:9001. This stores a copy of the 
+DOM on load in a text file. If you need an open menu tested, then you will 
+need to open the menu with the \`isOpen\` prop.
+
+For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
+`);
+
+// If a Storybook story should not be tested by Storyshots, please add
+// the suffix `NoTest` to the story's name.
+const skipStoryshotTest = 'NoTest';
+
 // Create DOM snapshot tests from Storybook stories
 initStoryshots({
 	configPath: '.storybook-based-tests',
-	storyNameRegex: /^((?!.*?(NoTest)).)*$/,
+	storyNameRegex: new RegExp(`^((?!.*?(${skipStoryshotTest})).)*$`, 'g'),
 	suite: 'DOM snapshots',
 });
 
@@ -47,6 +68,26 @@ const getMatchOptions = ({ context: { kind, story }, url }) => ({
 });
 
 let server;
+
+console.log(`
+★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+QUEUEING: STORY-BASED VISUAL REGRESSION SNAPSHOT TESTING
+★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
+
+EXECUTING /tests/story-based-tests.snapshot-test.js
+BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
+
+This script uses Jest to call Storyshots 
+https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 
+Storybook story found at http://localhost:9001. This stores a PNG on load and 
+compares it to PNGs previously captured. If you need an open menu tested, then 
+you will need to open the menu with the \`isOpen\` prop.
+
+PLEASE DO NOT USE \`git add -A\` WHEN COMMITING PNGs. ONLY ADD IMAGES THAT 
+ARE RELATED TO YOUR PULL REQUEST. Each PNG adds up and bloats the repository.
+
+For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
+`);
 
 describe('Image Snapshots', function imageSnapshotFunction() {
 	beforeAll(() => {
@@ -68,7 +109,7 @@ describe('Image Snapshots', function imageSnapshotFunction() {
 	// snapshot tests.
 	initStoryshots({
 		configPath: '.storybook-based-tests',
-		storyNameRegex: /^((?!.*?(NoTest)).)*$/,
+		storyNameRegex: new RegExp(`^((?!.*?(${skipStoryshotTest})).)*$`, 'g'),
 		suite: 'Image storyshots',
 		test: imageSnapshot({
 			storybookUrl: `http://localhost:${port}`,
