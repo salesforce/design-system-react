@@ -6,7 +6,7 @@
  *  regression testing. All new components should be added below to enable 
  * DOM and image snapshots. With enough Storybook story examples, these two
  * methods should be significant to fully test components with the exception
- * of callback testing. Pleaes test callback props with the Mocha framework
+ * of callback testing. Please test callback props with the Mocha framework
  * (http://localhost:8001). `tests/story-based-tests.snapshot-test.js` looks
  * at this file and uses the following stories to create snapshots.
  *
