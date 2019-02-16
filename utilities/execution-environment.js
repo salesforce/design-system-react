@@ -7,7 +7,7 @@ const canUseDOM = !!(
 	window.document.createElement
 );
 const canUseEventListeners =
-	canUseDOM && !!(window.addEventListener || window.attachEvent);
-const canUseViewport = canUseDOM && !!window.screen;
+	canUseDOM && Boolean(window.addEventListener || window.attachEvent);
+const canUseViewport = canUseDOM && Boolean(window.screen);
 
 export { canUseDOM, canUseEventListeners, canUseViewport };

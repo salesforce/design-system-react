@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 		const appElement = Settings.getAppElement();
 		/* eslint-disable max-len */
 		warning(
-			canUseDOM && !!appElement,
+			canUseDOM && Boolean(appElement),
 			'[Design System React] App element is not defined. Please use Settings.setAppElement(el).' +
 				' By default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies.' +
 				' To prevent this you can add Settings.setAppElement(el) to your application with `el` being the root node of your application' +
