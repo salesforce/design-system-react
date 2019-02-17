@@ -18,6 +18,8 @@ newPRWelcomeComment: >
 
   Once feedback has been given, please reply to the feedback giver once the feedback on been addressed, so that they can continue the review.
 
+  If you need a release while you are waiting for a review, please build this library by running `npm run dist`. Then copy the files in `/.tmp-npm` into `/node_modules/@salesforce/design-system-react`.
+
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 
 # Comment to be posted to on pull requests merged by a first time user
