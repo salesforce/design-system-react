@@ -1,6 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-
+/* eslint-disable max-len */
 import React from 'react';
 
 import PropTypes from 'prop-types';
@@ -472,15 +472,26 @@ class Dialog extends React.Component {
 			absolute: () => contents,
 			relative: () => contents,
 			overflowBoundaryElement: () => {
-				const iconSettingsContext = Object.keys(IconSettings.childContextTypes)
-					.filter((key) => !!this.context[key])
+				// Cycle through current context, create object of
+				// truthy values, and pass into Portal's context.
+
+				// TODO: Add test when switched to `ReactDOM.createPortal`
+				const truthyIconSettingsContext = Object.keys(
+					IconSettings.childContextTypes
+				)
+					.filter((key) => Boolean(this.context[key]))
 					.reduce(
-						(context, key) => ({ ...context, ...{ [key]: this.context[key] } }),
+						(accumulatedContext, key) => ({
+							...accumulatedContext,
+							...{ [key]: this.context[key] },
+						}),
 						{}
 					);
 				return (
 					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
-						<IconSettings {...iconSettingsContext}>{contents}</IconSettings>
+						<IconSettings {...truthyIconSettingsContext}>
+							{contents}
+						</IconSettings>
 					</Portal>
 				);
 			},
