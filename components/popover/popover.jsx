@@ -523,28 +523,28 @@ class Popover extends React.Component {
 
 		const clonedTrigger = this.props.children
 			? React.cloneElement(this.props.children, {
-				id: this.getId(),
-				onClick:
-					this.props.openOn === 'click' || this.props.openOn === 'hybrid'
-						? (event) => {
-							this.handleClick(event, {
-								triggerOnClickCallback: this.props.children.props.onClick,
-							});
-						}
-						: this.children.props.onClick,
-				onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
-				onMouseDown: this.props.onMouseDown,
-				onMouseEnter:
-					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-						? this.handleMouseEnter
-						: null,
-				onMouseLeave:
-					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-						? this.handleMouseLeave
-						: null,
-				tabIndex: this.props.children.props.tabIndex || '0',
-				...this.props.children.props,
-			})
+					id: this.getId(),
+					onClick:
+						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
+							? (event) => {
+									this.handleClick(event, {
+										triggerOnClickCallback: this.props.children.props.onClick,
+									});
+								}
+							: this.children.props.onClick,
+					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
+					onMouseDown: this.props.onMouseDown,
+					onMouseEnter:
+						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+							? this.handleMouseEnter
+							: null,
+					onMouseLeave:
+						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+							? this.handleMouseLeave
+							: null,
+					tabIndex: this.props.children.props.tabIndex || '0',
+					...this.props.children.props,
+				})
 			: null;
 
 		this.renderOverlay(this.getIsOpen());
