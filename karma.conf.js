@@ -66,6 +66,11 @@ const configExport = function(config) {
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
 		reporters: ['spec', 'coverage'],
 
+		specReporter: {
+			suppressPassed: true, // do not print information about passed tests
+			failFast: true, // test will finish with error when a first fail occurs.
+		},
+
 		coverageReporter: {
 			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }],
 		},
@@ -92,6 +97,10 @@ const configExport = function(config) {
 		singleRun: false,
 
 		webpack: webpackConfig,
+
+		webpackMiddleware: {
+			stats: 'errors-only', // Do not show webpack build
+		},
 
 		plugins: [
 			karmaWebpack,
