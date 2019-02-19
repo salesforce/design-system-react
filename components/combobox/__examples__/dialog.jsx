@@ -5,6 +5,8 @@ import Combobox from '~/components/combobox';
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover';
 
+const languages = ['English', 'German', 'Tobagonian Creole English', 'Spanish'];
+
 class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,13 @@ class Example extends React.Component {
       inputValue: 'Select an option',
       selection: [],
     };
+  }
+
+  getIsChecked(label) {
+    let isChecked = false;
+    const selectionIndex = this.state.selection.findIndex((el) => el.label === label);
+    if (selectionIndex > -1) isChecked = true;
+    return isChecked;
   }
 
   handleCheckboxChange(target, value) {
@@ -44,6 +53,7 @@ class Example extends React.Component {
             popoverLabel: 'Language Options'
           }}
           id="combobox-dialog"
+          errorText={this.state.selection.length > 2 ? 'Only select 2 options.' : null}
           events={{
             onSubmit: (e) => { },
           }}
@@ -61,37 +71,19 @@ class Example extends React.Component {
                       Select up to 2
                     </legend>
                     <div className="slds-form-element__control">
-                      <Checkbox
-                        id="checkbox-0"
-                        labels={{ label: 'English' }}
-                        onChange={(e) => {
-                          this.handleCheckboxChange(e.target, 'English');
-                        }}
-                      />
-                      <Checkbox
-                        id="checkbox-1"
-                        labels={{ label: 'German' }}
-                        onChange={(e) => {
-                          this.handleCheckboxChange(e.target, 'German');
-                        }}
-                      />
-                      <Checkbox
-                        id="checkbox-2"
-                        labels={{ label: 'Tobagonian Creole English' }}
-                        onChange={(e) => {
-                          this.handleCheckboxChange(
-                            e.target,
-                            'Tobagonian Creole English'
-                          );
-                        }}
-                      />
-                      <Checkbox
-                        id="checkbox-3"
-                        labels={{ label: 'Spanish' }}
-                        onChange={(e) => {
-                          this.handleCheckboxChange(e.target, 'Spanish');
-                        }}
-                      />
+                      {
+                        languages.map((language, i) =>
+                          <Checkbox
+                            checked={this.getIsChecked(language)}
+                            id={`checkbox-${i}`}
+                            key={`checkbox-${i + 1}`}
+                            labels={{ label: language }}
+                            onChange={(e) => {
+                              this.handleCheckboxChange(e.target, language);
+                            }}
+                          />
+                        )
+                      }
                     </div>
                   </fieldset>
                 </div>
