@@ -29,13 +29,16 @@ if (process.env.NODE_ENV !== 'production') {
 				},
 				createDocUrl('options')
 			)
+		} else {
+			oneOfRequiredProperty(
+				COMPONENT,
+				{
+					"assistiveText['popoverLabel']": props.assistiveText.popoverLabel,
+				},
+				createDocUrl('assistiveText')
+			)
 		}
 	};
 }
 
 export default checkProps;
-// create a new required prop, that checks if no options when not popover (look at deprecated property)
-// don't know when this error would happen though (should check)
-
-// add a check for label if popover variant
-// if A, then require B
