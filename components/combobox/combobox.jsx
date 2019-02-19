@@ -381,7 +381,7 @@ class Combobox extends React.Component {
 		}
 	}
 
-	getCustomPopoverProps = (body, onClose, { assistiveText }) => {
+	getCustomPopoverProps = (body, { assistiveText }) => {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
@@ -400,8 +400,8 @@ class Combobox extends React.Component {
 					className="slds-button slds-button_neutral"
 					id="cancel-button"
 					onClick={(e) => {
-						onClose(e, { trigger: 'cancel' });
-						this.handleClose(e);
+						// onClose(e, { trigger: 'cancel' });
+						this.handleClose(e, { trigger: 'cancel' });
 					}}
 				>
 					Cancel
@@ -429,7 +429,7 @@ class Combobox extends React.Component {
 			hasNoTriggerStyles: true,
 			onOpen: this.handleOpen,
 			onClose: this.handleClose,
-			// onRequestClose: this.handleClose,
+			onRequestClose: this.handleClose,
 		};
 
 		/* Mixin passed popover's props if there is any to override the default popover props */
@@ -531,7 +531,7 @@ class Combobox extends React.Component {
 		this.handleRequestClose(event, {});
 	};
 
-	handleClose = (event) => {
+	handleClose = (event, { trigger } = {}) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -544,6 +544,10 @@ class Combobox extends React.Component {
 				activeOptionIndex: -1,
 				isOpen: false,
 			});
+
+			if (this.props.variant === 'popover' && trigger === 'cancel') {
+				this.props.popover.props.onClose(event, { trigger });
+			}
 
 			if (this.props.events.onClose) {
 				this.props.events.onClose(event, {});
@@ -638,7 +642,9 @@ class Combobox extends React.Component {
 			this.openDialog();
 		}
 
-		this.handleNavigateListboxMenu(event, { direction: 'next' });
+		if (this.props.variant !== 'popover') {
+			this.handleNavigateListboxMenu(event, { direction: 'next' });
+		}
 	};
 
 	handleKeyDownTab = () => {
@@ -1280,32 +1286,32 @@ class Combobox extends React.Component {
 	renderPopover = ({ assistiveText, labels, props }) => {
 		const popoverProps = this.getCustomPopoverProps(
 			this.props.popover.props.body,
-			this.props.popover.props.onClose,
 			{ assistiveText }
 		);
 		return (
-			<Popover {...popoverProps}>
-				<div className="slds-form-element__control">
-					<div className="slds-combobox_container">
-						<div
-							className={classNames(
-								'slds-combobox',
-								'slds-dropdown-trigger',
-								'slds-dropdown-trigger_click',
-								'ignore-react-onclickoutside',
-								{
-									'slds-is-open': this.getIsOpen(),
-								},
-								{
-									'slds-has-error': props.errorText,
-								},
-								props.className
-							)}
-							aria-expanded={this.getIsOpen()}
-							aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-							aria-owns={`${this.getId()}`} // eslint-disable-line jsx-a11y/aria-proptypes
-							role="combobox"
-						>
+
+			<div className="slds-form-element__control">
+				<div className="slds-combobox_container">
+					<div
+						className={classNames(
+							'slds-combobox',
+							'slds-dropdown-trigger',
+							'slds-dropdown-trigger_click',
+							'ignore-react-onclickoutside',
+							{
+								'slds-is-open': this.getIsOpen(),
+							},
+							{
+								'slds-has-error': props.errorText,
+							},
+							props.className
+						)}
+						aria-expanded={this.getIsOpen()}
+						aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-owns={`${this.getId()}`} // eslint-disable-line jsx-a11y/aria-proptypes
+						role="combobox"
+					>
+						<Popover {...popoverProps}>
 							<InnerInput
 								aria-autocomplete="none"
 								aria-controls={`${this.getId()}`}
@@ -1338,20 +1344,20 @@ class Combobox extends React.Component {
 										: props.value
 								}
 							/>
+						</Popover>
+					</div>
+				</div>
+				{props.errorText && (
+					<div className="slds-has-error">
+						<div
+							id={this.getErrorId()}
+							className="slds-form-element__help slds-has-error"
+						>
+							{props.errorText}
 						</div>
 					</div>
-					{props.errorText && (
-						<div className="slds-has-error">
-							<div
-								id={this.getErrorId()}
-								className="slds-form-element__help slds-has-error"
-							>
-								{props.errorText}
-							</div>
-						</div>
-					)}
-				</div>
-			</Popover>
+				)}
+			</div>
 		);
 	};
 
