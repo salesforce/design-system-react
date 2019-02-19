@@ -98,7 +98,6 @@ class Example extends React.Component {
               }
             />
           }
-          // is passing selection necessary? seems not.
           selection={this.state.selection}
           value={this.state.inputValue}
           variant="popover"

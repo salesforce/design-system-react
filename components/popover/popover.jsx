@@ -72,7 +72,6 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close dialog',
 	},
-	hasNubbin: true,
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
@@ -152,8 +151,7 @@ class Popover extends React.Component {
 		/**
 		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
 		 */
-		// change to noNubbin or something (prefer true -> false)
-		hasNubbin: PropTypes.bool,
+		hasNoNubbin: PropTypes.bool,
 		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		 */
@@ -440,7 +438,7 @@ class Popover extends React.Component {
 
 		return isOpen ? (
 			<Dialog
-				hasNubbin={this.props.hasNubbin}
+				hasNubbin={!this.props.hasNoNubbin}
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,

@@ -34,6 +34,7 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
+import findTabbableDescendants from '../../utilities/tabbable';
 
 import checkProps from './check-props';
 
@@ -49,7 +50,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.
-	 * * `popoverHeading`: Used by popover variant, assistive text for the Popover heading.
+	 * * `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.
 	 * * `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.
 	 * * `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.
 	 * * `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.
@@ -58,7 +59,7 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
-		popoverHeading: PropTypes.string,
+		popoverLabel: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
 		removePill: PropTypes.string,
 		selectedListboxLabel: PropTypes.string,
@@ -241,9 +242,9 @@ const propTypes = {
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
 	/**
-	 * Specifies if the combobox is a popover variant.
+	 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Filter's Popover dialog to be a controlled component. _Tested with Mocha framework._
 	 */
-	popover: PropTypes.bool,
+	popover: PropTypes.node,
 	/**
 	 * Applies label styling for a required form element. _Tested with snapshot testing._
 	 */
@@ -332,6 +333,14 @@ class Combobox extends React.Component {
 		}
 	}
 
+	// checking attrs - use snapshots
+	// assistive text
+	// checking mouse stuff - need mocha tests
+	// testing doc on github
+	// snapshots might not work b/c popover is in portal
+	// dont need to check core popover functionality
+	// do need to check if opens/closes
+
 	componentWillReceiveProps(nextProps) {
 		// This logic will maintain the active highlight even when the
 		// option order changes. One example would be the server pushes
@@ -378,13 +387,10 @@ class Combobox extends React.Component {
 		 */
 		const popoverBody = (
 			<div>
-				<h4
-					className="slds-assistive-text"
-					id={`${this.getId()}-popover-heading`}
-				>
-					{assistiveText.popoverHeading}
-				</h4>
-				{this.props.children}
+				<div className="slds-assistive-text" id={`${this.getId()}-label`}>
+					{assistiveText.popoverLabel}
+				</div>
+				{this.props.popover.props.body}
 			</div>
 		);
 
@@ -409,16 +415,15 @@ class Combobox extends React.Component {
 		);
 
 		const defaultPopoverProps = {
-			ariaLabelledby: `${this.getId()}-popover-heading`,
+			ariaLabelledby: `${this.getId()}-label`,
 			align: 'bottom',
 			body: popoverBody,
 			className: 'slds-popover_full-width',
 			footer: popoverFooter,
-			hasNubbin: false,
-			heading: assistiveText.popoverHeading,
-			id: `${this.getId()}-popover`,
+			hasNoNubbin: true,
+			id: `${this.getId()}`,
 			isOpen: this.state.isOpen,
-			noTriggerStyles: true,
+			hasNoTriggerStyles: true,
 			onOpen: this.handleOpen,
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
@@ -429,6 +434,8 @@ class Combobox extends React.Component {
 			defaultPopoverProps,
 			this.props.popover ? this.props.popover.props : {}
 		);
+		popoverProps.body = popoverBody;
+
 		delete popoverProps.children;
 		return popoverProps;
 	};
@@ -751,6 +758,17 @@ class Combobox extends React.Component {
 
 			if (this.props.events.onOpen) {
 				this.props.events.onOpen(event, data);
+			}
+
+			// add canUseDOM check - may not work consistently b/c race condition
+			// might just keep focus on outer div
+			// could pass node as prop, put it in state - then it would rerender and then able to focus it
+			// firstElRef
+			if (this.props.popover) {
+				const dialog = document.getElementById(`${this.getId()}-popover`);
+				const focusableElements = findTabbableDescendants(dialog);
+				// Focus second element b/c the first is the close button.
+				focusableElements[1].focus();
 			}
 		}
 	};
@@ -1279,12 +1297,12 @@ class Combobox extends React.Component {
 							)}
 							aria-expanded={this.getIsOpen()}
 							aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-							aria-owns={`${this.getId()}-dialog`} // eslint-disable-line jsx-a11y/aria-proptypes
+							aria-owns={`${this.getId()}`} // eslint-disable-line jsx-a11y/aria-proptypes
 							role="combobox"
 						>
 							<InnerInput
 								aria-autocomplete="none"
-								aria-controls={`${this.getId()}-dialog`}
+								aria-controls={`${this.getId()}`}
 								aria-describedby={this.getErrorId()}
 								autoComplete="off"
 								className="slds-combobox__input"
