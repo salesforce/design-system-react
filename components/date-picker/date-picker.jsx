@@ -67,7 +67,7 @@ const propTypes = {
 	 */
 	dateDisabled: PropTypes.func,
 	/**
-	 * Date formatting function that formats the `value` prop. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._
+	 * Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) before rendering the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._
 	 * The default `formatter` function is:
 	 * ```
 	 * formatter(date) {
@@ -156,7 +156,7 @@ const propTypes = {
 	 */
 	onRequestOpen: PropTypes.func,
 	/**
-	 * Custom function to parse date string into and return a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. The default `parser` passes the input value to `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._
+	 * Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._
 	 * The default `parser function is:
 	 * ```
 	 * parser(str) {
