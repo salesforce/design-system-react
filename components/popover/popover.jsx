@@ -141,6 +141,14 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
+		 * CSS classes to be added to the `footer` of the popover.
+		 */
+		footerClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
@@ -493,7 +501,7 @@ class Popover extends React.Component {
 					{props.body}
 				</div>
 				{this.props.footer ? (
-					<footer className="slds-popover__footer">{this.props.footer}</footer>
+					<footer className={classNames("slds-popover__footer", this.props.footerClassName)}>{this.props.footer}</footer>
 				) : null}
 			</Dialog>
 		) : null;
@@ -521,28 +529,28 @@ class Popover extends React.Component {
 
 		const clonedTrigger = this.props.children
 			? React.cloneElement(this.props.children, {
-					id: this.getId(),
-					onClick:
-						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
-							? (event) => {
-									this.handleClick(event, {
-										triggerOnClickCallback: this.props.children.props.onClick,
-									});
-								}
-							: this.children.props.onClick,
-					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
-					onMouseDown: this.props.onMouseDown,
-					onMouseEnter:
-						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-							? this.handleMouseEnter
-							: null,
-					onMouseLeave:
-						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
-							? this.handleMouseLeave
-							: null,
-					tabIndex: this.props.children.props.tabIndex || '0',
-					...this.props.children.props,
-				})
+				id: this.getId(),
+				onClick:
+					this.props.openOn === 'click' || this.props.openOn === 'hybrid'
+						? (event) => {
+							this.handleClick(event, {
+								triggerOnClickCallback: this.props.children.props.onClick,
+							});
+						}
+						: this.children.props.onClick,
+				onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
+				onMouseDown: this.props.onMouseDown,
+				onMouseEnter:
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseEnter
+						: null,
+				onMouseLeave:
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseLeave
+						: null,
+				tabIndex: this.props.children.props.tabIndex || '0',
+				...this.props.children.props,
+			})
 			: null;
 
 		this.renderOverlay(this.getIsOpen());
