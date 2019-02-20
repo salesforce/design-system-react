@@ -1,6 +1,5 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-
 import React from 'react';
 
 import PropTypes from 'prop-types';
@@ -471,13 +470,30 @@ class Dialog extends React.Component {
 		const subRenders = {
 			absolute: () => contents,
 			relative: () => contents,
-			overflowBoundaryElement: () => (
-				<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
-					<IconSettings iconPath={this.context.iconPath}>
-						{contents}
-					</IconSettings>
-				</Portal>
-			),
+			overflowBoundaryElement: () => {
+				// Cycle through current context, create object of
+				// truthy values, and pass into Portal's context.
+
+				// TODO: Add test when switched to `ReactDOM.createPortal`
+				const truthyIconSettingsContext = Object.keys(
+					IconSettings.childContextTypes
+				)
+					.filter((key) => Boolean(this.context[key]))
+					.reduce(
+						(accumulatedContext, key) => ({
+							...accumulatedContext,
+							...{ [key]: this.context[key] },
+						}),
+						{}
+					);
+				return (
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						<IconSettings {...truthyIconSettingsContext}>
+							{contents}
+						</IconSettings>
+					</Portal>
+				);
+			},
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();
