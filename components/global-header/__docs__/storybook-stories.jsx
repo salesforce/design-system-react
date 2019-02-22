@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Avatar from '../../avatar';
+import Combobox from '../../combobox';
 import Dropdown from '../../menu-dropdown';
 import GlobalHeader from '../../global-header';
 import GlobalHeaderFavorites from '../../global-header/favorites';
@@ -131,15 +132,19 @@ class GlobalHeaderDemo extends React.Component {
 				}}
 			>
 				<GlobalHeaderSearch
-					events={{
-						onSelect: action('Search Selected'),
-					}}
-					id="header-search-custom-id"
-					labels={{ placeholder: 'Search Salesforce' }}
-					options={[
-						{ id: 'email', label: 'Email' },
-						{ id: 'mobile', label: 'Mobile' },
-					]}
+					combobox={
+						<Combobox
+							events={{
+								onSelect: action('Search Selected'),
+							}}
+							id="header-search-custom-id"
+							labels={{ placeholder: 'Search Salesforce' }}
+							options={[
+								{ id: 'email', label: 'Email' },
+								{ id: 'mobile', label: 'Mobile' },
+							]}
+						/>
+					}
 				/>
 				<GlobalHeaderFavorites
 					actionSelected={this.state.favoritesActionSelected}

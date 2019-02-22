@@ -4,12 +4,6 @@
     "display-name": "Global Header",
     "SLDS-component-path": "/components/global-header#flavor-base",
     "dependencies": [
-        {
-            "component": "button"
-        },
-        {
-            "component": "dropdown"
-        },
 		{
 			"component": "favorites"
 		},

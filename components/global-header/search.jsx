@@ -7,22 +7,27 @@
 
 // ### React
 import React from 'react';
-
-// ### Combobox
-import Combobox from '../combobox';
+import PropTypes from 'prop-types';
 
 // ## Constants
 import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
 
 /**
- * The Global Header Search component is currently just a Combobox. In the future this component will be far more robust and adhere to SLDS standards
+ * The GlobalHeaderSearch component is used for application wide search. The form element is implemented as a `Combobox`.
  */
 const GlobalHeaderSearch = (props) => (
 	<div className="slds-global-header__item slds-global-header__item_search">
-		<Combobox {...props} />
+		{props.combobox}
 	</div>
 );
 
 GlobalHeaderSearch.displayName = GLOBAL_HEADER_SEARCH;
+
+GlobalHeaderSearch.propTypes = {
+	/**
+	 * A required `Combobox` component. The props from this combobox will be merged and override any default props.
+	 */
+	combobox: PropTypes.node.isRequired,
+};
 
 export default GlobalHeaderSearch;

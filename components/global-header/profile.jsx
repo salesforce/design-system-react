@@ -67,11 +67,7 @@ class GlobalHeaderProfile extends React.Component {
 				>
 					{typeof avatar === 'string' ? (
 						<span className="slds-avatar slds-avatar_circle slds-avatar_medium">
-							<img
-								alt={this.props.userName}
-								src={this.props.avatar}
-								title="User avatar"
-							/>
+							<img alt={this.props.userName} src={avatar} title="User avatar" />
 						</span>
 					) : (
 						avatar || null

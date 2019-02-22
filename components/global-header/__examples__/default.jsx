@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Combobox from '~/components/combobox';
 import Dropdown from '~/components/menu-dropdown';
 import GlobalHeader from '~/components/global-header'; // `~` is replaced with design-system-react at runtime
 import GlobalHeaderFavorites from '~/components/global-header/favorites';
@@ -116,7 +117,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<GlobalHeader
-					logoSrc="/images/logo.svg"
+					logoSrc="/assets/images/logo.svg"
 					onSkipToContent={() => {
 						console.log('>>> Skip to Content Clicked');
 					}}
@@ -125,17 +126,21 @@ class Example extends React.Component {
 					}}
 				>
 					<GlobalHeaderSearch
-						events={{
-							onSelect: () => {
-								console.log('>>> onSelect');
-							},
-						}}
-						id="header-search-custom-id"
-						labels={{ placeholder: 'Search Salesforce' }}
-						options={[
-							{ id: 'email', label: 'Email' },
-							{ id: 'mobile', label: 'Mobile' },
-						]}
+						combobox={
+							<Combobox
+								events={{
+									onSelect: () => {
+										console.log('>>> onSelect');
+									},
+								}}
+								id="header-search-custom-id"
+								labels={{ placeholder: 'Search Salesforce' }}
+								options={[
+									{ id: 'email', label: 'Email' },
+									{ id: 'mobile', label: 'Mobile' },
+								]}
+							/>
+						}
 					/>
 					<GlobalHeaderFavorites
 						actionSelected={this.state.favoritesActionSelected}
