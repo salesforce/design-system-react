@@ -129,9 +129,17 @@ const propTypes = {
 	 */
 	onKeyUp: PropTypes.func,
 	/**
+	 * Triggered to indicate that this component should receive focus.
+	 */
+	onRequestFocus: PropTypes.func,
+	/**
 	 * Displays the value of the input, but does not allow changes.
 	 */
 	readOnly: PropTypes.bool,
+	/**
+	 * If true, will trigger `onRequestFocus`.
+	 */
+	requestFocus: PropTypes.bool,
 	/**
 	 * Highlights the Checkbox as a required field (does not perform any validation).
 	 */
@@ -140,6 +148,10 @@ const propTypes = {
 	 * The aria-role of the checkbox.
 	 */
 	role: PropTypes.string,
+	/**
+	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
+	 */
+	tabIndex: PropTypes.string,
 	/**
 	 * Which UX pattern of checkbox? The default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
 	 */
@@ -266,11 +278,15 @@ class Checkbox extends React.Component {
 						ref={(component) => {
 							if (component) {
 								component.indeterminate = props.indeterminate;
+								if (this.props.requestFocus && this.props.onRequestFocus) {
+									this.props.onRequestFocus(component);
+								}
 							}
 							this.input = component;
 						}}
 						role={props.role}
 						required={props.required}
+						tabIndex={props.tabIndex}
 						type="checkbox"
 					/>
 					<label className="slds-checkbox__label" htmlFor={this.getId()}>

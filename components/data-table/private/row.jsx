@@ -117,7 +117,7 @@ class DataTableRow extends React.Component {
 						)}
 					</td>
 				) : null}
-				{this.props.columns.map((column) => {
+				{this.props.columns.map((column, index) => {
 					const Cell = column.Cell;
 					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${
 						column.props.property
@@ -133,6 +133,16 @@ class DataTableRow extends React.Component {
 							item={this.props.item}
 							key={cellId}
 							width={column.props.width}
+							rowIndex={this.props.rowIndex}
+							columnIndex={index}
+							activeCell={this.props.activeCell}
+							activeElement={this.props.activeElement}
+							mode={this.props.mode}
+							tableHasFocus={this.props.tableHasFocus}
+							changeActiveCell={this.props.changeActiveCell}
+							changeActiveElement={this.props.changeActiveElement}
+							handleKeyDown={this.props.handleKeyDown}
+							registerInteractiveElement={this.props.registerInteractiveElement}
 						>
 							{this.props.item[column.props.property]}
 						</Cell>

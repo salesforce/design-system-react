@@ -18,7 +18,7 @@ import classNames from 'classnames';
 import assign from 'lodash.assign';
 import reject from 'lodash.reject';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+// This component's `checkProps` which issues warnings to developers about properties while in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './docs.json';
 
@@ -35,12 +35,20 @@ import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
 
+import KEYS from '../../utilities/key-code';
+import mapKeyEventCallbacks from '../../utilities/key-callbacks';
+
 import {
 	DATA_TABLE,
 	DATA_TABLE_CELL,
 	DATA_TABLE_HEAD,
 	DATA_TABLE_ROW,
 } from '../../utilities/constants';
+
+export const Mode = Object.freeze({
+	NAVIGATION: 'navigation',
+	ACTIONABLE: 'actionable',
+});
 
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
@@ -208,6 +216,25 @@ class DataTable extends React.Component {
 			select: [],
 		};
 		this.scrollerRef = null;
+		this.state = {
+			// Currently selected cell
+			activeCell: {
+				rowIndex: 0,
+				columnIndex: 0
+			},
+			// Interactive element within a cell that receives focus when in actionable mode
+			activeElement: null,
+			// The table can be in navigation or actionable mode
+			mode: Mode.NAVIGATION,
+			// The table currently has focus
+			tableHasFocus: false
+		}
+		// Map of cells to interactive elements within that cell
+		this.interactiveElements = {};
+		this.changeActiveCell = this.changeActiveCell.bind(this);
+		this.changeActiveElement = this.changeActiveElement.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.registerInteractiveElement = this.registerInteractiveElement.bind(this);
 	}
 
 	componentWillMount() {
@@ -234,6 +261,126 @@ class DataTable extends React.Component {
 
 	getId() {
 		return this.props.id || this.generatedId;
+	}
+
+	getFirstInteractiveElement(rowIndex, columnIndex) {
+		if (this.state.mode === Mode.ACTIONABLE && this.interactiveElements[rowIndex] && this.interactiveElements[rowIndex][columnIndex]) {
+			return this.interactiveElements[rowIndex][columnIndex][0];
+		}
+		return null;
+	}
+
+	changeActiveCell(rowIndex, columnIndex) {
+		this.setState({
+			tableHasFocus: true,
+			activeCell: { rowIndex, columnIndex }
+		});
+	}
+
+	changeActiveElement(activeElement) {
+		this.setState({ activeElement });
+	}
+
+	handleKeyDown(event) {
+		mapKeyEventCallbacks(event, {
+			callbacks: {
+				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
+				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
+				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
+				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
+				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
+				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) }
+			},
+		});
+	}
+
+	handleKeyDownUp() {
+		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(newRowIndex, this.state.activeCell.columnIndex);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: this.state.activeCell.columnIndex
+				},
+				activeElement
+			});
+		}
+	}
+
+	handleKeyDownDown() {
+		const newRowIndex = Math.min(this.state.activeCell.rowIndex + 1, this.props.items.length - 1);
+		const activeElement = this.getFirstInteractiveElement(newRowIndex, this.state.activeCell.columnIndex);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: this.state.activeCell.columnIndex
+				},
+				 activeElement
+			});
+		}
+	}
+
+	handleKeyDownLeft() {
+		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(this.state.activeCell.rowIndex, newColumnIndex);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState({
+				activeCell: {
+					rowIndex: this.state.activeCell.rowIndex,
+					columnIndex: newColumnIndex
+				},
+				activeElement
+			});
+		}
+	}
+
+	handleKeyDownRight() {
+		const newColumnIndex = Math.min(this.state.activeCell.columnIndex + 1, this.props.children.length - 1);
+		const activeElement = this.getFirstInteractiveElement(this.state.activeCell.rowIndex, newColumnIndex);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState({
+				activeCell: {
+					rowIndex: this.state.activeCell.rowIndex,
+					columnIndex: newColumnIndex
+				},
+				activeElement
+			});
+		}
+	}
+
+	handleKeyDownEnter() {
+		if (this.state.mode === Mode.NAVIGATION) {
+			const { rowIndex, columnIndex } = this.state.activeCell;
+			let activeElement = null;
+			if (this.interactiveElements[rowIndex][columnIndex]) {
+				activeElement = this.interactiveElements[rowIndex][columnIndex][0];
+			}
+			this.setState({
+				mode: Mode.ACTIONABLE,
+				activeElement
+			});
+		}
+	}
+
+	handleKeyDownEscape() {
+		if (this.state.mode === Mode.ACTIONABLE) {
+			this.setState({
+				mode: Mode.NAVIGATION,
+				activeElement: null
+			});
+		}
+	}
+
+	registerInteractiveElement(rowIndex, columnIndex, elementId) {
+		if (!this.interactiveElements[rowIndex]) {
+			this.interactiveElements[rowIndex] = {};
+		}
+		if (!this.interactiveElements[rowIndex][columnIndex]) {
+			this.interactiveElements[rowIndex][columnIndex] = [];
+		}
+		this.interactiveElements[rowIndex][columnIndex].push(elementId);
 	}
 
 	handleToggleAll = (e, { checked }) => {
@@ -437,6 +584,17 @@ class DataTable extends React.Component {
 			select: canSelectRows ? this.headerRefs.select : [],
 		};
 
+		const navigationProps = {
+			activeCell: this.state.activeCell,
+			activeElement: this.state.activeElement,
+			mode: this.state.mode,
+			tableHasFocus: this.state.tableHasFocus,
+			changeActiveCell: this.changeActiveCell,
+			changeActiveElement: this.changeActiveElement,
+			handleKeyDown: this.handleKeyDown,
+			registerInteractiveElement: this.registerInteractiveElement
+		};
+
 		let component = (
 			<table
 				{...ariaProps}
@@ -460,6 +618,7 @@ class DataTable extends React.Component {
 				)}
 				id={this.getId()}
 				role={this.props.fixedLayout ? 'grid' : null}
+				onBlur={() => this.setState({ tableHasFocus: false })}
 			>
 				<DataTableHead
 					assistiveText={assistiveText}
@@ -486,13 +645,14 @@ class DataTable extends React.Component {
 				/>
 				<tbody>
 					{numRows > 0
-						? this.props.items.map((item) => {
+						? this.props.items.map((item, index) => {
 								const rowId =
 									this.getId() && item.id
 										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
 										: shortid.generate();
 								return (
 									<DataTableRow
+										{...navigationProps}
 										assistiveText={assistiveText}
 										canSelectRows={canSelectRows}
 										columns={columns}
@@ -504,6 +664,7 @@ class DataTable extends React.Component {
 										selection={this.props.selection}
 										rowActions={RowActions}
 										tableId={this.getId()}
+										rowIndex={index}
 									/>
 								);
 							})

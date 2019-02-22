@@ -8,8 +8,14 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
+import CellContext from './private/cell-context';
+
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
+
+const isActive = (props) => props.activeCell.rowIndex === props.rowIndex && props.activeCell.columnIndex === props.columnIndex
+
+const hasFocus = (props) => props.tableHasFocus && isActive(props);
 
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
@@ -29,24 +35,57 @@ const DataTableCell = (props) => {
 		</div>
 	);
 
+	const className = classNames(props.className, {
+		'slds-has-focus': hasFocus(props)
+	});
+	const cellContext = {
+		rowIndex: props.rowIndex,
+		columnIndex: props.columnIndex,
+		activeElement: props.activeElement,
+		mode: props.mode,
+		changeActiveElement: props.changeActiveElement,
+		registerInteractiveElement: props.registerInteractiveElement
+	};
+	const tabIndex = isActive(props) && !props.activeElement ? '0' : undefined;
 	let cell = (
+		// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 		<td
-			className={props.className}
-			role={props.fixedLayout ? 'gridcell' : null}
+			className={className}
+			ref={(node) => {
+				if (node && hasFocus(props)) {
+					node.focus();
+				}
+			}}
+			role={props.fixedLayout ? 'gridcell' : null }
+			tabIndex={tabIndex}
 			style={props.width ? { width: props.width } : null}
+			onFocus={() => props.changeActiveCell(props.rowIndex, props.columnIndex)}
+			onKeyDown={(event) => props.handleKeyDown(event)}
 		>
-			{contents}
+			<CellContext.Provider value={cellContext}>
+				{contents}
+			</CellContext.Provider>
 		</td>
 	);
 
 	if (props.primaryColumn) {
 		cell = (
 			<th
-				className={props.className}
+				className={className}
+				ref={(node) => {
+					if (node && hasFocus(props)) {
+						node.focus();
+					}
+				}}
 				role={props.fixedLayout ? 'gridcell' : null}
+				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : null}
+				onFocus={() => props.changeActiveCell(props.rowIndex, props.columnIndex)}
+				onKeyDown={(event) => props.handleKeyDown(event)}
 			>
-				{contents}
+				<CellContext.Provider value={cellContext}>
+					{contents}
+				</CellContext.Provider>
 			</th>
 		);
 	}
