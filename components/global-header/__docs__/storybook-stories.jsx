@@ -21,12 +21,12 @@ import Default from '../__examples__/default';
 
 /* eslint-disable max-len */
 /* eslint-disable no-script-url */
-/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 
 const ipsum =
 	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum fermentum eros, vel porta metus dignissim vitae. Fusce finibus sed magna vitae tempus. Suspendisse condimentum, arcu eu viverra vulputate, mauris odio dictum velit, in dictum lorem augue id augue. Proin nec leo convallis, aliquet mi ut, interdum nunc.';
 
+// Notifications content is currently the contents of a generic `Popover` with markup copied from https://www.lightningdesignsystem.com/components/global-header/#Notifications. This allows content to have tab stops and focus trapping. If you need a more specific/explicit `GlobalHeaderNotification` content, please create an issue.
 const HeaderNotificationsCustomContent = (props) => (
 	<ul id="header-notifications-custom-popover-content">
 		{props.items.map((item) => (
@@ -80,7 +80,10 @@ const HeaderNotificationsCustomContent = (props) => (
 		))}
 	</ul>
 );
+HeaderNotificationsCustomContent.displayName =
+	'HeaderNotificationsCustomContent';
 
+// Profile content is currently the contents of a generic `Popover` with markup copied from https://www.lightningdesignsystem.com/components/global-header/. This allows content to have tab stops and focus trapping. If you need a more specific/explicit `GlobalHeaderProfile` content, please create an issue.
 const HeaderProfileCustomContent = (props) => (
 	<div id="header-profile-custom-popover-content">
 		<div className="slds-m-around_medium">
@@ -104,8 +107,8 @@ const HeaderProfileCustomContent = (props) => (
 		</div>
 	</div>
 );
+HeaderProfileCustomContent.displayName = 'HeaderProfileCustomContent';
 
-/* eslint-disable react/display-name */
 class GlobalHeaderDemo extends React.Component {
 	constructor(props) {
 		super(props);
@@ -128,9 +131,11 @@ class GlobalHeaderDemo extends React.Component {
 				}}
 			>
 				<GlobalHeaderSearch
+					events={{
+						onSelect: action('Search Selected'),
+					}}
 					id="header-search-custom-id"
 					labels={{ placeholder: 'Search Salesforce' }}
-					onSelect={action('Search Selected')}
 					options={[
 						{ id: 'email', label: 'Email' },
 						{ id: 'mobile', label: 'Mobile' },
@@ -233,6 +238,7 @@ class GlobalHeaderDemo extends React.Component {
 		);
 	}
 }
+GlobalHeaderDemo.displayName = 'GlobalHeaderDemo';
 
 storiesOf(GLOBAL_HEADER, module)
 	.addDecorator((getStory) => (

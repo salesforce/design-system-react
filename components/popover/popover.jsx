@@ -117,7 +117,7 @@ class Popover extends React.Component {
 		 */
 		ariaLabelledby: PropTypes.string,
 		/**
-		 * The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
+		 * Multiple children of any kind are allowed, but the first child must serve as the trigger component. Many props will be passed into this trigger related to popover interactions. The trigger needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
 		 */
 		children: PropTypes.node.isRequired,
 		/**
