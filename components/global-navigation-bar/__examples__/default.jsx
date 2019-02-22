@@ -10,7 +10,7 @@ import Button from '~/components/button';
 import Icon from '~/components/icon';
 
 import AppLauncher from '~/components/app-launcher';
-import AppLauncherSection from '~/components/app-launcher/section';
+import AppLauncherExpandableSection from '~/components/app-launcher/expandable-section';
 import AppLauncherTile from '~/components/app-launcher/tile';
 
 class Example extends React.Component {
@@ -52,7 +52,7 @@ class Example extends React.Component {
 							}}
 							modalHeaderButton={<Button label="App Exchange" />}
 						>
-							<AppLauncherSection title="Tile Section">
+							<AppLauncherExpandableSection title="Tile Section">
 								<AppLauncherTile
 									title="Marketing Cloud"
 									iconText="MC"
@@ -64,8 +64,8 @@ class Example extends React.Component {
 									descriptionHeading="Call Center"
 									iconText="CC"
 								/>
-							</AppLauncherSection>
-							<AppLauncherSection title="Small Tile Section">
+							</AppLauncherExpandableSection>
+							<AppLauncherExpandableSection title="Small Tile Section">
 								<AppLauncherTile
 									title="Journey Builder"
 									iconText="JB"
@@ -78,7 +78,7 @@ class Example extends React.Component {
 									}
 									size="small"
 								/>
-							</AppLauncherSection>
+							</AppLauncherExpandableSection>
 						</AppLauncher>
 					</GlobalNavigationBarRegion>
 					<GlobalNavigationBarRegion region="secondary" navigation>

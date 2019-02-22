@@ -23,6 +23,7 @@ export Card from '../components/card/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
+export ExpandableSection from '../components/expandable-section/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
