@@ -18,7 +18,7 @@ import classNames from 'classnames';
 import assign from 'lodash.assign';
 import reject from 'lodash.reject';
 
-// This component's `checkProps` which issues warnings to developers about properties while in development mode (similar to React's built in development tools)
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './docs.json';
 
@@ -222,7 +222,7 @@ class DataTable extends React.Component {
 				rowIndex: 0,
 				columnIndex: 0
 			},
-			// Interactive element within a cell that receives focus when in actionable mode
+			// Interactive element within a cell that receives focus while in actionable mode
 			activeElement: null,
 			// The table can be in navigation or actionable mode
 			mode: Mode.NAVIGATION,
