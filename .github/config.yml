@@ -18,7 +18,7 @@ newPRWelcomeComment: >
 
   Once feedback has been given, please reply to the feedback giver once the feedback on been addressed, so that they can continue the review.
 
-  If you need a release while you are waiting for a review, please build this library by running `npm run dist`. Then copy the files in `/.tmp-npm` into `/node_modules/@salesforce/design-system-react`.
+  If you need a release while you are waiting for a code review, you can publish a built tag to your own fork. See directions in the [release README](https://github.com/salesforce/design-system-react/blob/master/docs/release.md#release-to-your-own-fork).
 
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 
