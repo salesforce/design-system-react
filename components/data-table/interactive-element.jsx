@@ -20,19 +20,27 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 			context.changeActiveElement(this.elementId);
 		}
 		if (this.props.onFocus) {
-			this.props.onFocus(context, ...args);
+			this.props.onFocus(...args);
 		}
 	}
 
-	onRequestFocus(node, ...args) {
+	onBlur(context, ...args) {
+		context.changeActiveElement(null);
+		if (this.props.onBlur) {
+			this.props.onBlur(...args);
+		}
+	}
+
+	onRequestFocus(context, node, ...args) {
 		node.focus();
 		if (this.props.onRequestFocus) {
-			this.props.onRequestFocus(node, ...args);
+			this.props.onRequestFocus(...args);
 		}
 	}
 
 	render() {
 		const onFocus = this.onFocus;
+		const onBlur = this.onBlur;
 		const onRequestFocus = this.onRequestFocus;
 		return (
 			<CellContext.Consumer>
@@ -53,7 +61,8 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 							...this.props,
 							...{
 								onFocus: onFocus.bind(this, context),
-								onRequestFocus: onRequestFocus.bind(this),
+								onBlur: onBlur.bind(this, context),
+								onRequestFocus: onRequestFocus.bind(this, context),
 								requestFocus,
 								tabIndex
 							}

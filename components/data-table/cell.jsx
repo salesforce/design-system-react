@@ -35,9 +35,6 @@ const DataTableCell = (props) => {
 		</div>
 	);
 
-	const className = classNames(props.className, {
-		'slds-has-focus': hasFocus(props)
-	});
 	const cellContext = {
 		rowIndex: props.rowIndex,
 		columnIndex: props.columnIndex,
@@ -46,21 +43,28 @@ const DataTableCell = (props) => {
 		changeActiveElement: props.changeActiveElement,
 		registerInteractiveElement: props.registerInteractiveElement
 	};
-	const tabIndex = isActive(props) && !props.activeElement ? '0' : undefined;
+	const className = classNames(props.className, {
+		'slds-has-focus': props.fixedLayout && hasFocus(props)
+	});
+	const onFocus = props.fixedLayout ? () => props.changeActiveCell(props.rowIndex, props.columnIndex) : undefined;
+	const onKeyDown = props.fixedLayout ? (event) => props.handleKeyDown(event) : undefined;
+	const ref = props.fixedLayout ?
+		(node) => {
+			if (node && hasFocus(props)) {
+				node.focus();
+			}
+		} : undefined;
+	const tabIndex = props.fixedLayout && isActive(props) && !props.activeElement ? '0' : undefined;
 	let cell = (
 		// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 		<td
 			className={className}
-			ref={(node) => {
-				if (node && hasFocus(props)) {
-					node.focus();
-				}
-			}}
+			onFocus={onFocus}
+			onKeyDown={onKeyDown}
+			ref={ref}
 			role={props.fixedLayout ? 'gridcell' : null }
-			tabIndex={tabIndex}
 			style={props.width ? { width: props.width } : null}
-			onFocus={() => props.changeActiveCell(props.rowIndex, props.columnIndex)}
-			onKeyDown={(event) => props.handleKeyDown(event)}
+			tabIndex={tabIndex}
 		>
 			<CellContext.Provider value={cellContext}>
 				{contents}
@@ -72,16 +76,12 @@ const DataTableCell = (props) => {
 		cell = (
 			<th
 				className={className}
-				ref={(node) => {
-					if (node && hasFocus(props)) {
-						node.focus();
-					}
-				}}
+				ref={ref}
 				role={props.fixedLayout ? 'gridcell' : null}
 				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : null}
-				onFocus={() => props.changeActiveCell(props.rowIndex, props.columnIndex)}
-				onKeyDown={(event) => props.handleKeyDown(event)}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
 			>
 				<CellContext.Provider value={cellContext}>
 					{contents}
