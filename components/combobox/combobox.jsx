@@ -331,6 +331,10 @@ class Combobox extends React.Component {
 		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
+
+		if (this.props.isOpen !== this.state.isOpen) {
+			this.setState({ isOpen: this.props.isOpen })
+		}
 	}
 
 	// checking attrs - use snapshots
@@ -547,7 +551,9 @@ class Combobox extends React.Component {
 			});
 
 			if (this.props.variant === 'popover' && trigger === 'cancel') {
-				this.props.popover.props.onClose(event, { trigger });
+				if (this.props.popover.props.onClose) {
+					this.props.popover.props.onClose(event, { trigger });
+				}
 			}
 
 			if (this.props.events.onClose) {
