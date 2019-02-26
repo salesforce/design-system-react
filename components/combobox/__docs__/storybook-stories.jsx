@@ -23,6 +23,7 @@ import SnapshotBaseOpenMenuSubHeaderSeparator from '../__examples__/snapshot/bas
 import SnapshotBaseOpenMenuInheritWidthOf from '../__examples__/snapshot/base-open-menu-inheritWidthOf';
 import SnapshotBaseCustomMenuItemOpen from '../__examples__/snapshot/base-custom-menu-item-open';
 import SnapshotBaseSelected from '../__examples__/snapshot/base-selected';
+import SnapshotDialogOpen from '../__examples__/snapshot/dialog-open';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
 import SnapshotInlineSingleSelectionSelected from '../__examples__/snapshot/inline-single-selection-selected';
 import SnapshotInlineMultipleSelection from '../__examples__/snapshot/inline-multiple-selection';
@@ -85,7 +86,9 @@ storiesOf(COMBOBOX, module)
 	.add('Snapshot Base Open Menu inheritWidthOf prop', () => (
 		<SnapshotBaseOpenMenuInheritWidthOf action={action} />
 	))
-
+	.add('Snapshot Dialog Open', () => (
+		<SnapshotDialogOpen action={action} />
+	))
 	.add('Snapshot Inline Single Selection', () => (
 		<SnapshotInlineSingleSelection action={action} />
 	))
