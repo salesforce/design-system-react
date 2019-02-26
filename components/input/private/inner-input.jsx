@@ -228,18 +228,6 @@ const InnerInput = (props) => {
 		...props.assistiveText,
 	};
 
-	const editPencil = props.variant === 'edit-dialog' && props.editDialogPopover ? React.cloneElement(props.editDialogPopover, props.editDialogPopover.props, <Button
-		assistiveText={{icon: 'Edit: Status'}}
-		aria-controls={`${props.id}-edit-button`}
-		className="slds-button_reset"
-		iconCategory="utility"
-		iconClassName="slds-button__icon slds-button__icon_hint"
-		iconName="edit"
-		onClick={props.onTogglePopoverEditDialog}
-		variant="icon"
-		style={{verticalAlign:'middle'}}
-	/>) : null;
-
 	return (
 		<div
 			className={classNames(containerClassName, {
