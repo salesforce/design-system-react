@@ -497,11 +497,21 @@ class Popover extends React.Component {
 					</header>
 				) : null}
 
-				<div id={`${this.getId()}-dialog-body`} className={classNames("slds-popover__body", this.props.classNameBody)}>
+				<div
+					id={`${this.getId()}-dialog-body`}
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+				>
 					{props.body}
 				</div>
 				{this.props.footer ? (
-					<footer className={classNames("slds-popover__footer", this.props.classNameFooter)}>{this.props.footer}</footer>
+					<footer
+						className={classNames(
+							'slds-popover__footer',
+							this.props.classNameFooter
+						)}
+					>
+						{this.props.footer}
+					</footer>
 				) : null}
 			</Dialog>
 		) : null;

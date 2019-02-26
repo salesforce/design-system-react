@@ -337,22 +337,23 @@ const InnerInput = (props) => {
 					{props.inlineEditTrigger}
 				</span>
 			)}
-			{props.variant === 'edit-dialog' && props.editDialogPopover ?
-				React.cloneElement(
-					props.editDialogPopover,
-					props.editDialogPopover.props,
-					<Button
-						assistiveText={{icon: 'Edit: Status'}}
-						aria-controls={`${props.id}-edit-button`}
-						className="slds-button_reset"
-						iconCategory="utility"
-						iconClassName="slds-button__icon slds-button__icon_hint"
-						iconName="edit"
-						onClick={props.onClickEditButton}
-						variant="icon"
-						style={{verticalAlign:'middle'}}
-					/>
-				): null}
+			{props.variant === 'edit-dialog' && props.editDialogPopover
+				? React.cloneElement(
+						props.editDialogPopover,
+						props.editDialogPopover.props,
+						<Button
+							assistiveText={{ icon: 'Edit: Status' }}
+							aria-controls={`${props.id}-edit-button`}
+							className="slds-button_reset"
+							iconCategory="utility"
+							iconClassName="slds-button__icon slds-button__icon_hint"
+							iconName="edit"
+							onClick={props.onClickEditButton}
+							variant="icon"
+							style={{ verticalAlign: 'middle' }}
+						/>
+					)
+				: null}
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 
 			{props.inlineHelpText && (

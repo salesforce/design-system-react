@@ -327,7 +327,8 @@ class Input extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getIsStatic = () => this.props.isStatic || this.props.variant === 'edit-dialog'
+	getIsStatic = () =>
+		this.props.isStatic || this.props.variant === 'edit-dialog';
 
 	getErrorId = () => this.props['aria-describedby'] || this.generatedErrorId;
 
@@ -584,7 +585,8 @@ class Input extends React.Component {
 					'slds-form-element',
 					{
 						'slds-has-error': this.props.errorText,
-						'slds-form-element_edit slds-form-element_readonly slds-hint-parent': this.props.variant === 'edit-dialog'
+						'slds-form-element_edit slds-form-element_readonly slds-hint-parent':
+							this.props.variant === 'edit-dialog',
 					},
 					this.props.className
 				)}

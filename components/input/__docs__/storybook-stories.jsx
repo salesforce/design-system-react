@@ -297,7 +297,11 @@ storiesOf(INPUT, module)
 		</IconSettings>
 	))
 	.add('Inline Help', () => <InlineHelpInput />)
-	.add('Inline Edit', () => <IconSettings iconPath="/assets/icons"><InlineEditInput /></IconSettings>)
+	.add('Inline Edit', () => (
+		<IconSettings iconPath="/assets/icons">
+			<InlineEditInput />
+		</IconSettings>
+	))
 	.add('Field Level Help', () => <FieldLevelHelpInput />)
 	.add('Field Level Help, Tooltip Open', () => (
 		<FieldLevelHelpInput tooltipOpen />
