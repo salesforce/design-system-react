@@ -90,9 +90,7 @@ storiesOf(COMBOBOX, module)
 	.add('Required Input in Error State', () => (
 		<RequiredInputErrorState action={action} />
 	))
-	.add('Input Component as a Prop', () => (
-		<InputProp action={action} />
-	))
+	.add('Input Component as a Prop', () => <InputProp action={action} />)
 	.add('Snapshot Base Open', () => <SnapshotBaseOpen action={action} />)
 	.add('Snapshot Base Custom Menu Item Open', () => (
 		<SnapshotBaseCustomMenuItemOpen action={action} />

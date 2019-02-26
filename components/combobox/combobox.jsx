@@ -941,7 +941,12 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineMultiple = ({ assistiveText, labels, props, userDefinedProps }) => (
+	renderInlineMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => (
 		<div className="slds-form-element__control">
 			<div
 				className={classNames('slds-combobox_container', {
@@ -1209,7 +1214,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlyMultiple = ({ assistiveText, labels, props, userDefinedProps }) => {
+	renderReadOnlyMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
@@ -1320,7 +1330,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlySingle = ({ assistiveText, labels, props, userDefinedProps }) => {
+	renderReadOnlySingle = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value = (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */

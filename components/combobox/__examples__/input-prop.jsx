@@ -76,13 +76,19 @@ class Example extends React.Component {
 	}
 
 	render() {
-        // example of passing in an SLDSInput component to a SLDSCombobox
-        const inputElement = (<Input autoComplete="test" id="id_from_input_prop" placeholder="My overridden placeholder" />);
+		// example of passing in an SLDSInput component to a SLDSCombobox
+		const inputElement = (
+			<Input
+				autoComplete="test"
+				id="id_from_input_prop"
+				placeholder="My overridden placeholder"
+			/>
+		);
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-                    id="combobox-input-prop-example"
-                    input={inputElement}
+					id="combobox-input-prop-example"
+					input={inputElement}
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {
