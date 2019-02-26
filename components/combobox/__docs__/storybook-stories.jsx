@@ -19,6 +19,7 @@ import InlineMultiple from '../__examples__/inline-multiple';
 import BaseCustomMenuItem from '../__examples__/base-custom-menu-item';
 import BaseCustomMenuItemDisabled from '../__examples__/base-custom-menu-item-disabled';
 import ReadOnly from '../__examples__/readonly-single';
+import ReadOnlyDisabled from '../__examples__/readonly-single-disabled';
 import ReadOnlyMenuItemDisabled from '../__examples__/readonly-menu-item-disabled';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
@@ -32,6 +33,7 @@ import SnapshotInlineSingleSelectionSelected from '../__examples__/snapshot/inli
 import SnapshotInlineMultipleSelection from '../__examples__/snapshot/inline-multiple-selection';
 import SnapshotInlineMultipleSelectionSelected from '../__examples__/snapshot/inline-multiple-selection-selected';
 import SnapshotReadonlySingleSelection from '../__examples__/snapshot/readonly-single-selection';
+import SnapshotReadonlySingleSelectionDisabled from '../__examples__/snapshot/readonly-single-selection-disabled';
 import SnapshotReadonlySingleSelectionSelected from '../__examples__/snapshot/readonly-single-selection-selected';
 import SnapshotReadonlySingleSelectionSelectedOpen from '../__examples__/snapshot/readonly-single-selection-selected-open';
 import SnapshotReadonlyMultipleSelection from '../__examples__/snapshot/readonly-multiple-selection';
@@ -77,6 +79,9 @@ storiesOf(COMBOBOX, module)
 		<BaseInheritMenuWidth action={action} />
 	))
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
+	.add('Readonly Single Selection Disabled', () => (
+		<ReadOnlyDisabled action={action} />
+	))
 	.add('Readonly Single Menu Item Disabled', () => (
 		<ReadOnlyMenuItemDisabled action={action} />
 	))
@@ -118,6 +123,9 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Snapshot Readonly Single Selection', () => (
 		<SnapshotReadonlySingleSelection action={action} />
+	))
+	.add('Snapshot Readonly Single Selection Disabled', () => (
+		<SnapshotReadonlySingleSelectionDisabled action={action} />
 	))
 	.add('Snapshot Readonly Single Selection Selected', () => (
 		<SnapshotReadonlySingleSelectionSelected action={action} />
