@@ -13,6 +13,7 @@ class Example extends React.Component {
 				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
 					<div className="slds-col_padded">
 						<Input
+							aria-describedby="error-4"
 							id="unique-id-4"
 							label="Input Label"
 							required
@@ -24,7 +25,7 @@ class Example extends React.Component {
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
+									assistiveText={{ icon: 'Search' }}
 									name="warning"
 									category="utility"
 									color="warning"
@@ -33,7 +34,8 @@ class Example extends React.Component {
 									}}
 								/>
 							}
-							id="unique-id-4"
+							aria-describedby="error-5"
+							id="unique-id-5"
 							label="Input Label"
 							required
 							errorText="Error Message"

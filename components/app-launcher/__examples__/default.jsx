@@ -22,7 +22,7 @@ class Example extends React.Component {
 					console.log('Search term:', event.target.value);
 				}}
 				placeholder="Find an app"
-				assistiveText="Find an app"
+				assistiveText={{ label: 'Find an app' }}
 			/>
 		);
 		const headerButton = <Button label="App Exchange" />;

@@ -61,7 +61,7 @@ storiesOf(TREE, module)
 			nodes={sampleNodesDynamicHashMap.large}
 		/>
 	))
-	.add('Large dataset (300+)', () => (
+	.add('Large dataset (300+) NoTest', () => (
 		<DefaultExample action={action} nodes={sampleNodesDynamicHashMap.large} />
 	))
 	.add('Highlighted Search', () => (

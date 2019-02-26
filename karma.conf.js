@@ -36,7 +36,21 @@ const configExport = function(config) {
 		frameworks: ['mocha', 'chai-sinon'],
 
 		// list of files / patterns to load in the browser
-		files: ['tests/browser-tests.js'],
+		files: [
+			'tests/browser-tests.js',
+			{
+				pattern:
+					'./node_modules/@salesforce-ux/design-system/assets/icons/**/*.svg',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+		],
+		proxies: {
+			'/assets/':
+				'http://localhost:9876/base/node_modules/@salesforce-ux/design-system/assets/',
+		},
 
 		// list of files to exclude
 		exclude: [],
@@ -51,6 +65,11 @@ const configExport = function(config) {
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
 		reporters: ['spec', 'coverage'],
+
+		specReporter: {
+			suppressPassed: true, // do not print information about passed tests
+			failFast: true, // test will finish with error when a first fail occurs.
+		},
 
 		coverageReporter: {
 			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }],
@@ -78,6 +97,10 @@ const configExport = function(config) {
 		singleRun: false,
 
 		webpack: webpackConfig,
+
+		webpackMiddleware: {
+			stats: 'errors-only', // Do not show webpack build
+		},
 
 		plugins: [
 			karmaWebpack,

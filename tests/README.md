@@ -24,7 +24,7 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
 
 Add DOM snapshot, image snapshot, and documentation site examples to Storybook for manual testing.
 
-`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybooks.
+`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybook stories.
 
 ### Style and quality linting
 
@@ -33,7 +33,7 @@ There are two parts to code linting: style and quality. [Prettier](https://prett
 * `npm run lint` will check style and quality.
 * `npm run lint:fix` will fix most style issues.
 * `npm run lint:quality` will run `eslint`.
-* `npm run lint:style` will run `prettier-eslint`.
+* `npm run lint:style` will run `prettier`.
 
 ### Story-based tests
 
@@ -46,10 +46,22 @@ Use Jest to test the presence of:
 * DOM/markup nodes
 * CSS classes
 * Styles
+* Accessiblity features of the DOM
 
 **Do not** use Jest for:
 
 * Mouse/keyboard user interaction (event callbacks)
+
+#### Source files
+
+Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
+
+* `/tests/story-based-tests.snapshot-test.js`
+* `/tests/story-based-accessibility-tests.js`
+
+#### Story removal from test suite
+
+If a Storybook story should not be tested by Storyshots, please add the suffix `NoTest` to the story's name.
 
 #### Snapshot requirements
 
@@ -59,7 +71,7 @@ Use Jest to test the presence of:
 
 ### Additional tools
 
-* **[Mocha](http://mochajs.org/)** - Test framework ran in [PhantomJS](http://phantomjs.org/)
+* **[Mocha](http://mochajs.org/)** - Test framework ran in [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
 * **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner for Mocha
 * **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
@@ -97,7 +109,7 @@ const propTypes = {
 }
 ```
 
-#### TDD with Jest
+#### Test-driven development (TDD) with Jest DOM snapshots
 
 HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples.
 
@@ -116,6 +128,10 @@ Files ending in `.browser-test.jsx` will be run by CI server and in browser.
 * All mouse/keyboard interactions and events must have Mocha tests.
   * For components with user interactions events, real DOM testing is preferred. It is not recommended to use shallow rendering or to modify component prototypes with mock functions for these tests.
   * Because they are often easier to debug in the browser, mouse/keyboard user interaction testing should be done using Mocha.
+
+Mocha test suite source file:
+
+* `/tests/browser-tests.js`
 
 ## Sample Mocha Test File
 
