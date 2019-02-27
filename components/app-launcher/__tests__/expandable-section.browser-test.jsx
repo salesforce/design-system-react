@@ -12,8 +12,6 @@ import AppLauncherExpandableSection from '../../app-launcher/expandable-section'
 const expect = chai.expect;
 const should = chai.should();
 
-const { Simulate } = TestUtils;
-
 describe('SLDS APP LAUNCHER EXPANDABLE SECTION *******************************************', () => {
 	const handles = {
 		section: null,

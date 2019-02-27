@@ -71,6 +71,9 @@ export ColorPicker from './color-picker';
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
+export SLDSExpandableSection from './expandable-section';
+export ExpandableSection from './expandable-section';
+
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
 export comboboxAddSubheadings from './combobox/add-subheadings';

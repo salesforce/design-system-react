@@ -189,7 +189,7 @@ class AppLauncherTile extends React.Component {
 							</Tooltip>
 						}
 						wrapper={(text, textTruncateChild) => (
-							<>
+							<React.Fragment>
 								{this.props.descriptionHeading && (
 									// inline style override
 									<div
@@ -202,7 +202,7 @@ class AppLauncherTile extends React.Component {
 								<Highlighter search={this.props.search}>{text}</Highlighter>
 								{textTruncateChild && ' '}
 								{textTruncateChild}
-							</>
+							</React.Fragment>
 						)}
 					/>
 				</div>

@@ -198,7 +198,7 @@ class AppLauncher extends React.Component {
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
 
 		const customModalHeader = (
-			<>
+			<React.Fragment>
 				<h2
 					className="slds-text-heading_medium"
 					id={`${this.getId()}-app-launcher-title`}
@@ -213,7 +213,7 @@ class AppLauncher extends React.Component {
 				) : (
 					<span className="slds-size_1-of-7" />
 				)}
-			</>
+			</React.Fragment>
 		);
 
 		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
