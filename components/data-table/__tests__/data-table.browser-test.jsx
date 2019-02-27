@@ -396,7 +396,7 @@ describe('DataTable: ', function() {
 			Simulate.click(sortButton, {});
 		});
 
-		it('first clicked on sortable column header should result in sort specifid in firstSortDirection if given', function(done) {
+		it('if isDefaultSortDescending is true, first click on sortable column header should result in descending order', function(done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
 				data.sortDirection.should.equal('desc');
@@ -408,7 +408,7 @@ describe('DataTable: ', function() {
 					{columns.map((columnProps) => (
 						<DataTableColumn
 							{...columnProps}
-							firstSortDirection="desc"
+							isDefaultSortDescending
 							key={columnProps.property}
 						/>
 					))}

@@ -13334,25 +13334,48 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted_desc slds-text-title_caps"
             scope="col"
             style={null}
           >
-            <span
-              className="slds-p-horizontal_x-small"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
+            <a
+              className="slds-th__action slds-text-link_reset"
+              href="javascript:void(0)"
+              onClick={[Function]}
+              role="button"
+              tabIndex="0"
             >
+              <span
+                className="slds-assistive-text"
+              >
+                sort this column
+                 
+              </span>
               <span
                 className="slds-truncate"
                 title="Close Date"
               >
                 Close Date
               </span>
-            </span>
+              <span>
+                <svg
+                  aria-hidden="true"
+                  className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
+                  />
+                </svg>
+                
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="assertive"
+                className="slds-assistive-text"
+              >
+                desc
+              </span>
+            </a>
           </th>
           <th
             aria-label="Stage"
