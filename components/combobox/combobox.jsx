@@ -779,7 +779,7 @@ class Combobox extends React.Component {
 			// might just keep focus on outer div
 			// could pass node as prop, put it in state - then it would rerender and then able to focus it
 			// firstElRef
-			if (this.props.popover) {
+			if (this.props.popover && documentDefined) {
 				const dialog = document.getElementById(`${this.getId()}-popover`);
 				const focusableElements = findTabbableDescendants(dialog);
 				// Focus second element b/c the first is the close button.

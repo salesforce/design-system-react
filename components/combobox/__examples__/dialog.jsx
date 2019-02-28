@@ -71,7 +71,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					aria-describedby="combobox-dialog-description"
+					// aria-describedby="combobox-dialog-description"
 					assistiveText={{
 						popoverLabel: 'Language Options',
 					}}

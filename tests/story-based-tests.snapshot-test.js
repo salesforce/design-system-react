@@ -64,12 +64,12 @@ describe('Image Snapshots', function imageSnapshotFunction() {
 	// Use custom storybook config that uses a subset of stories until
 	// all components have been audited for compatibility with Jest
 	// snapshot tests.
-	initStoryshots({
-		configPath: '.storybook-based-tests',
-		suite: 'Image storyshots',
-		test: imageSnapshot({
-			storybookUrl: `http://localhost:${port}`,
-			getMatchOptions,
-		}),
-	});
+	// initStoryshots({
+	// 	configPath: '.storybook-based-tests',
+	// 	suite: 'Image storyshots',
+	// 	test: imageSnapshot({
+	// 		storybookUrl: `http://localhost:${port}`,
+	// 		getMatchOptions,
+	// 	}),
+	// });
 });
