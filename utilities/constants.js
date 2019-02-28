@@ -83,6 +83,7 @@ export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';
 export const PROGRESS_INDICATOR_PROGRESS = 'SLDSProgressIndicatorProgress';
 export const PROGRESS_INDICATOR_STEP = 'SLDSProgressIndicatorStep';
 export const PROGRESS_RING = 'SLDSProgressRing';
+export const PROGRESS_BAR = 'SLDSProgressBar';
 export const SLIDER = 'SLDSSlider';
 export const SPINNER = 'SLDSSpinner';
 export const SPLIT_VIEW = 'SLDSSplitView';
