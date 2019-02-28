@@ -41,7 +41,7 @@ If you are adding or changing component props, the first step is to propose the 
 1. Connect the newly created files
    1. Add public component exports to `/components/index.js`.
    1. Add the component's name to `/components/constants.js`
-   1. Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
+   1. [Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
    1. Add Storybook and site examples in `/components/[COMPONENT]/__docs__/`.
    1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
    1. Then import `__docs__` examples file into the documentation site by adding them to `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
