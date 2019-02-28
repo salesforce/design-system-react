@@ -40,7 +40,7 @@ If you are adding or changing component props, the first step is to propose the 
    1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
 1. Connect the newly created files
    1. Add public component exports to `/components/index.js`.
-   1. Add the component's name to `/components/constants.js`
+   1. Add the component's name to `/utilities/constants.js`
    1. [Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
    1. Add Storybook and site examples in `/components/[COMPONENT]/__docs__/`.
    1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
