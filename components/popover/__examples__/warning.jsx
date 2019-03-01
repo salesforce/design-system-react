@@ -14,23 +14,20 @@ class Example extends React.Component {
 					align="top left"
 					body={
 						<div>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore.{' '}
-								<a href="javascript:void(0);" title="Learn More">
-									Learn More
-								</a>
+							<p className="slds-p-bottom_x-small">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+								in pretium leo. Praesent quis risus eget libero commodo mollis.
 							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore.{' '}
-								<a href="javascript:void(0);" title="Learn More">
-									Learn More
-								</a>
+							<p className="slds-p-bottom_x-small">
+								Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec
+								neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus
+								consectetur mi, sit amet interdum purus. Suspendisse rhoncus,
+								orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at
+								tristique nisi tristique.
 							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore.{' '}
+							<p className="slds-p-bottom_x-small">
+								Pellentesque magna tellus, dapibus vitae placerat nec, viverra
+								vel mi.{' '}
 								<a href="javascript:void(0);" title="Learn More">
 									Learn More
 								</a>
@@ -39,8 +36,8 @@ class Example extends React.Component {
 					}
 					heading="Review warning"
 					id="popover-error"
-					isOpen
 					variant="warning"
+					{...this.props}
 				>
 					<Button label="Trigger Popover" />
 				</Popover>

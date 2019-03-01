@@ -435,17 +435,46 @@ class Popover extends React.Component {
 		const closeButtonAssistiveText =
 			props.closeButtonAssistiveText || assistiveText.closeButton;
 
-		const hasDefinedHeader =
-			this.props.heading &&
-			(this.props.variant === 'error' || this.props.variant === 'warning');
-
+		// HEADER SUB-RENDERS
+		const hasThemedHeader =
+			this.props.variant === 'error' || this.props.variant === 'warning';
+		const hasDefinedHeader = this.props.heading || hasThemedHeader;
 		const headerIcon = {
 			error: <Icon category="utility" name="error" size="x-small" inverse />,
 			warning: (
 				<Icon category="utility" name="warning" size="x-small" inverse />
 			),
 		};
+		const headerVariants = {
+			base: (
+				<header className="slds-popover__header">
+					<h2
+						id={`${this.getId()}-dialog-heading`}
+						className="slds-text-heading_small"
+					>
+						{this.props.heading}
+					</h2>
+				</header>
+			),
+			themed: (
+				<header className="slds-popover__header">
+					<MediaObject
+						body={
+							<h2
+								className="slds-truncate slds-text-heading_medium"
+								title={props.heading}
+							>
+								{props.heading}
+							</h2>
+						}
+						figure={headerIcon[this.props.variant]}
+						verticalCenter
+					/>
+				</header>
+			),
+		};
 
+		// MAIN RENDER
 		return isOpen ? (
 			<Dialog
 				hasNubbin
@@ -492,32 +521,53 @@ class Popover extends React.Component {
 					}
 				/>
 
-				{hasDefinedHeader ? (
-					<header className="slds-popover__header">
-						<MediaObject
-							body={
-								<h2
-									className="slds-truncate slds-text-heading_medium"
-									title={props.heading}
-								>
-									{props.heading}
-								</h2>
-							}
-							figure={headerIcon[this.props.variant]}
-							verticalCenter
+				{hasDefinedHeader
+					? headerVariants[hasThemedHeader ? 'themed' : 'base']
+					: null}
+				{props.variant === 'error' || props.variant === 'warning' ? (
+					// THIS WRAPPING DIV IS NOT IN SLDS MARKUP
+					<div>
+						<div
+							id={`${this.getId()}-dialog-body`}
+							className="slds-popover__body slds-popover__body_scrollable"
+							// REMOVE IN THE FUTURE: SLDS OVERRIDE
+							// Possible solution in future is to use .slds-popover__body_small
+							style={{
+								borderBottom: 'none',
+							}}
+						>
+							{props.body}
+						</div>
+						<div
+							// GRADIENT FOOTER - SLDS OVERRIDE
+							// REMOVE IN THE FUTURE (HOPEFULLY)
+							style={{
+								position: 'absolute',
+								bottom: 0,
+								left: 0,
+								width: '100%',
+								textAlign: 'center',
+								margin: 0,
+								padding: '5px 0',
+								/* "transparent" only works here because == rgba(0,0,0,0) */
+								backgroundImage:
+									'linear-gradient(to bottom, transparent, rgba(255,255,255,100)',
+							}}
 						/>
-					</header>
-				) : null}
+					</div>
+				) : (
+					// NOT SCROLLABLE
+					<div
+						id={`${this.getId()}-dialog-body`}
+						className={classNames('slds-popover__body', {
+							'slds-popover__body_scrollable':
+								props.variant === 'error' || props.variant === 'warning',
+						})}
+					>
+						{props.body}
+					</div>
+				)}
 
-				<div
-					id={`${this.getId()}-dialog-body`}
-					className={classNames('slds-popover__body', {
-						'slds-popover__body_scrollable':
-							props.variant === 'error' || props.variant === 'warning',
-					})}
-				>
-					{props.body}
-				</div>
 				{this.props.footer ? (
 					<footer className="slds-popover__footer">{this.props.footer}</footer>
 				) : null}

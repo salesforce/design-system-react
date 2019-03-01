@@ -127,4 +127,6 @@ storiesOf(POPOVER, module)
 		})
 	)
 	.add('Error', () => <Error />)
-	.add('Warning', () => <Warning />);
+	.add('Error - Open', () => <Error isOpen />)
+	.add('Warning', () => <Warning />)
+	.add('Warning  - Open', () => <Warning isOpen />);
