@@ -9957,6 +9957,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
               aria-controls="combobox-inline-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-inline-single"
               onBlur={[Function]}
               onChange={[Function]}
@@ -10093,6 +10094,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
               aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-readonly-single"
               onBlur={[Function]}
               onChange={[Function]}
@@ -10163,6 +10165,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
               aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-readonly-single"
               onBlur={[Function]}
               onChange={[Function]}
@@ -10233,6 +10236,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
               aria-controls="combobox-readonly-single-custom-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-readonly-single-custom-item"
               onBlur={[Function]}
               onChange={[Function]}
@@ -10240,6 +10244,77 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
               onFocus={[Function]}
               onKeyDown={[Function]}
               placeholder="Select company"
+              readOnly={true}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-controls="combobox-unique-id-listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={true}
+              id="combobox-unique-id"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select an Option"
               readOnly={true}
               required={false}
               role="textbox"
@@ -11571,6 +11646,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
               aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-unique-id"
               onBlur={[Function]}
               onChange={[Function]}
@@ -11652,6 +11728,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
               aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-unique-id"
               onBlur={[Function]}
               onChange={[Function]}
@@ -12044,6 +12121,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
               aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-unique-id"
               onBlur={[Function]}
               onChange={[Function]}
@@ -12114,6 +12192,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               aria-controls="combobox-readonly-single-custom-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-readonly-single-custom-item"
               onBlur={[Function]}
               onChange={[Function]}
@@ -12710,6 +12789,77 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
 </div>
 `;
 
+exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            aria-expanded={false}
+            aria-haspopup="listbox"
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-controls="combobox-unique-id-listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={true}
+              id="combobox-unique-id"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select an Option"
+              readOnly={true}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 1`] = `
 <div
   className="slds-p-around_medium"
@@ -12747,6 +12897,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-unique-id"
               onBlur={[Function]}
               onChange={[Function]}
@@ -12817,6 +12968,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="combobox-unique-id"
               onBlur={[Function]}
               onChange={[Function]}

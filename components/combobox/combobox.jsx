@@ -260,6 +260,10 @@ const propTypes = {
 	 */
 	selectedListboxRef: PropTypes.func,
 	/**
+	 * Disables the input and prevents editing the contents. This only applies for single readonly and inline-listbox variants.
+	 */
+	singleInputDisabled: PropTypes.bool,
+	/**
 	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
 	 */
 	tooltipMenuItemDisabled: PropTypes.element,
@@ -292,6 +296,7 @@ const defaultProps = {
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
+	singleInputDisabled: false,
 	variant: 'base',
 };
 
@@ -1096,6 +1101,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								props.selection.length ? (
 									<InputIcon
@@ -1355,6 +1361,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}
