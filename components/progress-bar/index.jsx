@@ -7,7 +7,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 import { PROGRESS_BAR } from '../../utilities/constants';
+
 
 const propTypes = {
 	/**
@@ -50,19 +55,22 @@ const defaultProps = {};
  * A progress bar component communicates to the user the progress of a particular process
  */
 class ProgressBar extends React.Component {
+	componentWillMount() {
+		this.generatedId = shortid.generate();
+	}
 	/**
 	 * ID as a string
 	 * @returns {string} id
 	 */
 	getId() {
-		return this.props.id;
+		return this.props.id || this.generatedId;
 	}
 
 	/**
 	 * Border Radius as String
 	 * @returns {string} Border
 	 */
-	getBorder() {
+	getRadius() {
 		if (this.props.radius) {
 			return `slds-progress-bar_${this.props.radius}`;
 		}
@@ -127,7 +135,7 @@ class ProgressBar extends React.Component {
 				<div
 					className={classNames(
 						'slds-progress-bar',
-						this.getBorder(),
+						this.getRadius(),
 						this.getThickness(),
 						this.props.className
 					)}

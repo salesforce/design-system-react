@@ -10615,7 +10615,166 @@
         "SLDS-component-path": "/components/progress-indicator",
         "dependencies": []
     },
-    "progress-ring": {
+    "progress-bar": {
+	  	"description": "A progress bar component communicates to the user the progress of a particular process.",
+	  	"methods": [
+		  {
+				"name": "getId",
+				"docblock": "Get the progress bar's HTML id. Generate a new one if no ID present.",
+				"modifiers": [],
+				"params": [],
+				"returns": null,
+				"description": "Get the progress bars's HTML id. Generate a new one if no ID present."
+		  },
+		  {
+			"name": "getRadius",
+			"docblock": "Get the progress bar's border radius.",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "Get the progress bar's border radius."
+		  },
+		  {
+			"name": "getColor",
+			"docblock": "Get the progress bar's fill color.",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "Get the progress bar's fill color."
+		  },
+		  {
+			"name": "getThickness",
+			"docblock": "Get the progress bar's thickness.",
+			"modifiers": [],
+			"params": [],
+			"returns": null,
+			"description": "Get the progress bar's thickness."
+		  },
+		  {
+			"name": "getDescription",
+			"docblock": "Get the the description for progress bar. Doesn't show description if label is not given.",
+			"modifiers": [],
+			"params": [],
+			"returns": {
+			  "description": "Progress Bar Description Container",
+			  "type": {
+				"name": "string"
+			  }
+			},
+			"description": "Get the the description for progress bar. Doesn't show description if label is not given."
+		  },
+		  {
+			"name": "progressPercent",
+			"docblock": "Progress Percentage as a string\n@returns {string} Percentage",
+			"modifiers": [],
+			"params": [],
+			"returns": {
+			  "description": "Percentage",
+			  "type": {
+				"name": "string"
+			  }
+			},
+			"description": "Percentage as a string"
+		  }
+		],
+		"props": {
+		  "id": {
+			"type": {
+			  "name": "string"
+			},
+			"required": false,
+			"description": "HTML id for component."
+		  },
+		  "className": {
+			"type": {
+			  "name": "union",
+			  "value": [
+				{
+				  "name": "array"
+				},
+				{
+				  "name": "object"
+				},
+				{
+				  "name": "string"
+				}
+			  ]
+			},
+			"required": false,
+			"description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+		  },
+		  "label": {
+			"type": {
+			  "name": "string"
+			},
+			"required": false,
+			"description": "Label for the progress bar."
+		  },
+		  "radius": {
+			"type": {
+			  "name": "enum",
+			  "value": [
+				{
+				  "value": "'circular'",
+				  "computed": false
+				}
+			  ]
+			},
+			"required": false,
+			"description": "Border radius of Progress Bar."
+		  },
+		  "color": {
+			"type": {
+			  "name": "enum",
+			  "value": [
+				{
+				  "value": "'success'",
+				  "computed": false
+				}
+			  ]
+			},
+			"required": false,
+			"description": "Color for filling the progress bar"
+		  },
+		  "thickness": {
+			"type": {
+			  "name": "enum",
+			  "value": [
+				{
+				  "value": "'x-small'",
+				  "computed": false
+				},
+				{
+				  "value": "'small'",
+				  "computed": false
+				},
+				{
+				  "value": "'medium'",
+				  "computed": false
+				},
+				{
+				  "value": "'large'",
+				  "computed": false
+				}
+			  ]
+			},
+			"required": false,
+			"description": "Thickness of the progress bar"
+		  },
+		  "value": {
+			"type": {
+			  "name": "number"
+			},
+			"required": true,
+			"description": "Percentage of progress completion, ranging [0, 100]."
+		  }
+		},
+	  	"route": "progress-bars",
+		"display-name": "Progress Bars",
+		"SLDS-component-path": "/components/progress-bar",
+		"dependencies": []
+	},
+  	"progress-ring": {
         "description": "Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.",
         "methods": [
             {
