@@ -8596,14 +8596,14 @@
                 "required": false,
                 "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
             },
-            "dismissible": {
+            "disableClose": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking on the close icon or pressing esc key.",
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.",
                 "defaultValue": {
-                    "value": "true",
+                    "value": "false",
                     "computed": false
                 }
             },
@@ -8612,7 +8612,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible."
+                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose."
             },
             "onRequestClose": {
                 "type": {
