@@ -54,13 +54,15 @@ class Example extends React.Component {
 	handleClose(e, { trigger }) {
 		if (trigger === 'cancel') {
 			const inputValue = this.getInputString(this.state.selection);
-			const selection = this.state.selection.length > 0 ? this.state.selection.slice(0) : [];
+			const selection =
+				this.state.selection.length > 0 ? this.state.selection.slice(0) : [];
 			this.setState({
 				checked: selection,
 				inputValue,
 			});
 		} else {
-			const checked = this.state.checked.length > 0 ? this.state.checked.slice(0) : [];
+			const checked =
+				this.state.checked.length > 0 ? this.state.checked.slice(0) : [];
 			this.setState({
 				selection: checked,
 			});
@@ -71,7 +73,6 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					// aria-describedby="combobox-dialog-description"
 					assistiveText={{
 						popoverLabel: 'Language Options',
 					}}

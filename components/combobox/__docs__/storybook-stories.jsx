@@ -86,9 +86,7 @@ storiesOf(COMBOBOX, module)
 	.add('Snapshot Base Open Menu inheritWidthOf prop', () => (
 		<SnapshotBaseOpenMenuInheritWidthOf action={action} />
 	))
-	.add('Snapshot Dialog Open', () => (
-		<SnapshotDialogOpen action={action} />
-	))
+	.add('Snapshot Dialog Open', () => <SnapshotDialogOpen action={action} />)
 	.add('Snapshot Inline Single Selection', () => (
 		<SnapshotInlineSingleSelection action={action} />
 	))

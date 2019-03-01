@@ -34,7 +34,6 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
-import findTabbableDescendants from '../../utilities/tabbable';
 
 import checkProps from './check-props';
 
@@ -333,7 +332,7 @@ class Combobox extends React.Component {
 		}
 
 		if (this.props.isOpen !== this.state.isOpen) {
-			this.setState({ isOpen: this.props.isOpen })
+			this.setState({ isOpen: this.props.isOpen });
 		}
 	}
 
@@ -725,7 +724,7 @@ class Combobox extends React.Component {
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
 				prevState.activeSelectedOptionIndex + 1 ===
-				this.props.selection.length && direction === 'next';
+					this.props.selection.length && direction === 'next';
 			const isFirstOptionAndLeftIsPressed =
 				prevState.activeSelectedOptionIndex === 0 && direction === 'previous';
 			let newState;
@@ -977,7 +976,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-								props.value
+									props.value
 								: props.value
 						}
 					/>
@@ -1106,7 +1105,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-								props.value
+									props.value
 								: props.value
 						}
 					/>
@@ -1127,8 +1126,8 @@ class Combobox extends React.Component {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
-					containerClassName: 'slds-combobox__input-entity-icon',
-				})
+						containerClassName: 'slds-combobox__input-entity-icon',
+					})
 				: null;
 
 		const value =
@@ -1168,8 +1167,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-									this.state.activeOption.id
-									}`
+											this.state.activeOption.id
+										}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1198,8 +1197,8 @@ class Combobox extends React.Component {
 										}}
 									/>
 								) : (
-										<InputIcon category="utility" name="search" />
-									)
+									<InputIcon category="utility" name="search" />
+								)
 							}
 							iconLeft={iconLeft}
 							id={this.getId()}
@@ -1225,8 +1224,8 @@ class Combobox extends React.Component {
 							value={
 								props.predefinedOptionsOnly
 									? (this.state.activeOption &&
-										this.state.activeOption.label) ||
-									props.value
+											this.state.activeOption.label) ||
+										props.value
 									: value
 							}
 						/>
@@ -1339,8 +1338,8 @@ class Combobox extends React.Component {
 								value={
 									props.predefinedOptionsOnly
 										? (this.state.activeOption &&
-											this.state.activeOption.label) ||
-										props.value
+												this.state.activeOption.label) ||
+											props.value
 										: props.value
 								}
 							/>
@@ -1365,7 +1364,7 @@ class Combobox extends React.Component {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
-				`${props.selection.length} options selected`
+					`${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1396,8 +1395,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-									this.state.activeOption.id
-									}`
+											this.state.activeOption.id
+										}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1502,8 +1501,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-									this.state.activeOption.id
-									}`
+											this.state.activeOption.id
+										}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1603,8 +1602,8 @@ class Combobox extends React.Component {
 				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
-						subRenderParameters
-					)
+							subRenderParameters
+						)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);

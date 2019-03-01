@@ -97,7 +97,7 @@ const defaultProps = {
 		placeholder: 'Search Salesforce',
 	},
 	menuPosition: 'relative',
-	onOpen: () => { },
+	onOpen: () => {},
 };
 
 const propTypes = {
@@ -209,7 +209,7 @@ const getNodes = ({ wrapper }) => ({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSCombobox', function () {
+describe('SLDSCombobox', function() {
 	let mountNode;
 	let wrapper;
 
@@ -225,7 +225,7 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', function () {
+		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', function() {
 			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
 			expect(nodes.combobox).attr('aria-haspopup', 'listbox');
@@ -236,7 +236,7 @@ describe('SLDSCombobox', function () {
 			expect(nodes.combobox).attr('aria-expanded', 'true');
 		});
 
-		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function () {
+		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function() {
 			wrapper = mount(<DemoComponent multiple isOpen />, {
 				attachTo: mountNode,
 			});
@@ -260,7 +260,7 @@ describe('SLDSCombobox', function () {
 			);
 		});
 
-		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
+		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function(done) {
 			const getSelectedListboxPills = ({ nodes, index }) =>
 				nodes.selectedListbox
 					.children()
@@ -435,7 +435,7 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Limit to pre-defined choices', function () {
+		it('Limit to pre-defined choices', function() {
 			wrapper = mount(<DemoComponent multiple predefinedOptionsOnly />, {
 				attachTo: mountNode,
 			});
@@ -447,7 +447,7 @@ describe('SLDSCombobox', function () {
 			expect(nodes.selectedListbox).not.to.be.present;
 		});
 
-		it('Inline Single Selection Remove selection', function () {
+		it('Inline Single Selection Remove selection', function() {
 			wrapper = mount(<DemoComponent variant="inline-listbox" />, {
 				attachTo: mountNode,
 			});
@@ -477,11 +477,9 @@ describe('SLDSCombobox', function () {
 		});
 
 		it('popover opens when click', () => {
-			wrapper = mount(<DemoComponent
-				variant="popover"
-				popover={<Popover />}
-				isOpen
-			/>);
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
 
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
@@ -490,11 +488,9 @@ describe('SLDSCombobox', function () {
 		});
 
 		it('onOpen callback is called when dialog variant', () => {
-			wrapper = mount(<DemoComponent
-				variant="popover"
-				popover={<Popover />}
-				isOpen
-			/>);
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
 
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('click', {});
@@ -512,7 +508,7 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Displays No match found', function () {
+		it('Displays No match found', function() {
 			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
@@ -537,7 +533,7 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onOpen callback is called', function () {
+		it('onOpen callback is called', function() {
 			wrapper = mount(<DemoComponent onOpen={onOpenCallback} />, {
 				attachTo: mountNode,
 			});
