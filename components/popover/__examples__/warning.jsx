@@ -38,6 +38,7 @@ class Example extends React.Component {
 						</div>
 					}
 					heading="Review warning"
+					id="popover-error"
 					isOpen
 					variant="warning"
 				>

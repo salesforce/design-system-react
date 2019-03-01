@@ -52,6 +52,7 @@ const getPopoverNubbins = (props) => {
 					body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 					hasStaticAlignment
 					heading="My Popover"
+					id={value}
 					isOpen
 					position="overflowBoundaryElement"
 					{...props}

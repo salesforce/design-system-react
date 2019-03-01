@@ -65,7 +65,7 @@ export Tree from '../components/tree/__docs__/storybook-stories';
 // export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 // export Modal from '../components/modal/__docs__/storybook-stories';
 // export Panel from '../components/panel/__docs__/storybook-stories';
-// export Popover from '../components/popover/__docs__/storybook-stories';
+export Popover from '../components/popover/__docs__/storybook-stories';
 // export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export TimePicker from '../components/time-picker/__docs__/storybook-stories';
 

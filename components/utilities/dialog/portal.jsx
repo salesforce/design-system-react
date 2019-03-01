@@ -8,6 +8,8 @@ import ReactDOM from 'react-dom';
 /*
  * This component mounts its children within a disconnected render tree (portal).
  */
+
+const documentDefined = typeof document !== 'undefined';
 class Portal extends Component {
 	constructor(props) {
 		super(props);
@@ -38,7 +40,7 @@ class Portal extends Component {
 		if (typeof this.props.renderTo === 'string') {
 			element = document.querySelector(this.props.renderTo);
 		} else {
-			element = this.props.renderTo || document.body;
+			element = this.props.renderTo || (documentDefined && document.body);
 		}
 		return element;
 	}
@@ -46,16 +48,21 @@ class Portal extends Component {
 	setupPortalNode() {
 		const parentParentNode = this.getPortalParentNode();
 
-		this.portalNode = document.createElement(this.props.renderTag);
-		this.portalNode.setAttribute(
-			'style',
-			'display: block; height: 0px; width: 0px;'
-		);
-		this.portalNode.setAttribute('className', 'design-system-react-portal');
-		parentParentNode.appendChild(this.portalNode);
-		this.portalNodeInstance = this.props.onMount
-			? this.props.onMount(undefined, { portal: this.portalNode })
-			: this.portalNode;
+		this.portalNode = documentDefined
+			? document.createElement(this.props.renderTag)
+			: {};
+
+		if (documentDefined) {
+			this.portalNode.setAttribute(
+				'style',
+				'display: block; height: 0px; width: 0px;'
+			);
+			this.portalNode.setAttribute('className', 'design-system-react-portal');
+			parentParentNode.appendChild(this.portalNode);
+			this.portalNodeInstance = this.props.onMount
+				? this.props.onMount(undefined, { portal: this.portalNode })
+				: this.portalNode;
+		}
 	}
 
 	unmountPortal() {
@@ -88,7 +95,7 @@ class Portal extends Component {
 
 	renderPortal() {
 		// if no portal contents, then unmount
-		if (!this.getChildren()) {
+		if (!this.getChildren() || !documentDefined) {
 			this.unmountPortal();
 			return;
 		}

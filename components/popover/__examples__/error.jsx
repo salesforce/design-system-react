@@ -38,6 +38,7 @@ class Example extends React.Component {
 						</div>
 					}
 					heading="Resolve error"
+					id="popover-error"
 					isOpen
 					variant="error"
 				>
