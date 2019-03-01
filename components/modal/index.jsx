@@ -43,7 +43,7 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
-	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.
+	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.
 	 * * `closeButton`: This is a visually hidden label for the close button.
 	 */
 	assistiveText: PropTypes.shape({
@@ -95,7 +95,7 @@ const propTypes = {
 	 */
 	footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
 	/**
-	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
+	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present.
 	 */
 	header: PropTypes.node,
 	/**
@@ -138,13 +138,13 @@ const propTypes = {
 	 */
 	size: PropTypes.oneOf(['medium', 'large']),
 	/**
-	 * Content underneath the title in the modal header.
+	 * Content underneath the heading in the modal header.
 	 */
 	tagline: PropTypes.node,
 	/**
 	 * Text heading at the top of a modal.
 	 */
-	title: PropTypes.node,
+	heading: PropTypes.node,
 	/**
 	 * Allows adding additional notifications within the modal.
 	 */
@@ -236,7 +236,7 @@ class Modal extends React.Component {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
 		const borderRadius =
-			this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
+			this.props.heading || this.props.header ? {} : { borderRadius: '.25rem' };
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
@@ -248,7 +248,7 @@ class Modal extends React.Component {
 			<div
 				aria-label={this.props.assistiveText.dialogLabel}
 				aria-labelledby={
-					!this.props.assistiveText.dialogLabel && this.props.title
+					!this.props.assistiveText.dialogLabel && this.props.heading
 						? this.getId()
 						: null
 				}
@@ -362,7 +362,7 @@ class Modal extends React.Component {
 	headerComponent() {
 		let headerContent = this.props.header;
 		const headerEmpty =
-			!headerContent && !this.props.title && !this.props.tagline;
+			!headerContent && !this.props.heading && !this.props.tagline;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -383,7 +383,7 @@ class Modal extends React.Component {
 			/>
 		);
 
-		if ((!headerContent && this.props.title) || this.props.tagline) {
+		if ((!headerContent && this.props.heading) || this.props.tagline) {
 			headerContent = (
 				<div>
 					{this.props.toast}
@@ -394,7 +394,7 @@ class Modal extends React.Component {
 						})}
 						id={this.getId()}
 					>
-						{this.props.title}
+						{this.props.heading}
 					</h2>
 					{this.props.tagline ? (
 						<p className="slds-m-top_x-small">{this.props.tagline}</p>

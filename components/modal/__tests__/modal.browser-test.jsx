@@ -195,7 +195,7 @@ describe('SLDSModal: ', function() {
 			getModal({
 				isOpen: true,
 				prompt: 'warning',
-				title: 'are you sure?',
+				heading: 'are you sure?',
 				footer: feet,
 			});
 			modal = getModalNode(document.body);
