@@ -29059,7 +29059,7 @@ exports[`DOM snapshots SLDSPopover Controlled w/ Footer 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSPopover Error 1`] = `
+exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
 <div
   className="slds-p-around_medium slds-m-horizontal_x-large"
   style={
@@ -29161,44 +29161,91 @@ exports[`DOM snapshots SLDSPopover Error 1`] = `
           </div>
         </div>
       </header>
-      <div
-        className="slds-popover__body slds-popover__body_scrollable"
-        id="popover-error-dialog-body"
-      >
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-             
-            <a
-              href="javascript:void(0);"
-              title="Learn More"
+      <div>
+        <div
+          className="slds-popover__body slds-popover__body_scrollable"
+          id="popover-error-dialog-body"
+          style={
+            Object {
+              "borderBottom": "none",
+            }
+          }
+        >
+          <div>
+            <p
+              className="slds-p-bottom_x-small"
             >
-              Learn More
-            </a>
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-             
-            <a
-              href="javascript:void(0);"
-              title="Learn More"
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
+            </p>
+            <p
+              className="slds-p-bottom_x-small"
             >
-              Learn More
-            </a>
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-             
-            <a
-              href="javascript:void(0);"
-              title="Learn More"
+              Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
+            </p>
+            <p
+              className="slds-p-bottom_x-small"
             >
-              Learn More
-            </a>
-          </p>
+              Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
+               
+              <a
+                href="javascript:void(0);"
+                title="Learn More"
+              >
+                Learn More
+              </a>
+            </p>
+          </div>
         </div>
+        <div
+          style={
+            Object {
+              "backgroundImage": "linear-gradient(to bottom, transparent, rgba(255,255,255,100)",
+              "bottom": 0,
+              "left": 0,
+              "margin": 0,
+              "padding": "5px 0",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": "100%",
+            }
+          }
+        />
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Error 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
   </div>
 </div>
 `;
@@ -29224,7 +29271,7 @@ exports[`DOM snapshots SLDSPopover Header 1`] = `
       <button
         className="slds-button slds-button_neutral"
         disabled={false}
-        id="rJLRxmRK4UUV"
+        id="popover-heading"
         onClick={[Function]}
         onFocus={null}
         onMouseEnter={null}
@@ -29309,6 +29356,16 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
             Shut it now!
           </span>
         </button>
+        <header
+          className="slds-popover__header"
+        >
+          <h2
+            className="slds-text-heading_small"
+            id="myPopoverId-dialog-heading"
+          >
+            My Popover
+          </h2>
+        </header>
         <div
           className="slds-popover__body"
           id="myPopoverId-dialog-body"
@@ -29321,7 +29378,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSPopover Warning 1`] = `
+exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
 <div
   className="slds-p-around_medium slds-m-horizontal_x-large"
   style={
@@ -29423,44 +29480,91 @@ exports[`DOM snapshots SLDSPopover Warning 1`] = `
           </div>
         </div>
       </header>
-      <div
-        className="slds-popover__body slds-popover__body_scrollable"
-        id="popover-error-dialog-body"
-      >
-        <div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-             
-            <a
-              href="javascript:void(0);"
-              title="Learn More"
+      <div>
+        <div
+          className="slds-popover__body slds-popover__body_scrollable"
+          id="popover-error-dialog-body"
+          style={
+            Object {
+              "borderBottom": "none",
+            }
+          }
+        >
+          <div>
+            <p
+              className="slds-p-bottom_x-small"
             >
-              Learn More
-            </a>
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-             
-            <a
-              href="javascript:void(0);"
-              title="Learn More"
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
+            </p>
+            <p
+              className="slds-p-bottom_x-small"
             >
-              Learn More
-            </a>
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-             
-            <a
-              href="javascript:void(0);"
-              title="Learn More"
+              Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
+            </p>
+            <p
+              className="slds-p-bottom_x-small"
             >
-              Learn More
-            </a>
-          </p>
+              Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
+               
+              <a
+                href="javascript:void(0);"
+                title="Learn More"
+              >
+                Learn More
+              </a>
+            </p>
+          </div>
         </div>
+        <div
+          style={
+            Object {
+              "backgroundImage": "linear-gradient(to bottom, transparent, rgba(255,255,255,100)",
+              "bottom": 0,
+              "left": 0,
+              "margin": 0,
+              "padding": "5px 0",
+              "position": "absolute",
+              "textAlign": "center",
+              "width": "100%",
+            }
+          }
+        />
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Warning 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
   </div>
 </div>
 `;
