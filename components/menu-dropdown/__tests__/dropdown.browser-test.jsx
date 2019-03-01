@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -372,14 +374,15 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				1
 			);
-			openNodes.menu
-				.find('.slds-dropdown__item a')
-				.at(0)
-				.simulate('click');
+			const firstNode = openNodes.menu.find('.slds-dropdown__item a').at(0);
+			firstNode.simulate('click');
 			openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				2
 			);
+			// item with checkmark has proper aria markup
+			expect(firstNode).attr('aria-checked', 'true');
+			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
 	});
 

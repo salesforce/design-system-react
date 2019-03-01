@@ -100,7 +100,7 @@ class Example extends React.Component {
 										label: value,
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{ label: 'Account' }}
 												category="standard"
 												name="account"
 											/>

@@ -327,6 +327,21 @@ storiesOf(MENU_DROPDOWN, module)
 			})}
 		</div>
 	))
+	.add('Checkmark', () =>
+		getDropdown({
+			assistiveText: { icon: 'More Options' },
+			buttonVariant: 'icon',
+			checkmark: true,
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconVariant: 'border-filled',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+			value: 'C0',
+		})
+	)
 	.add('Hover with Checkmark', () =>
 		getDropdown({
 			assistiveText: { icon: 'More Options' },

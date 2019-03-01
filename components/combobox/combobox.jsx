@@ -1,7 +1,9 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /* eslint-disable jsx-a11y/role-has-required-aria-props */
+/* eslint-disable max-lines */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -25,6 +27,7 @@ import Menu from './private/menu';
 import Label from '../forms/private/label';
 import SelectedListBox from '../pill-container/private/selected-listbox';
 
+import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 import KEYS from '../../utilities/key-code';
 import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
@@ -125,6 +128,10 @@ const propTypes = {
 	 */
 	errorText: PropTypes.string,
 	/**
+	 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props.
+	 */
+	fieldLevelHelpTooltip: PropTypes.node,
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -199,12 +206,16 @@ const propTypes = {
 	 * * `label`: A primary string of text for a menu item or group separator.
 	 * * `subTitle`: A secondary string of text added for clarity. (optional)
 	 * * `type`: 'separator' is the only type currently used
+	 * * `disabled`: Set to true to disable this menu item.
+	 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
 	 * ```
 	 * {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
 	 * 	type: 'account',
+	 *  disabled: true,
+	 *  tooltipContent: "You don't have permission to select this item."
 	 * },
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
@@ -216,6 +227,8 @@ const propTypes = {
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
+			disabled: PropTypes.boolean,
+			tooltipContent: PropTypes.node,
 		})
 	).isRequired,
 	/**
@@ -247,6 +260,10 @@ const propTypes = {
 	 */
 	selectedListboxRef: PropTypes.func,
 	/**
+	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
+	 */
+	tooltipMenuItemDisabled: PropTypes.element,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -266,6 +283,7 @@ const defaultProps = {
 	events: {},
 	labels: {
 		noOptionsFound: 'No matches found.',
+		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
@@ -406,7 +424,7 @@ class Combobox extends React.Component {
 			nextIndex >= 0 &&
 			options[nextIndex].type === 'separator';
 		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
 
@@ -498,6 +516,10 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
+		if (this.state.activeOption && this.state.activeOption.disabled) {
+			return;
+		}
+
 		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, {
@@ -1153,6 +1175,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
+				tooltipMenuItemDisabled={this.props.tooltipMenuItemDisabled}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
@@ -1380,7 +1403,8 @@ class Combobox extends React.Component {
 			props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-
+		const hasRenderedLabel =
+			labels.label || (assistiveText && assistiveText.label);
 		const subRenderParameters = { assistiveText, labels, props: this.props };
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
@@ -1409,6 +1433,11 @@ class Combobox extends React.Component {
 					label={labels.label}
 					required={props.required}
 				/>
+				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
+					<FieldLevelHelpTooltip
+						fieldLevelHelpTooltip={this.props.fieldLevelHelpTooltip}
+					/>
+				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters

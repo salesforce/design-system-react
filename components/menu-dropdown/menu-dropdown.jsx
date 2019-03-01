@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -259,7 +260,7 @@ const propTypes = {
 	/**
 	 * This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height
 	 */
-	length: PropTypes.oneOf([null, '5', '7', '10']),
+	length: PropTypes.oneOf([null, '5', '7', '10', 5, 7, 10]),
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.

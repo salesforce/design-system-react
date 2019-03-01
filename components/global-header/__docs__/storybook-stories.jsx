@@ -12,6 +12,8 @@ import GlobalHeaderSearch from '../../global-header/search';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
 
+import Default from '../__examples__/default';
+
 // import globalNavigationBar from '../../global-navigation-bar/__docs__/storybook-stories';
 
 /* eslint-disable react/prop-types */
@@ -151,4 +153,5 @@ storiesOf(GLOBAL_HEADER, module)
 	))
 	.add('With custom <Avatar/>', () => (
 		<GlobalHeaderDemo avatar={<Avatar variant="user" label="Art Vandelay" />} />
-	));
+	))
+	.add('Doc site Default', () => <Default />);

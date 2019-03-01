@@ -157,7 +157,12 @@ class Example extends React.Component {
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn
+							sortable
+							isDefaultSortDescending
+							label="Close Date"
+							property="closeDate"
+						/>
 						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}

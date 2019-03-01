@@ -176,7 +176,9 @@ class ListItem extends React.Component {
 					/* eslint-disable jsx-a11y/role-supports-aria-props */
 					// disabled eslint, but using aria-selected on presentation role seems suspicious...
 					<li
-						aria-selected={this.props.isSelected}
+						aria-selected={
+							this.props.checkmark === null ? this.props.isSelected : null
+						}
 						className={classNames(
 							'slds-dropdown__item',
 							{
@@ -190,11 +192,12 @@ class ListItem extends React.Component {
 					>
 						{/* eslint-disable jsx-a11y/role-supports-aria-props */}
 						<a
+							aria-checked={this.props.checkmark && this.props.isSelected}
 							aria-disabled={this.props['aria-disabled']}
 							href={this.props.href}
 							data-index={this.props.index}
 							onClick={this.handleClick}
-							role="menuitem"
+							role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
 							tabIndex="-1"
 						>
 							{this.getLabel()}

@@ -18,7 +18,6 @@ class Example extends React.Component {
 					</h1>
 					<Input
 						id="field-level-help"
-						assistiveText={{ fieldLevelHelpButton: 'Info' }}
 						label="My Label"
 						fieldLevelHelpTooltip={
 							<Tooltip

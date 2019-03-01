@@ -79,7 +79,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					aria-describedby="description-unique-id"
-					id="combobox-unique-id"
+					id="combobox-required-error-state"
 					disabled={this.props.disabled}
 					events={{
 						onChange: (event, { value }) => {
@@ -110,7 +110,7 @@ class Example extends React.Component {
 										label: value,
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{ label: 'Account' }}
 												category="standard"
 												name="account"
 											/>

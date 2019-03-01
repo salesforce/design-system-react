@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 
 import PropTypes from 'prop-types';
@@ -19,7 +20,16 @@ import GlobalNavigationBarRegion from '../../global-navigation-bar/region';
 import IconSettings from '../../icon-settings';
 import SLDSSettings from '../../SLDSSettings';
 
-SLDSSettings.setAppElement('#root'); // used by Modal component
+import DefaultExample from '../__examples__/default';
+
+import { canUseDOM } from '../../../utilities/execution-environment';
+
+// used by Modal component
+if (canUseDOM && document.querySelector('#root')) {
+	SLDSSettings.setAppElement('#root');
+} else {
+	SLDSSettings.setAppElement(document.createElement('div'));
+}
 
 const standardTileDemoStyles = {
 	width: '20rem',
@@ -546,4 +556,5 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Section', () => <DemoAppLauncherSection />)
 	.add('Section with small tiles', () => (
 		<DemoAppLauncherSectionWithSmallTiles />
-	));
+	))
+	.add('Doc site example', () => <DefaultExample />);

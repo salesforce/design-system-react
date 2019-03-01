@@ -31,6 +31,59 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.9.5
+
+**Minor Features**
+
+* Combobox: Allow disabled menu items and disabled menu items with Tooltips
+* Input: Add `styleContainer` prop
+* ProgressIndicator: `tooltipPosition` prop added to allow additional positioning logic
+* Dropdown: `length` prop now allows numbers
+
+**Bugfixes**
+
+* BrandBand: Lightning Theme CSS injection was intermittantly working.
+* Dropdown: Adds `aria-checked` and role="menuitemcheckbox" for selectable menus with checkmarks
+
+**Maintainance**
+
+* Warnings removed from snapshot tests and 404s from browser Mocha tests. "CI is now prettier."
+* Add first time contributor survey to allow additional feedback to library maintainers.
+* Imports additional examples from doc site examples that did not exist in Storybook
+
+## Release 0.9.4
+
+**Minor Features**
+
+* `PageHeader`: Allow actions in Base variant with support of `navRight`
+* `Combobox`: Add field-level tooltip with `fieldLevelHelpTooltip` prop on `input` prop. Deprecate `Combobox`'s `assistiveText.fieldLevelHelpButton` in favor of using `input` prop's prop. See [#1689](https://github.com/salesforce/design-system-react/pull/1689) for more details. You will see a console warning if you are doing it wrong.
+* `Tooltip`: Require `onClickTrigger` for learn more pattern
+  * If `learnMore` Tooltip variant is used without `onClickTrigger`, then the “no click” basic info icon tooltip will be used with a “disabled” button.
+  * If `onClickTrigger` is defined, a link will be rendered (this is the current behavior for learn more tooltips).
+* Add `AppLauncher` `Tile` and `Section` components to main module export to allow use in CommonJS build.
+
+**Bugfixes**
+
+* `DataTable`: A UX pattern of Radio Group / Single Select with a Fixed Header works now.
+
+**Documentation**
+
+* `Combobox`: Site examples now have unique id's
+* Re-organize [Codebase Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md)
+* Add maximum lines in a file lint rule of 500
+
+## Release 0.9.3
+
+**Bugfixes**
+
+* `DataTable`: Adds event listeners to listen for window resize by default. This creates a behavior that truncates horizontal cells and is similar to how a `DataTable` on the Salesforce Platform works.
+
+## Release 0.9.2
+
+**Major Features**
+
+* `DataTable` supports fixed headers and this allows the table headings to be visible while the table vertically scrolls.
+
 ## Release 0.9.1
 
 **Notes**

@@ -6,7 +6,7 @@
  * should also be added to `story-based-tests.jsx` in order to automatically
  * add DOM and image snapshots. With enough Storybook story examples, these
  * two methods should be significant to fully test components with the
- * exception of callback testing. Pleaes test callback props with the Mocha
+ * exception of callback testing. Please test callback props with the Mocha
  * framework (http://localhost:8001).
  */
 
