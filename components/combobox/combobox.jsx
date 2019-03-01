@@ -365,6 +365,10 @@ class Combobox extends React.Component {
 			this.setState({ isOpen: nextProps.isOpen });
 		}
 
+		if (this.props.errorText) {
+			this.generatedErrorId = shortid.generate();
+		}
+
 		// there may be issues with tabindex/focus if the app removes an item
 		// from selection while the user is using the listbox
 		const selectedOptionsRenderIsInitialRender =
@@ -1284,6 +1288,7 @@ class Combobox extends React.Component {
 			this.props.popover.props.body,
 			{ assistiveText }
 		);
+
 		return (
 			<div className="slds-form-element__control">
 				<div className="slds-combobox_container">
