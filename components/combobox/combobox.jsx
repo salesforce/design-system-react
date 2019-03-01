@@ -774,17 +774,6 @@ class Combobox extends React.Component {
 			if (this.props.events.onOpen) {
 				this.props.events.onOpen(event, data);
 			}
-
-			// add canUseDOM check - may not work consistently b/c race condition
-			// might just keep focus on outer div
-			// could pass node as prop, put it in state - then it would rerender and then able to focus it
-			// firstElRef
-			if (this.props.popover && documentDefined) {
-				const dialog = document.getElementById(`${this.getId()}-popover`);
-				const focusableElements = findTabbableDescendants(dialog);
-				// Focus second element b/c the first is the close button.
-				focusableElements[1].focus();
-			}
 		}
 	};
 
@@ -953,7 +942,7 @@ class Combobox extends React.Component {
 								: null
 						}
 						aria-describedby={this.getErrorId()}
-						autoComplete="list"
+						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
 							className: 'slds-combobox__form-element',
