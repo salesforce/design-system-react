@@ -24599,7 +24599,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             <span
