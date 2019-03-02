@@ -52,7 +52,7 @@ If you want to [contribute](/CONTRIBUTING.md), we hope that this overview will h
   * [Limit external production dependencies.](#limit-external-production-dependencies)
   * [Avoid inline styles and non-SLDS classes.](#avoid-inline-styles-and-non-slds-classes)
   * [Only extend from `React.Component`](#only-extend-from-reactcomponent)
-  * [Use `classNames` for conditional CSS classes](#use-classnames-for-conditional-css-classes)
+  * [Use `classnames` for conditional CSS classes](#use-classnames-for-conditional-css-classes)
   * [Use design tokens for inline styles](#use-design-tokens-for-inline-styles)
   * [500+ line files should be avoided](#500-line-files-should-be-avoided)
   * [Render style preference: 1) `?:`, 2) `&&`, 3) Enum, 4) Sub-component](#render-style-preference-1--2--3-enum-4-sub-component)
@@ -414,7 +414,7 @@ We are blessed to have a team of great CSS developers working on our design syst
 
 Use `class/extend`, but only extend from `React.Component` and never another `class`. This prevents class hierarchies and tight coupling being created beyond the basic `React.Component`. This completely avoids the gorilla-banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle” - Joe Armstrong).
 
-#### Use `classNames` for conditional CSS classes
+#### Use `classnames` for conditional CSS classes
 
 This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Although longer, static classname strings are preferred more than dynamic classnames (dynamic object keys) due to searchability when updating markup. See [Classnames](#classnames) section for more details.
 
