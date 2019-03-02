@@ -396,7 +396,7 @@ It is preferable to only have one stateful top-level class per component in this
 * A `DataTable` should have state, a `TableColumn` should not.
 * Frequently used items such as badges, pills, buttons or icons should probably not have state.
 
-* <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
+* Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
 
 #### No DOM node queries
 
