@@ -420,7 +420,7 @@ This library makes extensive use of the [classnames](https://github.com/JedWatso
 
 #### Use design tokens for inline styles
 
-Inline styles should be kept to a minimum. The best option is to file a bug either in the internal bug system or at the [SLDS repository](https://github.com/salesforce-ux/design-system). This library contains a copy of design tokens available on the [SLDS site](https://www.lightningdesignsystem.com/design-tokens/). See `utilities/design-tokens/README.md` for more details.
+Inline styles should be kept to a minimum. The best option is to file a bug either in the internal bug system or at the [SLDS repository](https://github.com/salesforce-ux/design-system). This library contains a copy of design tokens available on the [SLDS site](https://www.lightningdesignsystem.com/design-tokens/). See [here](https://github.com/salesforce/design-system-react/blob/master/utilities/design-tokens/README.md) for more details.
 
 #### 500+ line files should be avoided
 
