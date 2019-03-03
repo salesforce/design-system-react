@@ -67,39 +67,6 @@ class ProgressBar extends React.Component {
 	}
 
 	/**
-	 * Border Radius as String
-	 * @returns {string} Border
-	 */
-	getRadius() {
-		if (this.props.radius) {
-			return `slds-progress-bar_${this.props.radius}`;
-		}
-		return '';
-	}
-
-	/**
-	 * Fill color as a string
-	 * @returns {string} Color
-	 */
-	getColor() {
-		if (this.props.color) {
-			return `slds-progress-bar__value_${this.props.color}`;
-		}
-		return '';
-	}
-
-	/**
-	 * Bar thickness as a string
-	 * @returns {string} Thickness
-	 */
-	getThickness() {
-		if (this.props.thickness) {
-			return `slds-progress-bar_${this.props.thickness}`;
-		}
-		return 'slds-progress-bar_medium';
-	}
-
-	/**
 	 * Enables Descriptive Progress Bar if label is provided
 	 * @returns {string} description
 	 */
@@ -112,20 +79,12 @@ class ProgressBar extends React.Component {
 				>
 					<span>{this.props.label}</span>
 					<span aria-hidden="true">
-						<strong>{this.progressPercent()} Complete</strong>
+						<strong>{this.props.value}% Complete</strong>
 					</span>
 				</div>
 			);
 		}
 		return '';
-	}
-
-	/**
-	 * Progress percentage as a string
-	 * @returns {string} Percentage
-	 */
-	progressPercent() {
-		return `${this.props.value}%`;
 	}
 
 	render() {
@@ -135,19 +94,19 @@ class ProgressBar extends React.Component {
 				<div
 					className={classNames(
 						'slds-progress-bar',
-						this.getRadius(),
-						this.getThickness(),
+						`slds-progress-bar_${this.props.radius}`,
+						`slds-progress-bar_${this.props.thickness}`,
 						this.props.className
 					)}
 					style={{
-						width: this.progressPercent(),
+						width: `${this.props.value}%`,
 					}}
 				>
 					<span
-						className={classNames('slds-progress-bar__value', this.getColor())}
+						className={classNames(`slds-progress-bar__value`, `slds-progress-bar__value_${this.props.color}`)}
 					>
 						<span className="slds-assistive-text">
-							Progress: {this.progressPercent()}
+							Progress: {`${this.props.value}%`}
 						</span>
 					</span>
 				</div>
