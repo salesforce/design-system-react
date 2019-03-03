@@ -10627,30 +10627,6 @@
 				"description": "Get the progress bars's HTML id. Generate a new one if no ID present."
 		  },
 		  {
-			"name": "getRadius",
-			"docblock": "Get the progress bar's border radius.",
-			"modifiers": [],
-			"params": [],
-			"returns": null,
-			"description": "Get the progress bar's border radius."
-		  },
-		  {
-			"name": "getColor",
-			"docblock": "Get the progress bar's fill color.",
-			"modifiers": [],
-			"params": [],
-			"returns": null,
-			"description": "Get the progress bar's fill color."
-		  },
-		  {
-			"name": "getThickness",
-			"docblock": "Get the progress bar's thickness.",
-			"modifiers": [],
-			"params": [],
-			"returns": null,
-			"description": "Get the progress bar's thickness."
-		  },
-		  {
 			"name": "getDescription",
 			"docblock": "Get the the description for progress bar. Doesn't show description if label is not given.",
 			"modifiers": [],
@@ -10662,19 +10638,6 @@
 			  }
 			},
 			"description": "Get the the description for progress bar. Doesn't show description if label is not given."
-		  },
-		  {
-			"name": "progressPercent",
-			"docblock": "Progress Percentage as a string\n@returns {string} Percentage",
-			"modifiers": [],
-			"params": [],
-			"returns": {
-			  "description": "Percentage",
-			  "type": {
-				"name": "string"
-			  }
-			},
-			"description": "Percentage as a string"
 		  }
 		],
 		"props": {
