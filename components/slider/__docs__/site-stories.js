@@ -7,8 +7,12 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/base.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/disabled.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/error.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/vertical.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes-x-small.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes-small.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes-medium.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes-large.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes.jsx'),
 ];
 
 module.exports = siteStories;
