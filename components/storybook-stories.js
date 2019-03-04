@@ -31,6 +31,7 @@ export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
 export Teaxtarea from '../components/textarea/__docs__/storybook-stories';
+export Tiles from '../components/tiles/__docs__/storybook-stories';
 export InlineInput from '../components/forms/input/__docs__/inline/storybook-stories';
 export Search from '../components/input/__docs__/search/storybook-stories';
 export GlobalHeader from '../components/global-header/__docs__/storybook-stories';

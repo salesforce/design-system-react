@@ -26,6 +26,7 @@ const documentationSiteLiveExamples = {
 	illustration: require('@salesforce/design-system-react/components/illustration/__docs__/site-stories.js'),
 	input: require('@salesforce/design-system-react/components/input/__docs__/site-stories.js'),
 	textarea: require('@salesforce/design-system-react/components/textarea/__docs__/site-stories.js'),
+	tiles: require('@salesforce/design-system-react/components/tiles/__docs__/site-stories.js'),
 	'global-header': require('@salesforce/design-system-react/components/global-header/__docs__/site-stories.js'),
 	'global-navigation-bar': require('@salesforce/design-system-react/components/global-navigation-bar/__docs__/site-stories.js'),
 	'icon-settings': require('@salesforce/design-system-react/components/icon-settings/__docs__/site-stories.js'),

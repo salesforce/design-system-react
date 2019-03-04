@@ -237,6 +237,9 @@ export SplitViewListbox from './split-view/listbox';
 export SLDSTextarea from './textarea';
 export Textarea from './textarea';
 
+export SLDSTiles from './tiles';
+export Tiles from './tiles';
+
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
 

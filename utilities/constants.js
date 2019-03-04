@@ -40,6 +40,7 @@ export const CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
 export const INPUT = 'SLDSInput';
 export const TEXTAREA = 'SLDSTextarea';
+export const TILES = 'SLDSTiles';
 export const SEARCH = 'SLDSSearch';
 export const GLOBAL_HEADER = 'SLDSGlobalHeader';
 export const GLOBAL_HEADER_PROFILE = 'SLDSGlobalHeaderProfile';
