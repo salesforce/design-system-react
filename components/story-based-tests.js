@@ -44,11 +44,11 @@ export ProgressIndicator from '../components/progress-indicator/__docs__/storybo
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 // export Search from '../components/input/__docs__/search/storybook-stories';
-export Slider from '../components/slider/__docs__/storybook-stories';
-export SplitView from '../components/split-view/__docs__/storybook-stories';
+// export Slider from '../components/slider/__docs__/storybook-stories';
+// export SplitView from '../components/split-view/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';
 // export Textarea from '../components/textarea/__docs__/storybook-stories';
-export Toast from '../components/toast/__docs__/storybook-stories';
+// export Toast from '../components/toast/__docs__/storybook-stories';
 // export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
