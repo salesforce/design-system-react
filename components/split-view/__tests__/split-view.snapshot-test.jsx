@@ -4,6 +4,7 @@ import { renderMarkup, testDOMandHTML } from '../../../tests/snapshot-helpers';
 import Base from '../__examples__/base';
 import BaseMultiple from '../__examples__/base-multiple';
 import Custom from '../__examples__/custom-Item-list';
+import External from '../__examples__/external-state';
 
 testDOMandHTML({
 	name: 'Base Open',
@@ -33,4 +34,10 @@ testDOMandHTML({
 	name: 'Custom',
 	test,
 	Component: Custom,
+});
+
+testDOMandHTML({
+	name: 'External',
+	test,
+	Component: External,
 });

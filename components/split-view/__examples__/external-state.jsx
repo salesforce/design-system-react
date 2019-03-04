@@ -332,6 +332,7 @@ class Example extends React.Component {
 								onOpen: (e) => this.onSplitViewOpen(e),
 								onClose: (e) => this.onSplitViewClose(e),
 							}}
+							id="BkFNlpH0aYI4"
 							isOpen={this.state.isOpen}
 							master={this.masterView()}
 							detail={this.detailView()}
