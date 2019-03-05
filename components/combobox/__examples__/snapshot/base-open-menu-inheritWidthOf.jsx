@@ -36,6 +36,7 @@ class Example extends React.Component {
 					id="combobox-unique-id"
 					isOpen
 					labels={{
+						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
 					menuPosition="relative"
