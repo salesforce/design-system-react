@@ -516,7 +516,7 @@ class DataTable extends React.Component {
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
-					style={{ height: '100%' }}
+					style={{ borderTop: '1px solid #dddbda', height: '100%' }}
 				>
 					<div
 						className="slds-table_header-fixed_scroller"

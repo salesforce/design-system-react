@@ -18162,6 +18162,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
       className="slds-table_header-fixed_container"
       style={
         Object {
+          "borderTop": "1px solid #dddbda",
           "height": "100%",
         }
       }
