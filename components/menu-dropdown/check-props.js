@@ -8,6 +8,8 @@ import sunsetProperty from '../../utilities/warning/sunset-property';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
+import checkPropType from '../../utilities/warning/check-prop-type';
+import Button from '../button';
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 let checkProps = function() {};
@@ -57,6 +59,15 @@ if (process.env.NODE_ENV !== 'production') {
 			'isInline',
 			'menuPosition="relative"',
 			createDocUrl('menuPosition')
+		);
+
+		checkPropType(
+			COMPONENT,
+			props.children,
+			'children',
+			Button,
+			'Button',
+			createDocUrl()
 		);
 	};
 }
