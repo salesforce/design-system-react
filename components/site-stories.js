@@ -44,6 +44,7 @@ const documentationSiteLiveExamples = {
 	'progress-ring': require('@salesforce/design-system-react/components/progress-ring/__docs__/site-stories.js'),
 	'radio-button-group': require('@salesforce/design-system-react/components/radio-button-group/__docs__/site-stories.js'),
 	'radio-group': require('@salesforce/design-system-react/components/radio-group/__docs__/site-stories.js'),
+	select: require('@salesforce/design-system-react/components/select/__docs__/site-stories.js'),
 	radio: require('@salesforce/design-system-react/components/radio/__docs__/site-stories.js'),
 	tabs: require('@salesforce/design-system-react/components/tabs/__docs__/site-stories.js'),
 	slider: require('@salesforce/design-system-react/components/slider/__docs__/site-stories.js'),

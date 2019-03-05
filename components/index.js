@@ -215,6 +215,9 @@ export RadioButtonGroup from './radio-button-group';
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
 
+export SLDSSelect from './select';
+export Select from './select';
+
 export SLDSSlider from './slider';
 export Slider from './slider';
 
