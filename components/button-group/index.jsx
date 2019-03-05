@@ -36,9 +36,11 @@ const propTypes = {
 		label: PropTypes.string,
 	}),
 	/**
-	 * Use checkbox variant for "Checkbox Button Group" styling and add Checkbox components as children _Tested with snapshot testing._
+	 * Use either of these two variants:
+	 * 1. Checkbox variant uses "Checkbox Button Group" styling. Add Checkbox components as children _Tested with snapshot testing._
+	 * 2. List variant groups buttons in a list. Add Button components as children _Test with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['checkbox']),
+	variant: PropTypes.oneOf(['checkbox', 'list']),
 };
 
 const defaultProps = { labels: {} };
@@ -74,9 +76,6 @@ const ButtonGroup = (props) => {
 				variant: 'button-group',
 			})
 		);
-	}
-
-	if (props.variant === 'checkbox') {
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
@@ -101,6 +100,8 @@ const ButtonGroup = (props) => {
 				</div>
 			</fieldset>
 		);
+	} else if (props.variant === 'list') {
+		return <ul className="slds-button-group-list">{children}</ul>;
 	}
 	// default
 	return (
