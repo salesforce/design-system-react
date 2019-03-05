@@ -246,7 +246,7 @@ class PillContainer extends React.Component {
 	};
 
 	render() {
-		return (
+		return this.props.options.length > 0 ? (
 			<SelectedListBox
 				activeOption={this.state.activeSelectedOption}
 				activeOptionIndex={this.state.activeSelectedOptionIndex}
@@ -273,7 +273,7 @@ class PillContainer extends React.Component {
 				selection={this.props.options}
 				style={this.props.style}
 			/>
-		);
+		) : null;
 	}
 }
 
