@@ -1893,6 +1893,13 @@
                 "required": false,
                 "description": "Footer often contains pagination."
             },
+            "hasNoHeader":{
+                "type":{
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Allows the card to have no header."
+            },
             "header": {
                 "type": {
                     "name": "node"
