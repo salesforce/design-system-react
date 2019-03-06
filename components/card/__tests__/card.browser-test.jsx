@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 
-import chai from 'chai';
+import chai, { expect } from 'chai';
 
 import Card from '../../card';
 import CardFilter from '../../card/filter';
@@ -235,4 +235,53 @@ describe('Card: ', () => {
 			emptyBodyheading.textContent.should.equal(requiredProps.heading);
 		});
 	});
+
+	const optionalPropsWithoutHeader = assign(requiredProps, {
+		bodyClassName: 'this-is-a-custom-body-class',
+		className: 'this-is-a-custom-card-class',
+		footer: renderFooterContents,
+		hasNoHeader: true,
+		icon: renderIcon,
+		style: { background: 'rgb(18, 49, 35)' },
+	});
+
+	describe('Optional Structure w/o Header', () => {
+		beforeEach(renderCard(<Card {...optionalPropsWithoutHeader} />));
+
+		afterEach(removeCard);
+
+		it('has no header', function() {
+			const header = getHeader(this.dom);
+			expect(header).to.be.undefined;
+		});
+
+		it('renders custom styles', function() {
+			const card = getCard(this.dom);
+			card.style.backgroundColor.should.equal('rgb(18, 49, 35)');
+		});
+
+		it('renders custom classes on card', function() {
+			const card = getCard(this.dom);
+			card.className.should.contain('this-is-a-custom-card-class');
+		});
+
+		it('renders custom classes on body', function() {
+			const body = getBody(this.dom);
+			body.className.should.contain('this-is-a-custom-body-class');
+		});
+
+		it('has a body', function() {
+			const body = getBody(this.dom);
+			body.should.not.be.undefined;
+		});
+
+		it('has a footer and correct child ID', function() {
+			const footer = getFooter(this.dom);
+			footer.should.not.be.undefined;
+			const footerChildren = footer.querySelectorAll('#sampleFooter')[0];
+			footerChildren.should.not.be.undefined;
+		});
+	});
 });
+
+
