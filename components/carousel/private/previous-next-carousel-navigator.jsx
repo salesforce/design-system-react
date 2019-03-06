@@ -34,6 +34,14 @@ previousNextCarouselNavigator.displayName = CAROUSEL_NAVIGATORS;
 // ### Prop Types
 previousNextCarouselNavigator.propTypes = {
 	/**
+	 * Description of the previous/next navigation icons for screen-readers.
+	 */
+	assistiveText: PropTypes.string,
+	/**
+	 * Path of the icon to be used for the previous/next navigation
+	 */
+	icon: PropTypes.string.isRequired,
+	/**
 	 * Determines where the navigator indicator has been disabled
 	 */
 	isDisabled: PropTypes.bool,
@@ -41,14 +49,6 @@ previousNextCarouselNavigator.propTypes = {
 	 * Triggered when the indicator is clicked.
 	 */
 	onClick: PropTypes.func,
-	/**
-	 * Path of the icon to be used for the previous/next navigation
-	 */
-	icon: PropTypes.string.isRequired,
-	/**
-	 * Description of the previous/next navigation icons for screen-readers.
-	 */
-	assistiveText: PropTypes.string,
 };
 
 export default previousNextCarouselNavigator;

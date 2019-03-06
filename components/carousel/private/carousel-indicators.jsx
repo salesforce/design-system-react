@@ -65,13 +65,21 @@ CarouselIndicators.defaultProps = {
 // ### Prop Types
 CarouselIndicators.propTypes = {
 	/**
-	 * Number of indicators to be displayed (corresponds to the number of panels in the carousel)
+	 * CSS classes that are applied to the component
 	 */
-	noOfIndicators: PropTypes.number.isRequired,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Selected indicator
 	 */
 	currentIndex: PropTypes.number,
+	/**
+	 * Number of indicators to be displayed (corresponds to the number of panels in the carousel)
+	 */
+	noOfIndicators: PropTypes.number.isRequired,
 	/**
 	 * Triggered when the indicator is clicked.
 	 */
@@ -80,14 +88,6 @@ CarouselIndicators.propTypes = {
 	 * Title attribute for the carousel's panel
 	 */
 	title: PropTypes.string,
-	/**
-	 * CSS classes that are applied to the component
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
 };
 
 export default CarouselIndicators;

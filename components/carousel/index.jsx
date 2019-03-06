@@ -14,9 +14,6 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import '../../styles/carousel/carousel.css';
 
-import checkProps from './check-props';
-import componentDoc from './docs.json';
-
 import { CAROUSEL } from '../../utilities/constants';
 
 import CarouselIndicators from './private/carousel-indicators';
@@ -37,7 +34,6 @@ class Carousel extends React.Component {
 
 		const { items, itemsPerPanel } = this.props;
 
-		this.generatedId = shortid.generate();
 		this.nrOfPanels = Math.ceil(items.length / itemsPerPanel);
 		this.stageItem = React.createRef();
 
@@ -48,13 +44,22 @@ class Carousel extends React.Component {
 		};
 	}
 
+	componentWillMount() {
+		this.generatedId = shortid.generate();
+	}
+
 	componentDidMount() {
-		checkProps(CAROUSEL, this.props, componentDoc);
 		this.setTranslationAmount(0);
-		this.stageWidth = this.stageItem.current.offsetWidth;
 		if (this.props.hasAutoplay) {
 			this.startAutoplay();
 		}
+		this.stageWidth = this.stageItem.current.offsetWidth;
+		window.addEventListener('resize', this.setDimensions, false);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.setDimensions, false);
+		this.stopAutoplay();
 	}
 
 	onNextPanelHandler = () => {
@@ -81,12 +86,15 @@ class Carousel extends React.Component {
 		});
 		actionToTake();
 	};
+	setDimensions = () => {
+		this.setState({ stageWidth: this.stageItem.current.offsetWidth });
+	};
 	setTranslationAmount = (amount, cb) => {
-		this.setState(() => ({ translateX: amount }), cb);
+		this.setState({ translateX: amount }, cb);
 	};
 
 	setCurrentPanel = (amount, cb) => {
-		this.setState(() => ({ currentPanel: amount }), cb);
+		this.setState({ currentPanel: amount }, cb);
 	};
 
 	startAutoplay = () => {
@@ -144,7 +152,8 @@ class Carousel extends React.Component {
 		const id = this.props.id || this.generatedId;
 		const isPreviousBtnDisabled = !(isInfinite || this.canGoToPrevious());
 		const isNextBtnDisabled = !(isInfinite || this.canGoToNext());
-		const itemWidth = this.stageWidth / this.props.itemsPerPanel;
+		const itemWidth =
+			(this.state.stageWidth || this.stageWidth) / this.props.itemsPerPanel;
 
 		return (
 			<div className="slds-carousel" id={id} onKeyDown={this.handleKeyDown}>
@@ -209,6 +218,42 @@ Carousel.displayName = CAROUSEL;
 
 Carousel.propTypes = {
 	/**
+	 * Description of the carousel items for screen-readers.
+	 */
+	assistiveText: PropTypes.object,
+	/**
+	 * Interval for the autoplay iteration
+	 */
+	autoplayInterval: PropTypes.number,
+	/**
+	 * CSS classes that are applied to the component
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Boolean showing whether the autoplay feature is available or not
+	 */
+	hasAutoplay: PropTypes.bool,
+	/**
+	 * Boolean for displaying the navigation indicators (left/right arrows) of the carousel
+	 */
+	hasPreviousNextPanelNavigation: PropTypes.bool,
+	/**
+	 * Id of component, if desired. If not provided an id is automatically generated
+	 */
+	id: PropTypes.string,
+	/**
+	 * CSS that is applied to carousel indicators
+	 */
+	indicatorStyles: PropTypes.object,
+	/**
+	 * Boolean for infinite loop navigation
+	 */
+	isInfinite: PropTypes.bool,
+	/**
 	 * Array of objects with shape, needed for building a carousel item.
 	 * A shape would have:
 	 *   - id: 0   [REQUIRED]
@@ -227,45 +272,9 @@ Carousel.propTypes = {
 	 */
 	itemsPerPanel: PropTypes.number,
 	/**
-	 * Boolean showing whether the autoplay feature is available or not
-	 */
-	hasAutoplay: PropTypes.bool,
-	/**
-	 * Interval for the autoplay iteration
-	 */
-	autoplayInterval: PropTypes.number,
-	/**
-	 * Boolean for displaying the navigation indicators (left/right arrows) of the carousel
-	 */
-	hasPreviousNextPanelNavigation: PropTypes.bool,
-	/**
-	 * Boolean for infinite loop navigation
-	 */
-	isInfinite: PropTypes.bool,
-	/**
-	 * CSS classes that are applied to the component
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
-	 * CSS that is applied to carousel indicators
-	 */
-	indicatorStyles: PropTypes.object,
-	/**
-	 * Id of component, if desired. If not provided an id is automatically generated
-	 */
-	id: PropTypes.string,
-	/**
 	 * Accepts a custom carousel item rendering function
 	 */
 	onRenderItem: PropTypes.func,
-	/**
-	 * Description of the carousel items for screen-readers.
-	 */
-	assistiveText: PropTypes.object,
 	/**
 	 * Handler for clicking on a carousel item
 	 */
@@ -273,15 +282,15 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-	itemsPerPanel: 1,
-	hasAutoplay: false,
-	hasPreviousNextPanelNavigation: false,
-	isInfinite: false,
 	assistiveText: {
 		nextPanel: 'Next Panel',
 		previousPanel: 'Previous Panel',
 	},
 	autoplayInterval: 4000,
+	hasAutoplay: false,
+	hasPreviousNextPanelNavigation: false,
+	isInfinite: false,
+	itemsPerPanel: 1,
 };
 
 export default Carousel;

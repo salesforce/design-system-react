@@ -11,7 +11,7 @@ import { renderMarkup } from '../../../tests/snapshot-helpers';
 import Default from '../__examples__/default';
 import '../../../styles/carousel/carousel.css';
 
-test('Carousel Component Default Snapshot - 1 tem, no navigation', () => {
+test('Carousel Component Default Snapshot - 1 item, no navigation', () => {
 	expect(renderMarkup(Default)).toMatchSnapshot();
 });
 test('Carousel Component Default Snapshot - 3 items and navigation', () => {

@@ -18,7 +18,7 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
 const CarouselItem = (props) => (
 	<div
 		id={`content-id-${props.id}`}
-		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
+		className="slds-carousel__panel slds-grid_align-center slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
 		aria-labelledby={`indicator-id-${props.id}`}
@@ -59,30 +59,12 @@ const CarouselItem = (props) => (
 CarouselItem.displayName = CAROUSEL_ITEM;
 
 CarouselItem.propTypes = {
-	/**
-	 * Carousel Item's visible heading
-	 */
-	heading: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-	/**
-	 * Visible paragraph text to be displayed on the carousel item
-	 */
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-	/**
-	 * Path of the image to be used
-	 */
-	src: PropTypes.string.isRequired,
-	/**
-	 * Image alt text
-	 */
-	imageAssistiveText: PropTypes.string,
+	buttonLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+		.isRequired,
 	/**
 	 * Label of the button to be displayed
 	 */
 	CTALabel: PropTypes.string,
-	/**
-	 * Width of the carousel item
-	 */
-	itemWidth: PropTypes.number,
 	/**
 	 * CSS classes that are applied to the component
 	 */
@@ -91,17 +73,36 @@ CarouselItem.propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
-
+	/**
+	 * Visible paragraph text to be displayed on the carousel item
+	 */
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+		.isRequired,
+	/**
+	 * Carousel Item's visible heading
+	 */
+	heading: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+	href: PropTypes.string,
 	/**
 	 * Id of the item component.
 	 */
 	id: PropTypes.number.isRequired,
-    href: PropTypes.string,
-    /**
+	/**
+	 * Image alt text
+	 */
+	imageAssistiveText: PropTypes.string,
+	/**
+	 * Width of the carousel item
+	 */
+	itemWidth: PropTypes.number,
+	/**
 	 * Accepts a custom carousel item rendering function
 	 */
-    onRenderItem: PropTypes.func,
-    buttonLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+	onRenderItem: PropTypes.func,
+	/**
+	 * Path of the image to be used
+	 */
+	src: PropTypes.string.isRequired,
 };
 
 CarouselItem.defaultProps = {
