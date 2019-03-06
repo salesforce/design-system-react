@@ -39,7 +39,8 @@ class Example extends React.Component {
 	};
 
 	render() {
-		const isEmpty = this.state.items.length === 0;
+		const { items, isFiltering } = this.state;
+		const isEmpty = items.length === 0;
 
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -47,7 +48,7 @@ class Example extends React.Component {
 					<Card
 						id="ExampleCard"
 						filter={
-							(!isEmpty || this.state.isFiltering) && (
+							(!isEmpty || isFiltering) && (
 								<CardFilter onChange={this.handleFilterChange} />
 							)
 						}
@@ -69,7 +70,7 @@ class Example extends React.Component {
 							) : null
 						}
 					>
-						<DataTable items={this.state.items} id="DataTableExample-1">
+						<DataTable items={items} id="DataTableExample-1">
 							<DataTableColumn
 								label="Opportunity Name"
 								property="name"
