@@ -24518,7 +24518,7 @@ exports[`DOM snapshots SLDSInput Counter Static Input 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSInput Custom style 1`] = `
+exports[`DOM snapshots SLDSInput Custom style and autocomplete 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -24545,6 +24545,7 @@ exports[`DOM snapshots SLDSInput Custom style 1`] = `
             className="slds-form-element__control"
           >
             <input
+              autoComplete="off"
               className="slds-input"
               id="custom-style"
               onChange={[Function]}
