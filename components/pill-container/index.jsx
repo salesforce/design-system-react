@@ -56,6 +56,7 @@ const propTypes = {
 	 * 	title: 'Salesforce.com, Inc. - Want to work here?',
 	 * },
 	 * ```
+	 * `options` with array length of zero will remove this component from the DOM.
 	 */
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
