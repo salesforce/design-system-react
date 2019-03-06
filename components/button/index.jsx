@@ -205,24 +205,21 @@ class Button extends React.Component {
 	}
 
 	getClassName = () => {
-		const isIcon = this.props.variant === 'icon';
+		const { variant, inverse, iconSize, className } = this.props;
+		let { iconVariant } = this.props;
+		const isIcon = variant === 'icon';
 
-		let iconVariant = this.props.iconVariant;
 		const iconMore = iconVariant === 'more';
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
 
 		const showButtonVariant =
-			(this.props.variant !== 'base' &&
-				!iconVariant &&
-				!this.props.inverse &&
-				this.props.variant !== 'link') ||
+			(variant !== 'base' && !iconVariant && !inverse && variant !== 'link') ||
 			iconVariant === 'bare';
-		const plainInverseBtn = this.props.inverse && !isIcon;
-		const plainInverseIcon =
-			this.props.inverse && isIcon && !iconMore && !iconBorder;
-		const moreInverseIcon = this.props.inverse && iconMore;
-		const borderInverseIcon = this.props.inverse && iconBorder;
+		const plainInverseBtn = inverse && !isIcon;
+		const plainInverseIcon = inverse && isIcon && !iconMore && !iconBorder;
+		const moreInverseIcon = inverse && iconMore;
+		const borderInverseIcon = inverse && iconBorder;
 
 		// After hijacking `iconVariant` to let `Button` know it's in the header, we reset to container style for the actual button CSS.
 		if (iconVariant === 'global-header') {
@@ -231,118 +228,145 @@ class Button extends React.Component {
 
 		return classNames(
 			{
-				'slds-button': this.props.variant !== 'link',
-				[`slds-button_${this.props.variant}`]: showButtonVariant,
+				'slds-button': variant !== 'link',
+				[`slds-button_${variant}`]: showButtonVariant,
 				'slds-button_inverse': plainInverseBtn,
 				'slds-button_icon-inverse': plainInverseIcon || moreInverseIcon,
 				'slds-button_icon-border-inverse': borderInverseIcon,
 				[`slds-button_icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
 				'slds-global-header__button_icon': iconGlobalHeader,
 				// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
-				[`slds-button_icon-${this.props.iconSize}`]:
-					iconVariant && this.props.iconSize !== 'medium',
-				'slds-button_reset': this.props.variant === 'link',
-				'slds-text-link': this.props.variant === 'link',
+				[`slds-button_icon-${iconSize}`]: iconVariant && iconSize !== 'medium',
+				'slds-button_reset': variant === 'link',
+				'slds-text-link': variant === 'link',
 			},
-			this.props.className
+			className
 		);
 	};
 
 	handleClick = (event) => {
-		if (this.props.onClick) {
-			this.props.onClick(event, {});
+		const { onClick } = this.props;
+		if (onClick) {
+			onClick(event, {});
 		}
 	};
 
 	renderIcon = (name) => {
+		const {
+			iconVariant,
+			iconCategory,
+			iconClassName,
+			hint,
+			inverse,
+			iconPath,
+			iconPosition,
+		} = this.props;
 		const iconSize =
-			this.props.iconSize === '' || this.props.iconVariant
-				? null
-				: this.props.iconSize;
+			this.props.iconSize === '' || iconVariant ? null : this.props.iconSize;
 		return (
 			<ButtonIcon
-				category={this.props.iconCategory || 'utility'} // BREAKING CHANGE we will introduce in 1.0. For the moment, set default prop here if none specified.
+				category={iconCategory || 'utility'} // BREAKING CHANGE we will introduce in 1.0. For the moment, set default prop here if none specified.
 				className={classNames(
 					{
-						'slds-global-header__icon':
-							this.props.iconVariant === 'global-header',
+						'slds-global-header__icon': iconVariant === 'global-header',
 					},
-					this.props.iconClassName
+					iconClassName
 				)}
-				hint={this.props.hint}
-				inverse={this.props.inverse}
+				hint={hint}
+				inverse={inverse}
 				name={name}
-				path={this.props.iconPath}
-				position={this.props.iconPosition}
+				path={iconPath}
+				position={iconPosition}
 				size={iconSize}
 			/>
 		);
 	};
 
 	renderLabel = () => {
+		const { assistiveText, label } = this.props;
 		const iconOnly = this.props.iconName || this.props.iconPath;
 		const assistiveTextIcon =
-			typeof this.props.assistiveText === 'string'
-				? this.props.assistiveText
+			typeof assistiveText === 'string'
+				? assistiveText
 				: {
 						...defaultProps.assistiveText,
-						...this.props.assistiveText,
+						...assistiveText,
 					}.icon;
 
 		return iconOnly && assistiveTextIcon ? (
 			<span className="slds-assistive-text">{assistiveTextIcon}</span>
 		) : (
-			this.props.label
+			label
 		);
 	};
 
 	renderButton = () => {
 		const ariaProps = getAriaProps(this.props);
+		const {
+			disabled,
+			id,
+			onBlur,
+			onFocus,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			onMouseUp,
+			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
+			buttonRef,
+			tabIndex,
+			title,
+			type,
+			style,
+			iconPosition,
+			iconName,
+			iconPath,
+			iconVariant,
+			iconClassName,
+			children,
+		} = this.props;
 		return (
 			<button
 				className={this.getClassName()}
-				disabled={this.props.disabled}
-				id={this.props.id}
-				onBlur={this.props.onBlur}
+				disabled={disabled}
+				id={id}
+				onBlur={onBlur}
 				onClick={this.handleClick}
-				onFocus={this.props.onFocus}
-				onKeyDown={this.props.onKeyDown}
-				onKeyPress={this.props.onKeyPress}
-				onKeyUp={this.props.onKeyUp}
-				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				onMouseUp={this.props.onMouseUp}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onKeyPress={onKeyPress}
+				onKeyUp={onKeyUp}
+				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				onMouseUp={onMouseUp}
 				ref={(component) => {
-					if (this.props.buttonRef) {
-						this.props.buttonRef(component);
+					if (buttonRef) {
+						buttonRef(component);
 					}
 				}}
-				tabIndex={this.props.tabIndex}
-				title={this.props.title}
-				type={this.props.type}
-				style={this.props.style}
+				tabIndex={tabIndex}
+				title={title}
+				type={type}
+				style={style}
 				{...ariaProps}
 			>
-				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
+				{iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.props.iconName || this.props.iconPath
-					? this.renderIcon(this.props.iconName)
-					: null}
-				{this.props.iconVariant === 'more' ? (
+				{iconName || iconPath ? this.renderIcon(iconName) : null}
+				{iconVariant === 'more' ? (
 					<ButtonIcon
 						category="utility"
 						name="down"
 						size="x-small"
-						className={this.props.iconClassName}
+						className={iconClassName}
 					/>
 				) : null}
 
-				{this.props.iconPosition === 'left' || !this.props.iconPosition
-					? this.renderLabel()
-					: null}
+				{iconPosition === 'left' || !iconPosition ? this.renderLabel() : null}
 				{
-					this.props.children // eslint-disable-line react/prop-types
+					children // eslint-disable-line react/prop-types
 				}
 			</button>
 		);
