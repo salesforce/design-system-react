@@ -33,7 +33,7 @@ class Example extends React.Component {
 						onRequestClose={this.toggleOpen}
 						prompt="error"
 						size="medium"
-						heading={<span>Service Unavailable</span>}
+						title={<span>Service Unavailable</span>}
 					>
 						<div className="slds-m-around_medium">
 							The service you&quot;re trying to reach is unavailable due to
