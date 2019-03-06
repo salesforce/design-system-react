@@ -52,7 +52,7 @@ const Card = function(props) {
 			className={classnames('slds-card', props.className)}
 			style={props.style}
 		>
-			<Header
+			{!props.hasNoHeader && <Header
 				header={props.header}
 				headingId={headingId}
 				icon={props.icon}
@@ -61,7 +61,7 @@ const Card = function(props) {
 				heading={props.heading}
 				headerActions={props.headerActions}
 				headerActionsId={headerActionsId}
-			/>
+			/>}
 			{!empty ? (
 				<Body id={bodyId} className={props.bodyClassName}>
 					{props.children}
