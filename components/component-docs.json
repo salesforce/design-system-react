@@ -3279,7 +3279,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }"
+                        "name": "{ assistiveText, labels, props, userDefinedProps }"
                     }
                 ],
                 "returns": null,
@@ -3291,7 +3291,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3303,7 +3303,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{ assistiveText, labels, props, userDefinedProps }",
                         "type": null
                     }
                 ],
@@ -3327,7 +3327,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3339,7 +3339,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3539,6 +3539,13 @@
                 },
                 "required": false,
                 "description": "HTML id for component. _Tested with snapshot testing._"
+            },
+            "input": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "An [Input](https://react.lightningdesignsystem.com/components/inputs) component.\nThe props from this component will override any default props."
             },
             "labels": {
                 "type": {
@@ -5353,6 +5360,13 @@
                     "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
+            },
+            "autoComplete": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Disabled brower's autocomplete when \"off\" is used."
             },
             "children": {
                 "type": {

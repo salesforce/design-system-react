@@ -9987,6 +9987,217 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-input-prop-example"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          aria-owns="combobox-input-prop-example-listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-controls="combobox-input-prop-example-listbox"
+              autoComplete="test"
+              className="slds-input slds-combobox__input"
+              id="id_from_input_prop"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="My overridden placeholder"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-orientation="horizontal"
+        id="combobox-input-prop-example-selected-listbox"
+        role="listbox"
+      >
+        <ul
+          aria-label="Selected Options:"
+          className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+          role="group"
+        >
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex="0"
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-account"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Acme"
+              >
+                Acme
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  , Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-account"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Salesforce.com, Inc."
+              >
+                Salesforce.com, Inc.
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  , Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
 <div
   className="slds-p-around_medium"
@@ -24482,7 +24693,7 @@ exports[`DOM snapshots SLDSInput Counter Static Input 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSInput Custom style 1`] = `
+exports[`DOM snapshots SLDSInput Custom style and autocomplete 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -24509,6 +24720,7 @@ exports[`DOM snapshots SLDSInput Custom style 1`] = `
             className="slds-form-element__control"
           >
             <input
+              autoComplete="off"
               className="slds-input"
               id="custom-style"
               onChange={[Function]}
