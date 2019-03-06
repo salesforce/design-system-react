@@ -316,14 +316,10 @@ class DataTable extends React.Component {
 					}
 
 					const cellFixed = column.querySelector('.slds-cell-fixed');
-					const linkFixed = cellFixed.firstChild;
 
 					if (cellFixed) {
 						cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
-					}
-
-					if (linkFixed) {
-						linkFixed.style.width = `${column.offsetWidth}px`;
+						cellFixed.style.width = `${column.offsetWidth}px`;
 					}
 				}
 			});
@@ -517,6 +513,16 @@ class DataTable extends React.Component {
 				<div
 					className="slds-table_header-fixed_container"
 					style={{ height: '100%' }}
+					onScroll={(e) => {
+						const containerScrollLeft = e.target.scrollLeft;
+
+						if (containerScrollLeft > 0) {
+							e.target.scrollLeft = 0;
+							if (this.scrollerRef) {
+								this.scrollerRef.scrollLeft = containerScrollLeft;
+							}
+						}
+					}}
 				>
 					<div
 						className="slds-table_header-fixed_scroller"
@@ -525,7 +531,7 @@ class DataTable extends React.Component {
 						}}
 						style={{
 							height: '100%',
-							overflow: 'auto',
+							overflowY: 'auto'
 						}}
 					>
 						{component}

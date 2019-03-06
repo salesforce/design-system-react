@@ -204,9 +204,10 @@ class Example extends React.Component {
 			<div
 				style={{
 					height: '200px',
-					width: '100%',
+					width: '800px',
 				}}
 			>
+				<style dangerouslySetInnerHTML={{ __html: '.dsr_data-table-fixed-header-scroll-test { width: 1600px; }' }} />
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						assistiveText={{
@@ -217,6 +218,7 @@ class Example extends React.Component {
 							selectAllRows: 'all rows',
 							selectRow: 'select this row',
 						}}
+						className="dsr_data-table-fixed-header-scroll-test"
 						fixedHeader
 						fixedLayout
 						items={this.state.items}
