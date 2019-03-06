@@ -30,7 +30,7 @@ const propTypes = {
 	/**
 	 * Label for the progress bar
 	 */
-	label: PropTypes.string,
+	label: PropTypes.node,
 	/**
 	 *  Set radius of progress bar
 	 */
