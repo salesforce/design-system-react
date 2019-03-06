@@ -26,11 +26,18 @@ const BadgeIcon = (props) => {
 	checkProps(BADGE_ICON, props);
 
 	return (
-		<span className={`slds-badge__icon slds-badge__icon_${props.position}`}>
+		<span
+			className={classNames('slds-badge__icon', {
+				'slds-badge__icon_right': props.position === 'right',
+				'slds-badge__icon_left': props.position === 'left',
+			})}
+		>
 			<span
-				className={`slds-icon_container slds-icon-${props.category}-${
-					props.name
-				} slds-current-color`}
+				className={classNames(
+					'slds-icon_container',
+					'slds-current-color',
+					`slds-icon-${props.category}-${props.name}`
+				)}
 				title={props.title}
 			>
 				<SLDSUtilityIcon
@@ -38,8 +45,8 @@ const BadgeIcon = (props) => {
 					category={props.category}
 					className={classNames(
 						'slds-icon',
+						'slds-icon_xx-small',
 						{
-							[`slds-icon_${props.size}`]: 'xx-small',
 							[`slds-icon_${props.position}`]: props.position,
 						},
 						props.className

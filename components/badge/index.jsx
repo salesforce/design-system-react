@@ -83,33 +83,25 @@ class Badge extends React.Component {
 	}
 
 	/**
-	 * Color variant of the badge as a string
-	 * @returns {string} color
-	 */
-	getColor() {
-		return this.props.color ? `slds-badge_${this.props.color}` : '';
-	}
-
-	/**
 	 * Render icon according to the passed props.
 	 */
 	renderIcon = () => (
-			<BadgeIcon
-				category={this.props.iconCategory || 'utility'}
-				className={classNames(
-					{
-						'slds-global-header__icon':
-							this.props.iconVariant === 'global-header',
-					},
-					this.props.iconClassName
-				)}
-				inverse={this.props.color === 'inverse'}
-				name={this.props.iconName}
-				path={this.props.iconPath}
-				position={this.props.iconPosition}
-				title={this.props.iconTitle}
-			/>
-		);
+		<BadgeIcon
+			category={this.props.iconCategory || 'utility'}
+			className={classNames(
+				{
+					'slds-global-header__icon':
+						this.props.iconVariant === 'global-header',
+				},
+				this.props.iconClassName
+			)}
+			inverse={this.props.color === 'inverse'}
+			name={this.props.iconName}
+			path={this.props.iconPath}
+			position={this.props.iconPosition}
+			title={this.props.iconTitle}
+		/>
+	);
 
 	/**
 	 * Render data other than icon in a badge.
@@ -117,27 +109,29 @@ class Badge extends React.Component {
 	renderLabel = () => {
 		if (this.props.iconPosition === 'right' || !this.props.iconName) {
 			return this.props.children;
-		} 
-			return <span>{this.props.children}</span>;
-		
+		}
+		return <span>{this.props.children}</span>;
 	};
 
 	/**
 	 * Render badge component
 	 */
 	renderBadge = () => (
-			<span
-				className={classNames(
-					'slds-badge',
-					this.getColor(),
-					this.props.className
-				)}
-			>
-				{this.props.iconPosition === 'right' && this.renderLabel()}
-				{this.props.iconName && this.renderIcon()}
-				{this.props.iconPosition === 'left' && this.renderLabel()}
-			</span>
-		);
+		<span
+			className={classNames(
+				'slds-badge',
+				{
+					[`slds-badge_${this.props.color}`]: this.props.color,
+				},
+				this.props.className
+			)}
+			id={this.getId()}
+		>
+			{this.props.iconPosition === 'right' && this.renderLabel()}
+			{this.props.iconName && this.renderIcon()}
+			{this.props.iconPosition === 'left' && this.renderLabel()}
+		</span>
+	);
 
 	render() {
 		return this.renderBadge();

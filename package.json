@@ -266,6 +266,13 @@
 			"url-slug": "brand-band"
 		},
 		{
+			"component": "badge",
+			"status": "prod",
+			"display-name": "Badges",
+			"SLDS-component-path": "/components/badges",
+			"url-slug": "badges"
+		},
+		{
 			"component": "breadcrumb",
 			"status": "prod",
 			"display-name": "Breadcrumbs",
