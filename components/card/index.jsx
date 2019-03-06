@@ -121,6 +121,10 @@ Card.propTypes = {
 	 */
 	footer: PropTypes.node,
 	/**
+	 * Allows card to have no header.
+	 */
+	hasNoHeader: PropTypes.bool,
+	/**
 	 * Allows a custom header (the media object with the icon in the first column). `icon`, `heading` and other props are passed into the media object from Card if present. Use `design-system-react/components/media-object` to create your own custom header.
 	 */
 	header: PropTypes.node,
