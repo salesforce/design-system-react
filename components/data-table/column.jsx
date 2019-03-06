@@ -46,9 +46,33 @@ DataTableColumn.propTypes = {
 	 */
 	isDefaultSortDescending: PropTypes.bool,
 	/**
+	 * Selects this column as the currently sorted column.
+	 */
+	isSorted: PropTypes.bool,
+	/**
+	 * The column label. If a `string` is not passed in, no `title` attribute will be rendered.
+	 */
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	/**
+	 * The primary column for a row. This is almost always the first column.
+	 */
+	primaryColumn: PropTypes.bool,
+	/**
+	 * The property which corresponds to this column.
+	 */
+	property: PropTypes.string,
+	/**
 	 * Whether or not the column is sortable.
 	 */
 	sortable: PropTypes.bool,
+	/**
+	 * The current sort direction. If left out the component will track this internally. Required if `isSorted` is true.
+	 */
+	sortDirection: PropTypes.oneOf(['desc', 'asc']),
+	/**
+	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
+	 */
+	width: PropTypes.string,
 };
 
 export default DataTableColumn;
