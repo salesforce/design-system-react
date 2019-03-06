@@ -165,7 +165,7 @@ const DemoCardWithoutHeader = () => (
 	>
 		<DataTable id="SLDSDataTableExample-1" items={sampleItems}>
 			<DataTableColumn label="Opportunity Name" property="name" truncate>
-				<DataTableHighlightCell/>
+				<DataTableHighlightCell />
 			</DataTableColumn>
 		</DataTable>
 	</Card>

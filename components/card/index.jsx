@@ -52,16 +52,18 @@ const Card = function(props) {
 			className={classnames('slds-card', props.className)}
 			style={props.style}
 		>
-			{!props.hasNoHeader && <Header
-				header={props.header}
-				headingId={headingId}
-				icon={props.icon}
-				filter={props.filter}
-				filterId={filterId}
-				heading={props.heading}
-				headerActions={props.headerActions}
-				headerActionsId={headerActionsId}
-			/>}
+			{!props.hasNoHeader && (
+				<Header
+					header={props.header}
+					headingId={headingId}
+					icon={props.icon}
+					filter={props.filter}
+					filterId={filterId}
+					heading={props.heading}
+					headerActions={props.headerActions}
+					headerActionsId={headerActionsId}
+				/>
+			)}
 			{!empty ? (
 				<Body id={bodyId} className={props.bodyClassName}>
 					{props.children}
