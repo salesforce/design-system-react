@@ -132,7 +132,7 @@ Familiarize yourself with concepts used in the rest of the library.
 
 #### Rendered text needs a prop. Group assistive text and labels
 
-Be inclusive of non English users. Any text the user can read (including hidden assistive text for screenreaders) should be able to be set via a prop for internationalization purposes. Within the component, **do not concatenate strings.** This assumes that you know the word order of all languages. Strings should be passed into props in their entirety. Non-visible programmatic keys can be concatenated.
+Be inclusive of non-English users. Any text the user can read (including hidden assistive text for screenreaders) should be able to be set via a prop for internationalization purposes. Within the component, **do not concatenate strings.** This assumes that you know the word order of all languages. Strings should be passed into props in their entirety. Non-visible programmatic keys can be concatenated.
 
 All assistive text for accessibility and visible text should be grouped in an object and passed in with a prop, `assistiveText` and `labels` respectively. This will allow consuming developers to easily find and map text to localize it.
 
