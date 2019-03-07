@@ -196,7 +196,7 @@ const defaultProps = {
 	},
 	formatter(date) {
 		return date
-			? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+			? `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 			: '';
 	},
 	labels: {
