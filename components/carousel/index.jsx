@@ -41,6 +41,7 @@ class Carousel extends React.Component {
 			translateX: -1000000,
 			currentPanel: 1,
 			isAutoPlayOn: this.props.hasAutoplay,
+			stageWidth: 0,
 		};
 	}
 
@@ -87,7 +88,10 @@ class Carousel extends React.Component {
 		actionToTake();
 	};
 	setDimensions = () => {
-		this.setState({ stageWidth: this.stageItem.current.offsetWidth });
+		this.setState(
+			{ stageWidth: this.stageItem.current.offsetWidth },
+			this.changeTranslationAutomatically
+		);
 	};
 	setTranslationAmount = (amount, cb) => {
 		this.setState({ translateX: amount }, cb);
@@ -116,7 +120,10 @@ class Carousel extends React.Component {
 
 	changeTranslationAutomatically = () => {
 		this.setTranslationAmount(
-			-(this.stageWidth * (this.state.currentPanel - 1))
+			-(
+				(this.state.stageWidth || this.stageWidth) *
+				(this.state.currentPanel - 1)
+			)
 		);
 	};
 
@@ -164,18 +171,22 @@ class Carousel extends React.Component {
 							onClick={this.onAutoPlayBtnClick}
 						/>
 					)}
-					<div className="slds-grid slds-grid_align-center">
+					<div
+						className="slds-is-relative"
+						style={{ marginLeft: '60px', marginRight: '60px' }}
+					>
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
-								icon="/assets/icons/utility-sprite/svg/symbols.svg#left"
+								iconPath="/assets/icons/utility-sprite/svg/symbols.svg#left"
 								assistiveText={this.props.assistiveText.previousPanel}
 								isDisabled={isPreviousBtnDisabled}
 								onClick={this.onPreviousPanelHandler}
+								inlineStyle={{ left: '-60px' }}
 							/>
 						)}
 						<div
 							ref={this.stageItem}
-							className="slds-carousel__stage slds-align_absolute-center"
+							className="slds-carousel__stage slds-show"
 						>
 							<div
 								className="slds-carousel__panels slds-is-relative"
@@ -185,6 +196,7 @@ class Carousel extends React.Component {
 							>
 								{this.props.items.map((item) => (
 									<CarouselItem
+										onClick={() => this.props.onItemClick(item)}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
 										itemWidth={itemWidth}
@@ -195,10 +207,11 @@ class Carousel extends React.Component {
 						</div>
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
-								icon="/assets/icons/utility-sprite/svg/symbols.svg#right"
+								iconPath="/assets/icons/utility-sprite/svg/symbols.svg#right"
 								assistiveText={this.props.assistiveText.nextPanel}
 								isDisabled={isNextBtnDisabled}
 								onClick={this.onNextPanelHandler}
+								inlineStyle={{ right: '-60px' }}
 							/>
 						)}
 					</div>

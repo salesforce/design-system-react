@@ -5,30 +5,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '~/components/button';
 import { CAROUSEL_NAVIGATORS } from '../../../utilities/constants';
-
 /**
  * previousNextCarouselNavigator is used to display previous/next navigation items of the carousel
  */
 const previousNextCarouselNavigator = (props) => (
-	<div className="slds-carousel__col-center slds-align_absolute-center">
-		<button
+	<div
+		className="slds-carousel__col-center slds-is-absolute"
+		style={{ ...props.inlineStyle, top: '50%' }}
+	>
+		<Button
 			className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
-			disabled={props.isDisabled}
+			assistiveText={{ icon: props.assistiveText }}
+			iconCategory="utility"
+			iconPath={props.iconPath}
+			iconVariant="container"
 			onClick={props.onClick}
-		>
-			<svg
-				className="slds-icon slds-icon-text-default"
-				aria-hidden="true"
-				style={{ width: '60%', height: '100%' }}
-			>
-				<use xlinkHref={props.icon} />
-			</svg>
-			<span className="slds-assistive-text">{props.assistiveText}</span>
-		</button>
+			variant="icon"
+			disabled={props.isDisabled}
+		/>
 	</div>
 );
-
+// /assets/icons/utility-sprite/svg/symbols.svg#right
 previousNextCarouselNavigator.displayName = CAROUSEL_NAVIGATORS;
 
 // ### Prop Types
@@ -40,7 +39,7 @@ previousNextCarouselNavigator.propTypes = {
 	/**
 	 * Path of the icon to be used for the previous/next navigation
 	 */
-	icon: PropTypes.string.isRequired,
+	iconPath: PropTypes.string.isRequired,
 	/**
 	 * Determines where the navigator indicator has been disabled
 	 */

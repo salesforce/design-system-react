@@ -18,7 +18,7 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
 const CarouselItem = (props) => (
 	<div
 		id={`content-id-${props.id}`}
-		className="slds-carousel__panel slds-grid_align-center slds-m-horizontal_xx-small slds-list_horizontal"
+		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
 		aria-labelledby={`indicator-id-${props.id}`}
@@ -29,7 +29,7 @@ const CarouselItem = (props) => (
 		{props.onRenderItem ? (
 			props.onRenderItem(props)
 		) : (
-			<span className="slds-carousel__panel-action slds-text-link_reset">
+			<span className="slds-carousel__panel-action">
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText} />
 				</div>
@@ -46,6 +46,7 @@ const CarouselItem = (props) => (
 							className="slds-button slds-button_neutral slds-button_outline-brand"
 							href={props.href}
 							target="_blank"
+							onClick={props.onClick}
 						>
 							{props.CTALabel}
 						</a>

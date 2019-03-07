@@ -4,30 +4,29 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Button from '~/components/button';
 import { CAROUSEL_AUTOPLAY_BUTTON } from '../../../utilities/constants';
 
 /**
  *  AutoPlayButton is used to start/pause the autoplay iteration of the carousel
  */
 const AutoPlayButton = (props) => {
-	const icon = props.isAutoPlayOn
+	const iconPath = props.isAutoPlayOn
 		? '/assets/icons/utility-sprite/svg/symbols.svg#pause'
 		: '/assets/icons/utility-sprite/svg/symbols.svg#play';
 
 	return (
 		<span className="slds-carousel__autoplay">
-			<button
+			<Button
 				className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
-				aria-pressed="false"
-				title="Start / Stop auto-play"
+				assistiveText={{ icon: props.assistiveText }}
+				iconCategory="utility"
+				iconPath={iconPath}
+				iconVariant="container"
 				onClick={props.onClick}
-			>
-				<svg className="slds-button__icon" aria-hidden="true">
-					<use xlinkHref={icon} />
-				</svg>
-				<span className="slds-assistive-text">{props.assistiveText}</span>
-			</button>
+				variant="icon"
+				disabled={props.isDisabled}
+			/>
 		</span>
 	);
 };
