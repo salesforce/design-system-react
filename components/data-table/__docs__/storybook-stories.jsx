@@ -29,4 +29,6 @@ storiesOf(DATA_TABLE, module)
 		<AdvancedSingleSelectFixedHeader log={action} />
 	))
 	.add('Fixed Header', () => <FixedHeader />)
-	.add('Fixed Header Horizontal Scrolling', () => <FixedHeaderHorizontalScroller />);
+	.add('Fixed Header Horizontal Scrolling', () => (
+		<FixedHeaderHorizontalScroller />
+	));

@@ -538,7 +538,7 @@ class DataTable extends React.Component {
 						}}
 						style={{
 							height: '100%',
-							overflow: 'auto'
+							overflow: 'auto',
 						}}
 					>
 						{component}

@@ -151,7 +151,7 @@ class Example extends React.Component {
 				contact: 'nathan@salesforce.com',
 			},
 		],
-		selection: []
+		selection: [],
 	};
 
 	handleChanged = (event, data) => {
@@ -207,7 +207,7 @@ class Example extends React.Component {
 				}}
 				style={{
 					height: '200px',
-					width: '400px'
+					width: '400px',
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
