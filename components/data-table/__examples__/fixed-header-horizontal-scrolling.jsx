@@ -151,7 +151,7 @@ class Example extends React.Component {
 				contact: 'nathan@salesforce.com',
 			},
 		],
-		selection: [],
+		selection: []
 	};
 
 	handleChanged = (event, data) => {
@@ -202,8 +202,12 @@ class Example extends React.Component {
 	render() {
 		return (
 			<div
+				ref={(ref) => {
+					this.wrapperRef = ref;
+				}}
 				style={{
 					height: '200px',
+					width: '400px'
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
@@ -224,6 +228,7 @@ class Example extends React.Component {
 						onSort={this.handleSort}
 						selection={this.state.selection}
 						selectRows="checkbox"
+						style={{ minWidth: '800px' }}
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}

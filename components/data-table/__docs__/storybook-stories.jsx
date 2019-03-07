@@ -11,6 +11,7 @@ import AdvancedSingleSelectFixedHeader from '../__examples__/advanced-single-sel
 import Basic from '../__examples__/basic';
 import BasicFixedLayout from '../__examples__/basic-fixed-layout';
 import FixedHeader from '../__examples__/fixed-header';
+import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -27,4 +28,5 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced Single Select (Fixed Header)', () => (
 		<AdvancedSingleSelectFixedHeader log={action} />
 	))
-	.add('Fixed Header', () => <FixedHeader />);
+	.add('Fixed Header', () => <FixedHeader />)
+	.add('Fixed Header Horizontal Scrolling', () => <FixedHeaderHorizontalScroller />);
