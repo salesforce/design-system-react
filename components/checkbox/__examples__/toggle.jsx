@@ -12,6 +12,7 @@ class Example extends React.Component {
 						<div className="slds-col_padded">
 							<Checkbox
 								label="Toggle"
+								aria-describedby="checkbox-toggle-example-desc"
 								id="checkbox-toggle-example"
 								variant="toggle"
 							/>
@@ -19,6 +20,7 @@ class Example extends React.Component {
 						<div className="slds-col_padded">
 							<Checkbox
 								label="Toggle"
+								aria-describedby="checkbox-toggle-example--error-desc"
 								id="checkbox-toggle-example--error"
 								errorText="This field has an error"
 								variant="toggle"
@@ -27,6 +29,7 @@ class Example extends React.Component {
 						<div className="slds-col_padded">
 							<Checkbox
 								label="Toggle (disabled)"
+								aria-describedby="checkbox-toggle-example--disabled-desc"
 								id="checkbox-toggle-example--disabled"
 								variant="toggle"
 								disabled
@@ -35,6 +38,7 @@ class Example extends React.Component {
 						<div className="slds-col_padded">
 							<Checkbox
 								label="Toggle (required)"
+								aria-describedby="checkbox-toggle-example--required-desc"
 								id="checkbox-toggle-example--required"
 								variant="toggle"
 								required
@@ -47,6 +51,7 @@ class Example extends React.Component {
 								assistiveText={{
 									label: 'Toggle (with assistive text)',
 								}}
+								aria-describedby="checkbox-toggle-example--assitive-text-desc"
 								id="checkbox-toggle-example--assitive-text"
 								variant="toggle"
 							/>
@@ -54,6 +59,7 @@ class Example extends React.Component {
 						<div className="slds-col_padded">
 							<Checkbox
 								label="Toggle (checked)"
+								aria-describedby="checkbox-toggle-example--checked-desc"
 								id="checkbox-toggle-example--checked"
 								variant="toggle"
 								checked
@@ -61,6 +67,7 @@ class Example extends React.Component {
 						</div>
 						<div className="slds-col_padded">
 							<Checkbox
+								aria-describedby="checkbox-toggle-example--checked-disabled-desc"
 								id="checkbox-toggle-example--checked-disabled"
 								label="Toggle (checked + disabled)"
 								variant="toggle"

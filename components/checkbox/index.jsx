@@ -22,29 +22,11 @@ import EventUtil from '../../utilities/event';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './docs.json';
+import getAriaProps from '../../utilities/get-aria-props';
 
 import { CHECKBOX } from '../../utilities/constants';
 
 const propTypes = {
-	/**
-	 * An HTML ID that is shared with ARIA-supported devices with the
-	 * `aria-controls` attribute in order to relate the input with
-	 * another region of the page. An example would be a select box
-	 * that shows or hides a panel.
-	 */
-	'aria-controls': PropTypes.string,
-	/**
-	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
-	 */
-	'aria-describedby': PropTypes.string,
-	/**
-	 * `aria-owns` indicate that an element depends on the current one when the relation can't be determined by the hierarchy structure.
-	 */
-	'aria-owns': PropTypes.string,
-	/**
-	 * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
-	 */
-	'aria-required': PropTypes.bool,
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
@@ -157,6 +139,7 @@ const defaultProps = {
 
 /**
  * The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.
+ * Although not listed in the prop table, all `aria-*` props will be added to the `checkbox` element if passed in.
  */
 class Checkbox extends React.Component {
 	componentWillMount() {
@@ -195,13 +178,10 @@ class Checkbox extends React.Component {
 		}
 	};
 
-	renderButtonGroupVariant = (props, assistiveText, labels) => (
+	renderButtonGroupVariant = (props, assistiveText, labels, ariaProps) => (
 		<span className="slds-button slds-checkbox_button">
 			<input
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-owns={this.props['aria-owns']}
-				aria-required={this.props['aria-required']}
+				{...ariaProps}
 				disabled={props.disabled}
 				checked={props.checked}
 				defaultChecked={props.defaultChecked}
@@ -229,7 +209,7 @@ class Checkbox extends React.Component {
 		</span>
 	);
 
-	renderBaseVariant = (props, assistiveText, labels) => (
+	renderBaseVariant = (props, assistiveText, labels, ariaProps) => (
 		<div
 			className={classNames(
 				'slds-form-element',
@@ -248,10 +228,7 @@ class Checkbox extends React.Component {
 						</abbr>
 					) : null}
 					<input
-						aria-controls={this.props['aria-controls']}
-						aria-describedby={this.props['aria-describedby']}
-						aria-owns={this.props['aria-owns']}
-						aria-required={this.props['aria-required']}
+						{...ariaProps}
 						disabled={props.disabled}
 						checked={props.checked}
 						defaultChecked={props.defaultChecked}
@@ -290,7 +267,7 @@ class Checkbox extends React.Component {
 		</div>
 	);
 
-	renderToggleVariant = (props, assistiveText, labels) => (
+	renderToggleVariant = (props, assistiveText, labels, ariaProps) => (
 		<div
 			className={classNames(
 				'slds-form-element',
@@ -316,10 +293,7 @@ class Checkbox extends React.Component {
 					<span className="slds-assistive-text">{assistiveText.label}</span>
 				) : null}
 				<input
-					aria-controls={this.props['aria-controls']}
-					aria-describedby={`${this.getId()}-desc`}
-					aria-owns={this.props['aria-owns']}
-					aria-required={this.props['aria-required']}
+					{...ariaProps}
 					disabled={props.disabled}
 					id={this.getId()}
 					checked={props.checked}
@@ -371,7 +345,7 @@ class Checkbox extends React.Component {
 			...(this.props.label ? { label: this.props.label } : {}),
 			...this.props.labels,
 		};
-
+		const ariaProps = getAriaProps(this.props);
 		const subRenders = {
 			base: this.renderBaseVariant,
 			'button-group': this.renderButtonGroupVariant,
@@ -380,8 +354,13 @@ class Checkbox extends React.Component {
 		const variantExists = subRenders[this.props.variant];
 
 		return variantExists
-			? subRenders[this.props.variant](this.props, assistiveText, labels)
-			: subRenders.base(this.props, assistiveText, labels);
+			? subRenders[this.props.variant](
+					this.props,
+					assistiveText,
+					labels,
+					ariaProps
+				)
+			: subRenders.base(this.props, assistiveText, labels, ariaProps);
 	}
 }
 

@@ -165,6 +165,7 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox (indeterminate)', () => <CheckboxIndeterminate />)
 	.add('Checkbox Toggle', () => (
 		<Checkbox
+			aria-describedby="checkbox-example-toggle-desc"
 			id="checkbox-example-toggle"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle"
@@ -177,6 +178,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (with error)', () => (
 		<Checkbox
+			aria-describedby="checkbox-example-toggle-error-desc"
 			id="checkbox-example-toggle-error"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-error"
@@ -190,6 +192,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (required)', () => (
 		<Checkbox
+			aria-describedby="checkbox-example-toggle-required-desc"
 			id="checkbox-example-toggle-required"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-required"
@@ -203,6 +206,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (disabled)', () => (
 		<Checkbox
+			aria-describedby="checkbox-example-toggle-disabled-desc"
 			id="checkbox-example-toggle-disabled"
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-disabled"
@@ -227,6 +231,7 @@ storiesOf(CHECKBOX, module)
 							I must make my checkbox true.
 							I must make it truer than my radio button who is trying to... `,
 				}}
+				aria-describedby="checkbox-example-base-assistiveText-desc"
 				id="checkbox-example-base-assistiveText"
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
@@ -250,6 +255,7 @@ storiesOf(CHECKBOX, module)
 	))
 	.add('Checkbox Toggle (checked)', () => (
 		<Checkbox
+			aria-describedby="checkbox-example-toggle-checked-desc"
 			checked
 			id="checkbox-example-toggle-checked"
 			label="Checkbox Label"

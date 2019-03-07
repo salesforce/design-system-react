@@ -10,12 +10,9 @@ import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
+import getAriaProps from '../../utilities/get-aria-props';
 
 const propTypes = {
-	/**
-	 * The ID of an element that describes this radio input. Often used for error messages.
-	 */
-	'aria-describedby': PropTypes.string,
 	/**
 	 * This is a controlled component. This radio is checked according to this value.
 	 */
@@ -77,6 +74,7 @@ const defaultProps = {
 /**
  * A radio input that can have a single input checked at any one time. Radios should be wrapped with
  * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
+ * Although not listed in the prop table, all `aria-*` props will be added to the radio `input` element if passed in.
  */
 class Radio extends React.Component {
 	constructor(props) {
@@ -137,7 +135,7 @@ class Radio extends React.Component {
 				</label>
 			);
 		}
-
+		const ariaProps = getAriaProps(this.props);
 		return (
 			<span
 				className={classNames(
@@ -182,7 +180,7 @@ class Radio extends React.Component {
 							this.handleChange(event);
 						}
 					}}
-					aria-describedby={this.props['aria-describedby']}
+					{...ariaProps}
 					disabled={this.props.disabled}
 					{...dataProps}
 					ref={(input) => {

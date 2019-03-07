@@ -32,59 +32,15 @@ import checkProps from './check-props';
 import { TEXTAREA } from '../../utilities/constants';
 
 import componentDoc from './docs.json';
+import getAriaProps from '../../utilities/get-aria-props';
 
 /**
- * A multi-line plain-text editing control.
+ * A multi-line plain-text editing control. Although not listed in the prop table, all `aria-*` props will be added to the `textarea` element if passed in.
  */
 class Textarea extends React.Component {
 	static displayName = TEXTAREA;
 
 	static propTypes = {
-		/**
-		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
-		 */
-		'aria-activedescendant': PropTypes.string,
-		/**
-		 * Indicates if the suggestions in a composite widget are values that complete the current textbox input.
-		 */
-		'aria-autocomplete': PropTypes.string,
-		/**
-		 * An HTML ID that is shared with ARIA-supported devices with the
-		 * `aria-controls` attribute in order to relate the input with
-		 * another region of the page. An example would be a select box
-		 * that shows or hides a panel.
-		 */
-		'aria-controls': PropTypes.string,
-		/**
-		 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
-		 */
-		'aria-describedby': PropTypes.string,
-		/**
-		 * Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed.
-		 */
-		'aria-expanded': PropTypes.bool,
-		/**
-		 * Indicates that the element has a popup context menu or sub-level menu.
-		 */
-		'aria-haspopup': PropTypes.bool,
-		/**
-		 * The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object.
-		 */
-		'aria-labelledby': PropTypes.string,
-		/**
-		 * An HTML ID that is shared with ARIA-supported devices with the
-		 * `aria-controls` attribute in order to relate the input with
-		 * another region of the page. An example would be a search field
-		 * that shows search results.
-		 */
-		'aria-owns': PropTypes.string,
-		/**
-		 * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
-		 */
-		'aria-required': PropTypes.bool,
-		/**
-		 * Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience.
-		 */
 		autoFocus: PropTypes.bool,
 		/**
 		 * **Assistive text for accessibility.**
@@ -264,7 +220,7 @@ class Textarea extends React.Component {
 					}.label;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
-
+		const ariaProps = getAriaProps(this.props);
 		return (
 			<div
 				className={classNames(
@@ -292,13 +248,8 @@ class Textarea extends React.Component {
 				)}
 				<div className={classNames('slds-form-element__control')}>
 					<textarea
-						aria-activedescendant={this.props['aria-activedescendant']}
-						aria-controls={this.props['aria-controls']}
-						aria-labelledby={this.props['aria-labelledby']}
 						aria-describedby={this.getErrorId()}
-						aria-expanded={this.props['aria-expanded']}
-						aria-owns={this.props['aria-owns']}
-						aria-required={this.props['aria-required']}
+						{...ariaProps}
 						className={classNames('slds-textarea', className)}
 						autoFocus={autoFocus}
 						disabled={disabled}
