@@ -304,7 +304,7 @@ const InnerInput = (props) => {
 
 			{props.hasSpinner ? (
 				<div className="slds-input__icon-group slds-input__icon-group_right">
-					{props.hasSpinner && (
+					{(
 						<Spinner
 							assistiveText={{ label: assistiveText.spinner }}
 							id="loading-status-icon"
