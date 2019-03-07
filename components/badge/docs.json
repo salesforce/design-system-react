@@ -1,0 +1,7 @@
+{
+	"component": "badge",
+	"status": "prod",
+	"display-name": "Badges",
+	"SLDS-component-path": "/components/badge",
+	"url-slug": "badges"
+}
