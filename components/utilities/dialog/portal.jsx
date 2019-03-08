@@ -47,12 +47,10 @@ class Portal extends Component {
 
 	setupPortalNode() {
 		const parentParentNode = this.getPortalParentNode();
-
-		this.portalNode = documentDefined
-			? document.createElement(this.props.renderTag)
-			: {};
+		this.portalNode = {};
 
 		if (documentDefined) {
+			this.portalNode = document.createElement(this.props.renderTag);
 			this.portalNode.setAttribute(
 				'style',
 				'display: block; height: 0px; width: 0px;'

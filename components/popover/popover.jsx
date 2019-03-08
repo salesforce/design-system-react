@@ -211,7 +211,7 @@ class Popover extends React.Component {
 			PropTypes.string,
 		]),
 		/**
-		 * Determines the type of the popover. `error` and `warning` allows the  content body to scroll. _Tested with snaphots._
+		 * Determines the type of the popover. `error` and `warning` allows the  content body to scroll. Default is `base` _Tested with snaphots._
 		 */
 		variant: PropTypes.oneOf(['base', 'error', 'warning']),
 	};
