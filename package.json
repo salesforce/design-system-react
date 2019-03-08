@@ -39,6 +39,7 @@
 		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
+	  	"upload-diffs": "scripts/upload-diffs.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},

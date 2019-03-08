@@ -16706,7 +16706,6 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
     style={
       Object {
         "overflow": "auto",
-        "width": "750px",
       }
     }
   >
