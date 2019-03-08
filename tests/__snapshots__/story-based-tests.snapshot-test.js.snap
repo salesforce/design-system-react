@@ -16706,6 +16706,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
     style={
       Object {
         "overflow": "auto",
+        "width": "750px",
       }
     }
   >
@@ -18369,6 +18370,11 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
       }
     }
   >
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Fixed Header Layout
+    </h3>
     <div
       className="slds-table_header-fixed_container"
       style={
