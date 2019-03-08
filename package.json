@@ -39,7 +39,7 @@
 		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
-	  	"upload-diffs": "scripts/upload-diffs.sh",
+		"upload-diffs": "scripts/upload-diffs.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},
@@ -94,8 +94,8 @@
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.8.3",
-		"react": ">=15.4.1 <17",
-		"react-dom": ">=15.4.1 <17"
+		"react": ">=16.3 <17",
+		"react-dom": ">=16.3 <17"
 	},
 	"devDependencies": {
 		"@babel/cli": "7.0.0-beta.44",
@@ -133,8 +133,8 @@
 		"concurrently": "^4.0.1",
 		"cross-env": "^5.2.0",
 		"css-loader": "^0.28.0",
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
+		"enzyme": "^3.8.0",
+		"enzyme-adapter-react-16": "^1.9.1",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "16.1.0",
 		"eslint-config-prettier": "^3.0.1",
@@ -181,9 +181,9 @@
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
 		"puppeteer": "^1.9.0",
-		"react": "^16.4",
+		"react": "^16.8",
 		"react-docgen": "^2.21.0",
-		"react-dom": "^16.4",
+		"react-dom": "^16.8",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": "^16.4",
 		"regenerator-runtime": "^0.11.1",
