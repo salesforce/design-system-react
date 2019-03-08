@@ -1,0 +1,315 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _lodash = require("lodash.find");
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _shortid = require("shortid");
+
+var _shortid2 = _interopRequireDefault(_shortid);
+
+var _constants = require("../../utilities/constants");
+
+var _step = require("./private/step");
+
+var _step2 = _interopRequireDefault(_step);
+
+var _progress = require("./private/progress");
+
+var _progress2 = _interopRequireDefault(_progress);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var displayName = _constants.PROGRESS_INDICATOR;
+var propTypes = {
+  /**
+   * **Assistive text for accessibility**
+   * This object is merged with the default props object on every render.
+   * * `completedStep`: Label for a completed step. The default is `Completed Step`
+   * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
+   * * `errorStep`: Label for a step with an error. The default is `Error Step`
+   * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.
+   * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
+   */
+  assistiveText: _propTypes2.default.shape({
+    completedStep: _propTypes2.default.string,
+    disabledStep: _propTypes2.default.string,
+    percentage: _propTypes2.default.string,
+    step: _propTypes2.default.string
+  }),
+
+  /**
+   * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
+   */
+  className: _propTypes2.default.oneOfType([_propTypes2.default.array, _propTypes2.default.object, _propTypes2.default.string]),
+
+  /**
+   * Stores all completed steps. It is an array of step objects.
+   */
+  completedSteps: _propTypes2.default.array,
+
+  /**
+   * Stores all disabled steps. It is an array of step objects. Steps are still clickable/focusable,
+   * this only disables cursor change and removes onClick and onFocus event callbacks.
+   */
+  disabledSteps: _propTypes2.default.array,
+
+  /**
+   * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step. If an error occurs a second error icon should be placed to the left of related confirmation buttons (e.g. Cancel, Save) and an Error Popover should appear indicating there are errors. These additional items are NOT part of this component. This note was included for visibility purposes. Please refer to [SLDS website](https://www.lightningdesignsystem.com/components/progress-indicator/) for full details **
+   */
+  errorSteps: _propTypes2.default.array,
+
+  /**
+   * HTML id for component.
+   */
+  id: _propTypes2.default.string,
+
+  /**
+   * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
+   * ```
+   * const handleStepClick = function(event, data) { console.log(data); };
+   *   <ProgressIndicator onStepClick={handleStepClick} />
+   * ```
+   */
+  onStepClick: _propTypes2.default.func,
+
+  /**
+   * Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
+   * ```
+   * const handleStepFocus = function(event, data) { console.log(data); };
+   *   <ProgressIndicator onStepFocus={handleStepFocus} />
+   * ```
+   */
+  onStepFocus: _propTypes2.default.func,
+
+  /**
+   * Represents the currently selected or active step. It is a step object.
+   */
+  selectedStep: _propTypes2.default.object.isRequired,
+
+  /**
+   * It is an array of step objects in the following form:
+   * ```
+   *  [{
+   *    id: <PropTypes.number> or <PropTypes.string>, has to be unique
+   *    label: <PropTypes.string>, representing the tooltip content
+   *    assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.
+   *  }],
+   *  ```
+   */
+  steps: _propTypes2.default.array.isRequired,
+
+  /**
+   * Stores all steps with opened tooltips. This property is mainly for development purposes. The tooltip should only show on hover for the user.
+   */
+  tooltipIsOpenSteps: _propTypes2.default.array,
+
+  /**
+   * Determines component style.
+   */
+  variant: _propTypes2.default.oneOf(['base', 'modal']),
+
+  /**
+   * Please select one of the following:
+   * * `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+   * * `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+   * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+   */
+  tooltipPosition: _propTypes2.default.oneOf(['absolute', 'overflowBoundaryElement', 'relative'])
+};
+var defaultSteps = [{
+  id: 0,
+  label: 'tooltip label #1'
+}, {
+  id: 1,
+  label: 'tooltip label #2'
+}, {
+  id: 2,
+  label: 'tooltip label #3'
+}, {
+  id: 3,
+  label: 'tooltip label #4'
+}, {
+  id: 4,
+  label: 'tooltip label #5'
+}];
+var defaultProps = {
+  assistiveText: {
+    completedStep: 'Completed',
+    disabledStep: 'Disabled',
+    errorStep: 'Error',
+    step: 'Step'
+  },
+  errorSteps: [],
+  completedSteps: [],
+  disabledSteps: [],
+  selectedStep: defaultSteps[0],
+  variant: 'base',
+  // click/focus callbacks by default do nothing
+  onStepClick: function onStepClick() {},
+  onStepFocus: function onStepFocus() {}
+};
+/**
+ * Check if `steps` prop is valid
+ */
+
+function checkSteps(steps) {
+  var isStepsDefined = steps !== undefined;
+
+  var isLabelDefined = function isLabelDefined(step) {
+    return step.label !== undefined;
+  };
+
+  var stepLabelsDefined = Array.isArray(steps) && steps.every(isLabelDefined);
+  return isStepsDefined && stepLabelsDefined;
+}
+/**
+ * Check if an item is from an array of items when 'items' is an array;
+ * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
+ */
+
+
+function findStep(item, items) {
+  if (Array.isArray(items)) {
+    return !!(0, _lodash2.default)(items, item);
+  }
+
+  return JSON.stringify(item) === JSON.stringify(items);
+}
+/**
+ * Progress Indicator is a component that communicates to the user the progress of a particular process.
+ */
+
+
+var ProgressIndicator =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProgressIndicator, _React$Component);
+
+  function ProgressIndicator() {
+    _classCallCheck(this, ProgressIndicator);
+
+    return _possibleConstructorReturn(this, (ProgressIndicator.__proto__ || Object.getPrototypeOf(ProgressIndicator)).apply(this, arguments));
+  }
+
+  _createClass(ProgressIndicator, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.generatedId = _shortid2.default.generate();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.isUnmounting = true;
+    }
+    /**
+     * Get the progress indicator's HTML id. Generate a new one if no ID present.
+     */
+
+  }, {
+    key: "getId",
+    value: function getId() {
+      return this.props.id || this.generatedId;
+    }
+  }, {
+    key: "getSteps",
+    value: function getSteps() {
+      // check if passed steps are valid
+      return checkSteps(this.props.steps) ? this.props.steps : defaultSteps;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      // Merge objects of strings with their default object
+      var assistiveText = _objectSpread({}, defaultProps.assistiveText, this.props.assistiveText);
+
+      var _props = this.props,
+          selectedStep = _props.selectedStep,
+          disabledSteps = _props.disabledSteps,
+          errorSteps = _props.errorSteps,
+          completedSteps = _props.completedSteps;
+      /** 1. preparing data */
+
+      var allSteps = this.getSteps();
+      var currentStep = 0; // find index for the current step
+
+      for (var i = 0; i < allSteps.length; i += 1) {
+        // assign step an id if it does not have one
+        if (allSteps[i].id === undefined) {
+          allSteps[i].id = i;
+        }
+
+        if (findStep(allSteps[i], this.props.selectedStep)) {
+          currentStep = i;
+        }
+      } // Set default tooltipPosition
+
+
+      var tooltipPosition = this.props.tooltipPosition || (this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
+      /** 2. return DOM */
+
+      return _react2.default.createElement(_progress2.default, {
+        assistiveText: assistiveText,
+        id: this.getId(),
+        value: currentStep === 0 ? '0' : "".concat(100 * (currentStep / (allSteps.length - 1))),
+        variant: this.props.variant,
+        className: this.props.className
+      }, allSteps.map(function (step, i) {
+        return _react2.default.createElement(_step2.default, {
+          assistiveText: assistiveText,
+          key: "".concat(_this.getId(), "-").concat(step.id),
+          id: _this.getId(),
+          index: i,
+          isSelected: findStep(step, selectedStep),
+          isDisabled: findStep(step, disabledSteps),
+          isError: findStep(step, errorSteps),
+          isCompleted: findStep(step, completedSteps),
+          onClick: _this.props.onStepClick,
+          onFocus: _this.props.onStepFocus,
+          step: step,
+          tooltipIsOpen: findStep(step, _this.props.tooltipIsOpenSteps),
+          tooltipPosition: tooltipPosition
+        });
+      }));
+    }
+  }]);
+
+  return ProgressIndicator;
+}(_react2.default.Component);
+
+ProgressIndicator.displayName = displayName;
+ProgressIndicator.propTypes = propTypes;
+ProgressIndicator.defaultProps = defaultProps;
+exports.default = ProgressIndicator;
