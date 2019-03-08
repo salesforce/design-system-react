@@ -1,0 +1,23 @@
+{
+    "component": "split-view",
+    "status": "prod",
+    "display-name": "Split View",
+    "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+    },
+    "last-slds-markup-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+    },
+    "SLDS-component-path": "/components/split-view",
+    "dependencies": [
+        {
+            "component": "header"
+        },
+        {
+            "component": "listbox"
+        }
+    ],
+    "url-slug": "split-view"
+}
