@@ -13554,6 +13554,11 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
   className="slds-p-around_medium"
 >
   <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Advanced (Fixed Layout)
+    </h3>
     <table
       aria-multiselectable="true"
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
@@ -14462,6 +14467,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
   className="slds-p-around_medium"
 >
   <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Advanced Single Select (Fixed Header)
+    </h3>
     <table
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
       id="DataTableExample-SingleRequiredSelect"
@@ -15290,6 +15300,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
   className="slds-p-around_medium"
 >
   <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Advanced Single Select (Fixed Layout)
+    </h3>
     <table
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
       id="DataTableExample-SingleRequiredSelect"
@@ -16113,7 +16128,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
 </div>
 `;
 
-exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
+exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -16698,7 +16713,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -16712,7 +16727,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
     <h3
       className="slds-text-heading_medium slds-m-vertical_medium"
     >
-      Default Fluid Layout
+      Basic Fluid Layout (Default)
     </h3>
     <table
       className="slds-table slds-table_bordered slds-table_cell-buffer"
@@ -17120,14 +17135,29 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
     <h3
       className="slds-text-heading_medium slds-m-vertical_medium"
     >
-      Striped
+      Basic Fluid Layout - Column Bordered
     </h3>
     <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped"
-      id="DataTableExample-1-striped"
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered"
+      id="DataTableExample-columnBordered"
       role={null}
     >
       <thead>
@@ -17531,10 +17561,25 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
     <h3
       className="slds-text-heading_medium slds-m-vertical_medium"
     >
-      No Row Hover
+      Basic Fluid Layout - No Row Hover
     </h3>
     <table
       className="slds-table slds-table_bordered slds-table_cell-buffer slds-no-row-hover"
@@ -17942,14 +17987,29 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
     <h3
       className="slds-text-heading_medium slds-m-vertical_medium"
     >
-      Column Bordered
+      Basic Fluid Layout - Striped
     </h3>
     <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered"
-      id="DataTableExample-columnBordered"
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped"
+      id="DataTableExample-1-striped"
       role={null}
     >
       <thead>
