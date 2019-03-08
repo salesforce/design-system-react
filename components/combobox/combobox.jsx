@@ -401,6 +401,7 @@ class Combobox extends React.Component {
 				containerProps={{
 					id: `${this.getId()}-listbox`,
 					role: 'listbox',
+					tabIndex: '-1',
 				}}
 			>
 				{menuRenderer}
