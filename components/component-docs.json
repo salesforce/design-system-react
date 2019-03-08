@@ -9608,7 +9608,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```"
+                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```\n`options` with array length of zero will remove this component from the DOM."
             },
             "onClickPill": {
                 "type": {
@@ -10152,6 +10152,31 @@
                 },
                 "required": false,
                 "description": "CSS classes to be added to wrapping trigger `div` around the button."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the type of the popover. `error` and `warning` allows the  content body to scroll. Default is `base` _Tested with snaphots._",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             },
             "hoverCloseDelay": {
                 "defaultValue": {
