@@ -19,14 +19,15 @@ import { GLOBAL_HEADER_FAVORITES } from '../../utilities/constants';
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
-	 * * `triggerButton`: Assistive text for the GlobalHeaderFavorites trigger button. The default is `Help and Training`.
+	 * * `action`: Description of star button. Default is "Toggle Favorite."
+	 * * `more`: Description of dropdown menu. Default is "View Favorites."
 	 */
 	assistiveText: PropTypes.shape({
 		action: PropTypes.string,
 		more: PropTypes.string,
 	}),
 	/**
-	 * Disables the favorites action (star) button
+	 * Disables the favorites action (star) button and not the related Popover."
 	 */
 	actionDisabled: PropTypes.bool,
 	/**
@@ -38,13 +39,13 @@ const propTypes = {
 	 */
 	onToggleActionSelected: PropTypes.func,
 	/**
-	 * A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props.
+	 * A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props. The `children` prop will be ignored.
 	 */
 	popover: PropTypes.node,
 };
 
 /**
- * A GlobalHeaderFavorites component.
+ * A GlobalHeaderFavorites component. The favorites action is used to "favorite" a commonly used page within a user's experience. When a user "favorites" a page by pressing the favorites action, the button icon changes color with a small animation to confirm your selection.
  */
 class GlobalHeaderFavorites extends React.Component {
 	toggleActionSelected = (event) => {
@@ -61,7 +62,6 @@ class GlobalHeaderFavorites extends React.Component {
 			{
 				align: 'bottom',
 				body: <span />,
-				heading: 'My Favorites',
 				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
 			},
 			this.props.popover ? this.props.popover.props : {}

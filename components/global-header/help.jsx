@@ -21,7 +21,7 @@ const propTypes = {
 		triggerButton: PropTypes.string,
 	}),
 	/**
-	 * A `Popover` component. The props from this popover will be merged and override any default props.
+	 * A `Popover` component. The props from this popover will be merged and override any default props. The `children` prop will be ignored.
 	 */
 	popover: PropTypes.node,
 };
@@ -38,7 +38,6 @@ class GlobalHeaderHelp extends React.Component {
 			{
 				align: 'bottom',
 				body: <span />,
-				heading: 'Help and Training',
 				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
 			},
 			this.props.popover ? this.props.popover.props : {}

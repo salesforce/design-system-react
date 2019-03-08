@@ -3,7 +3,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 
-import SLDSIconSettings from '~/components/icon-settings';
+import SLDSIconSettings from '../../icon-settings';
 import SLDSGlobalHeader from '../../global-header';
 import SLDSGlobalHeaderFavorites from '../../global-header/favorites';
 import SLDSGlobalHeaderHelp from '../../global-header/help';

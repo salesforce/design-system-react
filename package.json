@@ -419,7 +419,7 @@
 		},
 		{
 			"component": "global-header",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Global Header",
 			"SLDS-component-path": "/components/global-header#flavor-base",
 			"dependencies": [

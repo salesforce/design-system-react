@@ -153,7 +153,18 @@ class GlobalHeaderDemo extends React.Component {
 					}}
 					popover={
 						<Popover
-							body={<div>{ipsum}</div>}
+							ariaLabelledby="favorites-heading"
+							body={
+								<div>
+									<h2
+										className="slds-text-heading_small"
+										id="favorites-heading"
+									>
+										Favorites
+									</h2>
+									{ipsum}
+								</div>
+							}
 							id="header-favorites-popover-id"
 						/>
 					}
@@ -171,7 +182,18 @@ class GlobalHeaderDemo extends React.Component {
 				/>
 				<GlobalHeaderHelp
 					popover={
-						<Popover body={<div>{ipsum}</div>} id="header-help-popover-id" />
+						<Popover
+							ariaLabelledby="help-heading"
+							body={
+								<div>
+									<h2 className="slds-text-heading_small" id="help-heading">
+										Help and Training
+									</h2>
+									{ipsum}
+								</div>
+							}
+							id="header-help-popover-id"
+						/>
 					}
 				/>
 				<GlobalHeaderSetup
@@ -189,6 +211,7 @@ class GlobalHeaderDemo extends React.Component {
 					notificationCount={5}
 					popover={
 						<Popover
+							ariaLabelledby="header-notifications-custom-popover-content"
 							body={
 								<HeaderNotificationsCustomContent
 									items={[

@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (COMPONENT === GLOBAL_HEADER_PROFILE) {
 			const popoverExtraMessage =
-				'Use the `popover` attribute to provide a `Popover` component with content inside the `body` attribute instead.';
+				'Use the `popover` attribute to provide a `Popover` component with content inside the `body` prop instead.';
 
 			sunsetProperty(COMPONENT, props.align, 'align');
 

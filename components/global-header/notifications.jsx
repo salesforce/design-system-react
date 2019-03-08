@@ -29,13 +29,13 @@ const propTypes = {
 	 */
 	notificationCount: PropTypes.number,
 	/**
-	 * A `Popover` component. The props from this popover will be merged and override any default props.
+	 * A `Popover` component. The props from this popover will be merged and override any default props. The `children` prop will be ignored.
 	 */
 	popover: PropTypes.node,
 };
 
 /**
- * A GlobalHeaderNotifications component.
+ * A GlobalHeaderNotifications component. Notifications are a way to notify a user about a global change within the application.
  */
 class GlobalHeaderNotifications extends React.Component {
 	render() {
@@ -47,7 +47,6 @@ class GlobalHeaderNotifications extends React.Component {
 			{
 				align: 'bottom right',
 				body: <span />,
-				heading: 'Notifications',
 				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
 			},
 			this.props.popover ? this.props.popover.props : {}
@@ -99,7 +98,7 @@ GlobalHeaderNotifications.defaultProps = {
 	assistiveText: {
 		newNotificationsAfter: ' new notifications',
 		newNotificationsBefore: '',
-		noNotifications: 'no new notifications',
+		noNotifications: 'No new notifications',
 	},
 	notificationCount: 0,
 };
