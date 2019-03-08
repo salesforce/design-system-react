@@ -18,6 +18,8 @@ newPRWelcomeComment: >
 
   Once feedback has been given, please reply to the feedback giver once the feedback on been addressed, so that they can continue the review.
 
+  If you need a release while you are waiting for a code review, you can publish a built tag to your own fork. See directions in the [release README](https://github.com/salesforce/design-system-react/blob/master/docs/release.md#release-to-your-own-fork).
+
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 
 # Comment to be posted to on pull requests merged by a first time user

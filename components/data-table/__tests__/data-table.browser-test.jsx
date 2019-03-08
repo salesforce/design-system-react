@@ -374,7 +374,7 @@ describe('DataTable: ', function() {
 	describe('Sortable', function() {
 		afterEach(removeTable);
 
-		it('first clicked on sortable column header should result in ascending sort', function(done) {
+		it('first clicked on sortable column header should result in ascending sort by default', function(done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
 				data.sortDirection.should.equal('asc');
@@ -385,6 +385,32 @@ describe('DataTable: ', function() {
 				<DataTable {...defaultProps} fixedLayout onSort={this.onSort}>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const thirdColumn = thead.querySelectorAll('th')[2];
+			const sortButton = thead.querySelectorAll('a')[0];
+
+			Simulate.click(sortButton, {});
+		});
+
+		it('if isDefaultSortDescending is true, first click on sortable column header should result in descending order', function(done) {
+			this.onSort = (data) => {
+				data.property.should.equal('count');
+				data.sortDirection.should.equal('desc');
+				done();
+			};
+
+			renderTable(
+				<DataTable {...defaultProps} fixedLayout onSort={this.onSort}>
+					{columns.map((columnProps) => (
+						<DataTableColumn
+							{...columnProps}
+							isDefaultSortDescending
+							key={columnProps.property}
+						/>
 					))}
 				</DataTable>
 			).call(this);
