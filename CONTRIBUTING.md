@@ -48,7 +48,25 @@ If you are adding or changing component props, the first step is to propose the 
    1. Review the [tests readme](/tests/README.md)
    1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here. `npm run test:snapshot` will run these tests by themselves
    1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries. These tests can be viewed at `http://localhost:8001`
-1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has a an empty string in it` error if they do not.
+   1. Add your component's meta description in `package.json`, under the `"components"` key. An example is shown below.
+      ```js
+      {
+        "component": "split-view",
+        "status": "prod",
+        "display-name": "Split View",
+        "SLDS-component-path": "/components/split-view",
+        "dependencies": [
+          {
+            "component": "header"
+          },
+          {
+            "component": "listbox"
+          }
+        ],
+        "url-slug": "split-views"
+      },
+      ```
+1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has an empty string in it` error if they do not.
 1. Push to your username's forked repository.
 1. Submit a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
 1. For large additions, make sure your tests pass, then mention @interactivellama and request a view, and we'll review your code, suggest any needed changes, and hopefully merge it in soon. Thank you!

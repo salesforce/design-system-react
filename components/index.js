@@ -81,11 +81,26 @@ export GlobalHeaderButton from './global-header/button';
 export SLDSGlobalHeaderDropdown from './global-header/dropdown';
 export GlobalHeaderDropdown from './global-header/dropdown';
 
+export SLDSGlobalHeaderFavorites from './global-header/favorites';
+export GlobalHeaderFavorites from './global-header/favorites';
+
+export SLDSGlobalHeaderHelp from './global-header/help';
+export GlobalHeaderHelp from './global-header/help';
+
+export SLDSGlobalHeaderNotifications from './global-header/notifications';
+export GlobalHeaderNotifications from './global-header/notifications';
+
 export SLDSGlobalHeaderProfile from './global-header/profile';
 export GlobalHeaderProfile from './global-header/profile';
 
 export SLDSGlobalHeaderSearch from './global-header/search';
 export GlobalHeaderSearch from './global-header/search';
+
+export SLDSGlobalHeaderSetup from './global-header/setup';
+export GlobalHeaderSetup from './global-header/setup';
+
+export SLDSGlobalHeaderTask from './global-header/task';
+export GlobalHeaderTask from './global-header/task';
 
 export SLDSGlobalNavigationBar from './global-navigation-bar';
 export GlobalNavigationBar from './global-navigation-bar';

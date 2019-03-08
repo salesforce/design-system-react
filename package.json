@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.9.5",
+	"version": "0.9.6",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -93,8 +93,8 @@
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.7.4",
-		"react": ">=15.4.1 <17",
-		"react-dom": ">=15.4.1 <17"
+		"react": ">=16.3 <17",
+		"react-dom": ">=16.3 <17"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.2.3",
@@ -133,8 +133,8 @@
 		"concurrently": "^4.0.1",
 		"cross-env": "^5.2.0",
 		"css-loader": "^0.28.0",
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
+		"enzyme": "^3.8.0",
+		"enzyme-adapter-react-16": "^1.9.1",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "16.1.0",
 		"eslint-config-prettier": "^3.0.1",
@@ -181,9 +181,9 @@
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
 		"puppeteer": "^1.9.0",
-		"react": "^16.4",
+		"react": "^16.8",
 		"react-docgen": "^4.0.1",
-		"react-dom": "^16.4",
+		"react-dom": "^16.8",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": "^16.4",
 		"regenerator-runtime": "^0.11.1",
@@ -231,15 +231,12 @@
 		},
 		{
 			"component": "app-launcher",
-			"status": "prod",
+			"status": "prototype",
 			"display-name": "App Launcher",
-			"SLDS-component-path": "/components/app-launcher",
+			"SLDS-component-path": "/components/app-launcher/#flavor-default",
 			"dependencies": [
 				{
-					"component": "expandable-section"
-				},
-				{
-					"component": "link"
+					"component": "section"
 				},
 				{
 					"component": "tile"
@@ -391,13 +388,6 @@
 			"url-slug": "date-pickers"
 		},
 		{
-			"component": "expandable-section",
-			"status": "prod",
-			"display-name": "Expandable Section",
-			"SLDS-component-path": "/components/expandable-section",
-			"url-slug": "expandable-section"
-		},
-		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
@@ -417,21 +407,30 @@
 		},
 		{
 			"component": "global-header",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Global Header",
 			"SLDS-component-path": "/components/global-header#flavor-base",
 			"dependencies": [
 				{
-					"component": "button"
+					"component": "favorites"
 				},
 				{
-					"component": "dropdown"
+					"component": "help"
+				},
+				{
+					"component": "notifications"
 				},
 				{
 					"component": "profile"
 				},
 				{
 					"component": "search"
+				},
+				{
+					"component": "setup"
+				},
+				{
+					"component": "task"
 				}
 			],
 			"url-slug": "global-headers"
