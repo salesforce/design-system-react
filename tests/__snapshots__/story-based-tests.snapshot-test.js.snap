@@ -8818,6 +8818,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                 "position": "absolute",
               }
             }
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
@@ -10697,6 +10698,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
@@ -11057,6 +11059,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
@@ -11231,6 +11234,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
@@ -11347,6 +11351,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
@@ -12435,6 +12440,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
@@ -13211,6 +13217,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
             onKeyDown={[Function]}
             role="listbox"
             style={Object {}}
+            tabIndex="-1"
           >
             <ul
               className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
