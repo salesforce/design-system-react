@@ -14,7 +14,7 @@ import RenderBranch from './render-branch';
 import { TREE_BRANCH } from '../../../utilities/constants';
 
 /**
- * A Tree Item is a non-branching node in a hierarchical list.
+ * A Tree Branch is a branching node in a hierarchical list.
  */
 const Branch = (props) => {
 	let treeIndex = '';
