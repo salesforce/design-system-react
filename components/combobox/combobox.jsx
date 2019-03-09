@@ -516,7 +516,9 @@ class Combobox extends React.Component {
 
 	handleInputChange = (event) => {
 		this.requestOpenMenu();
-		this.props.events.onChange(event, { value: event.target.value });
+		if (this.props.events && this.props.events.onChange) {
+			this.props.events.onChange(event, { value: event.target.value });
+		}
 	};
 
 	handleInputFocus = (event) => {

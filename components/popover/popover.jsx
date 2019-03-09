@@ -120,7 +120,7 @@ class Popover extends React.Component {
 		 */
 		ariaLabelledby: PropTypes.string,
 		/**
-		 * The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
+		 * Multiple children of any kind are allowed, but the first child must serve as the trigger component. Many props will be passed into this trigger related to popover interactions. The trigger needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
 		 */
 		children: PropTypes.node.isRequired,
 		/**
@@ -593,19 +593,22 @@ class Popover extends React.Component {
 	};
 
 	render() {
+		const otherChildren = [];
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
+		let clonedTrigger = null;
 
-		const clonedTrigger = this.props.children
-			? React.cloneElement(this.props.children, {
+		React.Children.forEach(this.props.children, (child, index) => {
+			if (index === 0) {
+				clonedTrigger = React.cloneElement(child, {
 					id: this.getId(),
 					onClick:
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
 							? (event) => {
 									this.handleClick(event, {
-										triggerOnClickCallback: this.props.children.props.onClick,
+										triggerOnClickCallback: child.props.onClick,
 									});
 								}
-							: this.children.props.onClick,
+							: child.props.onClick,
 					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 					onMouseDown: this.props.onMouseDown,
 					onMouseEnter:
@@ -616,10 +619,13 @@ class Popover extends React.Component {
 						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
 							? this.handleMouseLeave
 							: null,
-					tabIndex: this.props.children.props.tabIndex || '0',
-					...this.props.children.props,
-				})
-			: null;
+					tabIndex: child.props.tabIndex || '0',
+					...child.props,
+				});
+			} else {
+				otherChildren.push(child);
+			}
+		});
 
 		this.renderOverlay(this.getIsOpen());
 
@@ -631,6 +637,7 @@ class Popover extends React.Component {
 				ref={this.setContainerRef}
 			>
 				{clonedTrigger}
+				{otherChildren.length > 0 ? otherChildren : null}
 				{this.renderDialog(this.getIsOpen(), outsideClickIgnoreClass)}
 			</div>
 		);

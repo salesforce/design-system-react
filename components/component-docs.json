@@ -5901,231 +5901,175 @@
         "SLDS-component-path": "/components/global-header#flavor-base",
         "dependencies": [
             {
-                "button": {
-                    "description": "A helper component that renders a Button in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden if text-based buttons are required.",
-                    "methods": [],
-                    "name": "button",
-                    "source": "/components/global-header/button.jsx"
-                }
-            },
-            {
-                "dropdown": {
-                    "description": "This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).",
-                    "methods": [],
+                "favorites": {
+                    "description": "A GlobalHeaderFavorites component.",
+                    "methods": [
+                        {
+                            "name": "toggleActionSelected",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        }
+                    ],
                     "props": {
-                        "align": {
+                        "assistiveText": {
                             "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'left'",
-                                        "computed": false
+                                "name": "shape",
+                                "value": {
+                                    "action": {
+                                        "name": "string",
+                                        "required": false
                                     },
-                                    {
-                                        "value": "'right'",
-                                        "computed": false
+                                    "more": {
+                                        "name": "string",
+                                        "required": false
                                     }
-                                ]
+                                }
                             },
                             "required": false,
-                            "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderFavorites trigger button. The default is `Help and Training`.",
                             "defaultValue": {
-                                "value": "'right'",
+                                "value": "{\n    action: 'Toggle Favorite',\n    more: 'View Favorites',\n}",
                                 "computed": false
                             }
                         },
-                        "className": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Extra classnames to apply to the dropdown menu."
-                        },
-                        "buttonClassName": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "array"
-                                    },
-                                    {
-                                        "name": "object"
-                                    },
-                                    {
-                                        "name": "string"
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "CSS classes to be added to `li` element."
-                        },
-                        "iconName": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
-                        },
-                        "iconVariant": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'bare'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'container'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'border'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'border-filled'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'more'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'global-header'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "For icon variants, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#icon\">Lightning Design System Icons</a>.",
-                            "defaultValue": {
-                                "value": "'global-header'",
-                                "computed": false
-                            }
-                        },
-                        "id": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
-                        },
-                        "globalAction": {
+                        "actionDisabled": {
                             "type": {
                                 "name": "bool"
                             },
                             "required": false,
-                            "description": "Adds custom styling such as inverse fill and special sizing/spacing"
+                            "description": "Disables the favorites action (star) button"
                         },
-                        "nubbinPosition": {
+                        "actionSelected": {
                             "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'top left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top right'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom right'",
-                                        "computed": false
-                                    }
-                                ]
+                                "name": "bool"
                             },
                             "required": false,
-                            "description": "Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with \"icon container\" styling. Dropdown menus will still be contained to the closest scrolling parent.",
-                            "defaultValue": {
-                                "value": "'top right'",
-                                "computed": false
-                            }
+                            "description": "Controls whether the favorites action (star) button is selected or not"
                         },
-                        "offset": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
-                        },
-                        "onSelect": {
+                        "onToggleActionSelected": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": "Triggered when an item in the menu is clicked."
+                            "description": "This event fires when the favorites action (star) button is toggled. Passes in `event, { actionSelected }`."
                         },
-                        "options": {
-                            "type": {
-                                "name": "array"
-                            },
-                            "required": true,
-                            "description": "An array of menu item."
-                        },
-                        "buttonVariant": {
-                            "defaultValue": {
-                                "value": "'icon'",
-                                "computed": false
-                            },
-                            "required": false
-                        }
-                    },
-                    "name": "dropdown",
-                    "source": "/components/global-header/dropdown.jsx"
-                }
-            },
-            {
-                "profile": {
-                    "description": "A helper component that renders a MenuDropdown for the user profile.",
-                    "methods": [],
-                    "props": {
-                        "align": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'right'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
-                            "defaultValue": {
-                                "value": "'right'",
-                                "computed": false
-                            }
-                        },
-                        "children": {
+                        "popover": {
                             "type": {
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/utilities/menu-list/list' and pass in `<List>`.\n\n```\n<Dropdown>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                            "description": "A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props."
+                        }
+                    },
+                    "name": "favorites",
+                    "source": "/components/global-header/favorites.jsx"
+                }
+            },
+            {
+                "help": {
+                    "description": "A GlobalHeaderHelp component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "triggerButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderHelp trigger button. The default is `Help and Training`.",
+                            "defaultValue": {
+                                "value": "{\n    triggerButton: 'Help and Training',\n}",
+                                "computed": false
+                            }
                         },
+                        "popover": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props."
+                        }
+                    },
+                    "name": "help",
+                    "source": "/components/global-header/help.jsx"
+                }
+            },
+            {
+                "notifications": {
+                    "description": "A GlobalHeaderNotifications component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "newNotificationsAfter": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "newNotificationsBefore": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "noNotifications": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\n* `noNotifications`: Assistive text for when there are no new notifications.",
+                            "defaultValue": {
+                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'no new notifications',\n}",
+                                "computed": false
+                            }
+                        },
+                        "notificationCount": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Dictates the number of notifications shown in the new notifications badge.",
+                            "defaultValue": {
+                                "value": "0",
+                                "computed": false
+                            }
+                        },
+                        "popover": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props."
+                        }
+                    },
+                    "name": "notifications",
+                    "source": "/components/global-header/notifications.jsx"
+                }
+            },
+            {
+                "profile": {
+                    "description": "This component is an `Avatar` component that opens a `Popover` component when clicked.",
+                    "methods": [],
+                    "props": {
                         "className": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Extra classnames to apply to the dropdown menu."
+                            "description": "Extra classnames to apply to the popover."
                         },
                         "avatar": {
                             "type": {
@@ -6140,7 +6084,7 @@
                                 ]
                             },
                             "required": false,
-                            "description": "An image URL or avatar node to display for the user profile."
+                            "description": "An image URL or avatar node to display for the user profile. Defaults to a base64 encoded generic user avatar image string"
                         },
                         "buttonClassName": {
                             "type": {
@@ -6158,86 +6102,32 @@
                                 ]
                             },
                             "required": false,
-                            "description": "CSS classes to be added to `li` element."
+                            "description": "CSS classes to be added to the `button` element."
                         },
                         "id": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
+                            "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering button. If an id is not provided, it will be automatically generated."
                         },
-                        "nubbinPosition": {
+                        "popover": {
                             "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'top left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top right'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom right'",
-                                        "computed": false
-                                    }
-                                ]
+                                "name": "node"
                             },
                             "required": false,
-                            "description": "Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with \"icon container\" styling. Dropdown menus will still be contained to the closest scrolling parent.",
-                            "defaultValue": {
-                                "value": "'top right'",
-                                "computed": false
-                            }
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props."
                         },
-                        "offset": {
+                        "userName": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
-                        },
-                        "onSelect": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "Triggered when an item in the menu is clicked."
-                        },
-                        "options": {
-                            "type": {
-                                "name": "array"
-                            },
-                            "required": false,
-                            "description": "An array of menu item."
-                        },
-                        "buttonVariant": {
+                            "description": "The user name of the profile. Defaults to \"User Name\"",
                             "defaultValue": {
-                                "value": "'icon'",
+                                "value": "'User Name'",
                                 "computed": false
-                            },
-                            "required": false
-                        },
-                        "iconVariant": {
-                            "defaultValue": {
-                                "value": "'container'",
-                                "computed": false
-                            },
-                            "required": false
+                            }
                         }
                     },
                     "name": "profile",
@@ -6246,10 +6136,87 @@
             },
             {
                 "search": {
-                    "description": "The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.",
+                    "description": "The GlobalHeaderSearch component is used for application wide search. The form element is implemented as a `Combobox`.",
                     "methods": [],
+                    "props": {
+                        "combobox": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": true,
+                            "description": "A required `Combobox` component. The props from this combobox will be merged and override any default props."
+                        }
+                    },
                     "name": "search",
                     "source": "/components/global-header/search.jsx"
+                }
+            },
+            {
+                "setup": {
+                    "description": "A GlobalHeaderSetup component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "triggerButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.",
+                            "defaultValue": {
+                                "value": "{\n    triggerButton: 'Setup',\n}",
+                                "computed": false
+                            }
+                        },
+                        "dropdown": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Dropdown` component. The props from this dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the dropdown."
+                        }
+                    },
+                    "name": "setup",
+                    "source": "/components/global-header/setup.jsx"
+                }
+            },
+            {
+                "task": {
+                    "description": "A GlobalHeaderTask component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "triggerButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.",
+                            "defaultValue": {
+                                "value": "{\n    triggerButton: 'Global Actions',\n}",
+                                "computed": false
+                            }
+                        },
+                        "dropdown": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Dropdown` component. The props from this dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the dropdown."
+                        }
+                    },
+                    "name": "task",
+                    "source": "/components/global-header/task.jsx"
                 }
             }
         ]
@@ -9961,7 +9928,7 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`)."
+                "description": "Multiple children of any kind are allowed, but the first child must serve as the trigger component. Many props will be passed into this trigger related to popover interactions. The trigger needs to be a clickable element, such as a `Button` or an anchor tag (`a`)."
             },
             "body": {
                 "type": {
