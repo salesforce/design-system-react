@@ -422,16 +422,15 @@ class Example extends React.Component {
 		const currentNodesArray = Object.values(currentNodes).slice(1);
 
 		// Loop through each node to find if its label includes the search term
-		for (let index = 0; index < currentNodesArray.length; index++) {
-			const currentNode = currentNodesArray[index];
+		currentNodesArray.forEach((node) => {
 			if (
-				currentNode.label.toLowerCase().includes(searchTerm.toLowerCase()) &&
+				node.label.toLowerCase().includes(searchTerm.toLowerCase()) &&
 				searchTerm !== ''
 			) {
 				// expand all affliated parent nodes of the searched item/branch
-				this.expandParentNodes(currentNode, currentNodesArray);
+				this.expandParentNodes(node, currentNodesArray);
 			}
-		}
+		});
 		currentNodesArray.unshift(rootNode);
 
 		this.setState({
