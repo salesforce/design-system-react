@@ -23,8 +23,8 @@ class Example extends React.Component {
 					id: '3',
 					summary: 'Accordion Summary',
 					details: 'Accordion details - C',
-				}
-			]
+				},
+			],
 		};
 	}
 
