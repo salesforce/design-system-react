@@ -13,6 +13,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 import Info from './private/info';
 import Title from './private/title';
 import DetailRow from './private/detail-row';
@@ -35,8 +40,17 @@ const propTypes = {
 	className: PropTypes.string,
 	/**
 	 * The type of component
+	 * Note: Extra options are added to make the version backward compatible
 	 */
-	variant: PropTypes.string,
+	variant: PropTypes.oneOf([
+		'base',
+		'object-home',
+		'record-home',
+		'related-list',
+		'objectHome',
+		'recordHome',
+		'relatedList',
+	]),
 	/**
 	 * The info property can be a string or a React element
 	 */
@@ -116,6 +130,11 @@ const defaultProps = {
  * The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.
  */
 class PageHeader extends Component {
+	constructor(props) {
+		super(props);
+		checkProps(PAGE_HEADER, props, componentDoc);
+	}
+
 	_getClassNames(className) {
 		return classnames(
 			'slds-page-header',
@@ -245,13 +264,16 @@ class PageHeader extends Component {
 
 		let Variant;
 		switch (variant) {
-			case 'objectHome':
+			case 'object-home':
+			case 'objectHome': // For backward compatibility
 				Variant = ObjectHome;
 				break;
-			case 'recordHome':
+			case 'record-home':
+			case 'recordHome': // For backward compatibility
 				Variant = RecordHome;
 				break;
-			case 'relatedList':
+			case 'related-list':
+			case 'relatedList': // For backward compatibility
 				Variant = RelatedList;
 				break;
 			default:
