@@ -139,7 +139,9 @@ class PageHeader extends Component {
 		return classnames(
 			'slds-page-header',
 			{
-				'slds-page-header_object-home': this.props.variant === 'objectHome',
+				'slds-page-header_object-home':
+					this.props.variant === 'object-home' ||
+					this.props.variant === 'objectHome',
 			},
 			className
 		);

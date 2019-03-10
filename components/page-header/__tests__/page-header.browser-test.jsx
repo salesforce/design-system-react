@@ -74,7 +74,7 @@ describe('PageHeader: ', function() {
 		iconName: 'user',
 		label: 'Record Type',
 		title: 'Record Title',
-		variant: 'recordHome',
+		variant: 'record-home',
 		contentRight: recordHomeContentRight,
 		details: recordHomeDetails,
 	};
