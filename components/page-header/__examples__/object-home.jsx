@@ -156,7 +156,7 @@ class Example extends React.Component {
 						</h1>
 					}
 					truncate
-					variant="objectHome"
+					variant="object-home"
 				/>
 			</IconSettings>
 		);

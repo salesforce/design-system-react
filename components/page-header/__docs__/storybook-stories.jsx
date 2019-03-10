@@ -353,7 +353,7 @@ storiesOf(PAGE_HEADER, module)
 			iconName: 'user',
 			label: 'Record Type',
 			title: 'Record Title',
-			variant: 'recordHome',
+			variant: 'record-home',
 			contentRight: recordHomeContentRight,
 			details: recordHomeDetails,
 		})
@@ -362,7 +362,7 @@ storiesOf(PAGE_HEADER, module)
 	.add('Related List', () =>
 		getPageHeader({
 			title: 'Contacts',
-			variant: 'objectHome',
+			variant: 'object-home',
 			info: '10 items • sorted by name',
 			contentRight: relatedListContentRight,
 			navRight: relatedListNavRight,

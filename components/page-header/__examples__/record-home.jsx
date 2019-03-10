@@ -72,7 +72,7 @@ class Example extends React.Component {
 					iconName="user"
 					label="Record Type"
 					title="Record Title"
-					variant="recordHome"
+					variant="record-home"
 				/>
 			</IconSettings>
 		);

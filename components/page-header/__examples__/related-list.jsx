@@ -102,7 +102,7 @@ class Example extends React.Component {
 					title="Contacts (will truncate)"
 					navRight={navRight}
 					contentRight={contentRight}
-					variant="objectHome"
+					variant="object-home"
 					truncate
 					trail={trail}
 					info="10 items • sorted by name"
