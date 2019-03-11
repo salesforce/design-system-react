@@ -29,11 +29,10 @@ const propTypes = {
 
 class ToastContainer extends React.Component {
 	render() {
+		const { className, children } = this.props;
 		return (
-			<div
-				className={classNames('slds-notify-container', this.props.className)}
-			>
-				{this.props.children}
+			<div className={classNames('slds-notify-container', className)}>
+				{children}
 			</div>
 		);
 	}

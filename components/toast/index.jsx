@@ -149,6 +149,14 @@ class Toast extends React.Component {
 
 	render() {
 		// Merge objects of strings with their default object
+		const {
+			className,
+			onRequestClose,
+			onClickHeadingLink,
+			style,
+			variant,
+		} = this.props;
+		let { icon } = this.props;
 		const assistiveText = assign(
 			{},
 			defaultProps.assistiveText,
@@ -171,9 +179,7 @@ class Toast extends React.Component {
 			error: <Icon category="utility" name="error" />,
 		};
 
-		const icon = this.props.icon
-			? this.props.icon
-			: defaultIcons[this.props.variant];
+		icon = icon || defaultIcons[variant];
 
 		const clonedIcon = React.cloneElement(icon, {
 			containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
@@ -187,28 +193,25 @@ class Toast extends React.Component {
 				className={classNames(
 					'slds-notify slds-notify_toast',
 					{
-						'slds-theme_info': this.props.variant === 'info',
-						'slds-theme_success': this.props.variant === 'success',
-						'slds-theme_warning': this.props.variant === 'warning',
-						'slds-theme_error': this.props.variant === 'error',
+						'slds-theme_info': variant === 'info',
+						'slds-theme_success': variant === 'success',
+						'slds-theme_warning': variant === 'warning',
+						'slds-theme_error': variant === 'error',
 					},
-					this.props.className
+					className
 				)}
 				role="alert"
-				style={this.props.style}
+				style={style}
 			>
 				<span className="slds-assistive-text">
-					{assistiveTextVariant[this.props.variant]}
+					{assistiveTextVariant[variant]}
 				</span>
 				{clonedIcon}
 				<div className="slds-notify__content">
 					<h2 className="slds-text-heading_small">
 						{heading}{' '}
 						{labels.headingLink ? (
-							<a
-								onClick={this.props.onClickHeadingLink}
-								href="javascript:void(0);"
-							>
+							<a onClick={onClickHeadingLink} href="javascript:void(0);">
 								{labels.headingLink}
 							</a>
 						) : null}
@@ -223,7 +226,7 @@ class Toast extends React.Component {
 					iconName="close"
 					iconSize="large"
 					inverse
-					onClick={this.props.onRequestClose}
+					onClick={onRequestClose}
 					title={assistiveText.closeButton}
 					variant="icon"
 				/>
