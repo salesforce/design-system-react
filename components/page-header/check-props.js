@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import sunsetProperty from '../../utilities/warning/sunset-property';
+import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function() {};
@@ -20,16 +21,40 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
-		if (
-			props.variant === 'objectHome' ||
-			props.variant === 'recordHome' ||
-			props.variant === 'relatedList'
-		) {
-			sunsetProperty(
+		if (props.variant === 'objectHome') {
+			deprecatedPropertyValue(
 				COMPONENT,
-				props.variant,
-				'variant accepting value in camelCase',
-				`\`variant accepting value in camelCase\` has been deprecated and now accepts value in kebab-case.`
+				{
+					propAsString: 'variant',
+					propValue: props.variant,
+					deprecatedPropValue: 'objectHome',
+					replacementPropAsValue: 'object-home',
+				},
+				"Using value of variants in camelCase is deprecated. Use kebab-case ('object-home') instead."
+			);
+		}
+		if (props.variant === 'recordHome') {
+			deprecatedPropertyValue(
+				COMPONENT,
+				{
+					propAsString: 'variant',
+					propValue: props.variant,
+					deprecatedPropValue: 'recordHome',
+					replacementPropAsValue: 'record-home',
+				},
+				"Using value of variants in camelCase is deprecated. Use kebab-case ('record-home') instead."
+			);
+		}
+		if (props.variant === 'relatedList') {
+			deprecatedPropertyValue(
+				COMPONENT,
+				{
+					propAsString: 'variant',
+					propValue: props.variant,
+					deprecatedPropValue: 'relatedList',
+					replacementPropAsValue: 'related-list',
+				},
+				"Using value of variants in camelCase is deprecated. Use kebab-case ('related-list') instead."
 			);
 		}
 	};
