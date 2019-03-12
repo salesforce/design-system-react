@@ -154,6 +154,10 @@ const Timepicker = createReactClass({
 				});
 			}
 		}
+
+		if (nextProps.strValue !== this.props.value) {
+			this.setState({ strValue: nextProps.strValue});
+		}
 	},
 
 	getOptions() {
