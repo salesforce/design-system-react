@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -284,7 +286,7 @@ describe('SLDSMenuDropdown', function() {
 		beforeEach(
 			mountComponent(
 				<DemoComponent
-					assistiveText="more options"
+					assistiveText={{ icon: 'more options' }}
 					buttonVariant="icon"
 					checkmark
 					iconCategory="utility"
@@ -372,14 +374,15 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				1
 			);
-			openNodes.menu
-				.find('.slds-dropdown__item a')
-				.at(0)
-				.simulate('click');
+			const firstNode = openNodes.menu.find('.slds-dropdown__item a').at(0);
+			firstNode.simulate('click');
 			openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				2
 			);
+			// item with checkmark has proper aria markup
+			expect(firstNode).attr('aria-checked', 'true');
+			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
 	});
 
@@ -424,8 +427,12 @@ describe('SLDSMenuDropdown', function() {
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
-		afterEach(() => {
-			removeDropdownTrigger(btn);
+		afterEach((done) => {
+			// due to hover-close delay, removal from DOM must be delayed
+			setTimeout(() => {
+				removeDropdownTrigger(btn);
+				done();
+			}, 100);
 		});
 
 		it('gives the button correct aria properties', () => {

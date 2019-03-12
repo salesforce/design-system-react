@@ -1,21 +1,20 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Datepicker from '~/components/date-picker';
 import Input from '~/components/input';
 
-const Example = createReactClass({
-	displayName: 'DatepickerExample',
+class Example extends React.Component {
+	static displayName = 'DatepickerExample';
 
-	getInitialState() {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
 	render() {
 		return (
 			<Datepicker
+				input={<Input placeholder="With custom Input" />}
 				isOpen={this.state.isOpen}
 				onRequestClose={() => {
 					this.setState({ isOpen: false });
@@ -31,11 +30,9 @@ const Example = createReactClass({
 						console.log('onChange', event, data);
 					}
 				}}
-			>
-				<Input placeholder="With custom Input" value="" />
-			</Datepicker>
+			/>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

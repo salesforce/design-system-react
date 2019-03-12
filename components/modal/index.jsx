@@ -13,9 +13,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -320,7 +317,7 @@ class Modal extends React.Component {
 
 	dismissModalOnClickOutside() {
 		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
+		const dismissOnClickOutside = this.props.dismissOnClickOutside
 			? this.props.dismissOnClickOutside
 			: this.props.dismissible;
 

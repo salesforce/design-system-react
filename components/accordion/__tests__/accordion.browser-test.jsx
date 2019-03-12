@@ -62,7 +62,7 @@ class AccordionExample extends React.Component {
 			<Dropdown
 				align="right"
 				id="ButtonGroupExampleDropdown"
-				assistiveText="More Options"
+				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				buttonClassName="slds-shrink-none"
 				iconCategory="utility"
@@ -159,9 +159,7 @@ describe('Accordion', function() {
 			wrapper = mount(<AccordionExample />, {
 				attachTo: mountNode,
 			});
-			const panelContentActions = wrapper.find(
-				'div .slds-dropdown-trigger .slds-dropdown-trigger_click'
-			);
+			const panelContentActions = wrapper.find('div .slds-dropdown-trigger');
 			expect(panelContentActions, 'panel dropdown component exists').to.exist;
 		});
 	});

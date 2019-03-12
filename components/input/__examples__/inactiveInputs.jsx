@@ -1,10 +1,10 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'InactiveInputExamples',
+class Example extends React.Component {
+	static displayName = 'InactiveInputExamples';
 
 	render() {
 		return (
@@ -32,21 +32,10 @@ const Example = createReactClass({
 							value="Read Only Value"
 						/>
 					</div>
-					<div className="slds-col_padded">
-						<h1 className="slds-text-title_caps slds-p-vertical_medium">
-							Static Input
-						</h1>
-						<Input
-							id="unique-id-3"
-							label="Input Label"
-							isStatic
-							value="Read Only Value"
-						/>
-					</div>
 				</section>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

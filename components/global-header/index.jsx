@@ -10,7 +10,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -23,8 +22,13 @@ import EventUtil from '../../utilities/event';
 // ## Constants
 import {
 	GLOBAL_HEADER,
+	GLOBAL_HEADER_FAVORITES,
+	GLOBAL_HEADER_HELP,
+	GLOBAL_HEADER_NOTIFICATIONS,
 	GLOBAL_HEADER_PROFILE,
 	GLOBAL_HEADER_SEARCH,
+	GLOBAL_HEADER_SETUP,
+	GLOBAL_HEADER_TASK,
 	GLOBAL_HEADER_TOOL,
 } from '../../utilities/constants';
 
@@ -50,10 +54,10 @@ const defaultProps = {
  * </SLDSGlobalHeader>
  * ```
  */
-const GlobalHeader = createReactClass({
-	displayName: GLOBAL_HEADER,
+class GlobalHeader extends React.Component {
+	static displayName = GLOBAL_HEADER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -84,46 +88,59 @@ const GlobalHeader = createReactClass({
 		 * Required for accessibility. Should jump the user to the primary navigation.
 		 */
 		onSkipToNav: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	componentWillMount() {
 		checkProps(GLOBAL_HEADER, this.props, componentDoc);
-	},
+	}
 
-	handleSkipToContent(e) {
+	handleSkipToContent = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToContent(e);
-	},
+	};
 
-	handleSkipToNav(e) {
+	handleSkipToNav = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToNav(e);
-	},
+	};
 
 	render() {
-		let tools;
-		let search;
-		let profile;
-
-		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type.displayName === GLOBAL_HEADER_TOOL) {
-				if (!tools) tools = [];
-				tools.push(child);
-			} else if (child && child.type.displayName === GLOBAL_HEADER_SEARCH) {
-				search = child;
-			} else if (child && child.type.displayName === GLOBAL_HEADER_PROFILE) {
-				profile = child;
-			}
-		});
-
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
 		};
+		let actions = {
+			[GLOBAL_HEADER_FAVORITES]: [],
+			[GLOBAL_HEADER_HELP]: [],
+			[GLOBAL_HEADER_NOTIFICATIONS]: [],
+			[GLOBAL_HEADER_PROFILE]: [],
+			[GLOBAL_HEADER_SETUP]: [],
+			[GLOBAL_HEADER_TASK]: [],
+			[GLOBAL_HEADER_TOOL]: [], // support for deprecated GlobalHeaderButton and GlobalHeaderDropdown
+		};
+		let search;
+
+		React.Children.forEach(this.props.children, (child) => {
+			if (child) {
+				if (child.type.displayName === GLOBAL_HEADER_SEARCH) {
+					search = child;
+				} else if (actions[child.type.displayName]) {
+					actions[child.type.displayName].push(child);
+				}
+			}
+		});
+
+		actions = [].concat(
+			actions[GLOBAL_HEADER_FAVORITES],
+			actions[GLOBAL_HEADER_TASK],
+			actions[GLOBAL_HEADER_HELP],
+			actions[GLOBAL_HEADER_SETUP],
+			actions[GLOBAL_HEADER_NOTIFICATIONS],
+			actions[GLOBAL_HEADER_TOOL], // support for deprecated GlobalHeaderButton and GlobalHeaderDropdown
+			actions[GLOBAL_HEADER_PROFILE]
+		);
 
 		/* eslint-disable max-len, no-script-url */
 		return (
@@ -155,16 +172,24 @@ const GlobalHeader = createReactClass({
 						/>
 					</div>
 					{search}
-					<ul className="slds-global-header__item slds-grid slds-grid_vertical-align-center">
-						{tools}
-						{profile}
-					</ul>
+					<div className="slds-global-header__item">
+						<ul className="slds-global-actions">
+							{actions.map((actionItem, index) => (
+								<li
+									className="slds-global-actions__item"
+									key={`actions-item-${index}`} /* eslint-disable-line react/no-array-index-key */
+								>
+									{actionItem}
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 				{this.props.navigation}
 			</header>
 		);
 		/* eslint-enable max-len, no-script-url */
-	},
-});
+	}
+}
 
 export default GlobalHeader;

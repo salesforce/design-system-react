@@ -5,7 +5,6 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import requiredIf from 'react-required-if';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -13,6 +12,8 @@ import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
 import componentDoc from './docs.json';
 import Tooltip from '../tooltip';
+
+import getAriaProps from '../../utilities/get-aria-props';
 
 import { BUTTON } from '../../utilities/constants';
 
@@ -28,29 +29,13 @@ const defaultProps = {
 
 /**
  * The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.
- * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.
- * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
+ * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
+ * Although not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.
  */
-const Button = createReactClass({
-	displayName: BUTTON,
+class Button extends React.Component {
+	static displayName = BUTTON;
 
-	propTypes: {
-		/**
-		 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
-		 */
-		'aria-describedby': PropTypes.string,
-		/**
-		 * Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions.
-		 */
-		'aria-controls': PropTypes.string,
-		/**
-		 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
-		 */
-		'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-		/**
-		 * True if Button triggers a menu or popup to open/close.
-		 */
-		'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -171,6 +156,10 @@ const Button = createReactClass({
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
+		 * Triggered when a mouse button is released
+		 */
+		onMouseUp: PropTypes.func,
+		/**
 		 * If true, button scales to 100% width on small form factors.
 		 */
 		responsive: PropTypes.bool,
@@ -206,18 +195,16 @@ const Button = createReactClass({
 		 * Custom styles to be passed to the component
 		 */
 		style: PropTypes.object,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(BUTTON, this.props, componentDoc);
-	},
+	}
 
-	getClassName() {
+	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
 		let iconVariant = this.props.iconVariant;
@@ -259,15 +246,15 @@ const Button = createReactClass({
 			},
 			this.props.className
 		);
-	},
+	};
 
-	handleClick(event) {
+	handleClick = (event) => {
 		if (this.props.onClick) {
 			this.props.onClick(event, {});
 		}
-	},
+	};
 
-	renderIcon(name) {
+	renderIcon = (name) => {
 		const iconSize =
 			this.props.iconSize === '' || this.props.iconVariant
 				? null
@@ -290,9 +277,9 @@ const Button = createReactClass({
 				size={iconSize}
 			/>
 		);
-	},
+	};
 
-	renderLabel() {
+	renderLabel = () => {
 		const iconOnly = this.props.iconName || this.props.iconPath;
 		const assistiveTextIcon =
 			typeof this.props.assistiveText === 'string'
@@ -307,15 +294,12 @@ const Button = createReactClass({
 		) : (
 			this.props.label
 		);
-	},
+	};
 
-	renderButton() {
+	renderButton = () => {
+		const ariaProps = getAriaProps(this.props);
 		return (
 			<button
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-expanded={this.props['aria-expanded']}
-				aria-haspopup={this.props['aria-haspopup']}
 				className={this.getClassName()}
 				disabled={this.props.disabled}
 				id={this.props.id}
@@ -328,6 +312,7 @@ const Button = createReactClass({
 				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
+				onMouseUp={this.props.onMouseUp}
 				ref={(component) => {
 					if (this.props.buttonRef) {
 						this.props.buttonRef(component);
@@ -337,6 +322,7 @@ const Button = createReactClass({
 				title={this.props.title}
 				type={this.props.type}
 				style={this.props.style}
+				{...ariaProps}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
@@ -344,7 +330,12 @@ const Button = createReactClass({
 					? this.renderIcon(this.props.iconName)
 					: null}
 				{this.props.iconVariant === 'more' ? (
-					<ButtonIcon category="utility" name="down" size="x-small" />
+					<ButtonIcon
+						category="utility"
+						name="down"
+						size="x-small"
+						className={this.props.iconClassName}
+					/>
 				) : null}
 
 				{this.props.iconPosition === 'left' || !this.props.iconPosition
@@ -355,16 +346,16 @@ const Button = createReactClass({
 				}
 			</button>
 		);
-	},
+	};
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
-	renderTooltip() {
-		return <Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>;
-	},
+	renderTooltip = () => (
+		<Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>
+	);
 
 	render() {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
-	},
-});
+	}
+}
 
 export default Button;

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -7,7 +8,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -15,9 +16,6 @@ import PropTypes from 'prop-types';
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
-
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
@@ -32,6 +30,8 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 import Button from '../button';
+import MediaObject from '../media-object';
+import Icon from '../icon';
 
 // ### Children
 import Dialog from '../utilities/dialog';
@@ -77,18 +77,19 @@ const defaultProps = {
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
+	variant: 'base',
 };
 
 /**
  * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.
  */
-const Popover = createReactClass({
+class Popover extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: POPOVER,
+	static displayName = POPOVER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Aligns the popover with the respective side of the trigger. That is `top` will place the `Popover` above the trigger.
 		 */
@@ -119,7 +120,7 @@ const Popover = createReactClass({
 		 */
 		ariaLabelledby: PropTypes.string,
 		/**
-		 * The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
+		 * Multiple children of any kind are allowed, but the first child must serve as the trigger component. Many props will be passed into this trigger related to popover interactions. The trigger needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
 		 */
 		children: PropTypes.node.isRequired,
 		/**
@@ -179,7 +180,7 @@ const Popover = createReactClass({
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
+		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
 		 */
 		onRequestClose: PropTypes.func,
 		/**
@@ -209,23 +210,23 @@ const Popover = createReactClass({
 			PropTypes.object,
 			PropTypes.string,
 		]),
-	},
+		/**
+		 * Determines the type of the popover. `error` and `warning` allows the  content body to scroll. Default is `base` _Tested with snaphots._
+		 */
+		variant: PropTypes.oneOf(['base', 'error', 'warning']),
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
-	getInitialState() {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(POPOVER, this.props, componentDoc);
-	},
+	}
 
 	componentWillUnmount() {
 		if (currentOpenPopover === this) {
@@ -233,29 +234,25 @@ const Popover = createReactClass({
 		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);
-	},
+	}
 
-	getId() {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen() {
-		return (
-			!this.props.disabled &&
-			!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen)
-		);
-	},
+	getIsOpen = () =>
+		!this.props.disabled &&
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
-	getMenu() {
+	getMenu = () =>
 		// needed by keyboard navigation
-		return this.dialog;
-	},
+		this.dialog;
 
-	setMenuRef(component) {
+	setMenuRef = (component) => {
 		this.dialog = component;
-	},
+	};
 
-	setContainerRef(component) {
+	setContainerRef = (component) => {
 		this.trigger = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -265,9 +262,9 @@ const Popover = createReactClass({
 		if (!this.state.inputRendered) {
 			this.setState({ inputRendered: true });
 		}
-	},
+	};
 
-	handleDialogClose(event, data) {
+	handleDialogClose = (event, data) => {
 		const componentWillUnmount = (data && data.componentWillUnmount) || false;
 
 		if (currentOpenPopover === this) {
@@ -281,9 +278,9 @@ const Popover = createReactClass({
 				componentWillUnmount,
 			});
 		}
-	},
+	};
 
-	handleClose(event, data) {
+	handleClose = (event, data) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -302,9 +299,9 @@ const Popover = createReactClass({
 
 			this.isHover = false;
 		}
-	},
+	};
 
-	handleOpen() {
+	handleOpen = () => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -321,12 +318,12 @@ const Popover = createReactClass({
 				isOpen: true,
 			});
 		}
-	},
+	};
 
 	/* props.openOn is not a part of prop-types because it is not a supported feature, but may be needed for backwards compatibility with non-accessible dropdown/popover hybrids. */
 
 	/* eslint-disable react/prop-types */
-	handleMouseEnter(event) {
+	handleMouseEnter = (event) => {
 		const isOpen = this.getIsOpen();
 
 		this.isHover = true;
@@ -341,9 +338,9 @@ const Popover = createReactClass({
 		if (this.props.onMouseEnter) {
 			this.props.onMouseEnter(event);
 		}
-	},
+	};
 
-	handleMouseLeave(event) {
+	handleMouseLeave = (event) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -355,10 +352,11 @@ const Popover = createReactClass({
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave(event);
 		}
-	},
+	};
+
 	/* eslint-enable react/prop-types */
 
-	handleClick(event, { triggerOnClickCallback }) {
+	handleClick = (event, { triggerOnClickCallback }) => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -374,9 +372,9 @@ const Popover = createReactClass({
 		if (triggerOnClickCallback) {
 			triggerOnClickCallback(event);
 		}
-	},
+	};
 
-	handleFocus(event) {
+	handleFocus = (event) => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -386,9 +384,9 @@ const Popover = createReactClass({
 		if (this.props.onFocus) {
 			this.props.onFocus(event);
 		}
-	},
+	};
 
-	handleKeyDown(event) {
+	handleKeyDown = (event) => {
 		if (event.keyCode) {
 			if (event.keyCode !== KEYS.TAB) {
 				const isOpen = this.getIsOpen();
@@ -408,26 +406,26 @@ const Popover = createReactClass({
 				this.props.onKeyDown(event);
 			}
 		}
-	},
+	};
 
-	handleCancel(event) {
+	handleCancel = (event) => {
 		this.handleClose(event, { trigger: 'cancel' });
-	},
+	};
 
-	handleClickOutside(event) {
+	handleClickOutside = (event) => {
 		this.handleClose(event, { trigger: 'clickOutside' });
-	},
+	};
 
-	toggleOpenFromKeyboard(event) {
+	toggleOpenFromKeyboard = (event) => {
 		const isOpen = this.getIsOpen();
 		if (isOpen) {
 			this.handleCancel(event);
 		} else {
 			this.handleOpen();
 		}
-	},
+	};
 
-	renderDialog(isOpen, outsideClickIgnoreClass) {
+	renderDialog = (isOpen, outsideClickIgnoreClass) => {
 		const props = this.props;
 		const offset = props.offset;
 		const assistiveText = {
@@ -437,6 +435,46 @@ const Popover = createReactClass({
 		const closeButtonAssistiveText =
 			props.closeButtonAssistiveText || assistiveText.closeButton;
 
+		// HEADER SUB-RENDERS
+		const hasThemedHeader =
+			this.props.variant === 'error' || this.props.variant === 'warning';
+		const hasDefinedHeader = this.props.heading || hasThemedHeader;
+		const headerIcon = {
+			error: <Icon category="utility" name="error" size="x-small" inverse />,
+			warning: (
+				<Icon category="utility" name="warning" size="x-small" inverse />
+			),
+		};
+		const headerVariants = {
+			base: (
+				<header className="slds-popover__header">
+					<h2
+						id={`${this.getId()}-dialog-heading`}
+						className="slds-text-heading_small"
+					>
+						{this.props.heading}
+					</h2>
+				</header>
+			),
+			themed: (
+				<header className="slds-popover__header">
+					<MediaObject
+						body={
+							<h2
+								className="slds-truncate slds-text-heading_medium"
+								title={props.heading}
+							>
+								{props.heading}
+							</h2>
+						}
+						figure={headerIcon[this.props.variant]}
+						verticalCenter
+					/>
+				</header>
+			),
+		};
+
+		// MAIN RENDER
 		return isOpen ? (
 			<Dialog
 				hasNubbin
@@ -445,6 +483,8 @@ const Popover = createReactClass({
 					this.props.contentsClassName,
 					'ignore-react-onclickoutside',
 					'slds-popover',
+					{ 'slds-popover_error': props.variant === 'error' },
+					{ 'slds-popover_warning': props.variant === 'warning' },
 					props.className
 				)}
 				context={this.context}
@@ -473,34 +513,69 @@ const Popover = createReactClass({
 					assistiveText={{ icon: closeButtonAssistiveText }}
 					iconCategory="utility"
 					iconName="close"
-					iconSize="small"
 					className="slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
 					onClick={this.handleCancel}
 					variant="icon"
+					inverse={
+						this.props.variant === 'error' || this.props.variant === 'warning'
+					}
 				/>
 
-				{this.props.heading ? (
-					<header className="slds-popover__header">
-						<h2
-							id={`${this.getId()}-dialog-heading`}
-							className="slds-text-heading_small"
+				{hasDefinedHeader
+					? headerVariants[hasThemedHeader ? 'themed' : 'base']
+					: null}
+				{props.variant === 'error' || props.variant === 'warning' ? (
+					// THIS WRAPPING DIV IS NOT IN SLDS MARKUP
+					<div>
+						<div
+							id={`${this.getId()}-dialog-body`}
+							className="slds-popover__body slds-popover__body_scrollable"
+							// REMOVE IN THE FUTURE: SLDS OVERRIDE
+							// Possible solution in future is to use .slds-popover__body_small
+							style={{
+								borderBottom: 'none',
+							}}
 						>
-							{this.props.heading}
-						</h2>
-					</header>
-				) : null}
+							{props.body}
+						</div>
+						<div
+							// GRADIENT FOOTER - SLDS OVERRIDE
+							// REMOVE IN THE FUTURE (HOPEFULLY)
+							style={{
+								position: 'absolute',
+								bottom: 0,
+								left: 0,
+								width: '100%',
+								textAlign: 'center',
+								margin: 0,
+								padding: '5px 0',
+								/* "transparent" only works here because == rgba(0,0,0,0) */
+								backgroundImage:
+									'linear-gradient(to bottom, transparent, rgba(255,255,255,100)',
+							}}
+						/>
+					</div>
+				) : (
+					// NOT SCROLLABLE
+					<div
+						id={`${this.getId()}-dialog-body`}
+						className={classNames('slds-popover__body', {
+							'slds-popover__body_scrollable':
+								props.variant === 'error' || props.variant === 'warning',
+						})}
+					>
+						{props.body}
+					</div>
+				)}
 
-				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
-					{props.body}
-				</div>
 				{this.props.footer ? (
 					<footer className="slds-popover__footer">{this.props.footer}</footer>
 				) : null}
 			</Dialog>
 		) : null;
-	},
+	};
 
-	renderOverlay(isOpen) {
+	renderOverlay = (isOpen) => {
 		if (isFunction(overlay) && documentDefined) {
 			overlay(isOpen, overlay);
 		} else if (
@@ -515,22 +590,25 @@ const Popover = createReactClass({
 			this.overlay.parentNode.removeChild(this.overlay);
 			this.overlay = undefined;
 		}
-	},
+	};
 
 	render() {
+		const otherChildren = [];
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
+		let clonedTrigger = null;
 
-		const clonedTrigger = this.props.children
-			? React.cloneElement(this.props.children, {
+		React.Children.forEach(this.props.children, (child, index) => {
+			if (index === 0) {
+				clonedTrigger = React.cloneElement(child, {
 					id: this.getId(),
 					onClick:
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
 							? (event) => {
 									this.handleClick(event, {
-										triggerOnClickCallback: this.props.children.props.onClick,
+										triggerOnClickCallback: child.props.onClick,
 									});
 								}
-							: this.children.props.onClick,
+							: child.props.onClick,
 					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 					onMouseDown: this.props.onMouseDown,
 					onMouseEnter:
@@ -541,10 +619,13 @@ const Popover = createReactClass({
 						this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
 							? this.handleMouseLeave
 							: null,
-					tabIndex: this.props.children.props.tabIndex || '0',
-					...this.props.children.props,
-				})
-			: null;
+					tabIndex: child.props.tabIndex || '0',
+					...child.props,
+				});
+			} else {
+				otherChildren.push(child);
+			}
+		});
 
 		this.renderOverlay(this.getIsOpen());
 
@@ -556,11 +637,12 @@ const Popover = createReactClass({
 				ref={this.setContainerRef}
 			>
 				{clonedTrigger}
+				{otherChildren.length > 0 ? otherChildren : null}
 				{this.renderDialog(this.getIsOpen(), outsideClickIgnoreClass)}
 			</div>
 		);
-	},
-});
+	}
+}
 
 Popover.contextTypes = {
 	iconPath: PropTypes.string,

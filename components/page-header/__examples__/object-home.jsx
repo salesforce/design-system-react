@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -7,8 +7,8 @@ import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'ObjectHomePageHeaderExample';
 
 	render() {
 		const navRight = (
@@ -22,6 +22,7 @@ const Example = createReactClass({
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
+						id="page-header-dropdown-object-home-nav-right"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -38,6 +39,7 @@ const Example = createReactClass({
 			<div>
 				<Dropdown
 					align="right"
+					id="page-header-dropdown-object-home-content-right"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -59,8 +61,10 @@ const Example = createReactClass({
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
+					id="page-header-dropdown-object-home-content-right-2"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -128,6 +132,7 @@ const Example = createReactClass({
 					title={
 						<h1 className="slds-page-header__title slds-p-right_x-small">
 							<Dropdown
+								id="page-header-dropdown-object-home-header"
 								options={[
 									{ label: 'Menu Item One', value: 'A0' },
 									{ label: 'Menu Item Two', value: 'B0' },
@@ -155,7 +160,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

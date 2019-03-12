@@ -47,7 +47,7 @@ import Button from '@salesforce/design-system-react/components/button';
 Assuming you’re using the [babel loader for Webpack](https://github.com/babel/babel-loader), you’ll also want to tell the loader to go ahead and include the design-system-react folders in `node_modules`. Instead of excluding all of node_modules, which some tutorials have you do, we’d recommend explicitly including each directory where you have ES2015 code that you want Babel to process. Something like the following **Webpack v1** file:
 
 ```js
-onst path = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 

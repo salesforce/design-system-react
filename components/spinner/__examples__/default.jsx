@@ -1,6 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
-import Spinner from '~/components/slider';
+import Spinner from '~/components/spinner';
 
 class Example extends React.Component {
 	static displayName = 'SpinnerExample';

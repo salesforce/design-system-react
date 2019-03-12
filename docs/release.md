@@ -1,6 +1,20 @@
 # Release Process
 
-Before releasing, make sure all examples work in documentation site.
+Before releasing the library publicly, please make sure all examples work in the documentation site.
+
+## Release to your own fork
+
+Any library consumer can publish to their own fork. If you are waiting on a code review, one option is that you can temporarily release a tag to your own fork of this library. The structure of the NPM module differs from repository folder. To release, please replace the username `interactivellama` with your git username and follow theses steps:
+* Set your remote. `git remote rename origin git@github.com:interactivellama/design-system-react.git`
+* Build the library. `npm run dist`
+* Change to the built NPM module folder. `cd .tmp-npm`
+* Create a tag. `git tag v0.8.15`
+* Push a tag up to your fork. `git push origin v0.8.15`
+
+In your project's `package.json`, please update your dependency to the tag you released. 
+```
+"@salesforce/design-system-react": "git+ssh://git@github.com:interactivellama/design-system-react.git#v0.8.15-npm",
+```
 
 ## Release with build server (preferred)
 

@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import classNames from 'classnames';
-import isBoolean from 'lodash.isboolean';
 
 import ToggleButton, { TOGGLE_BUTTON_WIDTH } from './private/toggle-button';
 
@@ -96,12 +95,12 @@ class SplitView extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 
-		this.setIsOpen(this.props.isOpen);
+		this.setIsOpen({ isOpen: this.props.isOpen });
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.isOpen !== this.props.isOpen) {
-			this.setIsOpen(nextProps.isOpen);
+			this.setIsOpen({ isOpen: nextProps.isOpen });
 		}
 	}
 
@@ -113,8 +112,8 @@ class SplitView extends React.Component {
 		return `master_view_${this.getId()}`;
 	}
 
-	setIsOpen(isOpen) {
-		if (isBoolean(isOpen)) {
+	setIsOpen({ isOpen }) {
+		if (typeof this.props.isOpen === 'boolean') {
 			this.setState({
 				isOpen,
 			});
@@ -122,7 +121,7 @@ class SplitView extends React.Component {
 	}
 
 	toggle(event) {
-		this.setIsOpen(!this.state.isOpen);
+		this.setIsOpen({ isOpen: !this.state.isOpen });
 
 		if (this.state.isOpen && this.props.events.onClose) {
 			this.props.events.onClose(event);

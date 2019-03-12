@@ -1,7 +1,9 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /* eslint-disable jsx-a11y/role-has-required-aria-props */
+/* eslint-disable max-lines */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -12,7 +14,6 @@ import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
 
-import isBoolean from 'lodash.isboolean';
 import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
@@ -24,10 +25,14 @@ import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
-import SelectedListBox from './private/selected-listbox';
+import SelectedListBox from '../pill-container/private/selected-listbox';
 
+import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 import KEYS from '../../utilities/key-code';
+import KeyBuffer from '../../utilities/key-buffer';
+import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
+import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
 
 import checkProps from './check-props';
 
@@ -35,6 +40,7 @@ import { COMBOBOX } from '../../utilities/constants';
 import componentDoc from './docs.json';
 
 let currentOpenDropdown;
+const documentDefined = typeof document !== 'undefined';
 
 const propTypes = {
 	/**
@@ -122,6 +128,10 @@ const propTypes = {
 	 */
 	errorText: PropTypes.string,
 	/**
+	 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props.
+	 */
+	fieldLevelHelpTooltip: PropTypes.node,
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -129,6 +139,11 @@ const propTypes = {
 	 * HTML id for component. _Tested with snapshot testing._
 	 */
 	id: PropTypes.string,
+	/**
+	 * An [Input](https://react.lightningdesignsystem.com/components/inputs) component.
+	 * The props from this component will override any default props.
+	 */
+	input: PropTypes.node,
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
@@ -196,12 +211,16 @@ const propTypes = {
 	 * * `label`: A primary string of text for a menu item or group separator.
 	 * * `subTitle`: A secondary string of text added for clarity. (optional)
 	 * * `type`: 'separator' is the only type currently used
+	 * * `disabled`: Set to true to disable this menu item.
+	 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
 	 * ```
 	 * {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
 	 * 	type: 'account',
+	 *  disabled: true,
+	 *  tooltipContent: "You don't have permission to select this item."
 	 * },
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
@@ -213,6 +232,8 @@ const propTypes = {
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
+			disabled: PropTypes.boolean,
+			tooltipContent: PropTypes.node,
 		})
 	).isRequired,
 	/**
@@ -240,6 +261,18 @@ const propTypes = {
 		})
 	).isRequired,
 	/**
+	 * This callback exposes the selected listbox reference / DOM node to parent components.
+	 */
+	selectedListboxRef: PropTypes.func,
+	/**
+	 * Disables the input and prevents editing the contents. This only applies for single readonly and inline-listbox variants.
+	 */
+	singleInputDisabled: PropTypes.bool,
+	/**
+	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
+	 */
+	tooltipMenuItemDisabled: PropTypes.element,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -259,6 +292,7 @@ const defaultProps = {
 	events: {},
 	labels: {
 		noOptionsFound: 'No matches found.',
+		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
@@ -267,6 +301,7 @@ const defaultProps = {
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
+	singleInputDisabled: false,
 	variant: 'base',
 };
 
@@ -278,14 +313,19 @@ class Combobox extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: false,
 			activeOption: undefined,
 			activeOptionIndex: -1,
 			// seeding initial state with this.props.selection[0]
 			activeSelectedOption:
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
+			listboxHasFocus: false,
+			isOpen: false,
 		};
+
+		this.menuKeyBuffer = new KeyBuffer();
+		this.menuRef = undefined;
+		this.selectedListboxRef = null;
 	}
 
 	/**
@@ -382,7 +422,9 @@ class Combobox extends React.Component {
 		this.state.activeOption && this.state.activeOptionIndex !== -1;
 
 	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		!!(typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen);
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
@@ -392,7 +434,7 @@ class Combobox extends React.Component {
 			nextIndex >= 0 &&
 			options[nextIndex].type === 'separator';
 		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
 
@@ -407,6 +449,13 @@ class Combobox extends React.Component {
 		// DOM nodes are not queried.
 		if (!this.state.inputRendered) {
 			this.setState({ inputRendered: true });
+		}
+	};
+
+	setSelectedListboxRef = (ref) => {
+		this.selectedListboxRef = ref;
+		if (this.props.selectedListboxRef) {
+			this.props.selectedListboxRef(ref);
 		}
 	};
 
@@ -445,7 +494,19 @@ class Combobox extends React.Component {
 	handleInputBlur = (event) => {
 		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
 		setTimeout(() => {
-			this.handleClose(event);
+			const activeElement = documentDefined ? document.activeElement : false;
+			// detect if the scrollbar of the combobox-autocomplete/lookup menu is clicked in IE11. If it is, return focus to input, and do not close menu.
+			if (
+				activeElement &&
+				activeElement.tagName === 'DIV' &&
+				activeElement.id === `${this.getId()}-listbox`
+			) {
+				if (this.inputRef) {
+					this.inputRef.focus();
+				}
+			} else {
+				this.handleClose(event);
+			}
 		}, 200);
 
 		if (this.props.events.onBlur) {
@@ -455,7 +516,9 @@ class Combobox extends React.Component {
 
 	handleInputChange = (event) => {
 		this.requestOpenMenu();
-		this.props.events.onChange(event, { value: event.target.value });
+		if (this.props.events && this.props.events.onChange) {
+			this.props.events.onChange(event, { value: event.target.value });
+		}
 	};
 
 	handleInputFocus = (event) => {
@@ -465,6 +528,10 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
+		if (this.state.activeOption && this.state.activeOption.disabled) {
+			return;
+		}
+
 		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, {
@@ -488,15 +555,27 @@ class Combobox extends React.Component {
 	 */
 
 	handleKeyDown = (event) => {
+		const callbacks = {
+			[KEYS.DOWN]: { callback: this.handleKeyDownDown },
+			[KEYS.ENTER]: { callback: this.handleInputSubmit },
+			[KEYS.ESCAPE]: { callback: this.handleClose },
+			[KEYS.UP]: { callback: this.handleKeyDownUp },
+		};
+
+		if (this.props.variant === 'readonly') {
+			if (this.props.selection.length > 2) {
+				callbacks[KEYS.TAB] = { callback: this.handleKeyDownTab };
+			} else {
+				callbacks[KEYS.TAB] = undefined;
+			}
+			callbacks.other = {
+				callback: this.handleKeyDownOther,
+				stopPropagation: false,
+			};
+		}
+
 		// Helper function that takes an object literal of callbacks that are triggered with a key event
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.DOWN]: { callback: this.handleKeyDownDown },
-				[KEYS.ENTER]: { callback: this.handleInputSubmit },
-				[KEYS.ESCAPE]: { callback: this.handleClose },
-				[KEYS.UP]: { callback: this.handleKeyDownUp },
-			},
-		});
+		mapKeyEventCallbacks(event, { callbacks });
 	};
 
 	handleKeyDownDown = (event) => {
@@ -508,10 +587,41 @@ class Combobox extends React.Component {
 		this.handleNavigateListboxMenu(event, { direction: 'next' });
 	};
 
+	handleKeyDownTab = () => {
+		if (this.selectedListboxRef) {
+			this.setState({
+				listboxHasFocus: true,
+			});
+		}
+	};
+
 	handleKeyDownUp = (event) => {
 		// Don't open if user is selecting text
 		if (!event.shiftKey && this.state.isOpen) {
 			this.handleNavigateListboxMenu(event, { direction: 'previous' });
+		}
+	};
+
+	handleKeyDownOther = (event) => {
+		const activeOptionIndex = keyLetterMenuItemSelect({
+			key: event.key,
+			keyBuffer: this.menuKeyBuffer,
+			keyCode: event.keyCode,
+			options: this.props.options,
+		});
+
+		if (activeOptionIndex !== undefined) {
+			if (this.state.isOpen) {
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: activeOptionIndex,
+				});
+			}
+
+			this.setState({
+				activeOption: this.props.options[activeOptionIndex],
+				activeOptionIndex,
+			});
 		}
 	};
 
@@ -525,6 +635,13 @@ class Combobox extends React.Component {
 				options: this.props.options,
 			});
 
+			if (this.state.isOpen) {
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: newIndex,
+				});
+			}
+
 			return {
 				activeOption: this.props.options[newIndex],
 				activeOptionIndex: newIndex,
@@ -532,7 +649,7 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handleNavigateListboxOfPills = (event, { direction }) => {
+	handleNavigateSelectedListbox = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
@@ -593,7 +710,7 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handlePillClickListboxOfPills = (event, { option, index }) => {
+	handlePillClickSelectedListbox = (event, { option, index }) => {
 		// this is clicking the span, not the remove button
 		this.setState({
 			activeSelectedOption: option,
@@ -602,8 +719,14 @@ class Combobox extends React.Component {
 		});
 	};
 
+	handlePillFocus = () => {
+		if (!this.state.listboxHasFocus) {
+			this.setState({ listboxHasFocus: true });
+		}
+	};
+
 	/**
-	 * Selected options with listbox of pills event methods
+	 * Selected options with selected listbox event methods
 	 */
 
 	handleRemoveSelectedOption = (event, { option, index }) => {
@@ -653,7 +776,7 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleRequestFocusListboxOfPills = (event, { ref }) => {
+	handleRequestFocusSelectedListbox = (event, { ref }) => {
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
 			this.activeSelectedOptionRef.focus();
@@ -720,7 +843,7 @@ class Combobox extends React.Component {
 	 * if state is passed in as a prop)
 	 */
 
-	renderBase = ({ assistiveText, labels, props }) => (
+	renderBase = ({ assistiveText, labels, props, userDefinedProps }) => (
 		<div className="slds-form-element__control">
 			<div className="slds-combobox_container">
 				<div
@@ -786,6 +909,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -798,14 +922,16 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				events={{
 					onBlurPill: this.handleBlurPill,
-					onClickPill: this.handlePillClickListboxOfPills,
-					onRequestFocus: this.handleRequestFocusListboxOfPills,
-					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+					onClickPill: this.handlePillClickSelectedListbox,
+					onPillFocus: this.handlePillFocus,
+					onRequestFocus: this.handleRequestFocusSelectedListbox,
+					onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+					onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 					onRequestRemove: this.handleRemoveSelectedOption,
 				}}
-				id={this.getId()}
+				id={`${this.getId()}-selected-listbox`}
 				labels={labels}
+				selectedListboxRef={this.setSelectedListboxRef}
 				selection={props.selection}
 				listboxHasFocus={this.state.listboxHasFocus}
 			/>
@@ -822,7 +948,12 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineMultiple = ({ assistiveText, labels, props }) => (
+	renderInlineMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => (
 		<div className="slds-form-element__control">
 			<div
 				className={classNames('slds-combobox_container', {
@@ -836,14 +967,16 @@ class Combobox extends React.Component {
 						assistiveText={assistiveText}
 						events={{
 							onBlurPill: this.handleBlurPill,
-							onClickPill: this.handlePillClickListboxOfPills,
-							onRequestFocus: this.handleRequestFocusListboxOfPills,
-							onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+							onClickPill: this.handlePillClickSelectedListbox,
+							onPillFocus: this.handlePillFocus,
+							onRequestFocus: this.handleRequestFocusSelectedListbox,
+							onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+							onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 							onRequestRemove: this.handleRemoveSelectedOption,
 						}}
-						id={this.getId()}
+						id={`${this.getId()}-selected-listbox`}
 						labels={labels}
+						selectedListboxRef={this.setSelectedListboxRef}
 						selection={props.selection}
 						listboxHasFocus={this.state.listboxHasFocus}
 					/>
@@ -911,6 +1044,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -925,7 +1059,7 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineSingle = ({ assistiveText, labels, props }) => {
+	renderInlineSingle = ({ assistiveText, labels, props, userDefinedProps }) => {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
@@ -981,6 +1115,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								props.selection.length ? (
 									<InputIcon
@@ -1031,6 +1166,7 @@ class Combobox extends React.Component {
 										props.value
 									: value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1060,6 +1196,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
+				tooltipMenuItemDisabled={this.props.tooltipMenuItemDisabled}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
@@ -1072,6 +1209,9 @@ class Combobox extends React.Component {
 				labels={labels}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
+				menuRef={(ref) => {
+					this.menuRef = ref;
+				}}
 				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}
@@ -1082,7 +1222,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlyMultiple = ({ assistiveText, labels, props }) => {
+	renderReadOnlyMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
@@ -1151,6 +1296,7 @@ class Combobox extends React.Component {
 							required={props.required}
 							role="textbox"
 							value={value}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1163,14 +1309,16 @@ class Combobox extends React.Component {
 					assistiveText={assistiveText}
 					events={{
 						onBlurPill: this.handleBlurPill,
-						onClickPill: this.handlePillClickListboxOfPills,
-						onRequestFocus: this.handleRequestFocusListboxOfPills,
-						onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-						onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+						onClickPill: this.handlePillClickSelectedListbox,
+						onPillFocus: this.handlePillFocus,
+						onRequestFocus: this.handleRequestFocusSelectedListbox,
+						onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+						onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
 						onRequestRemove: this.handleRemoveSelectedOption,
 					}}
-					id={this.getId()}
+					id={`${this.getId()}-selected-listbox`}
 					labels={labels}
+					selectedListboxRef={this.setSelectedListboxRef}
 					selection={props.selection}
 					listboxHasFocus={this.state.listboxHasFocus}
 					variant={this.props.variant}
@@ -1190,7 +1338,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlySingle = ({ assistiveText, labels, props }) => {
+	renderReadOnlySingle = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value = (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1234,6 +1387,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}
@@ -1258,6 +1412,7 @@ class Combobox extends React.Component {
 								(this.state.activeOption && this.state.activeOption.label) ||
 								value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1282,8 +1437,20 @@ class Combobox extends React.Component {
 			props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-
-		const subRenderParameters = { assistiveText, labels, props: this.props };
+		const hasRenderedLabel =
+			labels.label || (assistiveText && assistiveText.label);
+		// declare user defined props
+		const userDefinedProps = {};
+		if (props.input) {
+			// at the moment we only support overriding the input props
+			userDefinedProps.input = props.input.props;
+		}
+		const subRenderParameters = {
+			assistiveText,
+			labels,
+			props: this.props,
+			userDefinedProps,
+		};
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
 			base: {
@@ -1311,6 +1478,11 @@ class Combobox extends React.Component {
 					label={labels.label}
 					required={props.required}
 				/>
+				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
+					<FieldLevelHelpTooltip
+						fieldLevelHelpTooltip={this.props.fieldLevelHelpTooltip}
+					/>
+				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters

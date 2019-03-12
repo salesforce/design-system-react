@@ -88,7 +88,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 				modalClassName: 'custom-modal-class',
 				modalHeaderButton: <Button label="App Exchange" />,
 				onClose,
-				search: <Search assistiveText="Find an app" />,
+				search: <Search assistiveText={{ icon: 'Find an app' }} />,
 				title: 'App Launcher!',
 			});
 		});

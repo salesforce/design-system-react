@@ -21,9 +21,6 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### isNumber
-import isNumber from 'lodash.isnumber';
-
 // Child components
 import TabsList from './private/tabs-list';
 import Tab from './private/tab';
@@ -145,6 +142,12 @@ class Tabs extends React.Component {
 		});
 	}
 
+	componentWillUnmount() {
+		this.setState({
+			focus: false,
+		});
+	}
+
 	getNextTab(index) {
 		const count = this.getTabsCount();
 
@@ -201,7 +204,7 @@ class Tabs extends React.Component {
 	}
 
 	getSelectedIndex() {
-		return isNumber(this.props.selectedIndex)
+		return Number.isInteger(this.props.selectedIndex)
 			? this.props.selectedIndex
 			: this.state.selectedIndex;
 	}
@@ -356,6 +359,9 @@ class Tabs extends React.Component {
 							key={child.key}
 							ref={(node) => {
 								this.tabs[index] = { tab: child, node };
+								if (this.state.focus) {
+									this.setState({ focus: false });
+								}
 							}}
 							focus={focus}
 							selected={selected}
@@ -378,12 +384,6 @@ class Tabs extends React.Component {
 			id = this.generatedId,
 			variant = this.getVariant,
 		} = this.props;
-
-		if (this.state.focus) {
-			setTimeout(() => {
-				this.setState({ focus: false });
-			}, 0);
-		}
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */

@@ -22,6 +22,12 @@ export AlertContainer from './alert/container';
 export SLDSAppLauncher from './app-launcher';
 export AppLauncher from './app-launcher';
 
+export SLDSAppLauncherTile from './app-launcher/tile';
+export AppLauncherTile from './app-launcher/tile';
+
+export SLDSAppLauncherSection from './app-launcher/section';
+export AppLauncherSection from './app-launcher/section';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
@@ -56,6 +62,9 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
+export SLDSColorPicker from './color-picker';
+export ColorPicker from './color-picker';
+
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
@@ -72,11 +81,26 @@ export GlobalHeaderButton from './global-header/button';
 export SLDSGlobalHeaderDropdown from './global-header/dropdown';
 export GlobalHeaderDropdown from './global-header/dropdown';
 
+export SLDSGlobalHeaderFavorites from './global-header/favorites';
+export GlobalHeaderFavorites from './global-header/favorites';
+
+export SLDSGlobalHeaderHelp from './global-header/help';
+export GlobalHeaderHelp from './global-header/help';
+
+export SLDSGlobalHeaderNotifications from './global-header/notifications';
+export GlobalHeaderNotifications from './global-header/notifications';
+
 export SLDSGlobalHeaderProfile from './global-header/profile';
 export GlobalHeaderProfile from './global-header/profile';
 
 export SLDSGlobalHeaderSearch from './global-header/search';
 export GlobalHeaderSearch from './global-header/search';
+
+export SLDSGlobalHeaderSetup from './global-header/setup';
+export GlobalHeaderSetup from './global-header/setup';
+
+export SLDSGlobalHeaderTask from './global-header/task';
+export GlobalHeaderTask from './global-header/task';
 
 export SLDSGlobalNavigationBar from './global-navigation-bar';
 export GlobalNavigationBar from './global-navigation-bar';
@@ -95,6 +119,9 @@ export DataTable from './data-table';
 
 export SLDSDataTableCell from './data-table/cell';
 export DataTableCell from './data-table/cell';
+
+export SLDSDataTableHighlightCell from './data-table/highlight-cell';
+export DataTableHighlightCell from './data-table/highlight-cell';
 
 export SLDSDataTableColumn from './data-table/column';
 export DataTableColumn from './data-table/column';
@@ -156,8 +183,8 @@ export Modal from './modal';
 export SLDSModalTrigger from './modal/trigger';
 export ModalTrigger from './modal/trigger';
 
-export SLDSNavigation from './navigation';
-export Navigation from './navigation';
+export SLDSNavigation from './vertical-navigation';
+export Navigation from './vertical-navigation';
 
 export SLDSNotification from './notification';
 export Notification from './notification';
@@ -176,6 +203,9 @@ export PageHeader from './page-header';
 
 export SLDSPill from './pill';
 export Pill from './pill';
+
+export SLDSPillContainer from './pill-container';
+export PillContainer from './pill-container';
 
 export SLDSPopover from './popover';
 export Popover from './popover';

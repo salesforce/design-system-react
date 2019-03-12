@@ -3,7 +3,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -13,6 +13,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
+import CellFixed from './cell-fixed';
 import Icon from '../../icon';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -27,13 +28,13 @@ import {
 /**
  * Used internally, renders each individual column heading.
  */
-const DataTableHeaderCell = createReactClass({
+class DataTableHeaderCell extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_HEADER_CELL,
+	static displayName = DATA_TABLE_HEADER_CELL;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
 			columnSort: PropTypes.string,
@@ -42,7 +43,13 @@ const DataTableHeaderCell = createReactClass({
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
 		}),
+		cellRef: PropTypes.func,
+		fixedHeader: PropTypes.bool,
 		id: PropTypes.string.isRequired,
+		/**
+		 * Some columns, such as "date last viewed" or "date recently updated," should sort descending first, since that is what the user probably wants. How often does one want to see their oldest files first in a table? If sortable and the `DataTable`'s parent has not defined the sort order, then ascending (A at the top to Z at the bottom) is the default sort order on first click.
+		 */
+		isDefaultSortDescending: PropTypes.bool,
 		/**
 		 * Indicates if column is sorted.
 		 */
@@ -71,29 +78,39 @@ const DataTableHeaderCell = createReactClass({
 		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 		 */
 		width: PropTypes.string,
-	},
+	};
 
-	getInitialState() {
-		return {
-			sortDirection: null,
-		};
-	},
+	state = {
+		sortDirection: null,
+	};
 
 	componentDidMount() {
 		checkProps(DATA_TABLE_COLUMN, this.props);
-	},
+	}
 
 	componentDidUpdate(prevProps) {
 		// reset sort state when another column is sorted
 		if (prevProps.isSorted === true && this.props.isSorted === false) {
 			this.setState({ sortDirection: null }); // eslint-disable-line react/no-did-update-set-state
 		}
-	},
+	}
 
-	handleSort(e) {
+	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
-		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
+		// UX pattern: If sortable, and the DataTable's parent has not defined the sort order, then ascending (that is A->Z) is the default sort order on first click. Some columns, such as "last viewed" or "recently updated," should sort descending first, since that is what the user probably wants. Who wants to see the oldest files first?
+		const sortDirection = (function(direction, isDefaultSortDescending) {
+			switch (direction) {
+				case 'asc':
+					return 'desc';
+				case 'desc':
+					return 'asc';
+				case null:
+					return isDefaultSortDescending ? 'desc' : 'asc';
+				default:
+					return 'asc';
+			}
+		})(oldSortDirection, this.props.isDefaultSortDescending);
 		const data = {
 			property: this.props.property,
 			sortDirection,
@@ -106,17 +123,22 @@ const DataTableHeaderCell = createReactClass({
 		if (isFunction(this.props.onSort)) {
 			this.props.onSort(data, e);
 		}
-	},
+	};
 
 	// ### Render
 	render() {
-		const { isSorted, label, sortable, width } = this.props;
+		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		// This decides which arrow to render--which is current sort order if the column is sorted OR the future sort order if the arrow is clicked in the future.
+		const sortDirection =
+			this.props.sortDirection ||
+			this.state.sortDirection ||
+			(this.props.isDefaultSortDescending && 'desc');
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
+
 		const fixedLayoutSubRenders = {
 			sortable: (
 				<a
@@ -169,6 +191,17 @@ const DataTableHeaderCell = createReactClass({
 			),
 		};
 
+		const headerCellContent = this.props.fixedLayout ? (
+			fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
+		) : (
+			<div
+				className="slds-truncate"
+				title={labelType === 'string' ? label : undefined}
+			>
+				{label}
+			</div>
+		);
+
 		return (
 			<th
 				aria-label={labelType === 'string' ? label : undefined}
@@ -182,22 +215,50 @@ const DataTableHeaderCell = createReactClass({
 					},
 					'slds-text-title_caps'
 				)}
+				ref={(ref) => {
+					if (this.props.cellRef) {
+						this.props.cellRef(ref);
+					}
+				}}
 				scope="col"
-				style={width ? { width } : null}
+				style={
+					fixedHeader || width
+						? {
+								height: fixedHeader ? 0 : null,
+								lineHeight: fixedHeader ? 0 : null,
+								width: width || null,
+							}
+						: null
+				}
 			>
-				{this.props.fixedLayout ? (
-					fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
-				) : (
-					<div
-						className="slds-truncate"
-						title={labelType === 'string' ? label : undefined}
-					>
-						{label}
-					</div>
-				)}
+				{fixedHeader
+					? React.cloneElement(headerCellContent, {
+							style: {
+								display: 'flex',
+								height: 0,
+								overflow: 'hidden',
+								paddingBottom: 0,
+								paddingTop: 0,
+								visibility: 'hidden',
+							},
+						})
+					: headerCellContent}
+				{fixedHeader ? (
+					<CellFixed>
+						{React.cloneElement(headerCellContent, {
+							style: {
+								alignItems: 'center',
+								display: 'flex',
+								flex: '1 1 auto',
+								lineHeight: 1.25,
+							},
+							tabIndex: sortable ? 0 : null,
+						})}
+					</CellFixed>
+				) : null}
 			</th>
 		);
-	},
-});
+	}
+}
 
 export default DataTableHeaderCell;

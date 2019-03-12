@@ -1,14 +1,14 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
-import Dropdown from '~/components/dropdown';
+import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'RelatedListPageHeaderExample';
 
 	render() {
 		const navRight = (
@@ -31,8 +31,10 @@ const Example = createReactClass({
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
+					id="content-right-dropdown"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -73,8 +75,10 @@ const Example = createReactClass({
 						triggerClassname
 						align="right"
 						assistiveText={{ icon: 'List View Controls' }}
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
+						id="content-right-dropdown-2"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -105,7 +109,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

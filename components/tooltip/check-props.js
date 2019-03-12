@@ -2,6 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import React from 'react';
+
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value';
 import isTriggerTabbable from '../../utilities/warning/is-trigger-tabbable';
@@ -13,7 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		if (props.variant === 'base') {
+		if (
+			props.variant === 'base' &&
+			React.Children.count(props.children) !== 0
+		) {
 			isTriggerTabbable(COMPONENT, props.children, createDocUrl());
 		}
 

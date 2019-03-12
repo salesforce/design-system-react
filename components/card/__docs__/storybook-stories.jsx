@@ -1,8 +1,9 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
-import { storiesOf, action } from '@storybook/react';
+import shortid from 'shortid';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { CARD } from '../../../utilities/constants';
@@ -18,29 +19,31 @@ import Icon from '../../icon';
 import MediaObject from '../../media-object';
 import InlineEdit from '../../forms/input/inline';
 
+import RelatedListWithTable from '../__examples__/related-list-with-table';
+
 const sampleItems = [
-	{ name: 'Cloudhub' },
-	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' },
+	{ id: '0', name: 'Cloudhub' },
+	{ id: '1', name: 'Cloudhub + Anypoint Connectors' },
+	{ id: '2', name: 'Cloud City' },
 ];
 
-const DemoCard = createReactClass({
-	displayName: 'DemoCard',
+let currentId = 3;
 
-	propTypes: {
+class DemoCard extends React.Component {
+	static displayName = 'DemoCard';
+
+	static propTypes = {
 		items: PropTypes.array,
 		header: PropTypes.node,
 		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-	},
+	};
 
-	getInitialState() {
-		return {
-			filter: null,
-			items: this.props.items,
-		};
-	},
+	state = {
+		filter: null,
+		items: this.props.items,
+	};
 
-	handleFilterChange(event, ...rest) {
+	handleFilterChange = (event, ...rest) => {
 		action('filter')(event, ...rest);
 
 		const filter =
@@ -49,24 +52,27 @@ const DemoCard = createReactClass({
 		this.setState({
 			filter,
 		});
-	},
+	};
 
-	handleDeleteAllItems(...rest) {
+	handleDeleteAllItems = (...rest) => {
 		action('delete all')(...rest);
 
 		this.setState({
 			filter: null,
 			items: [],
 		});
-	},
+	};
 
-	handleAddItem(...rest) {
+	handleAddItem = (...rest) => {
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items],
+			items: [
+				{ id: currentId++, name: `New item #${shortid.generate()}` },
+				...this.state.items,
+			],
 		});
-	},
+	};
 
 	render() {
 		let items = this.state.items;
@@ -108,7 +114,7 @@ const DemoCard = createReactClass({
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
 				>
-					<DataTable id="SLDSDataTableExample-1" items={items} bordered>
+					<DataTable id="SLDSDataTableExample-1" items={items}>
 						<DataTableColumn label="Opportunity Name" property="name" truncate>
 							<DataTableHighlightCell search={this.state.filter} />
 						</DataTableColumn>
@@ -116,8 +122,8 @@ const DemoCard = createReactClass({
 				</Card>
 			</div>
 		);
-	},
-});
+	}
+}
 
 const SetHeightCard = () => (
 	<Card
@@ -179,4 +185,5 @@ storiesOf(CARD, module)
 			heading={<span style={{ color: 'red' }}>To Wanda! This is custom!</span>}
 		/>
 	))
-	.add('Set height card', () => <SetHeightCard />);
+	.add('Set height card', () => <SetHeightCard />)
+	.add('Doc site Related List With Table', () => <RelatedListWithTable />);

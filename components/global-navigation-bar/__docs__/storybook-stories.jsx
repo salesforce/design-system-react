@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { GLOBAL_NAVIGATION_BAR } from '../../../utilities/constants';
@@ -16,6 +17,8 @@ import GlobalNavigationBarButton from '../../global-navigation-bar/button';
 import AppLauncher from '../../app-launcher';
 import AppLauncherSection from '../../app-launcher/section';
 import AppLauncherTile from '../../app-launcher/tile';
+
+import Default from '../__examples__/default';
 
 // aliased to allow copy and paste from component tests
 const buttonClicked = action;
@@ -350,6 +353,7 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.hybrid.props,
 			propSets.base.primaryRegionProps
 		)
-	);
+	)
+	.add('Doc site Default', () => <Default />);
 
 export default getGlobalNavigationBar;

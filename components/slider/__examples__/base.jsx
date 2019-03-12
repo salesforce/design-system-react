@@ -1,19 +1,17 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Slider from '~/components/slider';
 
-const DemoSlider = createReactClass({
-	displayName: 'DemoSlider',
+class DemoSlider extends React.Component {
+	static displayName = 'DemoSlider';
 
-	getInitialState() {
-		return {
-			value: this.props.value,
-		};
-	},
+	state = {
+		value: this.props.value,
+	};
 
-	handleChange(event, { value }) {
+	handleChange = (event, { value }) => {
 		this.setState({ value });
-	},
+	};
 
 	render() {
 		return (
@@ -23,11 +21,11 @@ const DemoSlider = createReactClass({
 				onChange={this.handleChange}
 			/>
 		);
-	},
-});
+	}
+}
 
-const Example = createReactClass({
-	displayName: 'SliderExample',
+class Example extends React.Component {
+	static displayName = 'SliderExample';
 
 	render() {
 		return (
@@ -77,7 +75,7 @@ const Example = createReactClass({
 				</ol>
 			</section>
 		);
-	},
-});
+	}
+}
 
 export default Example;

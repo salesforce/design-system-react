@@ -1,7 +1,9 @@
+/* eslint-disable max-lines */
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import classNames from 'classnames';
 
@@ -181,13 +183,14 @@ const getTabsScoped = () => (
 		</Tabs>
 	</div>
 );
+
 /* eslint-enable react/display-name */
 
-const DemoTabsConditional = createReactClass({
-	displayName: 'DemoTabsConditional',
+class DemoTabsConditional extends React.Component {
+	static displayName = 'DemoTabsConditional';
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Class names to be added to the container element and is passed along to its children.
 		 */
@@ -196,54 +199,50 @@ const DemoTabsConditional = createReactClass({
 			PropTypes.object,
 			PropTypes.string,
 		]),
-	},
+	};
 
-	getInitialState() {
-		return {
-			showA: true,
-			showB: true,
-			showC: true,
-			disableA: false,
-			disableB: true,
-			disableC: true,
-		};
-	},
+	state = {
+		showA: true,
+		showB: true,
+		showC: true,
+		disableA: false,
+		disableB: true,
+		disableC: true,
+	};
 
-	handleCheckClicked(checked, event) {
+	handleCheckClicked = (checked, event) => {
 		const state = {};
 		state[event.target.name] = checked;
 		this.setState(state);
-	},
+	};
 
-	handleCheckClickedDisable(checked, event) {
+	handleCheckClickedDisable = (checked, event) => {
 		const state = {};
 		state[event.target.name] = checked;
 		this.setState(state);
-	},
+	};
 
-	renderPaneA(disabled) {
-		return (
-			<Panel label="Tab A" disabled={disabled}>
-				<p>This is tab A.</p>
-				<div>
-					<Checkbox
-						assistiveText={{ label: 'Disable tab B' }}
-						checked={this.state.disableB}
-						onChange={this.handleCheckClickedDisable}
-						label="Disable tab B"
-						name="disableB"
-					/>
-					<Checkbox
-						assistiveText={{ label: 'Disable tab C' }}
-						checked={this.state.disableC}
-						onChange={this.handleCheckClickedDisable}
-						label="Disable tab C"
-						name="disableC"
-					/>
-				</div>
-			</Panel>
-		);
-	},
+	renderPaneA = (disabled) => (
+		<Panel label="Tab A" disabled={disabled}>
+			<p>This is tab A.</p>
+			<div>
+				<Checkbox
+					assistiveText={{ label: 'Disable tab B' }}
+					checked={this.state.disableB}
+					onChange={this.handleCheckClickedDisable}
+					label="Disable tab B"
+					name="disableB"
+				/>
+				<Checkbox
+					assistiveText={{ label: 'Disable tab C' }}
+					checked={this.state.disableC}
+					onChange={this.handleCheckClickedDisable}
+					label="Disable tab C"
+					name="disableC"
+				/>
+			</div>
+		</Panel>
+	);
 
 	render() {
 		return (
@@ -303,14 +302,14 @@ const DemoTabsConditional = createReactClass({
 				</Tabs>
 			</div>
 		);
-	},
-});
+	}
+}
 
-const DemoTabsOutsideControl = createReactClass({
-	displayName: 'DemoTabsOutsideControl',
+class DemoTabsOutsideControl extends React.Component {
+	static displayName = 'DemoTabsOutsideControl';
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Class names to be added to the container element and is passed along to its children.
 		 */
@@ -324,16 +323,14 @@ const DemoTabsOutsideControl = createReactClass({
 		 */
 		whichOneSelectedYo: PropTypes.number,
 		prevOneSelectedYo: PropTypes.number,
-	},
+	};
 
-	getInitialState() {
-		return {
-			whichOneSelectedYo: this.props.whichOneSelectedYo || 0,
-			prevOneSelectedYo: this.props.prevOneSelectedYo || 0,
-		};
-	},
+	state = {
+		whichOneSelectedYo: this.props.whichOneSelectedYo || 0,
+		prevOneSelectedYo: this.props.prevOneSelectedYo || 0,
+	};
 
-	handleSelect(index, last) {
+	handleSelect = (index, last) => {
 		let toReturn = true;
 		if (
 			index === this.state.whichOneSelectedYo &&
@@ -345,14 +342,14 @@ const DemoTabsOutsideControl = createReactClass({
 			this.setState({ whichOneSelectedYo: index, prevOneSelectedYo: last });
 		}
 		return toReturn;
-	},
+	};
 
-	showState() {
+	showState = () => {
 		action('showState (current)')(this.state.whichOneSelectedYo);
 		action('showState (previous)')(this.state.prevOneSelectedYo);
-	},
+	};
 
-	handleButtonClicked(event) {
+	handleButtonClicked = (event) => {
 		const prevOneSelected = this.state.prevOneSelectedYo;
 		const thisOneSelected = this.state.whichOneSelectedYo;
 
@@ -398,7 +395,7 @@ const DemoTabsOutsideControl = createReactClass({
 				// Statements executed when none of the values match the value of the expression
 				this.handleSelect(thisOneSelected, prevOneSelected);
 		}
-	},
+	};
 
 	render() {
 		return (
@@ -467,8 +464,8 @@ const DemoTabsOutsideControl = createReactClass({
 				</Tabs>
 			</div>
 		);
-	},
-});
+	}
+}
 
 /* eslint-disable react/display-name */
 const getTabsDisabled = () => (
@@ -539,21 +536,19 @@ const getCustomContentTabs = () => {
 		</div>
 	);
 };
+
 /* eslint-enable react/display-name */
 
-const DemoTabsInterceptSelect = createReactClass({
-	displayName: 'DemoTabsInterceptSelect',
+class DemoTabsInterceptSelect extends React.Component {
+	static displayName = 'DemoTabsInterceptSelect';
+	state = { intercepts: 0 };
 
-	getInitialState() {
-		return { intercepts: 0 };
-	},
-
-	handleTabSelect(next, last) {
+	handleTabSelect = (next, last) => {
 		action('handleTabSelect')(next, last);
 		const intercepts = this.state.intercepts + 1;
 		this.setState({ intercepts });
 		return false;
-	},
+	};
 
 	render() {
 		return (
@@ -586,8 +581,8 @@ const DemoTabsInterceptSelect = createReactClass({
 				</Tabs>
 			</div>
 		);
-	},
-});
+	}
+}
 
 storiesOf(TABS, module)
 	.addDecorator((getStory) => (

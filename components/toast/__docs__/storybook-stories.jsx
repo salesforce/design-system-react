@@ -10,6 +10,7 @@ import ErrorWithDetailsAlert from '../__examples__/error-with-details';
 import CloseToast from '../__examples__/close-toast';
 import DurationToast from '../__examples__/duration-toast';
 import CustomClassNames from '../__examples__/custom-class-name';
+import CustomStyle from '../__examples__/custom-style';
 
 /* eslint-disable react/display-name */
 
@@ -24,4 +25,5 @@ storiesOf(TOAST, module)
 	.add('Error With Details', () => <ErrorWithDetailsAlert />)
 	.add('Close Toast', () => <CloseToast />)
 	.add('Duration Toast', () => <DurationToast />)
-	.add('Custom Class Names', () => <CustomClassNames />);
+	.add('Custom Class Names', () => <CustomClassNames />)
+	.add('Custom Style', () => <CustomStyle />);

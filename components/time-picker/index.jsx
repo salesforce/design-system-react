@@ -7,7 +7,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### isDate
@@ -26,16 +26,41 @@ import { TIME_PICKER } from '../../utilities/constants';
 
 import componentDoc from './docs.json';
 
+const getOptions = ({ props }) => {
+	const baseDate = new Date();
+	const options = [];
+
+	baseDate.setHours(0);
+	baseDate.setMinutes(0);
+	baseDate.setSeconds(0);
+	baseDate.setMilliseconds(0);
+
+	const curDate = new Date(baseDate);
+
+	while (baseDate.getDate() === curDate.getDate()) {
+		const formatted = props.formatter(curDate);
+
+		options.push({
+			label: formatted,
+			value: new Date(curDate),
+		});
+
+		curDate.setMinutes(curDate.getMinutes() + props.stepInMinutes);
+	}
+
+	return options;
+};
+
 /**
  *  Component description.
  */
-const Timepicker = createReactClass({
+class Timepicker extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: TIME_PICKER,
+	static displayName = TIME_PICKER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * If true, constrains the menu to the scroll parent. See `Dropdown`.
 		 */
@@ -99,48 +124,44 @@ const Timepicker = createReactClass({
 		 * Instance an internal state in the `date` format.
 		 */
 		value: PropTypes.instanceOf(Date),
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			formatter(date) {
-				if (date) {
-					return date.toLocaleTimeString(navigator.language, {
-						hour: '2-digit',
-						minute: '2-digit',
-					});
-				}
-
-				return null;
-			},
-			parser(timeStr) {
-				const date = new Date();
-				const dateStr = date.toLocaleString(navigator.language, {
-					year: 'numeric',
-					month: 'numeric',
-					day: 'numeric',
+	static defaultProps = {
+		formatter(date) {
+			if (date) {
+				return date.toLocaleTimeString(navigator.language, {
+					hour: '2-digit',
+					minute: '2-digit',
 				});
-				return new Date(`${dateStr} ${timeStr}`);
-			},
-			menuPosition: 'absolute',
-			placeholder: 'Pick Time',
-			value: null,
-			stepInMinutes: 30,
-		};
-	},
+			}
 
-	getInitialState() {
-		return {
-			value: this.props.value,
-			strValue: this.props.strValue,
-			options: this.getOptions(),
-		};
-	},
+			return null;
+		},
+		parser(timeStr) {
+			const date = new Date();
+			const dateStr = date.toLocaleString(navigator.language, {
+				year: 'numeric',
+				month: 'numeric',
+				day: 'numeric',
+			});
+			return new Date(`${dateStr} ${timeStr}`);
+		},
+		menuPosition: 'absolute',
+		placeholder: 'Pick Time',
+		value: null,
+		stepInMinutes: 30,
+	};
+
+	state = {
+		value: this.props.value,
+		strValue: this.props.strValue,
+		options: getOptions({ props: this.props }),
+	};
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TIME_PICKER, this.props, componentDoc);
-	},
+	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
@@ -154,38 +175,12 @@ const Timepicker = createReactClass({
 				});
 			}
 		}
-
 		if (nextProps.strValue !== this.props.value) {
 			this.setState({ strValue: nextProps.strValue});
 		}
-	},
+	}
 
-	getOptions() {
-		const baseDate = new Date();
-		const options = [];
-
-		baseDate.setHours(0);
-		baseDate.setMinutes(0);
-		baseDate.setSeconds(0);
-		baseDate.setMilliseconds(0);
-
-		const curDate = new Date(baseDate);
-
-		while (baseDate.getDate() === curDate.getDate()) {
-			const formatted = this.props.formatter(curDate);
-
-			options.push({
-				label: formatted,
-				value: new Date(curDate),
-			});
-
-			curDate.setMinutes(curDate.getMinutes() + this.props.stepInMinutes);
-		}
-
-		return options;
-	},
-
-	parseDate(strValue) {
+	parseDate = (strValue) => {
 		const newDate = this.props.parser(strValue);
 
 		if (isDate(newDate)) {
@@ -195,9 +190,9 @@ const Timepicker = createReactClass({
 		}
 
 		return new Date();
-	},
+	};
 
-	handleChange(date, strValue) {
+	handleChange = (date, strValue) => {
 		this.setState({
 			value: date,
 			strValue,
@@ -206,15 +201,15 @@ const Timepicker = createReactClass({
 		if (this.props.onDateChange) {
 			this.props.onDateChange(date, strValue);
 		}
-	},
+	};
 
-	handleSelect(val) {
+	handleSelect = (val) => {
 		if (val && val.value) {
 			this.handleChange(val.value, val.label);
 		}
-	},
+	};
 
-	handleInputChange(event) {
+	handleInputChange = (event) => {
 		const strValue = event.target.value;
 
 		this.setState({
@@ -225,7 +220,7 @@ const Timepicker = createReactClass({
 			const parsedDate = this.props.parser(strValue);
 			this.props.onDateChange(parsedDate, strValue);
 		}
-	},
+	};
 
 	// ### Render
 	render() {
@@ -257,7 +252,7 @@ const Timepicker = createReactClass({
 				/>
 			</MenuDropdown>
 		);
-	},
-});
+	}
+}
 
 export default Timepicker;

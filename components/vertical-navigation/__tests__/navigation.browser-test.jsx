@@ -6,7 +6,7 @@
 
 // Import your external dependencies
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -45,27 +45,23 @@ const defaultProps = {
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  */
-const DemoComponent = createReactClass({
-	displayName: 'NavigationDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'NavigationDemoComponent';
+
+	static propTypes = {
 		selectedId: PropTypes.string,
 		onSelect: PropTypes.func,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
-
-	getInitialState() {
-		return {};
-	},
+	static defaultProps = defaultProps;
+	state = {};
 
 	// event handlers
 
 	render() {
 		return <VerticalNavigation {...this.props} />;
-	},
-});
+	}
+}
 
 describe('SLDSVerticalNavigation', () => {
 	describe('Assistive technology', () => {

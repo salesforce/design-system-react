@@ -1,4 +1,4 @@
-// Import your external dependencies
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
@@ -18,6 +18,7 @@ import {
 
 // Import your internal dependencies (for example):
 import Combobox from '../../../components/combobox';
+import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
 import KEYS, { keyObjects } from '../../../utilities/key-code';
@@ -55,6 +56,7 @@ const accounts = [
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
 		type: 'account',
+		disabled: true,
 	},
 	{
 		id: '5',
@@ -146,9 +148,12 @@ class DemoComponent extends React.Component {
 									...this.state.selection,
 									{
 										label: value,
+										id: 'another-account',
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{
+													label: 'Account',
+												}}
 												category="standard"
 												name="account"
 											/>
@@ -355,6 +360,70 @@ describe('SLDSCombobox', function() {
 				index: 0,
 			}).simulate('keydown', keyObjects.DELETE);
 		});
+
+		it('selects a menu item and scrolls when a letter key is pressed in read-only mode', () => {
+			wrapper = mount(<DemoComponent variant="readonly" />, {
+				attachTo: mountNode,
+			});
+			let nodes = getNodes({ wrapper });
+
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			nodes = getNodes({ wrapper });
+			for (let i = 0; i < 3; i++) {
+				nodes.input.simulate('keyDown', letterKeyObjects.A);
+			}
+
+			const menuListItem = nodes.menuListbox.find(
+				'#combobox-unique-id-listbox-option-8'
+			);
+			expect(
+				menuListItem.instance().className.search('slds-has-focus') > -1
+			).to.eql(true);
+
+			const scrollTop = nodes.menuListbox.instance().scrollTop;
+			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+		});
+
+		it('selects menu items and scrolls when the down/up keys are pressed', () => {
+			wrapper = mount(<DemoComponent variant="readonly" />, {
+				attachTo: mountNode,
+			});
+			let nodes = getNodes({ wrapper });
+			let i;
+			let menuListItem;
+			let scrollTop;
+
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			nodes = getNodes({ wrapper });
+
+			for (i = 0; i < 8; i++) {
+				nodes.input.simulate('keyDown', keyObjects.DOWN);
+			}
+
+			menuListItem = nodes.menuListbox.find(
+				'#combobox-unique-id-listbox-option-8'
+			);
+			expect(
+				menuListItem.instance().className.search('slds-has-focus') > -1
+			).to.eql(true);
+
+			scrollTop = nodes.menuListbox.instance().scrollTop;
+			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+
+			for (i = 0; i < 8; i++) {
+				nodes.input.simulate('keyDown', keyObjects.UP);
+			}
+
+			menuListItem = nodes.menuListbox.find(
+				'#combobox-unique-id-listbox-option-1'
+			);
+			expect(
+				menuListItem.instance().className.search('slds-has-focus') > -1
+			).to.eql(true);
+
+			scrollTop = nodes.menuListbox.instance().scrollTop;
+			expect(scrollTop === 4 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+		});
 	});
 
 	describe('Variant-specific', () => {
@@ -439,6 +508,41 @@ describe('SLDSCombobox', function() {
 			const nodes = getNodes({ wrapper });
 			nodes.input.simulate('click', {});
 			expect(onOpenCallback.callCount).to.equal(1);
+		});
+	});
+
+	describe('Combobox with items disabled', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+		it('Tooltip component shows when focused on menu item.', function() {
+			wrapper = mount(
+				<DemoComponent multiple isOpen tooltipMenuItemDisabled={<Tooltip />} />,
+				{
+					attachTo: mountNode,
+				}
+			);
+			const nodes = getNodes({ wrapper });
+			nodes.input.simulate('focus');
+			nodes.input.simulate('change', { target: { value: accounts[3].label } });
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+
+			const nodeInFocus = nodes.menuListbox.find('.slds-tooltip-trigger');
+			const span = nodeInFocus.find('#combobox-unique-id-listbox-option-4');
+
+			// verify span is aria-selected and aria-disabled
+			expect(span).to.have.attr('aria-selected', 'true');
+			expect(span).to.have.attr('aria-disabled', 'true');
+
+			// verify tooltip is rendered
+			expect(
+				nodes.menuListbox.find('#combobox-unique-id-listbox-option-help-4')
+					.length
+			).to.equal(1);
 		});
 	});
 });

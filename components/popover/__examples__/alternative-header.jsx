@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -67,20 +67,24 @@ const panelContent = (
 	</div>
 );
 
-const Example = createReactClass({
-	displayName: 'PopoverExample',
+class Example extends React.Component {
+	static displayName = 'PopoverExample';
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
-					<Popover ariaLabelledby="ALTERNATIVE-HEADING" body={panelContent}>
+					<Popover
+						ariaLabelledby="ALTERNATIVE-HEADING"
+						body={panelContent}
+						id="popover-alternative-header"
+					>
 						<Button label="Trigger Popover" />
 					</Popover>
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

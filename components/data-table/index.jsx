@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -5,11 +6,7 @@
 
 // Implements the [Data Table design pattern](https://www.lightningdesignsystem.com/components/data-tables) in React.
 
-// ## Dependencies
-
-// ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### shortid
@@ -17,18 +14,19 @@ import PropTypes from 'prop-types';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-// ### classNames
 import classNames from 'classnames';
-
-// ### assign
 import assign from 'lodash.assign';
-
-// ### reject
 import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './docs.json';
+
+import {
+	canUseDOM,
+	canUseEventListeners,
+} from '../../utilities/execution-environment';
+import paletteColorsCommon from '../../utilities/design-tokens/dist/palette-colors.common';
 
 // ## Children
 import DataTableCell from './cell';
@@ -37,7 +35,6 @@ import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
 
-// ## Constants
 import {
 	DATA_TABLE,
 	DATA_TABLE_CELL,
@@ -57,7 +54,6 @@ const defaultProps = {
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
 	},
-	id: shortid.generate(),
 	selection: [],
 };
 
@@ -65,13 +61,13 @@ const defaultProps = {
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
  */
-const DataTable = createReactClass({
+class DataTable extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE,
+	static displayName = DATA_TABLE;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -124,13 +120,17 @@ const DataTable = createReactClass({
 		 */
 		columnBordered: PropTypes.bool,
 		/**
+		 * Use this to enable fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with `fixedLayout`. Since scrolling is enabled, columns are not truncated unless a width is set. Due to `overflow:hidden` elements, any dialog components will need a separate render tree (portal) such as with `menuPosition: overflowBoundaryElement` in order to break out of the container.
+		 */
+		fixedHeader: PropTypes.bool,
+		/**
+		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
+		 */
+		fixedLayout: PropTypes.bool,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
-		/**
-		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
-		 */
-		fixedLayout: PropTypes.bool,
 		/**
 		 * The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.
 		 */
@@ -144,6 +144,10 @@ const DataTable = createReactClass({
 		 */
 		noRowHover: PropTypes.bool,
 		/**
+		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`
+		 */
+		onFixedHeaderResize: PropTypes.func,
+		/**
 		 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
 		 *
 		 * This used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object.
@@ -154,13 +158,23 @@ const DataTable = createReactClass({
 		 */
 		onSort: PropTypes.func,
 		/**
+		 * By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`
+		 */
+		onToggleFixedHeaderListeners: PropTypes.func,
+		/**
 		 * An array of objects of selected rows. See `items` prop for shape of objects.
 		 */
 		selection: PropTypes.array,
 		/**
-		 * True if rows should be selectable.
+		 * Specifies a row selection UX pattern.
+		 * * `checkbox`: Multiple row selection.
+		 * * `radio`: _Required_ single row selection.
+		 * _This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._
 		 */
-		selectRows: PropTypes.bool,
+		selectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['checkbox', 'radio']),
+		]),
 		/**
 		 * A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.
 		 */
@@ -181,18 +195,48 @@ const DataTable = createReactClass({
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
 		unbufferedCell: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps() {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
+
+	constructor(props) {
+		super(props);
+		this.generatedId = shortid.generate();
+		this.headerRefs = {
+			action: [],
+			column: [],
+			select: [],
+		};
+		this.scrollerRef = null;
+	}
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props, componentDoc);
-	},
+	}
 
-	handleToggleAll(e, { checked }) {
+	componentDidMount() {
+		if (this.props.fixedHeader) {
+			this.toggleFixedHeaderListeners(true);
+			this.resizeFixedHeaders();
+		}
+	}
+
+	componentDidUpdate() {
+		if (this.props.fixedHeader) {
+			this.resizeFixedHeaders();
+		}
+	}
+
+	componentWillUnmount() {
+		this.toggleFixedHeaderListeners(false);
+	}
+
+	getId() {
+		return this.props.id || this.generatedId;
+	}
+
+	handleToggleAll = (e, { checked }) => {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
@@ -204,41 +248,117 @@ const DataTable = createReactClass({
 			const selection = checked ? [...this.props.items] : [];
 			this.props.onRowChange(e, { selection });
 		}
-	},
+	};
 
-	handleRowToggle(item, selected, e) {
+	handleRowToggle = (item, selected, e) => {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			let selection;
 
 			if (selected) {
-				selection = [...this.props.selection, item];
+				selection =
+					this.props.selectRows === 'radio'
+						? [item]
+						: [...this.props.selection, item];
 			} else {
 				selection = reject(this.props.selection, item);
 			}
 
 			this.props.onChange(selection, e);
 		}
+		// DEPRECATED CODE ENDS HERE
 
 		if (typeof this.props.onRowChange === 'function') {
 			let selection;
 
 			if (selected) {
-				selection = [...this.props.selection, item];
+				selection =
+					this.props.selectRows === 'radio'
+						? [item]
+						: [...this.props.selection, item];
 			} else {
 				selection = reject(this.props.selection, item);
 			}
 
 			this.props.onRowChange(e, { selection });
 		}
-	},
+	};
+
+	resizeFixedHeaders = (event) => {
+		const headerRefs = [].concat(
+			this.headerRefs.select,
+			this.headerRefs.column,
+			this.headerRefs.action
+		);
+
+		if (this.props.onFixedHeaderResize) {
+			this.props.onFixedHeaderResize(event, {
+				headerRefs,
+				scrollerRef: this.scrollerRef,
+			});
+		} else if (headerRefs.length > 0) {
+			let documentScrollLeft = 0;
+
+			if (canUseDOM) {
+				documentScrollLeft = document.documentElement.scrollLeft;
+			}
+
+			headerRefs.forEach((column) => {
+				if (column && canUseDOM) {
+					const columnLeft =
+						column.getBoundingClientRect().left + documentScrollLeft;
+					let wrapperLeft = 0;
+
+					if (this.scrollerRef) {
+						wrapperLeft =
+							this.scrollerRef.getBoundingClientRect().left +
+							documentScrollLeft;
+					}
+
+					const cellFixed = column.querySelector('.slds-cell-fixed');
+					const linkFixed = cellFixed.firstChild;
+
+					if (cellFixed) {
+						cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
+					}
+
+					if (linkFixed) {
+						linkFixed.style.width = `${column.offsetWidth}px`;
+					}
+				}
+			});
+		}
+	};
+
+	toggleFixedHeaderListeners = (attach) => {
+		if (this.props.onToggleFixedHeaderListeners) {
+			this.props.onToggleFixedHeaderListeners(
+				{},
+				{
+					attach,
+					resizeHandler: this.resizeFixedHeaders,
+					scrollerRef: this.scrollerRef,
+				}
+			);
+		} else {
+			const action = [`${attach ? 'add' : 'remove'}EventListener`];
+			if (canUseEventListeners) {
+				window[action]('resize', this.resizeFixedHeaders);
+			}
+			if (canUseEventListeners && this.scrollerRef) {
+				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
+			}
+		}
+	};
 
 	// ### Render
 	render() {
+		const ariaProps = {};
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
-		const canSelectRows = this.props.selectRows && numRows > 0;
+		const canSelectRows =
+			this.props.selectRows && numRows > 0 ? this.props.selectRows : false;
 		const allSelected = canSelectRows && numRows === numSelected;
 		const indeterminateSelected =
 			canSelectRows && numRows !== numSelected && numSelected !== 0;
@@ -270,7 +390,16 @@ const DataTable = createReactClass({
 				child &&
 				child.type.displayName === DataTableRowActions.displayName
 			) {
-				RowActions = child;
+				const dropdown = child.props.dropdown;
+				const dropdownPropOverrides = {};
+				if (this.props.fixedHeader) {
+					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
+				}
+				RowActions = React.cloneElement(child, {
+					dropdown: dropdown
+						? React.cloneElement(dropdown, dropdownPropOverrides)
+						: null,
+				});
 			}
 		});
 
@@ -297,18 +426,31 @@ const DataTable = createReactClass({
 			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
 		}
 
-		return (
+		if (this.props.selectRows && this.props.selectRows !== 'radio') {
+			ariaProps['aria-multiselectable'] = 'true';
+		}
+
+		// This guarantees there are never any old header references if props change
+		this.headerRefs = {
+			action: RowActions ? this.headerRefs.action : [],
+			column: this.headerRefs.column.slice(0, columns.length),
+			select: canSelectRows ? this.headerRefs.select : [],
+		};
+
+		let component = (
 			<table
+				{...ariaProps}
 				className={classNames(
 					'slds-table',
 					{
 						'slds-table_fixed-layout': this.props.fixedLayout,
+						'slds-table_header-fixed': this.props.fixedHeader,
 						'slds-table_resizable-cols': this.props.fixedLayout,
 						'slds-table_bordered': !this.props.unborderedRow,
 						'slds-table_cell-buffer':
 							!this.props.fixedLayout && !this.props.unbufferedCell,
 						'slds-max-medium-table_stacked': this.props.stacked,
-						'slds-max-medium-table_stacked-horizontalviewports': this.props
+						'slds-max-medium-table_stacked-horizontal': this.props
 							.stackedHorizontal,
 						'slds-table_striped': this.props.striped,
 						'slds-table_col-bordered': this.props.columnBordered,
@@ -316,16 +458,28 @@ const DataTable = createReactClass({
 					},
 					this.props.className
 				)}
-				id={this.props.id}
+				id={this.getId()}
 				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
 					assistiveText={assistiveText}
 					allSelected={allSelected}
+					fixedHeader={this.props.fixedHeader}
+					headerRefs={(ref, index) => {
+						if (index === 'action' || index === 'select') {
+							if (ref) {
+								this.headerRefs[index][0] = ref;
+							} else {
+								this.headerRefs[index] = [];
+							}
+						} else {
+							this.headerRefs.column[index] = ref;
+						}
+					}}
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
-					id={`${this.props.id}-${DATA_TABLE_HEAD}`}
+					id={`${this.getId()}-${DATA_TABLE_HEAD}`}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
@@ -334,8 +488,9 @@ const DataTable = createReactClass({
 					{numRows > 0
 						? this.props.items.map((item) => {
 								const rowId =
-									`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` ||
-									shortid.generate();
+									this.getId() && item.id
+										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+										: shortid.generate();
 								return (
 									<DataTableRow
 										assistiveText={assistiveText}
@@ -348,6 +503,7 @@ const DataTable = createReactClass({
 										onToggle={this.handleRowToggle}
 										selection={this.props.selection}
 										rowActions={RowActions}
+										tableId={this.getId()}
 									/>
 								);
 							})
@@ -356,7 +512,34 @@ const DataTable = createReactClass({
 				</tbody>
 			</table>
 		);
-	},
-});
+
+		if (this.props.fixedHeader) {
+			component = (
+				<div
+					className="slds-table_header-fixed_container"
+					style={{
+						borderTop: `1px solid ${paletteColorsCommon.colorGray5}`,
+						height: '100%',
+					}}
+				>
+					<div
+						className="slds-table_header-fixed_scroller"
+						ref={(ref) => {
+							this.scrollerRef = ref;
+						}}
+						style={{
+							height: '100%',
+							overflow: 'auto',
+						}}
+					>
+						{component}
+					</div>
+				</div>
+			);
+		}
+
+		return component;
+	}
+}
 
 export default DataTable;

@@ -74,6 +74,10 @@ const propTypes = {
 	 */
 	onRequestClose: PropTypes.func,
 	/**
+	 * Custom styles to be passed to the component. _Tested with Mocha testing._
+	 */
+	style: PropTypes.object,
+	/**
 	 * The type of Toast. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
@@ -113,17 +117,22 @@ class Toast extends React.Component {
 	}
 
 	componentWillUnmount() {
+		this.clearTimeout();
 		DOMElementFocus.returnFocusToStoredElement();
 	}
 
 	onClose = () => {
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-			this.timeout = null;
-		}
+		this.clearTimeout();
 
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
+		}
+	};
+
+	clearTimeout = () => {
+		if (this.timeout) {
+			clearTimeout(this.timeout);
+			this.timeout = null;
 		}
 	};
 
@@ -186,6 +195,7 @@ class Toast extends React.Component {
 					this.props.className
 				)}
 				role="alert"
+				style={this.props.style}
 			>
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}

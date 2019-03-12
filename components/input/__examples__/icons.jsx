@@ -1,11 +1,11 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 import InputIcon from '~/components/icon/input-icon'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'InputExample',
+class Example extends React.Component {
+	static displayName = 'InputExample';
 
 	render() {
 		return (
@@ -18,7 +18,9 @@ const Example = createReactClass({
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
+									assistiveText={{
+										icon: 'Search',
+									}}
 									name="search"
 									category="utility"
 								/>
@@ -32,7 +34,9 @@ const Example = createReactClass({
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
+									assistiveText={{
+										icon: 'Search',
+									}}
 									name="search"
 									category="utility"
 									onClick={() => {
@@ -42,7 +46,9 @@ const Example = createReactClass({
 							}
 							iconRight={
 								<InputIcon
-									assistiveText="Clear"
+									assistiveText={{
+										icon: 'Clear',
+									}}
 									name="clear"
 									category="utility"
 									onClick={() => {
@@ -59,7 +65,9 @@ const Example = createReactClass({
 						<Input
 							iconRight={
 								<InputIcon
-									assistiveText="Clear"
+									assistiveText={{
+										icon: 'Clear',
+									}}
 									name="clear"
 									category="utility"
 									onClick={() => {
@@ -77,7 +85,9 @@ const Example = createReactClass({
 							assistiveText={{ spinner: 'Field data is loading' }}
 							iconRight={
 								<InputIcon
-									assistiveText="Clear"
+									assistiveText={{
+										icon: 'Clear',
+									}}
 									name="clear"
 									category="utility"
 									onClick={() => {
@@ -94,7 +104,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
