@@ -414,7 +414,7 @@ const defaultProps = {
 	length: '5',
 	menuPosition: 'absolute',
 	openOn: 'click',
-	width: 'medium'
+	width: 'medium',
 };
 
 /**
