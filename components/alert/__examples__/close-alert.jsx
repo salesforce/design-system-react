@@ -19,6 +19,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<Button
+					    style={{ marginTop: 25 }}
 						label="Toggle alert"
 						onClick={() => {
 							this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
