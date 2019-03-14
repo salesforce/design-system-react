@@ -138,6 +138,7 @@ class GlobalHeaderDemo extends React.Component {
 								onSelect: action('Search Selected'),
 							}}
 							id="header-search-custom-id"
+							assistiveText={{ label: 'Search Salesforce' }}
 							labels={{ placeholder: 'Search Salesforce' }}
 							options={[
 								{ id: 'email', label: 'Email' },
