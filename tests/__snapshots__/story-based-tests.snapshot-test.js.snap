@@ -5484,7 +5484,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
             />
           </svg>
         </button>
-        <div
+        <section
           aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
           aria-labelledby="color-picker-label-color-picker"
           className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
@@ -6738,7 +6738,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
               </button>
             </div>
           </footer>
-        </div>
+        </section>
       </div>
       <div
         className="slds-form-element slds-color-picker__summary-input slds-align-top"
@@ -8806,7 +8806,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               />
             </svg>
           </div>
-          <div
+          <section
             className="absolute-positioned"
             id="combobox-base-listbox"
             onKeyDown={[Function]}
@@ -8951,7 +8951,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <div
+                  <section
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-4"
                     onKeyDown={[Function]}
@@ -8969,7 +8969,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       This account has been removed from the system.
                     </div>
-                  </div>
+                  </section>
                 </div>
               </li>
               <li
@@ -9093,7 +9093,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <div
+                  <section
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-6"
                     onKeyDown={[Function]}
@@ -9111,7 +9111,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       You don't have permission to access this account.
                     </div>
-                  </div>
+                  </section>
                 </div>
               </li>
               <li
@@ -9213,7 +9213,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
       <div
@@ -10692,7 +10692,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
             role="listbox"
@@ -10910,7 +10910,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -11052,7 +11052,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             role="listbox"
@@ -11166,7 +11166,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -11226,7 +11226,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             role="listbox"
@@ -11282,7 +11282,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -11342,7 +11342,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             role="listbox"
@@ -11398,7 +11398,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -12430,7 +12430,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               </svg>
             </span>
           </div>
-          <div
+          <section
             id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
             role="listbox"
@@ -12992,7 +12992,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -13206,7 +13206,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               </svg>
             </span>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             role="listbox"
@@ -13541,7 +13541,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -25648,7 +25648,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
             Help
           </span>
         </button>
-        <div
+        <section
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="field-level-help-tooltip"
           onKeyDown={[Function]}
@@ -25666,7 +25666,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           >
             Some helpful information
           </div>
-        </div>
+        </section>
       </div>
       <div
         className="slds-form-element__control"
@@ -29678,7 +29678,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_error"
@@ -29800,7 +29800,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
           }
         />
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -29906,7 +29906,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
       >
         Trigger Popover
       </button>
-      <div
+      <section
         aria-describedby="myPopoverId-dialog-body"
         aria-labelledby="myPopoverId-dialog-heading"
         className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover sample-classname"
@@ -29961,7 +29961,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -29997,7 +29997,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_warning"
@@ -30119,7 +30119,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
           }
         />
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;
