@@ -26,8 +26,7 @@ const propTypes = {
 	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
-const Base = (props) => {
-	return (
+const Base = (props) => (
 		<div className="slds-grid slds-page-header__row">
 			<div className="slds-col slds-page-header__col-title">
 				<MediaObject
@@ -46,7 +45,6 @@ const Base = (props) => {
 			</div>
 		</div>
 	);
-};
 Base.displayName = displayName;
 Base.propTypes = propTypes;
 

@@ -35,8 +35,7 @@ const propTypes = {
 	title: PropTypes.node,
 };
 
-const ObjectHome = (props) => {
-	return (
+const ObjectHome = (props) => (
 		<div>
 			<div className="slds-grid">
 				<div className="slds-col slds-has-flexi-truncate">
@@ -63,7 +62,6 @@ const ObjectHome = (props) => {
 			</div>
 		</div>
 	);
-};
 
 ObjectHome.displayName = displayName;
 ObjectHome.propTypes = propTypes;

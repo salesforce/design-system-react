@@ -94,8 +94,7 @@ class DemoPageHeader extends React.Component {
 
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
-const recordHomeActions = () => {
-	return (
+const recordHomeActions = () => (
 		<div>
 			<SLDSButtonStateful
 				key="PageHeaderFollowButton"
@@ -147,7 +146,6 @@ const recordHomeActions = () => {
 			</SLDSButtonGroup>
 		</div>
 	);
-};
 
 const customTooltip = () => {
 	const content =

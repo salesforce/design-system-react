@@ -10408,27 +10408,12 @@
                 "required": false,
                 "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
             },
-            "contentRight": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
-            },
             "onRenderActions": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
             },
             "details": {
                 "type": {
@@ -10441,27 +10426,12 @@
                     "computed": false
                 }
             },
-            "navRight": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
-            },
             "onRenderControls": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
             },
             "trail": {
                 "type": {

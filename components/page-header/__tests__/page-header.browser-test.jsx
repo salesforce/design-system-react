@@ -12,7 +12,7 @@ import SLDSMenuDropdown from '../../menu-dropdown';
 
 chai.use(chaiEnzyme());
 
-const recordHomeContentRight = (
+const recordHomeActions = () => (
 	<div>
 		<SLDSButtonStateful
 			key="PageHeaderFollowButton"
@@ -75,7 +75,7 @@ describe('PageHeader: ', function() {
 		label: 'Record Type',
 		title: 'Record Title',
 		variant: 'record-home',
-		contentRight: recordHomeContentRight,
+		onRenderActions: recordHomeActions,
 		details: recordHomeDetails,
 	};
 

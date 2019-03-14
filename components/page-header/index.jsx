@@ -103,7 +103,6 @@ const propTypes = {
 	 * Content to appear on the right hand side of the page header
 	 * prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead
 	 */
-	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onRenderActions: PropTypes.func,
 	/**
 	 * An array of buttons which appear on the component's right hand side.
@@ -113,7 +112,6 @@ const propTypes = {
 	 * Nav content which appears in the upper right hand corner.
 	 * prop 'navRight' will be deprecated soon, use 'onRenderControls' instead
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onRenderControls: PropTypes.func,
 	/**
 	 * An array of react elements presumably anchor <a> elements.
@@ -337,7 +335,7 @@ class PageHeader extends Component {
 					icon={renderIcon()}
 					title={renderTitle()}
 					info={renderInfo()}
-					contentRight={renderContentRight()} //For backward compatibility, 'contentRight' prop will be deprecated sooon
+					contentRight={renderContentRight()} // For backward compatibility, 'contentRight' prop will be deprecated sooon
 					navRight={renderNavRight()} // For backward compatibility, 'navRight' prop will be deprecate soon
 					onRenderActions={renderOnRenderActions()}
 					onRenderControls={renderOnRenderControls()}
