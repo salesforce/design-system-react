@@ -10210,10 +10210,40 @@
             },
             "variant": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'object-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'objectHome'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'recordHome'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relatedList'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "The type of component",
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -10391,11 +10421,14 @@
                     ]
                 },
                 "required": false,
-                "description": "Content to appear on the right hand side of the page header",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
             },
             "details": {
                 "type": {
@@ -10421,11 +10454,14 @@
                     ]
                 },
                 "required": false,
-                "description": "Nav content which appears in the upper right hand corner.",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
+            },
+            "onRenderControls": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
             },
             "trail": {
                 "type": {
