@@ -11,7 +11,7 @@ class Example extends React.Component {
 	static displayName = 'RelatedListPageHeaderExample';
 
 	render() {
-		const navRight = (
+		const controls = () => (
 			<div className="slds-button-group" role="group">
 				<button className="slds-button slds-button_neutral">Add Contact</button>
 				<div className="slds-button_last">
@@ -26,7 +26,7 @@ class Example extends React.Component {
 			</div>
 		);
 
-		const contentRight = (
+		const actions = () => (
 			<div>
 				<Dropdown
 					align="right"
@@ -100,8 +100,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					title="Contacts (will truncate)"
-					navRight={navRight}
-					contentRight={contentRight}
+					onRenderControls={controls}
+					onRenderActions={actions}
 					variant="object-home"
 					truncate
 					trail={trail}

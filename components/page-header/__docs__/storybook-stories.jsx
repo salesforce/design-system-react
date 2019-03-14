@@ -78,7 +78,7 @@ class DemoPageHeader extends React.Component {
 			iconName: 'user',
 			label: 'Record Type',
 			title: 'Record Title',
-			variant: 'recordHome',
+			variant: 'record-home',
 			details: this.state.recordHomeDetails,
 		};
 		return (
@@ -94,58 +94,60 @@ class DemoPageHeader extends React.Component {
 
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
-const recordHomeContentRight = (
-	<div>
-		<SLDSButtonStateful
-			key="PageHeaderFollowButton"
-			disabled={false}
-			iconSize="medium"
-			responsive={false}
-			stateOne={{
-				iconName: 'add',
-				label: 'Follow',
-			}}
-			stateTwo={{
-				iconCategory: 'utility',
-				iconName: 'check',
-				label: 'Following',
-			}}
-			stateThree={{
-				iconCategory: 'utility',
-				iconName: 'close',
-				label: 'Unfollow',
-			}}
-		/>
-		<SLDSButtonGroup key="">
-			<SLDSButton label="Edit" />
-			<SLDSButton label="Delete" />
-			<SLDSButton label="Clone" />
-			<SLDSMenuDropdown
-				assistiveText={{
-					icon: 'More Options',
+const recordHomeActions = () => {
+	return (
+		<div>
+			<SLDSButtonStateful
+				key="PageHeaderFollowButton"
+				disabled={false}
+				iconSize="medium"
+				responsive={false}
+				stateOne={{
+					iconName: 'add',
+					label: 'Follow',
 				}}
-				buttonVariant="icon"
-				iconCategory="utility"
-				iconName="down"
-				iconVariant="border-filled"
-				id="page-header-dropdown-record-home-content-right"
-				onSelect={action('select')}
-				openOn="click"
-				align="right"
-				options={[
-					{
-						label: 'Disable',
-						value: 'A0',
-					},
-					{
-						label: 'Promote',
-						value: 'C0',
-					},
-				]}
+				stateTwo={{
+					iconCategory: 'utility',
+					iconName: 'check',
+					label: 'Following',
+				}}
+				stateThree={{
+					iconCategory: 'utility',
+					iconName: 'close',
+					label: 'Unfollow',
+				}}
 			/>
-		</SLDSButtonGroup>
-	</div>
-);
+			<SLDSButtonGroup key="">
+				<SLDSButton label="Edit" />
+				<SLDSButton label="Delete" />
+				<SLDSButton label="Clone" />
+				<SLDSMenuDropdown
+					assistiveText={{
+						icon: 'More Options',
+					}}
+					buttonVariant="icon"
+					iconCategory="utility"
+					iconName="down"
+					iconVariant="border-filled"
+					id="page-header-dropdown-record-home-content-right"
+					onSelect={action('select')}
+					openOn="click"
+					align="right"
+					options={[
+						{
+							label: 'Disable',
+							value: 'A0',
+						},
+						{
+							label: 'Promote',
+							value: 'C0',
+						},
+					]}
+				/>
+			</SLDSButtonGroup>
+		</div>
+	);
+};
 
 const customTooltip = () => {
 	const content =
@@ -188,6 +190,7 @@ const recordHomeDetails = [
 		content: 'Description (2-line truncation)',
 	},
 ];
+<<<<<<< 8ee31c4ffb4b9c1e3586abb914b55b107f6975bb
 const objectHomeNavRight = (
 	<SLDSButtonGroup>
 		<SLDSButton label="New Lead" variant="neutral" />
@@ -219,6 +222,85 @@ const objectHomeNavRight = (
 	</SLDSButtonGroup>
 );
 const relatedListContentRight = (
+=======
+const objectHomeActions = () => (
+	<div>
+		<SLDSButton
+			iconCategory="utility"
+			iconName="settings"
+			variant="icon"
+			iconVariant="more"
+			className="slds-m-left_xx-small"
+			assistiveText={{
+				icon: 'Settings',
+			}}
+		/>
+		<SLDSButton
+			iconCategory="utility"
+			iconName="table"
+			variant="icon"
+			iconVariant="more"
+			className="slds-m-left_xx-small"
+			assistiveText={{
+				icon: 'Table',
+			}}
+		/>
+		<SLDSButtonGroup>
+			<SLDSButton
+				iconCategory="utility"
+				iconName="chart"
+				variant="icon"
+				iconVariant="border"
+				assistiveText={{
+					icon: 'Chart',
+				}}
+			/>
+			<SLDSButton
+				iconCategory="utility"
+				iconName="filterList"
+				variant="icon"
+				iconVariant="border"
+				className="slds-m-left_xx-small"
+				assistiveText={{
+					icon: 'Filter List',
+				}}
+			/>
+			<SLDSMenuDropdown
+				assistiveText={{
+					icon: 'Sort',
+				}}
+				buttonVariant="icon"
+				iconCategory="utility"
+				iconName="sort"
+				iconVariant="more"
+				id="page-header-dropdown-object-home-content-right"
+				onSelect={action('select')}
+				openOn="click"
+				align="right"
+				options={[
+					{
+						label: 'Last Name (ascending)',
+						value: 'LNA',
+					},
+					{
+						label: 'Last Name (descending)',
+						value: 'LND',
+					},
+					{
+						label: 'Last Contacted (descending)',
+						value: 'LCD',
+					},
+					{
+						label: 'Last Contacted (ascending)',
+						value: 'LCA',
+					},
+				]}
+			/>
+		</SLDSButtonGroup>
+	</div>
+);
+const relatedListActions = () => (
+>>>>>>> Update examples according to the change in props
 	<div>
 		<SLDSButton
 			iconCategory="utility"
@@ -285,7 +367,7 @@ const relatedListContentRight = (
 		</SLDSButtonGroup>
 	</div>
 );
-const relatedListNavRight = (
+const relatedListControls = () => (
 	<SLDSButtonGroup>
 		<SLDSButton label="Add Contact" variant="neutral" />
 		<SLDSMenuDropdown
@@ -336,14 +418,14 @@ storiesOf(PAGE_HEADER, module)
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 		})
 	)
-	.add('Base with content right', () =>
+	.add('Base with actions', () =>
 		getPageHeader({
 			iconAssistiveText: 'Opportunity',
 			iconCategory: 'standard',
 			iconName: 'opportunity',
 			title: 'Rohde Corp - 80,000 Widgets',
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
-			navRight: objectHomeNavRight,
+			onRenderControls: objectHomeActions,
 		})
 	)
 	.add('Record Home (truncates)', () =>
@@ -354,7 +436,7 @@ storiesOf(PAGE_HEADER, module)
 			label: 'Record Type',
 			title: 'Record Title',
 			variant: 'record-home',
-			contentRight: recordHomeContentRight,
+			onRenderActions: recordHomeActions,
 			details: recordHomeDetails,
 		})
 	)
@@ -364,8 +446,8 @@ storiesOf(PAGE_HEADER, module)
 			title: 'Contacts',
 			variant: 'object-home',
 			info: '10 items • sorted by name',
-			contentRight: relatedListContentRight,
-			navRight: relatedListNavRight,
+			onRenderActions: relatedListActions,
+			onRenderControls: relatedListControls,
 			trail: relatedListTrail,
 		})
 	)
