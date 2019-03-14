@@ -95,57 +95,57 @@ class DemoPageHeader extends React.Component {
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
 const recordHomeActions = () => (
-		<div>
-			<SLDSButtonStateful
-				key="PageHeaderFollowButton"
-				disabled={false}
-				iconSize="medium"
-				responsive={false}
-				stateOne={{
-					iconName: 'add',
-					label: 'Follow',
+	<div>
+		<SLDSButtonStateful
+			key="PageHeaderFollowButton"
+			disabled={false}
+			iconSize="medium"
+			responsive={false}
+			stateOne={{
+				iconName: 'add',
+				label: 'Follow',
+			}}
+			stateTwo={{
+				iconCategory: 'utility',
+				iconName: 'check',
+				label: 'Following',
+			}}
+			stateThree={{
+				iconCategory: 'utility',
+				iconName: 'close',
+				label: 'Unfollow',
+			}}
+		/>
+		<SLDSButtonGroup key="">
+			<SLDSButton label="Edit" />
+			<SLDSButton label="Delete" />
+			<SLDSButton label="Clone" />
+			<SLDSMenuDropdown
+				assistiveText={{
+					icon: 'More Options',
 				}}
-				stateTwo={{
-					iconCategory: 'utility',
-					iconName: 'check',
-					label: 'Following',
-				}}
-				stateThree={{
-					iconCategory: 'utility',
-					iconName: 'close',
-					label: 'Unfollow',
-				}}
+				buttonVariant="icon"
+				iconCategory="utility"
+				iconName="down"
+				iconVariant="border-filled"
+				id="page-header-dropdown-record-home-content-right"
+				onSelect={action('select')}
+				openOn="click"
+				align="right"
+				options={[
+					{
+						label: 'Disable',
+						value: 'A0',
+					},
+					{
+						label: 'Promote',
+						value: 'C0',
+					},
+				]}
 			/>
-			<SLDSButtonGroup key="">
-				<SLDSButton label="Edit" />
-				<SLDSButton label="Delete" />
-				<SLDSButton label="Clone" />
-				<SLDSMenuDropdown
-					assistiveText={{
-						icon: 'More Options',
-					}}
-					buttonVariant="icon"
-					iconCategory="utility"
-					iconName="down"
-					iconVariant="border-filled"
-					id="page-header-dropdown-record-home-content-right"
-					onSelect={action('select')}
-					openOn="click"
-					align="right"
-					options={[
-						{
-							label: 'Disable',
-							value: 'A0',
-						},
-						{
-							label: 'Promote',
-							value: 'C0',
-						},
-					]}
-				/>
-			</SLDSButtonGroup>
-		</div>
-	);
+		</SLDSButtonGroup>
+	</div>
+);
 
 const customTooltip = () => {
 	const content =

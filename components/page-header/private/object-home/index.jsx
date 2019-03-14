@@ -36,32 +36,32 @@ const propTypes = {
 };
 
 const ObjectHome = (props) => (
-		<div>
-			<div className="slds-grid">
-				<div className="slds-col slds-has-flexi-truncate">
-					<MediaObject
-						body={
-							<div>
-								{props.label}
-								{props.title}
-							</div>
-						}
-						className="slds-no-space slds-grow"
-						figure={props.icon}
-					/>
-				</div>
-				<div className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small">
-					{props.onRenderControls ? props.onRenderControls : props.navRight}
-				</div>
+	<div>
+		<div className="slds-grid">
+			<div className="slds-col slds-has-flexi-truncate">
+				<MediaObject
+					body={
+						<div>
+							{props.label}
+							{props.title}
+						</div>
+					}
+					className="slds-no-space slds-grow"
+					figure={props.icon}
+				/>
 			</div>
-			<div className="slds-grid">
-				<div className="slds-col slds-align-bottom">{props.info}</div>
-				<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-					{props.onRenderActions ? props.onRenderActions : props.contentRight}
-				</div>
+			<div className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom_xx-small">
+				{props.onRenderControls ? props.onRenderControls : props.navRight}
 			</div>
 		</div>
-	);
+		<div className="slds-grid">
+			<div className="slds-col slds-align-bottom">{props.info}</div>
+			<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
+				{props.onRenderActions ? props.onRenderActions : props.contentRight}
+			</div>
+		</div>
+	</div>
+);
 
 ObjectHome.displayName = displayName;
 ObjectHome.propTypes = propTypes;
