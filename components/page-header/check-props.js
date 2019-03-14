@@ -4,6 +4,7 @@
 
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function() {};
@@ -57,6 +58,13 @@ if (process.env.NODE_ENV !== 'production') {
 				"Using value of variants in camelCase is deprecated. Use kebab-case ('related-list') instead."
 			);
 		}
+		deprecatedProperty(
+			COMPONENT,
+			props.navRight,
+			'navRight',
+			'onRenderControls',
+			createDocUrl('onRenderControls')
+		);
 	};
 }
 
