@@ -473,10 +473,14 @@ class Datepicker extends React.Component {
 	}
 
 	handleCalendarChange(event, { date }) {
+		// Date is set to midnight to maintain consistency while choosing the date
+		let midnightDate = date.setHours(0, 0, 0, 0);
+		midnightDate = new Date(midnightDate);
+
 		this.setState({
-			value: date,
-			formattedValue: this.props.formatter(date),
-			inputValue: this.props.formatter(date),
+			value: midnightDate,
+			formattedValue: this.props.formatter(midnightDate),
+			inputValue: this.props.formatter(midnightDate),
 		});
 
 		this.handleRequestClose();
