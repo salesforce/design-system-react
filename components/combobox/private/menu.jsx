@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -189,6 +190,7 @@ const Menu = (props) => {
 								}
 					}
 					role="option"
+					tabIndex="0"
 				>
 					{optionData.icon && !props.menuItem ? (
 						<span className="slds-media__figure">{optionData.icon}</span>

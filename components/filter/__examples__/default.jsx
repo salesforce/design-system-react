@@ -9,8 +9,8 @@ import Combobox from '~/components/combobox';
 
 const options = {
 	'show-me': [
-		{ id: 1, label: 'All Products', value: 'all-products' },
-		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' },
+		{ id: '1', label: 'All Products', value: 'all-products' },
+		{ id: '2', label: 'All Wackamoles', value: 'all-Wackamoles' },
 	],
 };
 

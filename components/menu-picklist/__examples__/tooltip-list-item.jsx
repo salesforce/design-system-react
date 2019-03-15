@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
@@ -10,7 +12,9 @@ const ListItemRenderer = (props) => (
 		align="bottom left"
 		content={`${props.label} tooltip on bottom left`}
 	>
-		<p className="slds-truncate">{props.label} (Hover for tooltip)</p>
+		<p className="slds-truncate" tabIndex="0">
+			{props.label} (Hover for tooltip)
+		</p>
 	</Tooltip>
 );
 
