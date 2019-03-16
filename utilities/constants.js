@@ -14,6 +14,7 @@ export const BRAND_BAND = 'SLDSBrandBand';
 export const BREAD_CRUMB = 'SLDSBreadcrumb';
 
 export const BREADCRUMB = 'SLDSBreadcrumb';
+export const BUILDER_HEADER = 'SLDSBuilderHeader';
 export const BUTTON = 'SLDSButton';
 export const BUTTON_GROUP = 'SLDSButtonGroup';
 export const BUTTON_STATEFUL = 'SLDSButtonStateful';

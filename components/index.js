@@ -31,6 +31,9 @@ export AppLauncherSection from './app-launcher/section';
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
+export SLDSBuilderHeader from './builder-header';
+export BuilderHeader from './builder-header';
+
 export SLDSBrandBand from './brand-band';
 export BrandBand from './brand-band';
 
