@@ -142,7 +142,7 @@ Thank you to all the contributors to this one of [many open source projects at S
 ### Active Key Contributors
 
 * [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
-* [@futuremint](https://github.com/futuremint) David Woodward
+* [@futuremint](https://github.com/futuremint) Dave Woodward
 * [@garygong](https://github.com/garygong) Gary Gong
 * [@interactivellama](https://github.com/interactivellama) Stephen James
 
