@@ -33,12 +33,6 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
-
 const defaultProps = {
 	id: 'sample-progress-indicator',
 };
