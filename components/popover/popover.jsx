@@ -144,6 +144,13 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
+		 * Used with `walkthrough` variant to provide action buttons (ex: "Next" / "Skip" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons.
+		 */
+		footerActions: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.arrayOf(PropTypes.node),
+		]),
+		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
@@ -187,13 +194,17 @@ class Popover extends React.Component {
 		 * Please select one of the following:
 		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
-		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing. NOTE: this setting is not compatible with custom targets outside the trigger
 		 */
 		position: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
 			'relative',
 		]),
+		/**
+		 * Used with `walkthrough` variant to provide the step text (ex: "Step 1 of 4") for a walkthrough popover footer.
+		 */
+		stepText: PropTypes.string,
 		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
 		 */
@@ -202,6 +213,10 @@ class Popover extends React.Component {
 		 * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
 		 */
 		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+		/**
+		 * Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position="relative"` is not compatible with custom targets outside the trigger
+		 */
+		target: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
 		 * CSS classes to be added to wrapping trigger `div` around the button.
 		 */
@@ -213,7 +228,13 @@ class Popover extends React.Component {
 		/**
 		 * Determines the type of the popover. `error` and `warning` allows the  content body to scroll. Default is `base` _Tested with snaphots._
 		 */
-		variant: PropTypes.oneOf(['base', 'error', 'warning']),
+		variant: PropTypes.oneOf([
+			'base',
+			'error',
+			'walkthrough',
+			'walkthrough-action',
+			'warning',
+		]),
 	};
 
 	static defaultProps = defaultProps;
@@ -247,6 +268,21 @@ class Popover extends React.Component {
 	getMenu = () =>
 		// needed by keyboard navigation
 		this.dialog;
+
+	getTargetElement = () => {
+		let target = this.trigger;
+
+		if (this.props.target) {
+			if (typeof this.props.target === 'string') {
+				const selectorTarget = document.querySelector(this.props.target);
+				target = selectorTarget || target;
+			} else {
+				target = this.props.target;
+			}
+		}
+
+		return target;
+	};
 
 	setMenuRef = (component) => {
 		this.dialog = component;
@@ -447,10 +483,17 @@ class Popover extends React.Component {
 		};
 		const headerVariants = {
 			base: (
-				<header className="slds-popover__header">
+				<header
+					className={classNames('slds-popover__header', {
+						'slds-p-vertical_medium': props.variant === 'walkthrough',
+					})}
+				>
 					<h2
 						id={`${this.getId()}-dialog-heading`}
-						className="slds-text-heading_small"
+						className={classNames({
+							'slds-text-heading_small': props.variant !== 'walkthrough',
+							'slds-text-heading_medium': props.variant === 'walkthrough',
+						})}
 					>
 						{this.props.heading}
 					</h2>
@@ -473,6 +516,112 @@ class Popover extends React.Component {
 				</header>
 			),
 		};
+		let header = null;
+
+		if (hasDefinedHeader && props.variant !== 'walkthrough-action') {
+			header = headerVariants[hasThemedHeader ? 'themed' : 'base'];
+		}
+
+		// BODY SUB-RENDERS
+		let body = null;
+
+		if (props.variant === 'error' || props.variant === 'warning') {
+			body = (
+				// THIS WRAPPING DIV IS NOT IN SLDS MARKUP
+				<div>
+					<div
+						id={`${this.getId()}-dialog-body`}
+						className="slds-popover__body slds-popover__body_scrollable"
+						// REMOVE IN THE FUTURE: SLDS OVERRIDE
+						// Possible solution in future is to use .slds-popover__body_small
+						style={{
+							borderBottom: 'none',
+						}}
+					>
+						{props.body}
+					</div>
+					<div
+						// GRADIENT FOOTER - SLDS OVERRIDE
+						// REMOVE IN THE FUTURE (HOPEFULLY)
+						style={{
+							position: 'absolute',
+							bottom: 0,
+							left: 0,
+							width: '100%',
+							textAlign: 'center',
+							margin: 0,
+							padding: '5px 0',
+							/* "transparent" only works here because == rgba(0,0,0,0) */
+							backgroundImage:
+								'linear-gradient(to bottom, transparent, rgba(255,255,255,100)',
+						}}
+					/>
+				</div>
+			);
+		} else if (props.variant === 'walkthrough-action') {
+			body = (
+				<div className="slds-popover__body" id={`${this.getId()}-dialog-body`}>
+					<div className="slds-media">
+						<div className="slds-media__figure">
+							<Icon
+								category="utility"
+								name="touch_action"
+								size="small"
+								inverse
+							/>
+						</div>
+						<div className="slds-media__body">
+							{props.heading ? (
+								<h2 className="slds-text-heading_small">{props.heading}</h2>
+							) : null}
+							{props.body}
+							{props.stepText ? (
+								<p className="slds-m-top_medium slds-text-title">
+									{props.stepText}
+								</p>
+							) : null}
+						</div>
+					</div>
+				</div>
+			);
+		} else {
+			body = (
+				// DEFAULT - NOT SCROLLABLE
+				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+					{props.body}
+				</div>
+			);
+		}
+
+		// FOOTER SUB-RENDERS
+		let footer = null;
+
+		if (props.footer) {
+			footer = (
+				<footer className="slds-popover__footer">{this.props.footer}</footer>
+			);
+		} else if (
+			props.variant !== 'walkthrough-action' &&
+			(props.footerActions || props.stepText)
+		) {
+			footer = (
+				<footer className="slds-popover__footer">
+					<div className="slds-grid slds-grid_vertical-align-center">
+						{props.stepText ? (
+							<span className="slds-text-title">{props.stepText}</span>
+						) : null}
+						{props.footerActions ? (
+							<div
+								className="slds-col_bump-left"
+								style={{ display: 'inline-block' }}
+							>
+								{props.footerActions}
+							</div>
+						) : null}
+					</div>
+				</footer>
+			);
+		}
 
 		// MAIN RENDER
 		return isOpen ? (
@@ -484,6 +633,15 @@ class Popover extends React.Component {
 					'ignore-react-onclickoutside',
 					'slds-popover',
 					{ 'slds-popover_error': props.variant === 'error' },
+					{
+						'slds-popover_walkthrough':
+							props.variant === 'walkthrough' ||
+							props.variant === 'walkthrough-action',
+					},
+					{
+						'slds-popover_walkthrough-alt':
+							props.variant === 'walkthrough-action',
+					},
 					{ 'slds-popover_warning': props.variant === 'warning' },
 					props.className
 				)}
@@ -497,7 +655,7 @@ class Popover extends React.Component {
 				onMouseEnter={props.openOn === 'hover' ? this.handleMouseEnter : null}
 				onMouseLeave={props.openOn === 'hover' ? this.handleMouseLeave : null}
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
-				onRequestTargetElement={() => this.trigger}
+				onRequestTargetElement={() => this.getTargetElement()}
 				position={this.props.position}
 				style={this.props.style}
 				variant="popover"
@@ -513,64 +671,23 @@ class Popover extends React.Component {
 					assistiveText={{ icon: closeButtonAssistiveText }}
 					iconCategory="utility"
 					iconName="close"
-					className="slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+					className={classNames(
+						'lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
+						{
+							'slds-button_icon-inverse':
+								props.variant === 'walkthrough' ||
+								props.variant === 'walkthrough-action',
+						}
+					)}
 					onClick={this.handleCancel}
 					variant="icon"
 					inverse={
 						this.props.variant === 'error' || this.props.variant === 'warning'
 					}
 				/>
-
-				{hasDefinedHeader
-					? headerVariants[hasThemedHeader ? 'themed' : 'base']
-					: null}
-				{props.variant === 'error' || props.variant === 'warning' ? (
-					// THIS WRAPPING DIV IS NOT IN SLDS MARKUP
-					<div>
-						<div
-							id={`${this.getId()}-dialog-body`}
-							className="slds-popover__body slds-popover__body_scrollable"
-							// REMOVE IN THE FUTURE: SLDS OVERRIDE
-							// Possible solution in future is to use .slds-popover__body_small
-							style={{
-								borderBottom: 'none',
-							}}
-						>
-							{props.body}
-						</div>
-						<div
-							// GRADIENT FOOTER - SLDS OVERRIDE
-							// REMOVE IN THE FUTURE (HOPEFULLY)
-							style={{
-								position: 'absolute',
-								bottom: 0,
-								left: 0,
-								width: '100%',
-								textAlign: 'center',
-								margin: 0,
-								padding: '5px 0',
-								/* "transparent" only works here because == rgba(0,0,0,0) */
-								backgroundImage:
-									'linear-gradient(to bottom, transparent, rgba(255,255,255,100)',
-							}}
-						/>
-					</div>
-				) : (
-					// NOT SCROLLABLE
-					<div
-						id={`${this.getId()}-dialog-body`}
-						className={classNames('slds-popover__body', {
-							'slds-popover__body_scrollable':
-								props.variant === 'error' || props.variant === 'warning',
-						})}
-					>
-						{props.body}
-					</div>
-				)}
-
-				{this.props.footer ? (
-					<footer className="slds-popover__footer">{this.props.footer}</footer>
-				) : null}
+				{header}
+				{body}
+				{footer}
 			</Dialog>
 		) : null;
 	};
