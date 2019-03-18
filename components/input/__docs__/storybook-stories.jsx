@@ -78,7 +78,7 @@ storiesOf(INPUT, module)
 			</section>
 		</IconSettings>
 	))
-	.add('Custom style', () => (
+	.add('Custom style and autocomplete', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
 				<ol>
@@ -87,6 +87,7 @@ storiesOf(INPUT, module)
 							Input with custom style
 						</h1>
 						<Input
+							autoComplete="off"
 							styleInput={{
 								width: 130,
 								height: 30,
