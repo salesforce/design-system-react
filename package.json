@@ -562,13 +562,6 @@
 			"url-slug": "page-headers"
 		},
 		{
-		  "component": "progress-bar",
-		  "status": "prod",
-		  "display-name": "Progress Bars",
-		  "SLDS-component-path": "/components/progress-bar",
-		  "url-slug": "progress-bars"
-		},
-		{
 			"component": "progress-indicator",
 			"status": "prod",
 			"display-name": "Progress Indicators",
