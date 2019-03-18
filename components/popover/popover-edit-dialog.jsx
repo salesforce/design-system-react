@@ -3,8 +3,6 @@
 
 // # Edit Dialog Popver Component
 
-// Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
-
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
