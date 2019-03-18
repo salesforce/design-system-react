@@ -27,11 +27,12 @@ const propTypes = {
 	/**
 	 *  Icon for the scoped notification
 	 */
-	icon: PropTypes.string.isRequired,
+	icon: PropTypes.string,
 };
 
 const defaultProps = {
 	theme: 'light',
+	icon: 'info'
 };
 
 /**

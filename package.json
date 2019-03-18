@@ -562,6 +562,13 @@
 			"url-slug": "page-headers"
 		},
 		{
+		  "component": "progress-bar",
+		  "status": "prod",
+		  "display-name": "Progress Bars",
+		  "SLDS-component-path": "/components/progress-bar",
+		  "url-slug": "progress-bars"
+		},
+		{
 			"component": "progress-indicator",
 			"status": "prod",
 			"display-name": "Progress Indicators",
@@ -646,6 +653,13 @@
 			},
 			"SLDS-component-path": "/components/radio-button-group",
 			"url-slug": "radio-button-groups"
+		},
+		{
+		  "component": "scoped-notification",
+		  "status": "prod",
+		  "display-name": "Scoped Notifications",
+		  "SLDS-component-path": "/components/scoped-notification",
+		  "url-slug": "scoped-notifications"
 		},
 		{
 			"component": "slider",

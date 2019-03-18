@@ -10,7 +10,7 @@ class Example extends React.Component {
 					background: 'rgb(244, 246, 249)',
 				}}
 			>
-				<ScopedNotification theme="dark" icon="info">
+				<ScopedNotification theme="dark">
 					<p>
 						It looks as if duplicates exist for this lead.{' '}
 						<a href="javascript:void(0);">View Duplicates.</a>
