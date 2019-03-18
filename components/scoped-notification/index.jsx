@@ -36,7 +36,7 @@ const defaultProps = {
 };
 
 /**
- * A scoped notification component communicates to the user the progress of a particular process
+ * A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert. 
  */
 class ScopedNotification extends React.Component {
 	render() {
