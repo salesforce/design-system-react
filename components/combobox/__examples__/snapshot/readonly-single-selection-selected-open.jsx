@@ -1,7 +1,6 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
