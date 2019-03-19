@@ -121,7 +121,7 @@ Card.propTypes = {
 	 */
 	footer: PropTypes.node,
 	/**
-	 * Allows card to have no header.
+	 * Allows card to have no header, and ignores header related props altogether.
 	 */
 	hasNoHeader: PropTypes.bool,
 	/**

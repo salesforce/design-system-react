@@ -1898,7 +1898,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Allows card to have no header."
+                "description": "Allows card to have no header, and ignores header related props altogether."
             },
             "header": {
                 "type": {
