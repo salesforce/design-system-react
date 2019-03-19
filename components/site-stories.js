@@ -7,6 +7,7 @@
 
 const documentationSiteLiveExamples = {
 	accordion: require('@salesforce/design-system-react/components/accordion/__docs__/site-stories.js'),
+	'activity-timeline': require('@salesforce/design-system-react/components/activity-timeline/__docs__/site-stories.js'),
 	alert: require('@salesforce/design-system-react/components/alert/__docs__/site-stories.js'),
 	'app-launcher': require('@salesforce/design-system-react/components/app-launcher/__docs__/site-stories.js'),
 	avatar: require('@salesforce/design-system-react/components/avatar/__docs__/site-stories.js'),

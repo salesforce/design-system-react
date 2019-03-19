@@ -1,6 +1,8 @@
 // ## Components
 export const ACCORDION = 'SLDSAccordion';
 export const ACCORDION_PANEL = 'SLDSAccordionPanel';
+export const ACTIVITY_TIMELINE = 'SLDSActivityTimeline';
+export const ACTIVITY_TIMELINE_ACTIVITY = 'SLDSActivityTimelineActivity';
 export const ALERT = 'SLDSAlert';
 export const ALERT_CONTAINER = 'SLDSAlertContainer';
 export const APP_LAUNCHER = 'SLDSAppLauncher';

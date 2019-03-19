@@ -1,0 +1,7 @@
+{
+  "component": "activity-timeline",
+  "status": "prod",
+  "display-name": "Activity Timelines",
+  "SLDS-component-path": "/components/activity-timeline",
+  "url-slug": "activity-timelines"
+}
