@@ -4,6 +4,8 @@ import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
+import log from '../../../utilities/log';
+
 class Example extends React.Component {
 	static displayName = 'PopoverExample';
 
@@ -18,7 +20,21 @@ class Example extends React.Component {
 							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</p>
 					}
-					footerActions={<Button variant="brand">Next</Button>}
+					footerActions={
+						<Button
+							onClick={(event) => {
+								log({
+									action: this.props.action,
+									data: {},
+									event,
+									eventName: 'Next clicked!',
+								});
+							}}
+							variant="brand"
+						>
+							Next
+						</Button>
+					}
 					heading="Manage your channels"
 					id="popover-walkthrough"
 					stepText="Step 2 of 4"

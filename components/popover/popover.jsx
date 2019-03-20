@@ -155,7 +155,7 @@ class Popover extends React.Component {
 		 */
 		hasStaticAlignment: PropTypes.bool,
 		/**
-		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
+		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant="walkthrough-action"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		 */
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
@@ -202,7 +202,7 @@ class Popover extends React.Component {
 			'relative',
 		]),
 		/**
-		 * Used with `walkthrough` variant to provide the step text (ex: "Step 1 of 4") for a walkthrough popover footer.
+		 * Used with `walkthrough` variant to provide the step text (ex: "Step 1 of 4") for a walkthrough popover footer. If used with `variant="walkthrough-action"`, it will be placed in the popover body.
 		 */
 		stepText: PropTypes.string,
 		/**

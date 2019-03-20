@@ -10022,7 +10022,7 @@
                     ]
                 },
                 "required": false,
-                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
+                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
             "id": {
                 "type": {
@@ -10110,7 +10110,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Used with `walkthrough` variant to provide the step text (ex: \"Step 1 of 4\") for a walkthrough popover footer."
+                "description": "Used with `walkthrough` variant to provide the step text (ex: \"Step 1 of 4\") for a walkthrough popover footer. If used with `variant=\"walkthrough-action\"`, it will be placed in the popover body."
             },
             "style": {
                 "type": {
