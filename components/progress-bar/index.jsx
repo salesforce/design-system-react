@@ -13,7 +13,6 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 import { PROGRESS_BAR } from '../../utilities/constants';
 
-
 const propTypes = {
 	/**
 	 * HTML id for component.
@@ -30,7 +29,7 @@ const propTypes = {
 	/**
 	 * Label for the progress bar
 	 */
-	label: PropTypes.node,
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 *  Set radius of progress bar
 	 */
@@ -58,6 +57,7 @@ class ProgressBar extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
+
 	/**
 	 * ID as a string
 	 * @returns {string} id
@@ -96,14 +96,17 @@ class ProgressBar extends React.Component {
 						'slds-progress-bar',
 						`slds-progress-bar_${this.props.radius}`,
 						`slds-progress-bar_${this.props.thickness}`,
-						this.props.className
+						this.props.className,
 					)}
 					style={{
 						width: `${this.props.value}%`,
 					}}
 				>
 					<span
-						className={classNames(`slds-progress-bar__value`, `slds-progress-bar__value_${this.props.color}`)}
+						className={classNames(
+							`slds-progress-bar__value`,
+							`slds-progress-bar__value_${this.props.color}`,
+						)}
 					>
 						<span className="slds-assistive-text">
 							Progress: {`${this.props.value}%`}
