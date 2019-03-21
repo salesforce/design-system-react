@@ -10,7 +10,7 @@ import Button from '../button';
 /**
  * Header for use in builder tools.
  */
-const BuilderHeader = () => (
+const BuilderHeader = (props) => (
 	<div style={{ position: 'relative', height: '100px' }}>
 		<div className="slds-builder-header_container">
 			<header className="slds-builder-header">
@@ -123,29 +123,7 @@ const BuilderHeader = () => (
 					</ButtonGroup>
 				</div>
 				<div className="slds-builder-toolbar__actions" aria-label="Document actions">
-					<ButtonGroup>
-						<Button label="Save" />
-						<Dropdown
-							assistiveText={{ icon: 'Menu' }}
-							buttonVariant="icon"
-							iconCategory="utility"
-							iconName="down"
-							iconVariant="border-filled"
-							openOn="click"
-							options={[
-								{ label: 'Save As', value: 'saveas' },
-								{ label: 'Clone', value: 'clone' },
-								{ label: 'Delete', value: 'delete' },
-							]}
-						/>
-					</ButtonGroup>
-					<Button
-						iconCategory="utility"
-						iconName="right"
-						iconPosition="left"
-						label="Run Dataflow"
-						variant="brand"
-					/>
+					{props.onRenderActions ? props.onRenderActions() : null}
 				</div>
 			</div>
 		</div>
