@@ -29474,7 +29474,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-assistive-text"
+        className="slds-tree__group-header slds-assistive-text"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -29708,7 +29708,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -29942,7 +29942,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -30209,7 +30209,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -30465,7 +30465,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -30937,7 +30937,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -31171,7 +31171,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -31405,7 +31405,7 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
       id="example-tree"
     >
       <h4
-        className=""
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
