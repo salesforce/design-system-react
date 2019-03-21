@@ -3455,6 +3455,124 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCard w/o Header 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <article
+    className="slds-card slds-grid slds-grid_vertical"
+    style={
+      Object {
+        "height": "300px",
+      }
+    }
+  >
+    <div
+      className="slds-card__body slds-grow slds-scrollable_y"
+      id={null}
+    >
+      <table
+        className="slds-table slds-table_bordered slds-table_cell-buffer"
+        id="SLDSDataTableExample-1"
+        role={null}
+      >
+        <thead>
+          <tr
+            className="slds-line-height_reset"
+          >
+            <th
+              aria-label="Opportunity Name"
+              aria-sort="none"
+              className="slds-text-title_caps"
+              scope="col"
+              style={null}
+            >
+              <div
+                className="slds-truncate"
+                title="Opportunity Name"
+              >
+                Opportunity Name
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloudhub"
+              >
+                <span
+                  title="Cloudhub"
+                >
+                  Cloudhub
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloudhub + Anypoint Connectors"
+              >
+                <span
+                  title="Cloudhub + Anypoint Connectors"
+                >
+                  Cloudhub + Anypoint Connectors
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloud City"
+              >
+                <span
+                  title="Cloud City"
+                >
+                  Cloud City
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="slds-card__footer"
+    >
+      <a
+        href="javascript:void(0);"
+      >
+        Footer text
+      </a>
+    </div>
+  </article>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCheckbox Checkbox (assistive text) 1`] = `
 <div
   className="slds-p-around_medium"
