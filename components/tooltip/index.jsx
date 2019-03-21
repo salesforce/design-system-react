@@ -196,9 +196,8 @@ class Tooltip extends React.Component {
 			children = this.props.children;
 		}
 
-		return React.Children.map(children, (child, i) =>
+		return React.Children.map(children, (child) =>
 			React.cloneElement(child, {
-				key: i,
 				'aria-describedby': this.getId(),
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,

@@ -124,99 +124,104 @@ class Example extends React.Component {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">
-					<DataTable
-						assistiveText={{
-							actionsHeader: 'actions',
-							columnSort: 'sort this column',
-							columnSortedAscending: 'asc',
-							columnSortedDescending: 'desc',
-							selectAllRows: 'all rows',
-							selectRow: 'select this row',
-						}}
-						fixedLayout
-						items={this.state.items}
-						id="DataTableExample-2"
-						onRowChange={this.handleChanged}
-						onSort={this.handleSort}
-						selection={this.state.selection}
-						selectRows="checkbox"
-					>
-						<DataTableColumn
-							isSorted={this.state.sortColumn === 'opportunityName'}
-							label="Name"
-							primaryColumn
-							property="opportunityName"
-							sortable
-							sortDirection={this.state.sortColumnDirection.opportunityName}
-							width="10rem"
+					<div style={{ overflow: 'auto' }}>
+						<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+							Advanced (Fixed Layout)
+						</h3>
+						<DataTable
+							assistiveText={{
+								actionsHeader: 'actions',
+								columnSort: 'sort this column',
+								columnSortedAscending: 'asc',
+								columnSortedDescending: 'desc',
+								selectAllRows: 'all rows',
+								selectRow: 'select this row',
+							}}
+							fixedLayout
+							items={this.state.items}
+							id="DataTableExample-2"
+							onRowChange={this.handleChanged}
+							onSort={this.handleSort}
+							selection={this.state.selection}
+							selectRows="checkbox"
 						>
-							<CustomDataTableCell />
-						</DataTableColumn>
-						<DataTableColumn
-							label="Account Name"
-							property="accountName"
-							width="8rem"
-						/>
-						<DataTableColumn
-							sortable
-							isDefaultSortDescending
-							label="Close Date"
-							property="closeDate"
-						/>
-						<DataTableColumn label="Stage" property="stage" />
-						<DataTableColumn
-							isSorted={this.state.sortColumn === 'confidence'}
-							label="Confidence"
-							property="confidence"
-							sortable
-							sortDirection={this.state.sortColumnDirection.confidence}
-						/>
-						<DataTableColumn label="Amount" property="amount" />
-						<DataTableColumn label="Contact" property="contact">
-							<CustomDataTableCell />
-						</DataTableColumn>
-						<DataTableRowActions
-							options={[
-								{
-									id: 0,
-									label: 'Add to Group',
-									value: '1',
-								},
-								{
-									id: 1,
-									label: 'Publish',
-									value: '2',
-								},
-								{
-									id: 2,
-									label: 'Third of Seven',
-									value: '3',
-								},
-								{
-									id: 3,
-									label: 'Fourth of Seven',
-									value: '4',
-								},
-								{
-									id: 4,
-									label: 'Fifth of Seven',
-									value: '5',
-								},
-								{
-									id: 5,
-									label: 'Sixth of Seven',
-									value: '6',
-								},
-								{
-									id: 6,
-									label: 'Seventh of Seven',
-									value: '7',
-								},
-							]}
-							onAction={this.handleRowAction}
-							dropdown={<Dropdown length="7" />}
-						/>
-					</DataTable>
+							<DataTableColumn
+								isSorted={this.state.sortColumn === 'opportunityName'}
+								label="Name"
+								primaryColumn
+								property="opportunityName"
+								sortable
+								sortDirection={this.state.sortColumnDirection.opportunityName}
+								width="10rem"
+							>
+								<CustomDataTableCell />
+							</DataTableColumn>
+							<DataTableColumn
+								label="Account Name"
+								property="accountName"
+								width="8rem"
+							/>
+							<DataTableColumn
+								sortable
+								isDefaultSortDescending
+								label="Close Date"
+								property="closeDate"
+							/>
+							<DataTableColumn label="Stage" property="stage" />
+							<DataTableColumn
+								isSorted={this.state.sortColumn === 'confidence'}
+								label="Confidence"
+								property="confidence"
+								sortable
+								sortDirection={this.state.sortColumnDirection.confidence}
+							/>
+							<DataTableColumn label="Amount" property="amount" />
+							<DataTableColumn label="Contact" property="contact">
+								<CustomDataTableCell />
+							</DataTableColumn>
+							<DataTableRowActions
+								options={[
+									{
+										id: 0,
+										label: 'Add to Group',
+										value: '1',
+									},
+									{
+										id: 1,
+										label: 'Publish',
+										value: '2',
+									},
+									{
+										id: 2,
+										label: 'Third of Seven',
+										value: '3',
+									},
+									{
+										id: 3,
+										label: 'Fourth of Seven',
+										value: '4',
+									},
+									{
+										id: 4,
+										label: 'Fifth of Seven',
+										value: '5',
+									},
+									{
+										id: 5,
+										label: 'Sixth of Seven',
+										value: '6',
+									},
+									{
+										id: 6,
+										label: 'Seventh of Seven',
+										value: '7',
+									},
+								]}
+								onAction={this.handleRowAction}
+								dropdown={<Dropdown length="7" />}
+							/>
+						</DataTable>
+					</div>
 				</IconSettings>
 			</div>
 		);
