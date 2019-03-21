@@ -3,10 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconSettings from '~/components/icon-settings';
 
-import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
-import FilterGroup from '~/components/panel/filtering/group';
-import FilterList from '~/components/panel/filtering/list';
-import FilterListHeading from '~/components/panel/filtering/list-heading';
 import Filter from '~/components/filter';
 
 import Combobox from '~/components/combobox';
