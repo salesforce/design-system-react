@@ -140,6 +140,11 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * An [Input](https://react.lightningdesignsystem.com/components/inputs) component.
+	 * The props from this component will override any default props.
+	 */
+	input: PropTypes.node,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
@@ -511,7 +516,9 @@ class Combobox extends React.Component {
 
 	handleInputChange = (event) => {
 		this.requestOpenMenu();
-		this.props.events.onChange(event, { value: event.target.value });
+		if (this.props.events && this.props.events.onChange) {
+			this.props.events.onChange(event, { value: event.target.value });
+		}
 	};
 
 	handleInputFocus = (event) => {
@@ -836,7 +843,7 @@ class Combobox extends React.Component {
 	 * if state is passed in as a prop)
 	 */
 
-	renderBase = ({ assistiveText, labels, props }) => (
+	renderBase = ({ assistiveText, labels, props, userDefinedProps }) => (
 		<div className="slds-form-element__control">
 			<div className="slds-combobox_container">
 				<div
@@ -902,6 +909,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -940,7 +948,12 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineMultiple = ({ assistiveText, labels, props }) => (
+	renderInlineMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => (
 		<div className="slds-form-element__control">
 			<div
 				className={classNames('slds-combobox_container', {
@@ -1031,6 +1044,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1045,7 +1059,7 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineSingle = ({ assistiveText, labels, props }) => {
+	renderInlineSingle = ({ assistiveText, labels, props, userDefinedProps }) => {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
@@ -1152,6 +1166,7 @@ class Combobox extends React.Component {
 										props.value
 									: value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1207,7 +1222,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlyMultiple = ({ assistiveText, labels, props }) => {
+	renderReadOnlyMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
@@ -1276,6 +1296,7 @@ class Combobox extends React.Component {
 							required={props.required}
 							role="textbox"
 							value={value}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1317,7 +1338,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlySingle = ({ assistiveText, labels, props }) => {
+	renderReadOnlySingle = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value = (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1386,6 +1412,7 @@ class Combobox extends React.Component {
 								(this.state.activeOption && this.state.activeOption.label) ||
 								value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1412,7 +1439,18 @@ class Combobox extends React.Component {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const hasRenderedLabel =
 			labels.label || (assistiveText && assistiveText.label);
-		const subRenderParameters = { assistiveText, labels, props: this.props };
+		// declare user defined props
+		const userDefinedProps = {};
+		if (props.input) {
+			// at the moment we only support overriding the input props
+			userDefinedProps.input = props.input.props;
+		}
+		const subRenderParameters = {
+			assistiveText,
+			labels,
+			props: this.props,
+			userDefinedProps,
+		};
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
 			base: {

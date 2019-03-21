@@ -154,6 +154,25 @@ const SetHeightCard = () => (
 
 SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
+const DemoCardWithoutHeader = () => (
+	<Card
+		bodyClassName="slds-grow slds-scrollable_y"
+		className="slds-grid slds-grid_vertical"
+		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		hasNoHeader
+		icon={<Icon category="standard" name="document" size="small" />}
+		style={{ height: '300px' }}
+	>
+		<DataTable id="SLDSDataTableExample-1" items={sampleItems}>
+			<DataTableColumn label="Opportunity Name" property="name" truncate>
+				<DataTableHighlightCell />
+			</DataTableColumn>
+		</DataTable>
+	</Card>
+);
+
+DemoCardWithoutHeader.displayName = 'CARD_WITHOUT_HEADER';
+
 storiesOf(CARD, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -186,4 +205,5 @@ storiesOf(CARD, module)
 		/>
 	))
 	.add('Set height card', () => <SetHeightCard />)
+	.add('w/o Header', () => <DemoCardWithoutHeader />)
 	.add('Doc site Related List With Table', () => <RelatedListWithTable />);
