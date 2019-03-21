@@ -1087,7 +1087,7 @@ exports[`DOM snapshots SLDSBreadcrumb 1 Item 1`] = `
       className="slds-breadcrumb slds-list_horizontal"
     >
       <li
-        className="slds-breadcrumb__item slds-text-title_caps"
+        className="slds-breadcrumb__item"
       >
         <a
           href="javascript:void(0);"
@@ -1112,7 +1112,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
       className="slds-breadcrumb slds-list_horizontal"
     >
       <li
-        className="slds-breadcrumb__item slds-text-title_caps"
+        className="slds-breadcrumb__item"
       >
         <a
           href="javascript:void(0);"
@@ -1122,7 +1122,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
         </a>
       </li>
       <li
-        className="slds-breadcrumb__item slds-text-title_caps"
+        className="slds-breadcrumb__item"
       >
         <a
           href="javascript:void(0);"
@@ -2583,7 +2583,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -2788,7 +2788,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -2985,7 +2985,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -3368,7 +3368,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -3483,7 +3483,7 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
             <th
               aria-label="Opportunity Name"
               aria-sort="none"
-              className="slds-text-title_caps"
+              className=""
               scope="col"
               style={null}
             >
@@ -11367,7 +11367,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                 title="Accounts"
               >
                 <span
-                  className="slds-text-title_caps"
+                  className="slds-listbox__option-header"
                 >
                   Accounts
                 </span>
@@ -11483,7 +11483,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                 title="Accounts"
               >
                 <span
-                  className="slds-text-title_caps"
+                  className="slds-listbox__option-header"
                 >
                   Accounts
                 </span>
@@ -13739,7 +13739,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Name"
             aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted"
             scope="col"
             style={
               Object {
@@ -13791,7 +13791,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -13820,7 +13820,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-is-sortable slds-is-sorted_desc slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted_desc"
             scope="col"
             style={null}
           >
@@ -13866,7 +13866,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -13889,7 +13889,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-is-sortable slds-text-title_caps"
+            className="slds-is-sortable"
             scope="col"
             style={null}
           >
@@ -13928,7 +13928,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -13951,7 +13951,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14613,7 +14613,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Name"
             aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted"
             scope="col"
             style={
               Object {
@@ -14665,7 +14665,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -14694,7 +14694,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14717,7 +14717,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14740,7 +14740,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-is-sortable slds-text-title_caps"
+            className="slds-is-sortable"
             scope="col"
             style={null}
           >
@@ -14779,7 +14779,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14802,7 +14802,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15446,7 +15446,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Name"
             aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted"
             scope="col"
             style={
               Object {
@@ -15498,7 +15498,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -15527,7 +15527,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15550,7 +15550,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15573,7 +15573,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-is-sortable slds-text-title_caps"
+            className="slds-is-sortable"
             scope="col"
             style={null}
           >
@@ -15612,7 +15612,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15635,7 +15635,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16274,7 +16274,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16303,7 +16303,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16332,7 +16332,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16361,7 +16361,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16390,7 +16390,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16419,7 +16419,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16448,7 +16448,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16859,7 +16859,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16873,7 +16873,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16887,7 +16887,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16901,7 +16901,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16915,7 +16915,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16929,7 +16929,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16943,7 +16943,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17285,7 +17285,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17299,7 +17299,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17313,7 +17313,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17327,7 +17327,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17341,7 +17341,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17355,7 +17355,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17369,7 +17369,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17711,7 +17711,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17725,7 +17725,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17739,7 +17739,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17753,7 +17753,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17767,7 +17767,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17781,7 +17781,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17795,7 +17795,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18137,7 +18137,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18151,7 +18151,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18165,7 +18165,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18179,7 +18179,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18193,7 +18193,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18207,7 +18207,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18221,7 +18221,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18696,7 +18696,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Name"
                 aria-sort="ascending"
-                className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+                className="slds-is-sortable slds-is-sorted"
                 scope="col"
                 style={
                   Object {
@@ -18815,7 +18815,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Account Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -18879,7 +18879,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Close Date"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -18943,7 +18943,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Stage"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -19007,7 +19007,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Confidence"
                 aria-sort="none"
-                className="slds-is-sortable slds-text-title_caps"
+                className="slds-is-sortable"
                 scope="col"
                 style={
                   Object {
@@ -19112,7 +19112,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Amount"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -19176,7 +19176,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Contact"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -26663,7 +26663,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                       className="slds-breadcrumb slds-list_horizontal"
                     >
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -26672,7 +26672,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                         </a>
                       </li>
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -27645,7 +27645,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                       className="slds-breadcrumb slds-list_horizontal"
                     >
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -27654,7 +27654,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                         </a>
                       </li>
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -31546,7 +31546,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps slds-assistive-text"
+        className="slds-tree__group-header slds-assistive-text"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -31780,7 +31780,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32014,7 +32014,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32281,7 +32281,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32537,7 +32537,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -33009,7 +33009,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -33243,7 +33243,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -33477,7 +33477,7 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
