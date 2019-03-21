@@ -23,6 +23,7 @@ import ReadOnlyDisabled from '../__examples__/readonly-single-disabled';
 import ReadOnlyMenuItemDisabled from '../__examples__/readonly-menu-item-disabled';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
+import InputProp from '../__examples__/input-prop';
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 import SnapshotBaseOpenMenuSubHeaderSeparator from '../__examples__/snapshot/base-open-menu-sub-header';
 import SnapshotBaseOpenMenuInheritWidthOf from '../__examples__/snapshot/base-open-menu-inheritWidthOf';
@@ -94,6 +95,7 @@ storiesOf(COMBOBOX, module)
 	.add('Required Input in Error State', () => (
 		<RequiredInputErrorState action={action} />
 	))
+	.add('Input Component as a Prop', () => <InputProp action={action} />)
 	.add('Snapshot Base Open', () => <SnapshotBaseOpen action={action} />)
 	.add('Snapshot Base Custom Menu Item Open', () => (
 		<SnapshotBaseCustomMenuItemOpen action={action} />
