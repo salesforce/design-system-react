@@ -1087,7 +1087,7 @@ exports[`DOM snapshots SLDSBreadcrumb 1 Item 1`] = `
       className="slds-breadcrumb slds-list_horizontal"
     >
       <li
-        className="slds-breadcrumb__item slds-text-title_caps"
+        className="slds-breadcrumb__item"
       >
         <a
           href="javascript:void(0);"
@@ -1112,7 +1112,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
       className="slds-breadcrumb slds-list_horizontal"
     >
       <li
-        className="slds-breadcrumb__item slds-text-title_caps"
+        className="slds-breadcrumb__item"
       >
         <a
           href="javascript:void(0);"
@@ -1122,7 +1122,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
         </a>
       </li>
       <li
-        className="slds-breadcrumb__item slds-text-title_caps"
+        className="slds-breadcrumb__item"
       >
         <a
           href="javascript:void(0);"
@@ -2583,7 +2583,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -2788,7 +2788,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -2985,7 +2985,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -3368,7 +3368,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
               <th
                 aria-label="Opportunity Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={null}
               >
@@ -3452,6 +3452,124 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
       </div>
     </article>
   </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCard w/o Header 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <article
+    className="slds-card slds-grid slds-grid_vertical"
+    style={
+      Object {
+        "height": "300px",
+      }
+    }
+  >
+    <div
+      className="slds-card__body slds-grow slds-scrollable_y"
+      id={null}
+    >
+      <table
+        className="slds-table slds-table_bordered slds-table_cell-buffer"
+        id="SLDSDataTableExample-1"
+        role={null}
+      >
+        <thead>
+          <tr
+            className="slds-line-height_reset"
+          >
+            <th
+              aria-label="Opportunity Name"
+              aria-sort="none"
+              className=""
+              scope="col"
+              style={null}
+            >
+              <div
+                className="slds-truncate"
+                title="Opportunity Name"
+              >
+                Opportunity Name
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloudhub"
+              >
+                <span
+                  title="Cloudhub"
+                >
+                  Cloudhub
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloudhub + Anypoint Connectors"
+              >
+                <span
+                  title="Cloudhub + Anypoint Connectors"
+                >
+                  Cloudhub + Anypoint Connectors
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloud City"
+              >
+                <span
+                  title="Cloud City"
+                >
+                  Cloud City
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="slds-card__footer"
+    >
+      <a
+        href="javascript:void(0);"
+      >
+        Footer text
+      </a>
+    </div>
+  </article>
 </div>
 `;
 
@@ -11249,7 +11367,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                 title="Accounts"
               >
                 <span
-                  className="slds-text-title_caps"
+                  className="slds-listbox__option-header"
                 >
                   Accounts
                 </span>
@@ -11365,7 +11483,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                 title="Accounts"
               >
                 <span
-                  className="slds-text-title_caps"
+                  className="slds-listbox__option-header"
                 >
                   Accounts
                 </span>
@@ -13554,6 +13672,11 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
   className="slds-p-around_medium"
 >
   <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Advanced (Fixed Layout)
+    </h3>
     <table
       aria-multiselectable="true"
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
@@ -13616,7 +13739,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Name"
             aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted"
             scope="col"
             style={
               Object {
@@ -13668,7 +13791,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -13697,7 +13820,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-is-sortable slds-is-sorted_desc slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted_desc"
             scope="col"
             style={null}
           >
@@ -13743,7 +13866,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -13766,7 +13889,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-is-sortable slds-text-title_caps"
+            className="slds-is-sortable"
             scope="col"
             style={null}
           >
@@ -13805,7 +13928,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -13828,7 +13951,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14462,6 +14585,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
   className="slds-p-around_medium"
 >
   <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Advanced Single Select (Fixed Header)
+    </h3>
     <table
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
       id="DataTableExample-SingleRequiredSelect"
@@ -14485,7 +14613,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Name"
             aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted"
             scope="col"
             style={
               Object {
@@ -14537,7 +14665,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -14566,7 +14694,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14589,7 +14717,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14612,7 +14740,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-is-sortable slds-text-title_caps"
+            className="slds-is-sortable"
             scope="col"
             style={null}
           >
@@ -14651,7 +14779,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -14674,7 +14802,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15290,6 +15418,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
   className="slds-p-around_medium"
 >
   <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Advanced Single Select (Fixed Layout)
+    </h3>
     <table
       className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
       id="DataTableExample-SingleRequiredSelect"
@@ -15313,7 +15446,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Name"
             aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+            className="slds-is-sortable slds-is-sorted"
             scope="col"
             style={
               Object {
@@ -15365,7 +15498,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -15394,7 +15527,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15417,7 +15550,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15440,7 +15573,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-is-sortable slds-text-title_caps"
+            className="slds-is-sortable"
             scope="col"
             style={null}
           >
@@ -15479,7 +15612,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -15502,7 +15635,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16113,7 +16246,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
 </div>
 `;
 
-exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
+exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -16141,7 +16274,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16170,7 +16303,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16199,7 +16332,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16228,7 +16361,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16257,7 +16390,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16286,7 +16419,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16315,7 +16448,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={
               Object {
@@ -16698,7 +16831,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fixed Layout) 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -16712,7 +16845,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
     <h3
       className="slds-text-heading_medium slds-m-vertical_medium"
     >
-      Default Fluid Layout
+      Basic Fluid Layout (Default)
     </h3>
     <table
       className="slds-table slds-table_bordered slds-table_cell-buffer"
@@ -16726,7 +16859,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16740,7 +16873,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16754,7 +16887,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16768,7 +16901,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16782,7 +16915,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16796,7 +16929,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -16810,7 +16943,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17120,832 +17253,25 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
     <h3
       className="slds-text-heading_medium slds-m-vertical_medium"
     >
-      Striped
-    </h3>
-    <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped"
-      id="DataTableExample-1-striped"
-      role={null}
-    >
-      <thead>
-        <tr
-          className="slds-line-height_reset"
-        >
-          <th
-            aria-label="Opportunity Name"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Opportunity Name"
-            >
-              Opportunity Name
-            </div>
-          </th>
-          <th
-            aria-label="Account Name"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Account Name"
-            >
-              Account Name
-            </div>
-          </th>
-          <th
-            aria-label="Close Date"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Close Date"
-            >
-              Close Date
-            </div>
-          </th>
-          <th
-            aria-label="Stage"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Stage"
-            >
-              Stage
-            </div>
-          </th>
-          <th
-            aria-label="Confidence"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Confidence"
-            >
-              Confidence
-            </div>
-          </th>
-          <th
-            aria-label="Amount"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Amount"
-            >
-              Amount
-            </div>
-          </th>
-          <th
-            aria-label="Contact"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Contact"
-            >
-              Contact
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          className=""
-        >
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub + Anypoint Connectors"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                Cloudhub + Anypoint Connectors
-              </a>
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <h3
-      className="slds-text-heading_medium slds-m-vertical_medium"
-    >
-      No Row Hover
-    </h3>
-    <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer slds-no-row-hover"
-      id="DataTableExample-noRowHover"
-      role={null}
-    >
-      <thead>
-        <tr
-          className="slds-line-height_reset"
-        >
-          <th
-            aria-label="Opportunity Name"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Opportunity Name"
-            >
-              Opportunity Name
-            </div>
-          </th>
-          <th
-            aria-label="Account Name"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Account Name"
-            >
-              Account Name
-            </div>
-          </th>
-          <th
-            aria-label="Close Date"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Close Date"
-            >
-              Close Date
-            </div>
-          </th>
-          <th
-            aria-label="Stage"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Stage"
-            >
-              Stage
-            </div>
-          </th>
-          <th
-            aria-label="Confidence"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Confidence"
-            >
-              Confidence
-            </div>
-          </th>
-          <th
-            aria-label="Amount"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Amount"
-            >
-              Amount
-            </div>
-          </th>
-          <th
-            aria-label="Contact"
-            aria-sort="none"
-            className="slds-text-title_caps"
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Contact"
-            >
-              Contact
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          className=""
-        >
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub + Anypoint Connectors"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                Cloudhub + Anypoint Connectors
-              </a>
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className={null}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="javascript:void(0);"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <h3
-      className="slds-text-heading_medium slds-m-vertical_medium"
-    >
-      Column Bordered
+      Basic Fluid Layout - Column Bordered
     </h3>
     <table
       className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered"
@@ -17959,7 +17285,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Opportunity Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17973,7 +17299,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Account Name"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -17987,7 +17313,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Close Date"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18001,7 +17327,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Stage"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18015,7 +17341,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Confidence"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18029,7 +17355,7 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Amount"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
             scope="col"
             style={null}
           >
@@ -18043,7 +17369,859 @@ exports[`DOM snapshots SLDSDataTable Basic (Fluid Layout) 1`] = `
           <th
             aria-label="Contact"
             aria-sort="none"
-            className="slds-text-title_caps"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Contact"
+            >
+              Contact
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Cloudhub
+              </a>
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub + Anypoint Connectors"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Cloudhub + Anypoint Connectors
+              </a>
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Cloudhub
+              </a>
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Basic Fluid Layout - No Row Hover
+    </h3>
+    <table
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-no-row-hover"
+      id="DataTableExample-noRowHover"
+      role={null}
+    >
+      <thead>
+        <tr
+          className="slds-line-height_reset"
+        >
+          <th
+            aria-label="Opportunity Name"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Opportunity Name"
+            >
+              Opportunity Name
+            </div>
+          </th>
+          <th
+            aria-label="Account Name"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Account Name"
+            >
+              Account Name
+            </div>
+          </th>
+          <th
+            aria-label="Close Date"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Close Date"
+            >
+              Close Date
+            </div>
+          </th>
+          <th
+            aria-label="Stage"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Stage"
+            >
+              Stage
+            </div>
+          </th>
+          <th
+            aria-label="Confidence"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Confidence"
+            >
+              Confidence
+            </div>
+          </th>
+          <th
+            aria-label="Amount"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Amount"
+            >
+              Amount
+            </div>
+          </th>
+          <th
+            aria-label="Contact"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Contact"
+            >
+              Contact
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Cloudhub
+              </a>
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub + Anypoint Connectors"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Cloudhub + Anypoint Connectors
+              </a>
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                Cloudhub
+              </a>
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className={null}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="javascript:void(0);"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Basic Fluid Layout - Striped
+    </h3>
+    <table
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped"
+      id="DataTableExample-1-striped"
+      role={null}
+    >
+      <thead>
+        <tr
+          className="slds-line-height_reset"
+        >
+          <th
+            aria-label="Opportunity Name"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Opportunity Name"
+            >
+              Opportunity Name
+            </div>
+          </th>
+          <th
+            aria-label="Account Name"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Account Name"
+            >
+              Account Name
+            </div>
+          </th>
+          <th
+            aria-label="Close Date"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Close Date"
+            >
+              Close Date
+            </div>
+          </th>
+          <th
+            aria-label="Stage"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Stage"
+            >
+              Stage
+            </div>
+          </th>
+          <th
+            aria-label="Confidence"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Confidence"
+            >
+              Confidence
+            </div>
+          </th>
+          <th
+            aria-label="Amount"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Amount"
+            >
+              Amount
+            </div>
+          </th>
+          <th
+            aria-label="Contact"
+            aria-sort="none"
+            className=""
             scope="col"
             style={null}
           >
@@ -18369,6 +18547,11 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
       }
     }
   >
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Fixed Header Layout
+    </h3>
     <div
       className="slds-table_header-fixed_container"
       style={
@@ -18513,7 +18696,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Name"
                 aria-sort="ascending"
-                className="slds-is-sortable slds-is-sorted slds-text-title_caps"
+                className="slds-is-sortable slds-is-sorted"
                 scope="col"
                 style={
                   Object {
@@ -18632,7 +18815,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Account Name"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -18696,7 +18879,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Close Date"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -18760,7 +18943,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Stage"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -18824,7 +19007,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Confidence"
                 aria-sort="none"
-                className="slds-is-sortable slds-text-title_caps"
+                className="slds-is-sortable"
                 scope="col"
                 style={
                   Object {
@@ -18929,7 +19112,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Amount"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -18993,7 +19176,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               <th
                 aria-label="Contact"
                 aria-sort="none"
-                className="slds-text-title_caps"
+                className=""
                 scope="col"
                 style={
                   Object {
@@ -26480,7 +26663,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                       className="slds-breadcrumb slds-list_horizontal"
                     >
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -26489,7 +26672,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                         </a>
                       </li>
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -27462,7 +27645,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                       className="slds-breadcrumb slds-list_horizontal"
                     >
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -27471,7 +27654,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                         </a>
                       </li>
                       <li
-                        className="slds-breadcrumb__item slds-text-title_caps"
+                        className="slds-breadcrumb__item"
                       >
                         <a
                           href="javascript:void(0);"
@@ -31841,7 +32024,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps slds-assistive-text"
+        className="slds-tree__group-header slds-assistive-text"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32075,7 +32258,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32309,7 +32492,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32576,7 +32759,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -32832,7 +33015,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -33304,7 +33487,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -33538,7 +33721,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods
@@ -33772,7 +33955,7 @@ exports[`DOM snapshots SLDSTree Overflow Hidden 1`] = `
       id="example-tree"
     >
       <h4
-        className="slds-text-title_caps"
+        className="slds-tree__group-header"
         id="example-tree__heading"
       >
         Miscellaneous Foods

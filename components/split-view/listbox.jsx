@@ -300,7 +300,7 @@ class SplitViewListbox extends React.Component {
 				style={{ borderTop: '0' }}
 				href="javascript:void(0);" // eslint-disable-line no-script-url
 				role="button"
-				className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+				className="slds-split-view__list-header slds-grid slds-text-link_reset"
 				onClick={this.props.events.onSort}
 			>
 				{children}
@@ -308,7 +308,7 @@ class SplitViewListbox extends React.Component {
 		) : (
 			<div
 				style={{ borderTop: '0' }}
-				className="slds-split-view__list-header slds-grid slds-text-title_caps"
+				className="slds-split-view__list-header slds-grid"
 			>
 				{children}
 			</div>

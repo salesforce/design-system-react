@@ -314,7 +314,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<div className="slds-box slds-m-bottom_large">
-						<div className="slds-text-title_caps slds-m-bottom_small">
+						<div className="slds-m-bottom_small">
 							Externally control the split view
 						</div>
 						<Button

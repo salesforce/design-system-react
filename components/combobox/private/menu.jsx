@@ -144,7 +144,7 @@ const Menu = (props) => {
 				>
 					<span
 						className={classNames(
-							'slds-text-title_caps',
+							'slds-listbox__option-header',
 							props.classNameMenuSubHeader
 						)}
 					>
