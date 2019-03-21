@@ -144,7 +144,7 @@ const propTypes = {
 	/**
 	 * Content underneath the title in the modal header.
 	 */
-	 title: PropTypes.node,
+	title: PropTypes.node,
 	/**
 	 * Text heading at the top of a modal.
 	 */
@@ -240,7 +240,9 @@ class Modal extends React.Component {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
 		const borderRadius =
-			this.props.title || this.props.heading || this.props.header ? {} : { borderRadius: '.25rem' };
+			this.props.title || this.props.heading || this.props.header
+				? {}
+				: { borderRadius: '.25rem' };
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
@@ -252,7 +254,8 @@ class Modal extends React.Component {
 			<div
 				aria-label={this.props.assistiveText.dialogLabel}
 				aria-labelledby={
-					!this.props.assistiveText.dialogLabel && (this.props.heading || this.props.title)
+					!this.props.assistiveText.dialogLabel &&
+					(this.props.heading || this.props.title)
 						? this.getId()
 						: null
 				}
@@ -366,7 +369,9 @@ class Modal extends React.Component {
 	headerComponent() {
 		let headerContent = this.props.header;
 		const headerEmpty =
-			!headerContent && !(this.props.heading || this.props.title) && !this.props.tagline;
+			!headerContent &&
+			!(this.props.heading || this.props.title) &&
+			!this.props.tagline;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -387,7 +392,10 @@ class Modal extends React.Component {
 			/>
 		);
 
-		if ((!headerContent && (this.props.heading||this.props.title)) || this.props.tagline) {
+		if (
+			(!headerContent && (this.props.heading || this.props.title)) ||
+			this.props.tagline
+		) {
 			headerContent = (
 				<div>
 					{this.props.toast}
