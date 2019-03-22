@@ -176,7 +176,7 @@ class Timepicker extends React.Component {
 			}
 		}
 		if (nextProps.strValue !== this.props.value) {
-			this.setState({ strValue: nextProps.strValue});
+			this.setState({ strValue: nextProps.strValue });
 		}
 	}
 
