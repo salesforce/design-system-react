@@ -1893,6 +1893,13 @@
                 "required": false,
                 "description": "Footer often contains pagination."
             },
+            "hasNoHeader": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Allows card to have no header, and ignores header related props altogether."
+            },
             "header": {
                 "type": {
                     "name": "node"
@@ -5933,7 +5940,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\r\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
+
+                            "description": "**Assistive text for accessibility**\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
+
                             "defaultValue": {
                                 "value": "{\r\n    action: 'Toggle Favorite',\r\n    more: 'View Favorites',\r\n}",
                                 "computed": false
@@ -6032,7 +6041,8 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\r\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\r\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\r\n* `noNotifications`: Assistive text for when there are no new notifications.",
                             "defaultValue": {
-                                "value": "{\r\n    newNotificationsAfter: ' new notifications',\r\n    newNotificationsBefore: '',\r\n    noNotifications: 'No new notifications',\r\n}",
+                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'No new notifications',\n}",
+
                                 "computed": false
                             }
                         },

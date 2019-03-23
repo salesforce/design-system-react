@@ -13,11 +13,6 @@ import Doctype from '../__examples__/doctype';
 import Custom from '../__examples__/custom';
 import ExternalPath from '../__examples__/external-path';
 
-import ColorBase from '../__examples__/color-base';
-import ColorDefault from '../__examples__/color-default';
-import ColorError from '../__examples__/color-error';
-import ColorWarning from '../__examples__/color-warning';
-
 import SizesExtraSmall from '../__examples__/sizes-extra-small';
 import SizesSmall from '../__examples__/sizes-small';
 import SizesMedium from '../__examples__/sizes-medium';
