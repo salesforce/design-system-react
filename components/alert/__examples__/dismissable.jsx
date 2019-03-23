@@ -34,9 +34,7 @@ class Example extends React.Component {
 							}}
 						/>
 					</AlertContainer>
-				) : (
-					<></>
-				)}
+				) : null}
 			</IconSettings>
 		);
 	}
