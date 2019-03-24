@@ -182,7 +182,6 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	menuItem: PropTypes.func, // For backward compatibiity, 'menuItem' will be deprecated soon
 	onRenderMenuItem: PropTypes.func,
 	/**
 	 * Please select one of the following:
