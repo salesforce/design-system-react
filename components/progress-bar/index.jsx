@@ -94,9 +94,11 @@ class ProgressBar extends React.Component {
 				<div
 					className={classNames(
 						'slds-progress-bar',
-						this.props.radius ? `slds-progress-bar_${this.props.radius}` : null ,
-						this.props.thickness ? `slds-progress-bar_${this.props.thickness}` : null,
-						this.props.className,
+						this.props.radius ? `slds-progress-bar_${this.props.radius}` : null,
+						this.props.thickness
+							? `slds-progress-bar_${this.props.thickness}`
+							: null,
+						this.props.className
 					)}
 					style={{
 						width: `${this.props.value}%`,
@@ -105,7 +107,9 @@ class ProgressBar extends React.Component {
 					<span
 						className={classNames(
 							`slds-progress-bar__value`,
-							this.props.color ? `slds-progress-bar__value_${this.props.color}` : null,
+							this.props.color
+								? `slds-progress-bar__value_${this.props.color}`
+								: null
 						)}
 					>
 						<span className="slds-assistive-text">
