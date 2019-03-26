@@ -814,6 +814,36 @@ exports[`DOM snapshots SLDSAvatar Entity Initials 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSAvatar Inverse User Initials 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      style={
+        Object {
+          "marginBottom": "10px",
+        }
+      }
+    >
+      Inversed User Initials Avatar
+    </h1>
+    <div>
+      <span
+        className="slds-avatar slds-avatar_circle slds-avatar_medium"
+      >
+        <abbr
+          className="slds-avatar__initials slds-avatar__initials_inverse slds-icon-standard-user"
+          title="Annie Wilson"
+        >
+          AW
+        </abbr>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSAvatar User Icon 1`] = `
 <div
   className="slds-p-around_medium"
