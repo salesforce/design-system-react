@@ -187,8 +187,10 @@ class Button extends React.Component {
 			'link',
 			'neutral',
 			'brand',
+			'outline-brand',
 			'destructive',
 			'success',
+			'text-destructive',
 			'icon',
 		]),
 		/**

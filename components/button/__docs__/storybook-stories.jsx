@@ -101,6 +101,13 @@ storiesOf(BUTTON, module)
 			inverse: true,
 		})
 	)
+	.add('Outline brand button', () =>
+		getIconButton({
+			assistiveTest: 'Outline brand button',
+			label: 'Outline brand button',
+			variant: 'outline-brand',
+		})
+	)
 	.add('Doc site Base Neutral', () => <BaseNeutral />)
 	.add('Doc site Brand Disabled', () => <BrandDisabled />)
 	.add('Doc site Button Icons', () => <ButtonIcons />);
