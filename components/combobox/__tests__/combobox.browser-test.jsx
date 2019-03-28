@@ -478,7 +478,7 @@ describe('SLDSCombobox', function() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('popover opens when click', () => {
+		it('popover opens when down arrow is pressed', () => {
 			wrapper = mount(
 				<DemoComponent variant="popover" popover={<Popover />} isOpen />
 			);
