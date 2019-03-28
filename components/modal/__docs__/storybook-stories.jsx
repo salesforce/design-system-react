@@ -18,7 +18,14 @@ import Prompt from '../__examples__/prompt';
 import Sizes from '../__examples__/sizes';
 import Taglines from '../__examples__/taglines';
 
-SLDSSettings.setAppElement('#root'); // used by Modal component
+import { canUseDOM } from '../../../utilities/execution-environment';
+
+// used by Modal component
+if (canUseDOM && document.querySelector('#root')) {
+	SLDSSettings.setAppElement('#root');
+} else {
+	SLDSSettings.setAppElement(document.createElement('div'));
+}
 
 const getModal = (props) => <Modal {...props} />;
 

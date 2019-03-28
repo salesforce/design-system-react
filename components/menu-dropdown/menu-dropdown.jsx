@@ -260,7 +260,7 @@ const propTypes = {
 	/**
 	 * This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height
 	 */
-	length: PropTypes.oneOf([null, '5', '7', '10']),
+	length: PropTypes.oneOf([null, '5', '7', '10', 5, 7, 10]),
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
@@ -862,6 +862,7 @@ class MenuDropdown extends React.Component {
 				customContentWithListPropInjection.push(clonedCustomContent);
 			}
 		});
+
 		if (customContentWithListPropInjection.length === 0) {
 			customContentWithListPropInjection = null;
 		}
@@ -959,7 +960,7 @@ class MenuDropdown extends React.Component {
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;
-			} else {
+			} else if (child) {
 				customContent.push(child);
 			}
 		});

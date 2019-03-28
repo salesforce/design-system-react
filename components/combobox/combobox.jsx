@@ -147,6 +147,11 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * An [Input](https://react.lightningdesignsystem.com/components/inputs) component.
+	 * The props from this component will override any default props.
+	 */
+	input: PropTypes.node,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
@@ -213,12 +218,16 @@ const propTypes = {
 	 * * `label`: A primary string of text for a menu item or group separator.
 	 * * `subTitle`: A secondary string of text added for clarity. (optional)
 	 * * `type`: 'separator' is the only type currently used
+	 * * `disabled`: Set to true to disable this menu item.
+	 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
 	 * ```
 	 * {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
 	 * 	type: 'account',
+	 *  disabled: true,
+	 *  tooltipContent: "You don't have permission to select this item."
 	 * },
 	 * ```
 	 * Note: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._
@@ -230,6 +239,8 @@ const propTypes = {
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
+			disabled: PropTypes.boolean,
+			tooltipContent: PropTypes.node,
 		})
 	),
 	/**
@@ -265,6 +276,14 @@ const propTypes = {
 	 */
 	selectedListboxRef: PropTypes.func,
 	/**
+	 * Disables the input and prevents editing the contents. This only applies for single readonly and inline-listbox variants.
+	 */
+	singleInputDisabled: PropTypes.bool,
+	/**
+	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
+	 */
+	tooltipMenuItemDisabled: PropTypes.element,
+	/**
 	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
@@ -284,6 +303,7 @@ const defaultProps = {
 	events: {},
 	labels: {
 		noOptionsFound: 'No matches found.',
+		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
@@ -292,6 +312,7 @@ const defaultProps = {
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
+	singleInputDisabled: false,
 	variant: 'base',
 };
 
@@ -503,7 +524,7 @@ class Combobox extends React.Component {
 			nextIndex >= 0 &&
 			options[nextIndex].type === 'separator';
 		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		const hasNewIndex = options.length > nextIndex && nextIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
 
@@ -590,7 +611,9 @@ class Combobox extends React.Component {
 
 	handleInputChange = (event) => {
 		this.requestOpenMenu();
-		this.props.events.onChange(event, { value: event.target.value });
+		if (this.props.events && this.props.events.onChange) {
+			this.props.events.onChange(event, { value: event.target.value });
+		}
 	};
 
 	handleInputFocus = (event) => {
@@ -600,6 +623,10 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
+		if (this.state.activeOption && this.state.activeOption.disabled) {
+			return;
+		}
+
 		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, {
@@ -913,7 +940,7 @@ class Combobox extends React.Component {
 	 * if state is passed in as a prop)
 	 */
 
-	renderBase = ({ assistiveText, labels, props }) => (
+	renderBase = ({ assistiveText, labels, props, userDefinedProps }) => (
 		<div className="slds-form-element__control">
 			<div className="slds-combobox_container">
 				<div
@@ -979,6 +1006,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1017,7 +1045,12 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineMultiple = ({ assistiveText, labels, props }) => (
+	renderInlineMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => (
 		<div className="slds-form-element__control">
 			<div
 				className={classNames('slds-combobox_container', {
@@ -1108,6 +1141,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1122,7 +1156,7 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineSingle = ({ assistiveText, labels, props }) => {
+	renderInlineSingle = ({ assistiveText, labels, props, userDefinedProps }) => {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
@@ -1178,6 +1212,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								props.selection.length ? (
 									<InputIcon
@@ -1228,6 +1263,7 @@ class Combobox extends React.Component {
 										props.value
 									: value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1257,6 +1293,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
+				tooltipMenuItemDisabled={this.props.tooltipMenuItemDisabled}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
@@ -1360,7 +1397,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlyMultiple = ({ assistiveText, labels, props }) => {
+renderReadOnlyMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
@@ -1429,6 +1471,7 @@ class Combobox extends React.Component {
 							required={props.required}
 							role="textbox"
 							value={value}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1470,7 +1513,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlySingle = ({ assistiveText, labels, props }) => {
+	renderReadOnlySingle = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value = (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1514,6 +1562,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}
@@ -1538,6 +1587,7 @@ class Combobox extends React.Component {
 								(this.state.activeOption && this.state.activeOption.label) ||
 								value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1564,7 +1614,18 @@ class Combobox extends React.Component {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const hasRenderedLabel =
 			labels.label || (assistiveText && assistiveText.label);
-		const subRenderParameters = { assistiveText, labels, props: this.props };
+		// declare user defined props
+		const userDefinedProps = {};
+		if (props.input) {
+			// at the moment we only support overriding the input props
+			userDefinedProps.input = props.input.props;
+		}
+		const subRenderParameters = {
+			assistiveText,
+			labels,
+			props: this.props,
+			userDefinedProps,
+		};
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
 			base: {

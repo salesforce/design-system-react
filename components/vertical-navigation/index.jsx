@@ -112,10 +112,7 @@ class VerticalNavigation extends React.Component {
 							key={`${categoryId}-header`}
 							className="slds-nav-vertical__section"
 						>
-							<h2
-								id={categoryId}
-								className="slds-nav-vertical__title slds-text-title_caps"
-							>
+							<h2 id={categoryId} className="slds-nav-vertical__title">
 								{category.label}
 							</h2>
 							<ul key={categoryId}>

@@ -30,6 +30,7 @@ const recordHomeDetails1 = [
 		content: 'Description (2-line truncation)',
 	},
 ];
+
 const recordHomeDetails2 = [
 	{
 		label: 'Field 1',
@@ -105,10 +106,12 @@ const recordHomeContentRight = (
 				label: 'Follow',
 			}}
 			stateTwo={{
+				iconCategory: 'utility',
 				iconName: 'check',
 				label: 'Following',
 			}}
 			stateThree={{
+				iconCategory: 'utility',
 				iconName: 'close',
 				label: 'Unfollow',
 			}}
@@ -185,81 +188,6 @@ const recordHomeDetails = [
 		content: 'Description (2-line truncation)',
 	},
 ];
-const objectHomeContentRight = (
-	<div>
-		<SLDSButton
-			iconCategory="utility"
-			iconName="settings"
-			variant="icon"
-			iconVariant="more"
-			className="slds-m-left_xx-small"
-			assistiveText={{
-				icon: 'Settings',
-			}}
-		/>
-		<SLDSButton
-			iconCategory="utility"
-			iconName="table"
-			variant="icon"
-			iconVariant="more"
-			className="slds-m-left_xx-small"
-			assistiveText={{
-				icon: 'Table',
-			}}
-		/>
-		<SLDSButtonGroup>
-			<SLDSButton
-				iconCategory="utility"
-				iconName="chart"
-				variant="icon"
-				iconVariant="border"
-				assistiveText={{
-					icon: 'Chart',
-				}}
-			/>
-			<SLDSButton
-				iconCategory="utility"
-				iconName="filterList"
-				variant="icon"
-				iconVariant="border"
-				className="slds-m-left_xx-small"
-				assistiveText={{
-					icon: 'Filter List',
-				}}
-			/>
-			<SLDSMenuDropdown
-				assistiveText={{
-					icon: 'Sort',
-				}}
-				buttonVariant="icon"
-				iconName="sort"
-				iconVariant="more"
-				id="page-header-dropdown-object-home-content-right"
-				onSelect={action('select')}
-				openOn="click"
-				align="right"
-				options={[
-					{
-						label: 'Last Name (ascending)',
-						value: 'LNA',
-					},
-					{
-						label: 'Last Name (descending)',
-						value: 'LND',
-					},
-					{
-						label: 'Last Contacted (descending)',
-						value: 'LCD',
-					},
-					{
-						label: 'Last Contacted (ascending)',
-						value: 'LCA',
-					},
-				]}
-			/>
-		</SLDSButtonGroup>
-	</div>
-);
 const objectHomeNavRight = (
 	<SLDSButtonGroup>
 		<SLDSButton label="New Lead" variant="neutral" />
@@ -328,6 +256,7 @@ const relatedListContentRight = (
 					icon: 'Sort',
 				}}
 				buttonVariant="icon"
+				iconCategory="utility"
 				iconName="sort"
 				iconVariant="more"
 				id="page-header-dropdown-related-list-content-right"

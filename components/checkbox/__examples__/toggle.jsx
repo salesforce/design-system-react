@@ -44,7 +44,9 @@ class Example extends React.Component {
 					<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
 						<div className="slds-col_padded">
 							<Checkbox
-								assistiveText="Toggle (with assistive text)"
+								assistiveText={{
+									label: 'Toggle (with assistive text)',
+								}}
 								id="checkbox-toggle-example--assitive-text"
 								variant="toggle"
 							/>

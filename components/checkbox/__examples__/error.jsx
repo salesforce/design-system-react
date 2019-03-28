@@ -10,7 +10,7 @@ class Example extends React.Component {
 				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
 					<div className="slds-col_padded">
 						<Checkbox
-							assistiveText="Error state"
+							assistiveText={{ label: 'Error state' }}
 							errorText="This field is required"
 							id="checkbox-error-example"
 							label="Checkbox Label"
@@ -28,7 +28,7 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							assistiveText="Indeterminate"
+							assistiveText={{ label: 'Indeterminate' }}
 							id="checkbox-indeterminate-required-example"
 							label="Required"
 							required
@@ -36,7 +36,7 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							assistiveText="Disabled"
+							assistiveText={{ label: 'Disabled' }}
 							id="checkbox-disabled-example"
 							label="Disabled"
 							disabled
