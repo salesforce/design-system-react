@@ -69,10 +69,6 @@ const propTypes = {
 	 */
 	'aria-describedby': PropTypes.string,
 	/**
-	 * Contents of popover. That is the contents of the Combobox's dialog.
-	 */
-	children: PropTypes.node,
-	/**
 	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([
