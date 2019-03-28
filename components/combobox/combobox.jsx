@@ -284,7 +284,14 @@ const propTypes = {
 	 */
 	value: PropTypes.string,
 	/**
-	 * Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._
+	 * Changes styles of the input and menu. Currently `entity` is not supported. 
+	 * The options are:
+	 * * `base`: An autocomplete Combobox also allows a user to select an option from a list, but that list can be affected by what the user types into the input of the Combobox. The SLDS website used to call the autocomplete Combobox its `base` variant.
+	 * * `inline-listbox`: An Entity Autocomplete Combobox or Lookup, is used to search for and select Salesforce Entities.
+	 * * `popover`: A dialog Combobox is best used when a listbox, tree, grid, or tree-grid is not the best solution. This variant allows custom content.
+	 * * `readonly`: A readonly text input that allows a user to select an option from a pre-defined list of options. It does not allow free form user input, nor does it allow the user to modify the selected value.
+	 * 
+	 *  _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
 };
