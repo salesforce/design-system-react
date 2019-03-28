@@ -1397,7 +1397,7 @@ class Combobox extends React.Component {
 		);
 	};
 
-renderReadOnlyMultiple = ({
+	renderReadOnlyMultiple = ({
 		assistiveText,
 		labels,
 		props,
