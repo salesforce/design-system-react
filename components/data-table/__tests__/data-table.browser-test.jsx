@@ -390,7 +390,6 @@ describe('DataTable: ', function() {
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
-			const thirdColumn = thead.querySelectorAll('th')[2];
 			const sortButton = thead.querySelectorAll('a')[0];
 
 			Simulate.click(sortButton, {});
@@ -416,7 +415,6 @@ describe('DataTable: ', function() {
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
-			const thirdColumn = thead.querySelectorAll('th')[2];
 			const sortButton = thead.querySelectorAll('a')[0];
 
 			Simulate.click(sortButton, {});
