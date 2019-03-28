@@ -47,9 +47,6 @@ const propTypes = {
 		'object-home',
 		'record-home',
 		'related-list',
-		'objectHome',
-		'recordHome',
-		'relatedList',
 	]),
 	/**
 	 * The info property can be a string or a React element
@@ -130,9 +127,8 @@ const defaultProps = {
  * The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.
  */
 class PageHeader extends Component {
-	constructor(props) {
-		super(props);
-		checkProps(PAGE_HEADER, props, componentDoc);
+	componentDidMount() {
+		checkProps(PAGE_HEADER, this.props, componentDoc);
 	}
 
 	_getClassNames(className) {

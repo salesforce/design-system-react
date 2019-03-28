@@ -188,39 +188,6 @@ const recordHomeDetails = [
 		content: 'Description (2-line truncation)',
 	},
 ];
-<<<<<<< 8ee31c4ffb4b9c1e3586abb914b55b107f6975bb
-const objectHomeNavRight = (
-	<SLDSButtonGroup>
-		<SLDSButton label="New Lead" variant="neutral" />
-		<SLDSMenuDropdown
-			align="right"
-			assistiveText={{
-				icon: 'More Options',
-			}}
-			iconCategory="utility"
-			iconName="down"
-			iconVariant="border-filled"
-			id="page-header-dropdown-object-home-nav-right"
-			onSelect={action('select')}
-			options={[
-				{
-					label: 'Refresh List',
-					value: 'A0',
-				},
-				{
-					label: 'Duplicate Selected Leads',
-					value: 'B0',
-				},
-				{
-					label: 'Disabled Selected Leads',
-					value: 'C0',
-				},
-			]}
-		/>
-	</SLDSButtonGroup>
-);
-const relatedListContentRight = (
-=======
 const objectHomeActions = () => (
 	<div>
 		<SLDSButton
@@ -298,7 +265,6 @@ const objectHomeActions = () => (
 	</div>
 );
 const relatedListActions = () => (
->>>>>>> Update examples according to the change in props
 	<div>
 		<SLDSButton
 			iconCategory="utility"
