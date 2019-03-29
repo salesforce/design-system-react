@@ -142,7 +142,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		it('renders li with proper classes for small tiles', () => {
 			should.exist(
 				handles.section.find(
-					'.slds-col_padded .slds-grow-none .slds-size_xx-small'
+					'.slds-col_padded.slds-grow-none.slds-size_xx-small'
 				)
 			);
 		});

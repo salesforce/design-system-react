@@ -3,6 +3,10 @@
 # Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
+# Jest markup & image snapshot tests (this is here so this variable can be used in runTest & elsewhere)
+SNAPSHOT_TESTS='npm run test:snapshot'
+SKIP_SNAPSHOT_TESTS=false
+
 function runTests() {
 COMMANDS=( "$@" )
 
@@ -66,6 +70,12 @@ NODE_ENV=test ${COMMAND}
                                  ☹︎ Failed ☹︎
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 "
+		if [ "${COMMAND}" = "${SNAPSHOT_TESTS}" ]; then
+        	echo "uploading diffs"
+        	npm run upload-diffs
+        else
+        	echo "COMMAND: ${COMMAND} != SNAPSHOT_TESTS: ${SNAPSHOT_TESTS}"
+        fi
 		exit $((10#$ERROR_CODE))
 	fi
 done
@@ -87,12 +97,11 @@ echo "
 # Prettier ONLY on JSON and markdown files.
 RUN_LINT='npm run lint'
 SKIP_LINT=false
+
 # Mocha framework tests that focus on user interaction
 START_KARMA='npm run test:unit'
 SKIP_START_KARMA=false
-# Jest markup & image snapshot tests
-SNAPSHOT_TESTS='npm run test:snapshot'
-SKIP_SNAPSHOT_TESTS=false
+
 # React DocGen library build of source code PropType comments into a JSON file for documentation site
 DOCGEN='npm run build:docs && npm run test:docs'
 SKIP_DOCGEN=false

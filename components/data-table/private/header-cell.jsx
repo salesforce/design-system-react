@@ -47,6 +47,10 @@ class DataTableHeaderCell extends React.Component {
 		fixedHeader: PropTypes.bool,
 		id: PropTypes.string.isRequired,
 		/**
+		 * Some columns, such as "date last viewed" or "date recently updated," should sort descending first, since that is what the user probably wants. How often does one want to see their oldest files first in a table? If sortable and the `DataTable`'s parent has not defined the sort order, then ascending (A at the top to Z at the bottom) is the default sort order on first click.
+		 */
+		isDefaultSortDescending: PropTypes.bool,
+		/**
 		 * Indicates if column is sorted.
 		 */
 		isSorted: PropTypes.bool,
@@ -94,7 +98,19 @@ class DataTableHeaderCell extends React.Component {
 	handleSort = (e) => {
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
-		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
+		// UX pattern: If sortable, and the DataTable's parent has not defined the sort order, then ascending (that is A->Z) is the default sort order on first click. Some columns, such as "last viewed" or "recently updated," should sort descending first, since that is what the user probably wants. Who wants to see the oldest files first?
+		const sortDirection = (function(direction, isDefaultSortDescending) {
+			switch (direction) {
+				case 'asc':
+					return 'desc';
+				case 'desc':
+					return 'asc';
+				case null:
+					return isDefaultSortDescending ? 'desc' : 'asc';
+				default:
+					return 'asc';
+			}
+		})(oldSortDirection, this.props.isDefaultSortDescending);
 		const data = {
 			property: this.props.property,
 			sortDirection,
@@ -114,7 +130,11 @@ class DataTableHeaderCell extends React.Component {
 		const { fixedHeader, isSorted, label, sortable, width } = this.props;
 
 		const labelType = typeof label;
-		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		// This decides which arrow to render--which is current sort order if the column is sorted OR the future sort order if the arrow is clicked in the future.
+		const sortDirection =
+			this.props.sortDirection ||
+			this.state.sortDirection ||
+			(this.props.isDefaultSortDescending && 'desc');
 		const expandedSortDirection =
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
@@ -186,15 +206,12 @@ class DataTableHeaderCell extends React.Component {
 			<th
 				aria-label={labelType === 'string' ? label : undefined}
 				aria-sort={ariaSort}
-				className={classNames(
-					{
-						'slds-is-sortable': sortable,
-						'slds-is-sorted': isSorted,
-						[`slds-is-sorted_${sortDirection}`]: sortDirection,
-						'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-					},
-					'slds-text-title_caps'
-				)}
+				className={classNames({
+					'slds-is-sortable': sortable,
+					'slds-is-sorted': isSorted,
+					[`slds-is-sorted_${sortDirection}`]: sortDirection,
+					'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
+				})}
 				ref={(ref) => {
 					if (this.props.cellRef) {
 						this.props.cellRef(ref);

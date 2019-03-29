@@ -25,10 +25,10 @@ class Example extends React.Component {
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
-									name="warning"
+									assistiveText={{ icon: 'Search' }}
+									name="error"
 									category="utility"
-									color="warning"
+									color="error"
 									onClick={() => {
 										console.log('Icon Clicked');
 									}}

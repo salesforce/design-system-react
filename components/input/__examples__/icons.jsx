@@ -18,7 +18,9 @@ class Example extends React.Component {
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
+									assistiveText={{
+										icon: 'Search',
+									}}
 									name="search"
 									category="utility"
 								/>
@@ -32,7 +34,9 @@ class Example extends React.Component {
 						<Input
 							iconLeft={
 								<InputIcon
-									assistiveText="Search"
+									assistiveText={{
+										icon: 'Search',
+									}}
 									name="search"
 									category="utility"
 									onClick={() => {
@@ -42,7 +46,9 @@ class Example extends React.Component {
 							}
 							iconRight={
 								<InputIcon
-									assistiveText="Clear"
+									assistiveText={{
+										icon: 'Clear',
+									}}
 									name="clear"
 									category="utility"
 									onClick={() => {
@@ -59,7 +65,9 @@ class Example extends React.Component {
 						<Input
 							iconRight={
 								<InputIcon
-									assistiveText="Clear"
+									assistiveText={{
+										icon: 'Clear',
+									}}
 									name="clear"
 									category="utility"
 									onClick={() => {
@@ -77,7 +85,9 @@ class Example extends React.Component {
 							assistiveText={{ spinner: 'Field data is loading' }}
 							iconRight={
 								<InputIcon
-									assistiveText="Clear"
+									assistiveText={{
+										icon: 'Clear',
+									}}
 									name="clear"
 									category="utility"
 									onClick={() => {

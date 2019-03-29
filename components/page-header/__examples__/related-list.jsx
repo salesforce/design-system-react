@@ -8,7 +8,7 @@ import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 class Example extends React.Component {
-	static displayName = 'PageHeaderExample';
+	static displayName = 'RelatedListPageHeaderExample';
 
 	render() {
 		const navRight = (
@@ -31,6 +31,7 @@ class Example extends React.Component {
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
 					id="content-right-dropdown"
@@ -74,6 +75,7 @@ class Example extends React.Component {
 						triggerClassname
 						align="right"
 						assistiveText={{ icon: 'List View Controls' }}
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
 						id="content-right-dropdown-2"

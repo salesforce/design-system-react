@@ -198,7 +198,7 @@ class Tooltip extends React.Component {
 
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
-				key: i,
+				key: i, // eslint-disable-line react/no-array-index-key
 				'aria-describedby': this.getId(),
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
