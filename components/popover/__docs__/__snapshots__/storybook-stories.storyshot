@@ -998,7 +998,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
         tabIndex="-1"
       >
         <button
-          className="slds-button slds-button_icon lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1038,7 +1038,6 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
       </div>
     </div>
     <div
-      id="popoverTarget"
       style={
         Object {
           "background": "#706e6b",
@@ -1097,7 +1096,6 @@ exports[`DOM snapshots SLDSPopover Custom Target 1`] = `
       </button>
     </div>
     <div
-      id="popoverTarget"
       style={
         Object {
           "background": "#706e6b",
@@ -1166,7 +1164,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
       tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon-inverse lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        className="slds-button slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1395,7 +1393,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
         tabIndex="-1"
       >
         <button
-          className="slds-button slds-button_icon lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -1485,7 +1483,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
       tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
+        className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1640,7 +1638,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
       tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
+        className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1788,7 +1786,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
       tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon-inverse lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        className="slds-button slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
         disabled={false}
         onClick={[Function]}
         type="button"
