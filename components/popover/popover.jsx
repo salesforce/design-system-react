@@ -146,7 +146,7 @@ class Popover extends React.Component {
 		/**
 		 * Used with `walkthrough` variant to provide action buttons (ex: "Next" / "Skip" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons.
 		 */
-		footerActions: PropTypes.oneOfType([
+		footerWalkthroughActions: PropTypes.oneOfType([
 			PropTypes.node,
 			PropTypes.arrayOf(PropTypes.node),
 		]),
@@ -191,6 +191,10 @@ class Popover extends React.Component {
 		 */
 		onRequestClose: PropTypes.func,
 		/**
+		 * Callback that returns an element or React `ref` to align the Popover with. If the target element has not been rendered yet, the popover will use the triggering element as the attachment target instead. NOTE: `position="relative"` is not compatible with custom targets that are not the triggering element.
+		 */
+		onRequestTargetElement: PropTypes.func,
+		/**
 		 * Please select one of the following:
 		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
@@ -213,10 +217,6 @@ class Popover extends React.Component {
 		 * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
 		 */
 		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-		/**
-		 * Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position="relative"` is not compatible with custom targets outside the trigger
-		 */
-		target: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
 		 * CSS classes to be added to wrapping trigger `div` around the button.
 		 */
@@ -269,20 +269,10 @@ class Popover extends React.Component {
 		// needed by keyboard navigation
 		this.dialog;
 
-	getTargetElement = () => {
-		let target = this.trigger;
-
-		if (this.props.target) {
-			if (typeof this.props.target === 'string') {
-				const selectorTarget = document.querySelector(this.props.target);
-				target = selectorTarget || target;
-			} else {
-				target = this.props.target;
-			}
-		}
-
-		return target;
-	};
+	getTargetElement = () =>
+		this.props.onRequestTargetElement && this.props.onRequestTargetElement()
+			? this.props.onRequestTargetElement()
+			: this.trigger;
 
 	setMenuRef = (component) => {
 		this.dialog = component;
@@ -602,7 +592,7 @@ class Popover extends React.Component {
 			);
 		} else if (
 			props.variant !== 'walkthrough-action' &&
-			(props.footerActions || props.stepText)
+			(props.footerWalkthroughActions || props.stepText)
 		) {
 			footer = (
 				<footer className="slds-popover__footer">
@@ -610,12 +600,12 @@ class Popover extends React.Component {
 						{props.stepText ? (
 							<span className="slds-text-title">{props.stepText}</span>
 						) : null}
-						{props.footerActions ? (
+						{props.footerWalkthroughActions ? (
 							<div
 								className="slds-col_bump-left"
 								style={{ display: 'inline-block' }}
 							>
-								{props.footerActions}
+								{props.footerWalkthroughActions}
 							</div>
 						) : null}
 					</div>

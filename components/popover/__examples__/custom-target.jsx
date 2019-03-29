@@ -21,13 +21,15 @@ class Example extends React.Component {
 						}
 						heading="Custom Target"
 						id="popover-custom-target"
-						target="#popoverTarget"
+						onRequestTargetElement={() => this.customTarget}
 						{...this.props}
 					>
 						<Button label="Trigger Popover" />
 					</Popover>
 					<div
-						id="popoverTarget"
+						ref={(component) => {
+							this.customTarget = component;
+						}}
 						style={{
 							background: '#706e6b',
 							borderRadius: '4px',
