@@ -20,6 +20,7 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 
+import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
@@ -150,6 +151,8 @@ const propTypes = {
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
+	 * * `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`
+	 * * `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`
 	 * * `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 * * `placeholder`: Input placeholder
@@ -283,6 +286,8 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
+		cancelButton: 'Cancel',
+		doneButton: `Done`,
 		noOptionsFound: 'No matches found.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
@@ -327,22 +332,12 @@ class Combobox extends React.Component {
 		checkProps(COMBOBOX, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
-		}
+		this.generatedErrorId = shortid.generate();
 
 		if (this.props.isOpen !== this.state.isOpen) {
 			this.setState({ isOpen: this.props.isOpen });
 		}
 	}
-
-	// checking attrs - use snapshots
-	// assistive text
-	// checking mouse stuff - need mocha tests
-	// testing doc on github
-	// snapshots might not work b/c popover is in portal
-	// dont need to check core popover functionality
-	// do need to check if opens/closes
 
 	componentWillReceiveProps(nextProps) {
 		// This logic will maintain the active highlight even when the
@@ -362,10 +357,6 @@ class Combobox extends React.Component {
 			}
 		} else if (this.props.isOpen !== nextProps.isOpen) {
 			this.setState({ isOpen: nextProps.isOpen });
-		}
-
-		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
 		}
 
 		// there may be issues with tabindex/focus if the app removes an item
@@ -388,7 +379,7 @@ class Combobox extends React.Component {
 		}
 	}
 
-	getCustomPopoverProps = (body, { assistiveText }) => {
+	getCustomPopoverProps = (body, { assistiveText, labels }) => {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
@@ -403,24 +394,17 @@ class Combobox extends React.Component {
 
 		const popoverFooter = (
 			<div>
-				<button
-					className="slds-button slds-button_neutral"
-					id="cancel-button"
+				<Button
+					label={labels.cancelButton}
 					onClick={(e) => {
-						// onClose(e, { trigger: 'cancel' });
 						this.handleClose(e, { trigger: 'cancel' });
 					}}
-				>
-					Cancel
-				</button>
-				<button
-					className="slds-button slds-button_brand"
-					ref={this.lastTab}
-					id="done-button"
+				/>
+				<Button
+					label={labels.doneButton}
+					variant="brand"
 					onClick={this.handleClose}
-				>
-					Done
-				</button>
+				/>
 			</div>
 		);
 
@@ -724,7 +708,7 @@ class Combobox extends React.Component {
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
 				prevState.activeSelectedOptionIndex + 1 ===
-					this.props.selection.length && direction === 'next';
+				this.props.selection.length && direction === 'next';
 			const isFirstOptionAndLeftIsPressed =
 				prevState.activeSelectedOptionIndex === 0 && direction === 'previous';
 			let newState;
@@ -976,7 +960,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 					/>
@@ -1105,7 +1089,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 					/>
@@ -1126,8 +1110,8 @@ class Combobox extends React.Component {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
-						containerClassName: 'slds-combobox__input-entity-icon',
-					})
+					containerClassName: 'slds-combobox__input-entity-icon',
+				})
 				: null;
 
 		const value =
@@ -1167,8 +1151,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1197,8 +1181,8 @@ class Combobox extends React.Component {
 										}}
 									/>
 								) : (
-									<InputIcon category="utility" name="search" />
-								)
+										<InputIcon category="utility" name="search" />
+									)
 							}
 							iconLeft={iconLeft}
 							id={this.getId()}
@@ -1224,8 +1208,8 @@ class Combobox extends React.Component {
 							value={
 								props.predefinedOptionsOnly
 									? (this.state.activeOption &&
-											this.state.activeOption.label) ||
-										props.value
+										this.state.activeOption.label) ||
+									props.value
 									: value
 							}
 						/>
@@ -1285,7 +1269,7 @@ class Combobox extends React.Component {
 	renderPopover = ({ assistiveText, labels, props }) => {
 		const popoverProps = this.getCustomPopoverProps(
 			this.props.popover.props.body,
-			{ assistiveText }
+			{ assistiveText, labels }
 		);
 
 		return (
@@ -1335,13 +1319,7 @@ class Combobox extends React.Component {
 								readOnly
 								required={props.required}
 								role="textbox"
-								value={
-									props.predefinedOptionsOnly
-										? (this.state.activeOption &&
-												this.state.activeOption.label) ||
-											props.value
-										: props.value
-								}
+								value={props.value}
 							/>
 						</Popover>
 					</div>
@@ -1364,7 +1342,7 @@ class Combobox extends React.Component {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
-					`${props.selection.length} options selected`
+				`${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1395,8 +1373,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1501,8 +1479,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1602,8 +1580,8 @@ class Combobox extends React.Component {
 				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
-							subRenderParameters
-						)
+						subRenderParameters
+					)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);
