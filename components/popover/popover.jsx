@@ -672,7 +672,7 @@ class Popover extends React.Component {
 					iconCategory="utility"
 					iconName="close"
 					className={classNames(
-						'lds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
+						'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
 						{
 							'slds-button_icon-inverse':
 								props.variant === 'walkthrough' ||
