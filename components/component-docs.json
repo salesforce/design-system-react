@@ -9991,7 +9991,7 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
-            "footerActions": {
+            "footerWalkthroughActions": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10087,6 +10087,13 @@
                 "required": false,
                 "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
+            "onRequestTargetElement": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback that returns an element or React `ref` to align the Popover with. If the target element has not been rendered yet, the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets that are not the triggering element."
+            },
             "position": {
                 "type": {
                     "name": "enum",
@@ -10140,21 +10147,6 @@
                 },
                 "required": false,
                 "description": "If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app."
-            },
-            "target": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets outside the trigger"
             },
             "triggerClassName": {
                 "type": {
@@ -10605,6 +10597,27 @@
                 },
                 "required": false,
                 "description": "HTML id for component."
+            },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the orientation of the progress indicator",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
             },
             "onStepClick": {
                 "type": {

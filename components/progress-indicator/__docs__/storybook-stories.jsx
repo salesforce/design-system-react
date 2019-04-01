@@ -50,6 +50,7 @@ class ExampleProgressIndicator extends React.Component {
 					selectedStep={this.props.selectedStep}
 					disabledSteps={this.props.disabledSteps}
 					completedSteps={this.props.completedSteps}
+					orientation={this.props.orientation}
 					assistiveText={this.props.assistiveText}
 					onStepClick={(event, data) => {
 						console.log(data);
@@ -105,5 +106,23 @@ storiesOf(PROGRESS_INDICATOR, module)
 				completedStep: 'Finished this step.',
 				disabledStep: 'Unable to proceed on this step.',
 			}}
+		/>
+	))
+	.add('Vertical', () => (
+		<ExampleProgressIndicator
+			steps={manySteps}
+			selectedStep={manySteps[4]}
+			completedSteps={manySteps.slice(0, 4)}
+			orientation="vertical"
+		/>
+	))
+	.add('VerticalStepError', () => (
+		<StepError
+			id="example-progress-indicator"
+			steps={steps}
+			selectedStep={steps[1]}
+			completedSteps={steps.slice(0, 1)}
+			errorSteps={steps.slice(1, 2)}
+			orientation="vertical"
 		/>
 	));
