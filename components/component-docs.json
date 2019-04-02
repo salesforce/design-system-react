@@ -1,6 +1,6 @@
 {
     "accordion": {
-        "description": "An accordion allows a user to toggle the display of sections of content.\r\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.",
+        "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.",
         "methods": [],
         "props": {
             "className": {
@@ -41,7 +41,7 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._\r\n\nExample:\r\n```\r\n<SLDSAccordion>\r\n  <SLDSAccordionpanel />\r\n  <SLDSAccordionpanel />\r\n  <SLDSAccordionpanel />\r\n</SLDSAccordion>\r\n```"
+                "description": "The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._\n\nExample:\n```\n<SLDSAccordion>\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n</SLDSAccordion>\n```"
             }
         },
         "route": "accordions",
@@ -120,7 +120,7 @@
                         }
                     },
                     "name": "panel",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\accordion\\panel.jsx"
+                    "source": "/components/accordion/panel.jsx"
                 }
             }
         ]
@@ -161,9 +161,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `closeButton`: This is a visually hidden label for the close button.\r\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\r\n    closeButton: 'Close',\r\n}",
+                    "value": "{\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -183,21 +183,21 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\r\n_Tested with snapshot testing._"
+                "description": "CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with snapshot testing._"
             },
             "dismissible": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,\r\n_Tested with snapshot testing._"
+                "description": "Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,\n_Tested with snapshot testing._"
             },
             "icon": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
-                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\r\n* info variant: `utility:info`\r\n* error variant: `utility:error`\r\n* offline variant: `utility:offline`\r\n* warning variant: `utility:warning`\r\n\n_Tested with snapshot testing._"
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* offline variant: `utility:offline`\n* warning variant: `utility:warning`\n\n_Tested with snapshot testing._"
             },
             "labels": {
                 "type": {
@@ -230,7 +230,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `heading`: text within heading tag\r\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\r\n\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -323,13 +323,13 @@
                         }
                     },
                     "name": "container",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\alert\\container.jsx"
+                    "source": "/components/alert/container.jsx"
                 }
             }
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\r\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\r\n\nUSAGE EXAMPLE:\r\n```\r\n<AppLauncher>\r\n\t<AppLauncherSection>\r\n\t\t<AppLauncherTile />\r\n\t\t<AppLauncherTile />\r\n\t\t<AppLauncherTile />\r\n\t</AppLauncherSection>\r\n\t<AppLauncherSection>\r\n\t\t<AppLauncherTile />\r\n\t\t<AppLauncherTile />\r\n\t</AppLauncherSection>\r\n</AppLauncher>\r\n```\r\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\r\n```\r\nimport settings from 'design-system-react/components/settings';\r\nsettings.setAppElement('#mount');\r\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
             {
                 "name": "openAppLauncher",
@@ -375,9 +375,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `trigger`: This is a visually hidden label for the app launcher icon.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `trigger`: This is a visually hidden label for the app launcher icon.",
                 "defaultValue": {
-                    "value": "{\r\n    trigger: 'Open App Launcher',\r\n}",
+                    "value": "{\n    trigger: 'Open App Launcher',\n}",
                     "computed": false
                 }
             },
@@ -511,9 +511,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
                             "defaultValue": {
-                                "value": "{\r\n    collapseSection: 'Toggle visibility of section',\r\n}",
+                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
                                 "computed": false
                             }
                         },
@@ -554,7 +554,7 @@
                         }
                     },
                     "name": "section",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\app-launcher\\section.jsx"
+                    "source": "/components/app-launcher/section.jsx"
                 }
             },
             {
@@ -681,13 +681,13 @@
                         }
                     },
                     "name": "tile",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\app-launcher\\tile.jsx"
+                    "source": "/components/app-launcher/tile.jsx"
                 }
             }
         ]
     },
     "avatar": {
-        "description": "The avatar component represents an object or entity. An image is the preferred format for an avatar.\r\n If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.\r\n\r\n Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.\r\n\r\n If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will\r\n render. If `variant='entity'`, an account icon will render.",
+        "description": "The avatar component represents an object or entity. An image is the preferred format for an avatar.\n If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.\n\n Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.\n\n If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will\n render. If `variant='entity'`, an account icon will render.",
         "methods": [
             {
                 "name": "buildInitials",
@@ -737,9 +737,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `icon`: Assistive text for accessibility that labels the icon.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Assistive text for accessibility that labels the icon.",
                 "defaultValue": {
-                    "value": "{\r\n    icon: 'User or Account Icon',\r\n}",
+                    "value": "{\n    icon: 'User or Account Icon',\n}",
                     "computed": false
                 }
             },
@@ -850,7 +850,7 @@
         "dependencies": []
     },
     "brand-band": {
-        "description": "The brand band provides theming capability that adds personality and improves information density and contrast.\r\n\nNOTE: you may find that themes other than 'default' fail to load the appropriate styling in your application.\r\nIf this occurs the cause is very likely to be CSP settings on the server hosting your application protecting against style injections.\r\nChanging these settings is not recommended. Instead, add the following styles to any stylesheet provided by the server itself (such as an external stylesheet):\r\n\nWhen using 'lightning-theme':\r\n.slds-brand-band.dsr-brand-band_lightning-blue:before {\r\n    background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);\r\n}\r\n.slds-brand-band.dsr-brand-band_lightning-blue:after {\r\n    background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);\r\n}\r\n\nFor more information on the problem, [see this Stack Overflow question](https://stackoverflow.com/questions/17766817/refused-to-apply-inline-style-because-it-violates-the-following-content-security)",
+        "description": "The brand band provides theming capability that adds personality and improves information density and contrast.\n\nNOTE: you may find that themes other than 'default' fail to load the appropriate styling in your application.\nIf this occurs the cause is very likely to be CSP settings on the server hosting your application protecting against style injections.\nChanging these settings is not recommended. Instead, add the following styles to any stylesheet provided by the server itself (such as an external stylesheet):\n\nWhen using 'lightning-theme':\n.slds-brand-band.dsr-brand-band_lightning-blue:before {\n    background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);\n}\n.slds-brand-band.dsr-brand-band_lightning-blue:after {\n    background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);\n}\n\nFor more information on the problem, [see this Stack Overflow question](https://stackoverflow.com/questions/17766817/refused-to-apply-inline-style-because-it-violates-the-following-content-security)",
         "methods": [
             {
                 "name": "injectLightningBlueStyles",
@@ -977,7 +977,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Different brand band styling.\r\nNOTE: using 'lightning-blue' may result in incorrect styling depending on server CSP settings. See opening component documentation above for details.",
+                "description": "Different brand band styling.\nNOTE: using 'lightning-blue' may result in incorrect styling depending on server CSP settings. See opening component documentation above for details.",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false
@@ -1004,9 +1004,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `label`: The assistive text for the breadcrumb trail.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: The assistive text for the breadcrumb trail.",
                 "defaultValue": {
-                    "value": "{\r\n    label: 'Breadcrumbs',\r\n}",
+                    "value": "{\n    label: 'Breadcrumbs',\n}",
                     "computed": false
                 }
             },
@@ -1024,7 +1024,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\r\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\r\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -1091,7 +1091,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.",
                 "defaultValue": {
                     "value": "{ icon: '' }",
                     "computed": false
@@ -1147,7 +1147,7 @@
             "iconCategory": {
                 "type": {
                     "name": "custom",
-                    "raw": "requiredIf(\r\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\r\n    (props) => !!props.iconName\r\n)"
+                    "raw": "requiredIf(\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n    (props) => !!props.iconName\n)"
                 },
                 "required": false,
                 "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
@@ -1474,7 +1474,7 @@
         "dependencies": []
     },
     "button-stateful": {
-        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\r\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
+        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
         "methods": [
             {
                 "name": "getClassName",
@@ -1532,7 +1532,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
                 "defaultValue": {
                     "value": "{ icon: '' }",
                     "computed": false
@@ -1792,7 +1792,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._\r\n* `label`: This label appears above the button group. _Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._\n* `label`: This label appears above the button group. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -1984,7 +1984,7 @@
                         }
                     },
                     "name": "empty",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\card\\empty.jsx"
+                    "source": "/components/card/empty.jsx"
                 }
             },
             {
@@ -2019,7 +2019,7 @@
                         }
                     },
                     "name": "filter",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\card\\filter.jsx"
+                    "source": "/components/card/filter.jsx"
                 }
             }
         ]
@@ -2125,7 +2125,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\r\n`aria-controls` attribute in order to relate the input with\r\nanother region of the page. An example would be a select box\r\nthat shows or hides a panel."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
             },
             "aria-describedby": {
                 "type": {
@@ -2159,7 +2159,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -2177,7 +2177,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present only\r\nto provide compatibility with hybrid framework applications that are not\r\nentirely React. It should only be used in an application without centralized\r\nstate (Redux, Flux). \"Controlled components\" with centralized state is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+                "description": "This is the initial value of an uncontrolled form element and is present only\nto provide compatibility with hybrid framework applications that are not\nentirely React. It should only be used in an application without centralized\nstate (Redux, Flux). \"Controlled components\" with centralized state is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "className": {
                 "type": {
@@ -2244,9 +2244,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\r\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\r\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
                 "defaultValue": {
-                    "value": "{\r\n    toggleDisabled: 'Disabled',\r\n    toggleEnabled: 'Enabled',\r\n}",
+                    "value": "{\n    toggleDisabled: 'Disabled',\n    toggleEnabled: 'Enabled',\n}",
                     "computed": false
                 }
             },
@@ -2589,9 +2589,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\n* `label`: Visually hidden label but read out loud by screen readers.\r\n* `hueSlider`: Instructions for hue selection input\r\n* `saturationValueGrid`: Instructions for using the grid for saturation\r\nand value selection",
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `hueSlider`: Instructions for hue selection input\n* `saturationValueGrid`: Instructions for using the grid for saturation\nand value selection",
                 "defaultValue": {
-                    "value": "{\r\n    saturationValueGrid:\r\n        'Use arrow keys to select a saturation and brightness, on an x and y axis.',\r\n    hueSlider: 'Select Hue',\r\n}",
+                    "value": "{\n    saturationValueGrid:\n        'Use arrow keys to select a saturation and brightness, on an x and y axis.',\n    hueSlider: 'Select Hue',\n}",
                     "computed": false
                 }
             },
@@ -2698,7 +2698,7 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\r\n* `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\r\n* `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.\r\n* `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.\r\n* `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.\r\n\t\t\t\t\t\tThis function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.\r\n* `onRequestOpen`: Function called when the color-picker menu would like show.\r\n* `onValidateColor`: Function that overwrites default color validator and called when validating HEX color on outer input change. If callback returns false, errorText is shown if set.\r\n* `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextWorkingColor is shown if set.\r\n* `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\r\n_Tested with Mocha framework._",
+                "description": "Event Callbacks\n* `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n* `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.\n* `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.\n* `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.\n\t\t\t\t\t\tThis function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.\n* `onRequestOpen`: Function called when the color-picker menu would like show.\n* `onValidateColor`: Function that overwrites default color validator and called when validating HEX color on outer input change. If callback returns false, errorText is shown if set.\n* `onValidateWorkingColor`: Function that overwrites default color validator and called when validating HEX color on custom tab inner input change. If callback returns false, errorTextWorkingColor is shown if set.\n* `onWorkingColorChange`: This function is triggered when working color changes (color inside the custom tab). This function returns `{event, { color: [string] }}`, which is a hex representation of the color.\n_Tested with Mocha framework._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -2788,9 +2788,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\n* `blueAbbreviated`: One letter abbreviation of blue color component\r\n* `cancelButton`: Text for cancel button on popover\r\n* `customTab`: Text for custom tab of popover\r\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\r\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\r\n* `greenAbbreviated`: One letter abbreviation of green color component\r\n* `hexLabel`: Label for input of hexadecimal color\r\n* `invalidColor`: Error message when hex color input is invalid\r\n* `invalidComponent`: Error message when a component input is invalid\r\n* `label`: An `input` label as for a `form`\r\n* `redAbbreviated`: One letter abbreviation of red color component\r\n* `swatchTab`: Label for swatch tab of popover\r\n* `submitButton`: Text for submit/done button of popover",
+                "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: An `input` label as for a `form`\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
                 "defaultValue": {
-                    "value": "{\r\n    blueAbbreviated: 'B',\r\n    cancelButton: 'Cancel',\r\n    customTab: 'Custom',\r\n    customTabActiveWorkingColorSwatch: 'Working Color',\r\n    customTabTransparentSwatch: 'Transparent Swatch',\r\n    greenAbbreviated: 'G',\r\n    hexLabel: 'Hex',\r\n    invalidColor: 'The color entered is invalid',\r\n    invalidComponent: 'The value needs to be an integer from 0-255',\r\n    redAbbreviated: 'R',\r\n    submitButton: 'Done',\r\n    swatchTab: 'Default',\r\n    swatchTabTransparentSwatch: 'Transparent Swatch',\r\n}",
+                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent Swatch',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n    swatchTabTransparentSwatch: 'Transparent Swatch',\n}",
                     "computed": false
                 }
             },
@@ -2813,7 +2813,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
@@ -2827,9 +2827,9 @@
                     }
                 },
                 "required": false,
-                "description": "An array of hex color values which is used to set the options of the\r\nswatch tab of the colorpicker popover.\r\nTo specify transparent, use empty string as a value.",
+                "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.\nTo specify transparent, use empty string as a value.",
                 "defaultValue": {
-                    "value": "[\r\n    '#e3abec',\r\n    '#c2dbf7',\r\n    '#9fd6ff',\r\n    '#9de7da',\r\n    '#9df0c0',\r\n    '#fff099',\r\n    '#fed49a',\r\n    '#d073e0',\r\n    '#86baf3',\r\n    '#5ebbff',\r\n    '#44d8be',\r\n    '#3be282',\r\n    '#ffe654',\r\n    '#ffb758',\r\n    '#bd35bd',\r\n    '#5779c1',\r\n    '#5679c0',\r\n    '#00aea9',\r\n    '#3cba4c',\r\n    '#f5bc25',\r\n    '#f99221',\r\n    '#580d8c',\r\n    '#001970',\r\n    '#0a2399',\r\n    '#0b7477',\r\n    '#0b6b50',\r\n    '#b67e11',\r\n    '#b85d0d',\r\n    '',\r\n]",
+                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n    '',\n]",
                     "computed": false
                 }
             },
@@ -2848,7 +2848,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines which tab is visible when dialog opens. Use this prop with `base` variant only.\r\nDefaults to `swatch` tab.",
+                "description": "Determines which tab is visible when dialog opens. Use this prop with `base` variant only.\nDefaults to `swatch` tab.",
                 "defaultValue": {
                     "value": "'swatches'",
                     "computed": false
@@ -2873,7 +2873,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Selects which tabs are present for the colorpicker.\r\n* `base`: both swatches and custom tabs are present\r\n* `swatches`: only swatch tab is present\r\n* `custom`: only custom tab is present\r\n_Tested with snapshot testing._",
+                "description": "Selects which tabs are present for the colorpicker.\n* `base`: both swatches and custom tabs are present\n* `swatches`: only swatch tab is present\n* `custom`: only custom tab is present\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -3282,7 +3282,7 @@
             },
             {
                 "name": "renderBase",
-                "docblock": "Combobox variant subrenders\r\n(these can probably be broken into function components\r\nif state is passed in as a prop)",
+                "docblock": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)",
                 "modifiers": [],
                 "params": [
                     {
@@ -3290,7 +3290,7 @@
                     }
                 ],
                 "returns": null,
-                "description": "Combobox variant subrenders\r\n(these can probably be broken into function components\r\nif state is passed in as a prop)"
+                "description": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)"
             },
             {
                 "name": "renderInlineMultiple",
@@ -3298,7 +3298,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\r\n    assistiveText,\r\n    labels,\r\n    props,\r\n    userDefinedProps,\r\n}",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3334,7 +3334,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\r\n    assistiveText,\r\n    labels,\r\n    props,\r\n    userDefinedProps,\r\n}",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3346,7 +3346,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\r\n    assistiveText,\r\n    labels,\r\n    props,\r\n    userDefinedProps,\r\n}",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3381,9 +3381,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\r\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\r\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\r\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\r\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\r\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\r\n    optionSelectedInMenu: 'Current Selection:',\r\n    removeSingleSelectedOption: 'Remove selected option',\r\n    removePill: ', Press delete or backspace to remove',\r\n    selectedListboxLabel: 'Selected Options:',\r\n}",
+                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
                 }
             },
@@ -3392,7 +3392,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.\r\nThis is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._"
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.\nThis is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._"
             },
             "className": {
                 "type": {
@@ -3513,7 +3513,7 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\r\n* `onBlur`: Called when `input` removes focus.\r\n* `onChange`: Called when keyboard events occur within `input`\r\n* `onClose`: Triggered when the menu has closed.\r\n* `onFocus`: Called when `input` receives focus.\r\n* `onOpen`: Triggered when the menu has opened.\r\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\r\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\r\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\r\n* `onSelect`: Function called when a menu item is selected\r\n* `onSubmit`: Function called when user presses enter or submits the `input`\r\n_Tested with Mocha testing._",
+                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -3552,7 +3552,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "An [Input](https://react.lightningdesignsystem.com/components/inputs) component.\r\nThe props from this component will override any default props."
+                "description": "An [Input](https://react.lightningdesignsystem.com/components/inputs) component.\nThe props from this component will override any default props."
             },
             "labels": {
                 "type": {
@@ -3601,9 +3601,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `label`: This label appears above the input.\r\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\r\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\r\n* `placeholder`: Input placeholder\r\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\r\n* `removePillTitle`: Title on `X` icon\r\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\r\n    noOptionsFound: 'No matches found.',\r\n    optionDisabledTooltipLabel: 'This option is disabled.',\r\n    placeholderReadOnly: 'Select an Option',\r\n    removePillTitle: 'Remove',\r\n}",
+                    "value": "{\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -3633,7 +3633,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Sets the dialog width to the width of one of the following:\r\n* `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),\r\n* `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.\r\n* `none`: Does not set a width on the dialog. _Tested with snapshot testing._",
+                "description": "Sets the dialog width to the width of one of the following:\n* `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),\n* `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.\n* `none`: Does not set a width on the dialog. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'target'",
                     "computed": false
@@ -3644,7 +3644,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Accepts a custom menu item rendering function that becomes a custom component. It should return a React node. The checkmark is still rendered in readonly variants. This function is passed the following props:\r\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\r\n* `option`: Object, option data for item being rendered that is passed into Combobox\r\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\r\n\n_Tested with snapshot testing._"
+                "description": "Accepts a custom menu item rendering function that becomes a custom component. It should return a React node. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
             },
             "menuPosition": {
                 "type": {
@@ -3665,7 +3665,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
@@ -3724,7 +3724,7 @@
                     }
                 },
                 "required": true,
-                "description": "**Array of item objects in the dropdown menu.**\r\nEach object can contain:\r\n* `icon`: An `Icon` component. (not used in read-only variant)\r\n* `id`: A unique identifier string.\r\n* `label`: A primary string of text for a menu item or group separator.\r\n* `subTitle`: A secondary string of text added for clarity. (optional)\r\n* `type`: 'separator' is the only type currently used\r\n* `disabled`: Set to true to disable this menu item.\r\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\r\n```\r\n{\r\n\tid: '2',\r\n\tlabel: 'Salesforce.com, Inc.',\r\n\tsubTitle: 'Account • San Francisco',\r\n\ttype: 'account',\r\n disabled: true,\r\n tooltipContent: \"You don't have permission to select this item.\"\r\n},\r\n```\r\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
+                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -3979,9 +3979,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `actionsHeader`: Text for heading of actions column\r\n* `columnSort`: Text for sort action on table column header\r\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\r\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\r\n* `selectAllRows`: Text for select all checkbox within the table header\r\n* `selectRow`: Text for select row",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
                 "defaultValue": {
-                    "value": "{\r\n    actionsHeader: 'Actions',\r\n    columnSort: 'Sort by: ',\r\n    columnSortedAscending: 'Sorted Ascending',\r\n    columnSortedDescending: 'Sorted Descending',\r\n    selectAllRows: 'Select all rows',\r\n    selectRow: 'Select row',\r\n}",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
                     "computed": false
                 }
             },
@@ -3990,7 +3990,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\r\n```\r\nimport DataTableCell from 'design-system-react/data-table/cell';\r\nconst CustomDataTableCell = ({ children, ...props }) => (\r\n  <DataTableCell {...props} >\r\n  <a href=\"javascript:void(0);\">{children}</a>\r\n  </DataTableCell>\r\n);\r\nCustomDataTableCell.displayName = DataTableCell.displayName;\r\n\n<DataTable>\r\n  <DataTableColumn />\r\n  <DataTableColumn>\r\n  <DataTableCustomCell />\r\n  </DataTableColumn>\r\n  <DataTableRowActions />\r\n</DataTable>\r\n```"
+                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n  <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n  <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
             },
             "className": {
                 "type": {
@@ -4073,7 +4073,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.\r\n\nThis used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object."
+                "description": "This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.\n\nThis used to be `onChange` which is deprecated now, so that the parameters can be consistent with other components. `onChange` passed in the selection first and the event wtihout a data object."
             },
             "onSort": {
                 "type": {
@@ -4123,7 +4123,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifies a row selection UX pattern.\r\n* `checkbox`: Multiple row selection.\r\n* `radio`: _Required_ single row selection.\r\n_This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._"
+                "description": "Specifies a row selection UX pattern.\n* `checkbox`: Multiple row selection.\n* `radio`: _Required_ single row selection.\n_This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._"
             },
             "stacked": {
                 "type": {
@@ -4247,7 +4247,7 @@
                         }
                     },
                     "name": "cell",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\data-table\\cell.jsx"
+                    "source": "/components/data-table/cell.jsx"
                 }
             },
             {
@@ -4260,7 +4260,7 @@
                                 "name": "element"
                             },
                             "required": false,
-                            "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\r\n```\r\nimport DataTableCell from 'design-system-react/data-table/cell';\r\nconst CustomDataTableCell = ({ children, ...props }) => (\r\n  <DataTableCell {...props} >\r\n    <a href=\"javascript:void(0);\">{children}</a>\r\n  </DataTableCell>\r\n);\r\nCustomDataTableCell.displayName = DataTableCell.displayName;\r\n\n<DataTable>\r\n  <DataTableColumn />\r\n  <DataTableColumn>\r\n    <DataTableCustomCell />\r\n  </DataTableColumn>\r\n  <DataTableRowActions />\r\n</DataTable>\r\n```"
+                            "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
                         },
                         "isDefaultSortDescending": {
                             "type": {
@@ -4352,7 +4352,7 @@
                         }
                     },
                     "name": "column",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\data-table\\column.jsx"
+                    "source": "/components/data-table/column.jsx"
                 }
             },
             {
@@ -4387,7 +4387,7 @@
                         }
                     },
                     "name": "highlight-cell",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\data-table\\highlight-cell.jsx"
+                    "source": "/components/data-table/highlight-cell.jsx"
                 }
             },
             {
@@ -4486,17 +4486,17 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/dropdown-menus/) component. The props from this drop will be merged and override any default props.\r\n**Note:** onAction will not be overridden, both `DropDown`'s onSelect(dropDownActionOption) and onAction(rowItem, dropdownActionOption) will be called with appropriate parameters"
+                            "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/dropdown-menus/) component. The props from this drop will be merged and override any default props.\n**Note:** onAction will not be overridden, both `DropDown`'s onSelect(dropDownActionOption) and onAction(rowItem, dropdownActionOption) will be called with appropriate parameters"
                         }
                     },
                     "name": "row-actions",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\data-table\\row-actions.jsx"
+                    "source": "/components/data-table/row-actions.jsx"
                 }
             }
         ]
     },
     "date-picker": {
-        "description": "A date picker is a non-text input form element. You can select a single date from a popup calendar. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and parsing and internationalization. You will want to use your date library within the `parser` and `formatter` callbacks.\r\n\nThe calendar is rendered with time/dates based on local browser time of the client browser. All dates are in the local user's timezones and time. Another way to put it is if a user selects a date, they are actually selecting midnight in their current time on their current day and not mightnight in UTC. If `Datepicker` is paired with a time and timezone input, you may want to convert dates provided by this component to UTC and then combine the date with your time and timezone input.\r\n\nPairing with any other component besides an `input` is untested.\r\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
+        "description": "A date picker is a non-text input form element. You can select a single date from a popup calendar. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and parsing and internationalization. You will want to use your date library within the `parser` and `formatter` callbacks.\n\nThe calendar is rendered with time/dates based on local browser time of the client browser. All dates are in the local user's timezones and time. Another way to put it is if a user selects a date, they are actually selecting midnight in their current time on their current day and not mightnight in UTC. If `Datepicker` is paired with a time and timezone input, you may want to convert dates provided by this component to UTC and then combine the date with your time and timezone input.\n\nPairing with any other component besides an `input` is untested.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
         "methods": [
             {
                 "name": "getDatePicker",
@@ -4677,9 +4677,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\r\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\r\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\r\n    nextMonth: 'Next month',\r\n    openCalendar: 'Open Calendar',\r\n    previousMonth: 'Previous month',\r\n}",
+                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n}",
                     "computed": false
                 }
             },
@@ -4745,9 +4745,9 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) before rendering the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._\r\nThe default `formatter` function is:\r\n```\r\nformatter(date) {\r\n  return date\r\n   ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\r\n   : '';\r\n}\r\n```",
+                "description": "Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) before rendering the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._\nThe default `formatter` function is:\n```\nformatter(date) {\n  return date\n   ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n   : '';\n}\n```",
                 "defaultValue": {
-                    "value": "function(date) {\r\n    return date\r\n        ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\r\n        : '';\r\n}",
+                    "value": "function(date) {\n    return date\n        ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n        : '';\n}",
                     "computed": false
                 }
             },
@@ -4803,9 +4803,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._\r\n* `months`: Names of the months. _Tested with snapshot testing._\r\n* `label`: This label appears above the input.\r\n* `placeholder`: Placeholder text for input. _Tested with snapshot testing._\r\n* `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._\r\n* `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._\n* `months`: Names of the months. _Tested with snapshot testing._\n* `label`: This label appears above the input.\n* `placeholder`: Placeholder text for input. _Tested with snapshot testing._\n* `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._\n* `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\r\n    abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\r\n    months: [\r\n        'January',\r\n        'February',\r\n        'March',\r\n        'April',\r\n        'May',\r\n        'June',\r\n        'July',\r\n        'August',\r\n        'September',\r\n        'October',\r\n        'November',\r\n        'December',\r\n    ],\r\n    placeholder: 'Pick a Date',\r\n    today: 'Today',\r\n    weekDays: [\r\n        'Sunday',\r\n        'Monday',\r\n        'Tuesday',\r\n        'Wednesday',\r\n        'Thursday',\r\n        'Friday',\r\n        'Saturday',\r\n    ],\r\n}",
+                    "value": "{\n    abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\n    months: [\n        'January',\n        'February',\n        'March',\n        'April',\n        'May',\n        'June',\n        'July',\n        'August',\n        'September',\n        'October',\n        'November',\n        'December',\n    ],\n    placeholder: 'Pick a Date',\n    today: 'Today',\n    weekDays: [\n        'Sunday',\n        'Monday',\n        'Tuesday',\n        'Wednesday',\n        'Thursday',\n        'Friday',\n        'Saturday',\n    ],\n}",
                     "computed": false
                 }
             },
@@ -4849,7 +4849,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
@@ -4902,9 +4902,9 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\r\nThe default `parser function is:\r\n```\r\nparser(str) {\r\n  return new Date(str);\r\n}\r\n```",
+                "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
-                    "value": "function(str) {\r\n    return new Date(str);\r\n}",
+                    "value": "function(str) {\n    return new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -5072,9 +5072,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\n* `removeFilter`: Assistive text for removing a filter. The default is `Remove Filter: this.props.property this.props.predicate`.\r\n* `editFilter`: Assistive text for changing a filter.\r\n* `editFilterHeading`: Assistive text for Popover heading.",
+                "description": "**Assistive text for accessibility**\n* `removeFilter`: Assistive text for removing a filter. The default is `Remove Filter: this.props.property this.props.predicate`.\n* `editFilter`: Assistive text for changing a filter.\n* `editFilterHeading`: Assistive text for Popover heading.",
                 "defaultValue": {
-                    "value": "{\r\n    editFilter: 'Edit filter:',\r\n    editFilterHeading: 'Choose filter criteria',\r\n}",
+                    "value": "{\n    editFilter: 'Edit filter:',\n    editFilterHeading: 'Choose filter criteria',\n}",
                     "computed": false
                 }
             },
@@ -5310,7 +5310,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\r\n`aria-controls` attribute in order to relate the input with\r\nanother region of the page. An example would be a select box\r\nthat shows or hides a panel."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
             },
             "aria-describedby": {
                 "type": {
@@ -5345,7 +5345,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\r\n`aria-controls` attribute in order to relate the input with\r\nanother region of the page. An example would be a search field\r\nthat shows search results."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
             },
             "aria-required": {
                 "type": {
@@ -5369,9 +5369,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\n* `label`: Visually hidden label but read out loud by screen readers.\r\n* `spinner`: Text for loading spinner icon.",
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
                 "defaultValue": {
-                    "value": "{\r\n    decrement: `${DECREMENT} ${COUNTER}`,\r\n    increment: `${INCREMENT} ${COUNTER}`,\r\n}",
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
             },
@@ -5420,7 +5420,7 @@
                     ]
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and\r\nis present only to provide compatibility with hybrid framework\r\napplications that are not entirely React. It should only be used\r\nin an application without centralized state (Redux, Flux).\r\n\"Controlled components\" with centralized state is highly recommended.\r\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+                "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -5814,7 +5814,7 @@
         "dependencies": []
     },
     "global-header": {
-        "description": "The global header is the anchor for the Salesforce platform and spans all other parts of the UI. It accepts children to define the items displayed within.\r\n\nExample:\r\n```\r\n<SLDSGlobalHeader>\r\n  <SLDSGlobalHeaderSearch />\r\n  <SLDSGlobalHeaderButton />\r\n  <SLDSGlobalHeaderDropdown />\r\n  <SLDSGlobalHeaderDropdown />\r\n  <SLDSGlobalHeaderProfile />\r\n</SLDSGlobalHeader>\r\n```",
+        "description": "The global header is the anchor for the Salesforce platform and spans all other parts of the UI. It accepts children to define the items displayed within.\n\nExample:\n```\n<SLDSGlobalHeader>\n  <SLDSGlobalHeaderSearch />\n  <SLDSGlobalHeaderButton />\n  <SLDSGlobalHeaderDropdown />\n  <SLDSGlobalHeaderDropdown />\n  <SLDSGlobalHeaderProfile />\n</SLDSGlobalHeader>\n```",
         "methods": [
             {
                 "name": "handleSkipToContent",
@@ -5857,9 +5857,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `skipToNav`: The localized text that will be read back for the \"Skip to Navigation\" accessibility link.\r\n* `skipToContent`: The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `skipToNav`: The localized text that will be read back for the \"Skip to Navigation\" accessibility link.\n* `skipToContent`: The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
                 "defaultValue": {
-                    "value": "{\r\n    skipToNav: 'Skip to Navigation',\r\n    skipToContent: 'Skip to Main Content',\r\n}",
+                    "value": "{\n    skipToNav: 'Skip to Navigation',\n    skipToContent: 'Skip to Main Content',\n}",
                     "computed": false
                 }
             },
@@ -5940,9 +5940,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\r\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
+                            "description": "**Assistive text for accessibility**\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
                             "defaultValue": {
-                                "value": "{\r\n    action: 'Toggle Favorite',\r\n    more: 'View Favorites',\r\n}",
+                                "value": "{\n    action: 'Toggle Favorite',\n    more: 'View Favorites',\n}",
                                 "computed": false
                             }
                         },
@@ -5976,7 +5976,7 @@
                         }
                     },
                     "name": "favorites",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\favorites.jsx"
+                    "source": "/components/global-header/favorites.jsx"
                 }
             },
             {
@@ -5995,9 +5995,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `triggerButton`: Assistive text for the GlobalHeaderHelp trigger button. The default is `Help and Training`.",
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderHelp trigger button. The default is `Help and Training`.",
                             "defaultValue": {
-                                "value": "{\r\n    triggerButton: 'Help and Training',\r\n}",
+                                "value": "{\n    triggerButton: 'Help and Training',\n}",
                                 "computed": false
                             }
                         },
@@ -6010,7 +6010,7 @@
                         }
                     },
                     "name": "help",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\help.jsx"
+                    "source": "/components/global-header/help.jsx"
                 }
             },
             {
@@ -6037,9 +6037,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\r\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\r\n* `noNotifications`: Assistive text for when there are no new notifications.",
+                            "description": "**Assistive text for accessibility**\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\n* `noNotifications`: Assistive text for when there are no new notifications.",
                             "defaultValue": {
-                                "value": "{\r\n    newNotificationsAfter: ' new notifications',\r\n    newNotificationsBefore: '',\r\n    noNotifications: 'No new notifications',\r\n}",
+                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'No new notifications',\n}",
                                 "computed": false
                             }
                         },
@@ -6063,7 +6063,7 @@
                         }
                     },
                     "name": "notifications",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\notifications.jsx"
+                    "source": "/components/global-header/notifications.jsx"
                 }
             },
             {
@@ -6138,7 +6138,7 @@
                         }
                     },
                     "name": "profile",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\profile.jsx"
+                    "source": "/components/global-header/profile.jsx"
                 }
             },
             {
@@ -6155,7 +6155,7 @@
                         }
                     },
                     "name": "search",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\search.jsx"
+                    "source": "/components/global-header/search.jsx"
                 }
             },
             {
@@ -6174,9 +6174,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.",
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.",
                             "defaultValue": {
-                                "value": "{\r\n    triggerButton: 'Setup',\r\n}",
+                                "value": "{\n    triggerButton: 'Setup',\n}",
                                 "computed": false
                             }
                         },
@@ -6189,7 +6189,7 @@
                         }
                     },
                     "name": "setup",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\setup.jsx"
+                    "source": "/components/global-header/setup.jsx"
                 }
             },
             {
@@ -6208,9 +6208,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.",
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.",
                             "defaultValue": {
-                                "value": "{\r\n    triggerButton: 'Global Actions',\r\n}",
+                                "value": "{\n    triggerButton: 'Global Actions',\n}",
                                 "computed": false
                             }
                         },
@@ -6223,7 +6223,7 @@
                         }
                     },
                     "name": "task",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-header\\task.jsx"
+                    "source": "/components/global-header/task.jsx"
                 }
             }
         ]
@@ -6346,7 +6346,7 @@
                         }
                     },
                     "name": "button",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-navigation-bar\\button.jsx"
+                    "source": "/components/global-navigation-bar/button.jsx"
                 }
             },
             {
@@ -6379,7 +6379,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop."
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop."
                         },
                         "align": {
                             "type": {
@@ -6503,7 +6503,7 @@
                         }
                     },
                     "name": "dropdown",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-navigation-bar\\dropdown.jsx"
+                    "source": "/components/global-navigation-bar/dropdown.jsx"
                 }
             },
             {
@@ -6562,7 +6562,7 @@
                         }
                     },
                     "name": "label",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-navigation-bar\\label.jsx"
+                    "source": "/components/global-navigation-bar/label.jsx"
                 }
             },
             {
@@ -6709,7 +6709,7 @@
                         }
                     },
                     "name": "link",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-navigation-bar\\link.jsx"
+                    "source": "/components/global-navigation-bar/link.jsx"
                 }
             },
             {
@@ -6789,7 +6789,7 @@
                         }
                     },
                     "name": "region",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\global-navigation-bar\\region.jsx"
+                    "source": "/components/global-navigation-bar/region.jsx"
                 }
             }
         ]
@@ -6809,7 +6809,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -6999,7 +6999,7 @@
         "dependencies": []
     },
     "icon-settings": {
-        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\r\n\n**Individual sprites**\r\nIf you are using webpack it is advised to use the sprite properties\r\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\r\neasily re-write the paths.\r\n```\r\nimport actionSprite from '......';\r\n\n<IconSettings actionSprite={actionSprite} ......>\r\n```\r\n**Root icon path**\r\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\r\nsuch as `/assets/icons`.",
+        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
         "methods": [],
         "props": {
             "iconPath": {
@@ -7007,7 +7007,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Path to the root icon folder\r\nexample: `/assets/icons`"
+                "description": "Path to the root icon folder\nexample: `/assets/icons`"
             },
             "onRequestIconPath": {
                 "type": {
@@ -7021,35 +7021,35 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Path to the action sprite\r\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
+                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
             },
             "customSprite": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Path to the custom sprite\r\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
+                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
             },
             "doctypeSprite": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Path to the doctype sprite\r\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
+                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
             },
             "standardSprite": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Path to the standard sprite\r\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
+                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
             },
             "utilitySprite": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Path to the utility sprite\r\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
+                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
             }
         },
         "childContext": {
@@ -7271,7 +7271,7 @@
         "dependencies": []
     },
     "menu-dropdown": {
-        "description": "The MenuDropdown component is a variant of the Lightning Design System Menu component. This component\r\nmay require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to\r\n[react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11\r\nsupport is needed.\r\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
+        "description": "The MenuDropdown component is a variant of the Lightning Design System Menu component. This component\nmay require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to\n[react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11\nsupport is needed.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
         "methods": [
             {
                 "name": "getId",
@@ -7537,7 +7537,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\r\n    event,\r\n    isOpen = true,\r\n    keyCode,\r\n    onFocus = this.handleKeyboardFocus,\r\n    onSelect,\r\n    target,\r\n    toggleOpen = noop,\r\n}",
+                        "name": "{\n    event,\n    isOpen = true,\n    keyCode,\n    onFocus = this.handleKeyboardFocus,\n    onSelect,\n    target,\n    toggleOpen = noop,\n}",
                         "type": null
                     }
                 ],
@@ -7742,7 +7742,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\r\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\r\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\r\n```\r\n<Dropdown>\r\n  <Trigger>\r\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\r\n  </Trigger>\r\n  <div>Look ma! This is Custom Content.</div>\r\n  <List options={[myArray]}/>\r\n</Dropdown>\r\n```"
+                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
             },
             "className": {
                 "type": {
@@ -7815,7 +7815,7 @@
             "iconCategory": {
                 "type": {
                     "name": "custom",
-                    "raw": "requiredIf(\r\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\r\n    (props) => !!props.iconName\r\n)"
+                    "raw": "requiredIf(\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n    (props) => !!props.iconName\n)"
                 },
                 "required": false,
                 "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
@@ -7998,7 +7998,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
@@ -8144,7 +8144,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\r\n```\r\n[{\r\n  className: 'custom-li-class',\r\n    divider: 'bottom',\r\n    label: 'A Header',\r\n    type: 'header'\r\n }, {\r\n    href: 'http://sfdc.co/',\r\n    id: 'custom-li-id',\r\n    label: 'Has a value',\r\n  leftIcon: {\r\n   name: 'settings',\r\n   category: 'utility'\r\n  },\r\n  rightIcon: {\r\n   name: 'settings',\r\n   category: 'utility'\r\n  },\r\n    type: 'item',\r\n    value: 'B0'\r\n }, {\r\n  type: 'divider'\r\n}]\r\n```"
+                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  type: 'divider'\n}]\n```"
             },
             "style": {
                 "type": {
@@ -8248,7 +8248,7 @@
                                 "name": "element"
                             },
                             "required": false,
-                            "description": "Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the triggering button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to allow functionality and accessibility.\r\n```\r\n<Dropdown>\r\n  <Trigger>\r\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\r\n  </Trigger>\r\n</Dropdown>\r\n```"
+                            "description": "Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the triggering button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to allow functionality and accessibility.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n</Dropdown>\n```"
                         },
                         "className": {
                             "type": {
@@ -8386,13 +8386,13 @@
                         }
                     },
                     "name": "button-trigger",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\menu-dropdown\\button-trigger.jsx"
+                    "source": "/components/menu-dropdown/button-trigger.jsx"
                 }
             }
         ]
     },
     "modal": {
-        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\r\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\r\n```\r\nimport settings from 'design-system-react/components/settings';\r\nsettings.setAppElement('#mount');\r\n```\r\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.",
+        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.",
         "methods": [
             {
                 "name": "getId",
@@ -8539,9 +8539,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\r\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\r\n    dialogLabel: '',\r\n    closeButton: 'Close',\r\n}",
+                    "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -8839,9 +8839,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `closeButton`: Localized description of the close button for the panel for screen readers",
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: Localized description of the close button for the panel for screen readers",
                             "defaultValue": {
-                                "value": "{\r\n    closeButton: 'Close Filter Panel',\r\n}",
+                                "value": "{\n    closeButton: 'Close Filter Panel',\n}",
                                 "computed": false
                             }
                         },
@@ -8872,7 +8872,7 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "Pass in `FilterList`'s of `Filters`:\r\n\n```\r\n<FilterGroup\r\n  variant=\"panel\"\r\n>\r\n  <FilterList>\r\n  <Filter\r\n    property=\"Show Me\"\r\n    predicate=\"All Wackamoles\"\r\n  >\r\n  {popoverContents}\r\n  </Filter>\r\n  </FilterList>\r\n</FilterGroup>\r\n```"
+                            "description": "Pass in `FilterList`'s of `Filters`:\n\n```\n<FilterGroup\n  variant=\"panel\"\n>\n  <FilterList>\n  <Filter\n    property=\"Show Me\"\n    predicate=\"All Wackamoles\"\n  >\n  {popoverContents}\n  </Filter>\n  </FilterList>\n</FilterGroup>\n```"
                         },
                         "errorLabel": {
                             "type": {
@@ -8993,7 +8993,7 @@
                         }
                     },
                     "name": "filtering/group",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\panel\\filtering\\group.jsx"
+                    "source": "/components/panel/filtering/group.jsx"
                 }
             },
             {
@@ -9043,7 +9043,7 @@
                         }
                     },
                     "name": "filtering/list-heading",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\panel\\filtering\\list-heading.jsx"
+                    "source": "/components/panel/filtering/list-heading.jsx"
                 }
             },
             {
@@ -9070,7 +9070,7 @@
                         }
                     },
                     "name": "filtering/list",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\panel\\filtering\\list.jsx"
+                    "source": "/components/panel/filtering/list.jsx"
                 }
             }
         ]
@@ -9171,7 +9171,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `remove`: This is a visually hidden label for the close button.\r\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -9182,21 +9182,21 @@
                     "name": "element"
                 },
                 "required": false,
-                "description": "SLDSAvatar component to show on the left of the pill.\r\n_Tested with Mocha framework._"
+                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
             },
             "bare": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Applies the bare style to the component.\r\n_Tested with Mocha framework._"
+                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
             },
             "children": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
-                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\r\n_Tested with Mocha framework._"
+                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
             },
             "className": {
                 "type": {
@@ -9214,28 +9214,28 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\r\n_Tested with Mocha framework._"
+                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with Mocha framework._"
             },
             "hasError": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Applies the error style to the component.\r\n_Tested with Mocha framework._"
+                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
             },
             "href": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "An href to use if the pill is shown as a link.\r\n_Tested with Mocha framework._"
+                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
             },
             "icon": {
                 "type": {
                     "name": "element"
                 },
                 "required": false,
-                "description": "SLDSIcon component to show on the left of the pill.\r\n_Tested with Mocha framework._"
+                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
             },
             "labels": {
                 "type": {
@@ -9256,7 +9256,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `label`: Pill's label.\r\n* `title`: Pill's title.\r\n* `removeTitle`: A title to use for the remove icon.\r\n\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Pill's label.\n* `title`: Pill's title.\n* `removeTitle`: A title to use for the remove icon.\n\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -9267,35 +9267,35 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "`onBlur` callback executes when the component loses focus.\r\n_Tested with Mocha framework._"
+                "description": "`onBlur` callback executes when the component loses focus.\n_Tested with Mocha framework._"
             },
             "onClick": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "`onClick` callback executes when a user clicks on the pill or presses the Enter key.\r\n_Tested with Mocha framework._"
+                "description": "`onClick` callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._"
             },
             "onFocus": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "`onFocus` callback executes when the component receives focus.\r\n_Tested with Mocha framework._"
+                "description": "`onFocus` callback executes when the component receives focus.\n_Tested with Mocha framework._"
             },
             "onKeyDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "`onKeyDown` callback executes when a user presses a key.\r\n_Tested with Mocha framework._"
+                "description": "`onKeyDown` callback executes when a user presses a key.\n_Tested with Mocha framework._"
             },
             "onRemove": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "`onRemove` callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\r\n_Tested with Mocha framework._"
+                "description": "`onRemove` callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._"
             },
             "variant": {
                 "type": {
@@ -9312,7 +9312,7 @@
                     ]
                 },
                 "required": false,
-                "description": "A variant of a pill\r\n_Tested with Mocha framework._",
+                "description": "A variant of a pill\n_Tested with Mocha framework._",
                 "defaultValue": {
                     "value": "'link'",
                     "computed": false
@@ -9448,9 +9448,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\n* `listboxLabel`: This is a label for the listbox. The default is `Selected Options:`.\r\n* `removePill`: Used to remove a selected item (pill). Focus is on the pill. This is not a button. The default is `Press delete or backspace to remove`.",
+                "description": "**Assistive text for accessibility**\n* `listboxLabel`: This is a label for the listbox. The default is `Selected Options:`.\n* `removePill`: Used to remove a selected item (pill). Focus is on the pill. This is not a button. The default is `Press delete or backspace to remove`.",
                 "defaultValue": {
-                    "value": "{\r\n    listboxLabel: 'Selected Options:',\r\n    removePill: 'Press delete or backspace to remove',\r\n}",
+                    "value": "{\n    listboxLabel: 'Selected Options:',\n    removePill: 'Press delete or backspace to remove',\n}",
                     "computed": false
                 }
             },
@@ -9490,9 +9490,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\n* `removePillTitle`: Title on `X` icon",
+                "description": "**Text labels for internationalization**\n* `removePillTitle`: Title on `X` icon",
                 "defaultValue": {
-                    "value": "{\r\n    removePillTitle: 'Remove',\r\n}",
+                    "value": "{\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -9582,7 +9582,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Array of pill objects.**\r\nEach object can contain:\r\n* `avatar`: An `Avatar` component.\r\n* `error`: Adds error styling\r\n* `icon`: An `Icon` component.\r\n* `id`: A unique identifier string.\r\n* `label`: A primary string of text.\r\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\r\n```\r\n{\r\n\tid: '2',\r\n\tlabel: 'Salesforce.com, Inc.',\r\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\r\n},\r\n```\r\n`options` with array length of zero will remove this component from the DOM."
+                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```\n`options` with array length of zero will remove this component from the DOM."
             },
             "onClickPill": {
                 "type": {
@@ -9647,6 +9647,13 @@
             },
             {
                 "name": "getMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getTargetElement",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -9917,9 +9924,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\r\n    closeButton: 'Close dialog',\r\n}",
+                    "value": "{\n    closeButton: 'Close dialog',\n}",
                     "computed": false
                 }
             },
@@ -9984,6 +9991,24 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
+            "footerActions": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "node"
+                            }
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Used with `walkthrough` variant to provide action buttons (ex: \"Next\" / \"Skip\" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -10004,7 +10029,7 @@
                     ]
                 },
                 "required": false,
-                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
+                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
             "id": {
                 "type": {
@@ -10081,11 +10106,18 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing. NOTE: this setting is not compatible with custom targets outside the trigger",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
                 }
+            },
+            "stepText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Used with `walkthrough` variant to provide the step text (ex: \"Step 1 of 4\") for a walkthrough popover footer. If used with `variant=\"walkthrough-action\"`, it will be placed in the popover body."
             },
             "style": {
                 "type": {
@@ -10108,6 +10140,21 @@
                 },
                 "required": false,
                 "description": "If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app."
+            },
+            "target": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets outside the trigger"
             },
             "triggerClassName": {
                 "type": {
@@ -10137,6 +10184,14 @@
                         },
                         {
                             "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'walkthrough'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'walkthrough-action'",
                             "computed": false
                         },
                         {
@@ -10487,9 +10542,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `completedStep`: Label for a completed step. The default is `Completed Step`\r\n* `disabledStep`: Label for disabled step. The default is `Disabled Step`\r\n* `errorStep`: Label for a step with an error. The default is `Error Step`\r\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.\r\n* `step`: Label for a step. It will be typically followed by the number of the step such as \"Step 1\".",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `completedStep`: Label for a completed step. The default is `Completed Step`\n* `disabledStep`: Label for disabled step. The default is `Disabled Step`\n* `errorStep`: Label for a step with an error. The default is `Error Step`\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.\n* `step`: Label for a step. It will be typically followed by the number of the step such as \"Step 1\".",
                 "defaultValue": {
-                    "value": "{\r\n    completedStep: 'Completed',\r\n    disabledStep: 'Disabled',\r\n    errorStep: 'Error',\r\n    step: 'Step',\r\n}",
+                    "value": "{\n    completedStep: 'Completed',\n    disabledStep: 'Disabled',\n    errorStep: 'Error',\n    step: 'Step',\n}",
                     "computed": false
                 }
             },
@@ -10527,7 +10582,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "Stores all disabled steps. It is an array of step objects. Steps are still clickable/focusable,\r\nthis only disables cursor change and removes onClick and onFocus event callbacks.",
+                "description": "Stores all disabled steps. It is an array of step objects. Steps are still clickable/focusable,\nthis only disables cursor change and removes onClick and onFocus event callbacks.",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -10556,7 +10611,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\r\n```\r\nconst handleStepClick = function(event, data) { console.log(data); };\r\n  <ProgressIndicator onStepClick={handleStepClick} />\r\n```",
+                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepClick = function(event, data) { console.log(data); };\n  <ProgressIndicator onStepClick={handleStepClick} />\n```",
                 "defaultValue": {
                     "value": "() => {}",
                     "computed": false
@@ -10567,7 +10622,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\r\n```\r\nconst handleStepFocus = function(event, data) { console.log(data); };\r\n  <ProgressIndicator onStepFocus={handleStepFocus} />\r\n```",
+                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepFocus = function(event, data) { console.log(data); };\n  <ProgressIndicator onStepFocus={handleStepFocus} />\n```",
                 "defaultValue": {
                     "value": "() => {}",
                     "computed": false
@@ -10589,7 +10644,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "It is an array of step objects in the following form:\r\n```\r\n [{\r\n   id: <PropTypes.number> or <PropTypes.string>, has to be unique\r\n   label: <PropTypes.string>, representing the tooltip content\r\n   assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.\r\n }],\r\n ```"
+                "description": "It is an array of step objects in the following form:\n```\n [{\n   id: <PropTypes.number> or <PropTypes.string>, has to be unique\n   label: <PropTypes.string>, representing the tooltip content\n   assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.\n }],\n ```"
             },
             "tooltipIsOpenSteps": {
                 "type": {
@@ -10638,7 +10693,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing."
+                "description": "Please select one of the following:\n* `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing."
             }
         },
         "route": "progress-indicators",
@@ -10651,7 +10706,7 @@
         "methods": [
             {
                 "name": "icon",
-                "docblock": "Gets the icon to display\r\n@returns {node} Icon",
+                "docblock": "Gets the icon to display\n@returns {node} Icon",
                 "modifiers": [],
                 "params": [],
                 "returns": {
@@ -10664,7 +10719,7 @@
             },
             {
                 "name": "percentDecimal",
-                "docblock": "Percentage as a decimal\r\n@returns {decimal} Percentage",
+                "docblock": "Percentage as a decimal\n@returns {decimal} Percentage",
                 "modifiers": [],
                 "params": [],
                 "returns": {
@@ -10677,7 +10732,7 @@
             },
             {
                 "name": "themeClass",
-                "docblock": "Gets the theme CSS class\r\n@returns {string} Class name",
+                "docblock": "Gets the theme CSS class\n@returns {string} Class name",
                 "modifiers": [],
                 "params": [],
                 "returns": {
@@ -10764,7 +10819,7 @@
         "dependencies": []
     },
     "radio": {
-        "description": "A radio input that can have a single input checked at any one time. Radios should be wrapped with\r\na [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)",
+        "description": "A radio input that can have a single input checked at any one time. Radios should be wrapped with\na [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)",
         "methods": [
             {
                 "name": "getId",
@@ -10828,7 +10883,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\r\nwith hybrid framework applications that are not entirely React. It should only be used in an application\r\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\r\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+                "description": "This is the initial value of an uncontrolled form element and is present only to provide compatibility\nwith hybrid framework applications that are not entirely React. It should only be used in an application\nwithout centralized state (Redux, Flux). \"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -10989,9 +11044,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\n* `toggleButtonOpen`: The button used to open the split view.\r\n* `toggleButtonClose`: The button used to close the split view.",
+                "description": "**Assistive text for accessibility**\n* `toggleButtonOpen`: The button used to open the split view.\n* `toggleButtonClose`: The button used to close the split view.",
                 "defaultValue": {
-                    "value": "{\r\n    toggleButtonOpen: 'Close split view',\r\n    toggleButtonClose: 'Open split view',\r\n}",
+                    "value": "{\n    toggleButtonOpen: 'Close split view',\n    toggleButtonClose: 'Open split view',\n}",
                     "computed": false
                 }
             },
@@ -11042,7 +11097,7 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\r\n* `onClose`: Triggered when the split view has closed.\r\n* `onOpen`: Triggered when the split view has opened.",
+                "description": "Event Callbacks\n* `onClose`: Triggered when the split view has closed.\n* `onOpen`: Triggered when the split view has opened.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -11064,7 +11119,7 @@
                     ]
                 },
                 "required": true,
-                "description": "The React component that is rendered in the master section.\r\nYou need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.\r\nReact requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys)."
+                "description": "The React component that is rendered in the master section.\nYou need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.\nReact requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys)."
             },
             "masterWidth": {
                 "type": {
@@ -11105,7 +11160,7 @@
                     "description": "The Split View Header takes the same properties as the [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/) component.",
                     "methods": [],
                     "name": "header",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\split-view\\header.jsx"
+                    "source": "/components/split-view/header.jsx"
                 }
             },
             {
@@ -11363,9 +11418,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\r\n* `list`: aria label for the list\r\n* `sort`\r\n   * `sortedBy`: Clickable sort header for the list.\r\n   * `descending`: Descending sorting.\r\n   * `ascending`: Ascending sorting.",
+                            "description": "**Assistive text for accessibility**\n* `list`: aria label for the list\n* `sort`\n   * `sortedBy`: Clickable sort header for the list.\n   * `descending`: Descending sorting.\n   * `ascending`: Ascending sorting.",
                             "defaultValue": {
-                                "value": "{\r\n    list: 'Select an item to open it in a new workspace tab.',\r\n    sort: {\r\n        sortedBy: 'Sorted by',\r\n        descending: 'Descending',\r\n        ascending: 'Ascending',\r\n    },\r\n}",
+                                "value": "{\n    list: 'Select an item to open it in a new workspace tab.',\n    sort: {\n        sortedBy: 'Sorted by',\n        descending: 'Descending',\n        ascending: 'Ascending',\n    },\n}",
                                 "computed": false
                             }
                         },
@@ -11402,7 +11457,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "Event Callbacks\r\n* `onSelect`: Called when a list item is selected.\r\n   * event {object} List item click event\r\n   * Meta {object}\r\n      * selectedItems {array} List of selected items.\r\n      * item {object} Last selected item.\r\n* `onSort`: Called when the list is sorted.\r\n   * event {object} Sort click event",
+                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected.\n   * event {object} List item click event\n   * Meta {object}\n      * selectedItems {array} List of selected items.\n      * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n   * event {object} Sort click event",
                             "defaultValue": {
                                 "value": "{}",
                                 "computed": false
@@ -11426,7 +11481,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Text labels for internationalization**\r\n* `header`: This is the header of the list.",
+                            "description": "**Text labels for internationalization**\n* `header`: This is the header of the list.",
                             "defaultValue": {
                                 "value": "{}",
                                 "computed": false
@@ -11447,7 +11502,7 @@
                                 ]
                             },
                             "required": false,
-                            "description": "The direction of the sort arrow. Option are:\r\n* SORT_OPTIONS.UP: `up`\r\n* SORT_OPTIONS.DOWN: `down`"
+                            "description": "The direction of the sort arrow. Option are:\n* SORT_OPTIONS.UP: `up`\n* SORT_OPTIONS.DOWN: `down`"
                         },
                         "multiple": {
                             "type": {
@@ -11461,7 +11516,7 @@
                                 "name": "array"
                             },
                             "required": true,
-                            "description": "The list of items.\r\nIt is recommended that you have a unique `id` for each item."
+                            "description": "The list of items.\nIt is recommended that you have a unique `id` for each item."
                         },
                         "selection": {
                             "type": {
@@ -11490,17 +11545,17 @@
                                 "name": "func"
                             },
                             "required": false,
-                            "description": "Custom list item template for the list item content. The select and unread functionality wraps the custom list item.\r\nThis should be a React component that accepts props."
+                            "description": "Custom list item template for the list item content. The select and unread functionality wraps the custom list item.\nThis should be a React component that accepts props."
                         }
                     },
                     "name": "listbox",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\split-view\\listbox.jsx"
+                    "source": "/components/split-view/listbox.jsx"
                 }
             }
         ]
     },
     "radio-group": {
-        "description": "A styled select list that can have a single entry checked at any one time.\r\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
         "methods": [
             {
                 "name": "getErrorId",
@@ -11565,7 +11620,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `error`: Message to display when any of Checkboxes are in an error state.\r\n* `label`: This label appears above the radio group.",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the radio group.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -11613,7 +11668,7 @@
         "dependencies": []
     },
     "radio-button-group": {
-        "description": "A styled select list that can have a single entry checked at any one time.\r\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
         "methods": [
             {
                 "name": "getErrorId",
@@ -11649,7 +11704,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\n* `label`: This label appears in the legend.",
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -11695,7 +11750,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `error`: Message to display when any of Checkboxes are in an error state.\r\n* `label`: This label appears above the button group.",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the button group.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -11803,7 +11858,7 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility**\r\n`label`: Visually hidden label but read out loud by screen readers."
+                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
             },
             "classNameContainer": {
                 "type": {
@@ -11828,7 +11883,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present\r\nonly to provide compatibility with hybrid framework applications that\r\nare not entirely React. It should only be used in an application without\r\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\r\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
             },
             "disabled": {
                 "type": {
@@ -11972,7 +12027,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `label`: Assistive text that is read out loud to screen readers.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text that is read out loud to screen readers.",
                 "defaultValue": {
                     "value": "{ label: 'Loading...' }",
                     "computed": false
@@ -12180,7 +12235,7 @@
             },
             {
                 "name": "isTabFromContainer",
-                "docblock": "Determine if a node from event.target is a Tab element for the current Tabs container.\r\nIf the clicked element is not a Tab, it returns false.\r\nIf it finds another Tabs container between the Tab and `this`, it returns false.",
+                "docblock": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false.",
                 "modifiers": [],
                 "params": [
                     {
@@ -12188,7 +12243,7 @@
                     }
                 ],
                 "returns": null,
-                "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\r\nIf the clicked element is not a Tab, it returns false.\r\nIf it finds another Tabs container between the Tab and `this`, it returns false."
+                "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false."
             },
             {
                 "name": "renderTabPanels",
@@ -12242,7 +12297,7 @@
                     ]
                 },
                 "required": true,
-                "description": "The `children` are the actual tabs and panels to be displayed.\r\n\nNote that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.\r\n\nThe component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.\r\n\n```\r\n<Tabs>\r\n\t<TabsPanel label=\"Tab 1\">\r\n\t\t<div>\r\n\t\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 1 contents!</h2>\r\n\t\t\t<p>They show when you click the first tab.</p>\r\n\t\t</div>\r\n\t</TabsPanel>\r\n\t<TabsPanel label=\"Tab 2\">\r\n\t\t<div>\r\n\t\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 2 contents!</h2>\r\n\t\t\t<p>They show when you click the second tab.</p>\r\n\t\t</div>\r\n\t</TabsPanel>\r\n</Tabs>\r\n```"
+                "description": "The `children` are the actual tabs and panels to be displayed.\n\nNote that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.\n\nThe component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.\n\n```\n<Tabs>\n\t<TabsPanel label=\"Tab 1\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 1 contents!</h2>\n\t\t\t<p>They show when you click the first tab.</p>\n\t\t</div>\n\t</TabsPanel>\n\t<TabsPanel label=\"Tab 2\">\n\t\t<div>\n\t\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 2 contents!</h2>\n\t\t\t<p>They show when you click the second tab.</p>\n\t\t</div>\n\t</TabsPanel>\n</Tabs>\n```"
             },
             "className": {
                 "type": {
@@ -12315,7 +12370,7 @@
         "dependencies": [
             {
                 "panel": {
-                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\r\n\r\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\r\n\r\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\r\n\n```\r\n<TabsPanel label=\"Tab 1\">\r\n\t<div>\r\n\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 1 contents!</h2>\r\n\t\t<p>They show when you click the first tab.</p>\r\n\t</div>\r\n</TabsPanel>\r\n```",
+                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\n\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\n\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\n\n```\n<TabsPanel label=\"Tab 1\">\n\t<div>\n\t\t<h2 className=\"slds-text-heading_medium\">This is my tab 1 contents!</h2>\n\t\t<p>They show when you click the first tab.</p>\n\t</div>\n</TabsPanel>\n```",
                     "methods": [],
                     "props": {
                         "label": {
@@ -12352,11 +12407,11 @@
                                 ]
                             },
                             "required": true,
-                            "description": "The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.\r\n\nNote that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one \"parent\" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM."
+                            "description": "The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.\n\nNote that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one \"parent\" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM."
                         }
                     },
                     "name": "panel",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\tabs\\panel.jsx"
+                    "source": "/components/tabs/panel.jsx"
                 }
             }
         ]
@@ -12399,7 +12454,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\r\n`aria-controls` attribute in order to relate the input with\r\nanother region of the page. An example would be a select box\r\nthat shows or hides a panel."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
             },
             "aria-describedby": {
                 "type": {
@@ -12434,7 +12489,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\r\n`aria-controls` attribute in order to relate the input with\r\nanother region of the page. An example would be a search field\r\nthat shows search results."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
             },
             "aria-required": {
                 "type": {
@@ -12461,7 +12516,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
+                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
             },
             "children": {
                 "type": {
@@ -12761,7 +12816,7 @@
                 "required": false,
                 "description": "Time formatting function",
                 "defaultValue": {
-                    "value": "function(date) {\r\n    if (date) {\r\n        return date.toLocaleTimeString(navigator.language, {\r\n            hour: '2-digit',\r\n            minute: '2-digit',\r\n        });\r\n    }\r\n\r\n    return null;\r\n}",
+                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n\n    return null;\n}",
                     "computed": false
                 }
             },
@@ -12805,7 +12860,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
@@ -12825,7 +12880,7 @@
                 "required": false,
                 "description": "Parsing date string into Date",
                 "defaultValue": {
-                    "value": "function(timeStr) {\r\n    const date = new Date();\r\n    const dateStr = date.toLocaleString(navigator.language, {\r\n        year: 'numeric',\r\n        month: 'numeric',\r\n        day: 'numeric',\r\n    });\r\n    return new Date(`${dateStr} ${timeStr}`);\r\n}",
+                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric',\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
                     "computed": false
                 }
             },
@@ -12933,9 +12988,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `closeButton`: This is a visually hidden label for the close button.\r\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\r\n    closeButton: 'Close',\r\n}",
+                    "value": "{\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -12955,7 +13010,7 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\r\n_Tested with snapshot testing._"
+                "description": "CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with snapshot testing._"
             },
             "duration": {
                 "type": {
@@ -13007,7 +13062,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `details`: Secondary text below heading\r\n* `heading`: text within heading tag\r\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\r\n\n_Tested with snapshot testing._"
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._"
             },
             "onClickHeadingLink": {
                 "type": {
@@ -13021,7 +13076,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\r\n* info variant: `utility:info`\r\n* error variant: `utility:error`\r\n* success variant: `utility:success`\r\n* warning variant: `utility:warning`\r\n\n_Tested with snapshot testing._"
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* success variant: `utility:success`\n* warning variant: `utility:warning`\n\n_Tested with snapshot testing._"
             },
             "onRequestClose": {
                 "type": {
@@ -13103,7 +13158,7 @@
                         }
                     },
                     "name": "container",
-                    "source": "F:\\Nikhil_JS\\OSS\\design-system-react\\components\\toast\\container.jsx"
+                    "source": "/components/toast/container.jsx"
                 }
             }
         ]
@@ -13257,9 +13312,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\r\nThis object is merged with the default props object on every render.\r\n* `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to \"complete the sentence\" for assistive tech users.\r\n* `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to \"complete the sentence\" for assistive tech users.\n* `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.",
                 "defaultValue": {
-                    "value": "{\r\n    tooltipTipLearnMoreIcon: 'this link',\r\n    triggerLearnMoreIcon: 'Help',\r\n}",
+                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Help',\n}",
                     "computed": false
                 }
             },
@@ -13321,9 +13376,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\r\nThis object is merged with the default props object on every render.\r\n* `learnMoreAfter`: This label appears in the tooltip after the info icon.\r\n* `learnMoreBefore`: This label appears in the tooltip before the info icon.",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: This label appears in the tooltip after the info icon.\n* `learnMoreBefore`: This label appears in the tooltip before the info icon.",
                 "defaultValue": {
-                    "value": "{\r\n    learnMoreAfter: 'to learn more.',\r\n    learnMoreBefore: 'Click',\r\n}",
+                    "value": "{\n    learnMoreAfter: 'to learn more.',\n    learnMoreBefore: 'Click',\n}",
                     "computed": false
                 }
             },
@@ -13371,7 +13426,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\r\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\r\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\r\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
@@ -13507,7 +13562,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\r\nThis object is merged with the default props object on every render.\r\n* `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText.label` must be set in order to label the tree.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -13631,7 +13686,7 @@
                     }
                 },
                 "required": true,
-                "description": "Array of items starting at the top of the tree. The shape each node in the array is:\r\n```\r\n{\r\n  expanded: string,\r\n  id: string,\r\n  label: string or node,\r\n  selected: string,\r\n  type: string,\r\n  nodes: array\r\n}\r\n```\r\n`assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
+                "description": "Array of items starting at the top of the tree. The shape each node in the array is:\n```\n{\n  expanded: string,\n  id: string,\n  label: string or node,\n  selected: string,\n  type: string,\n  nodes: array\n}\n```\n`assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
             },
             "onClick": {
                 "type": {
@@ -13761,7 +13816,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines component style:\r\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\r\n_Tested with snapshot testing._",
+                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false
