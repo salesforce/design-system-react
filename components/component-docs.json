@@ -3639,7 +3639,7 @@
                     "computed": false
                 }
             },
-            "menuItem": {
+            "onRenderMenuItem": {
                 "type": {
                     "name": "func"
                 },
