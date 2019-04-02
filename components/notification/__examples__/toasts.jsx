@@ -100,6 +100,29 @@ class Example extends React.Component {
 						theme="error"
 						variant="toast"
 					/>
+					<span />
+					<Button
+						label="Open warning toast with duration"
+						onClick={(event) => {
+							this.toggleOpen(event, 'error');
+						}}
+					/>
+					<Notification
+						content={[
+							<span key="required-fields">
+								You encountered some errors when trying to save edits to Samuel
+								Smith.
+							</span>,
+						]}
+						iconName="warning"
+						isOpen={this.state.errorIsOpen}
+						onDismiss={(event) => {
+							this.toggleOpen(event, 'error');
+						}}
+						duration={3000}
+						theme="warning"
+						variant="toast"
+					/>
 				</div>
 			</IconSettings>
 		);
