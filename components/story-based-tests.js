@@ -49,7 +49,7 @@ export ProgressIndicator from '../components/progress-indicator/__docs__/storybo
 // export Tabs from '../components/tabs/__docs__/storybook-stories';
 // export Textarea from '../components/textarea/__docs__/storybook-stories';
 // export Toast from '../components/toast/__docs__/storybook-stories';
-// export Tooltip from '../components/tooltip/__docs__/storybook-stories';
+export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
 

@@ -60,6 +60,14 @@ const propTypes = {
 	 */
 	children: PropTypes.node,
 	/**
+	 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
 	 * Content inside Tooltip.
 	 */
 	content: PropTypes.node.isRequired,
@@ -224,9 +232,14 @@ class Tooltip extends React.Component {
 			<Dialog
 				closeOnTabKey
 				hasNubbin
-				contentsClassName={classNames('slds-popover', 'slds-popover_tooltip', {
-					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-				})}
+				contentsClassName={classNames(
+					'slds-popover',
+					'slds-popover_tooltip',
+					{
+						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+					},
+					this.props.className
+				)}
 				align={align}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
