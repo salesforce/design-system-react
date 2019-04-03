@@ -20,11 +20,13 @@ import componentDoc from './docs.json';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
+import Menu from './private/menu';
 
 const defaultProps = {
 	assistiveText: {
 		label: 'Breadcrumbs',
 	},
+	parentIndex: 0,
 };
 
 /**
@@ -33,7 +35,8 @@ const defaultProps = {
 const Breadcrumb = (props) => {
 	checkProps(BREADCRUMB, props, componentDoc);
 
-	const { trail } = props;
+	const { parentIndex } = props;
+	let { trail } = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -41,10 +44,19 @@ const Breadcrumb = (props) => {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
 				}.label;
-
+	let menuTrail = [];
+	if (parentIndex) {
+		menuTrail = trail.slice(0, parentIndex);
+		trail = trail.slice(parentIndex);
+	}
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
 			<ol className="slds-breadcrumb slds-list_horizontal">
+				{menuTrail.length > 0 && (
+					<li className="slds-breadcrumb__item" key="menu">
+						<Menu items={menuTrail} />
+					</li>
+				)}
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
@@ -70,6 +82,10 @@ Breadcrumb.propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 	}),
+	/**
+	 * Index of the parent entity, before which there is an overflow menu
+	 */
+	parentIndex: PropTypes.number,
 	/**
 	 * An array of react elements presumably anchor elements.
 	 */
