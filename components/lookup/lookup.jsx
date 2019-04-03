@@ -399,14 +399,16 @@ const Lookup = class extends React.Component {
 			if (this.props.onRequestClose) {
 				this.props.onRequestClose();
 			}
-			this.setState({
-				isOpen: false,
-				selectedIndex: index,
-				searchTerm: '',
-			});
 			const data = this.state.items[index].data;
-			if (this.props.onSelect) {
-				this.props.onSelect(data);
+			if (data.type !== 'section') {
+				this.setState({
+					isOpen: false,
+					selectedIndex: index,
+					searchTerm: '',
+				});
+				if (this.props.onSelect) {
+					this.props.onSelect(data);
+				}
 			}
 		}
 	};
