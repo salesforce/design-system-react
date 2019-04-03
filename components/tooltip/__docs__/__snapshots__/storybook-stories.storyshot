@@ -2110,7 +2110,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
       Trigger Tooltip
     </button>
     <div
-      className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip sample-classname"
+      className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip dialog-classname"
       id="myPopoverId"
       onKeyDown={[Function]}
       role="tooltip"

@@ -60,17 +60,17 @@ const propTypes = {
 	 */
 	children: PropTypes.node,
 	/**
-	 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
+	 * Content inside Tooltip.
 	 */
-	className: PropTypes.oneOfType([
+	content: PropTypes.node.isRequired,
+	/**
+	 * CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it.
+	 */
+	dialogClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
-	/**
-	 * Content inside Tooltip.
-	 */
-	content: PropTypes.node.isRequired,
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -238,7 +238,7 @@ class Tooltip extends React.Component {
 					{
 						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
 					},
-					this.props.className
+					this.props.dialogClassName
 				)}
 				align={align}
 				context={this.context}

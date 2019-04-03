@@ -14,7 +14,7 @@ class Example extends React.Component {
 					align="top left"
 					content="Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
 					variant="learnMore"
-					className="sample-classname"
+					dialogClassName="dialog-classname"
 				/>
 			</IconSettings>
 		);
