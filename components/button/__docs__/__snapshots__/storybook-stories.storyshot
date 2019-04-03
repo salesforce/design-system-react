@@ -608,6 +608,11 @@ exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
           />
         </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Small icon hint inverse
+        </span>
       </button>
     </div>
   </div>
