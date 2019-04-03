@@ -1010,6 +1010,17 @@
                     "computed": false
                 }
             },
+            "parentIndex": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Index of the parent entity, before which there is an overflow menu",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
             "trail": {
                 "type": {
                     "name": "array"
@@ -9991,7 +10002,7 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
-            "footerActions": {
+            "footerWalkthroughActions": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10087,6 +10098,13 @@
                 "required": false,
                 "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
+            "onRequestTargetElement": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback that returns an element or React `ref` to align the Popover with. If the target element has not been rendered yet, the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets that are not the triggering element."
+            },
             "position": {
                 "type": {
                     "name": "enum",
@@ -10140,21 +10158,6 @@
                 },
                 "required": false,
                 "description": "If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app."
-            },
-            "target": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets outside the trigger"
             },
             "triggerClassName": {
                 "type": {
@@ -13740,13 +13743,6 @@
                 "returns": null
             },
             {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "getSelectedId",
                 "docblock": null,
                 "modifiers": [],
@@ -13800,27 +13796,6 @@
                 },
                 "required": false,
                 "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
             }
         },
         "route": "vertical-navigation",
