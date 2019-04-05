@@ -775,6 +775,13 @@
                 "required": false,
                 "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
             },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Avatar with initials that are dark text on light background"
+            },
             "label": {
                 "type": {
                     "name": "string"
