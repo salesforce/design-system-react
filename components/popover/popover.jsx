@@ -74,6 +74,7 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close dialog',
 	},
+	hasNubbin: true,
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
@@ -150,6 +151,10 @@ class Popover extends React.Component {
 			PropTypes.node,
 			PropTypes.arrayOf(PropTypes.node),
 		]),
+		/**
+		 * Determines if the popover has a nubbin or not. Default is `true`
+		 */
+		hasNubbin: PropTypes.bool,
 		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
@@ -616,7 +621,7 @@ class Popover extends React.Component {
 		// MAIN RENDER
 		return isOpen ? (
 			<Dialog
-				hasNubbin
+				hasNubbin={this.props.hasNubbin}
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
