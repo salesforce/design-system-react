@@ -237,6 +237,7 @@ class Button extends React.Component {
 				'slds-button': this.props.variant !== 'link',
 				[`slds-button_${this.props.variant}`]: showButtonVariant,
 				'slds-button_inverse': plainInverseBtn,
+				'slds-button_icon': isIcon,
 				'slds-button_icon-inverse': plainInverseIcon || moreInverseIcon,
 				'slds-button_icon-border-inverse': borderInverseIcon,
 				[`slds-button_icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
