@@ -134,7 +134,7 @@ Familiarize yourself with concepts used in the rest of the library.
 
 Be inclusive of non-English users. Any text the user can read (including hidden assistive text for screenreaders) should be able to be set via a prop for internationalization purposes. Within the component, **do not concatenate strings.** This assumes that you know the word order of all languages. Strings should be passed into props in their entirety. Non-visible programmatic keys can be concatenated.
 
-All assistive text for accessibility and visible text should be grouped in an object and passed in with a prop, `assistiveText` and `labels` respectively. This will allow consuming developers to easily find and map text to localize it.
+If the text has a mix of data and words, use a before/after key name or a callback with a return value. All assistive text for accessibility and visible text should be grouped in an object and passed in with a prop, `assistiveText` and `labels` respectively. This will allow consuming developers to easily find and map text to localize it. All visible text labels should allow a propType of `node`. This allows for italics, bold, other inline styling, and adding tooltips.
 
 #### Use `isRequired` PropType when possible
 
@@ -172,7 +172,7 @@ Render props are essentially a callback function that occurs at render and shoul
 
 Another kind of render prop is when a prop accepts an existing Design System React component class with a prop API such as the `dropdown` prop of `DataTableRowActions`. _Component composition with prop spread_ is a similar pattern to render props, but differs in that it does an element clone with a shallow prop/object merge in which it is assumed that the prop component passed in overrides any props from its parent.
 
-In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developer's passed in component controlled by the "grandparent" takes precedence and ***merges in last** which is what you typically want, since a grandparent component controls the parent. That said, overriding internal logic can easily break a component. _Use with caution._
+In a way, this is "grandparent control" in that it surfaces the internal API of sub-components to the consuming developer in a way that the parent of the parent can control it. The parent component (such as `DataTableRowActions`) shallow merges the props from itself with the component props provided from the developer. The developer's passed in component controlled by the "grandparent" takes precedence and **\*merges in last** which is what you typically want, since a grandparent component controls the parent. That said, overriding internal logic can easily break a component. _Use with caution._
 
 This pattern creates a separation of concern and a more declarative approach that relies on child components with their own documented props instead of additional props on the parent component such as `<Button iconClassName />`. Passing in `<Dropdown options={} />` to a `dropdown` prop limits the aliasing of props for child components that already exist (`dropdownOptions` is discouraged) and reduces duplication of `PropType` documentation and increases library maintainability.
 

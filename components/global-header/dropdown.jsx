@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # Global Header Dropdown Component
+// NOTE: THIS COMPONENT HAS BEEN DEPRECATED AND WILL BE REMOVED IN FUTURE MAJOR RELEASES
 
 // ## Dependencies
 
@@ -13,13 +14,22 @@ import PropTypes from 'prop-types';
 import MenuDropdown from '../menu-dropdown';
 import GlobalHeaderTrigger from './private/dropdown-trigger';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ## Constants
-import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
+import {
+	GLOBAL_HEADER_DROPDOWN,
+	GLOBAL_HEADER_TOOL,
+} from '../../utilities/constants';
 
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
 const GlobalHeaderDropdown = (props) => {
+	checkProps(GLOBAL_HEADER_DROPDOWN, props);
+
 	const { globalAction, iconVariant, ...rest } = props;
 	let iconVariantOverride;
 
