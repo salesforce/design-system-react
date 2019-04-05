@@ -74,8 +74,8 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close dialog',
 	},
-	hasCloseButton: true,
-	hasNubbin: true,
+	hasNoCloseButton: false,
+	hasNoNubbin: false,
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
@@ -153,13 +153,13 @@ class Popover extends React.Component {
 			PropTypes.arrayOf(PropTypes.node),
 		]),
 		/**
-		 * Determines if the popover has a close button or not. Default is `true`
+		 * Determines if the popover has a close button or not. Default is `false`
 		 */
-		hasCloseButton: PropTypes.bool,
+		hasNoCloseButton: PropTypes.bool,
 		/**
-		 * Determines if the popover has a nubbin or not. Default is `true`
+		 * Determines if the popover has a nubbin or not. Default is `false`
 		 */
-		hasNubbin: PropTypes.bool,
+		hasNoNubbin: PropTypes.bool,
 		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
@@ -626,7 +626,7 @@ class Popover extends React.Component {
 		// MAIN RENDER
 		return isOpen ? (
 			<Dialog
-				hasNubbin={this.props.hasNubbin}
+				hasNubbin={!this.props.hasNoNubbin}
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
@@ -667,7 +667,7 @@ class Popover extends React.Component {
 					'aria-describedby': `${this.getId()}-dialog-body`,
 				}}
 			>
-				{this.props.hasCloseButton && (
+				{!this.props.hasNoCloseButton && (
 					<Button
 						assistiveText={{ icon: closeButtonAssistiveText }}
 						iconCategory="utility"

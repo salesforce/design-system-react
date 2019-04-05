@@ -10024,25 +10024,25 @@
                 "required": false,
                 "description": "Used with `walkthrough` variant to provide action buttons (ex: \"Next\" / \"Skip\" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons."
             },
-            "hasCloseButton": {
+            "hasNoCloseButton": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Determines if the popover has a close button or not. Default is `true`",
+                "description": "Determines if the popover has a close button or not. Default is `false`",
                 "defaultValue": {
-                    "value": "true",
+                    "value": "false",
                     "computed": false
                 }
             },
-            "hasNubbin": {
+            "hasNoNubbin": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Determines if the popover has a nubbin or not. Default is `true`",
+                "description": "Determines if the popover has a nubbin or not. Default is `false`",
                 "defaultValue": {
-                    "value": "true",
+                    "value": "false",
                     "computed": false
                 }
             },
