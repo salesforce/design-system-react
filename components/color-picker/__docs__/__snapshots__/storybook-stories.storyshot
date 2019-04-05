@@ -147,7 +147,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
         <div
           aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
           aria-labelledby="color-picker-label-color-picker"
-          className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
+          className="absolute-positioned ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
           id="slds-color-picker__selector-color-picker-popover"
           onKeyDown={[Function]}
           onMouseEnter={null}
@@ -162,26 +162,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           }
           tabIndex="-1"
         >
-          <button
-            className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon"
-            >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Close dialog
-            </span>
-          </button>
           <div
             className="slds-popover__body"
             id="slds-color-picker__selector-color-picker-dialog-body"
