@@ -90,40 +90,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
 					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Default Fluid Layout
+						Basic Fluid Layout - Column Bordered
 					</h3>
-					<DataTable items={this.state.items} id="DataTableExample-1-default">
-						{columns}
-					</DataTable>
-
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Striped
-					</h3>
-
-					<DataTable
-						items={this.state.items}
-						id="DataTableExample-1-striped"
-						striped
-					>
-						{columns}
-					</DataTable>
-
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						No Row Hover
-					</h3>
-
-					<DataTable
-						items={this.state.items}
-						id="DataTableExample-noRowHover"
-						noRowHover
-					>
-						{columns}
-					</DataTable>
-
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Column Bordered
-					</h3>
-
 					<DataTable
 						columnBordered
 						items={this.state.items}

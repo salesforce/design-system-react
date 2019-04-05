@@ -18,6 +18,13 @@ if (process.env.NODE_ENV !== 'production') {
 			'menuPosition="relative"',
 			createDocUrl('menuPosition')
 		);
+		deprecatedProperty(
+			COMPONENT,
+			props.menuItem,
+			'menuItem',
+			'onRenderMenuItem',
+			createDocUrl('onRenderItem')
+		);
 		/* eslint-enable max-len */
 	};
 }

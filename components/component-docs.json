@@ -775,6 +775,13 @@
                 "required": false,
                 "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
             },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Avatar with initials that are dark text on light background"
+            },
             "label": {
                 "type": {
                     "name": "string"
@@ -1440,11 +1447,19 @@
                             "computed": false
                         },
                         {
+                            "value": "'outline-brand'",
+                            "computed": false
+                        },
+                        {
                             "value": "'destructive'",
                             "computed": false
                         },
                         {
                             "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'text-destructive'",
                             "computed": false
                         },
                         {
@@ -1892,6 +1907,13 @@
                 },
                 "required": false,
                 "description": "Footer often contains pagination."
+            },
+            "hasNoHeader": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Allows card to have no header, and ignores header related props altogether."
             },
             "header": {
                 "type": {
@@ -3632,7 +3654,7 @@
                     "computed": false
                 }
             },
-            "menuItem": {
+            "onRenderMenuItem": {
                 "type": {
                     "name": "func"
                 },
@@ -5902,7 +5924,7 @@
         "dependencies": [
             {
                 "favorites": {
-                    "description": "A GlobalHeaderFavorites component.",
+                    "description": "A GlobalHeaderFavorites component. The favorites action is used to \"favorite\" a commonly used page within a user's experience. When a user \"favorites\" a page by pressing the favorites action, the button icon changes color with a small animation to confirm your selection.",
                     "methods": [
                         {
                             "name": "toggleActionSelected",
@@ -5933,7 +5955,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderFavorites trigger button. The default is `Help and Training`.",
+                            "description": "**Assistive text for accessibility**\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
                             "defaultValue": {
                                 "value": "{\n    action: 'Toggle Favorite',\n    more: 'View Favorites',\n}",
                                 "computed": false
@@ -5944,7 +5966,7 @@
                                 "name": "bool"
                             },
                             "required": false,
-                            "description": "Disables the favorites action (star) button"
+                            "description": "Disables the favorites action (star) button and not the related Popover.\""
                         },
                         "actionSelected": {
                             "type": {
@@ -5965,7 +5987,7 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props."
+                            "description": "A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props. The `children` prop will be ignored."
                         }
                     },
                     "name": "favorites",
@@ -5999,7 +6021,7 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "A `Popover` component. The props from this popover will be merged and override any default props."
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props. The `children` prop will be ignored."
                         }
                     },
                     "name": "help",
@@ -6008,7 +6030,7 @@
             },
             {
                 "notifications": {
-                    "description": "A GlobalHeaderNotifications component.",
+                    "description": "A GlobalHeaderNotifications component. Notifications are a way to notify a user about a global change within the application.",
                     "methods": [],
                     "props": {
                         "assistiveText": {
@@ -6032,7 +6054,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\n* `noNotifications`: Assistive text for when there are no new notifications.",
                             "defaultValue": {
-                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'no new notifications',\n}",
+                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'No new notifications',\n}",
                                 "computed": false
                             }
                         },
@@ -6052,7 +6074,7 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "A `Popover` component. The props from this popover will be merged and override any default props."
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props. The `children` prop will be ignored."
                         }
                     },
                     "name": "notifications",
@@ -9646,6 +9668,13 @@
                 "returns": null
             },
             {
+                "name": "getTargetElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "setMenuRef",
                 "docblock": null,
                 "modifiers": [],
@@ -9977,6 +10006,24 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
+            "footerActions": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "node"
+                            }
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Used with `walkthrough` variant to provide action buttons (ex: \"Next\" / \"Skip\" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -9997,7 +10044,7 @@
                     ]
                 },
                 "required": false,
-                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
+                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
             "id": {
                 "type": {
@@ -10074,11 +10121,18 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing. NOTE: this setting is not compatible with custom targets outside the trigger",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
                 }
+            },
+            "stepText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Used with `walkthrough` variant to provide the step text (ex: \"Step 1 of 4\") for a walkthrough popover footer. If used with `variant=\"walkthrough-action\"`, it will be placed in the popover body."
             },
             "style": {
                 "type": {
@@ -10101,6 +10155,21 @@
                 },
                 "required": false,
                 "description": "If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app."
+            },
+            "target": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets outside the trigger"
             },
             "triggerClassName": {
                 "type": {
@@ -10130,6 +10199,14 @@
                         },
                         {
                             "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'walkthrough'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'walkthrough-action'",
                             "computed": false
                         },
                         {
