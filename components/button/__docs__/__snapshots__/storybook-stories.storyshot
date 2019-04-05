@@ -574,6 +574,39 @@ exports[`DOM snapshots SLDSButton Neutral with id 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSButton Outline brand button 1`] = `
+<div
+  className="slds-hint-parent"
+  style={
+    Object {
+      "backgroundColor": "#16325c",
+    }
+  }
+>
+  <div
+    className="slds-p-around_medium slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <div
+      className="slds-p-around_medium"
+    >
+      <button
+        className="slds-button slds-button_outline-brand"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Outline brand button
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
 <div
   className="slds-hint-parent"
