@@ -384,7 +384,7 @@ exports[`DOM snapshots SLDSButtonGroup More Icon 1`] = `
       <button
         aria-expanded={false}
         aria-haspopup={true}
-        className="slds-button slds-button_icon-border-filled ignore-click-ButtonGroupExampleDropdown"
+        className="slds-button slds-button_icon slds-button_icon-border-filled ignore-click-ButtonGroupExampleDropdown"
         disabled={false}
         onClick={[Function]}
         tabIndex="0"

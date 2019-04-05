@@ -56,7 +56,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -135,7 +135,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -214,7 +214,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"

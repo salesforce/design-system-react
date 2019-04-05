@@ -215,7 +215,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           </span>
         </button>
         <button
-          className="slds-button slds-button_icon-container slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -245,7 +245,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border"
+            className="slds-button slds-button_icon slds-button_icon-border"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -265,7 +265,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
             </span>
           </button>
           <button
-            className="slds-button slds-button_icon-border-filled"
+            className="slds-button slds-button_icon slds-button_icon-border-filled"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -286,7 +286,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           </button>
         </div>
         <button
-          className="slds-button slds-button_icon-more slds-button_icon-large"
+          className="slds-button slds-button_icon slds-button_icon-more slds-button_icon-large"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -324,7 +324,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-inverse"
+            className="slds-button slds-button_icon slds-button_icon-inverse"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -395,7 +395,7 @@ exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
   >
     <button
       aria-haspopup={true}
-      className="slds-button slds-button_icon-inverse slds-button_icon-more"
+      className="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-more"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -439,7 +439,7 @@ exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
     className="slds-p-around_medium"
   >
     <button
-      className="slds-button slds-button_icon-border-inverse slds-button_icon-large"
+      className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-large"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -628,7 +628,7 @@ exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
       className="slds-p-around_medium"
     >
       <button
-        className="slds-button slds-button_icon-border-inverse slds-button_icon-small"
+        className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
         disabled={false}
         onClick={[Function]}
         type="button"

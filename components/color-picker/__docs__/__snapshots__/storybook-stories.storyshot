@@ -25,7 +25,7 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={true}
           id="slds-color-picker__summary-button-color-picker"
           onClick={[Function]}
@@ -109,7 +109,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-color-picker"
           onClick={[Function]}
@@ -1447,7 +1447,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-custom-only-color-picker"
           onClick={[Function]}
@@ -1530,7 +1530,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-Custom-tab-default-color-picker"
           onClick={[Function]}
@@ -1613,7 +1613,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-custom-validator-color-picker"
           onClick={[Function]}
@@ -1696,7 +1696,7 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-default-color-picker"
           onClick={[Function]}
@@ -1779,7 +1779,7 @@ exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-default-color-picker"
           onClick={[Function]}
@@ -1862,7 +1862,7 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-hidden-input-color-picker"
           onClick={[Function]}
@@ -1929,7 +1929,7 @@ exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-outer-input-error-state-color-picker"
           onClick={[Function]}
@@ -2016,7 +2016,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-predefined-color-picker"
           onClick={[Function]}
@@ -2098,7 +2098,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-predefined-only-color-picker"
           onClick={[Function]}
@@ -2180,7 +2180,7 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-swatch-only-color-picker"
           onClick={[Function]}
@@ -2263,7 +2263,7 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
         }
       >
         <button
-          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          className="slds-button slds-button_icon slds-button_icon-more slds-color-picker__summary-button"
           disabled={false}
           id="slds-color-picker__summary-button-working-color-error-state-color-picker"
           onClick={[Function]}

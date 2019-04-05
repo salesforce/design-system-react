@@ -107,7 +107,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                 className="slds-button-group"
               >
                 <button
-                  className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-action"
+                  className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-action"
                   disabled={false}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -137,7 +137,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   }
                 >
                   <button
-                    className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
+                    className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
                     onClick={[Function]}
@@ -187,7 +187,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__task slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__task slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -223,7 +223,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
             >
               <button
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__help slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__help slds-global-actions__item-action"
                 disabled={false}
                 id="header-help-popover-id"
                 onClick={[Function]}
@@ -265,7 +265,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -301,7 +301,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
             >
               <button
                 aria-live="assertive"
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
                 id="header-notifications-popover-id"
                 onClick={[Function]}
@@ -420,7 +420,7 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -593,7 +593,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                 className="slds-button-group"
               >
                 <button
-                  className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-action"
+                  className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-action"
                   disabled={false}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -623,7 +623,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   }
                 >
                   <button
-                    className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
+                    className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
                     onClick={[Function]}
@@ -673,7 +673,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__task slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__task slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -709,7 +709,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
             >
               <button
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__help slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__help slds-global-actions__item-action"
                 disabled={false}
                 id="header-help-popover-id"
                 onClick={[Function]}
@@ -751,7 +751,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -787,7 +787,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
             >
               <button
                 aria-live="assertive"
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
                 id="header-notifications-popover-id"
                 onClick={[Function]}
@@ -970,7 +970,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                 className="slds-button-group"
               >
                 <button
-                  className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-action"
+                  className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-action"
                   disabled={false}
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1000,7 +1000,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   }
                 >
                   <button
-                    className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
+                    className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
                     onClick={[Function]}
@@ -1050,7 +1050,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__task slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__task slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -1086,7 +1086,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
             >
               <button
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__help slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__help slds-global-actions__item-action"
                 disabled={false}
                 id="header-help-popover-id"
                 onClick={[Function]}
@@ -1128,7 +1128,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -1164,7 +1164,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
             >
               <button
                 aria-live="assertive"
-                className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+                className="slds-button slds-button_icon slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
                 id="header-notifications-popover-id"
                 onClick={[Function]}

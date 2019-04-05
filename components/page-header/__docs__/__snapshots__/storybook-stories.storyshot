@@ -495,7 +495,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               className="slds-button_last"
             >
               <button
-                className="slds-button slds-button_icon-border-filled"
+                className="slds-button slds-button_icon slds-button_icon-border-filled"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -548,7 +548,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-more slds-m-right_xx-small"
+                className="slds-button slds-button_icon slds-button_icon-more slds-m-right_xx-small"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -582,7 +582,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               role="group"
             >
               <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                className="slds-button slds-button_icon slds-button_icon-border slds-m-left_xx-small"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -602,7 +602,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                 </span>
               </button>
               <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                className="slds-button slds-button_icon slds-button_icon-border slds-m-left_xx-small"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -886,7 +886,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-more slds-m-right_xx-small"
+                className="slds-button slds-button_icon slds-button_icon-more slds-m-right_xx-small"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -916,7 +916,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
               </button>
             </div>
             <button
-              className="slds-button slds-button_icon-border"
+              className="slds-button slds-button_icon slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -936,7 +936,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
               </span>
             </button>
             <button
-              className="slds-button slds-button_icon-border"
+              className="slds-button slds-button_icon slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -961,7 +961,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                 role="group"
               >
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon slds-button_icon-border"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -981,7 +981,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                   </span>
                 </button>
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon slds-button_icon-border"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -1285,7 +1285,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-record-home-content-right"
+                  className="slds-button slds-button_icon slds-button_icon-border-filled ignore-click-page-header-dropdown-record-home-content-right"
                   disabled={false}
                   onClick={[Function]}
                   tabIndex="0"
@@ -1488,7 +1488,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-related-list-nav-right"
+                className="slds-button slds-button_icon slds-button_icon-border-filled ignore-click-page-header-dropdown-related-list-nav-right"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -1531,7 +1531,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
             className="slds-grid"
           >
             <button
-              className="slds-button slds-button_icon-more slds-m-left_xx-small"
+              className="slds-button slds-button_icon slds-button_icon-more slds-m-left_xx-small"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -1563,7 +1563,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               role="group"
             >
               <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                className="slds-button slds-button_icon slds-button_icon-border slds-m-left_xx-small"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -1583,7 +1583,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                 </span>
               </button>
               <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                className="slds-button slds-button_icon slds-button_icon-border slds-m-left_xx-small"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -1614,7 +1614,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
-                  className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-related-list-content-right"
+                  className="slds-button slds-button_icon slds-button_icon-more ignore-click-page-header-dropdown-related-list-content-right"
                   disabled={false}
                   onClick={[Function]}
                   tabIndex="0"

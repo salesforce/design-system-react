@@ -153,7 +153,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
         </a>
       </h2>
       <button
-        className="slds-button slds-button_icon-inverse slds-notify__close"
+        className="slds-button slds-button_icon slds-button_icon-inverse slds-notify__close"
         disabled={false}
         onClick={[Function]}
         title="Close"

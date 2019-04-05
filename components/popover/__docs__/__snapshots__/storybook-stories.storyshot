@@ -389,7 +389,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -430,7 +430,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -471,7 +471,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -512,7 +512,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -553,7 +553,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -594,7 +594,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -635,7 +635,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -676,7 +676,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -717,7 +717,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -758,7 +758,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -799,7 +799,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -840,7 +840,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         }
       >
         <button
-          className="slds-button slds-button_icon-border slds-button_icon-small"
+          className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-small"
           disabled={false}
           id="myPopoverId"
           onClick={[Function]}
@@ -1164,7 +1164,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
       tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        className="slds-button slds-button_icon slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1786,7 +1786,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
       tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        className="slds-button slds-button_icon slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
         disabled={false}
         onClick={[Function]}
         type="button"
