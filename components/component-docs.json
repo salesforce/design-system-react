@@ -1447,11 +1447,19 @@
                             "computed": false
                         },
                         {
+                            "value": "'outline-brand'",
+                            "computed": false
+                        },
+                        {
                             "value": "'destructive'",
                             "computed": false
                         },
                         {
                             "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'text-destructive'",
                             "computed": false
                         },
                         {
