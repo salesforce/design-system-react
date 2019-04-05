@@ -74,6 +74,7 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close dialog',
 	},
+	hasCloseButton: true,
 	hasNubbin: true,
 	hoverCloseDelay: 300,
 	openOn: 'click',
@@ -151,6 +152,10 @@ class Popover extends React.Component {
 			PropTypes.node,
 			PropTypes.arrayOf(PropTypes.node),
 		]),
+		/**
+		 * Determines if the popover has a close button or not. Default is `true`
+		 */
+		hasCloseButton: PropTypes.bool,
 		/**
 		 * Determines if the popover has a nubbin or not. Default is `true`
 		 */
@@ -662,24 +667,26 @@ class Popover extends React.Component {
 					'aria-describedby': `${this.getId()}-dialog-body`,
 				}}
 			>
-				<Button
-					assistiveText={{ icon: closeButtonAssistiveText }}
-					iconCategory="utility"
-					iconName="close"
-					className={classNames(
-						'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
-						{
-							'slds-button_icon-inverse':
-								props.variant === 'walkthrough' ||
-								props.variant === 'walkthrough-action',
+				{this.props.hasCloseButton && (
+					<Button
+						assistiveText={{ icon: closeButtonAssistiveText }}
+						iconCategory="utility"
+						iconName="close"
+						className={classNames(
+							'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
+							{
+								'slds-button_icon-inverse':
+									props.variant === 'walkthrough' ||
+									props.variant === 'walkthrough-action',
+							}
+						)}
+						onClick={this.handleCancel}
+						variant="icon"
+						inverse={
+							this.props.variant === 'error' || this.props.variant === 'warning'
 						}
-					)}
-					onClick={this.handleCancel}
-					variant="icon"
-					inverse={
-						this.props.variant === 'error' || this.props.variant === 'warning'
-					}
-				/>
+					/>
+				)}
 				{header}
 				{body}
 				{footer}
