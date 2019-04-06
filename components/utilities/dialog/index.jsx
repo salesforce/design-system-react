@@ -455,6 +455,7 @@ class Dialog extends React.Component {
 					) || undefined
 				}
 				style={style}
+				onMouseDown={this.props.onMouseDown}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
