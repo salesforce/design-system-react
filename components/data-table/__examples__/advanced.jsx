@@ -124,6 +124,9 @@ class Example extends React.Component {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Advanced (Fixed Layout)
+					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',
@@ -157,7 +160,12 @@ class Example extends React.Component {
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn
+							sortable
+							isDefaultSortDescending
+							label="Close Date"
+							property="closeDate"
+						/>
 						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
