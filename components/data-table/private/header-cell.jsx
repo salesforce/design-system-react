@@ -206,15 +206,12 @@ class DataTableHeaderCell extends React.Component {
 			<th
 				aria-label={labelType === 'string' ? label : undefined}
 				aria-sort={ariaSort}
-				className={classNames(
-					{
-						'slds-is-sortable': sortable,
-						'slds-is-sorted': isSorted,
-						[`slds-is-sorted_${sortDirection}`]: sortDirection,
-						'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-					},
-					'slds-text-title_caps'
-				)}
+				className={classNames({
+					'slds-is-sortable': sortable,
+					'slds-is-sorted': isSorted,
+					[`slds-is-sorted_${sortDirection}`]: sortDirection,
+					'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
+				})}
 				ref={(ref) => {
 					if (this.props.cellRef) {
 						this.props.cellRef(ref);
