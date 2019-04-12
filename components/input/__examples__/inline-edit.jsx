@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
-import PopoverEditDialog from '~/components/popover/popover-edit-dialog';
+import EditDialog from '~/components/popover/edit-dialog';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -83,7 +83,7 @@ class Example extends React.Component {
 				<Input
 					id="inline-edit"
 					editDialogPopover={
-						<PopoverEditDialog
+						<EditDialog
 							body={editDialogPopoverBody}
 							heading="Edit First Name"
 							isOpen={this.state.isOpen}

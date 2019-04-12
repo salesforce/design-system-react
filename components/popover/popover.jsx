@@ -160,6 +160,10 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
+		 * An object of CSS styles that are applied to the `slds-popover__footer` DOM element.
+		 */
+		footerStyle: PropTypes.object,
+		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
@@ -578,24 +582,19 @@ class Popover extends React.Component {
 						className={classNames('slds-popover__body', {
 							'slds-popover__body_scrollable':
 								props.variant === 'error' || props.variant === 'warning',
-						})}
+						}, this.props.classNameBody)}
 					>
 						{props.body}
 					</div>
 				)}
 
-				<div
-					id={`${this.getId()}-dialog-body`}
-					className={classNames('slds-popover__body', this.props.classNameBody)}
-				>
-					{props.body}
-				</div>
 				{this.props.footer ? (
 					<footer
 						className={classNames(
 							'slds-popover__footer',
 							this.props.classNameFooter
 						)}
+						style={this.props.footerStyle}
 					>
 						{this.props.footer}
 					</footer>

@@ -9,6 +9,7 @@ import IconSettings from '../../icon-settings';
 import { POPOVER } from '../../../utilities/constants';
 import Header from '../__examples__/header';
 import Error from '../__examples__/error';
+import EditDialog from '../__examples__/edit-dialog';
 import Warning from '../__examples__/warning';
 import AlternativeHeader from '../__examples__/alternative-header';
 import ControlledWithFooter from '../__examples__/controlled-with-footer';
@@ -129,4 +130,6 @@ storiesOf(POPOVER, module)
 	.add('Error', () => <Error />)
 	.add('Error - Open', () => <Error isOpen />)
 	.add('Warning', () => <Warning />)
-	.add('Warning  - Open', () => <Warning isOpen />);
+	.add('Warning  - Open', () => <Warning isOpen />)
+	.add('Edit Dialog', () => <EditDialog />)
+	.add('Edit Dialog  - Open', () => <EditDialog isOpen />);
