@@ -26,19 +26,35 @@ const defaultProps = {
 };
 
 class Publisher extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isActive: false,
+			hasFocus: false,
+		};
+	}
+
 	getWrapper = (children) => {
 		if (this.props.variant === 'base') return children;
 		return <MediaObject figure={<Avatar />} body={children} />;
 	};
 
+	handleFocus = () => {
+		this.setState({ hasFocus: true, isActive: true });
+	};
+
+	handleBlur = () => this.setState({ hasFocus: false });
+
 	render() {
-		const isActive = true || this.props.isActive;
+		const isActive = this.state.isActive || this.props.isActive;
+		const hasFocus = this.state.hasFocus;
 		const { variant } = this.props;
 		return this.getWrapper(
 			<div
 				className={ClassNames('slds-publisher', {
 					'slds-is-active': isActive,
 					'slds-publisher_comment': variant === 'comment',
+					'slds-has-focus': hasFocus,
 				})}
 			>
 				{variant === 'base' && (
@@ -56,6 +72,8 @@ class Publisher extends React.Component {
 						'slds-textarea': variant === 'base',
 						'slds-input_bare': variant === 'comment',
 					})}
+					onFocus={this.handleFocus}
+					onBlur={this.handleBlur}
 					placeholder="Write a comment…"
 				/>
 				<div className="slds-publisher__actions slds-grid slds-grid_align-spread">

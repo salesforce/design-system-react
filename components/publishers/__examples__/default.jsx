@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Publisher from '~/components/publisher'; // `~` is replaced with design-system-react at runtime
+import Publisher from '~/components/publishers'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
 	static displayName = 'PublisherExample';
