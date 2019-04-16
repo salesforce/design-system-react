@@ -13,8 +13,15 @@ import MediaObject from '../media-object';
 import Button from '../button';
 
 const propTypes = {
-	hasFocus: PropTypes.bool,
-	isActive: PropTypes.bool,
+	onAddUser: PropTypes.func,
+	onAttach: PropTypes.func,
+	onChange: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
+	placeholder: PropTypes.string,
+	/**
+	 * This label appears above the text area
+	 */
+	label: PropTypes.string,
 	/**
 	 * Variant of the Publisher Component. `base` is the default and `comment` is to add an icon beside the text area.
 	 */
@@ -31,6 +38,7 @@ class Publisher extends React.Component {
 		this.state = {
 			isActive: false,
 			hasFocus: false,
+			disabled: true,
 		};
 	}
 
@@ -39,15 +47,22 @@ class Publisher extends React.Component {
 		return <MediaObject figure={<Avatar />} body={children} />;
 	};
 
-	handleFocus = () => {
-		this.setState({ hasFocus: true, isActive: true });
-	};
+	handleFocus = () => this.setState({ hasFocus: true, isActive: true });
 
 	handleBlur = () => this.setState({ hasFocus: false });
 
+	handleChange = (event) => {
+		const data = {
+			value: event.target.value,
+		};
+		this.setState({ disabled: !data.value.length > 0 });
+		this.props.onChange(event, data);
+	};
+
 	render() {
-		const isActive = this.state.isActive || this.props.isActive;
+		const isActive = this.state.isActive;
 		const hasFocus = this.state.hasFocus;
+		const placeholder = this.props.placeholder || 'Write a comment...';
 		const { variant } = this.props;
 		return this.getWrapper(
 			<div
@@ -62,8 +77,8 @@ class Publisher extends React.Component {
 						htmlFor="comment-text-input2"
 						className="slds-publisher__toggle-visibility slds-m-bottom_small"
 					>
-						<span className="slds-assistive-text">Write a comment</span>To: My
-						followers
+						<span className="slds-assistive-text">Write a comment</span>
+						{this.props.label}
 					</label>
 				)}
 				<textarea
@@ -72,34 +87,42 @@ class Publisher extends React.Component {
 						'slds-textarea': variant === 'base',
 						'slds-input_bare': variant === 'comment',
 					})}
+					onChange={this.handleChange}
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}
-					placeholder="Write a comment…"
+					placeholder={placeholder}
 				/>
 				<div className="slds-publisher__actions slds-grid slds-grid_align-spread">
 					<ul className="slds-grid slds-publisher__toggle-visibility">
 						<li>
 							<Button
+								onClick={this.props.onAddUser}
 								variant="icon"
 								className="slds-button_icon-container"
 								iconName="adduser"
-								assistiveText="Add User"
+								iconCategory="utility"
+								assistiveText={{ icon: 'Add User' }}
 								title="Add User"
 							/>
 						</li>
 						<li>
 							<Button
+								onClick={this.props.onAttach}
 								variant="icon"
 								className="slds-button_icon-container"
 								iconName="attach"
-								assistiveText="Attach a file"
+								iconCategory="utility"
+								assistiveText={{ icon: 'Attach a file' }}
 								title="Attach a file"
 							/>
 						</li>
 					</ul>
 					<Button
+						onClick={this.props.onSubmit}
+						disabled={this.state.disabled}
 						title={variant === 'base' ? 'Share' : 'Comment'}
 						variant="brand"
+						assistiveText={{ label: variant === 'base' ? 'Share' : 'Comment' }}
 					>
 						{variant === 'base' ? 'Share' : 'Comment'}
 					</Button>

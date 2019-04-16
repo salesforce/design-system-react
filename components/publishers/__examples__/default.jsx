@@ -6,7 +6,7 @@ class Example extends React.Component {
 	static displayName = 'PublisherExample';
 
 	render() {
-		return <Publisher variant={this.props.variant} />;
+		return <Publisher {...this.props} />;
 	}
 }
 
