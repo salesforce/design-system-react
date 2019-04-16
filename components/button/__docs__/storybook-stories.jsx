@@ -92,7 +92,9 @@ storiesOf(BUTTON, module)
 	))
 	.add('Small Icon Hint inverse', () =>
 		getIconButton({
-			assistiveTest: 'Hint',
+			assistiveText: {
+				icon: 'Small icon hint inverse',
+			},
 			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border',
