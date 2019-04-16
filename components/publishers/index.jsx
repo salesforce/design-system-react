@@ -11,10 +11,6 @@ import { PUBLISHER } from '../../utilities/constants';
 import Avatar from '../avatar';
 import MediaObject from '../media-object';
 import Button from '../button';
-import Icon from '../icon';
-
-import adduser from '../../icons/utility/adduser';
-import attach from '../../icons/utility/attach';
 
 const propTypes = {
 	hasFocus: PropTypes.bool,
@@ -66,29 +62,21 @@ class Publisher extends React.Component {
 					<ul className="slds-grid slds-publisher__toggle-visibility">
 						<li>
 							<Button
-								className="slds-button slds-button_icon slds-button_icon-container"
+								variant="icon"
+								className="slds-button_icon-container"
+								iconName="adduser"
+								assistiveText="Add User"
 								title="Add User"
-							>
-								<Icon
-									assistiveText={{ label: 'Add User' }}
-									category="utility"
-									icon={adduser}
-									size="x-small"
-								/>
-							</Button>
+							/>
 						</li>
 						<li>
 							<Button
-								className="slds-button slds-button_icon slds-button_icon-container"
+								variant="icon"
+								className="slds-button_icon-container"
+								iconName="attach"
+								assistiveText="Attach a file"
 								title="Attach a file"
-							>
-								<Icon
-									assistiveText={{ label: 'Add User' }}
-									category="utility"
-									icon={attach}
-									size="x-small"
-								/>
-							</Button>
+							/>
 						</li>
 					</ul>
 					<Button
