@@ -124,6 +124,9 @@ class Example extends React.Component {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Advanced (Fixed Layout)
+					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',

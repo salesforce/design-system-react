@@ -257,7 +257,7 @@ class Tree extends React.Component {
 				)} /* role="application" */
 			>
 				<h4
-					className={classNames('slds-text-title_caps', {
+					className={classNames('slds-tree__group-header', {
 						'slds-assistive-text': assistiveText,
 					})}
 					id={`${this.props.id}__heading`}
