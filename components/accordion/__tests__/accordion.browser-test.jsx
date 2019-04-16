@@ -159,9 +159,7 @@ describe('Accordion', function() {
 			wrapper = mount(<AccordionExample />, {
 				attachTo: mountNode,
 			});
-			const panelContentActions = wrapper.find(
-				'div .slds-dropdown-trigger .slds-dropdown-trigger_click'
-			);
+			const panelContentActions = wrapper.find('div .slds-dropdown-trigger');
 			expect(panelContentActions, 'panel dropdown component exists').to.exist;
 		});
 	});

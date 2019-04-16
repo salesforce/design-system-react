@@ -11,7 +11,10 @@
 // Ran in Jest Node environment
 
 import express from 'express';
-import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
+import initStoryshots, {
+	imageSnapshot,
+	multiSnapshotWithOptions,
+} from '@storybook/addon-storyshots';
 import path from 'path';
 
 // Express server setup. `npm run storyshots:build` must be run first.
@@ -54,6 +57,8 @@ initStoryshots({
 	configPath: '.storybook-based-tests',
 	storyNameRegex: new RegExp(`^((?!.*?(${skipStoryshotTest})).)*$`, 'g'),
 	suite: 'DOM snapshots',
+	integrityOptions: { cwd: __dirname }, // start searching from the current directory
+	test: multiSnapshotWithOptions({}),
 });
 
 /* jest-image-snapshot
