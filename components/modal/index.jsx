@@ -158,7 +158,6 @@ const defaultProps = {
 	},
 	align: 'center',
 	ariaHideApp: true,
-	disableClose: false,
 };
 
 /**
