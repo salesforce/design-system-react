@@ -221,6 +221,9 @@ export ProgressIndicator from './progress-indicator';
 export SLDSProgressRing from './progress-ring';
 export ProgressRing from './progress-ring';
 
+export SLDSPublisher from './publisher';
+export Publisher from './publisher';
+
 export SLDSRadio from './radio';
 export Radio from './radio';
 
