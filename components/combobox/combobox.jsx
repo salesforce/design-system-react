@@ -358,7 +358,7 @@ class Combobox extends React.Component {
 		this.generatedId = shortid.generate();
 		this.generatedErrorId = shortid.generate();
 
-		if (this.props.isOpen !== this.state.isOpen) {
+		if (this.props.isOpen) {
 			this.setState({ isOpen: this.props.isOpen });
 		}
 	}
