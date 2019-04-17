@@ -41,6 +41,7 @@ DataTableColumn.propTypes = {
 	 * </DataTable>
 	 * ```
 	 */
+	children: PropTypes.element,
 	/**
 	 * Some columns, such as "date last viewed" or "date recently updated," should sort descending first, since that is what the user probably wants. How often does one want to see their oldest files first in a table? If sortable and the `DataTable`'s parent has not defined the sort order, then ascending (A at the top to Z at the bottom) is the default sort order on first click.
 	 */
@@ -69,6 +70,14 @@ DataTableColumn.propTypes = {
 	 * The current sort direction. If left out the component will track this internally. Required if `isSorted` is true.
 	 */
 	sortDirection: PropTypes.oneOf(['desc', 'asc']),
+	/**
+	 * Title used for truncation div within the cell.
+	 */
+	title: PropTypes.string,
+	/**
+	 * Adds truncate to cell node.
+	 */
+	truncate: PropTypes.bool,
 	/**
 	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 	 */

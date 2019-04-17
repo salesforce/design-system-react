@@ -296,6 +296,7 @@ class Dialog extends React.Component {
 	};
 
 	handleClose = (event, data) => {
+		this.setState({ triggerPopperJS: true });
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}
