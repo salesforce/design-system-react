@@ -166,8 +166,6 @@ class Filter extends React.Component {
 			heading: '',
 			id: this.getId(),
 			isOpen: this.state.popoverIsOpen,
-			// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
-			offset: this.props.align === 'right' ? '0px -35px' : undefined,
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
 			position: 'overflowBoundaryElement',
