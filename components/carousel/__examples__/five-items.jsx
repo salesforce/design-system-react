@@ -1,7 +1,13 @@
-/* eslint-disable  import/prefer-default-export */
+import React from 'react';
 
-export const ITEMS = [
+import Carousel from '~/components/carousel';
+import IconSettings from '~/components/icon-settings';
+
+import log from '~/utilities/log';
+
+const items = [
 	{
+		buttonLabel: 'Get Started',
 		id: 1,
 		heading: 'Visit App Exchange',
 		description: 'Extend Salesforce with the #1 business marketplace.',
@@ -10,6 +16,7 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 2,
 		heading: 'Click to Customize',
 		description:
@@ -19,6 +26,7 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 3,
 		heading: 'Download SalesforceA',
 		description: 'Get the mobile app that\'s just for Salesforce admins.',
@@ -27,6 +35,7 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 4,
 		heading: 'Carousel Item 4',
 		description: 'Description for carousel item #4',
@@ -35,6 +44,7 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 5,
 		heading: 'Carousel Item 5',
 		description: 'Description for carousel item #5',
@@ -43,6 +53,7 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 6,
 		heading: 'Carousel Item 6',
 		description: 'Description for carousel item #6',
@@ -51,6 +62,7 @@ export const ITEMS = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 7,
 		heading: 'Carousel Item 7',
 		description: 'Description for carousel item #7',
@@ -60,6 +72,46 @@ export const ITEMS = [
 	},
 ];
 
-export const ITEMS_WITH_BUTTONS = ITEMS.map((item) => {
-	return { ...item, buttonLabel: item.id > 4 ? 'Get Started' : 'Learn More'}
-});
+class Example extends React.Component {
+	static displayName = 'FiveItemsExample';
+
+	render() {
+		return (
+			<div
+				style={{
+					bottom: '1rem',
+					left: '1rem',
+					overflow: 'auto',
+					position: 'absolute',
+					right: '1rem',
+					top: '1rem',
+				}}
+			>
+				<IconSettings iconPath="/assets/icons">
+					<div
+						style={{
+							maxWidth: '1280px',
+						}}
+					>
+						<Carousel
+							hasPreviousNextPanelNavigation
+							items={items}
+							itemsPerPanel={5}
+							onItemClick={(event, data) => {
+								event.preventDefault();
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'Item Clicked',
+									data,
+								});
+							}}
+						/>
+					</div>
+				</IconSettings>
+			</div>
+		);
+	}
+}
+
+export default Example;

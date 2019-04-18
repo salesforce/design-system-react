@@ -7,6 +7,7 @@ import log from '~/utilities/log';
 
 const items = [
 	{
+		buttonLabel: 'Get Started',
 		id: 1,
 		heading: 'Visit App Exchange',
 		description: 'Extend Salesforce with the #1 business marketplace.',
@@ -15,6 +16,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 2,
 		heading: 'Click to Customize',
 		description:
@@ -24,6 +26,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 3,
 		heading: 'Download SalesforceA',
 		description: 'Get the mobile app that\'s just for Salesforce admins.',
@@ -32,6 +35,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 4,
 		heading: 'Carousel Item 4',
 		description: 'Description for carousel item #4',
@@ -40,6 +44,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 5,
 		heading: 'Carousel Item 5',
 		description: 'Description for carousel item #5',
@@ -48,6 +53,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 6,
 		heading: 'Carousel Item 6',
 		description: 'Description for carousel item #6',
@@ -56,6 +62,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 7,
 		heading: 'Carousel Item 7',
 		description: 'Description for carousel item #7',
@@ -66,7 +73,7 @@ const items = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'DefaultExample';
+	static displayName = 'ThreeItemsExample';
 
 	render() {
 		return (
@@ -87,7 +94,9 @@ class Example extends React.Component {
 						}}
 					>
 						<Carousel
+							hasPreviousNextPanelNavigation
 							items={items}
+							itemsPerPanel={3}
 							onItemClick={(event, data) => {
 								event.preventDefault();
 								log({

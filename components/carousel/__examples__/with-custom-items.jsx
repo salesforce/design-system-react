@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Button from '~/components/button';
 import Carousel from '~/components/carousel';
 import IconSettings from '~/components/icon-settings';
 
@@ -7,6 +8,7 @@ import log from '~/utilities/log';
 
 const items = [
 	{
+		buttonLabel: 'Get Started',
 		id: 1,
 		heading: 'Visit App Exchange',
 		description: 'Extend Salesforce with the #1 business marketplace.',
@@ -15,6 +17,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 2,
 		heading: 'Click to Customize',
 		description:
@@ -24,6 +27,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 3,
 		heading: 'Download SalesforceA',
 		description: 'Get the mobile app that\'s just for Salesforce admins.',
@@ -32,6 +36,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Get Started',
 		id: 4,
 		heading: 'Carousel Item 4',
 		description: 'Description for carousel item #4',
@@ -40,6 +45,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 5,
 		heading: 'Carousel Item 5',
 		description: 'Description for carousel item #5',
@@ -48,6 +54,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 6,
 		heading: 'Carousel Item 6',
 		description: 'Description for carousel item #6',
@@ -56,6 +63,7 @@ const items = [
 		href: 'https://www.salesforce.com',
 	},
 	{
+		buttonLabel: 'Learn More',
 		id: 7,
 		heading: 'Carousel Item 7',
 		description: 'Description for carousel item #7',
@@ -66,9 +74,55 @@ const items = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'DefaultExample';
+	static displayName = 'WithCustomItemsExample';
 
-	render() {
+	renderCustomItem = (item) => {
+		const onButtonClick = (event) => {
+			event.preventDefault();
+			log({
+				action: this.props.action,
+				event,
+				eventName: 'Button Clicked',
+				data: { item }
+			});
+		};
+
+		return (
+			<div
+				className="slds-carousel-custom-rendering"
+				style={{
+					padding: '0 8px',
+					margin: 0,
+					textAlign: 'center'
+				}}
+			>
+				<div className="slds-carousel__content-title">
+					{item.heading}
+				</div>
+				<div className="slds-carousel__image">
+					<img src={item.src} alt={item.imageAssistiveText}/>
+				</div>
+				<Button
+					className="slds-button_outline-brand slds-m-around_small"
+					label="Button1"
+					onClick={(event) => {
+						onButtonClick(event, item);
+					}}
+					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
+				/>
+				<Button
+					className="slds-button_outline-brand slds-m-around_small"
+					label="Button2"
+					onClick={(event) => {
+						onButtonClick(event, item);
+					}}
+					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
+				/>
+			</div>
+		);
+	};
+
+	render () {
 		return (
 			<div
 				style={{
@@ -87,16 +141,10 @@ class Example extends React.Component {
 						}}
 					>
 						<Carousel
+							hasPreviousNextPanelNavigation
 							items={items}
-							onItemClick={(event, data) => {
-								event.preventDefault();
-								log({
-									action: this.props.action,
-									event,
-									eventName: 'Item Clicked',
-									data,
-								});
-							}}
+							itemsPerPanel={3}
+							onRenderItem={this.renderCustomItem}
 						/>
 					</div>
 				</IconSettings>

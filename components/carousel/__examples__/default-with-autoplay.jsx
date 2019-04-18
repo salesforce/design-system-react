@@ -66,7 +66,7 @@ const items = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'DefaultExample';
+	static displayName = 'DefaultWithAutoPlayExample';
 
 	render() {
 		return (
@@ -87,6 +87,7 @@ class Example extends React.Component {
 						}}
 					>
 						<Carousel
+							hasAutoplay
 							items={items}
 							onItemClick={(event, data) => {
 								event.preventDefault();

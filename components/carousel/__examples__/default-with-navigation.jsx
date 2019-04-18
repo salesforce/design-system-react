@@ -66,7 +66,7 @@ const items = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'DefaultExample';
+	static displayName = 'DefaultWithNavigationExample';
 
 	render() {
 		return (
@@ -87,6 +87,7 @@ class Example extends React.Component {
 						}}
 					>
 						<Carousel
+							hasPreviousNextPanelNavigation
 							items={items}
 							onItemClick={(event, data) => {
 								event.preventDefault();
