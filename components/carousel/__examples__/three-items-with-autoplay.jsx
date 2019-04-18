@@ -95,6 +95,7 @@ class Example extends React.Component {
 					>
 						<Carousel
 							hasAutoplay
+							id="carousel-three-items-with-auto-play-example"
 							items={items}
 							itemsPerPanel={3}
 							onItemClick={(event, data) => {

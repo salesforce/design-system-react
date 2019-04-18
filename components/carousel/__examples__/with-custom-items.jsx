@@ -140,6 +140,7 @@ class Example extends React.Component {
 					>
 						<Carousel
 							hasPreviousNextPanelNavigation
+							id="carousel-with-custom-items-example"
 							items={items}
 							itemsPerPanel={3}
 							onRenderItem={this.renderCustomItem}

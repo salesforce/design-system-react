@@ -88,6 +88,7 @@ class Example extends React.Component {
 					>
 						<Carousel
 							hasAutoplay
+							id="carousel-default-with-auto-play-example"
 							items={items}
 							onItemClick={(event, data) => {
 								event.preventDefault();

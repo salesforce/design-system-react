@@ -95,6 +95,7 @@ class Example extends React.Component {
 					>
 						<Carousel
 							hasPreviousNextPanelNavigation
+							id="carousel-three-items-example"
 							items={items}
 							itemsPerPanel={3}
 							onItemClick={(event, data) => {

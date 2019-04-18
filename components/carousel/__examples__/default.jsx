@@ -87,6 +87,7 @@ class Example extends React.Component {
 						}}
 					>
 						<Carousel
+							id="carousel-default-example"
 							items={items}
 							onItemClick={(event, data) => {
 								event.preventDefault();

@@ -7,7 +7,7 @@ import DefaultWithAutoPlay from '../__examples__/default-with-autoplay';
 import DefaultWithNavigation from '../__examples__/default-with-navigation';
 import FiveItems from '../__examples__/five-items';
 import ThreeItems from '../__examples__/three-items';
-import ThreeItemsWithAutoplay from '../__examples__/three-items-with-autplay';
+import ThreeItemsWithAutoplay from '../__examples__/three-items-with-autoplay';
 import WithCustomItems from '../__examples__/with-custom-items';
 
 import { CAROUSEL } from '../../../utilities/constants';

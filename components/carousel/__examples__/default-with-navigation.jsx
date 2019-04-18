@@ -88,6 +88,7 @@ class Example extends React.Component {
 					>
 						<Carousel
 							hasPreviousNextPanelNavigation
+							id="carousel-default-with-navigation-example"
 							items={items}
 							onItemClick={(event, data) => {
 								event.preventDefault();
