@@ -486,7 +486,10 @@ class Combobox extends React.Component {
 	}
 
 	getErrorId() {
-		return this.props['aria-describedby'] || this.generatedErrorId;
+		return (
+			this.props['aria-describedby'] ||
+			(this.props.errorText && this.generatedErrorId)
+		);
 	}
 
 	/**
