@@ -7,23 +7,25 @@ import PropTypes from 'prop-types';
 
 import Button from '~/components/button';
 import { CAROUSEL_NAVIGATORS } from '../../../utilities/constants';
+
 /**
  * previousNextCarouselNavigator is used to display previous/next navigation items of the carousel
  */
 const previousNextCarouselNavigator = (props) => (
 	<div
 		className="slds-carousel__col-center slds-is-absolute"
-		style={{ ...props.inlineStyle, top: '50%' }}
+		style={{ ...props.inlineStyle, margin: '0 25px', top: '50%' }}
 	>
 		<Button
-			className="slds-button slds-button_icon slds-carousel__button slds-button_icon-border-filled slds-button_icon-x-small"
 			assistiveText={{ icon: props.assistiveText }}
+			className="slds-button_icon slds-carousel__button"
+			disabled={props.isDisabled}
 			iconCategory="utility"
-			iconPath={props.iconPath}
-			iconVariant="container"
+			iconName={props.iconName}
+			iconVariant="border-filled"
+			iconSize="x-small"
 			onClick={props.onClick}
 			variant="icon"
-			disabled={props.isDisabled}
 		/>
 	</div>
 );
@@ -37,13 +39,17 @@ previousNextCarouselNavigator.propTypes = {
 	 */
 	assistiveText: PropTypes.string,
 	/**
-	 * Path of the icon to be used for the previous/next navigation
+	 * Name of icon displayed within the navigation button
 	 */
-	iconPath: PropTypes.string.isRequired,
+	iconName: PropTypes.oneOf('left', 'right'),
 	/**
 	 * Determines where the navigator indicator has been disabled
 	 */
 	isDisabled: PropTypes.bool,
+	/**
+	 * Additional styles to be applied to the container
+	 */
+	inlineStyle: PropTypes.object,
 	/**
 	 * Triggered when the indicator is clicked.
 	 */

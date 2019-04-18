@@ -9,7 +9,6 @@ import { ITEMS } from '~/components/carousel/__examples__/carousel-items';
 import { renderMarkup } from '../../../tests/snapshot-helpers';
 
 import Default from '../__examples__/default';
-import '../../../styles/carousel/carousel.css';
 
 test('Carousel Component Default Snapshot - 1 item, no navigation', () => {
 	expect(renderMarkup(Default)).toMatchSnapshot();

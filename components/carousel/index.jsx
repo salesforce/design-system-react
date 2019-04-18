@@ -13,7 +13,6 @@ import classnames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-import '../../styles/carousel/carousel.css';
 
 import { CAROUSEL } from '../../utilities/constants';
 
@@ -283,8 +282,8 @@ class Carousel extends React.Component {
 					>
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
-								iconPath="/assets/icons/utility-sprite/svg/symbols.svg#left"
 								assistiveText={this.props.assistiveText.previousPanel}
+								iconName="left"
 								isDisabled={isPreviousBtnDisabled}
 								onClick={this.onPreviousPanelHandler}
 								inlineStyle={{ left: '-60px' }}
@@ -319,8 +318,8 @@ class Carousel extends React.Component {
 						</div>
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
-								iconPath="/assets/icons/utility-sprite/svg/symbols.svg#right"
 								assistiveText={this.props.assistiveText.nextPanel}
+								iconName="right"
 								isDisabled={isNextBtnDisabled}
 								onClick={this.onNextPanelHandler}
 								inlineStyle={{ right: '-60px' }}

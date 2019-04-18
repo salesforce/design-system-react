@@ -47,7 +47,14 @@ storiesOf(CAROUSEL, module)
 			});
 		};
 		const onRenderItem = (item) => (
-			<div className="slds-carousel-custom-rendering">
+			<div
+				className="slds-carousel-custom-rendering"
+				style={{
+					padding: '0 8px',
+					margin: 0,
+					textAlign: 'center'
+				}}
+			>
 				<div className="slds-carousel__content-title">
 					{item.heading}
 				</div>

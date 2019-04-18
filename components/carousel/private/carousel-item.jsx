@@ -10,8 +10,6 @@ import PropTypes from 'prop-types';
 
 import Button from '../../button';
 
-// import Card from '~/components/card';
-import '../../../styles/carousel/carousel.css';
 import { CAROUSEL_ITEM } from '../../../utilities/constants';
 
 /**
@@ -25,7 +23,9 @@ const CarouselItem = (props) => (
 		aria-hidden="false"
 		aria-labelledby={`indicator-id-${props.id}`}
 		style={{
+			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
+			padding: '0 8px'
 		}}
 	>
 		{props.onRenderItem ? (
@@ -35,12 +35,16 @@ const CarouselItem = (props) => (
 				className="slds-carousel__panel-action slds-text-link--reset"
 				href={props.href}
 				onClick={props.onClick}
+				style={{
+					backgroundColor: 'white',
+					margin: 'auto'
+				}}
 				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText || props.heading} />
 				</div>
-				<div className="slds-carousel__content">
+				<div className="slds-carousel__content" style={{ height: 'auto' }}>
 					<h2 className="slds-carousel__content-title">{props.heading}</h2>
 					<div
 						className="slds-p-bottom_x-small slds-text-body_small"

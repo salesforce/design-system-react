@@ -52,8 +52,9 @@ class CarouselIndicators extends React.Component {
 					return (
 						<li
 							className="slds-carousel__indicator slds-m-horizontal_xx-small"
-							role="presentation"
 							key={index}
+							role="presentation"
+							style={{ margin: 0, padding: '0 8px' }}
 						>
 							<a
 								ref={component => {
