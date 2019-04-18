@@ -2089,6 +2089,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-controls="combobox-dialog"
+                aria-describedby={null}
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-dialog"
@@ -4081,15 +4082,17 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                 <div>
                   <button
                     className="slds-button slds-button_neutral"
-                    id="cancel-button"
+                    disabled={false}
                     onClick={[Function]}
+                    type="button"
                   >
                     Cancel
                   </button>
                   <button
                     className="slds-button slds-button_brand"
-                    id="done-button"
+                    disabled={false}
                     onClick={[Function]}
+                    type="button"
                   >
                     Done
                   </button>
