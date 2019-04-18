@@ -7,11 +7,11 @@ import Lookup from '../../lookup';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
 import SLDSButton from '../../button';
-import Alert from '../../alert';
-import AlertContainer from '../../alert/container';
+
 import Default from '../__examples__/default';
 import Files from '../__examples__/files';
 import WithSelection from '../__examples__/with-selection';
+import DeprecatedWarning from '../../utilities/deprecated-warning';
 
 class DemoLookup extends React.Component {
 	static displayName = 'DemoLookup';
@@ -112,23 +112,9 @@ class DemoLookupAccounts extends React.Component {
 }
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around_medium slds-p-top_xx-large">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">
-				{
-					<AlertContainer>
-						<Alert
-							labels={{
-								heading: (
-									<span>
-										<strong>Deprecated component.</strong> No fit and finish bug
-										fixes will be accepted for this component.
-									</span>
-								),
-							}}
-							variant="error"
-						/>
-					</AlertContainer>
-				}
+				{<DeprecatedWarning />}
 				{getStory()}
 			</IconSettings>
 		</div>
