@@ -4,11 +4,9 @@
 /* eslint-disable global-require */
 
 const siteStories = [
+	require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/three-items.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/default.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/default-with-navigation.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/default-with-autoplay.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/three-items.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/with-custom-items.jsx'),
 ];
 
 module.exports = siteStories;
