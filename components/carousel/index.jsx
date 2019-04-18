@@ -159,7 +159,6 @@ class Carousel extends React.Component {
 		if (canUseEventListeners) {
 			window.addEventListener('resize', this.setDimensions, false);
 		}
-
 	}
 
 	componentWillUnmount() {
