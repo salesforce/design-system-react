@@ -188,7 +188,7 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	menuItem: PropTypes.func,
+	onRenderMenuItem: PropTypes.func,
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
@@ -1291,7 +1291,12 @@ class Combobox extends React.Component {
 						: null
 				}
 				labels={labels}
-				menuItem={this.props.menuItem}
+				// For backward compatibility, 'menuItem' prop will be deprecated soon
+				onRenderMenuItem={
+					this.props.onRenderMenuItem
+						? this.props.onRenderMenuItem
+						: this.props.menuItem
+				}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {
 					this.menuRef = ref;
