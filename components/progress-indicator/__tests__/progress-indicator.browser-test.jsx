@@ -14,11 +14,8 @@
 // Import your external dependencies
 import React from 'react';
 
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
-import assign from 'lodash.assign';
 
 import SLDSProgressIndicator from '../../progress-indicator';
 import IconSettings from '../../icon-settings';
@@ -32,12 +29,6 @@ import {
 	mountComponent,
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
-
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
 
 const defaultProps = {
 	id: 'sample-progress-indicator',

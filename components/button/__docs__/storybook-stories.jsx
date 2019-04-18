@@ -92,13 +92,21 @@ storiesOf(BUTTON, module)
 	))
 	.add('Small Icon Hint inverse', () =>
 		getIconButton({
-			assistiveTest: 'Hint',
+			assistiveText: {
+				icon: 'Small icon hint inverse',
+			},
 			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border',
 			iconSize: 'small',
 			hint: true,
 			inverse: true,
+		})
+	)
+	.add('Outline brand button', () =>
+		getButton({
+			label: 'Outline brand button',
+			variant: 'outline-brand',
 		})
 	)
 	.add('Doc site Base Neutral', () => <BaseNeutral />)

@@ -32,13 +32,6 @@ const defaultProps = {
 	heading: <span id="sample-heading">This is the heading</span>,
 };
 
-const defaultIds = {
-	trigger: defaultProps.id,
-	popover: `${defaultProps.id}-popover`,
-	body: `${defaultProps.id}-dialog-body`,
-	heading: `${defaultProps.id}-dialog-heading`,
-};
-
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  * This wrapping component will be similar to your wrapping component
@@ -74,7 +67,6 @@ class DemoComponent extends React.Component {
  */
 describe('SLDSFilter', function() {
 	let mountNode;
-	let portalWrapper;
 	let wrapper;
 
 	// BASIC STRUCTURE
