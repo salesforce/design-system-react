@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
 import Button from '~/components/button';
+import IconSettings from '~/components/icon-settings';
 import log from '~/utilities/log';
 
 import Default from '../__examples__/default';
@@ -22,7 +23,7 @@ storiesOf(CAROUSEL, module)
 				top: '1rem',
 			}}
 		>
-			{getStory()}
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
 	.add('Default with 1 item', () => <Default action={action} items={ITEMS} />)

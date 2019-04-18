@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -24,11 +25,112 @@ import AutoPlayButton from './private/auto-play-button';
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
+
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+
+// ### Default Props
+const defaultProps = {
+	assistiveText: {
+		autoPlayButton: 'Start / Stop auto-play',
+		nextPanel: 'Next Panel',
+		previousPanel: 'Previous Panel',
+	},
+	autoplayInterval: 4000,
+	hasAutoplay: false,
+	hasPreviousNextPanelNavigation: false,
+	isInfinite: false,
+	itemsPerPanel: 1
+};
+
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
+ * Currently panel index and auto play cannot be controlled by the app.
  */
 class Carousel extends React.Component {
+	// ### Display Name
+	// Always use the canonical component name as the React display name.
+	static displayName = CAROUSEL;
+
+	// ### Prop Types
+	static propTypes = {
+		/**
+		 * Description of the carousel items for screen-readers.
+		 */
+		assistiveText: PropTypes.object,
+		/**
+		 * Interval for the autoplay iteration
+		 */
+		autoplayInterval: PropTypes.number,
+		/**
+		 * CSS classes that are applied to the main 'slds-carousel' classed component container
+		 */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
+		 * Boolean showing whether the autoplay feature is available or not
+		 */
+		hasAutoplay: PropTypes.bool,
+		/**
+		 * Boolean for displaying the navigation indicators (left/right arrows) of the carousel
+		 */
+		hasPreviousNextPanelNavigation: PropTypes.bool,
+		/**
+		 * Id of component, if desired. If not provided an id is automatically generated
+		 */
+		id: PropTypes.string,
+		/**
+		 * CSS that is applied to carousel indicators
+		 */
+		indicatorStyles: PropTypes.object,
+		/**
+		 * Boolean for infinite loop navigation
+		 */
+		isInfinite: PropTypes.bool,
+		/**
+		 * * **Array of item objects in the dropdown menu.**
+		 * Each object can contain:
+		 * * `icon`: An `Icon` component. (not used in read-only variant)
+		 * * `id`: A unique identifier string.
+		 * * `label`: A primary string of text for a menu item or group separator.
+		 * * `subTitle`: A secondary string of text added for clarity. (optional)
+		 * * `type`: 'separator' is the only type currently used
+		 * * `disabled`: Set to true to disable this menu item.
+		 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
+		 * ```
+		 *
+		 * Array of objects with shape needed for building the carousel items.
+		 * Item object shape:
+		 *   - `id`: 0   [REQUIRED] // The id of the carousel item
+		 *   - heading: "Carousel Item Header" // (Visible heading for default carousel item render)
+		 *   - description: "A short description of the carousel item."
+		 *          // (Visible paragraph text for default render and navigation bullet text used in assistive text tag. Can be a string or a node)
+		 *   - buttonLabel: "Get Started" // (OPTIONAL string, if assigned default carousel item will render a call to action button with this text)
+		 *   - imageAssistiveText: "Carousel image assistive text."
+		 *          // (image alt text, OPTIONAL, if not present heading will be used instead),
+		 *   - href: "https://www.salesforce.com" // (OPTIONAL, void(0) if not provided for default template
+		 *   - src: "/images/examples/carousel-01.png"	//
+		 */
+		items: PropTypes.array.isRequired,
+		/**
+		 * Number of items to be displayed at a time in the carousel
+		 */
+		itemsPerPanel: PropTypes.number,
+		/**
+		 * Accepts a custom carousel item rendering function
+		 */
+		onRenderItem: PropTypes.func,
+		/**
+		 * Handler for clicking on a carousel item
+		 */
+		onItemClick: PropTypes.func,
+	};
+
+	// ### Default Props
+	static defaultProps = defaultProps;
+
 	constructor(props) {
 		super(props);
 
@@ -149,7 +251,7 @@ class Carousel extends React.Component {
 
 		if (keyDownCallbacks[event.keyCode]) {
 			EventUtil.trapImmediate(event);
-			keyDownCallbacks[event.keyCode](event.shiftKey ? 10 : 1);
+			keyDownCallbacks[event.keyCode]();
 		}
 	};
 
@@ -166,10 +268,11 @@ class Carousel extends React.Component {
 			(this.state.stageWidth || this.stageWidth) / this.props.itemsPerPanel;
 
 		return (
-			<div className="slds-carousel" id={id} onKeyDown={this.handleKeyDown}>
+			<div className={classnames('slds-carousel', this.props.className)} id={id} onKeyDown={this.handleKeyDown}>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
 					{hasAutoplay && (
 						<AutoPlayButton
+							assistiveText={this.props.assistiveText.autoPlayButton}
 							isAutoPlayOn={this.state.isAutoPlayOn}
 							onClick={this.onAutoPlayBtnClick}
 						/>
@@ -200,7 +303,7 @@ class Carousel extends React.Component {
 								{this.props.items.map((item, index) => (
 									<CarouselItem
 										onClick={(event) => {
-											this.props.onItemClick(event, item)
+											this.props.onItemClick(event, { item })
 										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
@@ -237,84 +340,5 @@ class Carousel extends React.Component {
 		);
 	}
 }
-
-Carousel.displayName = CAROUSEL;
-
-Carousel.propTypes = {
-	/**
-	 * Description of the carousel items for screen-readers.
-	 */
-	assistiveText: PropTypes.object,
-	/**
-	 * Interval for the autoplay iteration
-	 */
-	autoplayInterval: PropTypes.number,
-	/**
-	 * CSS classes that are applied to the component
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
-	 * Boolean showing whether the autoplay feature is available or not
-	 */
-	hasAutoplay: PropTypes.bool,
-	/**
-	 * Boolean for displaying the navigation indicators (left/right arrows) of the carousel
-	 */
-	hasPreviousNextPanelNavigation: PropTypes.bool,
-	/**
-	 * Id of component, if desired. If not provided an id is automatically generated
-	 */
-	id: PropTypes.string,
-	/**
-	 * CSS that is applied to carousel indicators
-	 */
-	indicatorStyles: PropTypes.object,
-	/**
-	 * Boolean for infinite loop navigation
-	 */
-	isInfinite: PropTypes.bool,
-	/**
-	 * Array of objects with shape, needed for building a carousel item.
-	 * A shape would have:
-	 *   - id: 0   [REQUIRED]
-	 *   - heading: "All my things! Part 0" // (Visible heading for default render)
-	 *   - description: "Card 0 description."
-	 *          // (Visible paragraph text for default render and navigation bullet text used in
-	 *              assistive text tag)   [REQUIRED]
-	 *   - imageAssistiveText: "First card accessible description."
-	 *          // (image alt text, OPTIONAL, required if `src` is present),
-	 *   - href: "https://www.salesforce.com" // (OPTIONAL, void(0) if not provided for default template
-	 *   - src: "/images/examples/carousel-01.png"
-	 */
-	items: PropTypes.array.isRequired,
-	/**
-	 * Number of items to be displayed at a time in the carousel
-	 */
-	itemsPerPanel: PropTypes.number,
-	/**
-	 * Accepts a custom carousel item rendering function
-	 */
-	onRenderItem: PropTypes.func,
-	/**
-	 * Handler for clicking on a carousel item
-	 */
-	onItemClick: PropTypes.func,
-};
-
-Carousel.defaultProps = {
-	assistiveText: {
-		nextPanel: 'Next Panel',
-		previousPanel: 'Previous Panel',
-	},
-	autoplayInterval: 4000,
-	hasAutoplay: false,
-	hasPreviousNextPanelNavigation: false,
-	isInfinite: false,
-	itemsPerPanel: 1,
-};
 
 export default Carousel;

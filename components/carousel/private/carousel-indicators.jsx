@@ -38,7 +38,7 @@ class CarouselIndicators extends React.Component {
 						}
 					);
 					let assistiveText = `Panel ${index}`;
-					let title = props.title || `Visit Panel ${index}`;
+					let title = `Visit Panel ${index}`;
 
 					if (props.itemsPerPanel === 1 && props.items && props.items[index - 1] && props.items[index-1].heading) {
 						assistiveText = props.items[index-1].heading;
@@ -114,11 +114,7 @@ CarouselIndicators.propTypes = {
 	/**
 	 * Triggered when the indicator is clicked.
 	 */
-	onClick: PropTypes.func,
-	/**
-	 * Title attribute for the carousel's panel
-	 */
-	title: PropTypes.string,
+	onClick: PropTypes.func
 };
 
 export default CarouselIndicators;

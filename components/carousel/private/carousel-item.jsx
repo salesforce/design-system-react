@@ -38,7 +38,7 @@ const CarouselItem = (props) => (
 				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>
 				<div className="slds-carousel__image">
-					<img src={props.src} alt={props.imageAssistiveText} />
+					<img src={props.src} alt={props.imageAssistiveText || props.heading} />
 				</div>
 				<div className="slds-carousel__content">
 					<h2 className="slds-carousel__content-title">{props.heading}</h2>
@@ -79,8 +79,7 @@ CarouselItem.propTypes = {
 	/**
 	 * Visible paragraph text to be displayed on the carousel item
 	 */
-	description: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-		.isRequired,
+	description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
 	 * Carousel Item's visible heading
 	 */
@@ -113,7 +112,6 @@ CarouselItem.propTypes = {
 };
 
 CarouselItem.defaultProps = {
-	imageAssistiveText: 'Card image description',
 	href: 'javascript:void(0);',
 };
 
