@@ -604,10 +604,14 @@ class Popover extends React.Component {
 
 		if (props.footer) {
 			footer = (
-				<footer className={classNames(
-							'slds-popover__footer',
-							this.props.footerClassName
-						)}>{this.props.footer}</footer>
+				<footer
+					className={classNames(
+						'slds-popover__footer',
+						this.props.footerClassName
+					)}
+				>
+					{this.props.footer}
+				</footer>
 			);
 		} else if (
 			props.variant !== 'walkthrough-action' &&
@@ -730,10 +734,10 @@ class Popover extends React.Component {
 					onClick:
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
 							? (event) => {
-								this.handleClick(event, {
-									triggerOnClickCallback: child.props.onClick,
-								});
-							}
+									this.handleClick(event, {
+										triggerOnClickCallback: child.props.onClick,
+									});
+								}
 							: child.props.onClick,
 					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 					onMouseDown: this.props.onMouseDown,
