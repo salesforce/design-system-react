@@ -143,13 +143,7 @@ class Carousel extends React.Component {
 		if (this.props.hasAutoplay) {
 			this.startAutoplay();
 		}
-		if (
-			this.stageItem &&
-			this.stageItem.current &&
-			this.stageItem.offsetWidth
-		) {
-			this.stageWidth = this.stageItem.current.offsetWidth;
-		}
+		this.stageWidth = this.stageItem.current.offsetWidth;
 		window.addEventListener('resize', this.setDimensions, false);
 	}
 
@@ -184,15 +178,10 @@ class Carousel extends React.Component {
 	};
 
 	setDimensions = () => {
-		let stageWidth = 800;
-		if (
-			this.stageItem &&
-			this.stageItem.current &&
-			this.stageItem.current.offsetWidth
-		) {
-			stageWidth = this.stageItem.current.offsetWidth;
-		}
-		this.setState({ stageWidth }, this.changeTranslationAutomatically);
+		this.setState(
+			{ stageWidth: this.stageItem.current.offsetWidth },
+			this.changeTranslationAutomatically
+		);
 	};
 
 	setTranslationAmount = (amount, cb) => {
