@@ -16,6 +16,11 @@ import shortid from 'shortid';
 
 import { CAROUSEL } from '../../utilities/constants';
 
+import {
+	canUseDOM,
+	canUseEventListeners,
+} from '../../utilities/execution-environment';
+
 import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
 import CarouselItem from './private/carousel-item';
@@ -143,12 +148,24 @@ class Carousel extends React.Component {
 		if (this.props.hasAutoplay) {
 			this.startAutoplay();
 		}
-		this.stageWidth = this.stageItem.current.offsetWidth;
-		window.addEventListener('resize', this.setDimensions, false);
+		if (
+			canUseDOM &&
+			this.stageItem !== undefined &&
+			this.stageItem.current !== undefined &&
+			this.stageItem.current.offsetWidth !== undefined
+		) {
+			this.stageWidth = this.stageItem.current.offsetWidth;
+		}
+		if (canUseEventListeners) {
+			window.addEventListener('resize', this.setDimensions, false);
+		}
+
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener('resize', this.setDimensions, false);
+		if (canUseEventListeners) {
+			window.removeEventListener('resize', this.setDimensions, false);
+		}
 		this.stopAutoplay();
 	}
 
@@ -178,10 +195,17 @@ class Carousel extends React.Component {
 	};
 
 	setDimensions = () => {
-		this.setState(
-			{ stageWidth: this.stageItem.current.offsetWidth },
-			this.changeTranslationAutomatically
-		);
+		if (
+			canUseDOM &&
+			this.stageItem !== undefined &&
+			this.stageItem.current !== undefined &&
+			this.stageItem.current.offsetWidth !== undefined
+		) {
+			this.setState(
+				{ stageWidth: this.stageItem.current.offsetWidth },
+				this.changeTranslationAutomatically
+			);
+		}
 	};
 
 	setTranslationAmount = (amount, cb) => {
