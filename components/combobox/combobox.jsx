@@ -448,7 +448,7 @@ class Combobox extends React.Component {
 			onRequestClose: this.handleClose,
 		};
 
-		/* Mixin passed popover's props if there is any to override the default popover props */
+		/* Merge in passed popover's props if there is any to override the default popover props */
 		const popoverProps = assign(
 			defaultPopoverProps,
 			this.props.popover ? this.props.popover.props : {}
