@@ -4035,7 +4035,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
-              role="popover"
+              role="dialog"
               style={
                 Object {
                   "outline": 0,
