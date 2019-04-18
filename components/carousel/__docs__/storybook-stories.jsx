@@ -1,8 +1,9 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
 import Button from '~/components/button';
-import Carousel from '~/components/carousel';
+import log from '~/utilities/log';
 
 import Default from '../__examples__/default';
 
@@ -24,17 +25,26 @@ storiesOf(CAROUSEL, module)
 			{getStory()}
 		</div>
 	))
-	.add('Default with 1 item', () => <Default items={ITEMS} />)
-	.add('Default with navigation indicators', () => <Default items={ITEMS} hasNavigation />)
-	.add('Default with AutoPlay', () => <Default items={ITEMS} hasAutoplay />)
+	.add('Default with 1 item', () => <Default action={action} items={ITEMS} />)
+	.add('Default with navigation indicators', () => <Default action={action} items={ITEMS} hasNavigation />)
+	.add('Default with AutoPlay', () => <Default action={action} items={ITEMS} hasAutoplay />)
 	.add('Default with 3 items', () => (
-		<Default items={ITEMS_WITH_BUTTONS} itemsPerPanel={3} hasNavigation />
+		<Default action={action} items={ITEMS_WITH_BUTTONS} itemsPerPanel={3} hasNavigation />
 	))
-	.add('3 items and AutoPlay', () => <Default items={ITEMS_WITH_BUTTONS} itemsPerPanel={3} hasAutoplay />)
+	.add('3 items and AutoPlay', () => <Default action={action} items={ITEMS_WITH_BUTTONS} itemsPerPanel={3} hasAutoplay />)
 	.add('Default with 5 Items', () => (
-		<Default items={ITEMS_WITH_BUTTONS} itemsPerPanel={5} hasNavigation />
+		<Default action={action} items={ITEMS_WITH_BUTTONS} itemsPerPanel={5} hasNavigation />
 	))
 	.add('With custom items', () => {
+		const onButtonClick = (event, data) => {
+			event.preventDefault();
+			log({
+				action,
+				event,
+				eventName: 'Item Clicked',
+				data,
+			});
+		};
 		const onRenderItem = (item) => (
 			<div className="slds-carousel-custom-rendering">
 				<div className="slds-carousel__content-title">
@@ -44,20 +54,24 @@ storiesOf(CAROUSEL, module)
 					<img src={item.src} alt={item.imageAssistiveText} />
 				</div>
 				<Button
-					label="Button1"
 					className="slds-button_outline-brand slds-m-around_small"
-					tabIndex={item.isInCurrentPanel ? 0 : -1}
+					label="Button1"
+					onClick={(event) => {
+						onButtonClick(event, item);
+					}}
+					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
 				/>
 				<Button
-					label="Button2"
 					className="slds-button_outline-brand slds-m-around_small"
-					tabIndex={item.isInCurrentPanel ? 0 : -1}
+					label="Button2"
+					onClick={(event) => {
+						onButtonClick(event, item);
+					}}
+					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
 				/>
 			</div>
 		);
 		return (
-			<div style={{ maxWidth: '1280px' }}>
-				<Carousel itemsPerPanel={3} items={ITEMS} onRenderItem={onRenderItem} />
-			</div>
+			<Default action={action} items={ITEMS} itemsPerPanel={3} onRenderItem={onRenderItem} />
 		);
 	});

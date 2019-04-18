@@ -35,7 +35,7 @@ const CarouselItem = (props) => (
 				className="slds-carousel__panel-action slds-text-link--reset"
 				href={props.href}
 				onClick={props.onClick}
-				tabIndex={props.isInCurrentPanel ? 0 : -1}
+				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText} />
@@ -52,8 +52,7 @@ const CarouselItem = (props) => (
 						<Button
 							className="slds-button_outline-brand"
 							label={props.buttonLabel}
-							onClick={props.onClick}
-							tabIndex={props.isInCurrentPanel ? 0 : -1}
+							tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 						/>
 					)}
 				</div>

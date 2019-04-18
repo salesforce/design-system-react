@@ -199,7 +199,9 @@ class Carousel extends React.Component {
 							>
 								{this.props.items.map((item, index) => (
 									<CarouselItem
-										onClick={() => this.props.onItemClick(item)}
+										onClick={(event) => {
+											this.props.onItemClick(event, item)
+										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
 										isInCurrentPanel={(
