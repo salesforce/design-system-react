@@ -30,7 +30,7 @@ const items = [
 		buttonLabel: 'Get Started',
 		id: 3,
 		heading: 'Download SalesforceA',
-		description: 'Get the mobile app that\'s just for Salesforce admins.',
+		description: "Get the mobile app that's just for Salesforce admins.",
 		imageAssistiveText: 'SalesforceA',
 		src: 'assets/images/carousel/carousel-03.jpg',
 		href: 'https://www.salesforce.com',
@@ -83,7 +83,7 @@ class Example extends React.Component {
 				action: this.props.action,
 				event,
 				eventName: 'Button Clicked',
-				data: { item }
+				data: { item },
 			});
 		};
 
@@ -93,14 +93,12 @@ class Example extends React.Component {
 				style={{
 					padding: '0 8px',
 					margin: 0,
-					textAlign: 'center'
+					textAlign: 'center',
 				}}
 			>
-				<div className="slds-carousel__content-title">
-					{item.heading}
-				</div>
+				<div className="slds-carousel__content-title">{item.heading}</div>
 				<div className="slds-carousel__image">
-					<img src={item.src} alt={item.imageAssistiveText}/>
+					<img src={item.src} alt={item.imageAssistiveText} />
 				</div>
 				<Button
 					className="slds-button_outline-brand slds-m-around_small"
@@ -122,7 +120,7 @@ class Example extends React.Component {
 		);
 	};
 
-	render () {
+	render() {
 		return (
 			<div
 				style={{

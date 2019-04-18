@@ -38,7 +38,7 @@ const defaultProps = {
 	hasAutoplay: false,
 	hasPreviousNextPanelNavigation: false,
 	isInfinite: false,
-	itemsPerPanel: 1
+	itemsPerPanel: 1,
 };
 
 /**
@@ -89,28 +89,16 @@ class Carousel extends React.Component {
 		 */
 		isInfinite: PropTypes.bool,
 		/**
-		 * * **Array of item objects in the dropdown menu.**
+		 * * **Array of item objects used by the default carousel item renderer.**
 		 * Each object can contain:
-		 * * `icon`: An `Icon` component. (not used in read-only variant)
-		 * * `id`: A unique identifier string.
-		 * * `label`: A primary string of text for a menu item or group separator.
-		 * * `subTitle`: A secondary string of text added for clarity. (optional)
-		 * * `type`: 'separator' is the only type currently used
-		 * * `disabled`: Set to true to disable this menu item.
-		 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
+		 * * `id`: The id of the carousel item. [REQUIRED]
+		 * * `heading`: Primary string that will be used as the heading
+		 * * `description`: Secondary string that is used to describe the item
+		 * * `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered
+		 * * `imageAssistiveText`: Image alt text, if not present heading will be used instead
+		 * * `href`: Used for item link, if not provided 'javascript:void(0);' is used instead
+		 * * `src`: Item image src value
 		 * ```
-		 *
-		 * Array of objects with shape needed for building the carousel items.
-		 * Item object shape:
-		 *   - `id`: 0   [REQUIRED] // The id of the carousel item
-		 *   - heading: "Carousel Item Header" // (Visible heading for default carousel item render)
-		 *   - description: "A short description of the carousel item."
-		 *          // (Visible paragraph text for default render and navigation bullet text used in assistive text tag. Can be a string or a node)
-		 *   - buttonLabel: "Get Started" // (OPTIONAL string, if assigned default carousel item will render a call to action button with this text)
-		 *   - imageAssistiveText: "Carousel image assistive text."
-		 *          // (image alt text, OPTIONAL, if not present heading will be used instead),
-		 *   - href: "https://www.salesforce.com" // (OPTIONAL, void(0) if not provided for default template
-		 *   - src: "/images/examples/carousel-01.png"	//
 		 */
 		items: PropTypes.array.isRequired,
 		/**
@@ -155,7 +143,13 @@ class Carousel extends React.Component {
 		if (this.props.hasAutoplay) {
 			this.startAutoplay();
 		}
-		this.stageWidth = this.stageItem.current.offsetWidth;
+		if (
+			this.stageItem &&
+			this.stageItem.current &&
+			this.stageItem.offsetWidth
+		) {
+			this.stageWidth = this.stageItem.current.offsetWidth;
+		}
 		window.addEventListener('resize', this.setDimensions, false);
 	}
 
@@ -190,10 +184,15 @@ class Carousel extends React.Component {
 	};
 
 	setDimensions = () => {
-		this.setState(
-			{ stageWidth: this.stageItem.current.offsetWidth },
-			this.changeTranslationAutomatically
-		);
+		let stageWidth = 800;
+		if (
+			this.stageItem &&
+			this.stageItem.current &&
+			this.stageItem.current.offsetWidth
+		) {
+			stageWidth = this.stageItem.current.offsetWidth;
+		}
+		this.setState({ stageWidth }, this.changeTranslationAutomatically);
 	};
 
 	setTranslationAmount = (amount, cb) => {
@@ -267,7 +266,11 @@ class Carousel extends React.Component {
 			(this.state.stageWidth || this.stageWidth) / this.props.itemsPerPanel;
 
 		return (
-			<div className={classnames('slds-carousel', this.props.className)} id={id} onKeyDown={this.handleKeyDown}>
+			<div
+				className={classnames('slds-carousel', this.props.className)}
+				id={id}
+				onKeyDown={this.handleKeyDown}
+			>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
 					{hasAutoplay && (
 						<AutoPlayButton
@@ -302,14 +305,19 @@ class Carousel extends React.Component {
 								{this.props.items.map((item, index) => (
 									<CarouselItem
 										onClick={(event) => {
-											this.props.onItemClick(event, { item })
+											this.props.onItemClick(event, { item });
 										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
-										isInCurrentPanel={(
-											index >= ((this.state.currentPanel - 1) * this.props.itemsPerPanel) &&
-											index < (((this.state.currentPanel - 1) * this.props.itemsPerPanel) + this.props.itemsPerPanel)
-										)}
+										isInCurrentPanel={
+											index >=
+												(this.state.currentPanel - 1) *
+													this.props.itemsPerPanel &&
+											index <
+												(this.state.currentPanel - 1) *
+													this.props.itemsPerPanel +
+													this.props.itemsPerPanel
+										}
 										itemWidth={itemWidth}
 										key={item.id}
 									/>

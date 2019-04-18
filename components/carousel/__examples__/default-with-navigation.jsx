@@ -26,7 +26,7 @@ const items = [
 	{
 		id: 3,
 		heading: 'Download SalesforceA',
-		description: 'Get the mobile app that\'s just for Salesforce admins.',
+		description: "Get the mobile app that's just for Salesforce admins.",
 		imageAssistiveText: 'SalesforceA',
 		src: 'assets/images/carousel/carousel-03.jpg',
 		href: 'https://www.salesforce.com',

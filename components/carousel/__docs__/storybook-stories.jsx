@@ -14,9 +14,13 @@ import { CAROUSEL } from '../../../utilities/constants';
 
 storiesOf(CAROUSEL, module)
 	.add('Default (1 item)', () => <Default action={action} />)
-	.add('Default with navigation indicators', () => <DefaultWithNavigation action={action} />)
+	.add('Default with navigation indicators', () => (
+		<DefaultWithNavigation action={action} />
+	))
 	.add('Default with AutoPlay', () => <DefaultWithAutoPlay action={action} />)
-	.add('3 items', () => (<ThreeItems action={action} />))
-	.add('3 items with AutoPlay', () => <ThreeItemsWithAutoplay action={action} />)
-	.add('5 items', () => (<FiveItems action={action} />))
-	.add('With custom items', () => (<WithCustomItems action={action} />));
+	.add('3 items', () => <ThreeItems action={action} />)
+	.add('3 items with AutoPlay', () => (
+		<ThreeItemsWithAutoplay action={action} />
+	))
+	.add('5 items', () => <FiveItems action={action} />)
+	.add('With custom items', () => <WithCustomItems action={action} />);

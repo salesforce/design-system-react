@@ -1258,6 +1258,10 @@
                             "computed": false
                         },
                         {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
                             "value": "'more'",
                             "computed": false
                         },
@@ -2038,6 +2042,255 @@
                 }
             }
         ]
+    },
+    "carousel": {
+        "description": "A carousel allows multiple pieces of featured content to occupy an allocated amount of space.\nCurrently panel index and auto play cannot be controlled by the app.",
+        "methods": [
+            {
+                "name": "onNextPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onPreviousPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorClickHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "panel",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onAutoPlayBtnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setDimensions",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setTranslationAmount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "amount",
+                        "type": null
+                    },
+                    {
+                        "name": "cb",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setCurrentPanel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "amount",
+                        "type": null
+                    },
+                    {
+                        "name": "cb",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "startAutoplay",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "stopAutoplay",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "changeTranslationAutomatically",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "canGoToNext",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "canGoToPrevious",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Description of the carousel items for screen-readers.",
+                "defaultValue": {
+                    "value": "{\n    autoPlayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "computed": false
+                }
+            },
+            "autoplayInterval": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Interval for the autoplay iteration",
+                "defaultValue": {
+                    "value": "4000",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the main 'slds-carousel' classed component container"
+            },
+            "hasAutoplay": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean showing whether the autoplay feature is available or not",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "hasPreviousNextPanelNavigation": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean for displaying the navigation indicators (left/right arrows) of the carousel",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Id of component, if desired. If not provided an id is automatically generated"
+            },
+            "indicatorStyles": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "CSS that is applied to carousel indicators"
+            },
+            "isInfinite": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean for infinite loop navigation",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided 'javascript:void(0);' is used instead\n* `src`: Item image src value\n```"
+            },
+            "itemsPerPanel": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Number of items to be displayed at a time in the carousel",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "onRenderItem": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Accepts a custom carousel item rendering function"
+            },
+            "onItemClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Handler for clicking on a carousel item"
+            }
+        },
+        "route": "carousel",
+        "display-name": "Carousel",
+        "SLDS-component-path": "/components/carousel",
+        "dependencies": []
     },
     "checkbox": {
         "description": "The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.",
@@ -8622,11 +8875,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key."
             },
             "dismissOnClickOutside": {
                 "type": {
@@ -10006,7 +10255,7 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
-            "footerActions": {
+            "footerWalkthroughActions": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10102,6 +10351,13 @@
                 "required": false,
                 "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
+            "onRequestTargetElement": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback that returns an element or React `ref` to align the Popover with. If the target element has not been rendered yet, the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets that are not the triggering element."
+            },
             "position": {
                 "type": {
                     "name": "enum",
@@ -10155,21 +10411,6 @@
                 },
                 "required": false,
                 "description": "If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app."
-            },
-            "target": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Causes the popover to attach itself next to the provided element ref or element matching the provided selector when open. If not provided the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets outside the trigger"
             },
             "triggerClassName": {
                 "type": {
@@ -13755,13 +13996,6 @@
                 "returns": null
             },
             {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "getSelectedId",
                 "docblock": null,
                 "modifiers": [],
@@ -13815,27 +14049,6 @@
                 },
                 "required": false,
                 "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
             }
         },
         "route": "vertical-navigation",

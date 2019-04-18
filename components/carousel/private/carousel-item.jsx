@@ -25,24 +25,27 @@ const CarouselItem = (props) => (
 		style={{
 			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
-			padding: '0 8px'
+			padding: '0 8px',
 		}}
 	>
 		{props.onRenderItem ? (
 			props.onRenderItem(props)
 		) : (
 			<a
-				className="slds-carousel__panel-action slds-text-link--reset"
+				className="slds-carousel__panel-action slds-text-link_reset"
 				href={props.href}
 				onClick={props.onClick}
 				style={{
 					backgroundColor: 'white',
-					margin: 'auto'
+					margin: 'auto',
 				}}
 				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>
 				<div className="slds-carousel__image">
-					<img src={props.src} alt={props.imageAssistiveText || props.heading} />
+					<img
+						src={props.src}
+						alt={props.imageAssistiveText || props.heading}
+					/>
 				</div>
 				<div className="slds-carousel__content" style={{ height: 'auto' }}>
 					<h2 className="slds-carousel__content-title">{props.heading}</h2>

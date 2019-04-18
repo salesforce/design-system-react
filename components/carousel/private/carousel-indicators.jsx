@@ -22,19 +22,22 @@ class CarouselIndicators extends React.Component {
 		this[`indicator${this.props.currentIndex}`].focus();
 	};
 
-	render () {
+	render() {
 		const { props } = this;
 
 		return (
-			<ul className="slds-carousel__indicators slds-col slds-text-align_center" role="tablist">
-				{[...Array(props.noOfIndicators).keys()].map(key => {
+			<ul
+				className="slds-carousel__indicators slds-col slds-text-align_center"
+				role="tablist"
+			>
+				{[...Array(props.noOfIndicators).keys()].map((key) => {
 					const index = key + 1;
 					const isSelectedPanel = index === props.currentIndex;
 					const indicatorActionClassName = classnames(
 						'slds-carousel__indicator-action',
 						props.className,
 						{
-							'slds-is-active': isSelectedPanel
+							'slds-is-active': isSelectedPanel,
 						}
 					);
 					let assistiveText = `${index}`;
@@ -44,9 +47,15 @@ class CarouselIndicators extends React.Component {
 						const startItemIndex = (index - 1) * props.itemsPerPanel;
 						let autoIndicatorText = '';
 
-						for (let i = startItemIndex; i < (startItemIndex + props.itemsPerPanel); i++) {
+						for (
+							let i = startItemIndex;
+							i < startItemIndex + props.itemsPerPanel;
+							i++
+						) {
 							if (props.items[i] && props.items[i].heading) {
-								autoIndicatorText = !autoIndicatorText ? '' : `${autoIndicatorText}, `;
+								autoIndicatorText = !autoIndicatorText
+									? ''
+									: `${autoIndicatorText}, `;
 								autoIndicatorText += props.items[i].heading;
 							}
 						}
@@ -69,7 +78,7 @@ class CarouselIndicators extends React.Component {
 							style={{ margin: 0, padding: '0 8px' }}
 						>
 							<a
-								ref={component => {
+								ref={(component) => {
 									this[`indicator${index}`] = component;
 								}}
 								id={`indicator-id-${index}`}
@@ -127,7 +136,7 @@ CarouselIndicators.propTypes = {
 	/**
 	 * Triggered when the indicator is clicked.
 	 */
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
 };
 
 export default CarouselIndicators;
