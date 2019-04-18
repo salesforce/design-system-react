@@ -29,7 +29,7 @@ const CarouselItem = (props) => (
 		}}
 	>
 		{props.onRenderItem ? (
-			props.onRenderItem(props)
+			props.onRenderItem({ item: props })
 		) : (
 			<a
 				className="slds-carousel__panel-action slds-text-link_reset"

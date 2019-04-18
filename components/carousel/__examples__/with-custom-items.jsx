@@ -76,7 +76,7 @@ const items = [
 class Example extends React.Component {
 	static displayName = 'WithCustomItemsExample';
 
-	renderCustomItem = (item) => {
+	renderCustomItem = ({ item }) => {
 		const onButtonClick = (event) => {
 			event.preventDefault();
 			log({
