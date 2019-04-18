@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DOM snapshots SLDSCarousel 3 items 1`] = `
+exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -678,7 +678,7 @@ exports[`DOM snapshots SLDSCarousel 3 items 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay 1`] = `
+exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -1318,7 +1318,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel 5 items 1`] = `
+exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -1968,7 +1968,7 @@ exports[`DOM snapshots SLDSCarousel 5 items 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel Default (1 item) 1`] = `
+exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -2633,7 +2633,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel Default with AutoPlay 1`] = `
+exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -3322,7 +3322,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel Default with navigation indicators 1`] = `
+exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -4049,7 +4049,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel With custom items 1`] = `
+exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
 <div
   style={
     Object {
