@@ -37,12 +37,24 @@ class CarouselIndicators extends React.Component {
 							'slds-is-active': isSelectedPanel
 						}
 					);
-					let assistiveText = `Panel ${index}`;
-					let title = `Visit Panel ${index}`;
+					let assistiveText = `${index}`;
+					let title = `${index}`;
 
-					if (props.itemsPerPanel === 1 && props.items && props.items[index - 1] && props.items[index-1].heading) {
-						assistiveText = props.items[index-1].heading;
-						title = assistiveText;
+					if (props.items && props.items.length > 0) {
+						const startItemIndex = (index - 1) * props.itemsPerPanel;
+						let autoIndicatorText = '';
+
+						for (let i = startItemIndex; i < (startItemIndex + props.itemsPerPanel); i++) {
+							if (props.items[i] && props.items[i].heading) {
+								autoIndicatorText = !autoIndicatorText ? '' : `${autoIndicatorText}, `;
+								autoIndicatorText += props.items[i].heading;
+							}
+						}
+
+						if (autoIndicatorText) {
+							assistiveText = autoIndicatorText;
+							title = autoIndicatorText;
+						}
 					}
 
 					if (isSelectedPanel && this[`indicator${index}`]) {

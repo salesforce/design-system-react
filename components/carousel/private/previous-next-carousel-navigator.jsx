@@ -41,7 +41,7 @@ previousNextCarouselNavigator.propTypes = {
 	/**
 	 * Name of icon displayed within the navigation button
 	 */
-	iconName: PropTypes.oneOf('left', 'right'),
+	iconName: PropTypes.oneOf(['left', 'right']),
 	/**
 	 * Determines where the navigator indicator has been disabled
 	 */
