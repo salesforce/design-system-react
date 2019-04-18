@@ -21,8 +21,10 @@ class CarouselIndicators extends React.Component {
 	onFocus = () => {
 		this[`indicator${this.props.currentIndex}`].focus();
 	};
+
 	render () {
 		const { props } = this;
+
 		return (
 			<ul className="slds-carousel__indicators slds-col slds-text-align_center" role="tablist">
 				{[...Array(props.noOfIndicators).keys()].map(key => {
@@ -35,6 +37,14 @@ class CarouselIndicators extends React.Component {
 							'slds-is-active': isSelectedPanel
 						}
 					);
+					let assistiveText = `Panel ${index}`;
+					let title = props.title || `Visit Panel ${index}`;
+
+					if (props.itemsPerPanel === 1 && props.items && props.items[index - 1] && props.items[index-1].heading) {
+						assistiveText = props.items[index-1].heading;
+						title = assistiveText;
+					}
+
 					if (isSelectedPanel && this[`indicator${index}`]) {
 						this[`indicator${index}`].focus();
 					}
@@ -55,11 +65,11 @@ class CarouselIndicators extends React.Component {
 								tabIndex={isSelectedPanel ? '0' : '-1'}
 								aria-selected={isSelectedPanel}
 								aria-controls={`panel-${index}`}
-								title={props.title || `Visit Panel ${index}`}
+								title={title}
 								onClick={() => props.onClick(index)}
 								onFocus={this.onFocus}
 							>
-								<span className="slds-assistive-text">Panel {index}</span>
+								<span className="slds-assistive-text">{assistiveText}</span>
 							</a>
 						</li>
 					);
@@ -89,6 +99,14 @@ CarouselIndicators.propTypes = {
 	 * Selected indicator
 	 */
 	currentIndex: PropTypes.number,
+	/**
+	 * Array of objects with shape, needed for building a carousel items
+	 */
+	items: PropTypes.array,
+	/**
+	 * Number of items to be displayed at a time in the carousel
+	 */
+	itemsPerPanel: PropTypes.number,
 	/**
 	 * Number of indicators to be displayed (corresponds to the number of panels in the carousel)
 	 */

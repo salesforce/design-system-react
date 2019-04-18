@@ -8,6 +8,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Button from '../../button';
+
 // import Card from '~/components/card';
 import '../../../styles/carousel/carousel.css';
 import { CAROUSEL_ITEM } from '../../../utilities/constants';
@@ -29,7 +31,12 @@ const CarouselItem = (props) => (
 		{props.onRenderItem ? (
 			props.onRenderItem(props)
 		) : (
-			<span className="slds-carousel__panel-action">
+			<a
+				className="slds-carousel__panel-action slds-text-link--reset"
+				href={props.href}
+				onClick={props.onClick}
+				tabIndex={props.isInCurrentPanel ? 0 : -1}
+			>
 				<div className="slds-carousel__image">
 					<img src={props.src} alt={props.imageAssistiveText} />
 				</div>
@@ -41,18 +48,16 @@ const CarouselItem = (props) => (
 					>
 						{props.description}
 					</div>
-					{props.CTALabel && (
-						<a
-							className="slds-button slds-button_neutral slds-button_outline-brand"
-							href={props.href}
-							target="_blank"
+					{props.buttonLabel && (
+						<Button
+							className="slds-button_outline-brand"
+							label={props.buttonLabel}
 							onClick={props.onClick}
-						>
-							{props.CTALabel}
-						</a>
+							tabIndex={props.isInCurrentPanel ? 0 : -1}
+						/>
 					)}
 				</div>
-			</span>
+			</a>
 		)}
 	</div>
 );
@@ -60,12 +65,10 @@ const CarouselItem = (props) => (
 CarouselItem.displayName = CAROUSEL_ITEM;
 
 CarouselItem.propTypes = {
-	buttonLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-		.isRequired,
 	/**
-	 * Label of the button to be displayed
+	 * Label of the button to be displayed. If not provided, no button will be rendered.
 	 */
-	CTALabel: PropTypes.string,
+	buttonLabel: PropTypes.string,
 	/**
 	 * CSS classes that are applied to the component
 	 */
@@ -93,6 +96,10 @@ CarouselItem.propTypes = {
 	 */
 	imageAssistiveText: PropTypes.string,
 	/**
+	 * Boolean indicating whether this item is currently visible in the active parent carousel panel
+	 */
+	isInCurrentPanel: PropTypes.bool,
+	/**
 	 * Width of the carousel item
 	 */
 	itemWidth: PropTypes.number,
@@ -108,7 +115,6 @@ CarouselItem.propTypes = {
 
 CarouselItem.defaultProps = {
 	imageAssistiveText: 'Card image description',
-	buttonLabel: 'Get Started',
 	href: 'javascript:void(0);',
 };
 

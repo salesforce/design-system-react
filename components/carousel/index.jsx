@@ -87,12 +87,14 @@ class Carousel extends React.Component {
 		});
 		actionToTake();
 	};
+
 	setDimensions = () => {
 		this.setState(
 			{ stageWidth: this.stageItem.current.offsetWidth },
 			this.changeTranslationAutomatically
 		);
 	};
+
 	setTranslationAmount = (amount, cb) => {
 		this.setState({ translateX: amount }, cb);
 	};
@@ -150,6 +152,7 @@ class Carousel extends React.Component {
 			keyDownCallbacks[event.keyCode](event.shiftKey ? 10 : 1);
 		}
 	};
+
 	render() {
 		const {
 			hasAutoplay,
@@ -194,11 +197,15 @@ class Carousel extends React.Component {
 									transform: `translateX(${this.state.translateX}px)`,
 								}}
 							>
-								{this.props.items.map((item) => (
+								{this.props.items.map((item, index) => (
 									<CarouselItem
 										onClick={() => this.props.onItemClick(item)}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
+										isInCurrentPanel={(
+											index >= ((this.state.currentPanel - 1) * this.props.itemsPerPanel) &&
+											index < (((this.state.currentPanel - 1) * this.props.itemsPerPanel) + this.props.itemsPerPanel)
+										)}
 										itemWidth={itemWidth}
 										key={item.id}
 									/>
@@ -220,6 +227,8 @@ class Carousel extends React.Component {
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={this.state.currentPanel}
 						onClick={this.onIndicatorClickHandler}
+						items={this.props.items}
+						itemsPerPanel={this.props.itemsPerPanel}
 					/>
 				</div>
 			</div>

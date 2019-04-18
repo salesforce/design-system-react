@@ -1,12 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import Button from '~/components/button';
 import Carousel from '~/components/carousel';
-import Card from '~/components/card';
-import { ITEMS } from '~/components/carousel/__examples__/carousel-items';
-import { CAROUSEL } from '../../../utilities/constants';
+
 import Default from '../__examples__/default';
-import Button from './../../button';
+
+import { ITEMS, ITEMS_WITH_BUTTONS } from '../__examples__/carousel-items';
+import { CAROUSEL } from '../../../utilities/constants';
 
 storiesOf(CAROUSEL, module)
 	.addDecorator((getStory) => (
@@ -23,21 +24,21 @@ storiesOf(CAROUSEL, module)
 			{getStory()}
 		</div>
 	))
-	.add('Default With 1 Item', () => <Default itemsPerPanel={1} />)
-	.add('Default With Navigation Indicators', () => (
-		<Default itemsPerPanel={1} hasNavigation />
+	.add('Default with 1 item', () => <Default items={ITEMS} />)
+	.add('Default with navigation indicators', () => <Default items={ITEMS} hasNavigation />)
+	.add('Default with AutoPlay', () => <Default items={ITEMS} hasAutoplay />)
+	.add('Default with 3 items', () => (
+		<Default items={ITEMS_WITH_BUTTONS} itemsPerPanel={3} hasNavigation />
 	))
-	.add('Default With 3 Items', () => (
-		<Default itemsPerPanel={3} hasNavigation />
+	.add('3 items and AutoPlay', () => <Default items={ITEMS_WITH_BUTTONS} itemsPerPanel={3} hasAutoplay />)
+	.add('Default with 5 Items', () => (
+		<Default items={ITEMS_WITH_BUTTONS} itemsPerPanel={5} hasNavigation />
 	))
-	.add('Default With 5 Items', () => (
-		<Default itemsPerPanel={5} hasNavigation />
-	))
-	.add('With Custom Items', () => {
+	.add('With custom items', () => {
 		const onRenderItem = (item) => (
 			<div className="slds-carousel-custom-rendering">
 				<div className="slds-carousel__content-title">
-					{item.heading} With Custom Rendering
+					{item.heading}
 				</div>
 				<div className="slds-carousel__image">
 					<img src={item.src} alt={item.imageAssistiveText} />
@@ -45,10 +46,12 @@ storiesOf(CAROUSEL, module)
 				<Button
 					label="Button1"
 					className="slds-button_outline-brand slds-m-around_small"
+					tabIndex={item.isInCurrentPanel ? 0 : -1}
 				/>
 				<Button
 					label="Button2"
 					className="slds-button_outline-brand slds-m-around_small"
+					tabIndex={item.isInCurrentPanel ? 0 : -1}
 				/>
 			</div>
 		);
@@ -57,5 +60,4 @@ storiesOf(CAROUSEL, module)
 				<Carousel itemsPerPanel={3} items={ITEMS} onRenderItem={onRenderItem} />
 			</div>
 		);
-	})
-	.add('3 Items and AutoPlay', () => <Default itemsPerPanel={3} hasAutoplay />);
+	});
