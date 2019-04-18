@@ -1149,6 +1149,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
             className="absolute-positioned"
             id="combobox-base-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={
               Object {
@@ -3034,6 +3035,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
           <div
             id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3394,6 +3396,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3568,6 +3571,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3684,6 +3688,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -4772,6 +4777,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
           <div
             id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -5548,6 +5554,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
