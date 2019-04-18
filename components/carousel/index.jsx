@@ -103,7 +103,6 @@ class Carousel extends React.Component {
 		 * * `imageAssistiveText`: Image alt text, if not present heading will be used instead
 		 * * `href`: Used for item link, if not provided 'javascript:void(0);' is used instead
 		 * * `src`: Item image src value
-		 * ```
 		 */
 		items: PropTypes.array.isRequired,
 		/**
