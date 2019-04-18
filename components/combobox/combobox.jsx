@@ -395,6 +395,10 @@ class Combobox extends React.Component {
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}
 				onClose={this.handleClose}
+				onMouseDown={(event) => {
+					// prevent onBlur
+					event.preventDefault();
+				}}
 				onOpen={this.handleOpen}
 				onRequestTargetElement={this.getTargetElement}
 				position={menuPosition}
@@ -805,9 +809,9 @@ class Combobox extends React.Component {
 
 		this.handleClose();
 
-		if (this.inputRef) {
-			this.inputRef.focus();
-		}
+		// if (this.inputRef) {
+		// 	this.inputRef.focus();
+		// }
 	};
 
 	isSelected = ({ selection, option }) => !!find(selection, option);
