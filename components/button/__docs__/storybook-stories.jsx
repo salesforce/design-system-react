@@ -104,8 +104,7 @@ storiesOf(BUTTON, module)
 		})
 	)
 	.add('Outline brand button', () =>
-		getIconButton({
-			assistiveTest: 'Outline brand button',
+		getButton({
 			label: 'Outline brand button',
 			variant: 'outline-brand',
 		})

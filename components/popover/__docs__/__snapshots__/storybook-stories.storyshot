@@ -987,7 +987,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
-        role="popover"
+        role="dialog"
         style={
           Object {
             "outline": 0,
@@ -1153,7 +1153,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1381,7 +1381,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
-        role="popover"
+        role="dialog"
         style={
           Object {
             "background": "rgb(255, 80, 121)",
@@ -1472,7 +1472,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1627,7 +1627,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1775,7 +1775,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
