@@ -12112,6 +12112,17 @@
                 "required": false,
                 "description": "Unique html id placed on div with role=\"status\"."
             },
+            "isDelayed": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds delay of 300ms to the spinner",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "isInput": {
                 "type": {
                     "name": "bool"
