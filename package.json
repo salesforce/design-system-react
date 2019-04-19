@@ -36,6 +36,7 @@
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
 		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
+		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --update-snapshot --config=tests/snapshots-config.json",
 		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
