@@ -47,6 +47,10 @@ const Breadcrumb = (props) => {
 	let menuTrail = [];
 	if (parentIndex) {
 		menuTrail = trail.slice(0, parentIndex);
+		menuTrail = menuTrail.map((item) => ({
+			label: item.props.children,
+			value: item.props.children,
+		}));
 		trail = trail.slice(parentIndex);
 	}
 	return (
