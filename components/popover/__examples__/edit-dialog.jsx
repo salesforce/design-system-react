@@ -5,26 +5,29 @@ import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced wi
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
+const DEFAULT_FIRST_NAME = 'John';
+const DEFAULT_LAST_NAME = 'Smith';
+
 class Example extends React.Component {
 	static displayName = 'PopoverExample';
 
 	constructor(props) {
 		super(props);
-		const defaultFirstName = 'John';
-		const defaultLastName = 'Smith';
+
 		this.state = {
 			isOpen: this.props.isOpen,
-			input1: defaultFirstName, // stores firstName in edit input field
-			input2: defaultLastName, // stores lastName in edit input field
-			prevInput1: defaultFirstName,
-			prevInput2: defaultLastName,
+			firstName: DEFAULT_FIRST_NAME, // stores firstName in edit input field
+			lastName: DEFAULT_LAST_NAME, // stores lastName in edit input field
+			prevFirstName: DEFAULT_FIRST_NAME,
+			prevLastName: DEFAULT_LAST_NAME,
 		};
 	}
+
 	onChange = (inputName) => (event, { value }) => {
 		if (inputName === 'first-name') {
-			this.setState({ input1: value });
+			this.setState({ firstName: value });
 		} else {
-			this.setState({ input2: value });
+			this.setState({ lastName: value });
 		}
 	};
 
@@ -40,15 +43,15 @@ class Example extends React.Component {
 		}
 		this.setState({
 			isOpen: false,
-			input1: this.state.prevInput1,
-			input2: this.state.prevInput2,
+			firstName: this.state.prevFirstName,
+			lastName: this.state.prevLastName,
 		});
 	};
 
 	handleSave = (event, data) => {
 		this.setState({
-			prevInput1: this.state.input1,
-			prevInput2: this.state.input2,
+			prevFirstName: this.state.firstName,
+			prevLastName: this.state.lastName,
 			isOpen: false,
 		});
 	};
@@ -60,19 +63,19 @@ class Example extends React.Component {
 	};
 
 	render() {
-		// Content of EditDialogPopover that is shown when clicking on edit (pencil icon)
+		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon)
 		const editDialogPopoverBody = (
 			<div className="slds-col_padded">
 				<Input
 					id="first-name"
 					label="First Name"
-					value={this.state.input1}
+					value={this.state.firstName}
 					onChange={this.onChange('first-name')}
 				/>
 				<Input
 					id="last-name"
 					label="Last Name"
-					value={this.state.input2}
+					value={this.state.lastName}
 					onChange={this.onChange('last-name')}
 				/>
 			</div>
