@@ -38,6 +38,7 @@ export const DATA_TABLE_HEADER_CELL = 'SLDSDataTableHeaderCell';
 export const DATA_TABLE_ROW_ACTIONS = 'SLDSDataTableRowActions';
 export const DATA_TABLE_ROW = 'SLDSDataTableRow';
 export const DATE_PICKER = 'SLDSDatePicker';
+export const DEPRECATED_WARNING = 'SLDSDeprecatedWarning';
 export const DIALOG = 'SLDSDialog';
 export const FILTER = 'SLDSFilter';
 export const CHECKBOX = 'SLDSCheckbox';
@@ -93,6 +94,8 @@ export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';
 export const PROGRESS_INDICATOR_PROGRESS = 'SLDSProgressIndicatorProgress';
 export const PROGRESS_INDICATOR_STEP = 'SLDSProgressIndicatorStep';
+export const PROGRESS_INDICATOR_STEP_VERTICAL =
+	'SLDSProgressIndicatorStepVertical';
 export const PROGRESS_RING = 'SLDSProgressRing';
 export const SLIDER = 'SLDSSlider';
 export const SPINNER = 'SLDSSpinner';
