@@ -923,6 +923,27 @@
                     "computed": false
                 }
             },
+            "backgroundSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'contain'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'cover'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Background size of the brand band. Default is 'contain'",
+                "defaultValue": {
+                    "value": "'contain'",
+                    "computed": false
+                }
+            },
             "size": {
                 "type": {
                     "name": "enum",
