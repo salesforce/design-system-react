@@ -1149,6 +1149,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
             className="absolute-positioned"
             id="combobox-base-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={
               Object {
@@ -2043,6 +2044,80 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             </span>
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-dialog"
+    >
+      Languages
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="dialog"
+          aria-owns="combobox-dialog"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            style={
+              Object {
+                "display": undefined,
+              }
+            }
+          >
+            <div
+              className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+              role="none"
+            >
+              <input
+                aria-autocomplete="none"
+                aria-controls="combobox-dialog"
+                aria-describedby={null}
+                autoComplete="off"
+                className="slds-input slds-combobox__input"
+                id="combobox-dialog"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Select an option"
+                readOnly={true}
+                required={false}
+                role="textbox"
+                tabIndex="0"
+                type="text"
+                value="Select an option"
+              />
+              <svg
+                aria-hidden={true}
+                className="slds-input__icon slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -3034,6 +3109,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
           <div
             id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3394,6 +3470,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3568,6 +3645,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3684,6 +3762,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -3877,6 +3956,156 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
             </span>
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Languages
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={true}
+          aria-haspopup="dialog"
+          aria-owns="combobox-unique-id"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
+        >
+          <div
+            style={
+              Object {
+                "display": undefined,
+              }
+            }
+          >
+            <div
+              className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+              role="none"
+            >
+              <input
+                aria-autocomplete="none"
+                aria-controls="combobox-unique-id"
+                autoComplete="off"
+                className="slds-input slds-combobox__input"
+                id="combobox-unique-id"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Select an option"
+                readOnly={true}
+                required={false}
+                role="textbox"
+                tabIndex="0"
+                type="text"
+                value="Select an option"
+              />
+              <svg
+                aria-hidden={true}
+                className="slds-input__icon slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </div>
+            <div
+              aria-describedby="combobox-unique-id-dialog-body"
+              aria-labelledby="combobox-unique-id-label"
+              className="absolute-positioned ignore-react-onclickoutside slds-popover slds-popover_full-width"
+              id="combobox-unique-id-popover"
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
+              role="dialog"
+              style={
+                Object {
+                  "outline": 0,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                }
+              }
+              tabIndex="-1"
+            >
+              <button
+                className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Close dialog
+                </span>
+              </button>
+              <div
+                className="slds-popover__body"
+                id="combobox-unique-id-dialog-body"
+              >
+                <div>
+                  <div
+                    className="slds-assistive-text"
+                    id="combobox-unique-id-label"
+                  >
+                    Language Options
+                  </div>
+                  <div>
+                    Any content can go here.
+                  </div>
+                </div>
+              </div>
+              <footer
+                className="slds-popover__footer slds-popover__footer_form"
+              >
+                <div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="slds-button slds-button_brand"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Done
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -4772,6 +5001,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
           <div
             id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >
@@ -5548,6 +5778,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
           <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
             style={Object {}}
           >

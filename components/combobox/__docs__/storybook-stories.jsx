@@ -12,6 +12,7 @@ import BaseMenuItemDisabled from '../__examples__/base-menu-item-disabled';
 import BaseMenuItemDisabledTooltipOpen from '../__examples__/base-menu-item-disabled-tooltip-open';
 import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled-tooltip';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
+import Dialog from '../__examples__/dialog.jsx';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
@@ -29,6 +30,7 @@ import SnapshotBaseOpenMenuSubHeaderSeparator from '../__examples__/snapshot/bas
 import SnapshotBaseOpenMenuInheritWidthOf from '../__examples__/snapshot/base-open-menu-inheritWidthOf';
 import SnapshotBaseCustomMenuItemOpen from '../__examples__/snapshot/base-custom-menu-item-open';
 import SnapshotBaseSelected from '../__examples__/snapshot/base-selected';
+import SnapshotDialogOpen from '../__examples__/snapshot/dialog-open';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
 import SnapshotInlineSingleSelectionSelected from '../__examples__/snapshot/inline-single-selection-selected';
 import SnapshotInlineMultipleSelection from '../__examples__/snapshot/inline-multiple-selection';
@@ -79,6 +81,7 @@ storiesOf(COMBOBOX, module)
 	.add('Base Inherit Menu Width', () => (
 		<BaseInheritMenuWidth action={action} />
 	))
+	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
 	.add('Readonly Single Selection Disabled', () => (
 		<ReadOnlyDisabled action={action} />
@@ -110,7 +113,7 @@ storiesOf(COMBOBOX, module)
 	.add('Snapshot Base Open Menu inheritWidthOf prop', () => (
 		<SnapshotBaseOpenMenuInheritWidthOf action={action} />
 	))
-
+	.add('Snapshot Dialog Open', () => <SnapshotDialogOpen action={action} />)
 	.add('Snapshot Inline Single Selection', () => (
 		<SnapshotInlineSingleSelection action={action} />
 	))

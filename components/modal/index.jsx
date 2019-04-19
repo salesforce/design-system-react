@@ -79,11 +79,11 @@ const propTypes = {
 	 */
 	directional: PropTypes.bool,
 	/**
-	 * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
+	 * If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.
 	 */
-	dismissible: PropTypes.bool,
+	disableClose: PropTypes.bool,
 	/**
-	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
+	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose.
 	 */
 	dismissOnClickOutside: PropTypes.bool,
 	/**
@@ -158,7 +158,6 @@ const defaultProps = {
 	},
 	align: 'center',
 	ariaHideApp: true,
-	dismissible: true,
 };
 
 /**
@@ -259,7 +258,7 @@ class Modal extends React.Component {
 					'slds-modal_prompt': this.isPrompt(),
 				})}
 				onClick={this.dismissModalOnClickOutside}
-				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
+				role={this.props.disableClose ? 'alertdialog' : 'dialog'}
 			>
 				<div
 					className={classNames(
@@ -300,7 +299,7 @@ class Modal extends React.Component {
 	}
 
 	closeModal() {
-		if (this.props.dismissible) {
+		if (!this.props.disableClose) {
 			this.dismissModal();
 		}
 	}
@@ -316,10 +315,10 @@ class Modal extends React.Component {
 	}
 
 	dismissModalOnClickOutside() {
-		// if dismissOnClickOutside is not set, default its value to dismissible
+		// if dismissOnClickOutside is not set, default its value to disableClose
 		const dismissOnClickOutside = this.props.dismissOnClickOutside
 			? this.props.dismissOnClickOutside
-			: this.props.dismissible;
+			: !this.props.disableClose;
 
 		if (dismissOnClickOutside) {
 			this.dismissModal();
@@ -417,7 +416,7 @@ class Modal extends React.Component {
 				)}
 				onClick={this.handleModalClick}
 			>
-				{this.props.dismissible ? closeButton : null}
+				{this.props.disableClose ? null : closeButton}
 				{headerContent}
 			</header>
 		);
