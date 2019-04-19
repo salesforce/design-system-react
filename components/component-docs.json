@@ -743,13 +743,6 @@
                     "computed": false
                 }
             },
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Class names to be applied to Avatar component."
-            },
             "imgAlt": {
                 "type": {
                     "name": "string"
@@ -1258,6 +1251,10 @@
                             "computed": false
                         },
                         {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
                             "value": "'more'",
                             "computed": false
                         },
@@ -1600,13 +1597,6 @@
                     "computed": false
                 }
             },
-            "inverse": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds."
-            },
             "onBlur": {
                 "type": {
                     "name": "func"
@@ -1663,13 +1653,6 @@
                 "required": false,
                 "description": "Triggered when a mouse arrow hovers"
             },
-            "onMouseLeave": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a mouse arrow no longer hovers"
-            },
             "responsive": {
                 "type": {
                     "name": "bool"
@@ -1720,13 +1703,6 @@
                 },
                 "required": false,
                 "description": "Write \"-1\" if you don't want the user to tab to the button."
-            },
-            "tooltip": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "[Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead."
             },
             "variant": {
                 "type": {
@@ -2918,6 +2894,22 @@
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
             {
+                "name": "getCustomPopoverProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "body",
+                        "type": null
+                    },
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getDialog",
                 "docblock": null,
                 "modifiers": [],
@@ -3027,6 +3019,10 @@
                 "params": [
                     {
                         "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ trigger }",
                         "type": null
                     }
                 ],
@@ -3344,6 +3340,18 @@
                 "returns": null
             },
             {
+                "name": "renderPopover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderReadOnlyMultiple",
                 "docblock": null,
                 "modifiers": [],
@@ -3381,6 +3389,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "popoverLabel": {
+                            "name": "string",
+                            "required": false
+                        },
                         "removeSingleSelectedOption": {
                             "name": "string",
                             "required": false
@@ -3396,7 +3408,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
@@ -3616,9 +3628,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n    cancelButton: 'Cancel',\n    doneButton: `Done`,\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -3738,7 +3750,7 @@
                         }
                     }
                 },
-                "required": true,
+                "required": false,
                 "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
@@ -3772,6 +3784,13 @@
                 },
                 "required": false,
                 "description": "Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._"
+            },
+            "popover": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Combobox's Popover dialog to be a controlled component. _Tested with snapshot testing._"
             },
             "required": {
                 "type": {
@@ -3865,13 +3884,17 @@
                             "computed": false
                         },
                         {
+                            "value": "'popover'",
+                            "computed": false
+                        },
+                        {
                             "value": "'readonly'",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._",
+                "description": "Changes styles of the input and menu. Currently `entity` is not supported.\nThe options are:\n* `base`: An autocomplete Combobox also allows a user to select an option from a list, but that list can be affected by what the user types into the input of the Combobox. The SLDS website used to call the autocomplete Combobox its `base` variant.\n* `inline-listbox`: An Entity Autocomplete Combobox or Lookup, is used to search for and select Salesforce Entities.\n* `popover`: A dialog Combobox is best used when a listbox, tree, grid, or tree-grid is not the best solution. This variant allows custom content.\n* `readonly`: A readonly text input that allows a user to select an option from a pre-defined list of options. It does not allow free form user input, nor does it allow the user to modify the selected value.\n\n _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -8622,11 +8645,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key."
             },
             "dismissOnClickOutside": {
                 "type": {
@@ -10006,6 +10025,24 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
+            "footerClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the `footer` of the popover."
+            },
             "footerWalkthroughActions": {
                 "type": {
                     "name": "union",
@@ -10030,6 +10067,20 @@
                 },
                 "required": false,
                 "description": "Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used."
+            },
+            "hasNoTriggerStyles": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Removes `display:inline-block` from the trigger button."
+            },
+            "hasNoNubbin": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled."
             },
             "heading": {
                 "type": {
@@ -13758,13 +13809,6 @@
                 "returns": null
             },
             {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "getSelectedId",
                 "docblock": null,
                 "modifiers": [],
@@ -13818,27 +13862,6 @@
                 },
                 "required": false,
                 "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
             }
         },
         "route": "vertical-navigation",
