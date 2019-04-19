@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import Spinner from '../../../components/spinner';
-import Button from '../../../components/button';
 
 const COUNTER = 'counter';
 

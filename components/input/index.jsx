@@ -585,7 +585,7 @@ class Input extends React.Component {
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': this.props.errorText
+						'slds-has-error': this.props.errorText,
 					},
 					this.props.className
 				)}

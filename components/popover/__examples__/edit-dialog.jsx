@@ -6,61 +6,61 @@ import Input from '~/components/input'; // `~` is replaced with design-system-re
 import Button from '~/components/button';
 
 class Example extends React.Component {
-    static displayName = 'PopoverExample';
+	static displayName = 'PopoverExample';
 
-    constructor(props) {
-			super(props);
-			const defaultFirstName = 'John';
-			const defaultLastName = 'Smith';
-			this.state = {
-				isOpen: this.props.isOpen,
-				input1: defaultFirstName, // stores firstName in edit input field
-				input2: defaultLastName, // stores lastName in edit input field
-				prevInput1: defaultFirstName,
-				prevInput2: defaultLastName,
-			};
-    }
-		onChange = (inputName) => (event, { value }) => {
-			if (inputName === 'first-name') {
-				this.setState({ input1: value });
-			} else {
-				this.setState({ input2: value });
-			}
+	constructor(props) {
+		super(props);
+		const defaultFirstName = 'John';
+		const defaultLastName = 'Smith';
+		this.state = {
+			isOpen: this.props.isOpen,
+			input1: defaultFirstName, // stores firstName in edit input field
+			input2: defaultLastName, // stores lastName in edit input field
+			prevInput1: defaultFirstName,
+			prevInput2: defaultLastName,
 		};
+	}
+	onChange = (inputName) => (event, { value }) => {
+		if (inputName === 'first-name') {
+			this.setState({ input1: value });
+		} else {
+			this.setState({ input2: value });
+		}
+	};
 
-    handleClose = (event, data) => {
-			if (this.props.log) {
-				this.props.log('onClose')(event, data);
-			}
-		};
+	handleClose = (event, data) => {
+		if (this.props.log) {
+			this.props.log('onClose')(event, data);
+		}
+	};
 
-    handleRequestClose = (event, data) => {
-			if (this.props.log) {
-				this.props.log('handleRequestClose');
-			}
-			this.setState({
-					isOpen: false,
-					input1: this.state.prevInput1,
-					input2: this.state.prevInput2,
-				});
-    };
+	handleRequestClose = (event, data) => {
+		if (this.props.log) {
+			this.props.log('handleRequestClose');
+		}
+		this.setState({
+			isOpen: false,
+			input1: this.state.prevInput1,
+			input2: this.state.prevInput2,
+		});
+	};
 
-    handleSave = (event, data) => {
-			this.setState({
-				prevInput1: this.state.input1,
-				prevInput2: this.state.input2,
-				isOpen: false,
-			});
-		};
+	handleSave = (event, data) => {
+		this.setState({
+			prevInput1: this.state.input1,
+			prevInput2: this.state.input2,
+			isOpen: false,
+		});
+	};
 
-		handleOpen = () => {
-			this.setState({
-				isOpen: true,
-			});
-		};
+	handleOpen = () => {
+		this.setState({
+			isOpen: true,
+		});
+	};
 
 	render() {
-        // Content of EditDialogPopover that is shown when clicking on edit (pencil icon)
+		// Content of EditDialogPopover that is shown when clicking on edit (pencil icon)
 		const editDialogPopoverBody = (
 			<div className="slds-col_padded">
 				<Input

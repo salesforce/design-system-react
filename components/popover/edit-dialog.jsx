@@ -32,7 +32,7 @@ export default class EditDialog extends React.Component {
 		 */
 		onSave: PropTypes.func,
 		/**
-	 	 * Popover of type `~/components/popover`. This popover will be cloned and additional props appended, if passed in.
+		 * Popover of type `~/components/popover`. This popover will be cloned and additional props appended, if passed in.
 		 */
 		popover: PropTypes.node,
 	};
@@ -41,17 +41,21 @@ export default class EditDialog extends React.Component {
 		const { onCancel, onSave, ...restProps } = this.props;
 
 		// trigger button will either be passed in children or defaults to an edit button.
-		const children = this.children ? this.children : <Button
-			assistiveText={{ icon: 'Edit: Status' }}
-			aria-controls={`${this.props.id}-edit-button`}
-			className="slds-button_reset"
-			iconCategory="utility"
-			iconClassName="slds-button__icon slds-button__icon_hint"
-			iconName="edit"
-			onClick={this.props.handleOpen}
-			variant="icon"
-			style={{ verticalAlign: 'middle' }}
-		/>;
+		const children = this.children ? (
+			this.children
+		) : (
+			<Button
+				assistiveText={{ icon: 'Edit: Status' }}
+				aria-controls={`${this.props.id}-edit-button`}
+				className="slds-button_reset"
+				iconCategory="utility"
+				iconClassName="slds-button__icon slds-button__icon_hint"
+				iconName="edit"
+				onClick={this.props.handleOpen}
+				variant="icon"
+				style={{ verticalAlign: 'middle' }}
+			/>
+		);
 
 		return (
 			<Popover
@@ -67,9 +71,11 @@ export default class EditDialog extends React.Component {
 						<Button variant="brand" label="Save" onClick={onSave} />
 					</div>
 				}
-				footerStyle={{borderTop: '0px'}}
+				footerStyle={{ borderTop: '0px' }}
 				{...restProps}
-			>{children}</Popover>
+			>
+				{children}
+			</Popover>
 		);
 	}
 }
