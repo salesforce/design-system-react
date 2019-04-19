@@ -9,6 +9,13 @@ import Dropdown from '../../menu-dropdown';
 
 const displayName = 'Breadcrumbs-Overflow-Menu';
 const propTypes = {
+	/**
+	 * Callback function for selection of the menu item
+	 */
+	onSelect: PropTypes.func,
+	/**
+	 * Array of items to be shown in the dropdown menu
+	 */
 	items: PropTypes.array,
 };
 const defaultProps = {};
@@ -19,9 +26,7 @@ const Menu = (props) => (
 		iconCategory="utility"
 		iconName="threedots"
 		iconVariant="bare"
-		onSelect={(value) => {
-			console.log('selected: ', value);
-		}}
+		onSelect={props.onSelect}
 		options={props.items}
 	/>
 );
