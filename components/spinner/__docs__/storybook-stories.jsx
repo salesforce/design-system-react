@@ -59,6 +59,13 @@ storiesOf(SPINNER, module)
 			containerClassName: 'my-custom-classname',
 		})
 	)
+	.add('Large with 300ms delay', () =>
+		getSpinner({
+			size: 'large',
+			variant: 'base',
+			isDelayed: true,
+		})
+	)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium" style={inverseContainer}>
 			{getStory()}
