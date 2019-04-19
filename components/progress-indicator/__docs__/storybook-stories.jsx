@@ -119,10 +119,10 @@ storiesOf(PROGRESS_INDICATOR, module)
 	.add('VerticalStepError', () => (
 		<StepError
 			id="example-progress-indicator"
-			steps={steps}
-			selectedStep={steps[1]}
-			completedSteps={steps.slice(0, 1)}
-			errorSteps={steps.slice(1, 2)}
+			steps={manySteps}
+			selectedStep={manySteps[1]}
+			completedSteps={manySteps.slice(0, 4)}
+			errorSteps={manySteps.slice(4, 5)}
 			orientation="vertical"
 		/>
 	));
