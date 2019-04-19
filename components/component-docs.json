@@ -775,6 +775,13 @@
                 "required": false,
                 "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
             },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Avatar with initials that are dark text on light background"
+            },
             "label": {
                 "type": {
                     "name": "string"
@@ -1440,11 +1447,19 @@
                             "computed": false
                         },
                         {
+                            "value": "'outline-brand'",
+                            "computed": false
+                        },
+                        {
                             "value": "'destructive'",
                             "computed": false
                         },
                         {
                             "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'text-destructive'",
                             "computed": false
                         },
                         {
@@ -3639,7 +3654,7 @@
                     "computed": false
                 }
             },
-            "menuItem": {
+            "onRenderMenuItem": {
                 "type": {
                     "name": "func"
                 },
@@ -8602,14 +8617,14 @@
                 "required": false,
                 "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
             },
-            "dismissible": {
+            "disableClose": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking on the close icon or pressing esc key.",
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.",
                 "defaultValue": {
-                    "value": "true",
+                    "value": "false",
                     "computed": false
                 }
             },
@@ -8618,7 +8633,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible."
+                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose."
             },
             "onRequestClose": {
                 "type": {
