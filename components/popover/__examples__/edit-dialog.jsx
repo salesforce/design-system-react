@@ -24,7 +24,7 @@ class Example extends React.Component {
 			if (inputName === 'first-name') {
 				this.setState({ input1: value });
 			} else {
-				this.setState({ prevInput2: this.state.input2, input2: value });
+				this.setState({ input2: value });
 			}
 		};
 
@@ -48,6 +48,7 @@ class Example extends React.Component {
     handleSave = (event, data) => {
 			this.setState({
 				prevInput1: this.state.input1,
+				prevInput2: this.state.input2,
 				isOpen: false,
 			});
 		};

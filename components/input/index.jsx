@@ -303,7 +303,7 @@ class Input extends React.Component {
 		/**
 		 * Which UX pattern of input? The default is `base` while other option is `counter`
 		 */
-		variant: PropTypes.oneOf(['base', COUNTER, 'edit-dialog']),
+		variant: PropTypes.oneOf(['base', COUNTER]),
 	};
 
 	static defaultProps = defaultProps;
@@ -330,9 +330,6 @@ class Input extends React.Component {
 	}
 
 	getId = () => this.props.id || this.generatedId;
-
-	getIsStatic = () =>
-		this.props.isStatic || this.props.variant === 'edit-dialog';
 
 	getErrorId = () => this.props['aria-describedby'] || this.generatedErrorId;
 
@@ -564,7 +561,7 @@ class Input extends React.Component {
 			iconLeft = this.getIconRender('left', 'iconLeft');
 		} else if (
 			this.props.variant === COUNTER &&
-			!this.getIsStatic() &&
+			!this.props.isStatic &&
 			!this.props.readOnly
 		) {
 			iconLeft = this.getCounterButtonIcon(DECREMENT);
@@ -577,7 +574,7 @@ class Input extends React.Component {
 			iconRight = this.getIconRender('right', 'iconRight');
 		} else if (
 			this.props.variant === COUNTER &&
-			!this.getIsStatic() &&
+			!this.props.isStatic &&
 			!this.props.readOnly
 		) {
 			iconRight = this.getCounterButtonIcon(INCREMENT);
@@ -588,9 +585,7 @@ class Input extends React.Component {
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': this.props.errorText,
-						'slds-form-element_edit slds-form-element_readonly slds-hint-parent':
-							this.props.variant === 'edit-dialog',
+						'slds-has-error': this.props.errorText
 					},
 					this.props.className
 				)}
@@ -598,10 +593,10 @@ class Input extends React.Component {
 			>
 				<Label
 					assistiveText={assistiveText}
-					htmlFor={this.getIsStatic() ? undefined : this.getId()}
+					htmlFor={this.props.isStatic ? undefined : this.getId()}
 					label={this.props.label}
 					required={this.props.required}
-					variant={this.getIsStatic() ? 'static' : 'base'}
+					variant={this.props.isStatic ? 'static' : 'base'}
 				/>
 				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
 					<FieldLevelHelpTooltip
@@ -639,7 +634,7 @@ class Input extends React.Component {
 					iconRight={iconRight}
 					inlineEditTrigger={this.props.inlineEditTrigger}
 					inlineHelpText={this.props.inlineHelpText}
-					isStatic={this.getIsStatic()}
+					isStatic={this.props.isStatic}
 					minLength={this.props.minLength}
 					minValue={this.props.minValue}
 					maxLength={this.props.maxLength}
@@ -667,8 +662,6 @@ class Input extends React.Component {
 					variant={this.props.variant}
 					step={this.props.step}
 					style={this.props.styleInput}
-					editDialogPopover={this.props.editDialogPopover}
-					onClickEditButton={this.props.onClickEditButton}
 				/>
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">

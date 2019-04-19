@@ -11,7 +11,6 @@ import CounterInput from '../__examples__/counter-input';
 import CounterStaticInput from '../__examples__/counter-static-input';
 import InlineHelpInput from '../__examples__/inline-help';
 import FieldLevelHelpInput from '../__examples__/field-level-help';
-import InlineEditInput from '../__examples__/inline-edit';
 import Default from '../__examples__/default';
 import Error from '../__examples__/error';
 import Icons from '../__examples__/icons';
@@ -298,11 +297,6 @@ storiesOf(INPUT, module)
 		</IconSettings>
 	))
 	.add('Inline Help', () => <InlineHelpInput />)
-	.add('Inline Edit', () => (
-		<IconSettings iconPath="/assets/icons">
-			<InlineEditInput />
-		</IconSettings>
-	))
 	.add('Field Level Help', () => <FieldLevelHelpInput />)
 	.add('Field Level Help, Tooltip Open', () => (
 		<FieldLevelHelpInput tooltipOpen />
