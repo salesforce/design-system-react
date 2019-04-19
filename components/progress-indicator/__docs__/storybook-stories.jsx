@@ -120,7 +120,6 @@ storiesOf(PROGRESS_INDICATOR, module)
 		<StepError
 			id="example-progress-indicator"
 			steps={manySteps}
-			selectedStep={manySteps[1]}
 			completedSteps={manySteps.slice(0, 4)}
 			errorSteps={manySteps.slice(4, 5)}
 			orientation="vertical"

@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 // Child component
 import { PROGRESS_INDICATOR_STEP_VERTICAL } from '../../../utilities/constants';
-import ButtonIcon from '../../icon/button-icon';
+import Icon from '../../icon';
 
 // ### Display Name
 const displayName = PROGRESS_INDICATOR_STEP_VERTICAL;
@@ -44,7 +44,6 @@ const propTypes = {
 	/**
 	 * Determines if the step has been completed
 	 */
-
 	isCompleted: PropTypes.bool,
 	/**
 	 * Determines if the step has been disabled
@@ -59,116 +58,40 @@ const propTypes = {
 	 */
 	isSelected: PropTypes.bool,
 	/**
-	 * Label of tooltip attached to the step if applicable.
-	 */
-	label: PropTypes.node,
-	/**
-	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
-	 * users are able to re-define it by passing a function as a prop
-	 */
-	onClick: PropTypes.func,
-	/**
-	 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
-	 * users are able to re-define it by passing a function as a prop
-	 */
-	onFocus: PropTypes.func,
-	/**
-	 * Determines the orientation of the progress indicator
-	 */
-	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-	/**
 	 * Step object. This is passed into event callbacks.
 	 */
 	step: PropTypes.object,
 };
 
 /**
- * StepVertical renders a button icon and its step label if applied
- * The button is applied with different css classes under different conditions.
- * Button icons have 4 types of status: completed (success), active (in progress), error (warning) and uncompleted (not approached)
+ * StepVertical renders a step icon and its step label if applied
  */
 class StepVertical extends React.Component {
 	/**
-	 * buttonIcon represents the button icon used for each step.
-	 * the button is applied with different css classes under different conditions.
+	 * stepIcon represents the icon used for each step.
 	 */
-	buttonIcon(renderIcon, status, props) {
-		const data = {
-			isSelected: props.isSelected,
-			isError: props.isError,
-			isCompleted: props.isCompleted,
-			isDisabled: props.isDisabled,
-			step: props.step,
-		};
-
+	stepIcon = (renderIcon) => {
 		const icon = renderIcon ? (
-			<ButtonIcon
+			<Icon
 				category="utility"
+				size="x-small"
 				name={this.props.isError ? 'error' : 'success'}
 			/>
 		) : null;
 
-		const handleClick = (event) => props.onClick(event, data);
-		const handleFocus = (event) => props.onFocus(event, data);
-
-		const stepButton = props.isDisabled ? (
-			<a
-				className={classNames(
-					'slds-button',
-					{ 'slds-button_icon': renderIcon },
-					'slds-progress__marker',
-					{ 'slds-progress__marker_icon': renderIcon }
-				)}
-				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
-					this.props.index}`}
-				tabIndex={0}
-				role="button"
+		return (
+			<span
+				className={classNames('slds-progress__marker', {
+					'slds-progress__marker_icon': renderIcon,
+				})}
 			>
 				{icon}
-				<span className="slds-assistive-text">
-					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${
-							props.step.label
-						} - ${status}`}
-				</span>
-			</a>
-		) : (
-			<button
-				className={classNames(
-					'slds-button',
-					{ 'slds-button_icon': renderIcon },
-					'slds-progress__marker',
-					{ 'slds-progress__marker_icon': renderIcon }
-				)}
-				onClick={handleClick}
-				onFocus={handleFocus}
-				aria-describedby={`progress-indicator-vertical-label-${this.props.step
-					.id || this.props.index}`}
-				aria-current={this.props.isSelected ? 'step' : null}
-			>
-				{icon}
-				<span className="slds-assistive-text">
-					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${
-							props.step.label
-						}${status ? ` - ${status}` : ''}`}
-				</span>
-			</button>
+			</span>
 		);
-
-		return stepButton;
-	}
+	};
 
 	render() {
 		const renderIcon = this.props.isCompleted || this.props.isError;
-		let status = '';
-		if (this.props.isError) {
-			status = this.props.assistiveText.errorStep;
-		} else if (this.props.isCompleted) {
-			status = this.props.assistiveText.completedStep;
-		} else if (this.props.isDisabled) {
-			status = this.props.assistiveText.disabledStep;
-		}
 
 		return (
 			<li
@@ -178,7 +101,7 @@ class StepVertical extends React.Component {
 					'slds-has-error': this.props.isError,
 				})}
 			>
-				{this.buttonIcon(renderIcon, status, this.props)}
+				{this.stepIcon(renderIcon)}
 				<div
 					id={`progress-indicator-vertical-label-${this.props.step.id ||
 						this.props.index}`}
