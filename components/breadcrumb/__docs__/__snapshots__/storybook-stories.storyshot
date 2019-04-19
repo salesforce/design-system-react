@@ -76,7 +76,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
       >
         <div
           className="slds-dropdown-trigger slds-dropdown-trigger_click"
-          id="SJ9t6IEv54"
+          id="ADFA34_-dropdown"
           onClick={[Function]}
           onFocus={null}
           onKeyDown={[Function]}
@@ -86,7 +86,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
           <button
             aria-expanded={false}
             aria-haspopup={true}
-            className="slds-button slds-button_neutral slds-button_icon-bare ignore-click-SJ9t6IEv54"
+            className="slds-button slds-button_neutral slds-button_icon-bare ignore-click-ADFA34_-dropdown"
             disabled={false}
             onClick={[Function]}
             tabIndex="0"

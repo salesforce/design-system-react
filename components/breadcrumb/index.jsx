@@ -58,7 +58,7 @@ const Breadcrumb = (props) => {
 			<ol className="slds-breadcrumb slds-list_horizontal">
 				{menuTrail.length > 0 && (
 					<li className="slds-breadcrumb__item" key="menu">
-						<Menu items={menuTrail} />
+						<Menu items={menuTrail} id={props.id} />
 					</li>
 				)}
 				{trail.map((crumb, index) => (
@@ -86,6 +86,10 @@ Breadcrumb.propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 	}),
+	/**
+	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	 */
+	id: PropTypes.string,
 	/**
 	 * Index of the parent entity, before which there is an overflow menu
 	 */

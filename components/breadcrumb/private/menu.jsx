@@ -21,6 +21,7 @@ const propTypes = {
 const defaultProps = {};
 const Menu = (props) => (
 	<Dropdown
+		id={`${props.id}-dropdown`}
 		assistiveText={{ icon: 'Show More' }}
 		threedots
 		iconCategory="utility"

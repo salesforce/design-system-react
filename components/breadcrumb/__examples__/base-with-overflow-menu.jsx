@@ -18,6 +18,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<BreadCrumb
+					id="ADFA34_"
 					assistiveText={{ label: 'Breadcrumb with overflow menu' }}
 					parentIndex={3}
 					trail={trail}
