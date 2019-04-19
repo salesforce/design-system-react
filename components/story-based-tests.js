@@ -39,7 +39,9 @@ export MediaObject from '../components/media-object/__docs__/storybook-stories';
 export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
 export PillContainer from '../components/pill-container/__docs__/storybook-stories';
+export Popover from '../components/popover/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
+export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
@@ -65,8 +67,6 @@ export Tree from '../components/tree/__docs__/storybook-stories';
 // export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 // export Modal from '../components/modal/__docs__/storybook-stories';
 // export Panel from '../components/panel/__docs__/storybook-stories';
-export Popover from '../components/popover/__docs__/storybook-stories';
-// export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export TimePicker from '../components/time-picker/__docs__/storybook-stories';
 
 // DEPRECATED

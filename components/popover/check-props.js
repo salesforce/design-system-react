@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 					COMPONENT,
 					props,
 					'children[0]',
-					['SLDSButton', 'a', 'button'],
+					['SLDSButton', 'a', 'button', 'SLDSInnerInput'],
 					` Multiple children of any kind are allowed, but the first child must serve as the trigger component. ${createDocUrl()}`,
 					props.children[0]
 				);
