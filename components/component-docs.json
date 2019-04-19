@@ -7306,108 +7306,6 @@
         "SLDS-component-path": "/components/icons",
         "dependencies": []
     },
-    "icon-settings": {
-        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
-        "methods": [],
-        "props": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the root icon folder\nexample: `/assets/icons`"
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN. `({category, name}) => { return \\`#${name}\\` }`"
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
-            }
-        },
-        "childContext": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
-        "route": "icon-settings",
-        "display-name": "Icon Settings",
-        "dependencies": []
-    },
     "illustration": {
         "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
         "methods": [],
@@ -13695,6 +13593,24 @@
                     "value": "<span>Tooltip</span>",
                     "computed": false
                 }
+            },
+            "dialogClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it."
             },
             "hasStaticAlignment": {
                 "type": {

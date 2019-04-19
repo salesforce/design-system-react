@@ -484,12 +484,6 @@
 			"url-slug": "icons"
 		},
 		{
-			"component": "icon-settings",
-			"status": "prod",
-			"display-name": "Icon Settings",
-			"url-slug": "icon-settings"
-		},
-		{
 			"component": "illustration",
 			"status": "prod",
 			"display-name": "Illustrations",
