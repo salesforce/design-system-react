@@ -10685,6 +10685,27 @@
                 "required": false,
                 "description": "HTML id for component."
             },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the orientation of the progress indicator",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
+            },
             "onStepClick": {
                 "type": {
                     "name": "func"
