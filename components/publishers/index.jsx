@@ -3,6 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 
 import ClassNames from 'classnames';
 
@@ -17,10 +18,25 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 const propTypes = {
+	/**
+	 * Function callback on click of onAddUser button
+	 */
 	onAddUser: PropTypes.func,
+	/**
+	 * Function callback on click of onAttach button
+	 */
 	onAttach: PropTypes.func,
+	/**
+	 * Function callback on change of textarea content
+	 */
 	onChange: PropTypes.func.isRequired,
+	/**
+	 * Function callback on click of submit button
+	 */
 	onSubmit: PropTypes.func.isRequired,
+	/**
+	 * Placeholder of the text area
+	 */
 	placeholder: PropTypes.string,
 	/**
 	 * This label appears above the text area
@@ -48,6 +64,7 @@ class Publisher extends React.Component {
 
 	componentWillMount() {
 		checkProps(PUBLISHER, componentDoc);
+		this.generatedId = this.props.id || shortid.generate();
 	}
 
 	getWrapper = (children) => {
@@ -68,8 +85,7 @@ class Publisher extends React.Component {
 	};
 
 	render() {
-		const isActive = this.state.isActive;
-		const hasFocus = this.state.hasFocus;
+		const { hasFocus, isActive } = this.state;
 		const placeholder = this.props.placeholder || 'Write a comment...';
 		const { variant } = this.props;
 		return this.getWrapper(
@@ -82,7 +98,7 @@ class Publisher extends React.Component {
 			>
 				{variant === 'base' && (
 					<label
-						htmlFor="comment-text-input2"
+						htmlFor={`textarea-${this.generatedId}`}
 						className="slds-publisher__toggle-visibility slds-m-bottom_small"
 					>
 						<span className="slds-assistive-text">Write a comment</span>
@@ -90,7 +106,7 @@ class Publisher extends React.Component {
 					</label>
 				)}
 				<textarea
-					id="comment-text-input2"
+					id={`textarea-${this.generatedId}`}
 					className={ClassNames('slds-publisher__input', 'slds-text-longform', {
 						'slds-textarea': variant === 'base',
 						'slds-input_bare': variant === 'comment',
