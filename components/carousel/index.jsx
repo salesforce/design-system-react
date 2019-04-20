@@ -30,6 +30,10 @@ import AutoPlayButton from './private/auto-play-button';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 // ### Default Props
@@ -140,6 +144,7 @@ class Carousel extends React.Component {
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
+		checkProps(CAROUSEL, componentDoc);
 	}
 
 	componentDidMount() {
