@@ -11,16 +11,16 @@ class Example extends React.Component {
 				}}
 			>
 				<span>Thickness: x-small</span>
-				<ProgressBar value={90} thickness="x-small" />
+				<ProgressBar value={90} id="progress-bar-x-small" thickness="x-small" />
 				<hr />
 				<span>Thickness: small</span>
-				<ProgressBar value={75} thickness="small" />
+				<ProgressBar value={75} id="progress-bar-small" thickness="small" />
 				<hr />
 				<span>Thickness: medium</span>
-				<ProgressBar value={50} thickness="medium" />
+				<ProgressBar value={50} id="progress-bar-medium" thickness="medium" />
 				<hr />
 				<span>Thickness: large</span>
-				<ProgressBar value={25} thickness="large" />
+				<ProgressBar value={25} id="progress-bar-large" thickness="large" />
 			</div>
 		);
 	}

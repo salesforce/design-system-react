@@ -11,7 +11,7 @@ class Example extends React.Component {
 				}}
 			>
 				<span>Color: success</span>
-				<ProgressBar value={75} color="success" />
+				<ProgressBar id="progress-bar-success" value={75} color="success" />
 			</div>
 		);
 	}

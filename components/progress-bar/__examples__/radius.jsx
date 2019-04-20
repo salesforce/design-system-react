@@ -11,7 +11,7 @@ class Example extends React.Component {
 				}}
 			>
 				<span>Radius: circular</span>
-				<ProgressBar value={75} radius="circular" />
+				<ProgressBar id="progress-bar-circular" value={75} radius="circular" />
 			</div>
 		);
 	}

@@ -10,7 +10,7 @@ class Example extends React.Component {
 					background: 'rgb(244, 246, 249)',
 				}}
 			>
-				<ProgressBar value={75} />
+				<ProgressBar id="progress-bar" value={75} />
 			</div>
 		);
 	}

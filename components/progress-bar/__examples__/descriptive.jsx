@@ -10,7 +10,11 @@ class Example extends React.Component {
 					background: 'rgb(244, 246, 249)',
 				}}
 			>
-				<ProgressBar value={90} label="Einstein Setup Assistant" />
+				<ProgressBar
+					id="setup-progress-bar"
+					value={90}
+					label="Einstein Setup Assistant"
+				/>
 			</div>
 		);
 	}
