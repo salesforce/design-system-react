@@ -1,0 +1,7 @@
+{
+  "component": "file",
+  "status": "prod",
+  "display-name": "Files",
+  "SLDS-component-path": "/components/files",
+  "url-slug": "files"
+}
