@@ -146,6 +146,14 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
+		 * CSS classes to be added to the `footer` of the popover.
+		 */
+		footerClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
 		 * Used with `walkthrough` variant to provide action buttons (ex: "Next" / "Skip" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons.
 		 */
 		footerWalkthroughActions: PropTypes.oneOfType([
@@ -164,6 +172,10 @@ class Popover extends React.Component {
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
+		/**
+		 * Removes `display:inline-block` from the trigger button.
+		 */
+		hasNoTriggerStyles: PropTypes.bool,
 		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant="walkthrough-action"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		 */
@@ -598,7 +610,14 @@ class Popover extends React.Component {
 
 		if (props.footer) {
 			footer = (
-				<footer className="slds-popover__footer">{this.props.footer}</footer>
+				<footer
+					className={classNames(
+						'slds-popover__footer',
+						this.props.footerClassName
+					)}
+				>
+					{this.props.footer}
+				</footer>
 			);
 		} else if (
 			props.variant !== 'walkthrough-action' &&
@@ -747,8 +766,9 @@ class Popover extends React.Component {
 		});
 
 		this.renderOverlay(this.getIsOpen());
-
-		const containerStyles = { display: 'inline-block' };
+		const containerStyles = {
+			display: this.props.hasNoTriggerStyles ? undefined : 'inline-block',
+		};
 		return (
 			<div
 				className={this.props.triggerClassName}
