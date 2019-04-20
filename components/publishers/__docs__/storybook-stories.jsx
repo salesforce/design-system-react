@@ -7,7 +7,7 @@ import { storiesOf } from '@storybook/react';
 import IconSettings from '~/components/icon-settings';
 import Default from '../__examples__/default';
 
-import { PUBLISHER } from '../../../utilities/constants';
+import { PUBLISHERS } from '../../../utilities/constants';
 
 class PublisherExample extends React.Component {
 	render() {
@@ -18,12 +18,13 @@ class PublisherExample extends React.Component {
 		);
 	}
 }
-storiesOf(PUBLISHER, module)
+storiesOf(PUBLISHERS, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => (
 		<PublisherExample
+			id="AAA111"
 			label="To: My followers"
 			placeholder="Write something..."
 			onChange={() => {}}
@@ -32,6 +33,7 @@ storiesOf(PUBLISHER, module)
 	))
 	.add('Comment', () => (
 		<PublisherExample
+			id="AAA2211"
 			variant="comment"
 			placeholder="Write a comment.."
 			onChange={() => {}}

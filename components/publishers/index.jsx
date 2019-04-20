@@ -7,7 +7,7 @@ import shortid from 'shortid';
 
 import ClassNames from 'classnames';
 
-import { PUBLISHER } from '../../utilities/constants';
+import { PUBLISHERS } from '../../utilities/constants';
 
 import Avatar from '../avatar';
 import MediaObject from '../media-object';
@@ -18,6 +18,10 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 const propTypes = {
+	/**
+	 * Unique ID for the component to enable ARIA functioning and keyboard interactions
+	 */
+	id: PropTypes.string,
 	/**
 	 * Function callback on click of onAddUser button
 	 */
@@ -63,7 +67,7 @@ class Publisher extends React.Component {
 	}
 
 	componentWillMount() {
-		checkProps(PUBLISHER, componentDoc);
+		checkProps(PUBLISHERS, componentDoc);
 		this.generatedId = this.props.id || shortid.generate();
 	}
 
@@ -156,7 +160,7 @@ class Publisher extends React.Component {
 	}
 }
 
-Publisher.displayName = PUBLISHER;
+Publisher.displayName = PUBLISHERS;
 Publisher.propTypes = propTypes;
 Publisher.defaultProps = defaultProps;
 

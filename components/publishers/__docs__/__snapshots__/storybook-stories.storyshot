@@ -9,7 +9,7 @@ exports[`DOM snapshots SLDSPublishers Base 1`] = `
   >
     <label
       className="slds-publisher__toggle-visibility slds-m-bottom_small"
-      htmlFor="textarea-HJOmeqFfIOcN"
+      htmlFor="textarea-AAA111"
     >
       <span
         className="slds-assistive-text"
@@ -20,7 +20,7 @@ exports[`DOM snapshots SLDSPublishers Base 1`] = `
     </label>
     <textarea
       className="slds-publisher__input slds-text-longform slds-textarea"
-      id="textarea-HJOmeqFfIOcN"
+      id="textarea-AAA111"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -136,7 +136,7 @@ exports[`DOM snapshots SLDSPublishers Comment 1`] = `
       >
         <textarea
           className="slds-publisher__input slds-text-longform slds-input_bare"
-          id="textarea-r1YXg9FMU_5N"
+          id="textarea-AAA2211"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
