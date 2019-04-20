@@ -1,7 +1,7 @@
 {
-	"component": "publisher",
-	"status": "dev",
-	"display-name": "Publisher",
-	"SLDS-component-path": "/components/publisher/",
-	"url-slug": "publisher"
+	"component": "publishers",
+	"status": "prototype",
+	"display-name": "Publishers",
+	"SLDS-component-path": "/components/publishers/",
+	"url-slug": "publishers"
 }

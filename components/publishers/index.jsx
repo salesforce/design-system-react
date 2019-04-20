@@ -12,6 +12,10 @@ import Avatar from '../avatar';
 import MediaObject from '../media-object';
 import Button from '../button';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 const propTypes = {
 	onAddUser: PropTypes.func,
 	onAttach: PropTypes.func,
@@ -40,6 +44,10 @@ class Publisher extends React.Component {
 			hasFocus: false,
 			disabled: true,
 		};
+	}
+
+	componentWillMount() {
+		checkProps(PUBLISHER, componentDoc);
 	}
 
 	getWrapper = (children) => {
