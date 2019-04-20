@@ -59,6 +59,9 @@ export CardEmpty from './card/empty';
 export SLDSCardFilter from './card/filter';
 export CardFilter from './card/filter';
 
+export SLDSCarousel from './carousel';
+export Carousel from './carousel';
+
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 

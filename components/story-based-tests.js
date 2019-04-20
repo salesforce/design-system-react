@@ -25,6 +25,7 @@ export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
 export Card from '../components/card/__docs__/storybook-stories';
+export Carousel from '../components/carousel/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
@@ -39,8 +40,10 @@ export MediaObject from '../components/media-object/__docs__/storybook-stories';
 export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
 export PillContainer from '../components/pill-container/__docs__/storybook-stories';
+export Popover from '../components/popover/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 export Publishers from '../components/publishers/__docs__/storybook-stories';
+export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
@@ -50,7 +53,7 @@ export Publishers from '../components/publishers/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';
 // export Textarea from '../components/textarea/__docs__/storybook-stories';
 // export Toast from '../components/toast/__docs__/storybook-stories';
-// export Tooltip from '../components/tooltip/__docs__/storybook-stories';
+export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
 
@@ -66,8 +69,6 @@ export Tree from '../components/tree/__docs__/storybook-stories';
 // export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 // export Modal from '../components/modal/__docs__/storybook-stories';
 // export Panel from '../components/panel/__docs__/storybook-stories';
-export Popover from '../components/popover/__docs__/storybook-stories';
-// export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export TimePicker from '../components/time-picker/__docs__/storybook-stories';
 
 // DEPRECATED
