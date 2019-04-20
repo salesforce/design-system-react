@@ -40,6 +40,7 @@ export PageHeader from '../components/page-header/__docs__/storybook-stories';
 // export Pill from '../components/pill/__docs__/storybook-stories';
 export PillContainer from '../components/pill-container/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
+export Publishers from '../components/publishers/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
