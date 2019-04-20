@@ -8,7 +8,11 @@ class Example extends React.Component {
 		return (
 			<div style={{ position: 'relative', height: '5rem' }}>
 				<div style={{ width: '20rem' }}>
-					<Files title="Image Title" type="image" onClick="javascript:void(0);" />
+					<Files
+						title="Image Title"
+						type="image"
+						onClick="javascript:void(0);"
+					/>
 				</div>
 			</div>
 		);

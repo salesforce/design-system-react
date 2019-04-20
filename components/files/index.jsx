@@ -16,7 +16,6 @@ import Icon from '~/components/icon';
 import shortid from 'shortid';
 import { FILES } from '../../utilities/constants';
 
-
 import FileFigure from './private/file-figure';
 import FileActions from './private/file-actions';
 
@@ -48,7 +47,7 @@ const propTypes = {
 	 */
 	downloadLink: PropTypes.PropTypes.oneOfType([
 		PropTypes.string,
-		PropTypes.node
+		PropTypes.node,
 	]),
 	/**
 	 *  Link to External Icon
@@ -65,10 +64,7 @@ const propTypes = {
 	/**
 	 *  Action to be taken on clicking on image
 	 */
-	onClick: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.node
-	]),
+	onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
 	 *  Title for the File
 	 */
@@ -77,12 +73,11 @@ const propTypes = {
 	 *  Type of the File; shows icon according to matching SLDS Doctype Icon
 	 */
 	type: PropTypes.string,
-
 };
 
 const defaultProps = {
-		isLoading: false,
-		type: 'unknown'
+	isLoading: false,
+	type: 'unknown',
 };
 
 /**
@@ -100,7 +95,7 @@ class Files extends React.Component {
 	}
 
 	render() {
-		return(
+		return (
 			<IconSettings iconPath="/assets/icons">
 				<div
 					id={this.getId()}
@@ -113,39 +108,47 @@ class Files extends React.Component {
 					<figure>
 						<a href={this.props.onClick} className="slds-file__crop">
 							<FileFigure
-									isLoading={this.props.isLoading}
-									image={this.props.image}
-									onClick={this.props.onClick}
-									title={this.props.title}
-									type={this.props.type}
+								isLoading={this.props.isLoading}
+								image={this.props.image}
+								onClick={this.props.onClick}
+								title={this.props.title}
+								type={this.props.type}
 							/>
 						</a>
-					{ this.props.title ?
-						<figcaption className="slds-file__title slds-file__title_card">
-							<div className="slds-media__figure slds-line-height_reset">
-							<span className="slds-icon_container" title="pdf">
-								<Icon
-									assistiveText={{ label: this.props.type }}
-									category="doctype"
-									name={this.props.type}
-									size="x-small"
-								/>
-								<span className="slds-assistive-text">{this.props.type}</span>
-							</span>
-							</div>
-							<div className="slds-media__body">
-								<span className="slds-file__text slds-truncate" title={this.props.title}>{this.props.title}</span>
-							</div>
-						</figcaption>
-						: null
-					}
+						{this.props.title ? (
+							<figcaption className="slds-file__title slds-file__title_card">
+								<div className="slds-media__figure slds-line-height_reset">
+									<span className="slds-icon_container" title="pdf">
+										<Icon
+											assistiveText={{ label: this.props.type }}
+											category="doctype"
+											name={this.props.type}
+											size="x-small"
+										/>
+										<span className="slds-assistive-text">
+											{this.props.type}
+										</span>
+									</span>
+								</div>
+								<div className="slds-media__body">
+									<span
+										className="slds-file__text slds-truncate"
+										title={this.props.title}
+									>
+										{this.props.title}
+									</span>
+								</div>
+							</figcaption>
+						) : null}
 					</figure>
-					<FileActions downloadLink={this.props.downloadLink} title={this.props.title} />
+					<FileActions
+						downloadLink={this.props.downloadLink}
+						title={this.props.title}
+					/>
 				</div>
 			</IconSettings>
 		);
 	}
-
 }
 
 Files.displayName = displayName;

@@ -16,31 +16,36 @@ import { FILES_FIGURE } from '../../../utilities/constants';
  */
 const FileFigure = (props) => {
 	if (props.isLoading) {
-		return(<div role="status" className="slds-spinner slds-spinner_medium">
-			<span className="slds-assistive-text">Loading</span>
-			<div className="slds-spinner__dot-a"/>
-			<div className="slds-spinner__dot-b"/>
-		</div>);
+		return (
+			<div role="status" className="slds-spinner slds-spinner_medium">
+				<span className="slds-assistive-text">Loading</span>
+				<div className="slds-spinner__dot-a" />
+				<div className="slds-spinner__dot-b" />
+			</div>
+		);
 	} else if (props.image) {
-		return(<React.Fragment>
-			<span className="slds-assistive-text">Preview:</span>
-			<img
-				src={props.image}
-				alt={props.title || props.type}
-			/>
-		</React.Fragment>);
+		return (
+			<React.Fragment>
+				<span className="slds-assistive-text">Preview:</span>
+				<img src={props.image} alt={props.title || props.type} />
+			</React.Fragment>
+		);
 	}
-	return(<React.Fragment>
-		<span className="slds-assistive-text">Preview:</span>
-		<span className="slds-file__icon slds-icon_container" title={ props.title || props.type } >
-			<Icon
-				assistiveText={{ label: props.title || props.type }}
-				category="doctype"
-				name={props.type}
-			/>
-		</span>
-	</React.Fragment>);
-
+	return (
+		<React.Fragment>
+			<span className="slds-assistive-text">Preview:</span>
+			<span
+				className="slds-file__icon slds-icon_container"
+				title={props.title || props.type}
+			>
+				<Icon
+					assistiveText={{ label: props.title || props.type }}
+					category="doctype"
+					name={props.type}
+				/>
+			</span>
+		</React.Fragment>
+	);
 };
 
 FileFigure.displayName = FILES_FIGURE;
@@ -48,17 +53,14 @@ FileFigure.displayName = FILES_FIGURE;
 FileFigure.propTypes = {
 	isLoading: PropTypes.bool,
 	image: PropTypes.string,
-	onClick: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.node
-	]),
+	onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	type: PropTypes.string,
 	title: PropTypes.string,
 };
 
 FileFigure.defaultProps = {
 	isLoading: false,
-	type: 'unknown'
+	type: 'unknown',
 };
 
 export default FileFigure;

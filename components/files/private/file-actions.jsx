@@ -27,12 +27,12 @@ const FileActions = (props) => {
 						'slds-button_icon',
 						'slds-button_icon-x-small',
 						props.title ? null : 'slds-button_icon-inverse'
-					)
-					}
+					)}
 					href={props.downloadLink}
-					title="Download">
+					title="Download"
+				>
 					<Icon
-						assistiveText={{ label: "download" }}
+						assistiveText={{ label: 'download' }}
 						category="utility"
 						name="download"
 						size="xx-small"
@@ -43,14 +43,13 @@ const FileActions = (props) => {
 			</div>
 		</div>
 	);
-	if(props.downloadLink)
-	{
-		if(props.title) {
-			return (actions);
+	if (props.downloadLink) {
+		if (props.title) {
+			return actions;
 		}
-		return(<div className="slds-file__title slds-file__title_scrim">
-			{actions}
-		</div>);
+		return (
+			<div className="slds-file__title slds-file__title_scrim">{actions}</div>
+		);
 	}
 	return null;
 };
@@ -63,7 +62,7 @@ FileActions.propTypes = {
 	 */
 	downloadLink: PropTypes.PropTypes.oneOfType([
 		PropTypes.string,
-		PropTypes.node
+		PropTypes.node,
 	]),
 	/**
 	 *  Title for the File
