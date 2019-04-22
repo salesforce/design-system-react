@@ -496,7 +496,11 @@ class MenuDropdown extends React.Component {
 	};
 
 	setFocus = () => {
-		if (!this.isHover && !this.isUnmounting && this.trigger) {
+		if (
+			(!this.isHover || this.props.openOn === 'hover') &&
+			!this.isUnmounting &&
+			this.trigger
+		) {
 			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
 		}
 	};
@@ -615,6 +619,7 @@ class MenuDropdown extends React.Component {
 
 		if (!isOpen && this.props.openOn === 'hover') {
 			this.handleOpen();
+			this.setFocus();
 		} else {
 			// we want this clear when openOn is hover or hybrid
 			clearTimeout(this.isClosing);
