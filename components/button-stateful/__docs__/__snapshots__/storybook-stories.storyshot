@@ -198,7 +198,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Text Button 1`] = `
       className="slds-m-horizontal_small"
       style={
         Object {
-          "backgroundColor": "#16325c",
+          "backgroundColor": "#ededed",
           "display": "inline-block",
           "padding": "10px",
         }
