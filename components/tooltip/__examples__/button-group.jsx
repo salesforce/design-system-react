@@ -12,7 +12,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<ButtonGroup className="slds-p-bottom_medium">
+				<ButtonGroup className="slds-p-bottom_medium" variant="list">
 					<Tooltip
 						id="refresh-tooltip"
 						align="bottom"
