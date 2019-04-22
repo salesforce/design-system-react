@@ -1941,11 +1941,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
     }
   }
 >
-  <div
-    className="slds-button-group slds-p-bottom_medium"
+  <ul
+    className="slds-button-group-list slds-p-bottom_medium"
     role="group"
   >
-    <div
+    <li
       className="slds-tooltip-trigger"
       style={
         Object {
@@ -1968,8 +1968,8 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         Refresh
       </button>
       <span />
-    </div>
-    <div
+    </li>
+    <li
       className="slds-tooltip-trigger"
       style={
         Object {
@@ -1992,41 +1992,52 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         Edit
       </button>
       <span />
-    </div>
-    <div
-      className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-      id="options"
-      onClick={[Function]}
-      onFocus={null}
-      onKeyDown={[Function]}
-      onMouseEnter={null}
-      onMouseLeave={null}
+    </li>
+    <li
+      className="slds-tooltip-trigger slds-button_last"
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
     >
-      <button
-        aria-expanded={false}
-        aria-haspopup={true}
-        className="slds-button slds-button_icon-border-filled ignore-click-options"
-        disabled={false}
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="options"
+        onBlur={[Function]}
         onClick={[Function]}
-        tabIndex="0"
-        type="button"
+        onFocus={null}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
       >
-        <svg
-          aria-hidden="true"
-          className="slds-button__icon"
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-options"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
         >
-          <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-          />
-        </svg>
-        <span
-          className="slds-assistive-text"
-        >
-          More Options
-        </span>
-      </button>
-    </div>
-  </div>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            More Options
+          </span>
+        </button>
+      </div>
+      <span />
+    </li>
+  </ul>
 </div>
 `;
 
