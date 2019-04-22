@@ -127,7 +127,7 @@ const propTypes = {
 	/**
 	 * Determines the type of the tooltip.
 	 */
-	variant: PropTypes.oneOf(['base', 'learnMore']),
+	variant: PropTypes.oneOf(['base', 'learnMore', 'list-item']),
 };
 
 const defaultProps = {
@@ -329,6 +329,22 @@ class Tooltip extends React.Component {
 			display: 'inline-block',
 			...this.props.triggerStyle,
 		};
+
+		if (this.props.variant === 'list-item') {
+			return (
+				<li
+					className={classNames(
+						'slds-tooltip-trigger',
+						this.props.triggerClassName
+					)}
+					style={containerStyles}
+					ref={this.saveTriggerRef}
+				>
+					{this.getContent()}
+					{this.getTooltip()}
+				</li>
+			);
+		}
 
 		return (
 			<div
