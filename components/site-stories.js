@@ -55,6 +55,7 @@ const documentationSiteLiveExamples = {
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
 	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
 	'vertical-navigation': require('@salesforce/design-system-react/components/vertical-navigation/__docs__/site-stories.js'),
+	'welcome-mat': require('@salesforce/design-system-react/components/welcome-mat/__docs__/site-stories.js'),
 };
 
 module.exports = documentationSiteLiveExamples;

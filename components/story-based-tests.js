@@ -3,7 +3,7 @@
  *
  * Please add stories below to use Storybook Stories (http://localhost:9001)
  * as the basis for DOM and image snapshots to allow markup and visual
- *  regression testing. All new components should be added below to enable 
+ *  regression testing. All new components should be added below to enable
  * DOM and image snapshots. With enough Storybook story examples, these two
  * methods should be significant to fully test components with the exception
  * of callback testing. Please test callback props with the Mocha framework
@@ -55,6 +55,7 @@ export Spinner from '../components/spinner/__docs__/storybook-stories';
 export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
+export WelcomeMat from '../components/welcome-mat/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because they
