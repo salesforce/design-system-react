@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.2
+
+**Bugfixes**
+
+* `Carousel`: `Button` import path was incorrect. Resulting in a `Error: Can't resolve '../../../../components/button'` message
+
 ## Release 0.10.1
 
 **Bugfixes**
