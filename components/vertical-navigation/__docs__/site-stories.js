@@ -5,7 +5,6 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/default.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/shade.jsx'),
 ];
 
 module.exports = siteStories;

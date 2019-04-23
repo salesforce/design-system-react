@@ -241,7 +241,7 @@ storiesOf(MODAL, module)
 	)
 	.add('Small with footer, not dismissible', () =>
 		getModal({
-			dismissible: false,
+			disableClose: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
 			title: 'New Opportunity',

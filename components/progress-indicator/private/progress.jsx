@@ -39,6 +39,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string.isRequired,
 	/**
+	 * Determines the orientation of the progress indicator
+	 */
+	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+	/**
 	 * Percentage of progress completion, ranging [0, 100]
 	 */
 	value: PropTypes.string.isRequired,
@@ -66,14 +70,18 @@ class Progress extends React.Component {
 				className={classNames(
 					'slds-progress',
 					{ 'slds-progress_shade': this.props.variant === 'modal' },
+					{ 'slds-progress_vertical': this.props.orientation === 'vertical' },
 					this.props.className
 				)}
 			>
 				<ol className="slds-progress__list">{this.props.children}</ol>
-				<ProgressBar
-					value={this.props.value}
-					assistiveText={this.props.assistiveText}
-				/>
+				{this.props.orientation !== 'vertical' && (
+					<ProgressBar
+						value={this.props.value}
+						orientation={this.props.orientation}
+						assistiveText={this.props.assistiveText}
+					/>
+				)}
 			</div>
 		);
 	}
