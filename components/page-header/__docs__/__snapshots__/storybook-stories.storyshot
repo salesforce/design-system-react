@@ -211,7 +211,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
             >
               <div>
                 <p
-                  className="slds-text-title_caps slds-line-height_reset"
+                  className="slds-line-height_reset"
                 >
                   Record Type
                 </p>
@@ -711,7 +711,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
             >
               <div>
                 <p
-                  className="slds-text-title_caps slds-line-height_reset"
+                  className="slds-line-height_reset"
                 >
                   Leads
                 </p>
@@ -1059,7 +1059,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (field updates) 1`] = `
               >
                 <div>
                   <p
-                    className="slds-text-title_caps slds-line-height_reset"
+                    className="slds-line-height_reset"
                   >
                     Record Type
                   </p>
@@ -1177,7 +1177,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
             >
               <div>
                 <p
-                  className="slds-text-title_caps slds-line-height_reset"
+                  className="slds-line-height_reset"
                 >
                   Record Type
                 </p>
