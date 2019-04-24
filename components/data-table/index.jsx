@@ -221,7 +221,8 @@ class DataTable extends React.Component {
 			// Currently selected cell
 			activeCell: {
 				rowIndex: 1,
-				columnIndex: this.props.selectRows && count(this.props.selection) > 0 ? 1 : 0
+				columnIndex:
+					this.props.selectRows && count(this.props.selection) > 0 ? 1 : 0,
 			},
 			// Interactive element within a cell that receives focus while in actionable mode
 			activeElement: null,
@@ -231,14 +232,16 @@ class DataTable extends React.Component {
 			tableHasFocus: false,
 			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
 			// when another component requires its own focus behavior (e.g. menu dropdown).
-			allowKeyboardNavigation: true
-		}
+			allowKeyboardNavigation: true,
+		};
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};
 		this.changeActiveCell = this.changeActiveCell.bind(this);
 		this.changeActiveElement = this.changeActiveElement.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.registerInteractiveElement = this.registerInteractiveElement.bind(this);
+		this.registerInteractiveElement = this.registerInteractiveElement.bind(
+			this
+		);
 	}
 
 	componentWillMount() {
@@ -253,9 +256,12 @@ class DataTable extends React.Component {
 		}
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps) {
 		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
+		}
+		if (this.props.items !== prevProps.items) {
+			this.interactiveElements = {};
 		}
 	}
 
@@ -268,7 +274,11 @@ class DataTable extends React.Component {
 	}
 
 	getFirstInteractiveElement(rowIndex, columnIndex) {
-		if (this.state.mode === Mode.ACTIONABLE && this.interactiveElements[rowIndex] && this.interactiveElements[rowIndex][columnIndex]) {
+		if (
+			this.state.mode === Mode.ACTIONABLE &&
+			this.interactiveElements[rowIndex] &&
+			this.interactiveElements[rowIndex][columnIndex]
+		) {
 			return this.interactiveElements[rowIndex][columnIndex][0];
 		}
 		return null;
@@ -277,7 +287,7 @@ class DataTable extends React.Component {
 	changeActiveCell(rowIndex, columnIndex) {
 		this.setState({
 			tableHasFocus: true,
-			activeCell: { rowIndex, columnIndex }
+			activeCell: { rowIndex, columnIndex },
 		});
 	}
 
@@ -293,63 +303,81 @@ class DataTable extends React.Component {
 				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
 				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
 				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
-				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) }
+				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
 			},
 		});
 	}
 
 	handleKeyDownUp() {
 		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(newRowIndex, this.state.activeCell.columnIndex);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
 		if (newRowIndex !== this.state.activeCell.newRowIndex) {
 			this.setState({
 				activeCell: {
 					rowIndex: newRowIndex,
-					columnIndex: this.state.activeCell.columnIndex
+					columnIndex: this.state.activeCell.columnIndex,
 				},
-				activeElement
+				activeElement,
 			});
 		}
 	}
 
 	handleKeyDownDown() {
-		const newRowIndex = Math.min(this.state.activeCell.rowIndex + 1, this.props.items.length);
-		const activeElement = this.getFirstInteractiveElement(newRowIndex, this.state.activeCell.columnIndex);
+		const newRowIndex = Math.min(
+			this.state.activeCell.rowIndex + 1,
+			this.props.items.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
 		if (newRowIndex !== this.state.activeCell.newRowIndex) {
 			this.setState({
 				activeCell: {
 					rowIndex: newRowIndex,
-					columnIndex: this.state.activeCell.columnIndex
+					columnIndex: this.state.activeCell.columnIndex,
 				},
-				 activeElement
+				activeElement,
 			});
 		}
 	}
 
 	handleKeyDownLeft() {
 		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(this.state.activeCell.rowIndex, newColumnIndex);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
 		if (newColumnIndex !== this.state.activeCell.columnIndex) {
 			this.setState({
 				activeCell: {
 					rowIndex: this.state.activeCell.rowIndex,
-					columnIndex: newColumnIndex
+					columnIndex: newColumnIndex,
 				},
-				activeElement
+				activeElement,
 			});
 		}
 	}
 
 	handleKeyDownRight() {
-		const newColumnIndex = Math.min(this.state.activeCell.columnIndex + 1, this.props.children.length);
-		const activeElement = this.getFirstInteractiveElement(this.state.activeCell.rowIndex, newColumnIndex);
+		const newColumnIndex = Math.min(
+			this.state.activeCell.columnIndex + 1,
+			this.props.children.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
 		if (newColumnIndex !== this.state.activeCell.columnIndex) {
 			this.setState({
 				activeCell: {
 					rowIndex: this.state.activeCell.rowIndex,
-					columnIndex: newColumnIndex
+					columnIndex: newColumnIndex,
 				},
-				activeElement
+				activeElement,
 			});
 		}
 	}
@@ -363,7 +391,7 @@ class DataTable extends React.Component {
 			}
 			this.setState({
 				mode: Mode.ACTIONABLE,
-				activeElement
+				activeElement,
 			});
 		}
 	}
@@ -372,7 +400,7 @@ class DataTable extends React.Component {
 		if (this.state.mode === Mode.ACTIONABLE) {
 			this.setState({
 				mode: Mode.NAVIGATION,
-				activeElement: null
+				activeElement: null,
 			});
 		}
 	}
@@ -599,7 +627,9 @@ class DataTable extends React.Component {
 			handleKeyDown: this.handleKeyDown,
 			registerInteractiveElement: this.registerInteractiveElement,
 			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
-			setAllowKeyboardNavigation: (allowKeyboardNavigation) => { this.setState({ allowKeyboardNavigation }) },
+			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
+				this.setState({ allowKeyboardNavigation });
+			},
 		};
 
 		let component = (

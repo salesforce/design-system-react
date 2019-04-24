@@ -32,18 +32,23 @@ import {
 	DATA_TABLE_COLUMN,
 } from '../../../utilities/constants';
 
-const SortAnchor = (props) => (
+const SortAnchor = (props) => {
+	// Avoid passing props to <a> that it doesn't understand
+	const passThroughProps = { ...props };
+	['onRequestFocus', 'onOpen', 'onClose', 'requestFocus'].forEach((key) => delete passThroughProps[key]);
+	return (
 		<a
 			ref={(node) => {
 				if (node && props.requestFocus && props.onRequestFocus) {
 					props.onRequestFocus(node);
 				}
 			}}
-			 {...props}
+			{...passThroughProps}
 		>
 			{props.children}
 		</a>
-	)
+	);
+};
 const InteractiveSortAnchor = InteractiveElement(SortAnchor);
 
 /**
@@ -166,7 +171,9 @@ class DataTableHeaderCell extends React.Component {
 					href="javascript:void(0)" // eslint-disable-line no-script-url
 					className="slds-th__action slds-text-link_reset"
 					onClick={this.handleSort}
-					onKeyDown={(event) => event.keyCode === KEYS.ENTER ? this.handleSort(event) : undefined}
+					onKeyDown={(event) =>
+						event.keyCode === KEYS.ENTER ? this.handleSort(event) : undefined
+					}
 					role="button"
 				>
 					<span className="slds-assistive-text">
@@ -201,7 +208,10 @@ class DataTableHeaderCell extends React.Component {
 				</InteractiveSortAnchor>
 			),
 			notSortable: (
-				<span className="slds-p-horizontal_x-small slds-th__action" style={{ display: 'flex' }}>
+				<span
+					className="slds-p-horizontal_x-small slds-th__action"
+					style={{ display: 'flex' }}
+				>
 					<span
 						className="slds-truncate"
 						title={labelType === 'string' ? label : undefined}
@@ -228,7 +238,16 @@ class DataTableHeaderCell extends React.Component {
 				{(tableContext) => (
 					<CellContext.Consumer>
 						{(cellContext) => {
-							const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, cellContext, this.props.fixedLayout)
+							const {
+								tabIndex,
+								hasFocus,
+								handleFocus,
+								handleKeyDown,
+							} = keyboardNavState(
+								tableContext,
+								cellContext,
+								this.props.fixedLayout
+							);
 							return (
 								<th
 									aria-label={labelType === 'string' ? label : undefined}
@@ -238,7 +257,7 @@ class DataTableHeaderCell extends React.Component {
 										'slds-is-sorted': isSorted,
 										[`slds-is-sorted_${sortDirection}`]: sortDirection,
 										'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-										'slds-has-focus': hasFocus
+										'slds-has-focus': hasFocus,
 									})}
 									onFocus={handleFocus}
 									onKeyDown={handleKeyDown}

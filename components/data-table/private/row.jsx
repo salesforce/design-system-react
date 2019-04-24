@@ -142,7 +142,10 @@ const DataTableRow = (props) => {
 				}`;
 
 				return (
-					<CellContext.Provider value={{ columnIndex: props.canSelectRows ? index + 1 : index, rowIndex: props.rowIndex }}>
+					<CellContext.Provider
+						key={cellId}
+						value={{ columnIndex: props.canSelectRows ? index + 1 : index, rowIndex: props.rowIndex }}
+					>
 						<Cell
 							{...column.props}
 							className={column.props.truncate ? 'slds-truncate' : null}
@@ -150,7 +153,6 @@ const DataTableRow = (props) => {
 							rowHeader={column.props.primaryColumn}
 							id={cellId}
 							item={props.item}
-							key={cellId}
 							width={column.props.width}
 						>
 							{props.item[column.props.property]}

@@ -221,7 +221,10 @@ class DataTableHead extends React.Component {
 				<tr className="slds-line-height_reset">
 					{selectHeader}
 					{this.props.columns.map((column, index) => (
-						<CellContext.Provider value={{ columnIndex: this.props.canSelectRows ? index + 1 : index, rowIndex: 0 }}>
+						<CellContext.Provider
+							key={`${this.props.id}-${column.props.property}`}
+							value={{ columnIndex: this.props.canSelectRows ? index + 1 : index, rowIndex: 0 }}
+						>
 							<HeaderCell
 								assistiveText={this.props.assistiveText}
 								cellRef={(ref) => {
@@ -231,7 +234,6 @@ class DataTableHead extends React.Component {
 								}}
 								fixedHeader={this.props.fixedHeader}
 								id={`${this.props.id}-${column.props.property}`}
-								key={`${this.props.id}-${column.props.property}`}
 								onSort={this.props.onSort}
 								fixedLayout={this.props.fixedLayout}
 								{...column.props}
