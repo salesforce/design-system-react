@@ -26,7 +26,9 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 	}
 
 	onBlur(tableContext, ...args) {
-		tableContext.changeActiveElement(null);
+		if (tableContext.activeElement !== null) {
+			tableContext.changeActiveElement(null);
+		}
 		if (this.props.onBlur) {
 			this.props.onBlur(...args);
 		}
@@ -39,10 +41,26 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 		}
 	}
 
+	onOpen(tableContext, ...args) {
+		tableContext.setAllowKeyboardNavigation(false);
+		if (this.props.onOpen) {
+			this.props.onOpen(...args);
+		}
+	}
+
+	onClose(tableContext, ...args) {
+		tableContext.setAllowKeyboardNavigation(true);
+		if (this.props.onClose) {
+			this.props.onClose(...args);
+		}
+	}
+
 	render() {
 		const onFocus = this.onFocus;
 		const onBlur = this.onBlur;
 		const onRequestFocus = this.onRequestFocus;
+		const onOpen = this.onOpen;
+		const onClose = this.onClose;
 		return (
 			<TableContext.Consumer>
 				{(tableContext) => (
@@ -66,6 +84,8 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 										onFocus: onFocus.bind(this, tableContext),
 										onBlur: onBlur.bind(this, tableContext),
 										onRequestFocus: onRequestFocus.bind(this),
+										onOpen: onOpen.bind(this, tableContext),
+										onClose: onClose.bind(this, tableContext),
 										requestFocus,
 										tabIndex
 									}

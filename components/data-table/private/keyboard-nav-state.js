@@ -11,7 +11,7 @@ export default (tableContext, cellContext, fixedLayout) => {
 	const hasFocus = fixedLayout && tableContext.tableHasFocus && isActive;
 
 	const handleFocus = () => {
-		if (fixedLayout) {
+		if (fixedLayout && tableContext.allowKeyboardNavigation) {
 			tableContext.changeActiveCell(cellContext.rowIndex, cellContext.columnIndex)
 		}
 	}

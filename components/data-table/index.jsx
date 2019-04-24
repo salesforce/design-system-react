@@ -228,7 +228,10 @@ class DataTable extends React.Component {
 			// The table can be in navigation or actionable mode
 			mode: Mode.NAVIGATION,
 			// The table currently has focus
-			tableHasFocus: false
+			tableHasFocus: false,
+			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
+			// when another component requires its own focus behavior (e.g. menu dropdown).
+			allowKeyboardNavigation: true
 		}
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};
@@ -594,7 +597,9 @@ class DataTable extends React.Component {
 			changeActiveCell: this.changeActiveCell,
 			changeActiveElement: this.changeActiveElement,
 			handleKeyDown: this.handleKeyDown,
-			registerInteractiveElement: this.registerInteractiveElement
+			registerInteractiveElement: this.registerInteractiveElement,
+			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
+			setAllowKeyboardNavigation: (allowKeyboardNavigation) => { this.setState({ allowKeyboardNavigation }) },
 		};
 
 		let component = (

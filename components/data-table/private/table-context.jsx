@@ -8,5 +8,7 @@ export default React.createContext({
 	changeActiveCell: () => { },
 	changeActiveElement: () => { },
 	handleKeyDown: () => { },
-	registerInteractiveElement: () => { }
+	registerInteractiveElement: () => { },
+	allowKeyboardNavigation: true,
+	setAllowKeyboardNavigation: () => { }
 });
