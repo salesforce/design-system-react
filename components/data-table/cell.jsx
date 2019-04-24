@@ -2,25 +2,26 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
 
 import CellContext from './private/cell-context';
+import TableContext from './private/table-context';
+import keyboardNavState from './private/keyboard-nav-state';
 
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
-
-const isActive = (props) => props.activeCell.rowIndex === props.rowIndex && props.activeCell.columnIndex === props.columnIndex
-
-const hasFocus = (props) => props.tableHasFocus && isActive(props);
 
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
 const DataTableCell = (props) => {
+	const tableContext = useContext(TableContext);
+	const cellContext = useContext(CellContext);
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, cellContext, props.fixedLayout);
 	const childText = React.isValidElement(props.children)
 		? props.children.props.children
 		: props.children;
@@ -35,40 +36,26 @@ const DataTableCell = (props) => {
 		</div>
 	);
 
-	const cellContext = {
-		rowIndex: props.rowIndex,
-		columnIndex: props.columnIndex,
-		activeElement: props.activeElement,
-		mode: props.mode,
-		changeActiveElement: props.changeActiveElement,
-		registerInteractiveElement: props.registerInteractiveElement
-	};
 	const className = classNames(props.className, {
-		'slds-has-focus': props.fixedLayout && hasFocus(props)
+		'slds-has-focus': hasFocus
 	});
-	const onFocus = props.fixedLayout ? () => props.changeActiveCell(props.rowIndex, props.columnIndex) : undefined;
-	const onKeyDown = props.fixedLayout ? (event) => props.handleKeyDown(event) : undefined;
-	const ref = props.fixedLayout ?
-		(node) => {
-			if (node && hasFocus(props)) {
-				node.focus();
-			}
-		} : undefined;
-	const tabIndex = props.fixedLayout && isActive(props) && !props.activeElement ? '0' : undefined;
+	const ref = (node) => {
+		if (node && hasFocus) {
+			node.focus();
+		}
+	};
 	let cell = (
 		// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 		<td
 			className={className}
-			onFocus={onFocus}
-			onKeyDown={onKeyDown}
+			onFocus={handleFocus}
+			onKeyDown={handleKeyDown}
 			ref={ref}
-			role={props.fixedLayout ? 'gridcell' : null }
+			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
 			tabIndex={tabIndex}
 		>
-			<CellContext.Provider value={cellContext}>
-				{contents}
-			</CellContext.Provider>
+			{contents}
 		</td>
 	);
 
@@ -80,12 +67,10 @@ const DataTableCell = (props) => {
 				role={props.fixedLayout ? 'gridcell' : null}
 				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : null}
-				onFocus={onFocus}
-				onKeyDown={onKeyDown}
+				onFocus={handleFocus}
+				onKeyDown={handleKeyDown}
 			>
-				<CellContext.Provider value={cellContext}>
-					{contents}
-				</CellContext.Provider>
+				{contents}
 			</th>
 		);
 	}

@@ -2,6 +2,7 @@ import React from 'react';
 import shortid from 'shortid';
 import { Mode } from './index';
 import CellContext from './private/cell-context';
+import TableContext from './private/table-context';
 
 /**
  * Wrapper for interactive elements in the table. The wrapped element must accept the props:
@@ -15,23 +16,23 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 		this.elementId = shortid.generate();
 	}
 
-	onFocus(context, ...args) {
-		if (context.activeElement !== this.elementId) {
-			context.changeActiveElement(this.elementId);
+	onFocus(tableContext, ...args) {
+		if (tableContext.activeElement !== this.elementId) {
+			tableContext.changeActiveElement(this.elementId);
 		}
 		if (this.props.onFocus) {
 			this.props.onFocus(...args);
 		}
 	}
 
-	onBlur(context, ...args) {
-		context.changeActiveElement(null);
+	onBlur(tableContext, ...args) {
+		tableContext.changeActiveElement(null);
 		if (this.props.onBlur) {
 			this.props.onBlur(...args);
 		}
 	}
 
-	onRequestFocus(context, node, ...args) {
+	onRequestFocus(node, ...args) {
 		node.focus();
 		if (this.props.onRequestFocus) {
 			this.props.onRequestFocus(...args);
@@ -43,33 +44,37 @@ export default (WrappedElement) => class InteractiveElement extends React.Compon
 		const onBlur = this.onBlur;
 		const onRequestFocus = this.onRequestFocus;
 		return (
-			<CellContext.Consumer>
-				{(context) => {
-					context.registerInteractiveElement(context.rowIndex, context.columnIndex, this.elementId);
+			<TableContext.Consumer>
+				{(tableContext) => (
+					<CellContext.Consumer>
+						{(cellContext) => {
+							tableContext.registerInteractiveElement(cellContext.rowIndex, cellContext.columnIndex, this.elementId);
 
-					let requestFocus = false;
-					if (context.mode === Mode.ACTIONABLE && context.activeElement === this.elementId) {
-						requestFocus = true;
-					}
-					let tabIndex = '-1';
-					if (context.mode === Mode.ACTIONABLE) {
-						tabIndex = '0';
-					}
-
-					return <WrappedElement {
-						...{
-							...this.props,
-							...{
-								onFocus: onFocus.bind(this, context),
-								onBlur: onBlur.bind(this, context),
-								onRequestFocus: onRequestFocus.bind(this, context),
-								requestFocus,
-								tabIndex
+							let requestFocus = false;
+							if (tableContext.mode === Mode.ACTIONABLE && tableContext.activeElement === this.elementId) {
+								requestFocus = true;
 							}
-						}
-					} />;
-				}}
-			</CellContext.Consumer>
+							let tabIndex = '-1';
+							if (tableContext.mode === Mode.ACTIONABLE) {
+								tabIndex = '0';
+							}
+
+							return <WrappedElement {
+								...{
+									...this.props,
+									...{
+										onFocus: onFocus.bind(this, tableContext),
+										onBlur: onBlur.bind(this, tableContext),
+										onRequestFocus: onRequestFocus.bind(this),
+										requestFocus,
+										tabIndex
+									}
+								}
+							} />;
+						}}
+					</CellContext.Consumer>
+				)}
+			</TableContext.Consumer>
 		);
 	}
 }

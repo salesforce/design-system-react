@@ -34,6 +34,7 @@ import DataTableColumn from './column';
 import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
+import TableContext from './private/table-context';
 
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
@@ -219,8 +220,8 @@ class DataTable extends React.Component {
 		this.state = {
 			// Currently selected cell
 			activeCell: {
-				rowIndex: 0,
-				columnIndex: 0
+				rowIndex: 1,
+				columnIndex: this.props.selectRows && count(this.props.selection) > 0 ? 1 : 0
 			},
 			// Interactive element within a cell that receives focus while in actionable mode
 			activeElement: null,
@@ -309,7 +310,7 @@ class DataTable extends React.Component {
 	}
 
 	handleKeyDownDown() {
-		const newRowIndex = Math.min(this.state.activeCell.rowIndex + 1, this.props.items.length - 1);
+		const newRowIndex = Math.min(this.state.activeCell.rowIndex + 1, this.props.items.length);
 		const activeElement = this.getFirstInteractiveElement(newRowIndex, this.state.activeCell.columnIndex);
 		if (newRowIndex !== this.state.activeCell.newRowIndex) {
 			this.setState({
@@ -337,7 +338,7 @@ class DataTable extends React.Component {
 	}
 
 	handleKeyDownRight() {
-		const newColumnIndex = Math.min(this.state.activeCell.columnIndex + 1, this.props.children.length - 1);
+		const newColumnIndex = Math.min(this.state.activeCell.columnIndex + 1, this.props.children.length);
 		const activeElement = this.getFirstInteractiveElement(this.state.activeCell.rowIndex, newColumnIndex);
 		if (newColumnIndex !== this.state.activeCell.columnIndex) {
 			this.setState({
@@ -502,6 +503,7 @@ class DataTable extends React.Component {
 	// ### Render
 	render() {
 		const ariaProps = {};
+		const numHeaderRows = 1;
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
 		const canSelectRows =
@@ -584,7 +586,7 @@ class DataTable extends React.Component {
 			select: canSelectRows ? this.headerRefs.select : [],
 		};
 
-		const navigationProps = {
+		const tableContext = {
 			activeCell: this.state.activeCell,
 			activeElement: this.state.activeElement,
 			mode: this.state.mode,
@@ -596,82 +598,84 @@ class DataTable extends React.Component {
 		};
 
 		let component = (
-			<table
-				{...ariaProps}
-				className={classNames(
-					'slds-table',
-					{
-						'slds-table_fixed-layout': this.props.fixedLayout,
-						'slds-table_header-fixed': this.props.fixedHeader,
-						'slds-table_resizable-cols': this.props.fixedLayout,
-						'slds-table_bordered': !this.props.unborderedRow,
-						'slds-table_cell-buffer':
-							!this.props.fixedLayout && !this.props.unbufferedCell,
-						'slds-max-medium-table_stacked': this.props.stacked,
-						'slds-max-medium-table_stacked-horizontal': this.props
-							.stackedHorizontal,
-						'slds-table_striped': this.props.striped,
-						'slds-table_col-bordered': this.props.columnBordered,
-						'slds-no-row-hover': this.props.noRowHover,
-					},
-					this.props.className
-				)}
-				id={this.getId()}
-				role={this.props.fixedLayout ? 'grid' : null}
-				onBlur={() => this.setState({ tableHasFocus: false })}
-			>
-				<DataTableHead
-					assistiveText={assistiveText}
-					allSelected={allSelected}
-					fixedHeader={this.props.fixedHeader}
-					headerRefs={(ref, index) => {
-						if (index === 'action' || index === 'select') {
-							if (ref) {
-								this.headerRefs[index][0] = ref;
+			<TableContext.Provider value={tableContext}>
+				<table
+					{...ariaProps}
+					className={classNames(
+						'slds-table',
+						{
+							'slds-table_fixed-layout': this.props.fixedLayout,
+							'slds-table_header-fixed': this.props.fixedHeader,
+							'slds-table_resizable-cols': this.props.fixedLayout,
+							'slds-table_bordered': !this.props.unborderedRow,
+							'slds-table_cell-buffer':
+								!this.props.fixedLayout && !this.props.unbufferedCell,
+							'slds-max-medium-table_stacked': this.props.stacked,
+							'slds-max-medium-table_stacked-horizontal': this.props
+								.stackedHorizontal,
+							'slds-table_striped': this.props.striped,
+							'slds-table_col-bordered': this.props.columnBordered,
+							'slds-no-row-hover': this.props.noRowHover,
+						},
+						this.props.className
+					)}
+					id={this.getId()}
+					role={this.props.fixedLayout ? 'grid' : null}
+					onBlur={() => this.setState({ tableHasFocus: false })}
+				>
+					<DataTableHead
+						assistiveText={assistiveText}
+						allSelected={allSelected}
+						fixedHeader={this.props.fixedHeader}
+						fixedLayout={this.props.fixedLayout}
+						headerRefs={(ref, index) => {
+							if (index === 'action' || index === 'select') {
+								if (ref) {
+									this.headerRefs[index][0] = ref;
+								} else {
+									this.headerRefs[index] = [];
+								}
 							} else {
-								this.headerRefs[index] = [];
+								this.headerRefs.column[index] = ref;
 							}
-						} else {
-							this.headerRefs.column[index] = ref;
-						}
-					}}
-					indeterminateSelected={indeterminateSelected}
-					canSelectRows={canSelectRows}
-					columns={columns}
-					id={`${this.getId()}-${DATA_TABLE_HEAD}`}
-					onToggleAll={this.handleToggleAll}
-					onSort={this.props.onSort}
-					showRowActions={!!RowActions}
-				/>
-				<tbody>
-					{numRows > 0
-						? this.props.items.map((item, index) => {
-								const rowId =
-									this.getId() && item.id
-										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
-										: shortid.generate();
-								return (
-									<DataTableRow
-										{...navigationProps}
-										assistiveText={assistiveText}
-										canSelectRows={canSelectRows}
-										columns={columns}
-										fixedLayout={this.props.fixedLayout}
-										id={rowId}
-										item={item}
-										key={rowId}
-										onToggle={this.handleRowToggle}
-										selection={this.props.selection}
-										rowActions={RowActions}
-										tableId={this.getId()}
-										rowIndex={index}
-									/>
-								);
-							})
-						: // Someday this should be an element to render when the table is empty
-							null}
-				</tbody>
-			</table>
+						}}
+						indeterminateSelected={indeterminateSelected}
+						canSelectRows={canSelectRows}
+						columns={columns}
+						id={`${this.getId()}-${DATA_TABLE_HEAD}`}
+						onToggleAll={this.handleToggleAll}
+						onSort={this.props.onSort}
+						showRowActions={!!RowActions}
+					/>
+					<tbody>
+						{numRows > 0
+							? this.props.items.map((item, index) => {
+									const rowId =
+										this.getId() && item.id
+											? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+											: shortid.generate();
+									return (
+										<DataTableRow
+											assistiveText={assistiveText}
+											canSelectRows={canSelectRows}
+											columns={columns}
+											fixedLayout={this.props.fixedLayout}
+											id={rowId}
+											item={item}
+											key={rowId}
+											onToggle={this.handleRowToggle}
+											selection={this.props.selection}
+											rowActions={RowActions}
+											tableId={this.getId()}
+											rowIndex={index + numHeaderRows}
+										/>
+									);
+								})
+							: // Someday this should be an element to render when the table is empty
+								null}
+					</tbody>
+				</table>
+			</TableContext.Provider>
 		);
 
 		if (this.props.fixedHeader) {

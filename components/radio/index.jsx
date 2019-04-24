@@ -51,9 +51,29 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
+	 * This event fires when the Checkbox looses focus. It passes in `{ event }`.
+	 */
+	onBlur: PropTypes.func,
+	/**
 	 * This event fires when the radio selection changes. Passes in `event, { checked }`.
 	 */
 	onChange: PropTypes.func,
+	/**
+	 * This event fires when the Checkbox is focused. It passes in `{ event }`.
+	 */
+	onFocus: PropTypes.func,
+	/**
+	 * Triggered to indicate that this component should receive focus.
+	 */
+	onRequestFocus: PropTypes.func,
+	/**
+	 * If true, will trigger `onRequestFocus`.
+	 */
+	requestFocus: PropTypes.bool,
+	/**
+	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
+	 */
+	tabIndex: PropTypes.string,
 	/**
 	 * The value of this radio input.
 	 */
@@ -157,6 +177,8 @@ class Radio extends React.Component {
 					value={this.props.value}
 					checked={this.props.checked}
 					defaultChecked={this.props.defaultChecked}
+					onBlur={this.props.onBlur}
+					onFocus={this.props.onFocus}
 					onChange={(event) => {
 						this.handleChange(event);
 					}}
@@ -182,12 +204,16 @@ class Radio extends React.Component {
 							this.handleChange(event);
 						}
 					}}
+					tabIndex={this.props.tabIndex}
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
 					{...dataProps}
 					ref={(input) => {
 						if (this.props.refs && this.props.refs.input) {
 							this.props.refs.input(input);
+						}
+						if (input && this.props.requestFocus && this.props.onRequestFocus) {
+							this.props.onRequestFocus(input);
 						}
 					}}
 				/>

@@ -544,6 +544,10 @@ class MenuDropdown extends React.Component {
 		if (!this.state.triggerRendered) {
 			this.setState({ triggerRendered: true });
 		}
+
+		if (trigger && this.props.requestFocus && this.props.onRequestFocus) {
+			this.props.onRequestFocus(trigger);
+		}
 	};
 
 	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
@@ -715,17 +719,17 @@ class MenuDropdown extends React.Component {
 			}
 
 			if (event.keyCode !== KEYS.TAB) {
-				const isOpen = this.getIsOpen();
+				// const isOpen = this.getIsOpen();
 
-				this.handleKeyboardNavigate({
-					event,
-					isOpen,
-					key: event.key,
-					keyCode: event.keyCode,
-					onSelect: this.handleSelect,
-					target: event.target,
-					toggleOpen: this.toggleOpen,
-				});
+				// this.handleKeyboardNavigate({
+				// 	event,
+				// 	isOpen,
+				// 	key: event.key,
+				// 	keyCode: event.keyCode,
+				// 	onSelect: this.handleSelect,
+				// 	target: event.target,
+				// 	toggleOpen: this.toggleOpen,
+				// });
 			} else {
 				this.handleCancel();
 			}
