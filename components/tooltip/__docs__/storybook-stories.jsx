@@ -53,6 +53,9 @@ const getPopoverTooltipAlign = (props) => {
 	return <div key="container">{children}</div>;
 };
 
+const content =
+	'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.';
+
 storiesOf(POPOVER_TOOLTIP, module)
 	.addDecorator((getStory) => (
 		<div
@@ -74,16 +77,15 @@ storiesOf(POPOVER_TOOLTIP, module)
 			align: 'bottom',
 			isOpen: true,
 			id: 'myPopoverId',
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			dialogClassName: 'dialog-classname',
+			content,
 		})
 	)
 	.add('Alignment (Button)', () =>
 		getPopoverTooltipAlign({
 			id: 'myPopoverId',
 			isOpen: true,
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			content,
 			trigger: <Button label="Trigger Tooltip" />,
 		})
 	)
@@ -91,8 +93,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 		getPopoverTooltipAlign({
 			id: 'myPopoverId',
 			isOpen: true,
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			content,
 			trigger: (
 				<span tabIndex="0" key="trigger">
 					Trigger Tooltip
@@ -104,11 +105,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 		getPopoverTooltipAlign({
 			id: 'myPopoverId',
 			isOpen: true,
-			content: (
-				<span>
-					<Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie
-				</span>
-			), // react/no-unescaped-entities
+			content: <span>{content}</span>, // react/no-unescaped-entities
 			trigger: (
 				<Icon
 					assistiveText={{ label: 'Case Icon' }}

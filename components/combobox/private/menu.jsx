@@ -75,7 +75,7 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	menuItem: PropTypes.func,
+	onRenderMenuItem: PropTypes.func,
 	/**
 	 * Accepts a ref function or object (React.createRef() or otherwise) to store the menu DOM reference once available
 	 */
@@ -132,7 +132,7 @@ const Menu = (props) => {
 			selection: props.selection,
 			option: optionData,
 		});
-		const MenuItem = props.menuItem;
+		const MenuItem = props.onRenderMenuItem;
 
 		if (optionData.type === 'separator') {
 			return optionData.label ? (
@@ -144,7 +144,7 @@ const Menu = (props) => {
 				>
 					<span
 						className={classNames(
-							'slds-text-title_caps',
+							'slds-listbox__option-header',
 							props.classNameMenuSubHeader
 						)}
 					>
@@ -190,10 +190,11 @@ const Menu = (props) => {
 					}
 					role="option"
 				>
-					{optionData.icon && !props.menuItem ? (
+					{/* For backward compatibility,  */}
+					{optionData.icon && !props.onRenderMenuItem ? (
 						<span className="slds-media__figure">{optionData.icon}</span>
 					) : null}
-					{props.menuItem ? (
+					{props.onRenderMenuItem ? (
 						<MenuItem
 							assistiveText={props.assistiveText}
 							selected={selected}
@@ -256,7 +257,7 @@ const Menu = (props) => {
 						/>
 					</span>
 					<span className="slds-media__body">
-						{props.menuItem ? (
+						{props.onRenderMenuItem ? (
 							<MenuItem
 								assistiveText={props.assistiveText}
 								selected={selected}

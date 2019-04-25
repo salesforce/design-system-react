@@ -16,6 +16,7 @@ const documentationSiteLiveExamples = {
 	'button-group': require('@salesforce/design-system-react/components/button-group/__docs__/site-stories.js'),
 	'button-stateful': require('@salesforce/design-system-react/components/button-stateful/__docs__/site-stories.js'),
 	card: require('@salesforce/design-system-react/components/card/__docs__/site-stories.js'),
+	carousel: require('@salesforce/design-system-react/components/carousel/__docs__/site-stories.js'),
 	combobox: require('@salesforce/design-system-react/components/combobox/__docs__/site-stories.js'),
 	'color-picker': require('@salesforce/design-system-react/components/color-picker/__docs__/site-stories.js'),
 	filter: require('@salesforce/design-system-react/components/filter/__docs__/site-stories.js'),

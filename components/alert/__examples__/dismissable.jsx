@@ -10,29 +10,31 @@ class Example extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: false,
+			isOpen: true,
 		};
 	}
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<AlertContainer>
-					<Alert
-						dismissible
-						icon={<Icon category="utility" name="user" />}
-						labels={{
-							heading: 'Logged in as John Smith (johnsmith@acme.com).',
-							headingLink: 'Log out',
-						}}
-						onClickHeadingLink={() => {
-							console.log('Link clicked.');
-						}}
-						onRequestClose={() => {
-							this.setState({ isOpen: false });
-						}}
-					/>
-				</AlertContainer>
+				{this.state.isOpen ? (
+					<AlertContainer>
+						<Alert
+							dismissible
+							icon={<Icon category="utility" name="user" />}
+							labels={{
+								heading: 'Logged in as John Smith (johnsmith@acme.com).',
+								headingLink: 'Log out',
+							}}
+							onClickHeadingLink={() => {
+								console.log('Link clicked.');
+							}}
+							onRequestClose={() => {
+								this.setState({ isOpen: false });
+							}}
+						/>
+					</AlertContainer>
+				) : null}
 			</IconSettings>
 		);
 	}

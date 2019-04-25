@@ -31,6 +31,167 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.2
+
+**Bugfixes**
+
+* `Carousel`: `Button` import path was incorrect. Resulting in a `Error: Can't resolve '../../../../components/button'` message
+
+## Release 0.10.1
+
+**Bugfixes**
+
+* `Carousel`: `Button` import path was incorrect. Resulting in a `Error: Can't resolve '../../../../components/button'` message
+
+**Maintainance**
+
+* `Carousel`: Add `isPrototype` warning
+* `Dropdown`: Add `sunsetProperty` for `tooltip` prop
+
+## Release 0.10.0
+
+It has been more than a year since the release of React 16. With the release of v0.10, React 16.3 or later is required to consume this library. Features are present in the library now that are React v16 only.
+
+**Major Features**
+
+* `Carousel`: In addition, to the SLDS one-panel blueprint. This component adds a non-SLDS three-item panel option for use on product home pages to aid in user on-boarding.
+* `Combobox`: Adds Dialog variant. This allows “custom menus” such as checkboxes and other form elements to determine the input value.
+* `Popover`: Walkthrough and Walkthrough Action variants were added. Along with this, Popover now allows custom targets which is helpful in feature highlighting and other user engagement stories. Use `onRequestTargetElement` to set a custom target.
+* `GlobalHeader``: Align markup and latest UX pattern to SLDS
+* Remove all caps text from all components
+* Progress Indicator: Add vertical orientation
+
+**Minor Features**
+
+* `Tooltip`: Add dialog `className` prop
+* `Button`: Add `outline-brand` variant
+* `Avatar`: Add `inverse` variant
+* `Card`: Add `hasNoHeader` prop to remove header
+* `PillContainer`: Return null if options is empty
+* `Spinner`: Adds `isDelayed` prop to component
+
+**Bugfixes**
+
+* `Combobox`: Cancel mouseDown bubble from listbox div tag in order to help not trigger onBlur when uses clicks menu scrollbar
+* `Popover`: Change ARIA role to `dialog`
+* `ButtonStateful`: Use prevState to update state in component
+* `Input`: Remove always true condition, 'props.hasSpinner'
+* `Input`: Update error icon from warning icon to error icon
+* `Tree`: Adds unneeded `aria-hidden=true` to closer align with SLDS markup
+* `Popover`: Change ARIA `role` to `dialog`
+* `ProgressRing`: Fixe examples page
+* `AppLauncher`: Fixes arrow direction in Sections
+
+**Maintainance**
+
+* Require React >16.3
+* Add snapshot update npm command
+* `Toast`: Use role='status'
+* Add instructions to set up LDSR with Create React App 2.x
+* Removed propTypes which are not used from different components
+* `Modal`: Replace `dismissible` with `disableClose` in
+* `Button`: Fix assistive text in small icon hint inverse example
+* `Alert`: Add ability for example to close
+* `Combobox`: Update `menuItem` to `onRenderMenuItem`
+* `Vertical Navigation`: Remove `shade` variant
+* Move storyshot DOM snapshots to individual files
+* Remove unused variables from tests
+* Support React fragment syntax
+* Update to SLDS 2.8.x
+* Improve docs for codebase-overview.md and CONTRIBUTING.md
+* `Button` Examples: Update function call for "Outline brand button" story
+* `GlobalNavigationBar`: Remove overlapping items from example
+* `Lookup`: Add visual deprecation heading to component
+
+## Release 0.10.0
+
+It has been more than a year since the release of React 16. With the release of v0.10, **React 16.3 or later is required** to consume this library. Features are present in the library now that are React v16 only.
+
+**Major Features**
+
+* `Carousel`: In addition, to the SLDS one-panel blueprint. This component adds a non-SLDS three-item panel option for use on product home pages to aid in user on-boarding.
+* `Combobox`: Adds Dialog variant. This allows “custom menus” such as checkboxes and other form elements to determine the input value.
+* `Popover`: Walkthrough and Walkthrough Action variants were added. Along with this, Popover now allows custom targets which is helpful in feature highlighting and other user engagement stories. Use `onRequestTargetElement` to set a custom target.
+* `GlobalHeader``: Align markup and latest UX pattern to SLDS
+* Remove all caps text from all components
+* `ProgressIndicator`: Add vertical orientation
+
+**Minor Features**
+
+* `Tooltip`: Add dialog `className` prop
+* `Button`: Add `outline-brand` variant
+* `Avatar`: Add `inverse` variant
+* `Card`: Add `hasNoHeader` prop to remove header
+* `PillContainer`: Return null if options is empty
+* `Spinner`: Adds `isDelayed` prop to component
+
+**Bugfixes**
+
+* `Combobox`: Cancel mouseDown bubble from listbox div tag in order to help not trigger onBlur when uses clicks menu scrollbar
+* `Popover`: Change ARIA role to `dialog`
+* `ButtonStateful`: Use prevState to update state in component
+* `Input`: Remove always true condition, 'props.hasSpinner'
+* `Input`: Update error icon from warning icon to error icon
+* `Tree`: Adds unneeded `aria-hidden=true` to closer align with SLDS markup
+* `Popover`: Change ARIA `role` to `dialog`
+* `ProgressRing`: Fixe examples page
+* `AppLauncher`: Fixes arrow direction in Sections
+
+**Maintainance**
+
+* Require React >16.3
+* Add snapshot update npm command
+* `Toast`: Use role='status'
+* Add instructions to set up LDSR with Create React App 2.x
+* Removed propTypes which are not used from different components
+* `Modal`: Replace `dismissible` with `disableClose` in
+* `Button`: Fix assistive text in small icon hint inverse example
+* `Alert`: Add ability for example to close
+* `Combobox`: Update `menuItem` to `onRenderMenuItem`
+* `Vertical Navigation`: Remove `shade` variant
+* Move storyshot DOM snapshots to individual files
+* Remove unused variables from tests
+* Support React fragment syntax
+* Update to SLDS 2.8.x
+* Improve docs for codebase-overview.md and CONTRIBUTING.md
+* `Button` Examples: Update function call for "Outline brand button" story
+* `GlobalNavigationBar`: Remove overlapping items from example
+* `Lookup`: Add visual deprecation heading to component
+
+## Release 0.9.6
+
+**Minor Features**
+
+* `Popover`: Add `error` and `warning` variants
+* `DataTable`: Add `isDefaultSortDescending` prop to allow descending as first time sort direction
+* `Combobox`: Add `disabled` prop to readonly and inline-listbox variants
+* `PillContainer`: Return null if options is empty
+* `Input`: Add `autoComplete` prop. (Newer versions of Chrome browser ignore `autocomplete="off"`).
+* `Combobox`: Add `Input` prop on in order to expose all `Input` props within `Combobox`
+
+**Bugfixes**
+
+* `BrandBand`: Lightning Theme Fix - Styles were intermittently applied before
+* `DataTable`: Add missing top gray border to fixed header tables
+* `IconSettings`: Add additional inheritance of context for `overflowBoundaryElement` Dialog position which uses portals.
+* `Input`: Update error icon from warning icon to error icon
+* `Input`: Prevent `PropTypes` warning in `forms/private/label` when `label` prop contains a React `node`
+
+**Maintainance**
+
+* Update Brand Band documentation: Depending on your server settings, you may get this error due to stye injection and may want to directly add styles to your CSS file.
+* Update `README.md` to run install command in right directory
+* Datepicker: Clarify MomentJS usage in props/docs
+* Add ESLINT skipBlankLines/skipComments max lines rule
+* Combobox: Give each Storybook example a unique ID
+* Define pull request expectations in more detail
+* Document how to release a tag on a fork
+* Add how to release a tag to 1st time PR bot
+* Correct Typos in Contributor's Guidelines
+* Improve docs for codebase-overview.md and CONTRIBUTING.md
+* Remove non-breaking text from Tooltip Storybook examples
+* Contributing docs: Add mention of adding new components to `package.json`
+
 ## Release 0.9.5
 
 **Minor Features**
