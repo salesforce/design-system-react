@@ -5,8 +5,6 @@ import Icon from '../icon';
 
 import { BUILDER_HEADER_NAV_LINK } from '../../utilities/constants';
 
-// TODO ADD ONCLICK, REMOVE HREF, COMPARE WITH BUTTON PROPS, AND UPDATE GITHUB ISSUE; PROBABLY WANT TO ADD TARGET
-
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
