@@ -30,6 +30,7 @@ export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
+export DynamicIcon from '../components/dynamic-icon/__docs__/storybook-stories';
 // export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
