@@ -28,9 +28,7 @@ const renderDropdownNavItem = (props) => {
 						<span className="slds-media__figure">
 							<Icon
 								assistiveText={{
-									label:
-										(props.assistiveText && props.assistiveText.icon) ||
-										props.label,
+									label: props.assistiveText && props.assistiveText.icon,
 								}}
 								category={props.iconCategory}
 								containerClassName="slds-icon_container slds-icon-utility-page slds-current-color"

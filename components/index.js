@@ -34,6 +34,15 @@ export Avatar from './avatar';
 export SLDSBuilderHeader from './builder-header';
 export BuilderHeader from './builder-header';
 
+export SLDSBuilderHeaderNav from './builder-header/nav';
+export BuilderHeaderNav from './builder-header/nav';
+
+export SLDSBuilderHeaderNavLink from './builder-header/nav-link';
+export BuilderHeaderNavLink from './builder-header/nav-link';
+
+export SLDSBuilderHeaderToolbar from './builder-header/toolbar';
+export BuilderHeaderToolbar from './builder-header/toolbar';
+
 export SLDSBrandBand from './brand-band';
 export BrandBand from './brand-band';
 

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Button from '../button';
-
 import {
 	BUILDER_HEADER_TOOLBAR,
 	BUTTON_GROUP,
@@ -24,9 +22,9 @@ const BuilderHeaderToolbar = (props) => (
 		})}
 		<div
 			className="slds-builder-toolbar__actions"
-			aria-label={props.assistiveText.actions}
+			aria-label={props.assistiveText && props.assistiveText.actions}
 		>
-			{props.onRenderActions()}
+			{props.onRenderActions && props.onRenderActions()}
 		</div>
 	</div>
 );

@@ -13,51 +13,53 @@ import IconSettings from '../../icon-settings';
 
 import { BUILDER_HEADER } from '../../../utilities/constants';
 
-storiesOf(BUILDER_HEADER, module)
-	.addDecorator((getStory) => (
-		<div className="slds-p-around_medium">
-			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
-		</div>
-	))
-	.add('Default', () => (
-		<BuilderHeader
-			assistiveText={{ icon: 'Builder', actions: 'Document Actions' }}
-			labels={{
-				back: 'Back',
-				help: 'Help',
-				pageType: 'Page Type',
-				title: 'App Name',
-			}}
-			onRenderActions={() => (
-				<>
-					<Button
-						iconCategory="utility"
-						iconName="right"
-						iconPosition="left"
-						label="Run"
-					/>
-					<Button label="Save As" />
-					<Button label="Save" variant="brand" />
-				</>
-			)}
-		>
-			<BuilderHeaderNav>
-				<BuilderHeaderNavLink
+const renderBuilderHeader = (hasToolbar) => (
+	<BuilderHeader
+		assistiveText={{
+			icon: 'Builder',
+			actions: 'Document Actions',
+			backIcon: 'Back',
+			helpIcon: 'Help',
+		}}
+		labels={{
+			back: 'Back',
+			help: 'Help',
+			pageType: 'Page Type',
+			title: 'App Name',
+		}}
+		onRenderActions={() => (
+			<>
+				<Button
 					iconCategory="utility"
-					iconName="settings"
-					label="Link"
-					href="javascript:void(0);"
+					iconName="right"
+					iconPosition="left"
+					label="Run"
 				/>
-				<Dropdown
-					iconCategory="utility"
-					iconName="page"
-					label="Dropdown"
-					options={[
-						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' },
-					]}
-				/>
-			</BuilderHeaderNav>
+				<Button label="Save As" />
+				<Button label="Save" variant="brand" />
+			</>
+		)}
+	>
+		<BuilderHeaderNav>
+			<BuilderHeaderNavLink
+				assistiveText={{ label: 'Link' }}
+				iconCategory="utility"
+				iconName="settings"
+				label="Link"
+				href="javascript:void(0);"
+			/>
+			<Dropdown
+				assistiveText={{ icon: 'Dropdown' }}
+				iconCategory="utility"
+				iconName="page"
+				label="Dropdown"
+				options={[
+					{ label: 'Menu Item One', value: 'A0' },
+					{ label: 'Menu Item Two', value: 'B0' },
+				]}
+			/>
+		</BuilderHeaderNav>
+		{hasToolbar ? (
 			<BuilderHeaderToolbar>
 				<ButtonGroup label="Canvas Actions">
 					<Button
@@ -99,5 +101,15 @@ storiesOf(BUILDER_HEADER, module)
 					/>
 				</ButtonGroup>
 			</BuilderHeaderToolbar>
-		</BuilderHeader>
-	));
+		) : null}
+	</BuilderHeader>
+);
+
+storiesOf(BUILDER_HEADER, module)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around_medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Base', () => renderBuilderHeader())
+	.add('Base with Toolbar', () => renderBuilderHeader(true));

@@ -12,7 +12,12 @@ import {
 // TODO propTypes
 
 const defaultProps = {
-	assistiveText: { icon: 'Builder', actions: 'Document Actions' },
+	assistiveText: {
+		icon: 'Builder',
+		actions: 'Actions',
+		backIcon: 'Back',
+		helpIcon: 'Help',
+	},
 	labels: {
 		back: 'Back',
 		help: 'Help',
@@ -34,20 +39,22 @@ const BuilderHeader = (props) => {
 		...props.labels,
 	};
 
-	let builderHeaderNav;
-	let builderHeaderToolbarProps;
+	let nav;
+	let toolbarProps;
 	React.Children.forEach(props.children, (child) => {
-		switch (child.type.displayName) {
-			case BUILDER_HEADER_NAV:
-				builderHeaderNav = child;
-				break;
-			case BUILDER_HEADER_TOOLBAR:
-				builderHeaderToolbarProps = {
-					...child.props,
-					...{ assistiveText, onRenderActions: props.onRenderActions },
-				};
-				break;
-			default:
+		if (child) {
+			switch (child.type.displayName) {
+				case BUILDER_HEADER_NAV:
+					nav = child;
+					break;
+				case BUILDER_HEADER_TOOLBAR:
+					toolbarProps = {
+						...child.props,
+						...{ assistiveText, onRenderActions: props.onRenderActions },
+					};
+					break;
+				default:
+			}
 		}
 	});
 
@@ -69,7 +76,7 @@ const BuilderHeader = (props) => {
 							<div className="slds-media__body">{labels.title}</div>
 						</div>
 					</div>
-					{builderHeaderNav}
+					{nav}
 					<div className="slds-builder-header__item slds-has-flexi-truncate">
 						<h1 className="slds-builder-header__item-label">
 							<span className="slds-truncate" title={labels.pageType}>
@@ -85,7 +92,7 @@ const BuilderHeader = (props) => {
 							>
 								<div className="slds-media__figure">
 									<Icon
-										assistiveText={{ label: labels.back }}
+										assistiveText={{ label: assistiveText.backIcon }}
 										category="utility"
 										containerClassName="slds-icon_container slds-icon-utility-settings slds-current-color"
 										name="back"
@@ -102,7 +109,7 @@ const BuilderHeader = (props) => {
 							>
 								<div className="slds-media__figure">
 									<Icon
-										assistiveText={{ label: labels.help }}
+										assistiveText={{ label: assistiveText.helpIcon }}
 										category="utility"
 										containerClassName="slds-icon_container slds-icon-utility-settings slds-current-color"
 										name="help"
@@ -114,7 +121,7 @@ const BuilderHeader = (props) => {
 						</div>
 					</div>
 				</header>
-				{builderHeaderToolbarProps ? <BuilderHeaderToolbar {...builderHeaderToolbarProps} /> : null}
+				{toolbarProps ? <BuilderHeaderToolbar {...toolbarProps} /> : null}
 			</div>
 		</div>
 	);
