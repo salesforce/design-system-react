@@ -403,7 +403,8 @@ class Dialog extends React.Component {
 
 	render() {
 		let style = {};
-
+		const role =
+			this.props.variant === 'popover' ? 'dialog' : this.props.variant;
 		if (
 			this.props.position === 'absolute' ||
 			this.props.position === 'overflowBoundaryElement'
@@ -455,11 +456,12 @@ class Dialog extends React.Component {
 					) || undefined
 				}
 				style={style}
+				onMouseDown={this.props.onMouseDown}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
 				ref={this.setDialogContent}
-				role={this.props.variant}
+				role={role}
 				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
 				{...this.props.containerProps}
 			>

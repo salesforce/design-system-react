@@ -117,7 +117,11 @@ class AppLauncherSection extends React.Component {
 							iconCategory="utility"
 							iconName="switch"
 							onClick={this.toggleOpen}
-							className="slds-m-right_small"
+							className={classNames({
+								'slds-button__icon  slds-m-right_medium': true,
+								'slds-button__icon_left': isOpen,
+								'slds-accordion__summary-action-icon': !isOpen,
+							})}
 							variant="icon"
 						/>
 					) : null}

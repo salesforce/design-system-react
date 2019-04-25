@@ -22,6 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
 			)}`
 		);
 
+		sunsetProperty(COMPONENT, props.tooltip, 'tooltip', createDocUrl());
+
 		deprecatedProperty(
 			COMPONENT,
 			props.offset,

@@ -7,6 +7,7 @@ import oneOfRequiredProperty from '../../utilities/warning/one-of-required-prope
 import oneOfComponent from '../../utilities/warning/one-of-component';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import incompatibleProps from '../../utilities/warning/incompatible-props';
 
 let checkProps = function() {};
 
@@ -29,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 					COMPONENT,
 					props,
 					'children[0]',
-					['SLDSButton', 'a', 'button'],
+					['SLDSButton', 'a', 'button', 'SLDSInnerInput'],
 					` Multiple children of any kind are allowed, but the first child must serve as the trigger component. ${createDocUrl()}`,
 					props.children[0]
 				);
@@ -66,6 +67,16 @@ if (process.env.NODE_ENV !== 'production') {
 			'closeButtonAssistiveText',
 			"assistiveText['closeButton']",
 			createDocUrl('assistiveText')
+		);
+
+		incompatibleProps(
+			COMPONENT,
+			props,
+			'position',
+			['relative'],
+			'target',
+			null,
+			`${createDocUrl()}`
 		);
 	};
 }
