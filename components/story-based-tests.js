@@ -3,7 +3,7 @@
  *
  * Please add stories below to use Storybook Stories (http://localhost:9001)
  * as the basis for DOM and image snapshots to allow markup and visual
- *  regression testing. All new components should be added below to enable 
+ *  regression testing. All new components should be added below to enable
  * DOM and image snapshots. With enough Storybook story examples, these two
  * methods should be significant to fully test components with the exception
  * of callback testing. Please test callback props with the Mocha framework
@@ -21,6 +21,7 @@ export Alert from '../components/alert/__docs__/storybook-stories';
 export Avatar from '../components/avatar/__docs__/storybook-stories';
 export BrandBand from '../components/brand-band/__docs__/storybook-stories';
 export Breadcrumb from '../components/breadcrumb/__docs__/storybook-stories';
+export BuilderHeader from '../components/builder-header/__docs__/storybook-stories';
 export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '../button';
 import Icon from '../icon';
@@ -10,6 +11,21 @@ import {
 	BUILDER_HEADER_NAV_LINK,
 	MENU_DROPDOWN,
 } from '../../utilities/constants';
+
+const propTypes = {
+	/**
+	 * Provide children of the types `<BuilderHeaderNavLink />` or `<Dropdown />` to define the structure of the navigation section.
+	 * ```
+	 * <BuilderHeaderNav>
+	 *   <BuilderHeaderNav>
+	 *     <BuilderHeaderNavLink />
+	 *     <Dropdown />
+	 *   </BuilderHeaderNav>
+	 * </BuilderHeader>
+	 * ```
+	 */
+	children: PropTypes.node,
+};
 
 const renderDropdownNavItem = (props) => {
 	// Remove props that are custom rendered, and forward remaining props to the dropdown
@@ -54,6 +70,9 @@ const renderDropdownNavItem = (props) => {
 	);
 };
 
+/**
+ * The navigation section of the header.
+ */
 const BuilderHeaderNav = (props) => (
 	<nav className="slds-builder-header__item slds-builder-header__nav">
 		<ul className="slds-builder-header__nav-list">
@@ -70,4 +89,5 @@ const BuilderHeaderNav = (props) => (
 );
 
 BuilderHeaderNav.displayName = BUILDER_HEADER_NAV;
+BuilderHeaderNav.propTypes = propTypes;
 export default BuilderHeaderNav;
