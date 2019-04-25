@@ -1145,7 +1145,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               />
             </svg>
           </div>
-          <div
+          <section
             className="absolute-positioned"
             id="combobox-base-listbox"
             onKeyDown={[Function]}
@@ -1291,7 +1291,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <div
+                  <section
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-4"
                     onKeyDown={[Function]}
@@ -1309,7 +1309,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       This account has been removed from the system.
                     </div>
-                  </div>
+                  </section>
                 </div>
               </li>
               <li
@@ -1433,7 +1433,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <div
+                  <section
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-6"
                     onKeyDown={[Function]}
@@ -1451,7 +1451,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       You don't have permission to access this account.
                     </div>
-                  </div>
+                  </section>
                 </div>
               </li>
               <li
@@ -1553,7 +1553,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
       <div
@@ -3106,7 +3106,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3325,7 +3325,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -3467,7 +3467,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3582,7 +3582,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -3642,7 +3642,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3699,7 +3699,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -3759,7 +3759,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               />
             </svg>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3816,7 +3816,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -4027,7 +4027,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                 />
               </svg>
             </div>
-            <div
+            <section
               aria-describedby="combobox-unique-id-dialog-body"
               aria-labelledby="combobox-unique-id-label"
               className="absolute-positioned ignore-react-onclickoutside slds-popover slds-popover_full-width"
@@ -4103,7 +4103,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                   </button>
                 </div>
               </footer>
-            </div>
+            </section>
           </div>
         </div>
       </div>
@@ -4998,7 +4998,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               </svg>
             </span>
           </div>
-          <div
+          <section
             id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -5561,7 +5561,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -5775,7 +5775,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               </svg>
             </span>
           </div>
-          <div
+          <section
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -6111,7 +6111,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 </span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
       </div>
     </div>
