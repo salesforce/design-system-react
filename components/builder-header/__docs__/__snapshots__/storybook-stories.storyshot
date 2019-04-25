@@ -104,7 +104,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
             >
               <div
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                id="Mp0Gxt9fgB"
+                id="dropdown"
                 onClick={[Function]}
                 onFocus={null}
                 onKeyDown={[Function]}
@@ -367,7 +367,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
             >
               <div
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                id="PeSL2bl4Eb"
+                id="dropdown"
                 onClick={[Function]}
                 onFocus={null}
                 onKeyDown={[Function]}
@@ -534,7 +534,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
             role="group"
           >
             <button
-              className="slds-button slds-button_icon slds-button_icon-border"
+              className="slds-button slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -554,7 +554,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
               </span>
             </button>
             <button
-              className="slds-button slds-button_icon slds-button_icon-border"
+              className="slds-button slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -584,7 +584,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
             role="group"
           >
             <button
-              className="slds-button slds-button_icon slds-button_icon-border"
+              className="slds-button slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -604,7 +604,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
               </span>
             </button>
             <button
-              className="slds-button slds-button_icon slds-button_icon-border"
+              className="slds-button slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -624,7 +624,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
               </span>
             </button>
             <button
-              className="slds-button slds-button_icon slds-button_icon-border"
+              className="slds-button slds-button_icon-border"
               disabled={false}
               onClick={[Function]}
               type="button"

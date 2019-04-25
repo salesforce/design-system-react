@@ -35,6 +35,7 @@ const Example = (props) => (
 					assistiveText={{ icon: 'Dropdown' }}
 					iconCategory="utility"
 					iconName="page"
+					id="dropdown"
 					label="Dropdown"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
@@ -62,39 +63,39 @@ const Example = (props) => (
 				<ButtonGroup label="Canvas Actions">
 					<Button
 						assistiveText={{ icon: 'Undo' }}
-						className="slds-button_icon-border"
 						iconCategory="utility"
 						iconName="undo"
+						iconVariant="border"
 						variant="icon"
 					/>
 					<Button
 						assistiveText={{ icon: 'Redo' }}
-						className="slds-button_icon-border"
 						iconCategory="utility"
 						iconName="redo"
+						iconVariant="border"
 						variant="icon"
 					/>
 				</ButtonGroup>
 				<ButtonGroup label="Edit Actions">
 					<Button
 						assistiveText={{ icon: 'Cut' }}
-						className="slds-button_icon-border"
 						iconCategory="utility"
 						iconName="cut"
+						iconVariant="border"
 						variant="icon"
 					/>
 					<Button
 						assistiveText={{ icon: 'Copy' }}
-						className="slds-button_icon-border"
 						iconCategory="utility"
 						iconName="copy"
+						iconVariant="border"
 						variant="icon"
 					/>
 					<Button
 						assistiveText={{ icon: 'Paste' }}
-						className="slds-button_icon-border"
 						iconCategory="utility"
 						iconName="paste"
+						iconVariant="border"
 						variant="icon"
 					/>
 				</ButtonGroup>

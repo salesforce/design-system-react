@@ -34,6 +34,7 @@ const Example = (props) => (
 					assistiveText={{ icon: 'Dropdown' }}
 					iconCategory="utility"
 					iconName="page"
+					id="dropdown"
 					label="Dropdown"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
