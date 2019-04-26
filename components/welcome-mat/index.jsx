@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Modal from '~/components/modal';
+import ProgressBar from '~/components/progress-bar';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -122,65 +123,50 @@ class WelcomeMat extends React.Component {
 								</strong>
 							</p>
 						</div>
-						<div
-							className="slds-progress-bar slds-progress-bar_circular"
-							aria-valuemin="0"
-							aria-valuemax="100"
-							aria-valuenow={this.state.progress}
-							role="progressbar"
-						>
-							<span
-								className="slds-progress-bar__value"
-								style={{ width: `${this.state.progress}%` }}
-							>
-								<span className="slds-assistive-text">
-									Progress: {this.state.progress}%
-								</span>
-							</span>
-						</div>
+						<ProgressBar value={this.state.progress} radius="circular" />
 					</React.Fragment>
 				) : null}
 			</div>
 		);
 
 		return (
-				<Modal isOpen>
-					<div
-						className={classNames(
-							'slds-welcome-mat',
-							this.props.children ? null : 'slds-welcome-mat_splash'
-						)}
-					>
-						<div className="slds-welcome-mat__content slds-grid">
-							{this.props.children ? (
-								<React.Fragment>
-									<div className="slds-welcome-mat__info slds-size_1-of-2">
-										{splash}
-									</div>
-									<div
-										className={classNames(
-											'slds-welcome-mat__tiles',
-											'slds-size_1-of-2',
-											this.props.isInfoOnly
-												? 'slds-welcome-mat__tiles_info-only'
-												: null
-										)}
-									>
-										{React.Children.map(this.props.children, (child) =>
-											React.cloneElement(child, {
-												isInfoOnly: this.props.isInfoOnly,
-											})
-										)}
-									</div>
-								</React.Fragment>
-							) : (
-								<div className="slds-welcome-mat__info slds-size_1-of-1">
+			<Modal isOpen>
+				<div
+					className={classNames(
+						'slds-welcome-mat',
+						this.props.children ? null : 'slds-welcome-mat_splash'
+					)}
+				>
+					<div className="slds-welcome-mat__content slds-grid">
+						{this.props.children ? (
+							<React.Fragment>
+								<div className="slds-welcome-mat__info slds-size_1-of-2">
 									{splash}
 								</div>
-							)}
-						</div>
+								<div
+									className={classNames(
+										'slds-welcome-mat__tiles',
+										'slds-size_1-of-2',
+										this.props.isInfoOnly
+											? 'slds-welcome-mat__tiles_info-only'
+											: null
+									)}
+								>
+									{React.Children.map(this.props.children, (child) =>
+										React.cloneElement(child, {
+											isInfoOnly: this.props.isInfoOnly,
+										})
+									)}
+								</div>
+							</React.Fragment>
+						) : (
+							<div className="slds-welcome-mat__info slds-size_1-of-1">
+								{splash}
+							</div>
+						)}
 					</div>
-				</Modal>
+				</div>
+			</Modal>
 		);
 	}
 }
