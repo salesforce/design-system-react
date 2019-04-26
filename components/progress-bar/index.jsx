@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import assign from 'lodash.assign';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -29,7 +30,10 @@ const propTypes = {
 	/**
 	 * Label for the progress bar
 	 */
-	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+	labels: PropTypes.shape({
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		complete: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	}),
 	/**
 	 *  Set radius of progress bar
 	 */
@@ -48,7 +52,11 @@ const propTypes = {
 	value: PropTypes.number.isRequired,
 };
 
-const defaultProps = {};
+const defaultProps = {
+	labels: {
+		complete: 'Complete',
+	},
+};
 
 /**
  * A progress bar component communicates to the user the progress of a particular process
@@ -70,16 +78,18 @@ class ProgressBar extends React.Component {
 	 * Enables Descriptive Progress Bar if label is provided
 	 * @returns {string} description
 	 */
-	getDescription() {
-		if (this.props.label) {
+	getDescription({ labels }) {
+		if (this.props.labels.label) {
 			return (
 				<div
 					className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
 					id="progress-bar-label-id-4"
 				>
-					<span>{this.props.label}</span>
+					<span>{labels.label}</span>
 					<span aria-hidden="true">
-						<strong>{this.props.value}% Complete</strong>
+						<strong>
+							{this.props.value}% {labels.complete}
+						</strong>
 					</span>
 				</div>
 			);
@@ -88,9 +98,11 @@ class ProgressBar extends React.Component {
 	}
 
 	render() {
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+
 		return (
 			<div id={this.getId()}>
-				{this.getDescription()}
+				{this.getDescription({ labels })}
 				<div
 					className={classNames(
 						'slds-progress-bar',
@@ -100,9 +112,6 @@ class ProgressBar extends React.Component {
 							: null,
 						this.props.className
 					)}
-					style={{
-						width: `${this.props.value}%`,
-					}}
 				>
 					<span
 						className={classNames(
@@ -111,6 +120,9 @@ class ProgressBar extends React.Component {
 								? `slds-progress-bar__value_${this.props.color}`
 								: null
 						)}
+						style={{
+							width: `${this.props.value}%`,
+						}}
 					>
 						<span className="slds-assistive-text">
 							Progress: {`${this.props.value}%`}
