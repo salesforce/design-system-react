@@ -41,6 +41,7 @@ const documentationSiteLiveExamples = {
 	pill: require('@salesforce/design-system-react/components/pill/__docs__/site-stories.js'),
 	'pill-container': require('@salesforce/design-system-react/components/pill-container/__docs__/site-stories.js'),
 	popover: require('@salesforce/design-system-react/components/popover/__docs__/site-stories.js'),
+	'progress-bar': require('@salesforce/design-system-react/components/progress-bar/__docs__/site-stories.js'),
 	'progress-indicator': require('@salesforce/design-system-react/components/progress-indicator/__docs__/site-stories.js'),
 	'progress-ring': require('@salesforce/design-system-react/components/progress-ring/__docs__/site-stories.js'),
 	'radio-button-group': require('@salesforce/design-system-react/components/radio-button-group/__docs__/site-stories.js'),

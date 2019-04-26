@@ -218,6 +218,9 @@ export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 export Tooltip from './tooltip';
 
+export SLDSProgressBar from './progress-bar';
+export ProgressBar from './progress-bar';
+
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
 
