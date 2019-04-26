@@ -5,6 +5,8 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/info-only.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/splash.jsx'),
 ];
 
 module.exports = siteStories;

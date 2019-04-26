@@ -7,7 +7,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal';
 
 // ### shortid
@@ -145,7 +144,6 @@ class WelcomeMat extends React.Component {
 		);
 
 		return (
-			<IconSettings iconPath="/assets/icons">
 				<Modal isOpen>
 					<div
 						className={classNames(
@@ -183,7 +181,6 @@ class WelcomeMat extends React.Component {
 						</div>
 					</div>
 				</Modal>
-			</IconSettings>
 		);
 	}
 }
