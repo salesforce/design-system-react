@@ -11,6 +11,7 @@ import SLDSButton from '../../button';
 import Default from '../__examples__/default';
 import Files from '../__examples__/files';
 import WithSelection from '../__examples__/with-selection';
+import DeprecatedWarning from '../../utilities/deprecated-warning';
 
 class DemoLookup extends React.Component {
 	static displayName = 'DemoLookup';
@@ -112,7 +113,10 @@ class DemoLookupAccounts extends React.Component {
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
-			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+			<IconSettings iconPath="/assets/icons">
+				{<DeprecatedWarning />}
+				{getStory()}
+			</IconSettings>
 		</div>
 	))
 	.add('Standard', () => (

@@ -65,7 +65,7 @@ storiesOf(BUTTON, module)
 	))
 	.add('Icon Container Small', () =>
 		getIconButton({
-			assistiveText: { icon: 'Icon border container small' },
+			assistiveText: { icon: 'Icon container small' },
 			iconCategory: 'utility',
 			iconName: 'settings',
 			iconSize: 'large',
@@ -104,8 +104,7 @@ storiesOf(BUTTON, module)
 		})
 	)
 	.add('Outline brand button', () =>
-		getIconButton({
-			assistiveTest: 'Outline brand button',
+		getButton({
 			label: 'Outline brand button',
 			variant: 'outline-brand',
 		})

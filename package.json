@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.9.6",
+	"version": "0.10.2",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -36,6 +36,7 @@
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
 		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
+		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --updateSnapshot --config=tests/snapshots-config.json",
 		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
@@ -323,6 +324,13 @@
 			"url-slug": "cards"
 		},
 		{
+			"component": "carousel",
+			"status": "prototype",
+			"display-name": "Carousel",
+			"SLDS-component-path": "/components/carousel",
+			"url-slug": "carousel"
+		},
+		{
 			"component": "checkbox",
 			"status": "prod",
 			"display-name": "Checkboxes",
@@ -474,12 +482,6 @@
 			},
 			"SLDS-component-path": "/components/icons",
 			"url-slug": "icons"
-		},
-		{
-			"component": "icon-settings",
-			"status": "prod",
-			"display-name": "Icon Settings",
-			"url-slug": "icon-settings"
 		},
 		{
 			"component": "illustration",

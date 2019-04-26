@@ -979,7 +979,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
       >
         Trigger Popover
       </button>
-      <div
+      <section
         aria-describedby="popover-custom-target-dialog-body"
         aria-labelledby="popover-custom-target-dialog-heading"
         className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover"
@@ -987,7 +987,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
-        role="popover"
+        role="dialog"
         style={
           Object {
             "outline": 0,
@@ -1035,7 +1035,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-      </div>
+      </section>
     </div>
     <div
       style={
@@ -1145,7 +1145,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_error"
@@ -1153,7 +1153,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1267,7 +1267,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
           }
         />
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -1373,7 +1373,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
       >
         Trigger Popover
       </button>
-      <div
+      <section
         aria-describedby="myPopoverId-dialog-body"
         aria-labelledby="myPopoverId-dialog-heading"
         className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover sample-classname"
@@ -1381,7 +1381,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
-        role="popover"
+        role="dialog"
         style={
           Object {
             "background": "rgb(255, 80, 121)",
@@ -1428,7 +1428,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -1464,7 +1464,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-walkthrough-dialog-body"
       aria-labelledby="popover-walkthrough-dialog-heading"
       className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover slds-popover_walkthrough"
@@ -1472,7 +1472,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1550,7 +1550,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
           </div>
         </div>
       </footer>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -1619,7 +1619,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-walkthrough-dialog-body"
       aria-labelledby="popover-walkthrough-dialog-heading"
       className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover slds-popover_walkthrough slds-popover_walkthrough-alt"
@@ -1627,7 +1627,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1698,7 +1698,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -1767,7 +1767,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_warning"
@@ -1775,7 +1775,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
-      role="popover"
+      role="dialog"
       style={
         Object {
           "outline": 0,
@@ -1889,7 +1889,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
           }
         />
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;

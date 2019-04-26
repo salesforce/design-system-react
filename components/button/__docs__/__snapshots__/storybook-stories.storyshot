@@ -455,7 +455,7 @@ exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
       <span
         className="slds-assistive-text"
       >
-        Icon border container small
+        Icon container small
       </span>
     </button>
   </div>
