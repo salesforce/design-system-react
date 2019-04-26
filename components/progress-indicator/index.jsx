@@ -17,6 +17,7 @@ import { PROGRESS_INDICATOR } from '../../utilities/constants';
 // Child components
 import Step from './private/step';
 import Progress from './private/progress';
+import StepVertical from './private/step-vertical';
 
 const displayName = PROGRESS_INDICATOR;
 
@@ -61,6 +62,10 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
+	/**
+	 * Determines the orientation of the progress indicator
+	 */
+	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
 	/**
 	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
@@ -131,6 +136,7 @@ const defaultProps = {
 	errorSteps: [],
 	completedSteps: [],
 	disabledSteps: [],
+	orientation: 'horizontal',
 	selectedStep: defaultSteps[0],
 	variant: 'base',
 	// click/focus callbacks by default do nothing
@@ -216,12 +222,14 @@ class ProgressIndicator extends React.Component {
 		const tooltipPosition =
 			this.props.tooltipPosition ||
 			(this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
-
+		const StepComponent =
+			this.props.orientation === 'vertical' ? StepVertical : Step;
 		/** 2. return DOM */
 		return (
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
+				orientation={this.props.orientation}
 				value={
 					currentStep === 0
 						? '0'
@@ -231,7 +239,7 @@ class ProgressIndicator extends React.Component {
 				className={this.props.className}
 			>
 				{allSteps.map((step, i) => (
-					<Step
+					<StepComponent
 						assistiveText={assistiveText}
 						key={`${this.getId()}-${step.id}`}
 						id={this.getId()}
