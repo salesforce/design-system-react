@@ -129,6 +129,9 @@ export DataTableHighlightCell from './data-table/highlight-cell';
 export SLDSDataTableColumn from './data-table/column';
 export DataTableColumn from './data-table/column';
 
+export SLDSDataTableInteractiveElement from './data-table/interactive-element';
+export DataTableInteractiveElement from './data-table/interactive-element';
+
 export SLDSDataTableRowActions from './data-table/row-actions';
 export DataTableRowActions from './data-table/row-actions';
 

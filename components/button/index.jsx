@@ -328,7 +328,11 @@ class Button extends React.Component {
 					if (this.props.buttonRef) {
 						this.props.buttonRef(component);
 					}
-					if (component && this.props.requestFocus && this.props.onRequestFocus) {
+					if (
+						component &&
+						this.props.requestFocus &&
+						this.props.onRequestFocus
+					) {
 						this.props.onRequestFocus(component);
 					}
 				}}

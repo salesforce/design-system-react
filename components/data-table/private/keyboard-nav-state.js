@@ -17,9 +17,6 @@ export default (tableContext, cellContext, fixedLayout) => {
 				cellContext.rowIndex,
 				cellContext.columnIndex
 			);
-			console.log(
-				`handleFocus ${cellContext.rowIndex} ${cellContext.columnIndex}`
-			);
 		}
 	};
 

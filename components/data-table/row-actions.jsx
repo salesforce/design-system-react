@@ -24,7 +24,6 @@ import keyboardNavState from './private/keyboard-nav-state';
 
 // ## Constants
 import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
-import DataTable from '.';
 
 const InteractiveDropdown = InteractiveElement(Dropdown);
 
@@ -76,7 +75,11 @@ const defaultProps = {
 const DataTableRowActions = (props) => {
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, cellContext, props.fixedLayout);
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(
+		tableContext,
+		cellContext,
+		props.fixedLayout
+	);
 
 	const handleClick = (e) => {
 		EventUtil.trap(e);

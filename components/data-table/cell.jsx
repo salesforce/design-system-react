@@ -21,7 +21,11 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
 const DataTableCell = (props) => {
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, cellContext, props.fixedLayout);
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(
+		tableContext,
+		cellContext,
+		props.fixedLayout
+	);
 	const childText = React.isValidElement(props.children)
 		? props.children.props.children
 		: props.children;
@@ -37,7 +41,7 @@ const DataTableCell = (props) => {
 	);
 
 	const className = classNames(props.className, {
-		'slds-has-focus': hasFocus
+		'slds-has-focus': hasFocus,
 	});
 	const ref = (node) => {
 		if (node && hasFocus) {

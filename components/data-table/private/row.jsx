@@ -69,9 +69,13 @@ const DataTableRow = (props) => {
 	const tableContext = useContext(TableContext);
 	const selectRowCellContext = {
 		rowIndex: props.rowIndex,
-		columnIndex: 0
+		columnIndex: 0,
 	};
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, selectRowCellContext, props.fixedLayout);
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(
+		tableContext,
+		selectRowCellContext,
+		props.fixedLayout
+	);
 
 	const handleToggle = (e, { checked }) =>
 		props.onToggle(props.item, checked, e);
@@ -90,50 +94,50 @@ const DataTableRow = (props) => {
 			className={classNames({
 				'slds-hint-parent': props.rowActions,
 				'slds-is-selected': props.canSelectRows && isSelected,
-				'slds-has-focus': hasFocus
+				'slds-has-focus': hasFocus,
 			})}
 		>
 			{props.canSelectRows ? (
-					<td
-						role={props.fixedLayout ? 'gridcell' : null}
-						className="slds-text-align_right"
-						data-label={props.stacked ? 'Select Row' : undefined}
-						style={{ width: '3.25rem' }}
-						onFocus={handleFocus}
-						onKeyDown={handleKeyDown}
-						ref={(ref) => {
-							if (ref && hasFocus) {
-								ref.focus();
-							}
-						}}
-						tabIndex={tabIndex}
-					>
-						<CellContext.Provider value={selectRowCellContext}>
-							{props.canSelectRows === 'radio' ? (
-								<InteractiveRadio
-									assistiveText={{
-										label: props.assistiveText.selectRow,
-									}}
-									checked={isSelected}
-									className="slds-m-right_x-small"
-									id={`${props.id}-SelectRow`}
-									label=""
-									name={`${props.tableId}-SelectRow`}
-									onChange={handleToggle}
-								/>
-							) : (
-								<InteractiveCheckbox
-									assistiveText={{
-										label: props.assistiveText.selectRow,
-									}}
-									checked={isSelected}
-									id={`${props.id}-SelectRow`}
-									name="SelectRow"
-									onChange={handleToggle}
-								/>
-							)}
-						</CellContext.Provider>
-					</td>
+				<td
+					role={props.fixedLayout ? 'gridcell' : null}
+					className="slds-text-align_right"
+					data-label={props.stacked ? 'Select Row' : undefined}
+					style={{ width: '3.25rem' }}
+					onFocus={handleFocus}
+					onKeyDown={handleKeyDown}
+					ref={(ref) => {
+						if (ref && hasFocus) {
+							ref.focus();
+						}
+					}}
+					tabIndex={tabIndex}
+				>
+					<CellContext.Provider value={selectRowCellContext}>
+						{props.canSelectRows === 'radio' ? (
+							<InteractiveRadio
+								assistiveText={{
+									label: props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								className="slds-m-right_x-small"
+								id={`${props.id}-SelectRow`}
+								label=""
+								name={`${props.tableId}-SelectRow`}
+								onChange={handleToggle}
+							/>
+						) : (
+							<InteractiveCheckbox
+								assistiveText={{
+									label: props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								id={`${props.id}-SelectRow`}
+								name="SelectRow"
+								onChange={handleToggle}
+							/>
+						)}
+					</CellContext.Provider>
+				</td>
 			) : null}
 			{props.columns.map((column, index) => {
 				const Cell = column.Cell;
@@ -144,7 +148,10 @@ const DataTableRow = (props) => {
 				return (
 					<CellContext.Provider
 						key={cellId}
-						value={{ columnIndex: props.canSelectRows ? index + 1 : index, rowIndex: props.rowIndex }}
+						value={{
+							columnIndex: props.canSelectRows ? index + 1 : index,
+							rowIndex: props.rowIndex,
+						}}
 					>
 						<Cell
 							{...column.props}
@@ -160,18 +167,25 @@ const DataTableRow = (props) => {
 					</CellContext.Provider>
 				);
 			})}
-			<CellContext.Provider value={{ columnIndex: props.canSelectRows ? props.columns.length + 1 : props.columns.length, rowIndex: props.rowIndex }}>
+			<CellContext.Provider
+				value={{
+					columnIndex: props.canSelectRows
+						? props.columns.length + 1
+						: props.columns.length,
+					rowIndex: props.rowIndex,
+				}}
+			>
 				{props.rowActions
 					? React.cloneElement(props.rowActions, {
 							id: `${props.id}-${DATA_TABLE_ROW_ACTIONS}`,
 							item: props.item,
-							fixedLayout: props.fixedLayout
+							fixedLayout: props.fixedLayout,
 						})
 					: null}
 			</CellContext.Provider>
 		</tr>
 	);
-}
+};
 
 DataTableRow.displayName = DATA_TABLE_ROW;
 DataTableRow.propTypes = propTypes;

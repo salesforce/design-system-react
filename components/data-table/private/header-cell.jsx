@@ -35,7 +35,9 @@ import {
 const SortAnchor = (props) => {
 	// Avoid passing props to <a> that it doesn't understand
 	const passThroughProps = { ...props };
-	['onRequestFocus', 'onOpen', 'onClose', 'requestFocus'].forEach((key) => delete passThroughProps[key]);
+	['onRequestFocus', 'onOpen', 'onClose', 'requestFocus'].forEach(
+		(key) => delete passThroughProps[key]
+	);
 	return (
 		<a
 			ref={(node) => {

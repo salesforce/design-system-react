@@ -13,9 +13,7 @@ const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell {...props}>
-		<InteractiveCheckBox
-			label="Option"
-		/>
+		<InteractiveCheckBox label="Option" />
 		<InteractiveButton
 			onClick={(event) => {
 				event.preventDefault();
@@ -94,7 +92,11 @@ class Example extends React.Component {
 					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Default Fluid Layout
 					</h3>
-					<DataTable items={this.state.items} id="DataTableExample-1-default" fixedLayout>
+					<DataTable
+						items={this.state.items}
+						id="DataTableExample-1-default"
+						fixedLayout
+					>
 						{columns}
 					</DataTable>
 

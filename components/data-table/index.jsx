@@ -134,6 +134,24 @@ class DataTable extends React.Component {
 		fixedHeader: PropTypes.bool,
 		/**
 		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
+		 *
+		 * The advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
+		 * Wrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:
+		 * ```
+		 * const InteractiveButton = DataTableInteractiveElement(Button);
+		 * const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
+		 * const CustomDataTableCell = ({ children, ...props }) => (
+		 * 	<DataTableCell {...props}>
+		 * 		<InteractiveCheckBox />
+		 * 		<InteractiveButton />
+		 * 	</DataTableCell>
+		 * );
+		 * ```
+		 * The wrapped element must accept the props:
+		 *  `onFocus`: Callback for when the element is focused.
+		 *  `onRequestFocus`: Trigger to indicate that this element should be focused.
+		 *  `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
+		 *  `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
 		 */
 		fixedLayout: PropTypes.bool,
 		/**

@@ -75,9 +75,20 @@ class DataTableHead extends React.Component {
 			actionsHeader = (
 				<TableContext.Consumer>
 					{(tableContext) => {
-						const columnIndex = this.props.canSelectRows ? this.props.columns.length + 1 : this.props.columns.length;
+						const columnIndex = this.props.canSelectRows
+							? this.props.columns.length + 1
+							: this.props.columns.length;
 						const cellContext = { columnIndex, rowIndex: 0 };
-						const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, cellContext, this.props.fixedLayout);
+						const {
+							tabIndex,
+							hasFocus,
+							handleFocus,
+							handleKeyDown,
+						} = keyboardNavState(
+							tableContext,
+							cellContext,
+							this.props.fixedLayout
+						);
 						return (
 							<th
 								className={classNames({ 'slds-has-focus': hasFocus })}
@@ -152,11 +163,20 @@ class DataTableHead extends React.Component {
 				<TableContext.Consumer>
 					{(tableContext) => {
 						const cellContext = { columnIndex: 0, rowIndex: 0 };
-						const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(tableContext, cellContext, this.props.fixedLayout);
+						const {
+							tabIndex,
+							hasFocus,
+							handleFocus,
+							handleKeyDown,
+						} = keyboardNavState(
+							tableContext,
+							cellContext,
+							this.props.fixedLayout
+						);
 						return (
 							<th
 								className={classNames('slds-text-align_right', {
-									'slds-has-focus': hasFocus
+									'slds-has-focus': hasFocus,
 								})}
 								ref={(ref) => {
 									if (this.props.headerRefs) {
@@ -223,7 +243,10 @@ class DataTableHead extends React.Component {
 					{this.props.columns.map((column, index) => (
 						<CellContext.Provider
 							key={`${this.props.id}-${column.props.property}`}
-							value={{ columnIndex: this.props.canSelectRows ? index + 1 : index, rowIndex: 0 }}
+							value={{
+								columnIndex: this.props.canSelectRows ? index + 1 : index,
+								rowIndex: 0,
+							}}
 						>
 							<HeaderCell
 								assistiveText={this.props.assistiveText}

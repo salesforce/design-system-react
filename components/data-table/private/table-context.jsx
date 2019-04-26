@@ -5,10 +5,10 @@ export default React.createContext({
 	activeElement: null,
 	mode: null,
 	tableHasFocus: false,
-	changeActiveCell: () => { },
-	changeActiveElement: () => { },
-	handleKeyDown: () => { },
-	registerInteractiveElement: () => { },
+	changeActiveCell: () => {},
+	changeActiveElement: () => {},
+	handleKeyDown: () => {},
+	registerInteractiveElement: () => {},
 	allowKeyboardNavigation: true,
-	setAllowKeyboardNavigation: () => { }
+	setAllowKeyboardNavigation: () => {},
 });
