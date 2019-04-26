@@ -128,6 +128,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
         <table
           className="slds-table slds-table_bordered slds-table_cell-buffer"
           id="SLDSDataTableExample-1"
+          onBlur={[Function]}
           role={null}
         >
           <thead>
@@ -138,6 +139,8 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
                 aria-label="Opportunity Name"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={null}
               >
@@ -156,6 +159,8 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -176,6 +181,8 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -196,6 +203,8 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -333,6 +342,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
         <table
           className="slds-table slds-table_bordered slds-table_cell-buffer"
           id="SLDSDataTableExample-1"
+          onBlur={[Function]}
           role={null}
         >
           <thead>
@@ -343,6 +353,8 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
                 aria-label="Opportunity Name"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={null}
               >
@@ -361,6 +373,8 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -381,6 +395,8 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -401,6 +417,8 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -530,6 +548,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
         <table
           className="slds-table slds-table_bordered slds-table_cell-buffer"
           id="DataTableExample-1"
+          onBlur={[Function]}
           role={null}
         >
           <thead>
@@ -540,6 +559,8 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
                 aria-label="Opportunity Name"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={null}
               >
@@ -558,6 +579,8 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -574,6 +597,8 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -590,6 +615,8 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -913,6 +940,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
         <table
           className="slds-table slds-table_bordered slds-table_cell-buffer"
           id="SLDSDataTableExample-1"
+          onBlur={[Function]}
           role={null}
         >
           <thead>
@@ -923,6 +951,8 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
                 aria-label="Opportunity Name"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={null}
               >
@@ -941,6 +971,8 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -961,6 +993,8 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -981,6 +1015,8 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
             >
               <td
                 className="slds-truncate"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role={null}
                 style={null}
               >
@@ -1028,6 +1064,7 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
       <table
         className="slds-table slds-table_bordered slds-table_cell-buffer"
         id="SLDSDataTableExample-1"
+        onBlur={[Function]}
         role={null}
       >
         <thead>
@@ -1038,6 +1075,8 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
               aria-label="Opportunity Name"
               aria-sort="none"
               className=""
+              onFocus={[Function]}
+              onKeyDown={[Function]}
               scope="col"
               style={null}
             >
@@ -1056,6 +1095,8 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
           >
             <td
               className="slds-truncate"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
               role={null}
               style={null}
             >
@@ -1076,6 +1117,8 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
           >
             <td
               className="slds-truncate"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
               role={null}
               style={null}
             >
@@ -1096,6 +1139,8 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
           >
             <td
               className="slds-truncate"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
               role={null}
               style={null}
             >

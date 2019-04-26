@@ -11,9 +11,10 @@ import Checkbox from '~/components/checkbox';
 const InteractiveButton = DataTableInteractiveElement(Button);
 const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
 
+let index = 0;
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell {...props}>
-		<InteractiveCheckBox label="Option" />
+		<InteractiveCheckBox id={`${index++}`} label="Option" />
 		<InteractiveButton
 			onClick={(event) => {
 				event.preventDefault();
