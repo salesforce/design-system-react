@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 					deprecatedPropValue: 'recordHome',
 					replacementPropAsValue: 'record-home',
 				},
-				`Using value of variants in camelCase is deprecated. Use kebab-case ('record-home') instead.${createDocUrl(
+				`Using value of variants in camelCase is deprecated. Use kebab-case ('record-home') instead. ${createDocUrl(
 					'variant'
 				)}`
 			);
