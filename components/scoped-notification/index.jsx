@@ -3,11 +3,12 @@
 
 // Implements the [Scoped Notification design pattern](https://lightningdesignsystem.com/components/scoped-notifications/) in React.
 // Based on SLDS v2.4.5
-import IconSettings from '~/components/icon-settings';
-import Icon from '~/components/icon';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import IconSettings from '../icon-settings';
+import Icon from '../icon';
 
 import { SCOPED_NOTIFICATION } from '../../utilities/constants';
 
@@ -46,7 +47,9 @@ class ScopedNotification extends React.Component {
 					`slds-scoped-notification`,
 					`slds-media`,
 					`slds-media_center`,
-					`slds-scoped-notification_${this.props.theme}`,
+					this.props.theme === 'light'
+						? 'slds-scoped-notification_light'
+						: 'slds-scoped-notification_dark',
 					this.props.className
 				)}
 				role="status"
