@@ -6,7 +6,7 @@ class Example extends React.Component {
 		return (
 			<div>
 				<span>Color: success</span>
-				<ProgressBar value={75} color="success" />
+				<ProgressBar id="progress-bar-success" value={75} color="success" />
 			</div>
 		);
 	}

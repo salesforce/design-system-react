@@ -6,6 +6,7 @@ class Example extends React.Component {
 		return (
 			<div>
 				<ProgressBar
+					id="setup-progress-bar"
 					value={90}
 					labels={{ label: 'Einstein Setup Assistant' }}
 				/>

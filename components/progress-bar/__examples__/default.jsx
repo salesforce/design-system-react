@@ -5,7 +5,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<div>
-				<ProgressBar value={75} />
+				<ProgressBar id="progress-bar" value={75} />
 			</div>
 		);
 	}
