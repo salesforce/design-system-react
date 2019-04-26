@@ -4,13 +4,11 @@ import ProgressBar from '~/components/progress-bar';
 class Example extends React.Component {
 	render() {
 		return (
-			<div
-				style={{
-					padding: '4rem 1rem 0px',
-					background: 'rgb(244, 246, 249)',
-				}}
-			>
-				<ProgressBar value={90} label="Einstein Setup Assistant" />
+			<div>
+				<ProgressBar
+					value={90}
+					labels={{ label: 'Einstein Setup Assistant' }}
+				/>
 			</div>
 		);
 	}

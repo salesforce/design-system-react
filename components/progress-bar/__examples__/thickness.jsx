@@ -4,12 +4,7 @@ import ProgressBar from '~/components/progress-bar';
 class Example extends React.Component {
 	render() {
 		return (
-			<div
-				style={{
-					padding: '4rem 1rem 0px',
-					background: 'rgb(244, 246, 249)',
-				}}
-			>
+			<div>
 				<span>Thickness: x-small</span>
 				<ProgressBar value={90} thickness="x-small" />
 				<hr />
