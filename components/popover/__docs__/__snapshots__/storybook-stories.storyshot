@@ -1271,7 +1271,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
         }
       >
         <div
-          className="slds-text-align_right"
+          className="slds-text-align_right slds-col_padded slds-text-align_right slds-p-bottom_x-small"
         >
           <button
             className="slds-button slds-button_neutral"
@@ -1283,7 +1283,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
           </button>
           <button
             className="slds-button slds-button_brand"
-            disabled={false}
+            disabled={true}
             onClick={[Function]}
             type="button"
           >

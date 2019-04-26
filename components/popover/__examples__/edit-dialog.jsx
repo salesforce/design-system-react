@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
-import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
+import EditDialogPopover from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
@@ -13,7 +13,8 @@ class Example extends React.Component {
 
 	constructor(props) {
 		super(props);
-
+		const defaultFirstName = 'John';
+		const defaultLastName = 'Smith';
 		this.state = {
 			isOpen: this.props.isOpen,
 			firstName: DEFAULT_FIRST_NAME, // stores firstName in edit input field
@@ -82,9 +83,13 @@ class Example extends React.Component {
 		);
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<EditDialog
+				<EditDialogPopover
 					body={editDialogPopoverBody}
 					heading="Edit First Name"
+					isModified={
+						this.state.firstName !== this.state.prevFirstName ||
+						this.state.lastName !== this.state.prevLastName
+					}
 					onCancel={this.handleRequestClose}
 					onClose={this.handleClose}
 					onRequestClose={this.handleRequestClose}

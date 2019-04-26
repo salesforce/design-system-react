@@ -6,13 +6,20 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
+import assign from 'lodash.assign';
 
 import { POPOVER_EDIT_DIALOG } from '../../utilities/constants';
 
 import Button from '../button';
 import Popover from './popover';
 
-export default class EditDialog extends React.Component {
+const defaultProps = {
+	labels: {
+		cancel: 'Cancel',
+		save: 'Save',
+	},
+};
+class EditDialogPopover extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	static displayName = POPOVER_EDIT_DIALOG;
@@ -23,6 +30,22 @@ export default class EditDialog extends React.Component {
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		 */
 		id: PropTypes.string,
+		/**
+		 * Set to true when inputs within the popover are modified.
+		 */
+		isModified: PropTypes.bool,
+		/**
+		 * **Text labels for internationalization**
+		 * This object is merged with the default props object on every render.
+		 * * `cancel`: text for Cancel button
+		 * * `save`: text for Save button
+		 *
+		 * _Tested with snapshot testing._
+		 */
+		labels: PropTypes.shape({
+			cancel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+			save: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		}),
 		/**
 		 * This function is passed onto the cancel `Button`. Triggered when the trigger button is clicked.
 		 */
@@ -57,6 +80,8 @@ export default class EditDialog extends React.Component {
 			/>
 		);
 
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+
 		return (
 			<Popover
 				classNameBody={[
@@ -66,9 +91,14 @@ export default class EditDialog extends React.Component {
 				]}
 				classNameFooter={['slds-p-top_xx-small', 'slds-p-bottom_xx-small']}
 				footer={
-					<div className="slds-text-align_right">
-						<Button label="Cancel" onClick={onCancel} />
-						<Button variant="brand" label="Save" onClick={onSave} />
+					<div className="slds-text-align_right slds-col_padded slds-text-align_right slds-p-bottom_x-small">
+						<Button label={labels.cancel} onClick={onCancel} />
+						<Button
+							disabled={!this.props.isModified}
+							variant="brand"
+							label={labels.save}
+							onClick={onSave}
+						/>
 					</div>
 				}
 				footerStyle={{ borderTop: '0px' }}
@@ -79,3 +109,7 @@ export default class EditDialog extends React.Component {
 		);
 	}
 }
+
+EditDialogPopover.defaultProps = defaultProps;
+
+export default EditDialogPopover;
