@@ -10508,18 +10508,6 @@
                         {
                             "value": "'related-list'",
                             "computed": false
-                        },
-                        {
-                            "value": "'objectHome'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'recordHome'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'relatedList'",
-                            "computed": false
                         }
                     ]
                 },
