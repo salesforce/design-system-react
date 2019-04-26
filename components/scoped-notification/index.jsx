@@ -7,7 +7,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import IconSettings from '../icon-settings';
 import Icon from '../icon';
 
 import { SCOPED_NOTIFICATION } from '../../utilities/constants';
