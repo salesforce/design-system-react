@@ -140,18 +140,18 @@ class DataTable extends React.Component {
 		 * ```
 		 * const InteractiveButton = DataTableInteractiveElement(Button);
 		 * const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
-		 * const CustomDataTableCell = ({ children, ...props }) => (
-		 * 	<DataTableCell {...props}>
+		 * const CustomDataTableCell = () => (
+		 * 	<DataTableCell>
 		 * 		<InteractiveCheckBox />
 		 * 		<InteractiveButton />
 		 * 	</DataTableCell>
 		 * );
 		 * ```
 		 * The wrapped element must accept the props:
-		 *  `onFocus`: Callback for when the element is focused.
-		 *  `onRequestFocus`: Trigger to indicate that this element should be focused.
-		 *  `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
-		 *  `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
+		 *  * `onFocus`: Callback for when the element is focused.
+		 *  * `onRequestFocus`: Trigger to indicate that this element should be focused.
+		 *  * `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
+		 *  * `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
