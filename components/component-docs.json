@@ -10161,7 +10161,7 @@
                 "required": true,
                 "description": "The contents of the popover. This should also accept arrays."
             },
-            "className": {
+            "classNameBody": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10177,7 +10177,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to the popover. That is the element with `.slds-popover` on it."
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it."
+            },
+            "classNameFooter": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it."
             },
             "disabled": {
                 "type": {
@@ -10193,23 +10211,12 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
-            "footerClassName": {
+            "footerStyle": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
+                    "name": "object"
                 },
                 "required": false,
-                "description": "CSS classes to be added to the `footer` of the popover."
+                "description": "An object of CSS styles that are applied to the `slds-popover__footer` DOM element."
             },
             "footerWalkthroughActions": {
                 "type": {

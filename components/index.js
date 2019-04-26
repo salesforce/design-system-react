@@ -217,6 +217,8 @@ export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 export Tooltip from './tooltip';
+export SLDSEditDialog from './popover/edit-dialog';
+export EditDialog from './popover/edit-dialog';
 
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
