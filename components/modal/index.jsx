@@ -323,9 +323,10 @@ class Modal extends React.Component {
 
 	dismissModalOnClickOutside() {
 		// if dismissOnClickOutside is not set, default its value to disableClose
-		const dismissOnClickOutside = this.props.dismissOnClickOutside
-			? this.props.dismissOnClickOutside
-			: !this.props.disableClose;
+		const dismissOnClickOutside =
+			this.props.dismissOnClickOutside !== undefined
+				? this.props.dismissOnClickOutside
+				: !this.props.disableClose;
 
 		if (dismissOnClickOutside) {
 			this.dismissModal();
