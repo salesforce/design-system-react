@@ -397,6 +397,13 @@
 			"url-slug": "date-pickers"
 		},
 		{
+			"component": "dynamic-icon",
+			"status": "prod",
+			"display-name": "Dynamic Icon",
+			"SLDS-component-path": "/components/dynamic-icon",
+			"url-slug": "dynamic-icon"
+		},
+		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",

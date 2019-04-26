@@ -279,5 +279,8 @@ export Tree from './tree';
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
+export SLDSDynamicIcon from './dynamic-icon';
+export DynamicIcon from './dynamic-icon';
+
 // Library utilities
 export log from '../utilities/log';

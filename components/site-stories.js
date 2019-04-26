@@ -23,6 +23,7 @@ const documentationSiteLiveExamples = {
 	checkbox: require('@salesforce/design-system-react/components/checkbox/__docs__/site-stories.js'),
 	'data-table': require('@salesforce/design-system-react/components/data-table/__docs__/site-stories.js'),
 	'date-picker': require('@salesforce/design-system-react/components/date-picker/__docs__/site-stories.js'),
+	'dynamic-icon': require('@salesforce/design-system-react/components/dynamic-icon/__docs__/site-stories.js'),
 	icon: require('@salesforce/design-system-react/components/icon/__docs__/site-stories.js'),
 	illustration: require('@salesforce/design-system-react/components/illustration/__docs__/site-stories.js'),
 	input: require('@salesforce/design-system-react/components/input/__docs__/site-stories.js'),

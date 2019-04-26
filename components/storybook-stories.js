@@ -28,6 +28,7 @@ export Filter from '../components/filter/__docs__/storybook-stories';
 export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 export DatePicker from '../components/date-picker/__docs__/storybook-stories';
+export DynamicIcon from '../components/dynamic-icon/__docs__/storybook-stories';
 export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
