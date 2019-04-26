@@ -1,4 +1,5 @@
 import React from 'react';
+import IconSettings from '~/components/icon-settings';
 import ScopedNotification from '~/components/scoped-notification';
 
 class Example extends React.Component {
@@ -10,12 +11,14 @@ class Example extends React.Component {
 					background: 'rgb(244, 246, 249)',
 				}}
 			>
-				<ScopedNotification theme="dark">
-					<p>
-						It looks as if duplicates exist for this lead.{' '}
-						<a href="javascript:void(0);">View Duplicates.</a>
-					</p>
-				</ScopedNotification>
+				<IconSettings iconPath="/assets/icons">
+					<ScopedNotification theme="dark">
+						<p>
+							It looks as if duplicates exist for this lead.{' '}
+							<a href="javascript:void(0);">View Duplicates.</a>
+						</p>
+					</ScopedNotification>
+				</IconSettings>
 			</div>
 		);
 	}

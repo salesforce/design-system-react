@@ -25,18 +25,18 @@ const propTypes = {
 	 */
 	theme: PropTypes.oneOf(['dark', 'light']),
 	/**
-	 *  Icon for the scoped notification
+	 *  Icon for the scoped notification. This is currently limited to the utility set of icons.
 	 */
-	icon: PropTypes.string,
+	iconName: PropTypes.string,
 };
 
 const defaultProps = {
 	theme: 'light',
-	icon: 'info'
+	iconName: 'info',
 };
 
 /**
- * A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert. 
+ * A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.
  */
 class ScopedNotification extends React.Component {
 	render() {
@@ -52,15 +52,13 @@ class ScopedNotification extends React.Component {
 				role="status"
 			>
 				<div className="slds-media__figure">
-					<IconSettings iconPath="/assets/icons">
-						<Icon
-							assistiveText={this.props.assistiveText}
-							category="utility"
-							name={this.props.icon}
-							colorVariant={this.props.theme === 'light' ? 'light' : 'base'}
-							size="small"
-						/>
-					</IconSettings>
+					<Icon
+						assistiveText={this.props.assistiveText}
+						category="utility"
+						name={this.props.iconName}
+						colorVariant={this.props.theme === 'light' ? undefined : 'base'}
+						size="small"
+					/>
 				</div>
 				<div className="slds-media__body">{this.props.children}</div>
 			</div>
