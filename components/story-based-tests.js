@@ -43,6 +43,7 @@ export PageHeader from '../components/page-header/__docs__/storybook-stories';
 export PillContainer from '../components/pill-container/__docs__/storybook-stories';
 export Popover from '../components/popover/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
+export ProgressBar from '../components/progress-bar/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
