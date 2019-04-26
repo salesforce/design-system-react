@@ -18,6 +18,8 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+import componentDoc from './docs.json';
+import checkProps from './check-props';
 
 import { VERTICAL_NAVIGATION } from '../../utilities/constants';
 
@@ -55,25 +57,16 @@ class VerticalNavigation extends React.Component {
 		 * Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._
 		 */
 		onSelect: PropTypes.func,
-		/**
-		 * Determines component style:
-		 *     * Use `shade` when the component is placed on an existing background that is not lightly colored.
-		 * _Tested with snapshot testing._
-		 */
-		variant: PropTypes.oneOf(['default', 'shade']),
 	};
 
-	static defaultProps = {
-		variant: 'default',
-	};
+	static defaultProps = {};
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
+		checkProps(VERTICAL_NAVIGATION, this.props, componentDoc);
 	}
 
 	getId = () => this.props.id || this.generatedId;
-
-	getVariant = () => (this.props.variant === 'shade' ? 'shade' : 'default');
 
 	getSelectedId = () => {
 		const categories = this.props.categories;
@@ -92,17 +85,10 @@ class VerticalNavigation extends React.Component {
 
 	render() {
 		const rootId = this.getId();
-		const variant = this.getVariant();
 		return (
 			<nav
 				id={rootId}
-				className={classNames(
-					'slds-nav-vertical',
-					{
-						'slds-nav-vertical_shade': variant === 'shade',
-					},
-					this.props.className
-				)}
+				className={classNames('slds-nav-vertical', this.props.className)}
 			>
 				{this.props.categories.map((category) => {
 					const categoryId = `${rootId}-${category.id}`;
@@ -112,10 +98,7 @@ class VerticalNavigation extends React.Component {
 							key={`${categoryId}-header`}
 							className="slds-nav-vertical__section"
 						>
-							<h2
-								id={categoryId}
-								className="slds-nav-vertical__title slds-text-title_caps"
-							>
+							<h2 id={categoryId} className="slds-nav-vertical__title">
 								{category.label}
 							</h2>
 							<ul key={categoryId}>

@@ -20,11 +20,13 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 
+import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
 import Label from '../forms/private/label';
+import Popover from '../popover';
 import SelectedListBox from '../pill-container/private/selected-listbox';
 
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
@@ -48,6 +50,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.
+	 * * `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.
 	 * * `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.
 	 * * `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.
 	 * * `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.
@@ -56,6 +59,7 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
+		popoverLabel: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
 		removePill: PropTypes.string,
 		selectedListboxLabel: PropTypes.string,
@@ -140,9 +144,16 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * An [Input](https://react.lightningdesignsystem.com/components/inputs) component.
+	 * The props from this component will override any default props.
+	 */
+	input: PropTypes.node,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
+	 * * `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`
+	 * * `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`
 	 * * `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 * * `placeholder`: Input placeholder
@@ -177,7 +188,7 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	menuItem: PropTypes.func,
+	onRenderMenuItem: PropTypes.func,
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
@@ -230,7 +241,7 @@ const propTypes = {
 			disabled: PropTypes.boolean,
 			tooltipContent: PropTypes.node,
 		})
-	).isRequired,
+	),
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
@@ -239,6 +250,10 @@ const propTypes = {
 	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
+	/**
+	 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Combobox's Popover dialog to be a controlled component. _Tested with snapshot testing._
+	 */
+	popover: PropTypes.node,
 	/**
 	 * Applies label styling for a required form element. _Tested with snapshot testing._
 	 */
@@ -260,6 +275,10 @@ const propTypes = {
 	 */
 	selectedListboxRef: PropTypes.func,
 	/**
+	 * Disables the input and prevents editing the contents. This only applies for single readonly and inline-listbox variants.
+	 */
+	singleInputDisabled: PropTypes.bool,
+	/**
 	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
 	 */
 	tooltipMenuItemDisabled: PropTypes.element,
@@ -268,9 +287,16 @@ const propTypes = {
 	 */
 	value: PropTypes.string,
 	/**
-	 * Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._
+	 * Changes styles of the input and menu. Currently `entity` is not supported.
+	 * The options are:
+	 * * `base`: An autocomplete Combobox also allows a user to select an option from a list, but that list can be affected by what the user types into the input of the Combobox. The SLDS website used to call the autocomplete Combobox its `base` variant.
+	 * * `inline-listbox`: An Entity Autocomplete Combobox or Lookup, is used to search for and select Salesforce Entities.
+	 * * `popover`: A dialog Combobox is best used when a listbox, tree, grid, or tree-grid is not the best solution. This variant allows custom content.
+	 * * `readonly`: A readonly text input that allows a user to select an option from a pre-defined list of options. It does not allow free form user input, nor does it allow the user to modify the selected value.
+	 *
+	 *  _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly']),
+	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
 };
 
 const defaultProps = {
@@ -282,6 +308,8 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
+		cancelButton: 'Cancel',
+		doneButton: `Done`,
 		noOptionsFound: 'No matches found.',
 		optionDisabledTooltipLabel: 'This option is disabled.',
 		placeholderReadOnly: 'Select an Option',
@@ -292,6 +320,7 @@ const defaultProps = {
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
+	singleInputDisabled: false,
 	variant: 'base',
 };
 
@@ -327,8 +356,10 @@ class Combobox extends React.Component {
 		checkProps(COMBOBOX, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
+		this.generatedErrorId = shortid.generate();
+
+		if (this.props.isOpen) {
+			this.setState({ isOpen: this.props.isOpen });
 		}
 	}
 
@@ -372,6 +403,62 @@ class Combobox extends React.Component {
 		}
 	}
 
+	getCustomPopoverProps = (body, { assistiveText, labels }) => {
+		/*
+		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
+		 */
+		const popoverBody = (
+			<div>
+				<div className="slds-assistive-text" id={`${this.getId()}-label`}>
+					{assistiveText.popoverLabel}
+				</div>
+				{body}
+			</div>
+		);
+
+		const popoverFooter = (
+			<div>
+				<Button
+					label={labels.cancelButton}
+					onClick={(e) => {
+						this.handleClose(e, { trigger: 'cancel' });
+					}}
+				/>
+				<Button
+					label={labels.doneButton}
+					variant="brand"
+					onClick={this.handleClose}
+				/>
+			</div>
+		);
+
+		const defaultPopoverProps = {
+			ariaLabelledby: `${this.getId()}-label`,
+			align: 'bottom',
+			body: popoverBody,
+			className: 'slds-popover_full-width',
+			footer: popoverFooter,
+			footerClassName: 'slds-popover__footer_form',
+			hasNoNubbin: true,
+			id: `${this.getId()}`,
+			isOpen: this.state.isOpen,
+			hasNoTriggerStyles: true,
+			onOpen: this.handleOpen,
+			onClose: this.handleClose,
+			onRequestClose: this.handleClose,
+		};
+
+		/* Merge in passed popover's props if there is any to override the default popover props */
+		const popoverProps = assign(
+			defaultPopoverProps,
+			this.props.popover ? this.props.popover.props : {}
+		);
+		popoverProps.body = popoverBody;
+
+		delete popoverProps.children;
+		return popoverProps;
+	};
+
 	getDialog({ menuRenderer }) {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
@@ -385,6 +472,10 @@ class Combobox extends React.Component {
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}
 				onClose={this.handleClose}
+				onMouseDown={(event) => {
+					// prevent onBlur
+					event.preventDefault();
+				}}
 				onOpen={this.handleOpen}
 				onRequestTargetElement={this.getTargetElement}
 				position={menuPosition}
@@ -399,7 +490,10 @@ class Combobox extends React.Component {
 	}
 
 	getErrorId() {
-		return this.props['aria-describedby'] || this.generatedErrorId;
+		return (
+			this.props['aria-describedby'] ||
+			(this.props.errorText && this.generatedErrorId)
+		);
 	}
 
 	/**
@@ -456,12 +550,11 @@ class Combobox extends React.Component {
 	/**
 	 * Menu open/close and sub-render methods
 	 */
-
 	handleClickOutside = (event) => {
 		this.handleRequestClose(event, {});
 	};
 
-	handleClose = (event) => {
+	handleClose = (event, { trigger } = {}) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -474,6 +567,12 @@ class Combobox extends React.Component {
 				activeOptionIndex: -1,
 				isOpen: false,
 			});
+
+			if (this.props.variant === 'popover' && trigger === 'cancel') {
+				if (this.props.popover.props.onClose) {
+					this.props.popover.props.onClose(event, { trigger });
+				}
+			}
 
 			if (this.props.events.onClose) {
 				this.props.events.onClose(event, {});
@@ -494,7 +593,7 @@ class Combobox extends React.Component {
 				if (this.inputRef) {
 					this.inputRef.focus();
 				}
-			} else {
+			} else if (!this.props.popover) {
 				this.handleClose(event);
 			}
 		}, 200);
@@ -506,7 +605,9 @@ class Combobox extends React.Component {
 
 	handleInputChange = (event) => {
 		this.requestOpenMenu();
-		this.props.events.onChange(event, { value: event.target.value });
+		if (this.props.events && this.props.events.onChange) {
+			this.props.events.onChange(event, { value: event.target.value });
+		}
 	};
 
 	handleInputFocus = (event) => {
@@ -572,7 +673,9 @@ class Combobox extends React.Component {
 			this.openDialog();
 		}
 
-		this.handleNavigateListboxMenu(event, { direction: 'next' });
+		if (this.props.variant !== 'popover') {
+			this.handleNavigateListboxMenu(event, { direction: 'next' });
+		}
 	};
 
 	handleKeyDownTab = () => {
@@ -793,9 +896,9 @@ class Combobox extends React.Component {
 
 		this.handleClose();
 
-		if (this.inputRef) {
-			this.inputRef.focus();
-		}
+		// if (this.inputRef) {
+		// 	this.inputRef.focus();
+		// }
 	};
 
 	isSelected = ({ selection, option }) => !!find(selection, option);
@@ -831,7 +934,7 @@ class Combobox extends React.Component {
 	 * if state is passed in as a prop)
 	 */
 
-	renderBase = ({ assistiveText, labels, props }) => (
+	renderBase = ({ assistiveText, labels, props, userDefinedProps }) => (
 		<div className="slds-form-element__control">
 			<div className="slds-combobox_container">
 				<div
@@ -897,6 +1000,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -935,7 +1039,12 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineMultiple = ({ assistiveText, labels, props }) => (
+	renderInlineMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => (
 		<div className="slds-form-element__control">
 			<div
 				className={classNames('slds-combobox_container', {
@@ -1026,6 +1135,7 @@ class Combobox extends React.Component {
 									props.value
 								: props.value
 						}
+						{...userDefinedProps.input}
 					/>
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1040,7 +1150,7 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderInlineSingle = ({ assistiveText, labels, props }) => {
+	renderInlineSingle = ({ assistiveText, labels, props, userDefinedProps }) => {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
@@ -1096,6 +1206,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								props.selection.length ? (
 									<InputIcon
@@ -1146,6 +1257,7 @@ class Combobox extends React.Component {
 										props.value
 									: value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1186,7 +1298,12 @@ class Combobox extends React.Component {
 						: null
 				}
 				labels={labels}
-				menuItem={this.props.menuItem}
+				// For backward compatibility, 'menuItem' prop will be deprecated soon
+				onRenderMenuItem={
+					this.props.onRenderMenuItem
+						? this.props.onRenderMenuItem
+						: this.props.menuItem
+				}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {
 					this.menuRef = ref;
@@ -1201,7 +1318,84 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlyMultiple = ({ assistiveText, labels, props }) => {
+	renderPopover = ({ assistiveText, labels, props }) => {
+		const popoverProps = this.getCustomPopoverProps(
+			this.props.popover.props.body,
+			{ assistiveText, labels }
+		);
+
+		return (
+			<div className="slds-form-element__control">
+				<div className="slds-combobox_container">
+					<div
+						className={classNames(
+							'slds-combobox',
+							'slds-dropdown-trigger',
+							'slds-dropdown-trigger_click',
+							'ignore-react-onclickoutside',
+							{
+								'slds-is-open': this.getIsOpen(),
+							},
+							{
+								'slds-has-error': props.errorText,
+							},
+							props.className
+						)}
+						aria-expanded={this.getIsOpen()}
+						aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-owns={`${this.getId()}`} // eslint-disable-line jsx-a11y/aria-proptypes
+						role="combobox"
+					>
+						<Popover {...popoverProps}>
+							<InnerInput
+								aria-autocomplete="none"
+								aria-controls={`${this.getId()}`}
+								aria-describedby={this.getErrorId()}
+								autoComplete="off"
+								className="slds-combobox__input"
+								containerProps={{
+									className: 'slds-combobox__form-element',
+									role: 'none',
+								}}
+								iconRight={<InputIcon category="utility" name="down" />}
+								id={this.getId()}
+								onFocus={this.handleInputFocus}
+								onBlur={this.handleInputBlur}
+								onKeyDown={this.handleKeyDown}
+								inputRef={this.setInputRef}
+								onClick={() => {
+									this.openDialog();
+								}}
+								onChange={this.handleInputChange}
+								placeholder={labels.placeholder}
+								readOnly
+								required={props.required}
+								role="textbox"
+								value={props.value}
+							/>
+						</Popover>
+					</div>
+				</div>
+				{props.errorText && (
+					<div className="slds-has-error">
+						<div
+							id={this.getErrorId()}
+							className="slds-form-element__help slds-has-error"
+						>
+							{props.errorText}
+						</div>
+					</div>
+				)}
+			</div>
+		);
+	};
+
+	renderReadOnlyMultiple = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
@@ -1270,6 +1464,7 @@ class Combobox extends React.Component {
 							required={props.required}
 							role="textbox"
 							value={value}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1311,7 +1506,12 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderReadOnlySingle = ({ assistiveText, labels, props }) => {
+	renderReadOnlySingle = ({
+		assistiveText,
+		labels,
+		props,
+		userDefinedProps,
+	}) => {
 		const value = (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1355,6 +1555,7 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
+							disabled={this.props.singleInputDisabled}
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}
@@ -1379,6 +1580,7 @@ class Combobox extends React.Component {
 								(this.state.activeOption && this.state.activeOption.label) ||
 								value
 							}
+							{...userDefinedProps.input}
 						/>
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
@@ -1405,7 +1607,18 @@ class Combobox extends React.Component {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const hasRenderedLabel =
 			labels.label || (assistiveText && assistiveText.label);
-		const subRenderParameters = { assistiveText, labels, props: this.props };
+		// declare user defined props
+		const userDefinedProps = {};
+		if (props.input) {
+			// at the moment we only support overriding the input props
+			userDefinedProps.input = props.input.props;
+		}
+		const subRenderParameters = {
+			assistiveText,
+			labels,
+			props: this.props,
+			userDefinedProps,
+		};
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
 			base: {
@@ -1416,13 +1629,16 @@ class Combobox extends React.Component {
 				multiple: this.renderInlineMultiple,
 				single: this.renderInlineSingle,
 			},
+			popover: {
+				multiple: this.renderPopover, // same
+				single: this.renderPopover,
+			},
 			readonly: {
 				multiple: this.renderReadOnlyMultiple,
 				single: this.renderReadOnlySingle,
 			},
 		};
 		const variantExists = subRenders[this.props.variant][multipleOrSingle];
-
 		return (
 			<div
 				className={classNames('slds-form-element', props.classNameContainer)}

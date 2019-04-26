@@ -26,6 +26,7 @@ import {
 	canUseDOM,
 	canUseEventListeners,
 } from '../../utilities/execution-environment';
+import paletteColorsCommon from '../../utilities/design-tokens/dist/palette-colors.common';
 
 // ## Children
 import DataTableCell from './cell';
@@ -516,7 +517,10 @@ class DataTable extends React.Component {
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
-					style={{ height: '100%' }}
+					style={{
+						borderTop: `1px solid ${paletteColorsCommon.colorGray5}`,
+						height: '100%',
+					}}
 				>
 					<div
 						className="slds-table_header-fixed_scroller"

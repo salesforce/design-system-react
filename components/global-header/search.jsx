@@ -7,22 +7,27 @@
 
 // ### React
 import React from 'react';
-
-// ### Lookup
-import Lookup from '../lookup';
+import PropTypes from 'prop-types';
 
 // ## Constants
 import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
 
 /**
- * The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.
+ * The GlobalHeaderSearch component is used for application wide search. The form element is implemented as a `Combobox`.
  */
 const GlobalHeaderSearch = (props) => (
 	<div className="slds-global-header__item slds-global-header__item_search">
-		<Lookup iconPosition="left" {...props} />
+		{props.combobox}
 	</div>
 );
 
 GlobalHeaderSearch.displayName = GLOBAL_HEADER_SEARCH;
+
+GlobalHeaderSearch.propTypes = {
+	/**
+	 * A required `Combobox` component. The props from this combobox will be merged and override any default props.
+	 */
+	combobox: PropTypes.node.isRequired,
+};
 
 export default GlobalHeaderSearch;
