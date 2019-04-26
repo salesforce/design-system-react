@@ -1163,7 +1163,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
         Edit: Status
       </span>
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover"
@@ -1291,7 +1291,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
           </button>
         </div>
       </footer>
-    </div>
+    </section>
   </div>
 </div>
 `;
