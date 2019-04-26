@@ -9,7 +9,7 @@ exports[`DOM snapshots SLDSProgressBar Color 1`] = `
       Color: success
     </span>
     <div
-      id="IDrUHd6Yes"
+      id="progress-bar-success"
     >
       
       <div
@@ -42,7 +42,7 @@ exports[`DOM snapshots SLDSProgressBar Default 1`] = `
 >
   <div>
     <div
-      id="MV_q9qXzo_"
+      id="progress-bar"
     >
       
       <div
@@ -75,7 +75,7 @@ exports[`DOM snapshots SLDSProgressBar Descriptive 1`] = `
 >
   <div>
     <div
-      id="ZobsiDhZXu"
+      id="setup-progress-bar"
     >
       <div
         className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
@@ -127,7 +127,7 @@ exports[`DOM snapshots SLDSProgressBar Radius 1`] = `
       Radius: circular
     </span>
     <div
-      id="VfNb2AE6uM"
+      id="progress-bar-circular"
     >
       
       <div
@@ -163,7 +163,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
       Thickness: x-small
     </span>
     <div
-      id="n44KNeiEJJ"
+      id="progress-bar-x-small"
     >
       
       <div
@@ -191,7 +191,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
       Thickness: small
     </span>
     <div
-      id="Pc6cXeqB2U"
+      id="progress-bar-small"
     >
       
       <div
@@ -219,7 +219,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
       Thickness: medium
     </span>
     <div
-      id="rIjwPkHVf9"
+      id="progress-bar-medium"
     >
       
       <div
@@ -247,7 +247,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
       Thickness: large
     </span>
     <div
-      id="wUrWl1Qjsd"
+      id="progress-bar-large"
     >
       
       <div
