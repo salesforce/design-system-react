@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '~/components/button';
+import Button from '../../../components/button';
 import { CAROUSEL_NAVIGATORS } from '../../../utilities/constants';
 
 /**

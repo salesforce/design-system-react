@@ -440,7 +440,7 @@ class Dialog extends React.Component {
 		};
 
 		const contents = (
-			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
+			<section // eslint-disable-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions
 				className={
 					classNames(
 						{
@@ -466,7 +466,7 @@ class Dialog extends React.Component {
 				{...this.props.containerProps}
 			>
 				{this.props.children}
-			</div>
+			</section>
 		);
 
 		const subRenders = {

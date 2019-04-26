@@ -5278,6 +5278,216 @@
         "SLDS-component-path": "/components/datepickers",
         "dependencies": []
     },
+    "dynamic-icon": {
+        "description": "A set of delightful animated icons.",
+        "methods": [
+            {
+                "name": "getIconChildren",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: Used as a visually hidden label to describe the dynamic icon."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the icon."
+            },
+            "isPaused": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Pauses the icon animation if the value is true."
+            },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables icon animation if set to true"
+            },
+            "scorePolarity": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'positive'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'negative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Polarity values for the 'score' variant. Defaults to 'positive'"
+            },
+            "strengthLevel": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'-3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'0'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "-3",
+                            "computed": true
+                        },
+                        {
+                            "value": "-2",
+                            "computed": true
+                        },
+                        {
+                            "value": "-1",
+                            "computed": true
+                        },
+                        {
+                            "value": "0",
+                            "computed": false
+                        },
+                        {
+                            "value": "1",
+                            "computed": false
+                        },
+                        {
+                            "value": "2",
+                            "computed": false
+                        },
+                        {
+                            "value": "3",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Range of strength values for the 'strength' variant. Defaults to '0'."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "HTML title attribute."
+            },
+            "trendDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'down'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'up'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'neutral'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Signals direction for the 'trend' variant. The default value 'neutral' points to the east."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'ellie'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'eq'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'score'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'strength'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'trend'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'typing'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'waffle'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Different types of dynamic icons. Possible variants:\n\n`ellie` - Displays a pulsing blue circle, which pulses and stops after one animation cycle.\n`eq` - Displays an animated graph with three bars that rise and fall randomly.\n`score` - Displays a green filled circle or a red unfilled circle.\n`strength` - Displays three animated horizontal circles that are colored green or red.\n`trend` - Displays animated arrows that point up, down, or straight.\n`waffle` - Displays a 3x3 grid of dots that animates on hover."
+            }
+        },
+        "route": "dynamic-icon",
+        "display-name": "Dynamic Icon",
+        "SLDS-component-path": "/components/dynamic-icon",
+        "dependencies": []
+    },
     "filter": {
         "description": "A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [
@@ -10161,7 +10371,7 @@
                 "required": true,
                 "description": "The contents of the popover. This should also accept arrays."
             },
-            "className": {
+            "classNameBody": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10177,7 +10387,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to the popover. That is the element with `.slds-popover` on it."
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it."
+            },
+            "classNameFooter": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it."
             },
             "disabled": {
                 "type": {
@@ -10193,23 +10421,12 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
-            "footerClassName": {
+            "footerStyle": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
+                    "name": "object"
                 },
                 "required": false,
-                "description": "CSS classes to be added to the `footer` of the popover."
+                "description": "An object of CSS styles that are applied to the `slds-popover__footer` DOM element."
             },
             "footerWalkthroughActions": {
                 "type": {
@@ -10948,7 +11165,129 @@
         "SLDS-component-path": "/components/progress-indicator",
         "dependencies": []
     },
-    "progress-ring": {
+    "progress-bar": {
+	  	"description": "A progress bar component communicates to the user the progress of a particular process.",
+	  	"methods": [
+		  {
+				"name": "getId",
+				"docblock": "Get the progress bar's HTML id. Generate a new one if no ID present.",
+				"modifiers": [],
+				"params": [],
+				"returns": null,
+				"description": "Get the progress bars's HTML id. Generate a new one if no ID present."
+		  },
+		  {
+			"name": "getDescription",
+			"docblock": "Get the the description for progress bar. Doesn't show description if label is not given.",
+			"modifiers": [],
+			"params": [],
+			"returns": {
+			  "description": "Progress Bar Description Container",
+			  "type": {
+				"name": "string"
+			  }
+			},
+			"description": "Get the the description for progress bar. Doesn't show description if label is not given."
+		  }
+		],
+		"props": {
+		  "id": {
+			"type": {
+			  "name": "string"
+			},
+			"required": false,
+			"description": "HTML id for component."
+		  },
+		  "className": {
+			"type": {
+			  "name": "union",
+			  "value": [
+				{
+				  "name": "array"
+				},
+				{
+				  "name": "object"
+				},
+				{
+				  "name": "string"
+				}
+			  ]
+			},
+			"required": false,
+			"description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+		  },
+		  "label": {
+			"type": {
+			  "name": "string"
+			},
+			"required": false,
+			"description": "Label for the progress bar."
+		  },
+		  "radius": {
+			"type": {
+			  "name": "enum",
+			  "value": [
+				{
+				  "value": "'circular'",
+				  "computed": false
+				}
+			  ]
+			},
+			"required": false,
+			"description": "Border radius of Progress Bar."
+		  },
+		  "color": {
+			"type": {
+			  "name": "enum",
+			  "value": [
+				{
+				  "value": "'success'",
+				  "computed": false
+				}
+			  ]
+			},
+			"required": false,
+			"description": "Color for filling the progress bar"
+		  },
+		  "thickness": {
+			"type": {
+			  "name": "enum",
+			  "value": [
+				{
+				  "value": "'x-small'",
+				  "computed": false
+				},
+				{
+				  "value": "'small'",
+				  "computed": false
+				},
+				{
+				  "value": "'medium'",
+				  "computed": false
+				},
+				{
+				  "value": "'large'",
+				  "computed": false
+				}
+			  ]
+			},
+			"required": false,
+			"description": "Thickness of the progress bar"
+		  },
+		  "value": {
+			"type": {
+			  "name": "number"
+			},
+			"required": true,
+			"description": "Percentage of progress completion, ranging [0, 100]."
+		  }
+		},
+	  	"route": "progress-bars",
+		"display-name": "Progress Bars",
+		"SLDS-component-path": "/components/progress-bar",
+		"dependencies": []
+	},
+  	"progress-ring": {
         "description": "Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.",
         "methods": [
             {
