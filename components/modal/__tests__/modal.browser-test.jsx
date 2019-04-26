@@ -155,7 +155,7 @@ describe('SLDSModal: ', function() {
 		it('non-dismissible modal has role=alertdialog', () => {
 			const cmp = getModal({
 				isOpen: true,
-				dismissible: false,
+				disableClose: true,
 			});
 			const modal = getModalNode(document.body);
 			const role = modal.getAttribute('role');

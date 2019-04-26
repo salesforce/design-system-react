@@ -8,6 +8,7 @@ import { PROGRESS_INDICATOR } from '../../../utilities/constants';
 import Default from '../__examples__/default';
 import Modal from '../__examples__/modal';
 import StepError from '../__examples__/step-error';
+import VerticalProgressIndicator from '../__examples__/vertical';
 
 const steps = [
 	{
@@ -50,6 +51,7 @@ class ExampleProgressIndicator extends React.Component {
 					selectedStep={this.props.selectedStep}
 					disabledSteps={this.props.disabledSteps}
 					completedSteps={this.props.completedSteps}
+					orientation={this.props.orientation}
 					assistiveText={this.props.assistiveText}
 					onStepClick={(event, data) => {
 						console.log(data);
@@ -105,5 +107,15 @@ storiesOf(PROGRESS_INDICATOR, module)
 				completedStep: 'Finished this step.',
 				disabledStep: 'Unable to proceed on this step.',
 			}}
+		/>
+	))
+	.add('Vertical', () => <VerticalProgressIndicator />)
+	.add('VerticalStepError', () => (
+		<StepError
+			id="example-progress-indicator"
+			steps={manySteps}
+			completedSteps={manySteps.slice(0, 4)}
+			errorSteps={manySteps.slice(4, 5)}
+			orientation="vertical"
 		/>
 	));

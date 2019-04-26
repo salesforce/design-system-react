@@ -23,7 +23,14 @@ if (process.env.NODE_ENV !== 'production') {
 			props.title,
 			'title',
 			'heading',
-			createDocUrl('tiheadingtle')
+			createDocUrl('heading')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.dismissible,
+			'dismissible',
+			'disableClose',
+			createDocUrl('disableClose')
 		);
 	};
 }

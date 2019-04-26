@@ -59,6 +59,9 @@ export CardEmpty from './card/empty';
 export SLDSCardFilter from './card/filter';
 export CardFilter from './card/filter';
 
+export SLDSCarousel from './carousel';
+export Carousel from './carousel';
+
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
@@ -214,6 +217,8 @@ export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 export Tooltip from './tooltip';
+export SLDSEditDialog from './popover/edit-dialog';
+export EditDialog from './popover/edit-dialog';
 
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
@@ -273,6 +278,9 @@ export Tree from './tree';
 
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
+
+export SLDSDynamicIcon from './dynamic-icon';
+export DynamicIcon from './dynamic-icon';
 
 // Library utilities
 export log from '../utilities/log';

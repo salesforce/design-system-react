@@ -81,7 +81,7 @@ class ProgressRing extends React.Component {
 			} else if (this.props.theme === THEME_OPTIONS.EXPIRED) {
 				icon = <Icon category="utility" name="error" title="Expired" />;
 			} else if (this.props.theme === THEME_OPTIONS.COMPLETE) {
-				icon = <Icon category="utility" name="check" title="complete" />;
+				icon = <Icon category="utility" name="check" title="Complete" />;
 			}
 		}
 

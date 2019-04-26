@@ -49,7 +49,7 @@ const Breadcrumb = (props) => {
 					/* eslint-disable react/no-array-index-key */
 					<li
 						key={index} // There isn't any better reasonable way to identity these
-						className="slds-breadcrumb__item slds-text-title_caps"
+						className="slds-breadcrumb__item"
 					>
 						{crumb}
 					</li>

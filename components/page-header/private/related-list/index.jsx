@@ -7,10 +7,6 @@ import PropTypes from 'prop-types';
 const displayName = 'PageHeaderRelatedList';
 const propTypes = {
 	/**
-	 * Icon node passed by PageHeader
-	 */
-	icon: PropTypes.node,
-	/**
 	 * Title node passed by PageHeader
 	 */
 	title: PropTypes.node,
