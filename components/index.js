@@ -217,6 +217,11 @@ export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 export Tooltip from './tooltip';
+export SLDSEditDialog from './popover/edit-dialog';
+export EditDialog from './popover/edit-dialog';
+
+export SLDSProgressBar from './progress-bar';
+export ProgressBar from './progress-bar';
 
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
@@ -276,6 +281,9 @@ export Tree from './tree';
 
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
+
+export SLDSDynamicIcon from './dynamic-icon';
+export DynamicIcon from './dynamic-icon';
 
 // Library utilities
 export log from '../utilities/log';

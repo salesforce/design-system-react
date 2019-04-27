@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.0",
+	"version": "0.10.2",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -36,7 +36,7 @@
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
 		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
-		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --update-snapshot --config=tests/snapshots-config.json",
+		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --updateSnapshot --config=tests/snapshots-config.json",
 		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
@@ -397,6 +397,13 @@
 			"url-slug": "date-pickers"
 		},
 		{
+			"component": "dynamic-icon",
+			"status": "prod",
+			"display-name": "Dynamic Icon",
+			"SLDS-component-path": "/components/dynamic-icon",
+			"url-slug": "dynamic-icon"
+		},
+		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
@@ -590,6 +597,13 @@
 			"url-slug": "progress-indicators"
 		},
 		{
+		  "component": "progress-bar",
+		  "status": "prod",
+		  "display-name": "Progress Bars",
+		  "SLDS-component-path": "/components/progress-bar",
+		  "url-slug": "progress-bars"
+		},
+	    {
 			"component": "progress-ring",
 			"status": "prod",
 			"display-name": "Progress Rings",

@@ -30,6 +30,7 @@ import componentDoc from './docs.json';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
+import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
 
@@ -229,6 +230,10 @@ const defaultProps = {
 	},
 	menuPosition: 'absolute',
 	parser(str) {
+		lowPriorityWarning(
+			false,
+			`Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`
+		);
 		return new Date(str);
 	},
 	relativeYearFrom: -10,
@@ -252,20 +257,6 @@ class Datepicker extends React.Component {
 		const formattedValue = props.formattedValue || props.strValue; // eslint-disable-line react/prop-types
 		const dateString = props.formatter(props.value);
 		const initDate = props.value ? dateString : formattedValue;
-
-		this.getId = this.getId.bind(this);
-		this.getIsOpen = this.getIsOpen.bind(this);
-		this.handleCalendarChange = this.handleCalendarChange.bind(this);
-		this.handleClickOutside = this.handleClickOutside.bind(this);
-		this.handleRequestClose = this.handleRequestClose.bind(this);
-		this.openDialog = this.openDialog.bind(this);
-		this.parseDate = this.parseDate.bind(this);
-		this.handleClose = this.handleClose.bind(this);
-		this.handleOpen = this.handleOpen.bind(this);
-		this.getDialog = this.getDialog.bind(this);
-		this.getDatePicker = this.getDatePicker.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
 
 		this.state = {
 			isOpen: false,
@@ -297,7 +288,7 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	getDatePicker({ labels, assistiveText }) {
+	getDatePicker = ({ labels, assistiveText }) => {
 		const date = this.state.formattedValue
 			? this.parseDate(this.state.formattedValue)
 			: this.state.value;
@@ -340,9 +331,9 @@ class Datepicker extends React.Component {
 				}
 			/>
 		);
-	}
+	};
 
-	getDialog({ labels, assistiveText }) {
+	getDialog = ({ labels, assistiveText }) => {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
 			? 'relative'
@@ -379,17 +370,14 @@ class Datepicker extends React.Component {
 				{this.getDatePicker({ labels, assistiveText })}
 			</Dialog>
 		) : null;
-	}
+	};
 
-	getId() {
-		return this.props.id || this.generatedId;
-	}
+	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen() {
-		return !!(typeof this.props.isOpen === 'boolean'
+	getIsOpen = () =>
+		!!(typeof this.props.isOpen === 'boolean'
 			? this.props.isOpen
 			: this.state.isOpen);
-	}
 
 	getInputProps = ({ assistiveText, labels }) => {
 		/**
@@ -460,7 +448,7 @@ class Datepicker extends React.Component {
 		};
 	};
 
-	setInputRef(component) {
+	setInputRef = (component) => {
 		this.inputRef = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -470,9 +458,9 @@ class Datepicker extends React.Component {
 		if (!this.state.inputRendered) {
 			this.setState({ inputRendered: true });
 		}
-	}
+	};
 
-	handleCalendarChange(event, { date }) {
+	handleCalendarChange = (event, { date }) => {
 		this.setState({
 			value: date,
 			formattedValue: this.props.formatter(date),
@@ -495,19 +483,19 @@ class Datepicker extends React.Component {
 			this.props.onDateChange(date, this.props.formatter(date));
 		}
 		/* eslint-enable react/prop-types */
-	}
+	};
 
-	handleClickOutside() {
+	handleClickOutside = () => {
 		this.handleRequestClose();
-	}
+	};
 
-	handleClose() {
+	handleClose = () => {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
-	}
+	};
 
-	handleInputChange(event) {
+	handleInputChange = (event) => {
 		this.setState({
 			formattedValue: event.target.value,
 			inputValue: event.target.value,
@@ -522,9 +510,9 @@ class Datepicker extends React.Component {
 				timezoneOffset: date.getTimezoneOffset(),
 			});
 		}
-	}
+	};
 
-	handleKeyDown(event) {
+	handleKeyDown = (event) => {
 		// Don't open if user is selecting text
 		if (
 			event.keyCode &&
@@ -541,9 +529,9 @@ class Datepicker extends React.Component {
 			this.props.onKeyDown(event, {});
 		}
 		/* eslint-enable react/prop-types */
-	}
+	};
 
-	handleOpen(event, { portal }) {
+	handleOpen = (event, { portal }) => {
 		if (this.props.onOpen) {
 			this.props.onOpen(event, { portal });
 		}
@@ -551,9 +539,9 @@ class Datepicker extends React.Component {
 		if (this.selectedDateCell) {
 			this.selectedDateCell.focus();
 		}
-	}
+	};
 
-	handleRequestClose() {
+	handleRequestClose = () => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
@@ -565,17 +553,17 @@ class Datepicker extends React.Component {
 				this.inputRef.focus();
 			}
 		}
-	}
+	};
 
-	openDialog() {
+	openDialog = () => {
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {
 			this.setState({ isOpen: true });
 		}
-	}
+	};
 
-	parseDate(formattedValue) {
+	parseDate = (formattedValue) => {
 		let parsedDate = this.props.parser(formattedValue);
 		if (
 			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
@@ -584,7 +572,7 @@ class Datepicker extends React.Component {
 			parsedDate = new Date();
 		}
 		return parsedDate;
-	}
+	};
 
 	render() {
 		// Merge objects of strings with their default object
