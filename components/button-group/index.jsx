@@ -104,10 +104,7 @@ const ButtonGroup = (props) => {
 	}
 	if (props.variant === 'list') {
 		return (
-			<ul
-				className={classNames('slds-button-group-list', props.className)}
-				role="group"
-			>
+			<ul className={classNames('slds-button-group-list', props.className)}>
 				{children}
 			</ul>
 		);
