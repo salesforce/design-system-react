@@ -30,6 +30,7 @@ import componentDoc from './docs.json';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
+import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
 
@@ -229,6 +230,10 @@ const defaultProps = {
 	},
 	menuPosition: 'absolute',
 	parser(str) {
+		lowPriorityWarning(
+			false,
+			`Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`
+		);
 		return new Date(str);
 	},
 	relativeYearFrom: -10,
