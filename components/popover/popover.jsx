@@ -2,7 +2,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Popver Component
+// # Popover Component
 
 // Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
 
