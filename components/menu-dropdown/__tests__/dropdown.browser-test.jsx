@@ -124,7 +124,9 @@ describe('SLDSMenuDropdown', function() {
 
 	describe('Styling', () => {
 		beforeEach(
-			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} width="small" />)
+			mountComponent(
+				<DemoComponent menuStyle={{ height: '500px' }} width="small" />
+			)
 		);
 
 		afterEach(unmountComponent);
