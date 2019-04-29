@@ -382,6 +382,17 @@ const propTypes = {
 	 * Whether this dropdown supports multi select.
 	 */
 	multiple: PropTypes.bool,
+	/**
+	 *  To adjust the width of the menu dropdown
+	 */
+	width: PropTypes.oneOf([
+		'xx-small',
+		'x-small',
+		'small',
+		'medium',
+		'bottom',
+		'large',
+	]),
 };
 
 const defaultProps = {
@@ -390,6 +401,7 @@ const defaultProps = {
 	length: '5',
 	menuPosition: 'absolute',
 	openOn: 'click',
+	width: 'medium',
 };
 
 /**
@@ -902,6 +914,7 @@ class MenuDropdown extends React.Component {
 				closeOnTabKey
 				contentsClassName={classNames(
 					'slds-dropdown',
+					`slds-dropdown_${this.props.width}`,
 					'ignore-react-onclickoutside',
 					this.props.className,
 					positionClassName
