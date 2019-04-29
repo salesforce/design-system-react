@@ -40,15 +40,33 @@ If you are adding or changing component props, the first step is to propose the 
    1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
 1. Connect the newly created files
    1. Add public component exports to `/components/index.js`.
-   1. Add the component's name to `/components/constants.js`
-   1. Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
+   1. Add the component's name to `/utilities/constants.js`
+   1. [Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
    1. Add Storybook and site examples in `/components/[COMPONENT]/__docs__/`.
    1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
    1. Then import `__docs__` examples file into the documentation site by adding them to `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
    1. Review the [tests readme](/tests/README.md)
-   1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here. `npm run test:snapshot` will run these tests by themselves
+   1. Create snapshot tests. Copy examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve user events can be tested here. `npm run test:snapshot` will run these tests by themselves. `npm run test:snapshot:update` will update snapshots.
    1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries. These tests can be viewed at `http://localhost:8001`
-1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has a an empty string in it` error if they do not.
+   1. Add your component's meta description in `package.json`, under the `"components"` key. An example is shown below.
+      ```js
+      {
+        "component": "split-view",
+        "status": "prod",
+        "display-name": "Split View",
+        "SLDS-component-path": "/components/split-view",
+        "dependencies": [
+          {
+            "component": "header"
+          },
+          {
+            "component": "listbox"
+          }
+        ],
+        "url-slug": "split-views"
+      },
+      ```
+1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has an empty string in it` error if they do not.
 1. Push to your username's forked repository.
 1. Submit a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
 1. For large additions, make sure your tests pass, then mention @interactivellama and request a view, and we'll review your code, suggest any needed changes, and hopefully merge it in soon. Thank you!

@@ -163,20 +163,7 @@ const propTypes = {
 	 */
 	checkmark: PropTypes.bool,
 	/**
-	 * By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.
-	 *
-	 * If you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.
-	 *
-	 * **List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.
-	 * ```
-	 * <Dropdown>
-	 *   <Trigger>
-	 *   <Button iconCategory="utility" iconName="settings" />
-	 *   </Trigger>
-	 *   <div>Look ma! This is Custom Content.</div>
-	 *   <List options={[myArray]}/>
-	 * </Dropdown>
-	 * ```
+	 * If you need custom content _and_ a list, use a `<Popover>` instead.
 	 */
 	children: PropTypes.node,
 	/**
@@ -859,6 +846,20 @@ class MenuDropdown extends React.Component {
 	);
 
 	renderMenuContent = (customContent) => {
+		/**
+		 * Custom content for dropdown was a hack done in the past. If there's more than a listbox within a dropdown, then it should be a popover as explained for the `children` prop.
+		 *
+		 * This code block shows how things are done in the past:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *   <Button iconCategory="utility" iconName="settings" />
+		 *   </Trigger>
+		 *   <div>Look ma! This is Custom Content.</div>
+		 *   <List options={[myArray]}/>
+		 * </Dropdown>
+		 * ```
+		 */
 		let customContentWithListPropInjection = [];
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
@@ -874,6 +875,7 @@ class MenuDropdown extends React.Component {
 				customContentWithListPropInjection.push(clonedCustomContent);
 			}
 		});
+
 		if (customContentWithListPropInjection.length === 0) {
 			customContentWithListPropInjection = null;
 		}
@@ -972,7 +974,7 @@ class MenuDropdown extends React.Component {
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;
-			} else {
+			} else if (child) {
 				customContent.push(child);
 			}
 		});

@@ -88,7 +88,7 @@ class BrandBand extends React.Component {
 							'slds-brand-band_small': props.size === 'small',
 							'slds-brand-band_medium': props.size === 'medium',
 							'slds-brand-band_large': props.size === 'large',
-
+							'slds-brand-band_cover': props.backgroundSize === 'cover',
 							'slds-brand-band_none': props.image === 'none',
 
 							'dsr-brand-band_lightning-blue': props.theme === 'lightning-blue',
@@ -133,6 +133,10 @@ BrandBand.propTypes = {
 	image: PropTypes.oneOf(['default', 'none']),
 
 	/**
+	 * Background size of the brand band. Default is 'contain'
+	 */
+	backgroundSize: PropTypes.oneOf(['contain', 'cover']),
+	/**
 	 * Size of the brand band. Default is 'medium'
 	 */
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
@@ -155,6 +159,7 @@ BrandBand.propTypes = {
 };
 
 BrandBand.defaultProps = {
+	backgroundSize: 'contain',
 	image: 'default',
 	size: 'medium',
 	theme: 'default',

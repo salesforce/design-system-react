@@ -20,6 +20,9 @@ scripts/pre-commit.sh
 # in the current and previous capture
 __diff_output__
 
+# Dev notes
+dev-notes.txt
+
 # --- MACHINE GENERATED BELOW THIS LINE ---
 
 ### Node ###

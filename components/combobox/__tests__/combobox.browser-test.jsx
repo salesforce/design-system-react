@@ -21,6 +21,7 @@ import Combobox from '../../../components/combobox';
 import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
+import Popover from '../../../components/popover';
 import KEYS, { keyObjects } from '../../../utilities/key-code';
 import LETTERKEYS, {
 	keyObjects as letterKeyObjects,
@@ -198,6 +199,7 @@ const getNodes = ({ wrapper }) => ({
 	selectedListbox: wrapper.find(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
 	),
+	popover: wrapper.find('.slds-popover'),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -464,6 +466,38 @@ describe('SLDSCombobox', function() {
 			nodes.removeSingleItem.simulate('click');
 			nodes = getNodes({ wrapper });
 			expect(nodes.input).to.have.value('');
+		});
+	});
+
+	describe('Dialog variant', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('popover opens when down arrow is pressed', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
+
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			nodes = getNodes({ wrapper });
+			expect(nodes.popover).to.be.present;
+		});
+
+		it('onOpen callback is called when dialog variant', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
+
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('click', {});
+			nodes = getNodes({ wrapper });
+			expect(nodes.popover).to.be.present;
 		});
 	});
 

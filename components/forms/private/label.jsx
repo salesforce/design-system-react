@@ -15,9 +15,9 @@ const propTypes = {
 	 */
 	htmlFor: PropTypes.string,
 	/*
-	 * Input Label
+	 * Input Label or inner node for formatting purposes
 	 */
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/*
 	 * Applies label styling for a required form element
 	 */
