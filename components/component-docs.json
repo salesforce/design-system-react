@@ -5960,6 +5960,17 @@
                     "computed": false
                 }
             },
+            "canInputMaintainFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When `true`, clicking or typing in `Input` will not result in focus shifting away from `Input`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "className": {
                 "type": {
                     "name": "union",

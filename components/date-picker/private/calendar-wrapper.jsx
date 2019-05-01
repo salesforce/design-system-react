@@ -41,6 +41,10 @@ class DatepickerCalendarWrapper extends React.Component {
 		 */,
 		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
 		/**
+		 * Whether or not the `CalendarWrapper` can steal focus from the main `Input`
+		 */
+		canStealFocus: PropTypes.bool.isRequired,
+		/**
 		 * CSS classes to be added to tag with `slds-datepicker`.
 		 */
 		className: PropTypes.oneOfType([
@@ -108,7 +112,7 @@ class DatepickerCalendarWrapper extends React.Component {
 
 	state = {
 		initialDateForCalendarRender: this.props.selectedDate,
-		isCalendarFocused: true,
+		isCalendarFocused: this.props.canStealFocus,
 	};
 
 	handleCalendarBlur = (event, { direction }) => {

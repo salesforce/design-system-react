@@ -53,6 +53,10 @@ const propTypes = {
 	 */
 	align: PropTypes.oneOf(['left', 'right']),
 	/**
+	 * When `true`, clicking or typing in `Input` will not result in focus shifting away from `Input`
+	 */
+	canInputMaintainFocus: PropTypes.bool,
+	/**
 	 * CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`. _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([
@@ -197,6 +201,7 @@ const defaultProps = {
 		previousMonth: 'Previous month',
 		year: 'Year',
 	},
+	canInputMaintainFocus: false,
 	formatter(date) {
 		return date
 			? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
@@ -309,6 +314,7 @@ class Datepicker extends React.Component {
 					this.props.assistiveTextPreviousMonth || assistiveText.previousMonth // eslint-disable-line react/prop-types
 				}
 				assistiveTextYear={assistiveText.year}
+				canStealFocus={!this.props.canInputMaintainFocus}
 				id={this.getId()}
 				isIsoWeekday={this.props.isIsoWeekday}
 				monthLabels={
@@ -524,6 +530,11 @@ class Datepicker extends React.Component {
 			this.setState({ isOpen: true });
 		}
 
+		if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+			EventUtil.trapEvent(event);
+			this.setState({ isOpen: false });
+		}
+
 		// Please remove `onKeyDown` on the next breaking change.
 		/* eslint-disable react/prop-types */
 		if (this.props.onKeyDown) {
@@ -537,7 +548,7 @@ class Datepicker extends React.Component {
 			this.props.onOpen(event, { portal });
 		}
 
-		if (this.selectedDateCell) {
+		if (this.selectedDateCell && !this.props.canInputMaintainFocus) {
 			this.selectedDateCell.focus();
 		}
 	};
