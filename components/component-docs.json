@@ -865,13 +865,6 @@
                     "computed": false
                 }
             },
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Class names to be applied to Avatar component."
-            },
             "imgAlt": {
                 "type": {
                     "name": "string"
@@ -1049,6 +1042,27 @@
                 "description": "Image of the brand band",
                 "defaultValue": {
                     "value": "'default'",
+                    "computed": false
+                }
+            },
+            "backgroundSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'contain'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'cover'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Background size of the brand band. Default is 'contain'",
+                "defaultValue": {
+                    "value": "'contain'",
                     "computed": false
                 }
             },
@@ -1726,13 +1740,6 @@
                     "computed": false
                 }
             },
-            "inverse": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds."
-            },
             "onBlur": {
                 "type": {
                     "name": "func"
@@ -1789,13 +1796,6 @@
                 "required": false,
                 "description": "Triggered when a mouse arrow hovers"
             },
-            "onMouseLeave": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a mouse arrow no longer hovers"
-            },
             "responsive": {
                 "type": {
                     "name": "bool"
@@ -1846,13 +1846,6 @@
                 },
                 "required": false,
                 "description": "Write \"-1\" if you don't want the user to tab to the button."
-            },
-            "tooltip": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "[Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead."
             },
             "variant": {
                 "type": {
@@ -2164,6 +2157,255 @@
                 }
             }
         ]
+    },
+    "carousel": {
+        "description": "A carousel allows multiple pieces of featured content to occupy an allocated amount of space.\nCurrently panel index and auto play cannot be controlled by the app.",
+        "methods": [
+            {
+                "name": "onNextPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onPreviousPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorClickHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "panel",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onAutoPlayBtnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setDimensions",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setTranslationAmount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "amount",
+                        "type": null
+                    },
+                    {
+                        "name": "cb",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setCurrentPanel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "amount",
+                        "type": null
+                    },
+                    {
+                        "name": "cb",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "startAutoplay",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "stopAutoplay",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "changeTranslationAutomatically",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "canGoToNext",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "canGoToPrevious",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Description of the carousel items for screen-readers.",
+                "defaultValue": {
+                    "value": "{\n    autoPlayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "computed": false
+                }
+            },
+            "autoplayInterval": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Interval for the autoplay iteration",
+                "defaultValue": {
+                    "value": "4000",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the main 'slds-carousel' classed component container"
+            },
+            "hasAutoplay": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean showing whether the autoplay feature is available or not",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "hasPreviousNextPanelNavigation": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean for displaying the navigation indicators (left/right arrows) of the carousel",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Id of component, if desired. If not provided an id is automatically generated"
+            },
+            "indicatorStyles": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "CSS that is applied to carousel indicators"
+            },
+            "isInfinite": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean for infinite loop navigation",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided 'javascript:void(0);' is used instead\n* `src`: Item image src value"
+            },
+            "itemsPerPanel": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Number of items to be displayed at a time in the carousel",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "onRenderItem": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Accepts a custom carousel item rendering function"
+            },
+            "onItemClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Handler for clicking on a carousel item"
+            }
+        },
+        "route": "carousel",
+        "display-name": "Carousel",
+        "SLDS-component-path": "/components/carousel",
+        "dependencies": []
     },
     "checkbox": {
         "description": "The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.",
@@ -3044,6 +3286,22 @@
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
             {
+                "name": "getCustomPopoverProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "body",
+                        "type": null
+                    },
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getDialog",
                 "docblock": null,
                 "modifiers": [],
@@ -3153,6 +3411,10 @@
                 "params": [
                     {
                         "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ trigger }",
                         "type": null
                     }
                 ],
@@ -3470,6 +3732,18 @@
                 "returns": null
             },
             {
+                "name": "renderPopover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderReadOnlyMultiple",
                 "docblock": null,
                 "modifiers": [],
@@ -3507,6 +3781,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "popoverLabel": {
+                            "name": "string",
+                            "required": false
+                        },
                         "removeSingleSelectedOption": {
                             "name": "string",
                             "required": false
@@ -3522,7 +3800,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
@@ -3742,9 +4020,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n    cancelButton: 'Cancel',\n    doneButton: `Done`,\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -3864,7 +4142,7 @@
                         }
                     }
                 },
-                "required": true,
+                "required": false,
                 "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
@@ -3898,6 +4176,13 @@
                 },
                 "required": false,
                 "description": "Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._"
+            },
+            "popover": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Combobox's Popover dialog to be a controlled component. _Tested with snapshot testing._"
             },
             "required": {
                 "type": {
@@ -3991,13 +4276,17 @@
                             "computed": false
                         },
                         {
+                            "value": "'popover'",
+                            "computed": false
+                        },
+                        {
                             "value": "'readonly'",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._",
+                "description": "Changes styles of the input and menu. Currently `entity` is not supported.\nThe options are:\n* `base`: An autocomplete Combobox also allows a user to select an option from a list, but that list can be affected by what the user types into the input of the Combobox. The SLDS website used to call the autocomplete Combobox its `base` variant.\n* `inline-listbox`: An Entity Autocomplete Combobox or Lookup, is used to search for and select Salesforce Entities.\n* `popover`: A dialog Combobox is best used when a listbox, tree, grid, or tree-grid is not the best solution. This variant allows custom content.\n* `readonly`: A readonly text input that allows a user to select an option from a pre-defined list of options. It does not allow free form user input, nor does it allow the user to modify the selected value.\n\n _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -5045,7 +5334,7 @@
                 "required": false,
                 "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
-                    "value": "function(str) {\n    return new Date(str);\n}",
+                    "value": "function(str) {\n    lowPriorityWarning(\n        false,\n        `Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n    );\n    return new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -5109,6 +5398,216 @@
         "route": "datepickers",
         "display-name": "Datepickers",
         "SLDS-component-path": "/components/datepickers",
+        "dependencies": []
+    },
+    "dynamic-icon": {
+        "description": "A set of delightful animated icons.",
+        "methods": [
+            {
+                "name": "getIconChildren",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: Used as a visually hidden label to describe the dynamic icon."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the icon."
+            },
+            "isPaused": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Pauses the icon animation if the value is true."
+            },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables icon animation if set to true"
+            },
+            "scorePolarity": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'positive'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'negative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Polarity values for the 'score' variant. Defaults to 'positive'"
+            },
+            "strengthLevel": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'-3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'0'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "-3",
+                            "computed": true
+                        },
+                        {
+                            "value": "-2",
+                            "computed": true
+                        },
+                        {
+                            "value": "-1",
+                            "computed": true
+                        },
+                        {
+                            "value": "0",
+                            "computed": false
+                        },
+                        {
+                            "value": "1",
+                            "computed": false
+                        },
+                        {
+                            "value": "2",
+                            "computed": false
+                        },
+                        {
+                            "value": "3",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Range of strength values for the 'strength' variant. Defaults to '0'."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "HTML title attribute."
+            },
+            "trendDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'down'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'up'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'neutral'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Signals direction for the 'trend' variant. The default value 'neutral' points to the east."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'ellie'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'eq'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'score'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'strength'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'trend'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'typing'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'waffle'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Different types of dynamic icons. Possible variants:\n\n`ellie` - Displays a pulsing blue circle, which pulses and stops after one animation cycle.\n`eq` - Displays an animated graph with three bars that rise and fall randomly.\n`score` - Displays a green filled circle or a red unfilled circle.\n`strength` - Displays three animated horizontal circles that are colored green or red.\n`trend` - Displays animated arrows that point up, down, or straight.\n`waffle` - Displays a 3x3 grid of dots that animates on hover."
+            }
+        },
+        "route": "dynamic-icon",
+        "display-name": "Dynamic Icon",
+        "SLDS-component-path": "/components/dynamic-icon",
         "dependencies": []
     },
     "expandable-section": {
@@ -7250,108 +7749,6 @@
         "SLDS-component-path": "/components/icons",
         "dependencies": []
     },
-    "icon-settings": {
-        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
-        "methods": [],
-        "props": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the root icon folder\nexample: `/assets/icons`"
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN. `({category, name}) => { return \\`#${name}\\` }`"
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
-            }
-        },
-        "childContext": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
-        "route": "icon-settings",
-        "display-name": "Icon Settings",
-        "dependencies": []
-    },
     "illustration": {
         "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
         "methods": [],
@@ -7994,7 +8391,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                "description": "If you need custom content _and_ a list, use a `<Popover>` instead."
             },
             "className": {
                 "type": {
@@ -8476,6 +8873,43 @@
                 },
                 "required": false,
                 "description": "Whether this dropdown supports multi select."
+            },
+            "width": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'xx-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bottom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "To adjust the width of the menu dropdown",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
             }
         },
         "context": {
@@ -8795,7 +9229,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
                     "value": "{\n    dialogLabel: '',\n    dialogLabelledBy: '',\n    closeButton: 'Close',\n}",
                     "computed": false
@@ -8876,23 +9310,19 @@
                 "required": false,
                 "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
             },
-            "dismissible": {
+            "disableClose": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking on the close icon or pressing esc key.",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key."
             },
             "dismissOnClickOutside": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible."
+                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose."
             },
             "onRequestClose": {
                 "type": {
@@ -8921,7 +9351,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present."
+                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present."
             },
             "headerClassName": {
                 "type": {
@@ -9035,9 +9465,16 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content underneath the title in the modal header."
+                "description": "Content underneath the heading in the modal header."
             },
             "title": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content underneath the title in the modal header."
+            },
+            "heading": {
                 "type": {
                     "name": "node"
                 },
@@ -10240,7 +10677,7 @@
                 "required": true,
                 "description": "The contents of the popover. This should also accept arrays."
             },
-            "className": {
+            "classNameBody": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10256,7 +10693,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to the popover. That is the element with `.slds-popover` on it."
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it."
+            },
+            "classNameFooter": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it."
             },
             "disabled": {
                 "type": {
@@ -10271,6 +10726,13 @@
                 },
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
+            },
+            "footerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "An object of CSS styles that are applied to the `slds-popover__footer` DOM element."
             },
             "footerWalkthroughActions": {
                 "type": {
@@ -10296,6 +10758,20 @@
                 },
                 "required": false,
                 "description": "Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used."
+            },
+            "hasNoTriggerStyles": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Removes `display:inline-block` from the trigger button."
+            },
+            "hasNoNubbin": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled."
             },
             "heading": {
                 "type": {
@@ -10538,10 +11014,28 @@
             },
             "variant": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'object-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "The type of component",
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -10706,24 +11200,12 @@
                 "required": false,
                 "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
             },
-            "contentRight": {
+            "onRenderActions": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "Content to appear on the right hand side of the page header",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
             },
             "details": {
                 "type": {
@@ -10736,24 +11218,12 @@
                     "computed": false
                 }
             },
-            "navRight": {
+            "onRenderControls": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "Nav content which appears in the upper right hand corner.",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
             },
             "trail": {
                 "type": {
@@ -10879,6 +11349,27 @@
                 "required": false,
                 "description": "HTML id for component."
             },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the orientation of the progress indicator",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
+            },
             "onStepClick": {
                 "type": {
                     "name": "func"
@@ -10972,6 +11463,167 @@
         "route": "progress-indicators",
         "display-name": "Progress Indicators",
         "SLDS-component-path": "/components/progress-indicator",
+        "dependencies": []
+    },
+    "progress-bar": {
+        "description": "A progress bar component communicates to the user the progress of a particular process",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            },
+            {
+                "name": "getDescription",
+                "docblock": "Enables Descriptive Progress Bar if label is provided\n@returns {string} description",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }"
+                    }
+                ],
+                "returns": {
+                    "description": "description",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Enables Descriptive Progress Bar if label is provided"
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "complete": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Label for the progress bar",
+                "defaultValue": {
+                    "value": "{\n    complete: 'Complete',\n}",
+                    "computed": false
+                }
+            },
+            "radius": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'circular'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set radius of progress bar"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set fill of progress bar"
+            },
+            "thickness": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set progress bar thickness"
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": true,
+                "description": "Percentage of progress completion, ranging [0, 100]."
+            }
+        },
+        "route": "progress-bars",
+        "display-name": "Progress Bars",
+        "SLDS-component-path": "/components/progress-bar",
         "dependencies": []
     },
     "progress-ring": {
@@ -12320,6 +12972,17 @@
                 "required": false,
                 "description": "Unique html id placed on div with role=\"status\"."
             },
+            "isDelayed": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds delay of 300ms to the spinner",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "isInput": {
                 "type": {
                     "name": "bool"
@@ -13608,6 +14271,24 @@
                     "value": "<span>Tooltip</span>",
                     "computed": false
                 }
+            },
+            "dialogClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it."
             },
             "hasStaticAlignment": {
                 "type": {

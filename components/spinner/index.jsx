@@ -37,6 +37,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * Adds delay of 300ms to the spinner
+	 */
+	isDelayed: PropTypes.bool,
+	/**
 	 * Add styling to support a spinner inside an input field.
 	 */
 	isInput: PropTypes.bool,
@@ -52,6 +56,7 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: { label: 'Loading...' },
+	isDelayed: false,
 	size: 'medium',
 	variant: 'base',
 };
@@ -61,7 +66,7 @@ const defaultProps = {
  */
 const Spinner = (props) => {
 	checkProps(SPINNER, props, componentDoc);
-	const { containerClassName, id, isInput, size, variant } = props;
+	const { containerClassName, id, isDelayed, isInput, size, variant } = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -74,6 +79,7 @@ const Spinner = (props) => {
 		'slds-input__spinner': isInput,
 		'slds-spinner_brand': variant === 'brand',
 		'slds-spinner_inverse': variant === 'inverse',
+		'slds-spinner_delayed': isDelayed,
 		[`slds-spinner_${size}`]: size,
 	});
 

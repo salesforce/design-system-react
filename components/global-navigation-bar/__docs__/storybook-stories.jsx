@@ -121,17 +121,9 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			/>
 			<GlobalNavigationBarLink
 				// will actually go to website
+				active
 				href="https://www.lightningdesignsystem.com/"
 				label="Menu Item"
-			/>
-			<GlobalNavigationBarLink
-				active
-				label="Menu Item"
-				onClick={linkClicked('Link clicked')}
-			/>
-			<GlobalNavigationBarLink
-				label="Menu Item"
-				onClick={linkClicked('Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">

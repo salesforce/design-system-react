@@ -154,7 +154,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		it('renders modal content', () => {
 			expect(
 				handles.appLauncher.find(
-					'.slds-modal__content .slds-app-launcher__content .slds-p-around_medium'
+					'.slds-modal__content.slds-app-launcher__content.slds-p-around_medium'
 				).length
 			).to.equal(1);
 		});

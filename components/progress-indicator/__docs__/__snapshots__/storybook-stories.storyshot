@@ -1194,3 +1194,294 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
   </div>
 </div>
 `;
+
+exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "background": undefined,
+        "padding": "4rem 1rem 0px",
+      }
+    }
+  >
+    <div
+      className="slds-progress slds-progress_vertical"
+      id="vertical-progress-indicator"
+    >
+      <ol
+        className="slds-progress__list"
+      >
+        <li
+          className="slds-progress__item slds-is-active"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-0"
+          >
+            tooltip label #1
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-1"
+          >
+            tooltip label #2
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-2"
+          >
+            tooltip label #3
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-3"
+          >
+            tooltip label #4
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-4"
+          >
+            tooltip label #5
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "padding": "4rem 1rem 0px",
+      }
+    }
+  >
+    <div
+      className="slds-progress slds-progress_vertical"
+      id="example-progress-indicator"
+    >
+      <ol
+        className="slds-progress__list"
+      >
+        <li
+          className="slds-progress__item slds-is-completed"
+        >
+          <span
+            className="slds-progress__marker slds-progress__marker_icon"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                />
+              </svg>
+              
+            </span>
+          </span>
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-a"
+          >
+            tooltip label #1
+          </div>
+        </li>
+        <li
+          className="slds-progress__item slds-is-completed"
+        >
+          <span
+            className="slds-progress__marker slds-progress__marker_icon"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                />
+              </svg>
+              
+            </span>
+          </span>
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-b"
+          >
+            tooltip label #2
+          </div>
+        </li>
+        <li
+          className="slds-progress__item slds-is-completed"
+        >
+          <span
+            className="slds-progress__marker slds-progress__marker_icon"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                />
+              </svg>
+              
+            </span>
+          </span>
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-c"
+          >
+            tooltip label #3
+          </div>
+        </li>
+        <li
+          className="slds-progress__item slds-is-completed"
+        >
+          <span
+            className="slds-progress__marker slds-progress__marker_icon"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                />
+              </svg>
+              
+            </span>
+          </span>
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-d"
+          >
+            tooltip label #4
+          </div>
+        </li>
+        <li
+          className="slds-progress__item slds-has-error"
+        >
+          <span
+            className="slds-progress__marker slds-progress__marker_icon"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                />
+              </svg>
+              
+            </span>
+          </span>
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-e"
+          >
+            tooltip label #5
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-f"
+          >
+            tooltip label #6
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-g"
+          >
+            tooltip label #7
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-h"
+          >
+            tooltip label #8
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-i"
+          >
+            tooltip label #9
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+`;
