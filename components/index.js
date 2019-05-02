@@ -238,6 +238,9 @@ export RadioButtonGroup from './radio-button-group';
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
 
+export SLDSScopedNotification from './scoped-notification';
+export ScopedNotification from './scoped-notification';
+
 export SLDSSlider from './slider';
 export Slider from './slider';
 

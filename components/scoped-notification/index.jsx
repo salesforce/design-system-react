@@ -55,7 +55,7 @@ class ScopedNotification extends React.Component {
 			>
 				<div className="slds-media__figure">
 					<Icon
-						assistiveText={this.props.assistiveText}
+						assistiveText={{ icon: this.props.assistiveText.icon }}
 						category="utility"
 						name={this.props.iconName}
 						colorVariant={this.props.theme === 'light' ? undefined : 'base'}
