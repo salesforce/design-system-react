@@ -84,14 +84,14 @@ class EditDialogPopover extends React.Component {
 
 		return (
 			<Popover
-				classNameBody={[
-					'slds-p-left_small',
-					'slds-p-top_medium',
-					'slds-p-right_small',
+				classNameFooter={[
+					'slds-p-top_xxx-small',
+					'slds-p-bottom_xx-small',
+					'slds-p-right_large',
 				]}
-				classNameFooter={['slds-p-top_xx-small', 'slds-p-bottom_xx-small']}
+				classNameBody={['slds-p-bottom_xx-small']}
 				footer={
-					<div className="slds-text-align_right slds-col_padded slds-text-align_right slds-p-bottom_x-small">
+					<div className="slds-text-align_right slds-text-align_right slds-p-bottom_x-small slds-p-right_xx-small">
 						<Button label={labels.cancel} onClick={onCancel} />
 						<Button
 							disabled={!this.props.isModified}

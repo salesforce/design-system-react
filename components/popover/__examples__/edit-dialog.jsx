@@ -66,7 +66,7 @@ class Example extends React.Component {
 	render() {
 		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon)
 		const editDialogPopoverBody = (
-			<div className="slds-col_padded">
+			<div className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small">
 				<Input
 					id="first-name"
 					label="First Name"
@@ -83,23 +83,28 @@ class Example extends React.Component {
 		);
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<EditDialogPopover
-					body={editDialogPopoverBody}
-					heading="Edit First Name"
-					isModified={
-						this.state.firstName !== this.state.prevFirstName ||
-						this.state.lastName !== this.state.prevLastName
-					}
-					onCancel={this.handleRequestClose}
-					onClose={this.handleClose}
-					onRequestClose={this.handleRequestClose}
-					onSave={this.handleSave}
-					handleOpen={this.handleOpen}
-					position="absolute"
-					align="top left"
-					id="popover-error"
-					isOpen={this.state.isOpen}
-				/>
+				<div>
+					<span className="slds-p-right_x-small">
+						{this.state.prevFirstName} {this.state.prevLastName}
+					</span>
+					<EditDialogPopover
+						ariaLabelledby="Edit Name"
+						body={editDialogPopoverBody}
+						isModified={
+							this.state.firstName !== this.state.prevFirstName ||
+							this.state.lastName !== this.state.prevLastName
+						}
+						onCancel={this.handleRequestClose}
+						onClose={this.handleClose}
+						onRequestClose={this.handleRequestClose}
+						onSave={this.handleSave}
+						handleOpen={this.handleOpen}
+						position="absolute"
+						align="top left"
+						id="edit-dialog-popover"
+						isOpen={this.state.isOpen}
+					/>
+				</div>
 			</IconSettings>
 		);
 	}
