@@ -91,7 +91,10 @@ class StepVertical extends React.Component {
 	};
 
 	renderStepContent = () => {
-		if (this.props.step.onRenderSetupAssistantAction) {
+		if (
+			this.props.step.onRenderSetupAssistantAction ||
+			this.props.step.setupAssistantEstimatedTime
+		) {
 			return (
 				<div
 					id={`progress-indicator-vertical-label-${this.props.step.id ||
@@ -100,7 +103,14 @@ class StepVertical extends React.Component {
 				>
 					<div className="slds-size_3-of-4">{this.props.step.label}</div>
 					<div className="slds-grid slds-grid_align-end slds-size_1-of-4">
-						{this.props.step.onRenderSetupAssistantAction}
+						<div className="slds-media__figure slds-media__figure_reverse">
+							{this.props.step.onRenderSetupAssistantAction}
+							{this.props.step.setupAssistantEstimatedTime && (
+								<p className="slds-text-align_right slds-text-color_weak slds-p-top_medium">
+									{this.props.step.setupAssistantEstimatedTime}
+								</p>
+							)}
+						</div>
 					</div>
 				</div>
 			);

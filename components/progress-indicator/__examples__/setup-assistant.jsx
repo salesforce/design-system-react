@@ -9,6 +9,7 @@ const steps = [
 		id: 0,
 		label: 'tooltip label #1',
 		onRenderSetupAssistantAction: <Button label="Brand" variant="brand" />,
+		setupAssistantEstimatedTime: '4 min',
 	},
 	{
 		id: 1,
@@ -23,6 +24,7 @@ const steps = [
 				variant="brand"
 			/>
 		),
+		setupAssistantEstimatedTime: '40 min',
 	},
 	{
 		id: 2,
@@ -47,6 +49,7 @@ const steps = [
 		id: 4,
 		label: 'tooltip label #5',
 		onRenderSetupAssistantAction: <Button label="Done" />,
+		setupAssistantEstimatedTime: '14 min',
 	},
 ];
 
