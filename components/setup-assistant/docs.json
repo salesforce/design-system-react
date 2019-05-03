@@ -1,0 +1,7 @@
+{
+  "component": "setup-assistant",
+  "status": "prod",
+  "display-name": "Setup Assistant",
+  "SLDS-component-path": "/components/setup-assistant",
+  "url-slug": "setup-assistants"
+}
