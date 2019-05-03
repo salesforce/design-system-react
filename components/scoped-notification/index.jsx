@@ -31,7 +31,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-	theme: 'light',
 	iconName: 'info',
 };
 
@@ -46,9 +45,10 @@ class ScopedNotification extends React.Component {
 					`slds-scoped-notification`,
 					`slds-media`,
 					`slds-media_center`,
-					this.props.theme === 'light'
-						? 'slds-scoped-notification_light'
-						: 'slds-scoped-notification_dark',
+					{
+						'slds-scoped-notification_light': this.props.theme === 'light',
+						'slds-scoped-notification_dark': this.props.theme === 'dark',
+					},
 					this.props.className
 				)}
 				role="status"
@@ -60,7 +60,7 @@ class ScopedNotification extends React.Component {
 						}}
 						category="utility"
 						name={this.props.iconName}
-						colorVariant={this.props.theme === 'light' ? undefined : 'base'}
+						colorVariant={this.props.theme === 'dark' ? 'base' : undefined}
 						size="small"
 					/>
 				</div>
