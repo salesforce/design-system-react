@@ -1020,14 +1020,23 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
             >
-              <button
-                className="slds-button slds-button_brand"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
               >
-                Brand
-              </button>
+                <button
+                  className="slds-button slds-button_brand"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Brand
+                </button>
+                <p
+                  className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                >
+                  4 min
+                </p>
+              </div>
             </div>
           </div>
         </li>
@@ -1049,14 +1058,23 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
             >
-              <button
-                className="slds-button slds-button_brand"
-                disabled={true}
-                onClick={[Function]}
-                type="button"
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
               >
-                Disabled
-              </button>
+                <button
+                  className="slds-button slds-button_brand"
+                  disabled={true}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Disabled
+                </button>
+                <p
+                  className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                >
+                  40 min
+                </p>
+              </div>
             </div>
           </div>
         </li>
@@ -1078,22 +1096,26 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
               >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_left"
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
                 >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
-                  />
-                </svg>
-                Download
-              </button>
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon slds-button__icon_left"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                    />
+                  </svg>
+                  Download
+                </button>
+              </div>
             </div>
           </div>
         </li>
@@ -1116,38 +1138,42 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
             >
               <div
-                className="slds-form-element"
+                className="slds-media__figure slds-media__figure_reverse"
               >
-                <label
-                  className="slds-checkbox_toggle slds-grid"
-                  htmlFor="checkbox-toggle-example--error"
+                <div
+                  className="slds-form-element"
                 >
-                  <input
-                    aria-describedby="checkbox-toggle-example--error-desc"
-                    id="checkbox-toggle-example--error"
-                    onChange={[Function]}
-                    type="checkbox"
-                  />
-                  <span
-                    aria-live="assertive"
-                    className="slds-checkbox_faux_container"
-                    id="checkbox-toggle-example--error-desc"
+                  <label
+                    className="slds-checkbox_toggle slds-grid"
+                    htmlFor="checkbox-toggle-example--error"
                   >
-                    <span
-                      className="slds-checkbox_faux"
+                    <input
+                      aria-describedby="checkbox-toggle-example--error-desc"
+                      id="checkbox-toggle-example--error"
+                      onChange={[Function]}
+                      type="checkbox"
                     />
                     <span
-                      className="slds-checkbox_on"
+                      aria-live="assertive"
+                      className="slds-checkbox_faux_container"
+                      id="checkbox-toggle-example--error-desc"
                     >
-                      Enabled
+                      <span
+                        className="slds-checkbox_faux"
+                      />
+                      <span
+                        className="slds-checkbox_on"
+                      >
+                        Enabled
+                      </span>
+                      <span
+                        className="slds-checkbox_off"
+                      >
+                        Disabled
+                      </span>
                     </span>
-                    <span
-                      className="slds-checkbox_off"
-                    >
-                      Disabled
-                    </span>
-                  </span>
-                </label>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -1170,14 +1196,23 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
               >
-                Done
-              </button>
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Done
+                </button>
+                <p
+                  className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                >
+                  14 min
+                </p>
+              </div>
             </div>
           </div>
         </li>
