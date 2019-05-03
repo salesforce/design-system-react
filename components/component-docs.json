@@ -5212,7 +5212,7 @@
                 "required": false,
                 "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
-                    "value": "function(str) {\n    return new Date(str);\n}",
+                    "value": "function(str) {\n    lowPriorityWarning(\n        false,\n        `Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n    );\n    return new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -8158,7 +8158,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                "description": "If you need custom content _and_ a list, use a `<Popover>` instead."
             },
             "className": {
                 "type": {
@@ -8640,6 +8640,43 @@
                 },
                 "required": false,
                 "description": "Whether this dropdown supports multi select."
+            },
+            "width": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'xx-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bottom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "To adjust the width of the menu dropdown",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
             }
         },
         "context": {
@@ -8955,7 +8992,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
                     "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
                     "computed": false
@@ -9059,7 +9096,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present."
+                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present."
             },
             "headerClassName": {
                 "type": {
@@ -9166,9 +9203,16 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content underneath the title in the modal header."
+                "description": "Content underneath the heading in the modal header."
             },
             "title": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content underneath the title in the modal header."
+            },
+            "heading": {
                 "type": {
                     "name": "node"
                 },
@@ -10708,10 +10752,28 @@
             },
             "variant": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'object-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "The type of component",
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -10876,24 +10938,12 @@
                 "required": false,
                 "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
             },
-            "contentRight": {
+            "onRenderActions": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "Content to appear on the right hand side of the page header",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
             },
             "details": {
                 "type": {
@@ -10906,24 +10956,12 @@
                     "computed": false
                 }
             },
-            "navRight": {
+            "onRenderControls": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "Nav content which appears in the upper right hand corner.",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
             },
             "trail": {
                 "type": {
@@ -11166,128 +11204,167 @@
         "dependencies": []
     },
     "progress-bar": {
-	  	"description": "A progress bar component communicates to the user the progress of a particular process.",
-	  	"methods": [
-		  {
-				"name": "getId",
-				"docblock": "Get the progress bar's HTML id. Generate a new one if no ID present.",
-				"modifiers": [],
-				"params": [],
-				"returns": null,
-				"description": "Get the progress bars's HTML id. Generate a new one if no ID present."
-		  },
-		  {
-			"name": "getDescription",
-			"docblock": "Get the the description for progress bar. Doesn't show description if label is not given.",
-			"modifiers": [],
-			"params": [],
-			"returns": {
-			  "description": "Progress Bar Description Container",
-			  "type": {
-				"name": "string"
-			  }
-			},
-			"description": "Get the the description for progress bar. Doesn't show description if label is not given."
-		  }
-		],
-		"props": {
-		  "id": {
-			"type": {
-			  "name": "string"
-			},
-			"required": false,
-			"description": "HTML id for component."
-		  },
-		  "className": {
-			"type": {
-			  "name": "union",
-			  "value": [
-				{
-				  "name": "array"
-				},
-				{
-				  "name": "object"
-				},
-				{
-				  "name": "string"
-				}
-			  ]
-			},
-			"required": false,
-			"description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
-		  },
-		  "label": {
-			"type": {
-			  "name": "string"
-			},
-			"required": false,
-			"description": "Label for the progress bar."
-		  },
-		  "radius": {
-			"type": {
-			  "name": "enum",
-			  "value": [
-				{
-				  "value": "'circular'",
-				  "computed": false
-				}
-			  ]
-			},
-			"required": false,
-			"description": "Border radius of Progress Bar."
-		  },
-		  "color": {
-			"type": {
-			  "name": "enum",
-			  "value": [
-				{
-				  "value": "'success'",
-				  "computed": false
-				}
-			  ]
-			},
-			"required": false,
-			"description": "Color for filling the progress bar"
-		  },
-		  "thickness": {
-			"type": {
-			  "name": "enum",
-			  "value": [
-				{
-				  "value": "'x-small'",
-				  "computed": false
-				},
-				{
-				  "value": "'small'",
-				  "computed": false
-				},
-				{
-				  "value": "'medium'",
-				  "computed": false
-				},
-				{
-				  "value": "'large'",
-				  "computed": false
-				}
-			  ]
-			},
-			"required": false,
-			"description": "Thickness of the progress bar"
-		  },
-		  "value": {
-			"type": {
-			  "name": "number"
-			},
-			"required": true,
-			"description": "Percentage of progress completion, ranging [0, 100]."
-		  }
-		},
-	  	"route": "progress-bars",
-		"display-name": "Progress Bars",
-		"SLDS-component-path": "/components/progress-bar",
-		"dependencies": []
-	},
-  	"progress-ring": {
+        "description": "A progress bar component communicates to the user the progress of a particular process",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            },
+            {
+                "name": "getDescription",
+                "docblock": "Enables Descriptive Progress Bar if label is provided\n@returns {string} description",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }"
+                    }
+                ],
+                "returns": {
+                    "description": "description",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Enables Descriptive Progress Bar if label is provided"
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "complete": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Label for the progress bar",
+                "defaultValue": {
+                    "value": "{\n    complete: 'Complete',\n}",
+                    "computed": false
+                }
+            },
+            "radius": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'circular'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set radius of progress bar"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set fill of progress bar"
+            },
+            "thickness": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set progress bar thickness"
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": true,
+                "description": "Percentage of progress completion, ranging [0, 100]."
+            }
+        },
+        "route": "progress-bars",
+        "display-name": "Progress Bars",
+        "SLDS-component-path": "/components/progress-bar",
+        "dependencies": []
+    },
+    "progress-ring": {
         "description": "Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.",
         "methods": [
             {

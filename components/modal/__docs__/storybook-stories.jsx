@@ -233,7 +233,7 @@ storiesOf(MODAL, module)
 			},
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			portalClassName: 'portal-class-name-test',
@@ -244,7 +244,7 @@ storiesOf(MODAL, module)
 			disableClose: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: modalFooter,
@@ -255,7 +255,7 @@ storiesOf(MODAL, module)
 			directional: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: (
@@ -280,7 +280,7 @@ storiesOf(MODAL, module)
 			directional: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: modalFooter,
@@ -290,7 +290,7 @@ storiesOf(MODAL, module)
 	.add('Prompt', () =>
 		getModal({
 			isOpen: true,
-			title: 'Delete state - Default',
+			heading: 'Delete state - Default',
 			children: (
 				<div className="slds-p-around_medium">
 					Are you sure you want to delete the Default State? This action cannot

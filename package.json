@@ -597,13 +597,13 @@
 			"url-slug": "progress-indicators"
 		},
 		{
-		  "component": "progress-bar",
-		  "status": "prod",
-		  "display-name": "Progress Bars",
-		  "SLDS-component-path": "/components/progress-bar",
-		  "url-slug": "progress-bars"
+			"component": "progress-bar",
+			"status": "prod",
+			"display-name": "Progress Bars",
+			"SLDS-component-path": "/components/progress-bar",
+			"url-slug": "progress-bars"
 		},
-	    {
+		{
 			"component": "progress-ring",
 			"status": "prod",
 			"display-name": "Progress Rings",

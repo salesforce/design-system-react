@@ -146,6 +146,14 @@ exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
         >
           Destructive
         </button>
+        <button
+          className="slds-button slds-button_outline-brand"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Outline Brand
+        </button>
         <div
           className="-m-horizontal--small"
           style={

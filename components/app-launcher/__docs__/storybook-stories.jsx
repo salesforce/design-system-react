@@ -168,7 +168,7 @@ class DemoAppLauncherTileWithDescriptionHeading extends React.Component {
 				title="Journey Builder"
 				description="Build 1:1 journeys blah blah blah and use way too many words"
 				descriptionHeading="Journey Builder"
-				iconText="SC"
+				iconText="JB"
 				onClick={action('Tile with description heading clicked!')}
 				search={this.props.search}
 				size={this.props.size}
