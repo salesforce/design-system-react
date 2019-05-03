@@ -90,6 +90,32 @@ class StepVertical extends React.Component {
 		);
 	};
 
+	renderStepContent = () => {
+		if (this.props.step.onRenderSetupAssistantAction) {
+			return (
+				<div
+					id={`progress-indicator-vertical-label-${this.props.step.id ||
+						this.props.index}`}
+					className="slds-progress__item_content slds-grid slds-grid_align-spread"
+				>
+					<div className="slds-size_3-of-4">{this.props.step.label}</div>
+					<div className="slds-grid slds-grid_align-end slds-size_1-of-4">
+						{this.props.step.onRenderSetupAssistantAction}
+					</div>
+				</div>
+			);
+		}
+		return (
+			<div
+				id={`progress-indicator-vertical-label-${this.props.step.id ||
+					this.props.index}`}
+				className="slds-progress__item_content slds-grid slds-grid_align-spread"
+			>
+				{this.props.step.label}
+			</div>
+		);
+	};
+
 	render() {
 		const renderIcon = this.props.isCompleted || this.props.isError;
 
@@ -102,13 +128,7 @@ class StepVertical extends React.Component {
 				})}
 			>
 				{this.stepIcon(renderIcon)}
-				<div
-					id={`progress-indicator-vertical-label-${this.props.step.id ||
-						this.props.index}`}
-					className="slds-progress__item_content slds-grid slds-grid_align-spread"
-				>
-					{this.props.step.label}
-				</div>
+				{this.renderStepContent()}
 			</li>
 		);
 	}
