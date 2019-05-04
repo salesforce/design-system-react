@@ -12460,6 +12460,62 @@
         "SLDS-component-path": "/components/radio-button-group",
         "dependencies": []
     },
+    "scoped-notification": {
+        "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'dark'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'light'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Theme for the scoped notification"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Icon for the scoped notification. This is currently limited to the utility set of icons.",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "scoped-notifications",
+        "display-name": "Scoped Notifications",
+        "SLDS-component-path": "/components/scoped-notification",
+        "dependencies": []
+    },
     "slider": {
         "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
         "methods": [

@@ -675,11 +675,11 @@
 			"url-slug": "radio-button-groups"
 		},
 		{
-		  "component": "scoped-notification",
-		  "status": "prod",
-		  "display-name": "Scoped Notifications",
-		  "SLDS-component-path": "/components/scoped-notification",
-		  "url-slug": "scoped-notifications"
+			"component": "scoped-notification",
+			"status": "prod",
+			"display-name": "Scoped Notifications",
+			"SLDS-component-path": "/components/scoped-notification",
+			"url-slug": "scoped-notifications"
 		},
 		{
 			"component": "slider",
