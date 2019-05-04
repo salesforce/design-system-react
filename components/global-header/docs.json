@@ -1,0 +1,30 @@
+{
+	"component": "global-header",
+	"status": "prod",
+	"display-name": "Global Header",
+	"SLDS-component-path": "/components/global-header#flavor-base",
+	"dependencies": [
+		{
+			"component": "favorites"
+		},
+		{
+			"component": "help"
+		},
+		{
+			"component": "notifications"
+		},
+		{
+			"component": "profile"
+		},
+		{
+			"component": "search"
+		},
+		{
+			"component": "setup"
+		},
+		{
+			"component": "task"
+		}
+	],
+	"url-slug": "global-headers"
+}
