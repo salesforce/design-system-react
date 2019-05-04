@@ -289,6 +289,9 @@
 					"component": "nav"
 				},
 				{
+					"component": "nav-dropdown"
+				},
+				{
 					"component": "nav-link"
 				},
 				{

@@ -68,7 +68,7 @@ const propTypes = {
 		title: PropTypes.string,
 	}),
 	/**
-	 * Custom styles to be passed to the component
+	 * Custom styles applied to the `.slds-builder-header_container` element.
 	 */
 	style: PropTypes.object,
 };

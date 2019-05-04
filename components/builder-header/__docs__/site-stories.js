@@ -6,6 +6,9 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/base.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/base-with-toolbar.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/successful-save.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/after-successful-save.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/failed-save.jsx'),
 ];
 
 module.exports = siteStories;

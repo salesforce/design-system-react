@@ -37,6 +37,9 @@ export BuilderHeader from './builder-header';
 export SLDSBuilderHeaderNav from './builder-header/nav';
 export BuilderHeaderNav from './builder-header/nav';
 
+export SLDSBuilderHeaderNavDropdown from './builder-header/nav-dropdown';
+export BuilderHeaderNavDropdown from './builder-header/nav-dropdown';
+
 export SLDSBuilderHeaderNavLink from './builder-header/nav-link';
 export BuilderHeaderNavLink from './builder-header/nav-link';
 

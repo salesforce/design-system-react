@@ -3,11 +3,12 @@ import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
 import Dropdown from '../../menu-dropdown';
-import BuilderHeader from '../../builder-header';
-import BuilderHeaderNav from '../../builder-header/nav';
-import BuilderHeaderNavLink from '../../builder-header/nav-link';
-import BuilderHeaderNavDropdown from '../../builder-header/nav-dropdown';
-import BuilderHeaderToolbar from '../../builder-header/toolbar';
+import Tooltip from '../../tooltip';
+import BuilderHeader from '..';
+import BuilderHeaderNav from '../nav';
+import BuilderHeaderNavLink from '../nav-link';
+import BuilderHeaderNavDropdown from '../nav-dropdown';
+import BuilderHeaderToolbar from '../toolbar';
 
 const Example = (props) => (
 	<IconSettings iconPath="/assets/icons">
@@ -50,6 +51,15 @@ const Example = (props) => (
 				}}
 				onRenderActions={() => (
 					<div>
+						<Tooltip
+							id="status-tooltip"
+							align="bottom"
+							content="Last modified on June 1, 2018 by SysAdmin"
+						>
+							<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_small">
+								Saved 5 mins ago
+							</span>
+						</Tooltip>
 						<Button
 							iconCategory="utility"
 							iconName="right"
@@ -105,5 +115,5 @@ const Example = (props) => (
 	</IconSettings>
 );
 
-Example.displayName = 'BuilderHeaderBaseWithToolbar';
+Example.displayName = 'BuilderHeaderAfterSuccessfulSave';
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
