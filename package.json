@@ -111,7 +111,7 @@
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.3.4",
 		"@babel/preset-react": "^7.0.0",
-		"@salesforce-ux/design-system": "^2.6.0",
+		"@salesforce-ux/design-system": "^2.8.3",
 		"@salesforce-ux/icons": "7.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^3.4.10",
