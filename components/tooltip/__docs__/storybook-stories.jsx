@@ -77,6 +77,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			align: 'bottom',
 			isOpen: true,
 			id: 'myPopoverId',
+			dialogClassName: 'dialog-classname',
 			content,
 		})
 	)

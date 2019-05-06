@@ -6,7 +6,7 @@ import kebabCase from 'lodash.kebabcase';
 import isEmpty from 'lodash.isempty';
 import filter from 'lodash.filter';
 import util from 'util';
-import { parse as bParse } from 'babylon';
+import { parse as bParse } from '@babel/parser';
 import { components } from '../package.json';
 
 console.log(

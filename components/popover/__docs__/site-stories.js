@@ -7,6 +7,12 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/header.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/alternative-header.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/controlled-with-footer.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/custom-target.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/error.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/walkthrough.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/walkthrough-action.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/warning.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/edit-dialog.jsx'),
 ];
 
 module.exports = siteStories;

@@ -150,7 +150,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					menuItem={CustomMenuItem}
+					onRenderMenuItem={CustomMenuItem}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,

@@ -13,6 +13,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Tooltip
+					id="tooltip"
 					align="top left"
 					content="This is the exciting content of this tooltip. The content is so exciting that we cannot contain all we need to say within this tooltip."
 					onClickTrigger={this.handleClick}
