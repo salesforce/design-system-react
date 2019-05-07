@@ -2054,6 +2054,13 @@
                 "returns": null
             },
             {
+                "name": "onIndicatorBlur",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "onIndicatorClickHandler",
                 "docblock": null,
                 "modifiers": [],
@@ -2063,6 +2070,13 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {

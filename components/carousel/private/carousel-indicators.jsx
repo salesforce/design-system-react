@@ -18,8 +18,17 @@ import { CAROUSEL_INDICATORS } from '../../../utilities/constants';
  * a carousel has
  */
 class CarouselIndicators extends React.Component {
+	componentDidUpdate() {
+		if (this.props.hasFocus && this[`indicator${this.props.currentIndex}`]) {
+			this[`indicator${this.props.currentIndex}`].focus();
+		}
+	}
+
 	onFocus = () => {
 		this[`indicator${this.props.currentIndex}`].focus();
+		if (this.props.onFocus) {
+			this.props.onFocus();
+		}
 	};
 
 	render() {
@@ -66,10 +75,6 @@ class CarouselIndicators extends React.Component {
 						}
 					}
 
-					if (isSelectedPanel && this[`indicator${index}`]) {
-						this[`indicator${index}`].focus();
-					}
-
 					return (
 						<li
 							className="slds-carousel__indicator slds-m-horizontal_xx-small"
@@ -88,6 +93,7 @@ class CarouselIndicators extends React.Component {
 								aria-selected={isSelectedPanel}
 								aria-controls={`panel-${index}`}
 								title={title}
+								onBlur={props.onBlur}
 								onClick={() => props.onClick(index)}
 								onFocus={this.onFocus}
 							>
@@ -122,6 +128,10 @@ CarouselIndicators.propTypes = {
 	 */
 	currentIndex: PropTypes.number,
 	/**
+	 * Passed from carousel parent state, dictates if indicator currently has focus
+	 */
+	hasFocus: PropTypes.bool,
+	/**
 	 * Array of objects with shape, needed for building a carousel items
 	 */
 	items: PropTypes.array,
@@ -134,9 +144,17 @@ CarouselIndicators.propTypes = {
 	 */
 	noOfIndicators: PropTypes.number.isRequired,
 	/**
+	 * Fires on indicator blur, allows parent carousel to adjust indicatorsHaveFocus state accordingly
+	 */
+	onBlur: PropTypes.func,
+	/**
 	 * Triggered when the indicator is clicked.
 	 */
 	onClick: PropTypes.func,
+	/**
+	 * Fires on indicator focus, allows parent carousel to adjust indicatorsHaveFocus state accordingly
+	 */
+	onFocus: PropTypes.func,
 };
 
 export default CarouselIndicators;

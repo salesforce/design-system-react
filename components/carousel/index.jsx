@@ -137,6 +137,7 @@ class Carousel extends React.Component {
 		this.state = {
 			translateX: -1000000,
 			currentPanel: 1,
+			indicatorsHaveFocus: false,
 			isAutoPlayOn: this.props.hasAutoplay,
 			stageWidth: 0,
 		};
@@ -183,8 +184,17 @@ class Carousel extends React.Component {
 		this.setCurrentPanel(prev, this.changeTranslationAutomatically);
 	};
 
+	onIndicatorBlur = () => {
+		this.setState({ indicatorsHaveFocus: false });
+	};
+
 	onIndicatorClickHandler = (panel) => {
 		this.setCurrentPanel(panel, this.changeTranslationAutomatically);
+		this.setState({ indicatorsHaveFocus: true });
+	};
+
+	onIndicatorFocus = () => {
+		this.setState({ indicatorsHaveFocus: true });
 	};
 
 	onAutoPlayBtnClick = () => {
@@ -224,7 +234,7 @@ class Carousel extends React.Component {
 			if (this.canGoToNext()) {
 				this.onNextPanelHandler();
 			} else {
-				this.stopAutoplay();
+				this.setCurrentPanel(1, this.changeTranslationAutomatically);
 			}
 		}, this.props.autoplayInterval);
 	};
@@ -254,11 +264,13 @@ class Carousel extends React.Component {
 			[KEYS.LEFT]: () => {
 				if (this.canGoToPrevious()) {
 					this.onPreviousPanelHandler();
+					this.setState({ indicatorsHaveFocus: true });
 				}
 			},
 			[KEYS.RIGHT]: () => {
 				if (this.canGoToNext()) {
 					this.onNextPanelHandler();
+					this.setState({ indicatorsHaveFocus: true });
 				}
 			},
 		};
@@ -354,7 +366,10 @@ class Carousel extends React.Component {
 						style={this.props.indicatorStyles}
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={this.state.currentPanel}
+						hasFocus={this.state.indicatorsHaveFocus}
+						onBlur={this.onIndicatorBlur}
 						onClick={this.onIndicatorClickHandler}
+						onFocus={this.onIndicatorFocus}
 						items={this.props.items}
 						itemsPerPanel={this.props.itemsPerPanel}
 					/>
