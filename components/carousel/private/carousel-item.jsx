@@ -25,7 +25,7 @@ const CarouselItem = (props) => (
 		style={{
 			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
-			padding: '0 8px',
+			padding: '0 6px',
 		}}
 	>
 		{props.onRenderItem ? (
@@ -37,7 +37,8 @@ const CarouselItem = (props) => (
 				onClick={props.onClick}
 				style={{
 					backgroundColor: 'white',
-					margin: 'auto',
+					// margin: 'auto',
+					width: '100%'
 				}}
 				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>
@@ -57,9 +58,9 @@ const CarouselItem = (props) => (
 					</div>
 					{props.buttonLabel && (
 						<Button
-							className="slds-button_outline-brand"
 							label={props.buttonLabel}
 							tabIndex={props.isInCurrentPanel ? '0' : '-1'}
+							variant="neutral"
 						/>
 					)}
 				</div>
