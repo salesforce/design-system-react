@@ -37,8 +37,7 @@ const CarouselItem = (props) => (
 				onClick={props.onClick}
 				style={{
 					backgroundColor: 'white',
-					// margin: 'auto',
-					width: '100%'
+					width: '100%',
 				}}
 				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>

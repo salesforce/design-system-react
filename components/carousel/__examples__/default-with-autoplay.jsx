@@ -73,7 +73,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div
 					style={{
-						maxWidth: '1280px',
+						margin: '0 auto',
+						maxWidth: '774px',
 					}}
 				>
 					<Carousel

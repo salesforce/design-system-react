@@ -14,7 +14,7 @@ import { CAROUSEL_NAVIGATORS } from '../../../utilities/constants';
 const previousNextCarouselNavigator = (props) => (
 	<div
 		className="slds-carousel__col-center slds-is-absolute"
-		style={{ ...props.inlineStyle, margin: '-12px 25px 0', top: '50%' }}
+		style={{ ...props.inlineStyle, margin: '-12px 0 0', top: '50%' }}
 	>
 		<Button
 			assistiveText={{ icon: props.assistiveText }}

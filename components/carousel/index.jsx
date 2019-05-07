@@ -319,8 +319,11 @@ class Carousel extends React.Component {
 								assistiveText={this.props.assistiveText.previousPanel}
 								iconName="chevronleft"
 								isDisabled={isPreviousBtnDisabled}
-								onClick={this.onPreviousPanelHandler}
-								inlineStyle={{ left: '-60px' }}
+								onClick={() => {
+									this.stopAutoplay();
+									this.onPreviousPanelHandler();
+								}}
+								inlineStyle={{ left: '-38px' }}
 							/>
 						)}
 						<div
@@ -360,8 +363,11 @@ class Carousel extends React.Component {
 								assistiveText={this.props.assistiveText.nextPanel}
 								iconName="chevronright"
 								isDisabled={isNextBtnDisabled}
-								onClick={this.onNextPanelHandler}
-								inlineStyle={{ right: '-60px' }}
+								onClick={() => {
+									this.stopAutoplay();
+									this.onNextPanelHandler();
+								}}
+								inlineStyle={{ right: '-38px' }}
 							/>
 						)}
 					</div>
