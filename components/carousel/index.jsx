@@ -196,6 +196,7 @@ class Carousel extends React.Component {
 
 	onIndicatorFocus = () => {
 		this.setState({ indicatorsHaveFocus: true });
+		this.stopAutoplay();
 	};
 
 	onAutoPlayBtnClick = () => {
@@ -340,6 +341,9 @@ class Carousel extends React.Component {
 									<CarouselItem
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
+										}}
+										onFocus={() => {
+											this.stopAutoplay();
 										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}

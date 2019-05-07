@@ -35,6 +35,7 @@ const CarouselItem = (props) => (
 				className="slds-carousel__panel-action slds-text-link_reset"
 				href={props.href}
 				onClick={props.onClick}
+				onFocus={props.onFocus}
 				style={{
 					backgroundColor: 'white',
 					width: '100%',
@@ -108,6 +109,10 @@ CarouselItem.propTypes = {
 	 * Width of the carousel item
 	 */
 	itemWidth: PropTypes.number,
+	/**
+	 * Accepts a callback to handle when the a tag is focused on
+	 */
+	onFocus: PropTypes.func,
 	/**
 	 * Accepts a custom carousel item rendering function
 	 */
