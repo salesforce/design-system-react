@@ -85,6 +85,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -154,6 +155,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -223,6 +225,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -235,7 +238,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -250,7 +253,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -292,6 +295,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -361,6 +365,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -430,6 +435,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -442,7 +448,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -499,6 +505,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -608,12 +615,12 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             onFocus={[Function]}
             role="tab"
             tabIndex="0"
-            title="Visit App Exchange, Click to Customize, Download SalesforceA"
+            title="Visit App Exchange, Click to Customize, Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Visit App Exchange, Click to Customize, Download SalesforceA
+              Visit App Exchange, Click to Customize, Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -764,6 +771,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -833,6 +841,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -902,6 +911,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -914,7 +924,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -929,7 +939,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -971,6 +981,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1040,6 +1051,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1109,6 +1121,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1121,7 +1134,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -1178,6 +1191,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1256,12 +1270,12 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             onFocus={[Function]}
             role="tab"
             tabIndex="0"
-            title="Visit App Exchange, Click to Customize, Download SalesforceA"
+            title="Visit App Exchange, Click to Customize, Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Visit App Exchange, Click to Customize, Download SalesforceA
+              Visit App Exchange, Click to Customize, Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -1414,6 +1428,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1483,6 +1498,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1552,6 +1568,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1564,7 +1581,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -1579,7 +1596,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -1621,6 +1638,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1690,6 +1708,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1759,6 +1778,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1771,7 +1791,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -1828,6 +1848,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -1937,12 +1958,12 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             onFocus={[Function]}
             role="tab"
             tabIndex="0"
-            title="Visit App Exchange, Click to Customize, Download SalesforceA, Carousel Item 4, Carousel Item 5"
+            title="Visit App Exchange, Click to Customize, Download Salesforce Apps, Carousel Item 4, Carousel Item 5"
           >
             <span
               className="slds-assistive-text"
             >
-              Visit App Exchange, Click to Customize, Download SalesforceA, Carousel Item 4, Carousel Item 5
+              Visit App Exchange, Click to Customize, Download Salesforce Apps, Carousel Item 4, Carousel Item 5
             </span>
           </a>
         </li>
@@ -2036,6 +2057,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2096,6 +2118,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2156,6 +2179,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2168,7 +2192,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -2183,7 +2207,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -2216,6 +2240,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2276,6 +2301,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2336,6 +2362,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2348,7 +2375,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -2396,6 +2423,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2523,12 +2551,12 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             onFocus={[Function]}
             role="tab"
             tabIndex="-1"
-            title="Download SalesforceA"
+            title="Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Download SalesforceA
+              Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -2738,6 +2766,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2798,6 +2827,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2858,6 +2888,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2870,7 +2901,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -2885,7 +2916,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -2918,6 +2949,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -2978,6 +3010,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3038,6 +3071,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3050,7 +3084,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -3098,6 +3132,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3225,12 +3260,12 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             onFocus={[Function]}
             role="tab"
             tabIndex="-1"
-            title="Download SalesforceA"
+            title="Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Download SalesforceA
+              Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -3442,6 +3477,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3502,6 +3538,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3562,6 +3599,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3574,7 +3612,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -3589,7 +3627,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -3622,6 +3660,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3682,6 +3721,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3742,6 +3782,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3754,7 +3795,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -3802,6 +3843,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
@@ -3960,12 +4002,12 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             onFocus={[Function]}
             role="tab"
             tabIndex="-1"
-            title="Download SalesforceA"
+            title="Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Download SalesforceA
+              Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -4311,13 +4353,13 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
                   <div
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </div>
                   <div
                     className="slds-carousel__image"
                   >
                     <img
-                      alt="SalesforceA"
+                      alt="Salesforce Apps"
                       src="/assets/images/carousel/carousel-03.jpg"
                     />
                   </div>
@@ -4488,7 +4530,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
                     className="slds-carousel__image"
                   >
                     <img
-                      alt="SalesforceA"
+                      alt="Salesforce Apps"
                       src="/assets/images/carousel/carousel-03.jpg"
                     />
                   </div>
@@ -4627,12 +4669,12 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               onFocus={[Function]}
               role="tab"
               tabIndex="0"
-              title="Visit App Exchange, Click to Customize, Download SalesforceA"
+              title="Visit App Exchange, Click to Customize, Download Salesforce Apps"
             >
               <span
                 className="slds-assistive-text"
               >
-                Visit App Exchange, Click to Customize, Download SalesforceA
+                Visit App Exchange, Click to Customize, Download Salesforce Apps
               </span>
             </a>
           </li>
