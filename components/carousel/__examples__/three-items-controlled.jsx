@@ -79,10 +79,9 @@ class Example extends React.Component {
 		super(props);
 		this.state = {
 			currentPanel: 2,
-			isAutoplayOn: false
+			isAutoplayOn: false,
 		};
 	}
-
 
 	render() {
 		return (
@@ -115,7 +114,7 @@ class Example extends React.Component {
 								action: this.props.action,
 								event,
 								eventName: 'On Request Autoplay Toggle',
-								data
+								data,
 							});
 							this.setState({ isAutoplayOn: !data.isAutoplayOn });
 						}}
@@ -124,7 +123,7 @@ class Example extends React.Component {
 								action: this.props.action,
 								event,
 								eventName: 'On Request Panel Change',
-								data
+								data,
 							});
 							this.setState({ currentPanel: data.requestedPanel });
 						}}
