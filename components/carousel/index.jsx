@@ -94,10 +94,6 @@ class Carousel extends React.Component {
 		 */
 		id: PropTypes.string,
 		/**
-		 * CSS that is applied to carousel indicators
-		 */
-		indicatorStyles: PropTypes.object,
-		/**
 		 * Boolean that dictates whether autoplay is active or not. Use with `onRequestAutoplayToggle` for a controlled carousel component.
 		 */
 		isAutoplayOn: PropTypes.bool,
@@ -452,7 +448,6 @@ class Carousel extends React.Component {
 						)}
 					</div>
 					<CarouselIndicators
-						style={this.props.indicatorStyles}
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={currentPanel}
 						hasFocus={this.state.indicatorsHaveFocus}
