@@ -7,7 +7,7 @@ import DefaultWithAutoPlay from '../__examples__/default-with-autoplay';
 import DefaultWithNavigation from '../__examples__/default-with-navigation';
 import FiveItems from '../__examples__/five-items';
 import ThreeItems from '../__examples__/three-items';
-import ThreeItemsWithAutoplay from '../__examples__/three-items-with-autoplay';
+import ThreeItemsControlled from '../__examples__/three-items-controlled';
 import WithCustomItems from '../__examples__/with-custom-items';
 
 import { CAROUSEL } from '../../../utilities/constants';
@@ -21,8 +21,8 @@ storiesOf(CAROUSEL, module)
 		<DefaultWithAutoPlay action={action} />
 	))
 	.add('3 items NoImageTest', () => <ThreeItems action={action} />)
-	.add('3 items with AutoPlay NoImageTest', () => (
-		<ThreeItemsWithAutoplay action={action} />
+	.add('3 items controlled NoImageTest', () => (
+		<ThreeItemsControlled action={action} />
 	))
 	.add('5 items NoImageTest', () => <FiveItems action={action} />)
 	.add('With custom items NoImageTest', () => (

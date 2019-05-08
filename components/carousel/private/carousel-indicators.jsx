@@ -94,7 +94,7 @@ class CarouselIndicators extends React.Component {
 								aria-controls={`panel-${index}`}
 								title={title}
 								onBlur={props.onBlur}
-								onClick={() => props.onClick(index)}
+								onClick={(event) => props.onClick(event, index)}
 								onFocus={this.onFocus}
 							>
 								<span className="slds-assistive-text">{assistiveText}</span>

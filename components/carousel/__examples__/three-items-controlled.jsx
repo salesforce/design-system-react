@@ -73,7 +73,15 @@ const items = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'ThreeItemsWithAutoplayExample';
+	static displayName = 'ThreeItemsControlledExample';
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentPanel: 2
+		};
+	}
+
 
 	render() {
 		return (
@@ -84,8 +92,10 @@ class Example extends React.Component {
 					}}
 				>
 					<Carousel
+						currentPanel={this.state.currentPanel}
 						hasAutoplay
-						id="carousel-three-items-with-auto-play-example"
+						hasPreviousNextPanelNavigation
+						id="carousel-three-items-controlled-example"
 						items={items}
 						itemsPerPanel={3}
 						onItemClick={(event, data) => {
@@ -96,6 +106,15 @@ class Example extends React.Component {
 								eventName: 'Item Clicked',
 								data,
 							});
+						}}
+						onRequestPanelChange={(event, data) => {
+							log({
+								action: this.props.action,
+								event,
+								eventName: 'On Request Panel Change',
+								data
+							});
+							this.setState({ currentPanel: data.requestedPanel });
 						}}
 					/>
 				</div>
