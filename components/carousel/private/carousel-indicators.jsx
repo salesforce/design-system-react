@@ -24,10 +24,10 @@ class CarouselIndicators extends React.Component {
 		}
 	}
 
-	onFocus = () => {
+	onFocus = (event) => {
 		this[`indicator${this.props.currentIndex}`].focus();
 		if (this.props.onFocus) {
-			this.props.onFocus();
+			this.props.onFocus(event);
 		}
 	};
 

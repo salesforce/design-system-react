@@ -66,7 +66,7 @@ const items = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'DefaultWithAutoPlayExample';
+	static displayName = 'DefaultWithAutoplayExample';
 
 	render() {
 		return (
@@ -80,6 +80,7 @@ class Example extends React.Component {
 					<Carousel
 						hasAutoplay
 						id="carousel-default-with-auto-play-example"
+						isInfinite
 						items={items}
 						onItemClick={(event, data) => {
 							event.preventDefault();

@@ -24,7 +24,7 @@ import {
 import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
 import CarouselItem from './private/carousel-item';
-import AutoPlayButton from './private/auto-play-button';
+import AutoplayButton from './private/auto-play-button';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
@@ -39,7 +39,7 @@ import componentDoc from './docs.json';
 // ### Default Props
 const defaultProps = {
 	assistiveText: {
-		autoPlayButton: 'Start / Stop auto-play',
+		autoplayButton: 'Start / Stop auto-play',
 		nextPanel: 'Next Panel',
 		previousPanel: 'Previous Panel',
 	},
@@ -82,7 +82,7 @@ class Carousel extends React.Component {
 		 */
 		currentPanel: PropTypes.number,
 		/**
-		 * Boolean showing whether the autoplay feature is available or not
+		 * Boolean showing whether the autoplay button is available or not
 		 */
 		hasAutoplay: PropTypes.bool,
 		/**
@@ -98,7 +98,11 @@ class Carousel extends React.Component {
 		 */
 		indicatorStyles: PropTypes.object,
 		/**
-		 * Boolean for infinite loop navigation
+		 * Boolean that dictates whether autoplay is active or not. Use with `onRequestAutoplayToggle` for a controlled carousel component.
+		 */
+		isAutoplayOn: PropTypes.bool,
+		/**
+		 * Boolean for infinite loop navigation. Note: if not true autoplay will stop automatically at the last panel.
 		 */
 		isInfinite: PropTypes.bool,
 		/**
@@ -121,6 +125,10 @@ class Carousel extends React.Component {
 		 * Accepts a custom carousel item rendering function
 		 */
 		onRenderItem: PropTypes.func,
+		/**
+		 * Called whenever `isAutoplayOn` is requested to be toggled on or off. Use with `isAutoplayOn` prop for a controlled carousel component. Passes an event object and a data object with the current `isAutoplayOn` value as an attribute.
+		 */
+		onRequestAutoplayToggle: PropTypes.func,
 		/**
 		 * Called whenever the panel is requested to change due to user interaction or auto-play. Use with `currentPanel` for a controlled carousel component. Passes an event object and a data object with `currentPanel` and `requestedPanel` attributes.
 		 */
@@ -145,7 +153,7 @@ class Carousel extends React.Component {
 		this.state = {
 			currentPanel: (props.currentPanel !== undefined) ? props.currentPanel : 1,
 			indicatorsHaveFocus: false,
-			isAutoPlayOn: this.props.hasAutoplay,
+			isAutoplayOn: (props.isAutoplayOn !== undefined) ? props.isAutoplayOn : props.hasAutoplay,
 			stageWidth: 0,
 			translateX: -1000000,
 		};
@@ -172,8 +180,8 @@ class Carousel extends React.Component {
 
 		this.changeTranslationAutomatically();
 
-		if (this.props.hasAutoplay) {
-			this.startAutoplay({ initializedAutoPlayEvent: true });
+		if (this.getIsAutoplayOn()) {
+			this.startAutoplay({ mountAutoplayEvent: true });
 		}
 	}
 
@@ -181,17 +189,28 @@ class Carousel extends React.Component {
 		if (this.props.currentPanel !== undefined && prevProps.currentPanel !== this.props.currentPanel) {
 			this.changeTranslationAutomatically();
 		}
+		if (this.props.isAutoplayOn !== undefined && prevProps.isAutoplayOn !== this.props.isAutoplayOn) {
+			if (this.props.isAutoplayOn) {
+				this.startAutoplay({ updateAutoplayEvent: true });
+			} else {
+				this.stopAutoplay({ updateAutoplayEvent: true }, true );
+			}
+		}
 	}
 
 	componentWillUnmount() {
 		if (canUseEventListeners) {
 			window.removeEventListener('resize', this.setDimensions, false);
 		}
-		this.stopAutoplay();
+		this.stopAutoplay({ unmountAutoplayEvent: true }, true);
 	}
 
 	getCurrentPanel () {
 		return (this.props.currentPanel !== undefined) ? this.props.currentPanel : this.state.currentPanel;
+	}
+
+	getIsAutoplayOn () {
+		return (this.props.isAutoplayOn !== undefined) ? this.props.isAutoplayOn : this.state.isAutoplayOn;
 	}
 
 	onNextPanelHandler = (event) => {
@@ -200,8 +219,11 @@ class Carousel extends React.Component {
 	};
 
 	onPreviousPanelHandler = (event) => {
-		const prev =
+		let prev =
 			(this.getCurrentPanel() + this.nrOfPanels - 1) % this.nrOfPanels;
+		if (prev < 1) {
+			prev = this.nrOfPanels;
+		}
 		this.setCurrentPanel(event, prev, this.changeTranslationAutomatically);
 	};
 
@@ -212,22 +234,31 @@ class Carousel extends React.Component {
 	onIndicatorClickHandler = (event, panel) => {
 		this.setCurrentPanel(event, panel, this.changeTranslationAutomatically);
 		this.setState({ indicatorsHaveFocus: true });
-		this.stopAutoplay();
+		if (this.getIsAutoplayOn()) {
+			this.stopAutoplay(event);
+		}
 	};
 
-	onIndicatorFocus = () => {
+	onIndicatorFocus = (event) => {
 		this.setState({ indicatorsHaveFocus: true });
-		this.stopAutoplay();
+		if (this.getIsAutoplayOn()) {
+			this.stopAutoplay(event);
+		}
 	};
 
-	onAutoPlayBtnClick = (event) => {
-		const { isAutoPlayOn } = this.state;
-		const actionToTake = isAutoPlayOn ? this.stopAutoplay : this.startAutoplay;
+	onAutoplayBtnClick = (event) => {
+		const isAutoplayOn = this.getIsAutoplayOn();
 
-		this.setState({
-			isAutoPlayOn: !isAutoPlayOn,
-		});
-		actionToTake(event);
+		if (this.props.onRequestAutoplayToggle) {
+			this.props.onRequestAutoplayToggle(event, { isAutoplayOn });
+		} else {
+			const actionToTake = isAutoplayOn ? this.stopAutoplay : this.startAutoplay;
+
+			this.setState({
+				isAutoplayOn: !isAutoplayOn,
+			});
+			actionToTake(event);
+		}
 	};
 
 	setDimensions = () => {
@@ -260,17 +291,26 @@ class Carousel extends React.Component {
 		this.autoplayId = setInterval(() => {
 			if (this.canGoToNext()) {
 				this.onNextPanelHandler(event);
-			} else {
+			} else if (this.props.isInfinite) {
 				this.setCurrentPanel(event,1, this.changeTranslationAutomatically);
+			} else {
+				this.stopAutoplay(event);
 			}
 		}, this.props.autoplayInterval);
 	};
 
-	stopAutoplay = () => {
+	stopAutoplay = (event, ignoreCallbacksAndStateUpdates) => {
 		if (this.autoplayId) {
 			clearInterval(this.autoplayId);
 		}
-		this.setState({ isAutoPlayOn: false });
+
+		if (!ignoreCallbacksAndStateUpdates) {
+			if (this.props.onRequestAutoplayToggle) {
+				this.props.onRequestAutoplayToggle(event, { isAutoplayOn: this.getIsAutoplayOn() });
+			} else {
+				this.setState({ isAutoplayOn: false });
+			}
+		}
 	};
 
 	changeTranslationAutomatically = () => {
@@ -289,17 +329,21 @@ class Carousel extends React.Component {
 	handleKeyDown = (event) => {
 		const keyDownCallbacks = {
 			[KEYS.LEFT]: () => {
-				if (this.canGoToPrevious()) {
+				if (this.props.isInfinite || this.canGoToPrevious()) {
 					this.onPreviousPanelHandler(event);
 					this.setState({ indicatorsHaveFocus: true });
-					this.stopAutoplay();
+					if (this.getIsAutoplayOn()) {
+						this.stopAutoplay(event);
+					}
 				}
 			},
 			[KEYS.RIGHT]: () => {
-				if (this.canGoToNext()) {
+				if (this.props.isInfinite || this.canGoToNext()) {
 					this.onNextPanelHandler(event);
 					this.setState({ indicatorsHaveFocus: true });
-					this.stopAutoplay();
+					if (this.getIsAutoplayOn()) {
+						this.stopAutoplay(event);
+					}
 				}
 			},
 		};
@@ -331,10 +375,10 @@ class Carousel extends React.Component {
 			>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
 					{hasAutoplay && (
-						<AutoPlayButton
-							assistiveText={this.props.assistiveText.autoPlayButton}
-							isAutoPlayOn={this.state.isAutoPlayOn}
-							onClick={this.onAutoPlayBtnClick}
+						<AutoplayButton
+							assistiveText={this.props.assistiveText.autoplayButton}
+							isAutoplayOn={this.getIsAutoplayOn()}
+							onClick={this.onAutoplayBtnClick}
 						/>
 					)}
 					<div
@@ -347,7 +391,9 @@ class Carousel extends React.Component {
 								iconName="chevronleft"
 								isDisabled={isPreviousBtnDisabled}
 								onClick={(event) => {
-									this.stopAutoplay();
+									if (this.getIsAutoplayOn()) {
+										this.stopAutoplay(event);
+									}
 									this.onPreviousPanelHandler(event);
 								}}
 								inlineStyle={{ left: '-38px' }}
@@ -368,8 +414,10 @@ class Carousel extends React.Component {
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
-										onFocus={() => {
-											this.stopAutoplay();
+										onFocus={(event) => {
+											if (this.getIsAutoplayOn()) {
+												this.stopAutoplay(event);
+											}
 										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
@@ -394,7 +442,9 @@ class Carousel extends React.Component {
 								iconName="chevronright"
 								isDisabled={isNextBtnDisabled}
 								onClick={(event) => {
-									this.stopAutoplay();
+									if (this.getIsAutoplayOn()) {
+										this.stopAutoplay(event);
+									}
 									this.onNextPanelHandler(event);
 								}}
 								inlineStyle={{ right: '-38px' }}

@@ -78,7 +78,8 @@ class Example extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentPanel: 2
+			currentPanel: 2,
+			isAutoplayOn: false
 		};
 	}
 
@@ -96,6 +97,8 @@ class Example extends React.Component {
 						hasAutoplay
 						hasPreviousNextPanelNavigation
 						id="carousel-three-items-controlled-example"
+						isAutoplayOn={this.state.isAutoplayOn}
+						isInfinite
 						items={items}
 						itemsPerPanel={3}
 						onItemClick={(event, data) => {
@@ -106,6 +109,15 @@ class Example extends React.Component {
 								eventName: 'Item Clicked',
 								data,
 							});
+						}}
+						onRequestAutoplayToggle={(event, data) => {
+							log({
+								action: this.props.action,
+								event,
+								eventName: 'On Request Autoplay Toggle',
+								data
+							});
+							this.setState({ isAutoplayOn: !data.isAutoplayOn });
 						}}
 						onRequestPanelChange={(event, data) => {
 							log({
