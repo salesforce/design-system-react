@@ -8855,6 +8855,13 @@
                 "returns": null
             },
             {
+                "name": "getBorderRadius",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getModal",
                 "docblock": null,
                 "modifiers": [],
