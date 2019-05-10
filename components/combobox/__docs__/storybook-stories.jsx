@@ -88,7 +88,9 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
-	.add('Readonly Single Selection - Right to Left (RTL)', () => <ReadOnlyRTL action={action} />)
+	.add('Readonly Single Selection - Right to Left (RTL)', () => (
+		<ReadOnlyRTL action={action} />
+	))
 	.add('Readonly Single Selection Disabled', () => (
 		<ReadOnlyDisabled action={action} />
 	))

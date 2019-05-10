@@ -71,84 +71,85 @@ class Example extends React.Component {
 	}
 
 	render() {
-		return (<div dir='rtl'>
-			<IconSettings iconPath="/assets/icons">
-				<DirectionSettings.Provider value="rtl">
-					<Combobox
-						isOpen
-						id="combobox-base-inherit-menu-width"
-						disabled={this.props.disabled}
-						inheritWidthOf="menu"
-						events={{
-							onChange: (event, { value }) => {
-								if (this.props.action) {
-									this.props.action('onChange')(event, value);
-								} else if (console) {
-									console.log('onChange', event, value);
-								}
-								this.setState({ inputValue: value });
-							},
-							onRequestRemoveSelectedOption: (event, data) => {
-								this.setState({
-									inputValue: '',
-									selection: data.selection,
-								});
-							},
-							onSubmit: (event, { value }) => {
-								if (this.props.action) {
-									this.props.action('onChange')(event, value);
-								} else if (console) {
-									console.log('onChange', event, value);
-								}
-								this.setState({
-									inputValue: '',
-									selection: [
-										...this.state.selection,
-										{
-											label: value,
-											icon: (
-												<Icon
-													assistiveText={{ label: 'Account' }}
-													category="standard"
-													name="account"
-												/>
-											),
-										},
-									],
-								});
-							},
-							onSelect: (event, data) => {
-								if (this.props.action) {
-									this.props.action('onSelect')(
-										event,
-										...Object.keys(data).map((key) => data[key])
-									);
-								} else if (console) {
-									console.log('onSelect', event, data);
-								}
-								this.setState({
-									inputValue: '',
-									selection: data.selection,
-								});
-							},
-						}}
-						labels={{
-							label: 'Search',
-							placeholder: 'Search Salesforce',
-						}}
-						menuMaxWidth="500px"
-						multiple
-						options={comboboxFilterAndLimit({
-							inputValue: this.state.inputValue,
-							limit: 10,
-							options: accountsWithIcon,
-							selection: this.state.selection,
-						})}
-						selection={this.state.selection}
-						value={this.state.inputValue}
-					/>
-				</DirectionSettings.Provider>
-			</IconSettings>
+		return (
+			<div dir="rtl">
+				<IconSettings iconPath="/assets/icons">
+					<DirectionSettings.Provider value="rtl">
+						<Combobox
+							isOpen
+							id="combobox-base-inherit-menu-width"
+							disabled={this.props.disabled}
+							inheritWidthOf="menu"
+							events={{
+								onChange: (event, { value }) => {
+									if (this.props.action) {
+										this.props.action('onChange')(event, value);
+									} else if (console) {
+										console.log('onChange', event, value);
+									}
+									this.setState({ inputValue: value });
+								},
+								onRequestRemoveSelectedOption: (event, data) => {
+									this.setState({
+										inputValue: '',
+										selection: data.selection,
+									});
+								},
+								onSubmit: (event, { value }) => {
+									if (this.props.action) {
+										this.props.action('onChange')(event, value);
+									} else if (console) {
+										console.log('onChange', event, value);
+									}
+									this.setState({
+										inputValue: '',
+										selection: [
+											...this.state.selection,
+											{
+												label: value,
+												icon: (
+													<Icon
+														assistiveText={{ label: 'Account' }}
+														category="standard"
+														name="account"
+													/>
+												),
+											},
+										],
+									});
+								},
+								onSelect: (event, data) => {
+									if (this.props.action) {
+										this.props.action('onSelect')(
+											event,
+											...Object.keys(data).map((key) => data[key])
+										);
+									} else if (console) {
+										console.log('onSelect', event, data);
+									}
+									this.setState({
+										inputValue: '',
+										selection: data.selection,
+									});
+								},
+							}}
+							labels={{
+								label: 'Search',
+								placeholder: 'Search Salesforce',
+							}}
+							menuMaxWidth="500px"
+							multiple
+							options={comboboxFilterAndLimit({
+								inputValue: this.state.inputValue,
+								limit: 10,
+								options: accountsWithIcon,
+								selection: this.state.selection,
+							})}
+							selection={this.state.selection}
+							value={this.state.inputValue}
+						/>
+					</DirectionSettings.Provider>
+				</IconSettings>
 			</div>
 		);
 	}

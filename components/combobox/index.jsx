@@ -7,6 +7,8 @@ import onClickOutside from 'react-onclickoutside';
 import LanguageDirection from '../utilities/direction/language-direction';
 import Combobox from './combobox';
 
-export default LanguageDirection(onClickOutside(Combobox, {
-	excludeScrollbar: true,
-}));
+export default LanguageDirection(
+	onClickOutside(Combobox, {
+		excludeScrollbar: true,
+	})
+);

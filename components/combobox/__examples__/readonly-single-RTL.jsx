@@ -58,37 +58,37 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-                <DirectionSettings.Provider value="rtl">
-                    <div dir='rtl' style={{ width: '300px'}}>
-                        <Combobox
-                            id="combobox-readonly-single"
-                            events={{
-                                onSelect: (event, data) => {
-                                    if (this.props.action) {
-                                        this.props.action('onSelect')(
-                                            event,
-                                            ...Object.keys(data).map((key) => data[key])
-                                        );
-                                    } else if (console) {
-                                        console.log('onSelect', event, data);
-                                    }
-                                    this.setState({
-                                        inputValue: '',
-                                        selection: data.selection,
-                                    });
-                                },
-                            }}
-                            labels={{
-                                label: 'Search',
-                                placeholder: 'Search Salesforce',
-                            }}
-                            options={accounts}
-                            selection={this.state.selection}
-                            value={this.state.inputValue}
-                            variant="readonly"
-                        />
-                    </div>
-                </DirectionSettings.Provider>
+				<DirectionSettings.Provider value="rtl">
+					<div dir="rtl" style={{ width: '300px' }}>
+						<Combobox
+							id="combobox-readonly-single"
+							events={{
+								onSelect: (event, data) => {
+									if (this.props.action) {
+										this.props.action('onSelect')(
+											event,
+											...Object.keys(data).map((key) => data[key])
+										);
+									} else if (console) {
+										console.log('onSelect', event, data);
+									}
+									this.setState({
+										inputValue: '',
+										selection: data.selection,
+									});
+								},
+							}}
+							labels={{
+								label: 'Search',
+								placeholder: 'Search Salesforce',
+							}}
+							options={accounts}
+							selection={this.state.selection}
+							value={this.state.inputValue}
+							variant="readonly"
+						/>
+					</div>
+				</DirectionSettings.Provider>
 			</IconSettings>
 		);
 	}

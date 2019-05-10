@@ -100,6 +100,10 @@ class Dialog extends React.Component {
 		 */
 		containerProps: PropTypes.object,
 		/**
+		 * Establishes directional context for component. Defaults to left-to-right.
+		 */
+		direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
+		/**
 		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
 		 */
 		hasNubbin: PropTypes.bool,
@@ -186,6 +190,7 @@ class Dialog extends React.Component {
 
 	static defaultProps = {
 		align: 'bottom left',
+		direction: DIRECTIONS.LTR,
 		offset: '0px 0px',
 		outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 	};

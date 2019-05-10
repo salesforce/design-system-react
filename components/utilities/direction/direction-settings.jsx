@@ -4,7 +4,7 @@
 import React from 'react';
 
 // Definition constants for Left-to-Right and Right-to-Left
-const DIRECTIONS = {}
+const DIRECTIONS = {};
 DIRECTIONS.LTR = 'ltr';
 DIRECTIONS.RTL = 'rtl';
 
