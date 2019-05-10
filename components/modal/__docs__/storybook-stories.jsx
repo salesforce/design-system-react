@@ -281,7 +281,7 @@ storiesOf(MODAL, module)
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			portalClassName: 'portal-class-name-test',
-			footer: modalFooter
+			footer: modalFooter,
 		})
 	)
 	.add('Large with directional footer', () =>
