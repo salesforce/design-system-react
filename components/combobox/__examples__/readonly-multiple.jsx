@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -58,7 +57,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-readonly-multiple"
 					events={{
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({

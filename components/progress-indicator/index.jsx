@@ -17,6 +17,7 @@ import { PROGRESS_INDICATOR } from '../../utilities/constants';
 // Child components
 import Step from './private/step';
 import Progress from './private/progress';
+import StepVertical from './private/step-vertical';
 
 const displayName = PROGRESS_INDICATOR;
 
@@ -62,6 +63,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * Determines the orientation of the progress indicator
+	 */
+	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+	/**
 	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
 	 * const handleStepClick = function(event, data) { console.log(data); };
@@ -100,6 +105,17 @@ const propTypes = {
 	 * Determines component style.
 	 */
 	variant: PropTypes.oneOf(['base', 'modal']),
+	/**
+	 * Please select one of the following:
+	 * * `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+	 * * `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+	 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+	 */
+	tooltipPosition: PropTypes.oneOf([
+		'absolute',
+		'overflowBoundaryElement',
+		'relative',
+	]),
 };
 
 const defaultSteps = [
@@ -120,6 +136,7 @@ const defaultProps = {
 	errorSteps: [],
 	completedSteps: [],
 	disabledSteps: [],
+	orientation: 'horizontal',
 	selectedStep: defaultSteps[0],
 	variant: 'base',
 	// click/focus callbacks by default do nothing
@@ -201,11 +218,18 @@ class ProgressIndicator extends React.Component {
 			}
 		}
 
+		// Set default tooltipPosition
+		const tooltipPosition =
+			this.props.tooltipPosition ||
+			(this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
+		const StepComponent =
+			this.props.orientation === 'vertical' ? StepVertical : Step;
 		/** 2. return DOM */
 		return (
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
+				orientation={this.props.orientation}
 				value={
 					currentStep === 0
 						? '0'
@@ -215,7 +239,7 @@ class ProgressIndicator extends React.Component {
 				className={this.props.className}
 			>
 				{allSteps.map((step, i) => (
-					<Step
+					<StepComponent
 						assistiveText={assistiveText}
 						key={`${this.getId()}-${step.id}`}
 						id={this.getId()}
@@ -228,6 +252,7 @@ class ProgressIndicator extends React.Component {
 						onFocus={this.props.onStepFocus}
 						step={step}
 						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
+						tooltipPosition={tooltipPosition}
 					/>
 				))}
 			</Progress>

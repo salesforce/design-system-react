@@ -329,7 +329,7 @@
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nAlso note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.\nExample:\n```\nimport AppLauncher from 'design-system-react/components/app-launcher';\nimport AppLauncherTile from 'design-system-react/components/app-launcher/tile';\nimport AppLauncherSection from 'design-system-react/components/app-launcher/section';\n```\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
             {
                 "name": "openAppLauncher",
@@ -743,13 +743,6 @@
                     "computed": false
                 }
             },
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Class names to be applied to Avatar component."
-            },
             "imgAlt": {
                 "type": {
                     "name": "string"
@@ -774,6 +767,13 @@
                 },
                 "required": false,
                 "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
+            },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Avatar with initials that are dark text on light background"
             },
             "label": {
                 "type": {
@@ -850,17 +850,19 @@
         "dependencies": []
     },
     "brand-band": {
-        "description": "The brand band provides theming capability that adds personality and improves information density and contrast.",
+        "description": "The brand band provides theming capability that adds personality and improves information density and contrast.\n\nNOTE: you may find that themes other than 'default' fail to load the appropriate styling in your application.\nIf this occurs the cause is very likely to be CSP settings on the server hosting your application protecting against style injections.\nChanging these settings is not recommended. Instead, add the following styles to any stylesheet provided by the server itself (such as an external stylesheet):\n\nWhen using 'lightning-theme':\n.slds-brand-band.dsr-brand-band_lightning-blue:before {\n    background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);\n}\n.slds-brand-band.dsr-brand-band_lightning-blue:after {\n    background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);\n}\n\nFor more information on the problem, [see this Stack Overflow question](https://stackoverflow.com/questions/17766817/refused-to-apply-inline-style-because-it-violates-the-following-content-security)",
         "methods": [
             {
-                "name": "getId",
+                "name": "injectLightningBlueStyles",
                 "docblock": null,
-                "modifiers": [],
+                "modifiers": [
+                    "static"
+                ],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "injectLightningBlueStyles",
+                "name": "getId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -921,6 +923,27 @@
                     "computed": false
                 }
             },
+            "backgroundSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'contain'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'cover'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Background size of the brand band. Default is 'contain'",
+                "defaultValue": {
+                    "value": "'contain'",
+                    "computed": false
+                }
+            },
             "size": {
                 "type": {
                     "name": "enum",
@@ -975,7 +998,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Different brand band styling",
+                "description": "Different brand band styling.\nNOTE: using 'lightning-blue' may result in incorrect styling depending on server CSP settings. See opening component documentation above for details.",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false
@@ -1022,7 +1045,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -1078,50 +1101,6 @@
             }
         ],
         "props": {
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Used if the Button triggers a tooltip. The value should match the `id` of the element with `role=\"tooltip\"`."
-            },
-            "aria-controls": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions."
-            },
-            "aria-expanded": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "bool"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed."
-            },
-            "aria-haspopup": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "bool"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "True if Button triggers a menu or popup to open/close."
-            },
             "assistiveText": {
                 "type": {
                     "name": "shape",
@@ -1290,6 +1269,10 @@
                         },
                         {
                             "value": "'border-filled'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'brand'",
                             "computed": false
                         },
                         {
@@ -1482,11 +1465,19 @@
                             "computed": false
                         },
                         {
+                            "value": "'outline-brand'",
+                            "computed": false
+                        },
+                        {
                             "value": "'destructive'",
                             "computed": false
                         },
                         {
                             "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'text-destructive'",
                             "computed": false
                         },
                         {
@@ -1627,13 +1618,6 @@
                     "computed": false
                 }
             },
-            "inverse": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds."
-            },
             "onBlur": {
                 "type": {
                     "name": "func"
@@ -1690,13 +1674,6 @@
                 "required": false,
                 "description": "Triggered when a mouse arrow hovers"
             },
-            "onMouseLeave": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a mouse arrow no longer hovers"
-            },
             "responsive": {
                 "type": {
                     "name": "bool"
@@ -1747,13 +1724,6 @@
                 },
                 "required": false,
                 "description": "Write \"-1\" if you don't want the user to tab to the button."
-            },
-            "tooltip": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "[Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead."
             },
             "variant": {
                 "type": {
@@ -1935,6 +1905,13 @@
                 "required": false,
                 "description": "Footer often contains pagination."
             },
+            "hasNoHeader": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Allows card to have no header, and ignores header related props altogether."
+            },
             "header": {
                 "type": {
                     "name": "node"
@@ -2058,6 +2035,269 @@
                 }
             }
         ]
+    },
+    "carousel": {
+        "description": "A carousel allows multiple pieces of featured content to occupy an allocated amount of space.\nCurrently panel index and auto play cannot be controlled by the app.",
+        "methods": [
+            {
+                "name": "onNextPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onPreviousPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorBlur",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorClickHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "panel",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onAutoPlayBtnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setDimensions",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setTranslationAmount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "amount",
+                        "type": null
+                    },
+                    {
+                        "name": "cb",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setCurrentPanel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "amount",
+                        "type": null
+                    },
+                    {
+                        "name": "cb",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "startAutoplay",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "stopAutoplay",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "changeTranslationAutomatically",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "canGoToNext",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "canGoToPrevious",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Description of the carousel items for screen-readers.",
+                "defaultValue": {
+                    "value": "{\n    autoPlayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "computed": false
+                }
+            },
+            "autoplayInterval": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Interval for the autoplay iteration",
+                "defaultValue": {
+                    "value": "4000",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the main 'slds-carousel' classed component container"
+            },
+            "hasAutoplay": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean showing whether the autoplay feature is available or not",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "hasPreviousNextPanelNavigation": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean for displaying the navigation indicators (left/right arrows) of the carousel",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Id of component, if desired. If not provided an id is automatically generated"
+            },
+            "indicatorStyles": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "CSS that is applied to carousel indicators"
+            },
+            "isInfinite": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean for infinite loop navigation",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided 'javascript:void(0);' is used instead\n* `src`: Item image src value"
+            },
+            "itemsPerPanel": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Number of items to be displayed at a time in the carousel",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "onRenderItem": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Accepts a custom carousel item rendering function"
+            },
+            "onItemClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Handler for clicking on a carousel item"
+            }
+        },
+        "route": "carousel",
+        "display-name": "Carousel",
+        "SLDS-component-path": "/components/carousel",
+        "dependencies": []
     },
     "checkbox": {
         "description": "The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.",
@@ -2938,6 +3178,22 @@
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
             {
+                "name": "getCustomPopoverProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "body",
+                        "type": null
+                    },
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getDialog",
                 "docblock": null,
                 "modifiers": [],
@@ -3047,6 +3303,10 @@
                 "params": [
                     {
                         "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ trigger }",
                         "type": null
                     }
                 ],
@@ -3321,7 +3581,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }"
+                        "name": "{ assistiveText, labels, props, userDefinedProps }"
                     }
                 ],
                 "returns": null,
@@ -3333,7 +3593,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3345,7 +3605,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{ assistiveText, labels, props, userDefinedProps }",
                         "type": null
                     }
                 ],
@@ -3364,7 +3624,7 @@
                 "returns": null
             },
             {
-                "name": "renderReadOnlyMultiple",
+                "name": "renderPopover",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3376,12 +3636,24 @@
                 "returns": null
             },
             {
+                "name": "renderReadOnlyMultiple",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderReadOnlySingle",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ assistiveText, labels, props }",
+                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -3401,6 +3673,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "popoverLabel": {
+                            "name": "string",
+                            "required": false
+                        },
                         "removeSingleSelectedOption": {
                             "name": "string",
                             "required": false
@@ -3416,7 +3692,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
@@ -3561,6 +3837,13 @@
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
             },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -3574,6 +3857,13 @@
                 },
                 "required": false,
                 "description": "HTML id for component. _Tested with snapshot testing._"
+            },
+            "input": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "An [Input](https://react.lightningdesignsystem.com/components/inputs) component.\nThe props from this component will override any default props."
             },
             "labels": {
                 "type": {
@@ -3622,9 +3912,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n    cancelButton: 'Cancel',\n    doneButton: `Done`,\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -3660,7 +3950,7 @@
                     "computed": false
                 }
             },
-            "menuItem": {
+            "onRenderMenuItem": {
                 "type": {
                     "name": "func"
                 },
@@ -3731,12 +4021,21 @@
                             "type": {
                                 "name": "string",
                                 "required": false
+                            },
+                            "disabled": {
+                                "name": "custom",
+                                "raw": "PropTypes.boolean",
+                                "required": false
+                            },
+                            "tooltipContent": {
+                                "name": "node",
+                                "required": false
                             }
                         }
                     }
                 },
-                "required": true,
-                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
+                "required": false,
+                "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
@@ -3769,6 +4068,13 @@
                 },
                 "required": false,
                 "description": "Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._"
+            },
+            "popover": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Combobox's Popover dialog to be a controlled component. _Tested with snapshot testing._"
             },
             "required": {
                 "type": {
@@ -3824,6 +4130,24 @@
                 "required": false,
                 "description": "This callback exposes the selected listbox reference / DOM node to parent components."
             },
+            "singleInputDisabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents. This only applies for single readonly and inline-listbox variants.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "tooltipMenuItemDisabled": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "Accepts a tooltip that is displayed when hovering on disabled menu items."
+            },
             "value": {
                 "type": {
                     "name": "string"
@@ -3844,13 +4168,17 @@
                             "computed": false
                         },
                         {
+                            "value": "'popover'",
+                            "computed": false
+                        },
+                        {
                             "value": "'readonly'",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._",
+                "description": "Changes styles of the input and menu. Currently `entity` is not supported.\nThe options are:\n* `base`: An autocomplete Combobox also allows a user to select an option from a list, but that list can be affected by what the user types into the input of the Combobox. The SLDS website used to call the autocomplete Combobox its `base` variant.\n* `inline-listbox`: An Entity Autocomplete Combobox or Lookup, is used to search for and select Salesforce Entities.\n* `popover`: A dialog Combobox is best used when a listbox, tree, grid, or tree-grid is not the best solution. This variant allows custom content.\n* `readonly`: A readonly text input that allows a user to select an option from a pre-defined list of options. It does not allow free form user input, nor does it allow the user to modify the selected value.\n\n _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -3993,6 +4321,30 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "resizeFixedHeaders",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "toggleFixedHeaderListeners",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "attach",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -4065,19 +4417,26 @@
                 "required": false,
                 "description": "A variant which adds border to the vertical columns."
             },
-            "id": {
+            "fixedHeader": {
                 "type": {
-                    "name": "string"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
+                "description": "Use this to enable fixed headers and scrolling columns / rows. Appearance / behavior is consistent only if used in combination with `fixedLayout`. Since scrolling is enabled, columns are not truncated unless a width is set. Due to `overflow:hidden` elements, any dialog components will need a separate render tree (portal) such as with `menuPosition: overflowBoundaryElement` in order to break out of the container."
             },
             "fixedLayout": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows)"
+                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID is needed in order to support keyboard navigation and ARIA support."
             },
             "items": {
                 "type": {
@@ -4102,6 +4461,13 @@
                 "required": false,
                 "description": "A variant which removes hover style on rows"
             },
+            "onFixedHeaderResize": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`"
+            },
             "onRowChange": {
                 "type": {
                     "name": "func"
@@ -4115,6 +4481,13 @@
                 },
                 "required": false,
                 "description": "This function fires when the table should be sorted."
+            },
+            "onToggleFixedHeaderListeners": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "By default this function attaches/detaches listeners for window resize and tbody scrolling when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with an `attach` boolean property to determine whether listeners should be attached, a `resizeHandler` function property that can be called as-needed, and a `scrollerRef` DOM node property that serves as a reference to `.slds-table_header-fixed_scroller`"
             },
             "selection": {
                 "type": {
@@ -4150,7 +4523,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifies a select row UX pattern. `checkbox` should be used for multiple row selection. `radio` should be limited to _required_ single row selection. This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility"
+                "description": "Specifies a row selection UX pattern.\n* `checkbox`: Multiple row selection.\n* `radio`: _Required_ single row selection.\n_This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._"
             },
             "stacked": {
                 "type": {
@@ -4288,6 +4661,13 @@
                             },
                             "required": false,
                             "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+                        },
+                        "isDefaultSortDescending": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Some columns, such as \"date last viewed\" or \"date recently updated,\" should sort descending first, since that is what the user probably wants. How often does one want to see their oldest files first in a table? If sortable and the `DataTable`'s parent has not defined the sort order, then ascending (A at the top to Z at the bottom) is the default sort order on first click."
                         },
                         "isSorted": {
                             "type": {
@@ -4516,7 +4896,7 @@
         ]
     },
     "date-picker": {
-        "description": "A date picker is a non text input form element. You can select a single date from a popup or inline calendar. The date picker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.\n\nThe calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
+        "description": "A date picker is a non-text input form element. You can select a single date from a popup calendar. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and parsing and internationalization. You will want to use your date library within the `parser` and `formatter` callbacks.\n\nThe calendar is rendered with time/dates based on local browser time of the client browser. All dates are in the local user's timezones and time. Another way to put it is if a user selects a date, they are actually selecting midnight in their current time on their current day and not mightnight in UTC. If `Datepicker` is paired with a time and timezone input, you may want to convert dates provided by this component to UTC and then combine the date with your time and timezone input.\n\nPairing with any other component besides an `input` is untested.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
         "methods": [
             {
                 "name": "getDatePicker",
@@ -4765,7 +5145,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Date formatting function. _Tested with snapshot testing._",
+                "description": "Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) before rendering the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._\nThe default `formatter` function is:\n```\nformatter(date) {\n  return date\n   ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n   : '';\n}\n```",
                 "defaultValue": {
                     "value": "function(date) {\n    return date\n        ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n        : '';\n}",
                     "computed": false
@@ -4776,7 +5156,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Value of input that gets passed to `parser` prop. Set the `value` prop if using a `Date` object. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date formatting or internationalization is needed. _Not tested._"
+                "description": "Value of input that gets passed to `parser` prop on initial render. This prop is only present for uncontrolled use of Datepicker which is _highly discouraged_. A better name for this prop would be `defaultFormatedValue`. Please use the `value` prop instead. _Not tested._"
             },
             "hasStaticAlignment": {
                 "type": {
@@ -4922,9 +5302,9 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom function to parse date string into and return a `Date` object. Default function passes the input value to `Date()` and prays for a miracle. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date parsing is needed. _Tested with snapshot testing._",
+                "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
-                    "value": "function(str) {\n    return new Date(str);\n}",
+                    "value": "function(str) {\n    lowPriorityWarning(\n        false,\n        `Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n    );\n    return new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -4988,6 +5368,216 @@
         "route": "datepickers",
         "display-name": "Datepickers",
         "SLDS-component-path": "/components/datepickers",
+        "dependencies": []
+    },
+    "dynamic-icon": {
+        "description": "A set of delightful animated icons.",
+        "methods": [
+            {
+                "name": "getIconChildren",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: Used as a visually hidden label to describe the dynamic icon."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the icon."
+            },
+            "isPaused": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Pauses the icon animation if the value is true."
+            },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables icon animation if set to true"
+            },
+            "scorePolarity": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'positive'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'negative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Polarity values for the 'score' variant. Defaults to 'positive'"
+            },
+            "strengthLevel": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'-3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'0'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "-3",
+                            "computed": true
+                        },
+                        {
+                            "value": "-2",
+                            "computed": true
+                        },
+                        {
+                            "value": "-1",
+                            "computed": true
+                        },
+                        {
+                            "value": "0",
+                            "computed": false
+                        },
+                        {
+                            "value": "1",
+                            "computed": false
+                        },
+                        {
+                            "value": "2",
+                            "computed": false
+                        },
+                        {
+                            "value": "3",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Range of strength values for the 'strength' variant. Defaults to '0'."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "HTML title attribute."
+            },
+            "trendDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'down'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'up'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'neutral'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Signals direction for the 'trend' variant. The default value 'neutral' points to the east."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'ellie'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'eq'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'score'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'strength'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'trend'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'typing'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'waffle'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Different types of dynamic icons. Possible variants:\n\n`ellie` - Displays a pulsing blue circle, which pulses and stops after one animation cycle.\n`eq` - Displays an animated graph with three bars that rise and fall randomly.\n`score` - Displays a green filled circle or a red unfilled circle.\n`strength` - Displays three animated horizontal circles that are colored green or red.\n`trend` - Displays animated arrows that point up, down, or straight.\n`waffle` - Displays a 3x3 grid of dots that animates on hover."
+            }
+        },
+        "route": "dynamic-icon",
+        "display-name": "Dynamic Icon",
+        "SLDS-component-path": "/components/dynamic-icon",
         "dependencies": []
     },
     "filter": {
@@ -5385,19 +5975,22 @@
                         "spinner": {
                             "name": "string",
                             "required": false
-                        },
-                        "fieldLevelHelpButton": {
-                            "name": "string",
-                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.\n* `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.",
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
                 "defaultValue": {
-                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    fieldLevelHelpButton: 'Help',\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
+            },
+            "autoComplete": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Disabled brower's autocomplete when \"off\" is used."
             },
             "children": {
                 "type": {
@@ -5466,7 +6059,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label. The props from the component will be merged and override any default props."
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label."
             },
             "fixedTextLeft": {
                 "type": {
@@ -5716,6 +6309,13 @@
                 "required": false,
                 "description": "styles to be added to input"
             },
+            "styleContainer": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component container"
+            },
             "type": {
                 "type": {
                     "name": "enum",
@@ -5918,231 +6518,175 @@
         "SLDS-component-path": "/components/global-header#flavor-base",
         "dependencies": [
             {
-                "button": {
-                    "description": "A helper component that renders a Button in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden if text-based buttons are required.",
-                    "methods": [],
-                    "name": "button",
-                    "source": "/components/global-header/button.jsx"
-                }
-            },
-            {
-                "dropdown": {
-                    "description": "This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).",
-                    "methods": [],
+                "favorites": {
+                    "description": "A GlobalHeaderFavorites component. The favorites action is used to \"favorite\" a commonly used page within a user's experience. When a user \"favorites\" a page by pressing the favorites action, the button icon changes color with a small animation to confirm your selection.",
+                    "methods": [
+                        {
+                            "name": "toggleActionSelected",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        }
+                    ],
                     "props": {
-                        "align": {
+                        "assistiveText": {
                             "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'left'",
-                                        "computed": false
+                                "name": "shape",
+                                "value": {
+                                    "action": {
+                                        "name": "string",
+                                        "required": false
                                     },
-                                    {
-                                        "value": "'right'",
-                                        "computed": false
+                                    "more": {
+                                        "name": "string",
+                                        "required": false
                                     }
-                                ]
+                                }
                             },
                             "required": false,
-                            "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                            "description": "**Assistive text for accessibility**\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
                             "defaultValue": {
-                                "value": "'right'",
+                                "value": "{\n    action: 'Toggle Favorite',\n    more: 'View Favorites',\n}",
                                 "computed": false
                             }
                         },
-                        "className": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Extra classnames to apply to the dropdown menu."
-                        },
-                        "buttonClassName": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "array"
-                                    },
-                                    {
-                                        "name": "object"
-                                    },
-                                    {
-                                        "name": "string"
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "CSS classes to be added to `li` element."
-                        },
-                        "iconName": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
-                        },
-                        "iconVariant": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'bare'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'container'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'border'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'border-filled'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'more'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'global-header'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "For icon variants, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#icon\">Lightning Design System Icons</a>.",
-                            "defaultValue": {
-                                "value": "'global-header'",
-                                "computed": false
-                            }
-                        },
-                        "id": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
-                        },
-                        "globalAction": {
+                        "actionDisabled": {
                             "type": {
                                 "name": "bool"
                             },
                             "required": false,
-                            "description": "Adds custom styling such as inverse fill and special sizing/spacing"
+                            "description": "Disables the favorites action (star) button and not the related Popover.\""
                         },
-                        "nubbinPosition": {
+                        "actionSelected": {
                             "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'top left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top right'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom right'",
-                                        "computed": false
-                                    }
-                                ]
+                                "name": "bool"
                             },
                             "required": false,
-                            "description": "Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with \"icon container\" styling. Dropdown menus will still be contained to the closest scrolling parent.",
-                            "defaultValue": {
-                                "value": "'top right'",
-                                "computed": false
-                            }
+                            "description": "Controls whether the favorites action (star) button is selected or not"
                         },
-                        "offset": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
-                        },
-                        "onSelect": {
+                        "onToggleActionSelected": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": "Triggered when an item in the menu is clicked."
+                            "description": "This event fires when the favorites action (star) button is toggled. Passes in `event, { actionSelected }`."
                         },
-                        "options": {
-                            "type": {
-                                "name": "array"
-                            },
-                            "required": true,
-                            "description": "An array of menu item."
-                        },
-                        "buttonVariant": {
-                            "defaultValue": {
-                                "value": "'icon'",
-                                "computed": false
-                            },
-                            "required": false
-                        }
-                    },
-                    "name": "dropdown",
-                    "source": "/components/global-header/dropdown.jsx"
-                }
-            },
-            {
-                "profile": {
-                    "description": "A helper component that renders a MenuDropdown for the user profile.",
-                    "methods": [],
-                    "props": {
-                        "align": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'right'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
-                            "defaultValue": {
-                                "value": "'right'",
-                                "computed": false
-                            }
-                        },
-                        "children": {
+                        "popover": {
                             "type": {
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/utilities/menu-list/list' and pass in `<List>`.\n\n```\n<Dropdown>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                            "description": "A `Popover` component applied to the favorites more button. The props from this popover will be merged and override any default props. The `children` prop will be ignored."
+                        }
+                    },
+                    "name": "favorites",
+                    "source": "/components/global-header/favorites.jsx"
+                }
+            },
+            {
+                "help": {
+                    "description": "A GlobalHeaderHelp component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "triggerButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderHelp trigger button. The default is `Help and Training`.",
+                            "defaultValue": {
+                                "value": "{\n    triggerButton: 'Help and Training',\n}",
+                                "computed": false
+                            }
                         },
+                        "popover": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props. The `children` prop will be ignored."
+                        }
+                    },
+                    "name": "help",
+                    "source": "/components/global-header/help.jsx"
+                }
+            },
+            {
+                "notifications": {
+                    "description": "A GlobalHeaderNotifications component. Notifications are a way to notify a user about a global change within the application.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "newNotificationsAfter": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "newNotificationsBefore": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "noNotifications": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\n* `noNotifications`: Assistive text for when there are no new notifications.",
+                            "defaultValue": {
+                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'No new notifications',\n}",
+                                "computed": false
+                            }
+                        },
+                        "notificationCount": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Dictates the number of notifications shown in the new notifications badge.",
+                            "defaultValue": {
+                                "value": "0",
+                                "computed": false
+                            }
+                        },
+                        "popover": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props. The `children` prop will be ignored."
+                        }
+                    },
+                    "name": "notifications",
+                    "source": "/components/global-header/notifications.jsx"
+                }
+            },
+            {
+                "profile": {
+                    "description": "This component is an `Avatar` component that opens a `Popover` component when clicked.",
+                    "methods": [],
+                    "props": {
                         "className": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Extra classnames to apply to the dropdown menu."
+                            "description": "Extra classnames to apply to the popover."
                         },
                         "avatar": {
                             "type": {
@@ -6157,7 +6701,7 @@
                                 ]
                             },
                             "required": false,
-                            "description": "An image URL or avatar node to display for the user profile."
+                            "description": "An image URL or avatar node to display for the user profile. Defaults to a base64 encoded generic user avatar image string"
                         },
                         "buttonClassName": {
                             "type": {
@@ -6175,86 +6719,32 @@
                                 ]
                             },
                             "required": false,
-                            "description": "CSS classes to be added to `li` element."
+                            "description": "CSS classes to be added to the `button` element."
                         },
                         "id": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
+                            "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering button. If an id is not provided, it will be automatically generated."
                         },
-                        "nubbinPosition": {
+                        "popover": {
                             "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'top left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'top right'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom left'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'bottom right'",
-                                        "computed": false
-                                    }
-                                ]
+                                "name": "node"
                             },
                             "required": false,
-                            "description": "Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with \"icon container\" styling. Dropdown menus will still be contained to the closest scrolling parent.",
-                            "defaultValue": {
-                                "value": "'top right'",
-                                "computed": false
-                            }
+                            "description": "A `Popover` component. The props from this popover will be merged and override any default props."
                         },
-                        "offset": {
+                        "userName": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px)."
-                        },
-                        "onSelect": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "Triggered when an item in the menu is clicked."
-                        },
-                        "options": {
-                            "type": {
-                                "name": "array"
-                            },
-                            "required": false,
-                            "description": "An array of menu item."
-                        },
-                        "buttonVariant": {
+                            "description": "The user name of the profile. Defaults to \"User Name\"",
                             "defaultValue": {
-                                "value": "'icon'",
+                                "value": "'User Name'",
                                 "computed": false
-                            },
-                            "required": false
-                        },
-                        "iconVariant": {
-                            "defaultValue": {
-                                "value": "'container'",
-                                "computed": false
-                            },
-                            "required": false
+                            }
                         }
                     },
                     "name": "profile",
@@ -6263,10 +6753,87 @@
             },
             {
                 "search": {
-                    "description": "The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.",
+                    "description": "The GlobalHeaderSearch component is used for application wide search. The form element is implemented as a `Combobox`.",
                     "methods": [],
+                    "props": {
+                        "combobox": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": true,
+                            "description": "A required `Combobox` component. The props from this combobox will be merged and override any default props."
+                        }
+                    },
                     "name": "search",
                     "source": "/components/global-header/search.jsx"
+                }
+            },
+            {
+                "setup": {
+                    "description": "A GlobalHeaderSetup component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "triggerButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.",
+                            "defaultValue": {
+                                "value": "{\n    triggerButton: 'Setup',\n}",
+                                "computed": false
+                            }
+                        },
+                        "dropdown": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Dropdown` component. The props from this dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the dropdown."
+                        }
+                    },
+                    "name": "setup",
+                    "source": "/components/global-header/setup.jsx"
+                }
+            },
+            {
+                "task": {
+                    "description": "A GlobalHeaderTask component.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "triggerButton": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.",
+                            "defaultValue": {
+                                "value": "{\n    triggerButton: 'Global Actions',\n}",
+                                "computed": false
+                            }
+                        },
+                        "dropdown": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "A `Dropdown` component. The props from this dropdown will be merged and override any default props. This also allows custom content to be passed as children and rendered in the dropdown."
+                        }
+                    },
+                    "name": "task",
+                    "source": "/components/global-header/task.jsx"
                 }
             }
         ]
@@ -7041,108 +7608,6 @@
         "SLDS-component-path": "/components/icons",
         "dependencies": []
     },
-    "icon-settings": {
-        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
-        "methods": [],
-        "props": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the root icon folder\nexample: `/assets/icons`"
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Function to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN. `({category, name}) => { return \\`#${name}\\` }`"
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
-            }
-        },
-        "childContext": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
-        "route": "icon-settings",
-        "display-name": "Icon Settings",
-        "dependencies": []
-    },
     "illustration": {
         "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
         "methods": [],
@@ -7785,7 +8250,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                "description": "If you need custom content _and_ a list, use a `<Popover>` instead."
             },
             "className": {
                 "type": {
@@ -7999,6 +8464,18 @@
                         },
                         {
                             "value": "'10'",
+                            "computed": false
+                        },
+                        {
+                            "value": "5",
+                            "computed": false
+                        },
+                        {
+                            "value": "7",
+                            "computed": false
+                        },
+                        {
+                            "value": "10",
                             "computed": false
                         }
                     ]
@@ -8255,6 +8732,43 @@
                 },
                 "required": false,
                 "description": "Whether this dropdown supports multi select."
+            },
+            "width": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'xx-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bottom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "To adjust the width of the menu dropdown",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
             }
         },
         "context": {
@@ -8570,7 +9084,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
                     "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
                     "computed": false
@@ -8633,23 +9147,19 @@
                 "required": false,
                 "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
             },
-            "dismissible": {
+            "disableClose": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking on the close icon or pressing esc key.",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key."
             },
             "dismissOnClickOutside": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible."
+                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose."
             },
             "onRequestClose": {
                 "type": {
@@ -8678,7 +9188,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present."
+                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present."
             },
             "headerClassName": {
                 "type": {
@@ -8785,9 +9295,16 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content underneath the title in the modal header."
+                "description": "Content underneath the heading in the modal header."
             },
             "title": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content underneath the title in the modal header."
+            },
+            "heading": {
                 "type": {
                     "name": "node"
                 },
@@ -9613,7 +10130,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```"
+                "description": "**Array of pill objects.**\nEach object can contain:\n* `avatar`: An `Avatar` component.\n* `error`: Adds error styling\n* `icon`: An `Icon` component.\n* `id`: A unique identifier string.\n* `label`: A primary string of text.\n* `title`: Text that appears on mouse hover. Most helpful for long labels.\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\ttitle: 'Salesforce.com, Inc. - Want to work here?',\n},\n```\n`options` with array length of zero will remove this component from the DOM."
             },
             "onClickPill": {
                 "type": {
@@ -9678,6 +10195,13 @@
             },
             {
                 "name": "getMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getTargetElement",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -9966,7 +10490,7 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`)."
+                "description": "Multiple children of any kind are allowed, but the first child must serve as the trigger component. Many props will be passed into this trigger related to popover interactions. The trigger needs to be a clickable element, such as a `Button` or an anchor tag (`a`)."
             },
             "body": {
                 "type": {
@@ -9983,7 +10507,7 @@
                 "required": true,
                 "description": "The contents of the popover. This should also accept arrays."
             },
-            "className": {
+            "classNameBody": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -9999,7 +10523,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to the popover. That is the element with `.slds-popover` on it."
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it."
+            },
+            "classNameFooter": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it."
             },
             "disabled": {
                 "type": {
@@ -10015,12 +10557,51 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
+            "footerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "An object of CSS styles that are applied to the `slds-popover__footer` DOM element."
+            },
+            "footerWalkthroughActions": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "node"
+                            }
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Used with `walkthrough` variant to provide action buttons (ex: \"Next\" / \"Skip\" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
                 "description": "Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used."
+            },
+            "hasNoTriggerStyles": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Removes `display:inline-block` from the trigger button."
+            },
+            "hasNoNubbin": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled."
             },
             "heading": {
                 "type": {
@@ -10035,7 +10616,7 @@
                     ]
                 },
                 "required": false,
-                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
+                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
             "id": {
                 "type": {
@@ -10093,6 +10674,13 @@
                 "required": false,
                 "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
+            "onRequestTargetElement": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback that returns an element or React `ref` to align the Popover with. If the target element has not been rendered yet, the popover will use the triggering element as the attachment target instead. NOTE: `position=\"relative\"` is not compatible with custom targets that are not the triggering element."
+            },
             "position": {
                 "type": {
                     "name": "enum",
@@ -10112,11 +10700,18 @@
                     ]
                 },
                 "required": false,
-                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing. NOTE: this setting is not compatible with custom targets outside the trigger",
                 "defaultValue": {
                     "value": "'absolute'",
                     "computed": false
                 }
+            },
+            "stepText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Used with `walkthrough` variant to provide the step text (ex: \"Step 1 of 4\") for a walkthrough popover footer. If used with `variant=\"walkthrough-action\"`, it will be placed in the popover body."
             },
             "style": {
                 "type": {
@@ -10157,6 +10752,39 @@
                 },
                 "required": false,
                 "description": "CSS classes to be added to wrapping trigger `div` around the button."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'walkthrough'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'walkthrough-action'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the type of the popover. `error` and `warning` allows the  content body to scroll. Default is `base` _Tested with snaphots._",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             },
             "hoverCloseDelay": {
                 "defaultValue": {
@@ -10216,10 +10844,28 @@
             },
             "variant": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'object-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "The type of component",
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -10384,24 +11030,12 @@
                 "required": false,
                 "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
             },
-            "contentRight": {
+            "onRenderActions": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "Content to appear on the right hand side of the page header",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
             },
             "details": {
                 "type": {
@@ -10414,24 +11048,12 @@
                     "computed": false
                 }
             },
-            "navRight": {
+            "onRenderControls": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "Nav content which appears in the upper right hand corner.",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
             },
             "trail": {
                 "type": {
@@ -10557,6 +11179,27 @@
                 "required": false,
                 "description": "HTML id for component."
             },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the orientation of the progress indicator",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
+            },
             "onStepClick": {
                 "type": {
                     "name": "func"
@@ -10624,11 +11267,193 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "tooltipPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - (default if `variant` is `base`) The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing."
             }
         },
         "route": "progress-indicators",
         "display-name": "Progress Indicators",
         "SLDS-component-path": "/components/progress-indicator",
+        "dependencies": []
+    },
+    "progress-bar": {
+        "description": "A progress bar component communicates to the user the progress of a particular process",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            },
+            {
+                "name": "getDescription",
+                "docblock": "Enables Descriptive Progress Bar if label is provided\n@returns {string} description",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }"
+                    }
+                ],
+                "returns": {
+                    "description": "description",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Enables Descriptive Progress Bar if label is provided"
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "complete": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Label for the progress bar",
+                "defaultValue": {
+                    "value": "{\n    complete: 'Complete',\n}",
+                    "computed": false
+                }
+            },
+            "radius": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'circular'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set radius of progress bar"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set fill of progress bar"
+            },
+            "thickness": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set progress bar thickness"
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": true,
+                "description": "Percentage of progress completion, ranging [0, 100]."
+            }
+        },
+        "route": "progress-bars",
+        "display-name": "Progress Bars",
+        "SLDS-component-path": "/components/progress-bar",
         "dependencies": []
     },
     "progress-ring": {
@@ -11727,6 +12552,62 @@
         "SLDS-component-path": "/components/radio-button-group",
         "dependencies": []
     },
+    "scoped-notification": {
+        "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'dark'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'light'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Theme for the scoped notification"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Icon for the scoped notification. This is currently limited to the utility set of icons.",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "scoped-notifications",
+        "display-name": "Scoped Notifications",
+        "SLDS-component-path": "/components/scoped-notification",
+        "dependencies": []
+    },
     "slider": {
         "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
         "methods": [
@@ -11976,6 +12857,17 @@
                 },
                 "required": false,
                 "description": "Unique html id placed on div with role=\"status\"."
+            },
+            "isDelayed": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds delay of 300ms to the spinner",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "isInput": {
                 "type": {
@@ -13266,6 +14158,24 @@
                     "computed": false
                 }
             },
+            "dialogClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -13670,13 +14580,6 @@
                 "returns": null
             },
             {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "getSelectedId",
                 "docblock": null,
                 "modifiers": [],
@@ -13730,27 +14633,6 @@
                 },
                 "required": false,
                 "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'shade'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines component style:\n    * Use `shade` when the component is placed on an existing background that is not lightly colored.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
             }
         },
         "route": "vertical-navigation",

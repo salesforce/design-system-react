@@ -18,6 +18,8 @@ import AppLauncher from '../../app-launcher';
 import AppLauncherSection from '../../app-launcher/section';
 import AppLauncherTile from '../../app-launcher/tile';
 
+import Default from '../__examples__/default';
+
 // aliased to allow copy and paste from component tests
 const buttonClicked = action;
 const dropdownItemClicked = action;
@@ -119,17 +121,9 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			/>
 			<GlobalNavigationBarLink
 				// will actually go to website
+				active
 				href="https://www.lightningdesignsystem.com/"
 				label="Menu Item"
-			/>
-			<GlobalNavigationBarLink
-				active
-				label="Menu Item"
-				onClick={linkClicked('Link clicked')}
-			/>
-			<GlobalNavigationBarLink
-				label="Menu Item"
-				onClick={linkClicked('Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
@@ -351,6 +345,7 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.hybrid.props,
 			propSets.base.primaryRegionProps
 		)
-	);
+	)
+	.add('Doc site Default', () => <Default />);
 
 export default getGlobalNavigationBar;

@@ -83,7 +83,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('renders tile with proper classes', () => {
 			should.exist(
-				handles.tile.find('.slds-app-launcher__tile .slds-text-link_reset')
+				handles.tile.find('.slds-app-launcher__tile.slds-text-link_reset')
 			);
 		});
 

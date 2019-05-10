@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -122,7 +124,9 @@ describe('SLDSMenuDropdown', function() {
 
 	describe('Styling', () => {
 		beforeEach(
-			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} />)
+			mountComponent(
+				<DemoComponent menuStyle={{ height: '500px' }} width="small" />
+			)
 		);
 
 		afterEach(unmountComponent);
@@ -133,6 +137,7 @@ describe('SLDSMenuDropdown', function() {
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu).to.exist;
 			expect(openNodes.menu).to.have.style('height', '500px');
+			expect(openNodes.menu.hasClass('slds-dropdown_small')).to.equal(true);
 		});
 	});
 
@@ -372,14 +377,15 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				1
 			);
-			openNodes.menu
-				.find('.slds-dropdown__item a')
-				.at(0)
-				.simulate('click');
+			const firstNode = openNodes.menu.find('.slds-dropdown__item a').at(0);
+			firstNode.simulate('click');
 			openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
 				2
 			);
+			// item with checkmark has proper aria markup
+			expect(firstNode).attr('aria-checked', 'true');
+			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
 	});
 

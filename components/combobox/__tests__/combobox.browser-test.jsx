@@ -1,4 +1,4 @@
-// Import your external dependencies
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
@@ -18,8 +18,10 @@ import {
 
 // Import your internal dependencies (for example):
 import Combobox from '../../../components/combobox';
+import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
+import Popover from '../../../components/popover';
 import KEYS, { keyObjects } from '../../../utilities/key-code';
 import LETTERKEYS, {
 	keyObjects as letterKeyObjects,
@@ -55,6 +57,7 @@ const accounts = [
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
 		type: 'account',
+		disabled: true,
 	},
 	{
 		id: '5',
@@ -196,6 +199,7 @@ const getNodes = ({ wrapper }) => ({
 	selectedListbox: wrapper.find(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
 	),
+	popover: wrapper.find('.slds-popover'),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -465,6 +469,38 @@ describe('SLDSCombobox', function() {
 		});
 	});
 
+	describe('Dialog variant', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('popover opens when down arrow is pressed', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
+
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			nodes = getNodes({ wrapper });
+			expect(nodes.popover).to.be.present;
+		});
+
+		it('onOpen callback is called when dialog variant', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
+
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('click', {});
+			nodes = getNodes({ wrapper });
+			expect(nodes.popover).to.be.present;
+		});
+	});
+
 	describe('Optional Props', () => {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
@@ -506,6 +542,41 @@ describe('SLDSCombobox', function() {
 			const nodes = getNodes({ wrapper });
 			nodes.input.simulate('click', {});
 			expect(onOpenCallback.callCount).to.equal(1);
+		});
+	});
+
+	describe('Combobox with items disabled', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+		it('Tooltip component shows when focused on menu item.', function() {
+			wrapper = mount(
+				<DemoComponent multiple isOpen tooltipMenuItemDisabled={<Tooltip />} />,
+				{
+					attachTo: mountNode,
+				}
+			);
+			const nodes = getNodes({ wrapper });
+			nodes.input.simulate('focus');
+			nodes.input.simulate('change', { target: { value: accounts[3].label } });
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+
+			const nodeInFocus = nodes.menuListbox.find('.slds-tooltip-trigger');
+			const span = nodeInFocus.find('#combobox-unique-id-listbox-option-4');
+
+			// verify span is aria-selected and aria-disabled
+			expect(span).to.have.attr('aria-selected', 'true');
+			expect(span).to.have.attr('aria-disabled', 'true');
+
+			// verify tooltip is rendered
+			expect(
+				nodes.menuListbox.find('#combobox-unique-id-listbox-option-help-4')
+					.length
+			).to.equal(1);
 		});
 	});
 });

@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -80,7 +79,7 @@ class Example extends React.Component {
 									label: value,
 									icon: (
 										<Icon
-											assistiveText="Account"
+											assistiveText={{ label: 'Account' }}
 											category="standard"
 											name="account"
 										/>

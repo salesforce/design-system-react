@@ -8,10 +8,10 @@ import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 class Example extends React.Component {
-	static displayName = 'PageHeaderExample';
+	static displayName = 'ObjectHomePageHeaderExample';
 
 	render() {
-		const navRight = (
+		const controls = () => (
 			<div>
 				<ButtonGroup>
 					<Button label="New Lead" />
@@ -35,7 +35,7 @@ class Example extends React.Component {
 			</div>
 		);
 
-		const contentRight = (
+		const actions = () => (
 			<div>
 				<Dropdown
 					align="right"
@@ -61,6 +61,7 @@ class Example extends React.Component {
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
 					id="page-header-dropdown-object-home-content-right-2"
@@ -97,37 +98,35 @@ class Example extends React.Component {
 					iconVariant="border"
 					variant="icon"
 				/>
-				<div>
-					<ButtonGroup>
-						<Button
-							assistiveText={{ icon: 'Charts' }}
-							iconCategory="utility"
-							iconName="chart"
-							iconVariant="border"
-							variant="icon"
-						/>
-						<Button
-							assistiveText={{ icon: 'Filters' }}
-							iconCategory="utility"
-							iconName="filterList"
-							iconVariant="border"
-							variant="icon"
-						/>
-					</ButtonGroup>
-				</div>
+				<ButtonGroup>
+					<Button
+						assistiveText={{ icon: 'Charts' }}
+						iconCategory="utility"
+						iconName="chart"
+						iconVariant="border"
+						variant="icon"
+					/>
+					<Button
+						assistiveText={{ icon: 'Filters' }}
+						iconCategory="utility"
+						iconName="filterList"
+						iconVariant="border"
+						variant="icon"
+					/>
+				</ButtonGroup>
 			</div>
 		);
 
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					contentRight={contentRight}
+					onRenderActions={actions}
 					iconAssistiveText="User"
 					iconCategory="standard"
 					iconName="lead"
 					info="10 items • sorted by name"
 					label="Leads"
-					navRight={navRight}
+					onRenderControls={controls}
 					title={
 						<h1 className="slds-page-header__title slds-p-right_x-small">
 							<Dropdown
@@ -155,7 +154,7 @@ class Example extends React.Component {
 						</h1>
 					}
 					truncate
-					variant="objectHome"
+					variant="object-home"
 				/>
 			</IconSettings>
 		);

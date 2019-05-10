@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 
 import PropTypes from 'prop-types';
@@ -19,7 +20,16 @@ import GlobalNavigationBarRegion from '../../global-navigation-bar/region';
 import IconSettings from '../../icon-settings';
 import SLDSSettings from '../../SLDSSettings';
 
-SLDSSettings.setAppElement('#root'); // used by Modal component
+import DefaultExample from '../__examples__/default';
+
+import { canUseDOM } from '../../../utilities/execution-environment';
+
+// used by Modal component
+if (canUseDOM && document.querySelector('#root')) {
+	SLDSSettings.setAppElement('#root');
+} else {
+	SLDSSettings.setAppElement(document.createElement('div'));
+}
 
 const standardTileDemoStyles = {
 	width: '20rem',
@@ -158,7 +168,7 @@ class DemoAppLauncherTileWithDescriptionHeading extends React.Component {
 				title="Journey Builder"
 				description="Build 1:1 journeys blah blah blah and use way too many words"
 				descriptionHeading="Journey Builder"
-				iconText="SC"
+				iconText="JB"
 				onClick={action('Tile with description heading clicked!')}
 				search={this.props.search}
 				size={this.props.size}
@@ -546,4 +556,5 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Section', () => <DemoAppLauncherSection />)
 	.add('Section with small tiles', () => (
 		<DemoAppLauncherSectionWithSmallTiles />
-	));
+	))
+	.add('Doc site example', () => <DefaultExample />);

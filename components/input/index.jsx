@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -24,7 +25,6 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import Button from '../button';
-import Tooltip from '../tooltip';
 
 // ## Children
 import InputIcon from '../icon/input-icon';
@@ -36,6 +36,7 @@ import checkProps from './check-props';
 
 import { INPUT } from '../../utilities/constants';
 import componentDoc from './docs.json';
+import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 
 const COUNTER = 'counter';
 const DECREMENT = 'Decrement';
@@ -44,7 +45,6 @@ const INCREMENT = 'Increment';
 const defaultProps = {
 	assistiveText: {
 		decrement: `${DECREMENT} ${COUNTER}`,
-		fieldLevelHelpButton: 'Help',
 		increment: `${INCREMENT} ${COUNTER}`,
 	},
 	type: 'text',
@@ -103,13 +103,15 @@ class Input extends React.Component {
 		 * **Assistive text for accessibility**
 		 * * `label`: Visually hidden label but read out loud by screen readers.
 		 * * `spinner`: Text for loading spinner icon.
-		 * * `fieldLevelHelpButton`: The field level help button, by default an 'info' icon.
 		 */
 		assistiveText: PropTypes.shape({
 			label: PropTypes.string,
 			spinner: PropTypes.string,
-			fieldLevelHelpButton: PropTypes.string,
 		}),
+		/**
+		 * Disabled brower's autocomplete when "off" is used.
+		 */
+		autoComplete: PropTypes.string,
 		/**
 		 * Elements are added after the `input`.
 		 */
@@ -140,7 +142,7 @@ class Input extends React.Component {
 		 */
 		errorText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
-		 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label. The props from the component will be merged and override any default props.
+		 * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label.
 		 */
 		fieldLevelHelpTooltip: PropTypes.node,
 		/**
@@ -271,6 +273,10 @@ class Input extends React.Component {
 		 * styles to be added to input
 		 */
 		styleInput: PropTypes.object,
+		/**
+		 * Custom styles to be passed to the component container
+		 */
+		styleContainer: PropTypes.object,
 		/**
 		 * The `<Input>` element includes support for all HTML5 types.
 		 */
@@ -538,33 +544,11 @@ class Input extends React.Component {
 		};
 		const inputRef =
 			this.props.variant === COUNTER ? this.setInputRef : this.props.inputRef;
-		let fieldLevelHelpTooltip;
 		let iconLeft = null;
 		let iconRight = null;
 
-		if (
-			(this.props.label ||
-				(this.props.assistiveText && this.props.assistiveText.label)) &&
-			this.props.fieldLevelHelpTooltip
-		) {
-			const defaultTooltipProps = {
-				triggerClassName: 'slds-form-element__icon',
-				triggerStyle: { position: 'static' },
-				children: (
-					<Button
-						assistiveText={{ icon: assistiveText.fieldLevelHelpButton }}
-						iconCategory="utility"
-						iconName="info"
-						variant="icon"
-					/>
-				),
-			};
-			const tooltipProps = {
-				...defaultTooltipProps,
-				...this.props.fieldLevelHelpTooltip.props,
-			};
-			fieldLevelHelpTooltip = <Tooltip {...tooltipProps} />;
-		}
+		const hasRenderedLabel =
+			this.props.label || (assistiveText && assistiveText.label);
 
 		// Remove at next breaking change
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
@@ -605,15 +589,23 @@ class Input extends React.Component {
 					},
 					this.props.className
 				)}
+				style={this.props.styleContainer}
 			>
 				<Label
-					assistiveText={this.props.assistiveText}
+					assistiveText={assistiveText}
 					htmlFor={this.props.isStatic ? undefined : this.getId()}
 					label={this.props.label}
 					required={this.props.required}
 					variant={this.props.isStatic ? 'static' : 'base'}
 				/>
-				{fieldLevelHelpTooltip}
+				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
+					<FieldLevelHelpTooltip
+						assistiveText={{
+							triggerLearnMoreIcon: assistiveText.fieldLevelHelpButton,
+						}}
+						fieldLevelHelpTooltip={this.props.fieldLevelHelpTooltip}
+					/>
+				) : null}
 				<InnerInput
 					aria-activedescendant={this.props['aria-activedescendant']}
 					aria-autocomplete={this.props['aria-autocomplete']}
@@ -623,6 +615,7 @@ class Input extends React.Component {
 					aria-expanded={this.props['aria-expanded']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
+					autoComplete={this.props.autoComplete}
 					className={classNames({
 						'slds-input_counter': this.props.variant === COUNTER,
 						'slds-p-horizontal_none':

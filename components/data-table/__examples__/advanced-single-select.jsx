@@ -113,6 +113,9 @@ class Example extends React.Component {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Advanced Single Select (Fixed Layout)
+					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',
@@ -124,7 +127,7 @@ class Example extends React.Component {
 						}}
 						fixedLayout
 						items={this.state.items}
-						id="DataTableExample-2"
+						id="DataTableExample-SingleRequiredSelect"
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}

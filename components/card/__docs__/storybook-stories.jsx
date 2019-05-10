@@ -19,11 +19,15 @@ import Icon from '../../icon';
 import MediaObject from '../../media-object';
 import InlineEdit from '../../forms/input/inline';
 
+import RelatedListWithTable from '../__examples__/related-list-with-table';
+
 const sampleItems = [
-	{ name: 'Cloudhub' },
-	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' },
+	{ id: '0', name: 'Cloudhub' },
+	{ id: '1', name: 'Cloudhub + Anypoint Connectors' },
+	{ id: '2', name: 'Cloud City' },
 ];
+
+let currentId = 3;
 
 class DemoCard extends React.Component {
 	static displayName = 'DemoCard';
@@ -63,7 +67,10 @@ class DemoCard extends React.Component {
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: `New item #${shortid.generate()}` }, ...this.state.items],
+			items: [
+				{ id: currentId++, name: `New item #${shortid.generate()}` },
+				...this.state.items,
+			],
 		});
 	};
 
@@ -107,7 +114,7 @@ class DemoCard extends React.Component {
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
 				>
-					<DataTable id="SLDSDataTableExample-1" items={items} bordered>
+					<DataTable id="SLDSDataTableExample-1" items={items}>
 						<DataTableColumn label="Opportunity Name" property="name" truncate>
 							<DataTableHighlightCell search={this.state.filter} />
 						</DataTableColumn>
@@ -147,6 +154,25 @@ const SetHeightCard = () => (
 
 SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
+const DemoCardWithoutHeader = () => (
+	<Card
+		bodyClassName="slds-grow slds-scrollable_y"
+		className="slds-grid slds-grid_vertical"
+		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		hasNoHeader
+		icon={<Icon category="standard" name="document" size="small" />}
+		style={{ height: '300px' }}
+	>
+		<DataTable id="SLDSDataTableExample-1" items={sampleItems}>
+			<DataTableColumn label="Opportunity Name" property="name" truncate>
+				<DataTableHighlightCell />
+			</DataTableColumn>
+		</DataTable>
+	</Card>
+);
+
+DemoCardWithoutHeader.displayName = 'CARD_WITHOUT_HEADER';
+
 storiesOf(CARD, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -178,4 +204,6 @@ storiesOf(CARD, module)
 			heading={<span style={{ color: 'red' }}>To Wanda! This is custom!</span>}
 		/>
 	))
-	.add('Set height card', () => <SetHeightCard />);
+	.add('Set height card', () => <SetHeightCard />)
+	.add('w/o Header', () => <DemoCardWithoutHeader />)
+	.add('Doc site Related List With Table', () => <RelatedListWithTable />);

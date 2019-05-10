@@ -8,6 +8,10 @@ import IconSettings from '../../icon-settings';
 import { BUTTON } from '../../../utilities/constants';
 import Button from '../../button';
 
+import BaseNeutral from '../__examples__/base-neutral';
+import BrandDisabled from '../__examples__/brand-disabled-destructive-inverse';
+import ButtonIcons from '../__examples__/button-icons';
+
 const getButton = (props) => <Button {...props} onClick={action('click')} />;
 
 const getIconButton = (props) => getButton({ variant: 'icon', ...props });
@@ -61,7 +65,7 @@ storiesOf(BUTTON, module)
 	))
 	.add('Icon Container Small', () =>
 		getIconButton({
-			assistiveText: { icon: 'Icon border container small' },
+			assistiveText: { icon: 'Icon container small' },
 			iconCategory: 'utility',
 			iconName: 'settings',
 			iconSize: 'large',
@@ -88,7 +92,9 @@ storiesOf(BUTTON, module)
 	))
 	.add('Small Icon Hint inverse', () =>
 		getIconButton({
-			assistiveTest: 'Hint',
+			assistiveText: {
+				icon: 'Small icon hint inverse',
+			},
 			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border',
@@ -96,4 +102,13 @@ storiesOf(BUTTON, module)
 			hint: true,
 			inverse: true,
 		})
-	);
+	)
+	.add('Outline brand button', () =>
+		getButton({
+			label: 'Outline brand button',
+			variant: 'outline-brand',
+		})
+	)
+	.add('Doc site Base Neutral', () => <BaseNeutral />)
+	.add('Doc site Brand Disabled', () => <BrandDisabled />)
+	.add('Doc site Button Icons', () => <ButtonIcons />);

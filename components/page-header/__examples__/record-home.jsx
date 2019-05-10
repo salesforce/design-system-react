@@ -8,10 +8,10 @@ import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
 
 class Example extends React.Component {
-	static displayName = 'PageHeaderExample';
+	static displayName = 'RecordHomePageHeaderExample';
 
 	render() {
-		const contentRight = (
+		const actions = () => (
 			<div>
 				<ButtonStateful
 					key="PageHeaderFollowButton"
@@ -30,6 +30,7 @@ class Example extends React.Component {
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
+						id="dropdown-record-home-example"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -64,14 +65,14 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					contentRight={contentRight}
+					onRenderActions={actions}
 					details={details}
 					iconAssistiveText={{ icon: 'User' }}
 					iconCategory="standard"
 					iconName="user"
 					label="Record Type"
 					title="Record Title"
-					variant="recordHome"
+					variant="record-home"
 				/>
 			</IconSettings>
 		);

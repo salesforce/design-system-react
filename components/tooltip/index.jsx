@@ -17,6 +17,7 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
+import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -62,6 +63,14 @@ const propTypes = {
 	 * Content inside Tooltip.
 	 */
 	content: PropTypes.node.isRequired,
+	/**
+	 * CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it.
+	 */
+	dialogClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -164,8 +173,9 @@ class Tooltip extends React.Component {
 
 	getContent() {
 		let children;
+		const noChildrenProvided = React.Children.count(this.props.children) === 0;
 
-		if (React.Children.count(this.props.children) === 0) {
+		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
 				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
 					<Icon
@@ -178,13 +188,25 @@ class Tooltip extends React.Component {
 					/>
 				</a>,
 			];
+		} else if (noChildrenProvided) {
+			children = [
+				<Button
+					aria-disabled
+					assistiveText={{
+						icon: this.props.assistiveText.triggerLearnMoreIcon,
+					}}
+					iconCategory="utility"
+					iconName="info"
+					variant="icon"
+				/>,
+			];
 		} else {
 			children = this.props.children;
 		}
 
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
-				key: i,
+				key: i, // eslint-disable-line react/no-array-index-key
 				'aria-describedby': this.getId(),
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
@@ -210,9 +232,14 @@ class Tooltip extends React.Component {
 			<Dialog
 				closeOnTabKey
 				hasNubbin
-				contentsClassName={classNames('slds-popover', 'slds-popover_tooltip', {
-					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-				})}
+				contentsClassName={classNames(
+					'slds-popover',
+					'slds-popover_tooltip',
+					{
+						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+					},
+					this.props.dialogClassName
+				)}
 				align={align}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
@@ -235,7 +262,7 @@ class Tooltip extends React.Component {
 		return (
 			<div className="slds-popover__body">
 				{this.props.content}
-				{this.props.variant === 'learnMore' ? (
+				{this.props.variant === 'learnMore' && this.props.onClickTrigger ? (
 					<div className="slds-m-top_x-small" aria-hidden="true">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon

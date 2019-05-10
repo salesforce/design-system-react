@@ -4,14 +4,14 @@ import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
-import Dropdown from '~/components/dropdown';
+import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 class Example extends React.Component {
-	static displayName = 'PageHeaderExample';
+	static displayName = 'RelatedListPageHeaderExample';
 
 	render() {
-		const navRight = (
+		const controls = () => (
 			<div className="slds-button-group" role="group">
 				<button className="slds-button slds-button_neutral">Add Contact</button>
 				<div className="slds-button_last">
@@ -26,13 +26,15 @@ class Example extends React.Component {
 			</div>
 		);
 
-		const contentRight = (
+		const actions = () => (
 			<div>
 				<Dropdown
 					align="right"
 					assistiveText={{ icon: 'Change view' }}
+					iconCategory="utility"
 					iconName="settings"
 					iconVariant="more"
+					id="content-right-dropdown"
 					options={[
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
@@ -73,8 +75,10 @@ class Example extends React.Component {
 						triggerClassname
 						align="right"
 						assistiveText={{ icon: 'List View Controls' }}
+						iconCategory="utility"
 						iconName="sort"
 						iconVariant="more"
+						id="content-right-dropdown-2"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -96,9 +100,9 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					title="Contacts (will truncate)"
-					navRight={navRight}
-					contentRight={contentRight}
-					variant="objectHome"
+					onRenderControls={controls}
+					onRenderActions={actions}
+					variant="object-home"
 					truncate
 					trail={trail}
 					info="10 items • sorted by name"
