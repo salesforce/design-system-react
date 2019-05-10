@@ -35,6 +35,7 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
+import {DIRECTIONS} from '../utilities/direction/direction-settings';
 
 import checkProps from './check-props';
 
@@ -465,9 +466,10 @@ class Combobox extends React.Component {
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
+		const alignment = this.props.direction === DIRECTIONS.RTL ? 'bottom right' : 'bottom left';
 		return !this.props.disabled && this.getIsOpen() ? (
 			<Dialog
-				align="bottom left"
+				align={alignment}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}

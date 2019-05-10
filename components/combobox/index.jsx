@@ -4,8 +4,9 @@
 // ### onClickOutside
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
+import LanguageDirection from '../utilities/direction/language-direction';
 import Combobox from './combobox';
 
-export default onClickOutside(Combobox, {
+export default LanguageDirection(onClickOutside(Combobox, {
 	excludeScrollbar: true,
-});
+}));
