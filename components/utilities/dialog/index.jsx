@@ -27,8 +27,8 @@ import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
 import IconSettings from '../../icon-settings';
-import { DIRECTIONS } from '../direction/direction-settings';
-import LanguageDirection from '../direction/language-direction';
+import { DIRECTIONS } from '../private/direction/direction-settings';
+import LanguageDirection from '../private/direction/language-direction';
 
 /*
  * A Dialog is content that is separate from the typical flow of a page. It typically overlays other elements in the document flow. This is achieved with elevation (`z-index`) and one of the following: relative position, absolute position, or a new top-level React render tree (portal). A boundary element is a scrolling ancestor element or the edge of the browser (window/viewport). This element typically has an overflow (overflow-y/overflow-x) style that is scroll, hidden, or auto. Inverted placement is the flipping of the overlay element from top to bottom or left to right in order stay within a boundary element.

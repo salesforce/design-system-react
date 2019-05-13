@@ -4,7 +4,7 @@ import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import IconSettings from '~/components/icon-settings';
-import DirectionSettings from '~/components/utilities/direction/direction-settings';
+import DirectionSettings from '~/components/utilities/private/direction/direction-settings';
 
 const accounts = [
 	{

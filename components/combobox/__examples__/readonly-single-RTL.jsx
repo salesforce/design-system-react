@@ -1,7 +1,7 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';
-import DirectionSettings from '~/components/utilities/direction/direction-settings';
+import DirectionSettings from '~/components/utilities/private/direction/direction-settings';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
