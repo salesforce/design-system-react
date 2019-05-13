@@ -1699,12 +1699,12 @@ class Combobox extends React.Component {
 						label={labels.label}
 						required={props.required}
 					/>
-					{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
+				)}
+				{this.props.fieldLevelHelpTooltip && hasRenderedLabel ? (
 						<FieldLevelHelpTooltip
 							fieldLevelHelpTooltip={this.props.fieldLevelHelpTooltip}
 						/>
 					) : null}
-				)}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters
