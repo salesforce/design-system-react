@@ -12,7 +12,7 @@
 		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
-		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
+		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production; ./scripts/heroku-postbuild.sh",
 		"icons": "npx babel-node scripts/inline-icons.js",
 		"link": "./scripts/npm-link.sh",
 		"lint": "npx concurrently \"npm:lint:style\" \"npm:lint:quality\"",
