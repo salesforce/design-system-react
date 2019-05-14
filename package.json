@@ -280,6 +280,27 @@
 			"url-slug": "breadcrumbs"
 		},
 		{
+			"component": "builder-header",
+			"status": "prod",
+			"display-name": "Builder Header",
+			"SLDS-component-path": "/components/builder-header",
+			"dependencies": [
+				{
+					"component": "nav"
+				},
+				{
+					"component": "nav-dropdown"
+				},
+				{
+					"component": "nav-link"
+				},
+				{
+					"component": "toolbar"
+				}
+			],
+			"url-slug": "builder-header"
+		},
+		{
 			"component": "button",
 			"status": "prod",
 			"display-name": "Buttons",

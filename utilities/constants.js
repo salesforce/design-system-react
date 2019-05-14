@@ -14,6 +14,11 @@ export const BRAND_BAND = 'SLDSBrandBand';
 export const BREAD_CRUMB = 'SLDSBreadcrumb';
 
 export const BREADCRUMB = 'SLDSBreadcrumb';
+export const BUILDER_HEADER = 'SLDSBuilderHeader';
+export const BUILDER_HEADER_NAV = 'SLDSBuilderHeaderNav';
+export const BUILDER_HEADER_NAV_DROPDOWN = 'SLDSBuilderHeaderNavDropdown';
+export const BUILDER_HEADER_NAV_LINK = 'SLDSBuilderHeaderNavLink';
+export const BUILDER_HEADER_TOOLBAR = 'SLDSBuilderHeaderToolbar';
 export const BUTTON = 'SLDSButton';
 export const BUTTON_GROUP = 'SLDSButtonGroup';
 export const BUTTON_STATEFUL = 'SLDSButtonStateful';

@@ -1044,6 +1044,269 @@
         "SLDS-component-path": "/components/breadcrumbs",
         "dependencies": []
     },
+    "builder-header": {
+        "description": "Every builder needs a builder header, which contains basic navigation elements. It also shows the builder type and content name.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "backIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "helpIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `backIcon`: Used for the back icon.\n* `helpIcon`: Used for the help icon.\n* `icon`: Used for the main icon next to the header title.\n* _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    backIcon: 'Back',\n    helpIcon: 'Help',\n    icon: 'Builder',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n</BuilderHeader>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-builder-header_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onClickBack": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClickHelp": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "back": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "help": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "pageType": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `back`: The label for the Back link.\n* `help`: The label for the Help link.\n* `pageType`: The label that describes the page type.\n* `title`: The label for the page title.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    back: 'Back',\n    help: 'Help',\n    pageType: 'Page Type',\n    title: 'App Name',\n}",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component"
+            }
+        },
+        "route": "builder-header",
+        "display-name": "Builder Header",
+        "SLDS-component-path": "/components/builder-header",
+        "dependencies": [
+            {
+                "nav": {
+                    "description": "The navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the types `<BuilderHeaderNavLink />` or `<BuilderHeaderNavDropdown />` to define the structure of the navigation section.\n```\n<BuilderHeaderNav>\n  <BuilderHeaderNav>\n    <BuilderHeaderNavLink />\n    <BuilderHeaderNavDropdown />\n  </BuilderHeaderNav>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "nav",
+                    "source": "/components/builder-header/nav.jsx"
+                }
+            },
+            {
+                "nav-dropdown": {
+                    "description": "A dropdown within the navigation section of the header.",
+                    "methods": [],
+                    "composes": [
+                        "../menu-dropdown/menu-dropdown"
+                    ],
+                    "name": "nav-dropdown",
+                    "source": "/components/builder-header/nav-dropdown.jsx"
+                }
+            },
+            {
+                "nav-link": {
+                    "description": "A link within the navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "icon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `icon`: Used for the icon next to the link text.\n* _Tested with snapshot testing._"
+                        },
+                        "iconCategory": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'action'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'custom'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'doctype'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'standard'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'utility'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
+                        },
+                        "iconName": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+                        },
+                        "iconPath": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Path to the icon. This will override any global icon settings."
+                        },
+                        "label": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Text for the link."
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Triggered when the link is clicked."
+                        }
+                    },
+                    "name": "nav-link",
+                    "source": "/components/builder-header/nav-link.jsx"
+                }
+            },
+            {
+                "toolbar": {
+                    "description": "The toolbar section of the header.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "actions": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `actions`: Used for the aria-label for the actions section of the toolbar.\n* _Tested with snapshot testing._",
+                            "defaultValue": {
+                                "value": "{\n    actions: 'Actions',\n}",
+                                "computed": false
+                            }
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the type `<ButtonGroup />` to define the structure of the toolbar section.\n```\n<BuilderHeaderNav>\n  <BuilderHeaderToolbar>\n    <ButtonGroup />\n    <ButtonGroup />\n  </BuilderHeaderToolbar>\n</BuilderHeader>\n```"
+                        },
+                        "onRenderActions": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Renders the actions section of the header."
+                        }
+                    },
+                    "name": "toolbar",
+                    "source": "/components/builder-header/toolbar.jsx"
+                }
+            }
+        ]
+    },
     "button": {
         "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
         "methods": [
