@@ -12,6 +12,7 @@ const documentationSiteLiveExamples = {
 	avatar: require('@salesforce/design-system-react/components/avatar/__docs__/site-stories.js'),
 	'brand-band': require('@salesforce/design-system-react/components/brand-band/__docs__/site-stories.js'),
 	breadcrumb: require('@salesforce/design-system-react/components/breadcrumb/__docs__/site-stories.js'),
+	'builder-header': require('@salesforce/design-system-react/components/builder-header/__docs__/site-stories.js'),
 	button: require('@salesforce/design-system-react/components/button/__docs__/site-stories.js'),
 	'button-group': require('@salesforce/design-system-react/components/button-group/__docs__/site-stories.js'),
 	'button-stateful': require('@salesforce/design-system-react/components/button-stateful/__docs__/site-stories.js'),
