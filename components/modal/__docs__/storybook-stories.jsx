@@ -275,6 +275,15 @@ storiesOf(MODAL, module)
 			portalClassName: 'portal-class-name-test',
 		})
 	)
+	.add('Small no header and custom footer', () =>
+		getModal({
+			isOpen: true,
+			children: modalContent,
+			onRequestClose: action('modal closed'),
+			portalClassName: 'portal-class-name-test',
+			footer: modalFooter,
+		})
+	)
 	.add('Large with directional footer', () =>
 		getModal({
 			directional: true,

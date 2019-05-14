@@ -135,10 +135,11 @@ class Carousel extends React.Component {
 		this.stageItem = React.createRef();
 
 		this.state = {
-			translateX: -1000000,
 			currentPanel: 1,
+			indicatorsHaveFocus: false,
 			isAutoPlayOn: this.props.hasAutoplay,
 			stageWidth: 0,
+			translateX: -1000000,
 		};
 	}
 
@@ -183,8 +184,19 @@ class Carousel extends React.Component {
 		this.setCurrentPanel(prev, this.changeTranslationAutomatically);
 	};
 
+	onIndicatorBlur = () => {
+		this.setState({ indicatorsHaveFocus: false });
+	};
+
 	onIndicatorClickHandler = (panel) => {
 		this.setCurrentPanel(panel, this.changeTranslationAutomatically);
+		this.setState({ indicatorsHaveFocus: true });
+		this.stopAutoplay();
+	};
+
+	onIndicatorFocus = () => {
+		this.setState({ indicatorsHaveFocus: true });
+		this.stopAutoplay();
 	};
 
 	onAutoPlayBtnClick = () => {
@@ -224,7 +236,7 @@ class Carousel extends React.Component {
 			if (this.canGoToNext()) {
 				this.onNextPanelHandler();
 			} else {
-				this.stopAutoplay();
+				this.setCurrentPanel(1, this.changeTranslationAutomatically);
 			}
 		}, this.props.autoplayInterval);
 	};
@@ -254,11 +266,15 @@ class Carousel extends React.Component {
 			[KEYS.LEFT]: () => {
 				if (this.canGoToPrevious()) {
 					this.onPreviousPanelHandler();
+					this.setState({ indicatorsHaveFocus: true });
+					this.stopAutoplay();
 				}
 			},
 			[KEYS.RIGHT]: () => {
 				if (this.canGoToNext()) {
 					this.onNextPanelHandler();
+					this.setState({ indicatorsHaveFocus: true });
+					this.stopAutoplay();
 				}
 			},
 		};
@@ -302,10 +318,13 @@ class Carousel extends React.Component {
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
 								assistiveText={this.props.assistiveText.previousPanel}
-								iconName="left"
+								iconName="chevronleft"
 								isDisabled={isPreviousBtnDisabled}
-								onClick={this.onPreviousPanelHandler}
-								inlineStyle={{ left: '-60px' }}
+								onClick={() => {
+									this.stopAutoplay();
+									this.onPreviousPanelHandler();
+								}}
+								inlineStyle={{ left: '-38px' }}
 							/>
 						)}
 						<div
@@ -322,6 +341,9 @@ class Carousel extends React.Component {
 									<CarouselItem
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
+										}}
+										onFocus={() => {
+											this.stopAutoplay();
 										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
@@ -343,10 +365,13 @@ class Carousel extends React.Component {
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
 								assistiveText={this.props.assistiveText.nextPanel}
-								iconName="right"
+								iconName="chevronright"
 								isDisabled={isNextBtnDisabled}
-								onClick={this.onNextPanelHandler}
-								inlineStyle={{ right: '-60px' }}
+								onClick={() => {
+									this.stopAutoplay();
+									this.onNextPanelHandler();
+								}}
+								inlineStyle={{ right: '-38px' }}
 							/>
 						)}
 					</div>
@@ -354,7 +379,10 @@ class Carousel extends React.Component {
 						style={this.props.indicatorStyles}
 						noOfIndicators={this.nrOfPanels}
 						currentIndex={this.state.currentPanel}
+						hasFocus={this.state.indicatorsHaveFocus}
+						onBlur={this.onIndicatorBlur}
 						onClick={this.onIndicatorClickHandler}
+						onFocus={this.onIndicatorFocus}
 						items={this.props.items}
 						itemsPerPanel={this.props.itemsPerPanel}
 					/>

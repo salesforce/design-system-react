@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.2",
+	"version": "0.10.3",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -12,7 +12,7 @@
 		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
-		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
+		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production; ./scripts/heroku-postbuild.sh",
 		"icons": "npx babel-node scripts/inline-icons.js",
 		"link": "./scripts/npm-link.sh",
 		"lint": "npx concurrently \"npm:lint:style\" \"npm:lint:quality\"",
@@ -111,7 +111,7 @@
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.3.4",
 		"@babel/preset-react": "^7.0.0",
-		"@salesforce-ux/design-system": "^2.6.0",
+		"@salesforce-ux/design-system": "^2.8.3",
 		"@salesforce-ux/icons": "7.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^3.4.10",
@@ -278,6 +278,27 @@
 			},
 			"SLDS-component-path": "/components/breadcrumbs",
 			"url-slug": "breadcrumbs"
+		},
+		{
+			"component": "builder-header",
+			"status": "prod",
+			"display-name": "Builder Header",
+			"SLDS-component-path": "/components/builder-header",
+			"dependencies": [
+				{
+					"component": "nav"
+				},
+				{
+					"component": "nav-dropdown"
+				},
+				{
+					"component": "nav-link"
+				},
+				{
+					"component": "toolbar"
+				}
+			],
+			"url-slug": "builder-header"
 		},
 		{
 			"component": "button",
@@ -675,11 +696,11 @@
 			"url-slug": "radio-button-groups"
 		},
 		{
-		  "component": "scoped-notification",
-		  "status": "prod",
-		  "display-name": "Scoped Notifications",
-		  "SLDS-component-path": "/components/scoped-notification",
-		  "url-slug": "scoped-notifications"
+			"component": "scoped-notification",
+			"status": "prod",
+			"display-name": "Scoped Notifications",
+			"SLDS-component-path": "/components/scoped-notification",
+			"url-slug": "scoped-notifications"
 		},
 		{
 			"component": "slider",

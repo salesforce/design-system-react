@@ -1125,173 +1125,172 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "display": "inline-block",
-      }
-    }
-  >
-    <button
-      aria-controls="popover-error-edit-button"
-      className="slds-button slds-button_icon slds-button_reset"
-      disabled={false}
-      id="popover-error"
-      onClick={[Function]}
-      onFocus={null}
-      onMouseEnter={null}
-      onMouseLeave={null}
-      style={
-        Object {
-          "verticalAlign": "middle",
-        }
-      }
-      tabIndex="0"
-      type="button"
+  <div>
+    <span
+      className="slds-p-right_x-small"
     >
-      <svg
-        aria-hidden="true"
-        className="slds-button__icon slds-button__icon slds-button__icon_hint"
-      >
-        <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
-        />
-      </svg>
-      <span
-        className="slds-assistive-text"
-      >
-        Edit: Status
-      </span>
-    </button>
-    <section
-      aria-describedby="popover-error-dialog-body"
-      aria-labelledby="popover-error-dialog-heading"
-      className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover"
-      id="popover-error-popover"
-      onKeyDown={[Function]}
-      onMouseEnter={null}
-      onMouseLeave={null}
-      role="dialog"
+      John
+       
+      Smith
+    </span>
+    <div
       style={
         Object {
-          "outline": 0,
-          "pointerEvents": "none",
-          "position": "absolute",
+          "display": "inline-block",
         }
       }
-      tabIndex="-1"
     >
       <button
-        className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        aria-controls="edit-dialog-popover-edit-button"
+        className="slds-button slds-button_icon slds-button_reset"
         disabled={false}
+        id="edit-dialog-popover"
         onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          className="slds-button__icon"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
           />
         </svg>
         <span
           className="slds-assistive-text"
         >
-          Close dialog
+          Edit: Status
         </span>
       </button>
-      <header
-        className="slds-popover__header"
-      >
-        <h2
-          className="slds-text-heading_small"
-          id="popover-error-dialog-heading"
-        >
-          Edit First Name
-        </h2>
-      </header>
-      <div
-        className="slds-popover__body slds-p-left_small slds-p-top_medium slds-p-right_small"
-        id="popover-error-dialog-body"
-      >
-        <div
-          className="slds-col_padded"
-        >
-          <div
-            className="slds-form-element"
-          >
-            <label
-              className="slds-form-element__label"
-              htmlFor="first-name"
-            >
-              First Name
-            </label>
-            <div
-              className="slds-form-element__control"
-            >
-              <input
-                className="slds-input"
-                id="first-name"
-                onChange={[Function]}
-                type="text"
-                value="John"
-              />
-            </div>
-          </div>
-          <div
-            className="slds-form-element"
-          >
-            <label
-              className="slds-form-element__label"
-              htmlFor="last-name"
-            >
-              Last Name
-            </label>
-            <div
-              className="slds-form-element__control"
-            >
-              <input
-                className="slds-input"
-                id="last-name"
-                onChange={[Function]}
-                type="text"
-                value="Smith"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer
-        className="slds-popover__footer slds-p-top_xx-small slds-p-bottom_xx-small"
+      <section
+        aria-describedby="edit-dialog-popover-dialog-body"
+        aria-labelledby="Edit Name"
+        className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover"
+        id="edit-dialog-popover-popover"
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        role="dialog"
         style={
           Object {
-            "borderTop": "0px",
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
           }
         }
+        tabIndex="-1"
       >
-        <div
-          className="slds-text-align_right slds-col_padded slds-text-align_right slds-p-bottom_x-small"
+        <button
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
         >
-          <button
-            className="slds-button slds-button_neutral"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
           >
-            Cancel
-          </button>
-          <button
-            className="slds-button slds-button_brand"
-            disabled={true}
-            onClick={[Function]}
-            type="button"
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
           >
-            Save
-          </button>
+            Close dialog
+          </span>
+        </button>
+        <div
+          className="slds-popover__body slds-p-bottom_xx-small"
+          id="edit-dialog-popover-dialog-body"
+        >
+          <div
+            className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small"
+          >
+            <div
+              className="slds-form-element"
+            >
+              <label
+                className="slds-form-element__label"
+                htmlFor="first-name"
+              >
+                First Name
+              </label>
+              <div
+                className="slds-form-element__control"
+              >
+                <input
+                  className="slds-input"
+                  id="first-name"
+                  onChange={[Function]}
+                  type="text"
+                  value="John"
+                />
+              </div>
+            </div>
+            <div
+              className="slds-form-element"
+            >
+              <label
+                className="slds-form-element__label"
+                htmlFor="last-name"
+              >
+                Last Name
+              </label>
+              <div
+                className="slds-form-element__control"
+              >
+                <input
+                  className="slds-input"
+                  id="last-name"
+                  onChange={[Function]}
+                  type="text"
+                  value="Smith"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
-    </section>
+        <footer
+          className="slds-popover__footer slds-p-top_xxx-small slds-p-bottom_xx-small slds-p-right_large"
+          style={
+            Object {
+              "borderTop": "0px",
+            }
+          }
+        >
+          <div
+            className="slds-text-align_right slds-text-align_right slds-p-bottom_x-small slds-p-right_xx-small"
+          >
+            <button
+              className="slds-button slds-button_neutral"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              className="slds-button slds-button_brand"
+              disabled={true}
+              onClick={[Function]}
+              type="button"
+            >
+              Save
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
   </div>
 </div>
 `;
@@ -1306,44 +1305,53 @@ exports[`DOM snapshots SLDSPopover Edit Dialog 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "display": "inline-block",
-      }
-    }
-  >
-    <button
-      aria-controls="popover-error-edit-button"
-      className="slds-button slds-button_icon slds-button_reset"
-      disabled={false}
-      id="popover-error"
-      onClick={[Function]}
-      onFocus={null}
-      onMouseEnter={null}
-      onMouseLeave={null}
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
       style={
         Object {
-          "verticalAlign": "middle",
+          "display": "inline-block",
         }
       }
-      tabIndex="0"
-      type="button"
     >
-      <svg
-        aria-hidden="true"
-        className="slds-button__icon slds-button__icon slds-button__icon_hint"
+      <button
+        aria-controls="edit-dialog-popover-edit-button"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={false}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
       >
-        <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
-        />
-      </svg>
-      <span
-        className="slds-assistive-text"
-      >
-        Edit: Status
-      </span>
-    </button>
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+    </div>
   </div>
 </div>
 `;
