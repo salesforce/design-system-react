@@ -14,7 +14,7 @@ import { CAROUSEL_NAVIGATORS } from '../../../utilities/constants';
 const previousNextCarouselNavigator = (props) => (
 	<div
 		className="slds-carousel__col-center slds-is-absolute"
-		style={{ ...props.inlineStyle, margin: '0 25px', top: '50%' }}
+		style={{ ...props.inlineStyle, margin: '-12px 0 0', top: '50%' }}
 	>
 		<Button
 			assistiveText={{ icon: props.assistiveText }}
@@ -23,7 +23,7 @@ const previousNextCarouselNavigator = (props) => (
 			iconCategory="utility"
 			iconName={props.iconName}
 			iconVariant="border-filled"
-			iconSize="x-small"
+			iconSize="small"
 			onClick={props.onClick}
 			variant="icon"
 		/>
@@ -41,7 +41,7 @@ previousNextCarouselNavigator.propTypes = {
 	/**
 	 * Name of icon displayed within the navigation button
 	 */
-	iconName: PropTypes.oneOf(['left', 'right']),
+	iconName: PropTypes.oneOf(['chevronleft', 'chevronright']),
 	/**
 	 * Determines where the navigator indicator has been disabled
 	 */

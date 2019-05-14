@@ -11,7 +11,7 @@ import { CAROUSEL_AUTOPLAY_BUTTON } from '../../../utilities/constants';
  *  AutoPlayButton is used to start/pause the autoplay iteration of the carousel
  */
 const AutoPlayButton = (props) => (
-	<span className="slds-carousel__autoplay">
+	<span className="slds-carousel__autoplay" style={{ left: '66px' }}>
 		<Button
 			assistiveText={{ icon: props.assistiveText }}
 			className="slds-button_icon"
