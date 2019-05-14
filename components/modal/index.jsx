@@ -235,13 +235,31 @@ class Modal extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getBorderRadius() {
+		const borderRadiusValue = '.25rem';
+		const borderTopRadius =
+			this.props.title || this.props.heading || this.props.header
+				? {}
+				: {
+						borderTopLeftRadius: borderRadiusValue,
+						borderTopRightRadius: borderRadiusValue,
+					};
+		const borderBottomRadius = this.props.footer
+			? {}
+			: {
+					borderBottomLeftRadius: borderRadiusValue,
+					borderBottomRightRadius: borderRadiusValue,
+				};
+		return {
+			...borderTopRadius,
+			...borderBottomRadius,
+		};
+	}
+
 	getModal() {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const borderRadius =
-			this.props.title || this.props.heading || this.props.header
-				? {}
-				: { borderRadius: '.25rem' };
+		const borderRadius = this.getBorderRadius();
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
