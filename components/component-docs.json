@@ -11443,6 +11443,10 @@
                         {
                             "value": "'modal'",
                             "computed": false
+                        },
+                        {
+                            "value": "'setup-assistant'",
+                            "computed": false
                         }
                     ]
                 },

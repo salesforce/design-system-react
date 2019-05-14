@@ -49,7 +49,7 @@ const propTypes = {
 	/**
 	 * Determines component style
 	 */
-	variant: PropTypes.oneOf(['base', 'modal']),
+	variant: PropTypes.oneOf(['base', 'modal', 'setup-assistant']),
 };
 
 /**
