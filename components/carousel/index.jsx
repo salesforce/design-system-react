@@ -78,7 +78,7 @@ class Carousel extends React.Component {
 			PropTypes.string,
 		]),
 		/**
-		 * Dictates the currently active/visible carousel panel. 1-indexed. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state.
+		 * Dictates the currently active/visible carousel panel. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state.
 		 */
 		currentPanel: PropTypes.number,
 		/**
@@ -141,13 +141,11 @@ class Carousel extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const { items, itemsPerPanel } = this.props;
-
-		this.nrOfPanels = Math.ceil(items.length / itemsPerPanel);
+		this.nrOfPanels = Math.ceil(props.items.length / props.itemsPerPanel);
 		this.stageItem = React.createRef();
 
 		this.state = {
-			currentPanel: props.currentPanel !== undefined ? props.currentPanel : 1,
+			currentPanel: props.currentPanel !== undefined ? props.currentPanel : 0,
 			indicatorsHaveFocus: false,
 			isAutoplayOn:
 				props.isAutoplayOn !== undefined
@@ -211,14 +209,17 @@ class Carousel extends React.Component {
 	}
 
 	onNextPanelHandler = (event) => {
-		const next = this.getCurrentPanel() % this.nrOfPanels + 1;
+		let next = this.getCurrentPanel() + 1;
+		if (next > this.nrOfPanels - 1) {
+			next = 0;
+		}
 		this.setCurrentPanel(event, next, this.changeTranslationAutomatically);
 	};
 
 	onPreviousPanelHandler = (event) => {
-		let prev = (this.getCurrentPanel() + this.nrOfPanels - 1) % this.nrOfPanels;
-		if (prev < 1) {
-			prev = this.nrOfPanels;
+		let prev = this.getCurrentPanel() - 1;
+		if (prev < 0) {
+			prev = this.nrOfPanels - 1;
 		}
 		this.setCurrentPanel(event, prev, this.changeTranslationAutomatically);
 	};
@@ -305,7 +306,7 @@ class Carousel extends React.Component {
 			if (this.canGoToNext()) {
 				this.onNextPanelHandler(event);
 			} else if (this.props.isInfinite) {
-				this.setCurrentPanel(event, 1, this.changeTranslationAutomatically);
+				this.setCurrentPanel(event, 0, this.changeTranslationAutomatically);
 			} else {
 				this.stopAutoplay(event);
 			}
@@ -330,16 +331,13 @@ class Carousel extends React.Component {
 
 	changeTranslationAutomatically = () => {
 		this.setTranslationAmount(
-			-(
-				(this.state.stageWidth || this.stageWidth) *
-				(this.getCurrentPanel() - 1)
-			)
+			-((this.state.stageWidth || this.stageWidth) * this.getCurrentPanel())
 		);
 	};
 
-	canGoToNext = () => this.getCurrentPanel() < this.nrOfPanels;
+	canGoToNext = () => this.getCurrentPanel() < this.nrOfPanels - 1;
 
-	canGoToPrevious = () => this.getCurrentPanel() > 1;
+	canGoToPrevious = () => this.getCurrentPanel() > 0;
 
 	handleKeyDown = (event) => {
 		const keyDownCallbacks = {
@@ -437,9 +435,9 @@ class Carousel extends React.Component {
 										onRenderItem={this.props.onRenderItem}
 										{...item}
 										isInCurrentPanel={
-											index >= (currentPanel - 1) * this.props.itemsPerPanel &&
+											index >= currentPanel * this.props.itemsPerPanel &&
 											index <
-												(currentPanel - 1) * this.props.itemsPerPanel +
+												currentPanel * this.props.itemsPerPanel +
 													this.props.itemsPerPanel
 										}
 										itemWidth={itemWidth}

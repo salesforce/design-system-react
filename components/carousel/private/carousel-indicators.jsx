@@ -39,8 +39,7 @@ class CarouselIndicators extends React.Component {
 				className="slds-carousel__indicators slds-col slds-text-align_center"
 				role="tablist"
 			>
-				{[...Array(props.noOfIndicators).keys()].map((key) => {
-					const index = key + 1;
+				{[...Array(props.noOfIndicators).keys()].map((index) => {
 					const isSelectedPanel = index === props.currentIndex;
 					const indicatorActionClassName = classnames(
 						'slds-carousel__indicator-action',
@@ -53,7 +52,7 @@ class CarouselIndicators extends React.Component {
 					let title = `${index}`;
 
 					if (props.items && props.items.length > 0) {
-						const startItemIndex = (index - 1) * props.itemsPerPanel;
+						const startItemIndex = index * props.itemsPerPanel;
 						let autoIndicatorText = '';
 
 						for (

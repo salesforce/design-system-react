@@ -78,7 +78,7 @@ class Example extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentPanel: 2,
+			currentPanel: 1,
 			isAutoplayOn: false,
 		};
 	}
