@@ -64,6 +64,14 @@ const propTypes = {
 	 */
 	content: PropTypes.node.isRequired,
 	/**
+	 * CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it.
+	 */
+	dialogClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -198,7 +206,7 @@ class Tooltip extends React.Component {
 
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
-				key: i,
+				key: i, // eslint-disable-line react/no-array-index-key
 				'aria-describedby': this.getId(),
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
@@ -224,9 +232,14 @@ class Tooltip extends React.Component {
 			<Dialog
 				closeOnTabKey
 				hasNubbin
-				contentsClassName={classNames('slds-popover', 'slds-popover_tooltip', {
-					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-				})}
+				contentsClassName={classNames(
+					'slds-popover',
+					'slds-popover_tooltip',
+					{
+						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+					},
+					this.props.dialogClassName
+				)}
 				align={align}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}

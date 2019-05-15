@@ -10,8 +10,12 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Tooltip align="right" content="Tooltip with right alignment">
-					<Button label="Hover or focus to Open" />
+				<Tooltip
+					id="tooltip"
+					align="right"
+					content="Tooltip with right alignment"
+				>
+					<Button id="button" label="Hover or focus to Open" />
 				</Tooltip>
 			</IconSettings>
 		);

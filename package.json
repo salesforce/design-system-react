@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.9.4",
+	"version": "0.10.3",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -12,7 +12,7 @@
 		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
-		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
+		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production; ./scripts/heroku-postbuild.sh",
 		"icons": "npx babel-node scripts/inline-icons.js",
 		"link": "./scripts/npm-link.sh",
 		"lint": "npx concurrently \"npm:lint:style\" \"npm:lint:quality\"",
@@ -35,8 +35,12 @@
 		"test:docs": "npx babel-node ./tests/component-docs-test.js",
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
-		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest",
+		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
+		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --updateSnapshot --config=tests/snapshots-config.json",
+		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
+		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
+		"upload-diffs": "scripts/upload-diffs.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},
@@ -45,24 +49,7 @@
 		"url": "git+ssh://git@github.com/salesforce/design-system-react.git"
 	},
 	"jest": {
-		"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
-		"testEnvironment": "node",
-		"testPathIgnorePatterns": [
-			"/node_modules/",
-			"/preset/",
-			"/.tmp-amd/",
-			"/.tmp-commonjs/",
-			"/.tmp-es/",
-			"/.tmp-npm/"
-		],
-		"transformIgnorePatterns": [
-			"/node_modules/",
-			"/preset/",
-			"/.tmp-amd/",
-			"/.tmp-commonjs/",
-			"/.tmp-es/",
-			"/.tmp-npm/"
-		]
+		"preset": "./tests/snapshots-config.json"
 	},
 	"keywords": [
 		"react",
@@ -107,23 +94,24 @@
 		"warning": "^3.0.0"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "^2.7.4",
-		"react": ">=15.4.1 <17",
-		"react-dom": ">=15.4.1 <17"
+		"@salesforce-ux/design-system": "^2.8.3",
+		"react": ">=16.3 <17",
+		"react-dom": ">=16.3 <17"
 	},
 	"devDependencies": {
-		"@babel/cli": "7.0.0-beta.44",
-		"@babel/core": "^7.0.0-beta.44",
-		"@babel/node": "7.0.0-beta.44",
-		"@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
-		"@babel/plugin-proposal-export-default-from": "7.0.0-beta.44",
-		"@babel/plugin-proposal-export-namespace-from": "7.0.0-beta.44",
-		"@babel/plugin-transform-modules-amd": "7.0.0-beta.44",
-		"@babel/plugin-transform-modules-commonjs": "7.0.0-beta.44",
-		"@babel/polyfill": "7.0.0-beta.44",
-		"@babel/preset-env": "7.0.0-beta.44",
-		"@babel/preset-react": "7.0.0-beta.44",
-		"@salesforce-ux/design-system": "^2.6.0",
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.3.4",
+		"@babel/node": "^7.2.2",
+		"@babel/parser": "^7.3.4",
+		"@babel/plugin-proposal-class-properties": "^7.3.4",
+		"@babel/plugin-proposal-export-default-from": "^7.2.0",
+		"@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+		"@babel/plugin-transform-modules-amd": "^7.2.0",
+		"@babel/plugin-transform-modules-commonjs": "^7.2.0",
+		"@babel/polyfill": "^7.2.5",
+		"@babel/preset-env": "^7.3.4",
+		"@babel/preset-react": "^7.0.0",
+		"@salesforce-ux/design-system": "^2.8.3",
 		"@salesforce-ux/icons": "7.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^3.4.10",
@@ -147,8 +135,8 @@
 		"concurrently": "^4.0.1",
 		"cross-env": "^5.2.0",
 		"css-loader": "^0.28.0",
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
+		"enzyme": "^3.8.0",
+		"enzyme-adapter-react-16": "^1.9.1",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "16.1.0",
 		"eslint-config-prettier": "^3.0.1",
@@ -166,6 +154,8 @@
 		"glob": "^7.1.3",
 		"istanbul-instrumenter-loader": "^3.0.1",
 		"jest": "^23.1.0",
+		"jest-axe": "^3.1.0",
+		"jest-svg-transformer": "^1.0.0",
 		"js-beautify": "^1.6.8",
 		"json-loader": "^0.5.3",
 		"karma": "^1.7.0",
@@ -193,9 +183,9 @@
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
 		"puppeteer": "^1.9.0",
-		"react": "^16.4",
-		"react-docgen": "^2.21.0",
-		"react-dom": "^16.4",
+		"react": "^16.8",
+		"react-docgen": "^4.0.1",
+		"react-dom": "^16.8",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": "^16.4",
 		"regenerator-runtime": "^0.11.1",
@@ -290,6 +280,27 @@
 			"url-slug": "breadcrumbs"
 		},
 		{
+			"component": "builder-header",
+			"status": "prod",
+			"display-name": "Builder Header",
+			"SLDS-component-path": "/components/builder-header",
+			"dependencies": [
+				{
+					"component": "nav"
+				},
+				{
+					"component": "nav-dropdown"
+				},
+				{
+					"component": "nav-link"
+				},
+				{
+					"component": "toolbar"
+				}
+			],
+			"url-slug": "builder-header"
+		},
+		{
 			"component": "button",
 			"status": "prod",
 			"display-name": "Buttons",
@@ -332,6 +343,13 @@
 				}
 			],
 			"url-slug": "cards"
+		},
+		{
+			"component": "carousel",
+			"status": "prototype",
+			"display-name": "Carousel",
+			"SLDS-component-path": "/components/carousel",
+			"url-slug": "carousel"
 		},
 		{
 			"component": "checkbox",
@@ -400,6 +418,13 @@
 			"url-slug": "date-pickers"
 		},
 		{
+			"component": "dynamic-icon",
+			"status": "prod",
+			"display-name": "Dynamic Icon",
+			"SLDS-component-path": "/components/dynamic-icon",
+			"url-slug": "dynamic-icon"
+		},
+		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
@@ -419,21 +444,30 @@
 		},
 		{
 			"component": "global-header",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Global Header",
 			"SLDS-component-path": "/components/global-header#flavor-base",
 			"dependencies": [
 				{
-					"component": "button"
+					"component": "favorites"
 				},
 				{
-					"component": "dropdown"
+					"component": "help"
+				},
+				{
+					"component": "notifications"
 				},
 				{
 					"component": "profile"
 				},
 				{
 					"component": "search"
+				},
+				{
+					"component": "setup"
+				},
+				{
+					"component": "task"
 				}
 			],
 			"url-slug": "global-headers"
@@ -476,12 +510,6 @@
 			},
 			"SLDS-component-path": "/components/icons",
 			"url-slug": "icons"
-		},
-		{
-			"component": "icon-settings",
-			"status": "prod",
-			"display-name": "Icon Settings",
-			"url-slug": "icon-settings"
 		},
 		{
 			"component": "illustration",
@@ -590,6 +618,13 @@
 			"url-slug": "progress-indicators"
 		},
 		{
+			"component": "progress-bar",
+			"status": "prod",
+			"display-name": "Progress Bars",
+			"SLDS-component-path": "/components/progress-bar",
+			"url-slug": "progress-bars"
+		},
+		{
 			"component": "progress-ring",
 			"status": "prod",
 			"display-name": "Progress Rings",
@@ -659,6 +694,13 @@
 			},
 			"SLDS-component-path": "/components/radio-button-group",
 			"url-slug": "radio-button-groups"
+		},
+		{
+			"component": "scoped-notification",
+			"status": "prod",
+			"display-name": "Scoped Notifications",
+			"SLDS-component-path": "/components/scoped-notification",
+			"url-slug": "scoped-notifications"
 		},
 		{
 			"component": "slider",

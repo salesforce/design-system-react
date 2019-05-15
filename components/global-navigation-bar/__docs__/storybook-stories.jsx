@@ -101,6 +101,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			/>
 			<GlobalNavigationBarLink
 				// will actually go to website
+				active
 				href="https://www.lightningdesignsystem.com/"
 				label="Menu Item"
 			/>

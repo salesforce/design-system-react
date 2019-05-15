@@ -109,6 +109,10 @@ class Input extends React.Component {
 			spinner: PropTypes.string,
 		}),
 		/**
+		 * Disabled brower's autocomplete when "off" is used.
+		 */
+		autoComplete: PropTypes.string,
+		/**
 		 * Elements are added after the `input`.
 		 */
 		children: PropTypes.node,
@@ -269,6 +273,10 @@ class Input extends React.Component {
 		 * styles to be added to input
 		 */
 		styleInput: PropTypes.object,
+		/**
+		 * Custom styles to be passed to the component container
+		 */
+		styleContainer: PropTypes.object,
 		/**
 		 * The `<Input>` element includes support for all HTML5 types.
 		 */
@@ -581,6 +589,7 @@ class Input extends React.Component {
 					},
 					this.props.className
 				)}
+				style={this.props.styleContainer}
 			>
 				<Label
 					assistiveText={assistiveText}
@@ -606,6 +615,7 @@ class Input extends React.Component {
 					aria-expanded={this.props['aria-expanded']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
+					autoComplete={this.props.autoComplete}
 					className={classNames({
 						'slds-input_counter': this.props.variant === COUNTER,
 						'slds-p-horizontal_none':

@@ -119,6 +119,7 @@ Bundled script files are provided _only_ for convenience. Do not use in producti
 
 ```
 git clone git@github.com:salesforce/design-system-react.git
+cd design-system-react
 npm install
 npm start
 open http://localhost:9001 http://localhost:8001
@@ -131,18 +132,22 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/READ
 If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
 
 ## Security
+
 Please report any security issue to [security@salesforce.com](mailto:security@salesforce.com) as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigilant and have their security stakeholders review all third-party dependencies.
 
 ## Contributors
+
 Thank you to all the contributors to this one of [many open source projects at Salesforce](https://opensource.salesforce.com/), but special thanks to the following:
 
 ### Active Key Contributors
+
 * [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
 * [@futuremint](https://github.com/futuremint) David Woodward
 * [@garygong](https://github.com/garygong) Gary Gong
 * [@interactivellama](https://github.com/interactivellama) Stephen James
 
 ### Former Key Contributors
+
 * [@donnieberg](https://github.com/donnieberg) Donielle Berg
 * [@tweettypography](https://github.com/tweettypography) David Brainer
 * [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov

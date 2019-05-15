@@ -19,12 +19,13 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
   * Browse to [http://localhost:8001](http://localhost:8001)
 * Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
   `npm run test:snapshot components/button/`.
+* The entire test suite may take up to 10 minutes to run. To update Jest snapshots for a single component, use `npm run test:snapshot:update -- -t=popover` where the test name contains `popover`.
 
 ### React Storybook
 
 Add DOM snapshot, image snapshot, and documentation site examples to Storybook for manual testing.
 
-`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybooks.
+`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybook stories.
 
 ### Style and quality linting
 
@@ -33,23 +34,35 @@ There are two parts to code linting: style and quality. [Prettier](https://prett
 * `npm run lint` will check style and quality.
 * `npm run lint:fix` will fix most style issues.
 * `npm run lint:quality` will run `eslint`.
-* `npm run lint:style` will run `prettier-eslint`.
+* `npm run lint:style` will run `prettier`.
 
 ### Story-based tests
 
 Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
 
-To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`.
+To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated for each Storybook story. To update existing snapshots, please use `npm run test:snapshot:update`.
 
 Use Jest to test the presence of:
 
 * DOM/markup nodes
 * CSS classes
 * Styles
+* Accessiblity features of the DOM
 
 **Do not** use Jest for:
 
 * Mouse/keyboard user interaction (event callbacks)
+
+#### Source files
+
+Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
+
+* `/tests/story-based-tests.snapshot-test.js`
+* `/tests/story-based-accessibility-tests.js`
+
+#### Story removal from test suite
+
+If a Storybook story should not be tested by Storyshots, please add the suffix `NoTest` to the story's name.
 
 #### Snapshot requirements
 
@@ -59,7 +72,7 @@ Use Jest to test the presence of:
 
 ### Additional tools
 
-* **[Mocha](http://mochajs.org/)** - Test framework ran in [PhantomJS](http://phantomjs.org/)
+* **[Mocha](http://mochajs.org/)** - Test framework ran in [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
 * **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner for Mocha
 * **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
@@ -97,7 +110,7 @@ const propTypes = {
 }
 ```
 
-#### TDD with Jest
+#### Test-driven development (TDD) with Jest DOM snapshots
 
 HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples.
 
@@ -116,6 +129,10 @@ Files ending in `.browser-test.jsx` will be run by CI server and in browser.
 * All mouse/keyboard interactions and events must have Mocha tests.
   * For components with user interactions events, real DOM testing is preferred. It is not recommended to use shallow rendering or to modify component prototypes with mock functions for these tests.
   * Because they are often easier to debug in the browser, mouse/keyboard user interaction testing should be done using Mocha.
+
+Mocha test suite source file:
+
+* `/tests/browser-tests.js`
 
 ## Sample Mocha Test File
 

@@ -56,6 +56,7 @@ class Example extends React.Component {
 							</div>
 						}
 						heading="Confirmation"
+						id="popover-controlled-with-footer"
 						onClose={this.handleClose}
 						onRequestClose={this.handleRequestClose}
 					>

@@ -4,7 +4,10 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-striped.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-no-row-hover.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-column-bordered.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fixed-layout.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced-single-select.jsx'),

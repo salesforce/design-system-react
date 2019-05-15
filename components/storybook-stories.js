@@ -6,7 +6,7 @@
  * should also be added to `story-based-tests.jsx` in order to automatically
  * add DOM and image snapshots. With enough Storybook story examples, these
  * two methods should be significant to fully test components with the
- * exception of callback testing. Pleaes test callback props with the Mocha
+ * exception of callback testing. Please test callback props with the Mocha
  * framework (http://localhost:8001).
  */
 
@@ -16,10 +16,12 @@ export AppLauncher from '../components/app-launcher/__docs__/storybook-stories';
 export Avatar from '../components/avatar/__docs__/storybook-stories';
 export BrandBand from '../components/brand-band/__docs__/storybook-stories';
 export Breadcrumb from '../components/breadcrumb/__docs__/storybook-stories';
+export BuilderHeader from '../components/builder-header/__docs__/storybook-stories';
 export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
 export Card from '../components/card/__docs__/storybook-stories';
+export Carousel from '../components/carousel/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
@@ -27,6 +29,7 @@ export Filter from '../components/filter/__docs__/storybook-stories';
 export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 export DatePicker from '../components/date-picker/__docs__/storybook-stories';
+export DynamicIcon from '../components/dynamic-icon/__docs__/storybook-stories';
 export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
@@ -47,10 +50,12 @@ export PillContainer from '../components/pill-container/__docs__/storybook-stori
 export Popover from '../components/popover/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
+export ProgressBar from '../components/progress-bar/__docs__/storybook-stories';
 export Picklist from '../components/menu-picklist/__docs__/storybook-stories';
 export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 export Radio from '../components/radio/__docs__/storybook-stories';
 export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
+export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
 export Slider from '../components/slider/__docs__/storybook-stories';
 export SplitView from '../components/split-view/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
