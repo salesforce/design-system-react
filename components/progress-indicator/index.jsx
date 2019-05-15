@@ -104,7 +104,7 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal']),
+	variant: PropTypes.oneOf(['base', 'modal', 'setup-assistant']),
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
@@ -218,18 +218,21 @@ class ProgressIndicator extends React.Component {
 			}
 		}
 
+		const orientation =
+			this.props.variant === 'setup-assistant'
+				? 'vertical'
+				: this.props.orientation;
 		// Set default tooltipPosition
 		const tooltipPosition =
 			this.props.tooltipPosition ||
 			(this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
-		const StepComponent =
-			this.props.orientation === 'vertical' ? StepVertical : Step;
+		const StepComponent = orientation === 'vertical' ? StepVertical : Step;
 		/** 2. return DOM */
 		return (
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
-				orientation={this.props.orientation}
+				orientation={orientation}
 				value={
 					currentStep === 0
 						? '0'
