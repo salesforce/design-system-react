@@ -983,6 +983,245 @@ exports[`DOM snapshots SLDSProgressIndicator In A Modal (With Step Error) - Need
 />
 `;
 
+exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "background": undefined,
+        "padding": "4rem 1rem 0px",
+      }
+    }
+  >
+    <div
+      className="slds-progress slds-progress_vertical"
+      id="setup-assistant-progress-indicator"
+    >
+      <ol
+        className="slds-progress__list"
+      >
+        <li
+          className="slds-progress__item slds-is-active"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-0"
+          >
+            <div
+              className="slds-size_3-of-4"
+            >
+              tooltip label #1
+            </div>
+            <div
+              className="slds-grid slds-grid_align-end slds-size_1-of-4"
+            >
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
+              >
+                <button
+                  className="slds-button slds-button_brand"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Brand
+                </button>
+                <p
+                  className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                >
+                  4 min
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-1"
+          >
+            <div
+              className="slds-size_3-of-4"
+            >
+              tooltip label #2
+            </div>
+            <div
+              className="slds-grid slds-grid_align-end slds-size_1-of-4"
+            >
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
+              >
+                <button
+                  className="slds-button slds-button_brand"
+                  disabled={true}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Disabled
+                </button>
+                <p
+                  className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                >
+                  40 min
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-2"
+          >
+            <div
+              className="slds-size_3-of-4"
+            >
+              tooltip label #3
+            </div>
+            <div
+              className="slds-grid slds-grid_align-end slds-size_1-of-4"
+            >
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
+              >
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon slds-button__icon_left"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                    />
+                  </svg>
+                  Download
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-3"
+          >
+            <div
+              className="slds-size_3-of-4"
+            >
+              tooltip label #4
+            </div>
+            <div
+              className="slds-grid slds-grid_align-end slds-size_1-of-4"
+            >
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
+              >
+                <div
+                  className="slds-form-element"
+                >
+                  <label
+                    className="slds-checkbox_toggle slds-grid"
+                    htmlFor="checkbox-toggle-example--error"
+                  >
+                    <input
+                      aria-describedby="checkbox-toggle-example--error-desc"
+                      id="checkbox-toggle-example--error"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                    <span
+                      aria-live="assertive"
+                      className="slds-checkbox_faux_container"
+                      id="checkbox-toggle-example--error-desc"
+                    >
+                      <span
+                        className="slds-checkbox_faux"
+                      />
+                      <span
+                        className="slds-checkbox_on"
+                      >
+                        Enabled
+                      </span>
+                      <span
+                        className="slds-checkbox_off"
+                      >
+                        Disabled
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className="slds-progress__item"
+        >
+          <span
+            className="slds-progress__marker"
+          />
+          <div
+            className="slds-progress__item_content slds-grid slds-grid_align-spread"
+            id="progress-indicator-vertical-label-4"
+          >
+            <div
+              className="slds-size_3-of-4"
+            >
+              tooltip label #5
+            </div>
+            <div
+              className="slds-grid slds-grid_align-end slds-size_1-of-4"
+            >
+              <div
+                className="slds-media__figure slds-media__figure_reverse"
+              >
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Done
+                </button>
+                <p
+                  className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                >
+                  14 min
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
 <div
   className="slds-p-around_medium"

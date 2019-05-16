@@ -606,10 +606,10 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -635,10 +635,10 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -664,10 +664,10 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -688,7 +688,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel 3 items controlled NoImageTest 1`] = `
+exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`] = `
 <div
   style={
     Object {
@@ -1323,10 +1323,10 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-1"
+            id="indicator-id-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1352,10 +1352,10 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-2"
+            id="indicator-id-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1381,10 +1381,10 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2011,10 +2011,10 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2040,10 +2040,10 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2546,10 +2546,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2575,10 +2575,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2604,10 +2604,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2633,10 +2633,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2662,10 +2662,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2691,10 +2691,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2720,10 +2720,10 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-7"
+            aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-7"
+            id="indicator-id-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3255,10 +3255,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3284,10 +3284,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3313,10 +3313,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3342,10 +3342,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3371,10 +3371,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3400,10 +3400,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3429,10 +3429,10 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-7"
+            aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-7"
+            id="indicator-id-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3997,10 +3997,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4026,10 +4026,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4055,10 +4055,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4084,10 +4084,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4113,10 +4113,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4142,10 +4142,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4171,10 +4171,10 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-7"
+            aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-7"
+            id="indicator-id-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4722,10 +4722,10 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <a
-              aria-controls="panel-1"
+              aria-controls="panel-0"
               aria-selected={true}
               className="slds-carousel__indicator-action slds-is-active"
-              id="indicator-id-1"
+              id="indicator-id-0"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4751,10 +4751,10 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <a
-              aria-controls="panel-2"
+              aria-controls="panel-1"
               aria-selected={false}
               className="slds-carousel__indicator-action"
-              id="indicator-id-2"
+              id="indicator-id-1"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4780,10 +4780,10 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <a
-              aria-controls="panel-3"
+              aria-controls="panel-2"
               aria-selected={false}
               className="slds-carousel__indicator-action"
-              id="indicator-id-3"
+              id="indicator-id-2"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
