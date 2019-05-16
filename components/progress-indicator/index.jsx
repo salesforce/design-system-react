@@ -256,6 +256,7 @@ class ProgressIndicator extends React.Component {
 						step={step}
 						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
 						tooltipPosition={tooltipPosition}
+						variant={this.props.variant}
 					/>
 				))}
 			</Progress>

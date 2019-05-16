@@ -34,6 +34,10 @@ const propTypes = {
 	 */
 	isCard: PropTypes.bool,
 	/**
+	 * Function to handle opening / closing of steps when the step is expandable. Passes event object and step `index`, `isOpen`, and `step` props as data.
+	 */
+	onStepToggleIsOpen: PropTypes.func,
+	/**
 	 * Accepts a progress bar component, which will only be visible if `isCard` is enabled
 	 */
 	progressBar: PropTypes.node,
@@ -82,6 +86,9 @@ class SetupAssistant extends React.Component {
 				{this.props.steps.map((step, i) => (
 					<Step
 						assistiveText={this.props.assistiveText}
+						index={i}
+						key={`${this.getId()}-step-${i}`}	// eslint-disable-line react/no-array-index-key
+						onToggleIsOpen={this.props.onStepToggleIsOpen}
 						stepNumber={i + 1}
 						{...step}
 					/>

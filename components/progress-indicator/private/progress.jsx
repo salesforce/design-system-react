@@ -71,6 +71,7 @@ class Progress extends React.Component {
 					'slds-progress',
 					{ 'slds-progress_shade': this.props.variant === 'modal' },
 					{ 'slds-progress_vertical': this.props.orientation === 'vertical' },
+					{ 'slds-progress_success': this.props.variant === 'setup-assistant' },
 					this.props.className
 				)}
 			>

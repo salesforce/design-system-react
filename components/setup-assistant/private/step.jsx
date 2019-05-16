@@ -48,8 +48,10 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
+	index: PropTypes.number,
 	isExpandable: PropTypes.bool,
 	isOpen: PropTypes.bool,
+	onRenderContent: PropTypes.func,
 	onToggleIsOpen: PropTypes.func,
 	/**
 	 * Percentage of step completed. No progress indicator will be shown for the step unless this is provided
@@ -63,8 +65,7 @@ const propTypes = {
 	stepNumber: PropTypes.number,
 };
 
-const defaultProps = {
-};
+const defaultProps = {};
 
 class Step extends React.Component {
 	constructor(props) {
@@ -80,12 +81,12 @@ class Step extends React.Component {
 	}
 
 	getIsOpen () {
-		return this.props.isOpen !== undefined && this.props.onToggleIsOpen ? this.props.isOpen : this.state.isOpen;	// TODO: ask about this
+		return this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 	}
 
 	toggleIsOpen = (event) => {
 		if (this.props.onToggleIsOpen) {
-			this.props.onToggleIsOpen(event, this.getIsOpen());
+			this.props.onToggleIsOpen(event, { index: this.props.index, isOpen: this.getIsOpen(), step: this.props });
 		} else {
 			this.setState({ isOpen: !this.getIsOpen() });
 		}
@@ -168,8 +169,14 @@ class Step extends React.Component {
 									id={`${this.getId()}-detail-content`}
 								>
 									<div className="slds-setup-assistant__step-detail">
-										{this.props.progressIndicator}
-										{this.props.scopedNotification}
+										{(this.props.onRenderContent) ? (
+											this.props.onRenderContent()
+										) : (
+											<>
+												{this.props.progressIndicator}
+												{this.props.scopedNotification}
+											</>
+										)}
 									</div>
 								</div>
 							</div>
