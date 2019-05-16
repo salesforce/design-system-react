@@ -89,14 +89,6 @@ class SetupAssistant extends React.Component {
 			</ol>
 		);
 
-		/*
-		{this.props.steps.map(this.props.steps, (child, i) =>
-			React.cloneElement(child, {
-				stepNumber: i + 1,
-			})
-		)}
-		*/
-
 		return this.props.isCard ? (
 			<section className="slds-card">
 				<header className="slds-theme_shade slds-p-around_medium slds-m-bottom_small">
