@@ -24,7 +24,7 @@ import {
 import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
 import CarouselItem from './private/carousel-item';
-import AutoPlayButton from './private/auto-play-button';
+import AutoplayButton from './private/auto-play-button';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
@@ -39,7 +39,7 @@ import componentDoc from './docs.json';
 // ### Default Props
 const defaultProps = {
 	assistiveText: {
-		autoPlayButton: 'Start / Stop auto-play',
+		autoplayButton: 'Start / Stop auto-play',
 		nextPanel: 'Next Panel',
 		previousPanel: 'Previous Panel',
 	},
@@ -78,7 +78,11 @@ class Carousel extends React.Component {
 			PropTypes.string,
 		]),
 		/**
-		 * Boolean showing whether the autoplay feature is available or not
+		 * Dictates the currently active/visible carousel panel. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state.
+		 */
+		currentPanel: PropTypes.number,
+		/**
+		 * Boolean showing whether the autoplay button is available or not
 		 */
 		hasAutoplay: PropTypes.bool,
 		/**
@@ -90,11 +94,11 @@ class Carousel extends React.Component {
 		 */
 		id: PropTypes.string,
 		/**
-		 * CSS that is applied to carousel indicators
+		 * Boolean that dictates whether autoplay is active or not. Use with `onRequestAutoplayToggle` for a controlled carousel component.
 		 */
-		indicatorStyles: PropTypes.object,
+		isAutoplayOn: PropTypes.bool,
 		/**
-		 * Boolean for infinite loop navigation
+		 * Boolean for infinite loop navigation. Note: if not true autoplay will stop automatically at the last panel.
 		 */
 		isInfinite: PropTypes.bool,
 		/**
@@ -118,6 +122,14 @@ class Carousel extends React.Component {
 		 */
 		onRenderItem: PropTypes.func,
 		/**
+		 * Called whenever `isAutoplayOn` is requested to be toggled on or off. Use with `isAutoplayOn` prop for a controlled carousel component. Passes an event object and a data object with the current `isAutoplayOn` value as an attribute.
+		 */
+		onRequestAutoplayToggle: PropTypes.func,
+		/**
+		 * Called whenever the panel is requested to change due to user interaction or auto-play. Use with `currentPanel` for a controlled carousel component. Passes an event object and a data object with `currentPanel` and `requestedPanel` attributes.
+		 */
+		onRequestPanelChange: PropTypes.func,
+		/**
 		 * Handler for clicking on a carousel item
 		 */
 		onItemClick: PropTypes.func,
@@ -129,15 +141,16 @@ class Carousel extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const { items, itemsPerPanel } = this.props;
-
-		this.nrOfPanels = Math.ceil(items.length / itemsPerPanel);
+		this.nrOfPanels = Math.ceil(props.items.length / props.itemsPerPanel);
 		this.stageItem = React.createRef();
 
 		this.state = {
-			currentPanel: 1,
+			currentPanel: props.currentPanel !== undefined ? props.currentPanel : 0,
 			indicatorsHaveFocus: false,
-			isAutoPlayOn: this.props.hasAutoplay,
+			isAutoplayOn:
+				props.isAutoplayOn !== undefined
+					? props.isAutoplayOn
+					: props.hasAutoplay,
 			stageWidth: 0,
 			translateX: -1000000,
 		};
@@ -149,10 +162,6 @@ class Carousel extends React.Component {
 	}
 
 	componentDidMount() {
-		this.setTranslationAmount(0);
-		if (this.props.hasAutoplay) {
-			this.startAutoplay();
-		}
 		if (
 			canUseDOM &&
 			this.stageItem !== undefined &&
@@ -161,8 +170,34 @@ class Carousel extends React.Component {
 		) {
 			this.stageWidth = this.stageItem.current.offsetWidth;
 		}
+
 		if (canUseEventListeners) {
 			window.addEventListener('resize', this.setDimensions, false);
+		}
+
+		this.changeTranslationAutomatically();
+
+		if (this.getIsAutoplayOn()) {
+			this.startAutoplay({ mountAutoplayEvent: true });
+		}
+	}
+
+	componentDidUpdate(prevProps) {
+		if (
+			this.props.currentPanel !== undefined &&
+			prevProps.currentPanel !== this.props.currentPanel
+		) {
+			this.changeTranslationAutomatically();
+		}
+		if (
+			this.props.isAutoplayOn !== undefined &&
+			prevProps.isAutoplayOn !== this.props.isAutoplayOn
+		) {
+			if (this.props.isAutoplayOn) {
+				this.startAutoplay({ updateAutoplayEvent: true });
+			} else {
+				this.stopAutoplay({ updateAutoplayEvent: true }, true);
+			}
 		}
 	}
 
@@ -170,44 +205,72 @@ class Carousel extends React.Component {
 		if (canUseEventListeners) {
 			window.removeEventListener('resize', this.setDimensions, false);
 		}
-		this.stopAutoplay();
+		this.stopAutoplay({ unmountAutoplayEvent: true }, true);
 	}
 
-	onNextPanelHandler = () => {
-		const next = this.state.currentPanel % this.nrOfPanels + 1;
-		this.setCurrentPanel(next, this.changeTranslationAutomatically);
+	onNextPanelHandler = (event) => {
+		let next = this.getCurrentPanel() + 1;
+		if (next > this.nrOfPanels - 1) {
+			next = 0;
+		}
+		this.setCurrentPanel(event, next, this.changeTranslationAutomatically);
 	};
 
-	onPreviousPanelHandler = () => {
-		const prev =
-			(this.state.currentPanel + this.nrOfPanels - 1) % this.nrOfPanels;
-		this.setCurrentPanel(prev, this.changeTranslationAutomatically);
+	onPreviousPanelHandler = (event) => {
+		let prev = this.getCurrentPanel() - 1;
+		if (prev < 0) {
+			prev = this.nrOfPanels - 1;
+		}
+		this.setCurrentPanel(event, prev, this.changeTranslationAutomatically);
 	};
 
 	onIndicatorBlur = () => {
 		this.setState({ indicatorsHaveFocus: false });
 	};
 
-	onIndicatorClickHandler = (panel) => {
-		this.setCurrentPanel(panel, this.changeTranslationAutomatically);
+	onIndicatorClickHandler = (event, panel) => {
+		this.setCurrentPanel(event, panel, this.changeTranslationAutomatically);
 		this.setState({ indicatorsHaveFocus: true });
-		this.stopAutoplay();
+		if (this.getIsAutoplayOn()) {
+			this.stopAutoplay(event);
+		}
 	};
 
-	onIndicatorFocus = () => {
+	onIndicatorFocus = (event) => {
 		this.setState({ indicatorsHaveFocus: true });
-		this.stopAutoplay();
+		if (this.getIsAutoplayOn()) {
+			this.stopAutoplay(event);
+		}
 	};
 
-	onAutoPlayBtnClick = () => {
-		const { isAutoPlayOn } = this.state;
-		const actionToTake = isAutoPlayOn ? this.stopAutoplay : this.startAutoplay;
+	onAutoplayBtnClick = (event) => {
+		const isAutoplayOn = this.getIsAutoplayOn();
 
-		this.setState({
-			isAutoPlayOn: !isAutoPlayOn,
-		});
-		actionToTake();
+		if (this.props.onRequestAutoplayToggle) {
+			this.props.onRequestAutoplayToggle(event, { isAutoplayOn });
+		} else {
+			const actionToTake = isAutoplayOn
+				? this.stopAutoplay
+				: this.startAutoplay;
+
+			this.setState({
+				isAutoplayOn: !isAutoplayOn,
+			});
+			actionToTake(event);
+		}
 	};
+
+	getCurrentPanel() {
+		return this.props.currentPanel !== undefined
+			? this.props.currentPanel
+			: this.state.currentPanel;
+	}
+
+	getIsAutoplayOn() {
+		return this.props.isAutoplayOn !== undefined
+			? this.props.isAutoplayOn
+			: this.state.isAutoplayOn;
+	}
 
 	setDimensions = () => {
 		if (
@@ -227,54 +290,73 @@ class Carousel extends React.Component {
 		this.setState({ translateX: amount }, cb);
 	};
 
-	setCurrentPanel = (amount, cb) => {
-		this.setState({ currentPanel: amount }, cb);
+	setCurrentPanel = (event, amount, cb) => {
+		if (this.props.onRequestPanelChange) {
+			this.props.onRequestPanelChange(event, {
+				currentPanel: this.getCurrentPanel(),
+				requestedPanel: amount,
+			});
+		} else {
+			this.setState({ currentPanel: amount }, cb);
+		}
 	};
 
-	startAutoplay = () => {
+	startAutoplay = (event) => {
 		this.autoplayId = setInterval(() => {
 			if (this.canGoToNext()) {
-				this.onNextPanelHandler();
+				this.onNextPanelHandler(event);
+			} else if (this.props.isInfinite) {
+				this.setCurrentPanel(event, 0, this.changeTranslationAutomatically);
 			} else {
-				this.setCurrentPanel(1, this.changeTranslationAutomatically);
+				this.stopAutoplay(event);
 			}
 		}, this.props.autoplayInterval);
 	};
 
-	stopAutoplay = () => {
+	stopAutoplay = (event, ignoreCallbacksAndStateUpdates) => {
 		if (this.autoplayId) {
 			clearInterval(this.autoplayId);
 		}
-		this.setState({ isAutoPlayOn: false });
+
+		if (!ignoreCallbacksAndStateUpdates) {
+			if (this.props.onRequestAutoplayToggle) {
+				this.props.onRequestAutoplayToggle(event, {
+					isAutoplayOn: this.getIsAutoplayOn(),
+				});
+			} else {
+				this.setState({ isAutoplayOn: false });
+			}
+		}
 	};
 
 	changeTranslationAutomatically = () => {
 		this.setTranslationAmount(
-			-(
-				(this.state.stageWidth || this.stageWidth) *
-				(this.state.currentPanel - 1)
-			)
+			-((this.state.stageWidth || this.stageWidth) * this.getCurrentPanel())
 		);
 	};
 
-	canGoToNext = () => this.state.currentPanel < this.nrOfPanels;
+	canGoToNext = () => this.getCurrentPanel() < this.nrOfPanels - 1;
 
-	canGoToPrevious = () => this.state.currentPanel > 1;
+	canGoToPrevious = () => this.getCurrentPanel() > 0;
 
 	handleKeyDown = (event) => {
 		const keyDownCallbacks = {
 			[KEYS.LEFT]: () => {
-				if (this.canGoToPrevious()) {
-					this.onPreviousPanelHandler();
+				if (this.props.isInfinite || this.canGoToPrevious()) {
+					this.onPreviousPanelHandler(event);
 					this.setState({ indicatorsHaveFocus: true });
-					this.stopAutoplay();
+					if (this.getIsAutoplayOn()) {
+						this.stopAutoplay(event);
+					}
 				}
 			},
 			[KEYS.RIGHT]: () => {
-				if (this.canGoToNext()) {
-					this.onNextPanelHandler();
+				if (this.props.isInfinite || this.canGoToNext()) {
+					this.onNextPanelHandler(event);
 					this.setState({ indicatorsHaveFocus: true });
-					this.stopAutoplay();
+					if (this.getIsAutoplayOn()) {
+						this.stopAutoplay(event);
+					}
 				}
 			},
 		};
@@ -291,6 +373,7 @@ class Carousel extends React.Component {
 			hasPreviousNextPanelNavigation,
 			isInfinite,
 		} = this.props;
+		const currentPanel = this.getCurrentPanel();
 		const id = this.props.id || this.generatedId;
 		const isPreviousBtnDisabled = !(isInfinite || this.canGoToPrevious());
 		const isNextBtnDisabled = !(isInfinite || this.canGoToNext());
@@ -305,10 +388,10 @@ class Carousel extends React.Component {
 			>
 				<div className="slds-grid_vertical slds-col slds-path__scroller">
 					{hasAutoplay && (
-						<AutoPlayButton
-							assistiveText={this.props.assistiveText.autoPlayButton}
-							isAutoPlayOn={this.state.isAutoPlayOn}
-							onClick={this.onAutoPlayBtnClick}
+						<AutoplayButton
+							assistiveText={this.props.assistiveText.autoplayButton}
+							isAutoplayOn={this.getIsAutoplayOn()}
+							onClick={this.onAutoplayBtnClick}
 						/>
 					)}
 					<div
@@ -320,9 +403,11 @@ class Carousel extends React.Component {
 								assistiveText={this.props.assistiveText.previousPanel}
 								iconName="chevronleft"
 								isDisabled={isPreviousBtnDisabled}
-								onClick={() => {
-									this.stopAutoplay();
-									this.onPreviousPanelHandler();
+								onClick={(event) => {
+									if (this.getIsAutoplayOn()) {
+										this.stopAutoplay(event);
+									}
+									this.onPreviousPanelHandler(event);
 								}}
 								inlineStyle={{ left: '-38px' }}
 							/>
@@ -342,18 +427,17 @@ class Carousel extends React.Component {
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
-										onFocus={() => {
-											this.stopAutoplay();
+										onFocus={(event) => {
+											if (this.getIsAutoplayOn()) {
+												this.stopAutoplay(event);
+											}
 										}}
 										onRenderItem={this.props.onRenderItem}
 										{...item}
 										isInCurrentPanel={
-											index >=
-												(this.state.currentPanel - 1) *
-													this.props.itemsPerPanel &&
+											index >= currentPanel * this.props.itemsPerPanel &&
 											index <
-												(this.state.currentPanel - 1) *
-													this.props.itemsPerPanel +
+												currentPanel * this.props.itemsPerPanel +
 													this.props.itemsPerPanel
 										}
 										itemWidth={itemWidth}
@@ -367,18 +451,19 @@ class Carousel extends React.Component {
 								assistiveText={this.props.assistiveText.nextPanel}
 								iconName="chevronright"
 								isDisabled={isNextBtnDisabled}
-								onClick={() => {
-									this.stopAutoplay();
-									this.onNextPanelHandler();
+								onClick={(event) => {
+									if (this.getIsAutoplayOn()) {
+										this.stopAutoplay(event);
+									}
+									this.onNextPanelHandler(event);
 								}}
 								inlineStyle={{ right: '-38px' }}
 							/>
 						)}
 					</div>
 					<CarouselIndicators
-						style={this.props.indicatorStyles}
 						noOfIndicators={this.nrOfPanels}
-						currentIndex={this.state.currentPanel}
+						currentIndex={currentPanel}
 						hasFocus={this.state.indicatorsHaveFocus}
 						onBlur={this.onIndicatorBlur}
 						onClick={this.onIndicatorClickHandler}

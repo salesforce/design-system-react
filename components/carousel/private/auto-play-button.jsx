@@ -8,16 +8,16 @@ import Button from '../../../components/button';
 import { CAROUSEL_AUTOPLAY_BUTTON } from '../../../utilities/constants';
 
 /**
- *  AutoPlayButton is used to start/pause the autoplay iteration of the carousel
+ *  AutoplayButton is used to start/pause the autoplay iteration of the carousel
  */
-const AutoPlayButton = (props) => (
+const AutoplayButton = (props) => (
 	<span className="slds-carousel__autoplay" style={{ left: '66px' }}>
 		<Button
 			assistiveText={{ icon: props.assistiveText }}
 			className="slds-button_icon"
 			disabled={props.isDisabled}
 			iconCategory="utility"
-			iconName={props.isAutoPlayOn ? 'pause' : 'play'}
+			iconName={props.isAutoplayOn ? 'pause' : 'play'}
 			iconVariant="border-filled"
 			iconSize="x-small"
 			onClick={props.onClick}
@@ -25,26 +25,26 @@ const AutoPlayButton = (props) => (
 		/>
 	</span>
 );
-AutoPlayButton.displayName = CAROUSEL_AUTOPLAY_BUTTON;
+AutoplayButton.displayName = CAROUSEL_AUTOPLAY_BUTTON;
 
 // ### Prop Types
-AutoPlayButton.propTypes = {
+AutoplayButton.propTypes = {
 	/**
 	 * Description of the start/pause autoplay button for screen-readers.
 	 */
 	assistiveText: PropTypes.string,
 	/**
-	 * Indicates whether autoPlay is enabled
+	 * Indicates whether autoplay is enabled
 	 */
-	isAutoPlayOn: PropTypes.bool,
+	isAutoplayOn: PropTypes.bool,
 	/**
 	 * Triggered when the autoplay button is clicked.
 	 */
 	onClick: PropTypes.func,
 };
 
-AutoPlayButton.defaultProps = {
-	isAutoPlayOn: false,
+AutoplayButton.defaultProps = {
+	isAutoplayOn: false,
 };
 
-export default AutoPlayButton;
+export default AutoplayButton;
