@@ -21,7 +21,7 @@ storiesOf(CAROUSEL, module)
 		<DefaultWithAutoplay action={action} />
 	))
 	.add('3 items NoImageTest', () => <ThreeItems action={action} />)
-	.add('3 items controlled NoImageTest', () => (
+	.add('3 items controlled isInfinite NoImageTest', () => (
 		<ThreeItemsControlled action={action} />
 	))
 	.add('5 items NoImageTest', () => <FiveItems action={action} />)

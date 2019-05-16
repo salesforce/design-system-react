@@ -688,7 +688,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel 3 items controlled NoImageTest 1`] = `
+exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`] = `
 <div
   style={
     Object {
