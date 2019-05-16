@@ -83,6 +83,7 @@ class StepVertical extends React.Component {
 			<span
 				className={classNames('slds-progress__marker', {
 					'slds-progress__marker_icon': renderIcon,
+					'slds-progress__marker_icon-success': renderIcon && !this.props.isError
 				})}
 			>
 				{icon}

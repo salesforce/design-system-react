@@ -11,14 +11,12 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-import ProgressBar from '~/components/progress-bar';
+
+import Step from './private/step';
+
 import { SETUP_ASSISTANT } from '../../utilities/constants';
 
 const propTypes = {
-	/**
-	 * HTML id for component.
-	 */
-	id: PropTypes.string,
 	/**
 	 * CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -27,28 +25,35 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
-
 	/**
-	 * Label for the Progress Bar
+	 * HTML id for component.
 	 */
-	progressBarLabels: PropTypes.shape({
-		cardTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-		complete: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-	}),
-
-	showStepProgress: PropTypes.bool,
-
+	id: PropTypes.string,
+	/**
+	 * Dictates whether this setup assistant has card wrappings and styling
+	 */
 	isCard: PropTypes.bool,
+	/**
+	 * Accepts a progress bar component, which will only be visible if `isCard` is enabled
+	 */
+	progressBar: PropTypes.node,
+	/**
+	 * Required. Accepts an array of step objects with the following form:
+	 * ```
+	 *  [{
+	 *    action: <PropTypes.node>, accepts a node to display the step's available action(s). Typically a Button, Button of variant "link," or Checkbox of variant "toggle"
+	 *    description: <PropTypes.node> or <PropTypes.string>, the descriptive content for the step
+	 *    estimatedTime: <PropTypes.node> or <PropTypes.string>, estimated time for completing the step
+	 *    heading: <PropTypes.node> or <PropTypes.string>, the step's heading content
+	 *    progress: <PropTypes.number>, the step's current progress percentage
+	 *  }],
+	 *  ```
+	 */
+	steps: PropTypes.array.isRequired
 };
 
 const defaultProps = {
-	showStepProgress: false,
-	isCard: false,
-	progressBarLabels: {
-		label:
-			'Complete all the steps below to finish setting up Einstein Visibility',
-		complete: 'Complete',
-	},
+	isCard: false
 };
 
 /**
@@ -68,42 +73,34 @@ class SetupAssistant extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	/**
-	 * Progress as number
-	 * @returns {number} progress
-	 */
-	getProgress() {
-		let progress = 0;
-		let steps = 0;
-		React.Children.forEach(this.props.children, (child) => {
-			progress += child.props.progress;
-			steps += 1;
-		});
-		return progress / steps;
-	}
-
 	render() {
 		const steps = (
 			<ol
 				id={this.getId()}
 				className={classNames('slds-setup-assistant', this.props.className)}
 			>
-				{React.Children.map(this.props.children, (child, i) =>
-					React.cloneElement(child, {
-						stepNo: i + 1,
-						showStepProgress: this.props.showStepProgress,
-					})
-				)}
+				{this.props.steps.map((step, i) => (
+					<Step
+						assistiveText={this.props.assistiveText}
+						stepNumber={i + 1}
+						{...step}
+					/>
+				))}
 			</ol>
 		);
+
+		/*
+		{this.props.steps.map(this.props.steps, (child, i) =>
+			React.cloneElement(child, {
+				stepNumber: i + 1,
+			})
+		)}
+		*/
 
 		return this.props.isCard ? (
 			<section className="slds-card">
 				<header className="slds-theme_shade slds-p-around_medium slds-m-bottom_small">
-					<ProgressBar
-						value={this.getProgress()}
-						labels={this.props.progressBarLabels}
-					/>
+					{this.props.progressBar}
 				</header>
 				{steps}
 			</section>
