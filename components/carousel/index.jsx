@@ -199,6 +199,14 @@ class Carousel extends React.Component {
 				this.stopAutoplay({ updateAutoplayEvent: true }, true);
 			}
 		}
+		if (
+			prevProps.items.length !== this.props.items.length ||
+			prevProps.itemsPerPanel !== this.props.itemsPerPanel
+		) {
+			this.nrOfPanels = Math.ceil(
+				this.props.items.length / this.props.itemsPerPanel
+			);
+		}
 	}
 
 	componentWillUnmount() {
@@ -442,6 +450,9 @@ class Carousel extends React.Component {
 										}
 										itemWidth={itemWidth}
 										key={item.id}
+										panelIndex={
+											Math.ceil((index + 1) / this.props.itemsPerPanel) - 1
+										}
 									/>
 								))}
 							</div>

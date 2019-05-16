@@ -1,6 +1,6 @@
 {
 	"component": "carousel",
-	"status": "prototype",
+	"status": "prod",
 	"display-name": "Carousel",
 	"SLDS-component-path": "/components/carousel",
 	"url-slug": "carousel"

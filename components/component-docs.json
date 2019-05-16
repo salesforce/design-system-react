@@ -1149,7 +1149,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": "Custom styles to be passed to the component"
+                "description": "Custom styles applied to the `.slds-builder-header_container` element."
             }
         },
         "route": "builder-header",
@@ -2538,7 +2538,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Dictates the currently active/visible carousel panel. 1-indexed. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state."
+                "description": "Dictates the currently active/visible carousel panel. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state."
             },
             "hasAutoplay": {
                 "type": {
@@ -7657,7 +7657,7 @@
                                 ]
                             },
                             "required": true,
-                            "description": "Region wrap children in styling specific to that region."
+                            "description": "Region wrap children in styling specific to that region. When `tertiary`\nregion is used, secondary region only supports four list items."
                         }
                     },
                     "name": "region",

@@ -126,7 +126,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-7')
+					.find('#indicator-id-6')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -139,7 +139,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-6')
+					.find('#indicator-id-5')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -158,7 +158,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find('#indicator-id-1')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -171,7 +171,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-3')
+					.find('#indicator-id-2')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -188,7 +188,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find('#indicator-id-1')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -201,14 +201,14 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find('#indicator-id-0')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 		});
 
 		it('handles indicator button presses correctly', () => {
-			handles.carousel.find('#indicator-id-3').simulate('click');
+			handles.carousel.find('#indicator-id-2').simulate('click');
 			expect(
 				handles.carousel
 					.find('#content-id-3 a')
@@ -217,14 +217,14 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-3')
+					.find('#indicator-id-2')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			handles.carousel.find('#indicator-id-6').simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-6 a')
+					.find('#content-id-7 a')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -322,7 +322,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find('#indicator-id-1')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -335,7 +335,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-3')
+					.find('#indicator-id-2')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -360,7 +360,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find('#indicator-id-0')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -389,7 +389,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find('#indicator-id-1')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -414,14 +414,14 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find('#indicator-id-0')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 		});
 
 		it('handles indicator button presses correctly', () => {
-			handles.carousel.find('#indicator-id-3').simulate('click');
+			handles.carousel.find('#indicator-id-2').simulate('click');
 			expect(
 				handles.carousel
 					.find('#content-id-7 a')
@@ -430,11 +430,11 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-3')
+					.find('#indicator-id-2')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
-			handles.carousel.find('#indicator-id-2').simulate('click');
+			handles.carousel.find('#indicator-id-1').simulate('click');
 			expect(
 				handles.carousel
 					.find('#content-id-4 a')
@@ -455,7 +455,7 @@ describe('SLDS Carousel', () => {
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find('#indicator-id-1')
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -498,8 +498,8 @@ describe('SLDS Carousel', () => {
 			expect(requestPanelChangeObject !== undefined).to.eql(true);
 			expect(typeof requestPanelChangeObject.event).to.eql('object');
 			expect(typeof requestPanelChangeObject.data).to.eql('object');
-			expect(requestPanelChangeObject.data.currentPanel).to.eql(1);
-			expect(requestPanelChangeObject.data.requestedPanel).to.eql(2);
+			expect(requestPanelChangeObject.data.currentPanel).to.eql(0);
+			expect(requestPanelChangeObject.data.requestedPanel).to.eql(1);
 		});
 
 		it('calls onItemClick correctly', () => {

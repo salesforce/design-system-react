@@ -21,7 +21,7 @@ const CarouselItem = (props) => (
 		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
-		aria-labelledby={`indicator-id-${props.id}`}
+		aria-labelledby={`indicator-id-${props.panelIndex}`}
 		style={{
 			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
@@ -117,6 +117,10 @@ CarouselItem.propTypes = {
 	 * Accepts a custom carousel item rendering function
 	 */
 	onRenderItem: PropTypes.func,
+	/**
+	 * Index of the panel this item belongs to, to be used when associating it to an indicator
+	 */
+	panelIndex: PropTypes.number,
 	/**
 	 * Path of the image to be used
 	 */
