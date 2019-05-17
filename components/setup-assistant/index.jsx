@@ -57,11 +57,11 @@ const propTypes = {
 	 *  }],
 	 *  ```
 	 */
-	steps: PropTypes.array.isRequired
+	steps: PropTypes.array.isRequired,
 };
 
 const defaultProps = {
-	isCard: false
+	isCard: false,
 };
 
 /**
@@ -91,7 +91,7 @@ class SetupAssistant extends React.Component {
 					<Step
 						assistiveText={this.props.assistiveText}
 						index={i}
-						key={`${this.getId()}-step-${i}`}	// eslint-disable-line react/no-array-index-key
+						key={`${this.getId()}-step-${i}`} // eslint-disable-line react/no-array-index-key
 						onToggleIsOpen={this.props.onStepToggleIsOpen}
 						stepNumber={i + 1}
 						{...step}

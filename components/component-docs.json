@@ -1149,7 +1149,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": "Custom styles to be passed to the component"
+                "description": "Custom styles applied to the `.slds-builder-header_container` element."
             }
         },
         "route": "builder-header",
@@ -7580,7 +7580,7 @@
                                 ]
                             },
                             "required": true,
-                            "description": "Region wrap children in styling specific to that region."
+                            "description": "Region wrap children in styling specific to that region. When `tertiary`\nregion is used, secondary region only supports four list items."
                         }
                     },
                     "name": "region",

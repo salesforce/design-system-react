@@ -12,32 +12,22 @@ const subSteps = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
-			<Checkbox
-				checked
-				variant="toggle"
-			/>
-		)
+		onRenderSetupAssistantAction: <Checkbox checked variant="toggle" />,
 	},
 	{
 		id: 1,
-		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		label:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button
-				label="View in Trailhead"
-				variant="link"
-			/>
-		)
+			<Button label="View in Trailhead" variant="link" />
+		),
 	},
 	{
 		id: 2,
 		label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
 		onRenderSetupAssistantAction: (
-			<Button
-				label="Add Users"
-				variant="outline-brand"
-			/>
-		)
+			<Button label="Add Users" variant="outline-brand" />
+		),
 	},
 ];
 
@@ -45,22 +35,15 @@ const subStepsComplete = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
-			<Checkbox
-				checked
-				variant="toggle"
-			/>
-		)
+		onRenderSetupAssistantAction: <Checkbox checked variant="toggle" />,
 	},
 	{
 		id: 1,
-		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		label:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button
-				label="View in Trailhead"
-				variant="link"
-			/>
-		)
+			<Button label="View in Trailhead" variant="link" />
+		),
 	},
 ];
 
@@ -68,33 +51,28 @@ const subStepsIncomplete = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
-			<Checkbox
-				variant="toggle"
-			/>
-		)
+		onRenderSetupAssistantAction: <Checkbox variant="toggle" />,
 	},
 	{
 		id: 1,
-		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		label:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button
-				label="View in Trailhead"
-				variant="link"
-			/>
-		)
+			<Button label="View in Trailhead" variant="link" />
+		),
 	},
 ];
 
 class Example extends React.Component {
 	static displayName = 'SetupAssistantInACard';
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			steps: [
 				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '4 mins',
 					heading: 'Add Users to Your Org',
 					isExpandable: true,
@@ -109,7 +87,8 @@ class Example extends React.Component {
 					),
 				},
 				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '10 mins',
 					heading: 'Create Profiles for Your Users',
 					isExpandable: true,
@@ -125,12 +104,16 @@ class Example extends React.Component {
 					),
 					scopedNotification: (
 						<ScopedNotification theme="light">
-							<p>It looks as if duplicates exist for this lead. <a href="javascript:void(0);">View Duplicates.</a></p>
+							<p>
+								It looks as if duplicates exist for this lead.{' '}
+								<a href="javascript:void(0);">View Duplicates.</a>
+							</p>
 						</ScopedNotification>
-					)
+					),
 				},
 				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '15 mins',
 					heading: 'Learn How to Use Profiles to control Visibility',
 					isExpandable: true,
@@ -145,7 +128,8 @@ class Example extends React.Component {
 					),
 				},
 				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '10 mins',
 					heading: 'Turn on tracking for profiles',
 					isExpandable: true,
@@ -160,7 +144,8 @@ class Example extends React.Component {
 					),
 				},
 				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '10 mins',
 					heading: 'Setup Einstein Visibility for Admins',
 					isExpandable: true,
@@ -173,8 +158,8 @@ class Example extends React.Component {
 							variant="setup-assistant"
 						/>
 					),
-				}
-			]
+				},
+			],
 		};
 	}
 
@@ -183,18 +168,22 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<SetupAssistant
 					isCard
-					progressBar={(
+					progressBar={
 						<ProgressBar
 							color="success"
-							labels={{ label: 'Complete all the steps below to finish setting up Einstein Visibility' }}
+							labels={{
+								label:
+									'Complete all the steps below to finish setting up Einstein Visibility',
+							}}
 							radius="circular"
 							value={50}
 							variant="light"
 						/>
-					)}
+					}
 					steps={this.state.steps}
 				/>
-			</IconSettings>);
+			</IconSettings>
+		);
 	}
 }
 

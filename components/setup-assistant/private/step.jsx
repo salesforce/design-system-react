@@ -93,7 +93,7 @@ class Step extends React.Component {
 		super(props);
 		this.generatedId = shortid.generate();
 		this.state = {
-			isOpen: props.isOpen || false
+			isOpen: props.isOpen || false,
 		};
 	}
 
@@ -101,13 +101,19 @@ class Step extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	getIsOpen () {
-		return this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
+	getIsOpen() {
+		return this.props.isOpen !== undefined
+			? this.props.isOpen
+			: this.state.isOpen;
 	}
 
 	toggleIsOpen = (event) => {
 		if (this.props.onToggleIsOpen) {
-			this.props.onToggleIsOpen(event, { index: this.props.index, isOpen: this.getIsOpen(), step: this.props });
+			this.props.onToggleIsOpen(event, {
+				index: this.props.index,
+				isOpen: this.getIsOpen(),
+				step: this.props,
+			});
 		} else {
 			this.setState({ isOpen: !this.getIsOpen() });
 		}
@@ -121,7 +127,10 @@ class Step extends React.Component {
 						<div className="slds-media__figure">
 							<ProgressRing
 								className={classNames('slds-progress-ring_large', {
-									'slds-progress-ring_active-step': this.props.progress > 0 && this.props.progress < 100 && this.props.progressIndicator
+									'slds-progress-ring_active-step':
+										this.props.progress > 0 &&
+										this.props.progress < 100 &&
+										this.props.progressIndicator,
 								})}
 								hasIcon
 								icon={
@@ -134,7 +143,7 @@ class Step extends React.Component {
 					) : null}
 					<div className="slds-setup-assistant__step-summary-content slds-media__body">
 						<h3 className="slds-setup-assistant__step-summary-title slds-text-heading_small">
-							{(this.props.isExpandable) ? (
+							{this.props.isExpandable ? (
 								<Button
 									aria-controls={`${this.getId()}-detail-content`}
 									className="slds-button_reset"
@@ -168,10 +177,12 @@ class Step extends React.Component {
 				)}
 			>
 				<article className="slds-setup-assistant__step">
-					{(this.props.isExpandable) ? (
-						<div className={classNames('slds-summary-detail', {
-							'slds-is-open': this.getIsOpen()
-						})}>
+					{this.props.isExpandable ? (
+						<div
+							className={classNames('slds-summary-detail', {
+								'slds-is-open': this.getIsOpen(),
+							})}
+						>
 							<Button
 								aria-controls={`${this.getId()}-detail-content`}
 								className="slds-m-right_x-small slds-m-top_x-small"
@@ -182,15 +193,13 @@ class Step extends React.Component {
 								variant="icon"
 							/>
 							<div className="slds-container_fluid">
-								<div className="slds-summary-detail__title">
-									{summary}
-								</div>
+								<div className="slds-summary-detail__title">{summary}</div>
 								<div
 									className="slds-summary-detail__content"
 									id={`${this.getId()}-detail-content`}
 								>
 									<div className="slds-setup-assistant__step-detail">
-										{(this.props.onRenderContent) ? (
+										{this.props.onRenderContent ? (
 											this.props.onRenderContent()
 										) : (
 											<>

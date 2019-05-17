@@ -11,22 +11,15 @@ const subStepsComplete = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
-			<Checkbox
-				checked
-				variant="toggle"
-			/>
-		)
+		onRenderSetupAssistantAction: <Checkbox checked variant="toggle" />,
 	},
 	{
 		id: 1,
-		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		label:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button
-				label="View in Trailhead"
-				variant="link"
-			/>
-		)
+			<Button label="View in Trailhead" variant="link" />
+		),
 	},
 ];
 
@@ -34,29 +27,31 @@ const subStepsIncomplete = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
-			<Checkbox
-				variant="toggle"
-			/>
-		)
+		onRenderSetupAssistantAction: <Checkbox variant="toggle" />,
 	},
 	{
 		id: 1,
-		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		label:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button
-				label="View in Trailhead"
-				variant="link"
-			/>
-		)
+			<Button label="View in Trailhead" variant="link" />
+		),
 	},
 ];
 
 class Example extends React.Component {
 	static displayName = 'SetupAssistantHubWithExpandableSteps';
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
+
+		this.state = {
+			expandedSteps: { 1: true },
+			stepTwoCompletedSubSteps: [],
+			stepTwoCompletedSubStepsStatus: [false, false, false],
+			stepTwoSelectedSubStep: this.subSteps[0],
+			stepTwoProgress: 0,
+		};
 
 		this.subSteps = [
 			{
@@ -69,20 +64,24 @@ class Example extends React.Component {
 						}}
 						variant="toggle"
 					/>
-				)
+				),
 			},
 			{
 				id: 1,
-				label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				label:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				onRenderSetupAssistantAction: (
 					<Button
 						onClick={() => [
-							this.toggleSubStepCompletion(1, !this.state.stepTwoCompletedSubStepsStatus[1])
+							this.toggleSubStepCompletion(
+								1,
+								!this.state.stepTwoCompletedSubStepsStatus[1]
+							),
 						]}
 						label="View in Trailhead"
 						variant="link"
 					/>
-				)
+				),
 			},
 			{
 				id: 2,
@@ -90,119 +89,121 @@ class Example extends React.Component {
 				onRenderSetupAssistantAction: (
 					<Button
 						onClick={() => [
-							this.toggleSubStepCompletion(2, !this.state.stepTwoCompletedSubStepsStatus[2])
+							this.toggleSubStepCompletion(
+								2,
+								!this.state.stepTwoCompletedSubStepsStatus[2]
+							),
 						]}
 						label="Add Users"
 						variant="outline-brand"
 					/>
-				)
+				),
 			},
 		];
-
-		this.state = {
-			expandedSteps: { 1: true },
-			stepTwoCompletedSubSteps: [],
-			stepTwoCompletedSubStepsStatus: [false, false, false],
-			stepTwoSelectedSubStep: this.subSteps[0],
-			stepTwoProgress: 0
-		};
 	}
 
-	getSteps () {
-		return (
-			[
-				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-					estimatedTime: '4 mins',
-					heading: 'Add Users to Your Org',
-					isExpandable: true,
-					isOpen: this.state.expandedSteps[0] || false,
-					progress: 100,
-					progressIndicator: (
-						<ProgressIndicator
-							completedSteps={subStepsComplete}
-							orientation="vertical"
-							steps={subStepsComplete}
-							variant="setup-assistant"
-						/>
-					),
-				},
-				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-					estimatedTime: '10 mins',
-					heading: 'Create Profiles for Your Users',
-					isExpandable: true,
-					isOpen: this.state.expandedSteps[1] || false,
-					progress: this.state.stepTwoProgress,
-					progressIndicator: (
-						<ProgressIndicator
-							completedSteps={this.state.stepTwoCompletedSubSteps}
-							orientation="vertical"
-							steps={this.subSteps}
-							selectedStep={this.state.stepTwoSelectedSubStep}
-							variant="setup-assistant"
-						/>
-					),
-					scopedNotification: (
-						<ScopedNotification theme="light">
-							<p>It looks as if duplicates exist for this lead. <a href="javascript:void(0);">View Duplicates.</a></p>
-						</ScopedNotification>
-					)
-				},
-				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-					estimatedTime: '15 mins',
-					heading: 'Learn How to Use Profiles to control Visibility',
-					isExpandable: true,
-					isOpen: this.state.expandedSteps[2] || false,
-					progress: 100,
-					progressIndicator: (
-						<ProgressIndicator
-							completedSteps={subStepsComplete}
-							orientation="vertical"
-							steps={subStepsComplete}
-							variant="setup-assistant"
-						/>
-					),
-				},
-				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-					estimatedTime: '10 mins',
-					heading: 'Turn on tracking for profiles',
-					isExpandable: true,
-					isOpen: this.state.expandedSteps[3] || false,
-					progress: 0,
-					progressIndicator: (
-						<ProgressIndicator
-							orientation="vertical"
-							steps={subStepsIncomplete}
-							selectedStep={subStepsIncomplete[0]}
-							variant="setup-assistant"
-						/>
-					),
-				},
-				{
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-					estimatedTime: '10 mins',
-					heading: 'Setup Einstein Visibility for Admins',
-					isExpandable: true,
-					isOpen: this.state.expandedSteps[4] || false,
-					progress: 0,
-					progressIndicator: (
-						<ProgressIndicator
-							orientation="vertical"
-							steps={subStepsIncomplete}
-							selectedStep={subStepsIncomplete[0]}
-							variant="setup-assistant"
-						/>
-					),
-				}
-			]
-		);
+	getSteps() {
+		return [
+			{
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				estimatedTime: '4 mins',
+				heading: 'Add Users to Your Org',
+				isExpandable: true,
+				isOpen: this.state.expandedSteps[0] || false,
+				progress: 100,
+				progressIndicator: (
+					<ProgressIndicator
+						completedSteps={subStepsComplete}
+						orientation="vertical"
+						steps={subStepsComplete}
+						variant="setup-assistant"
+					/>
+				),
+			},
+			{
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				estimatedTime: '10 mins',
+				heading: 'Create Profiles for Your Users',
+				isExpandable: true,
+				isOpen: this.state.expandedSteps[1] || false,
+				progress: this.state.stepTwoProgress,
+				progressIndicator: (
+					<ProgressIndicator
+						completedSteps={this.state.stepTwoCompletedSubSteps}
+						orientation="vertical"
+						steps={this.subSteps}
+						selectedStep={this.state.stepTwoSelectedSubStep}
+						variant="setup-assistant"
+					/>
+				),
+				scopedNotification: (
+					<ScopedNotification theme="light">
+						<p>
+							It looks as if duplicates exist for this lead.{' '}
+							<a href="javascript:void(0);">View Duplicates.</a>
+						</p>
+					</ScopedNotification>
+				),
+			},
+			{
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				estimatedTime: '15 mins',
+				heading: 'Learn How to Use Profiles to control Visibility',
+				isExpandable: true,
+				isOpen: this.state.expandedSteps[2] || false,
+				progress: 100,
+				progressIndicator: (
+					<ProgressIndicator
+						completedSteps={subStepsComplete}
+						orientation="vertical"
+						steps={subStepsComplete}
+						variant="setup-assistant"
+					/>
+				),
+			},
+			{
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				estimatedTime: '10 mins',
+				heading: 'Turn on tracking for profiles',
+				isExpandable: true,
+				isOpen: this.state.expandedSteps[3] || false,
+				progress: 0,
+				progressIndicator: (
+					<ProgressIndicator
+						orientation="vertical"
+						steps={subStepsIncomplete}
+						selectedStep={subStepsIncomplete[0]}
+						variant="setup-assistant"
+					/>
+				),
+			},
+			{
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				estimatedTime: '10 mins',
+				heading: 'Setup Einstein Visibility for Admins',
+				isExpandable: true,
+				isOpen: this.state.expandedSteps[4] || false,
+				progress: 0,
+				progressIndicator: (
+					<ProgressIndicator
+						orientation="vertical"
+						steps={subStepsIncomplete}
+						selectedStep={subStepsIncomplete[0]}
+						variant="setup-assistant"
+					/>
+				),
+			},
+		];
 	}
 
-	toggleSubStepCompletion (subStepId, completed) {
-		const stepTwoCompletedSubStepsStatus = this.state.stepTwoCompletedSubStepsStatus;
+	toggleSubStepCompletion(subStepId, completed) {
+		const stepTwoCompletedSubStepsStatus = this.state
+			.stepTwoCompletedSubStepsStatus;
 		let stepsCompleted = 0;
 		let stepTwoCompletedSubSteps = this.state.stepTwoCompletedSubSteps;
 		let stepTwoSelectedSubStep;
@@ -211,7 +212,9 @@ class Example extends React.Component {
 			stepTwoCompletedSubSteps.push(this.subSteps[subStepId]);
 			stepTwoCompletedSubStepsStatus[subStepId] = true;
 		} else {
-			stepTwoCompletedSubSteps = stepTwoCompletedSubSteps.filter((subStep) => subStep.id !== subStepId);
+			stepTwoCompletedSubSteps = stepTwoCompletedSubSteps.filter(
+				(subStep) => subStep.id !== subStepId
+			);
 			stepTwoCompletedSubStepsStatus[subStepId] = false;
 		}
 
@@ -228,8 +231,8 @@ class Example extends React.Component {
 		this.setState({
 			stepTwoCompletedSubSteps,
 			stepTwoCompletedSubStepsStatus,
-			stepTwoProgress: Math.ceil((stepsCompleted / this.subSteps.length) * 100),
-			stepTwoSelectedSubStep
+			stepTwoProgress: Math.ceil(stepsCompleted / this.subSteps.length * 100),
+			stepTwoSelectedSubStep,
 		});
 	}
 
@@ -244,7 +247,8 @@ class Example extends React.Component {
 					}}
 					steps={this.getSteps()}
 				/>
-			</IconSettings>);
+			</IconSettings>
+		);
 	}
 }
 
