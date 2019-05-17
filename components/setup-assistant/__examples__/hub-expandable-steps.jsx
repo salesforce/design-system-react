@@ -40,6 +40,51 @@ const subSteps = [
 	},
 ];
 
+const subStepsComplete = [
+	{
+		id: 0,
+		label: 'Turn on Lightning for all users.',
+		onRenderSetupAssistantAction: (
+			<Checkbox
+				checked
+				variant="toggle"
+			/>
+		)
+	},
+	{
+		id: 1,
+		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		onRenderSetupAssistantAction: (
+			<Button
+				label="View in Trailhead"
+				variant="link"
+			/>
+		)
+	},
+];
+
+const subStepsIncomplete = [
+	{
+		id: 0,
+		label: 'Turn on Lightning for all users.',
+		onRenderSetupAssistantAction: (
+			<Checkbox
+				variant="toggle"
+			/>
+		)
+	},
+	{
+		id: 1,
+		label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		onRenderSetupAssistantAction: (
+			<Button
+				label="View in Trailhead"
+				variant="link"
+			/>
+		)
+	},
+];
+
 class Example extends React.Component {
 	static displayName = 'SetupAssistantHubWithExpandableSteps';
 
@@ -52,7 +97,15 @@ class Example extends React.Component {
 					estimatedTime: '4 mins',
 					heading: 'Add Users to Your Org',
 					isExpandable: true,
-					progress: 100
+					progress: 100,
+					progressIndicator: (
+						<ProgressIndicator
+							completedSteps={subStepsComplete}
+							orientation="vertical"
+							steps={subStepsComplete}
+							variant="setup-assistant"
+						/>
+					),
 				},
 				{
 					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
@@ -81,21 +134,45 @@ class Example extends React.Component {
 					estimatedTime: '15 mins',
 					heading: 'Learn How to Use Profiles to control Visibility',
 					isExpandable: true,
-					progress: 100
+					progress: 100,
+					progressIndicator: (
+						<ProgressIndicator
+							completedSteps={subStepsComplete}
+							orientation="vertical"
+							steps={subStepsComplete}
+							variant="setup-assistant"
+						/>
+					),
 				},
 				{
 					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '10 mins',
 					heading: 'Turn on tracking for profiles',
 					isExpandable: true,
-					progress: 0
+					progress: 0,
+					progressIndicator: (
+						<ProgressIndicator
+							orientation="vertical"
+							steps={subStepsIncomplete}
+							selectedStep={subStepsIncomplete[0]}
+							variant="setup-assistant"
+						/>
+					),
 				},
 				{
 					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 					estimatedTime: '10 mins',
 					heading: 'Setup Einstein Visibility for Admins',
 					isExpandable: true,
-					progress: 0
+					progress: 0,
+					progressIndicator: (
+						<ProgressIndicator
+							orientation="vertical"
+							steps={subStepsIncomplete}
+							selectedStep={subStepsIncomplete[0]}
+							variant="setup-assistant"
+						/>
+					),
 				}
 			]
 		};

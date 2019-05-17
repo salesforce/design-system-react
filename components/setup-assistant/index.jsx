@@ -49,7 +49,11 @@ const propTypes = {
 	 *    description: <PropTypes.node> or <PropTypes.string>, the descriptive content for the step
 	 *    estimatedTime: <PropTypes.node> or <PropTypes.string>, estimated time for completing the step
 	 *    heading: <PropTypes.node> or <PropTypes.string>, the step's heading content
+	 *    isExpandable: <PropTypes.bool>, dictates whether a step can be expanded / collapsed
+	 *    isOpen: <PropTypes.bool>, if `isExpandable` is enabled, this can be used to control the step's opened / closed status. If this or `onStepToggleIsOpen` is not provided, state will be used instead
 	 *    progress: <PropTypes.number>, the step's current progress percentage
+	 *		progressIndicator: <PropTypes.node>, accepts a ProgressIndicator component for use in showing sub-steps
+	 *		scopedNotification: <PropTypes.node>, accepts a ScopedNotification component to display issues or warnings
 	 *  }],
 	 *  ```
 	 */

@@ -48,16 +48,37 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
+	/**
+	 * Index of the step within the step array
+	 */
 	index: PropTypes.number,
+	/**
+	 * Dictates whether the step can be expanded / collapsed
+	 */
 	isExpandable: PropTypes.bool,
+	/**
+	 * If `isExpandable` is true, this prop can be used to control the expanded state. If not provided state will be used instead
+	 */
 	isOpen: PropTypes.bool,
+	/**
+	 * Function that is called to render step content. If not provided progressIndicator and scopedNotification will be used instead
+	 */
 	onRenderContent: PropTypes.func,
+	/**
+	 * Function to handle requests to expand / collapse the step
+	 */
 	onToggleIsOpen: PropTypes.func,
 	/**
 	 * Percentage of step completed. No progress indicator will be shown for the step unless this is provided
 	 */
 	progress: PropTypes.number,
+	/**
+	 * Accepts a ProgressIndicator component for use in showing sub-steps
+	 */
 	progressIndicator: PropTypes.node,
+	/**
+	 * Accepts a ScopedNotification component to display issues or warnings
+	 */
 	scopedNotification: PropTypes.node,
 	/**
 	 * Display number for the step. Only appears if progress indicator is enabled
@@ -100,7 +121,7 @@ class Step extends React.Component {
 						<div className="slds-media__figure">
 							<ProgressRing
 								className={classNames('slds-progress-ring_large', {
-									'slds-progress-ring_active-step': this.props.progress !== undefined && this.props.progress > 0 && this.props.progressIndicator
+									'slds-progress-ring_active-step': this.props.progress > 0 && this.props.progress < 100 && this.props.progressIndicator
 								})}
 								hasIcon
 								icon={
