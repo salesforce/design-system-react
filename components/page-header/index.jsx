@@ -79,6 +79,18 @@ const propTypes = {
 		'utility',
 	]),
 	/**
+	 * CSS classes to be added to icon.
+	 */
+	iconClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Path to the icon. This will override any global icon settings.
+	 */
+	iconPath: PropTypes.string,
+	/**
 	 * If omitted, icon position is centered.
 	 */
 	iconPosition: PropTypes.oneOf(['left', 'right']),
@@ -154,7 +166,9 @@ class PageHeader extends Component {
 			details,
 			icon,
 			iconCategory,
+			iconClassName,
 			iconName,
+			iconPath,
 			iconPosition,
 			iconSize,
 			iconVariant,
@@ -174,11 +188,13 @@ class PageHeader extends Component {
 		 * Render the icon
 		 */
 		const renderIcon = () => {
-			if (iconName) {
+			if (iconName || iconPath) {
 				return (
 					<Icon
 						name={iconName}
 						category={iconCategory}
+						className={iconClassName}
+						path={iconPath}
 						position={iconPosition}
 						size={iconSize}
 						variant={iconVariant}

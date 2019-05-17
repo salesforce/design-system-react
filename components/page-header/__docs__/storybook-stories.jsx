@@ -382,6 +382,17 @@ storiesOf(PAGE_HEADER, module)
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 		})
 	)
+	.add('Base with custom icon', () =>
+		getPageHeader({
+			iconAssistiveText: 'Opportunity',
+			iconCategory: 'standard',
+			iconClassName: 'slds-icon-text-default',
+			iconName: 'opportunity',
+			iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#bucket',
+			title: 'Rohde Corp - 80,000 Widgets',
+			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
+		})
+	)
 	.add('Base with actions', () =>
 		getPageHeader({
 			iconAssistiveText: 'Opportunity',

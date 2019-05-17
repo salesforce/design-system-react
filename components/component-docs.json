@@ -11228,6 +11228,31 @@
                 "required": false,
                 "description": "The icons category"
             },
+            "iconClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to icon."
+            },
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the icon. This will override any global icon settings."
+            },
             "iconPosition": {
                 "type": {
                     "name": "enum",
