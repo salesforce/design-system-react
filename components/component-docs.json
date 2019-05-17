@@ -1149,7 +1149,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": "Custom styles to be passed to the component"
+                "description": "Custom styles applied to the `.slds-builder-header_container` element."
             }
         },
         "route": "builder-header",
@@ -2306,14 +2306,24 @@
                 "name": "onNextPanelHandler",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "onPreviousPanelHandler",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2329,6 +2339,10 @@
                 "modifiers": [],
                 "params": [
                     {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
                         "name": "panel",
                         "type": null
                     }
@@ -2339,11 +2353,35 @@
                 "name": "onIndicatorFocus",
                 "docblock": null,
                 "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onAutoplayBtnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getCurrentPanel",
+                "docblock": null,
+                "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "onAutoPlayBtnClick",
+                "name": "getIsAutoplayOn",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2378,6 +2416,10 @@
                 "modifiers": [],
                 "params": [
                     {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
                         "name": "amount",
                         "type": null
                     },
@@ -2392,14 +2434,28 @@
                 "name": "startAutoplay",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "stopAutoplay",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "ignoreCallbacksAndStateUpdates",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2444,7 +2500,7 @@
                 "required": false,
                 "description": "Description of the carousel items for screen-readers.",
                 "defaultValue": {
-                    "value": "{\n    autoPlayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "value": "{\n    autoplayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
                     "computed": false
                 }
             },
@@ -2477,12 +2533,19 @@
                 "required": false,
                 "description": "CSS classes that are applied to the main 'slds-carousel' classed component container"
             },
+            "currentPanel": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Dictates the currently active/visible carousel panel. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state."
+            },
             "hasAutoplay": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean showing whether the autoplay feature is available or not",
+                "description": "Boolean showing whether the autoplay button is available or not",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -2506,19 +2569,19 @@
                 "required": false,
                 "description": "Id of component, if desired. If not provided an id is automatically generated"
             },
-            "indicatorStyles": {
+            "isAutoplayOn": {
                 "type": {
-                    "name": "object"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "CSS that is applied to carousel indicators"
+                "description": "Boolean that dictates whether autoplay is active or not. Use with `onRequestAutoplayToggle` for a controlled carousel component."
             },
             "isInfinite": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean for infinite loop navigation",
+                "description": "Boolean for infinite loop navigation. Note: if not true autoplay will stop automatically at the last panel.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -2548,6 +2611,20 @@
                 },
                 "required": false,
                 "description": "Accepts a custom carousel item rendering function"
+            },
+            "onRequestAutoplayToggle": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Called whenever `isAutoplayOn` is requested to be toggled on or off. Use with `isAutoplayOn` prop for a controlled carousel component. Passes an event object and a data object with the current `isAutoplayOn` value as an attribute."
+            },
+            "onRequestPanelChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Called whenever the panel is requested to change due to user interaction or auto-play. Use with `currentPanel` for a controlled carousel component. Passes an event object and a data object with `currentPanel` and `requestedPanel` attributes."
             },
             "onItemClick": {
                 "type": {
@@ -7580,7 +7657,7 @@
                                 ]
                             },
                             "required": true,
-                            "description": "Region wrap children in styling specific to that region."
+                            "description": "Region wrap children in styling specific to that region. When `tertiary`\nregion is used, secondary region only supports four list items."
                         }
                     },
                     "name": "region",

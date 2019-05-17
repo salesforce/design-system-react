@@ -199,6 +199,14 @@ class Carousel extends React.Component {
 				this.stopAutoplay({ updateAutoplayEvent: true }, true);
 			}
 		}
+		if (
+			prevProps.items.length !== this.props.items.length ||
+			prevProps.itemsPerPanel !== this.props.itemsPerPanel
+		) {
+			this.nrOfPanels = Math.ceil(
+				this.props.items.length / this.props.itemsPerPanel
+			);
+		}
 	}
 
 	componentWillUnmount() {
@@ -424,6 +432,7 @@ class Carousel extends React.Component {
 							>
 								{this.props.items.map((item, index) => (
 									<CarouselItem
+										carouselId={id}
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
@@ -442,6 +451,9 @@ class Carousel extends React.Component {
 										}
 										itemWidth={itemWidth}
 										key={item.id}
+										panelIndex={
+											Math.ceil((index + 1) / this.props.itemsPerPanel) - 1
+										}
 									/>
 								))}
 							</div>
@@ -463,6 +475,7 @@ class Carousel extends React.Component {
 					</div>
 					<CarouselIndicators
 						noOfIndicators={this.nrOfPanels}
+						carouselId={id}
 						currentIndex={currentPanel}
 						hasFocus={this.state.indicatorsHaveFocus}
 						onBlur={this.onIndicatorBlur}

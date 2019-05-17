@@ -69,9 +69,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-three-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-three-items-example-1"
               role="tabpanel"
               style={
                 Object {
@@ -139,9 +139,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-three-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-three-items-example-2"
               role="tabpanel"
               style={
                 Object {
@@ -209,9 +209,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-three-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-three-items-example-3"
               role="tabpanel"
               style={
                 Object {
@@ -279,9 +279,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-three-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-three-items-example-4"
               role="tabpanel"
               style={
                 Object {
@@ -349,9 +349,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-three-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-three-items-example-5"
               role="tabpanel"
               style={
                 Object {
@@ -419,9 +419,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-three-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-three-items-example-6"
               role="tabpanel"
               style={
                 Object {
@@ -489,9 +489,9 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-three-items-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-three-items-example-7"
               role="tabpanel"
               style={
                 Object {
@@ -609,7 +609,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-0"
+            id="indicator-id-carousel-three-items-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -638,7 +638,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-1"
+            id="indicator-id-carousel-three-items-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -667,7 +667,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-three-items-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -786,9 +786,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-three-items-controlled-example-1"
               role="tabpanel"
               style={
                 Object {
@@ -856,9 +856,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-three-items-controlled-example-2"
               role="tabpanel"
               style={
                 Object {
@@ -926,9 +926,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-three-items-controlled-example-3"
               role="tabpanel"
               style={
                 Object {
@@ -996,9 +996,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-three-items-controlled-example-4"
               role="tabpanel"
               style={
                 Object {
@@ -1066,9 +1066,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-three-items-controlled-example-5"
               role="tabpanel"
               style={
                 Object {
@@ -1136,9 +1136,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-three-items-controlled-example-6"
               role="tabpanel"
               style={
                 Object {
@@ -1206,9 +1206,9 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-three-items-controlled-example-7"
               role="tabpanel"
               style={
                 Object {
@@ -1326,7 +1326,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             aria-controls="panel-0"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-0"
+            id="indicator-id-carousel-three-items-controlled-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1355,7 +1355,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             aria-controls="panel-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-carousel-three-items-controlled-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1384,7 +1384,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
             aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-three-items-controlled-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1474,9 +1474,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-five-items-example-1"
               role="tabpanel"
               style={
                 Object {
@@ -1544,9 +1544,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-five-items-example-2"
               role="tabpanel"
               style={
                 Object {
@@ -1614,9 +1614,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-five-items-example-3"
               role="tabpanel"
               style={
                 Object {
@@ -1684,9 +1684,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-five-items-example-4"
               role="tabpanel"
               style={
                 Object {
@@ -1754,9 +1754,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-five-items-example-5"
               role="tabpanel"
               style={
                 Object {
@@ -1824,9 +1824,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-five-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-five-items-example-6"
               role="tabpanel"
               style={
                 Object {
@@ -1894,9 +1894,9 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-five-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-five-items-example-7"
               role="tabpanel"
               style={
                 Object {
@@ -2014,7 +2014,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-0"
+            id="indicator-id-carousel-five-items-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2043,7 +2043,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-1"
+            id="indicator-id-carousel-five-items-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2103,9 +2103,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-default-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-default-example-1"
               role="tabpanel"
               style={
                 Object {
@@ -2164,9 +2164,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-default-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-default-example-2"
               role="tabpanel"
               style={
                 Object {
@@ -2225,9 +2225,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-default-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-default-example-3"
               role="tabpanel"
               style={
                 Object {
@@ -2286,9 +2286,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-default-example-3"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-default-example-4"
               role="tabpanel"
               style={
                 Object {
@@ -2347,9 +2347,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-default-example-4"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-default-example-5"
               role="tabpanel"
               style={
                 Object {
@@ -2408,9 +2408,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-default-example-5"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-default-example-6"
               role="tabpanel"
               style={
                 Object {
@@ -2469,9 +2469,9 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-default-example-6"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-default-example-7"
               role="tabpanel"
               style={
                 Object {
@@ -2549,7 +2549,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-0"
+            id="indicator-id-carousel-default-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2578,7 +2578,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-1"
+            id="indicator-id-carousel-default-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2607,7 +2607,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-default-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2636,7 +2636,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-default-example-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2665,7 +2665,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-carousel-default-example-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2694,7 +2694,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-carousel-default-example-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2723,7 +2723,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-carousel-default-example-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2812,9 +2812,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-default-with-auto-play-example-1"
               role="tabpanel"
               style={
                 Object {
@@ -2873,9 +2873,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-default-with-auto-play-example-2"
               role="tabpanel"
               style={
                 Object {
@@ -2934,9 +2934,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-default-with-auto-play-example-3"
               role="tabpanel"
               style={
                 Object {
@@ -2995,9 +2995,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-3"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-default-with-auto-play-example-4"
               role="tabpanel"
               style={
                 Object {
@@ -3056,9 +3056,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-4"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-default-with-auto-play-example-5"
               role="tabpanel"
               style={
                 Object {
@@ -3117,9 +3117,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-5"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-default-with-auto-play-example-6"
               role="tabpanel"
               style={
                 Object {
@@ -3178,9 +3178,9 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-6"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-default-with-auto-play-example-7"
               role="tabpanel"
               style={
                 Object {
@@ -3258,7 +3258,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-0"
+            id="indicator-id-carousel-default-with-auto-play-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3287,7 +3287,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-1"
+            id="indicator-id-carousel-default-with-auto-play-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3316,7 +3316,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-default-with-auto-play-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3345,7 +3345,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-default-with-auto-play-example-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3374,7 +3374,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-carousel-default-with-auto-play-example-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3403,7 +3403,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-carousel-default-with-auto-play-example-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3432,7 +3432,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
             aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-carousel-default-with-auto-play-example-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3523,9 +3523,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-default-with-navigation-example-1"
               role="tabpanel"
               style={
                 Object {
@@ -3584,9 +3584,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-default-with-navigation-example-2"
               role="tabpanel"
               style={
                 Object {
@@ -3645,9 +3645,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-default-with-navigation-example-3"
               role="tabpanel"
               style={
                 Object {
@@ -3706,9 +3706,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-3"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-default-with-navigation-example-4"
               role="tabpanel"
               style={
                 Object {
@@ -3767,9 +3767,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-4"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-default-with-navigation-example-5"
               role="tabpanel"
               style={
                 Object {
@@ -3828,9 +3828,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-5"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-default-with-navigation-example-6"
               role="tabpanel"
               style={
                 Object {
@@ -3889,9 +3889,9 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-6"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-default-with-navigation-example-7"
               role="tabpanel"
               style={
                 Object {
@@ -4000,7 +4000,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-0"
+            id="indicator-id-carousel-default-with-navigation-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4029,7 +4029,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-1"
+            id="indicator-id-carousel-default-with-navigation-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4058,7 +4058,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-default-with-navigation-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4087,7 +4087,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-default-with-navigation-example-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4116,7 +4116,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-carousel-default-with-navigation-example-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4145,7 +4145,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-carousel-default-with-navigation-example-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4174,7 +4174,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-carousel-default-with-navigation-example-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4276,9 +4276,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             >
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-1"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-0"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-1"
+                id="content-id-carousel-with-custom-items-example-1"
                 role="tabpanel"
                 style={
                   Object {
@@ -4333,9 +4333,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-2"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-0"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-2"
+                id="content-id-carousel-with-custom-items-example-2"
                 role="tabpanel"
                 style={
                   Object {
@@ -4390,9 +4390,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-3"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-0"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-3"
+                id="content-id-carousel-with-custom-items-example-3"
                 role="tabpanel"
                 style={
                   Object {
@@ -4447,9 +4447,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-4"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-1"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-4"
+                id="content-id-carousel-with-custom-items-example-4"
                 role="tabpanel"
                 style={
                   Object {
@@ -4504,9 +4504,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-5"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-1"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-5"
+                id="content-id-carousel-with-custom-items-example-5"
                 role="tabpanel"
                 style={
                   Object {
@@ -4561,9 +4561,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-6"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-1"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-6"
+                id="content-id-carousel-with-custom-items-example-6"
                 role="tabpanel"
                 style={
                   Object {
@@ -4618,9 +4618,9 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-7"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-2"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-7"
+                id="content-id-carousel-with-custom-items-example-7"
                 role="tabpanel"
                 style={
                   Object {
@@ -4725,7 +4725,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               aria-controls="panel-0"
               aria-selected={true}
               className="slds-carousel__indicator-action slds-is-active"
-              id="indicator-id-0"
+              id="indicator-id-carousel-with-custom-items-example-0"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4754,7 +4754,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               aria-controls="panel-1"
               aria-selected={false}
               className="slds-carousel__indicator-action"
-              id="indicator-id-1"
+              id="indicator-id-carousel-with-custom-items-example-1"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4783,7 +4783,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               aria-controls="panel-2"
               aria-selected={false}
               className="slds-carousel__indicator-action"
-              id="indicator-id-2"
+              id="indicator-id-carousel-with-custom-items-example-2"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}

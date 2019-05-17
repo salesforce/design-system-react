@@ -85,7 +85,7 @@ class CarouselIndicators extends React.Component {
 								ref={(component) => {
 									this[`indicator${index}`] = component;
 								}}
-								id={`indicator-id-${index}`}
+								id={`indicator-id-${props.carouselId}-${index}`}
 								className={indicatorActionClassName}
 								role="tab"
 								tabIndex={isSelectedPanel ? '0' : '-1'}
@@ -114,6 +114,10 @@ CarouselIndicators.defaultProps = {
 
 // ### Prop Types
 CarouselIndicators.propTypes = {
+	/**
+	 * Carousel HTML ID
+	 */
+	carouselId: PropTypes.string,
 	/**
 	 * CSS classes that are applied to the component
 	 */
