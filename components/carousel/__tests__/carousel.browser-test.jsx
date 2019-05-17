@@ -5,6 +5,8 @@ import { mount } from 'enzyme';
 import IconSettings from '../../icon-settings';
 import Carousel from '../../carousel';
 
+import KEYS from '../../../utilities/key-code';
+
 /* eslint-disable react/no-find-dom-node */
 
 const items = [
@@ -75,6 +77,7 @@ describe('SLDS Carousel', () => {
 	const defaultCarouselProps = {
 		hasAutoplay: true,
 		hasPreviousNextPanelNavigation: true,
+		id: 'test-carousel',
 		isInfinite: true,
 		items,
 	};
@@ -120,26 +123,26 @@ describe('SLDS Carousel', () => {
 			previousButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-7 a')
+					.find(`#content-id-${defaultCarouselProps.id}-7 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-6')
+					.find(`#indicator-id-${defaultCarouselProps.id}-6`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			previousButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-6 a')
+					.find(`#content-id-${defaultCarouselProps.id}-6 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-5')
+					.find(`#indicator-id-${defaultCarouselProps.id}-5`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -152,26 +155,26 @@ describe('SLDS Carousel', () => {
 			nextButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-2 a')
+					.find(`#content-id-${defaultCarouselProps.id}-2 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find(`#indicator-id-${defaultCarouselProps.id}-1`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			nextButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-3 a')
+					.find(`#content-id-${defaultCarouselProps.id}-3 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find(`#indicator-id-${defaultCarouselProps.id}-2`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -179,58 +182,62 @@ describe('SLDS Carousel', () => {
 
 		it('handles keyboard navigation correctly', () => {
 			handles.carousel.simulate('focus');
-			handles.carousel.simulate('keyDown', { keyCode: 39 });
+			handles.carousel.simulate('keyDown', { keyCode: KEYS.RIGHT });
 			expect(
 				handles.carousel
-					.find('#content-id-2 a')
+					.find(`#content-id-${defaultCarouselProps.id}-2 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find(`#indicator-id-${defaultCarouselProps.id}-1`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
-			handles.carousel.simulate('keyDown', { keyCode: 37 });
+			handles.carousel.simulate('keyDown', { keyCode: KEYS.LEFT });
 			expect(
 				handles.carousel
-					.find('#content-id-1 a')
+					.find(`#content-id-${defaultCarouselProps.id}-1 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-0')
+					.find(`#indicator-id-${defaultCarouselProps.id}-0`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 		});
 
 		it('handles indicator button presses correctly', () => {
-			handles.carousel.find('#indicator-id-2').simulate('click');
+			handles.carousel
+				.find(`#indicator-id-${defaultCarouselProps.id}-2`)
+				.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-3 a')
+					.find(`#content-id-${defaultCarouselProps.id}-3 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find(`#indicator-id-${defaultCarouselProps.id}-2`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
-			handles.carousel.find('#indicator-id-6').simulate('click');
+			handles.carousel
+				.find(`#indicator-id-${defaultCarouselProps.id}-6`)
+				.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-7 a')
+					.find(`#content-id-${defaultCarouselProps.id}-7 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-6')
+					.find(`#indicator-id-${defaultCarouselProps.id}-6`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -253,45 +260,45 @@ describe('SLDS Carousel', () => {
 			previousButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-7 a')
+					.find(`#content-id-${defaultCarouselProps.id}-7 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			previousButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-6 a')
+					.find(`#content-id-${defaultCarouselProps.id}-6 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-5 a')
+					.find(`#content-id-${defaultCarouselProps.id}-5 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-4 a')
+					.find(`#content-id-${defaultCarouselProps.id}-4 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			previousButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-3 a')
+					.find(`#content-id-${defaultCarouselProps.id}-3 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-2 a')
+					.find(`#content-id-${defaultCarouselProps.id}-2 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-1 a')
+					.find(`#content-id-${defaultCarouselProps.id}-1 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -304,63 +311,63 @@ describe('SLDS Carousel', () => {
 			nextButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-4 a')
+					.find(`#content-id-${defaultCarouselProps.id}-4 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-5 a')
+					.find(`#content-id-${defaultCarouselProps.id}-5 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-6 a')
+					.find(`#content-id-${defaultCarouselProps.id}-6 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
-					.html()
-					.search(tabIndexRegex) >= 0
-			).to.eql(true);
-			nextButton.simulate('click');
-			expect(
-				handles.carousel
-					.find('#content-id-7 a')
-					.html()
-					.search(tabIndexRegex) >= 0
-			).to.eql(true);
-			expect(
-				handles.carousel
-					.find('#indicator-id-2')
+					.find(`#indicator-id-${defaultCarouselProps.id}-1`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			nextButton.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-1 a')
+					.find(`#content-id-${defaultCarouselProps.id}-7 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-2 a')
+					.find(`#indicator-id-${defaultCarouselProps.id}-2`)
+					.html()
+					.search(tabIndexRegex) >= 0
+			).to.eql(true);
+			nextButton.simulate('click');
+			expect(
+				handles.carousel
+					.find(`#content-id-${defaultCarouselProps.id}-1 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-3 a')
+					.find(`#content-id-${defaultCarouselProps.id}-2 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-0')
+					.find(`#content-id-${defaultCarouselProps.id}-3 a`)
+					.html()
+					.search(tabIndexRegex) >= 0
+			).to.eql(true);
+			expect(
+				handles.carousel
+					.find(`#indicator-id-${defaultCarouselProps.id}-0`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -368,94 +375,98 @@ describe('SLDS Carousel', () => {
 
 		it('handles keyboard navigation correctly', () => {
 			handles.carousel.simulate('focus');
-			handles.carousel.simulate('keyDown', { keyCode: 39 });
+			handles.carousel.simulate('keyDown', { keyCode: KEYS.RIGHT });
 			expect(
 				handles.carousel
-					.find('#content-id-4 a')
+					.find(`#content-id-${defaultCarouselProps.id}-4 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-5 a')
+					.find(`#content-id-${defaultCarouselProps.id}-5 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-6 a')
+					.find(`#content-id-${defaultCarouselProps.id}-6 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find(`#indicator-id-${defaultCarouselProps.id}-1`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
-			handles.carousel.simulate('keyDown', { keyCode: 37 });
+			handles.carousel.simulate('keyDown', { keyCode: KEYS.LEFT });
 			expect(
 				handles.carousel
-					.find('#content-id-1 a')
-					.html()
-					.search(tabIndexRegex) >= 0
-			).to.eql(true);
-			expect(
-				handles.carousel
-					.find('#content-id-2 a')
+					.find(`#content-id-${defaultCarouselProps.id}-1 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-3 a')
+					.find(`#content-id-${defaultCarouselProps.id}-2 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-0')
+					.find(`#content-id-${defaultCarouselProps.id}-3 a`)
+					.html()
+					.search(tabIndexRegex) >= 0
+			).to.eql(true);
+			expect(
+				handles.carousel
+					.find(`#indicator-id-${defaultCarouselProps.id}-0`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 		});
 
 		it('handles indicator button presses correctly', () => {
-			handles.carousel.find('#indicator-id-2').simulate('click');
+			handles.carousel
+				.find(`#indicator-id-${defaultCarouselProps.id}-2`)
+				.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-7 a')
+					.find(`#content-id-${defaultCarouselProps.id}-7 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-2')
+					.find(`#indicator-id-${defaultCarouselProps.id}-2`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
-			handles.carousel.find('#indicator-id-1').simulate('click');
+			handles.carousel
+				.find(`#indicator-id-${defaultCarouselProps.id}-1`)
+				.simulate('click');
 			expect(
 				handles.carousel
-					.find('#content-id-4 a')
-					.html()
-					.search(tabIndexRegex) >= 0
-			).to.eql(true);
-			expect(
-				handles.carousel
-					.find('#content-id-5 a')
+					.find(`#content-id-${defaultCarouselProps.id}-4 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#content-id-6 a')
+					.find(`#content-id-${defaultCarouselProps.id}-5 a`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
 			expect(
 				handles.carousel
-					.find('#indicator-id-1')
+					.find(`#content-id-${defaultCarouselProps.id}-6 a`)
+					.html()
+					.search(tabIndexRegex) >= 0
+			).to.eql(true);
+			expect(
+				handles.carousel
+					.find(`#indicator-id-${defaultCarouselProps.id}-1`)
 					.html()
 					.search(tabIndexRegex) >= 0
 			).to.eql(true);
@@ -494,7 +505,7 @@ describe('SLDS Carousel', () => {
 
 		it('calls onRequestPanelChange correctly', () => {
 			handles.carousel.simulate('focus');
-			handles.carousel.simulate('keyDown', { keyCode: 39 });
+			handles.carousel.simulate('keyDown', { keyCode: KEYS.RIGHT });
 			expect(requestPanelChangeObject !== undefined).to.eql(true);
 			expect(typeof requestPanelChangeObject.event).to.eql('object');
 			expect(typeof requestPanelChangeObject.data).to.eql('object');
@@ -503,7 +514,9 @@ describe('SLDS Carousel', () => {
 		});
 
 		it('calls onItemClick correctly', () => {
-			handles.carousel.find('#content-id-1 a').simulate('click');
+			handles.carousel
+				.find(`#content-id-${defaultCarouselProps.id}-1 a`)
+				.simulate('click');
 			expect(itemClickObject !== undefined).to.eql(true);
 			expect(typeof itemClickObject.event).to.eql('object');
 			expect(typeof itemClickObject.data).to.eql('object');
