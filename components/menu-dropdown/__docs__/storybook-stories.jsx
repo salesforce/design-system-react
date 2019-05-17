@@ -253,6 +253,24 @@ storiesOf(MENU_DROPDOWN, module)
 			options,
 		})
 	)
+	.add('Base with icon, dropdown right-aligned, right-to-left', () =>
+		makeRtl(
+			getDropdown({
+				align: 'right',
+				label: 'Dropdown Click',
+				iconCategory: 'utility',
+				iconName: 'down',
+				iconPosition: 'right',
+				onClick: (...rest) => {
+					action('Clicked')(...rest);
+				},
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				options
+			})
+		)
+	)
 	.add('Base with icon, dropdown left-aligned', () =>
 		getDropdown({
 			align: 'left',
