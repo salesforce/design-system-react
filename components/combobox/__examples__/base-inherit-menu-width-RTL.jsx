@@ -1,10 +1,11 @@
-/* eslint-disable no-console, react/prop-types */
+/* eslint-disable no-console, react/prop-types, react/jsx-pascal-case */
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import IconSettings from '~/components/icon-settings';
-import DirectionSettings from '~/components/utilities/private/direction/direction-settings';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '~/components/utilities/direction';
 
 const accounts = [
 	{
@@ -74,7 +75,7 @@ class Example extends React.Component {
 		return (
 			<div dir="rtl">
 				<IconSettings iconPath="/assets/icons">
-					<DirectionSettings.Provider value="rtl">
+					<UNSAFE_DirectionSettings.Provider value="rtl">
 						<Combobox
 							isOpen
 							id="combobox-base-inherit-menu-width"
@@ -148,7 +149,7 @@ class Example extends React.Component {
 							selection={this.state.selection}
 							value={this.state.inputValue}
 						/>
-					</DirectionSettings.Provider>
+					</UNSAFE_DirectionSettings.Provider>
 				</IconSettings>
 			</div>
 		);

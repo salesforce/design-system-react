@@ -290,3 +290,6 @@ export DynamicIcon from './dynamic-icon';
 
 // Library utilities
 export log from '../utilities/log';
+
+// eslint-disable-next-line camelcase
+export UNSAFE_DirectionSettings from './utilities/direction';

@@ -1,7 +1,8 @@
-/* eslint-disable no-console, react/prop-types */
+/* eslint-disable no-console, react/prop-types, react/jsx-pascal-case */
 import React from 'react';
 import Combobox from '~/components/combobox';
-import DirectionSettings from '~/components/utilities/private/direction/direction-settings';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '~/components/utilities/direction';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
@@ -58,7 +59,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<DirectionSettings.Provider value="rtl">
+				<UNSAFE_DirectionSettings.Provider value="rtl">
 					<div dir="rtl" style={{ width: '300px' }}>
 						<Combobox
 							id="combobox-readonly-single"
@@ -88,7 +89,7 @@ class Example extends React.Component {
 							variant="readonly"
 						/>
 					</div>
-				</DirectionSettings.Provider>
+				</UNSAFE_DirectionSettings.Provider>
 			</IconSettings>
 		);
 	}
