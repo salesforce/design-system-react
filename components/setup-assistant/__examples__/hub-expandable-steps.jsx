@@ -49,57 +49,10 @@ class Example extends React.Component {
 			expandedSteps: { 1: true },
 			stepTwoCompletedSubSteps: [],
 			stepTwoCompletedSubStepsStatus: [false, false, false],
-			stepTwoSelectedSubStep: this.subSteps[0],
 			stepTwoProgress: 0,
 		};
 
-		this.subSteps = [
-			{
-				id: 0,
-				label: 'Turn on Lightning for all users.',
-				onRenderSetupAssistantAction: (
-					<Checkbox
-						onChange={(event) => {
-							this.toggleSubStepCompletion(0, event.target.checked);
-						}}
-						variant="toggle"
-					/>
-				),
-			},
-			{
-				id: 1,
-				label:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				onRenderSetupAssistantAction: (
-					<Button
-						onClick={() => [
-							this.toggleSubStepCompletion(
-								1,
-								!this.state.stepTwoCompletedSubStepsStatus[1]
-							),
-						]}
-						label="View in Trailhead"
-						variant="link"
-					/>
-				),
-			},
-			{
-				id: 2,
-				label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
-				onRenderSetupAssistantAction: (
-					<Button
-						onClick={() => [
-							this.toggleSubStepCompletion(
-								2,
-								!this.state.stepTwoCompletedSubStepsStatus[2]
-							),
-						]}
-						label="Add Users"
-						variant="outline-brand"
-					/>
-				),
-			},
-		];
+		this.state.stepTwoSelectedSubStep = this.getSubSteps()[0];
 	}
 
 	getSteps() {
@@ -133,7 +86,7 @@ class Example extends React.Component {
 					<ProgressIndicator
 						completedSteps={this.state.stepTwoCompletedSubSteps}
 						orientation="vertical"
-						steps={this.subSteps}
+						steps={this.getSubSteps()}
 						selectedStep={this.state.stepTwoSelectedSubStep}
 						variant="setup-assistant"
 					/>
@@ -201,15 +154,71 @@ class Example extends React.Component {
 		];
 	}
 
+	getSubSteps() {
+		return [
+			{
+				id: 0,
+				label: 'Turn on Lightning for all users.',
+				onRenderSetupAssistantAction: (
+					<Checkbox
+						onChange={(event) => {
+							this.toggleSubStepCompletion(0, event.target.checked);
+						}}
+						variant="toggle"
+					/>
+				),
+			},
+			{
+				id: 1,
+				label:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				onRenderSetupAssistantAction: (
+					<Button
+						disabled={!this.state.stepTwoCompletedSubStepsStatus[0]}
+						onClick={() => [
+							this.toggleSubStepCompletion(
+								1,
+								!this.state.stepTwoCompletedSubStepsStatus[1]
+							),
+						]}
+						label="View in Trailhead"
+						variant="link"
+					/>
+				),
+			},
+			{
+				id: 2,
+				label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
+				onRenderSetupAssistantAction: (
+					<Button
+						disabled={
+							!this.state.stepTwoCompletedSubStepsStatus[0] ||
+							!this.state.stepTwoCompletedSubStepsStatus[1]
+						}
+						onClick={() => [
+							this.toggleSubStepCompletion(
+								2,
+								!this.state.stepTwoCompletedSubStepsStatus[2]
+							),
+						]}
+						label="Add Users"
+						variant="outline-brand"
+					/>
+				),
+			},
+		];
+	}
+
 	toggleSubStepCompletion(subStepId, completed) {
 		const stepTwoCompletedSubStepsStatus = this.state
 			.stepTwoCompletedSubStepsStatus;
+		const subSteps = this.getSubSteps();
 		let stepsCompleted = 0;
 		let stepTwoCompletedSubSteps = this.state.stepTwoCompletedSubSteps;
 		let stepTwoSelectedSubStep;
 
 		if (completed) {
-			stepTwoCompletedSubSteps.push(this.subSteps[subStepId]);
+			stepTwoCompletedSubSteps.push(subSteps[subStepId]);
 			stepTwoCompletedSubStepsStatus[subStepId] = true;
 		} else {
 			stepTwoCompletedSubSteps = stepTwoCompletedSubSteps.filter(
@@ -224,14 +233,14 @@ class Example extends React.Component {
 			}
 
 			if (!stepTwoCompletedSubStepsStatus[i] && !stepTwoSelectedSubStep) {
-				stepTwoSelectedSubStep = this.subSteps[i];
+				stepTwoSelectedSubStep = subSteps[i];
 			}
 		}
 
 		this.setState({
 			stepTwoCompletedSubSteps,
 			stepTwoCompletedSubStepsStatus,
-			stepTwoProgress: Math.ceil(stepsCompleted / this.subSteps.length * 100),
+			stepTwoProgress: Math.ceil(stepsCompleted / subSteps.length * 100),
 			stepTwoSelectedSubStep,
 		});
 	}
