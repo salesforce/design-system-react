@@ -17,11 +17,11 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
  */
 const CarouselItem = (props) => (
 	<div
-		id={`content-id-${props.id}`}
+		id={`content-id-${props.carouselId}-${props.id}`}
 		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
-		aria-labelledby={`indicator-id-${props.panelIndex}`}
+		aria-labelledby={`indicator-id-${props.carouselId}-${props.panelIndex}`}
 		style={{
 			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
@@ -76,6 +76,10 @@ CarouselItem.propTypes = {
 	 * Label of the button to be displayed. If not provided, no button will be rendered.
 	 */
 	buttonLabel: PropTypes.string,
+	/**
+	 * Carousel HTML ID
+	 */
+	carouselId: PropTypes.string,
 	/**
 	 * CSS classes that are applied to the component
 	 */

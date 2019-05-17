@@ -432,6 +432,7 @@ class Carousel extends React.Component {
 							>
 								{this.props.items.map((item, index) => (
 									<CarouselItem
+										carouselId={id}
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
@@ -474,6 +475,7 @@ class Carousel extends React.Component {
 					</div>
 					<CarouselIndicators
 						noOfIndicators={this.nrOfPanels}
+						carouselId={id}
 						currentIndex={currentPanel}
 						hasFocus={this.state.indicatorsHaveFocus}
 						onBlur={this.onIndicatorBlur}
