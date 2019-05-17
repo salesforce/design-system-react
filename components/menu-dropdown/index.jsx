@@ -4,6 +4,9 @@
 // ### onClickOutside
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
+import LanguageDirection from '../utilities/direction/private/language-direction';
 import MenuDropdown from './menu-dropdown';
 
-export default onClickOutside(MenuDropdown);
+export default LanguageDirection(
+	onClickOutside(MenuDropdown)
+);

@@ -471,11 +471,9 @@ class Combobox extends React.Component {
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
-		const alignment =
-			this.props.direction === DIRECTIONS.RTL ? 'bottom right' : 'bottom left';
 		return !this.props.disabled && this.getIsOpen() ? (
 			<Dialog
-				align={alignment}
+				align="bottom left"
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}

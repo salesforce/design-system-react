@@ -77,7 +77,6 @@ class Example extends React.Component {
 				<IconSettings iconPath="/assets/icons">
 					<UNSAFE_DirectionSettings.Provider value="rtl">
 						<Combobox
-							isOpen
 							id="combobox-base-inherit-menu-width"
 							disabled={this.props.disabled}
 							inheritWidthOf="menu"
