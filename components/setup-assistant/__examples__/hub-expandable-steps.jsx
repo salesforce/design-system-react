@@ -203,8 +203,8 @@ class Example extends React.Component {
 
 	toggleSubStepCompletion (subStepId, completed) {
 		const stepTwoCompletedSubStepsStatus = this.state.stepTwoCompletedSubStepsStatus;
+		let stepsCompleted = 0;
 		let stepTwoCompletedSubSteps = this.state.stepTwoCompletedSubSteps;
-		let stepTwoProgress = 0;
 		let stepTwoSelectedSubStep;
 
 		if (completed) {
@@ -217,7 +217,7 @@ class Example extends React.Component {
 
 		for (let i = 0; i < stepTwoCompletedSubStepsStatus.length; i++) {
 			if (stepTwoCompletedSubStepsStatus[i]) {
-				stepTwoProgress += 33;
+				stepsCompleted++;
 			}
 
 			if (!stepTwoCompletedSubStepsStatus[i] && !stepTwoSelectedSubStep) {
@@ -228,7 +228,7 @@ class Example extends React.Component {
 		this.setState({
 			stepTwoCompletedSubSteps,
 			stepTwoCompletedSubStepsStatus,
-			stepTwoProgress: stepTwoProgress >= 99 ? 100 : stepTwoProgress,
+			stepTwoProgress: Math.ceil((stepsCompleted / this.subSteps.length) * 100),
 			stepTwoSelectedSubStep
 		});
 	}
