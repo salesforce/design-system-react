@@ -5,15 +5,14 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-dom/test-utils';
 
 import IconSettings from '../../icon-settings';
+import AppLauncherLink from '../../app-launcher/link';
 import AppLauncherTile from '../../app-launcher/tile';
-import AppLauncherSection from '../../app-launcher/section';
+import AppLauncherExpandableSection from '../../app-launcher/expandable-section';
 
 const expect = chai.expect;
 const should = chai.should();
 
-const { Simulate } = TestUtils;
-
-describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
+describe('SLDS APP LAUNCHER EXPANDABLE SECTION *******************************************', () => {
 	const handles = {
 		section: null,
 	};
@@ -27,9 +26,14 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		<AppLauncherTile key="qwer" title="Support Cloud" />,
 	];
 
+	const linkChildren = [
+		<AppLauncherLink key="asdf">Accounts</AppLauncherLink>,
+		<AppLauncherLink key="qwer">Ammnouncements</AppLauncherLink>,
+	];
+
 	const createSection = (props, children) =>
 		React.createElement(
-			AppLauncherSection,
+			AppLauncherExpandableSection,
 			assign({}, defaultSectionProps, props),
 			children
 		);
@@ -42,25 +46,24 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		);
 	}
 
-	describe('App Launcher Section (toggleable)', () => {
-		let onToggleClick;
+	describe('App Launcher Expandable Section', () => {
+		let onToggleOpen;
 
 		beforeEach(() => {
-			onToggleClick = sinon.spy();
+			onToggleOpen = sinon.spy();
 
 			mountSection({
-				assistiveText: { collapseSection: 'Collapse Section' },
-				onToggleClick,
+				assistiveText: { toggleSection: 'Collapse Section' },
+				onToggleOpen,
 				title: 'ALL THE ITEMS!',
-				toggleable: true,
 			});
 		});
 
-		it('modal section exists', () => {
+		it('section exists', () => {
 			should.exist(handles.section);
 		});
 
-		it('modal section has "slds-is-open" class when open', () => {
+		it('section has "slds-is-open" class when open', () => {
 			expect(handles.section.find('.slds-section')).to.have.className(
 				'slds-is-open'
 			);
@@ -82,68 +85,60 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('renders li with proper classes', () => {
 			const li = handles.section.find('li').at(0);
-			expect(li).to.have.className('slds-col_padded');
-			expect(li).to.have.className('slds-grow-none');
+			expect(li).to.have.className('slds-p-horizontal_small');
 			expect(li).to.have.className('slds-size_1-of-1');
 			expect(li).to.have.className('slds-medium-size_1-of-3');
 		});
 
 		it('renders custom section title', () => {
-			expect(handles.section.find('h3').text()).to.equal('ALL THE ITEMS!');
-		});
-
-		it('renders custom toggle assistve text', () => {
-			expect(handles.section.find('.slds-assistive-text').text()).to.equal(
-				'Collapse Section'
+			expect(handles.section.find('h3 .slds-truncate').text()).to.equal(
+				'ALL THE ITEMS!'
 			);
 		});
 
+		it('renders custom toggle assistve text', () => {
+			expect(
+				handles.section.find('h3 span.slds-assistive-text').text()
+			).to.equal('Collapse Section');
+		});
+
 		it('toggling section fires callback', () => {
-			handles.section.find('.slds-button').simulate('click');
-			expect(onToggleClick.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
+			handles.section.find('h3 button.slds-button').simulate('click');
+			expect(onToggleOpen.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});
 	});
 
-	describe('App Launcher Section (not toggleable)', () => {
+	describe('App Launcher Expandable Section (non-collapsible) with links', () => {
 		beforeEach(() => {
-			mountSection();
+			mountSection({ nonCollapsible: true }, linkChildren);
 		});
 
-		it('does not render toggle if toggleable is false', () => {
+		it('does not render toggle if non-collapsible is true', () => {
 			should.not.exist(
 				handles.section.find(
 					'.slds-button .slds-button_icon .slds-m-right_small'
 				)
 			);
 		});
+
+		it('renders li with proper classes', () => {
+			const li = handles.section.find('li').at(0);
+			expect(li).to.have.className('slds-col_padded');
+			expect(li).to.have.className('slds-p-vertical_xx-small');
+			expect(li).to.have.className('slds-size_1-of-5');
+		});
 	});
 
-	describe('App Launcher Section (closed)', () => {
+	describe('App Launcher Expandable Section (closed)', () => {
 		beforeEach(() => {
 			mountSection({
-				toggleable: true,
 				isOpen: false,
 			});
 		});
 
-		it('modal section has "slds-is-close" class when closed', () => {
-			should.exist(handles.section.find('.slds-is-close'));
-		});
-	});
-
-	describe('App Launcher Section (small)', () => {
-		beforeEach(() => {
-			mountSection(
-				{},
-				<AppLauncherTile size="small" title="Marketing Clout" />
-			);
-		});
-
-		it('renders li with proper classes for small tiles', () => {
-			should.exist(
-				handles.section.find(
-					'.slds-col_padded.slds-grow-none.slds-size_xx-small'
-				)
+		it('section does not have "slds-is-open" class when closed', () => {
+			expect(handles.section.find('.slds-section.slds-is-open').length).to.eql(
+				0
 			);
 		});
 	});

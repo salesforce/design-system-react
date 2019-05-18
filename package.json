@@ -233,12 +233,15 @@
 		},
 		{
 			"component": "app-launcher",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "App Launcher",
-			"SLDS-component-path": "/components/app-launcher/#flavor-default",
+			"SLDS-component-path": "/components/app-launcher",
 			"dependencies": [
 				{
-					"component": "section"
+					"component": "expandable-section"
+				},
+				{
+					"component": "link"
 				},
 				{
 					"component": "tile"
@@ -417,13 +420,20 @@
 			"SLDS-component-path": "/components/datepickers",
 			"url-slug": "date-pickers"
 		},
-		{
-			"component": "dynamic-icon",
-			"status": "prod",
-			"display-name": "Dynamic Icon",
-			"SLDS-component-path": "/components/dynamic-icon",
-			"url-slug": "dynamic-icon"
-		},
+        {
+            "component": "dynamic-icon",
+            "status": "prod",
+            "display-name": "Dynamic Icon",
+            "SLDS-component-path": "/components/dynamic-icon",
+            "url-slug": "dynamic-icon"
+        },
+        {
+            "component": "expandable-section",
+            "status": "prod",
+            "display-name": "Expandable Section",
+            "SLDS-component-path": "/components/expandable-section",
+            "url-slug": "expandable-section"
+        },
 		{
 			"component": "filter",
 			"status": "prototype",

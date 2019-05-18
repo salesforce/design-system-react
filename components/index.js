@@ -22,11 +22,14 @@ export AlertContainer from './alert/container';
 export SLDSAppLauncher from './app-launcher';
 export AppLauncher from './app-launcher';
 
+export SLDSAppLauncherExpandableSection from './app-launcher/expandable-section';
+export AppLauncherExpandableSection from './app-launcher/expandable-section';
+
+export SLDSAppLauncherLink from './app-launcher/link';
+export AppLauncherLink from './app-launcher/link';
+
 export SLDSAppLauncherTile from './app-launcher/tile';
 export AppLauncherTile from './app-launcher/tile';
-
-export SLDSAppLauncherSection from './app-launcher/section';
-export AppLauncherSection from './app-launcher/section';
 
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
@@ -85,6 +88,9 @@ export ColorPicker from './color-picker';
 
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
+
+export SLDSExpandableSection from './expandable-section';
+export ExpandableSection from './expandable-section';
 
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';

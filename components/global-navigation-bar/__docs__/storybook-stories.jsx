@@ -15,7 +15,7 @@ import GlobalNavigationBarLabel from '../../global-navigation-bar/label';
 import GlobalNavigationBarButton from '../../global-navigation-bar/button';
 
 import AppLauncher from '../../app-launcher';
-import AppLauncherSection from '../../app-launcher/section';
+import AppLauncherExpandableSection from '../../app-launcher/expandable-section';
 import AppLauncherTile from '../../app-launcher/tile';
 
 import Default from '../__examples__/default';
@@ -89,14 +89,14 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				id="app-launcher-trigger"
 				triggerName="App Name"
 			>
-				<AppLauncherSection title="All Items">
+				<AppLauncherExpandableSection title="All Items">
 					<AppLauncherTile
 						title="Marketing Cloud"
 						iconText="MC"
 						description="Send emails, track emails, read emails! Emails!"
 						onClick={action('Tile clicked!')}
 					/>
-				</AppLauncherSection>
+				</AppLauncherExpandableSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
@@ -150,14 +150,14 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
 			>
-				<AppLauncherSection title="All Items">
+				<AppLauncherExpandableSection title="All Items">
 					<AppLauncherTile
 						title="Marketing Cloud"
 						iconText="MC"
 						description="Send emails, track emails, read emails! Emails!"
 						onClick={action('Tile clicked!')}
 					/>
-				</AppLauncherSection>
+				</AppLauncherExpandableSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
@@ -222,14 +222,14 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (
 				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
 			>
-				<AppLauncherSection title="All Items">
+				<AppLauncherExpandableSection title="All Items">
 					<AppLauncherTile
 						title="Marketing Cloud"
 						iconText="MC"
 						description="Send emails, track emails, read emails! Emails!"
 						onClick={action('Tile clicked!')}
 					/>
-				</AppLauncherSection>
+				</AppLauncherExpandableSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
@@ -297,14 +297,14 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 				id="app-launcher-trigger"
 				triggerName="App Name"
 			>
-				<AppLauncherSection title="All Items">
+				<AppLauncherExpandableSection title="All Items">
 					<AppLauncherTile
 						title="Marketing Cloud"
 						iconText="MC"
 						description="Send emails, track emails, read emails! Emails!"
 						onClick={action('Tile clicked!')}
 					/>
-				</AppLauncherSection>
+				</AppLauncherExpandableSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>

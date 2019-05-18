@@ -329,8 +329,15 @@
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherExpandableSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherExpandableSection>\n\t<AppLauncherExpandableSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherExpandableSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
             {
                 "name": "openAppLauncher",
                 "docblock": null,
@@ -397,7 +404,14 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s"
+                "description": "One or more `<AppLauncherExpandableSection />`s, each containing one or more `<AppLauncherTile />`s or `<AppLauncherLink />`s"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The app launcher id. If not provided, one will be generated for accessibility"
             },
             "isOpen": {
                 "type": {
@@ -480,14 +494,181 @@
         },
         "route": "app-launcher",
         "display-name": "App Launcher",
-        "SLDS-component-path": "/components/app-launcher/#flavor-default",
+        "SLDS-component-path": "/components/app-launcher",
         "dependencies": [
             {
-                "section": {
-                    "description": "App Launcher Sections allow users to categorize App Tiles as well as toggle their display",
+                "expandable-section": {
+                    "description": "App Launcher Sections allow users to categorize App Tiles & Links as well as toggle their display. It is a superset of components/expandable-section with content formatting.\nAll Expandable Section props are compatible with props passed to this component.",
                     "methods": [
                         {
                             "name": "toggleOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                },
+                                {
+                                    "name": "data",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "toggleSection": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section"
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Contents of the section"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Class names to be added to the `slds-section` classed node"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Unique identifier for the expandable section. The id is automatically generated if not provided"
+                        },
+                        "isOpen": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Specifies whether the section is expanded or collapsed. If not provided, component will use its own state to manage this itself"
+                        },
+                        "nonCollapsible": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Specifies whether the section can be expanded or collapsed. Defaults to `false`"
+                        },
+                        "onToggleOpen": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback for when the section is expanded or collapsed. Passes event object and data object with `isOpen` bool."
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": true,
+                            "description": "The title for the section"
+                        }
+                    },
+                    "name": "expandable-section",
+                    "source": "/components/app-launcher/expandable-section.jsx"
+                }
+            },
+            {
+                "link": {
+                    "description": "App Launcher Link component creates simple links to be used in \"All Items\" sections",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Contents of the link"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Classes to be applied to the link"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The `href` attribute of the link. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback for when the link is clicked. Passes back event and data object with href prop. Prevents click from changing browser's location if set."
+                        },
+                        "search": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Text used to highlight content in link"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The title for the link. If not provided it will attempt to use child content if that content is a string."
+                        }
+                    },
+                    "name": "link",
+                    "source": "/components/app-launcher/link.jsx"
+                }
+            },
+            {
+                "tile": {
+                    "description": "App Launcher Tiles provide information and links to a user's apps",
+                    "methods": [
+                        {
+                            "name": "handleClick",
                             "docblock": null,
                             "modifiers": [],
                             "params": [
@@ -504,132 +685,16 @@
                             "type": {
                                 "name": "shape",
                                 "value": {
-                                    "collapseSection": {
+                                    "dragIconText": {
                                         "name": "string",
                                         "required": false
                                     }
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "description": "**Assistive text for accessibility.**\n* `dragIconText`: Text that describes the purpose of the drag handle icon.",
                             "defaultValue": {
-                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
-                                "computed": false
-                            }
-                        },
-                        "title": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": true,
-                            "description": "The title for this section of apps"
-                        },
-                        "toggleable": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Allows the user to show/hide the section"
-                        },
-                        "children": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": true,
-                            "description": "An array of applications to display"
-                        },
-                        "isOpen": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Controls the open/closed state of the section"
-                        },
-                        "onToggleClick": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "Callback for when section is toggled. Passes \"isOpen\" bool. Forces `toggleable` to true"
-                        }
-                    },
-                    "name": "section",
-                    "source": "/components/app-launcher/section.jsx"
-                }
-            },
-            {
-                "tile": {
-                    "description": "App Launcher Tiles provide information and links to a user's apps",
-                    "methods": [],
-                    "props": {
-                        "title": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": true,
-                            "description": "App name for the tile's title."
-                        },
-                        "size": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'default'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'small'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "Size of the rendered tile.",
-                            "defaultValue": {
-                                "value": "'default'",
-                                "computed": false
-                            }
-                        },
-                        "description": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The description of the app. Not visible on small tiles."
-                        },
-                        "descriptionHeading": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Heading for app description"
-                        },
-                        "href": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
-                            "defaultValue": {
-                                "value": "'javascript:void(0);'",
-                                "computed": false
-                            }
-                        },
-                        "isOpenTooltip": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Open the More Tooltip"
-                        },
-                        "moreLabel": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The localized text for the \"More information\" tooltip.",
-                            "defaultValue": {
-                                "value": "' More'",
+                                "value": "{\n    dragIconText: 'Reorder',\n}",
                                 "computed": false
                             }
                         },
@@ -651,12 +716,37 @@
                             "required": false,
                             "description": "Class names to be added to the tile."
                         },
-                        "onClick": {
+                        "description": {
                             "type": {
-                                "name": "func"
+                                "name": "string"
                             },
                             "required": false,
-                            "description": "Function that will be executed when clicking on a tile"
+                            "description": "The description of the app. Not visible on small tiles."
+                        },
+                        "descriptionHeading": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Heading for app description. NOTE: this prop is DEPRECATED and use should be avoided"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "iconBackgroundColor": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Background color to be used on the icon. Only applied if iconNode is undefined"
                         },
                         "iconNode": {
                             "type": {
@@ -672,12 +762,44 @@
                             "required": false,
                             "description": "Text to be used as an icon. Only renders if iconNode is undefined"
                         },
+                        "isOpenTooltip": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Open the More Tooltip"
+                        },
+                        "moreLabel": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The localized text for the \"More information\" tooltip.",
+                            "defaultValue": {
+                                "value": "' More'",
+                                "computed": false
+                            }
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that will be executed when clicking on a tile"
+                        },
                         "search": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
                             "description": "Text used to highlight content in app tiles"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": true,
+                            "description": "App name for the tile's title."
                         }
                     },
                     "name": "tile",
@@ -5842,6 +5964,117 @@
         "SLDS-component-path": "/components/dynamic-icon",
         "dependencies": []
     },
+    "expandable-section": {
+        "description": "Toggle visibility of section content with the Expandable Section",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "toggleOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "toggleSection": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section",
+                "defaultValue": {
+                    "value": "{\n    toggleSection: 'Toggle visibility of section',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Contents of the section"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the `slds-section` classed node"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the expandable section. The id is automatically generated if not provided"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether the section is expanded or collapsed. If not provided, component will use its own state to manage this itself"
+            },
+            "nonCollapsible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether the section can be expanded or collapsed. Defaults to `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onToggleOpen": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback for when the section is expanded or collapsed. Passes event object and data object with `isOpen` bool."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "The title for the section"
+            }
+        },
+        "route": "expandable-section",
+        "display-name": "Expandable Section",
+        "SLDS-component-path": "/components/expandable-section",
+        "dependencies": []
+    },
     "filter": {
         "description": "A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [
@@ -9346,6 +9579,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "dialogLabelledBy": {
+                            "name": "string",
+                            "required": false
+                        },
                         "closeButton": {
                             "name": "string",
                             "required": false
@@ -9353,9 +9590,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
+                    "value": "{\n    dialogLabel: '',\n    dialogLabelledBy: '',\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -9365,6 +9602,24 @@
                 },
                 "required": true,
                 "description": "Modal content."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the modal `section` node classed `.slds-modal` and the parent of `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "containerClassName": {
                 "type": {
@@ -9382,7 +9637,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+                "description": "Custom CSS classes for the modal's container. This is the child element of `.slds-modal` with class `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "contentClassName": {
                 "type": {
@@ -9476,6 +9731,13 @@
                 },
                 "required": false,
                 "description": "Adds CSS classes to the container surrounding the modal header and the close button. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the modal. The id is automatically generated if not provided"
             },
             "isOpen": {
                 "type": {
