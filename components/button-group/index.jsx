@@ -10,7 +10,7 @@ import classNames from 'classnames';
 
 import assign from 'lodash.assign';
 
-import { BUTTON_GROUP } from '../../utilities/constants';
+import { BUTTON_GROUP, POPOVER_TOOLTIP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -58,7 +58,10 @@ const ButtonGroup = (props) => {
 	if (zeroIndexLength > 0) {
 		children = React.Children.map(props.children, (child, index) => {
 			let newChild;
-			if (index === zeroIndexLength) {
+			if (
+				index === zeroIndexLength &&
+				child.type.displayName === POPOVER_TOOLTIP
+			) {
 				newChild = React.cloneElement(child, {
 					triggerClassName: 'slds-button_last',
 				});
