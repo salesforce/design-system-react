@@ -35,10 +35,6 @@ const propTypes = {
 		icon: PropTypes.string,
 	}),
 	/**
-	 * Class names to be applied to Avatar component.
-	 */
-	className: PropTypes.string,
-	/**
 	 * Alt attribute to be applied to image (base case) element.
 	 */
 	imgAlt: PropTypes.string,

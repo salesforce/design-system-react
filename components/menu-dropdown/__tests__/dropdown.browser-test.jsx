@@ -124,7 +124,9 @@ describe('SLDSMenuDropdown', function() {
 
 	describe('Styling', () => {
 		beforeEach(
-			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} />)
+			mountComponent(
+				<DemoComponent menuStyle={{ height: '500px' }} width="small" />
+			)
 		);
 
 		afterEach(unmountComponent);
@@ -135,6 +137,7 @@ describe('SLDSMenuDropdown', function() {
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu).to.exist;
 			expect(openNodes.menu).to.have.style('height', '500px');
+			expect(openNodes.menu.hasClass('slds-dropdown_small')).to.equal(true);
 		});
 	});
 

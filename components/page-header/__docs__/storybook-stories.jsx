@@ -78,7 +78,7 @@ class DemoPageHeader extends React.Component {
 			iconName: 'user',
 			label: 'Record Type',
 			title: 'Record Title',
-			variant: 'recordHome',
+			variant: 'record-home',
 			details: this.state.recordHomeDetails,
 		};
 		return (
@@ -94,7 +94,7 @@ class DemoPageHeader extends React.Component {
 
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
-const recordHomeContentRight = (
+const recordHomeActions = () => (
 	<div>
 		<SLDSButtonStateful
 			key="PageHeaderFollowButton"
@@ -188,37 +188,83 @@ const recordHomeDetails = [
 		content: 'Description (2-line truncation)',
 	},
 ];
-const objectHomeNavRight = (
-	<SLDSButtonGroup>
-		<SLDSButton label="New Lead" variant="neutral" />
-		<SLDSMenuDropdown
-			align="right"
-			assistiveText={{
-				icon: 'More Options',
-			}}
+const objectHomeActions = () => (
+	<div>
+		<SLDSButton
 			iconCategory="utility"
-			iconName="down"
-			iconVariant="border-filled"
-			id="page-header-dropdown-object-home-nav-right"
-			onSelect={action('select')}
-			options={[
-				{
-					label: 'Refresh List',
-					value: 'A0',
-				},
-				{
-					label: 'Duplicate Selected Leads',
-					value: 'B0',
-				},
-				{
-					label: 'Disabled Selected Leads',
-					value: 'C0',
-				},
-			]}
+			iconName="settings"
+			variant="icon"
+			iconVariant="more"
+			className="slds-m-left_xx-small"
+			assistiveText={{
+				icon: 'Settings',
+			}}
 		/>
-	</SLDSButtonGroup>
+		<SLDSButton
+			iconCategory="utility"
+			iconName="table"
+			variant="icon"
+			iconVariant="more"
+			className="slds-m-left_xx-small"
+			assistiveText={{
+				icon: 'Table',
+			}}
+		/>
+		<SLDSButtonGroup>
+			<SLDSButton
+				iconCategory="utility"
+				iconName="chart"
+				variant="icon"
+				iconVariant="border"
+				assistiveText={{
+					icon: 'Chart',
+				}}
+			/>
+			<SLDSButton
+				iconCategory="utility"
+				iconName="filterList"
+				variant="icon"
+				iconVariant="border"
+				className="slds-m-left_xx-small"
+				assistiveText={{
+					icon: 'Filter List',
+				}}
+			/>
+			<SLDSMenuDropdown
+				assistiveText={{
+					icon: 'Sort',
+				}}
+				buttonVariant="icon"
+				iconCategory="utility"
+				iconName="sort"
+				iconVariant="more"
+				id="page-header-dropdown-object-home-content-right"
+				onSelect={action('select')}
+				openOn="click"
+				align="right"
+				options={[
+					{
+						label: 'Last Name (ascending)',
+						value: 'LNA',
+					},
+					{
+						label: 'Last Name (descending)',
+						value: 'LND',
+					},
+					{
+						label: 'Last Contacted (descending)',
+						value: 'LCD',
+					},
+					{
+						label: 'Last Contacted (ascending)',
+						value: 'LCA',
+					},
+				]}
+			/>
+		</SLDSButtonGroup>
+	</div>
 );
-const relatedListContentRight = (
+const relatedListActions = () => (
 	<div>
 		<SLDSButton
 			iconCategory="utility"
@@ -285,7 +331,7 @@ const relatedListContentRight = (
 		</SLDSButtonGroup>
 	</div>
 );
-const relatedListNavRight = (
+const relatedListControls = () => (
 	<SLDSButtonGroup>
 		<SLDSButton label="Add Contact" variant="neutral" />
 		<SLDSMenuDropdown
@@ -336,14 +382,14 @@ storiesOf(PAGE_HEADER, module)
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 		})
 	)
-	.add('Base with content right', () =>
+	.add('Base with actions', () =>
 		getPageHeader({
 			iconAssistiveText: 'Opportunity',
 			iconCategory: 'standard',
 			iconName: 'opportunity',
 			title: 'Rohde Corp - 80,000 Widgets',
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
-			navRight: objectHomeNavRight,
+			onRenderControls: objectHomeActions,
 		})
 	)
 	.add('Record Home (truncates)', () =>
@@ -353,8 +399,8 @@ storiesOf(PAGE_HEADER, module)
 			iconName: 'user',
 			label: 'Record Type',
 			title: 'Record Title',
-			variant: 'recordHome',
-			contentRight: recordHomeContentRight,
+			variant: 'record-home',
+			onRenderActions: recordHomeActions,
 			details: recordHomeDetails,
 		})
 	)
@@ -362,10 +408,10 @@ storiesOf(PAGE_HEADER, module)
 	.add('Related List', () =>
 		getPageHeader({
 			title: 'Contacts',
-			variant: 'objectHome',
+			variant: 'object-home',
 			info: '10 items • sorted by name',
-			contentRight: relatedListContentRight,
-			navRight: relatedListNavRight,
+			onRenderActions: relatedListActions,
+			onRenderControls: relatedListControls,
 			trail: relatedListTrail,
 		})
 	)

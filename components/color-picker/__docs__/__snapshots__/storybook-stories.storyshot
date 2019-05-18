@@ -144,7 +144,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
             />
           </svg>
         </button>
-        <div
+        <section
           aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
           aria-labelledby="color-picker-label-color-picker"
           className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
@@ -152,7 +152,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
-          role="popover"
+          role="dialog"
           style={
             Object {
               "outline": 0,
@@ -1398,7 +1398,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
               </button>
             </div>
           </footer>
-        </div>
+        </section>
       </div>
       <div
         className="slds-form-element slds-color-picker__summary-input slds-align-top"

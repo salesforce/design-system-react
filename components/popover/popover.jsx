@@ -2,7 +2,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Popver Component
+// # Popover Component
 
 // Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
 
@@ -128,9 +128,17 @@ class Popover extends React.Component {
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
-		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it.
 		 */
-		className: PropTypes.oneOfType([
+		classNameBody: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it.
+		 */
+		classNameFooter: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string,
@@ -144,6 +152,10 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
+		 * An object of CSS styles that are applied to the `slds-popover__footer` DOM element.
+		 */
+		footerStyle: PropTypes.object,
+		/**
 		 * Used with `walkthrough` variant to provide action buttons (ex: "Next" / "Skip" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons.
 		 */
 		footerWalkthroughActions: PropTypes.oneOfType([
@@ -154,6 +166,14 @@ class Popover extends React.Component {
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
+		/**
+		 * Removes `display:inline-block` from the trigger button.
+		 */
+		hasNoTriggerStyles: PropTypes.bool,
+		/**
+		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
+		 */
+		hasNoNubbin: PropTypes.bool,
 		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant="walkthrough-action"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		 */
@@ -521,7 +541,10 @@ class Popover extends React.Component {
 				<div>
 					<div
 						id={`${this.getId()}-dialog-body`}
-						className="slds-popover__body slds-popover__body_scrollable"
+						className={classNames(
+							'slds-popover__body slds-popover__body_scrollable',
+							this.props.classNameBody
+						)}
 						// REMOVE IN THE FUTURE: SLDS OVERRIDE
 						// Possible solution in future is to use .slds-popover__body_small
 						style={{
@@ -550,7 +573,10 @@ class Popover extends React.Component {
 			);
 		} else if (props.variant === 'walkthrough-action') {
 			body = (
-				<div className="slds-popover__body" id={`${this.getId()}-dialog-body`}>
+				<div
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+					id={`${this.getId()}-dialog-body`}
+				>
 					<div className="slds-media">
 						<div className="slds-media__figure">
 							<Icon
@@ -577,7 +603,10 @@ class Popover extends React.Component {
 		} else {
 			body = (
 				// DEFAULT - NOT SCROLLABLE
-				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+				<div
+					id={`${this.getId()}-dialog-body`}
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+				>
 					{props.body}
 				</div>
 			);
@@ -588,7 +617,16 @@ class Popover extends React.Component {
 
 		if (props.footer) {
 			footer = (
-				<footer className="slds-popover__footer">{this.props.footer}</footer>
+				<footer
+					className={classNames(
+						'slds-popover__footer',
+						this.props.classNameFooter,
+						this.props.footerClassName
+					)}
+					style={this.props.footerStyle}
+				>
+					{this.props.footer}
+				</footer>
 			);
 		} else if (
 			props.variant !== 'walkthrough-action' &&
@@ -616,7 +654,7 @@ class Popover extends React.Component {
 		// MAIN RENDER
 		return isOpen ? (
 			<Dialog
-				hasNubbin
+				hasNubbin={!this.props.hasNoNubbin}
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
@@ -735,8 +773,9 @@ class Popover extends React.Component {
 		});
 
 		this.renderOverlay(this.getIsOpen());
-
-		const containerStyles = { display: 'inline-block' };
+		const containerStyles = {
+			display: this.props.hasNoTriggerStyles ? undefined : 'inline-block',
+		};
 		return (
 			<div
 				className={this.props.triggerClassName}
