@@ -55,9 +55,6 @@ storiesOf(BUTTON, module)
 			title: 'announcement',
 		})
 	)
-	.add('Doc site Base Neutral', () => <BaseNeutral />)
-	.add('Doc site Brand Disabled', () => <BrandDisabled />)
-	.add('Doc site Button Icons', () => <ButtonIcons />)
 	.addDecorator((getStory) => (
 		<div
 			className="slds-p-around_medium slds-hint-parent"
@@ -98,4 +95,13 @@ storiesOf(BUTTON, module)
 			iconVariant: 'more',
 			inverse: true,
 		})
-	);
+	)
+	.add('Outline brand button', () =>
+		getButton({
+			label: 'Outline brand button',
+			variant: 'outline-brand',
+		})
+	)
+	.add('Doc site Base Neutral', () => <BaseNeutral />)
+	.add('Doc site Brand Disabled', () => <BrandDisabled />)
+	.add('Doc site Button Icons', () => <ButtonIcons />);

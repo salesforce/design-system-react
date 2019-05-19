@@ -95,7 +95,7 @@ class Example extends React.Component {
 							id={item.id}
 							panelContentActions={this.menuDropdown(item)}
 							key={item.id}
-							onTogglePanel={() => this.togglePanel(event, item)}
+							onTogglePanel={(event) => this.togglePanel(event, item)}
 							summary={item.summary}
 						>
 							{item.details}

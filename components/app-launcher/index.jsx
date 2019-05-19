@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import isFunction from 'lodash.isfunction';
+import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -35,15 +36,15 @@ const defaultProps = {
  * USAGE EXAMPLE:
  * ```
  * <AppLauncher>
- * 	<AppLauncherSection>
+ * 	<AppLauncherExpandableSection>
  * 		<AppLauncherTile />
  * 		<AppLauncherTile />
  * 		<AppLauncherTile />
- * 	</AppLauncherSection>
- * 	<AppLauncherSection>
+ * 	</AppLauncherExpandableSection>
+ * 	<AppLauncherExpandableSection>
  * 		<AppLauncherTile />
  * 		<AppLauncherTile />
- * 	</AppLauncherSection>
+ * 	</AppLauncherExpandableSection>
  * </AppLauncher>
  * ```
  *
@@ -73,9 +74,13 @@ class AppLauncher extends React.Component {
 		 */
 		ariaHideApp: PropTypes.bool,
 		/**
-		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
+		 * One or more `<AppLauncherExpandableSection />`s, each containing one or more `<AppLauncherTile />`s or `<AppLauncherLink />`s
 		 */
 		children: PropTypes.node.isRequired,
+		/**
+		 * The app launcher id. If not provided, one will be generated for accessibility
+		 */
+		id: PropTypes.string,
 		/**
 		 * Control the open/close state of the App Launcher
 		 */
@@ -120,13 +125,21 @@ class AppLauncher extends React.Component {
 
 	static defaultProps = defaultProps;
 
-	state = {
-		isOpen: false,
-	};
+	constructor(props) {
+		super(props);
+		this.generatedId = shortid.generate();
+		this.state = {
+			isOpen: false,
+		};
+	}
 
 	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(APP_LAUNCHER, this.props, componentDoc);
+	}
+
+	getId() {
+		return this.props.id || this.generatedId;
 	}
 
 	openAppLauncher = (event) => {
@@ -185,8 +198,13 @@ class AppLauncher extends React.Component {
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
 
 		const customModalHeader = (
-			<div className="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
-				<h2 className="slds-text-heading_medium">{this.props.title}</h2>
+			<React.Fragment>
+				<h2
+					className="slds-text-heading_medium"
+					id={`${this.getId()}-app-launcher-title`}
+				>
+					{this.props.title}
+				</h2>
 
 				{this.renderSearch()}
 
@@ -195,7 +213,7 @@ class AppLauncher extends React.Component {
 				) : (
 					<span className="slds-size_1-of-7" />
 				)}
-			</div>
+			</React.Fragment>
 		);
 
 		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
@@ -208,12 +226,16 @@ class AppLauncher extends React.Component {
 		const triggerAssistiveText =
 			this.props.triggerAssistiveText || assistiveText.trigger;
 		return (
-			<div className="slds-context-bar__item slds-no-hover" style={style}>
+			<div
+				className="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover"
+				style={style}
+			>
 				<div className="slds-context-bar__icon-action">
 					<button
 						aria-haspopup="true"
 						className="slds-button slds-icon-waffle_container slds-context-bar__button"
 						onClick={this.openAppLauncher}
+						title={triggerAssistiveText}
 					>
 						<span className="slds-icon-waffle">
 							<span className="slds-r1" />
@@ -235,28 +257,29 @@ class AppLauncher extends React.Component {
 				</div>
 				<Modal
 					ariaHideApp={this.props.ariaHideApp}
-					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around_medium"
+					assistiveText={{
+						dialogLabelledBy: `${this.getId()}-app-launcher-title`,
+					}}
+					className={classNames('slds-app-launcher', this.props.modalClassName)}
+					contentClassName="slds-app-launcher__content slds-p-around_medium"
 					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
-					containerClassName={classNames(
-						'app-launcher',
-						this.props.modalClassName
-					)}
 					size="large"
 					header={customModalHeader}
-					headerClassName="slds-app-launcher__header"
+					headerClassName="slds-grid slds-grid_align-spread slds-grid_vertical-align-center"
 				>
 					{this.props.children}
 				</Modal>
 				{this.props.triggerName ? (
-					<span
-						className={classNames(
-							'slds-context-bar__label-action slds-context-bar__app-name',
-							{ 'slds-truncate': !this.props.noTruncate }
+					<span className="slds-context-bar__label-action slds-context-bar__app-name">
+						{this.props.noTruncate ? (
+							this.props.triggerName
+						) : (
+							<span className="slds-truncate" title={this.props.triggerName}>
+								{this.props.triggerName}
+							</span>
 						)}
-					>
-						{this.props.triggerName}
 					</span>
 				) : null}
 			</div>

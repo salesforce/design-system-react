@@ -13,13 +13,22 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup className="slds-p-bottom_medium">
-					<Tooltip align="bottom" content="Buttonbar Tooltip">
-						<Button label="Refresh" />
+					<Tooltip
+						id="refresh-tooltip"
+						align="bottom"
+						content="Buttonbar Tooltip"
+					>
+						<Button id="refresh-button" label="Refresh" />
 					</Tooltip>
-					<Tooltip align="bottom right" content="Buttonbar Tooltip">
-						<Button label="Edit" />
+					<Tooltip
+						id="edit-tooltip"
+						align="bottom right"
+						content="Buttonbar Tooltip"
+					>
+						<Button label="Edit" id="edit-button" />
 					</Tooltip>
 					<Dropdown
+						id="options"
 						assistiveText={{ icon: 'More Options' }}
 						buttonVariant="icon"
 						iconCategory="utility"

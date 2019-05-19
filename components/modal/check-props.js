@@ -18,6 +18,20 @@ if (process.env.NODE_ENV !== 'production') {
 			"assistiveText['closeButton']",
 			createDocUrl('assistiveText')
 		);
+		deprecatedProperty(
+			COMPONENT,
+			props.title,
+			'title',
+			'heading',
+			createDocUrl('heading')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.dismissible,
+			'dismissible',
+			'disableClose',
+			createDocUrl('disableClose')
+		);
 	};
 }
 
