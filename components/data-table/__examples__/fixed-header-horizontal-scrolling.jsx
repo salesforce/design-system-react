@@ -202,14 +202,15 @@ class Example extends React.Component {
 	render() {
 		return (
 			<div
+				ref={(ref) => {
+					this.wrapperRef = ref;
+				}}
 				style={{
 					height: '200px',
+					width: '400px',
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Fixed Header Layout
-					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',
@@ -227,6 +228,7 @@ class Example extends React.Component {
 						onSort={this.handleSort}
 						selection={this.state.selection}
 						selectRows="checkbox"
+						style={{ minWidth: '800px' }}
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}

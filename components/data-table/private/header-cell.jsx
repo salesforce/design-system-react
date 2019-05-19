@@ -248,6 +248,7 @@ class DataTableHeaderCell extends React.Component {
 								display: 'flex',
 								flex: '1 1 auto',
 								lineHeight: 1.25,
+								width: '100%',
 							},
 							tabIndex: sortable ? 0 : null,
 						})}
