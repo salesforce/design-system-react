@@ -29,7 +29,12 @@ class Example extends React.Component {
 					>
 						<Button label="Edit" id="edit-button" />
 					</Tooltip>
-					<li>
+					<Tooltip
+						id="drop-tooltip"
+						align="bottom right"
+						content="Buttonbar Tooltip"
+						variant="list-item"
+					>
 						<Dropdown
 							id="options"
 							assistiveText={{ icon: 'More Options' }}
@@ -44,7 +49,7 @@ class Example extends React.Component {
 								{ label: 'C Option', value: 'C0' },
 							]}
 						/>
-					</li>
+					</Tooltip>
 				</ButtonGroup>
 			</IconSettings>
 		);

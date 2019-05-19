@@ -1993,11 +1993,17 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
       <span />
     </li>
     <li
-      triggerClassName="slds-button_last"
+      className="slds-tooltip-trigger slds-button_last"
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
     >
       <div
         className="slds-dropdown-trigger slds-dropdown-trigger_click"
         id="options"
+        onBlur={[Function]}
         onClick={[Function]}
         onFocus={null}
         onKeyDown={[Function]}
@@ -2028,6 +2034,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
           </span>
         </button>
       </div>
+      <span />
     </li>
   </ul>
 </div>
