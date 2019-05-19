@@ -7367,11 +7367,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Typically the cloud name (e.g.- \"sales\" or \"marketing\"). This primarily changes the background color.",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
+                "description": "Typically the cloud name (e.g.- \"sales\" or \"marketing\"). This primarily changes the background color."
             },
             "theme": {
                 "type": {
@@ -7388,11 +7384,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Transforms text and interactions (such as hover) to be more visually accessible.",
-                "defaultValue": {
-                    "value": "'dark'",
-                    "computed": false
-                }
+                "description": "Transforms text and interactions (such as hover) to be more visually accessible."
             }
         },
         "route": "global-navigation-bar",
@@ -7688,6 +7680,23 @@
                             },
                             "required": false,
                             "description": "Allows alignment of active item with active application background color. If application background is dark, text color may need to be `#fff`. This can be done with the style prop."
+                        },
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "activeDescriptor": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `activeDescriptor`: The text that appears alongside a link that is currently active.",
+                            "defaultValue": {
+                                "value": "{\n    activeDescriptor: 'Current page:',\n}",
+                                "computed": false
+                            }
                         },
                         "className": {
                             "type": {

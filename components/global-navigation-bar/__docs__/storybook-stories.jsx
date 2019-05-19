@@ -30,8 +30,10 @@ const dropdownCollection = [
 	{
 		label: 'Main action',
 		value: '0',
-		iconCategory: 'utility',
-		iconName: 'table',
+		leftIcon: {
+			category: 'utility',
+			name: 'add',
+		},
 		href: 'http://www.google.com',
 	},
 	{
@@ -42,39 +44,16 @@ const dropdownCollection = [
 	{
 		label: 'Menu Item One',
 		value: '1',
-		iconCategory: 'utility',
-		iconName: 'kanban',
 		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Two',
 		value: '2',
-		iconCategory: 'utility',
-		iconName: 'kanban',
 		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Three',
 		value: '3',
-		iconCategory: 'utility',
-		iconName: 'side_list',
-		href: 'http://www.google.com',
-	},
-	{
-		label: 'Menu Item Four',
-		value: '4',
-		iconCategory: 'utility',
-		iconName: 'side_list',
-		href: 'http://www.google.com',
-	},
-	{
-		type: 'divider',
-	},
-	{
-		label: 'Menu Item Five',
-		value: '5',
-		iconCategory: 'utility',
-		iconName: 'side_list',
 		href: 'http://www.google.com',
 	},
 ];
@@ -101,6 +80,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
+				active={props.homeActive !== false}
 				href="https://www.lightningdesignsystem.com/"
 				label="Home"
 				id="home-link"
@@ -112,7 +92,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				}}
 			/>
 			<GlobalNavigationBarDropdown
-				assistiveText={{ icon: 'Open Menu Item 1' }}
+				assistiveText={{ icon: 'Open menu item submenu' }}
 				id="primaryDropdown"
 				label="Menu Item"
 				openOn={props.openOn || undefined}
@@ -125,19 +105,14 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				href="https://www.lightningdesignsystem.com/"
 				label="Menu Item"
 			/>
-		</GlobalNavigationBarRegion>
-		<GlobalNavigationBarRegion region="tertiary">
-			<GlobalNavigationBarButton
-				label="Button"
-				onClick={buttonClicked('Button clicked')}
+			<GlobalNavigationBarLink
+				active={props.homeActive === false}
+				label="Menu Item"
+				onClick={linkClicked('Link clicked')}
 			/>
 			<GlobalNavigationBarLink
-				label="Actions"
-				onClick={buttonClicked('Link clicked')}
-			/>
-			<GlobalNavigationBarLabel
-				dividerPosition="left"
-				label="Vandelay Enterprises"
+				label="Menu Item"
+				onClick={linkClicked('Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
@@ -198,15 +173,19 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 				label="Admin"
 				onClick={linkClicked('Admin Link clicked')}
 			/>
-			<GlobalNavigationBarLink
-				label="Audience Builder"
-				onClick={linkClicked('Audience Builder Link clicked')}
-			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarButton
+				label="Button"
+				onClick={buttonClicked('Button clicked')}
+			/>
 			<GlobalNavigationBarLink
 				label="Actions"
 				onClick={linkClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLabel
+				dividerPosition="left"
+				label="Vandelay Enterprises"
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
@@ -274,15 +253,19 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (
 				label="Admin"
 				onClick={linkClicked('Admin Link clicked')}
 			/>
-			<GlobalNavigationBarLink
-				label="Audience Builder"
-				onClick={linkClicked('Audience Builder Link clicked')}
-			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarButton
+				label="Button"
+				onClick={buttonClicked('Button clicked')}
+			/>
 			<GlobalNavigationBarLink
 				label="Actions"
 				onClick={linkClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLabel
+				dividerPosition="left"
+				label="Vandelay Enterprises"
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>

@@ -46,6 +46,7 @@ class Example extends React.Component {
 				<GlobalNavigationBar>
 					<GlobalNavigationBarRegion region="primary">
 						<AppLauncher
+							id="app-launcher-trigger"
 							triggerName="App Name"
 							onSearch={() => {
 								console.log('Search term:', event.target.value);
@@ -82,28 +83,16 @@ class Example extends React.Component {
 						</AppLauncher>
 					</GlobalNavigationBarRegion>
 					<GlobalNavigationBarRegion region="secondary" navigation>
-						<GlobalNavigationBarLink
-							href="javascript:void(0);"
-							label="Home"
-							id="home-link"
-						/>
+						<GlobalNavigationBarLink active label="Home" id="home-link" />
 						<GlobalNavigationBarDropdown
+							assistiveText={{ icon: 'Open menu item submenu' }}
 							id="primaryDropdown"
-							assistiveText={{ icon: 'Context Menu Item 1' }}
-							label="Context Menu Item"
+							label="Menu Item"
 							options={dropdownCollection}
 						/>
-						<GlobalNavigationBarLink
-							href="javascript:void(0);"
-							label="Context Menu Item 2"
-							active
-						/>
-					</GlobalNavigationBarRegion>
-					<GlobalNavigationBarRegion region="tertiary">
-						<GlobalNavigationBarLink
-							href="javascript:void(0);"
-							label="Actions"
-						/>
+						<GlobalNavigationBarLink label="Menu Item" />
+						<GlobalNavigationBarLink label="Menu Item" />
+						<GlobalNavigationBarLink label="Menu Item" />
 					</GlobalNavigationBarRegion>
 				</GlobalNavigationBar>
 			</IconSettings>
