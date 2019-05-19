@@ -46,7 +46,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           </h3>
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger_click"
-            id="ButtonGroupExampleDropdown"
+            id="1"
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
@@ -56,7 +56,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-1 slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -125,7 +125,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           </h3>
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger_click"
-            id="ButtonGroupExampleDropdown"
+            id="2"
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
@@ -135,7 +135,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-2 slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -204,7 +204,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           </h3>
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger_click"
-            id="ButtonGroupExampleDropdown"
+            id="3"
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
@@ -214,7 +214,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-3 slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
