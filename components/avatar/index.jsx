@@ -35,10 +35,6 @@ const propTypes = {
 		icon: PropTypes.string,
 	}),
 	/**
-	 * Class names to be applied to Avatar component.
-	 */
-	className: PropTypes.string,
-	/**
 	 * Alt attribute to be applied to image (base case) element.
 	 */
 	imgAlt: PropTypes.string,
@@ -50,6 +46,10 @@ const propTypes = {
 	 * Initials attribute to optionally pass in initials directly in case of "initials" fallback case.
 	 */
 	initials: PropTypes.string,
+	/**
+	 * Avatar with initials that are dark text on light background
+	 */
+	inverse: PropTypes.bool,
 	/**
 	 * Label attibute to display inside "initials" fallback case. Will be passed as title prop in `abbr` element to provide more specificity.
 	 */
@@ -148,10 +148,11 @@ class Avatar extends React.Component {
 	}
 
 	renderInitialsAvatar() {
-		const { initials, label, variant } = this.props;
+		const { initials, inverse, label, variant } = this.props;
 		return (
 			<abbr
 				className={classNames('slds-avatar__initials', {
+					'slds-avatar__initials_inverse': inverse,
 					'slds-icon-standard-account': variant === 'entity',
 					'slds-icon-standard-user': variant === 'user',
 				})}

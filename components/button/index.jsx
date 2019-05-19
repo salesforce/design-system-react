@@ -104,6 +104,7 @@ class Button extends React.Component {
 			'container',
 			'border',
 			'border-filled',
+			'brand',
 			'more',
 			'global-header',
 		]),
@@ -187,8 +188,10 @@ class Button extends React.Component {
 			'link',
 			'neutral',
 			'brand',
+			'outline-brand',
 			'destructive',
 			'success',
+			'text-destructive',
 			'icon',
 		]),
 		/**

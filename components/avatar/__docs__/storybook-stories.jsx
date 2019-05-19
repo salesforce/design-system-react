@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { AVATAR } from '../../../utilities/constants';
 import Base from '../__examples__/base';
+import InverseUserInitials from '../__examples__/inverse-user-initials.jsx';
 import UserIcon from '../__examples__/user-icon.jsx';
 import UserInitials from '../__examples__/user-initials.jsx';
 import EntityIcon from '../__examples__/entity-icon.jsx';
@@ -42,5 +43,11 @@ storiesOf(AVATAR, module)
 		<div>
 			<h1 style={{ marginBottom: '10px' }}>User Initials Avatar</h1>
 			<UserInitials />
+		</div>
+	))
+	.add('Inverse User Initials', () => (
+		<div>
+			<h1 style={{ marginBottom: '10px' }}>Inversed User Initials Avatar</h1>
+			<InverseUserInitials />
 		</div>
 	));

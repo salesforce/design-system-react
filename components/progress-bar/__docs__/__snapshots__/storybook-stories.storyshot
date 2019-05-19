@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSProgressBar Color 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <span>
+      Color: success
+    </span>
+    <div
+      id="progress-bar-success"
+    >
+      
+      <div
+        className="slds-progress-bar"
+      >
+        <span
+          className="slds-progress-bar__value slds-progress-bar__value_success"
+          style={
+            Object {
+              "width": "75%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            75%
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSProgressBar Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      id="progress-bar"
+    >
+      
+      <div
+        className="slds-progress-bar"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "75%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            75%
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSProgressBar Descriptive 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      id="setup-progress-bar"
+    >
+      <div
+        className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
+        id="progress-bar-label-id-4"
+      >
+        <span>
+          Einstein Setup Assistant
+        </span>
+        <span
+          aria-hidden="true"
+        >
+          <strong>
+            90
+            % 
+            Complete
+          </strong>
+        </span>
+      </div>
+      <div
+        className="slds-progress-bar"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "90%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            90%
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSProgressBar Radius 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <span>
+      Radius: circular
+    </span>
+    <div
+      id="progress-bar-circular"
+    >
+      
+      <div
+        className="slds-progress-bar slds-progress-bar_circular"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "75%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            75%
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <span>
+      Thickness: x-small
+    </span>
+    <div
+      id="progress-bar-x-small"
+    >
+      
+      <div
+        className="slds-progress-bar slds-progress-bar_x-small"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "90%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            90%
+          </span>
+        </span>
+      </div>
+    </div>
+    <hr />
+    <span>
+      Thickness: small
+    </span>
+    <div
+      id="progress-bar-small"
+    >
+      
+      <div
+        className="slds-progress-bar slds-progress-bar_small"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "75%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            75%
+          </span>
+        </span>
+      </div>
+    </div>
+    <hr />
+    <span>
+      Thickness: medium
+    </span>
+    <div
+      id="progress-bar-medium"
+    >
+      
+      <div
+        className="slds-progress-bar slds-progress-bar_medium"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "50%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            50%
+          </span>
+        </span>
+      </div>
+    </div>
+    <hr />
+    <span>
+      Thickness: large
+    </span>
+    <div
+      id="progress-bar-large"
+    >
+      
+      <div
+        className="slds-progress-bar slds-progress-bar_large"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "width": "25%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            25%
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
