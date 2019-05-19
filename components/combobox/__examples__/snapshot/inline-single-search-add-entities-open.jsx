@@ -23,32 +23,7 @@ const accounts = [
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
 		type: 'account',
-	},
-	{
-		id: '4',
-		label: 'Tyrell Corp',
-		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
-	},
-	{
-		id: '5',
-		label: 'Paper St. Soap Company',
-		subTitle: 'Account • Beloit, WI',
-		type: 'account',
-	},
-	{
-		id: '6',
-		label: 'Nakatomi Investments',
-		subTitle: 'Account • Chicago, IL',
-		type: 'account',
-	},
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
-	{
-		id: '8',
-		label: 'Acme Construction',
-		subTitle: 'Account • Grand Marais, MN',
-		type: 'account',
-	},
+	}
 ];
 
 const accountsWithIcon = accounts.map((elem) => ({
