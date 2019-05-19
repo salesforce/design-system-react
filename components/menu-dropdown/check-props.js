@@ -3,7 +3,6 @@
 /* eslint-disable import/no-mutable-exports */
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
-import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
@@ -26,6 +25,8 @@ if (process.env.NODE_ENV !== 'production') {
 				'isOpen'
 			)}`
 		);
+
+		sunsetProperty(COMPONENT, props.tooltip, 'tooltip', createDocUrl());
 
 		deprecatedProperty(
 			COMPONENT,

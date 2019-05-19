@@ -9,7 +9,7 @@ import TestUtils from 'react-dom/test-utils';
 import IconSettings from '../../icon-settings';
 import AppLauncher from '../../app-launcher';
 import AppLauncherTile from '../../app-launcher/tile';
-import AppLauncherSection from '../../app-launcher/section';
+import AppLauncherExpandableSection from '../../app-launcher/expandable-section';
 import Search from '../../input/search';
 import Button from '../../button';
 
@@ -34,10 +34,10 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		React.createElement(
 			AppLauncher,
 			assign({}, defaultAppLauncherProps, props),
-			<AppLauncherSection title="All Items">
+			<AppLauncherExpandableSection title="All Items">
 				<AppLauncherTile title="Marketing Cloud" />
 				<AppLauncherTile title="Support Cloud" />
-			</AppLauncherSection>
+			</AppLauncherExpandableSection>
 		);
 
 	function mountAppLauncher(props) {
@@ -90,6 +90,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 				onClose,
 				search: <Search assistiveText={{ icon: 'Find an app' }} />,
 				title: 'App Launcher!',
+				triggerName: 'App Name',
 			});
 		});
 
@@ -98,7 +99,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('renders modal', () => {
-			expect(handles.modal).to.be.present;
+			expect(handles.appLauncher.find('.slds-modal').length).to.eql(1);
 		});
 
 		it('renders custom modal class', () => {
@@ -110,21 +111,34 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('app launcher title can be set', () => {
-			expect(handles.appLauncher).to.contain(
-				<h2 className="slds-text-heading_medium">App Launcher!</h2>
+			const appLauncherTitle = handles.appLauncher.find(
+				'h2.slds-text-heading_medium'
 			);
+			expect(appLauncherTitle.length).to.eql(1);
+			expect(appLauncherTitle.text()).to.eql('App Launcher!');
+		});
+
+		it('app launcher triggerName can be set', () => {
+			const appLauncherTriggerName = handles.appLauncher.find(
+				'.slds-context-bar__app-name'
+			);
+			expect(appLauncherTriggerName.length).to.eql(1);
+			expect(appLauncherTriggerName.text()).to.eql('App Name');
 		});
 
 		it('renders search bar', () => {
 			should.exist(handles.modal.find(Search));
-		});
-
-		it('renders search bar with proper class', () => {
-			should.exist(handles.modal.find('.slds-app-launcher__header-search'));
+			expect(
+				handles.appLauncher.find('.slds-app-launcher__header-search').length
+			).to.eql(1);
 		});
 
 		it('renders `modalHeaderButton`', () => {
-			should.exist(handles.modal.find(Button).at(1));
+			const headerButton = handles.appLauncher.find(
+				'header.slds-modal__header button.slds-button.slds-button_neutral'
+			);
+			expect(headerButton.length).to.eql(1);
+			expect(headerButton.text()).to.eql('App Exchange');
 		});
 
 		it('closing modal fires callback', () => {
@@ -138,15 +152,17 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('renders modal content', () => {
-			should.exist(
-				handles.modal.find(
-					'.slds-modal__content .slds-app-launcher__content .slds-p-around_medium'
-				)
-			);
+			expect(
+				handles.appLauncher.find(
+					'.slds-modal__content.slds-app-launcher__content.slds-p-around_medium'
+				).length
+			).to.equal(1);
 		});
 
 		it('app launcher can be passed children', () => {
-			should.exist(handles.appLauncher.find('SLDSAppLauncherSection'));
+			should.exist(
+				handles.appLauncher.find('SLDSAppLauncherExpandableSection')
+			);
 			expect(handles.appLauncher.find('SLDSAppLauncherTile').length).to.equal(
 				2
 			);

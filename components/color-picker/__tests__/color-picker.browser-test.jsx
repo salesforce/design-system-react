@@ -1,7 +1,5 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';

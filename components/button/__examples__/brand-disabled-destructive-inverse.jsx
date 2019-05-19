@@ -23,6 +23,8 @@ class Example extends React.Component {
 
 					<Button label="Destructive" variant="destructive" />
 
+					<Button label="Outline Brand" variant="outline-brand" />
+
 					<div
 						style={{
 							backgroundColor: '#16325c',

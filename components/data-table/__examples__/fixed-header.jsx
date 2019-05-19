@@ -204,10 +204,12 @@ class Example extends React.Component {
 			<div
 				style={{
 					height: '200px',
-					width: '100%',
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Fixed Header Layout
+					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',

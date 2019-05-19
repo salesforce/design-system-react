@@ -119,7 +119,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholderReadOnly: 'Select company',
 					}}
-					menuItem={CustomMenuItem}
+					onRenderMenuItem={CustomMenuItem}
 					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={this.state.inputValue}

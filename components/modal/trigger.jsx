@@ -22,7 +22,7 @@ const ModalTrigger = {
 		el.setAttribute('data-slds-modal', true);
 		document.body.appendChild(el);
 		const comp = (
-			<Modal title={cfg.title} footer={cfg.footer} isOpen>
+			<Modal heading={cfg.title} footer={cfg.footer} isOpen>
 				{cfg.content}
 			</Modal>
 		);

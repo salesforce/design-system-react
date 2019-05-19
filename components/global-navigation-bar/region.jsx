@@ -105,7 +105,8 @@ class Region extends React.Component {
 		 */
 		navigation: PropTypes.bool,
 		/**
-		 * Region wrap children in styling specific to that region.
+		 * Region wrap children in styling specific to that region. When `tertiary`
+		 * region is used, secondary region only supports four list items.
 		 */
 		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
 	};

@@ -56,6 +56,7 @@ const propTypes = {
 	 * 	title: 'Salesforce.com, Inc. - Want to work here?',
 	 * },
 	 * ```
+	 * `options` with array length of zero will remove this component from the DOM.
 	 */
 	options: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -246,7 +247,7 @@ class PillContainer extends React.Component {
 	};
 
 	render() {
-		return (
+		return this.props.options.length > 0 ? (
 			<SelectedListBox
 				activeOption={this.state.activeSelectedOption}
 				activeOptionIndex={this.state.activeSelectedOptionIndex}
@@ -273,7 +274,7 @@ class PillContainer extends React.Component {
 				selection={this.props.options}
 				style={this.props.style}
 			/>
-		);
+		) : null;
 	}
 }
 
