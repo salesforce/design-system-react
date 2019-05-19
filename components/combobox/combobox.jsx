@@ -13,7 +13,6 @@ import find from 'lodash.find';
 import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
-
 import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
@@ -309,7 +308,7 @@ const propTypes = {
 	 */
 	loading: PropTypes.bool,
 	/**
-	 * Object for creating Add item below the options
+	 * Object for creating new item below the options
 	 */
 	optionsAddItem: PropTypes.shape({
 		id: PropTypes.string,
@@ -318,7 +317,7 @@ const propTypes = {
 		onClick: PropTypes.func,
 	}),
 	/**
-	 * Object for creating Search item on top of the options
+	 * Object for creating new item on top of the options
 	 */
 	optionsSearchEntity: PropTypes.shape({
 		id: PropTypes.string,
@@ -351,6 +350,8 @@ const defaultProps = {
 	},
 	inheritWidthOf: 'target',
 	menuPosition: 'absolute',
+	optionsSearchEntity: {},
+	optionsAddItem: {},
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
@@ -404,8 +405,8 @@ class Combobox extends React.Component {
 		// `activeOption` if the active option is no longer in the options
 		// list. If it's in the options list, then find the new index and
 		// set `activeOptionIndex`
-		if (!isEqual(this.props.options, nextProps.options)) {
-			const index = findIndex(nextProps.options, (item) =>
+		if (!isEqual(this.getOptions(), this.getOptions(nextProps))) {
+			const index = findIndex(this.getOptions(nextProps), (item) =>
 				isEqual(item, this.state.activeOption)
 			);
 			if (index !== -1) {
@@ -556,6 +557,19 @@ class Combobox extends React.Component {
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
 
+	getOptions = (props) => {
+		const localProps = props || this.props;
+		const options = [];
+		if (Object.keys(localProps.optionsSearchEntity).length > 0) {
+			options.push(localProps.optionsSearchEntity);
+		}
+		options.push(...localProps.options);
+		if (Object.keys(localProps.optionsAddItem).length > 0) {
+			options.push(localProps.optionsAddItem);
+		}
+		return options;
+	}
+
 	getTargetElement = () => this.inputRef;
 
 	setInputRef = (component) => {
@@ -655,6 +669,11 @@ class Combobox extends React.Component {
 			return;
 		}
 
+		if (this.state.activeOption.type === 'header' || this.state.activeOption.type === 'footer') {
+			this.state.activeOption.onClick(event);
+			return;
+		}
+
 		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, {
@@ -732,7 +751,7 @@ class Combobox extends React.Component {
 			key: event.key,
 			keyBuffer: this.menuKeyBuffer,
 			keyCode: event.keyCode,
-			options: this.props.options,
+			options: this.getOptions(),
 		});
 
 		if (activeOptionIndex !== undefined) {
@@ -744,7 +763,7 @@ class Combobox extends React.Component {
 			}
 
 			this.setState({
-				activeOption: this.props.options[activeOptionIndex],
+				activeOption: this.getOptions()[activeOptionIndex],
 				activeOptionIndex,
 			});
 		}
@@ -757,7 +776,7 @@ class Combobox extends React.Component {
 			const newIndex = this.getNewActiveOptionIndex({
 				activeOptionIndex: prevState.activeOptionIndex,
 				offset: offsets[direction],
-				options: this.props.options,
+				options: this.getOptions(),
 			});
 
 			if (this.state.isOpen) {
@@ -768,7 +787,7 @@ class Combobox extends React.Component {
 			}
 
 			return {
-				activeOption: this.props.options[newIndex],
+				activeOption: this.getOptions()[newIndex],
 				activeOptionIndex: newIndex,
 			};
 		});

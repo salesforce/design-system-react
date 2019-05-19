@@ -138,6 +138,20 @@ const defaultProps = {
 	menuRef: () => {},
 };
 
+const getOptions = (props) => {
+	const options = [];
+	if (Object.keys(props.optionsSearchEntity).length > 0) {
+		props.optionsSearchEntity.type = 'header';
+		options.push(props.optionsSearchEntity);
+	}
+	options.push(...props.options);
+	if (Object.keys(props.optionsAddItem).length > 0) {
+		props.optionsAddItem.type = 'footer';
+		options.push(props.optionsAddItem);
+	}
+	return options;
+}
+
 const Menu = (props) => {
 	const { optionsAddItem, optionsSearchEntity } = props;
 	let maxWidth = props.inheritWidthOf === 'menu' ? 'inherit' : undefined;
@@ -147,14 +161,14 @@ const Menu = (props) => {
 			: maxWidth;
 
 	// .slds-dropdown sets the menu to absolute positioning, since it has a relative parent. Absolute positioning removes clientHeight and clientWidth which Popper.js needs to absolute position the menu's wrapping div. Absolute positioning an already absolute positioned element doesn't work. Setting the menu's position to relative allows PopperJS to work it's magic.
-	const menuOptions = props.options.map((optionData, index) => {
+	const menuOptions = getOptions(props).map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&
 			isEqual(optionData, props.activeOption);
 		const selected = props.isSelected({
 			selection: props.selection,
-			option: optionData,
-		});
+			option: optionData
+		}) && (optionData.type !== 'header' || optionData.type === 'footer');
 		const MenuItem = props.onRenderMenuItem;
 
 		if (optionData.type === 'separator') {
@@ -181,6 +195,44 @@ const Menu = (props) => {
 					key={`menu-separator-${optionData.id}`}
 				/>
 			);
+		} else if (optionData.type === 'header') {
+			return (<li role="presentation" className="slds-listbox__item">
+					<div
+						onClick={(event) => optionsSearchEntity.onClick(event)}
+						aria-selected="false"
+						id={optionsSearchEntity.id}
+						className={classNames(
+							'slds-media slds-listbox__option',
+							'slds-listbox__option_entity slds-listbox__option_term',
+							{ 'slds-has-focus': active }
+						)}
+						role="option"
+					>
+						<span className="slds-media__figure ">
+							{optionsSearchEntity.icon}
+						</span>
+						<span className="slds-media__body">
+							{optionsSearchEntity.label}
+						</span>
+					</div>
+				</li>)
+		} else if (optionData.type === 'footer') {
+			return (<li role="presentation" className="slds-listbox__item">
+					<div
+						aria-selected="false"
+						onClick={(event) => optionsAddItem.onClick(event)}
+						id={optionsAddItem.id}
+						className={classNames(
+							'slds-media slds-listbox__option',
+							'slds-listbox__option_entity slds-listbox__option_term',
+							{ 'slds-has-focus': active }
+						)}
+						role="option"
+					>
+						<span className="slds-media__figure ">{optionsAddItem.icon}</span>
+						<span className="slds-media__body">{optionsAddItem.label}</span>
+					</div>
+				</li>);
 		}
 
 		const disabledProps = {};
@@ -363,24 +415,6 @@ const Menu = (props) => {
 				position: props.menuPosition !== 'relative' ? 'relative' : undefined,
 			}}
 		>
-			{optionsSearchEntity ? (
-				<li role="presentation" className="slds-listbox__item">
-					<div
-						onClick={(event) => optionsSearchEntity.onClick(event)}
-						aria-selected="false"
-						id={optionsSearchEntity.id}
-						className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-						role="option"
-					>
-						<span className="slds-media__figure ">
-							{optionsSearchEntity.icon}
-						</span>
-						<span className="slds-media__body">
-							{optionsSearchEntity.label}
-						</span>
-					</div>
-				</li>
-			) : null}
 			{menuOptions.length ? (
 				menuOptions
 			) : (
@@ -394,20 +428,6 @@ const Menu = (props) => {
 					</span>
 				</li>
 			)}
-			{optionsAddItem ? (
-				<li role="presentation" className="slds-listbox__item">
-					<div
-						aria-selected="false"
-						onClick={(event) => optionsAddItem.onClick(event)}
-						id={optionsAddItem.id}
-						className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-						role="option"
-					>
-						<span className="slds-media__figure ">{optionsAddItem.icon}</span>
-						<span className="slds-media__body">{optionsAddItem.label}</span>
-					</div>
-				</li>
-			) : null}
 			{props.loading ? (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
