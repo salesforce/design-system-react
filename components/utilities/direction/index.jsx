@@ -17,12 +17,12 @@ DIRECTIONS.RTL = 'rtl';
  * Note: This context is prefixed with UNSAFE because it is not a publicly supported feature.
  *
  * Example on how to use the context to set your component right-to-left:
- * <UNSAFE_DirectionSettings.Provider value="rtl">
+ * <DirectionSettings.Provider value="rtl">
  *      <Combobox ... />
- * </UNSAFE_DirectionSettings.Provider>
+ * </DirectionSettings.Provider>
  */
 // eslint-disable-next-line camelcase
-const UNSAFE_DirectionSettings = React.createContext('ltr');
+const DirectionSettings = React.createContext('ltr');
 
 // eslint-disable-next-line camelcase
-export { UNSAFE_DirectionSettings as default, DIRECTIONS };
+export { DirectionSettings as default, DIRECTIONS };

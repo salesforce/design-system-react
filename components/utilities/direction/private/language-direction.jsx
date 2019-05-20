@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // eslint-disable-next-line camelcase
-import UNSAFE_DirectionSettings from '..';
+import DirectionSettings from '..';
 
 const LanguageDirectionHOC = (WrappedComponent) => {
 	const componentName =
@@ -9,7 +9,7 @@ const LanguageDirectionHOC = (WrappedComponent) => {
 	return class LanguageDirection extends Component {
 		static displayName = `LanguageDirection(${componentName})`;
 		// eslint-disable-next-line camelcase
-		static contextType = UNSAFE_DirectionSettings;
+		static contextType = DirectionSettings;
 
 		render() {
 			const props = { ...this.props };

@@ -5,7 +5,7 @@ import Icon from '~/components/icon';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import IconSettings from '~/components/icon-settings';
 // eslint-disable-next-line camelcase
-import UNSAFE_DirectionSettings from '~/components/utilities/direction';
+import DirectionSettings from '~/components/utilities/direction';
 
 const accounts = [
 	{
@@ -75,7 +75,7 @@ class Example extends React.Component {
 		return (
 			<div dir="rtl">
 				<IconSettings iconPath="/assets/icons">
-					<UNSAFE_DirectionSettings.Provider value="rtl">
+					<DirectionSettings.Provider value="rtl">
 						<Combobox
 							id="combobox-base-inherit-menu-width"
 							disabled={this.props.disabled}
@@ -148,7 +148,7 @@ class Example extends React.Component {
 							selection={this.state.selection}
 							value={this.state.inputValue}
 						/>
-					</UNSAFE_DirectionSettings.Provider>
+					</DirectionSettings.Provider>
 				</IconSettings>
 			</div>
 		);

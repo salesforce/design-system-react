@@ -3,7 +3,7 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 // eslint-disable-next-line camelcase
-import UNSAFE_DirectionSettings from '~/components/utilities/direction';
+import DirectionSettings from '~/components/utilities/direction';
 
 class Example extends React.Component {
 	static displayName = 'MediaObjectExample';
@@ -11,7 +11,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			// eslint-disable-next-line
-			<UNSAFE_DirectionSettings.Provider value="rtl">
+			<DirectionSettings.Provider value="rtl">
 				<div dir="rtl">
 					<IconSettings iconPath="/assets/icons">
 						<Dropdown
@@ -36,7 +36,7 @@ class Example extends React.Component {
 						/>
 					</IconSettings>
 				</div>
-			</UNSAFE_DirectionSettings.Provider>
+			</DirectionSettings.Provider>
 		);
 	}
 }
