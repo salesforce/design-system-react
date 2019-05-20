@@ -155,8 +155,10 @@ class Radio extends React.Component {
 					id={this.getId()}
 					name={this.props.name}
 					value={this.props.value}
-					checked={this.props.checked}
-					defaultChecked={this.props.defaultChecked}
+					/* A form element should not have both checked and defaultChecked props. */
+					{...(this.props.defaultChecked
+						? { defaultChecked: this.props.defaultChecked }
+						: { checked: this.props.checked })}
 					onChange={(event) => {
 						this.handleChange(event);
 					}}

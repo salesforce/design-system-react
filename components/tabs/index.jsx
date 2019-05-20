@@ -142,12 +142,6 @@ class Tabs extends React.Component {
 		});
 	}
 
-	componentWillUnmount() {
-		this.setState({
-			focus: false,
-		});
-	}
-
 	getNextTab(index) {
 		const count = this.getTabsCount();
 

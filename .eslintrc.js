@@ -189,8 +189,6 @@ module.exports = {
 		'react/require-default-props': 'off',
 		// Components that are top-level should be classes, so the DOM ref exists
 		'react/prefer-stateless-function': 'off',
-		// Prevent multiple component definition per file
-		'react/no-multi-comp': 'off',
 
 		// javascript:void(0) is present in SLDS markup
 		'jsx-a11y/anchor-is-valid': 'off',

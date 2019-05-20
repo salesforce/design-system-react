@@ -67,7 +67,7 @@ const Lookup = class extends React.Component {
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 		/**
 		 * Class names to be added to the tag classed with `slds-lookup`.
 		 */
