@@ -33,7 +33,7 @@ class Example extends React.Component {
 		return (
 			<Dropdown
 				align="right"
-				id="ButtonGroupExampleDropdown"
+				id={selectedItem.id}
 				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				buttonClassName="slds-shrink-none"
