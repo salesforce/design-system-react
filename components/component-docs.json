@@ -4661,7 +4661,7 @@
         "dependencies": []
     },
     "data-table": {
-        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
+        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.\n\nNOTE: for horizontal scrolling with `fixedHeader`-enabled DataTables, see the `style` property description",
         "methods": [
             {
                 "name": "getId",
@@ -4929,6 +4929,13 @@
                 },
                 "required": false,
                 "description": "A variant which adds stripes to alternating rows."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the table.\nNOTE: for horizontal scrolling in `fixedHeader`-enabled DataTables, apply a `minWidth` style here. If the containing element width is less than the `minWidth` value, horizontal scrolling will occur"
             },
             "unborderedRow": {
                 "type": {
@@ -12110,6 +12117,27 @@
                 },
                 "required": true,
                 "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "flowDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'drain'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'fill'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Direction that the progress ring \"flows.\" Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`",
+                "defaultValue": {
+                    "value": "'drain'",
+                    "computed": false
+                }
             }
         },
         "route": "progress-rings",
