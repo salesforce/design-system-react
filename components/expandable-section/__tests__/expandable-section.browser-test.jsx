@@ -10,8 +10,6 @@ import ExpandableSection from '../../expandable-section';
 const expect = chai.expect;
 const should = chai.should();
 
-const { Simulate } = TestUtils;
-
 describe('SLDSExpandableSection', () => {
 	const handles = {
 		section: null,

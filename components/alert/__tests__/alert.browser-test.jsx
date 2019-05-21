@@ -55,7 +55,6 @@ class DemoComponent extends Component {
 DemoComponent.displayName = 'AlertExample';
 
 describe('SLDSAlert: ', function() {
-	let wrapper;
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss alert', () => {

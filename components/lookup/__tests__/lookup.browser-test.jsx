@@ -14,11 +14,7 @@ import IconSettings from '../../icon-settings';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithClass,
-	scryRenderedDOMComponentsWithTag,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('SLDSLookup: ', () => {
 	const generateLookup = function(lookupInstance) {

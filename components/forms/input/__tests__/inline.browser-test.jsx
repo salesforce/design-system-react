@@ -9,8 +9,6 @@ import IconSettings from '../../../icon-settings';
 
 const should = chai.should();
 
-const { Simulate } = TestUtils;
-
 describe('Inline Edit: ', function() {
 	const sampleValue = 'Sample value';
 

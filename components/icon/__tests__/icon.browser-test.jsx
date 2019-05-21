@@ -161,8 +161,6 @@ describe('SLDSIcon: ', function() {
 	});
 
 	describe('Utility Icon Props Render', function() {
-		let svg;
-
 		beforeEach(
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">

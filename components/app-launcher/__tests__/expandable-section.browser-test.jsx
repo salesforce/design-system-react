@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import chai from 'chai';
 import assign from 'lodash.assign';
-import TestUtils from 'react-dom/test-utils';
 
 import IconSettings from '../../icon-settings';
 import AppLauncherLink from '../../app-launcher/link';

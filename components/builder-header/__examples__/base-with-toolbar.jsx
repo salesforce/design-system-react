@@ -2,7 +2,6 @@ import React from 'react';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
-import Dropdown from '../../menu-dropdown';
 import BuilderHeader from '../../builder-header';
 import BuilderHeaderNav from '../../builder-header/nav';
 import BuilderHeaderNavLink from '../../builder-header/nav-link';

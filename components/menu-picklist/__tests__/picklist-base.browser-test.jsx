@@ -57,11 +57,6 @@ describe('SLDSMenuPicklist: ', function() {
 	const getPicklist = (props) => renderPicklist(createPicklist(props));
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
-	const clickOnItem = (cmp, index) => {
-		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
-		Simulate.click(items[index]);
-	};
-
 	describe('in modal mode', () => {
 		let cmp;
 		let btn;
@@ -129,7 +124,6 @@ describe('SLDSMenuPicklist: ', function() {
 	describe('expanded with onSelect', () => {
 		let cmp;
 		let btn;
-		let clicked;
 		let selected;
 
 		beforeEach(() => {
@@ -190,16 +184,9 @@ describe('SLDSMenuPicklist: ', function() {
 	describe('accessible markup', () => {
 		let cmp;
 		let btn;
-		let clicked;
-		let selected;
 
 		beforeEach(() => {
-			selected = false;
-			cmp = getPicklist({
-				onSelect: (i) => {
-					selected = i;
-				},
-			});
+			cmp = getPicklist({});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 

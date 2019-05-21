@@ -71,8 +71,6 @@ module.exports = {
 				// TODO: This should be removed.
 				'no-unused-expressions': 'off',
 				// TODO: This should be removed.
-				'no-unused-vars': 'off',
-				// TODO: This should be removed.
 				'prefer-arrow-callback': 'off',
 				// TODO: This should be removed.
 				'react/display-name': 'off',

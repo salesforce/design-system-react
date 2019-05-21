@@ -25,8 +25,6 @@ import {
  */
 chai.use(chaiEnzyme());
 
-const { Simulate } = TestUtils;
-
 const COMPONENT_CSS_CLASSES = {
 	wrapper: 'slds-tabs_default_wrapper',
 	base: 'slds-tabs_default',

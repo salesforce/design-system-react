@@ -413,8 +413,7 @@ describe('SLDSMenuDropdown', function() {
 			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
-		const dropItDown = (props, children) =>
-			renderDropdown(createDropdown(props, children));
+		const dropItDown = (props) => renderDropdown(createDropdown(props));
 
 		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 

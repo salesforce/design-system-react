@@ -122,7 +122,6 @@ describe('SLDSIllustration: ', function() {
 	describe('Heading only renders', function() {
 		let svg;
 		let heading;
-		let messageBody;
 
 		beforeEach(
 			mountComponent(
