@@ -204,9 +204,9 @@ class Checkbox extends React.Component {
 				aria-required={this.props['aria-required']}
 				disabled={props.disabled}
 				/* A form element should not have both checked and defaultChecked props. */
-				{...(props.defaultChecked
-					? { defaultChecked: props.defaultChecked }
-					: { checked: props.checked })}
+				{...(props.checked !== undefined
+					? { checked: props.checked }
+					: { defaultChecked: props.defaultChecked })}
 				id={this.getId()}
 				name={props.name}
 				onBlur={props.onBlur}
@@ -256,9 +256,9 @@ class Checkbox extends React.Component {
 						aria-required={this.props['aria-required']}
 						disabled={props.disabled}
 						/* A form element should not have both checked and defaultChecked props. */
-						{...(props.defaultChecked
-							? { defaultChecked: props.defaultChecked }
-							: { checked: props.checked })}
+						{...(props.checked !== undefined
+							? { checked: props.checked }
+							: { defaultChecked: props.defaultChecked })}
 						id={this.getId()}
 						name={props.name}
 						onBlur={props.onBlur}
@@ -328,9 +328,9 @@ class Checkbox extends React.Component {
 					disabled={props.disabled}
 					id={this.getId()}
 					/* A form element should not have both checked and defaultChecked props. */
-					{...(props.defaultChecked
-						? { defaultChecked: props.defaultChecked }
-						: { checked: props.checked })}
+					{...(props.checked !== undefined
+						? { checked: props.checked }
+						: { defaultChecked: props.defaultChecked })}
 					name={props.name}
 					onBlur={props.onBlur}
 					onChange={this.handleChange}

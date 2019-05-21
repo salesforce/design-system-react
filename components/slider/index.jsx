@@ -203,9 +203,9 @@ class Slider extends React.Component {
 							onChange={this.handleChange}
 							onInput={this.handleInput}
 							/* A form element should not have both value and defaultValue props. */
-							{...(this.props.defaultValue
-								? { defaultValue: this.props.defaultValue }
-								: { value: this.props.value })}
+							{...(this.props.value !== undefined
+								? { value: this.props.value }
+								: { defaultValue: this.props.defaultValue })}
 						/>
 						<span className="slds-slider__value" aria-hidden="true">
 							{this.props.value || this.props.defaultValue || '0'}

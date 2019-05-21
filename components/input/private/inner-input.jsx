@@ -298,9 +298,9 @@ const InnerInput = (props) => {
 					tabIndex={props.tabIndex}
 					type={props.type}
 					/* A form element should not have both value and defaultValue props. */
-					{...(props.defaultValue
-						? { defaultValue: props.defaultValue }
-						: { value: props.value })}
+					{...(props.value !== undefined
+						? { value: props.value }
+						: { defaultValue: props.defaultValue })}
 				/>
 			)}
 
