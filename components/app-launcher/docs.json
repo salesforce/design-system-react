@@ -1,0 +1,18 @@
+{
+    "component": "app-launcher",
+    "status": "prod",
+    "display-name": "App Launcher",
+    "SLDS-component-path": "/components/app-launcher",
+    "dependencies": [
+        {
+            "component": "expandable-section"
+        },
+		{
+			"component": "link"
+		},
+        {
+            "component": "tile"
+        }
+    ],
+    "url-slug": "app-launcher"
+}
