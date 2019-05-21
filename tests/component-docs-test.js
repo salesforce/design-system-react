@@ -24,7 +24,7 @@ const deepMap = (obj, callback) => {
 	};
 
 	if (Array.isArray(obj)) {
-		return obj.map(deepMapper);
+		return obj.forEach(deepMapper);
 	} else if (typeof obj === 'object') {
 		return mapObject(obj, deepMapper);
 	}
