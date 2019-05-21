@@ -43,7 +43,7 @@ describe('SLDSModal: ', function() {
 		container = document.createElement('div');
 
 		const opener = (
-			<button>
+			<button type="button">
 				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
 			</button>
 		);
@@ -254,10 +254,10 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<button key="test-content1" className="cancel">
+				<button type="button" key="test-content1" className="cancel">
 					Cancel
 				</button>,
-				<button key="test-content2" className="save">
+				<button type="button" key="test-content2" className="save">
 					Save
 				</button>,
 			];

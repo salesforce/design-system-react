@@ -116,7 +116,9 @@ const defaultProps = {
  */
 class Slider extends React.Component {
 	static displayName = SLIDER;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {

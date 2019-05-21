@@ -9,6 +9,7 @@ import MenuDropdown from '../menu-dropdown/menu-dropdown';
 import { BUILDER_HEADER_NAV_DROPDOWN } from '../../utilities/constants';
 
 // This component accepts the same props as MenuDropdown.
+// eslint-disable-next-line react/forbid-foreign-prop-types
 const { propTypes } = MenuDropdown;
 
 /**

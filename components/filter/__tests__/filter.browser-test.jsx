@@ -45,6 +45,7 @@ class DemoComponent extends React.Component {
 	};
 
 	static defaultProps = defaultProps;
+
 	state = {};
 
 	render() {

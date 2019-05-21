@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable no-param-reassign */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable max-lines */

@@ -120,7 +120,9 @@ const defaultProps = {
  */
 class SplitViewListbox extends React.Component {
 	static displayName = SPLIT_VIEW_LISTBOX;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {
