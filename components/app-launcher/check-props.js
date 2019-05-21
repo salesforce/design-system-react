@@ -3,12 +3,14 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import componentIsDeprecated from '../../utilities/warning/component-is-deprecated';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import oneOfComponent from '../../utilities/warning/one-of-component';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import {
 	APP_LAUNCHER,
 	APP_LAUNCHER_EXPANDABLE_SECTION,
+	APP_LAUNCHER_SECTION,
 	APP_LAUNCHER_TILE,
 } from '../../utilities/constants';
 
@@ -43,6 +45,11 @@ if (process.env.NODE_ENV !== 'production') {
 				'collapseSectionAssistiveText',
 				"assistiveText['collapseSection']",
 				createDocUrl('assistiveText')
+			);
+		} else if (COMPONENT === APP_LAUNCHER_SECTION) {
+			componentIsDeprecated(
+				COMPONENT,
+				'App Launcher Section has been deprecated. Please use APP_LAUNCHER_EXPANDABLE_SECTION instead.'
 			);
 		} else if (COMPONENT === APP_LAUNCHER_TILE) {
 			deprecatedProperty(

@@ -6,6 +6,8 @@ export const ALERT_CONTAINER = 'SLDSAlertContainer';
 export const APP_LAUNCHER = 'SLDSAppLauncher';
 export const APP_LAUNCHER_EXPANDABLE_SECTION =
 	'SLDSAppLauncherExpandableSection';
+/* Remove at next breaking change */
+export const APP_LAUNCHER_SECTION = 'SLDSAppLauncherSection';
 export const APP_LAUNCHER_LINK = 'SLDSAppLauncherLink';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
 export const APP_LAUNCHER_HEADER = 'SLDSAppLauncherHeader';
