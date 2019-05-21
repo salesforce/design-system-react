@@ -12,6 +12,7 @@ const docs = parseJSON('components/component-docs.json');
 
 const mapObject = (obj, callback) =>
 	Object.keys(obj).reduce((accumulator, key) => {
+		// eslint-disable-next-line no-param-reassign
 		accumulator[key] = callback(obj[key]);
 		return accumulator;
 	}, {});

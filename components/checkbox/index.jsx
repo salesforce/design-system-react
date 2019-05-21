@@ -269,6 +269,7 @@ class Checkbox extends React.Component {
 						onKeyUp={props.onKeyUp}
 						ref={(component) => {
 							if (component) {
+								// eslint-disable-next-line no-param-reassign
 								component.indeterminate = props.indeterminate;
 							}
 							this.input = component;

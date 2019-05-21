@@ -798,6 +798,7 @@ class MenuDropdown extends React.Component {
 			const menuItemTop = menuItem.offsetTop - menu.offsetTop;
 
 			if (menuItemTop < menuTop) {
+				// eslint-disable-next-line no-param-reassign
 				menu.scrollTop = menuItemTop;
 			} else {
 				const menuBottom = menuTop + menuHeight + menu.offsetTop;
@@ -805,6 +806,7 @@ class MenuDropdown extends React.Component {
 					menuItemTop + menuItem.offsetHeight + menu.offsetTop;
 
 				if (menuItemBottom > menuBottom) {
+					// eslint-disable-next-line no-param-reassign
 					menu.scrollTop = menuItemBottom - menuHeight - menu.offsetTop;
 				}
 			}

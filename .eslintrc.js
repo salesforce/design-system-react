@@ -134,20 +134,10 @@ module.exports = {
 		// to start appearing. All lint warnings errors should be meaningful, and
 		// therefore, there should never intentionally be any.
 
-		// static class properties/method is still too low of a babel stage
-		'class-methods-use-this': 'warn',
 		// We are open to changing this to always use a trailing comma,
 		// in order to make re-sorting easier
 		'comma-dangle': [2, 'only-multiline'],
-		// May consider removing
-		'function-paren-newline': 'off',
-		// currently used in older files, this should be removed
-		'no-param-reassign': [
-			2,
-			{
-				props: false,
-			},
-		],
+
 		// Should be removed in the future. `event` is the main global used now.
 		'no-restricted-globals': 'off',
 		// Would prefer all mixed operators as errors, but this conflicts

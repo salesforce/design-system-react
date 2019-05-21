@@ -186,8 +186,10 @@ class Tree extends React.Component {
 	handleSelect = ({ event, data, clearSelectedNodes, fromFocus }) => {
 		// When triggered by a key event, other nodes should be deselected.
 		if (clearSelectedNodes) {
+			// TODO: This bad design. This is state modfication. State should be changed via setState only.
 			this.state.flattenedNodes.forEach((flattenedNode) => {
 				if (flattenedNode.node.selected) {
+					// eslint-disable-next-line no-param-reassign
 					flattenedNode.node.selected = false;
 				}
 			});
