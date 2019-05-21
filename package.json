@@ -1,0 +1,672 @@
+{
+  "name": "design-system-react",
+  "version": "0.10.4",
+  "description": "Salesforce Lightning Design System for React",
+  "license": "SEE LICENSE IN README.md",
+  "engines": {
+    "npm": "^5.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/salesforce/design-system-react.git"
+  },
+  "keywords": [
+    "react",
+    "slds",
+    "salesforce",
+    "salesforce-ux",
+    "lightning",
+    "design system",
+    "lightning design system",
+    "salesforce-lightning",
+    "salesforce lightning design system",
+    "interactive components",
+    "interactive",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/salesforce/design-system-react/issues"
+  },
+  "main": "components/index.js",
+  "homepage": "https://react.lightningdesignsystem.com",
+  "dependencies": {
+    "@salesforce/babel-preset-design-system-react": "^1.0.0",
+    "classnames": "^2.2.5",
+    "create-react-class": "^15.6.0",
+    "lodash.assign": "^4.0.9",
+    "lodash.escaperegexp": "^4.1.1",
+    "lodash.find": "^4.3.0",
+    "lodash.findindex": "^4.3.0",
+    "lodash.isdate": "^4.0.1",
+    "lodash.isequal": "^4.2.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.memoize": "^4.1.1",
+    "lodash.reject": "^4.3.0",
+    "popper.js": "^1.10.8",
+    "prop-types": ">=15.5.8",
+    "react-highlighter": "^0.4.0",
+    "react-modal": "3.4.4",
+    "react-onclickoutside": "^6.5.0",
+    "react-required-if": "^1.0.3",
+    "react-text-truncate": "^0.12.0",
+    "shortid": "^2.2.6",
+    "warning": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@salesforce-ux/design-system": "^2.8.3",
+    "react": ">=16.3 <17",
+    "react-dom": ">=16.3 <17"
+  },
+  "components": [
+    {
+      "component": "accordion",
+      "status": "prod",
+      "display-name": "Accordions",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/accordion",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ],
+      "url-slug": "accordions"
+    },
+    {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/alert",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ],
+      "url-slug": "alerts"
+    },
+    {
+      "component": "app-launcher",
+      "status": "prod",
+      "display-name": "App Launcher",
+      "SLDS-component-path": "/components/app-launcher",
+      "dependencies": [
+        {
+          "component": "expandable-section"
+        },
+        {
+          "component": "link"
+        },
+        {
+          "component": "tile"
+        }
+      ],
+      "url-slug": "app-launchers"
+    },
+    {
+      "component": "avatar",
+      "status": "prod",
+      "display-name": "Avatars",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/avatar",
+      "url-slug": "avatars"
+    },
+    {
+      "component": "brand-band",
+      "status": "prod",
+      "display-name": "BrandBand",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/08/27",
+        "commit-sha": "aef31ce8daf993b59ca94c656c5efd9f2e3266f7"
+      },
+      "SLDS-component-path": "/components/brand-band",
+      "url-slug": "brand-band"
+    },
+    {
+      "component": "breadcrumb",
+      "status": "prod",
+      "display-name": "Breadcrumbs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/breadcrumbs",
+      "url-slug": "breadcrumbs"
+    },
+    {
+      "component": "builder-header",
+      "status": "prod",
+      "display-name": "Builder Header",
+      "SLDS-component-path": "/components/builder-header",
+      "dependencies": [
+        {
+          "component": "nav"
+        },
+        {
+          "component": "nav-dropdown"
+        },
+        {
+          "component": "nav-link"
+        },
+        {
+          "component": "toolbar"
+        }
+      ],
+      "url-slug": "builder-header"
+    },
+    {
+      "component": "button",
+      "status": "prod",
+      "display-name": "Buttons",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/buttons",
+      "url-slug": "buttons"
+    },
+    {
+      "component": "button-stateful",
+      "status": "prod",
+      "display-name": "Stateful Buttons",
+      "SLDS-component-path": "/components/button/#flavor-stateful",
+      "url-slug": "stateful-buttons"
+    },
+    {
+      "component": "button-group",
+      "status": "prod",
+      "display-name": "Button Groups",
+      "SLDS-component-path": "/components/button-groups",
+      "url-slug": "button-groups"
+    },
+    {
+      "component": "card",
+      "status": "prod",
+      "display-name": "Cards",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/cards",
+      "dependencies": [
+        {
+          "component": "empty"
+        },
+        {
+          "component": "filter"
+        }
+      ],
+      "url-slug": "cards"
+    },
+    {
+      "component": "carousel",
+      "status": "prod",
+      "display-name": "Carousel",
+      "SLDS-component-path": "/components/carousel",
+      "url-slug": "carousel"
+    },
+    {
+      "component": "checkbox",
+      "status": "prod",
+      "display-name": "Checkboxes",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/checkbox",
+      "url-slug": "checkboxes"
+    },
+    {
+      "component": "color-picker",
+      "status": "prod",
+      "display-name": "Color Pickers",
+      "SLDS-component-path": "/components/color-picker",
+      "url-slug": "color-picker"
+    },
+    {
+      "component": "combobox",
+      "status": "prod",
+      "display-name": "Comboboxes",
+      "last-accessibility-review": {
+        "date-iso-8601": "2019/01/10",
+        "commit-sha": "ad49735c8055420c4c95872299986f5fbbb2236e"
+      },
+      "SLDS-component-path": "/components/combobox",
+      "url-slug": "comboboxes"
+    },
+    {
+      "component": "data-table",
+      "status": "prod",
+      "display-name": "Data Tables",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/01",
+        "deprecated-accessibility": "true",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/data-tables",
+      "dependencies": [
+        {
+          "component": "cell"
+        },
+        {
+          "component": "column"
+        },
+        {
+          "component": "highlight-cell"
+        },
+        {
+          "component": "row-actions"
+        }
+      ],
+      "url-slug": "data-table"
+    },
+    {
+      "component": "date-picker",
+      "status": "prod",
+      "display-name": "Datepickers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/20",
+        "commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
+      },
+      "SLDS-component-path": "/components/datepickers",
+      "url-slug": "date-pickers"
+    },
+    {
+      "component": "dynamic-icon",
+      "status": "prod",
+      "display-name": "Dynamic Icon",
+      "SLDS-component-path": "/components/dynamic-icon",
+      "url-slug": "dynamic-icon"
+    },
+    {
+      "component": "expandable-section",
+      "status": "prod",
+      "display-name": "Expandable Section",
+      "SLDS-component-path": "/components/expandable-section",
+      "url-slug": "expandable-section"
+    },
+    {
+      "component": "filter",
+      "status": "prototype",
+      "display-name": "Filters",
+      "SLDS-component-path": "/components/filter",
+      "url-slug": "filters"
+    },
+    {
+      "component": "input",
+      "status": "prod",
+      "display-name": "Inputs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/09/22",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/input",
+      "url-slug": "inputs"
+    },
+    {
+      "component": "global-header",
+      "status": "prod",
+      "display-name": "Global Header",
+      "SLDS-component-path": "/components/global-header#flavor-base",
+      "dependencies": [
+        {
+          "component": "favorites"
+        },
+        {
+          "component": "help"
+        },
+        {
+          "component": "notifications"
+        },
+        {
+          "component": "profile"
+        },
+        {
+          "component": "search"
+        },
+        {
+          "component": "setup"
+        },
+        {
+          "component": "task"
+        }
+      ],
+      "url-slug": "global-headers"
+    },
+    {
+      "component": "global-navigation-bar",
+      "status": "prototype",
+      "display-name": "Global Navigation Bar",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/05/02",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/global-navigation",
+      "dependencies": [
+        {
+          "component": "button"
+        },
+        {
+          "component": "dropdown"
+        },
+        {
+          "component": "label"
+        },
+        {
+          "component": "link"
+        },
+        {
+          "component": "region"
+        }
+      ],
+      "url-slug": "global-navigation-bars"
+    },
+    {
+      "component": "icon",
+      "status": "prod",
+      "display-name": "Icons",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/icons",
+      "url-slug": "icons"
+    },
+    {
+      "component": "illustration",
+      "status": "prod",
+      "display-name": "Illustrations",
+      "SLDS-component-path": "/components/illustration",
+      "url-slug": "illustrations"
+    },
+    {
+      "component": "media-object",
+      "status": "prod",
+      "display-name": "Media Objects",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/utilities/media-object",
+      "url-slug": "media-objects"
+    },
+    {
+      "component": "menu-dropdown",
+      "status": "prod",
+      "display-name": "Dropdown Menus",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/menus#flavor-dropdown",
+      "dependencies": [
+        {
+          "component": "button-trigger"
+        }
+      ],
+      "url-slug": "menu-dropdowns"
+    },
+    {
+      "component": "modal",
+      "status": "prod",
+      "display-name": "Modals and Prompts",
+      "SLDS-component-path": "/components/modals",
+      "url-slug": "modals"
+    },
+    {
+      "component": "panel",
+      "status": "prototype",
+      "display-name": "Panels",
+      "SLDS-component-path": "/components/panels",
+      "dependencies": [
+        {
+          "component": "filtering/group"
+        },
+        {
+          "component": "filtering/list-heading"
+        },
+        {
+          "component": "filtering/list"
+        }
+      ],
+      "url-slug": "panels"
+    },
+    {
+      "component": "pill",
+      "status": "prod",
+      "display-name": "Pills",
+      "SLDS-component-path": "/components/pills",
+      "url-slug": "pills"
+    },
+    {
+      "component": "pill-container",
+      "status": "prod",
+      "display-name": "Pill Container",
+      "SLDS-component-path": "/components/pill-container",
+      "url-slug": "pill-container"
+    },
+    {
+      "component": "popover",
+      "status": "prod",
+      "display-name": "Popovers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/popovers",
+      "url-slug": "popovers"
+    },
+    {
+      "component": "page-header",
+      "status": "prod",
+      "display-name": "Page Headers",
+      "SLDS-component-path": "/components/page-headers",
+      "url-slug": "page-headers"
+    },
+    {
+      "component": "progress-indicator",
+      "status": "prod",
+      "display-name": "Progress Indicators",
+      "SLDS-component-path": "/components/progress-indicator",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/07/25",
+        "commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/07/25",
+        "commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
+      },
+      "url-slug": "progress-indicators"
+    },
+    {
+      "component": "progress-bar",
+      "status": "prod",
+      "display-name": "Progress Bars",
+      "SLDS-component-path": "/components/progress-bar",
+      "url-slug": "progress-bars"
+    },
+    {
+      "component": "progress-ring",
+      "status": "prod",
+      "display-name": "Progress Rings",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+      },
+      "SLDS-component-path": "/components/progress-ring",
+      "url-slug": "progress-rings"
+    },
+    {
+      "component": "radio",
+      "status": "prod",
+      "display-name": "Radios",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-group/",
+      "url-slug": "radios"
+    },
+    {
+      "component": "split-view",
+      "status": "prod",
+      "display-name": "Split View",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/split-view",
+      "dependencies": [
+        {
+          "component": "header"
+        },
+        {
+          "component": "listbox"
+        }
+      ],
+      "url-slug": "split-views"
+    },
+    {
+      "component": "radio-group",
+      "status": "prod",
+      "display-name": "Radio Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-group",
+      "url-slug": "radio-groups"
+    },
+    {
+      "component": "radio-button-group",
+      "status": "prod",
+      "display-name": "Radio Button Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-button-group",
+      "url-slug": "radio-button-groups"
+    },
+    {
+      "component": "scoped-notification",
+      "status": "prod",
+      "display-name": "Scoped Notifications",
+      "SLDS-component-path": "/components/scoped-notification",
+      "url-slug": "scoped-notifications"
+    },
+    {
+      "component": "slider",
+      "status": "prod",
+      "display-name": "Slider",
+      "SLDS-component-path": "/components/slider",
+      "url-slug": "sliders"
+    },
+    {
+      "component": "spinner",
+      "status": "prod",
+      "display-name": "Spinners",
+      "SLDS-component-path": "/components/spinner",
+      "url-slug": "spinners"
+    },
+    {
+      "component": "tabs",
+      "status": "prod",
+      "display-name": "Tabs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/tabs",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ],
+      "url-slug": "tabs"
+    },
+    {
+      "component": "textarea",
+      "status": "prod",
+      "display-name": "Textareas",
+      "SLDS-component-path": "/components/forms#flavor-textarea",
+      "url-slug": "textareas"
+    },
+    {
+      "component": "time-picker",
+      "status": "prod",
+      "display-name": "Timepickers",
+      "SLDS-component-path": "/components/timepicker",
+      "url-slug": "time-pickers"
+    },
+    {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/toast",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ],
+      "url-slug": "toasts"
+    },
+    {
+      "component": "tooltip",
+      "status": "prod",
+      "display-name": "Tooltips",
+      "SLDS-component-path": "/components/tooltips",
+      "url-slug": "tooltips"
+    },
+    {
+      "component": "tree",
+      "status": "prod",
+      "display-name": "Tree",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/05/04",
+        "commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/05/04",
+        "commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+      },
+      "SLDS-component-path": "/components/trees",
+      "url-slug": "trees"
+    },
+    {
+      "component": "vertical-navigation",
+      "status": "prod",
+      "display-name": "Vertical Navigation",
+      "SLDS-component-path": "/components/vertical-navigation",
+      "url-slug": "vertical-navigation"
+    }
+  ],
+  "documentation": {
+    "prototype": {
+      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+    }
+  },
+  "SLDS": {
+    "gitURL": "^2.8.3"
+  }
+}

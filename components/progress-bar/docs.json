@@ -1,0 +1,7 @@
+{
+    "component": "progress-bar",
+    "status": "prod",
+    "display-name": "Progress Bars",
+    "SLDS-component-path": "/components/progress-bar",
+    "url-slug": "progress-bars"
+}
