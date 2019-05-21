@@ -14,7 +14,12 @@ class Example extends React.Component {
 						<ProgressRing value={20} theme="warning" hasIcon />
 					</div>
 					<div className="slds-col_padded">
-						<ProgressRing flowDirection="fill" value={40} theme="warning" hasIcon />
+						<ProgressRing
+							flowDirection="fill"
+							value={40}
+							theme="warning"
+							hasIcon
+						/>
 					</div>
 					<div className="slds-col_padded">
 						<ProgressRing value={100} theme="warning" />

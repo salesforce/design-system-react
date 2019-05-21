@@ -29,7 +29,7 @@ const propTypes = {
 	/**
 	 * Direction that the progress ring "flows." Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`
 	 */
-	flowDirection: PropTypes.oneOf(['drain', 'fill'])
+	flowDirection: PropTypes.oneOf(['drain', 'fill']),
 };
 
 const defaultProps = {
