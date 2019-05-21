@@ -141,7 +141,6 @@ describe('SLDSButton: ', () => {
 
 	describe('(icon path) Icon Button renders assistive text', () => {
 		let cmp;
-		let btn;
 		let asstText;
 
 		beforeEach(() => {
@@ -151,7 +150,6 @@ describe('SLDSButton: ', () => {
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				title: 'announcement',
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
 		});
 

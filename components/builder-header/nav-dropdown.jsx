@@ -9,7 +9,7 @@ import MenuDropdown from '../menu-dropdown/menu-dropdown';
 import { BUILDER_HEADER_NAV_DROPDOWN } from '../../utilities/constants';
 
 // This component accepts the same props as MenuDropdown.
-const propTypes = MenuDropdown.propTypes;
+const { propTypes } = MenuDropdown;
 
 /**
  * A dropdown within the navigation section of the header.

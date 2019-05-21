@@ -160,7 +160,8 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', isStatic: true });
-			label = scryRenderedDOMComponentsWithTag(component, 'span')[0];
+			[label] = scryRenderedDOMComponentsWithTag(component, 'span');
+			// eslint-disable-next-line prefer-destructuring
 			input = scryRenderedDOMComponentsWithTag(component, 'span')[1];
 		});
 
@@ -513,7 +514,6 @@ describe('SLDSInput', () => {
 		let component;
 		let decrement;
 		let increment;
-		let input;
 		let onChangeData;
 
 		afterEach(() => {
@@ -536,7 +536,6 @@ describe('SLDSInput', () => {
 				component,
 				'slds-input__button_increment'
 			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			onChangeData = {};
 			TestUtils.Simulate.mouseDown(increment);
@@ -596,7 +595,6 @@ describe('SLDSInput', () => {
 				component,
 				'slds-input__button_increment'
 			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			changeOccurred = false;
 			TestUtils.Simulate.mouseDown(increment);
@@ -628,7 +626,6 @@ describe('SLDSInput', () => {
 				component,
 				'slds-input__button_increment'
 			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			onChangeData = {};
 			TestUtils.Simulate.mouseDown(increment);

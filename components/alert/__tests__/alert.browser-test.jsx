@@ -54,7 +54,7 @@ class DemoComponent extends Component {
 
 DemoComponent.displayName = 'AlertExample';
 
-describe('SLDSAlert: ', function() {
+describe('SLDSAlert: ', function describeFunction() {
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss alert', () => {
@@ -82,7 +82,7 @@ describe('SLDSAlert: ', function() {
 		});
 	});
 
-	describe('Basic Alert Props Render', function() {
+	describe('Basic Alert Props Render', function describeFunction2() {
 		beforeEach(
 			mountComponent(
 				<DemoComponent style={{ backgroundColor: 'rgb(18, 49, 35)' }} />

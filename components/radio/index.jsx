@@ -168,7 +168,7 @@ class Radio extends React.Component {
 						}
 					}}
 					onKeyPress={(event) => {
-						const charCode = event.charCode;
+						const { charCode } = event;
 
 						if (
 							charCode === KEYS.SPACE &&

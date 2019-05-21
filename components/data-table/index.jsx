@@ -392,7 +392,7 @@ class DataTable extends React.Component {
 				child &&
 				child.type.displayName === DataTableRowActions.displayName
 			) {
-				const dropdown = child.props.dropdown;
+				const { dropdown } = child.props;
 				const dropdownPropOverrides = {};
 				if (this.props.fixedHeader) {
 					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';

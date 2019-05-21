@@ -210,7 +210,7 @@ class Button extends React.Component {
 	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
-		let iconVariant = this.props.iconVariant;
+		let { iconVariant } = this.props;
 		const iconMore = iconVariant === 'more';
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';

@@ -64,6 +64,7 @@ module.exports = {
 				sinon: true,
 			},
 			rules: {
+				'func-names': 'off',
 				// devDependencies are used
 				'import/no-extraneous-dependencies': 'off',
 				// console is used in tests
@@ -138,8 +139,6 @@ module.exports = {
 		// We are open to changing this to always use a trailing comma,
 		// in order to make re-sorting easier
 		'comma-dangle': [2, 'only-multiline'],
-		// TODO: Should be removed
-		'func-names': 'off',
 		// May consider removing
 		'function-paren-newline': 'off',
 		// currently used in older files, this should be removed
@@ -149,8 +148,6 @@ module.exports = {
 				props: false,
 			},
 		],
-		// currently used in older files
-		'no-plusplus': 'off',
 		// Should be removed in the future. `event` is the main global used now.
 		'no-restricted-globals': 'off',
 		// Would prefer all mixed operators as errors, but this conflicts
@@ -168,10 +165,6 @@ module.exports = {
 				allowSamePrecedence: true,
 			},
 		],
-		// May consider removing
-		'object-curly-newline': 'off',
-		// May consider removing
-		'prefer-destructuring': 'off',
 
 		// May consider removing. Would be unable to test for undefined props.
 		'react/default-props-match-prop-types': 'off',

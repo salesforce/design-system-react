@@ -8,7 +8,7 @@ import AppLauncherLink from '../../app-launcher/link';
 import AppLauncherTile from '../../app-launcher/tile';
 import AppLauncherExpandableSection from '../../app-launcher/expandable-section';
 
-const expect = chai.expect;
+const { expect } = chai;
 const should = chai.should();
 
 describe('SLDS APP LAUNCHER EXPANDABLE SECTION *******************************************', () => {

@@ -9,11 +9,7 @@ import { expect } from 'chai';
 import SLDSMenuPicklist from '../../menu-picklist';
 import IconSettings from '../../icon-settings';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate, findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSMenuPicklist: ', function() {
 	let body;

@@ -54,7 +54,6 @@ class DemoComponent extends React.Component {
 DemoComponent.displayName = 'ToastExample';
 
 describe('SLDSToast: ', function() {
-	let wrapper;
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss Toast', () => {

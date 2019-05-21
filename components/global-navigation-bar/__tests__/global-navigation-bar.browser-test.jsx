@@ -101,7 +101,7 @@ describe('Global Navigation Bar: ', () => {
 	});
 
 	describe('Optional Region Structure', () => {
-		const props = propSets.base.props;
+		const { props } = propSets.base;
 
 		const buttonClicked = () => {};
 		const linkClicked = () => {};

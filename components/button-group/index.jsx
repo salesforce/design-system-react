@@ -50,7 +50,7 @@ const ButtonGroup = (props = {}) => {
 	// Merge objects of strings with their default object
 	const labels = assign({}, defaultProps.labels, props.labels);
 
-	let children = props.children;
+	let { children } = props;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
 
 	if (zeroIndexLength > 0) {

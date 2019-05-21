@@ -65,7 +65,7 @@ class DemoComponent extends React.Component {
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSFilter', function() {
+describe('SLDSFilter', function describeFunction() {
 	let mountNode;
 	let wrapper;
 

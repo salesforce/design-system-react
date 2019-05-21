@@ -167,7 +167,7 @@ class Tree extends React.Component {
 		}
 		let nodes = [{ node: root, treeIndex }];
 		if (root.expanded) {
-			for (let index = 0; index < root.nodes.length; index++) {
+			for (let index = 0; index < root.nodes.length; index += 1) {
 				const curNode = firstLevel
 					? root.nodes[index]
 					: this.props.getNodes(root)[index];

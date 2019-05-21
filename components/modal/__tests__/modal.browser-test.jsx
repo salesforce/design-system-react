@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-find-dom-node */
 
 import React from 'react';
@@ -144,6 +145,7 @@ describe('SLDSModal: ', function() {
 
 	describe('Proper HTML markup', () => {
 		it('dismissible modal has role=dialog', () => {
+			// eslint-disable-next-line no-unused-vars
 			const cmp = getModal({
 				isOpen: true,
 			});

@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-render-return-value */
 /* eslint-disable react/no-find-dom-node */
 

@@ -83,7 +83,7 @@ const ROTATED_HEIGHT = NUBBIN_SIZE / Math.sqrt(2); // 'rem'
 // FIXME - still need to account for border shadow of 2px. probably only needs to be added to the rotated height.
 // TODO - should we convert all rem to pixels right from the get go? Keep units consistent. Memoize the values for perf?
 const getNubbinMargins = (popperData = {}) => {
-	const placement = popperData.placement;
+	const { placement } = popperData;
 
 	let top = 0;
 	let left = 0;

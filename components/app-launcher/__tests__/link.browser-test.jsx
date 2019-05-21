@@ -5,7 +5,7 @@ import IconSettings from '../../icon-settings';
 
 import AppLauncherLink from '../../app-launcher/link';
 
-const expect = chai.expect;
+const { expect } = chai;
 const should = chai.should();
 
 describe('SLDS APP LAUNCHER LINK *******************************************', () => {

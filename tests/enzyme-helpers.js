@@ -16,7 +16,7 @@ function createMountNode({ context, mountNodeId }) {
 }
 
 const mountComponent = (instance) =>
-	function() {
+	function mountComponentInside() {
 		this.dom = document.createElement('div');
 		const mountNode = document.body.appendChild(this.dom);
 		mountNode.id = 'mount-node';

@@ -11,6 +11,7 @@
 
 const rule = require('../../../lib/rules/no-double-dash-modifier');
 // eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line prefer-destructuring
 const RuleTester = require('eslint').RuleTester;
 
 //------------------------------------------------------------------------------

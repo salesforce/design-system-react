@@ -1597,7 +1597,7 @@ class Combobox extends React.Component {
 	};
 
 	render() {
-		const props = this.props;
+		const { props } = this;
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},
