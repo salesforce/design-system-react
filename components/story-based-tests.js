@@ -1,3 +1,4 @@
+/* eslint-disable import/no-useless-path-segments */
 /*
  * STORY-BASED SNAPSHOT TESTING
  *

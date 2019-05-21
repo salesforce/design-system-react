@@ -26,6 +26,7 @@ const deepMap = (obj, callback) => {
 
 	if (Array.isArray(obj)) {
 		return obj.forEach(deepMapper);
+		// eslint-disable-next-line no-else-return
 	} else if (typeof obj === 'object') {
 		return mapObject(obj, deepMapper);
 	}
