@@ -683,12 +683,14 @@ class MenuDropdown extends React.Component {
 			this.props.multiple &&
 			this.state.selectedIndices.indexOf(index) === -1
 		) {
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
 				selectedIndices: currentIndices,
 			});
 		} else if (this.props.multiple) {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			const currentSelected = this.state.selectedIndices;
 			currentSelected.splice(deselectIndex, 1);
 			this.setState({

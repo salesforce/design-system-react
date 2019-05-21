@@ -36,6 +36,7 @@ module.exports = {
 				'no-console': 'off',
 				// TODO: This should be removed.
 				'no-unused-vars': 'off',
+				'react/no-access-state-in-setstate': 'off',
 			},
 		},
 		{
@@ -75,6 +76,7 @@ module.exports = {
 				'prefer-arrow-callback': 'off',
 				// TODO: This should be removed.
 				'react/display-name': 'off',
+				'react/no-access-state-in-setstate': 'off',
 			},
 		},
 		{
@@ -138,6 +140,7 @@ module.exports = {
 		// in order to make re-sorting easier
 		'comma-dangle': [2, 'only-multiline'],
 
+		'import/no-useless-path-segments': 'off',
 		// Should be removed in the future. `event` is the main global used now.
 		'no-restricted-globals': 'off',
 		// Would prefer all mixed operators as errors, but this conflicts
@@ -155,6 +158,8 @@ module.exports = {
 				allowSamePrecedence: true,
 			},
 		],
+
+		'react/destructuring-assignment': ['error', { ignoreClassFields: true }],
 
 		// May consider removing. Would be unable to test for undefined props.
 		'react/default-props-match-prop-types': 'off',
@@ -186,6 +191,7 @@ module.exports = {
 		// TODO: Should be removed. All mouse interactions should be able
 		// to be done with the keyboard.
 		'jsx-a11y/click-events-have-key-events': 'off',
+		'jsx-a11y/label-has-associated-control': 'off',
 
 		// Enforce single underscore modifiers for BEM class names
 		'@salesforce/slds-react/no-double-dash-modifier': 'error',

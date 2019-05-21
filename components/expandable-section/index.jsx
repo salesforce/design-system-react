@@ -88,7 +88,9 @@ class ExpandableSection extends React.Component {
 				isOpen: this.props.isOpen,
 			});
 		} else {
-			this.setState({ isOpen: !this.state.isOpen });
+			this.setState((prevState) => ({
+				isOpen: !prevState.isOpen,
+			}));
 		}
 	};
 

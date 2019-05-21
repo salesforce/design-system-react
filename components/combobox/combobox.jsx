@@ -726,6 +726,7 @@ class Combobox extends React.Component {
 				options: this.props.options,
 			});
 
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			if (this.state.isOpen) {
 				menuItemSelectScroll({
 					container: this.menuRef,

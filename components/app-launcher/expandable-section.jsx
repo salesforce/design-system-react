@@ -91,7 +91,9 @@ class AppLauncherExpandableSection extends React.Component {
 		if (this.props.onToggleOpen) {
 			this.props.onToggleOpen(event, data);
 		} else {
-			this.setState({ isOpen: !this.state.isOpen });
+			this.setState((prevState) => ({
+				isOpen: !prevState.isOpen,
+			}));
 		}
 	};
 

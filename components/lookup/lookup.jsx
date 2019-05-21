@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
