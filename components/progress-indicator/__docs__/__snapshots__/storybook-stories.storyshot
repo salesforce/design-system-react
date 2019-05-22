@@ -39,6 +39,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -69,6 +70,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -235,6 +237,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -273,6 +276,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -311,6 +315,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -447,6 +452,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -485,6 +491,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -523,6 +530,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -561,6 +569,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -599,6 +608,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -629,6 +639,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -659,6 +670,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -689,6 +701,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -719,6 +732,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -795,6 +809,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -833,6 +848,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -871,6 +887,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -909,6 +926,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -939,6 +957,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -1260,6 +1279,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -1298,6 +1318,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -1336,6 +1357,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -1366,6 +1388,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"
@@ -1396,6 +1419,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              type="button"
             >
               <span
                 className="slds-assistive-text"

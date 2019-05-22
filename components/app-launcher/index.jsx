@@ -236,6 +236,7 @@ class AppLauncher extends React.Component {
 						className="slds-button slds-icon-waffle_container slds-context-bar__button"
 						onClick={this.openAppLauncher}
 						title={triggerAssistiveText}
+						type="button"
 					>
 						<span className="slds-icon-waffle">
 							<span className="slds-r1" />

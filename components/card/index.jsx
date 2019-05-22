@@ -34,7 +34,7 @@ const idSuffixes = {
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
  */
-const Card = function(props) {
+const Card = (props) => {
 	const bodyId = props.id ? props.id + idSuffixes.body : null;
 	const filterId = props.id ? props.id + idSuffixes.filter : null;
 	const headingId = props.id ? props.id + idSuffixes.heading : null;

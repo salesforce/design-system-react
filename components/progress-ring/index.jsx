@@ -81,6 +81,7 @@ class ProgressRing extends React.Component {
 
 		if (this.props.hasIcon) {
 			if (this.props.icon) {
+				// eslint-disable-next-line prefer-destructuring
 				icon = this.props.icon;
 			} else if (this.props.theme === THEME_OPTIONS.WARNING) {
 				icon = <Icon category="utility" name="warning" title="Warning" />;

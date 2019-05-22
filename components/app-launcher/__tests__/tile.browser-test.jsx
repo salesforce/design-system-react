@@ -2,16 +2,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 import chai from 'chai';
 import assign from 'lodash.assign';
-import TestUtils from 'react-dom/test-utils';
 import IconSettings from '../../icon-settings';
 
 import AppLauncherTile from '../../app-launcher/tile';
 import Icon from '../../icon';
 
-const expect = chai.expect;
+const { expect } = chai;
 const should = chai.should();
-
-const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER TILE *******************************************', () => {
 	let div;
@@ -176,7 +173,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		afterEach((done) => {
-			setTimeout(function() {
+			setTimeout(function timeoutFunction() {
 				cleanDom();
 				done();
 			}, 100);
@@ -205,7 +202,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('search string highlights tooltip content', () => {
 			// this is a hack that waits for the tooltip to render through PopperJS
-			setTimeout(function() {
+			setTimeout(function timeoutFunction() {
 				expect(
 					handles.tile
 						.find('.slds-popover__body mark')

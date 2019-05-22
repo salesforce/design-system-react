@@ -3,10 +3,8 @@
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount } from 'enzyme';
 import assign from 'lodash.assign';
 import {
 	Simulate,
@@ -27,7 +25,7 @@ import {
 import Dropdown from '../../menu-dropdown';
 import IconSettings from '../../icon-settings';
 import List from '../../utilities/menu-list';
-import KEYS, { keyObjects } from '../../../utilities/key-code';
+import { keyObjects } from '../../../utilities/key-code';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -120,8 +118,6 @@ const getNodes = ({ wrapper }) => ({
  * as much as possible/appropriate.`
  */
 describe('SLDSMenuDropdown', function() {
-	let wrapper;
-
 	describe('Styling', () => {
 		beforeEach(
 			mountComponent(
@@ -413,8 +409,7 @@ describe('SLDSMenuDropdown', function() {
 			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
-		const dropItDown = (props, children) =>
-			renderDropdown(createDropdown(props, children));
+		const dropItDown = (props) => renderDropdown(createDropdown(props));
 
 		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 

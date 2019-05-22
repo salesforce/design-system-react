@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactModal from 'react-modal';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
 import assign from 'lodash.assign';
-import TestUtils from 'react-dom/test-utils';
 
 import IconSettings from '../../icon-settings';
 import AppLauncher from '../../app-launcher';
@@ -16,8 +14,6 @@ import Button from '../../button';
 /* eslint-disable react/no-find-dom-node */
 
 const should = chai.should();
-
-const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER *******************************************', () => {
 	const handles = {

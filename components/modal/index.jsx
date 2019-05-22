@@ -283,6 +283,7 @@ class Modal extends React.Component {
 		let dialogLabelledBy = null;
 
 		if (this.props.assistiveText.dialogLabelledBy) {
+			// eslint-disable-next-line prefer-destructuring
 			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
 		} else if (
 			!this.props.assistiveText.dialogLabel &&

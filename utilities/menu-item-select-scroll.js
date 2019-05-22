@@ -17,12 +17,14 @@ const menuItemSelectScroll = ({
 			domItem.offsetHeight - container.scrollTop + domItem.offsetTop >=
 			container.offsetHeight
 		) {
+			// eslint-disable-next-line no-param-reassign
 			container.scrollTop =
 				domItem.offsetHeight +
 				domItem.offsetTop -
 				container.offsetHeight +
 				scrollPadding;
 		} else if (domItem.offsetTop <= container.scrollTop) {
+			// eslint-disable-next-line no-param-reassign
 			container.scrollTop = domItem.offsetTop - scrollPadding;
 		}
 	}

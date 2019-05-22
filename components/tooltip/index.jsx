@@ -17,6 +17,7 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
+// eslint-disable-next-line import/no-cycle
 import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -201,6 +202,7 @@ class Tooltip extends React.Component {
 				/>,
 			];
 		} else {
+			// eslint-disable-next-line prefer-destructuring
 			children = this.props.children;
 		}
 
@@ -223,7 +225,7 @@ class Tooltip extends React.Component {
 	getTooltip() {
 		const isOpen =
 			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
-		const align = this.props.align;
+		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
 		const deprecatedWay = this.props.variant === 'error';

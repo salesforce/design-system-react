@@ -6,10 +6,10 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		deprecatedProperty(

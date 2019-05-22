@@ -1,17 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import chai from 'chai';
-import assign from 'lodash.assign';
-import TestUtils from 'react-dom/test-utils';
 import IconSettings from '../../icon-settings';
 
 import AppLauncherLink from '../../app-launcher/link';
-import Icon from '../../icon';
 
-const expect = chai.expect;
+const { expect } = chai;
 const should = chai.should();
-
-const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER LINK *******************************************', () => {
 	let div;

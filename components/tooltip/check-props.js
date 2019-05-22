@@ -9,10 +9,10 @@ import deprecatedPropertyValue from '../../utilities/warning/deprecated-property
 import isTriggerTabbable from '../../utilities/warning/is-trigger-tabbable';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (

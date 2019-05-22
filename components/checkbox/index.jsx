@@ -203,8 +203,10 @@ class Checkbox extends React.Component {
 				aria-owns={this.props['aria-owns']}
 				aria-required={this.props['aria-required']}
 				disabled={props.disabled}
-				checked={props.checked}
-				defaultChecked={props.defaultChecked}
+				/* A form element should not have both checked and defaultChecked props. */
+				{...(props.checked !== undefined
+					? { checked: props.checked }
+					: { defaultChecked: props.defaultChecked })}
 				id={this.getId()}
 				name={props.name}
 				onBlur={props.onBlur}
@@ -253,8 +255,10 @@ class Checkbox extends React.Component {
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
 						disabled={props.disabled}
-						checked={props.checked}
-						defaultChecked={props.defaultChecked}
+						/* A form element should not have both checked and defaultChecked props. */
+						{...(props.checked !== undefined
+							? { checked: props.checked }
+							: { defaultChecked: props.defaultChecked })}
 						id={this.getId()}
 						name={props.name}
 						onBlur={props.onBlur}
@@ -265,6 +269,7 @@ class Checkbox extends React.Component {
 						onKeyUp={props.onKeyUp}
 						ref={(component) => {
 							if (component) {
+								// eslint-disable-next-line no-param-reassign
 								component.indeterminate = props.indeterminate;
 							}
 							this.input = component;
@@ -322,8 +327,10 @@ class Checkbox extends React.Component {
 					aria-required={this.props['aria-required']}
 					disabled={props.disabled}
 					id={this.getId()}
-					checked={props.checked}
-					defaultChecked={props.defaultChecked}
+					/* A form element should not have both checked and defaultChecked props. */
+					{...(props.checked !== undefined
+						? { checked: props.checked }
+						: { defaultChecked: props.defaultChecked })}
 					name={props.name}
 					onBlur={props.onBlur}
 					onChange={this.handleChange}

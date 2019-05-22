@@ -14,10 +14,10 @@ import {
 	APP_LAUNCHER_TILE,
 } from '../../utilities/constants';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === APP_LAUNCHER) {

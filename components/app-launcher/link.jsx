@@ -66,7 +66,7 @@ class AppLauncherLink extends React.Component {
 	};
 
 	render() {
-		let title = this.props.title;
+		let { title } = this.props;
 
 		if (!title && typeof this.props.children === 'string') {
 			title = this.props.children;

@@ -5,8 +5,6 @@ import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 
 import BuilderHeader from '../../builder-header';
-import BuilderHeaderNav from '../../builder-header/nav';
-import BuilderHeaderNavLink from '../../builder-header/nav-link';
 import IconSettings from '../../icon-settings';
 
 const { Simulate, scryRenderedDOMComponentsWithClass } = TestUtils;
