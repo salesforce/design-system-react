@@ -3,5 +3,10 @@
   "status": "prototype",
   "display-name": "Setup Assistant",
   "SLDS-component-path": "/components/setup-assistant",
-  "url-slug": "setup-assistants"
+  "dependencies": [
+	{
+	  "component": "step"
+	}
+  ],
+  "url-slug": "setup-assistant"
 }

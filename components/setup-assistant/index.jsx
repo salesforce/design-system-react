@@ -12,11 +12,21 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-import Step from './private/step';
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
 
-import { SETUP_ASSISTANT } from '../../utilities/constants';
+import {
+	SETUP_ASSISTANT,
+	SETUP_ASSISTANT_STEP,
+} from '../../utilities/constants';
 
 const propTypes = {
+	/**
+	 * Accepts setup assistant step components only as children.
+	 */
+	children: PropTypes.node,
 	/**
 	 * CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -41,23 +51,6 @@ const propTypes = {
 	 * Accepts a progress bar component, which will only be visible if `isCard` is enabled
 	 */
 	progressBar: PropTypes.node,
-	/**
-	 * Required. Accepts an array of step objects with the following form:
-	 * ```
-	 *  [{
-	 *    action: <PropTypes.node>, accepts a node to display the step's available action(s). Typically a Button, Button of variant "link," or Checkbox of variant "toggle"
-	 *    description: <PropTypes.node> or <PropTypes.string>, the descriptive content for the step
-	 *    estimatedTime: <PropTypes.node> or <PropTypes.string>, estimated time for completing the step
-	 *    heading: <PropTypes.node> or <PropTypes.string>, the step's heading content
-	 *    isExpandable: <PropTypes.bool>, dictates whether a step can be expanded / collapsed
-	 *    isOpen: <PropTypes.bool>, if `isExpandable` is enabled, this can be used to control the step's opened / closed status. If this or `onStepToggleIsOpen` is not provided, state will be used instead
-	 *    progress: <PropTypes.number>, the step's current progress percentage
-	 *		progressIndicator: <PropTypes.node>, accepts a ProgressIndicator component for use in showing sub-steps
-	 *		scopedNotification: <PropTypes.node>, accepts a ScopedNotification component to display issues or warnings
-	 *  }],
-	 *  ```
-	 */
-	steps: PropTypes.array.isRequired,
 };
 
 const defaultProps = {
@@ -71,6 +64,14 @@ const defaultProps = {
 class SetupAssistant extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
+	}
+
+	componentDidMount() {
+		checkProps(SETUP_ASSISTANT, this.props, componentDoc);
+	}
+
+	componentDidUpdate() {
+		checkProps(SETUP_ASSISTANT, this.props, componentDoc);
 	}
 
 	/**
@@ -87,16 +88,16 @@ class SetupAssistant extends React.Component {
 				id={this.getId()}
 				className={classNames('slds-setup-assistant', this.props.className)}
 			>
-				{this.props.steps.map((step, i) => (
-					<Step
-						assistiveText={this.props.assistiveText}
-						index={i}
-						key={`${this.getId()}-step-${i}`} // eslint-disable-line react/no-array-index-key
-						onToggleIsOpen={this.props.onStepToggleIsOpen}
-						stepNumber={i + 1}
-						{...step}
-					/>
-				))}
+				{React.Children.map(this.props.children, (child, i) => {
+					if (child.type.displayName !== SETUP_ASSISTANT_STEP) return null;
+					return React.cloneElement(child, {
+						assistiveText: this.props.assistiveText, // TODO: determine if this is needed
+						index: i,
+						onToggleIsOpen: this.props.onStepToggleIsOpen,
+						stepNumber: i + 1,
+						...child.props,
+					});
+				})}
 			</ol>
 		);
 

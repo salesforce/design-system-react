@@ -20,18 +20,19 @@ if (process.env.NODE_ENV !== 'production') {
 		displayName,
 		comment
 	) {
-		const additionalComment = comment ? ` ${comment}` : '';
-		const childrenWithoutSelectedDisplayName = [];
-
-		React.Children.forEach(children, (child) => {
-			if (child && child.type && child.type.displayName !== displayName) {
-				childrenWithoutSelectedDisplayName.push(child);
-			}
-		});
-
 		if (!hasWarned[control]) {
+			const additionalComment = comment ? ` ${comment}` : '';
+			const childrenWithoutSelectedDisplayName = [];
+
+			React.Children.forEach(children, (child) => {
+				if (child && child.type && child.type.displayName !== displayName) {
+					childrenWithoutSelectedDisplayName.push(child);
+				}
+			});
+
 			const hasChildrenWithoutSelectedDisplayName =
 				childrenWithoutSelectedDisplayName.length > 0;
+
 			if (hasChildrenWithoutSelectedDisplayName) {
 				/* eslint-disable max-len */
 				warning(
@@ -40,6 +41,7 @@ if (process.env.NODE_ENV !== 'production') {
 				);
 				/* eslint-enable max-len */
 			}
+
 			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;
 		}
 	};

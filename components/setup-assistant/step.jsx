@@ -10,10 +10,10 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-import Button from '../../button';
-import ProgressRing from '../../progress-ring';
+import Button from '../button';
+import ProgressRing from '../progress-ring';
 
-const SETUP_ASSISTANT_STEP = 'SLDSSetupAssistantStep';
+import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -81,7 +81,7 @@ const propTypes = {
 	 */
 	scopedNotification: PropTypes.node,
 	/**
-	 * Display number for the step. Only appears if progress indicator is enabled
+	 * Display number for the step. Only appears if progress indicator is enabled. Determined automatically by parent if not provided.
 	 */
 	stepNumber: PropTypes.number,
 };
