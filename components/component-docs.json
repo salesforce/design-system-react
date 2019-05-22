@@ -8494,6 +8494,27 @@
                 "required": false,
                 "description": "By default, these class names will be added to the absolutely-positioned `Dialog` component."
             },
+            "direction": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "DIRECTIONS.LTR",
+                            "computed": true
+                        },
+                        {
+                            "value": "DIRECTIONS.RTL",
+                            "computed": true
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Establishes directional context for component. Defaults to left-to-right.",
+                "defaultValue": {
+                    "value": "DIRECTIONS.LTR",
+                    "computed": true
+                }
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
