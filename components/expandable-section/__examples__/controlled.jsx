@@ -3,14 +3,33 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import ExpandableSection from '~/components/expandable-section';
 
+import log from '~/utilities/log';
+
 class Example extends React.Component {
-	static displayName = 'ExpandableSectionDefaultExample';
+	static displayName = 'ExpandableSectionControlledExample';
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			isOpen: true,
+		};
+	}
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ExpandableSection
-					id="default-expandable-section"
+					id="controlled-expandable-section"
+					isOpen={this.state.isOpen}
+					onToggleOpen={(event, data) => {
+						log({
+							action: this.props.action,
+							event,
+							eventName: 'Toggle expandable section!',
+							data,
+						});
+						this.setState({ isOpen: !this.state.isOpen });
+					}}
 					title="Section Title"
 				>
 					<p>

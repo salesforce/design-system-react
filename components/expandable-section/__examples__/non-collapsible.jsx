@@ -4,13 +4,14 @@ import IconSettings from '~/components/icon-settings';
 import ExpandableSection from '~/components/expandable-section';
 
 class Example extends React.Component {
-	static displayName = 'ExpandableSectionDefaultExample';
+	static displayName = 'ExpandableSectionNonCollapsibleExample';
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ExpandableSection
-					id="default-expandable-section"
+					id="non-collapsible-expandable-section"
+					nonCollapsible
 					title="Section Title"
 				>
 					<p>
