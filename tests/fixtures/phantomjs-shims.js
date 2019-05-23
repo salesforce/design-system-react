@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable func-names */
 /* eslint-disable prefer-rest-params */
 (function() {
 	// Src: https://gist.github.com/noradaiko/12cbaf8a1674e3b8c8e6

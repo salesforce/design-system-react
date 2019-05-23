@@ -26,6 +26,10 @@ const propTypes = {
 	 * Decimal percentage drain of the ring [0.0 - 1.0]
 	 */
 	fillPercentDecimal: PropTypes.number,
+	/**
+	 * Direction that the progress ring "flows." Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`
+	 */
+	flowDirection: PropTypes.oneOf(['drain', 'fill']),
 };
 
 const defaultProps = {
@@ -56,28 +60,37 @@ const calculateD = (fillPercent) => {
 /**
  * Displays the progress ring shape.
  */
-const ProgressRingShape = (props) => (
-	<div
-		id={props.id}
-		className={classNames('slds-progress-ring', props.className)}
-	>
+const ProgressRingShape = (props) => {
+	const progressStyles = {};
+
+	if (props.flowDirection === 'fill') {
+		progressStyles.transform = 'scaleX(1) rotate(-90deg)';
+	}
+
+	return (
 		<div
-			className="slds-progress-ring__progress"
-			role="progressbar"
-			aria-valuemin="0"
-			aria-valuemax="100"
-			aria-valuenow={props.fillPercentDecimal * 100}
+			id={props.id}
+			className={classNames('slds-progress-ring', props.className)}
 		>
-			<svg viewBox="-1 -1 2 2">
-				<path
-					className="slds-progress-ring__path"
-					d={calculateD(props.fillPercentDecimal)}
-				/>
-			</svg>
+			<div
+				aria-valuemin="0"
+				aria-valuemax="100"
+				aria-valuenow={props.fillPercentDecimal * 100}
+				className="slds-progress-ring__progress"
+				role="progressbar"
+				style={progressStyles}
+			>
+				<svg viewBox="-1 -1 2 2">
+					<path
+						className="slds-progress-ring__path"
+						d={calculateD(props.fillPercentDecimal)}
+					/>
+				</svg>
+			</div>
+			<div className="slds-progress-ring__content">{props.children}</div>
 		</div>
-		<div className="slds-progress-ring__content">{props.children}</div>
-	</div>
-);
+	);
+};
 
 ProgressRingShape.displayName = PROGRESS_RING_SHAPE;
 ProgressRingShape.propTypes = propTypes;

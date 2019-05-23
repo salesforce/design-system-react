@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
 import componentDoc from './docs.json';
+// eslint-disable-next-line import/no-cycle
 import Tooltip from '../tooltip';
 
 import getAriaProps from '../../utilities/get-aria-props';
@@ -104,6 +105,7 @@ class Button extends React.Component {
 			'container',
 			'border',
 			'border-filled',
+			'brand',
 			'more',
 			'global-header',
 		]),
@@ -187,8 +189,10 @@ class Button extends React.Component {
 			'link',
 			'neutral',
 			'brand',
+			'outline-brand',
 			'destructive',
 			'success',
+			'text-destructive',
 			'icon',
 		]),
 		/**
@@ -207,7 +211,7 @@ class Button extends React.Component {
 	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
-		let iconVariant = this.props.iconVariant;
+		let { iconVariant } = this.props;
 		const iconMore = iconVariant === 'more';
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
@@ -299,6 +303,7 @@ class Button extends React.Component {
 	renderButton = () => {
 		const ariaProps = getAriaProps(this.props);
 		return (
+			// eslint-disable-next-line react/button-has-type
 			<button
 				className={this.getClassName()}
 				disabled={this.props.disabled}
@@ -320,7 +325,7 @@ class Button extends React.Component {
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
-				type={this.props.type}
+				type={this.props.type || 'button'}
 				style={this.props.style}
 				{...ariaProps}
 			>

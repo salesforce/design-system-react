@@ -63,6 +63,17 @@ storiesOf(BUTTON, module)
 			{getStory()}
 		</div>
 	))
+	.add('Small Icon Hint inverse', () =>
+		getIconButton({
+			assistiveText: 'Hint',
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconVariant: 'border',
+			iconSize: 'small',
+			hint: true,
+			inverse: true,
+		})
+	)
 	.add('Icon Container Small', () =>
 		getIconButton({
 			assistiveText: { icon: 'Icon border container small' },
@@ -85,20 +96,10 @@ storiesOf(BUTTON, module)
 			inverse: true,
 		})
 	)
-	.addDecorator((getStory) => (
-		<div className="slds-hint-parent" style={{ backgroundColor: '#16325c' }}>
-			{getStory()}
-		</div>
-	))
-	.add('Small Icon Hint inverse', () =>
-		getIconButton({
-			assistiveTest: 'Hint',
-			iconCategory: 'utility',
-			iconName: 'down',
-			iconVariant: 'border',
-			iconSize: 'small',
-			hint: true,
-			inverse: true,
+	.add('Outline brand button', () =>
+		getButton({
+			label: 'Outline brand button',
+			variant: 'outline-brand',
 		})
 	)
 	.add('Doc site Base Neutral', () => <BaseNeutral />)

@@ -79,7 +79,7 @@ class Example extends React.Component {
 		}
 
 		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
+		const { sortDirection } = sortColumn;
 		const newState = {
 			sortColumn: sortProperty,
 			sortColumnDirection: {
@@ -113,6 +113,9 @@ class Example extends React.Component {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Advanced Single Select (Fixed Layout)
+					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',

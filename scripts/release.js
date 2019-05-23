@@ -199,7 +199,7 @@ if (isBuildServer) {
 				'utf8',
 				(err2, contents) => {
 					const regEx = /### Latest Release\n*(##.[^]+?)##/g;
-					currentVersionReleaseNotes = regEx.exec(contents)[1];
+					[, currentVersionReleaseNotes] = regEx.exec(contents);
 					executeTasks({ release: argv.release });
 				}
 			);

@@ -68,6 +68,7 @@ class DemoCard extends React.Component {
 
 		this.setState({
 			items: [
+				// eslint-disable-next-line no-plusplus
 				{ id: currentId++, name: `New item #${shortid.generate()}` },
 				...this.state.items,
 			],
@@ -75,14 +76,14 @@ class DemoCard extends React.Component {
 	};
 
 	render() {
-		let items = this.state.items;
+		let { items } = this.state;
 		if (this.state.filter) {
 			items = items.filter((item) => this.state.filter.test(item.name));
 		}
 
 		const isEmpty = items.length === 0;
 
-		let heading = this.props.heading;
+		let { heading } = this.props;
 
 		if (!this.props.heading) {
 			heading =
@@ -154,6 +155,25 @@ const SetHeightCard = () => (
 
 SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
+const DemoCardWithoutHeader = () => (
+	<Card
+		bodyClassName="slds-grow slds-scrollable_y"
+		className="slds-grid slds-grid_vertical"
+		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		hasNoHeader
+		icon={<Icon category="standard" name="document" size="small" />}
+		style={{ height: '300px' }}
+	>
+		<DataTable id="SLDSDataTableExample-1" items={sampleItems}>
+			<DataTableColumn label="Opportunity Name" property="name" truncate>
+				<DataTableHighlightCell />
+			</DataTableColumn>
+		</DataTable>
+	</Card>
+);
+
+DemoCardWithoutHeader.displayName = 'CARD_WITHOUT_HEADER';
+
 storiesOf(CARD, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -186,4 +206,5 @@ storiesOf(CARD, module)
 		/>
 	))
 	.add('Set height card', () => <SetHeightCard />)
+	.add('w/o Header', () => <DemoCardWithoutHeader />)
 	.add('Doc site Related List With Table', () => <RelatedListWithTable />);

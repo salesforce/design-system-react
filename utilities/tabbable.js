@@ -14,6 +14,7 @@ function focusable(element, isTabIndexNotNaN) {
 	const nodeName = element.nodeName.toLowerCase();
 	if (/input|select|textarea|button|object/.test(nodeName)) {
 		return !element.disabled;
+		// eslint-disable-next-line no-else-return
 	} else if (nodeName === 'a') {
 		return element.href || isTabIndexNotNaN;
 	}

@@ -297,22 +297,22 @@ const InnerInput = (props) => {
 					style={props.style}
 					tabIndex={props.tabIndex}
 					type={props.type}
-					value={props.value}
-					defaultValue={props.defaultValue}
+					/* A form element should not have both value and defaultValue props. */
+					{...(props.value !== undefined
+						? { value: props.value }
+						: { defaultValue: props.defaultValue })}
 				/>
 			)}
 
 			{props.hasSpinner ? (
 				<div className="slds-input__icon-group slds-input__icon-group_right">
-					{props.hasSpinner && (
-						<Spinner
-							assistiveText={{ label: assistiveText.spinner }}
-							id="loading-status-icon"
-							isInput
-							size="x-small"
-							variant="brand"
-						/>
-					)}
+					<Spinner
+						assistiveText={{ label: assistiveText.spinner }}
+						id="loading-status-icon"
+						isInput
+						size="x-small"
+						variant="brand"
+					/>
 					{props.iconRight && props.iconRight}
 				</div>
 			) : (

@@ -14,7 +14,7 @@ class Example extends React.Component {
 
 					<div
 						style={{
-							backgroundColor: '#16325c',
+							backgroundColor: '#ededed',
 							padding: '10px',
 							display: 'inline-block',
 						}}

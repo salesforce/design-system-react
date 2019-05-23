@@ -7,10 +7,6 @@ import PropTypes from 'prop-types';
 const displayName = 'PageHeaderRelatedList';
 const propTypes = {
 	/**
-	 * Icon node passed by PageHeader
-	 */
-	icon: PropTypes.node,
-	/**
 	 * Title node passed by PageHeader
 	 */
 	title: PropTypes.node,
@@ -20,10 +16,12 @@ const propTypes = {
 	info: PropTypes.node,
 	/**
 	 * Content to appear on the right hand side of the page header
+	 * 'contentRight' prop will be deprecated soon, instead use 'onRenderActions'
 	 */
 	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * Nav content which appears in the upper right hand corner.
+	 * 'navRight' prop will be deprecated soon, instaed use 'onRenderControls'
 	 */
 	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
@@ -39,13 +37,17 @@ class RelatedList extends Component {
 						{this.props.title}
 					</div>
 					<div className="slds-col slds-no-flex slds-grid slds-align-top">
-						{this.props.navRight}
+						{this.props.onRenderControls
+							? this.props.onRenderControls
+							: this.props.navRight}
 					</div>
 				</div>
 				<div className="slds-grid">
 					<div className="slds-col slds-align-bottom">{this.props.info}</div>
 					<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-						{this.props.contentRight}
+						{this.props.onRenderActions
+							? this.props.onRenderActions
+							: this.props.contentRight}
 					</div>
 				</div>
 			</div>

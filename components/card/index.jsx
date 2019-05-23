@@ -34,7 +34,7 @@ const idSuffixes = {
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
  */
-const Card = function(props) {
+const Card = (props) => {
 	const bodyId = props.id ? props.id + idSuffixes.body : null;
 	const filterId = props.id ? props.id + idSuffixes.filter : null;
 	const headingId = props.id ? props.id + idSuffixes.heading : null;
@@ -52,16 +52,18 @@ const Card = function(props) {
 			className={classnames('slds-card', props.className)}
 			style={props.style}
 		>
-			<Header
-				header={props.header}
-				headingId={headingId}
-				icon={props.icon}
-				filter={props.filter}
-				filterId={filterId}
-				heading={props.heading}
-				headerActions={props.headerActions}
-				headerActionsId={headerActionsId}
-			/>
+			{!props.hasNoHeader && (
+				<Header
+					header={props.header}
+					headingId={headingId}
+					icon={props.icon}
+					filter={props.filter}
+					filterId={filterId}
+					heading={props.heading}
+					headerActions={props.headerActions}
+					headerActionsId={headerActionsId}
+				/>
+			)}
 			{!empty ? (
 				<Body id={bodyId} className={props.bodyClassName}>
 					{props.children}
@@ -118,6 +120,10 @@ Card.propTypes = {
 	 * Footer often contains pagination.
 	 */
 	footer: PropTypes.node,
+	/**
+	 * Allows card to have no header, and ignores header related props altogether.
+	 */
+	hasNoHeader: PropTypes.bool,
 	/**
 	 * Allows a custom header (the media object with the icon in the first column). `icon`, `heading` and other props are passed into the media object from Card if present. Use `design-system-react/components/media-object` to create your own custom header.
 	 */

@@ -136,7 +136,7 @@ AccordionExample.defaultProps = defaultProps;
 /* Accordion rendering tests
  */
 
-describe('Accordion', function() {
+describe('Accordion', function describeFunction() {
 	describe('Renders Accordion', () => {
 		let mountNode;
 		let wrapper;

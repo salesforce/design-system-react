@@ -11,10 +11,10 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { INPUT, SEARCH } from '../../utilities/constants';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props = {}, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === INPUT) {
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 			// Deprecated and changed to another property
 			deprecatedProperty(
 				COMPONENT,
-				props.assistiveText.fieldLevelHelpButton,
+				props.assistiveText && props.assistiveText.fieldLevelHelpButton,
 				'assistiveText.fieldLevelHelpButton',
 				undefined,
 				`Please pass a \`Tooltip\` component into \`fieldLevelHelpTooltip\` with \`assistiveText.triggerLearnMoreIcon\`.`

@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -119,7 +118,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholderReadOnly: 'Select company',
 					}}
-					menuItem={CustomMenuItem}
+					onRenderMenuItem={CustomMenuItem}
 					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={this.state.inputValue}
