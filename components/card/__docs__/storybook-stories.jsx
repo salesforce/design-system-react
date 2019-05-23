@@ -68,6 +68,7 @@ class DemoCard extends React.Component {
 
 		this.setState({
 			items: [
+				// eslint-disable-next-line no-plusplus
 				{ id: currentId++, name: `New item #${shortid.generate()}` },
 				...this.state.items,
 			],
@@ -75,14 +76,14 @@ class DemoCard extends React.Component {
 	};
 
 	render() {
-		let items = this.state.items;
+		let { items } = this.state;
 		if (this.state.filter) {
 			items = items.filter((item) => this.state.filter.test(item.name));
 		}
 
 		const isEmpty = items.length === 0;
 
-		let heading = this.props.heading;
+		let { heading } = this.props;
 
 		if (!this.props.heading) {
 			heading =

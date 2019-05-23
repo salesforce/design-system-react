@@ -1,8 +1,7 @@
 /* eslint-disable react/no-render-return-value */
 /* eslint-disable react/no-find-dom-node */
 
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import {
@@ -13,7 +12,6 @@ import {
 import Toast from '../../toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '../../toast/container'; // `~` is replaced with design-system-react at runtime
 import Icon from '../../icon'; // `~` is replaced with design-system-react at runtime
-import Button from '../../button'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '../../icon-settings';
 
 chai.use(chaiEnzyme());
@@ -56,7 +54,6 @@ class DemoComponent extends React.Component {
 DemoComponent.displayName = 'ToastExample';
 
 describe('SLDSToast: ', function() {
-	let wrapper;
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss Toast', () => {

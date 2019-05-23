@@ -472,8 +472,8 @@ class Popover extends React.Component {
 	};
 
 	renderDialog = (isOpen, outsideClickIgnoreClass) => {
-		const props = this.props;
-		const offset = props.offset;
+		const { props } = this;
+		const { offset } = props;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,

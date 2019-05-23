@@ -1,3 +1,4 @@
+/* eslint-disable import/no-useless-path-segments */
 /*
  * STORY-BASED SNAPSHOT TESTING
  *
@@ -30,6 +31,7 @@ export Carousel from '../components/carousel/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
+export ExpandableSection from '../components/expandable-section/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 export DynamicIcon from '../components/dynamic-icon/__docs__/storybook-stories';
@@ -46,7 +48,7 @@ export Popover from '../components/popover/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
 export ProgressBar from '../components/progress-bar/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
-// export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
+export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';

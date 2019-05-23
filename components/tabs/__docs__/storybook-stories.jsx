@@ -541,6 +541,7 @@ const getCustomContentTabs = () => {
 
 class DemoTabsInterceptSelect extends React.Component {
 	static displayName = 'DemoTabsInterceptSelect';
+
 	state = { intercepts: 0 };
 
 	handleTabSelect = (next, last) => {

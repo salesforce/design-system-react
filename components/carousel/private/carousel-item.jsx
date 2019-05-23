@@ -17,11 +17,11 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
  */
 const CarouselItem = (props) => (
 	<div
-		id={`content-id-${props.id}`}
+		id={`content-id-${props.carouselId}-${props.id}`}
 		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
-		aria-labelledby={`indicator-id-${props.id}`}
+		aria-labelledby={`indicator-id-${props.carouselId}-${props.panelIndex}`}
 		style={{
 			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
@@ -77,6 +77,10 @@ CarouselItem.propTypes = {
 	 */
 	buttonLabel: PropTypes.string,
 	/**
+	 * Carousel HTML ID
+	 */
+	carouselId: PropTypes.string,
+	/**
 	 * CSS classes that are applied to the component
 	 */
 	className: PropTypes.oneOfType([
@@ -117,6 +121,10 @@ CarouselItem.propTypes = {
 	 * Accepts a custom carousel item rendering function
 	 */
 	onRenderItem: PropTypes.func,
+	/**
+	 * Index of the panel this item belongs to, to be used when associating it to an indicator
+	 */
+	panelIndex: PropTypes.number,
 	/**
 	 * Path of the image to be used
 	 */

@@ -11,6 +11,7 @@ exports[`DOM snapshots SLDSButtonStateful Base 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onMouseLeave={[Function]}
+    type="button"
   >
     <span
       className="slds-text-not-selected"
@@ -66,6 +67,7 @@ exports[`DOM snapshots SLDSButtonStateful Disabled 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onMouseLeave={[Function]}
+    type="button"
   >
     <span
       className="slds-text-not-selected"
@@ -121,6 +123,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Button 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onMouseLeave={[Function]}
+    type="button"
   >
     <svg
       aria-hidden="true"
@@ -153,6 +156,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Text Button 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onMouseLeave={[Function]}
+      type="button"
     >
       <span
         className="slds-text-not-selected"
@@ -211,6 +215,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Text Button 1`] = `
         onBlur={[Function]}
         onClick={[Function]}
         onMouseLeave={[Function]}
+        type="button"
       >
         <span
           className="slds-text-not-selected"
@@ -270,6 +275,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon 1`] = `
     onFocus={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    type="button"
   >
     <svg
       aria-hidden="true"

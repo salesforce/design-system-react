@@ -1,6 +1,6 @@
 {
     "component": "global-navigation-bar",
-    "status": "prototype",
+    "status": "prod",
     "display-name": "Global Navigation Bar",
     "last-accessibility-review": {
         "date-iso-8601": "2017/05/02",

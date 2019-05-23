@@ -1,8 +1,6 @@
 import React from 'react';
 
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger'; // `~` is replaced with design-system-react at runtime
-import Button from '~/components/button/'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
 	static displayName = 'DropdownExample';

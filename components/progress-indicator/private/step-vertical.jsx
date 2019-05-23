@@ -19,25 +19,6 @@ const displayName = PROGRESS_INDICATOR_STEP_VERTICAL;
 // ### Prop Types
 const propTypes = {
 	/**
-	 * **Assistive text for accessibility**
-	 * This object is merged with the default props object on every render.
-	 * * `completedStep`: Label for a completed step. The default is `Completed Step`
-	 * * `disabledStep`: Label for disabled step. The default is `Disabled Step`
-	 * * `errorStep`: Label for a step with an error. The default is `Error Step`
-	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.
-	 * * `step`: Label for a step. It will be typically followed by the number of the step such as "Step 1".
-	 */
-	assistiveText: PropTypes.shape({
-		completedStep: PropTypes.string,
-		disabledStep: PropTypes.string,
-		percentage: PropTypes.string,
-		step: PropTypes.string,
-	}),
-	/**
-	 * Id for Steps, ranging in [0, steps.length).
-	 */
-	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	/**
 	 * Index of step. Used for id's if no step ID exists
 	 */
 	index: PropTypes.number,
@@ -45,10 +26,6 @@ const propTypes = {
 	 * Determines if the step has been completed
 	 */
 	isCompleted: PropTypes.bool,
-	/**
-	 * Determines if the step has been disabled
-	 */
-	isDisabled: PropTypes.bool,
 	/**
 	 * Determines if the step contains an error
 	 */
