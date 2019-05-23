@@ -329,8 +329,15 @@
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherExpandableSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherExpandableSection>\n\t<AppLauncherExpandableSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherExpandableSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
             {
                 "name": "openAppLauncher",
                 "docblock": null,
@@ -397,7 +404,14 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s"
+                "description": "One or more `<AppLauncherExpandableSection />`s, each containing one or more `<AppLauncherTile />`s or `<AppLauncherLink />`s"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The app launcher id. If not provided, one will be generated for accessibility"
             },
             "isOpen": {
                 "type": {
@@ -480,14 +494,181 @@
         },
         "route": "app-launcher",
         "display-name": "App Launcher",
-        "SLDS-component-path": "/components/app-launcher/#flavor-default",
+        "SLDS-component-path": "/components/app-launcher",
         "dependencies": [
             {
-                "section": {
-                    "description": "App Launcher Sections allow users to categorize App Tiles as well as toggle their display",
+                "expandable-section": {
+                    "description": "App Launcher Sections allow users to categorize App Tiles & Links as well as toggle their display. It is a superset of components/expandable-section with content formatting.\nAll Expandable Section props are compatible with props passed to this component.",
                     "methods": [
                         {
                             "name": "toggleOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                },
+                                {
+                                    "name": "data",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "toggleSection": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section"
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Contents of the section"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Class names to be added to the `slds-section` classed node"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Unique identifier for the expandable section. The id is automatically generated if not provided"
+                        },
+                        "isOpen": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Specifies whether the section is expanded or collapsed. If not provided, component will use its own state to manage this itself"
+                        },
+                        "nonCollapsible": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Specifies whether the section can be expanded or collapsed. Defaults to `false`"
+                        },
+                        "onToggleOpen": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback for when the section is expanded or collapsed. Passes event object and data object with `isOpen` bool."
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": true,
+                            "description": "The title for the section"
+                        }
+                    },
+                    "name": "expandable-section",
+                    "source": "/components/app-launcher/expandable-section.jsx"
+                }
+            },
+            {
+                "link": {
+                    "description": "App Launcher Link component creates simple links to be used in \"All Items\" sections",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Contents of the link"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Classes to be applied to the link"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The `href` attribute of the link. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback for when the link is clicked. Passes back event and data object with href prop. Prevents click from changing browser's location if set."
+                        },
+                        "search": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Text used to highlight content in link"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The title for the link. If not provided it will attempt to use child content if that content is a string."
+                        }
+                    },
+                    "name": "link",
+                    "source": "/components/app-launcher/link.jsx"
+                }
+            },
+            {
+                "tile": {
+                    "description": "App Launcher Tiles provide information and links to a user's apps",
+                    "methods": [
+                        {
+                            "name": "handleClick",
                             "docblock": null,
                             "modifiers": [],
                             "params": [
@@ -504,132 +685,16 @@
                             "type": {
                                 "name": "shape",
                                 "value": {
-                                    "collapseSection": {
+                                    "dragIconText": {
                                         "name": "string",
                                         "required": false
                                     }
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "description": "**Assistive text for accessibility.**\n* `dragIconText`: Text that describes the purpose of the drag handle icon.",
                             "defaultValue": {
-                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
-                                "computed": false
-                            }
-                        },
-                        "title": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": true,
-                            "description": "The title for this section of apps"
-                        },
-                        "toggleable": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Allows the user to show/hide the section"
-                        },
-                        "children": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": true,
-                            "description": "An array of applications to display"
-                        },
-                        "isOpen": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Controls the open/closed state of the section"
-                        },
-                        "onToggleClick": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "Callback for when section is toggled. Passes \"isOpen\" bool. Forces `toggleable` to true"
-                        }
-                    },
-                    "name": "section",
-                    "source": "/components/app-launcher/section.jsx"
-                }
-            },
-            {
-                "tile": {
-                    "description": "App Launcher Tiles provide information and links to a user's apps",
-                    "methods": [],
-                    "props": {
-                        "title": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": true,
-                            "description": "App name for the tile's title."
-                        },
-                        "size": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'default'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'small'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "Size of the rendered tile.",
-                            "defaultValue": {
-                                "value": "'default'",
-                                "computed": false
-                            }
-                        },
-                        "description": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The description of the app. Not visible on small tiles."
-                        },
-                        "descriptionHeading": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Heading for app description"
-                        },
-                        "href": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
-                            "defaultValue": {
-                                "value": "'javascript:void(0);'",
-                                "computed": false
-                            }
-                        },
-                        "isOpenTooltip": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Open the More Tooltip"
-                        },
-                        "moreLabel": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The localized text for the \"More information\" tooltip.",
-                            "defaultValue": {
-                                "value": "' More'",
+                                "value": "{\n    dragIconText: 'Reorder',\n}",
                                 "computed": false
                             }
                         },
@@ -651,12 +716,37 @@
                             "required": false,
                             "description": "Class names to be added to the tile."
                         },
-                        "onClick": {
+                        "description": {
                             "type": {
-                                "name": "func"
+                                "name": "string"
                             },
                             "required": false,
-                            "description": "Function that will be executed when clicking on a tile"
+                            "description": "The description of the app. Not visible on small tiles."
+                        },
+                        "descriptionHeading": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Heading for app description. NOTE: this prop is DEPRECATED and use should be avoided"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "iconBackgroundColor": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Background color to be used on the icon. Only applied if iconNode is undefined"
                         },
                         "iconNode": {
                             "type": {
@@ -672,12 +762,44 @@
                             "required": false,
                             "description": "Text to be used as an icon. Only renders if iconNode is undefined"
                         },
+                        "isOpenTooltip": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Open the More Tooltip"
+                        },
+                        "moreLabel": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The localized text for the \"More information\" tooltip.",
+                            "defaultValue": {
+                                "value": "' More'",
+                                "computed": false
+                            }
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that will be executed when clicking on a tile"
+                        },
                         "search": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
                             "description": "Text used to highlight content in app tiles"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": true,
+                            "description": "App name for the tile's title."
                         }
                     },
                     "name": "tile",
@@ -1043,6 +1165,269 @@
         "display-name": "Breadcrumbs",
         "SLDS-component-path": "/components/breadcrumbs",
         "dependencies": []
+    },
+    "builder-header": {
+        "description": "Every builder needs a builder header, which contains basic navigation elements. It also shows the builder type and content name.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "backIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "helpIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `backIcon`: Used for the back icon.\n* `helpIcon`: Used for the help icon.\n* `icon`: Used for the main icon next to the header title.\n* _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    backIcon: 'Back',\n    helpIcon: 'Help',\n    icon: 'Builder',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n</BuilderHeader>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-builder-header_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onClickBack": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClickHelp": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "back": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "help": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "pageType": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `back`: The label for the Back link.\n* `help`: The label for the Help link.\n* `pageType`: The label that describes the page type.\n* `title`: The label for the page title.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    back: 'Back',\n    help: 'Help',\n    pageType: 'Page Type',\n    title: 'App Name',\n}",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles applied to the `.slds-builder-header_container` element."
+            }
+        },
+        "route": "builder-header",
+        "display-name": "Builder Header",
+        "SLDS-component-path": "/components/builder-header",
+        "dependencies": [
+            {
+                "nav": {
+                    "description": "The navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the types `<BuilderHeaderNavLink />` or `<BuilderHeaderNavDropdown />` to define the structure of the navigation section.\n```\n<BuilderHeaderNav>\n  <BuilderHeaderNav>\n    <BuilderHeaderNavLink />\n    <BuilderHeaderNavDropdown />\n  </BuilderHeaderNav>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "nav",
+                    "source": "/components/builder-header/nav.jsx"
+                }
+            },
+            {
+                "nav-dropdown": {
+                    "description": "A dropdown within the navigation section of the header.",
+                    "methods": [],
+                    "composes": [
+                        "../menu-dropdown/menu-dropdown"
+                    ],
+                    "name": "nav-dropdown",
+                    "source": "/components/builder-header/nav-dropdown.jsx"
+                }
+            },
+            {
+                "nav-link": {
+                    "description": "A link within the navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "icon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `icon`: Used for the icon next to the link text.\n* _Tested with snapshot testing._"
+                        },
+                        "iconCategory": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'action'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'custom'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'doctype'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'standard'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'utility'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
+                        },
+                        "iconName": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+                        },
+                        "iconPath": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Path to the icon. This will override any global icon settings."
+                        },
+                        "label": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Text for the link."
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Triggered when the link is clicked."
+                        }
+                    },
+                    "name": "nav-link",
+                    "source": "/components/builder-header/nav-link.jsx"
+                }
+            },
+            {
+                "toolbar": {
+                    "description": "The toolbar section of the header.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "actions": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `actions`: Used for the aria-label for the actions section of the toolbar.\n* _Tested with snapshot testing._",
+                            "defaultValue": {
+                                "value": "{\n    actions: 'Actions',\n}",
+                                "computed": false
+                            }
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the type `<ButtonGroup />` to define the structure of the toolbar section.\n```\n<BuilderHeaderNav>\n  <BuilderHeaderToolbar>\n    <ButtonGroup />\n    <ButtonGroup />\n  </BuilderHeaderToolbar>\n</BuilderHeader>\n```"
+                        },
+                        "onRenderActions": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Renders the actions section of the header."
+                        }
+                    },
+                    "name": "toolbar",
+                    "source": "/components/builder-header/toolbar.jsx"
+                }
+            }
+        ]
     },
     "button": {
         "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
@@ -2043,11 +2428,28 @@
                 "name": "onNextPanelHandler",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "onPreviousPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorBlur",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2059,6 +2461,10 @@
                 "modifiers": [],
                 "params": [
                     {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
                         "name": "panel",
                         "type": null
                     }
@@ -2066,7 +2472,38 @@
                 "returns": null
             },
             {
-                "name": "onAutoPlayBtnClick",
+                "name": "onIndicatorFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onAutoplayBtnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getCurrentPanel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getIsAutoplayOn",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2101,6 +2538,10 @@
                 "modifiers": [],
                 "params": [
                     {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
                         "name": "amount",
                         "type": null
                     },
@@ -2115,14 +2556,28 @@
                 "name": "startAutoplay",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "stopAutoplay",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "ignoreCallbacksAndStateUpdates",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2167,7 +2622,7 @@
                 "required": false,
                 "description": "Description of the carousel items for screen-readers.",
                 "defaultValue": {
-                    "value": "{\n    autoPlayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "value": "{\n    autoplayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
                     "computed": false
                 }
             },
@@ -2200,12 +2655,19 @@
                 "required": false,
                 "description": "CSS classes that are applied to the main 'slds-carousel' classed component container"
             },
+            "currentPanel": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Dictates the currently active/visible carousel panel. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state."
+            },
             "hasAutoplay": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean showing whether the autoplay feature is available or not",
+                "description": "Boolean showing whether the autoplay button is available or not",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -2229,19 +2691,19 @@
                 "required": false,
                 "description": "Id of component, if desired. If not provided an id is automatically generated"
             },
-            "indicatorStyles": {
+            "isAutoplayOn": {
                 "type": {
-                    "name": "object"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "CSS that is applied to carousel indicators"
+                "description": "Boolean that dictates whether autoplay is active or not. Use with `onRequestAutoplayToggle` for a controlled carousel component."
             },
             "isInfinite": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean for infinite loop navigation",
+                "description": "Boolean for infinite loop navigation. Note: if not true autoplay will stop automatically at the last panel.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -2271,6 +2733,20 @@
                 },
                 "required": false,
                 "description": "Accepts a custom carousel item rendering function"
+            },
+            "onRequestAutoplayToggle": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Called whenever `isAutoplayOn` is requested to be toggled on or off. Use with `isAutoplayOn` prop for a controlled carousel component. Passes an event object and a data object with the current `isAutoplayOn` value as an attribute."
+            },
+            "onRequestPanelChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Called whenever the panel is requested to change due to user interaction or auto-play. Use with `currentPanel` for a controlled carousel component. Passes an event object and a data object with `currentPanel` and `requestedPanel` attributes."
             },
             "onItemClick": {
                 "type": {
@@ -4206,7 +4682,7 @@
         "dependencies": []
     },
     "data-table": {
-        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
+        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.\n\nNOTE: for horizontal scrolling with `fixedHeader`-enabled DataTables, see the `style` property description",
         "methods": [
             {
                 "name": "getId",
@@ -4474,6 +4950,13 @@
                 },
                 "required": false,
                 "description": "A variant which adds stripes to alternating rows."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the table.\nNOTE: for horizontal scrolling in `fixedHeader`-enabled DataTables, apply a `minWidth` style here. If the containing element width is less than the `minWidth` value, horizontal scrolling will occur"
             },
             "unborderedRow": {
                 "type": {
@@ -5507,6 +5990,117 @@
         "route": "dynamic-icon",
         "display-name": "Dynamic Icon",
         "SLDS-component-path": "/components/dynamic-icon",
+        "dependencies": []
+    },
+    "expandable-section": {
+        "description": "Toggle visibility of section content with the Expandable Section",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "toggleOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "toggleSection": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section",
+                "defaultValue": {
+                    "value": "{\n    toggleSection: 'Toggle visibility of section',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Contents of the section"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the `slds-section` classed node"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the expandable section. The id is automatically generated if not provided"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether the section is expanded or collapsed. If not provided, component will use its own state to manage this itself"
+            },
+            "nonCollapsible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether the section can be expanded or collapsed. Defaults to `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onToggleOpen": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback for when the section is expanded or collapsed. Passes event object and data object with `isOpen` bool."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "The title for the section"
+            }
+        },
+        "route": "expandable-section",
+        "display-name": "Expandable Section",
+        "SLDS-component-path": "/components/expandable-section",
         "dependencies": []
     },
     "filter": {
@@ -6801,11 +7395,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Typically the cloud name (e.g.- \"sales\" or \"marketing\"). This primarily changes the background color.",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
+                "description": "Typically the cloud name (e.g.- \"sales\" or \"marketing\"). This primarily changes the background color."
             },
             "theme": {
                 "type": {
@@ -6822,11 +7412,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Transforms text and interactions (such as hover) to be more visually accessible.",
-                "defaultValue": {
-                    "value": "'dark'",
-                    "computed": false
-                }
+                "description": "Transforms text and interactions (such as hover) to be more visually accessible."
             }
         },
         "route": "global-navigation-bar",
@@ -7122,6 +7708,23 @@
                             },
                             "required": false,
                             "description": "Allows alignment of active item with active application background color. If application background is dark, text color may need to be `#fff`. This can be done with the style prop."
+                        },
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "activeDescriptor": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `activeDescriptor`: The text that appears alongside a link that is currently active.",
+                            "defaultValue": {
+                                "value": "{\n    activeDescriptor: 'Current page:',\n}",
+                                "computed": false
+                            }
                         },
                         "className": {
                             "type": {
@@ -8876,6 +9479,13 @@
                 "returns": null
             },
             {
+                "name": "getBorderRadius",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getModal",
                 "docblock": null,
                 "modifiers": [],
@@ -9006,6 +9616,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "dialogLabelledBy": {
+                            "name": "string",
+                            "required": false
+                        },
                         "closeButton": {
                             "name": "string",
                             "required": false
@@ -9013,9 +9627,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
+                    "value": "{\n    dialogLabel: '',\n    dialogLabelledBy: '',\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -9025,6 +9639,24 @@
                 },
                 "required": true,
                 "description": "Modal content."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the modal `section` node classed `.slds-modal` and the parent of `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "containerClassName": {
                 "type": {
@@ -9042,7 +9674,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+                "description": "Custom CSS classes for the modal's container. This is the child element of `.slds-modal` with class `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "contentClassName": {
                 "type": {
@@ -9136,6 +9768,13 @@
                 },
                 "required": false,
                 "description": "Adds CSS classes to the container surrounding the modal header and the close button. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the modal. The id is automatically generated if not provided"
             },
             "isOpen": {
                 "type": {
@@ -11187,6 +11826,10 @@
                         {
                             "value": "'modal'",
                             "computed": false
+                        },
+                        {
+                            "value": "'setup-assistant'",
+                            "computed": false
                         }
                     ]
                 },
@@ -11495,6 +12138,27 @@
                 },
                 "required": true,
                 "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "flowDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'drain'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'fill'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Direction that the progress ring \"flows.\" Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`",
+                "defaultValue": {
+                    "value": "'drain'",
+                    "computed": false
+                }
             }
         },
         "route": "progress-rings",

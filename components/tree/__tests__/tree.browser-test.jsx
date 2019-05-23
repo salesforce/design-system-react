@@ -5,10 +5,6 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
-import isFunction from 'lodash.isfunction';
-import cloneDeep from 'lodash.clonedeep';
 import isEqual from 'lodash.isequal';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -21,9 +17,6 @@ import {
 import { keyObjects } from '../../../utilities/key-code';
 import sampleNodesDynamicHashMap from '../__docs__/dynamic-hashmap';
 
-import IconSettings from '../../icon-settings';
-import Tree from '../../tree';
-import Search from '../../forms/input/search';
 import DefaultExample from '../__examples__/default';
 
 chai.use(chaiEnzyme());
