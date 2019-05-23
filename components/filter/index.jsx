@@ -248,6 +248,7 @@ class Filter extends React.Component {
 							aria-describedby={
 								this.props.isError ? `${this.getId()}-error` : undefined
 							}
+							type="button"
 						>
 							<span className="slds-assistive-text">
 								{assistiveText.editFilter}
@@ -265,6 +266,7 @@ class Filter extends React.Component {
 						}
 						className="slds-button_reset slds-grow slds-has-blur-focus"
 						disabled
+						type="button"
 					>
 						<p className="slds-text-body_small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>

@@ -14,7 +14,6 @@
 // Import your external dependencies
 import React from 'react';
 
-import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 
 import SLDSProgressIndicator from '../../progress-indicator';
@@ -29,12 +28,6 @@ import {
 	mountComponent,
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
-
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
 
 const defaultProps = {
 	id: 'sample-progress-indicator',

@@ -194,7 +194,7 @@ class Toast extends React.Component {
 					},
 					this.props.className
 				)}
-				role="alert"
+				role="status"
 				style={this.props.style}
 			>
 				<span className="slds-assistive-text">

@@ -58,9 +58,15 @@ const propTypes = {
 	 * Percentage of progress completion, ranging [0, 100].
 	 */
 	value: PropTypes.number.isRequired,
+	/**
+	 * Direction that the progress ring "flows." Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`
+	 */
+	flowDirection: PropTypes.oneOf(['drain', 'fill']),
 };
 
-const defaultProps = {};
+const defaultProps = {
+	flowDirection: 'drain',
+};
 
 /**
  * Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.
@@ -75,13 +81,14 @@ class ProgressRing extends React.Component {
 
 		if (this.props.hasIcon) {
 			if (this.props.icon) {
+				// eslint-disable-next-line prefer-destructuring
 				icon = this.props.icon;
 			} else if (this.props.theme === THEME_OPTIONS.WARNING) {
 				icon = <Icon category="utility" name="warning" title="Warning" />;
 			} else if (this.props.theme === THEME_OPTIONS.EXPIRED) {
 				icon = <Icon category="utility" name="error" title="Expired" />;
 			} else if (this.props.theme === THEME_OPTIONS.COMPLETE) {
-				icon = <Icon category="utility" name="check" title="complete" />;
+				icon = <Icon category="utility" name="check" title="Complete" />;
 			}
 		}
 
@@ -110,6 +117,7 @@ class ProgressRing extends React.Component {
 				id={this.props.id}
 				className={classNames(this.props.className, this.themeClass())}
 				fillPercentDecimal={this.percentDecimal()}
+				flowDirection={this.props.flowDirection}
 			>
 				{this.icon()}
 			</ProgressRingShape>

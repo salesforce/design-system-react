@@ -51,10 +51,6 @@ const propTypes = {
 	 */
 	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
-	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
-	 */
-	inverse: PropTypes.bool,
-	/**
 	 * Triggered when focus is removed.
 	 */
 	onBlur: PropTypes.func,
@@ -87,10 +83,6 @@ const propTypes = {
 	 */
 	onMouseEnter: PropTypes.func,
 	/**
-	 * Triggered when a mouse arrow no longer hovers
-	 */
-	onMouseLeave: PropTypes.func,
-	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
 	responsive: PropTypes.bool,
@@ -110,10 +102,6 @@ const propTypes = {
 	 * Write "-1" if you don't want the user to tab to the button.
 	 */
 	tabIndex: PropTypes.string,
-	/**
-	 * [Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead.
-	 */
-	tooltip: PropTypes.node,
 	/**
 	 * Different types of buttons
 	 */
@@ -216,6 +204,7 @@ class ButtonStateful extends React.Component {
 					onMouseEnter={onMouseEnter}
 					onMouseLeave={this.handleBlur}
 					tabIndex={tabIndex}
+					type="button"
 				>
 					<ButtonIcon
 						disabled={disabled}
@@ -245,6 +234,7 @@ class ButtonStateful extends React.Component {
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
+				type="button"
 			>
 				<span className="slds-text-not-selected">
 					<ButtonIcon
