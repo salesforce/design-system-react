@@ -31,7 +31,7 @@ class Example extends React.Component {
 								{ label: 'Menu Item Five', value: 'E0' },
 								{ label: 'Menu Item Six', value: 'F0' },
 								{ type: 'divider' },
-								{ label: 'Menu Item Seven', value: 'G0' }
+								{ label: 'Menu Item Seven', value: 'G0' },
 							]}
 						/>
 					</IconSettings>

@@ -41,7 +41,6 @@ import {
 } from '../../utilities/constants';
 import { DIRECTIONS } from '../utilities/direction';
 
-
 const documentDefined = typeof document !== 'undefined';
 
 // The overlay is an optional way to allow the dropdown to close on outside

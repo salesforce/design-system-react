@@ -59,11 +59,9 @@ const getDropdown = (props) => (
 
 const makeRtl = (component) => (
 	<DirectionSettings.Provider value="rtl">
-		<div dir="rtl">
-			{component}
-		</div>
+		<div dir="rtl">{component}</div>
 	</DirectionSettings.Provider>
-)
+);
 
 class DropdownControlled extends React.Component {
 	static displayName = 'DropdownControlled';
@@ -267,7 +265,7 @@ storiesOf(MENU_DROPDOWN, module)
 				onSelect: (...rest) => {
 					action('Selected')(...rest);
 				},
-				options
+				options,
 			})
 		)
 	)
@@ -301,7 +299,7 @@ storiesOf(MENU_DROPDOWN, module)
 				onSelect: (...rest) => {
 					action('Selected')(...rest);
 				},
-				options
+				options,
 			})
 		)
 	)

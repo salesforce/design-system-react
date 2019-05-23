@@ -358,7 +358,10 @@ class Dialog extends React.Component {
 	createPopper = () => {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
-		const placement = mapPropToPopperPlacement(this.props.align, this.props.direction);
+		const placement = mapPropToPopperPlacement(
+			this.props.align,
+			this.props.direction
+		);
 		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
 		const modifiers = {
 			applyStyle: { enabled: false },

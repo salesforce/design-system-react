@@ -7,6 +7,4 @@ import onClickOutside from 'react-onclickoutside';
 import LanguageDirection from '../utilities/direction/private/language-direction';
 import MenuDropdown from './menu-dropdown';
 
-export default LanguageDirection(
-	onClickOutside(MenuDropdown)
-);
+export default LanguageDirection(onClickOutside(MenuDropdown));
