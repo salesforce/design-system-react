@@ -58,7 +58,7 @@ class CarouselIndicators extends React.Component {
 						for (
 							let i = startItemIndex;
 							i < startItemIndex + props.itemsPerPanel;
-							i++
+							i += 1
 						) {
 							if (props.items[i] && props.items[i].heading) {
 								autoIndicatorText = !autoIndicatorText

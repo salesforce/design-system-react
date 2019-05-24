@@ -9,7 +9,6 @@ import Textarea from '../';
 
 const {
 	findRenderedDOMComponentWithTag,
-	scryRenderedDOMComponentsWithTag,
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 

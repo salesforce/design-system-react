@@ -50,9 +50,11 @@ const recordHomeDetails2 = [
 
 class DemoPageHeader extends React.Component {
 	static displayName = 'DemoPageHeader';
+
 	state = {
 		recordHomeDetails: recordHomeDetails2,
 	};
+
 	changeDescription = () => {
 		if (this.state.recordHomeDetails[0].content === 'hi') {
 			this.setState({
@@ -64,6 +66,7 @@ class DemoPageHeader extends React.Component {
 			});
 		}
 	};
+
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({

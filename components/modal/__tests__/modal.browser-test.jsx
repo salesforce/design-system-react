@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-find-dom-node */
 
 import React from 'react';
@@ -42,7 +43,7 @@ describe('SLDSModal: ', function() {
 		container = document.createElement('div');
 
 		const opener = (
-			<button>
+			<button type="button">
 				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
 			</button>
 		);
@@ -144,6 +145,7 @@ describe('SLDSModal: ', function() {
 
 	describe('Proper HTML markup', () => {
 		it('dismissible modal has role=dialog', () => {
+			// eslint-disable-next-line no-unused-vars
 			const cmp = getModal({
 				isOpen: true,
 			});
@@ -252,10 +254,10 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<button key="test-content1" className="cancel">
+				<button type="button" key="test-content1" className="cancel">
 					Cancel
 				</button>,
-				<button key="test-content2" className="save">
+				<button type="button" key="test-content2" className="save">
 					Save
 				</button>,
 			];

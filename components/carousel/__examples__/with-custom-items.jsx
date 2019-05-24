@@ -104,7 +104,7 @@ class Example extends React.Component {
 					className="slds-button_outline-brand slds-m-around_small"
 					label="Button1"
 					onClick={(event) => {
-						onButtonClick(event, item);
+						onButtonClick(event);
 					}}
 					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
 				/>
@@ -112,7 +112,7 @@ class Example extends React.Component {
 					className="slds-button_outline-brand slds-m-around_small"
 					label="Button2"
 					onClick={(event) => {
-						onButtonClick(event, item);
+						onButtonClick(event);
 					}}
 					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
 				/>

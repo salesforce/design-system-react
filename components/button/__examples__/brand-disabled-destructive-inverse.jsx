@@ -9,7 +9,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="-x-small-buttons--horizontal">
+				<div className="slds-x-small-buttons_horizontal">
 					<Button label="Brand" variant="brand" />
 
 					<Button

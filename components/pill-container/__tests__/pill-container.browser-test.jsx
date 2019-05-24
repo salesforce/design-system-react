@@ -126,7 +126,7 @@ describe('SLDSPillContainer', () => {
 					expect(pill.find('.slds-has-error').length).to.eql(1);
 				}
 
-				idOfCurrentPill++;
+				idOfCurrentPill += 1;
 			});
 		});
 
@@ -143,7 +143,7 @@ describe('SLDSPillContainer', () => {
 					.getDOMNode()
 			);
 
-			for (i = 1; i < 7; i++) {
+			for (i = 1; i < 7; i += 1) {
 				Simulate.keyDown(document.activeElement, keyObjects.RIGHT);
 				expect(getFocusedPillLabel()).to.eql(options[i].label);
 			}
@@ -154,7 +154,7 @@ describe('SLDSPillContainer', () => {
 			Simulate.keyDown(document.activeElement, keyObjects.LEFT);
 			expect(getFocusedPillLabel()).to.eql(options[6].label);
 
-			for (i = 0; i < 3; i++) {
+			for (i = 0; i < 3; i += 1) {
 				Simulate.keyDown(document.activeElement, keyObjects.LEFT);
 			}
 			Simulate.keyDown(document.activeElement, keyObjects.DELETE);

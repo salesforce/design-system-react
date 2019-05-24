@@ -5,10 +5,10 @@
 import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (typeof props.assistiveText === 'string') {
