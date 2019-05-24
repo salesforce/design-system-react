@@ -7,10 +7,10 @@ import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
 
-let checkProps = function() {};
+let checkProps = () => {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = (COMPONENT, props, jsonDoc) => {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		hasChildrenWithoutDisplayNameof(

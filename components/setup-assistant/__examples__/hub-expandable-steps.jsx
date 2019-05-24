@@ -67,7 +67,7 @@ class Example extends React.Component {
 			stepTwoProgress: 0,
 		};
 
-		this.state.stepTwoSelectedSubStep = this.getSubSteps()[0];
+		this.state.stepTwoSelectedSubStep = this.getSubSteps()[0]; // eslint-disable-line prefer-destructuring
 	}
 
 	getSubSteps() {
@@ -129,11 +129,10 @@ class Example extends React.Component {
 	}
 
 	toggleSubStepCompletion(subStepId, completed) {
-		const stepTwoCompletedSubStepsStatus = this.state
-			.stepTwoCompletedSubStepsStatus;
+		const { stepTwoCompletedSubStepsStatus } = this.state;
 		const subSteps = this.getSubSteps();
 		let stepsCompleted = 0;
-		let stepTwoCompletedSubSteps = this.state.stepTwoCompletedSubSteps;
+		let { stepTwoCompletedSubSteps } = this.state;
 		let stepTwoSelectedSubStep;
 
 		if (completed) {
@@ -146,9 +145,9 @@ class Example extends React.Component {
 			stepTwoCompletedSubStepsStatus[subStepId] = false;
 		}
 
-		for (let i = 0; i < stepTwoCompletedSubStepsStatus.length; i++) {
+		for (let i = 0; i < stepTwoCompletedSubStepsStatus.length; i += 1) {
 			if (stepTwoCompletedSubStepsStatus[i]) {
-				stepsCompleted++;
+				stepsCompleted += 1;
 			}
 
 			if (!stepTwoCompletedSubStepsStatus[i] && !stepTwoSelectedSubStep) {
@@ -177,7 +176,7 @@ class Example extends React.Component {
 							data,
 						});
 
-						const expandedSteps = this.state.expandedSteps;
+						const { expandedSteps } = this.state;
 						expandedSteps[data.index] = !data.isOpen;
 						this.setState({ expandedSteps });
 					}}

@@ -67,11 +67,11 @@ describe('SLDS Setup Assistant', () => {
 				'#setup-assistant-event-test-1-step-2 .slds-setup-assistant__step-summary-title button'
 			);
 			expandButton.simulate('click');
-			expect(typeof onStepToggleIsOpenObject.event).to.eql('object');
-			expect(typeof onStepToggleIsOpenObject.data).to.eql('object');
-			expect(onStepToggleIsOpenObject.data.index).to.eql(0);
-			expect(onStepToggleIsOpenObject.data.isOpen).to.eql(true);
-			expect(typeof onStepToggleIsOpenObject.data.step).to.eql('object');
+			expect(typeof onToggleIsOpenObject.event).to.eql('object');
+			expect(typeof onToggleIsOpenObject.data).to.eql('object');
+			expect(onToggleIsOpenObject.data.index).to.eql(1);
+			expect(onToggleIsOpenObject.data.isOpen).to.eql(true);
+			expect(typeof onToggleIsOpenObject.data.step).to.eql('object');
 		});
 	});
 });
