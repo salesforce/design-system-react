@@ -8,18 +8,26 @@ import SetupAssistant from '~/components/setup-assistant';
 import SetupAssistantStep from '~/components/setup-assistant/step';
 import ProgressIndicator from '~/components/progress-indicator';
 
+import log from '~/utilities/log';
+
 const subStepsComplete = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: <Checkbox checked variant="toggle" />,
+		onRenderSetupAssistantAction: (
+			<Checkbox id="substep-complete-0-action" checked variant="toggle" />
+		),
 	},
 	{
 		id: 1,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button label="View in Trailhead" variant="link" />
+			<Button
+				id="substep-complete-1-action"
+				label="View in Trailhead"
+				variant="link"
+			/>
 		),
 	},
 ];
@@ -28,20 +36,26 @@ const subStepsIncomplete = [
 	{
 		id: 0,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: <Checkbox variant="toggle" />,
+		onRenderSetupAssistantAction: (
+			<Checkbox id="substep-incomplete-0-action" variant="toggle" />
+		),
 	},
 	{
 		id: 1,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
-			<Button label="View in Trailhead" variant="link" />
+			<Button
+				id="substep-incomplete-1-action"
+				label="View in Trailhead"
+				variant="link"
+			/>
 		),
 	},
 ];
 
 class Example extends React.Component {
-	static displayName = 'SetupAssistantHubWithExpandableSteps';
+	static displayName = 'SetupAssistantHubWithExpandableStepsExample';
 
 	constructor(props) {
 		super(props);
@@ -63,6 +77,7 @@ class Example extends React.Component {
 				label: 'Turn on Lightning for all users.',
 				onRenderSetupAssistantAction: (
 					<Checkbox
+						id="substep-0-action"
 						onChange={(event) => {
 							this.toggleSubStepCompletion(0, event.target.checked);
 						}}
@@ -77,6 +92,7 @@ class Example extends React.Component {
 				onRenderSetupAssistantAction: (
 					<Button
 						disabled={!this.state.stepTwoCompletedSubStepsStatus[0]}
+						id="substep-1-action"
 						onClick={() => [
 							this.toggleSubStepCompletion(
 								1,
@@ -97,6 +113,7 @@ class Example extends React.Component {
 							!this.state.stepTwoCompletedSubStepsStatus[0] ||
 							!this.state.stepTwoCompletedSubStepsStatus[1]
 						}
+						id="substep-2-action"
 						onClick={() => [
 							this.toggleSubStepCompletion(
 								2,
@@ -151,7 +168,15 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<SetupAssistant
+					id="hub-expandable-steps-setup-assistant"
 					onStepToggleIsOpen={(event, data) => {
+						log({
+							action: this.props.action,
+							event,
+							eventName: 'onStepToggleIsOpen',
+							data,
+						});
+
 						const expandedSteps = this.state.expandedSteps;
 						expandedSteps[data.index] = !data.isOpen;
 						this.setState({ expandedSteps });
@@ -161,90 +186,103 @@ class Example extends React.Component {
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 						estimatedTime="4 mins"
 						heading="Add Users to Your Org"
+						id="hub-expandable-step-1"
 						isExpandable
 						isOpen={this.state.expandedSteps[0] || false}
-						progress={100}
-						progressIndicator={
+						onRenderContent={() => (
 							<ProgressIndicator
 								completedSteps={subStepsComplete}
+								id="hub-expandable-step-1-progress-indicator"
 								orientation="vertical"
 								steps={subStepsComplete}
 								variant="setup-assistant"
 							/>
-						}
+						)}
+						progress={100}
 					/>
 					<SetupAssistantStep
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 						estimatedTime="10 mins"
 						heading="Create Profiles for Your Users"
+						id="hub-expandable-step-2"
 						isExpandable
 						isOpen={this.state.expandedSteps[1] || false}
+						onRenderContent={() => (
+							<>
+								<ProgressIndicator
+									completedSteps={this.state.stepTwoCompletedSubSteps}
+									id="hub-expandable-step-2-progress-indicator"
+									orientation="vertical"
+									steps={this.getSubSteps()}
+									selectedStep={this.state.stepTwoSelectedSubStep}
+									variant="setup-assistant"
+								/>
+								<ScopedNotification
+									id="hub-expandable-step-2-scoped-notification"
+									theme="light"
+								>
+									<p>
+										It looks as if duplicates exist for this lead.{' '}
+										<a href="javascript:void(0);">View Duplicates.</a>
+									</p>
+								</ScopedNotification>
+							</>
+						)}
 						progress={this.state.stepTwoProgress}
-						progressIndicator={
-							<ProgressIndicator
-								completedSteps={this.state.stepTwoCompletedSubSteps}
-								orientation="vertical"
-								steps={this.getSubSteps()}
-								selectedStep={this.state.stepTwoSelectedSubStep}
-								variant="setup-assistant"
-							/>
-						}
-						scopedNotification={
-							<ScopedNotification theme="light">
-								<p>
-									It looks as if duplicates exist for this lead.{' '}
-									<a href="javascript:void(0);">View Duplicates.</a>
-								</p>
-							</ScopedNotification>
-						}
 					/>
 					<SetupAssistantStep
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 						estimatedTime="15 mins"
 						heading="Learn How to Use Profiles to control Visibility"
+						id="hub-expandable-step-3"
 						isExpandable
 						isOpen={this.state.expandedSteps[2] || false}
-						progress={100}
-						progressIndicator={
+						onRenderContent={() => (
 							<ProgressIndicator
 								completedSteps={subStepsComplete}
+								id="hub-expandable-step-3-progress-indicator"
 								orientation="vertical"
 								steps={subStepsComplete}
 								variant="setup-assistant"
 							/>
-						}
+						)}
+						progress={100}
 					/>
 					<SetupAssistantStep
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 						estimatedTime="10 mins"
 						heading="Turn on tracking for profiles"
+						id="hub-expandable-step-4"
 						isExpandable
 						isOpen={this.state.expandedSteps[3] || false}
-						progress={0}
-						progressIndicator={
+						onRenderContent={() => (
 							<ProgressIndicator
+								id="hub-expandable-step-4-progress-indicator"
 								orientation="vertical"
 								steps={subStepsIncomplete}
 								selectedStep={subStepsIncomplete[0]}
 								variant="setup-assistant"
 							/>
-						}
+						)}
+						progress={0}
 					/>
 					<SetupAssistantStep
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 						estimatedTime="10 mins"
 						heading="Setup Einstein Visibility for Admins"
+						id="hub-expandable-step-5"
 						isExpandable
 						isOpen={this.state.expandedSteps[4] || false}
-						progress={0}
-						progressIndicator={
+						onRenderContent={() => (
 							<ProgressIndicator
+								id="hub-expandable-step-5-progress-indicator"
 								orientation="vertical"
 								steps={subStepsIncomplete}
 								selectedStep={subStepsIncomplete[0]}
 								variant="setup-assistant"
 							/>
-						}
+						)}
+						progress={0}
 					/>
 				</SetupAssistant>
 			</IconSettings>

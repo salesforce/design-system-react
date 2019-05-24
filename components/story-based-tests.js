@@ -51,6 +51,7 @@ export Spinner from '../components/spinner/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
 // export Search from '../components/input/__docs__/search/storybook-stories';
+export SetupAssistant from '../components/setup-assistant/__docs__/storybook-stories';
 // export Slider from '../components/slider/__docs__/storybook-stories';
 // export SplitView from '../components/split-view/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';

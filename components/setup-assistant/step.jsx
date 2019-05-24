@@ -17,14 +17,6 @@ import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
-	 * Accepts a node to display the step's available action(s). Typically a Button, Button of variant "link," or Checkbox of variant "toggle"
-	 */
-	action: PropTypes.node,
-	/**
-	 * Assistive text passed in from the parent setup assistant
-	 */
-	assistiveText: PropTypes.object,
-	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
 	className: PropTypes.oneOfType([
@@ -61,7 +53,11 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool,
 	/**
-	 * Function that is called to render step content. If not provided progressIndicator and scopedNotification will be used instead
+	 * Function that is called to render a step's available action(s). Typically returns a Button, Button of variant "link," or Checkbox of variant "toggle"
+	 */
+	onRenderAction: PropTypes.node,
+	/**
+	 * Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component
 	 */
 	onRenderContent: PropTypes.func,
 	/**
@@ -72,14 +68,6 @@ const propTypes = {
 	 * Percentage of step completed. No progress indicator will be shown for the step unless this is provided
 	 */
 	progress: PropTypes.number,
-	/**
-	 * Accepts a ProgressIndicator component for use in showing sub-steps
-	 */
-	progressIndicator: PropTypes.node,
-	/**
-	 * Accepts a ScopedNotification component to display issues or warnings
-	 */
-	scopedNotification: PropTypes.node,
 	/**
 	 * Display number for the step. Only appears if progress indicator is enabled. Determined automatically by parent if not provided.
 	 */
@@ -158,7 +146,7 @@ class Step extends React.Component {
 						<p>{this.props.description}</p>
 					</div>
 					<div className="slds-media__figure slds-media__figure_reverse">
-						{this.props.action}
+						{this.props.onRenderAction ? this.props.onRenderAction() : null}
 						{this.props.estimatedTime ? (
 							<p className="slds-text-align_right slds-text-color_weak slds-p-top_medium">
 								{this.props.estimatedTime}
@@ -175,6 +163,7 @@ class Step extends React.Component {
 					'slds-setup-assistant__item',
 					this.props.className
 				)}
+				id={this.getId()}
 			>
 				<article className="slds-setup-assistant__step">
 					{this.props.isExpandable ? (
@@ -199,14 +188,9 @@ class Step extends React.Component {
 									id={`${this.getId()}-detail-content`}
 								>
 									<div className="slds-setup-assistant__step-detail">
-										{this.props.onRenderContent ? (
-											this.props.onRenderContent()
-										) : (
-											<>
-												{this.props.progressIndicator}
-												{this.props.scopedNotification}
-											</>
-										)}
+										{this.props.onRenderContent
+											? this.props.onRenderContent()
+											: null}
 									</div>
 								</div>
 							</div>

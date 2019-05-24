@@ -1,4 +1,5 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
 import Base from '../__examples__/base';
@@ -12,7 +13,9 @@ storiesOf(SETUP_ASSISTANT, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
-	.add('Base Variant', () => <Base />)
-	.add('With Step Progress', () => <StepProgress />)
-	.add('Hub with Expandable Steps', () => <HubWithExpandableSteps />)
-	.add('In a Card', () => <Card />);
+	.add('Base Variant', () => <Base action={action} />)
+	.add('With Step Progress', () => <StepProgress action={action} />)
+	.add('Hub with Expandable Steps', () => (
+		<HubWithExpandableSteps action={action} />
+	))
+	.add('In a Card', () => <Card action={action} />);

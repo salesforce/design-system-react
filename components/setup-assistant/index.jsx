@@ -24,7 +24,7 @@ import {
 
 const propTypes = {
 	/**
-	 * Accepts setup assistant step components only as children.
+	 * Accepts SetupAssistantStep components only as children.
 	 */
 	children: PropTypes.node,
 	/**
@@ -91,7 +91,6 @@ class SetupAssistant extends React.Component {
 				{React.Children.map(this.props.children, (child, i) => {
 					if (child.type.displayName !== SETUP_ASSISTANT_STEP) return null;
 					return React.cloneElement(child, {
-						assistiveText: this.props.assistiveText, // TODO: determine if this is needed
 						index: i,
 						onToggleIsOpen: this.props.onStepToggleIsOpen,
 						stepNumber: i + 1,
