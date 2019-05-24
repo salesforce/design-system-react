@@ -127,7 +127,7 @@ class Example extends React.Component {
 						onRenderContent={() => (
 							<>
 								<ProgressIndicator
-									completedSteps={subSteps[0]}
+									completedSteps={[subSteps[0]]}
 									id="card-step-2-progress-indicator"
 									orientation="vertical"
 									steps={subSteps}

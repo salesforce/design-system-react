@@ -55,7 +55,7 @@ const propTypes = {
 	/**
 	 * Function that is called to render a step's available action(s). Typically returns a Button, Button of variant "link," or Checkbox of variant "toggle"
 	 */
-	onRenderAction: PropTypes.node,
+	onRenderAction: PropTypes.func,
 	/**
 	 * Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component
 	 */

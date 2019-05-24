@@ -161,6 +161,8 @@ class Example extends React.Component {
 			stepTwoProgress: Math.ceil(stepsCompleted / subSteps.length * 100),
 			stepTwoSelectedSubStep,
 		});
+
+		return false;
 	}
 
 	render() {
