@@ -313,4 +313,4 @@ export DynamicIcon from './dynamic-icon';
 export log from '../utilities/log';
 
 // eslint-disable-next-line camelcase
-export UNSAFE_DirectionSettings from './utilities/direction';
+export UNSAFE_DirectionSettings from './utilities/UNSAFE_direction';

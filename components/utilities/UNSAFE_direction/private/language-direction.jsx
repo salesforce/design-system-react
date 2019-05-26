@@ -8,6 +8,7 @@ const LanguageDirectionHOC = (WrappedComponent) => {
 		WrappedComponent.displayName || WrappedComponent.name || 'Component';
 	return class LanguageDirection extends Component {
 		static displayName = `LanguageDirection(${componentName})`;
+
 		// eslint-disable-next-line camelcase
 		static contextType = UNSAFE_DirectionSettings;
 
