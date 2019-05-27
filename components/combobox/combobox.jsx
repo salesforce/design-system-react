@@ -955,12 +955,14 @@ class Combobox extends React.Component {
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
-					aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
+					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
 					role="combobox"
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={`${this.getId()}-listbox`}
+						aria-controls={
+							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+						}
 						aria-activedescendant={
 							this.state.activeOption
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
@@ -1093,7 +1095,9 @@ class Combobox extends React.Component {
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={`${this.getId()}-listbox`}
+						aria-controls={
+							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+						}
 						aria-activedescendant={
 							this.state.activeOption
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
@@ -1192,7 +1196,9 @@ class Combobox extends React.Component {
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1350,7 +1356,9 @@ class Combobox extends React.Component {
 						<Popover {...popoverProps}>
 							<InnerInput
 								aria-autocomplete="none"
-								aria-controls={`${this.getId()}`}
+								aria-controls={
+									this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+								}
 								aria-describedby={this.getErrorId()}
 								autoComplete="off"
 								className="slds-combobox__input"
@@ -1427,7 +1435,9 @@ class Combobox extends React.Component {
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1539,7 +1549,9 @@ class Combobox extends React.Component {
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
