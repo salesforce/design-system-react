@@ -209,7 +209,7 @@ class Tooltip extends React.Component {
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
 				key: i, // eslint-disable-line react/no-array-index-key
-				'aria-describedby': this.getId(),
+				'aria-describedby': this.getIsOpen() ? this.getId() : undefined,
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
@@ -222,9 +222,14 @@ class Tooltip extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getIsOpen() {
+		return this.props.isOpen === undefined
+			? this.state.isOpen
+			: this.props.isOpen;
+	}
+
 	getTooltip() {
-		const isOpen =
-			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
+		const isOpen = this.getIsOpen();
 		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
