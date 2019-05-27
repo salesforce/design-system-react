@@ -5,6 +5,6 @@ import React from 'react';
 // Alias
 import Checkbox from '../../checkbox';
 
-const OldCheckbox = (props) => <Checkbox oldEventParameterOrder {...props} />;
+export const OldCheckbox = (props) => <Checkbox oldEventParameterOrder {...props} />;
 
-export default OldCheckbox;
+export default Checkbox;
