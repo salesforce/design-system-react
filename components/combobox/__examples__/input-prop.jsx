@@ -87,6 +87,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
+					assistiveText={{ label: 'Search' }}
 					id="combobox-input-prop-example"
 					input={inputElement}
 					events={{
