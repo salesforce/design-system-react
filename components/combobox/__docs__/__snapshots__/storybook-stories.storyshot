@@ -348,6 +348,22 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
   <div
     dir="rtl"
   >
+    <h1>
+      1. Combobox in RTL mode.
+    </h1>
+    <h2
+      style={
+        Object {
+          "fontSize": "10px",
+        }
+      }
+    >
+      Note that 
+      <i>
+        design-system.css
+      </i>
+       styles are in LTR. See example code for more info.
+    </h2>
     <div
       className="slds-form-element"
     >
@@ -3189,6 +3205,22 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
 <div
   className="slds-p-around_medium"
 >
+  <h1>
+    1. Combobox in RTL mode.
+  </h1>
+  <h2
+    style={
+      Object {
+        "fontSize": "10px",
+      }
+    }
+  >
+    Note that 
+    <i>
+      design-system.css
+    </i>
+     styles are in LTR. See example code for more info.
+  </h2>
   <div
     dir="rtl"
     style={
