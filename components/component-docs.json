@@ -9839,11 +9839,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifies the modal's width. May be deprecated in favor of `width` in the future.",
-                "defaultValue": {
-                    "value": "'small'",
-                    "computed": false
-                }
+                "description": "Specifies the modal's width. May be deprecated in favor of `width` in the future."
             },
             "tagline": {
                 "type": {

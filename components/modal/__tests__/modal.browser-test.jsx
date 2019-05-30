@@ -84,10 +84,6 @@ describe('SLDSModal: ', function() {
 			);
 			expect(modalPortal).to.exist;
 		});
-		it('size is set to small on default', () => {
-			const modal = getModalNode(document.body);
-			expect(modal.className).to.include('slds-modal_small');
-		});
 	});
 
 	describe('Sizing', () => {

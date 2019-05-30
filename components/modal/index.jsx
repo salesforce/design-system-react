@@ -177,7 +177,6 @@ const defaultProps = {
 	},
 	align: 'center',
 	ariaHideApp: true,
-	size: 'small',
 };
 
 /**
@@ -304,7 +303,7 @@ class Modal extends React.Component {
 				className={classNames(
 					'slds-modal',
 					'slds-fade-in-open',
-					`slds-modal_${this.props.size}`,
+					this.props.size ? `slds-modal_${this.props.size}` : null,
 					{ 'slds-modal_prompt': this.isPrompt() },
 					this.props.className
 				)}
