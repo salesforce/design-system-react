@@ -1563,8 +1563,6 @@ class Combobox extends React.Component {
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
-								'aria-expanded': this.getIsOpen(),
-								'aria-haspopup': 'listbox',
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
