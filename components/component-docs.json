@@ -9825,6 +9825,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
                             "value": "'medium'",
                             "computed": false
                         },
@@ -9835,7 +9839,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifiies the modal's width. May be deprecated in favor of `width` in the future."
+                "description": "Specifies the modal's width. May be deprecated in favor of `width` in the future."
             },
             "tagline": {
                 "type": {
