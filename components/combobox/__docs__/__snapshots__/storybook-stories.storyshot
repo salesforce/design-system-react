@@ -22,7 +22,6 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -33,7 +32,6 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -233,7 +231,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -244,7 +241,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-custom-menu-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-custom-menu-item"
@@ -298,7 +294,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -309,7 +304,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -363,7 +357,6 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-inherit-menu-width-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -374,7 +367,6 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-inherit-menu-width-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-inherit-menu-width"
@@ -435,7 +427,6 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         }
       >
         <button
-          aria-describedby="field-level-help-tooltip"
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
@@ -471,7 +462,6 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           <div
             aria-expanded={false}
             aria-haspopup="listbox"
-            aria-owns="combobox-base-inline-help-listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
             role="combobox"
           >
@@ -482,7 +472,6 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
-                aria-controls="combobox-base-inline-help-listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-base-inline-help"
@@ -683,7 +672,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -694,7 +682,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -896,7 +883,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -907,7 +893,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -1145,7 +1130,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               />
             </svg>
           </div>
-          <section
+          <div
             className="absolute-positioned"
             id="combobox-base-listbox"
             onKeyDown={[Function]}
@@ -1291,7 +1276,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <section
+                  <div
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-4"
                     onKeyDown={[Function]}
@@ -1309,7 +1294,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       This account has been removed from the system.
                     </div>
-                  </section>
+                  </div>
                 </div>
               </li>
               <li
@@ -1433,7 +1418,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <section
+                  <div
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-6"
                     onKeyDown={[Function]}
@@ -1451,7 +1436,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       You don't have permission to access this account.
                     </div>
-                  </section>
+                  </div>
                 </div>
               </li>
               <li
@@ -1553,7 +1538,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
       <div
@@ -1731,7 +1716,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-menu-separator-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -1742,7 +1726,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-menu-separator-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-menu-separator"
@@ -1796,7 +1779,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-menu-subheader-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -1807,7 +1789,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-menu-subheader-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-menu-subheader"
@@ -1861,7 +1842,6 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-predefined-options-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -1872,7 +1852,6 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-predefined-options-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-predefined-options"
@@ -2072,7 +2051,6 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="dialog"
-          aria-owns="combobox-dialog"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2089,7 +2067,6 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
             >
               <input
                 aria-autocomplete="none"
-                aria-controls="combobox-dialog"
                 aria-describedby={null}
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
@@ -2296,15 +2273,12 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-inline-multiple-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-inline-multiple"
@@ -2368,7 +2342,6 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-inline-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -2423,7 +2396,6 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-input-prop-example-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2434,10 +2406,9 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-input-prop-example-listbox"
               autoComplete="test"
               className="slds-input slds-combobox__input"
-              id="id_from_input_prop"
+              id="combobox-input-prop-example"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -2638,15 +2609,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-multiple-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-readonly-multiple"
@@ -2708,15 +2676,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -2779,15 +2744,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -2850,15 +2812,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-single-custom-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -2921,15 +2880,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={true}
@@ -2994,7 +2950,6 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-required-error-state-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
           role="combobox"
         >
@@ -3005,7 +2960,6 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-required-error-state-listbox"
               aria-describedby="description-unique-id"
               autoComplete="off"
               className="slds-input slds-combobox__input"
@@ -3106,7 +3060,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3325,7 +3279,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -3361,7 +3315,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-required-error-state-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
           role="combobox"
         >
@@ -3372,7 +3325,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-required-error-state-listbox"
               aria-describedby="description-unique-id"
               autoComplete="off"
               className="slds-input slds-combobox__input"
@@ -3473,7 +3425,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3588,7 +3540,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -3654,7 +3606,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3711,7 +3663,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -3777,7 +3729,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3834,7 +3786,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -3849,6 +3801,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label slds-assistive-text"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
     <div
       className="slds-form-element__control"
     >
@@ -3858,7 +3816,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -3869,7 +3826,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4002,7 +3958,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
         <div
           aria-expanded={true}
           aria-haspopup="dialog"
-          aria-owns="combobox-unique-id"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -4019,7 +3974,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
             >
               <input
                 aria-autocomplete="none"
-                aria-controls="combobox-unique-id"
+                aria-controls="combobox-unique-id-popover"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-unique-id"
@@ -4046,10 +4001,10 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               </svg>
             </div>
             <section
-              aria-describedby="combobox-unique-id-dialog-body"
+              aria-describedby="combobox-unique-id-popover-dialog-body"
               aria-labelledby="combobox-unique-id-label"
               className="absolute-positioned ignore-react-onclickoutside slds-popover slds-popover_full-width"
-              id="combobox-unique-id-popover"
+              id="combobox-unique-id-popover-popover"
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -4085,7 +4040,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               </button>
               <div
                 className="slds-popover__body"
-                id="combobox-unique-id-dialog-body"
+                id="combobox-unique-id-popover-dialog-body"
               >
                 <div>
                   <div
@@ -4156,15 +4111,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4368,15 +4320,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4440,7 +4389,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4522,7 +4470,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4593,15 +4540,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4663,15 +4607,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4837,15 +4778,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4907,15 +4845,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4978,8 +4913,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
           role="combobox"
         >
           <div
-            aria-expanded={true}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
@@ -5016,7 +4949,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               </svg>
             </span>
           </div>
-          <section
+          <div
             id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -5579,7 +5512,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -5613,15 +5546,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={true}
@@ -5684,15 +5614,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -5755,8 +5682,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
           role="combobox"
         >
           <div
-            aria-expanded={true}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
@@ -5793,7 +5718,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               </svg>
             </span>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -6129,7 +6054,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>

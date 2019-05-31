@@ -440,7 +440,7 @@ class Combobox extends React.Component {
 			footer: popoverFooter,
 			footerClassName: 'slds-popover__footer_form',
 			hasNoNubbin: true,
-			id: `${this.getId()}`,
+			id: `${this.getId()}-popover`,
 			isOpen: this.state.isOpen,
 			hasNoTriggerStyles: true,
 			onOpen: this.handleOpen,
@@ -1107,8 +1107,6 @@ class Combobox extends React.Component {
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
-							'aria-expanded': this.getIsOpen(),
-							'aria-haspopup': 'listbox',
 							className: 'slds-combobox__form-element',
 							role: 'none',
 						}}
@@ -1350,14 +1348,13 @@ class Combobox extends React.Component {
 						)}
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-						aria-owns={`${this.getId()}`} // eslint-disable-line jsx-a11y/aria-proptypes
 						role="combobox"
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
 								aria-autocomplete="none"
 								aria-controls={
-									this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+									this.getIsOpen() ? `${this.getId()}-popover` : undefined
 								}
 								aria-describedby={this.getErrorId()}
 								autoComplete="off"
@@ -1449,8 +1446,6 @@ class Combobox extends React.Component {
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
-								'aria-expanded': this.getIsOpen(),
-								'aria-haspopup': 'listbox',
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
