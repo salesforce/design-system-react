@@ -64,7 +64,14 @@ describe('aXe Testing', function aXeFunction() {
 		test: async ({ story, context }) => {
 			const component = story.render(context);
 			const wrapper = mount(component);
-			expect(await axe(wrapper.html())).toHaveNoViolations();
+			expect(
+				await axe(wrapper.html(), {
+					rules: {
+						// Added due to autocomplete bug in browsers. Invalid value of "test" is passed into `autoComplete` intentionally.
+						'autocomplete-valid': { enabled: false },
+					},
+				})
+			).toHaveNoViolations();
 		},
 	});
 });
