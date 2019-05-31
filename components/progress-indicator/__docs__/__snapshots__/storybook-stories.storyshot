@@ -32,7 +32,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
           >
             <button
               aria-current="step"
-              aria-describedby="progress-indicator-tooltip-0"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -63,7 +62,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-1"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -93,7 +91,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             }
           >
             <a
-              aria-describedby="progress-indicator-tooltip-2"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -123,7 +120,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             }
           >
             <a
-              aria-describedby="progress-indicator-tooltip-3"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -153,7 +149,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             }
           >
             <a
-              aria-describedby="progress-indicator-tooltip-4"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -230,7 +225,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-0"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -269,7 +263,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-1"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -308,7 +301,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
           >
             <button
               aria-current="step"
-              aria-describedby="progress-indicator-tooltip-2"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -338,7 +330,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             }
           >
             <a
-              aria-describedby="progress-indicator-tooltip-3"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -368,7 +359,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             }
           >
             <a
-              aria-describedby="progress-indicator-tooltip-4"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -445,7 +435,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-a"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -484,7 +473,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-b"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -523,7 +511,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-c"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -562,7 +549,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-d"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -601,7 +587,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current="step"
-              aria-describedby="progress-indicator-tooltip-e"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -632,7 +617,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-f"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -663,7 +647,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-g"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -694,7 +677,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-h"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -725,7 +707,6 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-i"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -802,7 +783,6 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-0"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -841,7 +821,6 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-1"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -880,7 +859,6 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-2"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -919,7 +897,6 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
           >
             <button
               aria-current="step"
-              aria-describedby="progress-indicator-tooltip-3"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -950,7 +927,6 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-4"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1272,7 +1248,6 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-0"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1311,7 +1286,6 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
           >
             <button
               aria-current="step"
-              aria-describedby="progress-indicator-tooltip-1"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1350,7 +1324,6 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-2"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1381,7 +1354,6 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-3"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1412,7 +1384,6 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
           >
             <button
               aria-current={null}
-              aria-describedby="progress-indicator-tooltip-4"
               className="slds-button slds-progress__marker"
               onBlur={[Function]}
               onClick={[Function]}
