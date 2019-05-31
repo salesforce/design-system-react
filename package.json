@@ -155,7 +155,7 @@
 		"glob": "^7.1.3",
 		"istanbul-instrumenter-loader": "^3.0.1",
 		"jest": "^23.1.0",
-		"jest-axe": "git+ssh://git@github.com:interactivellama/jest-axe.git#v3.1.1-alpha.1",
+		"jest-axe": "https://github.com/interactivellama/jest-axe.git#v3.1.1-alpha.1",
 		"jest-svg-transformer": "^1.0.0",
 		"js-beautify": "^1.6.8",
 		"json-loader": "^0.5.3",
