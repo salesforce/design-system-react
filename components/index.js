@@ -80,8 +80,8 @@ export CardFilter from './card/filter';
 export SLDSCarousel from './carousel';
 export Carousel from './carousel';
 
-export SLDSCheckbox from './forms/checkbox';
-export Checkbox from './forms/checkbox';
+export SLDSCheckbox from './checkbox';
+export Checkbox from './checkbox';
 
 export SLDSColorPicker from './color-picker';
 export ColorPicker from './color-picker';
