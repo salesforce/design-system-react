@@ -155,8 +155,10 @@ class Radio extends React.Component {
 					id={this.getId()}
 					name={this.props.name}
 					value={this.props.value}
-					checked={this.props.checked}
-					defaultChecked={this.props.defaultChecked}
+					/* A form element should not have both checked and defaultChecked props. */
+					{...(this.props.checked !== undefined
+						? { checked: this.props.checked }
+						: { defaultChecked: this.props.defaultChecked })}
 					onChange={(event) => {
 						this.handleChange(event);
 					}}
@@ -166,7 +168,7 @@ class Radio extends React.Component {
 						}
 					}}
 					onKeyPress={(event) => {
-						const charCode = event.charCode;
+						const { charCode } = event;
 
 						if (
 							charCode === KEYS.SPACE &&

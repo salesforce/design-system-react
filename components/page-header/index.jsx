@@ -253,6 +253,7 @@ class PageHeader extends Component {
 		const renderContentRight = () => {
 			if (onRenderActions) {
 				return '';
+				// eslint-disable-next-line no-else-return
 			} else if (contentRight) {
 				const type = typeof contentRight;
 				if (type !== 'string') {
@@ -290,6 +291,7 @@ class PageHeader extends Component {
 		const renderNavRight = () => {
 			if (onRenderControls) {
 				return '';
+				// eslint-disable-next-line no-else-return
 			} else if (navRight) {
 				const type = typeof navRight;
 				if (type !== 'string') {

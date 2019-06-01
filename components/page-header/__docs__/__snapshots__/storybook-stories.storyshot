@@ -341,6 +341,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onMouseLeave={[Function]}
+                type="button"
               >
                 <span
                   className="slds-text-not-selected"
@@ -595,6 +596,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
             >
               <button
                 className="slds-button slds-button_neutral"
+                type="button"
               >
                 Add Contact
               </button>
@@ -1317,6 +1319,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                 onBlur={[Function]}
                 onClick={[Function]}
                 onMouseLeave={[Function]}
+                type="button"
               >
                 <span
                   className="slds-text-not-selected"

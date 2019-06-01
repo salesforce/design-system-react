@@ -726,6 +726,7 @@ class Combobox extends React.Component {
 				options: this.props.options,
 			});
 
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			if (this.state.isOpen) {
 				menuItemSelectScroll({
 					container: this.menuRef,
@@ -1597,7 +1598,7 @@ class Combobox extends React.Component {
 	};
 
 	render() {
-		const props = this.props;
+		const { props } = this;
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},

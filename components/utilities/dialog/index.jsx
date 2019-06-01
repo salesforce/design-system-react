@@ -295,8 +295,10 @@ class Dialog extends React.Component {
 		this.handleClose();
 	};
 
-	handleClose = (event, data) => {
-		this.setState({ triggerPopperJS: true });
+	handleClose = (event, data = {}) => {
+		if (!data.componentWillUnmount) {
+			this.setState({ triggerPopperJS: true });
+		}
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}

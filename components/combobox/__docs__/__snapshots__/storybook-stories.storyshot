@@ -3422,6 +3422,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
     <div
       className="slds-form-element__control"
     >
@@ -3597,6 +3603,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
     <div
       className="slds-form-element__control"
     >
@@ -3714,6 +3726,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
     <div
       className="slds-form-element__control"
     >
