@@ -1,6 +1,5 @@
 /* eslint-env jest */
-import React from 'react';
-import { renderMarkup, testDOMandHTML } from '../../../tests/snapshot-helpers';
+import { testDOMandHTML } from '../../../tests/snapshot-helpers';
 
 import BaseExample from '../__examples__/base';
 import DisabledExample from '../__examples__/disabled';

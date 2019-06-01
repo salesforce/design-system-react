@@ -17,15 +17,15 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
  */
 const CarouselItem = (props) => (
 	<div
-		id={`content-id-${props.id}`}
+		id={`content-id-${props.carouselId}-${props.id}`}
 		className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 		role="tabpanel"
 		aria-hidden="false"
-		aria-labelledby={`indicator-id-${props.id}`}
+		aria-labelledby={`indicator-id-${props.carouselId}-${props.panelIndex}`}
 		style={{
 			margin: 0,
 			maxWidth: `${props.itemWidth}px`,
-			padding: '0 8px',
+			padding: '0 6px',
 		}}
 	>
 		{props.onRenderItem ? (
@@ -35,9 +35,10 @@ const CarouselItem = (props) => (
 				className="slds-carousel__panel-action slds-text-link_reset"
 				href={props.href}
 				onClick={props.onClick}
+				onFocus={props.onFocus}
 				style={{
 					backgroundColor: 'white',
-					margin: 'auto',
+					width: '100%',
 				}}
 				tabIndex={props.isInCurrentPanel ? '0' : '-1'}
 			>
@@ -57,9 +58,9 @@ const CarouselItem = (props) => (
 					</div>
 					{props.buttonLabel && (
 						<Button
-							className="slds-button_outline-brand"
 							label={props.buttonLabel}
 							tabIndex={props.isInCurrentPanel ? '0' : '-1'}
+							variant="neutral"
 						/>
 					)}
 				</div>
@@ -75,6 +76,10 @@ CarouselItem.propTypes = {
 	 * Label of the button to be displayed. If not provided, no button will be rendered.
 	 */
 	buttonLabel: PropTypes.string,
+	/**
+	 * Carousel HTML ID
+	 */
+	carouselId: PropTypes.string,
 	/**
 	 * CSS classes that are applied to the component
 	 */
@@ -109,9 +114,17 @@ CarouselItem.propTypes = {
 	 */
 	itemWidth: PropTypes.number,
 	/**
+	 * Accepts a callback to handle when the a tag is focused on
+	 */
+	onFocus: PropTypes.func,
+	/**
 	 * Accepts a custom carousel item rendering function
 	 */
 	onRenderItem: PropTypes.func,
+	/**
+	 * Index of the panel this item belongs to, to be used when associating it to an indicator
+	 */
+	panelIndex: PropTypes.number,
 	/**
 	 * Path of the image to be used
 	 */

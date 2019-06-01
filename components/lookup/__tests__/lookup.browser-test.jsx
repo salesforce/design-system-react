@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-render-return-value */
 /* eslint-disable react/no-find-dom-node */
 
@@ -14,11 +16,7 @@ import IconSettings from '../../icon-settings';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithClass,
-	scryRenderedDOMComponentsWithTag,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('SLDSLookup: ', () => {
 	const generateLookup = function(lookupInstance) {

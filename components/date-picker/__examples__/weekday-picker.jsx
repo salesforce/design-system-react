@@ -9,6 +9,9 @@ class Example extends React.Component {
 	render() {
 		return (
 			<Datepicker
+				labels={{
+					label: 'Date',
+				}}
 				dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
 			/>
 		);

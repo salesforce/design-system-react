@@ -683,12 +683,14 @@ class MenuDropdown extends React.Component {
 			this.props.multiple &&
 			this.state.selectedIndices.indexOf(index) === -1
 		) {
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
 				selectedIndices: currentIndices,
 			});
 		} else if (this.props.multiple) {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			const currentSelected = this.state.selectedIndices;
 			currentSelected.splice(deselectIndex, 1);
 			this.setState({
@@ -798,6 +800,7 @@ class MenuDropdown extends React.Component {
 			const menuItemTop = menuItem.offsetTop - menu.offsetTop;
 
 			if (menuItemTop < menuTop) {
+				// eslint-disable-next-line no-param-reassign
 				menu.scrollTop = menuItemTop;
 			} else {
 				const menuBottom = menuTop + menuHeight + menu.offsetTop;
@@ -805,6 +808,7 @@ class MenuDropdown extends React.Component {
 					menuItemTop + menuItem.offsetHeight + menu.offsetTop;
 
 				if (menuItemBottom > menuBottom) {
+					// eslint-disable-next-line no-param-reassign
 					menu.scrollTop = menuItemBottom - menuHeight - menu.offsetTop;
 				}
 			}

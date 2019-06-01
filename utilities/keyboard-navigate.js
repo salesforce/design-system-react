@@ -18,7 +18,7 @@ const keyboardNavigate = ({
 	target,
 	toggleOpen,
 }) => {
-	const indexes = navigableItems.indexes;
+	const { indexes } = navigableItems;
 	const lastIndex = indexes.length - 1;
 	let focusedIndex;
 	let ch = key || String.fromCharCode(keyCode);
@@ -35,7 +35,7 @@ const keyboardNavigate = ({
 	if (keyCode === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
 	} else if (!isOpen) {
-		focusedIndex = indexes[0];
+		[focusedIndex] = indexes;
 		if (openMenuKeys || ch) {
 			toggleOpen();
 		}
@@ -57,7 +57,7 @@ const keyboardNavigate = ({
 				const newNavigableIndex = navigableIndex + 1;
 				focusedIndex = indexes[newNavigableIndex];
 			} else {
-				focusedIndex = indexes[0];
+				[focusedIndex] = indexes;
 			}
 		} else if (keyCode === KEYS.UP) {
 			if (navigableIndex > 0) {

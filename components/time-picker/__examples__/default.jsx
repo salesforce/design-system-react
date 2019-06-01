@@ -10,6 +10,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Timepicker
+					label="Time"
 					placeholder="Select a time"
 					stepInMinutes={30}
 					onDateChange={(date, inputStr) => {

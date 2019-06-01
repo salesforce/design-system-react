@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { APP_LAUNCHER } from '../../../utilities/constants';
+import { APP_LAUNCHER, APP_LAUNCHER_TILE } from '../../../utilities/constants';
 
 import AppLauncher from '../../app-launcher';
+import AppLauncherLink from '../../app-launcher/link';
 import AppLauncherTile from '../../app-launcher/tile';
-import AppLauncherSection from '../../app-launcher/section';
+import AppLauncherExpandableSection from '../../app-launcher/expandable-section';
 import Icon from '../../icon';
 import Button from '../../button';
 import Search from '../../input/search';
@@ -31,158 +32,102 @@ if (canUseDOM && document.querySelector('#root')) {
 	SLDSSettings.setAppElement(document.createElement('div'));
 }
 
-const standardTileDemoStyles = {
+const tileDemoStyles = {
 	width: '20rem',
 	paddingLeft: '.5rem',
 	paddingRight: '.5rem',
 };
 
-const smallTileDemoStyles = {
-	width: '6rem',
-	paddingLeft: '.5rem',
-	paddingRight: '.5rem',
-};
-
 class DemoAppLauncherTile extends React.Component {
-	static displayName = 'DemoAppLauncherTile';
+	static displayName = APP_LAUNCHER_TILE;
 
 	static propTypes = {
 		search: PropTypes.string,
-		size: PropTypes.string,
 	};
 
 	render() {
+		return (
+			<AppLauncherTile
+				title="Sales Cloud"
+				iconText="SC"
+				description="The primary internal Salesforce org. Used to run our online sales business and manage accounts."
+				href="https://www.salesforce.com/"
+				onClick={action('Tile clicked! Actual href should be ignored')}
+				search={this.props.search}
+			/>
+		);
+	}
+}
+DemoAppLauncherTile.displayName = APP_LAUNCHER_TILE;
+
+class DemoAppLauncherTileWithIconNode extends React.Component {
+	static displayName = APP_LAUNCHER_TILE;
+
+	static propTypes = {
+		search: PropTypes.string,
+	};
+
+	render() {
+		const icon = <Icon name="email_chatter" category="standard" size="large" />;
+
 		return (
 			<AppLauncherTile
 				title="Marketing Cloud"
-				iconText="MC"
-				description="Send emails, track emails, read emails! Emails!"
+				description="Salesforce Marketing Cloud lets businesses of any size engage with their customers through multiple channels of messaging."
 				href="https://www.marketingcloud.com/"
-				onClick={action('Tile clicked! Actual href should be ignored')}
-				search={this.props.search}
-				size={this.props.size}
-			/>
-		);
-	}
-}
-
-class DemoAppLauncherSmallTile extends React.Component {
-	static displayName = 'DemoAppLauncherSmallTile';
-
-	render() {
-		return (
-			<AppLauncherTile
-				title="Journey Builder"
-				iconText="JB"
-				size="small"
-				onClick={action('Tiny tile clicked!')}
-			/>
-		);
-	}
-}
-
-class DemoAppLauncherTileWithIconNode extends React.Component {
-	static displayName = 'DemoAppLauncherTileWithIconNode';
-
-	static propTypes = {
-		search: PropTypes.string,
-		size: PropTypes.string,
-	};
-
-	render() {
-		const icon = <Icon name="campaign" category="standard" size="large" />;
-
-		return (
-			<AppLauncherTile
-				title="Sales Cloud"
-				description="The primary internal Salesforce org."
-				href="https://www.salesforce.com/"
 				iconNode={icon}
 				onClick={action('Tile with icon node clicked!')}
 				search={this.props.search}
-				size={this.props.size}
 			/>
 		);
 	}
 }
 
-class DemoAppLauncherTileWithIconText extends React.Component {
-	static displayName = 'DemoAppLauncherTileWithIconText';
+class DemoAppLauncherTileWithIconBackgroundColor extends React.Component {
+	static displayName = APP_LAUNCHER_TILE;
 
 	static propTypes = {
 		search: PropTypes.string,
-		size: PropTypes.string,
 	};
 
 	render() {
 		return (
 			<AppLauncherTile
-				title="Sales Cloud"
-				description="The primary internal Salesforce org."
-				iconText="SC"
-				onClick={action('Tile with icon text clicked!')}
+				description="Manage your finances across multiple financial platforms and make the most of your capital."
+				iconBackgroundColor="#73c07b"
+				iconText="MM"
 				search={this.props.search}
-				size={this.props.size}
+				title="My Money"
 			/>
 		);
 	}
 }
 
 class DemoAppLauncherTileWithTruncatedText extends React.Component {
-	static displayName = 'DemoAppLauncherTileWithTruncatedText';
+	static displayName = APP_LAUNCHER_TILE;
 
 	static propTypes = {
 		search: PropTypes.string,
-		size: PropTypes.string,
 	};
 
 	render() {
 		return (
 			<AppLauncherTile
 				title="Call Center"
-				description="The key to call center and contact center is not to use too many words!"
+				description="The key to call center and contact center management is more simple than you think with this amazing application!"
 				iconText="CC"
 				onClick={action('Tile with icon text clicked!')}
 				search={this.props.search}
-				size={this.props.size}
-			/>
-		);
-	}
-}
-
-class DemoAppLauncherTileWithDescriptionHeading extends React.Component {
-	static displayName = 'DemoAppLauncherTileWithDescriptionHeading';
-
-	static propTypes = {
-		search: PropTypes.string,
-		size: PropTypes.string,
-	};
-
-	static defaultProps = {
-		search: 'journey',
-	};
-
-	render() {
-		return (
-			<AppLauncherTile
-				title="Journey Builder"
-				description="Build 1:1 journeys blah blah blah and use way too many words"
-				descriptionHeading="Journey Builder"
-				iconText="JB"
-				onClick={action('Tile with description heading clicked!')}
-				search={this.props.search}
-				size={this.props.size}
 			/>
 		);
 	}
 }
 
 class DemoAppLauncherTileWithSearchText extends React.Component {
-	static displayName = 'DemoAppLauncherTileWithSearchText';
+	static displayName = APP_LAUNCHER_TILE;
 
 	static propTypes = {
 		search: PropTypes.string,
-		size: PropTypes.string,
 	};
 
 	static defaultProps = {
@@ -190,64 +135,45 @@ class DemoAppLauncherTileWithSearchText extends React.Component {
 	};
 
 	render() {
-		return (
-			<DemoAppLauncherTileWithTruncatedText
-				search={this.props.search}
-				size={this.props.size}
-			/>
-		);
+		return <DemoAppLauncherTileWithTruncatedText search={this.props.search} />;
 	}
 }
 
-class DemoAppLauncherSection extends React.Component {
-	static displayName = 'DemoAppLauncherSection';
+class DemoAppLauncherExpandableSection extends React.Component {
+	static displayName = 'DemoAppLauncherExpandableSection';
+
+	state = {
+		allAppsOpen: true,
+	};
 
 	render() {
 		return (
 			<div>
-				<AppLauncherSection
-					assistiveText={{ collapseSection: 'Collapse Section' }}
-					title="All Items"
-					toggleable
-					onToggleClick={action('Section `All Items` open -->')}
-				>
-					<DemoAppLauncherTile />
-					<DemoAppLauncherTileWithIconText />
-					<DemoAppLauncherTileWithIconNode />
-				</AppLauncherSection>
-				<AppLauncherSection
+				<AppLauncherExpandableSection
+					assistiveText={{ toggleSection: 'Expand/Collapse Section' }}
+					isOpen={this.state.allAppsOpen}
+					onToggleOpen={() => {
+						action('Section `All App` open -->');
+						this.setState({ allAppsOpen: !this.state.allAppsOpen });
+					}}
 					title="All Apps"
-					onToggleClick={action('Section `All App` open -->')}
 				>
 					<DemoAppLauncherTile />
+					<DemoAppLauncherTileWithIconBackgroundColor />
 					<DemoAppLauncherTileWithIconNode />
-				</AppLauncherSection>
-			</div>
-		);
-	}
-}
-
-class DemoAppLauncherSectionWithSmallTiles extends React.Component {
-	static displayName = 'DemoAppLauncherSectionWithSmallTiles';
-
-	render() {
-		return (
-			<div>
-				<AppLauncherSection
-					title="All Items"
-					onToggleClick={action('Section `All Items` open -->')}
-				>
 					<DemoAppLauncherTile />
-					<DemoAppLauncherTileWithIconText />
-					<DemoAppLauncherTileWithIconNode />
-				</AppLauncherSection>
-				<AppLauncherSection
-					title="All Apps"
-					onToggleClick={action('Section `All App` open -->')}
-				>
-					<DemoAppLauncherTile size="small" />
-					<DemoAppLauncherTileWithIconNode size="small" />
-				</AppLauncherSection>
+					<DemoAppLauncherTileWithTruncatedText />
+					<DemoAppLauncherTile />
+				</AppLauncherExpandableSection>
+				<AppLauncherExpandableSection nonCollapsible title="All Items">
+					<AppLauncherLink>Accounts</AppLauncherLink>
+					<AppLauncherLink>Announcements</AppLauncherLink>
+					<AppLauncherLink>Approvals</AppLauncherLink>
+					<AppLauncherLink>Campaigns</AppLauncherLink>
+					<AppLauncherLink>Cases</AppLauncherLink>
+					<AppLauncherLink>Coaching</AppLauncherLink>
+					<AppLauncherLink>Contacts</AppLauncherLink>
+				</AppLauncherExpandableSection>
 			</div>
 		);
 	}
@@ -259,7 +185,7 @@ class DemoAppLauncher extends React.Component {
 	state = {
 		search: '',
 		appLauncherOpen: this.props.isOpen || false, // eslint-disable-line react/prop-types
-		allItemsSectionIsOpen: false,
+		allItemsSectionIsOpen: true,
 	};
 
 	onClear = () => {
@@ -306,42 +232,32 @@ class DemoAppLauncher extends React.Component {
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
-						<AppLauncherSection
-							toggleable
+						<AppLauncherExpandableSection title="All Apps" toggleable>
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithIconNode search={this.state.search} />
+							<DemoAppLauncherTileWithIconBackgroundColor
+								search={this.state.search}
+							/>
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText
+								search={this.state.search}
+							/>
+							<DemoAppLauncherTile search={this.state.search} />
+						</AppLauncherExpandableSection>
+						<hr />
+						<AppLauncherExpandableSection
 							title="All Items"
 							isOpen={this.state.allItemsSectionIsOpen}
-							onToggleClick={this.toggleSection}
+							onToggleOpen={this.toggleSection}
 						>
-							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithIconNode search={this.state.search} />
-							<DemoAppLauncherTileWithIconText search={this.state.search} />
-							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithIconNode search={this.state.search} />
-							<DemoAppLauncherTileWithIconText search={this.state.search} />
-						</AppLauncherSection>
-						<AppLauncherSection title="All Apps" toggleable>
-							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText
-								search={this.state.search}
-							/>
-							<DemoAppLauncherTileWithDescriptionHeading
-								search={this.state.search}
-							/>
-							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText
-								search={this.state.search}
-							/>
-							<DemoAppLauncherTileWithDescriptionHeading
-								search={this.state.search}
-							/>
-							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText
-								search={this.state.search}
-							/>
-							<DemoAppLauncherTileWithDescriptionHeading
-								search={this.state.search}
-							/>
-						</AppLauncherSection>
+							<AppLauncherLink>Accounts</AppLauncherLink>
+							<AppLauncherLink>Announcements</AppLauncherLink>
+							<AppLauncherLink>Approvals</AppLauncherLink>
+							<AppLauncherLink>Campaigns</AppLauncherLink>
+							<AppLauncherLink>Cases</AppLauncherLink>
+							<AppLauncherLink>Coaching</AppLauncherLink>
+							<AppLauncherLink>Contacts</AppLauncherLink>
+						</AppLauncherExpandableSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
@@ -385,17 +301,19 @@ class DemoAppLauncherNoHeaderButton extends React.Component {
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
-						<AppLauncherSection toggleable title="All Items">
+						<AppLauncherExpandableSection toggleable title="All Items">
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
-							<DemoAppLauncherTileWithIconText search={this.state.search} />
-						</AppLauncherSection>
-						<AppLauncherSection title="All Apps" toggleable>
+							<DemoAppLauncherTileWithIconBackgroundColor
+								search={this.state.search}
+							/>
+						</AppLauncherExpandableSection>
+						<AppLauncherExpandableSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText
 								search={this.state.search}
 							/>
-						</AppLauncherSection>
+						</AppLauncherExpandableSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
@@ -430,15 +348,15 @@ class DemoAppLauncherNoSearch extends React.Component {
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
-						<AppLauncherSection toggleable title="All Items">
+						<AppLauncherExpandableSection toggleable title="All Items">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
-							<DemoAppLauncherTileWithIconText />
-						</AppLauncherSection>
-						<AppLauncherSection title="All Apps" toggleable>
+							<DemoAppLauncherTileWithIconBackgroundColor />
+						</AppLauncherExpandableSection>
+						<AppLauncherExpandableSection title="All Apps" toggleable>
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithTruncatedText />
-						</AppLauncherSection>
+						</AppLauncherExpandableSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
@@ -473,34 +391,72 @@ class DemoAppLauncherWithSeveralSections extends React.Component {
 						search={search}
 						modalHeaderButton={modalHeaderButton}
 					>
-						<AppLauncherSection title="First Section">
+						<AppLauncherExpandableSection nonCollapsible title="First Section">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 							<DemoAppLauncherTileWithTruncatedText />
-						</AppLauncherSection>
-						<AppLauncherSection title="Second Section">
+						</AppLauncherExpandableSection>
+						<AppLauncherExpandableSection nonCollapsible title="Second Section">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 							<DemoAppLauncherTileWithTruncatedText />
-						</AppLauncherSection>
-						<AppLauncherSection title="Third Section">
+						</AppLauncherExpandableSection>
+						<AppLauncherExpandableSection nonCollapsible title="Third Section">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 							<DemoAppLauncherTileWithTruncatedText />
-						</AppLauncherSection>
-						<AppLauncherSection title="Fourth Section">
+						</AppLauncherExpandableSection>
+						<AppLauncherExpandableSection nonCollapsible title="Fourth Section">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 							<DemoAppLauncherTileWithTruncatedText />
-						</AppLauncherSection>
-						<AppLauncherSection title="Fifth Section">
+						</AppLauncherExpandableSection>
+						<AppLauncherExpandableSection nonCollapsible title="Fifth Section">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 							<DemoAppLauncherTileWithTruncatedText />
-						</AppLauncherSection>
+						</AppLauncherExpandableSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
+		);
+	}
+}
+
+class DemoAppLauncherLink extends React.Component {
+	static displayName = 'DemoAppLauncherLink';
+
+	render() {
+		return (
+			<div>
+				<div>
+					<AppLauncherLink>Accounts</AppLauncherLink>
+				</div>
+				<div>
+					<AppLauncherLink className="custom-class">
+						Announcements
+					</AppLauncherLink>
+				</div>
+				<div>
+					<AppLauncherLink href="http://www.salesforce.com">
+						Approvals
+					</AppLauncherLink>
+				</div>
+				<div>
+					<AppLauncherLink onClick={action('Link clicked!')}>
+						Campaigns
+					</AppLauncherLink>
+				</div>
+				<div>
+					<AppLauncherLink search="se">Cases</AppLauncherLink>
+				</div>
+				<div>
+					<AppLauncherLink title="Custom Title">Coaching</AppLauncherLink>
+				</div>
+				<div>
+					<AppLauncherLink>Contacts</AppLauncherLink>
+				</div>
+			</div>
 		);
 	}
 }
@@ -511,50 +467,38 @@ storiesOf(APP_LAUNCHER, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
+	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
 	.add('App Launcher no search', () => <DemoAppLauncherNoSearch />)
-	.add('App Launcher with several sections (no toggle)', () => (
+	.add('App Launcher with several sections (non-collapsible)', () => (
 		<DemoAppLauncherWithSeveralSections />
 	))
 	.add('Tile', () => (
-		<div style={standardTileDemoStyles}>
+		<div style={tileDemoStyles}>
 			<DemoAppLauncherTile />
 		</div>
 	))
-	.add('Small Tile', () => (
-		<div style={smallTileDemoStyles}>
-			<DemoAppLauncherSmallTile />
-		</div>
-	))
 	.add('Tile with Icon node', () => (
-		<div style={standardTileDemoStyles}>
+		<div style={tileDemoStyles}>
 			<DemoAppLauncherTileWithIconNode />
 		</div>
 	))
-	.add('Tile with icon text', () => (
-		<div style={standardTileDemoStyles}>
-			<DemoAppLauncherTileWithIconText />
+	.add('Tile with Icon background color', () => (
+		<div style={tileDemoStyles}>
+			<DemoAppLauncherTileWithIconBackgroundColor />
 		</div>
 	))
 	.add('Tile with search text', () => (
-		<div style={standardTileDemoStyles}>
+		<div style={tileDemoStyles}>
 			<DemoAppLauncherTileWithSearchText />
 		</div>
 	))
 	.add('Tile with truncated text', () => (
-		<div style={standardTileDemoStyles}>
+		<div style={tileDemoStyles}>
 			<DemoAppLauncherTileWithTruncatedText />
 		</div>
 	))
-	.add('Tile with description heading', () => (
-		<div style={standardTileDemoStyles}>
-			<DemoAppLauncherTileWithDescriptionHeading />
-		</div>
-	))
-	.add('Section', () => <DemoAppLauncherSection />)
-	.add('Section with small tiles', () => (
-		<DemoAppLauncherSectionWithSmallTiles />
-	))
+	.add('Expandable Section', () => <DemoAppLauncherExpandableSection />)
+	.add('Link', () => <DemoAppLauncherLink />)
 	.add('Doc site example', () => <DefaultExample />);

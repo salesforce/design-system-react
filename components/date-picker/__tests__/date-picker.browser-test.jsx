@@ -35,6 +35,7 @@ class DemoComponent extends React.Component {
 	};
 
 	static defaultProps = defaultProps;
+
 	state = {};
 
 	// event handlers
@@ -57,7 +58,7 @@ class DemoComponent extends React.Component {
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSDatepicker', function() {
+describe('SLDSDatepicker', function describeFunction() {
 	let wrapper;
 
 	const triggerClassSelector = 'button.slds-input__icon';
@@ -98,7 +99,7 @@ describe('SLDSDatepicker', function() {
 
 	// EVENTS
 
-	describe('onClose, onRequestClose, onOpen callbacks are set', function() {
+	describe('onClose, onRequestClose, onOpen callbacks are set', function describeFunction2() {
 		afterEach(() => wrapper.unmount());
 
 		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function(done) {
@@ -347,7 +348,7 @@ describe('SLDSDatepicker', function() {
 		});
 	});
 
-	describe('Disabled', function() {
+	describe('Disabled', function describeFunction2() {
 		const triggerClicked = sinon.spy();
 		const dialogOpened = sinon.spy();
 

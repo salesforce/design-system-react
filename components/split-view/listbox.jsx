@@ -120,7 +120,9 @@ const defaultProps = {
  */
 class SplitViewListbox extends React.Component {
 	static displayName = SPLIT_VIEW_LISTBOX;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {
@@ -342,7 +344,7 @@ class SplitViewListbox extends React.Component {
 	}
 
 	listItems() {
-		const ListItemWithContent = this.ListItemWithContent;
+		const { ListItemWithContent } = this;
 
 		return this.props.options.map((item, index) => (
 			<ListItemWithContent
