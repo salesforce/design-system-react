@@ -31,9 +31,9 @@ const propTypes = {
 	 */
 	label: PropTypes.string,
 	/**
-	 *  Input type for visual picker
+	 *  Whether the visual picker is coverable on selection
 	 */
-	inputType: PropTypes.oneOf(['radio', 'checkbox']).isRequired,
+	coverable: PropTypes.bool,
 	/**
 	 *  Size for visual picker
 	 */
@@ -53,11 +53,16 @@ class VisualPicker extends React.Component {
 	}
 
 	render() {
-		const options = React.Children.map(this.props.children, (option, index) => React.cloneElement(option, {
+		const options = React.Children.map(this.props.children, (option, index) =>
+			React.cloneElement(option, {
 				index: `${this.props.id || this.generatedId}-${index}`,
-				type: this.props.inputType,
+				className: `slds-visual-picker_${this.props.size}`,
+				coverable: this.props.coverable,
+				variant: 'visual-picker',
+				name: `${this.props.id || this.generatedId}_options`,
 				size: this.props.size,
-			}));
+			})
+		);
 
 		return (
 			<fieldset

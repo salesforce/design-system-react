@@ -10,6 +10,7 @@ import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
+import Icon from '../icon';
 
 const propTypes = {
 	/**
@@ -61,7 +62,31 @@ const propTypes = {
 	/**
 	 * Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).
 	 */
-	variant: PropTypes.oneOf(['base', 'button-group', 'swatch']),
+	variant: PropTypes.oneOf(['base', 'button-group', 'swatch', 'visual-picker']),
+	/**
+	 * Determines whether visual picker is coverable when selected (only for visual picker variant)
+	 */
+	coverable: PropTypes.bool,
+	/**
+	 * Allows icon to shown if radio is not selected (only for non-coverable visual picker variant)
+	 */
+	onRenderVisualPicker: PropTypes.node,
+	/**
+	 * Allows icon to shown if radio is not selected (only for visual picker variant)
+	 */
+	onRenderVisualPickerSelected: PropTypes.node,
+	/**
+	 * Allows icon to shown if radio is not selected (only for visual picker variant)
+	 */
+	onRenderVisualPickerNotSelected: PropTypes.node,
+	/**
+	 * Shows description for radio option (only for visual picker variant)
+	 */
+	description: PropTypes.string,
+	/**
+	 * Allows icon to shown if radio is not selected (only for visual picker variant)
+	 */
+	size: PropTypes.oneOf(['medium', 'large']),
 	/**
 	 * Ref callback that will pass in the radio's `input` tag
 	 */
@@ -72,6 +97,7 @@ const propTypes = {
 
 const defaultProps = {
 	variant: 'base',
+	coverable: false,
 };
 
 /**
@@ -123,13 +149,57 @@ class Radio extends React.Component {
 					</span>
 				</label>
 			);
-		} else if (this.props.variant === 'button-group')
+		} else if (this.props.variant === 'button-group') {
 			radio = (
 				<label className="slds-radio_button__label" htmlFor={this.getId()}>
 					<span className="slds-radio_faux">{this.props.label}</span>
 				</label>
 			);
-		else {
+		} else if (this.props.variant === 'visual-picker') {
+			radio = (
+				<label htmlFor={this.getId()}>
+					{this.props.coverable ? (
+						<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+							<span className="slds-is-selected">
+								{this.props.onRenderVisualPickerSelected}
+							</span>
+							<span className="slds-is-not-selected">
+								{this.props.onRenderVisualPickerNotSelected}
+							</span>
+						</div>
+					) : (
+						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+							{this.props.onRenderVisualPicker}
+						</span>
+					)}
+					<span className="slds-visual-picker__body">
+						{!this.props.coverable ? (
+							<React.Fragment>
+								<span className="slds-text-heading_small">
+									{this.props.label}
+								</span>
+								<span className="slds-text-title">
+									{this.props.description}
+								</span>
+							</React.Fragment>
+						) : (
+							<span className="slds-text-title">{this.props.label}</span>
+						)}
+					</span>
+					{!this.props.coverable ? (
+						<span className="slds-icon_container slds-visual-picker__text-check">
+							<Icon
+								assistiveText={this.props.assistiveText}
+								category="utility"
+								name="check"
+								colorVariant="base"
+								size="x-small"
+							/>
+						</span>
+					) : null}
+				</label>
+			);
+		} else {
 			radio = (
 				<label className="slds-radio__label" htmlFor={this.getId()}>
 					<span className="slds-radio_faux" />
@@ -141,11 +211,15 @@ class Radio extends React.Component {
 		return (
 			<span
 				className={classNames(
+					this.props.variant === 'visual-picker'
+						? `slds-visual-picker_${this.props.size}`
+						: null,
 					{
 						'slds-radio':
 							this.props.variant === 'base' || this.props.variant === 'swatch',
 						'slds-button slds-radio_button':
 							this.props.variant === 'button-group',
+						'slds-visual-picker': this.props.variant === 'visual-picker',
 					},
 					this.props.className
 				)}
