@@ -436,18 +436,12 @@ class Checkbox extends React.Component {
 				)}
 				{!this.props.vertical ? (
 					<span className="slds-visual-picker__body">
-						{!this.props.coverable ? (
-							<React.Fragment>
-								<span className="slds-text-heading_small">
-									{this.props.label}
-								</span>
-								<span className="slds-text-title">
-									{this.props.description}
-								</span>
-							</React.Fragment>
-						) : (
-							<span className="slds-text-title">{this.props.label}</span>
-						)}
+							<span className="slds-text-heading_small">
+								{this.props.label}
+							</span>
+							<span className="slds-text-title">
+								{this.props.description}
+							</span>
 						{assistiveText.label ? (
 							<span className="slds-assistive-text">{assistiveText.label}</span>
 						) : null}
