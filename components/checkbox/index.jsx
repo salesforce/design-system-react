@@ -49,9 +49,11 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
+	 * * `heading`: This is used as a visually hidden label if, no `labels.heading` is provided.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 */
 	assistiveText: PropTypes.shape({
+		heading: PropTypes.string,
 		label: PropTypes.string,
 	}),
 	/**
@@ -92,11 +94,13 @@ const propTypes = {
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
+	 * * `heading`: Heading for the visual picker variant
 	 * * `label`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 	 * * `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to "Disabled". Note that this uses SLDS language, and meaning, of "Enabled" and "Disabled"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.
 	 * * `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 	 */
 	labels: PropTypes.shape({
+		heading: PropTypes.heading,
 		label: PropTypes.string,
 		toggleDisabled: PropTypes.string,
 		toggleEnabled: PropTypes.string,
@@ -436,14 +440,16 @@ class Checkbox extends React.Component {
 				)}
 				{!this.props.vertical ? (
 					<span className="slds-visual-picker__body">
+						{this.props.labels.heading ? (
 							<span className="slds-text-heading_small">
-								{this.props.label}
+								{this.props.labels.heading}
 							</span>
-							<span className="slds-text-title">
-								{this.props.description}
+						) : null}
+						<span className="slds-text-title">{this.props.labels.label}</span>
+						{assistiveText.label || assistiveText.heading ? (
+							<span className="slds-assistive-text">
+								{assistiveText.label || assistiveText.heading}
 							</span>
-						{assistiveText.label ? (
-							<span className="slds-assistive-text">{assistiveText.label}</span>
 						) : null}
 					</span>
 				) : null}
