@@ -4239,6 +4239,27 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
+            "direction": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "DIRECTIONS.LTR",
+                            "computed": true
+                        },
+                        {
+                            "value": "DIRECTIONS.RTL",
+                            "computed": true
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Establishes directional context for component. Defaults to left-to-right.",
+                "defaultValue": {
+                    "value": "DIRECTIONS.LTR",
+                    "computed": true
+                }
+            },
             "events": {
                 "type": {
                     "name": "shape",
