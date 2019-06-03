@@ -18,8 +18,6 @@ const recordHomeDetails1 = [
 		label: 'Field 1',
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
-		flavor: '1-of-4',
-		truncate: true,
 	},
 	{
 		label: 'Field 2',
@@ -35,8 +33,6 @@ const recordHomeDetails2 = [
 	{
 		label: 'Field 1',
 		content: 'hi',
-		flavor: '1-of-4',
-		truncate: true,
 	},
 	{
 		label: 'Field 2',
@@ -174,8 +170,6 @@ const recordHomeDetails = [
 		label: 'Field 1',
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
-		flavor: '1-of-4',
-		truncate: true,
 	},
 	{
 		label: 'Field 2',
@@ -184,7 +178,6 @@ const recordHomeDetails = [
 	{
 		label: 'Field 3',
 		content: customTooltip(),
-		flavor: '1-of-4',
 	},
 	{
 		label: 'Field 4',
@@ -335,36 +328,38 @@ const relatedListActions = () => (
 	</div>
 );
 const relatedListControls = () => (
-	<SLDSButtonGroup>
-		<SLDSButton label="Add Contact" variant="neutral" />
-		<SLDSMenuDropdown
-			assistiveText={{
-				icon: 'More Options',
-			}}
-			buttonVariant="icon"
-			iconCategory="utility"
-			iconName="down"
-			iconVariant="border-filled"
-			id="page-header-dropdown-related-list-nav-right"
-			onSelect={action('select')}
-			openOn="click"
-			align="right"
-			options={[
-				{
-					label: 'Refresh List',
-					value: 'A0',
-				},
-				{
-					label: 'Duplicate Selected Leads',
-					value: 'B0',
-				},
-				{
-					label: 'Disabled Selected Leads',
-					value: 'C0',
-				},
-			]}
-		/>
-	</SLDSButtonGroup>
+	<div>
+		<SLDSButtonGroup>
+			<SLDSButton label="Add Contact" variant="neutral" />
+			<SLDSMenuDropdown
+				assistiveText={{
+					icon: 'More Options',
+				}}
+				buttonVariant="icon"
+				iconCategory="utility"
+				iconName="down"
+				iconVariant="border-filled"
+				id="page-header-dropdown-related-list-nav-right"
+				onSelect={action('select')}
+				openOn="click"
+				align="right"
+				options={[
+					{
+						label: 'Refresh List',
+						value: 'A0',
+					},
+					{
+						label: 'Duplicate Selected Leads',
+						value: 'B0',
+					},
+					{
+						label: 'Disabled Selected Leads',
+						value: 'C0',
+					},
+				]}
+			/>
+		</SLDSButtonGroup>
+	</div>
 );
 const relatedListTrail = [
 	<a href="javascript:void(0);">Accounts</a>,
@@ -392,32 +387,32 @@ storiesOf(PAGE_HEADER, module)
 			iconName: 'opportunity',
 			title: 'Rohde Corp - 80,000 Widgets',
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
-			onRenderControls: objectHomeActions,
+			onRenderActions: objectHomeActions,
 		})
 	)
 	.add('Record Home (truncates)', () =>
 		getPageHeader({
-			iconAssistiveText: 'User',
+			iconAssistiveText: 'Opportunity',
 			iconCategory: 'standard',
-			iconName: 'user',
-			label: 'Record Type',
-			title: 'Record Title',
+			iconName: 'opportunity',
+			label: 'Opportunity',
+			title: 'Acme - 1,200 Widgets',
 			variant: 'record-home',
 			onRenderActions: recordHomeActions,
 			details: recordHomeDetails,
 		})
 	)
+	.add('Record Home (field updates)', () => <DemoPageHeader />)
 	.add('Object Home', () => <ObjectHome />)
 	.add('Related List', () =>
 		getPageHeader({
-			title: 'Contacts',
-			variant: 'object-home',
+			title: 'Contacts (will truncate)',
+			variant: 'related-list',
 			info: '10 items • sorted by name',
 			onRenderActions: relatedListActions,
 			onRenderControls: relatedListControls,
 			trail: relatedListTrail,
 		})
 	)
-	.add('Record Home (field updates)', () => <DemoPageHeader />)
 	.add('Docs site RecordHome', () => <RecordHome />)
 	.add('Docs site RelatedList', () => <RelatedList />);

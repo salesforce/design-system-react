@@ -3,8 +3,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import DetailRow from '../detail-row';
+import Icon from '../../../icon';
 import MediaObject from '../../../media-object';
+import Title from '../title';
 
 const displayName = 'PageHeaderRecordHome';
 const propTypes = {
@@ -35,28 +38,73 @@ const propTypes = {
 	title: PropTypes.node,
 };
 
+const renderActions = (props) => {
+	let actions = (props.onRenderActions) ? props.onRenderActions() : props.contentRight;
+
+	if (actions) {
+		if (actions.props && actions.props.children) {
+			actions =  (
+				<>
+					{React.Children.map(actions.props.children, (child) => (
+						<div className="slds-page-header__control">
+							{child}
+						</div>
+					))}
+				</>
+			);
+		} else {
+			actions = <div className="slds-page-header__control">{actions}</div>;
+		}
+
+		return (
+			<div className="slds-page-header__col-actions">
+				<div className="slds-page-header__controls">
+					{actions}
+				</div>
+			</div>
+		);
+	}
+
+	return null;
+};
+
 const RecordHome = (props) => (
-	<div>
-		<div className="slds-grid">
-			<div className="slds-col slds-has-flexi-truncate">
+	<>
+		<div className="slds-page-header__row">
+			<div className="slds-page-header__col-title">
 				<MediaObject
 					body={
-						<div>
-							{props.label}
-							{props.title}
-							{props.info}
-						</div>
+						<>
+							<div className="slds-page-header__name">
+								<Title
+									content={props.title}
+									label={props.label}
+								/>
+							</div>
+						</>
 					}
-					className="slds-no-space slds-grow"
-					figure={props.icon}
+					figure={(props.iconName) ? (
+						<Icon
+							category={props.iconCategory}
+							className="slds-page-header__icon"
+							name={props.iconName}
+							position={props.iconPosition}
+							size={props.iconSize}
+							variant={props.iconVariant}
+						/>
+					) : props.icon}
 				/>
 			</div>
-			<div className="slds-col slds-no-flex slds-grid slds-align-top">
-				{props.onRenderActions ? props.onRenderActions : props.contentRight}
-			</div>
+			{renderActions(props)}
 		</div>
-		<DetailRow details={props.details} />
-	</div>
+		{(props.details) ? (
+			<div className="slds-page-header__row slds-page-header__row_gutters">
+				<div className="slds-page-header__col-details">
+					<DetailRow details={props.details} />
+				</div>
+			</div>
+		) : null}
+	</>
 );
 
 RecordHome.displayName = displayName;

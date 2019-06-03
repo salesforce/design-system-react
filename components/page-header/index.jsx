@@ -26,8 +26,6 @@ import Base from './private/base';
 import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
 import RelatedList from './private/related-list';
-import Icon from '../icon';
-import Breadcrumb from '../breadcrumb';
 
 // ## Constants
 import { PAGE_HEADER } from '../../utilities/constants';
@@ -37,7 +35,11 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * The type of component
 	 * Note: Extra options are added to make the version backward compatible
@@ -49,7 +51,7 @@ const propTypes = {
 		'related-list',
 	]),
 	/**
-	 * The info property can be a string or a React element
+	 * The label property can be a string or a React element
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
@@ -102,7 +104,7 @@ const propTypes = {
 	 */
 	onRenderActions: PropTypes.func,
 	/**
-	 * An array of buttons which appear on the component's right hand side.
+	 * An array of detail blocks (used in "recordHome" variant)
 	 */
 	details: PropTypes.array,
 	/**
@@ -117,7 +119,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-	className: '',
 	variant: 'base',
 	details: [],
 	trail: [],
@@ -131,182 +132,25 @@ class PageHeader extends Component {
 		checkProps(PAGE_HEADER, this.props, componentDoc);
 	}
 
-	_getClassNames(className) {
-		return classnames(
+	render() {
+		const { className, variant } = this.props;
+		const classes = classnames(
 			'slds-page-header',
 			{
 				'slds-page-header_object-home':
-					this.props.variant === 'object-home' ||
-					this.props.variant === 'objectHome',
+					variant === 'object-home' ||
+					variant === 'objectHome',
+				'slds-page-header_record-home':
+					variant === 'record-home' ||
+					variant === 'recordHome',
+				'slds-page-header_related-list':
+					variant === 'related-list' ||
+					variant === 'relatedList'
 			},
 			className
 		);
-	}
-
-	render() {
-		/**
-		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
-		 * Example: const {foo, ...bar} = this.props;
-		 */
-		const {
-			className,
-			contentRight,
-			details,
-			icon,
-			iconCategory,
-			iconName,
-			iconPosition,
-			iconSize,
-			iconVariant,
-			info,
-			label,
-			navRight,
-			onRenderActions,
-			onRenderControls,
-			title,
-			trail,
-			variant,
-		} = this.props;
-
-		const classes = this._getClassNames(className);
-
-		/**
-		 * Render the icon
-		 */
-		const renderIcon = () => {
-			if (iconName) {
-				return (
-					<Icon
-						name={iconName}
-						category={iconCategory}
-						position={iconPosition}
-						size={iconSize}
-						variant={iconVariant}
-					/>
-				);
-			}
-			return icon;
-		};
-
-		/**
-		 * Render the label
-		 */
-		const renderLabel = () => {
-			const type = typeof label;
-
-			if (trail.length > 0) {
-				return (
-					<nav className="slds-m-bottom_xx-small" role="navigation">
-						<Breadcrumb trail={trail} />
-					</nav>
-				);
-			}
-			if (type === 'string') {
-				return <p className="slds-line-height_reset">{label}</p>;
-			}
-			return label;
-		};
-
-		/**
-		 * Render the title
-		 */
-		const renderTitle = () => {
-			const type = typeof title;
-
-			if (type === 'string') {
-				return <Title title={title} />;
-			}
-			return title;
-		};
-
-		/**
-		 * Render info
-		 */
-		const renderInfo = () => {
-			const type = typeof info;
-
-			if (type === 'string') {
-				return <Info>{info}</Info>;
-			}
-			return info;
-		};
-
-		/**
-		 * Handles onRenderActions
-		 */
-		const renderOnRenderActions = () => {
-			if (onRenderActions) {
-				const Actions = onRenderActions;
-
-				return (
-					<div className="slds-col slds-no-flex slds-grid slds-align-top">
-						<Actions />
-					</div>
-				);
-			}
-			return null;
-		};
-
-		/**
-		 * Steal contentRight's children
-		 */
-		const renderContentRight = () => {
-			if (onRenderActions) {
-				return '';
-				// eslint-disable-next-line no-else-return
-			} else if (contentRight) {
-				const type = typeof contentRight;
-				if (type !== 'string') {
-					return (
-						<div
-							className="slds-col slds-no-flex slds-grid slds-align-top"
-							{...contentRight.props}
-						/>
-					);
-				}
-			}
-			return '';
-		};
-
-		/**
-		 * Handles onRenderControls
-		 */
-		const renderOnRenderControls = () => {
-			if (onRenderControls) {
-				const Controls = onRenderControls;
-
-				return (
-					<div className="slds-col slds-no-flex slds-grid slds-align-top">
-						<Controls />
-					</div>
-				);
-			}
-			return null;
-		};
-
-		/**
-		 * Steal navRight's children
-		 * For backward compatibility, this function can be deleted once 'navRight' prop is deprecated
-		 */
-		const renderNavRight = () => {
-			if (onRenderControls) {
-				return '';
-				// eslint-disable-next-line no-else-return
-			} else if (navRight) {
-				const type = typeof navRight;
-				if (type !== 'string') {
-					return (
-						<div
-							className="slds-col slds-no-flex slds-grid slds-align-top"
-							{...navRight.props}
-						/>
-					);
-				}
-			}
-			return '';
-		};
-
 		let Variant;
+
 		switch (variant) {
 			case 'object-home':
 			case 'objectHome': // For backward compatibility
@@ -326,17 +170,7 @@ class PageHeader extends Component {
 
 		return (
 			<div className={classes}>
-				<Variant
-					label={renderLabel()}
-					icon={renderIcon()}
-					title={renderTitle()}
-					info={renderInfo()}
-					contentRight={renderContentRight()} // For backward compatibility, 'contentRight' prop will be deprecated sooon
-					navRight={renderNavRight()} // For backward compatibility, 'navRight' prop will be deprecate soon
-					onRenderActions={renderOnRenderActions()}
-					onRenderControls={renderOnRenderControls()}
-					details={details}
-				/>
+				<Variant {...this.props} />
 			</div>
 		);
 	}

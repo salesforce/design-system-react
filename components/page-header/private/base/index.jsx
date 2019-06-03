@@ -3,7 +3,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Icon from '../../../icon';
+import Info from '../info';
 import MediaObject from '../../../media-object';
+import Title from '../title';
 
 const displayName = 'PageHeaderBase';
 const propTypes = {
@@ -20,29 +24,75 @@ const propTypes = {
 	 */
 	info: PropTypes.node,
 	/**
-	 * Nav content which appears in the upper right hand corner.
-	 * 'navRight' prop will be deprecated soon, instaed use 'onRenderControls'
+	 * Content which appears in the top right corner. Either of these will work,
+	 * but onRenderActions takes precedent. contentRight & navRight also work
+	 * but will be deprecated eventually
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	onRenderActions: PropTypes.node,
+	onRenderContent: PropTypes.node
+};
+
+const renderActions = (props) => {
+	let actions = props.onRenderActions || props.onRenderControls;
+
+	if (actions) {
+		actions = actions();
+	} else {
+		actions = props.contentRight || props.navRight;
+	}
+
+	if (actions) {
+		if (actions.props && actions.props.children) {
+			actions =  (
+				<>
+					{React.Children.map(actions.props.children, (child) => (
+						<div className="slds-page-header__control">
+							{child}
+						</div>
+					))}
+				</>
+			);
+		} else {
+			actions = <div className="slds-page-header__control">{actions}</div>;
+		}
+
+		return (
+			<div className="slds-page-header__col-controls slds-align-middle">
+				<div className="slds-page-header__controls">
+					{actions}
+				</div>
+			</div>
+		);
+	}
+
+	return null;
 };
 
 const Base = (props) => (
-	<div className="slds-grid slds-page-header__row">
-		<div className="slds-col slds-page-header__col-title">
+	<div className="slds-page-header__row">
+		<div className="slds-page-header__col-title">
 			<MediaObject
 				body={
-					<div>
-						{props.title}
-						{props.info}
-					</div>
+					<>
+						<div className="slds-page-header__name">
+							<Title content={props.title} />
+						</div>
+						<Info content={props.info} variant={props.variant} />
+					</>
 				}
-				className="slds-no-space slds-grow"
-				figure={props.icon}
+				figure={(props.iconName) ? (
+					<Icon
+						category={props.iconCategory}
+						className="slds-page-header__icon"
+						name={props.iconName}
+						position={props.iconPosition}
+						size={props.iconSize}
+						variant={props.iconVariant}
+					/>
+				) : props.icon}
 			/>
 		</div>
-		<div className="slds-col slds-no-flex slds-grid slds-align-top">
-			{props.onRenderControls ? props.onRenderControls : props.navRight}
-		</div>
+		{renderActions(props)}
 	</div>
 );
 Base.displayName = displayName;

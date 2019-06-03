@@ -69,7 +69,7 @@ class Example extends React.Component {
 					details={details}
 					iconAssistiveText={{ icon: 'User' }}
 					iconCategory="standard"
-					iconName="user"
+					iconName="opportunity"
 					label="Record Type"
 					title="Record Title"
 					variant="record-home"

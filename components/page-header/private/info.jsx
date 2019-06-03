@@ -8,25 +8,33 @@ import classnames from 'classnames';
 const displayName = 'PageHeaderInfo';
 const propTypes = {
 	/**
-	 * Contents of info section
-	 */
-	children: PropTypes.node,
-	/**
 	 * Optional class name
 	 */
 	className: PropTypes.string,
+	/**
+	 * Contents of info section
+	 */
+	content: PropTypes.node,
+	/**
+	 * Variant passed down from page header
+	 */
+	variant: PropTypes.string,
 };
 
-const Info = (props) => (
-	<p
-		className={classnames(
-			'slds-text-body_small slds-line-height_reset',
-			props.className
-		)}
-	>
-		{props.children}
-	</p>
-);
+const Info = (props) => {
+	if (!props.content) return null;
+
+	const classes = classnames({
+		'slds-page-header__name-meta': props.variant === 'base',
+		'slds-page-header__meta-text': props.variant === 'object-home' || props.variant === 'objectHome',
+	});
+
+	if (typeof props.content === 'string') {
+		return <p className={classes}>{props.content}</p>
+	}
+
+	return <div className={classes}>{props.content}</div>
+};
 
 Info.displayName = displayName;
 Info.propTypes = propTypes;

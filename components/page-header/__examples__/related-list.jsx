@@ -104,7 +104,7 @@ class Example extends React.Component {
 					title="Contacts (will truncate)"
 					onRenderControls={controls}
 					onRenderActions={actions}
-					variant="object-home"
+					variant="related-list"
 					truncate
 					trail={trail}
 					info="10 items • sorted by name"

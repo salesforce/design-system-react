@@ -14,8 +14,7 @@ class Example extends React.Component {
 		const controls = () => (
 			<div>
 				<ButtonGroup>
-					<Button label="New Lead" />
-					<Button label="Import Leads" />
+					<Button label="New" />
 					<Dropdown
 						align="right"
 						assistiveText={{ icon: 'More Options' }}
@@ -121,37 +120,35 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					onRenderActions={actions}
-					iconAssistiveText="User"
+					iconAssistiveText="Opportunity"
 					iconCategory="standard"
-					iconName="lead"
-					info="10 items • sorted by name"
-					label="Leads"
+					iconName="opportunity"
+					info="10 items • Updated 13 minutes ago"
+					label="Opportunities"
 					onRenderControls={controls}
 					title={
-						<h1 className="slds-page-header__title slds-p-right_x-small">
-							<Dropdown
-								id="page-header-dropdown-object-home-header"
-								options={[
-									{ label: 'Menu Item One', value: 'A0' },
-									{ label: 'Menu Item Two', value: 'B0' },
-									{ label: 'Menu Item Three', value: 'C0' },
-									{ type: 'divider' },
-									{ label: 'Menu Item Four', value: 'D0' },
-								]}
-							>
-								<DropdownTrigger>
-									<Button
-										className="slds-button_reset slds-type-focus"
-										iconCategory="utility"
-										iconName="down"
-										iconPosition="right"
-										label="Dropdown"
-										responsive
-										variant="base"
-									/>
-								</DropdownTrigger>
-							</Dropdown>
-						</h1>
+						<Dropdown
+							id="page-header-dropdown-object-home-header"
+							options={[
+								{ label: 'Menu Item One', value: 'A0' },
+								{ label: 'Menu Item Two', value: 'B0' },
+								{ label: 'Menu Item Three', value: 'C0' },
+								{ type: 'divider' },
+								{ label: 'Menu Item Four', value: 'D0' },
+							]}
+						>
+							<DropdownTrigger>
+								<Button
+									className="slds-button_reset slds-type-focus"
+									iconCategory="utility"
+									iconName="down"
+									iconPosition="right"
+									label="Recently Viewed"
+									responsive
+									variant="base"
+								/>
+							</DropdownTrigger>
+						</Dropdown>
 					}
 					truncate
 					variant="object-home"
