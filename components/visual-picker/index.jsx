@@ -35,6 +35,10 @@ const propTypes = {
 	 */
 	coverable: PropTypes.bool,
 	/**
+	 *  Whether the visual picker has a vertical layout
+	 */
+	vertical: PropTypes.bool,
+	/**
 	 *  Size for visual picker
 	 */
 	size: PropTypes.oneOf(['medium', 'large']),
@@ -42,6 +46,7 @@ const propTypes = {
 
 const defaultProps = {
 	size: 'medium',
+	vertical: false,
 };
 
 /**
@@ -56,11 +61,11 @@ class VisualPicker extends React.Component {
 		const options = React.Children.map(this.props.children, (option, index) =>
 			React.cloneElement(option, {
 				index: `${this.props.id || this.generatedId}-${index}`,
-				className: `slds-visual-picker_${this.props.size}`,
 				coverable: this.props.coverable,
 				variant: 'visual-picker',
 				name: `${this.props.id || this.generatedId}_options`,
 				size: this.props.size,
+				vertical: !!this.props.vertical,
 			})
 		);
 

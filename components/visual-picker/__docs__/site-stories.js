@@ -6,6 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/visual-picker/__examples__/coverable.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/visual-picker/__examples__/non-coverable.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/visual-picker/__examples__/vertical.jsx'),
 ];
 
 module.exports = siteStories;
