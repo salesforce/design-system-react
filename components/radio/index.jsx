@@ -162,12 +162,7 @@ class Radio extends React.Component {
 		} else if (this.props.variant === 'visual-picker') {
 			radio = (
 				<label htmlFor={this.getId()}>
-					{/* eslint-disable-next-line no-nested-ternary */}
-					{this.props.vertical || !this.props.coverable ? (
-						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-							{this.props.onRenderVisualPicker}
-						</span>
-					) : this.props.coverable ? (
+					{this.props.coverable ? (
 						<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 							<span className="slds-is-selected">
 								{this.props.onRenderVisualPickerSelected}
@@ -176,7 +171,11 @@ class Radio extends React.Component {
 								{this.props.onRenderVisualPickerNotSelected}
 							</span>
 						</div>
-					) : null}
+					) : (
+						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+							{this.props.onRenderVisualPicker}
+						</span>
+					)}
 					{!this.props.vertical ? (
 						<span className="slds-visual-picker__body">
 							{!this.props.coverable ? (
@@ -193,7 +192,7 @@ class Radio extends React.Component {
 							)}
 						</span>
 					) : null}
-					{this.props.vertical || !this.props.coverable ? (
+					{!this.props.coverable ? (
 						<span className="slds-icon_container slds-visual-picker__text-check">
 							<Icon
 								assistiveText={this.props.assistiveText}
