@@ -48,6 +48,18 @@ const propTypes = {
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `heading`: Heading for the visual picker variant
+	 * * `label`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
+	 * * `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to "Disabled". Note that this uses SLDS language, and meaning, of "Enabled" and "Disabled"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.
+	 * * `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
+	 */
+	labels: PropTypes.shape({
+		heading: PropTypes.heading,
+		label: PropTypes.string,
+	}),
+	/**
 	 * The name of the radio input group.
 	 */
 	name: PropTypes.string,
@@ -178,12 +190,12 @@ class Radio extends React.Component {
 					)}
 					{!this.props.vertical ? (
 						<span className="slds-visual-picker__body">
-							<span className="slds-text-heading_small">
-								{this.props.label}
-							</span>
-							<span className="slds-text-title">
-								{this.props.description}
-							</span>
+							{this.props.labels.heading ? (
+								<span className="slds-text-heading_small">
+									{this.props.labels.heading}
+								</span>
+							) : null}
+							<span className="slds-text-title">{this.props.labels.label}</span>
 						</span>
 					) : null}
 					{!this.props.coverable ? (

@@ -16,8 +16,10 @@ class Example extends React.Component {
 					<h1>Radio</h1>
 					<VisualPicker label="Please Select Any One">
 						<Radio
-							label="Lightning Professional"
-							description="Complete service CRM for teams of any size"
+							labels={{
+								heading: 'Lightning Professional',
+								label: 'Complete service CRM for teams of any size',
+							}}
 							value="30"
 							onRenderVisualPicker={
 								<span>
@@ -27,8 +29,10 @@ class Example extends React.Component {
 							}
 						/>
 						<Radio
-							label="Lightning Enterprise"
-							description="Everything you need to take support to the next level"
+							labels={{
+								heading: 'Lightning Enterprise',
+								label: 'Everything you need to take support to the next level',
+							}}
 							value="150"
 							onRenderVisualPicker={
 								<span>
@@ -38,8 +42,10 @@ class Example extends React.Component {
 							}
 						/>
 						<Radio
-							label="Lightning Ultimate"
-							description="Complete support with enterprise-grade customization"
+							labels={{
+								heading: 'Lightning Ultimate',
+								label: 'Complete support with enterprise-grade customization',
+							}}
 							disabled
 							value="300"
 							onRenderVisualPicker={
@@ -54,8 +60,10 @@ class Example extends React.Component {
 					<h1>Checkbox</h1>
 					<VisualPicker label="Add the following object(s)">
 						<Checkbox
-							label="Lightning Professional"
-							description="Complete service CRM for teams of any size"
+							labels={{
+								heading: 'Lightning Professional',
+								label: 'Complete service CRM for teams of any size',
+							}}
 							value="30"
 							onRenderVisualPicker={
 								<span>
@@ -65,8 +73,10 @@ class Example extends React.Component {
 							}
 						/>
 						<Checkbox
-							label="Lightning Enterprise"
-							description="Everything you need to take support to the next level"
+							labels={{
+								heading: 'Lightning Enterprise',
+								label: 'Everything you need to take support to the next level',
+							}}
 							value="150"
 							onRenderVisualPicker={
 								<span>
@@ -76,8 +86,10 @@ class Example extends React.Component {
 							}
 						/>
 						<Checkbox
-							label="Lightning Ultimate"
-							description="Complete support with enterprise-grade customization"
+							labels={{
+								heading: 'Lightning Ultimate',
+								label: 'Complete support with enterprise-grade customization',
+							}}
 							disabled
 							value="300"
 							onRenderVisualPicker={
