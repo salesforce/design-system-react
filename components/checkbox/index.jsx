@@ -150,6 +150,10 @@ const propTypes = {
 	 */
 	coverable: PropTypes.bool,
 	/**
+	 * Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)
+	 */
+	vertical: PropTypes.bool,
+	/**
 	 * Allows icon to shown with checkbox (only for non-coverable visual picker variant)
 	 */
 	onRenderVisualPicker: PropTypes.node,
@@ -382,11 +386,12 @@ class Checkbox extends React.Component {
 		</div>
 	);
 
-	renderVisualPickerVariant = (props, assistiveText, labels) => (
+	renderVisualPickerVariant = (props, assistiveText) => (
 		<span
 			className={classNames(
 				'slds-visual-picker',
-				`slds-visual-picker_${this.props.size}`
+				`slds-visual-picker_${this.props.size}`,
+				this.props.vertical ? 'slds-visual-picker_vertical' : null
 			)}
 		>
 			<input
@@ -415,7 +420,12 @@ class Checkbox extends React.Component {
 				type="checkbox"
 			/>
 			<label className="slds-checkbox_button__label" htmlFor={this.getId()}>
-				{this.props.coverable ? (
+				{/* eslint-disable-next-line no-nested-ternary */}
+				{!this.props.coverable || this.props.vertical ? (
+					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+						{this.props.onRenderVisualPicker}
+					</span>
+				) : this.props.coverable ? (
 					<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 						<span className="slds-is-selected">
 							{this.props.onRenderVisualPickerSelected}
@@ -424,26 +434,26 @@ class Checkbox extends React.Component {
 							{this.props.onRenderVisualPickerNotSelected}
 						</span>
 					</div>
-				) : (
-					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-						{this.props.onRenderVisualPicker}
+				) : null}
+				{!this.props.vertical ? (
+					<span className="slds-visual-picker__body">
+						{!this.props.coverable ? (
+							<React.Fragment>
+								<span className="slds-text-heading_small">
+									{this.props.label}
+								</span>
+								<span className="slds-text-title">
+									{this.props.description}
+								</span>
+							</React.Fragment>
+						) : (
+							<span className="slds-text-title">{this.props.label}</span>
+						)}
+						{assistiveText.label ? (
+							<span className="slds-assistive-text">{assistiveText.label}</span>
+						) : null}
 					</span>
-				)}
-				<span className="slds-visual-picker__body">
-					{!this.props.coverable ? (
-						<React.Fragment>
-							<span className="slds-text-heading_small">
-								{this.props.label}
-							</span>
-							<span className="slds-text-title">{this.props.description}</span>
-						</React.Fragment>
-					) : (
-						<span className="slds-text-title">{this.props.label}</span>
-					)}
-					{assistiveText.label ? (
-						<span className="slds-assistive-text">{assistiveText.label}</span>
-					) : null}
-				</span>
+				) : null}
 				{!this.props.coverable ? (
 					<span className="slds-icon_container slds-visual-picker__text-check">
 						<Icon

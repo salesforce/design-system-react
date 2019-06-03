@@ -68,6 +68,10 @@ const propTypes = {
 	 */
 	coverable: PropTypes.bool,
 	/**
+	 * Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)
+	 */
+	vertical: PropTypes.bool,
+	/**
 	 * Allows icon to shown if radio is not selected (only for non-coverable visual picker variant)
 	 */
 	onRenderVisualPicker: PropTypes.node,
@@ -158,7 +162,12 @@ class Radio extends React.Component {
 		} else if (this.props.variant === 'visual-picker') {
 			radio = (
 				<label htmlFor={this.getId()}>
-					{this.props.coverable ? (
+					{/* eslint-disable-next-line no-nested-ternary */}
+					{this.props.vertical || !this.props.coverable ? (
+						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+							{this.props.onRenderVisualPicker}
+						</span>
+					) : this.props.coverable ? (
 						<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 							<span className="slds-is-selected">
 								{this.props.onRenderVisualPickerSelected}
@@ -167,26 +176,24 @@ class Radio extends React.Component {
 								{this.props.onRenderVisualPickerNotSelected}
 							</span>
 						</div>
-					) : (
-						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-							{this.props.onRenderVisualPicker}
+					) : null}
+					{!this.props.vertical ? (
+						<span className="slds-visual-picker__body">
+							{!this.props.coverable ? (
+								<React.Fragment>
+									<span className="slds-text-heading_small">
+										{this.props.label}
+									</span>
+									<span className="slds-text-title">
+										{this.props.description}
+									</span>
+								</React.Fragment>
+							) : (
+								<span className="slds-text-title">{this.props.label}</span>
+							)}
 						</span>
-					)}
-					<span className="slds-visual-picker__body">
-						{!this.props.coverable ? (
-							<React.Fragment>
-								<span className="slds-text-heading_small">
-									{this.props.label}
-								</span>
-								<span className="slds-text-title">
-									{this.props.description}
-								</span>
-							</React.Fragment>
-						) : (
-							<span className="slds-text-title">{this.props.label}</span>
-						)}
-					</span>
-					{!this.props.coverable ? (
+					) : null}
+					{this.props.vertical || !this.props.coverable ? (
 						<span className="slds-icon_container slds-visual-picker__text-check">
 							<Icon
 								assistiveText={this.props.assistiveText}
@@ -220,6 +227,8 @@ class Radio extends React.Component {
 						'slds-button slds-radio_button':
 							this.props.variant === 'button-group',
 						'slds-visual-picker': this.props.variant === 'visual-picker',
+						'slds-visual-picker_vertical':
+							this.props.variant === 'visual-picker' && this.props.vertical,
 					},
 					this.props.className
 				)}
