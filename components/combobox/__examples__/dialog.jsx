@@ -36,7 +36,7 @@ class Example extends React.Component {
 	};
 
 	handleCheckboxChange(targetChecked, target, value) {
-		const checked = this.state.checked;
+		const checked = [...this.state.checked];
 		if (targetChecked) {
 			checked.push({
 				id: target.id,
