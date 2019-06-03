@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Popover from '~/components/popover';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {

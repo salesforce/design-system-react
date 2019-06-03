@@ -2,15 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import chai from 'chai';
 import assign from 'lodash.assign';
-import TestUtils from 'react-dom/test-utils';
 
 import IconSettings from '../../icon-settings';
 import ExpandableSection from '../../expandable-section';
 
-const expect = chai.expect;
+const { expect } = chai;
 const should = chai.should();
-
-const { Simulate } = TestUtils;
 
 describe('SLDSExpandableSection', () => {
 	const handles = {

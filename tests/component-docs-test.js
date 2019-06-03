@@ -12,6 +12,7 @@ const docs = parseJSON('components/component-docs.json');
 
 const mapObject = (obj, callback) =>
 	Object.keys(obj).reduce((accumulator, key) => {
+		// eslint-disable-next-line no-param-reassign
 		accumulator[key] = callback(obj[key]);
 		return accumulator;
 	}, {});
@@ -24,7 +25,8 @@ const deepMap = (obj, callback) => {
 	};
 
 	if (Array.isArray(obj)) {
-		return obj.map(deepMapper);
+		return obj.forEach(deepMapper);
+		// eslint-disable-next-line no-else-return
 	} else if (typeof obj === 'object') {
 		return mapObject(obj, deepMapper);
 	}

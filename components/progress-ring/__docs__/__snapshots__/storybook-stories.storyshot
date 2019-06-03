@@ -19,6 +19,7 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -48,6 +49,7 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -74,9 +76,44 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
         <div
           aria-valuemax="100"
           aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-progress-ring"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -117,6 +154,7 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -124,6 +162,50 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
             <path
               className="slds-progress-ring__path"
               d="M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          <span>
+            <svg
+              aria-hidden="true"
+              className="slds-icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+              />
+            </svg>
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-progress-ring slds-progress-ring_expired"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={60}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 1 1 -0.8090169943749475 -0.587785252292473 L 0 0"
             />
           </svg>
         </div>
@@ -156,7 +238,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
     className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-wrap"
   >
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring"
@@ -167,6 +249,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -185,7 +268,41 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
+    >
+      <div
+        className="slds-progress-ring"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring"
@@ -196,6 +313,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -224,7 +342,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring"
@@ -235,6 +353,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -263,7 +382,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_complete"
@@ -274,6 +393,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -292,7 +412,41 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
+    >
+      <div
+        className="slds-progress-ring slds-progress-ring_complete"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_complete"
@@ -303,6 +457,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -333,7 +488,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_complete"
@@ -344,6 +499,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -362,7 +518,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_warning"
@@ -373,6 +529,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -391,7 +548,41 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
+    >
+      <div
+        className="slds-progress-ring slds-progress-ring_warning"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_warning"
@@ -402,6 +593,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -432,7 +624,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_warning"
@@ -443,6 +635,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -461,7 +654,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_expired"
@@ -472,6 +665,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -490,7 +684,41 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
+    >
+      <div
+        className="slds-progress-ring slds-progress-ring_expired"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_expired"
@@ -501,6 +729,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -531,7 +760,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
       </div>
     </div>
     <div
-      className="slds-col_padded slds-m-top_x-large slds-size_1-of-3 slds-align_absolute-center"
+      className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center"
     >
       <div
         className="slds-progress-ring slds-progress-ring_expired"
@@ -542,6 +771,7 @@ exports[`DOM snapshots SLDSProgressRing Docs site Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -582,6 +812,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Complete 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -611,6 +842,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Complete 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -666,6 +898,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -695,6 +928,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -733,9 +967,56 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
         <div
           aria-valuemax="100"
           aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          <span
+            title="Expired"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+              />
+            </svg>
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-progress-ring slds-progress-ring_expired"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -776,6 +1057,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -805,6 +1087,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -843,9 +1126,56 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
         <div
           aria-valuemax="100"
           aria-valuemin="0"
+          aria-valuenow={40}
+          className="slds-progress-ring__progress"
+          role="progressbar"
+          style={
+            Object {
+              "transform": "scaleX(1) rotate(-90deg)",
+            }
+          }
+        >
+          <svg
+            viewBox="-1 -1 2 2"
+          >
+            <path
+              className="slds-progress-ring__path"
+              d="M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0"
+            />
+          </svg>
+        </div>
+        <div
+          className="slds-progress-ring__content"
+        >
+          <span
+            title="Warning"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+              />
+            </svg>
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-progress-ring slds-progress-ring_warning"
+      >
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
+          style={Object {}}
         >
           <svg
             viewBox="-1 -1 2 2"

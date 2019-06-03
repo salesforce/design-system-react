@@ -6,6 +6,8 @@ export const ALERT_CONTAINER = 'SLDSAlertContainer';
 export const APP_LAUNCHER = 'SLDSAppLauncher';
 export const APP_LAUNCHER_EXPANDABLE_SECTION =
 	'SLDSAppLauncherExpandableSection';
+/* Remove at next breaking change */
+export const APP_LAUNCHER_SECTION = 'SLDSAppLauncherSection';
 export const APP_LAUNCHER_LINK = 'SLDSAppLauncherLink';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
 export const APP_LAUNCHER_HEADER = 'SLDSAppLauncherHeader';
@@ -109,6 +111,8 @@ export const PROGRESS_INDICATOR_STEP_VERTICAL =
 	'SLDSProgressIndicatorStepVertical';
 export const PROGRESS_RING = 'SLDSProgressRing';
 export const PROGRESS_BAR = 'SLDSProgressBar';
+export const SETUP_ASSISTANT = 'SLDSSetupAssistant';
+export const SETUP_ASSISTANT_STEP = 'SLDSSetupAssistantStep';
 export const SCOPED_NOTIFICATION = 'SLDSScopedNotification';
 export const SLIDER = 'SLDSSlider';
 export const SPINNER = 'SLDSSpinner';

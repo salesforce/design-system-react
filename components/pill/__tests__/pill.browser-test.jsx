@@ -73,7 +73,6 @@ describe('SLDSPill', () => {
 
 		it('focuses and blurs', function() {
 			this.wrapper.simulate('focus');
-			const pill = this.wrapper.find('.slds-pill');
 			expect(this.wrapper).to.containMatchingElement(document.activeElement);
 			expect(onFocus.calledOnce).to.be.true;
 			this.wrapper.simulate('blur');

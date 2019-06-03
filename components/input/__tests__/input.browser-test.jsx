@@ -6,10 +6,8 @@ import { expect } from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-dom/test-utils';
 
-import Button from '../../button';
 import Input from '../../input';
 import Icon from '../../icon';
-import Tooltip from '../../tooltip';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
 
@@ -162,7 +160,8 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', isStatic: true });
-			label = scryRenderedDOMComponentsWithTag(component, 'span')[0];
+			[label] = scryRenderedDOMComponentsWithTag(component, 'span');
+			// eslint-disable-next-line prefer-destructuring
 			input = scryRenderedDOMComponentsWithTag(component, 'span')[1];
 		});
 
@@ -515,7 +514,6 @@ describe('SLDSInput', () => {
 		let component;
 		let decrement;
 		let increment;
-		let input;
 		let onChangeData;
 
 		afterEach(() => {
@@ -538,7 +536,6 @@ describe('SLDSInput', () => {
 				component,
 				'slds-input__button_increment'
 			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			onChangeData = {};
 			TestUtils.Simulate.mouseDown(increment);
@@ -598,7 +595,6 @@ describe('SLDSInput', () => {
 				component,
 				'slds-input__button_increment'
 			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			changeOccurred = false;
 			TestUtils.Simulate.mouseDown(increment);
@@ -630,7 +626,6 @@ describe('SLDSInput', () => {
 				component,
 				'slds-input__button_increment'
 			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
 
 			onChangeData = {};
 			TestUtils.Simulate.mouseDown(increment);

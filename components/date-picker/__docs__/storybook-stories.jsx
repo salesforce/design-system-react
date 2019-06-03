@@ -21,6 +21,13 @@ storiesOf(DATE_PICKER, module)
 	.add('Default', () => <Default action={action} />)
 	.add('ISO weekdays', () => <IsoWeekdays action={action} />)
 	.add('Custom Input', () => <CustomInput action={action} />)
-	.add('Inline menu', () => <Datepicker menuPosition="relative" />)
+	.add('Inline menu', () => (
+		<Datepicker
+			labels={{
+				label: 'Date',
+			}}
+			menuPosition="relative"
+		/>
+	))
 	.add('DOM Snapshot', () => <SnaphotDefault />)
 	.add('Weekday picker', () => <WeekdayPicker />);

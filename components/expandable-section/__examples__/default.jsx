@@ -4,7 +4,7 @@ import IconSettings from '~/components/icon-settings';
 import ExpandableSection from '~/components/expandable-section';
 
 class Example extends React.Component {
-	static displayName = 'ExpandableSectionExample';
+	static displayName = 'ExpandableSectionDefaultExample';
 
 	render() {
 		return (
