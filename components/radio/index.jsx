@@ -56,7 +56,7 @@ const propTypes = {
 	 * * `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 	 */
 	labels: PropTypes.shape({
-		heading: PropTypes.heading,
+		heading: PropTypes.string,
 		label: PropTypes.string,
 	}),
 	/**
