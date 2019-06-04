@@ -35,7 +35,11 @@ const propTypes = {
 	labels: PropTypes.shape({
 		error: PropTypes.string,
 		label: PropTypes.string,
-	}),
+    }),
+    /**
+     * `error`: Alternative way to display an error message
+     */
+    error: PropTypes.string,
 	/**
 	 * This event fires when the radio selection changes.
 	 */
@@ -58,7 +62,7 @@ const propTypes = {
 	errorId: PropTypes.string,
 };
 
-const defaultProps = { labels: {} };
+const defaultProps = { labels: {}, error: ''};
 
 /**
  * A styled select list that can have a single entry checked at any one time.
@@ -89,8 +93,12 @@ class RadioGroup extends React.Component {
 	}
 
 	hasError() {
-		return !!this.labels.error;
-	}
+		return !!this.labels.error || !!this.props.error;
+    }
+    
+    getError() {
+        return !!this.labels.error ? this.labels.error : this.props.error
+    }
 
 	render() {
 		const children = React.Children.map(this.props.children, (child) =>
@@ -105,7 +113,7 @@ class RadioGroup extends React.Component {
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
-					'slds-has-error': this.labels.error,
+					'slds-has-error': this.hasError(),
 				})}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">
@@ -123,9 +131,9 @@ class RadioGroup extends React.Component {
 					)}
 				>
 					{children}
-					{this.labels.error ? (
+					{this.hasError() ? (
 						<div id={this.getErrorId()} className="slds-form-element__help">
-							{this.labels.error}
+							{this.getError()}
 						</div>
 					) : null}
 				</div>
