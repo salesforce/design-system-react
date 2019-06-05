@@ -10,7 +10,11 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Contents of info section
 	 */
@@ -24,16 +28,20 @@ const propTypes = {
 const Info = (props) => {
 	if (!props.content) return null;
 
-	const classes = classnames({
-		'slds-page-header__name-meta': props.variant === 'base',
-		'slds-page-header__meta-text': props.variant === 'object-home' || props.variant === 'objectHome',
-	});
+	const classes = classnames(
+		{
+			'slds-page-header__name-meta': props.variant === 'base',
+			'slds-page-header__meta-text':
+				props.variant === 'object-home' || props.variant === 'objectHome',
+		},
+		props.className
+	);
 
 	if (typeof props.content === 'string') {
-		return <p className={classes}>{props.content}</p>
+		return <p className={classes}>{props.content}</p>;
 	}
 
-	return <div className={classes}>{props.content}</div>
+	return <div className={classes}>{props.content}</div>;
 };
 
 Info.displayName = displayName;

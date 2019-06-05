@@ -12,7 +12,11 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Contents of label section
 	 */
@@ -21,10 +25,6 @@ const propTypes = {
 	 * An array of react elements, presumably anchor <a> elements.
 	 */
 	trail: PropTypes.array,
-	/**
-	 * Variant passed down from page header
-	 */
-	variant: PropTypes.string,
 };
 
 const Label = (props) => {

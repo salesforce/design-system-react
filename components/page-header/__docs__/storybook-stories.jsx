@@ -383,7 +383,7 @@ storiesOf(PAGE_HEADER, module)
 			iconCategory: 'standard',
 			iconName: 'opportunity',
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
-			title: 'Rohde Corp - 80,000 Widgets'
+			title: 'Rohde Corp - 80,000 Widgets',
 		})
 	)
 	.add('Base with controls', () =>
@@ -393,7 +393,7 @@ storiesOf(PAGE_HEADER, module)
 			iconName: 'opportunity',
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 			onRenderControls: baseControls,
-			title: 'Rohde Corp - 80,000 Widgets'
+			title: 'Rohde Corp - 80,000 Widgets',
 		})
 	)
 	.add('Record Home (truncates)', () =>
@@ -405,7 +405,7 @@ storiesOf(PAGE_HEADER, module)
 			label: 'Opportunity',
 			onRenderActions: recordHomeActions,
 			title: 'Acme - 1,200 Widgets',
-			variant: 'record-home'
+			variant: 'record-home',
 		})
 	)
 	.add('Record Home (field updates)', () => <DemoPageHeader />)
@@ -417,7 +417,7 @@ storiesOf(PAGE_HEADER, module)
 			onRenderControls: relatedListControls,
 			title: 'Contacts (will truncate)',
 			trail: relatedListTrail,
-			variant: 'related-list'
+			variant: 'related-list',
 		})
 	)
 	.add('Docs site RecordHome', () => <RecordHome />)

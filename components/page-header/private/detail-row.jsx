@@ -12,7 +12,11 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * An array of detail blocks
 	 */
@@ -21,7 +25,7 @@ const propTypes = {
 const defaultProps = {};
 
 class DetailRow extends Component {
-	renderDetails () {
+	renderDetails() {
 		if (this.props.children !== undefined) {
 			return this.props.children;
 		}
@@ -46,7 +50,10 @@ class DetailRow extends Component {
 	}
 
 	render() {
-		const classes = classnames('slds-page-header__detail-row', this.props.className);
+		const classes = classnames(
+			'slds-page-header__detail-row',
+			this.props.className
+		);
 
 		return <ul className={classes}>{this.renderDetails()}</ul>;
 	}

@@ -16,7 +16,11 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * The title content
 	 */
@@ -29,10 +33,6 @@ const propTypes = {
 	 * Sets whether the title will truncate its content responsively.
 	 */
 	truncate: PropTypes.bool,
-	/**
-	 * Variant passed down from page header
-	 */
-	variant: PropTypes.string,
 };
 const defaultProps = {
 	// align: 'middle',
@@ -44,16 +44,27 @@ class Title extends Component {
 	render() {
 		if (!this.props.content) return null;
 
-		const classes = classnames('slds-page-header__title', this.props.className, {
-			'slds-truncate': this.props.truncate,
-			[`slds-align-${this.props.align}`]: this.props.align,
-		});
+		const classes = classnames(
+			'slds-page-header__title',
+			this.props.className,
+			{
+				'slds-truncate': this.props.truncate,
+				[`slds-align-${this.props.align}`]: this.props.align,
+			}
+		);
 
 		return (
 			<div className="slds-page-header__name-title">
 				<h1>
 					<Label content={this.props.label} />
-					<span className={classes} title={(typeof this.props.content === 'string') ? this.props.content : undefined}>
+					<span
+						className={classes}
+						title={
+							typeof this.props.content === 'string'
+								? this.props.content
+								: undefined
+						}
+					>
 						{this.props.content}
 					</span>
 				</h1>

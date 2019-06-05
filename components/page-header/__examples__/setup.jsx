@@ -37,7 +37,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					icon={(
+					icon={
 						<Icon
 							assistiveText={{
 								label: 'Home',
@@ -51,12 +51,10 @@ class Example extends React.Component {
 							}}
 							title="Home"
 						/>
-					)}
+					}
 					onRenderActions={actions}
 					title="Home"
-					trail={[
-						<a href="javascript:void(0);">Setup</a>
-					]}
+					trail={[<a href="javascript:void(0);">Setup</a>]}
 					truncate
 					variant="object-home"
 				/>

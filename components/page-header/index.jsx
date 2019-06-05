@@ -53,7 +53,7 @@ const propTypes = {
 	 */
 	icon: PropTypes.element,
 	/**
-	 * The icons category
+	 * The icon category
 	 */
 	iconCategory: PropTypes.oneOf([
 		'action',
@@ -89,7 +89,7 @@ const propTypes = {
 	 */
 	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * Used with the `object-home` variant, accepts a node, typically a Dropdown component
+	 * Used with the `object-home` variant. Accepts a node, typically a Dropdown component
 	 */
 	nameSwitcherDropdown: PropTypes.node,
 	/**
@@ -123,7 +123,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	variant: 'base'
+	variant: 'base',
 };
 
 /**
@@ -140,11 +140,9 @@ class PageHeader extends Component {
 			'slds-page-header',
 			{
 				'slds-page-header_record-home':
-					variant === 'record-home' ||
-					variant === 'recordHome',
+					variant === 'record-home' || variant === 'recordHome',
 				'slds-page-header_related-list':
-					variant === 'related-list' ||
-					variant === 'relatedList'
+					variant === 'related-list' || variant === 'relatedList',
 			},
 			className
 		);

@@ -132,10 +132,14 @@ describe('PageHeader: ', function() {
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
-			const field1Title = wrapper.find('.slds-text-title').first();
-			const field1Content = wrapper.find('.slds-text-body_regular').first();
-			expect(field1Title.text()).to.equal('Description');
-			expect(field1Content.text()).to.equal(
+			const field1 = wrapper.find('.slds-page-header__detail-block').first();
+			expect(field1.find('.slds-text-title').text()).to.equal('Description');
+			expect(
+				field1
+					.find('.slds-truncate')
+					.last()
+					.text()
+			).to.equal(
 				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
 			);
 		});
@@ -148,24 +152,9 @@ describe('PageHeader: ', function() {
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
-			const field1Content = wrapper.find('.slds-text-body_regular').first();
+			const field1 = wrapper.find('.slds-page-header__detail-block').first();
+			const field1Content = field1.find('.slds-truncate').last();
 			expect(field1Content.hasClass('slds-truncate')).to.equal(true);
 		});
-
-		/*
-		it('field content does NOT show PopoverTooltip if text is NOT truncated', () => {
-			const wrapper = mount(<IconSettings iconPath="/assets/icons"><PageHeader {...defaultPropsRecordHome} />)
-			wrapper.update();
-			const nonTruncatedText = wrapper.find('.slds-text-body_regular').at(1);
-			expect(nonTruncatedText.node.tabIndex).to.equal(-1);
-		});
-
-		it('field content shows PopoverTooltip if text truncates', () => {
-			const wrapper = mount(<IconSettings iconPath="/assets/icons"><PageHeader {...defaultPropsRecordHome} />)
-			wrapper.update();
-			const truncatedText = wrapper.find('.slds-text-body_regular').first();
-			expect(truncatedText.node.tabIndex).to.equal(0);
-		});
-		*/
 	});
 });

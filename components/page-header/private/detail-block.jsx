@@ -13,29 +13,33 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
-	/**
-	 * label
-	 */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * The content property can be a string or a React element
 	 */
-	content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
-	 * Sets whether the fields truncate
-	 */
-	truncate: PropTypes.bool,
+	content: PropTypes.node,
 	/**
 	 * Sets the 'flavor' of a block, which adds the following sizing class: `slds-size_${flavor}`
 	 */
 	flavor: PropTypes.string,
+	/**
+	 * Sets the label of a detail block
+	 */
+	label: PropTypes.node,
+	/**
+	 * Sets whether the fields truncate
+	 */
+	truncate: PropTypes.bool,
 };
 
 const defaultProps = {
 	content: '',
 	label: '',
-	truncate: true
+	truncate: true,
 };
 
 class DetailBlock extends Component {
@@ -54,7 +58,7 @@ class DetailBlock extends Component {
 		}
 	}
 
-	renderContent () {
+	renderContent() {
 		const { content, truncate } = this.props;
 
 		if (typeof content === 'string') {
@@ -76,21 +80,13 @@ class DetailBlock extends Component {
 		return content;
 	}
 
-	renderContentWithTooltip () {
+	renderContentWithTooltip() {
 		const { content, truncate } = this.props;
 		const labelClasses = classnames({ 'slds-truncate': truncate });
 
 		return (
-			<Tooltip
-				align="top"
-				title={content}
-				triggerStyle={{ display: 'inline' }}
-			>
-				<div
-					className={labelClasses}
-					tabIndex="0"
-					title={content}
-				>
+			<Tooltip align="top" title={content} triggerStyle={{ display: 'inline' }}>
+				<div className={labelClasses} tabIndex="0" title={content}>
 					{content}
 				</div>
 			</Tooltip>
@@ -109,7 +105,7 @@ class DetailBlock extends Component {
 		}
 	}
 
-	renderLabel () {
+	renderLabel() {
 		const { label, truncate } = this.props;
 
 		if (typeof label === 'string') {
@@ -137,7 +133,9 @@ class DetailBlock extends Component {
 		return (
 			<li className={classes}>
 				{this.renderLabel()}
-				{this.state.showTooltip ? this.renderContentWithTooltip() : this.renderContent()}
+				{this.state.showTooltip
+					? this.renderContentWithTooltip()
+					: this.renderContent()}
 			</li>
 		);
 	}

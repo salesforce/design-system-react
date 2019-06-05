@@ -15,31 +15,64 @@ import Title from '../title';
 const displayName = 'PageHeaderObjectHome';
 const propTypes = {
 	/**
-	 * Content to appear on the right hand side of the page header
-	 * 'contentRight' prop will be deprecated soon, instead use 'onRenderActions'
-	 */
-	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
-	 * Icon node passed by PageHeader
-	 */
-	icon: PropTypes.node,
-	/**
-	 * Info node passed by PageHeader
-	 */
-	info: PropTypes.node,
-	/**
-	 * Heading above title
+	 * The label property can be a string or a React element
 	 */
 	label: PropTypes.node,
 	/**
-	 * Nav content which appears in the upper right hand corner.
-	 * 'navRight' prop will be deprecated soon, instaed use 'onRenderControls'
+	 * The page header icon
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	icon: PropTypes.element,
 	/**
-	 * Title node passed by PageHeader
+	 * The icon category
+	 */
+	iconCategory: PropTypes.string,
+	/**
+	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: PropTypes.string,
+	/**
+	 * If omitted, icon position is centered.
+	 */
+	iconPosition: PropTypes.string,
+	/**
+	 * Determines the size of the icon.
+	 */
+	iconSize: PropTypes.string,
+	/**
+	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
+	 */
+	iconVariant: PropTypes.string,
+	/**
+	 * The info property can be a string or a React element
+	 */
+	info: PropTypes.node,
+	/**
+	 * Used with the `object-home` variant. Accepts a node, typically a Dropdown component
+	 */
+	nameSwitcherDropdown: PropTypes.node,
+	/**
+	 * Content to appear on the right hand side of the page header
+	 * prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead
+	 */
+	onRenderActions: PropTypes.func,
+	/**
+	 * Nav content which appears in the upper right hand corner.
+	 * prop 'navRight' will be deprecated soon, use 'onRenderControls' instead
+	 */
+	onRenderControls: PropTypes.func,
+	/**
+	 * The title property can be a string or a React element
 	 */
 	title: PropTypes.node,
+	/**
+	 * An array of react elements presumably anchor <a> elements.
+	 */
+	trail: PropTypes.array,
+	/**
+	 * The type of component
+	 * Note: Extra options are added to make the version backward compatible
+	 */
+	variant: PropTypes.string,
 };
 
 const ObjectHome = (props) => (
@@ -49,15 +82,15 @@ const ObjectHome = (props) => (
 				<MediaObject
 					body={
 						<>
-							{(props.trail) ? (
+							{props.trail ? (
 								<Label style={{ lineHeight: '1.3' }} trail={props.trail} />
 							) : null}
 							<div className="slds-page-header__name">
 								<Title
 									content={props.title}
-									label={(!props.trail) ? props.label : null}
+									label={!props.trail ? props.label : null}
 								/>
-								{(props.nameSwitcherDropdown) ? (
+								{props.nameSwitcherDropdown ? (
 									<div className="slds-page-header__name-switcher">
 										{props.nameSwitcherDropdown}
 									</div>
@@ -65,21 +98,26 @@ const ObjectHome = (props) => (
 							</div>
 						</>
 					}
-					figure={(props.iconName) ? (
-						<Icon
-							category={props.iconCategory}
-							className="slds-page-header__icon"
-							name={props.iconName}
-							position={props.iconPosition}
-							size={props.iconSize}
-							variant={props.iconVariant}
-						/>
-					) : props.icon}
+					figure={
+						props.iconName ? (
+							<Icon
+								category={props.iconCategory}
+								className="slds-page-header__icon"
+								name={props.iconName}
+								position={props.iconPosition}
+								size={props.iconSize}
+								variant={props.iconVariant}
+							/>
+						) : (
+							props.icon
+						)
+					}
 				/>
 			</div>
 			<Controls
 				className={classnames({
-					'slds-align-middle slds-p-bottom_none': !props.onRenderControls && !props.navRight
+					'slds-align-middle slds-p-bottom_none':
+						!props.onRenderControls && !props.navRight,
 				})}
 				contentRight={props.contentRight}
 				onRenderActions={props.onRenderActions}
@@ -92,7 +130,7 @@ const ObjectHome = (props) => (
 			</div>
 			<Controls
 				className={classnames({
-					'slds-align-middle': !props.onRenderActions && !props.comntentRight
+					'slds-align-middle': !props.onRenderActions && !props.comntentRight,
 				})}
 				navRight={props.navRight}
 				onRenderControls={props.onRenderControls}
