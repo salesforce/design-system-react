@@ -51,9 +51,8 @@ const ButtonGroup = (props) => {
 	const labels = props
 		? assign({}, defaultProps.labels, props.labels)
 		: defaultProps.labels;
-
-	let children = props.children;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
+	let children = props.children;
 
 	if (zeroIndexLength > 0) {
 		children = React.Children.map(props.children, (child, index) => {
@@ -74,9 +73,7 @@ const ButtonGroup = (props) => {
 				variant: 'button-group',
 			})
 		);
-	}
 
-	if (props.variant === 'checkbox') {
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
@@ -102,6 +99,7 @@ const ButtonGroup = (props) => {
 			</fieldset>
 		);
 	}
+
 	if (props.variant === 'list') {
 		return (
 			<ul className={classNames('slds-button-group-list', props.className)}>
@@ -109,6 +107,7 @@ const ButtonGroup = (props) => {
 			</ul>
 		);
 	}
+
 	// default
 	return (
 		<div
