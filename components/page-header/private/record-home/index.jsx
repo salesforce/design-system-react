@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Controls from '../controls';
 import DetailRow from '../detail-row';
 import Icon from '../../../icon';
 import MediaObject from '../../../media-object';
@@ -38,36 +39,6 @@ const propTypes = {
 	title: PropTypes.node,
 };
 
-const renderActions = (props) => {
-	let actions = (props.onRenderActions) ? props.onRenderActions() : props.contentRight;
-
-	if (actions) {
-		if (actions.props && actions.props.children) {
-			actions =  (
-				<>
-					{React.Children.map(actions.props.children, (child) => (
-						<div className="slds-page-header__control">
-							{child}
-						</div>
-					))}
-				</>
-			);
-		} else {
-			actions = <div className="slds-page-header__control">{actions}</div>;
-		}
-
-		return (
-			<div className="slds-page-header__col-actions">
-				<div className="slds-page-header__controls">
-					{actions}
-				</div>
-			</div>
-		);
-	}
-
-	return null;
-};
-
 const RecordHome = (props) => (
 	<>
 		<div className="slds-page-header__row">
@@ -95,7 +66,11 @@ const RecordHome = (props) => (
 					) : props.icon}
 				/>
 			</div>
-			{renderActions(props)}
+			<Controls
+				contentRight={props.contentRight}
+				onRenderActions={props.onRenderActions}
+				type="actions"
+			/>
 		</div>
 		{(props.details) ? (
 			<div className="slds-page-header__row slds-page-header__row_gutters">

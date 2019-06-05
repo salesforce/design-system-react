@@ -52,10 +52,10 @@ class Title extends Component {
 		return (
 			<div className="slds-page-header__name-title">
 				<h1>
-					<Label content={this.props.label} variant={this.props.variant} />
+					<Label content={this.props.label} />
 					<span className={classes} title={(typeof this.props.content === 'string') ? this.props.content : undefined}>
-							{this.props.content}
-						</span>
+						{this.props.content}
+					</span>
 				</h1>
 			</div>
 		);

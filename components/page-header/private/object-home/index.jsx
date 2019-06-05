@@ -3,9 +3,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
+import Controls from '../controls';
 import Icon from '../../../icon';
 import Info from '../info';
+import Label from '../label';
 import MediaObject from '../../../media-object';
 import Title from '../title';
 
@@ -39,43 +42,6 @@ const propTypes = {
 	title: PropTypes.node,
 };
 
-const renderActionsOrControls = (props, type) => {
-	let components;
-
-	if (type === 'actions') {
-		components = (props.onRenderControls) ? props.onRenderControls() : props.navRight;
-	} else {
-		components = (props.onRenderActions) ? props.onRenderActions() : props.contentRight;
-	}
-
-	if (components) {
-		if (components.props && components.props.children) {
-			components =  (
-				<>
-					{React.Children.map(components.props.children, (child) => (
-						<div className="slds-page-header__control">
-							{child}
-						</div>
-					))}
-				</>
-			);
-		} else {
-			components = <div className="slds-page-header__control">{components}</div>;
-		}
-
-
-		return (
-			<div className={`slds-page-header__col-${type}`}>
-				<div className="slds-page-header__controls">
-					{components}
-				</div>
-			</div>
-		);
-	}
-
-	return null;
-};
-
 const ObjectHome = (props) => (
 	<>
 		<div className="slds-page-header__row">
@@ -83,11 +49,19 @@ const ObjectHome = (props) => (
 				<MediaObject
 					body={
 						<>
+							{(props.trail) ? (
+								<Label style={{ lineHeight: '1.3' }} trail={props.trail} />
+							) : null}
 							<div className="slds-page-header__name">
 								<Title
 									content={props.title}
-									label={props.label}
+									label={(!props.trail) ? props.label : null}
 								/>
+								{(props.nameSwitcherDropdown) ? (
+									<div className="slds-page-header__name-switcher">
+										{props.nameSwitcherDropdown}
+									</div>
+								) : null}
 							</div>
 						</>
 					}
@@ -103,13 +77,27 @@ const ObjectHome = (props) => (
 					) : props.icon}
 				/>
 			</div>
-			{renderActionsOrControls(props, 'actions')}
+			<Controls
+				className={classnames({
+					'slds-align-middle slds-p-bottom_none': !props.onRenderControls && !props.navRight
+				})}
+				contentRight={props.contentRight}
+				onRenderActions={props.onRenderActions}
+				type="actions"
+			/>
 		</div>
 		<div className="slds-page-header__row">
 			<div className="slds-page-header__col-meta">
 				<Info content={props.info} variant={props.variant} />
 			</div>
-			{renderActionsOrControls(props, 'controls')}
+			<Controls
+				className={classnames({
+					'slds-align-middle': !props.onRenderActions && !props.comntentRight
+				})}
+				navRight={props.navRight}
+				onRenderControls={props.onRenderControls}
+				type="controls"
+			/>
 		</div>
 	</>
 );

@@ -43,7 +43,7 @@ const Breadcrumb = (props) => {
 				}.label;
 
 	return (
-		<nav role="navigation" aria-label={assistiveText}>
+		<nav role="navigation" aria-label={assistiveText} style={props.style}>
 			<ol className="slds-breadcrumb slds-list_horizontal">
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
@@ -70,6 +70,10 @@ Breadcrumb.propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 	}),
+	/**
+	 * Custom styles to be passed to the top-level `nav` tag
+	 */
+	style: PropTypes.object,
 	/**
 	 * An array of react elements presumably anchor elements.
 	 */

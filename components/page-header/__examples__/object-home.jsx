@@ -11,7 +11,7 @@ class Example extends React.Component {
 	static displayName = 'ObjectHomePageHeaderExample';
 
 	render() {
-		const controls = () => (
+		const actions = () => (
 			<div>
 				<ButtonGroup>
 					<Button label="New" />
@@ -34,7 +34,7 @@ class Example extends React.Component {
 			</div>
 		);
 
-		const actions = () => (
+		const controls = () => (
 			<div>
 				<Dropdown
 					align="right"
@@ -119,37 +119,30 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					onRenderActions={actions}
 					iconAssistiveText="Opportunity"
 					iconCategory="standard"
 					iconName="opportunity"
 					info="10 items • Updated 13 minutes ago"
 					label="Opportunities"
-					onRenderControls={controls}
-					title={
+					nameSwitcherDropdown={
 						<Dropdown
-							id="page-header-dropdown-object-home-header"
+							assistiveText={{ icon: 'Name Switcher' }}
+							buttonClassName="slds-button_icon-small"
+							buttonVariant="icon"
+							iconCategory="utility"
+							iconName="down"
+							id="page-header-name-switcher-dropdown"
 							options={[
 								{ label: 'Menu Item One', value: 'A0' },
 								{ label: 'Menu Item Two', value: 'B0' },
 								{ label: 'Menu Item Three', value: 'C0' },
-								{ type: 'divider' },
 								{ label: 'Menu Item Four', value: 'D0' },
 							]}
-						>
-							<DropdownTrigger>
-								<Button
-									className="slds-button_reset slds-type-focus"
-									iconCategory="utility"
-									iconName="down"
-									iconPosition="right"
-									label="Recently Viewed"
-									responsive
-									variant="base"
-								/>
-							</DropdownTrigger>
-						</Dropdown>
+						/>
 					}
+					onRenderActions={actions}
+					onRenderControls={controls}
+					title="Recently Viewed"
 					truncate
 					variant="object-home"
 				/>

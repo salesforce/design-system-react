@@ -65,12 +65,12 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					onRenderActions={actions}
 					details={details}
 					iconAssistiveText={{ icon: 'User' }}
 					iconCategory="standard"
 					iconName="opportunity"
 					label="Record Type"
+					onRenderActions={actions}
 					title="Record Title"
 					variant="record-home"
 				/>

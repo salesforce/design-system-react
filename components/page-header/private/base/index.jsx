@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Controls from '../controls';
 import Icon from '../../../icon';
 import Info from '../info';
 import MediaObject from '../../../media-object';
@@ -23,49 +24,6 @@ const propTypes = {
 	 * Info node passed by PageHeader
 	 */
 	info: PropTypes.node,
-	/**
-	 * Content which appears in the top right corner. Either of these will work,
-	 * but onRenderActions takes precedent. contentRight & navRight also work
-	 * but will be deprecated eventually
-	 */
-	onRenderActions: PropTypes.node,
-	onRenderContent: PropTypes.node
-};
-
-const renderActions = (props) => {
-	let actions = props.onRenderActions || props.onRenderControls;
-
-	if (actions) {
-		actions = actions();
-	} else {
-		actions = props.contentRight || props.navRight;
-	}
-
-	if (actions) {
-		if (actions.props && actions.props.children) {
-			actions =  (
-				<>
-					{React.Children.map(actions.props.children, (child) => (
-						<div className="slds-page-header__control">
-							{child}
-						</div>
-					))}
-				</>
-			);
-		} else {
-			actions = <div className="slds-page-header__control">{actions}</div>;
-		}
-
-		return (
-			<div className="slds-page-header__col-controls slds-align-middle">
-				<div className="slds-page-header__controls">
-					{actions}
-				</div>
-			</div>
-		);
-	}
-
-	return null;
 };
 
 const Base = (props) => (
@@ -92,7 +50,12 @@ const Base = (props) => (
 				) : props.icon}
 			/>
 		</div>
-		{renderActions(props)}
+		<Controls
+			className="slds-align-middle"
+			navRight={props.navRight}
+			onRenderControls={props.onRenderControls}
+			type="controls"
+		/>
 	</div>
 );
 Base.displayName = displayName;

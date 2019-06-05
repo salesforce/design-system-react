@@ -28,17 +28,19 @@ const propTypes = {
 };
 
 const Label = (props) => {
-	if (!props.content && !props.trail) return null;
-
 	if (props.trail && props.trail.length > 0) {
-		return <Breadcrumb trail={props.trail} />;
+		return <Breadcrumb style={props.style} trail={props.trail} />;
 	}
 
-	if (typeof props.content === 'string') {
-		return <span>{props.content}</span>;
+	if (props.content) {
+		if (typeof props.content === 'string') {
+			return <span>{props.content}</span>;
+		}
+
+		return props.content;
 	}
 
-	return props.content;
+	return null;
 };
 
 Label.displayName = displayName;

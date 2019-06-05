@@ -41,35 +41,17 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * The type of component
-	 * Note: Extra options are added to make the version backward compatible
+	 * An array of detail blocks (used in "recordHome" variant)
 	 */
-	variant: PropTypes.oneOf([
-		'base',
-		'object-home',
-		'record-home',
-		'related-list',
-	]),
+	details: PropTypes.array,
 	/**
 	 * The label property can be a string or a React element
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * The title property can be a string or a React element
-	 */
-	title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
-	 * The info property can be a string or a React element
-	 */
-	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
 	 * The page header icon
 	 */
 	icon: PropTypes.element,
-	/**
-	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
-	 */
-	iconName: PropTypes.string,
 	/**
 	 * The icons category
 	 */
@@ -80,6 +62,10 @@ const propTypes = {
 		'standard',
 		'utility',
 	]),
+	/**
+	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: PropTypes.string,
 	/**
 	 * If omitted, icon position is centered.
 	 */
@@ -99,29 +85,45 @@ const propTypes = {
 		'more',
 	]),
 	/**
+	 * The info property can be a string or a React element
+	 */
+	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	/**
+	 * Used with the `object-home` variant, accepts a node, typically a Dropdown component
+	 */
+	nameSwitcherDropdown: PropTypes.node,
+	/**
 	 * Content to appear on the right hand side of the page header
 	 * prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead
 	 */
 	onRenderActions: PropTypes.func,
-	/**
-	 * An array of detail blocks (used in "recordHome" variant)
-	 */
-	details: PropTypes.array,
 	/**
 	 * Nav content which appears in the upper right hand corner.
 	 * prop 'navRight' will be deprecated soon, use 'onRenderControls' instead
 	 */
 	onRenderControls: PropTypes.func,
 	/**
+	 * The title property can be a string or a React element
+	 */
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	/**
 	 * An array of react elements presumably anchor <a> elements.
 	 */
 	trail: PropTypes.array,
+	/**
+	 * The type of component
+	 * Note: Extra options are added to make the version backward compatible
+	 */
+	variant: PropTypes.oneOf([
+		'base',
+		'object-home',
+		'record-home',
+		'related-list',
+	]),
 };
 
 const defaultProps = {
-	variant: 'base',
-	details: [],
-	trail: [],
+	variant: 'base'
 };
 
 /**
@@ -137,9 +139,6 @@ class PageHeader extends Component {
 		const classes = classnames(
 			'slds-page-header',
 			{
-				'slds-page-header_object-home':
-					variant === 'object-home' ||
-					variant === 'objectHome',
 				'slds-page-header_record-home':
 					variant === 'record-home' ||
 					variant === 'recordHome',
@@ -181,4 +180,7 @@ PageHeader.propTypes = propTypes;
 PageHeader.defaultProps = defaultProps;
 
 export default PageHeader;
+
+// NOTE: these are private components and are prone to breaking changes.
+// Do not use these in your app! These exports are for legacy use only.
 export { Info, Title, DetailRow, DetailBlock };

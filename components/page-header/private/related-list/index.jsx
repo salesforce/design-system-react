@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Controls from '../controls';
 import Info from '../info';
 import Label from '../label';
 import MediaObject from '../../../media-object';
@@ -32,43 +33,6 @@ const propTypes = {
 };
 const defaultProps = {};
 
-const renderActionsOrControls = (props, type) => {
-	let components;
-
-	if (type === 'actions') {
-		components = (props.onRenderControls) ? props.onRenderControls() : props.navRight;
-	} else {
-		components = (props.onRenderActions) ? props.onRenderActions() : props.contentRight;
-	}
-
-	if (components) {
-		if (components.props && components.props.children) {
-			components =  (
-				<>
-					{React.Children.map(components.props.children, (child) => (
-						<div className="slds-page-header__control">
-							{child}
-						</div>
-					))}
-				</>
-			);
-		} else {
-			components = <div className="slds-page-header__control">{components}</div>;
-		}
-
-
-		return (
-			<div className={`slds-page-header__col-${type}`}>
-				<div className="slds-page-header__controls">
-					{components}
-				</div>
-			</div>
-		);
-	}
-
-	return null;
-};
-
 const RelatedList = (props) => (
 	<>
 		<div className="slds-page-header__row">
@@ -85,13 +49,21 @@ const RelatedList = (props) => (
 					}
 				/>
 			</div>
-			{renderActionsOrControls(props, 'actions')}
+			<Controls
+				contentRight={props.contentRight}
+				onRenderActions={props.onRenderActions}
+				type="actions"
+			/>
 		</div>
 		<div className="slds-page-header__row">
 			<div className="slds-page-header__col-meta">
 				<Info content={props.info} variant={props.variant} />
 			</div>
-			{renderActionsOrControls(props, 'controls')}
+			<Controls
+				navRight={props.navRight}
+				onRenderControls={props.onRenderControls}
+				type="controls"
+			/>
 		</div>
 	</>
 );

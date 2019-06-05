@@ -11,24 +11,41 @@ class Example extends React.Component {
 	static displayName = 'RelatedListPageHeaderExample';
 
 	render() {
-		const controls = () => (
-			<div className="slds-button-group" role="group">
-				<button type="button" className="slds-button slds-button_neutral">
-					Add Contact
-				</button>
-				<div className="slds-button_last">
-					<Button
+		const actions = () => (
+			<div>
+				<ButtonGroup>
+					<Button label="Add Contact" variant="neutral" />
+					<Dropdown
+						assistiveText={{
+							icon: 'More Options',
+						}}
+						buttonVariant="icon"
 						iconCategory="utility"
 						iconName="down"
-						variant="icon"
 						iconVariant="border-filled"
-						assistiveText={{ icon: 'More Actions' }}
+						id="page-header-related-list-add-contact-dropdown"
+						openOn="click"
+						align="right"
+						options={[
+							{
+								label: 'Refresh List',
+								value: 'A0',
+							},
+							{
+								label: 'Duplicate Selected Leads',
+								value: 'B0',
+							},
+							{
+								label: 'Disabled Selected Leads',
+								value: 'C0',
+							},
+						]}
 					/>
-				</div>
+				</ButtonGroup>
 			</div>
 		);
 
-		const actions = () => (
+		const controls = () => (
 			<div>
 				<Dropdown
 					align="right"
@@ -101,13 +118,13 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					title="Contacts (will truncate)"
-					onRenderControls={controls}
-					onRenderActions={actions}
-					variant="related-list"
-					truncate
-					trail={trail}
 					info="10 items • sorted by name"
+					onRenderActions={actions}
+					onRenderControls={controls}
+					title="Contacts (will truncate)"
+					trail={trail}
+					truncate
+					variant="related-list"
 				/>
 			</IconSettings>
 		);

@@ -26,19 +26,23 @@ class DetailRow extends Component {
 			return this.props.children;
 		}
 
-		return this.props.details.map((detail, i) => {
-			const key = `page-header-detail-block-${i}`;
+		if (this.props.details) {
+			return this.props.details.map((detail, i) => {
+				const key = `page-header-detail-block-${i}`;
 
-			return (
-				<DetailBlock
-					key={key}
-					flavor={detail.flavor}
-					label={detail.label}
-					content={detail.content}
-					truncate={detail.truncate}
-				/>
-			);
-		});
+				return (
+					<DetailBlock
+						key={key}
+						flavor={detail.flavor}
+						label={detail.label}
+						content={detail.content}
+						truncate={detail.truncate}
+					/>
+				);
+			});
+		}
+
+		return null;
 	}
 
 	render() {
