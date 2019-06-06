@@ -62,6 +62,7 @@ export SetupAssistant from '../components/setup-assistant/__docs__/storybook-sto
 export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
+export VisualPicker from '../components/visual-picker/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because they

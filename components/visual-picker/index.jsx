@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Scoped Notification design pattern](https://lightningdesignsystem.com/components/scoped-notifications/) in React.
+// Implements the [Visual Picker design pattern](https://lightningdesignsystem.com/components/visual-picker/) in React.
 // Based on SLDS v2.4.5
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -39,6 +39,10 @@ const propTypes = {
 	 */
 	vertical: PropTypes.bool,
 	/**
+	 * Whether the visual picker has links as children
+	 */
+	links: PropTypes.bool,
+	/**
 	 *  Size for visual picker
 	 */
 	size: PropTypes.oneOf(['medium', 'large']),
@@ -47,6 +51,7 @@ const propTypes = {
 const defaultProps = {
 	size: 'medium',
 	vertical: false,
+	links: false,
 };
 
 /**
@@ -77,7 +82,9 @@ class VisualPicker extends React.Component {
 				<legend className="slds-form-element__legend slds-form-element__label">
 					{this.props.label}
 				</legend>
-				<div className="slds-form-element__control">{options}</div>
+				<div className="slds-form-element__control">
+					{!this.props.links ? options : this.props.children}
+				</div>
 			</fieldset>
 		);
 	}
