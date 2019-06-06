@@ -20,6 +20,9 @@ class Example extends React.Component {
 							labels={{
 								label: 'Connected App',
 							}}
+							onChange={(event, data) => {
+								console.log(data);
+							}}
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
