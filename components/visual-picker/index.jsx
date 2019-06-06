@@ -72,7 +72,7 @@ class VisualPicker extends React.Component {
 		return (
 			<fieldset
 				id={this.props.id}
-				className={classNames(`slds-form-element`, this.props.class)}
+				className={classNames(`slds-form-element`, this.props.className)}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">
 					{this.props.label}
