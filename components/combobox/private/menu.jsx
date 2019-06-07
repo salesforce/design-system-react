@@ -145,19 +145,18 @@ const defaultProps = {
 const getOptions = (props) => {
 	const options = [];
 	if (props.optionsSearchEntity.length > 0) {
-		props.optionsSearchEntity.map((entity) => ({...entity, type: 'header'}));
-		options.push(...props.optionsSearchEntity);
+		const localOptionsSearchEntity = props.optionsSearchEntity.map((entity) => ({...entity, type: 'header'}));
+		options.push(...localOptionsSearchEntity);
 	}
 	options.push(...props.options);
 	if (props.optionsAddItem.length > 0) {
-		props.optionsAddItem.map((entity) => ({...entity, type: 'footer'}));
-		options.push(...props.optionsAddItem);
+		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({...entity, type: 'footer'}));
+		options.push(...localOptionsAddItem);
 	}
 	return options;
 }
 
 const Menu = (props) => {
-	const { optionsAddItem, optionsSearchEntity } = props;
 	let maxWidth = props.inheritWidthOf === 'menu' ? 'inherit' : undefined;
 	maxWidth =
 		props.inheritWidthOf === 'menu' && props.maxWidth
@@ -200,11 +199,11 @@ const Menu = (props) => {
 				/>
 			);
 		} else if (optionData.type === 'header') {
-			return (<li key={`menu-header-${optionsSearchEntity[index].id}}`} role="presentation" className="slds-listbox__item">
+			return (<li key={`menu-header-${optionData.id}}`} role="presentation" className="slds-listbox__item">
 					<div
-						onClick={(event) => optionsSearchEntity[index].onClick(event)}
+						onClick={(event) => optionData.onClick(event)}
 						aria-selected="false"
-						id={optionsSearchEntity[index].id}
+						id={optionData.id}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -212,20 +211,20 @@ const Menu = (props) => {
 						)}
 						role="option"
 					>
-						<span className="slds-media__figure ">
-							{optionsSearchEntity[index].icon}
+						<span className="slds-media__figure slds-listbox__option-icon">
+							{optionData.icon}
 						</span>
 						<span className="slds-media__body">
-							{optionsSearchEntity[index].label}
+							{optionData.label}
 						</span>
 					</div>
 				</li>)
 		} else if (optionData.type === 'footer') {
-			return (<li key={`menu-header-${optionsAddItem[index].id}}`} role="presentation" className="slds-listbox__item">
+			return (<li key={`menu-header-${optionData.id}}`} role="presentation" className="slds-listbox__item">
 					<div
 						aria-selected="false"
-						onClick={(event) => optionsAddItem[index].onClick(event)}
-						id={optionsAddItem[index].id}
+						onClick={(event) => optionData.onClick(event)}
+						id={optionData.id}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -233,8 +232,8 @@ const Menu = (props) => {
 						)}
 						role="option"
 					>
-						<span className="slds-media__figure ">{optionsAddItem[index].icon}</span>
-						<span className="slds-media__body">{optionsAddItem[index].label}</span>
+						<span className="slds-media__figure slds-listbox__option-icon">{optionData.icon}</span>
+						<span className="slds-media__body">{optionData.label}</span>
 					</div>
 				</li>);
 		}

@@ -53,6 +53,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
+					isOpen
 					id="combobox-unique-id"
 					optionsSearchEntity={[{
 						id: 'my-new-id',
@@ -65,6 +66,24 @@ class Example extends React.Component {
 							/>
 						),
 						label: 'salesforce',
+						onClick: (event) => {
+							if (this.props.action) {
+								this.props.action('onClick')(event);
+							} else if (console) {
+								console.log('onClick', event);
+							}
+						},
+					}, {
+						id: 'search-in-account-id',
+						icon: (
+							<Icon
+								assistiveText={{ label: 'add in Accounts' }}
+								size="x-small"
+								category="utility"
+								name="search"
+							/>
+						),
+						label: 'search in Accounts',
 						onClick: (event) => {
 							if (this.props.action) {
 								this.props.action('onClick')(event);
