@@ -200,66 +200,14 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_icon-border"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Chart
-                </span>
-              </button>
-              <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Filter List
-                </span>
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-dropdown-object-home-content-right"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-object-home-content-right"
+                  className="slds-button slds-button_icon-border"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
                   <svg
@@ -267,25 +215,82 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
-                    />
-                  </svg>
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon slds-button__icon_x-small"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    Sort
+                    Chart
                   </span>
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Filter List
+                  </span>
+                </button>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-dropdown-object-home-content-right"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-object-home-content-right"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_x-small"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Sort
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -415,68 +420,75 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Edit
-              </button>
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Delete
-              </button>
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Clone
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="dropdown-record-home-example"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-dropdown-record-home-example"
+                  className="slds-button slds-button_neutral"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
+                  Edit
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Delete
+                </button>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Clone
+                </button>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="dropdown-record-home-example"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled ignore-click-dropdown-record-home-example"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -634,52 +646,55 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Add Contact
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-related-list-add-contact-dropdown"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-page-header-related-list-add-contact-dropdown"
+                  className="slds-button slds-button_neutral"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
+                  Add Contact
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-related-list-add-contact-dropdown"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled ignore-click-page-header-related-list-add-contact-dropdown"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -750,66 +765,14 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Chart
-                </span>
-              </button>
-              <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Filter List
-                </span>
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="content-right-dropdown-2"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-more ignore-click-content-right-dropdown-2"
+                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
                   <svg
@@ -817,25 +780,82 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
-                    />
-                  </svg>
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon slds-button__icon_x-small"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    List View Controls
+                    Chart
                   </span>
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Filter List
+                  </span>
+                </button>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="content-right-dropdown-2"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-more ignore-click-content-right-dropdown-2"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_x-small"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      List View Controls
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -949,52 +969,55 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                New
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-dropdown-object-home-nav-right"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-object-home-nav-right"
+                  className="slds-button slds-button_neutral"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
+                  New
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-dropdown-object-home-nav-right"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-object-home-nav-right"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1158,51 +1181,54 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_icon-border"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
+              <li>
+                <button
+                  className="slds-button slds-button_icon-border"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
                 >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Charts
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_icon-border"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
                 >
-                  Charts
-                </span>
-              </button>
-              <button
-                className="slds-button slds-button_icon-border"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Filters
-                </span>
-              </button>
-            </div>
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Filters
+                  </span>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1466,68 +1492,75 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Edit
-              </button>
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Delete
-              </button>
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Clone
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-dropdown-record-home-content-right"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-record-home-content-right"
+                  className="slds-button slds-button_neutral"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
+                  Edit
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Delete
+                </button>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_neutral"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Clone
+                </button>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-dropdown-record-home-content-right"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-record-home-content-right"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1701,52 +1734,55 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Add Contact
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-dropdown-related-list-nav-right"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-related-list-nav-right"
+                  className="slds-button slds-button_neutral"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
+                  Add Contact
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-dropdown-related-list-nav-right"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled ignore-click-page-header-dropdown-related-list-nav-right"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1804,66 +1840,14 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group"
-              role="group"
+            <ul
+              className="slds-button-group-list"
             >
-              <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Chart
-                </span>
-              </button>
-              <button
-                className="slds-button slds-button_icon-border slds-m-left_xx-small"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon"
-                >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
-                  />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Filter List
-                </span>
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-dropdown-related-list-content-right"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-related-list-content-right"
+                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
                   <svg
@@ -1871,25 +1855,82 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
-                    />
-                  </svg>
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon slds-button__icon_x-small"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    Sort
+                    Chart
                   </span>
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <button
+                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Filter List
+                  </span>
+                </button>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-dropdown-related-list-content-right"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-related-list-content-right"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_x-small"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Sort
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1997,52 +2038,55 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
           <div
             className="slds-page-header__control"
           >
-            <div
-              className="slds-button-group slds-align-middle"
-              role="group"
+            <ul
+              className="slds-button-group-list slds-align-middle"
             >
-              <button
-                className="slds-button slds-button_neutral"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                Create
-              </button>
-              <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-                id="page-header-setup-dropdown-actions"
-                onClick={[Function]}
-                onFocus={null}
-                onKeyDown={[Function]}
-                onMouseEnter={null}
-                onMouseLeave={null}
-              >
+              <li>
                 <button
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  className="slds-button slds-button_icon-border-filled ignore-click-page-header-setup-dropdown-actions"
+                  className="slds-button slds-button_neutral"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0"
                   type="button"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="slds-button__icon"
-                  >
-                    <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                    />
-                  </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
+                  Create
                 </button>
-              </div>
-            </div>
+              </li>
+              <li>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="page-header-setup-dropdown-actions"
+                  onClick={[Function]}
+                  onFocus={null}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled ignore-click-page-header-setup-dropdown-actions"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

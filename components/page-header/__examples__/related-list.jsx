@@ -14,7 +14,7 @@ class Example extends React.Component {
 	render() {
 		const actions = () => (
 			<PageHeaderControl>
-				<ButtonGroup>
+				<ButtonGroup variant="list">
 					<Button label="Add Contact" variant="neutral" />
 					<Dropdown
 						assistiveText={{
@@ -77,7 +77,7 @@ class Example extends React.Component {
 					</Dropdown>
 				</PageHeaderControl>
 				<PageHeaderControl>
-					<ButtonGroup>
+					<ButtonGroup variant="list">
 						<Button
 							iconCategory="utility"
 							iconName="chart"

@@ -14,7 +14,7 @@ class Example extends React.Component {
 	render() {
 		const actions = () => (
 			<PageHeaderControl>
-				<ButtonGroup className="slds-align-middle">
+				<ButtonGroup className="slds-align-middle" variant="list">
 					<Button label="Create" />
 					<Dropdown
 						align="right"

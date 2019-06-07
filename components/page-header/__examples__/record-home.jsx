@@ -24,7 +24,7 @@ class Example extends React.Component {
 					/>
 				</PageHeaderControl>
 				<PageHeaderControl>
-					<ButtonGroup>
+					<ButtonGroup variant="list">
 						<Button label="Edit" />
 						<Button label="Delete" />
 						<Button label="Clone" />

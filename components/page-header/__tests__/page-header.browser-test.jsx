@@ -35,7 +35,7 @@ const recordHomeActions = () => (
 			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
-			<SLDSButtonGroup key="">
+			<SLDSButtonGroup variant="list">
 				<SLDSButton label="Edit" />
 				<SLDSButton label="Delete" />
 				<SLDSButton label="Clone" />
@@ -119,14 +119,14 @@ describe('PageHeader: ', function() {
 			);
 		});
 
-		it('renders ContentRight prop', () => {
+		it('renders onRenderActions prop', () => {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
 			const statefulBtn = wrapper.find('.slds-not-selected');
-			const buttonGroup = wrapper.find('.slds-button-group');
+			const buttonGroup = wrapper.find('.slds-button-group-list');
 			expect(statefulBtn).to.have.length(1);
 			expect(buttonGroup).to.have.length(1);
 		});
