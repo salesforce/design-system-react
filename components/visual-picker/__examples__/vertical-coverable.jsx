@@ -15,9 +15,15 @@ class Example extends React.Component {
 					}}
 				>
 					<h1>Radio</h1>
-					<VisualPicker label="Select any one" coverable vertical>
+					<VisualPicker
+						label="Select any one"
+						coverable
+						vertical
+						id="visual-picker-vertical-coverable-radio"
+					>
 						<Radio
 							label="Connected App"
+							id="visual-picker-vertical-coverable-radio-1"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -38,6 +44,7 @@ class Example extends React.Component {
 						/>
 						<Radio
 							label="Custom App"
+							id="visual-picker-vertical-coverable-radio-2"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -59,9 +66,15 @@ class Example extends React.Component {
 					</VisualPicker>
 					<hr />
 					<h1>Checkbox</h1>
-					<VisualPicker label="Add the following object(s)" coverable vertical>
+					<VisualPicker
+						label="Add the following object(s)"
+						coverable
+						vertical
+						id="visual-picker-vertical-coverable-checkbox"
+					>
 						<Checkbox
 							label="Account"
+							id="visual-picker-vertical-coverable-checkbox-1"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -82,6 +95,7 @@ class Example extends React.Component {
 						/>
 						<Checkbox
 							label="Lead"
+							id="visual-picker-vertical-coverable-checkbox-2"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -102,6 +116,7 @@ class Example extends React.Component {
 						/>
 						<Checkbox
 							label="Orders"
+							id="visual-picker-vertical-coverable-checkbox-3"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}

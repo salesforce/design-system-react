@@ -74,7 +74,9 @@ class VisualPicker extends React.Component {
 			})
 		);
 
-		return (
+		return this.props.links ? (
+			<div>{this.props.children}</div>
+		) : (
 			<fieldset
 				id={this.props.id}
 				className={classNames(`slds-form-element`, this.props.class)}
@@ -82,9 +84,7 @@ class VisualPicker extends React.Component {
 				<legend className="slds-form-element__legend slds-form-element__label">
 					{this.props.label}
 				</legend>
-				<div className="slds-form-element__control">
-					{!this.props.links ? options : this.props.children}
-				</div>
+				<div className="slds-form-element__control">{options}</div>
 			</fieldset>
 		);
 	}

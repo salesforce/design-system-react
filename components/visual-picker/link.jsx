@@ -22,9 +22,21 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * URL for the Link
+	 */
 	href: PropTypes.string,
-	icon: PropTypes.string,
+	/**
+	 * Icon node for the Link
+	 */
+	icon: PropTypes.node,
+	/**
+	 * Title for the Link
+	 */
 	title: PropTypes.string,
+	/**
+	 * Description for the Link
+	 */
 	description: PropTypes.string,
 };
 
@@ -33,6 +45,7 @@ class VisualPickerLink extends React.Component {
 		return (
 			<a
 				href={this.props.href}
+				id={this.props.id}
 				className={classNames(
 					'slds-box',
 					'slds-box_link',

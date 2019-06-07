@@ -14,6 +14,8 @@ describe('SLDS Visual Picker', () => {
 	};
 
 	describe('Coverable Visual Picker with Radio', () => {
+		// eslint-disable-next-line no-unused-vars
+		let changeObject;
 
 		beforeEach(() => {
 			handles.visualPicker = mount(
@@ -26,6 +28,10 @@ describe('SLDS Visual Picker', () => {
 						<Radio
 							labels={{
 								label: 'Connected App',
+							}}
+							id="visual-picker-test-radio-1"
+							onChange={(data, event) => {
+								changeObject = { event, data };
 							}}
 							onRenderVisualPickerSelected={
 								<Icon
@@ -52,18 +58,9 @@ describe('SLDS Visual Picker', () => {
 		it('renders visual picker', () => {
 			expect(handles.visualPicker.length).to.equal(1);
 		});
-		it('legend is correctly rendered', () => {
-			const legend = handles.visualPicker.find(
-				'#visual-picker-event-test-1 legend'
-			);
-			expect(legend.text()).to.equal('Select any one');
-		});
-		it('options are covered on selection', () => {
-			expect(
-				handles.visualPicker
-					.find('#visual-picker-event-test-1 label div')
-					.hasClass('slds-visual-picker__icon')
-			).to.equal(true);
+		it('options are selected on click', () => {
+			handles.visualPicker.find({ type: 'radio' }).simulate('change');
+			expect(changeObject !== undefined).to.eql(true);
 		});
 	});
 });
