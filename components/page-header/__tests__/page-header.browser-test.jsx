@@ -5,6 +5,7 @@ import chaiEnzyme from 'chai-enzyme';
 
 import IconSettings from '../../icon-settings';
 import PageHeader from '../../page-header';
+import PageHeaderControl from '../../page-header/control';
 import SLDSButtonStateful from '../../button-stateful';
 import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
@@ -13,46 +14,50 @@ import SLDSMenuDropdown from '../../menu-dropdown';
 chai.use(chaiEnzyme());
 
 const recordHomeActions = () => (
-	<div>
-		<SLDSButtonStateful
-			key="PageHeaderFollowButton"
-			disabled={false}
-			iconSize="medium"
-			responsive={false}
-			stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
-			stateTwo={{
-				iconCategory: 'utility',
-				iconName: 'check',
-				label: 'Following',
-			}}
-			stateThree={{
-				iconCategory: 'utility',
-				iconName: 'close',
-				label: 'Unfollow',
-			}}
-		/>
-		<SLDSButtonGroup key="">
-			<SLDSButton label="Edit" />
-			<SLDSButton label="Delete" />
-			<SLDSButton label="Clone" />
-			<SLDSMenuDropdown
-				assistiveText={{ icon: 'More Options' }}
-				buttonVariant="icon"
-				iconCategory="utility"
-				iconName="down"
-				iconVariant="border-filled"
-				onSelect={() => {
-					console.log('selected');
+	<>
+		<PageHeaderControl>
+			<SLDSButtonStateful
+				key="PageHeaderFollowButton"
+				disabled={false}
+				iconSize="medium"
+				responsive={false}
+				stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
+				stateTwo={{
+					iconCategory: 'utility',
+					iconName: 'check',
+					label: 'Following',
 				}}
-				openOn="click"
-				align="right"
-				options={[
-					{ label: 'Disable', value: 'A0' },
-					{ label: 'Promote', value: 'C0' },
-				]}
+				stateThree={{
+					iconCategory: 'utility',
+					iconName: 'close',
+					label: 'Unfollow',
+				}}
 			/>
-		</SLDSButtonGroup>
-	</div>
+		</PageHeaderControl>
+		<PageHeaderControl>
+			<SLDSButtonGroup key="">
+				<SLDSButton label="Edit" />
+				<SLDSButton label="Delete" />
+				<SLDSButton label="Clone" />
+				<SLDSMenuDropdown
+					assistiveText={{ icon: 'More Options' }}
+					buttonVariant="icon"
+					iconCategory="utility"
+					iconName="down"
+					iconVariant="border-filled"
+					onSelect={() => {
+						console.log('selected');
+					}}
+					openOn="click"
+					align="right"
+					options={[
+						{ label: 'Disable', value: 'A0' },
+						{ label: 'Promote', value: 'C0' },
+					]}
+				/>
+			</SLDSButtonGroup>
+		</PageHeaderControl>
+	</>
 );
 
 const recordHomeDetails = [

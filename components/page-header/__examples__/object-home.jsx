@@ -1,18 +1,19 @@
 import React from 'react';
 
-import IconSettings from '~/components/icon-settings';
-import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
+import IconSettings from '~/components/icon-settings';
+import PageHeader from '~/components/page-header';
+import PageHeaderControl from '~/components/page-header/control';
 
 class Example extends React.Component {
 	static displayName = 'ObjectHomePageHeaderExample';
 
 	render() {
 		const actions = () => (
-			<div>
+			<PageHeaderControl>
 				<ButtonGroup>
 					<Button label="New" />
 					<Dropdown
@@ -31,89 +32,99 @@ class Example extends React.Component {
 						]}
 					/>
 				</ButtonGroup>
-			</div>
+			</PageHeaderControl>
 		);
 
 		const controls = () => (
-			<div>
-				<Dropdown
-					align="right"
-					id="page-header-dropdown-object-home-content-right"
-					options={[
-						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' },
-						{ label: 'Menu Item Three', value: 'C0' },
-						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' },
-					]}
-				>
-					<DropdownTrigger>
+			<>
+				<PageHeaderControl>
+					<Dropdown
+						align="right"
+						id="page-header-dropdown-object-home-content-right"
+						options={[
+							{ label: 'Menu Item One', value: 'A0' },
+							{ label: 'Menu Item Two', value: 'B0' },
+							{ label: 'Menu Item Three', value: 'C0' },
+							{ type: 'divider' },
+							{ label: 'Menu Item Four', value: 'D0' },
+						]}
+					>
+						<DropdownTrigger>
+							<Button
+								assistiveText={{ icon: 'List View Controls' }}
+								className="slds-m-right_xx-small"
+								iconCategory="utility"
+								iconName="settings"
+								iconVariant="more"
+							/>
+						</DropdownTrigger>
+					</Dropdown>
+				</PageHeaderControl>
+				<PageHeaderControl>
+					<Dropdown
+						align="right"
+						assistiveText={{ icon: 'Change view' }}
+						iconCategory="utility"
+						iconName="settings"
+						iconVariant="more"
+						id="page-header-dropdown-object-home-content-right-2"
+						options={[
+							{ label: 'Menu Item One', value: 'A0' },
+							{ label: 'Menu Item Two', value: 'B0' },
+							{ label: 'Menu Item Three', value: 'C0' },
+							{ type: 'divider' },
+							{ label: 'Menu Item Four', value: 'D0' },
+						]}
+					>
+						<DropdownTrigger>
+							<Button
+								assistiveText={{ icon: 'Change view' }}
+								className="slds-m-right_xx-small"
+								iconCategory="utility"
+								iconName="table"
+								iconVariant="more"
+								variant="icon"
+							/>
+						</DropdownTrigger>
+					</Dropdown>
+				</PageHeaderControl>
+				<PageHeaderControl>
+					<Button
+						assistiveText={{ icon: 'Edit List' }}
+						iconCategory="utility"
+						iconName="edit"
+						iconVariant="border"
+						variant="icon"
+					/>
+				</PageHeaderControl>
+				<PageHeaderControl>
+					<Button
+						assistiveText={{ icon: 'Refresh' }}
+						iconCategory="utility"
+						iconName="refresh"
+						iconVariant="border"
+						variant="icon"
+					/>
+				</PageHeaderControl>
+				<PageHeaderControl>
+					<ButtonGroup>
 						<Button
-							assistiveText={{ icon: 'List View Controls' }}
-							className="slds-m-right_xx-small"
+							assistiveText={{ icon: 'Charts' }}
 							iconCategory="utility"
-							iconName="settings"
-							iconVariant="more"
-						/>
-					</DropdownTrigger>
-				</Dropdown>
-				<Dropdown
-					align="right"
-					assistiveText={{ icon: 'Change view' }}
-					iconCategory="utility"
-					iconName="settings"
-					iconVariant="more"
-					id="page-header-dropdown-object-home-content-right-2"
-					options={[
-						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' },
-						{ label: 'Menu Item Three', value: 'C0' },
-						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' },
-					]}
-				>
-					<DropdownTrigger>
-						<Button
-							assistiveText={{ icon: 'Change view' }}
-							className="slds-m-right_xx-small"
-							iconCategory="utility"
-							iconName="table"
-							iconVariant="more"
+							iconName="chart"
+							iconVariant="border"
 							variant="icon"
 						/>
-					</DropdownTrigger>
-				</Dropdown>
-				<Button
-					assistiveText={{ icon: 'Edit List' }}
-					iconCategory="utility"
-					iconName="edit"
-					iconVariant="border"
-					variant="icon"
-				/>
-				<Button
-					assistiveText={{ icon: 'Refresh' }}
-					iconCategory="utility"
-					iconName="refresh"
-					iconVariant="border"
-					variant="icon"
-				/>
-				<ButtonGroup>
-					<Button
-						assistiveText={{ icon: 'Charts' }}
-						iconCategory="utility"
-						iconName="chart"
-						iconVariant="border"
-						variant="icon"
-					/>
-					<Button
-						assistiveText={{ icon: 'Filters' }}
-						iconCategory="utility"
-						iconName="filterList"
-						iconVariant="border"
-						variant="icon"
-					/>
-				</ButtonGroup>
-			</div>
+						<Button
+							assistiveText={{ icon: 'Filters' }}
+							iconCategory="utility"
+							iconName="filterList"
+							iconVariant="border"
+							variant="icon"
+						/>
+					</ButtonGroup>
+				</PageHeaderControl>
+			</>
 		);
 
 		return (

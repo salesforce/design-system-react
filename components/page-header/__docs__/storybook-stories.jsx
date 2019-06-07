@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { PAGE_HEADER } from '../../../utilities/constants';
 import IconSettings from '../../icon-settings';
 import SLDSPageHeader from '../../page-header';
+import SLDSPageHeaderControl from '../../page-header/control';
 import SLDSButtonStateful from '../../button-stateful';
 import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
@@ -95,56 +96,60 @@ class DemoPageHeader extends React.Component {
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
 const recordHomeActions = () => (
-	<div>
-		<SLDSButtonStateful
-			key="PageHeaderFollowButton"
-			disabled={false}
-			iconSize="medium"
-			responsive={false}
-			stateOne={{
-				iconName: 'add',
-				label: 'Follow',
-			}}
-			stateTwo={{
-				iconCategory: 'utility',
-				iconName: 'check',
-				label: 'Following',
-			}}
-			stateThree={{
-				iconCategory: 'utility',
-				iconName: 'close',
-				label: 'Unfollow',
-			}}
-		/>
-		<SLDSButtonGroup key="">
-			<SLDSButton label="Edit" />
-			<SLDSButton label="Delete" />
-			<SLDSButton label="Clone" />
-			<SLDSMenuDropdown
-				assistiveText={{
-					icon: 'More Options',
+	<>
+		<SLDSPageHeaderControl>
+			<SLDSButtonStateful
+				key="PageHeaderFollowButton"
+				disabled={false}
+				iconSize="medium"
+				responsive={false}
+				stateOne={{
+					iconName: 'add',
+					label: 'Follow',
 				}}
-				buttonVariant="icon"
-				iconCategory="utility"
-				iconName="down"
-				iconVariant="border-filled"
-				id="page-header-dropdown-record-home-content-right"
-				onSelect={action('select')}
-				openOn="click"
-				align="right"
-				options={[
-					{
-						label: 'Disable',
-						value: 'A0',
-					},
-					{
-						label: 'Promote',
-						value: 'C0',
-					},
-				]}
+				stateTwo={{
+					iconCategory: 'utility',
+					iconName: 'check',
+					label: 'Following',
+				}}
+				stateThree={{
+					iconCategory: 'utility',
+					iconName: 'close',
+					label: 'Unfollow',
+				}}
 			/>
-		</SLDSButtonGroup>
-	</div>
+		</SLDSPageHeaderControl>
+		<SLDSPageHeaderControl>
+			<SLDSButtonGroup key="">
+				<SLDSButton label="Edit" />
+				<SLDSButton label="Delete" />
+				<SLDSButton label="Clone" />
+				<SLDSMenuDropdown
+					assistiveText={{
+						icon: 'More Options',
+					}}
+					buttonVariant="icon"
+					iconCategory="utility"
+					iconName="down"
+					iconVariant="border-filled"
+					id="page-header-dropdown-record-home-content-right"
+					onSelect={action('select')}
+					openOn="click"
+					align="right"
+					options={[
+						{
+							label: 'Disable',
+							value: 'A0',
+						},
+						{
+							label: 'Promote',
+							value: 'C0',
+						},
+					]}
+				/>
+			</SLDSButtonGroup>
+		</SLDSPageHeaderControl>
+	</>
 );
 
 const customTooltip = () => {
@@ -187,84 +192,90 @@ const recordHomeDetails = [
 ];
 
 const baseControls = () => (
-	<div>
-		<SLDSButton
-			iconCategory="utility"
-			iconName="settings"
-			variant="icon"
-			iconVariant="more"
-			className="slds-m-left_xx-small"
-			assistiveText={{
-				icon: 'Settings',
-			}}
-		/>
-		<SLDSButton
-			iconCategory="utility"
-			iconName="table"
-			variant="icon"
-			iconVariant="more"
-			className="slds-m-left_xx-small"
-			assistiveText={{
-				icon: 'Table',
-			}}
-		/>
-		<SLDSButtonGroup>
+	<>
+		<SLDSPageHeaderControl>
 			<SLDSButton
 				iconCategory="utility"
-				iconName="chart"
+				iconName="settings"
 				variant="icon"
-				iconVariant="border"
-				assistiveText={{
-					icon: 'Chart',
-				}}
-			/>
-			<SLDSButton
-				iconCategory="utility"
-				iconName="filterList"
-				variant="icon"
-				iconVariant="border"
+				iconVariant="more"
 				className="slds-m-left_xx-small"
 				assistiveText={{
-					icon: 'Filter List',
+					icon: 'Settings',
 				}}
 			/>
-			<SLDSMenuDropdown
-				assistiveText={{
-					icon: 'Sort',
-				}}
-				buttonVariant="icon"
+		</SLDSPageHeaderControl>
+		<SLDSPageHeaderControl>
+			<SLDSButton
 				iconCategory="utility"
-				iconName="sort"
+				iconName="table"
+				variant="icon"
 				iconVariant="more"
-				id="page-header-dropdown-object-home-content-right"
-				onSelect={action('select')}
-				openOn="click"
-				align="right"
-				options={[
-					{
-						label: 'Last Name (ascending)',
-						value: 'LNA',
-					},
-					{
-						label: 'Last Name (descending)',
-						value: 'LND',
-					},
-					{
-						label: 'Last Contacted (descending)',
-						value: 'LCD',
-					},
-					{
-						label: 'Last Contacted (ascending)',
-						value: 'LCA',
-					},
-				]}
+				className="slds-m-left_xx-small"
+				assistiveText={{
+					icon: 'Table',
+				}}
 			/>
-		</SLDSButtonGroup>
-	</div>
+		</SLDSPageHeaderControl>
+		<SLDSPageHeaderControl>
+			<SLDSButtonGroup>
+				<SLDSButton
+					iconCategory="utility"
+					iconName="chart"
+					variant="icon"
+					iconVariant="border"
+					assistiveText={{
+						icon: 'Chart',
+					}}
+				/>
+				<SLDSButton
+					iconCategory="utility"
+					iconName="filterList"
+					variant="icon"
+					iconVariant="border"
+					className="slds-m-left_xx-small"
+					assistiveText={{
+						icon: 'Filter List',
+					}}
+				/>
+				<SLDSMenuDropdown
+					assistiveText={{
+						icon: 'Sort',
+					}}
+					buttonVariant="icon"
+					iconCategory="utility"
+					iconName="sort"
+					iconVariant="more"
+					id="page-header-dropdown-object-home-content-right"
+					onSelect={action('select')}
+					openOn="click"
+					align="right"
+					options={[
+						{
+							label: 'Last Name (ascending)',
+							value: 'LNA',
+						},
+						{
+							label: 'Last Name (descending)',
+							value: 'LND',
+						},
+						{
+							label: 'Last Contacted (descending)',
+							value: 'LCD',
+						},
+						{
+							label: 'Last Contacted (ascending)',
+							value: 'LCA',
+						},
+					]}
+				/>
+			</SLDSButtonGroup>
+		</SLDSPageHeaderControl>
+	</>
 );
 
 const relatedListActions = () => (
-	<div>
+	<SLDSPageHeaderControl>
 		<SLDSButtonGroup>
 			<SLDSButton label="Add Contact" variant="neutral" />
 			<SLDSMenuDropdown
@@ -295,75 +306,79 @@ const relatedListActions = () => (
 				]}
 			/>
 		</SLDSButtonGroup>
-	</div>
+	</SLDSPageHeaderControl>
 );
 
 const relatedListControls = () => (
-	<div>
-		<SLDSButton
-			iconCategory="utility"
-			iconName="table"
-			variant="icon"
-			iconVariant="more"
-			className="slds-m-left_xx-small"
-			assistiveText={{
-				icon: 'Table',
-			}}
-		/>
-		<SLDSButtonGroup>
+	<>
+		<SLDSPageHeaderControl>
 			<SLDSButton
 				iconCategory="utility"
-				iconName="chart"
+				iconName="table"
 				variant="icon"
-				iconVariant="border"
-				className="slds-m-left_xx-small"
-				assistiveText={{
-					icon: 'Chart',
-				}}
-			/>
-			<SLDSButton
-				iconCategory="utility"
-				iconName="filterList"
-				variant="icon"
-				iconVariant="border"
-				className="slds-m-left_xx-small"
-				assistiveText={{
-					icon: 'Filter List',
-				}}
-			/>
-			<SLDSMenuDropdown
-				assistiveText={{
-					icon: 'Sort',
-				}}
-				buttonVariant="icon"
-				iconCategory="utility"
-				iconName="sort"
 				iconVariant="more"
-				id="page-header-dropdown-related-list-content-right"
-				onSelect={action('select')}
-				openOn="click"
-				align="right"
-				options={[
-					{
-						label: 'Last Name (ascending)',
-						value: 'LNA',
-					},
-					{
-						label: 'Last Name (descending)',
-						value: 'LND',
-					},
-					{
-						label: 'Last Contacted (descending)',
-						value: 'LCD',
-					},
-					{
-						label: 'Last Contacted (ascending)',
-						value: 'LCA',
-					},
-				]}
+				className="slds-m-left_xx-small"
+				assistiveText={{
+					icon: 'Table',
+				}}
 			/>
-		</SLDSButtonGroup>
-	</div>
+		</SLDSPageHeaderControl>
+		<SLDSPageHeaderControl>
+			<SLDSButtonGroup>
+				<SLDSButton
+					iconCategory="utility"
+					iconName="chart"
+					variant="icon"
+					iconVariant="border"
+					className="slds-m-left_xx-small"
+					assistiveText={{
+						icon: 'Chart',
+					}}
+				/>
+				<SLDSButton
+					iconCategory="utility"
+					iconName="filterList"
+					variant="icon"
+					iconVariant="border"
+					className="slds-m-left_xx-small"
+					assistiveText={{
+						icon: 'Filter List',
+					}}
+				/>
+				<SLDSMenuDropdown
+					assistiveText={{
+						icon: 'Sort',
+					}}
+					buttonVariant="icon"
+					iconCategory="utility"
+					iconName="sort"
+					iconVariant="more"
+					id="page-header-dropdown-related-list-content-right"
+					onSelect={action('select')}
+					openOn="click"
+					align="right"
+					options={[
+						{
+							label: 'Last Name (ascending)',
+							value: 'LNA',
+						},
+						{
+							label: 'Last Name (descending)',
+							value: 'LND',
+						},
+						{
+							label: 'Last Contacted (descending)',
+							value: 'LCD',
+						},
+						{
+							label: 'Last Contacted (ascending)',
+							value: 'LCA',
+						},
+					]}
+				/>
+			</SLDSButtonGroup>
+		</SLDSPageHeaderControl>
+	</>
 );
 
 const relatedListTrail = [

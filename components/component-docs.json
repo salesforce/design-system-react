@@ -11553,14 +11553,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
+                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
             },
             "onRenderControls": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
+                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
             },
             "title": {
                 "type": {

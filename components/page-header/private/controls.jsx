@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+// ## Constants
+import { PAGE_HEADER_CONTROL } from '../../../utilities/constants';
+
 const displayName = 'PageHeaderControls';
 const propTypes = {
 	/**
@@ -24,31 +27,34 @@ const defaultProps = {};
 
 class Controls extends Component {
 	render() {
-		let components;
+		let controls;
+		let vettedControls;
 
 		if (this.props.type === 'actions') {
-			components = this.props.onRenderActions
+			controls = this.props.onRenderActions
 				? this.props.onRenderActions()
 				: this.props.contentRight;
 		} else {
-			components = this.props.onRenderControls
+			controls = this.props.onRenderControls
 				? this.props.onRenderControls()
 				: this.props.navRight;
 		}
 
-		if (components) {
-			if (components.props && components.props.children) {
-				components = (
-					<>
-						{React.Children.map(components.props.children, (child) => (
-							<div className="slds-page-header__control">{child}</div>
-						))}
-					</>
-				);
-			} else {
-				components = (
-					<div className="slds-page-header__control">{components}</div>
-				);
+		if (controls) {
+			if (controls.type && controls.type.displayName === PAGE_HEADER_CONTROL) {
+				vettedControls = controls;
+			} else if (controls.props && controls.props.children) {
+				vettedControls = [];
+
+				React.Children.forEach(controls.props.children, (child) => {
+					if (
+						child &&
+						child.type &&
+						child.type.displayName === PAGE_HEADER_CONTROL
+					) {
+						vettedControls.push(child);
+					}
+				});
 			}
 
 			return (
@@ -58,7 +64,7 @@ class Controls extends Component {
 						this.props.className
 					)}
 				>
-					<div className="slds-page-header__controls">{components}</div>
+					<div className="slds-page-header__controls">{vettedControls}</div>
 				</div>
 			);
 		}

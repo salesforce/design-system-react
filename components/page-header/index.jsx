@@ -93,13 +93,15 @@ const propTypes = {
 	 */
 	nameSwitcherDropdown: PropTypes.node,
 	/**
-	 * Content to appear on the right hand side of the page header
-	 * prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead
+	 * Actions content to appear on the upper right side of the page header.
+	 * Returned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.
+	 * Prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead.
 	 */
 	onRenderActions: PropTypes.func,
 	/**
-	 * Nav content which appears in the upper right hand corner.
-	 * prop 'navRight' will be deprecated soon, use 'onRenderControls' instead
+	 * Controls content to appear on the lower right side of the page header.
+	 * Returned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.
+	 * Prop 'navRight' will be deprecated soon, use 'onRenderControls' instead.
 	 */
 	onRenderControls: PropTypes.func,
 	/**

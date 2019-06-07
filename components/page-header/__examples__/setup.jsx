@@ -1,18 +1,19 @@
 import React from 'react';
 
-import Icon from '~/components/icon';
-import IconSettings from '~/components/icon-settings';
-import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
+import Icon from '~/components/icon';
+import IconSettings from '~/components/icon-settings';
+import PageHeader from '~/components/page-header';
+import PageHeaderControl from '~/components/page-header/control';
 
 class Example extends React.Component {
 	static displayName = 'SetupPageHeaderExample';
 
 	render() {
 		const actions = () => (
-			<div>
+			<PageHeaderControl>
 				<ButtonGroup className="slds-align-middle">
 					<Button label="Create" />
 					<Dropdown
@@ -31,7 +32,7 @@ class Example extends React.Component {
 						]}
 					/>
 				</ButtonGroup>
-			</div>
+			</PageHeaderControl>
 		);
 
 		return (
