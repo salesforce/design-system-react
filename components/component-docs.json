@@ -2202,6 +2202,10 @@
                         {
                             "value": "'checkbox'",
                             "computed": false
+                        },
+                        {
+                            "value": "'list'",
+                            "computed": false
                         }
                     ]
                 },
@@ -14907,6 +14911,10 @@
                         },
                         {
                             "value": "'learnMore'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'list-item'",
                             "computed": false
                         }
                     ]
