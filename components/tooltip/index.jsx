@@ -256,8 +256,8 @@ class Tooltip extends React.Component {
 				{this.getTooltipContent()}
 			</Dialog>
 		) : (
-			<span />
-		);
+				<span />
+			);
 	}
 
 	getTooltipContent() {
@@ -331,22 +331,6 @@ class Tooltip extends React.Component {
 			display: 'inline-block',
 			...this.props.triggerStyle,
 		};
-
-		if (this.props.variant === 'list-item') {
-			return (
-				<li
-					className={classNames(
-						'slds-tooltip-trigger',
-						this.props.triggerClassName
-					)}
-					style={containerStyles}
-					ref={this.saveTriggerRef}
-				>
-					{this.getContent()}
-					{this.getTooltip()}
-				</li>
-			);
-		}
 
 		return (
 			<div

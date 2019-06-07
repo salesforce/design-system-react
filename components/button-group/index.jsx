@@ -50,9 +50,8 @@ const ButtonGroup = (props = {}) => {
 	// Merge objects of strings with their default object
 	const labels = assign({}, defaultProps.labels, props.labels);
 
-	let { children } = props;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
-
+	let { children } = props;
 	if (zeroIndexLength > 0) {
 		children = React.Children.map(props.children, (child, index) => {
 			let newChild;
@@ -102,7 +101,9 @@ const ButtonGroup = (props = {}) => {
 	if (props.variant === 'list') {
 		return (
 			<ul className={classNames('slds-button-group-list', props.className)}>
-				{children}
+				{React.Children.map(props.children, (child) => (
+					<li>{child}</li>
+				))}
 			</ul>
 		);
 	}
