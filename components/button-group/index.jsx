@@ -38,7 +38,7 @@ const propTypes = {
 	/**
 	 * Use checkbox variant for "Checkbox Button Group" styling and add Checkbox components as children _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['checkbox']),
+	variant: PropTypes.oneOf(['checkbox', 'list']),
 };
 
 const defaultProps = { labels: {} };
@@ -50,9 +50,8 @@ const ButtonGroup = (props = {}) => {
 	// Merge objects of strings with their default object
 	const labels = assign({}, defaultProps.labels, props.labels);
 
-	let { children } = props;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
-
+	let { children } = props;
 	if (zeroIndexLength > 0) {
 		children = React.Children.map(props.children, (child, index) => {
 			let newChild;
@@ -72,9 +71,7 @@ const ButtonGroup = (props = {}) => {
 				variant: 'button-group',
 			})
 		);
-	}
 
-	if (props.variant === 'checkbox') {
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
@@ -100,6 +97,15 @@ const ButtonGroup = (props = {}) => {
 			</fieldset>
 		);
 	}
+
+	if (props.variant === 'list') {
+		return (
+			<ul className={classNames('slds-button-group-list', props.className)}>
+				{React.Children.map(props.children, (child) => <li>{child}</li>)}
+			</ul>
+		);
+	}
+
 	// default
 	return (
 		<div
