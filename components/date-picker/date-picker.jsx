@@ -19,6 +19,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import Dialog from '../utilities/dialog';
+import { DIRECTIONS } from '../utilities/UNSAFE_direction';
 import CalendarWrapper from './private/calendar-wrapper';
 import InputIcon from '../icon/input-icon';
 import Input from '../input';
@@ -59,6 +60,10 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * Establishes directional context for component. Defaults to left-to-right.
+	 */
+	direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
 	/**
 	 * Disable input and calendar. _Tested with Mocha framework._
 	 */
@@ -195,6 +200,7 @@ const defaultProps = {
 		openCalendar: 'Open Calendar',
 		previousMonth: 'Previous month',
 	},
+	direction: DIRECTIONS.LTR,
 	formatter(date) {
 		return date
 			? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
@@ -308,6 +314,7 @@ class Datepicker extends React.Component {
 				assistiveTextPreviousMonth={
 					this.props.assistiveTextPreviousMonth || assistiveText.previousMonth // eslint-disable-line react/prop-types
 				}
+				direction={this.props.direction}
 				id={this.getId()}
 				isIsoWeekday={this.props.isIsoWeekday}
 				monthLabels={

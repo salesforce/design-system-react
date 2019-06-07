@@ -194,6 +194,7 @@ class DatepickerCalendar extends React.Component {
 				<Week
 					calendarHasFocus={this.state.calendarHasFocus}
 					dateDisabled={this.props.dateDisabled}
+					direction={this.props.direction}
 					firstDayOfWeek={firstDayOfWeek}
 					key={firstDayOfWeek.toString()}
 					focusedDate={this.state.focusedDate}

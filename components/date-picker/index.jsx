@@ -4,6 +4,7 @@
 // ### onClickOutside
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
+import LanguageDirection from '../utilities/UNSAFE_direction/private/language-direction';
 import Datepicker from './date-picker';
 
-export default onClickOutside(Datepicker);
+export default LanguageDirection(onClickOutside(Datepicker));

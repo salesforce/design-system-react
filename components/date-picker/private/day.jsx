@@ -14,6 +14,8 @@ import EventUtil from '../../../utilities/event';
 import DateUtil from '../../../utilities/date';
 import KEYS from '../../../utilities/key-code';
 
+import { DIRECTIONS } from '../../utilities/UNSAFE_direction';
+
 const handleClick = (event, { date, onSelectDate }) => {
 	onSelectDate(event, { date });
 };
@@ -28,6 +30,7 @@ const handleKeyDown = (
 		onKeyboardNavigateToNextDay,
 		onKeyboardNavigateToPreviousWeek,
 		onKeyboardNavigateToNextWeek,
+		direction,
 	}
 ) => {
 	const keyDownCallbacks = {
@@ -41,10 +44,18 @@ const handleKeyDown = (
 			onCalendarBlur(event, { direction: 'next' });
 		},
 		[KEYS.LEFT]: () => {
-			onKeyboardNavigateToPreviousDay(event, { date });
+			if (direction === DIRECTIONS.RTL) {
+				onKeyboardNavigateToNextDay(event, { date });
+			} else {
+				onKeyboardNavigateToPreviousDay(event, { date });
+			}
 		},
 		[KEYS.RIGHT]: () => {
-			onKeyboardNavigateToNextDay(event, { date });
+			if (direction === DIRECTIONS.RTL) {
+				onKeyboardNavigateToPreviousDay(event, { date });
+			} else {
+				onKeyboardNavigateToNextDay(event, { date });
+			}
 		},
 		[KEYS.UP]: () => {
 			onKeyboardNavigateToPreviousWeek(event, { date });
