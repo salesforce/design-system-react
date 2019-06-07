@@ -13,8 +13,8 @@ const selectedStyle = {
 
 const selectedInnerStyle = {
 	border: '1px solid white',
-	borderRadius: '2px'
-}
+	borderRadius: '2px',
+};
 
 class SwatchOption extends React.Component {
 	static displayName = 'SLDSSwatchOption';
@@ -46,7 +46,8 @@ class SwatchOption extends React.Component {
 					ref={this.props.swatchOptionRef}
 					role="option"
 					style={
-						this.props.workingColor && this.props.workingColor === this.props.color
+						this.props.workingColor &&
+						this.props.workingColor === this.props.color
 							? selectedInnerStyle
 							: {}
 					}
