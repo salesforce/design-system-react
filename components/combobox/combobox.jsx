@@ -319,12 +319,14 @@ const propTypes = {
 	/**
 	 * Object for creating new item on top of the options
 	 */
-	optionsSearchEntity: PropTypes.shape({
-		id: PropTypes.string,
-		icon: PropTypes.node,
-		label: PropTypes.string,
-		onClick: PropTypes.func,
-	}),
+	optionsSearchEntity: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			onClick: PropTypes.func,
+		})
+	),
 	/**
 	 * Element which should be Combobox for creating grouped comboboxes
 	 */
@@ -350,8 +352,8 @@ const defaultProps = {
 	},
 	inheritWidthOf: 'target',
 	menuPosition: 'absolute',
-	optionsSearchEntity: {},
-	optionsAddItem: {},
+	optionsSearchEntity: [],
+	optionsAddItem: [],
 	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
@@ -560,12 +562,12 @@ class Combobox extends React.Component {
 	getOptions = (props) => {
 		const localProps = props || this.props;
 		const options = [];
-		if (Object.keys(localProps.optionsSearchEntity).length > 0) {
-			options.push(localProps.optionsSearchEntity);
+		if (localProps.optionsSearchEntity.length > 0) {
+			options.push(...localProps.optionsSearchEntity);
 		}
 		options.push(...localProps.options);
-		if (Object.keys(localProps.optionsAddItem).length > 0) {
-			options.push(localProps.optionsAddItem);
+		if (localProps.optionsAddItem.length > 0) {
+			options.push(...localProps.optionsAddItem);
 		}
 		return options;
 	}

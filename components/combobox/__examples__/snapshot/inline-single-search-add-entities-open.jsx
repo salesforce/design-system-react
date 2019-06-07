@@ -55,7 +55,7 @@ class Example extends React.Component {
 				<Combobox
 					isOpen
 					id="combobox-unique-id"
-					optionsSearchEntity={{
+					optionsSearchEntity={[{
 						id: 'my-new-id',
 						icon: (
 							<Icon
@@ -67,8 +67,8 @@ class Example extends React.Component {
 						),
 						label: 'salesforce',
 						onClick: (event) => console.log('onClick', event),
-					}}
-					optionsAddItem={{
+					}]}
+					optionsAddItem={[{
 						id: 'my-new-id',
 						icon: (
 							<Icon
@@ -80,7 +80,7 @@ class Example extends React.Component {
 						),
 						label: 'New Entity',
 						onClick: (event) => console.log('onClick', event),
-					}}
+					}]}
 					events={{
 						onChange: (event, { value }) => {
 							console.log('onChange', event, value);

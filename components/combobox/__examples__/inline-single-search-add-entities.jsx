@@ -54,7 +54,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
-					optionsSearchEntity={{
+					optionsSearchEntity={[{
 						id: 'my-new-id',
 						icon: (
 							<Icon
@@ -72,8 +72,8 @@ class Example extends React.Component {
 								console.log('onClick', event);
 							}
 						},
-					}}
-					optionsAddItem={{
+					}]}
+					optionsAddItem={[{
 						id: 'my-new-id',
 						icon: (
 							<Icon
@@ -91,7 +91,7 @@ class Example extends React.Component {
 								console.log('onClick', event);
 							}
 						},
-					}}
+					}]}
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {

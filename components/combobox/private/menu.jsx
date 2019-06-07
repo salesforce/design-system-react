@@ -107,21 +107,25 @@ const propTypes = {
 	/*
 	 * Object for creating Add item below the options
 	 */
-	optionsAddItem: PropTypes.shape({
-		id: PropTypes.string,
-		icon: PropTypes.node,
-		label: PropTypes.string,
-		onClick: PropTypes.func,
-	}),
+	optionsAddItem: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			onClick: PropTypes.func,
+		})
+	),
 	/*
 	 * Object for creating Search item on top of the options
 	 */
-	optionsSearchEntity: PropTypes.shape({
-		id: PropTypes.string,
-		icon: PropTypes.node,
-		label: PropTypes.string,
-		onClick: PropTypes.func,
-	}),
+	optionsSearchEntity: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			icon: PropTypes.node,
+			label: PropTypes.string,
+			onClick: PropTypes.func,
+		})
+	),
 	/**
 	 * Acepts a tooltip that is displayed when hovering on disabled menu items.
 	 */
@@ -140,14 +144,14 @@ const defaultProps = {
 
 const getOptions = (props) => {
 	const options = [];
-	if (Object.keys(props.optionsSearchEntity).length > 0) {
-		props.optionsSearchEntity.type = 'header';
-		options.push(props.optionsSearchEntity);
+	if (props.optionsSearchEntity.length > 0) {
+		props.optionsSearchEntity.map((entity) => ({...entity, type: 'header'}));
+		options.push(...props.optionsSearchEntity);
 	}
 	options.push(...props.options);
-	if (Object.keys(props.optionsAddItem).length > 0) {
-		props.optionsAddItem.type = 'footer';
-		options.push(props.optionsAddItem);
+	if (props.optionsAddItem.length > 0) {
+		props.optionsAddItem.map((entity) => ({...entity, type: 'footer'}));
+		options.push(...props.optionsAddItem);
 	}
 	return options;
 }
@@ -196,11 +200,11 @@ const Menu = (props) => {
 				/>
 			);
 		} else if (optionData.type === 'header') {
-			return (<li role="presentation" className="slds-listbox__item">
+			return (<li key={`menu-header-${optionsSearchEntity[index].id}}`} role="presentation" className="slds-listbox__item">
 					<div
-						onClick={(event) => optionsSearchEntity.onClick(event)}
+						onClick={(event) => optionsSearchEntity[index].onClick(event)}
 						aria-selected="false"
-						id={optionsSearchEntity.id}
+						id={optionsSearchEntity[index].id}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -209,19 +213,19 @@ const Menu = (props) => {
 						role="option"
 					>
 						<span className="slds-media__figure ">
-							{optionsSearchEntity.icon}
+							{optionsSearchEntity[index].icon}
 						</span>
 						<span className="slds-media__body">
-							{optionsSearchEntity.label}
+							{optionsSearchEntity[index].label}
 						</span>
 					</div>
 				</li>)
 		} else if (optionData.type === 'footer') {
-			return (<li role="presentation" className="slds-listbox__item">
+			return (<li key={`menu-header-${optionsAddItem[index].id}}`} role="presentation" className="slds-listbox__item">
 					<div
 						aria-selected="false"
-						onClick={(event) => optionsAddItem.onClick(event)}
-						id={optionsAddItem.id}
+						onClick={(event) => optionsAddItem[index].onClick(event)}
+						id={optionsAddItem[index].id}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -229,8 +233,8 @@ const Menu = (props) => {
 						)}
 						role="option"
 					>
-						<span className="slds-media__figure ">{optionsAddItem.icon}</span>
-						<span className="slds-media__body">{optionsAddItem.label}</span>
+						<span className="slds-media__figure ">{optionsAddItem[index].icon}</span>
+						<span className="slds-media__body">{optionsAddItem[index].label}</span>
 					</div>
 				</li>);
 		}
