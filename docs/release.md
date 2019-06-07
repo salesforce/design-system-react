@@ -19,7 +19,7 @@ In your project's `package.json`, please update your dependency to the tag you r
 ## Release with build server (preferred)
 
 1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
-1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you, push back to the library repository.
+1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you, push back to the library repository. This is a [convenient list](https://github.com/salesforce/design-system-react/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc) of pull requests.
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
 ### Manual release

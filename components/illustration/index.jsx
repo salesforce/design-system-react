@@ -52,7 +52,14 @@ const Illustration = ({
 		componentDoc
 	);
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
+	const styles = { ...style };
 	let illustrationSvg;
+
+	// large illustration svg should have a default height of 400px if not already specified
+	if (size === 'large' && !styles.height) {
+		styles.height = '400px';
+	}
+
 	if (illustration) {
 		// Use SVG data passed in with `illustration` prop
 		illustrationSvg = (
@@ -61,7 +68,7 @@ const Illustration = ({
 				aria-hidden="true"
 				data={illustration}
 				name={kababCaseName}
-				style={style}
+				style={styles}
 			/>
 		);
 	} else if (path) {
@@ -70,16 +77,13 @@ const Illustration = ({
 				className="slds-illustration__svg"
 				aria-hidden="true"
 				name={kababCaseName}
-				style={style}
+				style={styles}
 			>
 				<use xlinkHref={path} />
 			</svg>
 		);
 	}
-	// large illustration svg should have a default height of 400px if not already specified
-	if (illustrationSvg && size === 'large' && !style.height) {
-		style.height = '400px';
-	}
+
 	return (
 		<div
 			className={classNames(className, 'slds-illustration', {

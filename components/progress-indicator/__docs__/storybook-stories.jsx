@@ -8,6 +8,8 @@ import { PROGRESS_INDICATOR } from '../../../utilities/constants';
 import Default from '../__examples__/default';
 import Modal from '../__examples__/modal';
 import StepError from '../__examples__/step-error';
+import VerticalProgressIndicator from '../__examples__/vertical';
+import SetupAssistant from '../__examples__/setup-assistant';
 
 const steps = [
 	{
@@ -108,14 +110,7 @@ storiesOf(PROGRESS_INDICATOR, module)
 			}}
 		/>
 	))
-	.add('Vertical', () => (
-		<ExampleProgressIndicator
-			steps={manySteps}
-			selectedStep={manySteps[4]}
-			completedSteps={manySteps.slice(0, 4)}
-			orientation="vertical"
-		/>
-	))
+	.add('Vertical', () => <VerticalProgressIndicator />)
 	.add('VerticalStepError', () => (
 		<StepError
 			id="example-progress-indicator"
@@ -124,4 +119,5 @@ storiesOf(PROGRESS_INDICATOR, module)
 			errorSteps={manySteps.slice(4, 5)}
 			orientation="vertical"
 		/>
-	));
+	))
+	.add('SetupAssistant', () => <SetupAssistant />);

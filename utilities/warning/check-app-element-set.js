@@ -6,10 +6,10 @@ import warning from 'warning';
 import Settings from '../../components/settings';
 import { canUseDOM } from '../execution-environment';
 
-let checkAppElementIsSet = function() {};
+let checkAppElementIsSet = function checkAppElementIsSetFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkAppElementIsSet = function() {
+	checkAppElementIsSet = function checkAppElementIsSetFunction() {
 		const appElement = Settings.getAppElement();
 		/* eslint-disable max-len */
 		warning(

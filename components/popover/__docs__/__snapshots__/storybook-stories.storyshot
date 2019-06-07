@@ -979,7 +979,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
       >
         Trigger Popover
       </button>
-      <div
+      <section
         aria-describedby="popover-custom-target-dialog-body"
         aria-labelledby="popover-custom-target-dialog-heading"
         className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover"
@@ -1035,7 +1035,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-      </div>
+      </section>
     </div>
     <div
       style={
@@ -1115,6 +1115,247 @@ exports[`DOM snapshots SLDSPopover Custom Target 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-controls="edit-dialog-popover-edit-button"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={false}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+      <section
+        aria-describedby="edit-dialog-popover-dialog-body"
+        aria-labelledby="Edit Name"
+        className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover"
+        id="edit-dialog-popover-popover"
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        role="dialog"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+        tabIndex="-1"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Close dialog
+          </span>
+        </button>
+        <div
+          className="slds-popover__body slds-p-bottom_xx-small"
+          id="edit-dialog-popover-dialog-body"
+        >
+          <div
+            className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small"
+          >
+            <div
+              className="slds-form-element"
+            >
+              <label
+                className="slds-form-element__label"
+                htmlFor="first-name"
+              >
+                First Name
+              </label>
+              <div
+                className="slds-form-element__control"
+              >
+                <input
+                  className="slds-input"
+                  id="first-name"
+                  onChange={[Function]}
+                  type="text"
+                  value="John"
+                />
+              </div>
+            </div>
+            <div
+              className="slds-form-element"
+            >
+              <label
+                className="slds-form-element__label"
+                htmlFor="last-name"
+              >
+                Last Name
+              </label>
+              <div
+                className="slds-form-element__control"
+              >
+                <input
+                  className="slds-input"
+                  id="last-name"
+                  onChange={[Function]}
+                  type="text"
+                  value="Smith"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer
+          className="slds-popover__footer slds-p-top_xxx-small slds-p-bottom_xx-small slds-p-right_large"
+          style={
+            Object {
+              "borderTop": "0px",
+            }
+          }
+        >
+          <div
+            className="slds-text-align_right slds-text-align_right slds-p-bottom_x-small slds-p-right_xx-small"
+          >
+            <button
+              className="slds-button slds-button_neutral"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              className="slds-button slds-button_brand"
+              disabled={true}
+              onClick={[Function]}
+              type="button"
+            >
+              Save
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Edit Dialog 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-controls="edit-dialog-popover-edit-button"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={false}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
 <div
   className="slds-p-around_medium slds-m-horizontal_x-large"
@@ -1145,7 +1386,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_error"
@@ -1267,7 +1508,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
           }
         />
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -1373,7 +1614,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
       >
         Trigger Popover
       </button>
-      <div
+      <section
         aria-describedby="myPopoverId-dialog-body"
         aria-labelledby="myPopoverId-dialog-heading"
         className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover sample-classname"
@@ -1428,7 +1669,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -1464,7 +1705,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-walkthrough-dialog-body"
       aria-labelledby="popover-walkthrough-dialog-heading"
       className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover slds-popover_walkthrough"
@@ -1550,7 +1791,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
           </div>
         </div>
       </footer>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -1619,7 +1860,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-walkthrough-dialog-body"
       aria-labelledby="popover-walkthrough-dialog-heading"
       className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover slds-popover_walkthrough slds-popover_walkthrough-alt"
@@ -1698,7 +1939,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;
@@ -1767,7 +2008,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
     >
       Trigger Popover
     </button>
-    <div
+    <section
       aria-describedby="popover-error-dialog-body"
       aria-labelledby="popover-error-dialog-heading"
       className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_warning"
@@ -1889,7 +2130,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
           }
         />
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;

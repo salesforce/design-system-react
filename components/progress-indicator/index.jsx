@@ -104,7 +104,7 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal']),
+	variant: PropTypes.oneOf(['base', 'modal', 'setup-assistant']),
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
@@ -156,14 +156,23 @@ function checkSteps(steps) {
 }
 
 /**
- * Check if an item is from an array of items when 'items' is an array;
- * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
+ * Check if an item is from an array of items.
+ * If items argument is not an array, it will be treated as an object comparison between item & items.
  */
 function findStep(item, items) {
-	if (Array.isArray(items)) {
-		return !!find(items, item);
-	}
-	return JSON.stringify(item) === JSON.stringify(items);
+	if (!item || !items) return false;
+
+	const itemsArray = !Array.isArray(items) ? [items] : items;
+
+	return !!find(itemsArray, (arrayItem) => {
+		if (arrayItem === item) {
+			return true;
+		}
+		if (arrayItem.id !== undefined && item.id !== undefined) {
+			return arrayItem.id === item.id;
+		}
+		return JSON.stringify(arrayItem) === JSON.stringify(item);
+	});
 }
 
 /**
@@ -218,18 +227,21 @@ class ProgressIndicator extends React.Component {
 			}
 		}
 
+		const orientation =
+			this.props.variant === 'setup-assistant'
+				? 'vertical'
+				: this.props.orientation;
 		// Set default tooltipPosition
 		const tooltipPosition =
 			this.props.tooltipPosition ||
 			(this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
-		const StepComponent =
-			this.props.orientation === 'vertical' ? StepVertical : Step;
+		const StepComponent = orientation === 'vertical' ? StepVertical : Step;
 		/** 2. return DOM */
 		return (
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
-				orientation={this.props.orientation}
+				orientation={orientation}
 				value={
 					currentStep === 0
 						? '0'
@@ -253,6 +265,7 @@ class ProgressIndicator extends React.Component {
 						step={step}
 						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
 						tooltipPosition={tooltipPosition}
+						variant={this.props.variant}
 					/>
 				))}
 			</Progress>

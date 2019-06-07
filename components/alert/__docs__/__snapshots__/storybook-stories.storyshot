@@ -2,7 +2,7 @@
 
 exports[`DOM snapshots SLDSAlert Close alert 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div>
     <button
@@ -22,7 +22,7 @@ exports[`DOM snapshots SLDSAlert Close alert 1`] = `
 
 exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container this-is-the-container"
@@ -66,7 +66,7 @@ exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
 
 exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container this-is-the-container"
@@ -115,7 +115,7 @@ exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
 
 exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -180,7 +180,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
 
 exports[`DOM snapshots SLDSAlert Error 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -224,7 +224,7 @@ exports[`DOM snapshots SLDSAlert Error 1`] = `
 
 exports[`DOM snapshots SLDSAlert Info 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -268,7 +268,7 @@ exports[`DOM snapshots SLDSAlert Info 1`] = `
 
 exports[`DOM snapshots SLDSAlert Offline 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -312,7 +312,7 @@ exports[`DOM snapshots SLDSAlert Offline 1`] = `
 
 exports[`DOM snapshots SLDSAlert Warning 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"

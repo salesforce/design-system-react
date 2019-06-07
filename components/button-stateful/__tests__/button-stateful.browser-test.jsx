@@ -5,7 +5,6 @@ import assign from 'lodash.assign';
 import chai from 'chai';
 
 import IconSettings from '../../icon-settings';
-import Icon from '../../icon';
 import ButtonStateful from '../../button-stateful';
 
 chai.should();
@@ -21,7 +20,7 @@ describe('Button Stateful: ', () => {
 
 	// Setup and takedown
 	const renderButton = (instance) =>
-		function() {
+		function renderButtonFunction() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
