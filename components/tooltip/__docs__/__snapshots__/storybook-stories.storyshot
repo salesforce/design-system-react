@@ -1944,97 +1944,103 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
   <ul
     className="slds-button-group-list slds-p-bottom_medium"
   >
-    <li
-      className="slds-tooltip-trigger"
-      style={
-        Object {
-          "display": "inline-block",
-        }
-      }
-    >
-      <button
-        aria-describedby="refresh-tooltip"
-        className="slds-button slds-button_neutral"
-        disabled={false}
-        id="refresh-button"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        type="button"
-      >
-        Refresh
-      </button>
-      <span />
-    </li>
-    <li
-      className="slds-tooltip-trigger"
-      style={
-        Object {
-          "display": "inline-block",
-        }
-      }
-    >
-      <button
-        aria-describedby="edit-tooltip"
-        className="slds-button slds-button_neutral"
-        disabled={false}
-        id="edit-button"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        type="button"
-      >
-        Edit
-      </button>
-      <span />
-    </li>
-    <li
-      className="slds-tooltip-trigger slds-button_last"
-      style={
-        Object {
-          "display": "inline-block",
-        }
-      }
-    >
+    <li>
       <div
-        className="slds-dropdown-trigger slds-dropdown-trigger_click"
-        id="options"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={null}
-        onKeyDown={[Function]}
-        onMouseEnter={null}
-        onMouseLeave={null}
+        className="slds-tooltip-trigger"
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
       >
         <button
-          aria-expanded={false}
-          aria-haspopup={true}
-          className="slds-button slds-button_icon-border-filled ignore-click-options"
+          aria-describedby="refresh-tooltip"
+          className="slds-button slds-button_neutral"
           disabled={false}
+          id="refresh-button"
+          onBlur={[Function]}
           onClick={[Function]}
-          tabIndex="0"
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
           type="button"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            More Options
-          </span>
+          Refresh
         </button>
+        <span />
       </div>
-      <span />
+    </li>
+    <li>
+      <div
+        className="slds-tooltip-trigger"
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-describedby="edit-tooltip"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="edit-button"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          type="button"
+        >
+          Edit
+        </button>
+        <span />
+      </div>
+    </li>
+    <li>
+      <div
+        className="slds-tooltip-trigger"
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click"
+          id="options"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-border-filled ignore-click-options"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              More Options
+            </span>
+          </button>
+        </div>
+        <span />
+      </div>
     </li>
   </ul>
 </div>

@@ -101,9 +101,7 @@ const ButtonGroup = (props = {}) => {
 	if (props.variant === 'list') {
 		return (
 			<ul className={classNames('slds-button-group-list', props.className)}>
-				{React.Children.map(props.children, (child) => (
-					<li>{child}</li>
-				))}
+				{React.Children.map(props.children, (child) => <li>{child}</li>)}
 			</ul>
 		);
 	}

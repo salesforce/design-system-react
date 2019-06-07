@@ -256,8 +256,8 @@ class Tooltip extends React.Component {
 				{this.getTooltipContent()}
 			</Dialog>
 		) : (
-				<span />
-			);
+			<span />
+		);
 	}
 
 	getTooltipContent() {
