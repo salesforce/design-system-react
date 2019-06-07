@@ -12,6 +12,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/walkthrough.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/walkthrough-action.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/warning.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/edit-dialog.jsx'),
 ];
 
 module.exports = siteStories;

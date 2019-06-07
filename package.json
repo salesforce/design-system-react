@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.0",
+	"version": "0.10.4",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -12,14 +12,14 @@
 		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
-		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
+		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production; ./scripts/heroku-postbuild.sh",
 		"icons": "npx babel-node scripts/inline-icons.js",
 		"link": "./scripts/npm-link.sh",
 		"lint": "npx concurrently \"npm:lint:style\" \"npm:lint:quality\"",
 		"lint:docs": "npx prettylint \"*.md\"",
 		"lint:fix": "cross-env NODE_ENV=test npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx concurrently \"npx prettier --list-different \"**/*.{js,jsx}\"\" \"npx prettylint \"*.json\"\"",
-		"lint:quality": "npx concurrently \"npx eslint \"**/*.{jsx,js,json}\" --max-warnings=0\"",
+		"lint:quality": "npx eslint \"**/*.{jsx,js,json}\" --max-warnings=0",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
 		"publish:edge": "npx babel-node scripts/publish-to-git.js --tag=edge",
 		"publish:upstream": "npx babel-node scripts/publish-to-git.js --remote=upstream",
@@ -36,7 +36,7 @@
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
 		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
-		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --update-snapshot --config=tests/snapshots-config.json",
+		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --updateSnapshot --config=tests/snapshots-config.json",
 		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
@@ -111,7 +111,7 @@
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.3.4",
 		"@babel/preset-react": "^7.0.0",
-		"@salesforce-ux/design-system": "^2.6.0",
+		"@salesforce-ux/design-system": "^2.8.3",
 		"@salesforce-ux/icons": "7.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^3.4.10",
@@ -138,15 +138,16 @@
 		"enzyme": "^3.8.0",
 		"enzyme-adapter-react-16": "^1.9.1",
 		"eslint": "^4.19.1",
-		"eslint-config-airbnb": "16.1.0",
+		"eslint-config-airbnb": "^17.1.0",
 		"eslint-config-prettier": "^3.0.1",
 		"eslint-loader": "^1.6.0",
 		"eslint-plugin-filenames": "^1.2.0",
-		"eslint-plugin-import": "^2.11.0",
 		"eslint-plugin-json": "^1.2.0",
-		"eslint-plugin-jsx-a11y": "^6.0.3",
 		"eslint-plugin-prefer-object-spread": "^1.2.1",
-		"eslint-plugin-react": "^7.7.0",
+		"eslint-find-rules": "^3.3.1",
+		"eslint-plugin-import": "^2.16.0",
+		"eslint-plugin-jsx-a11y": "^6.2.1",
+		"eslint-plugin-react": "^7.12.4",
 		"express": "^4.15.5",
 		"file-loader": "^0.11.0",
 		"find-remove": "^1.1.0",
@@ -233,12 +234,15 @@
 		},
 		{
 			"component": "app-launcher",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "App Launcher",
-			"SLDS-component-path": "/components/app-launcher/#flavor-default",
+			"SLDS-component-path": "/components/app-launcher",
 			"dependencies": [
 				{
-					"component": "section"
+					"component": "expandable-section"
+				},
+				{
+					"component": "link"
 				},
 				{
 					"component": "tile"
@@ -278,6 +282,27 @@
 			},
 			"SLDS-component-path": "/components/breadcrumbs",
 			"url-slug": "breadcrumbs"
+		},
+		{
+			"component": "builder-header",
+			"status": "prod",
+			"display-name": "Builder Header",
+			"SLDS-component-path": "/components/builder-header",
+			"dependencies": [
+				{
+					"component": "nav"
+				},
+				{
+					"component": "nav-dropdown"
+				},
+				{
+					"component": "nav-link"
+				},
+				{
+					"component": "toolbar"
+				}
+			],
+			"url-slug": "builder-header"
 		},
 		{
 			"component": "button",
@@ -325,7 +350,7 @@
 		},
 		{
 			"component": "carousel",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Carousel",
 			"SLDS-component-path": "/components/carousel",
 			"url-slug": "carousel"
@@ -395,6 +420,20 @@
 			},
 			"SLDS-component-path": "/components/datepickers",
 			"url-slug": "date-pickers"
+		},
+		{
+			"component": "dynamic-icon",
+			"status": "prod",
+			"display-name": "Dynamic Icon",
+			"SLDS-component-path": "/components/dynamic-icon",
+			"url-slug": "dynamic-icon"
+		},
+		{
+			"component": "expandable-section",
+			"status": "prod",
+			"display-name": "Expandable Section",
+			"SLDS-component-path": "/components/expandable-section",
+			"url-slug": "expandable-section"
 		},
 		{
 			"component": "filter",
@@ -590,6 +629,13 @@
 			"url-slug": "progress-indicators"
 		},
 		{
+			"component": "progress-bar",
+			"status": "prod",
+			"display-name": "Progress Bars",
+			"SLDS-component-path": "/components/progress-bar",
+			"url-slug": "progress-bars"
+		},
+		{
 			"component": "progress-ring",
 			"status": "prod",
 			"display-name": "Progress Rings",
@@ -659,6 +705,13 @@
 			},
 			"SLDS-component-path": "/components/radio-button-group",
 			"url-slug": "radio-button-groups"
+		},
+		{
+			"component": "scoped-notification",
+			"status": "prod",
+			"display-name": "Scoped Notifications",
+			"SLDS-component-path": "/components/scoped-notification",
+			"url-slug": "scoped-notifications"
 		},
 		{
 			"component": "slider",

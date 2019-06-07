@@ -29,9 +29,9 @@ const items = [
 	{
 		buttonLabel: 'Get Started',
 		id: 3,
-		heading: 'Download SalesforceA',
+		heading: 'Download Salesforce Apps',
 		description: "Get the mobile app that's just for Salesforce admins.",
-		imageAssistiveText: 'SalesforceA',
+		imageAssistiveText: 'Salesforce Apps',
 		src: '/assets/images/carousel/carousel-03.jpg',
 		href: 'https://www.salesforce.com',
 	},
@@ -58,7 +58,7 @@ const items = [
 		id: 6,
 		heading: 'Carousel Item 6',
 		description: 'Description for carousel item #6',
-		imageAssistiveText: 'SalesforceA',
+		imageAssistiveText: 'Salesforce Apps',
 		src: '/assets/images/carousel/carousel-03.jpg',
 		href: 'https://www.salesforce.com',
 	},
@@ -104,7 +104,7 @@ class Example extends React.Component {
 					className="slds-button_outline-brand slds-m-around_small"
 					label="Button1"
 					onClick={(event) => {
-						onButtonClick(event, item);
+						onButtonClick(event);
 					}}
 					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
 				/>
@@ -112,7 +112,7 @@ class Example extends React.Component {
 					className="slds-button_outline-brand slds-m-around_small"
 					label="Button2"
 					onClick={(event) => {
-						onButtonClick(event, item);
+						onButtonClick(event);
 					}}
 					tabIndex={item.isInCurrentPanel ? '0' : '-1'}
 				/>

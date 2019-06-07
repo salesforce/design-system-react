@@ -1,9 +1,10 @@
+/* eslint-disable import/no-useless-path-segments */
 /*
  * STORY-BASED SNAPSHOT TESTING
  *
  * Please add stories below to use Storybook Stories (http://localhost:9001)
  * as the basis for DOM and image snapshots to allow markup and visual
- *  regression testing. All new components should be added below to enable 
+ *  regression testing. All new components should be added below to enable
  * DOM and image snapshots. With enough Storybook story examples, these two
  * methods should be significant to fully test components with the exception
  * of callback testing. Please test callback props with the Mocha framework
@@ -21,6 +22,7 @@ export Alert from '../components/alert/__docs__/storybook-stories';
 export Avatar from '../components/avatar/__docs__/storybook-stories';
 export BrandBand from '../components/brand-band/__docs__/storybook-stories';
 export Breadcrumb from '../components/breadcrumb/__docs__/storybook-stories';
+export BuilderHeader from '../components/builder-header/__docs__/storybook-stories';
 export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
@@ -29,8 +31,10 @@ export Carousel from '../components/carousel/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
+export ExpandableSection from '../components/expandable-section/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
+export DynamicIcon from '../components/dynamic-icon/__docs__/storybook-stories';
 // export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export GlobalHeader from '../components/global-header/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
@@ -42,11 +46,14 @@ export PageHeader from '../components/page-header/__docs__/storybook-stories';
 export PillContainer from '../components/pill-container/__docs__/storybook-stories';
 export Popover from '../components/popover/__docs__/storybook-stories';
 export ProgressIndicator from '../components/progress-indicator/__docs__/storybook-stories';
+export ProgressBar from '../components/progress-bar/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
-// export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
+export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
+export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
 // export Search from '../components/input/__docs__/search/storybook-stories';
+export SetupAssistant from '../components/setup-assistant/__docs__/storybook-stories';
 // export Slider from '../components/slider/__docs__/storybook-stories';
 // export SplitView from '../components/split-view/__docs__/storybook-stories';
 // export Tabs from '../components/tabs/__docs__/storybook-stories';

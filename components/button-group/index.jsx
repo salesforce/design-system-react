@@ -46,13 +46,12 @@ const defaultProps = { labels: {} };
 /**
  * The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).
  */
-const ButtonGroup = (props) => {
+const ButtonGroup = (props = {}) => {
 	// Merge objects of strings with their default object
-	const labels = props
-		? assign({}, defaultProps.labels, props.labels)
-		: defaultProps.labels;
+	const labels = assign({}, defaultProps.labels, props.labels);
+
+	let { children } = props;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
-	let children = props.children;
 
 	if (zeroIndexLength > 0) {
 		children = React.Children.map(props.children, (child, index) => {

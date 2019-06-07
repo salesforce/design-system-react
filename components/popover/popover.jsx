@@ -2,7 +2,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Popver Component
+// # Popover Component
 
 // Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
 
@@ -128,9 +128,17 @@ class Popover extends React.Component {
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
-		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it.
 		 */
-		className: PropTypes.oneOfType([
+		classNameBody: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it.
+		 */
+		classNameFooter: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string,
@@ -144,13 +152,9 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
-		 * CSS classes to be added to the `footer` of the popover.
+		 * An object of CSS styles that are applied to the `slds-popover__footer` DOM element.
 		 */
-		footerClassName: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string,
-		]),
+		footerStyle: PropTypes.object,
 		/**
 		 * Used with `walkthrough` variant to provide action buttons (ex: "Next" / "Skip" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons.
 		 */
@@ -468,8 +472,8 @@ class Popover extends React.Component {
 	};
 
 	renderDialog = (isOpen, outsideClickIgnoreClass) => {
-		const props = this.props;
-		const offset = props.offset;
+		const { props } = this;
+		const { offset } = props;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -537,7 +541,10 @@ class Popover extends React.Component {
 				<div>
 					<div
 						id={`${this.getId()}-dialog-body`}
-						className="slds-popover__body slds-popover__body_scrollable"
+						className={classNames(
+							'slds-popover__body slds-popover__body_scrollable',
+							this.props.classNameBody
+						)}
 						// REMOVE IN THE FUTURE: SLDS OVERRIDE
 						// Possible solution in future is to use .slds-popover__body_small
 						style={{
@@ -566,7 +573,10 @@ class Popover extends React.Component {
 			);
 		} else if (props.variant === 'walkthrough-action') {
 			body = (
-				<div className="slds-popover__body" id={`${this.getId()}-dialog-body`}>
+				<div
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+					id={`${this.getId()}-dialog-body`}
+				>
 					<div className="slds-media">
 						<div className="slds-media__figure">
 							<Icon
@@ -593,7 +603,10 @@ class Popover extends React.Component {
 		} else {
 			body = (
 				// DEFAULT - NOT SCROLLABLE
-				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+				<div
+					id={`${this.getId()}-dialog-body`}
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+				>
 					{props.body}
 				</div>
 			);
@@ -607,8 +620,10 @@ class Popover extends React.Component {
 				<footer
 					className={classNames(
 						'slds-popover__footer',
+						this.props.classNameFooter,
 						this.props.footerClassName
 					)}
+					style={this.props.footerStyle}
 				>
 					{this.props.footer}
 				</footer>
