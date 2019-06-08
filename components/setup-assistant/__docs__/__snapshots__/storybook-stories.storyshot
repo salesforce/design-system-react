@@ -1497,6 +1497,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
     >
       <div
         id="card-setup-assistant-progress-bar"
+        style={null}
       >
         <div
           className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"

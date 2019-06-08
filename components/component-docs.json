@@ -4243,27 +4243,6 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
-            "direction": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "DIRECTIONS.LTR",
-                            "computed": true
-                        },
-                        {
-                            "value": "DIRECTIONS.RTL",
-                            "computed": true
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Establishes directional context for component. Defaults to left-to-right.",
-                "defaultValue": {
-                    "value": "DIRECTIONS.LTR",
-                    "computed": true
-                }
-            },
             "events": {
                 "type": {
                     "name": "shape",
@@ -4670,6 +4649,13 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "direction": {
+                "defaultValue": {
+                    "value": "DIRECTIONS.LTR",
+                    "computed": true
+                },
+                "required": false
             }
         },
         "context": {
@@ -12029,6 +12015,27 @@
                 },
                 "required": true,
                 "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Orientation of the progress bar to be used",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
             }
         },
         "route": "progress-bars",

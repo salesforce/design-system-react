@@ -50,12 +50,17 @@ const propTypes = {
 	 * Percentage of progress completion, ranging [0, 100].
 	 */
 	value: PropTypes.number.isRequired,
+	/**
+	 * Orientation of the progress bar to be used
+	 */
+	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
 const defaultProps = {
 	labels: {
 		complete: 'Complete',
 	},
+	orientation: 'horizontal',
 };
 
 /**
@@ -101,8 +106,14 @@ class ProgressBar extends React.Component {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 
 		return (
-			<div id={this.getId()}>
-				{this.getDescription({ labels })}
+			<div
+				id={this.getId()}
+				style={
+					this.props.orientation === 'vertical' ? { height: '200px' } : null
+				}
+			>
+				{this.props.orientation === 'horizontal' &&
+					this.getDescription({ labels })}
 				<div
 					className={classNames(
 						'slds-progress-bar',
@@ -110,7 +121,11 @@ class ProgressBar extends React.Component {
 						this.props.thickness
 							? `slds-progress-bar_${this.props.thickness}`
 							: null,
-						this.props.className
+						this.props.className,
+						{
+							'slds-progress-bar_vertical':
+								this.props.orientation === 'vertical',
+						}
 					)}
 				>
 					<span
@@ -120,9 +135,15 @@ class ProgressBar extends React.Component {
 								? `slds-progress-bar__value_${this.props.color}`
 								: null
 						)}
-						style={{
-							width: `${this.props.value}%`,
-						}}
+						style={
+							this.props.orientation === 'vertical'
+								? {
+										height: `${this.props.value}%`,
+									}
+								: {
+										width: `${this.props.value}%`,
+									}
+						}
 					>
 						<span className="slds-assistive-text">
 							Progress: {`${this.props.value}%`}

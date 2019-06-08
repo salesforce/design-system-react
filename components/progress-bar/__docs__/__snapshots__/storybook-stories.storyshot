@@ -10,6 +10,7 @@ exports[`DOM snapshots SLDSProgressBar Color 1`] = `
     </span>
     <div
       id="progress-bar-success"
+      style={null}
     >
       
       <div
@@ -43,6 +44,7 @@ exports[`DOM snapshots SLDSProgressBar Default 1`] = `
   <div>
     <div
       id="progress-bar"
+      style={null}
     >
       
       <div
@@ -76,6 +78,7 @@ exports[`DOM snapshots SLDSProgressBar Descriptive 1`] = `
   <div>
     <div
       id="setup-progress-bar"
+      style={null}
     >
       <div
         className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
@@ -128,6 +131,7 @@ exports[`DOM snapshots SLDSProgressBar Radius 1`] = `
     </span>
     <div
       id="progress-bar-circular"
+      style={null}
     >
       
       <div
@@ -164,6 +168,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
     </span>
     <div
       id="progress-bar-x-small"
+      style={null}
     >
       
       <div
@@ -192,6 +197,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
     </span>
     <div
       id="progress-bar-small"
+      style={null}
     >
       
       <div
@@ -220,6 +226,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
     </span>
     <div
       id="progress-bar-medium"
+      style={null}
     >
       
       <div
@@ -248,6 +255,7 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
     </span>
     <div
       id="progress-bar-large"
+      style={null}
     >
       
       <div
@@ -266,6 +274,43 @@ exports[`DOM snapshots SLDSProgressBar Thickness 1`] = `
           >
             Progress: 
             25%
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSProgressBar Vertical 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      id="progress-bar-vertical"
+      style={
+        Object {
+          "height": "200px",
+        }
+      }
+    >
+      <div
+        className="slds-progress-bar slds-progress-bar_vertical"
+      >
+        <span
+          className="slds-progress-bar__value"
+          style={
+            Object {
+              "height": "60%",
+            }
+          }
+        >
+          <span
+            className="slds-assistive-text"
+          >
+            Progress: 
+            60%
           </span>
         </span>
       </div>
