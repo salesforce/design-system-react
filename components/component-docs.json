@@ -1153,12 +1153,12 @@
                     "computed": false
                 }
             },
-            "style": {
+            "styleContainer": {
                 "type": {
                     "name": "object"
                 },
                 "required": false,
-                "description": "Custom styles to be passed to the top-level `nav` tag"
+                "description": "Custom styles to be passed to the containing `nav` tag"
             },
             "trail": {
                 "type": {

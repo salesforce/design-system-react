@@ -52,7 +52,6 @@ class Example extends React.Component {
 						<DropdownTrigger>
 							<Button
 								assistiveText={{ icon: 'List View Controls' }}
-								className="slds-m-right_xx-small"
 								iconCategory="utility"
 								iconName="settings"
 								iconVariant="more"
@@ -79,7 +78,6 @@ class Example extends React.Component {
 						<DropdownTrigger>
 							<Button
 								assistiveText={{ icon: 'Change view' }}
-								className="slds-m-right_xx-small"
 								iconCategory="utility"
 								iconName="table"
 								iconVariant="more"
@@ -93,7 +91,7 @@ class Example extends React.Component {
 						assistiveText={{ icon: 'Edit List' }}
 						iconCategory="utility"
 						iconName="edit"
-						iconVariant="border"
+						iconVariant="border-filled"
 						variant="icon"
 					/>
 				</PageHeaderControl>
@@ -102,7 +100,7 @@ class Example extends React.Component {
 						assistiveText={{ icon: 'Refresh' }}
 						iconCategory="utility"
 						iconName="refresh"
-						iconVariant="border"
+						iconVariant="border-filled"
 						variant="icon"
 					/>
 				</PageHeaderControl>
@@ -112,14 +110,14 @@ class Example extends React.Component {
 							assistiveText={{ icon: 'Charts' }}
 							iconCategory="utility"
 							iconName="chart"
-							iconVariant="border"
+							iconVariant="border-filled"
 							variant="icon"
 						/>
 						<Button
 							assistiveText={{ icon: 'Filters' }}
 							iconCategory="utility"
 							iconName="filterList"
-							iconVariant="border"
+							iconVariant="border-filled"
 							variant="icon"
 						/>
 					</ButtonGroup>

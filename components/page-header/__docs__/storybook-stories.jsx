@@ -199,7 +199,6 @@ const baseControls = () => (
 				iconName="settings"
 				variant="icon"
 				iconVariant="more"
-				className="slds-m-left_xx-small"
 				assistiveText={{
 					icon: 'Settings',
 				}}
@@ -211,7 +210,6 @@ const baseControls = () => (
 				iconName="table"
 				variant="icon"
 				iconVariant="more"
-				className="slds-m-left_xx-small"
 				assistiveText={{
 					icon: 'Table',
 				}}
@@ -223,7 +221,7 @@ const baseControls = () => (
 					iconCategory="utility"
 					iconName="chart"
 					variant="icon"
-					iconVariant="border"
+					iconVariant="border-filled"
 					assistiveText={{
 						icon: 'Chart',
 					}}
@@ -232,8 +230,7 @@ const baseControls = () => (
 					iconCategory="utility"
 					iconName="filterList"
 					variant="icon"
-					iconVariant="border"
-					className="slds-m-left_xx-small"
+					iconVariant="border-filled"
 					assistiveText={{
 						icon: 'Filter List',
 					}}
@@ -317,7 +314,6 @@ const relatedListControls = () => (
 				iconName="table"
 				variant="icon"
 				iconVariant="more"
-				className="slds-m-left_xx-small"
 				assistiveText={{
 					icon: 'Table',
 				}}
@@ -329,8 +325,7 @@ const relatedListControls = () => (
 					iconCategory="utility"
 					iconName="chart"
 					variant="icon"
-					iconVariant="border"
-					className="slds-m-left_xx-small"
+					iconVariant="border-filled"
 					assistiveText={{
 						icon: 'Chart',
 					}}
@@ -339,8 +334,7 @@ const relatedListControls = () => (
 					iconCategory="utility"
 					iconName="filterList"
 					variant="icon"
-					iconVariant="border"
-					className="slds-m-left_xx-small"
+					iconVariant="border-filled"
 					assistiveText={{
 						icon: 'Filter List',
 					}}

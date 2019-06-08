@@ -67,7 +67,6 @@ class Example extends React.Component {
 						<DropdownTrigger>
 							<Button
 								assistiveText={{ icon: 'Change view' }}
-								className="slds-m-right_xx-small"
 								iconCategory="utility"
 								iconName="table"
 								iconVariant="more"
@@ -82,16 +81,14 @@ class Example extends React.Component {
 							iconCategory="utility"
 							iconName="chart"
 							variant="icon"
-							iconVariant="border"
-							className="slds-m-left_xx-small"
+							iconVariant="border-filled"
 							assistiveText={{ icon: 'Chart' }}
 						/>
 						<Button
 							iconCategory="utility"
 							iconName="filterList"
 							variant="icon"
-							iconVariant="border"
-							className="slds-m-left_xx-small"
+							iconVariant="border-filled"
 							assistiveText={{ icon: 'Filter List' }}
 						/>
 						<Dropdown

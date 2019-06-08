@@ -32,7 +32,10 @@ const Info = (props) => {
 		{
 			'slds-page-header__name-meta': props.variant === 'base',
 			'slds-page-header__meta-text':
-				props.variant === 'object-home' || props.variant === 'objectHome',
+				props.variant === 'object-home' ||
+				props.variant === 'objectHome' ||
+				props.variant === 'related-list' ||
+				props.variant === 'relatedList',
 		},
 		props.className
 	);

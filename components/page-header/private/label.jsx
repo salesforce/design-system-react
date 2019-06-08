@@ -29,7 +29,7 @@ const propTypes = {
 
 const Label = (props) => {
 	if (props.trail && props.trail.length > 0) {
-		return <Breadcrumb style={props.style} trail={props.trail} />;
+		return <Breadcrumb styleContainer={props.style} trail={props.trail} />;
 	}
 
 	if (props.content) {

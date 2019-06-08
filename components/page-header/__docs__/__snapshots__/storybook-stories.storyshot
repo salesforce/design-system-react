@@ -137,7 +137,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
             className="slds-page-header__control"
           >
             <button
-              className="slds-button slds-button_icon-more slds-m-left_xx-small"
+              className="slds-button slds-button_icon-more"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -169,7 +169,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
             className="slds-page-header__control"
           >
             <button
-              className="slds-button slds-button_icon-more slds-m-left_xx-small"
+              className="slds-button slds-button_icon-more"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -205,7 +205,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
             >
               <li>
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -227,7 +227,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
               </li>
               <li>
                 <button
-                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -706,7 +706,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
         className="slds-page-header__col-meta"
       >
         <p
-          className=""
+          className="slds-page-header__meta-text"
         >
           10 items • sorted by name
         </p>
@@ -732,7 +732,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-more slds-m-right_xx-small"
+                className="slds-button slds-button_icon-more ignore-click-content-right-dropdown"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -770,7 +770,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
             >
               <li>
                 <button
-                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -792,7 +792,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               </li>
               <li>
                 <button
-                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -1055,7 +1055,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-more slds-m-right_xx-small"
+                className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-object-home-content-right"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -1100,7 +1100,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon-more slds-m-right_xx-small"
+                className="slds-button slds-button_icon-more ignore-click-page-header-dropdown-object-home-content-right-2"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
@@ -1134,7 +1134,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
             className="slds-page-header__control"
           >
             <button
-              className="slds-button slds-button_icon-border"
+              className="slds-button slds-button_icon-border-filled"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -1158,7 +1158,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
             className="slds-page-header__control"
           >
             <button
-              className="slds-button slds-button_icon-border"
+              className="slds-button slds-button_icon-border-filled"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -1186,7 +1186,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
             >
               <li>
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -1208,7 +1208,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
               </li>
               <li>
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -1794,7 +1794,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
         className="slds-page-header__col-meta"
       >
         <p
-          className=""
+          className="slds-page-header__meta-text"
         >
           10 items • sorted by name
         </p>
@@ -1809,7 +1809,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
             className="slds-page-header__control"
           >
             <button
-              className="slds-button slds-button_icon-more slds-m-left_xx-small"
+              className="slds-button slds-button_icon-more"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -1845,7 +1845,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
             >
               <li>
                 <button
-                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -1867,7 +1867,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               </li>
               <li>
                 <button
-                  className="slds-button slds-button_icon-border slds-m-left_xx-small"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
