@@ -25,9 +25,6 @@ class Example extends React.Component {
 								label: 'Connected App',
 							}}
 							id="visual-picker-coverable-radio-1"
-							onChange={(event, data) => {
-								console.log(event);
-							}}
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}

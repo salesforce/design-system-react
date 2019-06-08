@@ -22,7 +22,6 @@ class Example extends React.Component {
 						id="visual-picker-vertical-coverable-radio"
 					>
 						<Radio
-							label="Connected App"
 							id="visual-picker-vertical-coverable-radio-1"
 							onRenderVisualPickerSelected={
 								<Icon
@@ -43,7 +42,6 @@ class Example extends React.Component {
 							}
 						/>
 						<Radio
-							label="Custom App"
 							id="visual-picker-vertical-coverable-radio-2"
 							onRenderVisualPickerSelected={
 								<Icon
