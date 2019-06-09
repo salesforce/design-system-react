@@ -16,10 +16,7 @@ class Example extends React.Component {
 							<Button variant="success" label="Subscribe Now" />
 						)}
 					>
-						<TrialBarButton
-							label="Take the salesforce tour"
-							className="slds-m-right_small"
-						/>
+						<TrialBarButton label="Take the salesforce tour" />
 						<TrialBarDropdown
 							assistiveText={{ icon: 'Dropdown' }}
 							id="dropdown"

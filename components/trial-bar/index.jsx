@@ -5,25 +5,10 @@
 // Based on SLDS v2.4.5
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import assign from 'lodash.assign';
 
 import { TRIAL_BAR } from '../../utilities/constants';
 
 const propTypes = {
-	/**
-	 * **Assistive text for accessibility**
-	 * This object is merged with the default props object on every render.
-	 * * `backIcon`: Used for the back icon.
-	 * * `helpIcon`: Used for the help icon.
-	 * * `icon`: Used for the main icon next to the header title.
-	 * * _Tested with snapshot testing._
-	 */
-	assistiveText: PropTypes.shape({
-		backIcon: PropTypes.string,
-		helpIcon: PropTypes.string,
-		icon: PropTypes.string,
-	}),
 	/**
 	 * Renders the labels in the trial bar.
 	 */
@@ -61,11 +46,7 @@ const propTypes = {
 	onRenderActions: PropTypes.func,
 };
 
-const defaultProps = {
-	labels: {
-		complete: 'Complete',
-	},
-};
+const defaultProps = {};
 
 /**
  * Trial bar components are used to provide an interactive and educational prospect experience for setup.
