@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { TRIAL_BAR } from '../../utilities/constants';
+import classNames from 'classnames';
 
 const propTypes = {
 	/**
@@ -54,7 +55,13 @@ const defaultProps = {};
 class TrialBar extends React.Component {
 	render() {
 		return (
-			<div className="slds-trial-header slds-grid">
+			<div
+				className={classNames(
+					'slds-trial-header slds-grid',
+					this.props.className
+				)}
+				style={this.props.style}
+			>
 				<div className="slds-grid">{this.props.children}</div>
 				<div className="slds-grid slds-grid_vertical-align-center slds-col_bump-left">
 					<span className="slds-box slds-box_xx-small slds-theme_default">
