@@ -6,7 +6,7 @@ import Button from '~/components/button';
 export default class TrialBarDropdown extends React.Component {
 	render() {
 		return (
-			<Dropdown {...this.props} className="trial-bar-dropdown">
+			<Dropdown {...this.props} inverse>
 				<DropdownTrigger>
 					<Button
 						inverse
