@@ -25,16 +25,22 @@ const propTypes = {
 		icon: PropTypes.string,
 	}),
 	/**
-	 * Renders the actions section of the trial bar.
+	 * Renders the labels in the trial bar.
 	 */
 	labels: PropTypes.shape({
-		/* Amount of time left in trial, e.g. `30` */
+		/** Amount of time left in trial, e.g. `30` */
 		timeLeft: PropTypes.string,
-		/* Unit of the amount of time left, e.g. `days` */
+		/** Unit of the amount of time left, e.g. `days` */
 		timeLeftUnit: PropTypes.string,
 	}),
 	/**
-	 * Renders the actions section of the trial bar.
+	 * Provide children of the types `<TrialBarButton />` or `<TrialBarDropdown />` to define the structure of the trial bar.
+	 * ```
+	 * <TrialBar>
+	 *   <TrialBarButton />
+	 *   <TrialBarDropdown />
+	 * </TrialBar>
+	 * ```
 	 */
 	children: PropTypes.node,
 	/**
@@ -42,9 +48,13 @@ const propTypes = {
 	 */
 	style: PropTypes.object,
 	/**
-	 * CSS classes to be added to the component.
+	 * CSS classes to be added to the component. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * Renders the actions section of the trial bar.
 	 */
@@ -62,91 +72,17 @@ const defaultProps = {
  */
 class TrialBar extends React.Component {
 	render() {
-		const labels = assign({}, defaultProps.labels, this.props.labels);
-
 		return (
 			<div className="slds-trial-header slds-grid">
-				<div className="slds-grid">
-					<button className="slds-button slds-m-right_small">
-						Take the salesforce tour
-					</button>
-					<div
-						className={classNames(
-							'slds-grid slds-dropdown-trigger slds-dropdown-trigger_click',
-							props.tourMenuOpen ? 'slds-is-open' : null
-						)}
-					>
-						<button className="slds-button" aria-haspopup="true">
-							<SvgIcon
-								className="slds-button__icon slds-button__icon_left"
-								sprite="utility"
-								symbol="right"
-							/>
-							Choose your tour
-						</button>
-						<Menu className="slds-dropdown_inverse slds-dropdown_left">
-							<MenuList>
-								<MenuItem
-									tabIndex="0"
-									className="slds-is-selected"
-									title="Completed: Conquer Your Cases"
-								>
-									<SvgIcon
-										className="slds-icon slds-icon_selected slds-icon_x-small slds-m-right_x-small"
-										sprite="utility"
-										symbol="check"
-									/>
-									<span className="slds-assistive-text">Completed:</span>{' '}
-									Conquer Your Cases
-								</MenuItem>
-								<MenuItem title="Automate For Speed">
-									<SvgIcon
-										className="slds-icon slds-icon_selected slds-icon_x-small slds-m-right_x-small"
-										sprite="utility"
-										symbol="check"
-									/>
-									Automate For Speed
-								</MenuItem>
-								<MenuItem title="Share Your Knowledge">
-									<SvgIcon
-										className="slds-icon slds-icon_selected slds-icon_x-small slds-m-right_x-small"
-										sprite="utility"
-										symbol="check"
-									/>
-									Share Your Knowledge
-								</MenuItem>
-								<MenuItem title="Finish it up in a Flash">
-									<SvgIcon
-										className="slds-icon slds-icon_selected slds-icon_x-small slds-m-right_x-small"
-										sprite="utility"
-										symbol="check"
-									/>
-									Finish it up in a Flash
-								</MenuItem>
-								<li className="slds-has-divider_top-space" role="separator" />
-								<MenuItem title="Import Contacts and Accounts">
-									<SvgIcon
-										className="slds-icon slds-icon_x-small slds-m-right_x-small"
-										sprite="utility"
-										symbol="upload"
-									/>
-									Import Contacts and Accounts
-								</MenuItem>
-							</MenuList>
-						</Menu>
-					</div>
-				</div>
+				<div className="slds-grid">{this.props.children}</div>
 				<div className="slds-grid slds-grid_vertical-align-center slds-col_bump-left">
 					<span className="slds-box slds-box_xx-small slds-theme_default">
-						30
+						{this.props.labels.timeLeft}
 					</span>
-					<span className="slds-m-horizontal_x-small">Days left in trial</span>
-					<a
-						href="javascript:void(0);"
-						className="slds-button slds-button_success"
-					>
-						Subscribe Now
-					</a>
+					<span className="slds-m-horizontal_x-small">
+						{this.props.labels.timeLeftUnit} left in trial
+					</span>
+					{this.props.onRenderActions()}
 				</div>
 			</div>
 		);

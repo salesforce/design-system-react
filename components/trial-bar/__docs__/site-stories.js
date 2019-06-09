@@ -5,10 +5,6 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/progress-bar/__examples__/default.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/progress-bar/__examples__/descriptive.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/progress-bar/__examples__/color.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/progress-bar/__examples__/radius.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/progress-bar/__examples__/thickness.jsx'),
 ];
 
 module.exports = siteStories;
