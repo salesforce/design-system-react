@@ -139,23 +139,31 @@ class Step extends React.Component {
 	}
 
 	renderSummary() {
+		let progressRingTheme;
+
+		if (
+			this.props.progress > 0 &&
+			this.props.progress < 100 &&
+			this.getIsOpen()
+		) {
+			progressRingTheme = 'active';
+		} else if (this.props.progress === 100) {
+			progressRingTheme = 'complete';
+		}
+
 		return (
 			<div className="slds-setup-assistant__step-summary">
 				<div className="slds-media">
 					{this.props.progress !== undefined ? (
 						<div className="slds-media__figure">
 							<ProgressRing
-								className={classNames('slds-progress-ring_large', {
-									'slds-progress-ring_active-step':
-										this.props.progress > 0 &&
-										this.props.progress < 100 &&
-										this.props.progressIndicator,
-								})}
 								hasIcon
 								icon={
 									this.props.progress === 100 ? null : this.props.stepNumber
 								}
-								theme={this.props.progress === 100 ? 'complete' : null}
+								flowDirection="fill"
+								size="large"
+								theme={progressRingTheme}
 								value={this.props.progress}
 							/>
 						</div>

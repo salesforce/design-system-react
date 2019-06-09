@@ -307,7 +307,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     className="slds-media__figure"
                   >
                     <div
-                      className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                      className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                     >
                       <div
                         aria-valuemax="100"
@@ -315,7 +315,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={100}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -575,7 +579,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={0}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -857,7 +865,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     className="slds-media__figure"
                   >
                     <div
-                      className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                      className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                     >
                       <div
                         aria-valuemax="100"
@@ -865,7 +873,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={100}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -1125,7 +1137,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={0}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -1348,7 +1364,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={0}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -1622,7 +1642,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-media__figure"
                     >
                       <div
-                        className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                        className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                       >
                         <div
                           aria-valuemax="100"
@@ -1630,7 +1650,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={100}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -1890,7 +1914,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={33}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2185,7 +2213,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-media__figure"
                     >
                       <div
-                        className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                        className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                       >
                         <div
                           aria-valuemax="100"
@@ -2193,7 +2221,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={100}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2453,7 +2485,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={0}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2676,7 +2712,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={0}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2879,7 +2919,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               className="slds-media__figure"
             >
               <div
-                className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
               >
                 <div
                   aria-valuemax="100"
@@ -2887,7 +2927,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={100}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -2984,7 +3028,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={0}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -3056,7 +3104,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               className="slds-media__figure"
             >
               <div
-                className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
               >
                 <div
                   aria-valuemax="100"
@@ -3064,7 +3112,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={100}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -3161,7 +3213,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={0}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -3266,7 +3322,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={0}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"

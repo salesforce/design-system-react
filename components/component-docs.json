@@ -4243,27 +4243,6 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
-            "direction": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "DIRECTIONS.LTR",
-                            "computed": true
-                        },
-                        {
-                            "value": "DIRECTIONS.RTL",
-                            "computed": true
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Establishes directional context for component. Defaults to left-to-right.",
-                "defaultValue": {
-                    "value": "DIRECTIONS.LTR",
-                    "computed": true
-                }
-            },
             "events": {
                 "type": {
                     "name": "shape",
@@ -4670,6 +4649,13 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "direction": {
+                "defaultValue": {
+                    "value": "DIRECTIONS.LTR",
+                    "computed": true
+                },
+                "required": false
             }
         },
         "context": {
@@ -12110,6 +12096,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'active'",
+                            "computed": false
+                        },
+                        {
                             "value": "'warning'",
                             "computed": false
                         },
@@ -12165,6 +12155,27 @@
                 "description": "Direction that the progress ring \"flows.\" Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`",
                 "defaultValue": {
                     "value": "'drain'",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the progress ring. Default is 'medium'",
+                "defaultValue": {
+                    "value": "'medium'",
                     "computed": false
                 }
             }
