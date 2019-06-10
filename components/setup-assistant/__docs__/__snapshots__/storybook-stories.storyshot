@@ -379,7 +379,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           4 mins
                         </p>
@@ -631,7 +631,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           10 mins
                         </p>
@@ -937,7 +937,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           15 mins
                         </p>
@@ -1189,7 +1189,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           10 mins
                         </p>
@@ -1416,7 +1416,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           10 mins
                         </p>
@@ -1714,7 +1714,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             4 mins
                           </p>
@@ -1966,7 +1966,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             10 mins
                           </p>
@@ -2285,7 +2285,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             15 mins
                           </p>
@@ -2537,7 +2537,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             10 mins
                           </p>
@@ -2764,7 +2764,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             10 mins
                           </p>
