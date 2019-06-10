@@ -11144,6 +11144,28 @@
                 "required": false,
                 "description": "Used with `walkthrough` variant to provide action buttons (ex: \"Next\" / \"Skip\" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons."
             },
+            "hasNoCloseButton": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines if the popover has a close button or not. Default is `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "hasNoNubbin": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines if the popover has a nubbin or not. Default is `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -11157,13 +11179,6 @@
                 },
                 "required": false,
                 "description": "Removes `display:inline-block` from the trigger button."
-            },
-            "hasNoNubbin": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled."
             },
             "heading": {
                 "type": {
