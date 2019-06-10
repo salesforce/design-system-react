@@ -401,7 +401,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-1-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-completed slds-is-active"
@@ -653,7 +653,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-2-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -959,7 +959,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-3-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-completed slds-is-active"
@@ -1211,7 +1211,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-4-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -1438,7 +1438,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-5-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -1736,7 +1736,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-1-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed slds-is-active"
@@ -1988,7 +1988,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-2-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed"
@@ -2307,7 +2307,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-3-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed slds-is-active"
@@ -2559,7 +2559,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-4-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-active"
@@ -2786,7 +2786,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-5-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-active"
