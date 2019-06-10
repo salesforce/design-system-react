@@ -129,7 +129,15 @@ class Step extends React.Component {
 				<div className="slds-media__figure slds-media__figure_reverse">
 					{this.props.onRenderAction ? this.props.onRenderAction() : null}
 					{this.props.estimatedTime ? (
-						<p className="slds-text-align_right slds-text-color_weak slds-p-top_medium">
+						<p
+							className={classNames(
+								'slds-text-align_right',
+								'slds-text-color_weak',
+								{
+									'slds-p-top_medium': this.props.onRenderAction !== undefined,
+								}
+							)}
+						>
 							{this.props.estimatedTime}
 						</p>
 					) : null}

@@ -379,7 +379,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           4 mins
                         </p>
@@ -401,7 +401,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-1-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-completed slds-is-active"
@@ -631,7 +631,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           10 mins
                         </p>
@@ -653,7 +653,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-2-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -937,7 +937,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           15 mins
                         </p>
@@ -959,7 +959,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-3-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-completed slds-is-active"
@@ -1189,7 +1189,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           10 mins
                         </p>
@@ -1211,7 +1211,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-4-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -1416,7 +1416,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-media__figure slds-media__figure_reverse"
                       >
                         <p
-                          className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                          className="slds-text-align_right slds-text-color_weak"
                         >
                           10 mins
                         </p>
@@ -1438,7 +1438,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-5-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -1714,7 +1714,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             4 mins
                           </p>
@@ -1736,7 +1736,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-1-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed slds-is-active"
@@ -1966,7 +1966,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             10 mins
                           </p>
@@ -1988,7 +1988,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-2-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed"
@@ -2285,7 +2285,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             15 mins
                           </p>
@@ -2307,7 +2307,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-3-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed slds-is-active"
@@ -2537,7 +2537,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             10 mins
                           </p>
@@ -2559,7 +2559,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-4-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-active"
@@ -2764,7 +2764,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-media__figure slds-media__figure_reverse"
                         >
                           <p
-                            className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                            className="slds-text-align_right slds-text-color_weak"
                           >
                             10 mins
                           </p>
@@ -2786,7 +2786,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-5-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-active"
