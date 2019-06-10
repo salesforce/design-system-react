@@ -131,7 +131,7 @@ class RadioGroup extends React.Component {
 					) : null}
 					{this.props.assistiveText.label
 						? this.props.assistiveText.label
-						: this.labels.label}{' '}
+						: this.labels.label}
 				</legend>
 				<div
 					className={classNames(
