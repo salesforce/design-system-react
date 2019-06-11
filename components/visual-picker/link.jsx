@@ -49,6 +49,7 @@ class VisualPickerLink extends React.Component {
 				className={classNames(
 					'slds-box',
 					'slds-box_link',
+					'slds-theme_default',
 					'slds-box_x-small',
 					'slds-media',
 					'slds-visual-picker_vertical',
