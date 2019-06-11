@@ -1,4 +1,4 @@
-# Design System for React
+# Lightning Design System _for_ React
 
 ### Accessible, localization-friendly, presentational React components
 
