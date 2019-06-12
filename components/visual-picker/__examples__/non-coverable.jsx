@@ -25,12 +25,12 @@ class Example extends React.Component {
 							}}
 							id="visual-picker-non-coverable-radio-1"
 							value="30"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_large">$30</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							}
+							)}
 						/>
 						<Radio
 							labels={{
@@ -39,12 +39,12 @@ class Example extends React.Component {
 							}}
 							id="visual-picker-non-coverable-radio-2"
 							value="150"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_large">$150</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							}
+							)}
 						/>
 						<Radio
 							labels={{
@@ -54,12 +54,12 @@ class Example extends React.Component {
 							id="visual-picker-non-coverable-radio-3"
 							disabled
 							value="300"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_large">$300</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							}
+							)}
 						/>
 					</VisualPicker>
 					<hr />
@@ -75,12 +75,12 @@ class Example extends React.Component {
 							}}
 							id="visual-picker-non-coverable-checkbox-1"
 							value="30"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_large">$30</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							}
+							)}
 						/>
 						<Checkbox
 							labels={{
@@ -89,12 +89,12 @@ class Example extends React.Component {
 							}}
 							id="visual-picker-non-coverable-checkbox-2"
 							value="150"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_large">$150</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							}
+							)}
 						/>
 						<Checkbox
 							labels={{
@@ -104,12 +104,12 @@ class Example extends React.Component {
 							id="visual-picker-non-coverable-checkbox-3"
 							disabled
 							value="300"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_large">$300</span>
 									<span className="slds-text-title">USD/user/month *</span>
 								</span>
-							}
+							)}
 						/>
 					</VisualPicker>
 				</div>

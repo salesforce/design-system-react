@@ -2,7 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // Implements the [Visual Picker design pattern](https://lightningdesignsystem.com/components/visual-picker/) in React.
-// Based on SLDS v2.4.5
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';

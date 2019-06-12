@@ -25,7 +25,7 @@ class Example extends React.Component {
 								label: 'Connected App',
 							}}
 							id="visual-picker-coverable-radio-1"
-							onRenderVisualPickerSelected={
+							onRenderVisualPickerSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
@@ -33,22 +33,22 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							}
-							onRenderVisualPickerNotSelected={
+							)}
+							onRenderVisualPickerNotSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
 									name="connected_apps"
 									size="large"
 								/>
-							}
+							)}
 						/>
 						<Radio
 							labels={{
 								label: 'Custom App',
 							}}
 							id="visual-picker-coverable-radio-2"
-							onRenderVisualPickerSelected={
+							onRenderVisualPickerSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
@@ -56,15 +56,15 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							}
-							onRenderVisualPickerNotSelected={
+							)}
+							onRenderVisualPickerNotSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
 									name="custom_apps"
 									size="large"
 								/>
-							}
+							)}
 						/>
 					</VisualPicker>
 					<hr />
@@ -79,7 +79,7 @@ class Example extends React.Component {
 								label: 'Account',
 							}}
 							id="visual-picker-coverable-checkbox-1"
-							onRenderVisualPickerSelected={
+							onRenderVisualPickerSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
@@ -87,22 +87,22 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							}
-							onRenderVisualPickerNotSelected={
+							)}
+							onRenderVisualPickerNotSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="standard"
 									name="account"
 									size="large"
 								/>
-							}
+							)}
 						/>
 						<Checkbox
 							labels={{
 								label: 'Lead',
 							}}
 							id="visual-picker-coverable-checkbox-2"
-							onRenderVisualPickerSelected={
+							onRenderVisualPickerSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
@@ -110,22 +110,22 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							}
-							onRenderVisualPickerNotSelected={
+							)}
+							onRenderVisualPickerNotSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="standard"
 									name="lead"
 									size="large"
 								/>
-							}
+							)}
 						/>
 						<Checkbox
 							labels={{
 								label: 'Orders',
 							}}
 							id="visual-picker-coverable-checkbox-3"
-							onRenderVisualPickerSelected={
+							onRenderVisualPickerSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="utility"
@@ -133,15 +133,15 @@ class Example extends React.Component {
 									colorVariant="base"
 									size="large"
 								/>
-							}
-							onRenderVisualPickerNotSelected={
+							)}
+							onRenderVisualPickerNotSelected={() => (
 								<Icon
 									assistiveText={this.props.assistiveText}
 									category="standard"
 									name="orders"
 									size="large"
 								/>
-							}
+							)}
 						/>
 					</VisualPicker>
 				</div>
