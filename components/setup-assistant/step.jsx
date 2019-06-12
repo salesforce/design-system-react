@@ -109,7 +109,7 @@ class Step extends React.Component {
 
 	renderMediaContent() {
 		return (
-			<>
+			<React.Fragment>
 				<div className="slds-setup-assistant__step-summary-content slds-media__body">
 					<h3 className="slds-setup-assistant__step-summary-title slds-text-heading_small">
 						{this.props.isExpandable ? (
@@ -142,7 +142,7 @@ class Step extends React.Component {
 						</p>
 					) : null}
 				</div>
-			</>
+			</React.Fragment>
 		);
 	}
 

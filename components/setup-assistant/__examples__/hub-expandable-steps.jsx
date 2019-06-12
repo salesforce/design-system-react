@@ -209,7 +209,7 @@ class Example extends React.Component {
 						isExpandable
 						isOpen={this.state.expandedSteps[1] || false}
 						onRenderContent={() => (
-							<>
+							<React.Fragment>
 								<ProgressIndicator
 									completedSteps={this.state.stepTwoCompletedSubSteps}
 									id="hub-expandable-step-2-progress-indicator"
@@ -227,7 +227,7 @@ class Example extends React.Component {
 										<a href="javascript:void(0);">View Duplicates.</a>
 									</p>
 								</ScopedNotification>
-							</>
+							</React.Fragment>
 						)}
 						progress={this.state.stepTwoProgress}
 					/>

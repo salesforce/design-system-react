@@ -125,7 +125,7 @@ class Example extends React.Component {
 						id="card-step-2"
 						isExpandable
 						onRenderContent={() => (
-							<>
+							<React.Fragment>
 								<ProgressIndicator
 									completedSteps={[subSteps[0]]}
 									id="card-step-2-progress-indicator"
@@ -143,7 +143,7 @@ class Example extends React.Component {
 										<a href="javascript:void(0);">View Duplicates.</a>
 									</p>
 								</ScopedNotification>
-							</>
+							</React.Fragment>
 						)}
 						progress={33}
 					/>
