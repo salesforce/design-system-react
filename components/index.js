@@ -262,6 +262,9 @@ export RadioGroup from './radio-group';
 export SLDSScopedNotification from './scoped-notification';
 export ScopedNotification from './scoped-notification';
 
+export SLDSSetupAssistant from './setup-assistant';
+export SetupAssistant from './setup-assistant';
+
 export SLDSSlider from './slider';
 export Slider from './slider';
 
