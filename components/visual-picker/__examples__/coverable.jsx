@@ -15,14 +15,16 @@ class Example extends React.Component {
 					}}
 				>
 					<h1>Radio</h1>
-					<VisualPicker label="Select any one" coverable>
+					<VisualPicker
+						label="Select any one"
+						id="visual-picker-coverable-radio"
+						coverable
+					>
 						<Radio
 							labels={{
 								label: 'Connected App',
 							}}
-							onChange={(event, data) => {
-								console.log(data);
-							}}
+							id="visual-picker-coverable-radio-1"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -45,6 +47,7 @@ class Example extends React.Component {
 							labels={{
 								label: 'Custom App',
 							}}
+							id="visual-picker-coverable-radio-2"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -66,11 +69,16 @@ class Example extends React.Component {
 					</VisualPicker>
 					<hr />
 					<h1>Checkbox</h1>
-					<VisualPicker label="Add the following object(s)" coverable>
+					<VisualPicker
+						label="Add the following object(s)"
+						id="visual-picker-coverable-checkbox"
+						coverable
+					>
 						<Checkbox
 							labels={{
 								label: 'Account',
 							}}
+							id="visual-picker-coverable-checkbox-1"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -93,6 +101,7 @@ class Example extends React.Component {
 							labels={{
 								label: 'Lead',
 							}}
+							id="visual-picker-coverable-checkbox-2"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}
@@ -115,6 +124,7 @@ class Example extends React.Component {
 							labels={{
 								label: 'Orders',
 							}}
+							id="visual-picker-coverable-checkbox-3"
 							onRenderVisualPickerSelected={
 								<Icon
 									assistiveText={this.props.assistiveText}

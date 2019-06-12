@@ -14,9 +14,14 @@ class Example extends React.Component {
 					}}
 				>
 					<h1>Radio</h1>
-					<VisualPicker label="Please Select Any One" vertical>
+					<VisualPicker
+						label="Please Select Any One"
+						vertical
+						id="visual-picker-vertical-non-coverable-radio"
+					>
 						<Radio
 							value="30"
+							id="visual-picker-vertical-non-coverable-radio-1"
 							onRenderVisualPicker={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -31,6 +36,7 @@ class Example extends React.Component {
 						/>
 						<Radio
 							value="150"
+							id="visual-picker-vertical-non-coverable-radio-2"
 							onRenderVisualPicker={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -46,6 +52,7 @@ class Example extends React.Component {
 						<Radio
 							disabled
 							value="300"
+							id="visual-picker-vertical-non-coverable-radio-3"
 							onRenderVisualPicker={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -61,9 +68,14 @@ class Example extends React.Component {
 					</VisualPicker>
 					<hr />
 					<h1>Checkbox</h1>
-					<VisualPicker label="Please Select Any One" vertical>
+					<VisualPicker
+						label="Please Select Any One"
+						vertical
+						id="visual-picker-vertical-non-coverable-checkbox"
+					>
 						<Checkbox
 							value="30"
+							id="visual-picker-vertical-non-coverable-checkbox-1"
 							onRenderVisualPicker={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -78,6 +90,7 @@ class Example extends React.Component {
 						/>
 						<Checkbox
 							value="150"
+							id="visual-picker-vertical-non-coverable-checkbox-2"
 							onRenderVisualPicker={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -93,6 +106,7 @@ class Example extends React.Component {
 						<Checkbox
 							disabled
 							value="300"
+							id="visual-picker-vertical-non-coverable-checkbox-3"
 							onRenderVisualPicker={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">

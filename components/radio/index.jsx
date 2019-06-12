@@ -12,6 +12,10 @@ import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
 import Icon from '../icon';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 const propTypes = {
 	/**
 	 * The ID of an element that describes this radio input. Often used for error messages.
@@ -44,10 +48,6 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * The string or element that is shown as both the title and the label for this radio input.
-	 */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
-	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `heading`: Heading for the visual picker variant
@@ -56,7 +56,7 @@ const propTypes = {
 	 * * `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 	 */
 	labels: PropTypes.shape({
-		heading: PropTypes.string,
+		heading: PropTypes.heading,
 		label: PropTypes.string,
 	}),
 	/**
@@ -123,8 +123,12 @@ const defaultProps = {
 class Radio extends React.Component {
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
 		this.preventDuplicateChangeEvent = false;
+	}
+
+	componentWillMount() {
+		checkProps(RADIO, this.props, componentDoc);
+		this.generatedId = shortid.generate();
 	}
 
 	getId() {
@@ -149,6 +153,13 @@ class Radio extends React.Component {
 
 		let radio;
 
+		const labels = {
+			...defaultProps.labels,
+			/* Remove backward compatibility at next breaking change */
+			...(this.props.label ? { label: this.props.label } : {}),
+			...this.props.labels,
+		};
+
 		if (this.props.variant === 'swatch') {
 			radio = (
 				<label
@@ -158,7 +169,7 @@ class Radio extends React.Component {
 				>
 					<span>
 						<Swatch
-							label={this.props.label}
+							label={labels.label}
 							style={this.props.style}
 							color={this.props.value}
 						/>
@@ -168,7 +179,7 @@ class Radio extends React.Component {
 		} else if (this.props.variant === 'button-group') {
 			radio = (
 				<label className="slds-radio_button__label" htmlFor={this.getId()}>
-					<span className="slds-radio_faux">{this.props.label}</span>
+					<span className="slds-radio_faux">{labels.label}</span>
 				</label>
 			);
 		} else if (this.props.variant === 'visual-picker') {
@@ -190,12 +201,12 @@ class Radio extends React.Component {
 					)}
 					{!this.props.vertical ? (
 						<span className="slds-visual-picker__body">
-							{this.props.labels.heading ? (
+							{labels.heading ? (
 								<span className="slds-text-heading_small">
-									{this.props.labels.heading}
+									{labels.heading}
 								</span>
 							) : null}
-							<span className="slds-text-title">{this.props.labels.label}</span>
+							<span className="slds-text-title">{labels.label}</span>
 						</span>
 					) : null}
 					{!this.props.coverable ? (
@@ -215,7 +226,7 @@ class Radio extends React.Component {
 			radio = (
 				<label className="slds-radio__label" htmlFor={this.getId()}>
 					<span className="slds-radio_faux" />
-					<span className="slds-form-element__label">{this.props.label}</span>
+					<span className="slds-form-element__label">{labels.label}</span>
 				</label>
 			);
 		}

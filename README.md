@@ -2,7 +2,7 @@
 
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/616/projects/5608/branches/43183/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=616&pid=5608&bid=43183)
+[![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/616/projects/5798/branches/46037/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=616&pid=5798&bid=46037)
 [![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Join the chat at https://gitter.im/salesforce/design-system-react](https://badges.gitter.im/salesforce/design-system-react.svg)](https://gitter.im/salesforce/design-system-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Install

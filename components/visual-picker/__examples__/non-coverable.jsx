@@ -14,12 +14,16 @@ class Example extends React.Component {
 					}}
 				>
 					<h1>Radio</h1>
-					<VisualPicker label="Please Select Any One">
+					<VisualPicker
+						label="Please Select Any One"
+						id="visual-picker-non-coverable-radio"
+					>
 						<Radio
 							labels={{
 								heading: 'Lightning Professional',
 								label: 'Complete service CRM for teams of any size',
 							}}
+							id="visual-picker-non-coverable-radio-1"
 							value="30"
 							onRenderVisualPicker={
 								<span>
@@ -33,6 +37,7 @@ class Example extends React.Component {
 								heading: 'Lightning Enterprise',
 								label: 'Everything you need to take support to the next level',
 							}}
+							id="visual-picker-non-coverable-radio-2"
 							value="150"
 							onRenderVisualPicker={
 								<span>
@@ -46,6 +51,7 @@ class Example extends React.Component {
 								heading: 'Lightning Ultimate',
 								label: 'Complete support with enterprise-grade customization',
 							}}
+							id="visual-picker-non-coverable-radio-3"
 							disabled
 							value="300"
 							onRenderVisualPicker={
@@ -58,12 +64,16 @@ class Example extends React.Component {
 					</VisualPicker>
 					<hr />
 					<h1>Checkbox</h1>
-					<VisualPicker label="Add the following object(s)">
+					<VisualPicker
+						label="Add the following object(s)"
+						id="visual-picker-non-coverable-checkbox"
+					>
 						<Checkbox
 							labels={{
 								heading: 'Lightning Professional',
 								label: 'Complete service CRM for teams of any size',
 							}}
+							id="visual-picker-non-coverable-checkbox-1"
 							value="30"
 							onRenderVisualPicker={
 								<span>
@@ -77,6 +87,7 @@ class Example extends React.Component {
 								heading: 'Lightning Enterprise',
 								label: 'Everything you need to take support to the next level',
 							}}
+							id="visual-picker-non-coverable-checkbox-2"
 							value="150"
 							onRenderVisualPicker={
 								<span>
@@ -90,6 +101,7 @@ class Example extends React.Component {
 								heading: 'Lightning Ultimate',
 								label: 'Complete support with enterprise-grade customization',
 							}}
+							id="visual-picker-non-coverable-checkbox-3"
 							disabled
 							value="300"
 							onRenderVisualPicker={

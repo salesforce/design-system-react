@@ -49,6 +49,7 @@ export ProgressIndicator from '../components/progress-indicator/__docs__/storybo
 export ProgressBar from '../components/progress-bar/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
 export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
+export Radio from '../components/radio/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
