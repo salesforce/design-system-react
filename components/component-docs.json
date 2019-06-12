@@ -2202,6 +2202,10 @@
                         {
                             "value": "'checkbox'",
                             "computed": false
+                        },
+                        {
+                            "value": "'list'",
+                            "computed": false
                         }
                     ]
                 },
@@ -4238,6 +4242,27 @@
                 },
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "direction": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "DIRECTIONS.LTR",
+                            "computed": true
+                        },
+                        {
+                            "value": "DIRECTIONS.RTL",
+                            "computed": true
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Establishes directional context for component. Defaults to left-to-right.",
+                "defaultValue": {
+                    "value": "DIRECTIONS.LTR",
+                    "computed": true
+                }
             },
             "events": {
                 "type": {
@@ -9825,6 +9850,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
                             "value": "'medium'",
                             "computed": false
                         },
@@ -9835,7 +9864,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifiies the modal's width. May be deprecated in favor of `width` in the future."
+                "description": "Specifies the modal's width. May be deprecated in favor of `width` in the future."
             },
             "tagline": {
                 "type": {
@@ -14882,6 +14911,10 @@
                         },
                         {
                             "value": "'learnMore'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'list-item'",
                             "computed": false
                         }
                     ]

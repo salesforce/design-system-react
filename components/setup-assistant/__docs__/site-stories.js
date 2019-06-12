@@ -4,9 +4,10 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/more-icon.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/icon-group.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/list-variant.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/setup-assistant/__examples__/base.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/setup-assistant/__examples__/step-progress.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/setup-assistant/__examples__/hub-expandable-steps.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/setup-assistant/__examples__/card.jsx'),
 ];
 
 module.exports = siteStories;

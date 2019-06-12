@@ -58,6 +58,7 @@ export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 export Radio from '../components/radio/__docs__/storybook-stories';
 export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
+export SetupAssistant from '../components/setup-assistant/__docs__/storybook-stories';
 export Slider from '../components/slider/__docs__/storybook-stories';
 export SplitView from '../components/split-view/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';

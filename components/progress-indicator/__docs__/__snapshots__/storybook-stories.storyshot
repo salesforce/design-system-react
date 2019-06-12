@@ -1015,7 +1015,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
     }
   >
     <div
-      className="slds-progress slds-progress_vertical"
+      className="slds-progress slds-progress_vertical slds-progress_success"
       id="setup-assistant-progress-indicator"
     >
       <ol
