@@ -12361,6 +12361,265 @@
         "SLDS-component-path": "/components/radio-group/",
         "dependencies": []
     },
+    "setup-assistant": {
+        "description": "Setup Assistant provides Administrators with a centralized list of tasks for\nonboarding organizations, clouds, or features within the Salesforce Platform.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            }
+        ],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts SetupAssistantStep components only as children."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "isCard": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Dictates whether this setup assistant has card wrappings and styling",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onStepToggleIsOpen": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function to handle opening / closing of steps when the step is expandable. Passes event object and step `index`, `isOpen`, and `step` props as data."
+            },
+            "progressBar": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a progress bar component, which will only be visible if `isCard` is enabled"
+            }
+        },
+        "route": "setup-assistant",
+        "display-name": "Setup Assistant",
+        "SLDS-component-path": "/components/setup-assistant",
+        "dependencies": [
+            {
+                "step": {
+                    "description": "Setup Assistant Step component is used to specify individual items within the Setup Assistant\nfilled with learning and task links along with a recommended sequence that may have progress tracking",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "getIsOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "toggleIsOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "renderMediaContent",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "renderSummary",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "description": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Detailed description of the step"
+                        },
+                        "estimatedTime": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Estimated time for completing the step"
+                        },
+                        "heading": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Heading for the step"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "index": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Index of the step within the step array"
+                        },
+                        "isExpandable": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Dictates whether the step can be expanded / collapsed"
+                        },
+                        "isOpen": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "If `isExpandable` is true, this prop can be used to control the expanded state. If not provided state will be used instead"
+                        },
+                        "onRenderAction": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render a step's available action(s). Typically returns a Button, Button of variant \"link,\" or Checkbox of variant \"toggle\""
+                        },
+                        "onRenderContent": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component"
+                        },
+                        "onToggleIsOpen": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function to handle requests to expand / collapse the step"
+                        },
+                        "progress": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Percentage of step completed. No progress indicator will be shown for the step unless this is provided"
+                        },
+                        "stepNumber": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Display number for the step. Only appears if progress indicator is enabled. Determined automatically by parent if not provided."
+                        }
+                    },
+                    "name": "step",
+                    "source": "/components/setup-assistant/step.jsx"
+                }
+            }
+        ]
+    },
     "split-view": {
         "description": "Split view is used to navigate between records in a list while staying on the same screen.",
         "methods": [
@@ -12962,6 +13221,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -13042,6 +13318,27 @@
                 },
                 "required": false,
                 "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button-group'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variants of radio groups such as Radio Button Group",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             }
         },
         "route": "radio-groups",
@@ -13051,29 +13348,7 @@
     },
     "radio-button-group": {
         "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
-        "methods": [
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "hasError",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
+        "methods": [],
         "props": {
             "assistiveText": {
                 "type": {

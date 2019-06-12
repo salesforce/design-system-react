@@ -56,7 +56,11 @@ class Example extends React.Component {
 						heading="Turn on tracking for profiles"
 						id="base-step-4"
 						onRenderAction={() => (
-							<Checkbox id="base-step-4-action" variant="toggle" />
+							<Checkbox
+								id="base-step-4-action"
+								oldEventParameterOrder={false}
+								variant="toggle"
+							/>
 						)}
 					/>
 					<SetupAssistantStep

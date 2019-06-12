@@ -76,6 +76,10 @@ const propTypes = {
 
 const defaultProps = {};
 
+/**
+ * Setup Assistant Step component is used to specify individual items within the Setup Assistant
+ * filled with learning and task links along with a recommended sequence that may have progress tracking
+ */
 class Step extends React.Component {
 	constructor(props) {
 		super(props);
