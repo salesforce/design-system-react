@@ -135,5 +135,7 @@ export const TREE = 'SLDSTree';
 export const TREE_BRANCH = 'SLDSTreeBranch';
 export const TREE_ITEM = 'SLDSTreeItem';
 export const TRIAL_BAR = 'SLDSTrialBar';
+export const TRIAL_BAR_DROPDOWN = 'SLDSTrialBarDropdown';
+export const TRIAL_BAR_BUTTON = 'SLDSTrialBarButton';
 export const VERTICAL_NAVIGATION = 'SLDSVerticalNavigation';
 export const VERTICAL_NAVIGATION_ITEM = 'SLDSVerticalNavigationItem';

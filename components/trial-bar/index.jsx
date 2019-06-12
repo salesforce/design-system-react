@@ -5,9 +5,9 @@
 // Based on SLDS v2.4.5
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { TRIAL_BAR } from '../../utilities/constants';
-import classNames from 'classnames';
 
 const propTypes = {
 	/**
