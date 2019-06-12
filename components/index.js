@@ -265,6 +265,9 @@ export ScopedNotification from './scoped-notification';
 export SLDSSetupAssistant from './setup-assistant';
 export SetupAssistant from './setup-assistant';
 
+export SLDSSetupAssistantStep from './setup-assistant/step';
+export SetupAssistantStep from './setup-assistant/step';
+
 export SLDSSlider from './slider';
 export Slider from './slider';
 
