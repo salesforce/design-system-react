@@ -61,6 +61,7 @@ export ScopedNotification from '../components/scoped-notification/__docs__/story
 export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
+export WelcomeMat from '../components/welcome-mat/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because they

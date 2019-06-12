@@ -134,3 +134,5 @@ export const TREE_BRANCH = 'SLDSTreeBranch';
 export const TREE_ITEM = 'SLDSTreeItem';
 export const VERTICAL_NAVIGATION = 'SLDSVerticalNavigation';
 export const VERTICAL_NAVIGATION_ITEM = 'SLDSVerticalNavigationItem';
+export const WELCOME_MAT = 'SLDSWelcomeMat';
+export const WELCOME_MAT_STEP = 'SLDSWelcomeMat';
