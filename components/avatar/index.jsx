@@ -8,12 +8,17 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames) A
 // simple javascript utility for conditionally joining classNames together.
 import classNames from '../../utilities/class-names';
 import { AVATAR } from '../../utilities/constants';
 import UtilityIcon from '../icon';
+import componentDoc from './docs.json';
 
 // ### Display Name Always use the canonical component name as the React display
 // name.
@@ -22,13 +27,13 @@ const displayName = AVATAR;
 // ### Prop Types
 const propTypes = {
 	/**
-	 * Assistive text for accessibility that labels the icon.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `icon`: Assistive text for accessibility that labels the icon.
 	 */
-	assistiveText: PropTypes.string,
-	/**
-	 * Class names to be applied to Avatar component.
-	 */
-	className: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		icon: PropTypes.string,
+	}),
 	/**
 	 * Alt attribute to be applied to image (base case) element.
 	 */
@@ -41,6 +46,10 @@ const propTypes = {
 	 * Initials attribute to optionally pass in initials directly in case of "initials" fallback case.
 	 */
 	initials: PropTypes.string,
+	/**
+	 * Avatar with initials that are dark text on light background
+	 */
+	inverse: PropTypes.bool,
 	/**
 	 * Label attibute to display inside "initials" fallback case. Will be passed as title prop in `abbr` element to provide more specificity.
 	 */
@@ -60,6 +69,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		icon: 'User or Account Icon',
+	},
 	imgAlt: '',
 	size: 'medium',
 	title: 'user avatar',
@@ -77,14 +89,18 @@ const defaultProps = {
  */
 
 class Avatar extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			imgLoadError: false,
 		};
 	}
 
-	buildInitials () {
+	componentWillMount() {
+		checkProps(AVATAR, this.props, componentDoc);
+	}
+
+	buildInitials() {
 		const { label } = this.props;
 		const name = label.trim();
 		const nameParts = name.split(' ');
@@ -97,11 +113,11 @@ class Avatar extends React.Component {
 		return (name[0] || '').toUpperCase() + (name[1] || '').toLowerCase();
 	}
 
-	handleImageError () {
+	handleImageError() {
 		return this.setState(() => ({ imgLoadError: true }));
 	}
 
-	renderBaseAvatar () {
+	renderBaseAvatar() {
 		const { imgAlt, imgSrc, title } = this.props;
 		return (
 			<img
@@ -113,22 +129,30 @@ class Avatar extends React.Component {
 		);
 	}
 
-	renderIconAvatar () {
-		const { assistiveText, variant } = this.props;
+	renderIconAvatar() {
+		const { variant } = this.props;
+		const iconAssistiveText =
+			typeof this.props.assistiveText === 'string'
+				? this.props.assistiveText
+				: {
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
 		return (
 			<UtilityIcon
-				assistiveText={assistiveText || 'User or Account Icon'}
+				assistiveText={{ label: iconAssistiveText }}
 				category="standard"
 				name={variant === 'entity' ? 'account' : 'user'}
 			/>
 		);
 	}
 
-	renderInitialsAvatar () {
-		const { initials, label, variant } = this.props;
+	renderInitialsAvatar() {
+		const { initials, inverse, label, variant } = this.props;
 		return (
 			<abbr
 				className={classNames('slds-avatar__initials', {
+					'slds-avatar__initials_inverse': inverse,
 					'slds-icon-standard-account': variant === 'entity',
 					'slds-icon-standard-user': variant === 'user',
 				})}
@@ -139,7 +163,7 @@ class Avatar extends React.Component {
 		);
 	}
 
-	render () {
+	render() {
 		const { imgSrc, initials, variant, label, size } = this.props;
 
 		const renderAvatar = () => {

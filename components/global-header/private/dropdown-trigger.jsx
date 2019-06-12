@@ -9,7 +9,7 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -27,20 +27,20 @@ import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';
 /**
  *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
  */
-const GlobalHeaderDropdownTrigger = createReactClass({
+class GlobalHeaderDropdownTrigger extends React.Component {
 	// TODO: Make this a stateless component, however dropdowns break when this component becomes stateless.
 
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_TRIGGER,
+	static displayName = MENU_DROPDOWN_TRIGGER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
-		 * An image URL to display for the user profile.
+		 * An image URL or avatar node to display for the user profile.
 		 */
-		avatar: PropTypes.string,
+		avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
 		 * CSS classes to be added to `li` element.
 		 */
@@ -105,13 +105,24 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		 * The ref of the actual triggering button.
 		 */
 		triggerRef: PropTypes.func,
-	},
+	};
+
+	renderAvatar = () => {
+		const { avatar } = this.props;
+		if (typeof avatar === 'string') {
+			return (
+				<span className="slds-avatar slds-avatar_circle slds-avatar_medium">
+					<img src={avatar} alt="" />
+				</span>
+			);
+		}
+		return avatar || null;
+	};
 
 	// ### Render
-	render () {
+	render() {
 		// The following props are provided to the `li`, all others are passed into the `Button`
 		const {
-			avatar,
 			className,
 			id,
 			isOpen,
@@ -128,16 +139,15 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 			...rest
 		} = this.props;
 
-		// TODO: Add avatar component for use across multiple components
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<li
 				aria-haspopup="true"
 				className={classnames(
-					'slds-dropdown-trigger slds-dropdown-trigger--click',
+					'slds-dropdown-trigger slds-dropdown-trigger_click',
 					{
 						'slds-is-open': isOpen,
-						'slds-p-around--xx-small': globalAction,
+						'slds-p-around_xx-small': globalAction,
 					},
 					className
 				)}
@@ -154,24 +164,21 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					className={classnames({
-						'slds-global-header__button--icon-actions': globalAction,
+						'slds-global-header__button_icon-actions': globalAction,
 					})}
 					iconClassName={classnames({
 						'slds-global-header__icon-actions': globalAction,
 					})}
 					aria-haspopup="true"
+					buttonVariant="dropdown"
 					{...rest}
 				>
-					{avatar ? (
-						<span className="slds-avatar slds-avatar--circle slds-avatar--medium">
-							<img src={avatar} alt="" />
-						</span>
-					) : null}
+					{this.renderAvatar()}
 				</Button>
 				{menu}
 			</li>
 		);
-	},
-});
+	}
+}
 
 export default GlobalHeaderDropdownTrigger;

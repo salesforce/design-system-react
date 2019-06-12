@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import Datepicker from '../../date-picker';
@@ -13,13 +14,20 @@ import WeekdayPicker from '../__examples__/weekday-picker';
 
 storiesOf(DATE_PICKER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
 	.add('Default', () => <Default action={action} />)
 	.add('ISO weekdays', () => <IsoWeekdays action={action} />)
 	.add('Custom Input', () => <CustomInput action={action} />)
-	.add('Inline menu', () => <Datepicker menuPosition="relative" />)
+	.add('Inline menu', () => (
+		<Datepicker
+			labels={{
+				label: 'Date',
+			}}
+			menuPosition="relative"
+		/>
+	))
 	.add('DOM Snapshot', () => <SnaphotDefault />)
 	.add('Weekday picker', () => <WeekdayPicker />);

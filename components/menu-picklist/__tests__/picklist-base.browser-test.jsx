@@ -3,19 +3,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 
 import SLDSMenuPicklist from '../../menu-picklist';
 import IconSettings from '../../icon-settings';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate, findRenderedDOMComponentWithClass } = TestUtils;
 
-describe('SLDSMenuPicklist: ', function () {
+describe('SLDSMenuPicklist: ', function() {
 	let body;
 
 	const options = [
@@ -39,7 +35,7 @@ describe('SLDSMenuPicklist: ', function () {
 		);
 	};
 
-	function removePicklist () {
+	function removePicklist() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}
@@ -57,11 +53,6 @@ describe('SLDSMenuPicklist: ', function () {
 	const getPicklist = (props) => renderPicklist(createPicklist(props));
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
-	const clickOnItem = (cmp, index) => {
-		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
-		Simulate.click(items[index]);
-	};
-
 	describe('in modal mode', () => {
 		let cmp;
 		let btn;
@@ -75,17 +66,12 @@ describe('SLDSMenuPicklist: ', function () {
 			removePicklist();
 		});
 
-		it('expands/contracts the dropdown on click', (done) => {
+		it('expands/contracts the dropdown on click', () => {
 			expect(getMenu(document.body)).to.equal(null);
 			Simulate.click(btn, {});
-			setTimeout(() => {
-				expect(getMenu(document.body).className).to.include(
-					'slds-dropdown--left'
-				);
-				Simulate.click(btn, {});
-				expect(getMenu(document.body)).to.equal(null);
-				done();
-			}, 600);
+			expect(getMenu(document.body).className).to.include('slds-dropdown_left');
+			Simulate.click(btn, {});
+			expect(getMenu(document.body)).to.equal(null);
 		});
 	});
 
@@ -134,7 +120,6 @@ describe('SLDSMenuPicklist: ', function () {
 	describe('expanded with onSelect', () => {
 		let cmp;
 		let btn;
-		let clicked;
 		let selected;
 
 		beforeEach(() => {
@@ -195,16 +180,9 @@ describe('SLDSMenuPicklist: ', function () {
 	describe('accessible markup', () => {
 		let cmp;
 		let btn;
-		let clicked;
-		let selected;
 
 		beforeEach(() => {
-			selected = false;
-			cmp = getPicklist({
-				onSelect: (i) => {
-					selected = i;
-				},
-			});
+			cmp = getPicklist({});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -289,32 +267,6 @@ describe('SLDSMenuPicklist: ', function () {
 				which: 27,
 			});
 			expect(getMenu(body)).to.equal(null);
-		});
-	});
-
-	describe('multiple selection', () => {
-		let cmp;
-		let btn;
-
-		beforeEach(() => {
-			cmp = getPicklist({
-				multiple: true,
-			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-			Simulate.click(btn, {});
-		});
-
-		afterEach(() => {
-			removePicklist();
-		});
-
-		it('selects multiple items and renders pills', () => {
-			clickOnItem(cmp, 0);
-			clickOnItem(cmp, 1);
-			expect(btn.textContent).to.equal('Multiple Options Selected');
-
-			const listbox = findRenderedDOMComponentWithClass(cmp, 'slds-listbox');
-			expect(listbox.childNodes.length).to.equal(2);
 		});
 	});
 });

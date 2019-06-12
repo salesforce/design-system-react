@@ -13,9 +13,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -24,9 +21,15 @@ import shortid from 'shortid';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
+import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
+
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
+import componentDoc from './docs.json';
+
+const documentDefined = typeof document !== 'undefined';
+const windowDefined = typeof window !== 'undefined';
 
 const propTypes = {
 	/**
@@ -34,13 +37,19 @@ const propTypes = {
 	 */
 	align: PropTypes.oneOf(['top', 'center']),
 	/**
+	 * Boolean indicating if the appElement should be hidden.
+	 */
+	ariaHideApp: PropTypes.bool,
+	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
-	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.
+	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.
+	 * * `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.
 	 * * `closeButton`: This is a visually hidden label for the close button.
 	 */
 	assistiveText: PropTypes.shape({
 		dialogLabel: PropTypes.string,
+		dialogLabelledBy: PropTypes.string,
 		closeButton: PropTypes.string,
 	}),
 	/**
@@ -48,7 +57,15 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	 * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
+	 * Custom CSS classes for the modal `section` node classed `.slds-modal` and the parent of `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Custom CSS classes for the modal's container. This is the child element of `.slds-modal` with class `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
@@ -72,11 +89,11 @@ const propTypes = {
 	 */
 	directional: PropTypes.bool,
 	/**
-	 * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
+	 * If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.
 	 */
-	dismissible: PropTypes.bool,
+	disableClose: PropTypes.bool,
 	/**
-	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
+	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose.
 	 */
 	dismissOnClickOutside: PropTypes.bool,
 	/**
@@ -88,7 +105,7 @@ const propTypes = {
 	 */
 	footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
 	/**
-	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
+	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present.
 	 */
 	header: PropTypes.node,
 	/**
@@ -100,11 +117,15 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * Unique identifier for the modal. The id is automatically generated if not provided
+	 */
+	id: PropTypes.string,
+	/**
 	 * Forces the modal to be open or closed.
 	 */
 	isOpen: PropTypes.bool.isRequired,
 	/**
-	 * Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer').
+	 * Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`.
 	 */
 	parentSelector: PropTypes.func,
 	/**
@@ -127,17 +148,21 @@ const propTypes = {
 		'info',
 	]),
 	/**
-	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
+	 * Specifies the modal's width. May be deprecated in favor of `width` in the future.
 	 */
-	size: PropTypes.oneOf(['medium', 'large']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/**
-	 * Content underneath the title in the modal header.
+	 * Content underneath the heading in the modal header.
 	 */
 	tagline: PropTypes.node,
 	/**
-	 * Text heading at the top of a modal.
+	 * Content underneath the title in the modal header.
 	 */
 	title: PropTypes.node,
+	/**
+	 * Text heading at the top of a modal.
+	 */
+	heading: PropTypes.node,
 	/**
 	 * Allows adding additional notifications within the modal.
 	 */
@@ -147,10 +172,11 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		dialogLabel: '',
+		dialogLabelledBy: '',
 		closeButton: 'Close',
 	},
 	align: 'center',
-	dismissible: true,
+	ariaHideApp: true,
 };
 
 /**
@@ -164,7 +190,7 @@ const defaultProps = {
  * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
  */
 class Modal extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isClosing: false,
@@ -178,17 +204,20 @@ class Modal extends React.Component {
 		);
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
-		checkProps(MODAL, this.props);
+		checkProps(MODAL, this.props, componentDoc);
+		if (this.props.ariaHideApp) {
+			checkAppElementIsSet();
+		}
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.setReturnFocus();
 		this.updateBodyScroll();
 	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.props.isOpen !== prevProps.isOpen) {
 			this.updateBodyScroll();
 		}
@@ -212,43 +241,74 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 		this.clearBodyScroll();
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getModal () {
+	getBorderRadius() {
+		const borderRadiusValue = '.25rem';
+		const borderTopRadius =
+			this.props.title || this.props.heading || this.props.header
+				? {}
+				: {
+						borderTopLeftRadius: borderRadiusValue,
+						borderTopRightRadius: borderRadiusValue,
+					};
+		const borderBottomRadius = this.props.footer
+			? {}
+			: {
+					borderBottomLeftRadius: borderRadiusValue,
+					borderBottomRightRadius: borderRadiusValue,
+				};
+		return {
+			...borderTopRadius,
+			...borderBottomRadius,
+		};
+	}
+
+	getModal() {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const borderRadius =
-			this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
+		const borderRadius = this.getBorderRadius();
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
 			...contentStyleFromProps,
 		};
+		let dialogLabelledBy = null;
+
+		if (this.props.assistiveText.dialogLabelledBy) {
+			// eslint-disable-next-line prefer-destructuring
+			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
+		} else if (
+			!this.props.assistiveText.dialogLabel &&
+			(this.props.heading || this.props.title)
+		) {
+			dialogLabelledBy = `${this.getId()}-heading`;
+		}
+
 		return (
 			// temporarily disabling eslint for the onClicks on the div tags
 			/* eslint-disable */
-			<div
+			<section
+				aria-describedby={`${this.getId()}-modal-content`}
 				aria-label={this.props.assistiveText.dialogLabel}
-				aria-labelledby={
-					!this.props.assistiveText.dialogLabel && this.props.title
-						? this.getId()
-						: null
-				}
-				className={classNames({
-					'slds-modal': true,
-					'slds-fade-in-open': true,
-					'slds-modal--large': this.props.size === 'large',
-					'slds-modal--prompt': this.isPrompt(),
-				})}
+				aria-labelledby={dialogLabelledBy}
+				aria-modal={true}
+				className={classNames(
+					'slds-modal',
+					'slds-fade-in-open',
+					this.props.size ? `slds-modal_${this.props.size}` : null,
+					{ 'slds-modal_prompt': this.isPrompt() },
+					this.props.className
+				)}
 				onClick={this.dismissModalOnClickOutside}
-				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
+				role={this.props.disableClose ? 'alertdialog' : 'dialog'}
 			>
 				<div
 					className={classNames(
@@ -263,6 +323,7 @@ class Modal extends React.Component {
 							'slds-modal__content',
 							this.props.contentClassName
 						)}
+						id={`${this.getId()}-modal-content`}
 						style={contentStyle}
 						onClick={this.handleModalClick}
 					>
@@ -270,31 +331,31 @@ class Modal extends React.Component {
 					</div>
 					{this.footerComponent()}
 				</div>
-			</div>
+			</section>
 			/* eslint-enable */
 		);
 	}
 
-	setReturnFocus () {
+	setReturnFocus() {
 		this.setState({
-			returnFocusTo: document.activeElement,
+			returnFocusTo: documentDefined ? document.activeElement : null,
 		});
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	clearBodyScroll () {
-		if (window && document && document.body) {
+	clearBodyScroll() {
+		if (windowDefined && documentDefined && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
 
-	closeModal () {
-		if (this.props.dismissible) {
+	closeModal() {
+		if (!this.props.disableClose) {
 			this.dismissModal();
 		}
 	}
 
-	dismissModal () {
+	dismissModal() {
 		this.setState({ isClosing: true });
 		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
 			this.state.returnFocusTo.focus();
@@ -304,24 +365,25 @@ class Modal extends React.Component {
 		}
 	}
 
-	dismissModalOnClickOutside () {
-		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
-			? this.props.dismissOnClickOutside
-			: this.props.dismissible;
+	dismissModalOnClickOutside() {
+		// if dismissOnClickOutside is not set, default its value to disableClose
+		const dismissOnClickOutside =
+			this.props.dismissOnClickOutside !== undefined
+				? this.props.dismissOnClickOutside
+				: !this.props.disableClose;
 
 		if (dismissOnClickOutside) {
 			this.dismissModal();
 		}
 	}
 
-	footerComponent () {
+	footerComponent() {
 		let footer = null;
 		const hasFooter = this.props.footer;
 		const footerClass = {
 			'slds-modal__footer': true,
-			'slds-modal__footer--directional': this.props.directional,
-			'slds-theme--default': this.isPrompt(),
+			'slds-modal__footer_directional': this.props.directional,
+			'slds-theme_default': this.isPrompt(),
 		};
 
 		if (hasFooter) {
@@ -338,20 +400,22 @@ class Modal extends React.Component {
 	}
 
 	// eslint-disable-next-line class-methods-use-this
-	handleModalClick (event) {
+	handleModalClick(event) {
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}
 	}
 
-	handleSubmitModal () {
+	handleSubmitModal() {
 		this.closeModal();
 	}
 
-	headerComponent () {
+	headerComponent() {
 		let headerContent = this.props.header;
 		const headerEmpty =
-			!headerContent && !this.props.title && !this.props.tagline;
+			!headerContent &&
+			!(this.props.heading || this.props.title) &&
+			!this.props.tagline;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -360,33 +424,36 @@ class Modal extends React.Component {
 			this.props.closeButtonAssistiveText || assistiveText.closeButton;
 		const closeButton = (
 			<Button
-				assistiveText={closeButtonAssistiveText}
+				assistiveText={{ icon: closeButtonAssistiveText }}
 				iconCategory="utility"
 				iconName="close"
 				iconSize="large"
 				inverse
-				className="slds-modal__close"
+				className="slds-button_icon slds-modal__close"
 				onClick={this.closeModal}
 				title={closeButtonAssistiveText}
 				variant="icon"
 			/>
 		);
 
-		if ((!headerContent && this.props.title) || this.props.tagline) {
+		if (
+			(!headerContent && (this.props.heading || this.props.title)) ||
+			this.props.tagline
+		) {
 			headerContent = (
 				<div>
 					{this.props.toast}
 					<h2
 						className={classNames({
-							'slds-text-heading--small': this.isPrompt(),
-							'slds-text-heading--medium': !this.isPrompt(),
+							'slds-text-heading_small': this.isPrompt(),
+							'slds-text-heading_medium': !this.isPrompt(),
 						})}
-						id={this.getId()}
+						id={`${this.getId()}-heading`}
 					>
-						{this.props.title}
+						{this.props.heading ? this.props.heading : this.props.title}
 					</h2>
 					{this.props.tagline ? (
-						<p className="slds-m-top--x-small">{this.props.tagline}</p>
+						<p className="slds-m-top_x-small">{this.props.tagline}</p>
 					) : null}
 				</div>
 			);
@@ -398,26 +465,26 @@ class Modal extends React.Component {
 				className={classNames(
 					'slds-modal__header',
 					{
-						'slds-modal__header--empty': headerEmpty,
-						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-						'slds-theme--alert-texture': this.isPrompt(),
+						'slds-modal__header_empty': headerEmpty,
+						[`slds-theme_${this.props.prompt}`]: this.isPrompt(),
+						'slds-theme_alert-texture': this.isPrompt(),
 					},
 					this.props.headerClassName
 				)}
 				onClick={this.handleModalClick}
 			>
-				{this.props.dismissible ? closeButton : null}
+				{this.props.disableClose ? null : closeButton}
 				{headerContent}
 			</header>
 		);
 	}
 
-	isPrompt () {
+	isPrompt() {
 		return this.props.prompt !== undefined;
 	}
 
-	updateBodyScroll () {
-		if (window && document && document.body) {
+	updateBodyScroll() {
+		if (windowDefined && documentDefined && document.body) {
 			if (this.props.isOpen) {
 				document.body.style.overflow = 'hidden';
 			} else {
@@ -426,7 +493,7 @@ class Modal extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		const customStyles = {
 			content: {
 				position: 'default',
@@ -450,6 +517,7 @@ class Modal extends React.Component {
 
 		return (
 			<ReactModal
+				ariaHideApp={this.props.ariaHideApp}
 				contentLabel="Modal"
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
@@ -461,7 +529,7 @@ class Modal extends React.Component {
 				)}
 			>
 				{this.getModal()}
-				<div className="slds-backdrop slds-backdrop--open" />
+				<div className="slds-backdrop slds-backdrop_open" />
 			</ReactModal>
 		);
 	}

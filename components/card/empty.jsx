@@ -12,9 +12,9 @@ import { CARD_EMPTY } from '../../utilities/constants';
  * A default empty state for Cards.
  */
 const CardEmpty = (props) => (
-	<div className="slds-p-horizontal--small">
-		<div className="slds-text-align--center slds-m-bottom--x-large">
-			<h3 className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">
+	<div className="slds-p-horizontal_small">
+		<div className="slds-text-align_center slds-m-bottom_x-large">
+			<h3 className="slds-text-heading_small slds-p-top_large slds-p-bottom_large">
 				{props.heading}
 			</h3>
 			{props.children}

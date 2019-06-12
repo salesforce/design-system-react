@@ -1,13 +1,13 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Tabs from '~/components/tabs'; // `~` is replaced with design-system-react at runtime
 import TabsPanel from '~/components/tabs/panel';
 
-const Example = createReactClass({
-	displayName: 'TabsExample',
+class Example extends React.Component {
+	static displayName = 'TabsExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Tabs id="tabs-example-default">
@@ -20,7 +20,7 @@ const Example = createReactClass({
 				</Tabs>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

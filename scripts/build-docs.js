@@ -6,7 +6,7 @@ import kebabCase from 'lodash.kebabcase';
 import isEmpty from 'lodash.isempty';
 import filter from 'lodash.filter';
 import util from 'util';
-import { parse as bParse } from 'babylon';
+import { parse as bParse } from '@babel/parser';
 import { components } from '../package.json';
 
 console.log(
@@ -48,12 +48,7 @@ components.map((node) => {
 		}
 	}
 
-	console.log(
-		`\n================================================================================\n[ ${inputPath.replace(
-			dirName,
-			'.'
-		)} ] `
-	);
+	console.log(`[ ${inputPath.replace(dirName, '.')} ] `);
 
 	const src = fs.readFileSync(inputPath, 'utf8');
 	const doc = parse(src);

@@ -6,24 +6,32 @@ import Icon from '../../../components/icon';
 
 const dropdownCollection = [
 	{
+		label: 'Main action',
+		value: '0',
+		leftIcon: {
+			category: 'utility',
+			name: 'add',
+		},
+		href: 'http://www.google.com',
+	},
+	{
+		label: 'Menu Header',
+		type: 'header',
+		divider: 'top',
+	},
+	{
 		label: 'Menu Item One',
 		value: '1',
-		iconCategory: 'utility',
-		iconName: 'table',
 		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Two',
 		value: '2',
-		iconCategory: 'utility',
-		iconName: 'kanban',
 		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Three',
 		value: '3',
-		iconCategory: 'utility',
-		iconName: 'side_list',
 		href: 'http://www.google.com',
 	},
 ];
@@ -33,7 +41,7 @@ const propSets = {
 		props: {},
 		primaryRegionProps: {
 			appLauncher: {
-				assistiveText: 'Open App Launcher',
+				assistiveText: { trigger: 'Open App Launcher' },
 				id: 'app-launcher-trigger',
 				triggerName: 'App Name',
 			},
@@ -41,11 +49,12 @@ const propSets = {
 	},
 	hybrid: {
 		props: {
+			homeActive: false,
 			openOn: 'hybrid',
 		},
 		primaryRegionProps: {
 			appLauncher: {
-				assistiveText: 'Open App Launcher',
+				assistiveText: { trigger: 'Open App Launcher' },
 				id: 'app-launcher-trigger',
 				triggerName: 'App Name',
 			},
@@ -56,23 +65,24 @@ const propSets = {
 			cloud: 'marketing',
 		},
 		primaryRegionProps: {
+			dividerPosition: 'right',
 			truncate: false,
 			appLauncher: {
-				assistiveText: 'Open App Launcher',
+				assistiveText: { trigger: 'Open App Launcher' },
 				id: 'app-launcher-trigger',
 				noTruncate: true,
 				triggerName: (
-					<div className="slds-grid slds-grid--align-spread">
+					<div className="slds-grid slds-grid_align-spread">
 						<div>Marketing Cloud</div>
 						<div>
 							<Icon
 								category="utility"
-								className="slds-m-left--small slds-m-right--small"
+								className="slds-m-left_small slds-m-right_small"
 								name="email"
 								size="x-small"
 							/>
 							<span
-								className="context-bar__label-action slds-text-body--regular"
+								className="context-bar__label-action slds-text-body_regular"
 								style={{ fontWeight: 'normal' }}
 							>
 								Email Studio
@@ -92,7 +102,7 @@ const propSets = {
 		props: {},
 		primaryRegionProps: {
 			appLauncher: {
-				assistiveText: 'Open App Launcher',
+				assistiveText: { trigger: 'Open App Launcher' },
 				id: 'app-launcher-trigger',
 				triggerName: 'App Name',
 			},

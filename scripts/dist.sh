@@ -3,8 +3,15 @@
 # Copyright (c) 2015-present, salesforce.com, inc. All rights reserved
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
+# NOTE: eventually use "babel.config.js" instead of setting --config-path.
+# Use of --config-path is ok for now because babel-cli is searching for "babel.config.js"
+# and not falling back to ".babelrc" at all, so it doesn't double-load by default.
+# See:
+# https://babeljs.io/docs/en/configuration#what-s-your-use-case
+# https://babeljs.io/docs/en/options#configfile
+
 npx babel-node scripts/inline-icons.js \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
 
 echo "# Building design-system-react"
 echo "## Preparing the .tmp directory"
@@ -36,12 +43,13 @@ echo "## Cloning additional files"
 cp .gitignore .tmp/.gitignore
 cp LICENSE.txt .tmp/LICENSE.txt
 cp package.json .tmp/package.json
+cp -r docs .tmp/docs
 cp docs/README-dist.md .tmp/README.md
 
 echo "## Running JS steps"
 
 npx babel-node scripts/dist.js \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs
 
 echo "## Copying the components"
 
@@ -52,6 +60,7 @@ cp -r .tmp .tmp-es
 rm -rf .tmp/
 
 # Copy source code
+cp -r assets .tmp-es/assets
 cp -r components .tmp-es/components
 cp -r styles .tmp-es/styles
 cp -r icons .tmp-es/icons
@@ -64,7 +73,8 @@ echo "## Transpiling with Babel"
 # NODE_ENV=amd \
 # ./node_modules/.bin/babel \
 #     .tmp-es/components \
-#     --plugins transform-es2015-modules-amd \
+#	  --config-file ./.babelrc \
+#     --plugins @babel/plugin-transform-modules-amd \
 #     --out-dir .tmp-amd/components \
 #     --ignore site-stories.js,__docs__,__examples__,__tests__
 
@@ -72,43 +82,56 @@ echo "## Transpiling with Babel"
 
 # ./node_modules/.bin/babel \
 #     .tmp-es/icons \
-#     --plugins transform-es2015-modules-amd \
+#	  --config-file ./.babelrc \
+#     --plugins @babel/plugin-transform-modules-amd \
 #     --out-dir .tmp-amd/icons
 
 # NODE_ENV=amd \
 # ./node_modules/.bin/babel \
 #     .tmp-es/utilities \
-#     --plugins transform-es2015-modules-amd \
+#	  --config-file ./.babelrc \
+#     --plugins @babel/plugin-transform-modules-amd \
 #     --out-dir .tmp-amd/utilities
 
 # CommonJS module transpilation
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/components \
-    --plugins transform-es2015-modules-commonjs \
+    --config-file ./.babelrc \
     --out-dir .tmp-commonjs/components \
+    --copy-files \
+    --plugins @babel/plugin-transform-modules-commonjs \
     --ignore site-stories.js,__docs__,__examples__,__tests__
 
+cp -r assets .tmp-commonjs/assets
 cp -r styles .tmp-commonjs/styles
 
 npx babel \
     .tmp-es/icons \
-    --plugins transform-es2015-modules-commonjs \
-    --out-dir .tmp-commonjs/icons
+    --config-file ./.babelrc \
+    --out-dir .tmp-commonjs/icons \
+    --copy-files \
+    --plugins @babel/plugin-transform-modules-commonjs
 
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/utilities \
-    --plugins transform-es2015-modules-commonjs \
-    --out-dir .tmp-commonjs/utilities
+    --config-file ./.babelrc \
+    --out-dir .tmp-commonjs/utilities \
+    --copy-files \
+    --plugins @babel/plugin-transform-modules-commonjs
 
 # ES6 module transpilation
 NODE_ENV=esm \
 npx babel \
     .tmp-es/components \
+    --config-file ./.babelrc \
     --out-dir .tmp-esm/components \
+    --copy-files \
     --source-maps \
     --ignore site-stories.js,__docs__,__examples__,__tests__
+
+cp -r assets .tmp-esm/assets
 
 cp -r styles .tmp-esm/styles
 
@@ -117,14 +140,17 @@ cp -r icons .tmp-esm/icons
 NODE_ENV=esm \
 npx babel \
     .tmp-es/utilities \
-    --source-maps \
-    --out-dir .tmp-esm/utilities
+    --config-file ./.babelrc \
+    --out-dir .tmp-esm/utilities \
+    --copy-files \
+    --source-maps
 
 NODE_ENV=esm \
 npx babel \
     .tmp-es/icons \
-    --out-dir .tmp-esm/icons
-
+    --config-file ./.babelrc \
+    --out-dir .tmp-esm/icons \
+    --copy-files
 
 # NPM module structure
 # You module bundler will decide whether to use `module` or `lib` as an entry point.
@@ -141,4 +167,4 @@ rm .tmp-npm/lib/*.map
 rm .tmp-npm/lib/*.js
 
 npx babel-node scripts/npm-transform.js \
-    --plugins transform-es2015-modules-commonjs
+    --plugins @babel/plugin-transform-modules-commonjs

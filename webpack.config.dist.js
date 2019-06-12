@@ -1,14 +1,15 @@
 /* eslint-env node */
 const fs = require('fs');
 const webpack = require('webpack');
-const packageJson = require('./package.json');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
+const packageJson = require('./package.json');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
 const license = fs.readFileSync('./LICENSE.txt', 'utf8');
 
 const baseConfig = require('./webpack.config');
 
+// eslint-disable-next-line prefer-object-spread/prefer-object-spread
 const config = Object.assign({}, baseConfig, {
 	externals: {
 		react: {

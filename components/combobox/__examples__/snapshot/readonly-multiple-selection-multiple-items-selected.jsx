@@ -1,8 +1,6 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';
-import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -52,7 +50,7 @@ const accounts = [
 ];
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -61,7 +59,7 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox

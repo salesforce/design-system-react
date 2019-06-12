@@ -4,12 +4,8 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
 
-import isFunction from 'lodash.isfunction';
-import cloneDeep from 'lodash.clonedeep';
-
+import isEqual from 'lodash.isequal';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
@@ -19,11 +15,9 @@ import {
 } from '../../../tests/enzyme-helpers';
 
 import { keyObjects } from '../../../utilities/key-code';
-import sampleNodes from '../../../utilities/sample-data/tree';
+import sampleNodesDynamicHashMap from '../__docs__/dynamic-hashmap';
 
-import IconSettings from '../../icon-settings';
-import Tree from '../../tree';
-import Search from '../../forms/input/search';
+import DefaultExample from '../__examples__/default';
 
 chai.use(chaiEnzyme());
 
@@ -31,137 +25,16 @@ const COMPONENT_CSS_CLASSES = {
 	base: 'slds-tree',
 };
 
-const DemoTree = createReactClass({
-	displayName: 'DemoTree',
-
-	// ### Prop Types
-	propTypes: {
-		branchExpandClicked: PropTypes.func,
-		exampleNodesIndex: PropTypes.string,
-		getNodes: PropTypes.func,
-		itemClicked: PropTypes.func,
-		noBranchSelection: PropTypes.bool,
-		searchTerm: PropTypes.string,
-		searchable: PropTypes.bool,
-		singleSelection: PropTypes.bool,
-		treeScrolled: PropTypes.func,
-		loading: PropTypes.bool,
-	},
-
-	getDefaultProps () {
-		return {
-			exampleNodesIndex: 'sampleNodesDefault',
-			id: 'example-tree',
-			loading: true,
-		};
-	},
-
-	getInitialState () {
-		const initalNodes = this.props.exampleNodesIndex
-			? sampleNodes[this.props.exampleNodesIndex]
-			: sampleNodes.sampleNodesDefault;
-		return {
-			nodes: cloneDeep(initalNodes),
-			searchTerm: this.props.searchable ? 'fruit' : undefined,
-		};
-	},
-
-	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified, and due to object and arrays being reference variables, forceUpate is needed. This is just a "working example" not a prescription.
-	handleExpandClick (event, data) {
-		if (isFunction(this.props.branchExpandClicked)) {
-			this.props.branchExpandClicked(event, data);
-		}
-		data.node.expanded = data.expand;
-
-		if (this.props.loading) {
-			data.node.loading = data.expand ? true : undefined;
-			// Fake delay to demonstrate use of loading node attibute
-			setTimeout(
-				(node) => {
-					node.loading = false;
-					this.forceUpdate();
-				},
-				500,
-				data.node
-			);
-		} else {
-			this.forceUpdate();
-		}
-	},
-
-	handleClick (event, data) {
-		if (this.props.singleSelection) {
-			data.node.selected = data.select;
-			this.setState({ singleSelection: data.node });
-			if (this.state.singleSelection) {
-				this.state.singleSelection.selected = undefined;
-			}
-			this.forceUpdate();
-			if (isFunction(this.props.itemClicked)) {
-				this.props.itemClicked(event, data);
-			}
-		} else if (
-			!this.props.noBranchSelection ||
-			(this.props.noBranchSelection && data.node.type !== 'branch')
-		) {
-			data.node.selected = data.select;
-			this.forceUpdate();
-			if (isFunction(this.props.itemClicked)) {
-				this.props.itemClicked(event, data);
-			}
-		}
-	},
-
-	handleScroll (event, data) {
-		if (isFunction(this.props.treeScrolled)) {
-			this.props.treeScrolled(event, data);
-		}
-	},
-
-	handleSearchChange (event) {
-		this.setState({ searchTerm: event.target.value });
-	},
-
-	render () {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div>
-					{this.props.searchable ? (
-						<div>
-							<Search
-								assistiveText="Search Tree"
-								value={this.state.searchTerm}
-								onChange={this.handleSearchChange}
-							/>
-							<br />
-						</div>
-					) : null}
-					<Tree
-						id="example-tree"
-						getNodes={this.props.getNodes}
-						nodes={this.state.nodes}
-						onExpandClick={this.handleExpandClick}
-						onClick={this.handleClick}
-						onScroll={this.handleScroll}
-						searchTerm={this.state.searchTerm}
-						{...this.props}
-					/>
-				</div>
-			</IconSettings>
-		);
-	},
-});
-
 describe('Tree: ', () => {
 	/*
 		Tests
 	 */
 	describe('Tree can be navigated up/down using the keyboard', () => {
-		beforeEach(mountComponent(<DemoTree />));
+		beforeEach(mountComponent(<DefaultExample log={() => {}} />));
 
 		afterEach(unmountComponent);
 
-		it('moves selection up/down with wrapping when using keyboard up/down keys', function () {
+		it('moves selection up/down with wrapping when using keyboard up/down keys', function() {
 			// Initial focus selects the item
 			this.wrapper.find('#example-tree-1').simulate('focus');
 			let itemDiv = this.wrapper
@@ -212,16 +85,16 @@ describe('Tree: ', () => {
 	});
 
 	describe('Tree can be navigated right/left using the keyboard', () => {
-		beforeEach(mountComponent(<DemoTree loading={false} />));
+		beforeEach(mountComponent(<DefaultExample log={() => {}} />));
 
 		afterEach(unmountComponent);
 
-		it('expands/collapses branches when using right/left keys', function () {
+		it('expands/collapses branches when using right/left keys', function() {
 			// Initial focus selects the item
-			const item = this.wrapper.find('#example-tree-3');
+			const item = this.wrapper.find('#example-tree-1');
 			item.simulate('focus');
 			const itemDiv = this.wrapper
-				.find('#example-tree-3')
+				.find('#example-tree-1')
 				.find('.slds-is-selected');
 			expect(itemDiv).to.have.length(1);
 
@@ -256,26 +129,31 @@ describe('Tree: ', () => {
 		const id = 'this-is-a-container-test';
 		beforeEach(
 			mountComponent(
-				<DemoTree
+				<DefaultExample
 					className="this-is-a-container-test"
 					heading="Foods"
 					id={id}
 					listClassName="this-is-an-unordered-list-test"
 					listStyle={{ height: '500px' }}
+					log={() => {}}
 				/>
 			)
 		);
 
 		afterEach(unmountComponent);
 
-		it('has tree container class, list class, and heading', function () {
+		it('has tree container class, list class, and heading', function() {
 			const container = this.wrapper.find('.slds-tree_container');
 			expect(container.hasClass('this-is-a-container-test')).to.be.true;
 
 			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(list).to.have.length(1);
 			expect(list.hasClass('this-is-an-unordered-list-test')).to.be.true;
-			expect(list.node.offsetHeight).to.equal(500);
+			expect(list.get(0).props.style).to.have.property(
+				'height',
+				'500px',
+				'height of list'
+			);
 
 			const heading = this.wrapper.find(`#${id}__heading`);
 			expect(heading).to.have.length(1);
@@ -283,11 +161,15 @@ describe('Tree: ', () => {
 	});
 
 	describe('Assistive Technology', () => {
-		beforeEach(mountComponent(<DemoTree assistiveText="Foods" />));
+		beforeEach(
+			mountComponent(
+				<DefaultExample log={() => {}} assistiveText={{ label: 'Foods' }} />
+			)
+		);
 
 		afterEach(unmountComponent);
 
-		it('has heading via assistiveText', function () {
+		it('has heading via assistiveText', function() {
 			const heading = this.wrapper.find(
 				'#example-tree__heading.slds-assistive-text'
 			);
@@ -302,16 +184,16 @@ describe('Tree: ', () => {
 	describe('Initial Expanded and Selection based on nodes', () => {
 		beforeEach(
 			mountComponent(
-				<DemoTree
-					exampleNodesIndex="sampleNodesWithInitialState"
-					heading="Foods"
+				<DefaultExample
+					log={() => {}}
+					nodes={sampleNodesDynamicHashMap.initialExpandedSelected}
 				/>
 			)
 		);
 
 		afterEach(unmountComponent);
 
-		it('has initial selection', function () {
+		it('has initial selection', function() {
 			let selectedNode = this.wrapper
 				.find('#example-tree-2')
 				.find('.slds-is-selected');
@@ -323,11 +205,11 @@ describe('Tree: ', () => {
 			expect(selectedNode).to.have.length(1);
 		});
 
-		it('has initial expanded branches', function () {
+		it('has initial expanded branches', function() {
 			const expandedBranchList = this.wrapper
 				.find('#example-tree-2')
 				.find('.slds-is-expanded');
-			expect(expandedBranchList.node.childNodes).to.have.length(2);
+			expect(expandedBranchList).to.have.length(2);
 		});
 	});
 
@@ -337,17 +219,17 @@ describe('Tree: ', () => {
 
 		beforeEach(
 			mountComponent(
-				<DemoTree
-					branchExpandClicked={expandClicked}
-					itemClicked={itemClicked}
-					heading="Foods"
+				<DefaultExample
+					log={() => {}}
+					onExpandClick={expandClicked}
+					onClick={itemClicked}
 				/>
 			)
 		);
 
 		afterEach(unmountComponent);
 
-		it('branch calls onExpandClicked and onClick', function () {
+		it('branch calls onExpandClicked and onClick', function() {
 			const branch = this.wrapper
 				.find('#example-tree-2')
 				.find('.slds-tree__item');
@@ -366,12 +248,12 @@ describe('Tree: ', () => {
 		const itemClicked = sinon.spy();
 
 		beforeEach(
-			mountComponent(<DemoTree itemClicked={itemClicked} heading="Foods" />)
+			mountComponent(<DefaultExample log={() => {}} onClick={itemClicked} />)
 		);
 
 		afterEach(unmountComponent);
 
-		it('item calls itemClicked', function () {
+		it('item calls itemClicked', function() {
 			const item = this.wrapper
 				.find('#example-tree-1')
 				.find('.slds-tree__item');
@@ -380,32 +262,47 @@ describe('Tree: ', () => {
 		});
 	});
 
-	describe('getNodes is called on initial tree', () => {
-		const getNodes = sinon.spy();
+	describe('getNodes is called correctly on initial tree', () => {
+		const getNodes = (node) =>
+			node.nodes
+				? node.nodes.map(
+						(id) => sampleNodesDynamicHashMap.initialExpandedSelected[id]
+					)
+				: [];
+		const getNodesSpy = sinon.spy(getNodes);
 
 		beforeEach(
 			mountComponent(
-				<DemoTree
-					exampleNodesIndex="sampleNodesWithInitialState"
-					getNodes={getNodes}
-					heading="Foods"
+				<DefaultExample
+					getNodes={getNodesSpy}
+					log={() => {}}
+					nodes={sampleNodesDynamicHashMap.initialExpandedSelected}
 				/>
 			)
 		);
 
 		afterEach(unmountComponent);
 
-		it('getNodes is called on initial tree', () => {
-			expect(getNodes.callCount).to.equal(1);
+		it('getNodes passes in correct node and is called 18 times (all branches twice + root branch) on initial tree', () => {
+			const nodeCallbackParameter = getNodesSpy.args[0][0];
+			expect(
+				isEqual(
+					nodeCallbackParameter.nodes,
+					sampleNodesDynamicHashMap.initialExpandedSelected[0].nodes
+				)
+			).is.true;
+			expect(getNodesSpy.callCount).to.equal(18);
 		});
 	});
 
 	describe('Search term is highlighted', () => {
-		beforeEach(mountComponent(<DemoTree searchTerm="fruit" heading="Foods" />));
+		beforeEach(
+			mountComponent(<DefaultExample log={() => {}} searchTerm="fruit" />)
+		);
 
 		afterEach(unmountComponent);
 
-		it('item calls itemClicked', function () {
+		it('item calls itemClicked', function() {
 			const markedItem = this.wrapper.find('mark');
 			expect(markedItem).to.have.length(1);
 		});
@@ -416,21 +313,22 @@ describe('Tree: ', () => {
 
 		beforeEach(
 			mountComponent(
-				<DemoTree
-					exampleNodesIndex="sampleNodesWithLargeDataset"
+				<DefaultExample
 					heading="Foods"
-					onScroll={onScroll}
 					listStyle={{
 						height: '300px',
 						overflowY: 'auto',
 					}}
+					log={() => {}}
+					nodes={sampleNodesDynamicHashMap.large}
+					onScroll={onScroll}
 				/>
 			)
 		);
 
 		afterEach(unmountComponent);
 
-		it('scrolling calls onScroll', function () {
+		it('scrolling calls onScroll', function() {
 			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			list.simulate('scroll');
 			expect(onScroll.callCount).to.equal(1);

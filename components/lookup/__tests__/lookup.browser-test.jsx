@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-render-return-value */
 /* eslint-disable react/no-find-dom-node */
 
@@ -5,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 
 import SLDSLookup from '../../lookup';
@@ -14,14 +16,10 @@ import IconSettings from '../../icon-settings';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithClass,
-	scryRenderedDOMComponentsWithTag,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('SLDSLookup: ', () => {
-	const generateLookup = function (lookupInstance) {
+	const generateLookup = function(lookupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>
 		);
@@ -35,11 +33,11 @@ describe('SLDSLookup: ', () => {
 		iconName: 'account',
 		isInline: true,
 		label: 'Account',
-		onChange (newValue) {
-			console.log('New search term: ', newValue);
+		onChange(newValue) {
+			// console.log('New search term: ', newValue);
 		},
-		onSelect (item) {
-			console.log(item, ' Selected');
+		onSelect(item) {
+			// console.log(item, ' Selected');
 		},
 		options: [
 			{ label: 'Paddy"s Pub' },
@@ -281,7 +279,7 @@ describe('SLDSLookup: ', () => {
 			const focusedItem = lookup
 				.getElementsByTagName('ul')[0]
 				.getElementsByTagName('li')[0];
-			expect(focusedItem.className).to.have.string('slds-theme--shade');
+			expect(focusedItem.className).to.have.string('slds-theme_shade');
 		});
 
 		it('isOpen=false prevents dropdown from opening', () => {

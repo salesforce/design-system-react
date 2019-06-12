@@ -16,11 +16,14 @@ import isFunction from 'lodash.isfunction';
 
 // ## Children
 import Button from '../../button';
-import Input from './index';
+import Input from '../../input/index';
 import InputIcon from '../../icon/input-icon';
 
 // ### Event Helpers
 import KEYS from '../../../utilities/key-code';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './inline-check-props';
 
 // ## Constants
 import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
@@ -97,16 +100,19 @@ const defaultProps = {
  * An inline input is rendered as a label by default. When clicked (or tabbed in), it's rendered as an input. When the focus is lost, the current input value is saved and the input is rendered as a label again.
  */
 class InlineEdit extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
-
 		this.state = {
 			isEditing: false,
 			value: null,
 		};
 	}
 
-	componentDidUpdate () {
+	componentWillMount() {
+		checkProps(FORMS_INLINE_EDIT, this.props);
+	}
+
+	componentDidUpdate() {
 		if (this.autoFocus) {
 			if (this.inputNode) {
 				this.inputNode.focus();
@@ -115,13 +121,6 @@ class InlineEdit extends React.Component {
 			this.autoFocus = false;
 		}
 	}
-
-	handleCloseBtnClick = () => {
-		this.endEditMode();
-		setTimeout(() => {
-			this.editButtonRef.focus();
-		}, 100);
-	};
 
 	endEditMode = (option) => {
 		if (this.willSave) {
@@ -199,7 +198,7 @@ class InlineEdit extends React.Component {
 	};
 
 	// ### Render
-	render () {
+	render() {
 		const {
 			assistiveText,
 			disabled,
@@ -220,18 +219,15 @@ class InlineEdit extends React.Component {
 							category="utility"
 							name="close"
 							position="right"
-							onBlur={this.handleBlur}
-							onClick={this.handleCloseBtnClick}
+							onClick={this.endEditMode}
+							tabIndex="-1"
 						/>
 					) : null
 				}
 				disabled={disabled}
 				inlineEditTrigger={
 					<Button
-						assistiveText={assistiveText}
-						buttonRef={(component) => {
-							if (component) this.editButtonRef = component;
-						}}
+						assistiveText={{ icon: assistiveText }}
 						className="slds-m-left_x-small"
 						disabled={disabled}
 						iconCategory="utility"
@@ -241,6 +237,7 @@ class InlineEdit extends React.Component {
 						variant="icon"
 					/>
 				}
+				onBlur={this.handleBlur}
 				onChange={this.handleChange}
 				onClick={!this.state.isEditing ? this.triggerEditMode : null}
 				onKeyDown={this.handleKeyDown}

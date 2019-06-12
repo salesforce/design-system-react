@@ -19,21 +19,32 @@ const propTypes = {
 	 * Info node passed by PageHeader
 	 */
 	info: PropTypes.node,
+	/**
+	 * Nav content which appears in the upper right hand corner.
+	 * 'navRight' prop will be deprecated soon, instaed use 'onRenderControls'
+	 */
+	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const Base = (props) => (
-	<MediaObject
-		body={
-			<div>
-				{props.title}
-				{props.info}
-			</div>
-		}
-		figure={props.icon}
-		verticalCenter
-	/>
+	<div className="slds-grid slds-page-header__row">
+		<div className="slds-col slds-page-header__col-title">
+			<MediaObject
+				body={
+					<div>
+						{props.title}
+						{props.info}
+					</div>
+				}
+				className="slds-no-space slds-grow"
+				figure={props.icon}
+			/>
+		</div>
+		<div className="slds-col slds-no-flex slds-grid slds-align-top">
+			{props.onRenderControls ? props.onRenderControls : props.navRight}
+		</div>
+	</div>
 );
-
 Base.displayName = displayName;
 Base.propTypes = propTypes;
 

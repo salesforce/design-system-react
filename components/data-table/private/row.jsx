@@ -3,7 +3,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -13,7 +12,8 @@ import classNames from 'classnames';
 import find from 'lodash.find';
 
 // ## Children
-import Checkbox from '../../forms/checkbox';
+import Checkbox from '../../checkbox';
+import Radio from '../../radio';
 
 // ## Constants
 import {
@@ -25,18 +25,25 @@ import {
 /**
  * Used internally, provides row rendering to the DataTable.
  */
-const DataTableRow = createReactClass({
+class DataTableRow extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_ROW,
+	static displayName = DATA_TABLE_ROW;
 
 	// ### Prop Types
-	propTypes: {
-		/**
-		 * Text for select row
-		 */
-		assistiveTextForSelectRow: PropTypes.string,
-		canSelectRows: PropTypes.bool,
+	static propTypes = {
+		assistiveText: PropTypes.shape({
+			actionsHeader: PropTypes.string,
+			columnSort: PropTypes.string,
+			columnSortedAscending: PropTypes.string,
+			columnSortedDescending: PropTypes.string,
+			selectAllRows: PropTypes.string,
+			selectRow: PropTypes.string,
+		}),
+		canSelectRows: PropTypes.oneOfType([
+			PropTypes.bool,
+			PropTypes.oneOf(['checkbox', 'radio']),
+		]),
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -52,23 +59,27 @@ const DataTableRow = createReactClass({
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
 		selection: PropTypes.array,
-	},
+		tableId: PropTypes.string,
+	};
 
-	isSelected () {
-		return !!find(this.props.selection, this.props.item);
-	},
+	isSelected = () => !!find(this.props.selection, this.props.item);
 
-	handleToggle (selected, e) {
-		return this.props.onToggle(this.props.item, selected, e);
-	},
+	handleToggle = (e, { checked }) =>
+		this.props.onToggle(this.props.item, checked, e);
 
 	// ### Render
-	render () {
+	render() {
+		const ariaProps = {};
 		const isSelected = this.isSelected();
+
+		if (this.props.canSelectRows) {
+			ariaProps['aria-selected'] = isSelected ? 'true' : 'false';
+		}
 
 		// i18n
 		return (
 			<tr
+				{...ariaProps}
 				className={classNames({
 					'slds-hint-parent': this.props.rowActions,
 					'slds-is-selected': this.props.canSelectRows && isSelected,
@@ -77,21 +88,37 @@ const DataTableRow = createReactClass({
 				{this.props.canSelectRows ? (
 					<td
 						role={this.props.fixedLayout ? 'gridcell' : null}
-						className="slds-text-align--right"
-						data-label="Select Row"
+						className="slds-text-align_right"
+						data-label={this.props.stacked ? 'Select Row' : undefined}
 						style={{ width: '3.25rem' }}
 					>
-						<Checkbox
-							assistiveText={this.props.assistiveTextForSelectRow}
-							checked={isSelected}
-							id={`${this.props.id}-SelectRow`}
-							name="SelectRow"
-							onChange={this.handleToggle}
-						/>
+						{this.props.canSelectRows === 'radio' ? (
+							<Radio
+								assistiveText={{
+									label: this.props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								className="slds-m-right_x-small"
+								id={`${this.props.id}-SelectRow`}
+								label=""
+								name={`${this.props.tableId}-SelectRow`}
+								onChange={this.handleToggle}
+							/>
+						) : (
+							<Checkbox
+								assistiveText={{
+									label: this.props.assistiveText.selectRow,
+								}}
+								checked={isSelected}
+								id={`${this.props.id}-SelectRow`}
+								name="SelectRow"
+								onChange={this.handleToggle}
+							/>
+						)}
 					</td>
 				) : null}
 				{this.props.columns.map((column) => {
-					const Cell = column.Cell;
+					const { Cell } = column;
 					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${
 						column.props.property
 					}`;
@@ -113,13 +140,13 @@ const DataTableRow = createReactClass({
 				})}
 				{this.props.rowActions
 					? React.cloneElement(this.props.rowActions, {
-						id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
-						item: this.props.item,
-					})
+							id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
+							item: this.props.item,
+						})
 					: null}
 			</tr>
 		);
-	},
-});
+	}
+}
 
 export default DataTableRow;

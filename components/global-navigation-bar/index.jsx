@@ -39,18 +39,6 @@ const auditChildren = (children) => {
 		}
 	});
 
-	if (primaryRegion && secondaryRegions.length > 0) {
-		const dividerPosition =
-			primaryRegion.props.dividerPosition === undefined
-				? 'right'
-				: primaryRegion.props.dividerPosition;
-
-		primaryRegion = React.cloneElement(primaryRegion, {
-			dividerPosition,
-			key: 'primary-region',
-		});
-	}
-
 	return [primaryRegion, ...secondaryRegions, tertiaryRegion];
 };
 
@@ -62,8 +50,8 @@ const GlobalNavigationBar = (props) => (
 		className={classNames(
 			'slds-context-bar',
 			{
-				[`slds-context-bar--theme-${props.cloud}`]: props.cloud,
-				[`slds-context-bar--theme-${props.theme}`]: props.theme,
+				[`slds-context-bar_theme-${props.cloud}`]: props.cloud,
+				[`slds-context-bar_theme-${props.theme}`]: props.theme,
 			},
 			props.className
 		)}
@@ -96,10 +84,7 @@ GlobalNavigationBar.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
-GlobalNavigationBar.defaultProps = {
-	cloud: 'default',
-	theme: 'dark',
-};
+GlobalNavigationBar.defaultProps = {};
 
 GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;
 

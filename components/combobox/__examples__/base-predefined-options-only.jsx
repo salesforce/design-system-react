@@ -3,7 +3,6 @@ import React from 'react';
 import Combobox from '~/components/combobox';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -52,14 +51,21 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
-	})
-);
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
+		icon: (
+			<Icon
+				assistiveText={{ label: 'Account' }}
+				category="standard"
+				name={elem.type}
+			/>
+		),
+	},
+}));
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -68,11 +74,11 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-base-predefined-options"
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {

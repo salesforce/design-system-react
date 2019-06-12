@@ -1,16 +1,16 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
-const Example = createReactClass({
-	displayName: 'IconExample',
+class Example extends React.Component {
+	static displayName = 'IconExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Icon
-					assistiveText="Description of icon"
+					assistiveText={{ label: 'Description of icon' }}
 					category="utility"
 					name="warning"
 					size="x-small"
@@ -18,6 +18,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

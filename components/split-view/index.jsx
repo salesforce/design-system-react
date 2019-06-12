@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import classNames from 'classnames';
-import isBoolean from 'lodash.isboolean';
 
 import ToggleButton, { TOGGLE_BUTTON_WIDTH } from './private/toggle-button';
 
@@ -82,10 +81,12 @@ const defaultProps = {
  */
 class SplitView extends React.Component {
 	static displayName = SPLIT_VIEW;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -93,36 +94,36 @@ class SplitView extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		this.generatedId = shortid.generate();
 
-		this.setIsOpen(this.props.isOpen);
+		this.setIsOpen({ isOpen: this.props.isOpen });
 	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.isOpen !== this.props.isOpen) {
-			this.setIsOpen(nextProps.isOpen);
+			this.setIsOpen({ isOpen: nextProps.isOpen });
 		}
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getMasterViewId () {
+	getMasterViewId() {
 		return `master_view_${this.getId()}`;
 	}
 
-	setIsOpen (isOpen) {
-		if (isBoolean(isOpen)) {
+	setIsOpen({ isOpen }) {
+		if (typeof this.props.isOpen === 'boolean') {
 			this.setState({
 				isOpen,
 			});
 		}
 	}
 
-	toggle (event) {
-		this.setIsOpen(!this.state.isOpen);
+	toggle(event) {
+		this.setIsOpen({ isOpen: !this.state.isOpen });
 
 		if (this.state.isOpen && this.props.events.onClose) {
 			this.props.events.onClose(event);
@@ -131,7 +132,7 @@ class SplitView extends React.Component {
 		}
 	}
 
-	masterContent () {
+	masterContent() {
 		return this.state.isOpen ? (
 			<article
 				id={this.getMasterViewId()}
@@ -142,7 +143,7 @@ class SplitView extends React.Component {
 		) : null;
 	}
 
-	render () {
+	render() {
 		return (
 			<div
 				id={this.getId()}

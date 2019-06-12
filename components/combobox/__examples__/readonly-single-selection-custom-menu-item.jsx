@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -51,22 +50,23 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
 		icon: (
 			<Icon
-				assistiveText="Account"
+				assistiveText={{ label: 'Account' }}
 				category="standard"
 				size="x-small"
 				name={elem.type}
 			/>
 		),
-	})
-);
+	},
+}));
 
 const CustomMenuItem = (props) => (
 	<span className="slds-media">
-		<span className="slds-m-left--x-small slds-m-right--x-small">
+		<span className="slds-m-left_x-small slds-m-right_x-small">
 			{props.option.icon}
 		</span>
 		<span className="slds-media__body">
@@ -84,7 +84,7 @@ const CustomMenuItem = (props) => (
 CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -93,11 +93,11 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-readonly-single-custom-item"
 					events={{
 						onSelect: (event, data) => {
 							if (this.props.action) {
@@ -118,7 +118,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholderReadOnly: 'Select company',
 					}}
-					menuItem={CustomMenuItem}
+					onRenderMenuItem={CustomMenuItem}
 					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={this.state.inputValue}

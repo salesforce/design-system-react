@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -20,14 +19,21 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
-	})
-);
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
+		icon: (
+			<Icon
+				assistiveText={{ label: 'Account' }}
+				category="standard"
+				name={elem.type}
+			/>
+		),
+	},
+}));
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -36,13 +42,14 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
 					isOpen
 					labels={{
+						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
 					menuPosition="relative"
@@ -64,7 +71,7 @@ class Example extends React.Component {
 									label: value,
 									icon: (
 										<Icon
-											assistiveText="Account"
+											assistiveText={{ label: 'Account' }}
 											category="standard"
 											name="account"
 										/>

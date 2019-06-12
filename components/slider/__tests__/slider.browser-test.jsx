@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
@@ -27,7 +27,6 @@ chai.use(chaiEnzyme());
 
 const {
 	findRenderedDOMComponentWithTag,
-	scryRenderedDOMComponentsWithTag,
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
@@ -49,7 +48,7 @@ describe('SLDSSlider', () => {
 		return ReactDOM.render(instance, body2);
 	};
 
-	function removeSlider () {
+	function removeSlider() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 		if (body2 && body2.firstChild) {
@@ -132,7 +131,7 @@ describe('SLDSSlider', () => {
 			component = getSlider({
 				label: 'Slider Label',
 				id: 'custom-id',
-				defaultValue: 200,
+				value: 200,
 				min: 0,
 				max: 400,
 				step: 100,
@@ -177,7 +176,7 @@ describe('SLDSSlider', () => {
 		});
 	});
 
-	describe('onInput, onChange callbacks are set', function () {
+	describe('onInput, onChange callbacks are set', function() {
 		let mountNode;
 		let wrapper;
 
@@ -189,40 +188,38 @@ describe('SLDSSlider', () => {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onChange trigged callback', function (done) {
+		it('onChange trigged callback', function(done) {
 			wrapper = mount(
 				<Slider
-					defaultValue={200}
+					value={200}
 					min={0}
 					max={400}
 					step={100}
 					onChange={(e, { value }) => {
-						expect(value).to.equal('300');
+						expect(value).to.equal(300);
 						done();
 					}}
 				/>,
 				{ attachTo: mountNode }
 			);
-
 			const trigger = wrapper.find('input');
-			trigger.simulate('change', { target: { value: '300' } });
+			trigger.simulate('change', { target: { value: 300 } });
 		});
 
-		it('onInput trigged callback', function (done) {
+		it('onInput trigged callback', function(done) {
 			wrapper = mount(
 				<Slider
-					defaultValue={200}
+					value={200}
 					min={0}
 					max={400}
 					step={100}
 					onInput={(e, { value }) => {
-						expect(value).to.equal('300');
+						expect(value).to.equal(300);
 						done();
 					}}
 				/>,
 				{ attachTo: mountNode }
 			);
-
 			const trigger = wrapper.find('input');
 			trigger.simulate('input', { target: { value: '300' } });
 		});

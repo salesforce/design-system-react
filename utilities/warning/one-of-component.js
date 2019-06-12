@@ -6,22 +6,29 @@
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
 
-let oneOfComponent = function () {};
+let oneOfComponent = function oneOfComponentFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
-	oneOfComponent = function (
+	oneOfComponent = function oneOfComponentFunction(
 		control,
 		props,
 		propName,
 		allowedComponents,
-		comment
+		comment,
+		specificTest // if this is set, it will be checked instead of props[propName]
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 
 		let componentType;
 
-		if (typeof props[propName].type === 'string') {
+		if (specificTest) {
+			if (typeof specificTest.type === 'string') {
+				componentType = specificTest.type;
+			} else {
+				componentType = specificTest.type.displayName;
+			}
+		} else if (typeof props[propName].type === 'string') {
 			componentType = props[propName].type;
 		} else {
 			componentType = props[propName].type.displayName;
@@ -29,16 +36,16 @@ if (process.env.NODE_ENV !== 'production') {
 
 		const allowedComponentFound = allowedComponents.indexOf(componentType) > -1;
 
-		if (!hasWarned[control]) {
+		if (!allowedComponentFound && !hasWarned[control]) {
 			/* eslint-disable max-len */
 			warning(
-				allowedComponentFound,
+				false,
 				`[Design System React] ${control} requires that prop '${propName}' is an instance of one of the following components: ${allowedComponents.join(
 					', '
 				)}. An instance of '${componentType}' was given.${additionalComment}`
 			);
 			/* eslint-enable max-len */
-			hasWarned[control] = !!allowedComponentFound;
+			hasWarned[control] = true;
 		}
 	};
 }

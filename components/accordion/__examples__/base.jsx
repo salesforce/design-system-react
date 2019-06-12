@@ -5,7 +5,7 @@ import IconSettings from '~/components/icon-settings'; // `~` is replaced with d
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			expandedPanels: {},
@@ -29,12 +29,12 @@ class Example extends React.Component {
 		};
 	}
 
-	menuDropdown (selectedItem) {
+	menuDropdown(selectedItem) {
 		return (
 			<Dropdown
 				align="right"
-				id="ButtonGroupExampleDropdown"
-				assistiveText="More Options"
+				id={selectedItem.id}
+				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				buttonClassName="slds-shrink-none"
 				iconCategory="utility"
@@ -69,14 +69,21 @@ class Example extends React.Component {
 		);
 	}
 
-	togglePanel (event, data) {
-		this.setState((state) => ({
-			...state,
-			expandedPanels: {
-				...state.expandedPanels,
-				[data.id]: !state.expandedPanels[data.id],
+	togglePanel(event, data) {
+		this.setState(
+			{
+				expandedPanels: {},
 			},
-		}));
+			() => {
+				this.setState((state) => ({
+					...state,
+					expandedPanels: {
+						...state.expandedPanels,
+						[data.id]: !state.expandedPanels[data.id],
+					},
+				}));
+			}
+		);
 		if (this.props.action) {
 			const dataAsArray = Object.keys(data).map((id) => data[id]);
 			this.props.action('onClick')(event, ...dataAsArray);
@@ -85,7 +92,7 @@ class Example extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">
@@ -95,7 +102,7 @@ class Example extends React.Component {
 							id={item.id}
 							panelContentActions={this.menuDropdown(item)}
 							key={item.id}
-							onTogglePanel={() => this.togglePanel(event, item)}
+							onTogglePanel={(event) => this.togglePanel(event, item)}
 							summary={item.summary}
 						>
 							{item.details}

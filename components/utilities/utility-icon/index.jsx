@@ -55,6 +55,8 @@ const UtilityIcon = (
 	if (path) {
 		// Use `path` prop of Icon if present
 		modifiedPath = path;
+	} else if (context.onRequestIconPath) {
+		modifiedPath = context.onRequestIconPath({ category, name });
 	} else if (context[`${category}Sprite`]) {
 		// Use category sprite file from IconSettings if present
 		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
@@ -68,7 +70,7 @@ const UtilityIcon = (
 	return inlineData ? (
 		<Svg data={inlineData} name={name} {...rest} />
 	) : (
-		<svg {...rest}>
+		<svg key={`${name}_${category}`} {...rest}>
 			<use xlinkHref={modifiedPath} />
 		</svg>
 	);
@@ -77,7 +79,7 @@ const UtilityIcon = (
 UtilityIcon.displayName = 'UtilityIcon';
 
 UtilityIcon.propTypes = {
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.object,
 	category: PropTypes.oneOf([
 		'action',
 		'custom',
@@ -105,6 +107,7 @@ UtilityIcon.defaultProps = {
 
 UtilityIcon.contextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
 	actionSprite: PropTypes.string,
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,

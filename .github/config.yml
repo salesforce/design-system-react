@@ -1,0 +1,34 @@
+# Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
+
+# Comment to be posted to on first time issues
+newIssueWelcomeComment: >
+  Thanks for opening your first issue! :wave: 
+
+  If you have found this library helpful, please star it. A maintainer will try to respond within 7 days. If you haven’t heard anything by then, please bump this thread.
+
+# Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
+
+# Comment to be posted to on PRs from first time contributors in your repository
+newPRWelcomeComment: >
+  Thanks for opening this pull request! :100: 
+    
+  This is a community-driven project, and we can't do it without your participation. Please check out our [contributing guidelines](https://github.com/salesforce/design-system-react/blob/master/CONTRIBUTING.md) and review the Contributor Checklist if you haven't already, to make sure everything is squared away. TravisCI will take about 10 minutes to run through the same items that are on the Contributor checklist with a pass/fail check below. Please fix any issues that cause TravisCI to fail or ask for clarification--we try, but sometimes the errors can be unclear.
+
+  A maintainer will try to respond within 7 days. If you haven’t heard anything by then, please bump this thread. To ensure codebase quality, large code line changes may take more than 2 weeks to review, but may take longer depending on the number of pull requests in the queue. Feel free to ask for a status update at any time--you won't be bothering anyone.
+
+  Once feedback has been given, please reply to the feedback giver once the feedback on been addressed, so that they can continue the review.
+
+  If you need a release while you are waiting for a code review, you can publish a built tag to your own fork. See directions in the [release README](https://github.com/salesforce/design-system-react/blob/master/docs/release.md#release-to-your-own-fork).
+
+# Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
+
+# Comment to be posted to on pull requests merged by a first time user
+firstPRMergeComment: >
+  Congrats on merging your first pull request to Design System React! :tada:
+
+  If you have a moment, please fill out [this five question survey](https://docs.google.com/forms/d/e/1FAIpQLSdolT6RHVtWJCprIsGHg0TLcXNDDEA4RyTjf2Y-TcwMxNbaxw/viewform), we would appreciate it.
+
+  On behalf of Salesforce's customers, partners, product specialists and employees, we would like offer sincere thanks and appreciation for helping make our user experience better. We look forward to working with you more in the future.
+
+  **This definitely calls for a high five!**
+  ![Alt High Five](https://media.giphy.com/media/lcYFNTaz4U9jy/giphy.gif)

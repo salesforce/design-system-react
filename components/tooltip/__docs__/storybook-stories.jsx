@@ -5,8 +5,9 @@ import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
 import { POPOVER_TOOLTIP } from '../../../utilities/constants';
-import PopoverTooltip from '../../popover-tooltip';
+import Tooltip from '../../tooltip';
 
+import Base from '../__examples__/base';
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
 import LearnMoreExample from '../__examples__/learn-more';
@@ -15,9 +16,9 @@ import Icon from '../../icon';
 import Button from '../../button';
 
 const getPopoverTooltip = (props) => (
-	<PopoverTooltip {...props}>
+	<Tooltip {...props}>
 		<Button label="Trigger Tooltip" />
-	</PopoverTooltip>
+	</Tooltip>
 );
 
 const getPopoverTooltipAlign = (props) => {
@@ -42,9 +43,9 @@ const getPopoverTooltipAlign = (props) => {
 	align.forEach((value) => {
 		children.push(
 			<div key={value} style={{ margin: '100px auto' }}>
-				<PopoverTooltip {...props} align={value}>
+				<Tooltip {...props} align={value}>
 					{props.trigger}
-				</PopoverTooltip>
+				</Tooltip>
 			</div>
 		);
 	});
@@ -52,10 +53,13 @@ const getPopoverTooltipAlign = (props) => {
 	return <div key="container">{children}</div>;
 };
 
+const content =
+	'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.';
+
 storiesOf(POPOVER_TOOLTIP, module)
 	.addDecorator((getStory) => (
 		<div
-			className="slds-p-around--medium slds-m-horizontal--x-large"
+			className="slds-p-around_medium slds-m-horizontal_x-large"
 			style={{
 				margin: '150px auto',
 				width: '500px',
@@ -64,14 +68,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Base', () =>
-		getPopoverTooltip({
-			align: 'bottom',
-			id: 'myPopoverId',
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		})
-	)
+	.add('Base', () => <Base />)
 	.add('Learn More', () => <LearnMoreExample />)
 	.add('Button Group', () => <ButtonGroupExample />)
 	.add('Button', () => <ButtonExample />)
@@ -80,16 +77,15 @@ storiesOf(POPOVER_TOOLTIP, module)
 			align: 'bottom',
 			isOpen: true,
 			id: 'myPopoverId',
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			dialogClassName: 'dialog-classname',
+			content,
 		})
 	)
 	.add('Alignment (Button)', () =>
 		getPopoverTooltipAlign({
 			id: 'myPopoverId',
 			isOpen: true,
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			content,
 			trigger: <Button label="Trigger Tooltip" />,
 		})
 	)
@@ -97,8 +93,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 		getPopoverTooltipAlign({
 			id: 'myPopoverId',
 			isOpen: true,
-			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			content,
 			trigger: (
 				<span tabIndex="0" key="trigger">
 					Trigger Tooltip
@@ -110,14 +105,10 @@ storiesOf(POPOVER_TOOLTIP, module)
 		getPopoverTooltipAlign({
 			id: 'myPopoverId',
 			isOpen: true,
-			content: (
-				<span>
-					<Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie
-				</span>
-			), // react/no-unescaped-entities
+			content: <span>{content}</span>, // react/no-unescaped-entities
 			trigger: (
 				<Icon
-					assistiveText="Case Icon"
+					assistiveText={{ label: 'Case Icon' }}
 					category="standard"
 					name="case"
 					size="small"

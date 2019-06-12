@@ -13,11 +13,12 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
-// ### isBoolean
-import isBoolean from 'lodash.isboolean';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
@@ -30,10 +31,13 @@ const propTypes = {
 	 */
 	active: PropTypes.bool,
 	/**
-	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button.
-	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		icon: PropTypes.string,
+	}),
 	/**
 	 * Disables the button and adds disabled styling.
 	 */
@@ -46,10 +50,6 @@ const propTypes = {
 	 * Determines the size of the icon.
 	 */
 	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	/**
-	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
-	 */
-	inverse: PropTypes.bool,
 	/**
 	 * Triggered when focus is removed.
 	 */
@@ -83,10 +83,6 @@ const propTypes = {
 	 */
 	onMouseEnter: PropTypes.func,
 	/**
-	 * Triggered when a mouse arrow no longer hovers
-	 */
-	onMouseLeave: PropTypes.func,
-	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
 	responsive: PropTypes.bool,
@@ -107,10 +103,6 @@ const propTypes = {
 	 */
 	tabIndex: PropTypes.string,
 	/**
-	 * [Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead.
-	 */
-	tooltip: PropTypes.node,
-	/**
 	 * Different types of buttons
 	 */
 	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
@@ -118,6 +110,7 @@ const propTypes = {
 
 // i18n
 const defaultProps = {
+	assistiveText: { icon: '' },
 	disabled: false,
 	iconSize: 'medium',
 	responsive: false,
@@ -131,19 +124,23 @@ const defaultProps = {
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  */
 class ButtonStateful extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { active: false };
 	}
 
-	getClassName (active) {
+	componentWillMount() {
+		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
+	}
+
+	getClassName(active) {
 		return classNames(this.props.className, 'slds-button', {
-			'slds-button--neutral': this.props.variant !== 'icon',
-			'slds-button--inverse': this.props.variant === 'inverse',
+			'slds-button_neutral': this.props.variant !== 'icon',
+			'slds-button_inverse': this.props.variant === 'inverse',
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
-			'slds-max-small-button--stretch': this.props.responsive,
-			'slds-button--icon-border': this.props.variant === 'icon',
+			'slds-max-small-button_stretch': this.props.responsive,
+			'slds-button_icon-border': this.props.variant === 'icon',
 		});
 	}
 
@@ -154,15 +151,14 @@ class ButtonStateful extends React.Component {
 
 	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) {
-			this.setState({ active: !this.state.active });
+		if (typeof this.props.active !== 'boolean') {
+			this.setState((prevState) => ({ active: !prevState.active }));
 		}
 	};
 
-	render () {
+	render() {
 		const {
 			active,
-			assistiveText,
 			disabled,
 			iconName,
 			iconSize,
@@ -181,7 +177,15 @@ class ButtonStateful extends React.Component {
 			variant,
 		} = this.props;
 
-		const isActive = isBoolean(active) ? active : this.state.active;
+		const iconAssistiveText =
+			typeof this.props.assistiveText === 'string'
+				? this.props.assistiveText
+				: {
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
+
+		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
 		if (variant === 'icon') {
 			return (
@@ -200,15 +204,16 @@ class ButtonStateful extends React.Component {
 					onMouseEnter={onMouseEnter}
 					onMouseLeave={this.handleBlur}
 					tabIndex={tabIndex}
+					type="button"
 				>
 					<ButtonIcon
 						disabled={disabled}
 						name={iconName}
 						size={iconSize}
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
-					{assistiveText ? (
-						<span className="slds-assistive-text">{assistiveText}</span>
+					{iconAssistiveText ? (
+						<span className="slds-assistive-text">{iconAssistiveText}</span>
 					) : null}
 				</button>
 			);
@@ -229,6 +234,7 @@ class ButtonStateful extends React.Component {
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
+				type="button"
 			>
 				<span className="slds-text-not-selected">
 					<ButtonIcon
@@ -236,7 +242,7 @@ class ButtonStateful extends React.Component {
 						name={stateOne.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateOne.label}
 				</span>
@@ -246,7 +252,7 @@ class ButtonStateful extends React.Component {
 						name={stateTwo.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateTwo.label}
 				</span>
@@ -256,7 +262,7 @@ class ButtonStateful extends React.Component {
 						name={stateThree.iconName}
 						size="small"
 						position="left"
-						className="slds-button__icon--stateful"
+						className="slds-button__icon_stateful"
 					/>
 					{stateThree.label}
 				</span>

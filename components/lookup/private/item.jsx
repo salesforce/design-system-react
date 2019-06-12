@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -26,7 +27,7 @@ const propTypes = {
 };
 
 class Item extends React.Component {
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.isActive !== this.props.isActive &&
 			nextProps.isActive === true
@@ -36,12 +37,12 @@ class Item extends React.Component {
 		}
 	}
 
-	getCustomLabel () {
+	getCustomLabel() {
 		const ListItemLabel = this.props.listItemLabelRenderer;
 		return <ListItemLabel {...this.props} />;
 	}
 
-	getIcon () {
+	getIcon() {
 		if (this.props.iconName && !this.props.listItemLabelRenderer) {
 			return (
 				<span className="slds-media__figure">
@@ -58,7 +59,7 @@ class Item extends React.Component {
 		return null;
 	}
 
-	getLabel () {
+	getLabel() {
 		let label;
 		if (this.props.children.data.subTitle) {
 			label = (
@@ -66,14 +67,14 @@ class Item extends React.Component {
 					<div className="slds-lookup__result-text">
 						{this.props.children.label}
 					</div>
-					<span className="slds-lookup__result-meta slds-text-body--small">
+					<span className="slds-lookup__result-meta slds-text-body_small">
 						{this.props.children.data.subTitle}
 					</span>
 				</div>
 			);
 		} else {
 			const labelClassName = cx('slds-lookup__result-text', {
-				'slds-m-left--x-small': !this.props.iconName,
+				'slds-m-left_x-small': !this.props.iconName,
 			});
 
 			label = (
@@ -88,17 +89,17 @@ class Item extends React.Component {
 	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
 
 	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
-	scrollFocus () {
+	scrollFocus() {
 		const height = this.itemRef.offsetHeight;
 		if (height && this.props.handleItemFocus) {
 			this.props.handleItemFocus(this.props.index, height);
 		}
 	}
 
-	render () {
+	render() {
 		let itemClassName = 'js-slds-lookup__item';
 		const id = this.props.id;
-		if (this.props.isActive) itemClassName += ' slds-theme--shade';
+		if (this.props.isActive) itemClassName += ' slds-theme_shade';
 
 		return (
 			// IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
@@ -110,7 +111,7 @@ class Item extends React.Component {
 			>
 				<a
 					aria-disabled={this.props.isDisabled}
-					className="slds-lookup__item-action slds-media slds-media--center"
+					className="slds-lookup__item-action slds-media slds-media_center"
 					href={this.props.href}
 					id={id}
 					onClick={this.handleClick}

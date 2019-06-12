@@ -1,5 +1,6 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
+import Dropdown from '~/components/menu-dropdown';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
@@ -20,77 +21,76 @@ const CustomDataTableCell = ({ children, ...props }) => (
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
 
-const Example = createReactClass({
-	displayName: 'DataTableExample',
+class Example extends React.Component {
+	static displayName = 'DataTableExample';
 
-	getInitialState () {
-		return {
-			sortColumn: 'opportunityName',
-			sortColumnDirection: {
-				opportunityName: 'asc',
+	state = {
+		sortColumn: 'opportunityName',
+		sortColumnDirection: {
+			opportunityName: 'asc',
+		},
+		items: [
+			{
+				id: '8IKZHZZV80',
+				opportunityName: 'Acme - 1,200 Widgets',
+				accountName: 'Acme',
+				closeDate: '4/10/15',
+				stage: 'Value Proposition',
+				confidence: '70%',
+				amount: '$25,000,000',
+				contact: 'jrogers@acme.com',
 			},
-			items: [
-				{
-					id: '8IKZHZZV80',
-					opportunityName: 'Acme - 1,200 Widgets',
-					accountName: 'Acme',
-					closeDate: '4/10/15',
-					stage: 'Value Proposition',
-					confidence: '70%',
-					amount: '$25,000,000',
-					contact: 'jrogers@acme.com',
-				},
-				{
-					id: '5GJOOOPWU7',
-					opportunityName: 'Acme - 200 Widgets',
-					accountName: 'Acme',
-					closeDate: '1/31/15',
-					stage: 'Prospecting',
-					confidence: '30%',
-					amount: '$5,000,000',
-					contact: 'bob@acme.com',
-				},
-				{
-					id: '8IKZHZZV81',
-					opportunityName: 'salesforce.com - 1,000 Widgets',
-					accountName: 'salesforce.com',
-					closeDate: '1/31/15 3:45PM',
-					stage: 'Id. Decision Makers',
-					confidence: '60%',
-					amount: '$25,000',
-					contact: 'nathan@salesforce.com',
-				},
-			],
-			selection: [
-				{
-					id: '8IKZHZZV81',
-					opportunityName: 'salesforce.com - 1,000 Widgets',
-					accountName: 'salesforce.com',
-					closeDate: '1/31/15 3:45PM',
-					stage: 'Id. Decision Makers',
-					confidence: '60%',
-					amount: '$25,000',
-					contact: 'nathan@salesforce.com',
-				},
-			],
-		};
-	},
+			{
+				id: '5GJOOOPWU7',
+				opportunityName: 'Acme - 200 Widgets',
+				accountName: 'Acme',
+				closeDate: '1/31/15',
+				stage: 'Prospecting',
+				confidence: '30%',
+				amount: '$5,000,000',
+				contact: 'bob@acme.com',
+			},
+			{
+				id: '8IKZHZZV81',
+				opportunityName: 'salesforce.com - 1,000 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '1/31/15 3:45PM',
+				stage: 'Id. Decision Makers',
+				confidence: '60%',
+				amount: '$25,000',
+				contact: 'nathan@salesforce.com',
+			},
+		],
+		selection: [
+			{
+				id: '8IKZHZZV81',
+				opportunityName: 'salesforce.com - 1,000 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '1/31/15 3:45PM',
+				stage: 'Id. Decision Makers',
+				confidence: '60%',
+				amount: '$25,000',
+				contact: 'nathan@salesforce.com',
+			},
+		],
+	};
 
-	handleChanged (selection) {
-		this.setState({ selection });
-	},
+	handleChanged = (event, data) => {
+		this.setState({ selection: data.selection });
+		console.log(event, data);
+	};
 
-	handleRowAction (item, action) {
+	handleRowAction = (item, action) => {
 		console.log(item, action);
-	},
+	};
 
-	handleSort (sortColumn, ...rest) {
+	handleSort = (sortColumn, ...rest) => {
 		if (this.props.log) {
 			this.props.log('sort')(sortColumn, ...rest);
 		}
 
 		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
+		const { sortDirection } = sortColumn;
 		const newState = {
 			sortColumn: sortProperty,
 			sortColumnDirection: {
@@ -118,20 +118,31 @@ const Example = createReactClass({
 		});
 
 		this.setState(newState);
-	},
+	};
 
-	render () {
+	render() {
 		return (
 			<div>
 				<IconSettings iconPath="/assets/icons">
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Advanced (Fixed Layout)
+					</h3>
 					<DataTable
+						assistiveText={{
+							actionsHeader: 'actions',
+							columnSort: 'sort this column',
+							columnSortedAscending: 'asc',
+							columnSortedDescending: 'desc',
+							selectAllRows: 'all rows',
+							selectRow: 'select this row',
+						}}
 						fixedLayout
 						items={this.state.items}
 						id="DataTableExample-2"
-						onChange={this.handleChanged}
+						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
-						selectRows
+						selectRows="checkbox"
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}
@@ -149,7 +160,12 @@ const Example = createReactClass({
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn
+							sortable
+							isDefaultSortDescending
+							label="Close Date"
+							property="closeDate"
+						/>
 						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
@@ -174,14 +190,40 @@ const Example = createReactClass({
 									label: 'Publish',
 									value: '2',
 								},
+								{
+									id: 2,
+									label: 'Third of Seven',
+									value: '3',
+								},
+								{
+									id: 3,
+									label: 'Fourth of Seven',
+									value: '4',
+								},
+								{
+									id: 4,
+									label: 'Fifth of Seven',
+									value: '5',
+								},
+								{
+									id: 5,
+									label: 'Sixth of Seven',
+									value: '6',
+								},
+								{
+									id: 6,
+									label: 'Seventh of Seven',
+									value: '7',
+								},
 							]}
 							onAction={this.handleRowAction}
+							dropdown={<Dropdown length="7" />}
 						/>
 					</DataTable>
 				</IconSettings>
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

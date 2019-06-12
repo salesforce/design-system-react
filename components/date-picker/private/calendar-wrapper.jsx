@@ -149,7 +149,7 @@ class DatepickerCalendarWrapper extends React.Component {
 	handleKeyDown = (event) => {
 		if (event.keyCode === KEYS.ESCAPE) {
 			EventUtil.trapEvent(event);
-			this.props.onRequestClose(event);
+			this.props.onRequestClose(event, {});
 		}
 	};
 
@@ -160,9 +160,9 @@ class DatepickerCalendarWrapper extends React.Component {
 		}
 	};
 
-	handleRequestClose = () => {
+	handleRequestClose = (event) => {
 		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
+			this.props.onRequestClose(event, {});
 		}
 	};
 
@@ -179,7 +179,7 @@ class DatepickerCalendarWrapper extends React.Component {
 		}
 	};
 
-	render () {
+	render() {
 		return (
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				className={classNames(

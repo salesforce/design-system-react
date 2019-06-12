@@ -62,7 +62,7 @@ const SplitViewToggleButton = ({
 			iconCategory="utility"
 			iconSize="x-small"
 			onClick={events.onClick}
-			assistiveText={toggleAssistiveText}
+			assistiveText={{ icon: toggleAssistiveText }}
 		/>
 	);
 };

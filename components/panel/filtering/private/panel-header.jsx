@@ -18,7 +18,7 @@ import Button from '../../../button';
  * Header for a Filter Group within a Panel.
  */
 const PanelFilterHeader = ({
-	assistiveTextCloseFilterPanel,
+	assistiveText,
 	cancelLabel,
 	heading,
 	modified,
@@ -27,35 +27,39 @@ const PanelFilterHeader = ({
 	onRequestSave,
 	saveLabel,
 }) =>
-	(modified ? (
-		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
+	modified ? (
+		<div className="slds-filters__header slds-grid slds-has-divider_bottom-space slds-grid_align-spread">
 			<Button label={cancelLabel} onClick={onRequestCancel} variant="neutral" />
 			<Button label={saveLabel} onClick={onRequestSave} variant="brand" />
 		</div>
 	) : (
-		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
-			<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
+		<div className="slds-filters__header slds-grid slds-has-divider_bottom-space">
+			<h2 className="slds-align-middle slds-text-heading_small">{heading}</h2>
 			<Button
-				className="slds-col--bump-left"
-				assistiveText={assistiveTextCloseFilterPanel}
+				className="slds-col_bump-left"
+				assistiveText={{ icon: assistiveText.closeButton }}
 				iconCategory="utility"
 				iconName="forward"
 				iconVariant="bare"
 				iconSize="small"
 				onClick={onRequestClose}
-				title={assistiveTextCloseFilterPanel}
+				title={assistiveText.closeButton}
 				variant="icon"
 			/>
 		</div>
-	));
+	);
 
 PanelFilterHeader.displayName = 'SLDSPanelFilterHeader';
 
 PanelFilterHeader.propTypes = {
 	/**
-	 * Localized description of the close button for the panel for screen readers
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `closeButton`: Localized description of the close button for the panel for screen readers
 	 */
-	assistiveTextCloseFilterPanel: PropTypes.node,
+	assistiveText: PropTypes.shape({
+		closeButton: PropTypes.string,
+	}),
 	/**
 	 * Label for button that cancels modified filters
 	 */

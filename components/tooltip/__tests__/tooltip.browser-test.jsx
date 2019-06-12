@@ -3,18 +3,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
-import SLDSPopoverTooltip from '../../popover-tooltip';
+import SLDSTooltip from '../../tooltip';
 import SLDSButton from '../../button';
 
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate, findRenderedDOMComponentWithTag } = TestUtils;
 
-describe('SLDSTooltip: ', function () {
+describe('SLDSTooltip: ', function() {
 	let body;
 
 	const defaultTrigger = <SLDSButton label="Hover me for tooltip" />;
@@ -56,12 +52,12 @@ describe('SLDSTooltip: ', function () {
 	const renderTooltip = (inst) => ReactDOM.render(inst, body);
 
 	const createTooltip = (props, kids) =>
-		React.createElement(SLDSPopoverTooltip, props, kids);
+		React.createElement(SLDSTooltip, props, kids);
 
 	const generateTooltip = (props, kids) =>
 		renderTooltip(createTooltip(props, kids));
 
-	const getTip = (dom) => dom.querySelector('.slds-popover--tooltip');
+	const getTip = (dom) => dom.querySelector('.slds-popover_tooltip');
 
 	describe('component basic props render', () => {
 		let rootNode;
@@ -107,7 +103,7 @@ describe('SLDSTooltip: ', function () {
 			});
 
 			it('adds nubbin', () => {
-				expect(tip.className).to.include('slds-nubbin--bottom');
+				expect(tip.className).to.include('slds-nubbin_bottom');
 			});
 
 			it('closes', (done) => {
@@ -115,7 +111,7 @@ describe('SLDSTooltip: ', function () {
 				setTimeout(() => {
 					expect(getTip(document.body)).to.be.null;
 					done();
-				}, 600);
+				}, 60);
 			});
 		});
 	});

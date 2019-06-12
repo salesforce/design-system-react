@@ -14,23 +14,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
+
+const defaultProps = {
+	assistiveText: {
+		label: 'Breadcrumbs',
+	},
+};
 
 /**
  * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
  */
 const Breadcrumb = (props) => {
-	const { assistiveText, trail } = props;
+	checkProps(BREADCRUMB, props, componentDoc);
+
+	const { trail } = props;
+	const assistiveText =
+		typeof props.assistiveText === 'string'
+			? props.assistiveText
+			: {
+					...defaultProps.assistiveText,
+					...props.assistiveText,
+				}.label;
 
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
-			<ol className="slds-breadcrumb slds-list--horizontal">
+			<ol className="slds-breadcrumb slds-list_horizontal">
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
 						key={index} // There isn't any better reasonable way to identity these
-						className="slds-breadcrumb__item slds-text-title--caps"
+						className="slds-breadcrumb__item"
 					>
 						{crumb}
 					</li>
@@ -44,17 +63,19 @@ Breadcrumb.displayName = BREADCRUMB;
 
 Breadcrumb.propTypes = {
 	/**
-	 * The assistive text for the breadcrumb trail
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: The assistive text for the breadcrumb trail.
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * An array of react elements presumably anchor elements.
 	 */
 	trail: PropTypes.array,
 };
 
-Breadcrumb.defaultProps = {
-	assistiveText: 'Breadcrumbs',
-};
+Breadcrumb.defaultProps = defaultProps;
 
 export default Breadcrumb;

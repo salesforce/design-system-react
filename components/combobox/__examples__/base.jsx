@@ -51,14 +51,21 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
-	})
-);
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
+		icon: (
+			<Icon
+				assistiveText={{ label: 'Account' }}
+				category="standard"
+				name={elem.type}
+			/>
+		),
+	},
+}));
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -67,11 +74,11 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-base"
 					disabled={this.props.disabled}
 					events={{
 						onChange: (event, { value }) => {
@@ -102,7 +109,7 @@ class Example extends React.Component {
 										label: value,
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{ label: 'Account' }}
 												category="standard"
 												name="account"
 											/>

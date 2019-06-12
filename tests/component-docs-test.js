@@ -12,6 +12,7 @@ const docs = parseJSON('components/component-docs.json');
 
 const mapObject = (obj, callback) =>
 	Object.keys(obj).reduce((accumulator, key) => {
+		// eslint-disable-next-line no-param-reassign
 		accumulator[key] = callback(obj[key]);
 		return accumulator;
 	}, {});
@@ -24,7 +25,8 @@ const deepMap = (obj, callback) => {
 	};
 
 	if (Array.isArray(obj)) {
-		return obj.map(deepMapper);
+		return obj.forEach(deepMapper);
+		// eslint-disable-next-line no-else-return
 	} else if (typeof obj === 'object') {
 		return mapObject(obj, deepMapper);
 	}
@@ -36,7 +38,7 @@ deepMap(docs, (value) => {
 	if (value === '') {
 		console.log('EMPTY STRING FOUND!');
 		console.log(
-			'`components/component-docs.json` has a an empty string in it. All component and component PropTypes should have a description. Please `npm run build-docs` and review `components/component-docs.json` for empty strings, "".'
+			'`components/component-docs.json` has a an empty string in it. All component and component PropTypes should have a description. Please `npm run build:docs` and review `components/component-docs.json` for empty strings, "".'
 		);
 		console.log(
 			'* All descriptions must start with `/**` and be placed directly above a PropType or the class declaration.'

@@ -1,23 +1,23 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import Picklist from '~/components/menu-picklist'; // `~` is replaced with design-system-react at runtime
-import PopoverTooltip from '~/components/popover-tooltip';
+import Tooltip from '~/components/tooltip';
 
 const ListItemRenderer = (props) => (
-	<PopoverTooltip
+	<Tooltip
 		openByDefault={props.isHighlighted}
 		align="bottom left"
 		content={`${props.label} tooltip on bottom left`}
 	>
 		<p className="slds-truncate">{props.label} (Hover for tooltip)</p>
-	</PopoverTooltip>
+	</Tooltip>
 );
 
-const Example = createReactClass({
-	displayName: 'PicklistExample',
+class Example extends React.Component {
+	static displayName = 'PicklistExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Picklist
@@ -39,7 +39,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

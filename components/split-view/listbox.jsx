@@ -120,10 +120,12 @@ const defaultProps = {
  */
 class SplitViewListbox extends React.Component {
 	static displayName = SPLIT_VIEW_LISTBOX;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.listItemComponents = {};
@@ -137,30 +139,30 @@ class SplitViewListbox extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// Generates the list item template
 		this.ListItemWithContent = listItemWithContent(
 			this.props.listItem || SplitViewListItemContent
 		);
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.focusFirstItem();
 	}
 
-	isListItemFocused (item) {
+	isListItemFocused(item) {
 		return this.state.currentFocusedListItem.item === item;
 	}
 
-	isSelected (item) {
+	isSelected(item) {
 		return this.props.selection.includes(item);
 	}
 
-	isUnread (item) {
+	isUnread(item) {
 		return this.props.unread.includes(item);
 	}
 
-	handleKeyDown (event) {
+	handleKeyDown(event) {
 		if (this.props.multiple && event.key === 'a' && event.ctrlKey) {
 			// select / deselect all
 			eventUtil.trap(event);
@@ -178,7 +180,7 @@ class SplitViewListbox extends React.Component {
 		}
 	}
 
-	moveToNextItem (event) {
+	moveToNextItem(event) {
 		const nextFocusIndex =
 			this.state.currentFocusedListItem.index === this.props.options.length - 1
 				? 0
@@ -187,7 +189,7 @@ class SplitViewListbox extends React.Component {
 		this.moveToIndex(event, nextFocusIndex);
 	}
 
-	moveToPreviousItem (event) {
+	moveToPreviousItem(event) {
 		const previousFocusIndex =
 			this.state.currentFocusedListItem.index === 0
 				? this.props.options.length - 1
@@ -196,7 +198,7 @@ class SplitViewListbox extends React.Component {
 		this.moveToIndex(event, previousFocusIndex);
 	}
 
-	moveToIndex (event, index) {
+	moveToIndex(event, index) {
 		const item = this.props.options[index];
 
 		if (!event.metaKey && !event.ctrlKey) {
@@ -206,7 +208,7 @@ class SplitViewListbox extends React.Component {
 		this.focusItem(item);
 	}
 
-	focusFirstItem () {
+	focusFirstItem() {
 		const firstSelectedItem =
 			this.props.options.find((item) => this.props.selection.includes(item)) ||
 			this.props.options[0];
@@ -216,7 +218,7 @@ class SplitViewListbox extends React.Component {
 		}
 	}
 
-	focusItem (item, setDataOnly) {
+	focusItem(item, setDataOnly) {
 		const index = this.props.options.indexOf(item);
 
 		if (!setDataOnly) {
@@ -231,7 +233,7 @@ class SplitViewListbox extends React.Component {
 		});
 	}
 
-	deselectAllListItems (event) {
+	deselectAllListItems(event) {
 		this.setState({ currentSelectedItem: null });
 		this.props.events.onSelect(event, {
 			selectedItems: [],
@@ -239,14 +241,14 @@ class SplitViewListbox extends React.Component {
 		});
 	}
 
-	selectAllListItems (event) {
+	selectAllListItems(event) {
 		this.props.events.onSelect(event, {
 			selectedItems: this.props.options,
 			item: this.state.currentSelectedItem,
 		});
 	}
 
-	selectListItem (item, event) {
+	selectListItem(item, event) {
 		let selectedItems = [item];
 
 		if (this.props.multiple) {
@@ -274,12 +276,12 @@ class SplitViewListbox extends React.Component {
 		this.props.events.onSelect(event, { selectedItems, item });
 	}
 
-	handleOnSelect (event, { item }) {
+	handleOnSelect(event, { item }) {
 		this.selectListItem(item, event);
 		this.focusItem(item);
 	}
 
-	sortDirection () {
+	sortDirection() {
 		return this.props.sortDirection ? (
 			<Icon
 				category="utility"
@@ -294,13 +296,13 @@ class SplitViewListbox extends React.Component {
 		) : null;
 	}
 
-	headerWrapper (children) {
+	headerWrapper(children) {
 		return this.props.events.onSort ? (
 			<a
 				style={{ borderTop: '0' }}
 				href="javascript:void(0);" // eslint-disable-line no-script-url
 				role="button"
-				className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+				className="slds-split-view__list-header slds-grid slds-text-link_reset"
 				onClick={this.props.events.onSort}
 			>
 				{children}
@@ -308,41 +310,41 @@ class SplitViewListbox extends React.Component {
 		) : (
 			<div
 				style={{ borderTop: '0' }}
-				className="slds-split-view__list-header slds-grid slds-text-title_caps"
+				className="slds-split-view__list-header slds-grid"
 			>
 				{children}
 			</div>
 		);
 	}
 
-	header () {
+	header() {
 		return this.props.labels.header
 			? this.headerWrapper(
-				<span>
-					<span className="slds-assistive-text">
-						{this.props.assistiveText.sort.sortedBy}:
-					</span>
 					<span>
-						{this.props.labels.header}
-						{this.sortDirection()}
-					</span>
-					<span className="slds-assistive-text">
+						<span className="slds-assistive-text">
+							{this.props.assistiveText.sort.sortedBy}:
+						</span>
+						<span>
+							{this.props.labels.header}
+							{this.sortDirection()}
+						</span>
+						<span className="slds-assistive-text">
 							-{' '}
-						{this.props.sortDirection === SORT_OPTIONS.DOWN
-							? this.props.assistiveText.sort.descending
-							: this.props.assistiveText.sort.ascending}
+							{this.props.sortDirection === SORT_OPTIONS.DOWN
+								? this.props.assistiveText.sort.descending
+								: this.props.assistiveText.sort.ascending}
+						</span>
 					</span>
-				</span>
-			)
+				)
 			: null;
 	}
 
-	addListItemComponent (component, index) {
+	addListItemComponent(component, index) {
 		this.listItemComponents[index] = component;
 	}
 
-	listItems () {
-		const ListItemWithContent = this.ListItemWithContent;
+	listItems() {
+		const { ListItemWithContent } = this;
 
 		return this.props.options.map((item, index) => (
 			<ListItemWithContent
@@ -365,7 +367,7 @@ class SplitViewListbox extends React.Component {
 		));
 	}
 
-	render () {
+	render() {
 		return (
 			<div
 				id={this.props.id}

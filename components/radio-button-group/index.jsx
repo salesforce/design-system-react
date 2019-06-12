@@ -6,14 +6,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import shortid from 'shortid';
-import assign from 'lodash.assign';
+import RadioGroup from '../radio-group';
 
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility**
+	 * * `label`: This label appears in the legend.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * Children are expected to be Radio components.
 	 */
@@ -58,81 +63,18 @@ const propTypes = {
 	errorId: PropTypes.string,
 };
 
-const defaultProps = { labels: {} };
+const defaultProps = { labels: {}, assistiveText: {} };
 
 /**
  * A styled select list that can have a single entry checked at any one time.
  * The RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
-class RadioButtonGroup extends React.Component {
-	constructor (props) {
-		super(props);
+const RadioButtonGroup = (props) => {
+	// Separate props we care about in order to pass others along passively to the dropdown component
+	const { variant, ...rest } = props;
 
-		// Merge objects of strings with their default object
-		this.labels = this.props.labels
-			? assign({}, defaultProps.labels, this.props.labels)
-			: defaultProps.labels;
-
-		this.generatedName = shortid.generate();
-		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
-	}
-
-	getErrorId () {
-		if (this.hasError()) {
-			return this.props.errorId || this.generatedErrorId;
-		}
-		return undefined;
-	}
-
-	getName () {
-		return this.props.name || this.generatedName;
-	}
-
-	hasError () {
-		return !!this.labels.error;
-	}
-
-	render () {
-		const children = React.Children.map(this.props.children, (child) =>
-			React.cloneElement(child, {
-				name: this.getName(),
-				onChange: this.props.onChange,
-				'aria-describedby': this.getErrorId(),
-				disabled: this.props.disabled,
-			})
-		);
-
-		return (
-			<fieldset
-				className={classNames('slds-form-element', {
-					'slds-has-error': this.labels.error,
-				})}
-			>
-				<legend className="slds-form-element__legend slds-form-element__label">
-					{this.props.required ? (
-						<abbr className="slds-required" title="required">
-							*
-						</abbr>
-					) : null}
-					{this.labels.label}
-				</legend>
-				<div
-					className={classNames(
-						'slds-form-element__control',
-						this.props.className
-					)}
-				>
-					<div className="slds-radio_button-group">{children}</div>
-					{this.labels.error ? (
-						<div id={this.getErrorId()} className="slds-form-element__help">
-							{this.labels.error}
-						</div>
-					) : null}
-				</div>
-			</fieldset>
-		);
-	}
-}
+	return <RadioGroup variant="button-group" {...rest} />;
+};
 
 RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;
 RadioButtonGroup.propTypes = propTypes;

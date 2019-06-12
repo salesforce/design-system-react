@@ -1,26 +1,22 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'ModalExample',
+class Example extends React.Component {
+	static displayName = 'ModalExample';
 
-	getInitialState () {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
-	getParent () {
-		return document.querySelector('#myModalContainer');
-	},
+	getParent = () => document.querySelector('#myModalContainer');
 
-	toggleOpen () {
+	toggleOpen = () => {
 		this.setState({ isOpen: !this.state.isOpen });
-	},
+	};
 
-	render () {
+	render() {
 		return (
 			<div id="myModalContainer">
 				<Button label="Open large modal" onClick={this.toggleOpen} />
@@ -28,9 +24,9 @@ const Example = createReactClass({
 					isOpen={this.state.isOpen}
 					onRequestClose={this.toggleOpen}
 					parentSelector={this.getParent}
-					title="Modal header"
+					heading="Modal header"
 				>
-					<section className="slds-p-around--medium">
+					<section className="slds-p-around_medium">
 						<p>
 							Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
 							ullamco deserunt aute id consequat veniam incididunt duis in sint
@@ -51,7 +47,7 @@ const Example = createReactClass({
 				</Modal>
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

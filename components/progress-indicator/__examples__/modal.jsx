@@ -1,6 +1,6 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@storybook/react';
+
+import { action } from '@storybook/addon-actions';
 
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 import Modal from '~/components/modal';
@@ -19,7 +19,7 @@ const steps = [
 	{ id: 4, label: 'tooltip label #5' },
 ];
 
-const handleStepEvent = function (event, data) {
+const handleStepEvent = function handleStepEventFunction(event, data) {
 	console.log(data);
 };
 
@@ -46,10 +46,10 @@ const modalContent = (
 	/>
 );
 
-const Example = createReactClass({
-	displayName: 'ProgressIndicatorModal',
+class Example extends React.Component {
+	static displayName = 'ProgressIndicatorModal';
 
-	render () {
+	render() {
 		return (
 			<div style={{ height: '640px' }}>
 				{getModal({
@@ -63,7 +63,7 @@ const Example = createReactClass({
 				})}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

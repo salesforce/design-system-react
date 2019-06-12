@@ -83,7 +83,7 @@ const headerNavRight = (
 		<Dropdown
 			id="header-nav-right-more"
 			align="right"
-			assistiveText="More Options"
+			assistiveText={{ icon: 'More Options' }}
 			iconCategory="utility"
 			iconName="down"
 			iconVariant="border-filled"
@@ -100,7 +100,7 @@ const headerContentRight = (
 		<Dropdown
 			id="header-right-refresh"
 			buttonClassName="slds-m-right_xx-small"
-			assistiveText="Checkmark with right icon"
+			assistiveText={{ icon: 'Checkmark with right icon' }}
 			buttonVariant="icon"
 			checkmark
 			iconCategory="utility"
@@ -134,7 +134,7 @@ const headerContentRight = (
 		/>
 
 		<Button
-			assistiveText="Refresh"
+			assistiveText={{ icon: 'Refresh' }}
 			iconCategory="utility"
 			iconName="refresh"
 			iconVariant="border"
@@ -158,7 +158,7 @@ const headerTitle = (
 			>
 				<DropdownTrigger>
 					<Button
-						className="slds-button--reset slds-type-focus"
+						className="slds-button_reset slds-type-focus"
 						iconCategory="utility"
 						iconName="down"
 						iconPosition="right"
@@ -173,7 +173,7 @@ const headerTitle = (
 );
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -187,17 +187,17 @@ class Example extends React.Component {
 		this.sortList = this.sortList.bind(this);
 	}
 
-	onSplitViewOpen () {
+	onSplitViewOpen() {
 		this.setState({ isOpen: true });
 	}
 
-	onSplitViewClose () {
+	onSplitViewClose() {
 		this.setState({ isOpen: false });
 	}
 
 	// For multiple elements you need to pass an array in order for the scrolling to in the SplitViewList to work.
 	// React also requires a key prop on each items [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys).
-	masterView () {
+	masterView() {
 		return [
 			<SplitViewHeader
 				key="1"
@@ -233,7 +233,7 @@ class Example extends React.Component {
 		];
 	}
 
-	detailView () {
+	detailView() {
 		return this.state.selected.length ? (
 			this.state.selected.map((item) => (
 				<dl
@@ -292,7 +292,7 @@ class Example extends React.Component {
 		);
 	}
 
-	sortList () {
+	sortList() {
 		const sortDirection =
 			this.state.sortDirection === SORT_OPTIONS.DOWN
 				? SORT_OPTIONS.UP
@@ -301,20 +301,20 @@ class Example extends React.Component {
 		this.setState({
 			options: this.state.options.sort(
 				(a, b) =>
-					(sortDirection === SORT_OPTIONS.DOWN
+					sortDirection === SORT_OPTIONS.DOWN
 						? a.label > b.label
-						: b.label > a.label)
+						: b.label > a.label
 			),
 			sortDirection,
 		});
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<div className="slds-box slds-m-bottom_large">
-						<div className="slds-text-title_caps slds-m-bottom_small">
+						<div className="slds-m-bottom_small">
 							Externally control the split view
 						</div>
 						<Button

@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 
 import IconSettings from '../../icon-settings';
@@ -12,7 +12,9 @@ import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
 
 describe('SLDSButtonGroup: ', () => {
-	const generateButtonGroup = function (buttonGroupInstance) {
+	const generateButtonGroup = function generateButtonGroupFunction(
+		buttonGroupInstance
+	) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
 				<div>{buttonGroupInstance}</div>

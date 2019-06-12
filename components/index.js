@@ -19,8 +19,38 @@ export Alert from './alert';
 export SLDSAlertContainer from './alert/container';
 export AlertContainer from './alert/container';
 
+export SLDSAppLauncher from './app-launcher';
+export AppLauncher from './app-launcher';
+
+export SLDSAppLauncherExpandableSection from './app-launcher/expandable-section';
+export AppLauncherExpandableSection from './app-launcher/expandable-section';
+
+export SLDSAppLauncherLink from './app-launcher/link';
+export AppLauncherLink from './app-launcher/link';
+
+export SLDSAppLauncherTile from './app-launcher/tile';
+export AppLauncherTile from './app-launcher/tile';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
+
+export SLDSBuilderHeader from './builder-header';
+export BuilderHeader from './builder-header';
+
+export SLDSBuilderHeaderNav from './builder-header/nav';
+export BuilderHeaderNav from './builder-header/nav';
+
+export SLDSBuilderHeaderNavDropdown from './builder-header/nav-dropdown';
+export BuilderHeaderNavDropdown from './builder-header/nav-dropdown';
+
+export SLDSBuilderHeaderNavLink from './builder-header/nav-link';
+export BuilderHeaderNavLink from './builder-header/nav-link';
+
+export SLDSBuilderHeaderToolbar from './builder-header/toolbar';
+export BuilderHeaderToolbar from './builder-header/toolbar';
+
+export SLDSBrandBand from './brand-band';
+export BrandBand from './brand-band';
 
 export SLDSButton from './button';
 export Button from './button';
@@ -47,11 +77,20 @@ export CardEmpty from './card/empty';
 export SLDSCardFilter from './card/filter';
 export CardFilter from './card/filter';
 
+export SLDSCarousel from './carousel';
+export Carousel from './carousel';
+
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
+export SLDSColorPicker from './color-picker';
+export ColorPicker from './color-picker';
+
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
+
+export SLDSExpandableSection from './expandable-section';
+export ExpandableSection from './expandable-section';
 
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
@@ -66,11 +105,26 @@ export GlobalHeaderButton from './global-header/button';
 export SLDSGlobalHeaderDropdown from './global-header/dropdown';
 export GlobalHeaderDropdown from './global-header/dropdown';
 
+export SLDSGlobalHeaderFavorites from './global-header/favorites';
+export GlobalHeaderFavorites from './global-header/favorites';
+
+export SLDSGlobalHeaderHelp from './global-header/help';
+export GlobalHeaderHelp from './global-header/help';
+
+export SLDSGlobalHeaderNotifications from './global-header/notifications';
+export GlobalHeaderNotifications from './global-header/notifications';
+
 export SLDSGlobalHeaderProfile from './global-header/profile';
 export GlobalHeaderProfile from './global-header/profile';
 
 export SLDSGlobalHeaderSearch from './global-header/search';
 export GlobalHeaderSearch from './global-header/search';
+
+export SLDSGlobalHeaderSetup from './global-header/setup';
+export GlobalHeaderSetup from './global-header/setup';
+
+export SLDSGlobalHeaderTask from './global-header/task';
+export GlobalHeaderTask from './global-header/task';
 
 export SLDSGlobalNavigationBar from './global-navigation-bar';
 export GlobalNavigationBar from './global-navigation-bar';
@@ -90,6 +144,9 @@ export DataTable from './data-table';
 export SLDSDataTableCell from './data-table/cell';
 export DataTableCell from './data-table/cell';
 
+export SLDSDataTableHighlightCell from './data-table/highlight-cell';
+export DataTableHighlightCell from './data-table/highlight-cell';
+
 export SLDSDataTableColumn from './data-table/column';
 export DataTableColumn from './data-table/column';
 
@@ -102,6 +159,9 @@ export Datepicker from './date-picker';
 export SLDSIcon from './icon';
 export Icon from './icon';
 
+export SLDSIllustration from './illustration';
+export Illustration from './illustration';
+
 // TODO: Should probably be removed from export and only used internally. This component does not implement Button Icons per SLDS, but only the icons in buttons
 export SLDSButtonIcon from './icon/button-icon';
 export ButtonIcon from './icon/button-icon';
@@ -112,14 +172,11 @@ export Filter from './filter';
 export SLDSInlineEdit from './forms/input/inline';
 export InlineEdit from './forms/input/inline';
 
-export SLDSInput from './forms/input';
-export Input from './forms/input';
+export SLDSInput from './input';
+export Input from './input';
 
-export SLDSTextarea from './forms/textarea';
-export Textarea from './forms/textarea';
-
-export SLDSSearch from './forms/input/search';
-export Search from './forms/input/search';
+export SLDSSearch from './input/search';
+export Search from './input/search';
 
 export SLDSInputIcon from './icon/input-icon';
 export InputIcon from './icon/input-icon';
@@ -150,8 +207,8 @@ export Modal from './modal';
 export SLDSModalTrigger from './modal/trigger';
 export ModalTrigger from './modal/trigger';
 
-export SLDSNavigation from './navigation';
-export Navigation from './navigation';
+export SLDSNavigation from './vertical-navigation';
+export Navigation from './vertical-navigation';
 
 export SLDSNotification from './notification';
 export Notification from './notification';
@@ -171,6 +228,9 @@ export PageHeader from './page-header';
 export SLDSPill from './pill';
 export Pill from './pill';
 
+export SLDSPillContainer from './pill-container';
+export PillContainer from './pill-container';
+
 export SLDSPopover from './popover';
 export Popover from './popover';
 
@@ -178,6 +238,11 @@ export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 export Tooltip from './tooltip';
+export SLDSEditDialog from './popover/edit-dialog';
+export EditDialog from './popover/edit-dialog';
+
+export SLDSProgressBar from './progress-bar';
+export ProgressBar from './progress-bar';
 
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
@@ -185,14 +250,17 @@ export ProgressIndicator from './progress-indicator';
 export SLDSProgressRing from './progress-ring';
 export ProgressRing from './progress-ring';
 
-export SLDSRadio from './forms/radio';
-export Radio from './forms/radio';
+export SLDSRadio from './radio';
+export Radio from './radio';
 
 export SLDSRadioButtonGroup from './radio-button-group';
 export RadioButtonGroup from './radio-button-group';
 
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
+
+export SLDSScopedNotification from './scoped-notification';
+export ScopedNotification from './scoped-notification';
 
 export SLDSSlider from './slider';
 export Slider from './slider';
@@ -213,6 +281,9 @@ export SplitViewHeader from './split-view/header';
 export SLDSSplitViewListbox from './split-view/listbox';
 export SplitViewListbox from './split-view/listbox';
 
+export SLDSTextarea from './textarea';
+export Textarea from './textarea';
+
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
 
@@ -231,3 +302,15 @@ export UtilityIcon from './utilities/utility-icon';
 
 export SLDSTree from './tree';
 export Tree from './tree';
+
+export SLDSVerticalNavigation from './vertical-navigation';
+export VerticalNavigation from './vertical-navigation';
+
+export SLDSDynamicIcon from './dynamic-icon';
+export DynamicIcon from './dynamic-icon';
+
+// Library utilities
+export log from '../utilities/log';
+
+// eslint-disable-next-line camelcase
+export UNSAFE_DirectionSettings from './utilities/UNSAFE_direction';

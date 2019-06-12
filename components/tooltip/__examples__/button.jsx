@@ -1,21 +1,25 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
-import PopoverTooltip from '~/components/popover-tooltip'; // `~` is replaced with design-system-react at runtime
+import Tooltip from '~/components/tooltip'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'TooltipExample',
+class Example extends React.Component {
+	static displayName = 'TooltipExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<PopoverTooltip align="right" content="Tooltip with right alignment">
-					<Button label="Hover or focus to Open" />
-				</PopoverTooltip>
+				<Tooltip
+					id="tooltip"
+					align="right"
+					content="Tooltip with right alignment"
+				>
+					<Button id="button" label="Hover or focus to Open" />
+				</Tooltip>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

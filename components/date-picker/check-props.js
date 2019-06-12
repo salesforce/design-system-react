@@ -4,17 +4,32 @@
 /* eslint-disable  max-len */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
 
-let checkProps = function () {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.children,
+			'children',
+			'input',
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
+			)}`
+		);
+
 		deprecatedProperty(
 			COMPONENT,
 			props.onFocus,
 			'onFocus',
 			undefined,
-			'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -22,31 +37,37 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onBlur,
 			'onBlur',
 			undefined,
-			'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
+			)}`
 		);
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.abbrWeekDayLabels,
 			'abbrWeekDayLabels',
 			'abbreviatedWeekDayLabels',
-			'Prop name has changed.'
+			`Prop name has changed. ${createDocUrl('labels')}`
 		);
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.onDateChange,
 			'onDateChange',
 			'onChange',
-			'Please see prop description for `onChange`. Parameters have changed. The callback recieves an event and a data object of the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`'
+			`Please see prop description for \`onChange\`. Parameters have changed. The callback receives an event and a data object of the shape: \`{date: [Date object], formattedDate: [string], timezoneOffset: [number]}\` ${createDocUrl(
+				'onChange'
+			)}`
 		);
 
 		deprecatedProperty(
 			COMPONENT,
-			props.onFocus,
+			props.onKeyDown,
 			'onKeyDown',
 			undefined,
-			'Please see children prop description and add your own `Input` as a child of Datepicker.'
+			`Please see \`input\` prop description and add your own \`Input\`. Props will be shallow merged. ${createDocUrl(
+				'input'
+			)}`
 		);
 
 		deprecatedProperty(
@@ -54,16 +75,25 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onFocus,
 			'required',
 			undefined,
-			'Please see children prop description and add your own `Input` as a child of Datepicker.'
+			`Please see children prop description and add your own \`Input\` as a child of Datepicker. ${createDocUrl(
+				'children'
+			)}`
 		);
 
-		deprecatedProperty(COMPONENT, props.strValue, 'strValue', 'formattedValue');
+		deprecatedProperty(
+			COMPONENT,
+			props.strValue,
+			'strValue',
+			'formattedValue',
+			createDocUrl('formattedValue')
+		);
 
 		deprecatedProperty(
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'menuPosition="relative"'
+			'menuPosition="relative"',
+			createDocUrl('menuPosition')
 		);
 	};
 }

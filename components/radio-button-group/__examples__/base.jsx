@@ -5,12 +5,12 @@ import RadioButtonGroup from '~/components/radio-button-group'; // `~` is replac
 import Radio from '~/components/radio-button-group/radio'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { checked: 'Tue' };
 	}
 
-	render () {
+	render() {
 		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 		const labels = { label: 'Day of week' };
 		if (this.props.errorLabel) {

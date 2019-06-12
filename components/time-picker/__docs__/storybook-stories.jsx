@@ -1,17 +1,17 @@
 /* eslint-disable indent */
-
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
-
 import { TIME_PICKER } from '../../../utilities/constants';
 import Timepicker from '../../time-picker';
 
-const getTimepicker = (props) => <Timepicker {...props} />;
+import Default from '../__examples__/default';
 
+const getTimepicker = (props) => <Timepicker {...props} />;
 storiesOf(TIME_PICKER, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -22,4 +22,5 @@ storiesOf(TIME_PICKER, module)
 			stepInMinutes: 30,
 			onDateChange: action('onDateChange'),
 		})
-	);
+	)
+	.add('Docs site Default', () => <Default />);

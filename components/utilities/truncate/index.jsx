@@ -2,26 +2,33 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 import memoize from 'lodash.memoize';
 
-const canvas = document.createElement('canvas');
-const docFragment = document.createDocumentFragment();
-docFragment.appendChild(canvas);
-const canvasContext = canvas.getContext('2d');
+const documentDefined = typeof document !== 'undefined';
 
-const measureWidth = memoize((text, font) => {
-	canvasContext.font = font;
+let canvas;
+let docFragment;
+let canvasContext;
+let measureWidth = () => {};
 
-	return canvasContext.measureText(text).width;
-});
+if (documentDefined) {
+	canvas = document.createElement('canvas');
+	docFragment = document.createDocumentFragment();
+	docFragment.appendChild(canvas);
+	canvasContext = canvas.getContext('2d');
+	measureWidth = memoize((text, font) => {
+		canvasContext.font = font;
+		return canvasContext.measureText(text).width;
+	});
+}
 
-const TextTruncate = createReactClass({
-	displayName: 'TextTruncate',
+class TextTruncate extends React.Component {
+	static displayName = 'TextTruncate';
 
-	propTypes: {
+	static propTypes = {
 		containerClassName: PropTypes.string,
 		line: PropTypes.number,
 		prefix: PropTypes.string,
@@ -30,37 +37,33 @@ const TextTruncate = createReactClass({
 		textTruncateChild: PropTypes.node,
 		truncateText: PropTypes.string,
 		wrapper: PropTypes.func,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			line: 1,
-			text: '',
-			truncateText: '…',
-		};
-	},
+	static defaultProps = {
+		line: 1,
+		text: '',
+		truncateText: '…',
+	};
 
-	getInitialState () {
-		return {};
-	},
+	state = {};
 
-	componentDidMount () {
+	componentDidMount() {
 		window.addEventListener('resize', this.onResize, false);
-	},
+	}
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps(nextProps) {
 		this.update(nextProps);
-	},
+	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		window.removeEventListener('resize', this.onResize, false);
-	},
+	}
 
-	onResize () {
+	onResize = () => {
 		this.update(this.props);
-	},
+	};
 
-	getRenderText (ref, nextProps) {
+	getRenderText = (ref, nextProps) => {
 		if (!ref) {
 			return;
 		}
@@ -207,13 +210,13 @@ const TextTruncate = createReactClass({
 		}
 
 		this.setState({ renderText });
-	},
+	};
 
-	update (nextProps) {
+	update = (nextProps) => {
 		this.getRenderText(this.scope, nextProps);
-	},
+	};
 
-	render () {
+	render() {
 		const { containerClassName } = this.props;
 
 		// inline style override
@@ -226,7 +229,7 @@ const TextTruncate = createReactClass({
 				{this.state.renderText}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default TextTruncate;

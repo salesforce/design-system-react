@@ -5,46 +5,47 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import requiredIf from 'react-required-if';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
-import PopoverTooltip from '../popover-tooltip';
+import componentDoc from './docs.json';
+// eslint-disable-next-line import/no-cycle
+import Tooltip from '../tooltip';
+
+import getAriaProps from '../../utilities/get-aria-props';
 
 import { BUTTON } from '../../utilities/constants';
 
+const defaultProps = {
+	assistiveText: { icon: '' },
+	disabled: false,
+	hint: false,
+	iconSize: 'medium',
+	responsive: false,
+	type: 'button',
+	variant: 'neutral',
+};
+
 /**
  * The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.
- * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
- * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
+ * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
+ * Although not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.
  */
-const Button = createReactClass({
-	displayName: BUTTON,
+class Button extends React.Component {
+	static displayName = BUTTON;
 
-	propTypes: {
+	static propTypes = {
 		/**
-		 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. If the button has an icon and a visible label, you can omit the <code>assistiveText.icon</code> prop and use the <code>label</code> prop.
 		 */
-		'aria-describedby': PropTypes.string,
-		/**
-		 * Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions.
-		 */
-		'aria-controls': PropTypes.string,
-		/**
-		 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
-		 */
-		'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-		/**
-		 * True if Button triggers a menu or popup to open/close.
-		 */
-		'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-		/**
-		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
-		 */
-		assistiveText: PropTypes.string,
+		assistiveText: PropTypes.shape({
+			icon: PropTypes.string,
+		}),
+
 		/**
 		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
 		 */
@@ -104,6 +105,7 @@ const Button = createReactClass({
 			'container',
 			'border',
 			'border-filled',
+			'brand',
 			'more',
 			'global-header',
 		]),
@@ -116,7 +118,7 @@ const Button = createReactClass({
 		 */
 		inverse: PropTypes.bool,
 		/**
-		 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
+		 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText.icon</code> prop.
 		 */
 		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
@@ -156,6 +158,10 @@ const Button = createReactClass({
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
+		 * Triggered when a mouse button is released
+		 */
+		onMouseUp: PropTypes.func,
+		/**
 		 * If true, button scales to 100% width on small form factors.
 		 */
 		responsive: PropTypes.bool,
@@ -183,32 +189,29 @@ const Button = createReactClass({
 			'link',
 			'neutral',
 			'brand',
+			'outline-brand',
 			'destructive',
 			'success',
+			'text-destructive',
 			'icon',
 		]),
-	},
+		/**
+		 * Custom styles to be passed to the component
+		 */
+		style: PropTypes.object,
+	};
 
-	getDefaultProps () {
-		return {
-			disabled: false,
-			hint: false,
-			iconSize: 'medium',
-			responsive: false,
-			type: 'button',
-			variant: 'neutral',
-		};
-	},
+	static defaultProps = defaultProps;
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props);
-	},
+		checkProps(BUTTON, this.props, componentDoc);
+	}
 
-	getClassName () {
+	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
-		let iconVariant = this.props.iconVariant;
+		let { iconVariant } = this.props;
 		const iconMore = iconVariant === 'more';
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
@@ -233,29 +236,29 @@ const Button = createReactClass({
 		return classNames(
 			{
 				'slds-button': this.props.variant !== 'link',
-				[`slds-button--${this.props.variant}`]: showButtonVariant,
-				'slds-button--inverse': plainInverseBtn,
-				'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
-				'slds-button--icon-border-inverse': borderInverseIcon,
-				[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
-				'slds-global-header__button--icon': iconGlobalHeader,
+				[`slds-button_${this.props.variant}`]: showButtonVariant,
+				'slds-button_inverse': plainInverseBtn,
+				'slds-button_icon-inverse': plainInverseIcon || moreInverseIcon,
+				'slds-button_icon-border-inverse': borderInverseIcon,
+				[`slds-button_icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+				'slds-global-header__button_icon': iconGlobalHeader,
 				// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
-				[`slds-button--icon-${this.props.iconSize}`]:
+				[`slds-button_icon-${this.props.iconSize}`]:
 					iconVariant && this.props.iconSize !== 'medium',
-				'slds-button--reset': this.props.variant === 'link',
+				'slds-button_reset': this.props.variant === 'link',
 				'slds-text-link': this.props.variant === 'link',
 			},
 			this.props.className
 		);
-	},
+	};
 
-	handleClick (event) {
+	handleClick = (event) => {
 		if (this.props.onClick) {
-			this.props.onClick(event);
+			this.props.onClick(event, {});
 		}
-	},
+	};
 
-	renderIcon (name) {
+	renderIcon = (name) => {
 		const iconSize =
 			this.props.iconSize === '' || this.props.iconVariant
 				? null
@@ -278,25 +281,30 @@ const Button = createReactClass({
 				size={iconSize}
 			/>
 		);
-	},
+	};
 
-	renderLabel () {
+	renderLabel = () => {
 		const iconOnly = this.props.iconName || this.props.iconPath;
+		const assistiveTextIcon =
+			typeof this.props.assistiveText === 'string'
+				? this.props.assistiveText
+				: {
+						...defaultProps.assistiveText,
+						...this.props.assistiveText,
+					}.icon;
 
-		return iconOnly && this.props.assistiveText ? (
-			<span className="slds-assistive-text">{this.props.assistiveText}</span>
+		return iconOnly && assistiveTextIcon ? (
+			<span className="slds-assistive-text">{assistiveTextIcon}</span>
 		) : (
 			this.props.label
 		);
-	},
+	};
 
-	renderButton () {
+	renderButton = () => {
+		const ariaProps = getAriaProps(this.props);
 		return (
+			// eslint-disable-next-line react/button-has-type
 			<button
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-expanded={this.props['aria-expanded']}
-				aria-haspopup={this.props['aria-haspopup']}
 				className={this.getClassName()}
 				disabled={this.props.disabled}
 				id={this.props.id}
@@ -309,6 +317,7 @@ const Button = createReactClass({
 				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
+				onMouseUp={this.props.onMouseUp}
 				ref={(component) => {
 					if (this.props.buttonRef) {
 						this.props.buttonRef(component);
@@ -316,7 +325,9 @@ const Button = createReactClass({
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
-				type={this.props.type}
+				type={this.props.type || 'button'}
+				style={this.props.style}
+				{...ariaProps}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
@@ -324,7 +335,12 @@ const Button = createReactClass({
 					? this.renderIcon(this.props.iconName)
 					: null}
 				{this.props.iconVariant === 'more' ? (
-					<ButtonIcon category="utility" name="down" size="x-small" />
+					<ButtonIcon
+						category="utility"
+						name="down"
+						size="x-small"
+						className={this.props.iconClassName}
+					/>
 				) : null}
 
 				{this.props.iconPosition === 'left' || !this.props.iconPosition
@@ -335,20 +351,16 @@ const Button = createReactClass({
 				}
 			</button>
 		);
-	},
+	};
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
-	renderTooltip () {
-		return (
-			<PopoverTooltip content={this.props.tooltip}>
-				{this.renderButton}
-			</PopoverTooltip>
-		);
-	},
+	renderTooltip = () => (
+		<Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>
+	);
 
-	render () {
+	render() {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
-	},
-});
+	}
+}
 
 export default Button;

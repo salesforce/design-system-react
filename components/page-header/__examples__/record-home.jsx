@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -7,11 +7,11 @@ import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'RecordHomePageHeaderExample';
 
-	render () {
-		const contentRight = (
+	render() {
+		const actions = () => (
 			<div>
 				<ButtonStateful
 					key="PageHeaderFollowButton"
@@ -26,10 +26,11 @@ const Example = createReactClass({
 					<Button label="Clone" />
 					<Dropdown
 						align="right"
-						assistiveText="More Options"
+						assistiveText={{ icon: 'More Options' }}
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
+						id="dropdown-record-home-example"
 						options={[
 							{ label: 'Menu Item One', value: 'A0' },
 							{ label: 'Menu Item Two', value: 'B0' },
@@ -64,18 +65,18 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					contentRight={contentRight}
+					onRenderActions={actions}
 					details={details}
-					iconAssistiveText="User"
+					iconAssistiveText={{ icon: 'User' }}
 					iconCategory="standard"
 					iconName="user"
 					label="Record Type"
 					title="Record Title"
-					variant="recordHome"
+					variant="record-home"
 				/>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

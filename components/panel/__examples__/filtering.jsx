@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import PanelFilterGroup from '~/components/panel/filtering/group';
@@ -29,31 +28,29 @@ const options = {
 	],
 };
 
-const Example = createReactClass({
-	displayName: 'PanelExample',
+class Example extends React.Component {
+	static displayName = 'PanelExample';
 
-	getInitialState () {
-		return {
-			modifiedPanel: false,
-			'show-me': {
-				selectedPicklistItem: options['show-me'][0],
-				selectedItem: options['show-me'][0],
-			},
-			'created-date': {
-				selectedPicklistItem: options['created-date'][0],
-				selectedItem: options['created-date'][0],
-				isActive: true,
-			},
-			'list-price': {
-				selectedPicklistItem: options['list-price'][0],
-				selectedItem: options['list-price'][0],
-				isActive: true,
-			},
-			new: {},
-		};
-	},
+	state = {
+		modifiedPanel: false,
+		'show-me': {
+			selectedPicklistItem: options['show-me'][0],
+			selectedItem: options['show-me'][0],
+		},
+		'created-date': {
+			selectedPicklistItem: options['created-date'][0],
+			selectedItem: options['created-date'][0],
+			isActive: true,
+		},
+		'list-price': {
+			selectedPicklistItem: options['list-price'][0],
+			selectedItem: options['list-price'][0],
+			isActive: true,
+		},
+		new: {},
+	};
 
-	onChangePredicate (event, { id }) {
+	onChangePredicate = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			modifiedPanel:
@@ -64,18 +61,18 @@ const Example = createReactClass({
 				selectedItem: this.state[idSuffix].selectedPicklistItem,
 			},
 		});
-	},
+	};
 
-	onSelectPicklist (selectedItem, id) {
+	onSelectPicklist = (selectedItem, id) => {
 		this.setState({
 			[id]: {
 				...this.state[id],
 				selectedPicklistItem: selectedItem,
 			},
 		});
-	},
+	};
 
-	onRemove (event, { id }) {
+	onRemove = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -83,9 +80,9 @@ const Example = createReactClass({
 				isActive: false,
 			},
 		});
-	},
+	};
 
-	render () {
+	render() {
 		const hasActiveFilters =
 			this.state['created-date'].isActive ||
 			this.state['list-price'].isActive ||
@@ -94,6 +91,7 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<Panel variant="filters">
 					<PanelFilterGroup
+						assistiveText={{ closeButton: 'Close Panel' }}
 						modified={this.state.modifiedPanel}
 						onClickAdd={() => {
 							this.setState({
@@ -228,7 +226,7 @@ const Example = createReactClass({
 				</Panel>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

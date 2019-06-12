@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -20,23 +19,30 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
-	})
-);
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
+		icon: (
+			<Icon
+				assistiveText={{ label: 'Account' }}
+				category="standard"
+				name={elem.type}
+			/>
+		),
+	},
+}));
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
 			inputValue: '',
-			selection: [accounts[1]],
+			selection: [accountsWithIcon[1]],
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
@@ -45,37 +51,6 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					menuPosition="relative"
-					onChange={(event, { value }) => {
-						console.log('onChange', value);
-						this.setState({ inputValue: value });
-					}}
-					onRequestRemoveSelectedOption={(event, data) => {
-						this.setState({
-							inputValue: '',
-							selection: [],
-						});
-					}}
-					onSubmit={(event, { value }) => {
-						console.log('onSubmit', value);
-						this.setState({
-							selection: [
-								{
-									label: value,
-									icon: (
-										<Icon
-											assistiveText="Account"
-											category="standard"
-											name="account"
-										/>
-									),
-								},
-							],
-						});
-					}}
-					onSelect={(event, data) => {
-						console.log('onSelect', data);
-						this.setState({ selection: data.selection });
-					}}
 					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={

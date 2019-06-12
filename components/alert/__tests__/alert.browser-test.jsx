@@ -17,7 +17,7 @@ import IconSettings from '../../icon-settings';
 chai.use(chaiEnzyme());
 
 class DemoComponent extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -25,13 +25,14 @@ class DemoComponent extends Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<AlertContainer>
 						{this.state.isOpen ? (
 							<Alert
+								style={this.props.style}
 								dismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
@@ -53,8 +54,7 @@ class DemoComponent extends Component {
 
 DemoComponent.displayName = 'AlertExample';
 
-describe('SLDSAlert: ', function () {
-	let wrapper;
+describe('SLDSAlert: ', function describeFunction() {
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss alert', () => {
@@ -67,18 +67,34 @@ describe('SLDSAlert: ', function () {
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('calls onRequestClose handler', function () {
-			const button = this.wrapper.find('.slds-notify__close');
+		it('calls onRequestClose handler', function() {
+			const button = this.wrapper.find('button.slds-notify__close');
 			// If applicable, use second parameter to pass the data object
-			expect(this.wrapper.find('.slds-notify').length).to.equal(1);
+			expect(this.wrapper).to.have.state('isOpen', true);
 			button.simulate('click', {});
-			expect(this.wrapper.find('.slds-notify').length).to.equal(0);
+			expect(this.wrapper).to.have.state('isOpen', false);
 		});
-		it('calls onClickHeadingLink handler', function () {
+		it('calls onClickHeadingLink handler', function() {
 			const link = this.wrapper.find('a');
 			// If applicable, use second parameter to pass the data object
 			link.simulate('click', {});
 			expect(onClickHeadingLink.calledOnce).to.be.true;
+		});
+	});
+
+	describe('Basic Alert Props Render', function describeFunction2() {
+		beforeEach(
+			mountComponent(
+				<DemoComponent style={{ backgroundColor: 'rgb(18, 49, 35)' }} />
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('render custom styles', function() {
+			expect(
+				this.wrapper.find('.slds-notify').prop('style').backgroundColor
+			).to.equal('rgb(18, 49, 35)');
 		});
 	});
 });

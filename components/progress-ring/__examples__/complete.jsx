@@ -3,23 +3,23 @@ import IconSettings from '~/components/icon-settings';
 import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<ProgressRing value={100} theme="complete" />
 					</div>
-					<div className="slds-col--padded">
+					<div className="slds-col_padded">
 						<ProgressRing value={100} theme="complete" hasIcon />
 					</div>
-					<div className="slds-col--padded" />
+					<div className="slds-col_padded" />
 				</div>
 			</IconSettings>
 		);
 	}
 }
 
-Example.displayName = 'ProgressRingDefault';
+Example.displayName = 'ProgressRingCompleteExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

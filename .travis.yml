@@ -1,18 +1,20 @@
-sudo: false
+sudo: required
 language: node_js
 node_js:
-  - "8"
+  - '8'
+cache: npm
 install:
   - npm install npm -g
   - npm config set audit false
-  - npm ci
+  - npm install
 script:
   - npm run travis-ci
 env:
   - CXX=g++-4.8
 addons:
+  chrome: stable
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
+      - g++-4.8

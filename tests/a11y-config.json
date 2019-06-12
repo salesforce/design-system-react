@@ -1,0 +1,24 @@
+{
+	"testRegex": "/tests/story-based-accessibility-tests.js$",
+	"testEnvironment": "jsdom",
+	"testPathIgnorePatterns": [
+		"/node_modules/",
+		"/preset/",
+		"/.tmp-amd/",
+		"/.tmp-commonjs/",
+		"/.tmp-es/",
+		"/.tmp-npm/"
+	],
+	"transform": {
+		"^.+\\.jsx?$": "babel-jest",
+		"^.+\\.svg$": "jest-svg-transformer"
+	},
+	"transformIgnorePatterns": [
+		"/node_modules/",
+		"/preset/",
+		"/.tmp-amd/",
+		"/.tmp-commonjs/",
+		"/.tmp-es/",
+		"/.tmp-npm/"
+	]
+}

@@ -22,12 +22,12 @@ chai.use(chaiEnzyme());
 /* Re-usable demo component.
  */
 class RadioGroupExample extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = { checked: 'Radio Label One' };
 	}
 
-	render () {
+	render() {
 		const values = ['Radio Label One', 'Radio Label Two'];
 		return (
 			<RadioGroup
@@ -65,7 +65,7 @@ RadioGroupExample.defaultProps = {
 
 /* RadioGroup rendering tests
  */
-describe('RadioGroup', function () {
+describe('RadioGroup', function() {
 	let mountNode;
 	let wrapper;
 
@@ -110,12 +110,10 @@ describe('RadioGroup', function () {
 
 	it('triggers a change callback', () => {
 		wrapper = mount(<RadioGroupExample />, { attachTo: mountNode });
-		const radio = wrapper.find({ value: 'Radio Label Two' });
-		expect(radio.props().checked).to.be.false;
+		let radio = wrapper.find({ value: 'Radio Label Two' }).find('input');
+		expect(radio).to.have.prop('checked', false);
 		radio.simulate('change', { event: { target: 'Radio Label Two' } });
-		expect(
-			radio.props().checked,
-			'radio button changes from unchecked to checked'
-		).to.be.true;
+		radio = wrapper.find({ value: 'Radio Label Two' }).find('input');
+		expect(radio).to.have.prop('checked', true);
 	});
 });

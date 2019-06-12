@@ -1,13 +1,14 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import SLDSPill from '~/components/pill';
-import SLDSIcon from '~/components/icon';
-import SLDSAvatar from '~/components/avatar';
-import { mountComponent, unmountComponent } from '~/tests/enzyme-helpers';
 import { expect } from 'chai';
 
-const { Simulate } = TestUtils;
+import SLDSPill from '../../pill';
+import SLDSIcon from '../..//icon';
+import SLDSAvatar from '../..//avatar';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 
 describe('SLDSPill', () => {
 	const LABEL = 'Pill Label';
@@ -42,14 +43,14 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('has correct style and attributes', function () {
-			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
-			expect(this.wrapper.hasClass('slds-pill_link')).to.be.true;
-			expect(this.wrapper.hasClass('extra-class')).to.be.true;
-			expect(this.wrapper.find('.slds-pill[role="button"]').exists());
+		it('has correct style and attributes', function() {
+			expect(this.wrapper).to.have.className('slds-pill');
+			expect(this.wrapper).to.have.className('slds-pill_link');
+			expect(this.wrapper).to.have.className('extra-class');
+			expect(this.wrapper.find('.slds-pill[role="button"]')).to.be.present();
 		});
 
-		it('renders label as a link', function () {
+		it('renders label as a link', function() {
 			const anchor = this.wrapper.find('.slds-pill__action');
 			expect(anchor.exists()).to.be.true;
 			expect(anchor.prop('title')).to.equal(LABEL_TITLE);
@@ -57,12 +58,12 @@ describe('SLDSPill', () => {
 			expect(label.text()).to.equal(LABEL);
 		});
 
-		it('renders remove button', function () {
+		it('renders remove button', function() {
 			const removeButton = this.wrapper.find('.slds-pill__remove');
 			expect(removeButton.exists()).to.be.true;
 		});
 
-		it('renders assistive text in remove button', function () {
+		it('renders assistive text in remove button', function() {
 			const removeButton = this.wrapper.find('.slds-pill__remove');
 			expect(removeButton.exists()).to.be.true;
 			const assistiveText = removeButton.find('.slds-assistive-text');
@@ -70,33 +71,26 @@ describe('SLDSPill', () => {
 			expect(assistiveText.text()).to.equal('Remove assistive text');
 		});
 
-		it('focuses and blurs', function () {
-			this.wrapper.instance().focus();
-			const pill = this.wrapper.find('.slds-pill');
-			expect(pill.matchesElement(document.activeElement)).to.be.equal(
-				true,
-				'Pill was not focused'
-			);
+		it('focuses and blurs', function() {
+			this.wrapper.simulate('focus');
+			expect(this.wrapper).to.containMatchingElement(document.activeElement);
 			expect(onFocus.calledOnce).to.be.true;
-			this.wrapper.instance().blur();
-			expect(pill.matchesElement(document.activeElement)).to.be.equal(
-				false,
-				'Pill was not blurred'
-			);
+			this.wrapper.simulate('blur');
+			expect(document.activeElement).to.equal(document.querySelector('body'));
 			expect(onBlur.calledOnce).to.be.true;
 		});
 
-		it('reponds to link clicks', function () {
+		it('reponds to link clicks', function() {
 			const pillLink = this.wrapper.find('.slds-pill__action');
-			expect(pillLink.getNode()).to.exist;
-			Simulate.click(pillLink.getNode());
+			expect(pillLink).to.exist;
+			pillLink.simulate('click');
 			expect(onClick.calledOnce).to.be.true;
 		});
 
-		it('responds to remove clicks', function () {
+		it('responds to remove clicks', function() {
 			const removeButton = this.wrapper.find('.slds-pill__remove');
-			expect(removeButton.getNode()).to.exist;
-			Simulate.click(removeButton.getNode());
+			expect(removeButton).to.exist;
+			removeButton.simulate('click');
 			expect(onRemove.calledOnce).to.be.true;
 		});
 	});
@@ -117,11 +111,11 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('uses href', function () {
-			expect(this.wrapper.hasClass('slds-pill_link')).to.be.true;
+		it('uses href', function() {
+			expect(this.wrapper).to.have.className('slds-pill_link');
 			const anchor = this.wrapper.find('.slds-pill__action');
-			expect(anchor.exists()).to.be.true;
-			expect(anchor.prop('href')).to.equal(HREF);
+			expect(anchor).to.exist;
+			expect(anchor).to.have.prop('href', HREF);
 		});
 	});
 
@@ -138,10 +132,10 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('forces link style', function () {
-			expect(this.wrapper.hasClass('slds-pill_link')).to.be.true;
+		it('forces link style', function() {
+			expect(this.wrapper).to.have.className('slds-pill_link');
 			const anchor = this.wrapper.find('.slds-pill__action');
-			expect(anchor.exists()).to.be.true;
+			expect(anchor).to.exist;
 		});
 	});
 
@@ -159,9 +153,9 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('has correct style and attributes', function () {
-			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
-			expect(this.wrapper.hasClass('slds-pill_bare')).to.be.true;
+		it('has correct style and attributes', function() {
+			expect(this.wrapper).to.have.className('slds-pill');
+			expect(this.wrapper).to.have.className('slds-pill_bare');
 			expect(this.wrapper.find('.slds-pill[role="button"]').exists()).to.be
 				.true;
 		});
@@ -181,8 +175,8 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('has correct style and attributes', function () {
-			expect(this.wrapper.hasClass('slds-has-error')).to.be.true;
+		it('has correct style and attributes', function() {
+			expect(this.wrapper).to.have.className('slds-has-error');
 		});
 	});
 
@@ -203,7 +197,7 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('renders icon to the left from label', function () {
+		it('renders icon to the left from label', function() {
 			const icon = this.wrapper.find(SLDSIcon);
 			expect(icon.exists()).to.be.true;
 			expect(icon.prop('title')).to.equal('Account');
@@ -232,7 +226,7 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('renders icon to the left from label', function () {
+		it('renders icon to the left from label', function() {
 			const avatar = this.wrapper.find(SLDSAvatar);
 			expect(avatar.exists()).to.be.true;
 			expect(avatar.prop('title')).to.equal('User avatar');
@@ -252,9 +246,9 @@ describe('SLDSPill', () => {
 					labels={{
 						label: LABEL,
 						title: LABEL_TITLE,
+						removeTitle: 'Remove',
 					}}
 					variant="option"
-					removeTitle="Remove"
 					onRemove={onRemove}
 				/>
 			)
@@ -262,11 +256,11 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('has correct style', function () {
-			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
-			expect(this.wrapper.hasClass('slds-pill_link')).to.be.false;
+		it('has correct style', function() {
+			expect(this.wrapper).to.have.className('slds-pill');
+			expect(this.wrapper).to.not.have.className('slds-pill_link');
 			const anchor = this.wrapper.find('.slds-pill__action');
-			expect(anchor.exists()).to.be.false;
+			expect(anchor).to.not.exist;
 		});
 	});
 
@@ -284,30 +278,30 @@ describe('SLDSPill', () => {
 
 		afterEach(unmountComponent);
 
-		it('has correct style', function () {
-			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
-			expect(this.wrapper.hasClass('slds-pill_link')).to.be.true;
+		it('has correct style', function() {
+			expect(this.wrapper).to.have.className('slds-pill');
+			expect(this.wrapper).to.have.className('slds-pill_link');
 			const child = this.wrapper.find('.abc');
 			expect(child.exists()).to.be.true;
 			expect(child.text()).to.equal('this is a custom label');
 		});
 
-		it('renders remove button', function () {
+		it('renders remove button', function() {
 			const removeButton = this.wrapper.find('.slds-pill__remove');
 			expect(removeButton.exists()).to.be.true;
 		});
 
-		it('reponds to link clicks', function () {
+		it('reponds to link clicks', function() {
 			const pillLink = this.wrapper.find('.slds-pill');
-			expect(pillLink.getNode()).to.exist;
-			Simulate.click(pillLink.getNode());
+			expect(pillLink).to.exist;
+			pillLink.simulate('click');
 			expect(onClick.calledOnce).to.be.true;
 		});
 
-		it('responds to remove clicks', function () {
+		it('responds to remove clicks', function() {
 			const removeButton = this.wrapper.find('.slds-pill__remove');
-			expect(removeButton.getNode()).to.exist;
-			Simulate.click(removeButton.getNode());
+			expect(removeButton).to.exist;
+			removeButton.simulate('click');
 			expect(onRemove.calledOnce).to.be.true;
 		});
 	});

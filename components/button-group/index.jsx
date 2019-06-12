@@ -18,7 +18,7 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	 * CSS classes added to `slds-button-group` or `slds-checkbox--button-group` tag
+	 * CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
@@ -38,7 +38,7 @@ const propTypes = {
 	/**
 	 * Use checkbox variant for "Checkbox Button Group" styling and add Checkbox components as children _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['checkbox']),
+	variant: PropTypes.oneOf(['checkbox', 'list']),
 };
 
 const defaultProps = { labels: {} };
@@ -46,21 +46,18 @@ const defaultProps = { labels: {} };
 /**
  * The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).
  */
-const ButtonGroup = (props) => {
+const ButtonGroup = (props = {}) => {
 	// Merge objects of strings with their default object
-	const labels = props
-		? assign({}, defaultProps.labels, props.labels)
-		: defaultProps.labels;
+	const labels = assign({}, defaultProps.labels, props.labels);
 
-	let children = props.children;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
-
+	let { children } = props;
 	if (zeroIndexLength > 0) {
 		children = React.Children.map(props.children, (child, index) => {
 			let newChild;
 			if (index === zeroIndexLength) {
 				newChild = React.cloneElement(child, {
-					triggerClassName: 'slds-button--last',
+					triggerClassName: 'slds-button_last',
 				});
 			}
 
@@ -74,9 +71,7 @@ const ButtonGroup = (props) => {
 				variant: 'button-group',
 			})
 		);
-	}
 
-	if (props.variant === 'checkbox') {
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
@@ -89,7 +84,7 @@ const ButtonGroup = (props) => {
 				<div className="slds-form-element__control">
 					<div
 						className={classNames(
-							'slds-checkbox--button-group',
+							'slds-checkbox_button-group',
 							props.className
 						)}
 					>
@@ -102,6 +97,15 @@ const ButtonGroup = (props) => {
 			</fieldset>
 		);
 	}
+
+	if (props.variant === 'list') {
+		return (
+			<ul className={classNames('slds-button-group-list', props.className)}>
+				{React.Children.map(props.children, (child) => <li>{child}</li>)}
+			</ul>
+		);
+	}
+
 	// default
 	return (
 		<div

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-render-return-value */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
 
@@ -34,7 +34,7 @@ describe('SLDSButton: ', () => {
 		);
 	};
 
-	function removeButton () {
+	function removeButton() {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}
@@ -52,12 +52,13 @@ describe('SLDSButton: ', () => {
 				id: 'custom-id',
 				text: 'Brand',
 				theme: 'brand',
+				style: { background: 'rgb(18, 49, 35)' },
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders correct label', () => {
@@ -65,11 +66,15 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders correct variant styles', () => {
-			expect(btn.className).to.include('slds-button--neutral');
+			expect(btn.className).to.include('slds-button_neutral');
 		});
 
 		it('renders custom id', () => {
 			expect(btn.getAttribute('id')).to.equal('custom-id');
+		});
+
+		it('renders custom styles', function() {
+			btn.style.backgroundColor.should.equal('rgb(18, 49, 35)');
 		});
 	});
 
@@ -91,7 +96,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders label', () => {
@@ -99,32 +104,30 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders icon', () => {
-			expect(svg.className.baseVal).to.include('slds-button__icon--right');
+			expect(svg.className.baseVal).to.include('slds-button__icon_right');
 		});
 	});
 
 	describe('Icon Button Props render', () => {
 		let cmp;
-		let btn;
 		let asstText;
 		let svg;
 
 		beforeEach(() => {
 			cmp = getButton({
-				assistiveText: 'my settings',
+				assistiveText: { icon: 'my settings' },
 				variant: 'icon',
 				iconCategory: 'utility',
 				iconName: 'settings',
 				iconSize: 'small',
 				iconVariant: 'bare',
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
 			svg = findRenderedDOMComponentWithTag(cmp, 'svg');
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders label', () => {
@@ -138,22 +141,20 @@ describe('SLDSButton: ', () => {
 
 	describe('(icon path) Icon Button renders assistive text', () => {
 		let cmp;
-		let btn;
 		let asstText;
 
 		beforeEach(() => {
 			cmp = getButton({
-				assistiveText: 'News',
+				assistiveText: { icon: 'News' },
 				iconSize: 'large',
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				title: 'announcement',
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders label', () => {
@@ -168,7 +169,7 @@ describe('SLDSButton: ', () => {
 
 		before(() => {
 			cmp = getButton({
-				assistiveText: 'announcement',
+				assistiveText: { icon: 'announcement' },
 				variant: 'icon',
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				iconSize: 'large',
@@ -176,6 +177,10 @@ describe('SLDSButton: ', () => {
 			});
 			use = findRenderedDOMComponentWithTag(cmp, 'use');
 			svgHref = use.getAttribute('xlink:href');
+		});
+
+		after(() => {
+			removeButton();
 		});
 
 		it('renders svg', () => {
@@ -190,7 +195,7 @@ describe('SLDSButton: ', () => {
 		let btn;
 		let clicked;
 
-		function setClick () {
+		function setClick() {
 			clicked = true;
 		}
 
@@ -205,7 +210,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('can be clicked', () => {

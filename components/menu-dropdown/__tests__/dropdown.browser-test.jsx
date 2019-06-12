@@ -1,15 +1,15 @@
+/* eslint-disable max-lines */
+
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount } from 'enzyme';
 import assign from 'lodash.assign';
 import {
 	Simulate,
 	findRenderedDOMComponentWithClass,
-} from 'react-addons-test-utils';
+} from 'react-dom/test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -25,7 +25,7 @@ import {
 import Dropdown from '../../menu-dropdown';
 import IconSettings from '../../icon-settings';
 import List from '../../utilities/menu-list';
-import KEYS, { keyObjects } from '../../../utilities/key-code';
+import { keyObjects } from '../../../utilities/key-code';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -54,14 +54,14 @@ const defaultProps = {
 /* eslint-disable react/prop-types */
 const DropdownCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
-		<div className="slds-m-around--medium">
-			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+		<div className="slds-m-around_medium">
+			<div className="slds-tile slds-tile_board slds-m-horizontal_small">
+				<p className="tile__title slds-text-heading_small">Art Vandelay</p>
 				<div className="slds-tile__detail">
 					<p className="slds-truncate">
 						<a
 							id="custom-dropdown-menu-content-link"
-							className="slds-m-right--medium"
+							className="slds-m-right_medium"
 							href="javascript:void(0);"
 							onClick={props.onClick}
 						>
@@ -84,7 +84,7 @@ DropdownCustomContent.displayName = 'DropdownCustomContent';
  * you will create in the React Storybook for manual testing.
  */
 class DemoComponent extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Dropdown {...defaultProps} {...this.props}>
@@ -117,22 +117,23 @@ const getNodes = ({ wrapper }) => ({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSMenuDropdown', function () {
-	let wrapper;
-
+describe('SLDSMenuDropdown', function() {
 	describe('Styling', () => {
 		beforeEach(
-			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} />)
+			mountComponent(
+				<DemoComponent menuStyle={{ height: '500px' }} width="small" />
+			)
 		);
 
 		afterEach(unmountComponent);
 
-		it('has correct CSS classes and style', function () {
+		it('has correct CSS classes and style', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu).to.exist;
 			expect(openNodes.menu).to.have.style('height', '500px');
+			expect(openNodes.menu.hasClass('slds-dropdown_small')).to.equal(true);
 		});
 	});
 
@@ -150,28 +151,28 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('has content with custom ID is present', function () {
+		it('has content with custom ID is present', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.customContent.nodes.length).to.equal(1);
+			expect(openNodes.customContent.length).to.equal(1);
 		});
 
-		it('closes when custom content is clicked', function () {
+		it('closes when custom content is clicked', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			openNodes.customContentLink.simulate('click', {});
 			const closedNodes = getNodes({ wrapper: this.wrapper });
-			expect(closedNodes.customContent.nodes.length).to.equal(0);
+			expect(closedNodes.customContent.length).to.equal(0);
 		});
 
-		it("has additional ListItem from list child's options prop", function () {
+		it("has additional ListItem from list child's options prop", function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			const buttonId = nodes.trigger.node.id;
+			const buttonId = nodes.trigger.prop('id');
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find(`#${buttonId}-item-0`).text()).to.equal(
+			expect(openNodes.menu.find(`li#${buttonId}-item-0`).text()).to.equal(
 				'Custom Content Option'
 			);
 		});
@@ -184,26 +185,26 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('does not expand on hover', function () {
+		it('does not expand on hover', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('mouseEnter', {});
 			const hoverNodes = getNodes({ wrapper: this.wrapper });
-			expect(hoverNodes.menu.nodes.length).to.equal(0);
+			expect(hoverNodes.menu.length).to.equal(0);
 		});
 
-		it('expands/contracts on click', function () {
+		it('expands/contracts on click', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 			openNodes.trigger.simulate('click', {});
 			const closedNodes = getNodes({ wrapper: this.wrapper });
-			expect(closedNodes.menu.nodes.length).to.equal(0);
+			expect(closedNodes.menu.length).to.equal(0);
 		});
 
-		it('preserves click behavior', function () {
+		it('preserves click behavior', function() {
 			onClick.reset();
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
@@ -226,9 +227,9 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('selects an item on click', function () {
+		it('selects an item on click', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			openNodes.menu
@@ -244,26 +245,23 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('<ul> has role menu & aria-labelledby', function () {
+		it('<ul> has role menu & aria-labelledby', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find('ul').node.getAttribute('role')).to.equal(
-				'menu'
-			);
-			expect(
-				openNodes.menu.find('ul').node.getAttribute('aria-labelledby')
-			).to.equal(openNodes.trigger.node.getAttribute('id'));
+			expect(openNodes.menu.find('ul')).to.have.attr('role', 'menu');
+			const nodeId = openNodes.trigger.prop('id');
+			expect(openNodes.menu.find('ul')).attr('aria-labelledby', nodeId);
 		});
 
-		it('<a> inside <li> has role menuitem', function () {
+		it('<a> inside <li> has role menuitem', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			const anchorRole = openNodes.menu
 				.find('li a')
 				.first()
-				.node.getAttribute('role');
+				.prop('role');
 			const match =
 				anchorRole === 'menuitem' ||
 				anchorRole === 'menuitemradio' ||
@@ -271,15 +269,15 @@ describe('SLDSMenuDropdown', function () {
 			expect(match).to.be.true;
 		});
 
-		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function () {
+		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			const lastItemAriaDisabledRole = openNodes.menu
 				.find('li a')
-				.get(3)
-				.getAttribute('aria-disabled');
-			expect(lastItemAriaDisabledRole).to.equal('true');
+				.at(3)
+				.prop('aria-disabled');
+			expect(lastItemAriaDisabledRole).to.be.true;
 		});
 	});
 
@@ -287,7 +285,7 @@ describe('SLDSMenuDropdown', function () {
 		beforeEach(
 			mountComponent(
 				<DemoComponent
-					assistiveText="more options"
+					assistiveText={{ icon: 'more options' }}
 					buttonVariant="icon"
 					checkmark
 					iconCategory="utility"
@@ -299,9 +297,8 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('<button> has assistiveText', function () {
+		it('<button> has assistiveText', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			console.log(nodes.button);
 			expect(nodes.button.find('.slds-assistive-text').text()).to.equal(
 				'more options'
 			);
@@ -323,23 +320,23 @@ describe('SLDSMenuDropdown', function () {
 
 		afterEach(unmountComponent);
 
-		it('opens menu with enter', function () {
+		it('opens menu with enter', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.ENTER);
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 		});
 
-		it('opens menu with down arrow key', function () {
+		it('opens menu with down arrow key', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.DOWN);
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 		});
 
-		it('selects an item with keyboard', function () {
+		it('selects an item with keyboard', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -349,40 +346,42 @@ describe('SLDSMenuDropdown', function () {
 			expect(selected.value).to.equal('B0');
 		});
 
-		it('closes Menu on esc', function () {
+		it('closes Menu on esc', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.menu.nodes.length).to.equal(0);
+			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.nodes.length).to.equal(1);
+			expect(openNodes.menu.length).to.equal(1);
 			openNodes.menu
 				.find('.slds-dropdown__item a')
 				.first()
 				.simulate('keyDown', keyObjects.ESCAPE);
 			const closedNodes = getNodes({ wrapper: this.wrapper });
-			expect(closedNodes.menu.nodes.length).to.equal(0);
+			expect(closedNodes.menu.length).to.equal(0);
 		});
 	});
 
-	describe('multiple selection', function () {
+	describe('multiple selection', function() {
 		beforeEach(mountComponent(<DemoComponent multiple checkmark />));
 
 		afterEach(unmountComponent);
 
-		it('selects multiple items and renders checkmarks', function () {
+		it('selects multiple items and renders checkmarks', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
-			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').nodes.length
-			).to.equal(1);
-			openNodes.menu
-				.find('.slds-dropdown__item a')
-				.first()
-				.simulate('click', {});
-			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').nodes.length
-			).to.equal(2);
+			let openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
+				1
+			);
+			const firstNode = openNodes.menu.find('.slds-dropdown__item a').at(0);
+			firstNode.simulate('click');
+			openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
+				2
+			);
+			// item with checkmark has proper aria markup
+			expect(firstNode).attr('aria-checked', 'true');
+			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
 	});
 
@@ -401,7 +400,7 @@ describe('SLDSMenuDropdown', function () {
 			);
 		};
 
-		function removeDropdownTrigger () {
+		function removeDropdownTrigger() {
 			ReactDOM.unmountComponentAtNode(body);
 			document.body.removeChild(body);
 		}
@@ -410,8 +409,7 @@ describe('SLDSMenuDropdown', function () {
 			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
-		const dropItDown = (props, children) =>
-			renderDropdown(createDropdown(props, children));
+		const dropItDown = (props) => renderDropdown(createDropdown(props));
 
 		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
@@ -419,12 +417,20 @@ describe('SLDSMenuDropdown', function () {
 		let btn;
 
 		beforeEach(() => {
-			cmp = dropItDown({ buttonClassName: 'dijkstrafied', openOn: 'hover' });
+			cmp = dropItDown({
+				buttonClassName: 'dijkstrafied',
+				openOn: 'hover',
+				hoverCloseDelay: 2,
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
-		afterEach(() => {
-			removeDropdownTrigger(btn);
+		afterEach((done) => {
+			// due to hover-close delay, removal from DOM must be delayed
+			setTimeout(() => {
+				removeDropdownTrigger(btn);
+				done();
+			}, 100);
 		});
 
 		it('gives the button correct aria properties', () => {
@@ -450,7 +456,7 @@ describe('SLDSMenuDropdown', function () {
 			setTimeout(() => {
 				expect(getMenu(body)).to.equal(null);
 				done();
-			}, 600);
+			}, 3);
 		});
 
 		it("doesn't close on quick hover outside", (done) => {
@@ -458,12 +464,13 @@ describe('SLDSMenuDropdown', function () {
 			Simulate.mouseEnter(btn, {});
 			Simulate.mouseLeave(btn);
 			setTimeout(() => {
+				Simulate.mouseEnter(btn, {});
 				expect(getMenu(body)).to.not.equal(null);
 				setTimeout(() => {
-					expect(getMenu(body)).to.equal(null);
+					expect(getMenu(body)).to.not.equal(null);
 					done();
-				}, 600);
-			}, 100);
+				}, 3);
+			}, 1);
 		});
 	});
 
@@ -480,7 +487,7 @@ describe('SLDSMenuDropdown', function () {
 			);
 		};
 
-		function removeDropdownTrigger () {
+		function removeDropdownTrigger() {
 			ReactDOM.unmountComponentAtNode(body);
 			document.body.removeChild(body);
 		}
@@ -499,7 +506,7 @@ describe('SLDSMenuDropdown', function () {
 		const onClick = sinon.spy();
 
 		beforeEach(() => {
-			cmp = dropItDown({ openOn: 'hybrid', onClick });
+			cmp = dropItDown({ openOn: 'hybrid', onClick, hoverCloseDelay: 1 });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
@@ -526,7 +533,7 @@ describe('SLDSMenuDropdown', function () {
 			setTimeout(() => {
 				expect(getMenu(body)).to.equal(null);
 				done();
-			}, 600);
+			}, 2);
 		});
 	});
 });

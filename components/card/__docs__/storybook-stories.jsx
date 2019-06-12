@@ -1,8 +1,9 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash.uniqueid';
-import { storiesOf, action } from '@storybook/react';
+import shortid from 'shortid';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 
 import { CARD } from '../../../utilities/constants';
@@ -18,29 +19,31 @@ import Icon from '../../icon';
 import MediaObject from '../../media-object';
 import InlineEdit from '../../forms/input/inline';
 
+import RelatedListWithTable from '../__examples__/related-list-with-table';
+
 const sampleItems = [
-	{ name: 'Cloudhub' },
-	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' },
+	{ id: '0', name: 'Cloudhub' },
+	{ id: '1', name: 'Cloudhub + Anypoint Connectors' },
+	{ id: '2', name: 'Cloud City' },
 ];
 
-const DemoCard = createReactClass({
-	displayName: 'DemoCard',
+let currentId = 3;
 
-	propTypes: {
+class DemoCard extends React.Component {
+	static displayName = 'DemoCard';
+
+	static propTypes = {
 		items: PropTypes.array,
 		header: PropTypes.node,
 		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-	},
+	};
 
-	getInitialState () {
-		return {
-			filter: null,
-			items: this.props.items,
-		};
-	},
+	state = {
+		filter: null,
+		items: this.props.items,
+	};
 
-	handleFilterChange (event, ...rest) {
+	handleFilterChange = (event, ...rest) => {
 		action('filter')(event, ...rest);
 
 		const filter =
@@ -49,34 +52,38 @@ const DemoCard = createReactClass({
 		this.setState({
 			filter,
 		});
-	},
+	};
 
-	handleDeleteAllItems (...rest) {
+	handleDeleteAllItems = (...rest) => {
 		action('delete all')(...rest);
 
 		this.setState({
 			filter: null,
 			items: [],
 		});
-	},
+	};
 
-	handleAddItem (...rest) {
+	handleAddItem = (...rest) => {
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items],
+			items: [
+				// eslint-disable-next-line no-plusplus
+				{ id: currentId++, name: `New item #${shortid.generate()}` },
+				...this.state.items,
+			],
 		});
-	},
+	};
 
-	render () {
-		let items = this.state.items;
+	render() {
+		let { items } = this.state;
 		if (this.state.filter) {
 			items = items.filter((item) => this.state.filter.test(item.name));
 		}
 
 		const isEmpty = items.length === 0;
 
-		let heading = this.props.heading;
+		let { heading } = this.props;
 
 		if (!this.props.heading) {
 			heading =
@@ -84,7 +91,7 @@ const DemoCard = createReactClass({
 		}
 
 		return (
-			<div className="slds-grid slds-grid--vertical">
+			<div className="slds-grid slds-grid_vertical">
 				<Card
 					id="ExampleCard"
 					filter={
@@ -108,7 +115,7 @@ const DemoCard = createReactClass({
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
 				>
-					<DataTable id="SLDSDataTableExample-1" items={items} bordered>
+					<DataTable id="SLDSDataTableExample-1" items={items}>
 						<DataTableColumn label="Opportunity Name" property="name" truncate>
 							<DataTableHighlightCell search={this.state.filter} />
 						</DataTableColumn>
@@ -116,19 +123,19 @@ const DemoCard = createReactClass({
 				</Card>
 			</div>
 		);
-	},
-});
+	}
+}
 
 const SetHeightCard = () => (
 	<Card
-		bodyClassName="slds-grow slds-scrollable--y"
-		className="slds-grid slds-grid--vertical"
+		bodyClassName="slds-grow slds-scrollable_y"
+		className="slds-grid slds-grid_vertical"
 		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
 		heading="Card with set height"
 		icon={<Icon category="standard" name="document" size="small" />}
 		style={{ height: '300px' }}
 	>
-		<div className="slds-card__body--inner">
+		<div className="slds-card__body_inner">
 			<div>asdf</div>
 			<div>asdf</div>
 			<div>asdf</div>
@@ -148,9 +155,28 @@ const SetHeightCard = () => (
 
 SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
+const DemoCardWithoutHeader = () => (
+	<Card
+		bodyClassName="slds-grow slds-scrollable_y"
+		className="slds-grid slds-grid_vertical"
+		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		hasNoHeader
+		icon={<Icon category="standard" name="document" size="small" />}
+		style={{ height: '300px' }}
+	>
+		<DataTable id="SLDSDataTableExample-1" items={sampleItems}>
+			<DataTableColumn label="Opportunity Name" property="name" truncate>
+				<DataTableHighlightCell />
+			</DataTableColumn>
+		</DataTable>
+	</Card>
+);
+
+DemoCardWithoutHeader.displayName = 'CARD_WITHOUT_HEADER';
+
 storiesOf(CARD, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
@@ -162,7 +188,7 @@ storiesOf(CARD, module)
 				<MediaObject
 					body={
 						<InlineEdit
-							className="slds-text-heading--small slds-truncate"
+							className="slds-text-heading_small slds-truncate"
 							name="inline-edit-standard"
 							value="Write your own heading"
 							id="inline-edit-standard"
@@ -179,4 +205,6 @@ storiesOf(CARD, module)
 			heading={<span style={{ color: 'red' }}>To Wanda! This is custom!</span>}
 		/>
 	))
-	.add('Set height card', () => <SetHeightCard />);
+	.add('Set height card', () => <SetHeightCard />)
+	.add('w/o Header', () => <DemoCardWithoutHeader />)
+	.add('Doc site Related List With Table', () => <RelatedListWithTable />);

@@ -18,7 +18,12 @@ const propTypes = {
 };
 
 const Info = (props) => (
-	<p className={classnames('slds-page-header__info', props.className)}>
+	<p
+		className={classnames(
+			'slds-text-body_small slds-line-height_reset',
+			props.className
+		)}
+	>
 		{props.children}
 	</p>
 );

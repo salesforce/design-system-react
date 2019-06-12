@@ -8,36 +8,40 @@ import React from 'react';
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
 
-let hasChildrenWithoutDisplayNameOf = function () {};
+let hasChildrenWithoutDisplayNameOf = function hasChildrenWithoutDisplayNameOfFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
 	// TODO: allow `displayName` to be an array of displayNames
-	hasChildrenWithoutDisplayNameOf = function (
+	hasChildrenWithoutDisplayNameOf = function hasChildrenWithoutDisplayNameOfFunction(
 		control,
 		children,
 		displayName,
 		comment
 	) {
-		const additionalComment = comment ? ` ${comment}` : '';
-		const childrenWithoutSelectedDisplayName = [];
-
-		React.Children.forEach(children, (child) => {
-			if (child && child.type.displayName !== displayName) {
-				childrenWithoutSelectedDisplayName.push(child);
-			}
-		});
-
 		if (!hasWarned[control]) {
+			const additionalComment = comment ? ` ${comment}` : '';
+			const childrenWithoutSelectedDisplayName = [];
+
+			React.Children.forEach(children, (child) => {
+				if (child && child.type && child.type.displayName !== displayName) {
+					childrenWithoutSelectedDisplayName.push(child);
+				}
+			});
+
 			const hasChildrenWithoutSelectedDisplayName =
 				childrenWithoutSelectedDisplayName.length > 0;
-			/* eslint-disable max-len */
-			warning(
-				hasChildrenWithoutSelectedDisplayName,
-				`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`
-			);
-			/* eslint-enable max-len */
+
+			if (hasChildrenWithoutSelectedDisplayName) {
+				/* eslint-disable max-len */
+				warning(
+					false,
+					`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`
+				);
+				/* eslint-enable max-len */
+			}
+
 			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;
 		}
 	};

@@ -51,18 +51,19 @@ const accounts = [
 	},
 ];
 
-const accountsWithIcon = accounts.map((elem) =>
-	Object.assign(elem, {
+const accountsWithIcon = accounts.map((elem) => ({
+	...elem,
+	...{
 		icon: (
 			<Icon
-				assistiveText="Account"
+				assistiveText={{ label: 'Account' }}
 				category="standard"
 				size="x-small"
 				name={elem.type}
 			/>
 		),
-	})
-);
+	},
+}));
 
 const CustomMenuItem = (props) => (
 	<span>
@@ -77,7 +78,7 @@ const CustomMenuItem = (props) => (
 CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -86,11 +87,11 @@ class Example extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-base-custom-menu-item"
 					disabled={this.props.disabled}
 					events={{
 						onChange: (event, { value }) => {
@@ -121,7 +122,7 @@ class Example extends React.Component {
 										label: value,
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{ label: 'Account' }}
 												category="standard"
 												name="account"
 											/>
@@ -149,7 +150,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					menuItem={CustomMenuItem}
+					onRenderMenuItem={CustomMenuItem}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,

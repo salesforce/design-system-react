@@ -1,23 +1,22 @@
 /* eslint-disable indent */
 
 import React from 'react';
-import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@storybook/react';
+
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../../../../components/icon-settings';
 
 import { FORMS_INLINE_EDIT } from '../../../../../utilities/constants';
-import InlineEdit from '../../../input/inline';
+import InlineEdit from '../../inline';
 
-const DemoInlineEdit = createReactClass({
-	displayName: 'DemoInlineEdit',
+class DemoInlineEdit extends React.Component {
+	static displayName = 'DemoInlineEdit';
 
-	getInitialState () {
-		return {
-			value: 'Edit me inline',
-		};
-	},
+	state = {
+		value: 'Edit me inline',
+	};
 
-	handleChange (eventProps, ...rest) {
+	handleChange = (eventProps, ...rest) => {
 		action('change')(rest);
 
 		if (eventProps.value === '') {
@@ -25,9 +24,9 @@ const DemoInlineEdit = createReactClass({
 		} else {
 			this.setState({ value: eventProps.value });
 		}
-	},
+	};
 
-	render () {
+	render() {
 		return (
 			<InlineEdit
 				{...this.props}
@@ -35,18 +34,18 @@ const DemoInlineEdit = createReactClass({
 				onChange={this.handleChange}
 			/>
 		);
-	},
-});
+	}
+}
 
 storiesOf(FORMS_INLINE_EDIT, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
+		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
 	.add('Base', () => (
 		<section>
-			<h1 className="slds-text-title_caps slds-p-vertical--medium">
+			<h1 className="slds-text-title_caps slds-p-vertical_medium">
 				Base Inline Edit Input
 			</h1>
 			<DemoInlineEdit name="inline-edit-standard" id="inline-edit-standard" />
@@ -54,7 +53,7 @@ storiesOf(FORMS_INLINE_EDIT, module)
 	))
 	.add('Disabled', () => (
 		<section>
-			<h1 className="slds-text-title_caps slds-p-vertical--medium">
+			<h1 className="slds-text-title_caps slds-p-vertical_medium">
 				Disabled Inline Edit Input
 			</h1>
 			<DemoInlineEdit

@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 // ### classNames
 import classNames from 'classnames';
 
+import colors from '../../utilities/design-tokens/dist/salesforce-skin.common.js';
+
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LABEL } from '../../utilities/constants';
 
@@ -27,11 +29,11 @@ const GlobalNavigationBarLabel = (props) => {
 			<span
 				id={id}
 				// inline style override
-				style={{ color: '#16325c' }}
+				style={{ color: colors.colorTextLinkDisabled }}
 				className={classNames(
 					'slds-context-bar__label-action',
 					{
-						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
+						[`slds-context-bar__item_divider-${dividerPosition}`]: dividerPosition,
 					},
 					className
 				)}

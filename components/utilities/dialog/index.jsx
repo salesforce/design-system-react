@@ -1,8 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 import Popper from 'popper.js';
@@ -18,12 +17,18 @@ import Portal from './portal';
 import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
 import DOMElementFocus from '../../../utilities/dom-element-focus';
-import { mapPropToPopperPlacement } from '../../../utilities/dialog-helpers';
+import {
+	getNubbinMargins,
+	getNubbinClassName,
+	mapPropToPopperPlacement,
+} from '../../../utilities/dialog-helpers';
 
 import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
 import IconSettings from '../../icon-settings';
+import { DIRECTIONS } from '../UNSAFE_direction';
+import LanguageDirection from '../UNSAFE_direction/private/language-direction';
 
 /*
  * A Dialog is content that is separate from the typical flow of a page. It typically overlays other elements in the document flow. This is achieved with elevation (`z-index`) and one of the following: relative position, absolute position, or a new top-level React render tree (portal). A boundary element is a scrolling ancestor element or the edge of the browser (window/viewport). This element typically has an overflow (overflow-y/overflow-x) style that is scroll, hidden, or auto. Inverted placement is the flipping of the overlay element from top to bottom or left to right in order stay within a boundary element.
@@ -45,10 +50,10 @@ import IconSettings from '../../icon-settings';
  *
  * This component is private.
  */
-const Dialog = createReactClass({
-	displayName: DIALOG,
+class Dialog extends React.Component {
+	static displayName = DIALOG;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Aligns the right or left side of the dialog with the respective side of the target.
 		 */
@@ -95,15 +100,25 @@ const Dialog = createReactClass({
 		 */
 		containerProps: PropTypes.object,
 		/**
-		 * Sets the dialog width to the width of either 'target' (Menus attached to `input` typically follow this UX pattern), 'menu' or 'none.
+		 * Establishes directional context for component. Defaults to left-to-right.
 		 */
-		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
+		direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
+		/**
+		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
+		 */
+		hasNubbin: PropTypes.bool,
 		/**
 		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements.
 		 */
 		hasStaticAlignment: PropTypes.bool,
 		/**
-		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px). SHOULD BE OBJECT -----------
+		 * Sets the dialog width to the width of either 'target' (Menus attached to `input` typically follow this UX pattern), 'menu' or 'none.
+		 */
+		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
+		/**
+		 * DEPRECATED - do not add checkProp deprecation message at this level. It is handled at higher level components.
+		 * TODO - to be removed.
+		 * Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px). SHOULD BE OBJECT -----------
 		 */
 		offset: PropTypes.string,
 		/**
@@ -166,37 +181,41 @@ const Dialog = createReactClass({
 		 * An object of CSS styles that are applied to the immediate parent `div` of the contents. Use this instead of margin props.
 		 */
 		style: PropTypes.object,
+
 		/**
 		 * Sets which focus UX pattern to follow. For instance, popovers trap focus and must be exited to regain focus. Dropdowns and Tooltips never have focus.
 		 */
 		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			align: 'bottom left',
-			offset: '0px 0px',
-			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
-		};
-	},
+	static defaultProps = {
+		align: 'bottom left',
+		direction: DIRECTIONS.LTR,
+		offset: '0px 0px',
+		outsideClickIgnoreClass: 'ignore-react-onclickoutside',
+	};
 
-	getInitialState () {
-		return {
-			triggerPopperJS: false,
-			isOpen: false,
-		};
-	},
+	state = {
+		triggerPopperJS: false,
+		isOpen: false,
+	};
 
-	componentDidMount () {
+	componentDidMount() {
 		if (
 			this.props.position === 'absolute' ||
 			this.props.position === 'relative'
 		) {
 			this.handleOpen();
 		}
-	},
+	}
 
-	componentDidUpdate (prevProps, prevState) {
+	componentWillUpdate() {
+		if (this.popper) {
+			this.popper.scheduleUpdate();
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&
 			prevState.triggerPopperJS === false &&
@@ -207,9 +226,9 @@ const Dialog = createReactClass({
 		) {
 			this.createPopper();
 		}
-	},
+	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.teardownScopedFocus();
 			DOMElementFocus.returnFocusToStoredElement();
@@ -223,17 +242,17 @@ const Dialog = createReactClass({
 		}
 
 		this.handleClose(undefined, { componentWillUnmount: true });
-	},
+	}
 
-	getPropOffsetsInPixels (offsetString) {
+	getPropOffsetsInPixels = (offsetString) => {
 		const offsetArray = offsetString.split(' ');
 		return {
 			vertical: parseInt(offsetArray[0], 10),
 			horizontal: parseInt(offsetArray[1], 10),
 		};
-	},
+	};
 
-	getPopperStyles () {
+	getPopperStyles = () => {
 		const { popperData } = this.state;
 		if (!this.popper || !popperData) {
 			return {
@@ -242,43 +261,68 @@ const Dialog = createReactClass({
 			};
 		}
 
-		const propOffsets = this.getPropOffsetsInPixels(this.props.offset);
 		const { position } = popperData.offsets.popper;
-		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
-		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
-		return { ...popperData.style, left, top, position };
-	},
+		const propOffsets = this.getPropOffsetsInPixels(this.props.offset);
+
+		// FIXME before merge - gotta rename from margin to offset
+		const nubbinOffsets = this.props.hasNubbin
+			? getNubbinMargins(this.state.popperData)
+			: { left: 0, top: 0 };
+
+		const left =
+			popperData.offsets.popper.left +
+			nubbinOffsets.left +
+			propOffsets.horizontal;
+		const top =
+			popperData.offsets.popper.top + nubbinOffsets.top + propOffsets.vertical;
+
+		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
+		const right = 'inherit';
+
+		const leftValue = this.props.direction === DIRECTIONS.RTL ? right : left;
+		const rightValue = this.props.direction === DIRECTIONS.RTL ? 0 : right;
+
+		return {
+			...popperData.style,
+			left: leftValue,
+			top,
+			right: rightValue,
+			position,
+		};
+	};
 
 	// Render
-	setDialogContent (component) {
+	setDialogContent = (component) => {
 		this.dialogContent = component;
 		if (!this.state.triggerPopperJS) {
 			this.setState({ triggerPopperJS: true });
 		}
-	},
+	};
 
 	/**
 	 * Events
 	 */
-	handleClickOutside () {
+	handleClickOutside = () => {
 		this.handleClose();
-	},
+	};
 
-	handleClose (event, data) {
-		this.setState({ triggerPopperJS: true });
+	handleClose = (event, data = {}) => {
+		if (!data.componentWillUnmount) {
+			this.setState({ triggerPopperJS: true });
+		}
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}
-	},
+	};
 
-	handleClick (event) {
+	handleClick = (event) => {
 		if (event.nativeEvent) {
 			event.nativeEvent.preventDefault();
 			event.nativeEvent.stopPropagation();
 		}
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (event.keyCode === KEYS.TAB) {
 			if (this.props.closeOnTabKey) {
 				EventUtil.trap(event);
@@ -289,32 +333,32 @@ const Dialog = createReactClass({
 		if (this.props.onKeyDown) {
 			this.props.onKeyDown(event);
 		}
-	},
+	};
 
-	handleOpen () {
-		const scopedElement = this.dialogContent;
-
-		if (this.props.variant === 'popover' && scopedElement) {
+	handleOpen = () => {
+		if (this.props.variant === 'popover' && this.dialogContent) {
 			DOMElementFocus.storeActiveElement();
 			DOMElementFocus.setupScopedFocus({
-				ancestorElement: scopedElement.querySelector('.slds-popover'),
+				ancestorElement: this.dialogContent,
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
+				DOMElementFocus.focusAncestor({
+					isPortal: this.props.position === 'overflowBoundaryElement',
+				});
 			}
 		}
 
 		if (this.props.onOpen) {
 			this.props.onOpen(undefined, { portal: this.dialogContent });
 		}
-	},
+	};
 
 	/**
 	 * Popper API and helper functions
 	 */
 
-	createPopper () {
+	createPopper = () => {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
 		const placement = mapPropToPopperPlacement(this.props.align);
@@ -327,6 +371,7 @@ const Dialog = createReactClass({
 				boundariesElement:
 					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
+			hide: { enabled: false },
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			flip: {
 				enabled: !this.props.hasStaticAlignment,
@@ -361,22 +406,27 @@ const Dialog = createReactClass({
 		});
 
 		this.popper.scheduleUpdate();
-	},
+	};
 
-	destroyPopper () {
+	destroyPopper = () => {
 		if (this.popper) {
 			this.popper.destroy();
 		}
-	},
+	};
 
-	render () {
+	render() {
 		let style = {};
-
+		const role =
+			this.props.variant === 'popover' ? 'dialog' : this.props.variant;
 		if (
 			this.props.position === 'absolute' ||
 			this.props.position === 'overflowBoundaryElement'
 		) {
-			style = this.getPopperStyles();
+			style = {
+				...style,
+				outline: 0,
+				...this.getPopperStyles(),
+			};
 		}
 
 		if (
@@ -397,12 +447,13 @@ const Dialog = createReactClass({
 				.getBoundingClientRect().width;
 		}
 
-		if (this.props.style) {
-			style = Object.assign(style, this.props.style);
-		}
+		style = {
+			...style,
+			...this.props.style,
+		};
 
 		const contents = (
-			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
+			<section // eslint-disable-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions
 				className={
 					classNames(
 						{
@@ -412,38 +463,60 @@ const Dialog = createReactClass({
 							[`${this.props.outsideClickIgnoreClass}`]:
 								this.props.position === 'overflowBoundaryElement',
 						},
+						this.props.hasNubbin &&
+							getNubbinClassName(this.props.align, this.state.popperData),
 						this.props.contentsClassName
 					) || undefined
 				}
 				style={style}
+				onMouseDown={this.props.onMouseDown}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
-				{...this.props.containerProps}
 				ref={this.setDialogContent}
+				role={role}
+				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
+				{...this.props.containerProps}
 			>
 				{this.props.children}
-			</div>
+			</section>
 		);
 
 		const subRenders = {
 			absolute: () => contents,
 			relative: () => contents,
-			overflowBoundaryElement: () => (
-				<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
-					<IconSettings iconPath={this.context.iconPath}>
-						{contents}
-					</IconSettings>
-				</Portal>
-			),
+			overflowBoundaryElement: () => {
+				// Cycle through current context, create object of
+				// truthy values, and pass into Portal's context.
+
+				// TODO: Add test when switched to `ReactDOM.createPortal`
+				const truthyIconSettingsContext = Object.keys(
+					IconSettings.childContextTypes
+				)
+					.filter((key) => Boolean(this.context[key]))
+					.reduce(
+						(accumulatedContext, key) => ({
+							...accumulatedContext,
+							...{ [key]: this.context[key] },
+						}),
+						{}
+					);
+				return (
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						<IconSettings {...truthyIconSettingsContext}>
+							{contents}
+						</IconSettings>
+					</Portal>
+				);
+			},
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();
-	},
-});
+	}
+}
 
 Dialog.contextTypes = {
 	iconPath: PropTypes.string,
 };
 
-export default Dialog;
+export default LanguageDirection(Dialog);

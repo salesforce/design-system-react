@@ -1,6 +1,9 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable react/no-unused-prop-types */
+/* deepscan-disable REACT_USELESS_PROP_TYPES */
+
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -42,6 +45,10 @@ DataTableColumn.propTypes = {
 	 * ```
 	 */
 	children: PropTypes.element,
+	/**
+	 * Some columns, such as "date last viewed" or "date recently updated," should sort descending first, since that is what the user probably wants. How often does one want to see their oldest files first in a table? If sortable and the `DataTable`'s parent has not defined the sort order, then ascending (A at the top to Z at the bottom) is the default sort order on first click.
+	 */
+	isDefaultSortDescending: PropTypes.bool,
 	/**
 	 * Selects this column as the currently sorted column.
 	 */

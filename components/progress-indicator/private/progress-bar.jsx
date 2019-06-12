@@ -3,6 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const propTypes = {
 	/**
@@ -20,19 +21,24 @@ const propTypes = {
  * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage
  */
 class ProgressBar extends React.Component {
-	render () {
+	render() {
 		return (
 			<div
-				className="slds-progress-bar slds-progress-bar_x-small"
+				className={classNames('slds-progress-bar slds-progress-bar_x-small', {
+					'slds-progress-bar_vertical': this.props.orientation === 'vertical',
+				})}
 				aria-valuemin="0"
 				aria-valuemax="100"
 				aria-valuenow={this.props.value}
 				role="progressbar"
-				tabIndex={0}
 			>
 				<span
 					className="slds-progress-bar__value"
-					style={{ width: `${this.props.value}%` }}
+					style={
+						this.props.orientation === 'vertical'
+							? { height: `${this.props.value}%` }
+							: { width: `${this.props.value}%` }
+					}
 				>
 					<span className="slds-assistive-text">
 						{this.props.assistiveText.percentage ||

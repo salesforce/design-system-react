@@ -96,7 +96,7 @@ const propTypes = {
 	 */
 	step: PropTypes.number,
 	/**
-	 * The Slider is a controlled component, and will always display this value.
+	 * The Slider should be a controlled component, and will always display this value. This should always be used if you are using a Flux/Redux framework.
 	 */
 	value: PropTypes.number,
 	/**
@@ -106,7 +106,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-	defaultValue: 0,
 	min: 0,
 	max: 100,
 	step: 1,
@@ -117,10 +116,12 @@ const defaultProps = {
  */
 class Slider extends React.Component {
 	static displayName = SLIDER;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.generatedId = shortid.generate();
@@ -130,27 +131,27 @@ class Slider extends React.Component {
 		}
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getErrorId () {
+	getErrorId() {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	}
 
 	handleChange = (event) => {
 		if (isFunction(this.props.onChange)) {
-			this.props.onChange(event, { value: event.target.value });
+			this.props.onChange(event, { value: Number(event.target.value) });
 		}
 	};
 
 	handleInput = (event) => {
 		if (isFunction(this.props.onInput)) {
-			this.props.onInput(event, { value: event.target.value });
+			this.props.onInput(event, { value: Number(event.target.value) });
 		}
 	};
 
-	render () {
+	render() {
 		const labelText =
 			this.props.label ||
 			(this.props.assistiveText && this.props.assistiveText.label);
@@ -196,7 +197,6 @@ class Slider extends React.Component {
 							id={this.getId()}
 							name={this.props.name}
 							className="slds-slider__range"
-							defaultValue={this.props.defaultValue}
 							min={this.props.min}
 							max={this.props.max}
 							step={this.props.step}
@@ -204,9 +204,13 @@ class Slider extends React.Component {
 							disabled={this.props.disabled}
 							onChange={this.handleChange}
 							onInput={this.handleInput}
+							/* A form element should not have both value and defaultValue props. */
+							{...(this.props.value !== undefined
+								? { value: this.props.value }
+								: { defaultValue: this.props.defaultValue })}
 						/>
 						<span className="slds-slider__value" aria-hidden="true">
-							{this.props.value || this.props.defaultValue}
+							{this.props.value || this.props.defaultValue || '0'}
 						</span>
 					</div>
 					{this.props.errorText ? (

@@ -1,41 +1,52 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
-
 import { LOOKUP } from '../../../utilities/constants';
 import Lookup from '../../lookup';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
-
 import SLDSButton from '../../button';
 
-const DemoLookup = createReactClass({
-	displayName: 'DemoLookup',
+import Default from '../__examples__/default';
+import Files from '../__examples__/files';
+import WithSelection from '../__examples__/with-selection';
+import DeprecatedWarning from '../../utilities/deprecated-warning';
 
-	getInitialState () {
-		return {
-			options: [
-				{ label: 'File 1' },
-				{ label: 'File 2' },
-				{ label: 'File 3' },
-				{ label: 'File 4' },
-			],
-		};
-	},
+class DemoLookup extends React.Component {
+	static displayName = 'DemoLookup';
 
-	clearSelected () {
-		this.setState({ currentSelected: -1 });
-	},
+	state = {
+		options: [
+			{
+				label: 'File 1',
+			},
+			{
+				label: 'File 2',
+			},
+			{
+				label: 'File 3',
+			},
+			{
+				label: 'File 4',
+			},
+		],
+	};
 
-	handleSelect (selectedItem, ...rest) {
+	clearSelected = () => {
+		this.setState({
+			currentSelected: -1,
+		});
+	};
+
+	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
 			currentSelected: this.state.options.indexOf(selectedItem),
 		});
-	},
+	};
 
-	render () {
+	render() {
 		return (
 			<div>
 				<div>
@@ -50,31 +61,48 @@ const DemoLookup = createReactClass({
 				/>
 			</div>
 		);
-	},
-});
+	}
+}
 
-const DemoLookupAccounts = createReactClass({
-	displayName: 'DemoLookupAccounts',
+class DemoLookupAccounts extends React.Component {
+	static displayName = 'DemoLookupAccounts';
 
-	getInitialState () {
-		return {
-			options: [
-				{ label: "Paddy's Pub", subTitle: 'Boston, MA' },
-				{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
-				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
-				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
-				{ label: 'Acme Landscaping' },
-				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' },
-			],
-		};
-	},
+	state = {
+		options: [
+			{
+				label: "Paddy's Pub",
+				subTitle: 'Boston, MA',
+			},
+			{
+				label: 'Tyrell Corp',
+				subTitle: 'San Francisco, CA',
+			},
+			{
+				label: 'Paper St. Soap Company',
+				subTitle: 'Beloit, WI',
+			},
+			{
+				label: 'Nakatomi Investments',
+				subTitle: 'Chicago, IL',
+			},
+			{
+				label: 'Acme Landscaping',
+			},
+			{
+				label: 'Acme Construction',
+				subTitle: 'Grand Marais, MN',
+			},
+		],
+	};
 
-	handleSelect (selectedItem, ...rest) {
+	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
-		this.setState({ selectedItem });
-	},
+		this.setState({
+			selectedItem,
+		});
+	};
 
-	render () {
+	render() {
 		return (
 			<Lookup
 				{...this.props}
@@ -85,13 +113,15 @@ const DemoLookupAccounts = createReactClass({
 				options={this.state.options}
 			/>
 		);
-	},
-});
-
+	}
+}
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around--medium">
-			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		<div className="slds-p-around_medium">
+			<IconSettings iconPath="/assets/icons">
+				{<DeprecatedWarning />}
+				{getStory()}
+			</IconSettings>
 		</div>
 	))
 	.add('Standard', () => (
@@ -117,4 +147,7 @@ storiesOf(LOOKUP, module)
 	))
 	.add('Custom Empty Message Content', () => (
 		<DemoLookup emptyMessage={<span>No matches.</span>} isInline />
-	));
+	))
+	.add('Docs site Default', () => <Default />)
+	.add('Docs site Files', () => <Files />)
+	.add('Docs site WithSelection', () => <WithSelection />);

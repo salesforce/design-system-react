@@ -7,11 +7,11 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 
 // ### Children
-import Input from '../../forms/input';
+import Input from '../../input';
 
 // ### Event Helpers
 import KEYS from '../../../utilities/key-code';
@@ -22,14 +22,14 @@ import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';
 /**
  *  Component description.
  */
-const TimepickerDropdownTrigger = createReactClass({
+class TimepickerDropdownTrigger extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_TRIGGER,
+	static displayName = MENU_DROPDOWN_TRIGGER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Icon for right side of trigger
 		 */
@@ -74,9 +74,9 @@ const TimepickerDropdownTrigger = createReactClass({
 		 * Date
 		 */
 		value: PropTypes.string,
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (this.props.onKeyDown && event.keyCode) {
 			if (
 				event.keyCode === KEYS.ENTER ||
@@ -87,10 +87,10 @@ const TimepickerDropdownTrigger = createReactClass({
 				this.props.onKeyDown(event);
 			}
 		}
-	},
+	};
 
 	// ### Render
-	render () {
+	render() {
 		const {
 			iconRight,
 			menu,
@@ -116,7 +116,7 @@ const TimepickerDropdownTrigger = createReactClass({
 				</Input>
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default TimepickerDropdownTrigger;

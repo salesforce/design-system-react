@@ -18,7 +18,7 @@ import isFunction from 'lodash.isfunction';
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
-function handleClick (event, href, onClick) {
+function handleClick(event, href, onClick) {
 	event.preventDefault();
 
 	onClick(event, { href });
@@ -32,6 +32,7 @@ const GlobalNavigationBarLink = (props) => {
 	const {
 		active,
 		activeBackgroundColor,
+		assistiveText,
 		className,
 		dividerPosition,
 		href,
@@ -42,21 +43,24 @@ const GlobalNavigationBarLink = (props) => {
 		onFocus,
 		onKeyDown,
 		onKeyPress,
+		onKeyUp,
+		onMouseEnter,
+		onMouseLeave,
 		tabIndex,
 	} = props;
 
 	const listItemstyle = active
 		? {
-			backgroundColor: activeBackgroundColor,
-			borderBottomColor: activeBackgroundColor,
-		}
+				backgroundColor: activeBackgroundColor,
+				borderBottomColor: activeBackgroundColor,
+			}
 		: null;
 
 	return (
 		<li
 			className={classNames('slds-context-bar__item', {
 				'slds-is-active': active,
-				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
+				[`slds-context-bar__item_divider-${dividerPosition}`]: dividerPosition,
 			})}
 			id={id}
 			style={listItemstyle}
@@ -73,9 +77,20 @@ const GlobalNavigationBarLink = (props) => {
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
+				onKeyUp={onKeyUp}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
 				tabIndex={tabIndex}
+				title={label}
 			>
-				<span className="slds-truncate">{label}</span>
+				{active ? (
+					<span className="slds-assistive-text">
+						{assistiveText.activeDescriptor}
+					</span>
+				) : null}
+				<span className="slds-truncate" title={label}>
+					{label}
+				</span>
 			</a>
 		</li>
 	);
@@ -93,6 +108,13 @@ GlobalNavigationBarLink.propTypes = {
 	 * Allows alignment of active item with active application background color. If application background is dark, text color may need to be `#fff`. This can be done with the style prop.
 	 */
 	activeBackgroundColor: PropTypes.string,
+	/**
+	 * **Assistive text for accessibility.**
+	 * * `activeDescriptor`: The text that appears alongside a link that is currently active.
+	 */
+	assistiveText: PropTypes.shape({
+		activeDescriptor: PropTypes.string,
+	}),
 	/**
 	 * Class names to be added to the anchor element
 	 */
@@ -156,6 +178,9 @@ GlobalNavigationBarLink.propTypes = {
 };
 
 GlobalNavigationBarLink.defaultProps = {
+	assistiveText: {
+		activeDescriptor: 'Current page:',
+	},
 	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 };
 

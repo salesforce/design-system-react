@@ -4,15 +4,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 import { expect } from 'chai';
 
 import SLDSNotification from '../../notification';
 import IconSettings from '../../icon-settings';
 
 describe('SLDSNotification: ', () => {
-	const generateNotification = function (notificationInstance) {
+	const generateNotification = function(notificationInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
 				{notificationInstance}
@@ -24,7 +23,7 @@ describe('SLDSNotification: ', () => {
 	describe('component renders', () => {
 		it('notification renders', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="success" isOpen />
+				<SLDSNotification variant="toast" theme="success" isOpen content="hi" />
 			);
 			expect(notification).to.not.equal(undefined);
 		});
@@ -40,21 +39,22 @@ describe('SLDSNotification: ', () => {
 					isOpen
 					texture
 					animated
+					content="hi"
 				/>
 			);
 			const alert = notification.getElementsByTagName('div')[0];
-			expect(alert.className).to.include('slds-notify--toast');
+			expect(alert.className).to.include('slds-notify_toast');
 		});
 
 		it('renders theme', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="error" isOpen />
+				<SLDSNotification variant="toast" theme="error" isOpen content="hi" />
 			);
 			const alert = notification.getElementsByTagName('div')[0];
-			expect(alert.className).to.include('slds-theme--error');
+			expect(alert.className).to.include('slds-theme_error');
 		});
 
-		it('renders icon', (done) => {
+		it('renders icon', () => {
 			const notification = generateNotification(
 				<SLDSNotification
 					variant="alert"
@@ -65,20 +65,18 @@ describe('SLDSNotification: ', () => {
 					content="hi"
 				/>
 			);
-			setTimeout(() => {
-				const close = notification.querySelectorAll('button');
-				const svgs = notification.querySelectorAll(
-					'[*|href="/assets/icons/utility-sprite/svg/symbols.svg#notification"]'
-				);
-				expect(close[0].className).to.include('slds-notify__close');
-				expect(svgs[0]).to.exist;
-				done();
-			}, 400);
+
+			const close = notification.querySelectorAll('button');
+			const svgs = notification.querySelectorAll(
+				'[*|href="/assets/icons/utility-sprite/svg/symbols.svg#notification"]'
+			);
+			expect(close[0].className).to.include('slds-notify__close');
+			expect(svgs[0]).to.exist;
 		});
 	});
 
 	describe('dismiss notification click', () => {
-		it('button onClick invokes method from props', (done) => {
+		it('button onClick invokes method from props', () => {
 			const onClick = sinon.spy();
 			const notification = generateNotification(
 				<SLDSNotification
@@ -87,14 +85,12 @@ describe('SLDSNotification: ', () => {
 					iconName="notification"
 					onDismiss={onClick}
 					isOpen
+					content="hi"
 				/>
 			);
-			setTimeout(() => {
-				const dismissBtn = notification.getElementsByTagName('button')[0];
-				TestUtils.Simulate.click(dismissBtn);
-				expect(onClick.calledOnce).to.be.true;
-				done();
-			}, 400);
+			const dismissBtn = notification.getElementsByTagName('button')[0];
+			TestUtils.Simulate.click(dismissBtn);
+			expect(onClick.calledOnce).to.be.true;
 		});
 	});
 });

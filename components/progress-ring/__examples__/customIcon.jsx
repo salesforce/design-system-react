@@ -4,16 +4,25 @@ import Icon from '~/components/icon';
 import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-					<div className="slds-col--padded">
+				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
+					<div className="slds-col_padded">
 						<ProgressRing
 							value={20}
 							theme="expired"
 							hasIcon
 							icon={<Icon category="utility" name="lock" />}
+						/>
+					</div>
+					<div className="slds-col_padded">
+						<ProgressRing
+							value={60}
+							theme="expired"
+							hasIcon
+							icon={<Icon category="utility" name="lock" />}
+							flowDirection="fill"
 						/>
 					</div>
 				</div>
@@ -22,6 +31,6 @@ class Example extends React.Component {
 	}
 }
 
-Example.displayName = 'ProgressRingDefault';
+Example.displayName = 'ProgressRingCustomIconExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

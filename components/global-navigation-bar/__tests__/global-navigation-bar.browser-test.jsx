@@ -19,6 +19,7 @@ import IconSettings from '../../icon-settings';
 import GlobalNavigationBar from '../../global-navigation-bar';
 import GlobalNavigationBarRegion from '../../global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '../../global-navigation-bar/dropdown';
+import GlobalNavigationBarDropdownTrigger from '../../global-navigation-bar/dropdown-trigger';
 import GlobalNavigationBarLink from '../../global-navigation-bar/link';
 import GlobalNavigationBarLabel from '../../global-navigation-bar/label';
 import GlobalNavigationBarButton from '../../global-navigation-bar/button';
@@ -27,7 +28,7 @@ chai.use(chaiEnzyme());
 
 const COMPONENT_CSS_CLASSES = {
 	base: 'slds-context-bar',
-	themePrefix: 'slds-context-bar--theme-',
+	themePrefix: 'slds-context-bar_theme-',
 };
 
 const REGION_CSS_CLASSES = {
@@ -57,18 +58,19 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has wrapping div and one primary region', function () {
-			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			expect(component).to.have.length(1);
-
-			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.have.length(1);
+		it('has wrapping div and one primary region', function() {
+			expect(
+				this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.be.present();
 		});
 
-		it('Primary region DOES not have divider on right', function () {
+		it('Primary region DOES NOT have divider on right', function() {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.nodes[0].className).to.not.include(
-				'slds-context-bar__item--divider-right'
+			expect(primary).to.not.have.className(
+				'slds-context-bar__item_divider-right'
 			);
 		});
 	});
@@ -87,23 +89,19 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has custom cloud and theme CSS', function () {
+		it('has custom cloud and theme CSS', function() {
 			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			expect(
-				component.hasClass(
-					`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`
-				)
-			).to.be.true;
-			expect(
-				component.hasClass(
-					`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`
-				)
-			).to.be.true;
+			expect(component).to.have.className(
+				`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`
+			);
+			expect(component).to.have.className(
+				`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`
+			);
 		});
 	});
 
 	describe('Optional Region Structure', () => {
-		const props = propSets.base.props;
+		const { props } = propSets.base;
 
 		const buttonClicked = () => {};
 		const linkClicked = () => {};
@@ -125,7 +123,7 @@ describe('Global Navigation Bar: ', () => {
 								onClick={linkClicked('Home link clicked')}
 							/>
 							<GlobalNavigationBarDropdown
-								assistiveText="Open Menu"
+								assistiveText={{ icon: 'Open Menu' }}
 								id="primaryDropdown"
 								label="Global Navigation Menu Item 1"
 								onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
@@ -139,7 +137,7 @@ describe('Global Navigation Bar: ', () => {
 							/>
 							<GlobalNavigationBarDropdown
 								active
-								assistiveText="Open Menu"
+								assistiveText={{ icon: 'Open Menu' }}
 								id="primaryDropdownActive"
 								label="Global Navigation Menu Item 3"
 								onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
@@ -169,33 +167,25 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has 1 primary, 1 secondary, and 1 tertiary region', function () {
-			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.have.length(1);
-
-			const secondary = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
-			expect(secondary).to.have.length(1);
-
-			const tertiary = this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`);
-			expect(tertiary).to.have.length(1);
+		it('has 1 primary, 1 secondary, and 1 tertiary region', function() {
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`)
+			).to.be.present();
+			expect(
+				this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`)
+			).to.be.present();
 		});
 
-		it('Primary region has divider on right due to secondary region', function () {
-			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.nodes[0].className).to.include(
-				'slds-context-bar__item--divider-right'
-			);
-		});
-
-		it('Secondary region application is a nav HTML element and has divider on right side', function () {
+		it('Secondary region application is a nav HTML element and has divider on right side', function() {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
-			expect(nav.node.className).to.include(
-				'slds-context-bar__item--divider-right'
-			);
+			expect(nav).to.have.className('slds-context-bar__item_divider-right');
 		});
 
-		it('displays active items as active', function () {
+		it('displays active items as active', function() {
 			const activeItems = this.wrapper.find('.slds-is-active');
 			expect(activeItems).to.have.length(3);
 		});
@@ -212,51 +202,221 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('Secondary region application is div and not a nav', function () {
+		it('Secondary region application is div and not a nav', function() {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('div');
 		});
 	});
 
-	// TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
+	describe('GlobalNavigationDropdown child component', () => {
+		let dropdown;
+		let eventTest;
+
+		const eventHandler = (option, moreData) => {
+			eventTest = { option, moreData };
+		};
+
+		beforeEach(function() {
+			mountComponent(
+				<GlobalNavigationBarDropdown
+					dividerPosition="left"
+					label="Test"
+					onSelect={eventHandler}
+					options={dropdownCollection}
+				/>
+			).call(this);
+
+			dropdown = this.wrapper.find('.slds-context-bar__dropdown-trigger');
+			eventTest = null;
+		});
+
+		afterEach(unmountComponent);
+
+		it('calls onSelect handler properly', function() {
+			dropdown.find('button.slds-context-bar__button').simulate('click');
+			this.wrapper
+				.find('.slds-dropdown ul.dropdown__list')
+				.childAt(0)
+				.find('a')
+				.simulate('click');
+			expect(typeof eventTest.option).to.eql('object');
+			expect(typeof eventTest.moreData).to.eql('object');
+		});
+
+		it('renders divider as expected', function() {
+			expect(dropdown.hasClass('slds-context-bar__item_divider-left')).to.eql(
+				true
+			);
+		});
+	});
+
+	describe('GlobalNavigationDropdownTrigger child component', () => {
+		let dropdownTrigger;
+		let eventTest;
+
+		const eventHandler = (event, data) => {
+			eventTest = { event, data };
+		};
+
+		beforeEach(function() {
+			mountComponent(
+				<GlobalNavigationBarDropdownTrigger
+					dividerPosition="left"
+					label="Test"
+					onBlur={eventHandler}
+					onClick={eventHandler}
+					onFocus={eventHandler}
+					onKeyDown={eventHandler}
+					onMouseDown={eventHandler}
+					onMouseEnter={eventHandler}
+					onMouseLeave={eventHandler}
+				/>
+			).call(this);
+
+			dropdownTrigger = this.wrapper.find(
+				'.slds-context-bar__dropdown-trigger'
+			);
+			eventTest = null;
+		});
+
+		afterEach(unmountComponent);
+
+		it('has appropriate attributes', function() {
+			expect(dropdownTrigger.text()).to.equal('Test');
+		});
+
+		it('calls onClick handler properly', function() {
+			dropdownTrigger.simulate('click');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onBlur handler properly', function() {
+			dropdownTrigger.simulate('blur');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onFocus handler properly', function() {
+			dropdownTrigger.simulate('focus');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onKeyDown handler properly', function() {
+			dropdownTrigger.simulate('keydown', { keyCode: 13 });
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onMouseDown handler properly', function() {
+			dropdownTrigger.simulate('mousedown');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onMouseEnter handler properly', function() {
+			dropdownTrigger.simulate('mouseenter');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onMouseLeave handler properly', function() {
+			dropdownTrigger.simulate('mouseleave');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('renders divider as expected', function() {
+			expect(
+				dropdownTrigger.hasClass('slds-context-bar__item_divider-left')
+			).to.eql(true);
+		});
+	});
 
 	describe('GlobalNavigationLink child component', () => {
-		let linkClicked;
+		let aTag;
+		let eventTest;
 		let link;
 
-		beforeEach(function () {
-			linkClicked = sinon.spy();
-			const instance = (
+		const eventHandler = (event, data) => {
+			eventTest = { event, data };
+		};
+
+		beforeEach(function() {
+			mountComponent(
 				<GlobalNavigationBarLink
+					dividerPosition="left"
 					href="http://google.com"
 					label="Home"
 					id="home-link"
-					onClick={linkClicked('Home link clicked')}
+					onBlur={eventHandler}
+					onClick={eventHandler}
+					onFocus={eventHandler}
+					onKeyDown={eventHandler}
+					onKeyPress={eventHandler}
+					onKeyUp={eventHandler}
+					onMouseEnter={eventHandler}
+					onMouseLeave={eventHandler}
 				/>
-			);
-			this.wrapper = mount(instance, {
-				attachTo: document.body.appendChild(document.createElement('div')),
-			});
-			link = this.wrapper.find('#home-link');
+			).call(this);
+
+			link = this.wrapper.find('li#home-link');
+			aTag = link.find('a');
+			eventTest = null;
 		});
 
-		afterEach(function () {
-			this.wrapper.unmount();
-		});
+		afterEach(unmountComponent);
 
-		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
+		it('has appropriate attributes', function() {
 			expect(link.text()).to.equal('Home');
-			link.simulate('click');
-			expect(linkClicked.calledOnce).to.be.true;
+		});
+
+		it('calls onClick handler properly', function() {
+			aTag.simulate('click');
+			expect(typeof eventTest.event).to.eql('object');
+			expect(typeof eventTest.data.href).to.eql('string');
+		});
+
+		it('calls onBlur handler properly', function() {
+			aTag.simulate('blur');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onFocus handler properly', function() {
+			aTag.simulate('focus');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onKeyDown handler properly', function() {
+			aTag.simulate('keydown', { keyCode: 13 });
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onKeyPress handler properly', function() {
+			aTag.simulate('keypress', { keyCode: 13 });
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onKeyUp handler properly', function() {
+			aTag.simulate('keyup', { keyCode: 13 });
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onMouseEnter handler properly', function() {
+			aTag.simulate('mouseenter');
+			expect(typeof eventTest.event).to.eql('object');
+		});
+
+		it('calls onMouseLeave handler properly', function() {
+			aTag.simulate('mouseleave');
+			expect(typeof eventTest.event).to.eql('object');
 		});
 
 		it('renders href if passed', () => {
 			expect(link.find('a')).to.have.attr('href', 'http://google.com');
 		});
+
+		it('renders divider as expected', function() {
+			expect(link.hasClass('slds-context-bar__item_divider-left')).to.eql(true);
+		});
 	});
 
 	describe('GlobalNavigationButton child component', () => {
-		it('GlobalNavigationBarButton has attributes and onClick runs callback', function () {
+		it('GlobalNavigationBarButton has attributes and onClick runs callback', function() {
 			const buttonClicked = sinon.spy();
 			const instance = (
 				<GlobalNavigationBarButton
@@ -268,7 +428,7 @@ describe('Global Navigation Bar: ', () => {
 			this.wrapper = mount(instance, {
 				attachTo: document.body.appendChild(document.createElement('div')),
 			});
-			const link = this.wrapper.find('#global-nav__button');
+			const link = this.wrapper.find('button#global-nav__button');
 			expect(link.text()).to.equal('Button');
 			link.simulate('click');
 			expect(buttonClicked.calledOnce).to.be.true;
@@ -278,12 +438,24 @@ describe('Global Navigation Bar: ', () => {
 	});
 
 	describe('GlobalNavigationLabel child component', () => {
-		it('GlobalNavigationBarLabel has attributes', function () {
-			const instance = <GlobalNavigationBarLabel label="Text" id="test-text" />;
+		it('GlobalNavigationBarLabel has attributes and renders dividerPosition correctly', function() {
+			const instance = (
+				<GlobalNavigationBarLabel
+					dividerPosition="right"
+					label="Text"
+					id="test-text"
+				/>
+			);
 			this.wrapper = mount(instance, {
 				attachTo: document.body.appendChild(document.createElement('div')),
 			});
-			const item = this.wrapper.find('#test-text');
+			const item = this.wrapper.find('span#test-text');
+
+			expect(
+				this.wrapper
+					.find('span.slds-context-bar__label-action')
+					.hasClass('slds-context-bar__item_divider-right')
+			).to.eql(true);
 			expect(item.text()).to.equal('Text');
 
 			this.wrapper.unmount();

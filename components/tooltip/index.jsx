@@ -17,10 +17,12 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
+// eslint-disable-next-line import/no-cycle
+import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+import componentDoc from './docs.json';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -62,6 +64,14 @@ const propTypes = {
 	 * Content inside Tooltip.
 	 */
 	content: PropTypes.node.isRequired,
+	/**
+	 * CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it.
+	 */
+	dialogClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -118,13 +128,13 @@ const propTypes = {
 	/**
 	 * Determines the type of the tooltip.
 	 */
-	variant: PropTypes.oneOf(['base', 'learnMore']),
+	variant: PropTypes.oneOf(['base', 'learnMore', 'list-item']),
 };
 
 const defaultProps = {
 	assistiveText: {
 		tooltipTipLearnMoreIcon: 'this link',
-		triggerLearnMoreIcon: 'Learn More',
+		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
 	content: <span>Tooltip</span>,
@@ -142,7 +152,7 @@ const defaultProps = {
  * The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.
  */
 class Tooltip extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -151,38 +161,54 @@ class Tooltip extends React.Component {
 		};
 	}
 
-	componentWillMount () {
+	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER_TOOLTIP, this.props);
+		checkProps(POPOVER_TOOLTIP, this.props, componentDoc);
 
 		this.generatedId = shortid.generate();
 	}
 
-	componentWillUnmount () {
+	componentWillUnmount() {
 		this.isUnmounting = true;
 	}
 
-	getContent () {
+	getContent() {
 		let children;
+		const noChildrenProvided = React.Children.count(this.props.children) === 0;
 
-		if (React.Children.count(this.props.children) === 0) {
+		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
 				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
 					<Icon
 						category="utility"
 						name="info"
-						assistiveText={this.props.assistiveText.triggerLearnMoreIcon}
+						assistiveText={{
+							label: this.props.assistiveText.triggerLearnMoreIcon,
+						}}
 						size="x-small"
 					/>
 				</a>,
 			];
+		} else if (noChildrenProvided) {
+			children = [
+				<Button
+					aria-disabled
+					assistiveText={{
+						icon: this.props.assistiveText.triggerLearnMoreIcon,
+					}}
+					iconCategory="utility"
+					iconName="info"
+					variant="icon"
+				/>,
+			];
 		} else {
+			// eslint-disable-next-line prefer-destructuring
 			children = this.props.children;
 		}
 
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
-				key: i,
+				key: i, // eslint-disable-line react/no-array-index-key
 				'aria-describedby': this.getId(),
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
@@ -192,64 +218,59 @@ class Tooltip extends React.Component {
 		);
 	}
 
-	getId () {
+	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-	getTooltip () {
+	getTooltip() {
 		const isOpen =
 			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
-		const align = this.props.align;
+		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
 		const deprecatedWay = this.props.variant === 'error';
 
 		return isOpen ? (
 			<Dialog
+				closeOnTabKey
+				hasNubbin
+				contentsClassName={classNames(
+					'slds-popover',
+					'slds-popover_tooltip',
+					{
+						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+					},
+					this.props.dialogClassName
+				)}
 				align={align}
 				context={this.context}
-				closeOnTabKey
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				onClose={this.handleCancel}
 				onRequestTargetElement={() => this.getTooltipTarget()}
 				position={this.props.position}
-				style={{
-					marginBottom: getMargin.bottom(align),
-					marginLeft: getMargin.left(align),
-					marginRight: getMargin.right(align),
-					marginTop: getMargin.top(align),
-				}}
 				variant="tooltip"
+				containerProps={{
+					id: this.getId(),
+				}}
 			>
-				<div
-					id={this.getId()}
-					className={classNames(
-						'slds-popover',
-						'slds-popover--tooltip',
-						{
-							'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-						},
-						getNubbinClassName(align)
-					)}
-					role="tooltip"
-				>
-					{this.getTooltipContent()}
-				</div>
+				{this.getTooltipContent()}
 			</Dialog>
 		) : (
 			<span />
 		);
 	}
 
-	getTooltipContent () {
+	getTooltipContent() {
 		return (
 			<div className="slds-popover__body">
 				{this.props.content}
-				{this.props.variant === 'learnMore' ? (
-					<div className="slds-m-top_x-small">
+				{this.props.variant === 'learnMore' && this.props.onClickTrigger ? (
+					<div className="slds-m-top_x-small" aria-hidden="true">
 						{this.props.labels.learnMoreBefore}{' '}
 						<Icon
-							assistiveText={this.props.assistiveText.tooltipTipLearnMoreIcon}
+							assistiveText={{
+								label: this.props.assistiveText.tooltipTipLearnMoreIcon,
+							}}
 							category="utility"
 							inverse
 							name="info"
@@ -262,7 +283,7 @@ class Tooltip extends React.Component {
 		);
 	}
 
-	getTooltipTarget () {
+	getTooltipTarget() {
 		return this.props.target ? this.props.target : this.trigger;
 	}
 
@@ -305,8 +326,11 @@ class Tooltip extends React.Component {
 		}
 	};
 
-	render () {
-		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
+	render() {
+		const containerStyles = {
+			display: 'inline-block',
+			...this.props.triggerStyle,
+		};
 
 		return (
 			<div

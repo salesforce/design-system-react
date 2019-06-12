@@ -1,8 +1,12 @@
-# Design System for React
+# Lightning Design System _for_ React
 
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan Grade](https://deepscan.io/api/projects/1475/branches/4666/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666)
+[![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/616/projects/5798/branches/46037/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=616&pid=5798&bid=46037)
+[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Join the chat at https://gitter.im/salesforce/design-system-react](https://badges.gitter.im/salesforce/design-system-react.svg)](https://gitter.im/salesforce/design-system-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Monthly NPM downloads](https://img.shields.io/npm/dm/@salesforce/design-system-react.svg)](https://www.npmjs.com/package/@salesforce/design-system-react)
+
+
+
 
 ## Install
 
@@ -12,7 +16,7 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 
 ## Getting Started
 
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It has been tested with React >=15.4.1 <16 and is stable despite its version number. Please polyfill this library in order to meet your target environment needs.
+Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
 
 * [Usage](#usage)
 * [Getting started](https://react.lightningdesignsystem.com/getting-started/)
@@ -28,7 +32,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 ### Quick Setup (CommonJS)
 
-For a no hassle setup and compatibility with Create React App v1, a CommonJS version has been included within the NPM package to allow usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
+For a no hassle setup and compatibility with Create React App v1, a CommonJS version has been included within the NPM package. If using this setup, please re-write the `import` statement in the documentation site examples. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
 
 ```
 import { Button } from '@salesforce/design-system-react';
@@ -55,13 +59,10 @@ import Button from '@salesforce/design-system-react/components/button';
 	"presets": ["@salesforce/babel-preset-design-system-react"]
 }
 ```
+
 ### Styling
 
-This library does not contain any Cascading Style Sheets (CSS). You will need to add `<link rel="stylesheet" type="text/css"  href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" />` to your page and serve that file from a publicly available folder.
-
-### Icon Usage
-
-Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
+This library does not contain any Cascading Style Sheets (CSS). You will need to add `<link rel="stylesheet" type="text/css" href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" />` to your page and serve that file from a publicly available folder.
 
 #### Serve icons publicly
 
@@ -85,7 +86,7 @@ ReactDOM.render(
 
 ```
 // ExpressJS example
-app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/'));
+app.use('/assets/icons', express.static('node_modules/@salesforce-ux/design-system/assets/icons/'));
 ```
 
 #### Bundle icons
@@ -94,7 +95,6 @@ If you use a module bundler, like Webpack, you can let your module bundler manag
 
 ```
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-
 import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 ...
 ...
@@ -107,6 +107,10 @@ ReactDOM.render(
 )
 ```
 
+### Icon Usage
+
+Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
+
 Bundled script files are provided _only_ for convenience. Do not use in production.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
@@ -118,6 +122,7 @@ Bundled script files are provided _only_ for convenience. Do not use in producti
 
 ```
 git clone git@github.com:salesforce/design-system-react.git
+cd design-system-react
 npm install
 npm start
 open http://localhost:9001 http://localhost:8001
@@ -125,12 +130,33 @@ open http://localhost:9001 http://localhost:8001
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
 
+## Got feedback?
+
+If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
+
+## Security
+
+Please report any security issue to [security@salesforce.com](mailto:security@salesforce.com) as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigilant and have their security stakeholders review all third-party dependencies.
+
+## Contributors
+
+Thank you to all the contributors to this one of [many open source projects at Salesforce](https://opensource.salesforce.com/), but special thanks to the following:
+
+### Active Key Contributors
+
+* [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
+* [@futuremint](https://github.com/futuremint) David Woodward
+* [@garygong](https://github.com/garygong) Gary Gong
+* [@interactivellama](https://github.com/interactivellama) Stephen James
+
+### Former Key Contributors
+
+* [@donnieberg](https://github.com/donnieberg) Donielle Berg
+* [@tweettypography](https://github.com/tweettypography) David Brainer
+* [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
+
 ## Licenses
 
 * Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
 * All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
 * The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
-
-## Got feedback?
-
-If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).

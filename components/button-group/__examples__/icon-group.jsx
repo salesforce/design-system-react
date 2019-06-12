@@ -1,32 +1,32 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
 import IconSettings from '~/components/icon-settings';
 
-const Example = createReactClass({
-	displayName: 'ButtonGroupExample',
+class Example extends React.Component {
+	static displayName = 'ButtonGroupExample';
 
-	render () {
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup>
 					<ButtonStateful
-						assistiveText="Show Chart"
+						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
 						iconName="chart"
 						iconVariant="border"
 						variant="icon"
 					/>
 					<ButtonStateful
-						assistiveText="Filter List"
+						assistiveText={{ icon: 'Filter List' }}
 						iconName="filterList"
 						iconVariant="border"
 						variant="icon"
 					/>
 					<Dropdown
-						assistiveText="Settings"
+						assistiveText={{ icon: 'Settings' }}
 						checkmark
 						iconCategory="utility"
 						iconName="settings"
@@ -46,7 +46,7 @@ const Example = createReactClass({
 				</ButtonGroup>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -31,21 +31,595 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.4
+
+**Major Features**
+* `BuilderHeader`: Add component
+* `Expandable Section`: Add component
+
+**Minor Features**
+
+* `ProgressRing`: Added `flowDirection` prop
+* `Carousel`: Add Mocha tests
+* `Carousel`: Add props to allow controlled component
+* `Carousel`: Align design closer to SLDS and update non-SLDS design
+* `ProgressIndicator`: Adds `setup-assistant` variant
+* `Modal`: Refactor `border-radius` render logic based on header and footer
+* `GlobalNavigation`: Align closer to SLDS
+* `AppLauncher`: Align closer to SLDS 
+
+**Bugfixes**
+
+* `Carousel`: Prevent focus grab when slide changes 
+* `DataTable`: Fixed header scrolling bugfix when `tab` is used
+* `Illustration`: Minor bugfix for `style` object
+
+**Maintainance**
+
+* Add a Gitter chat badge to `README.md`
+* Fix accessibility issues in doc site examples
+* `GlobalNavigation`: Add a11y exception to region
+* Sync up the `package-lock.json` file
+
+
+## Release 0.10.3
+
+**Major Features**
+
+* `ProgressBar`: Add Component
+* `ScopedNotification`: Add Component
+* `DynamicIcon`: Add Component
+* `Popover`: Add `edit-dialog` variant
+
+**Minor Features**
+
+* `Dropdown`: Add menu width prop
+* `DatePicker`: Triggers a console warning on using default parser
+* `PageHeader`: Remove all caps heading
+
+**Bugfixes**
+
+* Modal: fix error with dismissModalOnClickOutside
+* Tree Buttons: Adds `aria-hidden=true` to align with SLDS
+* Accordion: Add event parameter in example code
+* Update Popover to use `section` tag
+
+**Maintainance**
+
+* Rename prop `title` to `heading` in Modal
+* Update `PageHeader` prop `variant` to accept kebab-case and otherwise show deprecation warning
+* Button Stateful: Changes background color to make the text more legible
+* Alert: Adds padding to story container to prevent overlap
+* AppLauncher: Changes icon text in tile to be consistent with heading
+* Progress Indicator: Adds `vertical` variant to docsite examples
+* Button: Add `outline-brand` variant to doc site examples
+* Deprecate custom content for Dropdown component
+* Add Icon Container assistive text in example
+
+## Release 0.10.2
+
+**Bugfixes**
+
+* `Carousel`: `Button` import path was incorrect. Resulting in a `Error: Can't resolve '../../../../components/button'` message
+
+## Release 0.10.1
+
+**Bugfixes**
+
+* `Carousel`: `Button` import path was incorrect. Resulting in a `Error: Can't resolve '../../../../components/button'` message
+
+**Maintainance**
+
+* `Carousel`: Add `isPrototype` warning
+* `Dropdown`: Add `sunsetProperty` for `tooltip` prop
+
+## Release 0.10.0
+
+It has been more than a year since the release of React 16. With the release of v0.10, React 16.3 or later is required to consume this library. Features are present in the library now that are React v16 only.
+
+**Major Features**
+
+* `Carousel`: In addition, to the SLDS one-panel blueprint. This component adds a non-SLDS three-item panel option for use on product home pages to aid in user on-boarding.
+* `Combobox`: Adds Dialog variant. This allows “custom menus” such as checkboxes and other form elements to determine the input value.
+* `Popover`: Walkthrough and Walkthrough Action variants were added. Along with this, Popover now allows custom targets which is helpful in feature highlighting and other user engagement stories. Use `onRequestTargetElement` to set a custom target.
+* `GlobalHeader``: Align markup and latest UX pattern to SLDS
+* Remove all caps text from all components
+* Progress Indicator: Add vertical orientation
+
+**Minor Features**
+
+* `Tooltip`: Add dialog `className` prop
+* `Button`: Add `outline-brand` variant
+* `Avatar`: Add `inverse` variant
+* `Card`: Add `hasNoHeader` prop to remove header
+* `PillContainer`: Return null if options is empty
+* `Spinner`: Adds `isDelayed` prop to component
+
+**Bugfixes**
+
+* `Combobox`: Cancel mouseDown bubble from listbox div tag in order to help not trigger onBlur when uses clicks menu scrollbar
+* `Popover`: Change ARIA role to `dialog`
+* `ButtonStateful`: Use prevState to update state in component
+* `Input`: Remove always true condition, 'props.hasSpinner'
+* `Input`: Update error icon from warning icon to error icon
+* `Tree`: Adds unneeded `aria-hidden=true` to closer align with SLDS markup
+* `Popover`: Change ARIA `role` to `dialog`
+* `ProgressRing`: Fixe examples page
+* `AppLauncher`: Fixes arrow direction in Sections
+
+**Maintainance**
+
+* Require React >16.3
+* Add snapshot update npm command
+* `Toast`: Use role='status'
+* Add instructions to set up LDSR with Create React App 2.x
+* Removed propTypes which are not used from different components
+* `Modal`: Replace `dismissible` with `disableClose` in
+* `Button`: Fix assistive text in small icon hint inverse example
+* `Alert`: Add ability for example to close
+* `Combobox`: Update `menuItem` to `onRenderMenuItem`
+* `Vertical Navigation`: Remove `shade` variant
+* Move storyshot DOM snapshots to individual files
+* Remove unused variables from tests
+* Support React fragment syntax
+* Update to SLDS 2.8.x
+* Improve docs for codebase-overview.md and CONTRIBUTING.md
+* `Button` Examples: Update function call for "Outline brand button" story
+* `GlobalNavigationBar`: Remove overlapping items from example
+* `Lookup`: Add visual deprecation heading to component
+
+## Release 0.10.0
+
+It has been more than a year since the release of React 16. With the release of v0.10, **React 16.3 or later is required** to consume this library. Features are present in the library now that are React v16 only.
+
+**Major Features**
+
+* `Carousel`: In addition, to the SLDS one-panel blueprint. This component adds a non-SLDS three-item panel option for use on product home pages to aid in user on-boarding.
+* `Combobox`: Adds Dialog variant. This allows “custom menus” such as checkboxes and other form elements to determine the input value.
+* `Popover`: Walkthrough and Walkthrough Action variants were added. Along with this, Popover now allows custom targets which is helpful in feature highlighting and other user engagement stories. Use `onRequestTargetElement` to set a custom target.
+* `GlobalHeader``: Align markup and latest UX pattern to SLDS
+* Remove all caps text from all components
+* `ProgressIndicator`: Add vertical orientation
+
+**Minor Features**
+
+* `Tooltip`: Add dialog `className` prop
+* `Button`: Add `outline-brand` variant
+* `Avatar`: Add `inverse` variant
+* `Card`: Add `hasNoHeader` prop to remove header
+* `PillContainer`: Return null if options is empty
+* `Spinner`: Adds `isDelayed` prop to component
+
+**Bugfixes**
+
+* `Combobox`: Cancel mouseDown bubble from listbox div tag in order to help not trigger onBlur when uses clicks menu scrollbar
+* `Popover`: Change ARIA role to `dialog`
+* `ButtonStateful`: Use prevState to update state in component
+* `Input`: Remove always true condition, 'props.hasSpinner'
+* `Input`: Update error icon from warning icon to error icon
+* `Tree`: Adds unneeded `aria-hidden=true` to closer align with SLDS markup
+* `Popover`: Change ARIA `role` to `dialog`
+* `ProgressRing`: Fixe examples page
+* `AppLauncher`: Fixes arrow direction in Sections
+
+**Maintainance**
+
+* Require React >16.3
+* Add snapshot update npm command
+* `Toast`: Use role='status'
+* Add instructions to set up LDSR with Create React App 2.x
+* Removed propTypes which are not used from different components
+* `Modal`: Replace `dismissible` with `disableClose` in
+* `Button`: Fix assistive text in small icon hint inverse example
+* `Alert`: Add ability for example to close
+* `Combobox`: Update `menuItem` to `onRenderMenuItem`
+* `Vertical Navigation`: Remove `shade` variant
+* Move storyshot DOM snapshots to individual files
+* Remove unused variables from tests
+* Support React fragment syntax
+* Update to SLDS 2.8.x
+* Improve docs for codebase-overview.md and CONTRIBUTING.md
+* `Button` Examples: Update function call for "Outline brand button" story
+* `GlobalNavigationBar`: Remove overlapping items from example
+* `Lookup`: Add visual deprecation heading to component
+
+## Release 0.9.6
+
+**Minor Features**
+
+* `Popover`: Add `error` and `warning` variants
+* `DataTable`: Add `isDefaultSortDescending` prop to allow descending as first time sort direction
+* `Combobox`: Add `disabled` prop to readonly and inline-listbox variants
+* `PillContainer`: Return null if options is empty
+* `Input`: Add `autoComplete` prop. (Newer versions of Chrome browser ignore `autocomplete="off"`).
+* `Combobox`: Add `Input` prop on in order to expose all `Input` props within `Combobox`
+
+**Bugfixes**
+
+* `BrandBand`: Lightning Theme Fix - Styles were intermittently applied before
+* `DataTable`: Add missing top gray border to fixed header tables
+* `IconSettings`: Add additional inheritance of context for `overflowBoundaryElement` Dialog position which uses portals.
+* `Input`: Update error icon from warning icon to error icon
+* `Input`: Prevent `PropTypes` warning in `forms/private/label` when `label` prop contains a React `node`
+
+**Maintainance**
+
+* Update Brand Band documentation: Depending on your server settings, you may get this error due to stye injection and may want to directly add styles to your CSS file.
+* Update `README.md` to run install command in right directory
+* Datepicker: Clarify MomentJS usage in props/docs
+* Add ESLINT skipBlankLines/skipComments max lines rule
+* Combobox: Give each Storybook example a unique ID
+* Define pull request expectations in more detail
+* Document how to release a tag on a fork
+* Add how to release a tag to 1st time PR bot
+* Correct Typos in Contributor's Guidelines
+* Improve docs for codebase-overview.md and CONTRIBUTING.md
+* Remove non-breaking text from Tooltip Storybook examples
+* Contributing docs: Add mention of adding new components to `package.json`
+
+## Release 0.9.5
+
+**Minor Features**
+
+* Combobox: Allow disabled menu items and disabled menu items with Tooltips
+* Input: Add `styleContainer` prop
+* ProgressIndicator: `tooltipPosition` prop added to allow additional positioning logic
+* Dropdown: `length` prop now allows numbers
+
+**Bugfixes**
+
+* BrandBand: Lightning Theme CSS injection was intermittantly working.
+* Dropdown: Adds `aria-checked` and role="menuitemcheckbox" for selectable menus with checkmarks
+
+**Maintainance**
+
+* Warnings removed from snapshot tests and 404s from browser Mocha tests. "CI is now prettier."
+* Add first time contributor survey to allow additional feedback to library maintainers.
+* Imports additional examples from doc site examples that did not exist in Storybook
+
+## Release 0.9.4
+
+**Minor Features**
+
+* `PageHeader`: Allow actions in Base variant with support of `navRight`
+* `Combobox`: Add field-level tooltip with `fieldLevelHelpTooltip` prop on `input` prop. Deprecate `Combobox`'s `assistiveText.fieldLevelHelpButton` in favor of using `input` prop's prop. See [#1689](https://github.com/salesforce/design-system-react/pull/1689) for more details. You will see a console warning if you are doing it wrong.
+* `Tooltip`: Require `onClickTrigger` for learn more pattern
+  * If `learnMore` Tooltip variant is used without `onClickTrigger`, then the “no click” basic info icon tooltip will be used with a “disabled” button.
+  * If `onClickTrigger` is defined, a link will be rendered (this is the current behavior for learn more tooltips).
+* Add `AppLauncher` `Tile` and `Section` components to main module export to allow use in CommonJS build.
+
+**Bugfixes**
+
+* `DataTable`: A UX pattern of Radio Group / Single Select with a Fixed Header works now.
+
+**Documentation**
+
+* `Combobox`: Site examples now have unique id's
+* Re-organize [Codebase Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md)
+* Add maximum lines in a file lint rule of 500
+
+## Release 0.9.3
+
+**Bugfixes**
+
+* `DataTable`: Adds event listeners to listen for window resize by default. This creates a behavior that truncates horizontal cells and is similar to how a `DataTable` on the Salesforce Platform works.
+
+## Release 0.9.2
+
+**Major Features**
+
+* `DataTable` supports fixed headers and this allows the table headings to be visible while the table vertically scrolls.
+
+## Release 0.9.1
+
+**Notes**
+
+* Tree `nodes` are now compared with node `id` key instead of object compare when using keyboard events
+* Testing suite runs on Windows now to enable contributions from Windows users. Use `git-bash`, please--no Powershell.
+
+**Major Features**
+
+* **Pill Container:** Add [Listbox of Pill Options](https://www.lightningdesignsystem.com/components/pills/) component. Previously `Pill` components used in a group were not accessible. This component creates a pillbox or group option. Isoloated `Pill` component is still present, but should not be used for user input/selection.
+* **Input Counter:** Add [Counter](https://www.lightningdesignsystem.com/components/input/) Example. This is useful for number input.
+
+**Minor Features**
+
+* **Combobox (Read-Only / Picklist):** Add "press a letter to scroll to an option" (similar to HTML `select` behavior)
+* **Combobox (Read-Only / Picklist):** Add auto-scroll behavior on keyboard menu item selection (similar to HTML `select` behavior)
+* **Combobox filter):** Make combobox filtering more performant by not creating RegExp in a loop
+* **Combobox (filter):** Remove selected options based on `option.id` only
+* **Input Counter:** Disable increment/decrement buttons when min/max is hit
+* **Datepicker:** Add `input` render prop for Input customization
+
+**Bugfixes**
+
+* **Tree:** Compare cached flattened nodes with id key
+* **Illustration:** Remove `<title>`
+* **Input:** `inlineHelpText` can be `node` as well as `string` proptype update.
+* **Combobox/PillContainer:** Pill aria-selected state is always true
+* **Combobox/PillContainer:** Tab propagation bug introduced with menu letter jump feature
+* **DataTable:** Update `stackedHorizontal` class name
+* **Tooltip:** Do not console error `isTriggerTabbable` if no children of tooltip.
+* **Toast:** Clear duration timeout in `componentWillUnmount()` to avoid memory leaks
+* **DataTable:** Generates row `id` if none is present
+
+**Maintenance**
+
+* **Contributor Productivity:** Enable test suite on Windows and run tests concurrently by default. This update allows entire testing suite (500+ browser tests, 320+ snapshot DOM/images, prop comment validation, Prettier style, ESlint code quality) to run in less than 2 minute on most machines. This pull request also aligns npm script names. Please use `npm run` to view new names.
+* **Contributor Productivity:** Replace PhantomJS with Headless Chrome (also speeds up browser tests slightly)
+
+## Release 0.9.0
+
+**Major Features**
+
+* Update CSS class names so that they align with the modified-BEM structure that [Salesforce Lightning Design System](https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm) switched to in June 2017. These changes are were promised to be backwards compatible for 18 months.\*\* . (In short, the `className` contains `--` instead of `_` now).
+
+**Minor Features**
+
+* Input: Add `styleInput` prop
+* Radio: Add `ref`, `data` attribute, and `className` props
+* Toast: Add `style` prop
+* Alert: Add `style` prop
+* Tooltip: Align "learn more" variant with SLDS
+* Allow SLDS Token import for inline styles
+* Allow Storybook (`npm start`) on Windows 10
+* Vertical Navigation: Update SLDS markup/classes
+
+**Bugfixes**
+
+* Popover (all dialogs): Prevent scroll to bottom on focus in dialogs
+* DataTable: Update `stackedHorizontal` class name
+* Dialog: Remove isNaN gaurds since ‘inherit’ is not a number
+* Page header: Details not truncating
+* Page header: Align Media Objects and header text
+* Adding missing `docs.json` to some components
+
+**Maintenance and Documentation**
+
+* Clarify new component contribution section
+* Convert `createReactClass` components to ES6 Classes
+* Move keyboard navigate mixin into picklist (deprecated)
+* Remove some unneeded dependencies
+* Fix typo in `Spinner` example
+* Update prettier CI command to fail on style issues
+* Fix lint errors
+
+## Release 0.8.28
+
+**Major Features**
+
+* Adds [Color Picker](https://www.lightningdesignsystem.com/components/color-picker/)
+
+## Release 0.8.27
+
+This version reverts CSS class changes in 0.8.26 that align with the modified-BEM structure that [Salesforce Lightning Design System](https://releasenotes.docs.salesforce.com/en-us/summer17/release-notes/rn_lds.htm) switched to in June 2017. These changes are were promised to be backwards compatible for 18 months.\*\* .
+
+Please use the upcoming 0.9.x for components that use the modified BEM (that is the `className` contains `--` instead of `_`).
+
+## Release 0.8.26
+
+**Bugfixes**
+
+* Fixes DataTable fixed layout width prop issue
+
+* Do not dismiss combobox lookup menu when clicking on menu scrollbar
+
+**Minor Features**
+
+* Adds additional helpful instruction for the pr template
+
+**Maintenance**
+
+* Converts Dropdown to ES6 class
+
+* Removes find dom node from Dropdown
+
+* Creates local ESLint plugin and rule to disallow double-dash (`--`) modifier class names
+
+* Makes eslint plugin for SLDS external
+
+* Removes Mocha console errors
+
+## Release 0.8.25
+
+**Minor Features**
+
+* `onRequestIconPath` added to `IconSettings` to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN.
+
+**Bugfixes**
+
+* Brand Band not exported in CJS/ESM packages
+
+## Release 0.8.24
+
+**Bugfixes**
+
+* Missing `docs.json` for each component added to build. Component meta data is now stored with each component folder in `docs.json`. This library's release script was not copying the new file which makes all components imports fail.
+
+## Release 0.8.23
+
+**Do not use 0.8.23.**
+
+**Major Features**
+
+* Adds new `BrandBrand` component
+
+**Minor Features**
+
+* Adds new `style` prop to `Button` component
+* Allows passing node as avatar in `GlobalHeaderProfile`
+
+**Bugfixes**
+
+* Fixes popper position when its props update in `Dialog` components
+* Replaces `Tooltip` with `PopoverTooltip` internally
+
+**Maintenance**
+
+* Removes `prettier-eslint`
+* Allows linking to doc site from dev console warning messages
+* Improves instructions on adding a new component to DSR
+
+## Release 0.8.22
+
+**Bugfixes**
+
+* Fixes v0.8.21 CommonJS/ES6 module versions of this library which had an undefined error that is a high priority blocker. See 0.8.21 release tag for more details on the bug.
+
+## Release 0.8.21
+
+* DataTable's `onChange` replaced with `onRowChange`. `onChange`'s parameters are `(selectedArrayOfItems, event)`. `onRowChange` standardizes the parameters with the rest of the library with `event, { selection:[array] }`.
+
+**Minor Features**
+
+* Input: Add Field Level Help and Inline Help variants
+* Icon: Add Warning, error, light color options
+* Modal: Add additional warning when `Settings.setAppElement` is not set.
+* AppLauncher: Add to CommonJS and ES6 module library export
+* Add Spinner to doc site
+
+**Bugfixes**
+
+* Progress Indicator: Improved assistive tech user experience
+* DatePicker: Fixing issue where year picker doesn't show years correctly
+* GlobalHeaderButton: Invalid markup fixed when used within GlobalHeaderTrigger
+* Tree: Allow label to be a React node (more lenient proptypes)
+* Positioning behavior of Dialog components that use nubbins has changed. This applies to `Popover`, `Tooltip`, `Datepicker`, `Dropdown`. Previously the nubbin would be misaligned due to hardcoded margins that would get added onto the dialog component. It will now instead calculate the offsets and include them in the positioning logic and add/subtract from the left and top.
+* Dialogs that use nubbins would previously have the nubbins point at the location on the reference trigger component (i.e. `Button`). Details:
+  * If a Popover had an align of `top left`, that meant the nubbin would point at the top left hand side of the `Button`.
+  * The behavior now is that the nubbin will always position the Dialog element as needed to ensure it points at the center of the desired side.
+  * In the case of a `top left` align the left will only designate the location of the nubbin on the Dialog.
+  * We may decide to bring back the ability to control both the nubbin location on the Dialog, but also the location at which it points to on the reference element. Much of the logic surrounding nubbins has been broken at the seams and edge cases for a long time. This change has been done in order to provide a more robust and dependable solution.
+  * Any dialog that uses an `offset` prop will need to be manually readjusted.
+  * Deprecate `offset` prop for `Dropdown` and `Popover`. The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic.
+
+**Maintenance and documenation**
+
+* Move `Navigation` to `VerticalNavigation` to align with SLDS.
+* Dropdown: Document that default menu height is 5
+* Datepicker: Increase default years, 5 to 10 years
+* Add warnings to `bread-crumb`, `forms/input`, `forms/radio`, `forms/textarea`, `navigation`, `popover-tooltip` to show that they have been moved. Warning only occurs when using source code files `import [COMPONENT] from`design-system-react/components/[COMPONENT]`
+* Modal: Deprecate rarely used Trigger Portal found at `/components/modal/trigger`
+* Combobox: Clarify prop docs
+* Update react-doc-gen version
+* Tree: Move to one render function and proptype object per file
+* Add url-slug to package.json components, Makes prompt easier to find
+* Update SLDS site URLs for doc site
+* Add NPM babel preset `package.json`
+* Prefer object spread instead of `object.assign` eslint rule
+* Revert to `npm install` from `npm ci` due to TravisCI issues
+
+## Release 0.8.20
+
+**Bugfixes**
+
+* Fix bug in `Dropdown` component where getIndexByValue() needs to look at nextProps.options when componentWillreceiveProps() is called.
+* Datepicker: Make year Combobox menu width match the width of its input/button.
+
+**Maintenance**
+
+* Documentation update on how to use Design System React within Create React App.
+* Consolidate assistiveText props under one object for the following: `DataTable`, `Icon`, `Search`, `PanelFilterGroup`, `Spinner`, `Tree`, `TextArea`.
+
+## Release 0.8.19
+
+**Major Features**
+
+* Add Illustration Component
+
+**Bugfixes**
+
+* Make `Slider` a controlled component. Use `value` and `onChange` props.
+* `Combobox`: Allow PopperJS to position menu correctly when menu hits the screen or overflow ancestor boundary.
+* Update `Tree` branch and item to use latest SLDS HTML tags
+* Update `Alert` error icon
+
+**Maintenance**
+
+* Add `getting-started.md` to NPM module
+* Document copying over SLDS fonts to public for Create React App
+* Update `Radio` component examples
+* Remove `Object.assign()` from codebase and replace with spread
+* Consolidate `assistiveText` props under one object. This is going to deprecate many props, but will make props more consistent across all the components.
+  * `AppLauncherSection`
+  * `Avatar`
+  * `Breadcrumb`
+  * `ButtonStateful`
+  * `Button`
+  * `GlobalHeader`
+  * `GlobalNavigationBarDropdown`
+
+## Release 0.8.18
+
+**Bugfixes**
+
+* `Icon` uses new values for `name` and `category` when changed.
+* Fixes console error that appears when using keyboard navigation to navigate the tree.
+
+**Maintenance**
+
+* `url-exists` utility uses `fetch` instead of `xmlHttpRequest`.
+
+## Release 0.8.17
+
+**Bugfixes**
+
+* REVERT [Change inline edit for accessibility](https://github.com/salesforce/design-system-react/pull/1332). It will not be updated. There is a new View/Edit Record Input pattern that uses the [Docked Former Footer component](http://www.lightningdesignsystem.com/components/docked-form-footer/) and this should be used instead of the Inline Edit Input in the future.
+
+**Minor features**
+
+* `dropdown` prop added to `DataTableRowActions` to increase customization of the dropdown menu
+* `tabIndex` added to `MenuDropdown` component
+* `Picklist` has been removed from examples. Please use a Combobox instead.
+
+## Release 0.8.16
+
+**Deprecation**
+TL:DR; If you use the source code directly, update your form component paths and the parameters in `onChange`. All others stay the same for now.
+
+* Moves `Input`, `Checkbox`, and `Textarea` out of `component/forms` and directly into `component/`. Old paths such as `component/forms/input` will still work, but include a console warning as deprecated.
+* `components/input`, `components/checkbox`, and `components/textarea` pass different parameters into the `onChange` callback. `onChange` now passes in `event, { checked }` if the new paths are used. The parameters used to be `checked, event, { checked }`. If you use the new paths such as `components/input`, please update your parameter variables. This aligns the callback's parameters with the rest of the library's callback functions.
+* If you consume the library with named imports `{[component]} from '@salesforce/design-system-react'`, you will recieve the warning and will need to use the old parameter order until the next breaking change.
+* For more information, please review #1350.
+
+**Minor features**
+
+* Update `Tree` example to be hashmap in order to promote immutability. Please review `Tree` example on [documentation site](http://react.lightningdesignsystem.com/components/tree/) in order to understand flattened tree data.
+* Add `tabIndex` prop to `MenuDropdown`
+* Update SLDS version to 2.6.0 and test
+
+**Bug fix**
+
+* Dialog components such as Dropdown when used with `menuPosition='overflowBoundaryElement'` now respect `max-width` instead of inherited children width
+* Remove duplicate logo in `GlobalHeader`
+
+**Maintenance**
+
+* Upgrade Babel to v7 and Jest to v23
+
+**Documentation**
+
+* Remove deprecated Picklist from code base and examples
+
 ## Release 0.8.15
+
 **Modals are now at `z-index: 8000`.** If there are items on the main page with a higher `z-index`, they will appear in front of the modal. This setting aligns with the [prescribed z-index in SLDS](https://www.lightningdesignsystem.com/design-tokens/#category-z-index) for `$z-index-overlay`.
 **Require `iconCategory` if `iconName` is set.** `utility` used to be the default icon category. `iconCategory` is now required.
 
 **Major features**
+
 * `@salesforce/design-system-react/module` now contains tree-shaking compatible ES6 modules (Tested with Webpack 4). This should work out of the box (due to `package.json`'s `module` field) and replace CommonJS module usage in Webpack 3 and 4. See [pull request](https://github.com/salesforce/design-system-react/pull/1300) for more details.
 * Tree is now a production component and supports [single selection keyboard navigation](https://www.lightningdesignsystem.com/components/trees/).
 
 **Minor features**
+
 * DataTable: Align header markup with SLDS to fix alignment issues. Remove error for non-boolean attribute `focusable`.
 * Upgrade React Modal to 3.4.4. This is a dependency of `Modal`.
 * Modal: Adds `assistiveText.dialogLabel` to define modal label when there is no header.
 * DataTable: Adds `noHint` prop to actions and makes hints an optional field.
 
 **Bug fix**
+
 * Request icons (console warning) with HTTP GET, so Create React App's webpack dev server doesn't 404
 * Modal no longer jumps to 50% of page.
 * Documentation: Align button group example on site with SLDS example
@@ -53,8 +627,10 @@ These are changes that have backwards-compatible solutions present and that comp
 * Datepicker: Change the year picklist initial focus to currently selected year
 * Datepicker: Focus input only if menu was previously open and not just requested to close
 * Inline Edit UX pattern updated for keyboard: New pattern is that it'll tab to the close button, and if you're focused on the close button and tab again, it'll blur the field.
+* `Dropdown` with `overflowBoundaryElement` and `align=right` use max-width instead of inherited children width.
 
 **Maintenance**
+
 * Require `iconCategory` if `iconName` is set. `utility` used to be the default icon category. `iconCategory` is now required.
 * App Launcher - `assistiveText` is now an object with keys. Please update your component props.
 * Popover - `assistiveText` is now an object with keys. Please update your component props.
@@ -67,9 +643,11 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 ## Release 0.8.14
 
 **Minor features**
+
 * Tooltip: "Learn more" variant added. Deprecation notice added for `variant: info || error`. Please use `theme` prop going forward instead.
 
 **Bug fix**
+
 * Data Table: Remove console warning when DataTableColumn `sortable` is `true`.
 * Combobox: Trigger onOpen callback when menu opens
 * Datepicker: Focus input if menu was actually open and not just requested to close
@@ -77,40 +655,49 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 ## Release 0.8.13
 
 **Major features**
+
 * Add SLDS Slider
 
 **Minor features**
+
 * Allow importing Lookup [deprecated] subcomponents in CommonJS modules
 
 ## Release 0.8.12
 
 **Minor features**
+
 * Affix position of Dialogs with `hasStaticAlignment` prop. Allows greater control of Tooltip, Popover, and dialog components.
 * Set Datepicker's initial year dropdown menu highlight selection to current selected date.
 
 ## Release 0.8.11
 
 **Minor features**
+
 * Allow `input` label of combobox to show as required
 * Input, Checkbox, and Radio support initial state (uncontrolled) in order to support applications with server-side form submission that are transitioning to atomic state.
 
 **Maintenance**
+
 * Lint warnings from a third-party package have been removed from CI tests.
 
 **Documentation**
+
 * Prop doc typos:
-    * replaced rendered input block to code block
-    * fixed broken link to source of Inline Edit Inputs
+  * replaced rendered input block to code block
+  * fixed broken link to source of Inline Edit Inputs
 
 ## Release 0.8.10
 
 **Minor features**
-* Combobox supports error messages. 
+
+* Combobox supports error messages.
 
 **Outside SLDS pattern added**
+
 * Multiple selection Combobox error messages should be placed after pillboxes with an additional `slds-has-error` wrapping div.
 
 **Maintenance**
+
 * Update Dropdown Menu children description
 * Update SLDS peer dependency to allow 2.6.0-alphas
 * Remove plus-plus (`var++`) instances from library for clarity
@@ -125,6 +712,7 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 * Combobox menu supports subheadings and line separators.
 
 **Outside SLDS pattern added**
+
 * UX pattern created for Combobox autocomplete that limits subheadings to those that have "child" matching items.
 
 ## Release 0.8.8
@@ -146,7 +734,6 @@ Adds new script storyshots:start that allows interactive viewing of what is bein
 * Add missing documentation site component descriptions
 * Document child nodes of `IconSettings`
 * Update `Modal` footer prop description
-
 
 ## Release 0.8.7
 

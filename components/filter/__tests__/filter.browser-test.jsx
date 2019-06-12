@@ -1,5 +1,5 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
+
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -32,40 +32,30 @@ const defaultProps = {
 	heading: <span id="sample-heading">This is the heading</span>,
 };
 
-const defaultIds = {
-	trigger: defaultProps.id,
-	popover: `${defaultProps.id}-popover`,
-	body: `${defaultProps.id}-dialog-body`,
-	heading: `${defaultProps.id}-dialog-heading`,
-};
-
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = createReactClass({
-	displayName: 'PopoverDemoComponent',
-	propTypes: {
+class DemoComponent extends React.Component {
+	static displayName = 'PopoverDemoComponent';
+
+	static propTypes = {
 		isOpen: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps () {
-		return defaultProps;
-	},
+	static defaultProps = defaultProps;
 
-	getInitialState () {
-		return {};
-	},
+	state = {};
 
-	render () {
+	render() {
 		return (
 			<Popover {...this.props}>
 				<Button label="Trigger Popover" />
 			</Popover>
 		);
-	},
-});
+	}
+}
 
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.
@@ -76,14 +66,13 @@ const DemoComponent = createReactClass({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSFilter', function () {
+describe('SLDSFilter', function describeFunction() {
 	let mountNode;
-	let portalWrapper;
 	let wrapper;
 
 	// BASIC STRUCTURE
 
-	describe('Add custom props to Filter Popover', function () {
+	describe('Add custom props to Filter Popover', function() {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -115,7 +104,7 @@ describe('SLDSFilter', function () {
 		});
 	});
 
-	describe('On click handler when clicking on filter', function () {
+	describe('On click handler when clicking on filter', function() {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -147,7 +136,7 @@ describe('SLDSFilter', function () {
 
 			setTimeout(() => {
 				const filterButton = wrapper.find(
-					'.slds-filters__item .slds-button--reset'
+					'.slds-filters__item .slds-button_reset'
 				);
 				filterButton.simulate('click', {});
 				expect(onFilterClicked).to.be.true;
