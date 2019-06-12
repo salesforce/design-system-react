@@ -130,7 +130,7 @@ class WelcomeMat extends React.Component {
 		);
 
 		return (
-			<Modal isOpen>
+			<Modal isOpen size="small" id={`${this.getId}-modal`}>
 				<div
 					className={classNames(
 						'slds-welcome-mat',
