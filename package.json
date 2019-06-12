@@ -662,18 +662,18 @@
 			"url-slug": "radios"
 		},
 		{
-		  "component": "setup-assistant",
-		  "status": "prototype",
-		  "display-name": "Setup Assistant",
-		  "SLDS-component-path": "/components/setup-assistant",
-		  "dependencies": [
-			{
-			  "component": "step"
-			}
-		  ],
-		  "url-slug": "setup-assistant"
+			"component": "setup-assistant",
+			"status": "prototype",
+			"display-name": "Setup Assistant",
+			"SLDS-component-path": "/components/setup-assistant",
+			"dependencies": [
+				{
+					"component": "step"
+				}
+			],
+			"url-slug": "setup-assistant"
 		},
-	  	{
+		{
 			"component": "split-view",
 			"status": "prod",
 			"display-name": "Split View",
