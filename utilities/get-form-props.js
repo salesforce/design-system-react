@@ -1,10 +1,10 @@
 const formPropsSet = new Set([
-    'form',
-    'formAction',
-    'formEncType',
-    'formMethod',
-    'formNoValidate',
-    'formTarget'
+	'form',
+	'formAction',
+	'formEncType',
+	'formMethod',
+	'formNoValidate',
+	'formTarget',
 ]);
 
 export default function getFormProps(props) {

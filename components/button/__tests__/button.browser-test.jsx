@@ -86,10 +86,9 @@ describe('SLDSButton: ', () => {
 		beforeEach(() => {
 			cmp = getButton({
 				id: 'custom-id',
-				formAction
+				formAction,
 			});
-			btn = findRenderedDOMComponentWithClass(cmp,
-				'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
 		afterEach(() => {
