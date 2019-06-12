@@ -1249,7 +1249,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    connected_apps_checked
+                  </span>
                 </span>
               </span>
               <span
@@ -1299,7 +1303,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    custom_apps_checked
+                  </span>
                 </span>
               </span>
               <span
@@ -1366,7 +1374,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    account_checked
+                  </span>
                 </span>
               </span>
               <span
@@ -1417,7 +1429,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    lead_checked
+                  </span>
                 </span>
               </span>
               <span
@@ -1468,7 +1484,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    orders_checked
+                  </span>
                 </span>
               </span>
               <span

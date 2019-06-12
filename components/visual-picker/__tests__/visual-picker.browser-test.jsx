@@ -49,7 +49,7 @@ class VisualPickerExample extends React.Component {
 								value="1"
 								checked={this.state.checked === '1'}
 								onChange={() => this.setState({ checked: '1' })}
-								onRenderVisualPickerSelected={
+								onRenderVisualPickerSelected={() => (
 									<Icon
 										assistiveText={{ label: 'selected-icon' }}
 										category="utility"
@@ -57,15 +57,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								}
-								onRenderVisualPickerNotSelected={
+								)}
+								onRenderVisualPickerNotSelected={() => (
 									<Icon
 										assistiveText={{ label: 'connected_apps-icon' }}
 										category="utility"
 										name="connected_apps"
 										size="large"
 									/>
-								}
+								)}
 							/>
 							<Radio
 								labels={{
@@ -75,7 +75,7 @@ class VisualPickerExample extends React.Component {
 								value="2"
 								checked={this.state.checked === '2'}
 								onChange={() => this.setState({ checked: '2' })}
-								onRenderVisualPickerSelected={
+								onRenderVisualPickerSelected={() => (
 									<Icon
 										assistiveText={{ label: 'selected-icon' }}
 										category="utility"
@@ -83,15 +83,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								}
-								onRenderVisualPickerNotSelected={
+								)}
+								onRenderVisualPickerNotSelected={() => (
 									<Icon
 										assistiveText={{ label: 'custom_apps-icon' }}
 										category="utility"
 										name="custom_apps"
 										size="large"
 									/>
-								}
+								)}
 							/>
 						</>
 					) : (
@@ -112,7 +112,7 @@ class VisualPickerExample extends React.Component {
 									else this.setState({ checked: [...this.state.checked, '1'] });
 								}}
 								id="visual-picker-coverable-checkbox-1"
-								onRenderVisualPickerSelected={
+								onRenderVisualPickerSelected={() => (
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="utility"
@@ -120,15 +120,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								}
-								onRenderVisualPickerNotSelected={
+								)}
+								onRenderVisualPickerNotSelected={() => (
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="standard"
 										name="account"
 										size="large"
 									/>
-								}
+								)}
 							/>
 							<Checkbox
 								labels={{
@@ -146,7 +146,7 @@ class VisualPickerExample extends React.Component {
 									else this.setState({ checked: [...this.state.checked, '2'] });
 								}}
 								id="visual-picker-coverable-checkbox-2"
-								onRenderVisualPickerSelected={
+								onRenderVisualPickerSelected={() => (
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="utility"
@@ -154,15 +154,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								}
-								onRenderVisualPickerNotSelected={
+								)}
+								onRenderVisualPickerNotSelected={() => (
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="standard"
 										name="lead"
 										size="large"
 									/>
-								}
+								)}
 							/>
 							<Checkbox
 								labels={{
@@ -182,7 +182,7 @@ class VisualPickerExample extends React.Component {
 									}
 								}}
 								id="visual-picker-coverable-checkbox-3"
-								onRenderVisualPickerSelected={
+								onRenderVisualPickerSelected={() => (
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="utility"
@@ -190,15 +190,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								}
-								onRenderVisualPickerNotSelected={
+								)}
+								onRenderVisualPickerNotSelected={() => (
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="standard"
 										name="orders"
 										size="large"
 									/>
-								}
+								)}
 							/>
 						</>
 					)}

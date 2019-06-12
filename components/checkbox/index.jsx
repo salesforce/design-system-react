@@ -160,15 +160,15 @@ const propTypes = {
 	/**
 	 * Allows icon to shown with checkbox (only for non-coverable visual picker variant)
 	 */
-	onRenderVisualPicker: PropTypes.node,
+	onRenderVisualPicker: PropTypes.func,
 	/**
 	 * Allows icon to shown if checkbox is not selected (only for visual picker variant)
 	 */
-	onRenderVisualPickerSelected: PropTypes.node,
+	onRenderVisualPickerSelected: PropTypes.func,
 	/**
 	 * Allows icon to shown if checkbox is not selected (only for visual picker variant)
 	 */
-	onRenderVisualPickerNotSelected: PropTypes.node,
+	onRenderVisualPickerNotSelected: PropTypes.func,
 	/**
 	 * Size of checkbox in case of visual composer variant
 	 */
@@ -427,15 +427,15 @@ class Checkbox extends React.Component {
 				{this.props.coverable ? (
 					<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 						<span className="slds-is-selected">
-							{this.props.onRenderVisualPickerSelected}
+							{this.props.onRenderVisualPickerSelected()}
 						</span>
 						<span className="slds-is-not-selected">
-							{this.props.onRenderVisualPickerNotSelected}
+							{this.props.onRenderVisualPickerNotSelected()}
 						</span>
 					</div>
 				) : (
 					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-						{this.props.onRenderVisualPicker}
+						{this.props.onRenderVisualPicker()}
 					</span>
 				)}
 				{!this.props.vertical ? (

@@ -22,7 +22,7 @@ class Example extends React.Component {
 						<Radio
 							value="30"
 							id="visual-picker-vertical-non-coverable-radio-1"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
 										Item Text
@@ -32,12 +32,12 @@ class Example extends React.Component {
 										understand what this option is about.
 									</span>
 								</span>
-							}
+							)}
 						/>
 						<Radio
 							value="150"
 							id="visual-picker-vertical-non-coverable-radio-2"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
 										Item Text
@@ -47,13 +47,13 @@ class Example extends React.Component {
 										understand what this option is about.
 									</span>
 								</span>
-							}
+							)}
 						/>
 						<Radio
 							disabled
 							value="300"
 							id="visual-picker-vertical-non-coverable-radio-3"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
 										Item Text
@@ -63,7 +63,7 @@ class Example extends React.Component {
 										understand what this option is about.
 									</span>
 								</span>
-							}
+							)}
 						/>
 					</VisualPicker>
 					<hr />
@@ -76,7 +76,7 @@ class Example extends React.Component {
 						<Checkbox
 							value="30"
 							id="visual-picker-vertical-non-coverable-checkbox-1"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
 										Item Text
@@ -86,12 +86,12 @@ class Example extends React.Component {
 										understand what this option is about.
 									</span>
 								</span>
-							}
+							)}
 						/>
 						<Checkbox
 							value="150"
 							id="visual-picker-vertical-non-coverable-checkbox-2"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
 										Item Text
@@ -101,13 +101,13 @@ class Example extends React.Component {
 										understand what this option is about.
 									</span>
 								</span>
-							}
+							)}
 						/>
 						<Checkbox
 							disabled
 							value="300"
 							id="visual-picker-vertical-non-coverable-checkbox-3"
-							onRenderVisualPicker={
+							onRenderVisualPicker={() => (
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
 										Item Text
@@ -117,7 +117,7 @@ class Example extends React.Component {
 										understand what this option is about.
 									</span>
 								</span>
-							}
+							)}
 						/>
 					</VisualPicker>
 				</div>
