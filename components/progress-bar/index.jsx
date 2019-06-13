@@ -54,6 +54,10 @@ const propTypes = {
 	 * Orientation of the progress bar to be used
 	 */
 	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+	/**
+	 * Custom styles to be passed to the component
+	 */
+	style: PropTypes.object,
 };
 
 const defaultProps = {
@@ -61,6 +65,9 @@ const defaultProps = {
 		complete: 'Complete',
 	},
 	orientation: 'horizontal',
+	style: {
+		height: '100%',
+	},
 };
 
 /**
@@ -106,15 +113,14 @@ class ProgressBar extends React.Component {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 
 		return (
-			<div
-				id={this.getId()}
-				style={
-					this.props.orientation === 'vertical' ? { height: '200px' } : null
-				}
-			>
+			<div id={this.getId()} style={this.props.style}>
 				{this.props.orientation === 'horizontal' &&
 					this.getDescription({ labels })}
 				<div
+					aria-valuemin="0"
+					aria-valuemax="100"
+					aria-valuenow={this.props.value}
+					role="progressbar"
 					className={classNames(
 						'slds-progress-bar',
 						this.props.radius ? `slds-progress-bar_${this.props.radius}` : null,
