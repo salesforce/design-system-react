@@ -111,9 +111,9 @@ class ProgressBar extends React.Component {
 
 	render() {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
-
+		const style = assign({}, defaultProps.style, this.props.style);
 		return (
-			<div id={this.getId()} style={this.props.style}>
+			<div id={this.getId()} style={style}>
 				{this.props.orientation === 'horizontal' &&
 					this.getDescription({ labels })}
 				<div
