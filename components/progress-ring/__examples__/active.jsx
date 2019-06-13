@@ -8,18 +8,17 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
 					<div className="slds-col_padded">
-						<ProgressRing value={100} theme="complete" />
+						<ProgressRing flowDirection="fill" value={20} theme="active" />
 					</div>
 					<div className="slds-col_padded">
-						<ProgressRing value={100} theme="complete" hasIcon />
+						<ProgressRing value={100} theme="active" />
 					</div>
-					<div className="slds-col_padded" />
 				</div>
 			</IconSettings>
 		);
 	}
 }
 
-Example.displayName = 'ProgressRingCompleteExample';
+Example.displayName = 'ProgressRingActiveExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -14,7 +14,12 @@ const subSteps = [
 		id: 0,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
-			<Checkbox id="substep-0-action" checked variant="toggle" />
+			<Checkbox
+				id="substep-0-action"
+				checked
+				oldEventParameterOrder={false}
+				variant="toggle"
+			/>
 		),
 	},
 	{
@@ -39,7 +44,12 @@ const subStepsComplete = [
 		id: 0,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
-			<Checkbox id="substep-complete-0-action" checked variant="toggle" />
+			<Checkbox
+				id="substep-complete-0-action"
+				checked
+				oldEventParameterOrder={false}
+				variant="toggle"
+			/>
 		),
 	},
 	{
@@ -61,7 +71,11 @@ const subStepsIncomplete = [
 		id: 0,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
-			<Checkbox id="substep-incomplete-0-action" variant="toggle" />
+			<Checkbox
+				id="substep-incomplete-0-action"
+				oldEventParameterOrder={false}
+				variant="toggle"
+			/>
 		),
 	},
 	{
@@ -125,7 +139,7 @@ class Example extends React.Component {
 						id="card-step-2"
 						isExpandable
 						onRenderContent={() => (
-							<>
+							<React.Fragment>
 								<ProgressIndicator
 									completedSteps={[subSteps[0]]}
 									id="card-step-2-progress-indicator"
@@ -143,7 +157,7 @@ class Example extends React.Component {
 										<a href="javascript:void(0);">View Duplicates.</a>
 									</p>
 								</ScopedNotification>
-							</>
+							</React.Fragment>
 						)}
 						progress={33}
 					/>

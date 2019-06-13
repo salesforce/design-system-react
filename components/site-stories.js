@@ -51,6 +51,7 @@ const documentationSiteLiveExamples = {
 	radio: require('@salesforce/design-system-react/components/radio/__docs__/site-stories.js'),
 	tabs: require('@salesforce/design-system-react/components/tabs/__docs__/site-stories.js'),
 	'scoped-notification': require('@salesforce/design-system-react/components/scoped-notification/__docs__/site-stories.js'),
+	'setup-assistant': require('@salesforce/design-system-react/components/setup-assistant/__docs__/site-stories.js'),
 	slider: require('@salesforce/design-system-react/components/slider/__docs__/site-stories.js'),
 	spinner: require('@salesforce/design-system-react/components/spinner/__docs__/site-stories.js'),
 	'split-view': require('@salesforce/design-system-react/components/split-view/__docs__/site-stories.js'),
