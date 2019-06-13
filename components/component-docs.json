@@ -12036,6 +12036,17 @@
                     "value": "'horizontal'",
                     "computed": false
                 }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component",
+                "defaultValue": {
+                    "value": "{\n    height: '100%',\n}",
+                    "computed": false
+                }
             }
         },
         "route": "progress-bars",

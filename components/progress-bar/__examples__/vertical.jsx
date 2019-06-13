@@ -9,6 +9,7 @@ class Example extends React.Component {
 					id="progress-bar-vertical"
 					value={60}
 					orientation="vertical"
+					style={{ height: '200px' }}
 				/>
 			</div>
 		);
