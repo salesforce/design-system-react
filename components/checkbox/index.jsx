@@ -24,6 +24,7 @@ import checkProps from './check-props';
 import componentDoc from './docs.json';
 
 import { CHECKBOX } from '../../utilities/constants';
+import Icon from '../icon';
 
 const propTypes = {
 	/**
@@ -48,9 +49,11 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
+	 * * `heading`: This is used as a visually hidden label if, no `labels.heading` is provided.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 */
 	assistiveText: PropTypes.shape({
+		heading: PropTypes.string,
 		label: PropTypes.string,
 	}),
 	/**
@@ -91,11 +94,13 @@ const propTypes = {
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
+	 * * `heading`: Heading for the visual picker variant
 	 * * `label`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 	 * * `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to "Disabled". Note that this uses SLDS language, and meaning, of "Enabled" and "Disabled"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.
 	 * * `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
 	 */
 	labels: PropTypes.shape({
+		heading: PropTypes.heading,
 		label: PropTypes.string,
 		toggleDisabled: PropTypes.string,
 		toggleEnabled: PropTypes.string,
@@ -143,7 +148,31 @@ const propTypes = {
 	/**
 	 * Which UX pattern of checkbox? The default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
 	 */
-	variant: PropTypes.oneOf(['base', 'toggle', 'button-group']),
+	variant: PropTypes.oneOf(['base', 'toggle', 'button-group', 'visual-picker']),
+	/**
+	 * Determines whether visual picker is coverable when selected (only for visual picker variant)
+	 */
+	coverable: PropTypes.bool,
+	/**
+	 * Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)
+	 */
+	vertical: PropTypes.bool,
+	/**
+	 * Allows icon to shown with checkbox (only for non-coverable visual picker variant)
+	 */
+	onRenderVisualPicker: PropTypes.func,
+	/**
+	 * Allows icon to shown if checkbox is not selected (only for visual picker variant)
+	 */
+	onRenderVisualPickerSelected: PropTypes.func,
+	/**
+	 * Allows icon to shown if checkbox is not selected (only for visual picker variant)
+	 */
+	onRenderVisualPickerNotSelected: PropTypes.func,
+	/**
+	 * Size of checkbox in case of visual composer variant
+	 */
+	size: PropTypes.oneOf(['medium', 'large']),
 };
 
 const defaultProps = {
@@ -361,6 +390,84 @@ class Checkbox extends React.Component {
 		</div>
 	);
 
+	renderVisualPickerVariant = (props, assistiveText) => (
+		<span
+			className={classNames(
+				'slds-visual-picker',
+				`slds-visual-picker_${this.props.size}`,
+				this.props.vertical ? 'slds-visual-picker_vertical' : null
+			)}
+		>
+			<input
+				aria-controls={this.props['aria-controls']}
+				aria-describedby={this.props['aria-describedby']}
+				aria-owns={this.props['aria-owns']}
+				aria-required={this.props['aria-required']}
+				disabled={props.disabled}
+				/* A form element should not have both checked and defaultChecked props. */
+				{...(props.checked !== undefined
+					? { checked: props.checked }
+					: { defaultChecked: props.defaultChecked })}
+				id={this.getId()}
+				name={props.name}
+				onBlur={props.onBlur}
+				onChange={this.handleChange}
+				onFocus={props.onFocus}
+				onKeyDown={props.onKeyDown}
+				onKeyPress={props.onKeyPress}
+				onKeyUp={props.onKeyUp}
+				ref={(component) => {
+					this.input = component;
+				}}
+				role={props.role}
+				required={props.required}
+				type="checkbox"
+			/>
+			<label className="slds-checkbox_button__label" htmlFor={this.getId()}>
+				{this.props.coverable ? (
+					<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+						<span className="slds-is-selected">
+							{this.props.onRenderVisualPickerSelected()}
+						</span>
+						<span className="slds-is-not-selected">
+							{this.props.onRenderVisualPickerNotSelected()}
+						</span>
+					</div>
+				) : (
+					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+						{this.props.onRenderVisualPicker()}
+					</span>
+				)}
+				{!this.props.vertical ? (
+					<span className="slds-visual-picker__body">
+						{this.props.labels.heading ? (
+							<span className="slds-text-heading_small">
+								{this.props.labels.heading}
+							</span>
+						) : null}
+						<span className="slds-text-title">{this.props.labels.label}</span>
+						{assistiveText.label || assistiveText.heading ? (
+							<span className="slds-assistive-text">
+								{assistiveText.label || assistiveText.heading}
+							</span>
+						) : null}
+					</span>
+				) : null}
+				{!this.props.coverable ? (
+					<span className="slds-icon_container slds-visual-picker__text-check">
+						<Icon
+							assistiveText={this.props.assistiveText}
+							category="utility"
+							name="check"
+							colorVariant="base"
+							size="x-small"
+						/>
+					</span>
+				) : null}
+			</label>
+		</span>
+	);
+
 	render() {
 		const assistiveText = {
 			...defaultProps.assistiveText,
@@ -383,6 +490,7 @@ class Checkbox extends React.Component {
 			base: this.renderBaseVariant,
 			'button-group': this.renderButtonGroupVariant,
 			toggle: this.renderToggleVariant,
+			'visual-picker': this.renderVisualPickerVariant,
 		};
 		const variantExists = subRenders[this.props.variant];
 

@@ -136,3 +136,5 @@ export const TREE_BRANCH = 'SLDSTreeBranch';
 export const TREE_ITEM = 'SLDSTreeItem';
 export const VERTICAL_NAVIGATION = 'SLDSVerticalNavigation';
 export const VERTICAL_NAVIGATION_ITEM = 'SLDSVerticalNavigationItem';
+export const VISUAL_PICKER = 'SLDSVisualPicker';
+export const VISUAL_PICKER_LINK = 'SLDSVisualPickerLink';

@@ -813,6 +813,13 @@
 			"display-name": "Vertical Navigation",
 			"SLDS-component-path": "/components/vertical-navigation",
 			"url-slug": "vertical-navigation"
+		},
+		{
+			"component": "visual-picker",
+			"status": "prod",
+			"display-name": "Visual Pickers",
+			"SLDS-component-path": "/components/visual-picker",
+			"url-slug": "visual-pickers"
 		}
 	],
 	"documentation": {

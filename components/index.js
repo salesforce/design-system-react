@@ -312,6 +312,12 @@ export Tree from './tree';
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
+export SLDSVisualPicker from './visual-picker';
+export VisualPicker from './visual-picker';
+
+export SLDSVisualPickerLink from './visual-picker/link';
+export VisualPickerLink from './visual-picker/link';
+
 export SLDSDynamicIcon from './dynamic-icon';
 export DynamicIcon from './dynamic-icon';
 

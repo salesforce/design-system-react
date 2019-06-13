@@ -2858,6 +2858,22 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "renderVisualPickerVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -2893,6 +2909,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "heading": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -2900,7 +2920,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `heading`: This is used as a visually hidden label if, no `labels.heading` is provided.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -2970,6 +2990,11 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "heading": {
+                            "name": "custom",
+                            "raw": "PropTypes.heading",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -2985,7 +3010,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
                 "defaultValue": {
                     "value": "{\n    toggleDisabled: 'Disabled',\n    toggleEnabled: 'Enabled',\n}",
                     "computed": false
@@ -3076,6 +3101,10 @@
                         {
                             "value": "'button-group'",
                             "computed": false
+                        },
+                        {
+                            "value": "'visual-picker'",
+                            "computed": false
                         }
                     ]
                 },
@@ -3085,6 +3114,58 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether visual picker is coverable when selected (only for visual picker variant)"
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)"
+            },
+            "onRenderVisualPicker": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows icon to shown with checkbox (only for non-coverable visual picker variant)"
+            },
+            "onRenderVisualPickerSelected": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
+            },
+            "onRenderVisualPickerNotSelected": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of checkbox in case of visual composer variant"
             }
         },
         "route": "checkboxes",
@@ -12281,20 +12362,23 @@
                 "required": false,
                 "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
             },
-            "label": {
+            "labels": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "heading": {
+                            "name": "custom",
+                            "raw": "PropTypes.heading",
+                            "required": false
                         },
-                        {
-                            "name": "element"
+                        "label": {
+                            "name": "string",
+                            "required": false
                         }
-                    ]
+                    }
                 },
-                "required": true,
-                "description": "The string or element that is shown as both the title and the label for this radio input."
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\"."
             },
             "name": {
                 "type": {
@@ -12332,6 +12416,10 @@
                         {
                             "value": "'swatch'",
                             "computed": false
+                        },
+                        {
+                            "value": "'visual-picker'",
+                            "computed": false
                         }
                     ]
                 },
@@ -12341,6 +12429,69 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether visual picker is coverable when selected (only for visual picker variant)",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)"
+            },
+            "onRenderVisualPicker": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for non-coverable visual picker variant)"
+            },
+            "onRenderVisualPickerSelected": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
+            },
+            "onRenderVisualPickerNotSelected": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
+            },
+            "description": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Shows description for radio option (only for visual picker variant)"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
             },
             "refs": {
                 "type": {
