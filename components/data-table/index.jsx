@@ -26,7 +26,8 @@ import {
 	canUseDOM,
 	canUseEventListeners,
 } from '../../utilities/execution-environment';
-import paletteColorsCommon from '../../utilities/design-tokens/dist/palette-colors.common';
+import { colorGray5 } from '../../utilities/design-tokens/dist/palette-colors.common';
+import { tableBorderRadius } from '../../utilities/design-tokens/dist/salesforce-skin.common';
 
 // ## Children
 import DataTableCell from './cell';
@@ -140,6 +141,10 @@ class DataTable extends React.Component {
 				id: PropTypes.string.isRequired,
 			})
 		).isRequired,
+		/**
+		 * Makes DataTable joinable with PageHeader by adding appropriate classes/styling
+		 */
+		joined: PropTypes.bool,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -517,13 +522,24 @@ class DataTable extends React.Component {
 		);
 
 		if (this.props.fixedHeader) {
+			const border = `1px solid ${colorGray5}`;
+			const styles = {
+				borderTop: border,
+				height: '100%',
+			};
+
+			if (this.props.joined) {
+				styles.borderBottom = border;
+				styles.borderLeft = border;
+				styles.borderRight = border;
+				styles.borderTop = 'none';
+				styles.borderRadius = tableBorderRadius;
+			}
+
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
-					style={{
-						borderTop: `1px solid ${paletteColorsCommon.colorGray5}`,
-						height: '100%',
-					}}
+					style={styles}
 					onScroll={(e) => {
 						const containerScrollLeft = e.target.scrollLeft;
 

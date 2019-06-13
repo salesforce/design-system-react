@@ -89,6 +89,10 @@ const propTypes = {
 	 */
 	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
+	 * Makes PageHeader joinable with DataTable by adding appropriate classes/styling
+	 */
+	joined: PropTypes.bool,
+	/**
 	 * Used with the `object-home` variant. Accepts a node, typically a Dropdown component
 	 */
 	nameSwitcherDropdown: PropTypes.node,
@@ -145,6 +149,7 @@ class PageHeader extends Component {
 					variant === 'record-home' || variant === 'recordHome',
 				'slds-page-header_related-list':
 					variant === 'related-list' || variant === 'relatedList',
+				'slds-page-header_joined': this.props.joined,
 			},
 			className
 		);
