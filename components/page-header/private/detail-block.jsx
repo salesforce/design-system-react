@@ -13,25 +13,33 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
-	/**
-	 * label
-	 */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * The content property can be a string or a React element
 	 */
-	content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	content: PropTypes.node,
+	/**
+	 * Sets the 'flavor' of a block, which adds the following sizing class: `slds-size_${flavor}`
+	 */
+	flavor: PropTypes.string,
+	/**
+	 * Sets the label of a detail block
+	 */
+	label: PropTypes.node,
 	/**
 	 * Sets whether the fields truncate
 	 */
 	truncate: PropTypes.bool,
-	flavor: PropTypes.string,
 };
 
 const defaultProps = {
-	label: '',
 	content: '',
+	label: '',
+	truncate: true,
 };
 
 class DetailBlock extends Component {
@@ -41,26 +49,55 @@ class DetailBlock extends Component {
 	}
 
 	componentDidMount() {
-		this._renderFieldTruncation();
+		this.renderFieldTruncation();
 	}
 
 	componentDidUpdate(prevProps) {
 		if (this.props.content !== prevProps.content) {
-			this._renderFieldTruncation();
+			this.renderFieldTruncation();
 		}
 	}
 
-	// eslint-disable-next-line class-methods-use-this
-	_getClassNames(className, flavor) {
-		return classnames('slds-page-header__detail-block', className, {
-			[`slds-size_${flavor}`]: flavor,
-		});
+	renderContent() {
+		const { content, truncate } = this.props;
+
+		if (typeof content === 'string') {
+			const labelClasses = classnames({ 'slds-truncate': truncate });
+
+			return (
+				<div
+					className={labelClasses}
+					ref={(field) => {
+						this.fieldContentRef = field;
+					}}
+					title={content}
+				>
+					{content}
+				</div>
+			);
+		}
+
+		return content;
 	}
 
-	_renderFieldTruncation() {
+	renderContentWithTooltip() {
+		const { content, truncate } = this.props;
+		const labelClasses = classnames({ 'slds-truncate': truncate });
+
+		return (
+			<Tooltip align="top" title={content} triggerStyle={{ display: 'inline' }}>
+				<div className={labelClasses} tabIndex="0" title={content}>
+					{content}
+				</div>
+			</Tooltip>
+		);
+	}
+
+	renderFieldTruncation() {
 		const fieldContent = this.fieldContentRef;
 		const isTruncated =
 			fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
+
 		if (isTruncated) {
 			this.setState({ showTooltip: true });
 		} else {
@@ -68,78 +105,37 @@ class DetailBlock extends Component {
 		}
 	}
 
-	render() {
-		const { className, content, flavor, label, truncate } = this.props;
+	renderLabel() {
+		const { label, truncate } = this.props;
 
-		const classes = this._getClassNames(className, flavor);
-
-		/**
-		 * Render the label
-		 */
-		const renderLabel = () => {
-			const type = typeof label;
-
-			if (type === 'string') {
-				const labelClasses = classnames('slds-text-title', {
-					'slds-truncate': truncate,
-				});
-				return (
-					<p className={labelClasses} title={label}>
-						{label}
-					</p>
-				);
-			}
-			return label;
-		};
-
-		/**
-		 * Render the content
-		 */
-		const renderContent = () => {
-			const type = typeof content;
-			if (type === 'string') {
-				const labelClasses = classnames('slds-text-body_regular', {
-					'slds-truncate': truncate,
-				});
-				return (
-					<p
-						ref={(field) => {
-							this.fieldContentRef = field;
-						}}
-						className={labelClasses}
-						content={content}
-					>
-						{content}
-					</p>
-				);
-			}
-			return content;
-		};
-
-		/**
-		 * Render the content with a tooltip (for content that truncates)
-		 */
-		const renderContentWithTooltip = () => {
-			const labelClasses = classnames('slds-text-body_regular', {
+		if (typeof label === 'string') {
+			const labelClasses = classnames('slds-text-title', {
 				'slds-truncate': truncate,
 			});
+
 			return (
-				<Tooltip
-					align="top"
-					content={content}
-					triggerStyle={{ display: 'inline' }}
-				>
-					<p tabIndex="0" className={labelClasses}>
-						{content}
-					</p>
-				</Tooltip>
+				<div className={labelClasses} title={label}>
+					{label}
+				</div>
 			);
-		};
+		}
+
+		return label;
+	}
+
+	render() {
+		const { className, flavor } = this.props;
+
+		const classes = classnames('slds-page-header__detail-block', className, {
+			[`slds-size_${flavor}`]: flavor,
+		});
 
 		return (
 			<li className={classes}>
-				{renderLabel()}
-				{this.state.showTooltip ? renderContentWithTooltip() : renderContent()}
+				{this.renderLabel()}
+				{this.state.showTooltip
+					? this.renderContentWithTooltip()
+					: this.renderContent()}
 			</li>
 		);
 	}

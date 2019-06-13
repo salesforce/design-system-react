@@ -5,50 +5,70 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+import Label from './label';
+
 const displayName = 'PageHeaderTitle';
 const propTypes = {
-	/**
-	 * Sets whether the title will truncate its content responsively.
-	 */
-	truncate: PropTypes.bool,
 	/**
 	 * Sets the vertical alignment on the title
 	 */
 	align: PropTypes.oneOf(['top', 'middle', 'bottom']),
 	/**
-	 * The title string (required)
-	 */
-	title: PropTypes.string.isRequired,
-	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * The title content
+	 */
+	content: PropTypes.node,
+	/**
+	 * Label node, for variants that require a label within the title
+	 */
+	label: PropTypes.node,
+	/**
+	 * Sets whether the title will truncate its content responsively.
+	 */
+	truncate: PropTypes.bool,
 };
 const defaultProps = {
-	truncate: true,
-	align: 'middle',
+	// align: 'middle',
 	title: 'Page Header Title',
-	className: '',
+	truncate: true,
 };
 
 class Title extends Component {
-	// eslint-disable-next-line class-methods-use-this
-	_getClassNames(truncate, align, className) {
-		return classnames('slds-page-header__title slds-m-right_small', className, {
-			'slds-truncate': truncate,
-			[`slds-align-${align}`]: align,
-		});
-	}
-
 	render() {
-		const { children, title, truncate, align, className } = this.props;
-		const classes = this._getClassNames(truncate, align, className);
+		if (!this.props.content) return null;
+
+		const classes = classnames(
+			'slds-page-header__title',
+			this.props.className,
+			{
+				'slds-truncate': this.props.truncate,
+				[`slds-align-${this.props.align}`]: this.props.align,
+			}
+		);
 
 		return (
-			<h1 className={classes} title={title}>
-				{title}
-				{children}
-			</h1>
+			<div className="slds-page-header__name-title">
+				<h1>
+					<Label content={this.props.label} />
+					<span
+						className={classes}
+						title={
+							typeof this.props.content === 'string'
+								? this.props.content
+								: undefined
+						}
+					>
+						{this.props.content}
+					</span>
+				</h1>
+			</div>
 		);
 	}
 }

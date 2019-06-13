@@ -3,46 +3,92 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Controls from '../controls';
+import Icon from '../../../icon';
+import Info from '../info';
 import MediaObject from '../../../media-object';
+import Title from '../title';
 
 const displayName = 'PageHeaderBase';
 const propTypes = {
 	/**
-	 * Icon node passed by PageHeader
+	 * The page header icon
 	 */
 	icon: PropTypes.node,
 	/**
-	 * Title node passed by PageHeader
+	 * The icon category
 	 */
-	title: PropTypes.node,
+	iconCategory: PropTypes.string,
 	/**
-	 * Info node passed by PageHeader
+	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: PropTypes.string,
+	/**
+	 * If omitted, icon position is centered.
+	 */
+	iconPosition: PropTypes.string,
+	/**
+	 * Determines the size of the icon.
+	 */
+	iconSize: PropTypes.string,
+	/**
+	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
+	 */
+	iconVariant: PropTypes.string,
+	/**
+	 * The info property can be a string or a React element
 	 */
 	info: PropTypes.node,
 	/**
 	 * Nav content which appears in the upper right hand corner.
-	 * 'navRight' prop will be deprecated soon, instaed use 'onRenderControls'
+	 * prop 'navRight' will be deprecated soon, use 'onRenderControls' instead
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	onRenderControls: PropTypes.func,
+	/**
+	 * The title property can be a string or a React element
+	 */
+	title: PropTypes.node,
+	/**
+	 * The type of component
+	 */
+	variant: PropTypes.string,
 };
 
 const Base = (props) => (
-	<div className="slds-grid slds-page-header__row">
-		<div className="slds-col slds-page-header__col-title">
+	<div className="slds-page-header__row">
+		<div className="slds-page-header__col-title">
 			<MediaObject
 				body={
-					<div>
-						{props.title}
-						{props.info}
-					</div>
+					<>
+						<div className="slds-page-header__name">
+							<Title content={props.title} />
+						</div>
+						<Info content={props.info} variant={props.variant} />
+					</>
 				}
-				className="slds-no-space slds-grow"
-				figure={props.icon}
+				figure={
+					props.iconName ? (
+						<Icon
+							category={props.iconCategory}
+							className="slds-page-header__icon"
+							name={props.iconName}
+							position={props.iconPosition}
+							size={props.iconSize}
+							variant={props.iconVariant}
+						/>
+					) : (
+						props.icon
+					)
+				}
 			/>
 		</div>
-		<div className="slds-col slds-no-flex slds-grid slds-align-top">
-			{props.onRenderControls ? props.onRenderControls : props.navRight}
-		</div>
+		<Controls
+			className="slds-align-middle"
+			navRight={props.navRight}
+			onRenderControls={props.onRenderControls}
+			type="controls"
+		/>
 	</div>
 );
 Base.displayName = displayName;

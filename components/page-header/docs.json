@@ -3,5 +3,10 @@
     "status": "prod",
     "display-name": "Page Headers",
     "SLDS-component-path": "/components/page-headers",
+	"dependencies": [
+	  {
+		"component": "control"
+	  }
+	],
     "url-slug": "page-headers"
 }

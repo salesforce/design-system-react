@@ -12,7 +12,11 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * An array of detail blocks
 	 */
@@ -21,25 +25,14 @@ const propTypes = {
 const defaultProps = {};
 
 class DetailRow extends Component {
-	// eslint-disable-next-line class-methods-use-this
-	_getClassNames(className) {
-		return classnames('slds-grid slds-page-header__detail-row', className);
-	}
+	renderDetails() {
+		if (this.props.children !== undefined) {
+			return this.props.children;
+		}
 
-	render() {
-		const { children, className, details } = this.props;
-		const classes = this._getClassNames(className);
-
-		/**
-		 * Render the deets
-		 */
-		const renderDetails = () => {
-			if (children !== undefined) {
-				return children;
-			}
-
-			return details.map((detail, i) => {
-				const key = `PageHeader.detailBlock.${i}`;
+		if (this.props.details) {
+			return this.props.details.map((detail, i) => {
+				const key = `page-header-detail-block-${i}`;
 
 				return (
 					<DetailBlock
@@ -51,9 +44,18 @@ class DetailRow extends Component {
 					/>
 				);
 			});
-		};
+		}
 
-		return <ul className={classes}>{renderDetails()}</ul>;
+		return null;
+	}
+
+	render() {
+		const classes = classnames(
+			'slds-page-header__detail-row',
+			this.props.className
+		);
+
+		return <ul className={classes}>{this.renderDetails()}</ul>;
 	}
 }
 
