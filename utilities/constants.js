@@ -139,3 +139,5 @@ export const TRIAL_BAR_DROPDOWN = 'SLDSTrialBarDropdown';
 export const TRIAL_BAR_BUTTON = 'SLDSTrialBarButton';
 export const VERTICAL_NAVIGATION = 'SLDSVerticalNavigation';
 export const VERTICAL_NAVIGATION_ITEM = 'SLDSVerticalNavigationItem';
+export const VISUAL_PICKER = 'SLDSVisualPicker';
+export const VISUAL_PICKER_LINK = 'SLDSVisualPickerLink';

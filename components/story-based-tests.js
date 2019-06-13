@@ -49,6 +49,7 @@ export ProgressIndicator from '../components/progress-indicator/__docs__/storybo
 export ProgressBar from '../components/progress-bar/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
 export ProgressRing from '../components/progress-ring/__docs__/storybook-stories';
+export Radio from '../components/radio/__docs__/storybook-stories';
 // export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 // export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
@@ -63,6 +64,7 @@ export TrialBar from '../components/trial-bar/__docs__/storybook-stories';
 export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
 // export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
+export VisualPicker from '../components/visual-picker/__docs__/storybook-stories';
 
 /*
  * The following components are not compatible Jest testing because they

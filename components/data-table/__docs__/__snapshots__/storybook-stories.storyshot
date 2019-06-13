@@ -1213,9 +1213,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 />
                 <span
                   className="slds-form-element__label"
-                >
-                  
-                </span>
+                />
               </label>
             </span>
           </td>
@@ -1400,9 +1398,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 />
                 <span
                   className="slds-form-element__label"
-                >
-                  
-                </span>
+                />
               </label>
             </span>
           </td>
@@ -1587,9 +1583,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 />
                 <span
                   className="slds-form-element__label"
-                >
-                  
-                </span>
+                />
               </label>
             </span>
           </td>
@@ -2046,9 +2040,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 />
                 <span
                   className="slds-form-element__label"
-                >
-                  
-                </span>
+                />
               </label>
             </span>
           </td>
@@ -2233,9 +2225,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 />
                 <span
                   className="slds-form-element__label"
-                >
-                  
-                </span>
+                />
               </label>
             </span>
           </td>
@@ -2420,9 +2410,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 />
                 <span
                   className="slds-form-element__label"
-                >
-                  
-                </span>
+                />
               </label>
             </span>
           </td>
