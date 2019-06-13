@@ -140,7 +140,7 @@ class ButtonStateful extends React.Component {
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
 			'slds-max-small-button_stretch': this.props.responsive,
-			'slds-button_icon-border': this.props.variant === 'icon',
+			'slds-button_icon-border-filled': this.props.variant === 'icon',
 		});
 	}
 
