@@ -1019,7 +1019,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
       id="setup-assistant-progress-indicator"
     >
       <ol
-        className="slds-progress__list"
+        className="slds-progress__list slds-progress__list-bordered"
       >
         <li
           className="slds-progress__item slds-is-active"

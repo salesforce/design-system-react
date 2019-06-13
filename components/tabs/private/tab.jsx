@@ -124,7 +124,7 @@ class Tab extends React.Component {
 
 		return (
 			<li
-				className={classNames('slds-text-title_caps', className, {
+				className={classNames(className, {
 					[activeTabClassName]: selected,
 					[disabledTabClassName]: disabled,
 					'slds-tabs_default__item': variant === 'default',
