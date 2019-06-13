@@ -26,7 +26,7 @@ exports[`DOM snapshots SLDSTrialBar Default 1`] = `
           Take the salesforce tour
         </button>
         <div
-          className="slds-dropdown-trigger slds-dropdown-trigger_click"
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-grid"
           id="dropdown"
           onClick={[Function]}
           onFocus={null}

@@ -11,11 +11,14 @@ import { TRIAL_BAR_DROPDOWN } from '../../utilities/constants';
 // eslint-disable-next-line react/forbid-foreign-prop-types
 const { propTypes } = MenuDropdown;
 
+/**
+ *  A Dropdown within the Trial Bar.
+ */
 const TrialBarDropdown = (props) => {
 	const { label, ...rest } = props;
 	return (
 		<Dropdown {...rest} inverse>
-			<DropdownTrigger>
+			<DropdownTrigger triggerClassName="slds-grid">
 				<Button
 					inverse
 					style={{ border: 0, height: '100%', padding: 0 }}

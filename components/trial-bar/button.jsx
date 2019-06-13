@@ -6,6 +6,9 @@ import { TRIAL_BAR_BUTTON } from '../../utilities/constants';
 // eslint-disable-next-line react/forbid-foreign-prop-types
 const { propTypes } = Button;
 
+/**
+ *  A Button within the Trial Bar.
+ */
 const TrialBarButton = (props) => (
 	<Button
 		{...props}
