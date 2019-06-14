@@ -7,7 +7,7 @@ import { TRIAL_BAR_BUTTON } from '../../utilities/constants';
 const { propTypes } = Button;
 
 /**
- *  A Button within the Trial Bar.
+ *  A [Button](/components/buttons/) within the Trial Bar.
  */
 const TrialBarButton = (props) => (
 	<Button

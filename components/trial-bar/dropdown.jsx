@@ -12,7 +12,7 @@ import { TRIAL_BAR_DROPDOWN } from '../../utilities/constants';
 const { propTypes } = MenuDropdown;
 
 /**
- *  A Dropdown within the Trial Bar.
+ *  A [Dropdown](/components/menu-dropdowns/) within the Trial Bar.
  */
 const TrialBarDropdown = (props) => {
 	const { label, ...rest } = props;
