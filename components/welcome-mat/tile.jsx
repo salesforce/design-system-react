@@ -7,7 +7,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import IconSettings from '~/components/icon-settings';
 import Icon from '~/components/icon';
 
 // ### shortid
@@ -60,13 +59,13 @@ const defaultProps = {
 /**
  * Tile component item represents a tile in a Welcome Mat
  */
-class WelcomeMatTile extends React.Component {
+class Tile extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 
 	/**
-	 * Get the File's HTML id. Generate a new one if no ID present.
+	 * Get the Welcome Mat Tile's HTML id. Generate a new one if no ID present.
 	 */
 	getId() {
 		return this.props.id || this.generatedId;
@@ -103,38 +102,36 @@ class WelcomeMatTile extends React.Component {
 		);
 
 		return (
-			<IconSettings iconPath="/assets/icons">
-				<div
-					id={this.getId()}
-					className={classNames(
-						'slds-welcome-mat__tile',
-						this.props.variant === 'info-only'
-							? 'slds-welcome-mat__tile_info-only'
-							: null,
-						this.props.isComplete && !this.props.isInfoOnly
-							? 'slds-welcome-mat__tile_complete'
-							: null,
-						this.props.className
-					)}
-				>
-					{this.props.variant === 'info-only' ? (
-						<div className="slds-media">{body}</div>
-					) : (
-						<a
-							href={this.props.href}
-							className="slds-box slds-box_link slds-media"
-						>
-							{body}
-						</a>
-					)}
-				</div>
-			</IconSettings>
+			<div
+				id={this.getId()}
+				className={classNames(
+					'slds-welcome-mat__tile',
+					this.props.variant === 'info-only'
+						? 'slds-welcome-mat__tile_info-only'
+						: null,
+					this.props.isComplete && !this.props.isInfoOnly
+						? 'slds-welcome-mat__tile_complete'
+						: null,
+					this.props.className
+				)}
+			>
+				{this.props.variant === 'info-only' ? (
+					<div className="slds-media">{body}</div>
+				) : (
+					<a
+						href={this.props.href}
+						className="slds-box slds-box_link slds-media"
+					>
+						{body}
+					</a>
+				)}
+			</div>
 		);
 	}
 }
 
-WelcomeMatTile.displayName = displayName;
-WelcomeMatTile.propTypes = propTypes;
-WelcomeMatTile.defaultProps = defaultProps;
+Tile.displayName = displayName;
+Tile.propTypes = propTypes;
+Tile.defaultProps = defaultProps;
 
-export default WelcomeMatTile;
+export default Tile;

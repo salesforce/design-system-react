@@ -5,8 +5,11 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/steps-complete.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/info-only.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/splash.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/trailhead.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/trailhead-complete.jsx'),
 ];
 
 module.exports = siteStories;

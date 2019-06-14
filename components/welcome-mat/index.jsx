@@ -38,6 +38,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * whether the modal is open
+	 */
+	isOpen: PropTypes.bool,
+	/**
 	 * **Weclome Mat labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `title`: Title for the Welcome Mat
@@ -61,10 +65,15 @@ const propTypes = {
 	 * Link to learn more button
 	 */
 	onRenderInfoActions: PropTypes.func,
+	/**
+	 *
+	 */
+	infoBadge: PropTypes.func,
 };
 
 const defaultProps = {
 	variant: 'steps',
+	isOpen: true,
 };
 
 /**
@@ -86,7 +95,7 @@ class WelcomeMat extends React.Component {
 	}
 
 	/**
-	 * Get the File's HTML id. Generate a new one if no ID present.
+	 * Get the WelcomeMat's HTML id. Generate a new one if no ID present.
 	 */
 	getId() {
 		return this.props.id || this.generatedId;
@@ -112,15 +121,19 @@ class WelcomeMat extends React.Component {
 					'slds-welcome-mat__info-content',
 					this.props.className
 				)}
-				id={`${this.getId}-content`}
+				id={`${this.getId()}-content`}
 			>
-				<h2 className="slds-welcome-mat__info-title" id={`${this.getId}-label`}>
+				<h2
+					className="slds-welcome-mat__info-title"
+					id={`${this.getId()}-label`}
+				>
 					{this.props.labels.title}
 				</h2>
 				<div className="slds-welcome-mat__info-description slds-text-longform">
 					<p>{this.props.labels.description}</p>
 				</div>
-				{this.props.variant !== 'steps' ? (
+				{this.props.variant === 'info-only' &&
+				this.props.variant === 'splash' ? (
 					<div className="slds-welcome-mat__info-actions">
 						{this.props.onRenderInfoActions()
 							? this.props.onRenderInfoActions()
@@ -144,24 +157,56 @@ class WelcomeMat extends React.Component {
 						</div>
 					</div>
 				) : null}
-				{this.props.variant === 'steps' && this.props.children ? (
+				{(this.props.variant === 'steps' ||
+					this.props.variant === 'trailhead-connected') &&
+				this.props.children ? (
 					<React.Fragment>
-						<div className="slds-welcome-mat__info-progress">
-							<p>
-								<strong>
-									{this.state.completedSteps}/{this.state.totalSteps} units
-									completed
-								</strong>
-							</p>
+						<div
+							className={classNames(
+								'slds-welcome-mat__info-progress',
+								// eslint-disable-next-line eqeqeq
+								this.state.completedSteps == this.state.totalSteps
+									? 'slds-welcome-mat__info-progress_complete'
+									: null
+							)}
+						>
+							{this.props.variant === 'trailhead-connected'
+								? React.Children.map(this.props.infoBadge(), (child) =>
+										React.cloneElement(child, {
+											isComplete:
+												this.state.completedSteps === this.state.totalSteps
+													? 'complete'
+													: null,
+										})
+									)
+								: null}
+							{this.state.completedSteps !== this.state.totalSteps ||
+							this.props.variant !== 'trailhead-connected' ? (
+								<>
+									{this.props.variant === 'trailhead-connected' ? (
+										<p>
+											{this.state.completedSteps}/{this.state.totalSteps} units
+											completed
+										</p>
+									) : (
+										<p>
+											<strong>
+												{this.state.completedSteps}/{this.state.totalSteps}{' '}
+												units completed
+											</strong>
+										</p>
+									)}
+									<ProgressBar value={this.state.progress} radius="circular" />
+								</>
+							) : null}
 						</div>
-						<ProgressBar value={this.state.progress} radius="circular" />
 					</React.Fragment>
 				) : null}
 			</div>
 		);
 
 		return (
-			<Modal isOpen size="small" id={`${this.getId}-modal`}>
+			<Modal isOpen={this.props.isOpen} size="small" id={`${this.getId}-modal`}>
 				<div
 					className={classNames(
 						'slds-welcome-mat',
