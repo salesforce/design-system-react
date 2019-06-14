@@ -54,7 +54,7 @@ const propTypes = {
 	 * * `label`: Label for the radio input
 	 */
 	labels: PropTypes.shape({
-		heading: PropTypes.heading,
+		heading: PropTypes.string,
 		label: PropTypes.string,
 	}),
 	/**
