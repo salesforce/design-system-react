@@ -1557,6 +1557,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
     >
       <div
         id="card-setup-assistant-progress-bar"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
       >
         <div
           className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
@@ -1576,7 +1581,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
           </span>
         </div>
         <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={50}
           className="slds-progress-bar slds-progress-bar_circular"
+          role="progressbar"
         >
           <span
             className="slds-progress-bar__value slds-progress-bar__value_success"

@@ -168,7 +168,7 @@
 		"karma-sourcemap-loader": "^0.3.5",
 		"karma-spec-reporter": "^0.0.31",
 		"karma-webpack": "^3.0.0",
-		"lint-staged": "^3.3.0",
+		"lint-staged": "^8.2.0",
 		"lodash.filter": "^4.6.0",
 		"lodash.isempty": "^4.2.1",
 		"lodash.kebabcase": "^4.0.1",
