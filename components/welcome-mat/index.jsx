@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 import Modal from '~/components/modal';
 import ProgressBar from '~/components/progress-bar';
-
+import Checkbox from '~/components/checkbox';
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -19,6 +19,12 @@ import { WELCOME_MAT } from '../../utilities/constants';
 const displayName = WELCOME_MAT;
 
 const propTypes = {
+	/**
+	 *  **Assistive text for accessibility**
+	 */
+	assistiveText: PropTypes.shape({
+		doNotShowAgain: PropTypes.string,
+	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
@@ -32,25 +38,33 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Title for the Welcome Mat
+	 * **Weclome Mat labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `title`: Title for the Welcome Mat
+	 * * `description`: Label for the radio input
 	 */
-	title: PropTypes.string,
+	labels: PropTypes.shape({
+		title: PropTypes.string,
+		description: PropTypes.string,
+		doNotShowAgain: PropTypes.string,
+	}),
 	/**
-	 * Description for the Welcome Mat
+	 *	Variant of the WelcomeMat
 	 */
-	description: PropTypes.string,
-	/**
-	 * Whether the Welcome Mat has steps
-	 */
-	isInfoOnly: PropTypes.bool,
+	variant: PropTypes.oneOf([
+		'steps',
+		'info-only',
+		'splash',
+		'trailhead-connected',
+	]),
 	/**
 	 * Link to learn more button
 	 */
-	learnMoreURL: PropTypes.string,
+	onRenderInfoActions: PropTypes.func,
 };
 
 const defaultProps = {
-	isInfoOnly: false,
+	variant: 'steps',
 };
 
 /**
@@ -94,26 +108,43 @@ class WelcomeMat extends React.Component {
 	render() {
 		const splash = (
 			<div
-				className="slds-welcome-mat__info-content"
+				className={classNames(
+					'slds-welcome-mat__info-content',
+					this.props.className
+				)}
 				id={`${this.getId}-content`}
 			>
 				<h2 className="slds-welcome-mat__info-title" id={`${this.getId}-label`}>
-					{this.props.title}
+					{this.props.labels.title}
 				</h2>
 				<div className="slds-welcome-mat__info-description slds-text-longform">
-					<p>{this.props.description}</p>
+					<p>{this.props.labels.description}</p>
 				</div>
-				{this.props.learnMoreURL ? (
+				{this.props.variant !== 'steps' ? (
 					<div className="slds-welcome-mat__info-actions">
-						<a
-							href={this.props.learnMoreURL}
-							className="slds-button slds-button_brand"
-						>
-							Learn More
-						</a>
+						{this.props.onRenderInfoActions()
+							? this.props.onRenderInfoActions()
+							: null}
+						<div className="slds-m-top_large">
+							<Checkbox
+								assistiveText={{
+									label:
+										this.props.assistiveText &&
+										this.props.assistiveText.doNotShowAgain
+											? this.props.assistiveText.doNotShowAgain
+											: `Don't show this again`,
+								}}
+								id={`${this.getId()}-do-not-show-again-checkbox`}
+								labels={{
+									label: this.props.labels.doNotShowAgain
+										? this.props.labels.doNotShowAgain
+										: `Don't show this again`,
+								}}
+							/>
+						</div>
 					</div>
 				) : null}
-				{!this.props.isInfoOnly && this.props.children ? (
+				{this.props.variant === 'steps' && this.props.children ? (
 					<React.Fragment>
 						<div className="slds-welcome-mat__info-progress">
 							<p>
@@ -147,14 +178,14 @@ class WelcomeMat extends React.Component {
 									className={classNames(
 										'slds-welcome-mat__tiles',
 										'slds-size_1-of-2',
-										this.props.isInfoOnly
+										this.props.variant === 'info-only'
 											? 'slds-welcome-mat__tiles_info-only'
 											: null
 									)}
 								>
 									{React.Children.map(this.props.children, (child) =>
 										React.cloneElement(child, {
-											isInfoOnly: this.props.isInfoOnly,
+											variant: this.props.variant,
 										})
 									)}
 								</div>

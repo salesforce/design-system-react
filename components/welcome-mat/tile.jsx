@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Welcome Mat Step design pattern](https://lightningdesignsystem.com/components/welcome-mat/) in React.
+// Implements the [Welcome Mat Tile design pattern](https://lightningdesignsystem.com/components/welcome-mat/) in React.
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -14,9 +14,9 @@ import Icon from '~/components/icon';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-import { WELCOME_MAT_STEP } from '../../utilities/constants';
+import { WELCOME_MAT_TILE } from '../../utilities/constants';
 
-const displayName = WELCOME_MAT_STEP;
+const displayName = WELCOME_MAT_TILE;
 
 const propTypes = {
 	/**
@@ -34,21 +34,33 @@ const propTypes = {
 
 	title: PropTypes.string,
 	description: PropTypes.string,
+	/**
+	 * Href for the tile link
+	 */
+	href: PropTypes.string,
+	/**
+	 * Icon for the tile
+	 */
 	icon: PropTypes.string,
-	onClick: PropTypes.string,
+	/**
+	 * Whether the tile is completed
+	 */
 	isComplete: PropTypes.bool,
-	isInfoOnly: PropTypes.bool,
+	/**
+	 * Variant of the Welcome Mat Tile
+	 */
+	variant: PropTypes.oneOf(['steps', 'info-only']),
 };
 
 const defaultProps = {
 	isComplete: false,
-	isInfoOnly: false,
+	variant: 'steps',
 };
 
 /**
- * Step component item represents a step in a Welcome Mat
+ * Tile component item represents a tile in a Welcome Mat
  */
-class Step extends React.Component {
+class Tile extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
@@ -63,7 +75,13 @@ class Step extends React.Component {
 	render() {
 		const body = (
 			<React.Fragment>
-				<div className="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+				<div
+					className={classNames(
+						'slds-media__figure',
+						'slds-media__figure_fixed-width',
+						'slds-align_absolute-center'
+					)}
+				>
 					<div className="slds-welcome-mat__tile-figure">
 						<div className="slds-welcome-mat__tile-icon-container">
 							<Icon category="utility" name={this.props.icon} />
@@ -87,19 +105,23 @@ class Step extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div
+					id={this.getId()}
 					className={classNames(
 						'slds-welcome-mat__tile',
-						this.props.isInfoOnly ? 'slds-welcome-mat__tile_info-only' : null,
+						this.props.variant === 'info-only'
+							? 'slds-welcome-mat__tile_info-only'
+							: null,
 						this.props.isComplete && !this.props.isInfoOnly
 							? 'slds-welcome-mat__tile_complete'
-							: null
+							: null,
+						this.props.className
 					)}
 				>
-					{this.props.isInfoOnly ? (
+					{this.props.variant === 'info-only' ? (
 						<div className="slds-media">{body}</div>
 					) : (
 						<a
-							href={this.props.onClick}
+							href={this.props.href}
 							className="slds-box slds-box_link slds-media"
 						>
 							{body}
@@ -111,8 +133,8 @@ class Step extends React.Component {
 	}
 }
 
-Step.displayName = displayName;
-Step.propTypes = propTypes;
-Step.defaultProps = defaultProps;
+Tile.displayName = displayName;
+Tile.propTypes = propTypes;
+Tile.defaultProps = defaultProps;
 
-export default Step;
+export default Tile;
