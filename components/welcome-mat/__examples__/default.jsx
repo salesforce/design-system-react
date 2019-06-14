@@ -1,6 +1,6 @@
 import React from 'react';
 import WelcomeMat from '~/components/welcome-mat';
-import Tile from '~/components/welcome-mat/tile';
+import WelcomeMatTile from '~/components/welcome-mat/tile';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
@@ -19,33 +19,33 @@ class Example extends React.Component {
 							}}
 							variant="steps"
 						>
-							<Tile
+							<WelcomeMatTile
 								title="Welcome to Salesforce!"
 								description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 								icon="animal_and_nature"
 								onClick="javascript:void(0);"
 								isComplete
 							/>
-							<Tile
+							<WelcomeMatTile
 								title="Learn About OpenCTI!"
 								description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 								icon="call"
 								href="javascript:void(0);"
 								isComplete
 							/>
-							<Tile
+							<WelcomeMatTile
 								title="Power Up the Utility Bar"
 								description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
 								href="javascript:void(0);"
 								icon="call"
 							/>
-							<Tile
+							<WelcomeMatTile
 								title="Customize your view"
 								description="Tailor your cases to your team&#x27;s workflow with custom list views."
 								href="javascript:void(0);"
 								icon="upload"
 							/>
-							<Tile
+							<WelcomeMatTile
 								title="Share the Knowledge"
 								description="Harness your team&#x27;s collective know-how with our powerful knowledge base."
 								href="javascript:void(0);"

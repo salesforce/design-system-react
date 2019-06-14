@@ -60,7 +60,7 @@ const defaultProps = {
 /**
  * Tile component item represents a tile in a Welcome Mat
  */
-class Tile extends React.Component {
+class WelcomeMatTile extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
@@ -133,8 +133,8 @@ class Tile extends React.Component {
 	}
 }
 
-Tile.displayName = displayName;
-Tile.propTypes = propTypes;
-Tile.defaultProps = defaultProps;
+WelcomeMatTile.displayName = displayName;
+WelcomeMatTile.propTypes = propTypes;
+WelcomeMatTile.defaultProps = defaultProps;
 
-export default Tile;
+export default WelcomeMatTile;
