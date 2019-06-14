@@ -17,6 +17,7 @@ class Example extends React.Component {
 								description:
 									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
 							}}
+							id="welcome-mat-steps-complete-example"
 							variant="steps"
 						>
 							<WelcomeMatTile

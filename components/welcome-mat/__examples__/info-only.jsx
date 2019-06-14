@@ -13,6 +13,7 @@ class Example extends React.Component {
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
+							id="welcome-mat-info-only-example"
 							labels={{
 								title: 'The Lightning Experience is here!',
 								description:
