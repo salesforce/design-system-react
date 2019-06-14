@@ -74,6 +74,8 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close dialog',
 	},
+	hasNoCloseButton: false,
+	hasNoNubbin: false,
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
@@ -163,6 +165,14 @@ class Popover extends React.Component {
 			PropTypes.arrayOf(PropTypes.node),
 		]),
 		/**
+		 * Determines if the popover has a close button or not. Default is `false`
+		 */
+		hasNoCloseButton: PropTypes.bool,
+		/**
+		 * Determines if the popover has a nubbin or not. Default is `false`
+		 */
+		hasNoNubbin: PropTypes.bool,
+		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
@@ -170,10 +180,6 @@ class Popover extends React.Component {
 		 * Removes `display:inline-block` from the trigger button.
 		 */
 		hasNoTriggerStyles: PropTypes.bool,
-		/**
-		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
-		 */
-		hasNoNubbin: PropTypes.bool,
 		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant="walkthrough-action"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		 */
@@ -695,24 +701,26 @@ class Popover extends React.Component {
 					'aria-describedby': `${this.getId()}-dialog-body`,
 				}}
 			>
-				<Button
-					assistiveText={{ icon: closeButtonAssistiveText }}
-					iconCategory="utility"
-					iconName="close"
-					className={classNames(
-						'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
-						{
-							'slds-button_icon-inverse':
-								props.variant === 'walkthrough' ||
-								props.variant === 'walkthrough-action',
+				{!this.props.hasNoCloseButton && (
+					<Button
+						assistiveText={{ icon: closeButtonAssistiveText }}
+						iconCategory="utility"
+						iconName="close"
+						className={classNames(
+							'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
+							{
+								'slds-button_icon-inverse':
+									props.variant === 'walkthrough' ||
+									props.variant === 'walkthrough-action',
+							}
+						)}
+						onClick={this.handleCancel}
+						variant="icon"
+						inverse={
+							this.props.variant === 'error' || this.props.variant === 'warning'
 						}
-					)}
-					onClick={this.handleCancel}
-					variant="icon"
-					inverse={
-						this.props.variant === 'error' || this.props.variant === 'warning'
-					}
-				/>
+					/>
+				)}
 				{header}
 				{body}
 				{footer}

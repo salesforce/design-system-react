@@ -51,6 +51,7 @@ const documentationSiteLiveExamples = {
 	radio: require('@salesforce/design-system-react/components/radio/__docs__/site-stories.js'),
 	tabs: require('@salesforce/design-system-react/components/tabs/__docs__/site-stories.js'),
 	'scoped-notification': require('@salesforce/design-system-react/components/scoped-notification/__docs__/site-stories.js'),
+	'setup-assistant': require('@salesforce/design-system-react/components/setup-assistant/__docs__/site-stories.js'),
 	slider: require('@salesforce/design-system-react/components/slider/__docs__/site-stories.js'),
 	spinner: require('@salesforce/design-system-react/components/spinner/__docs__/site-stories.js'),
 	'split-view': require('@salesforce/design-system-react/components/split-view/__docs__/site-stories.js'),
@@ -59,6 +60,7 @@ const documentationSiteLiveExamples = {
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
 	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
 	'vertical-navigation': require('@salesforce/design-system-react/components/vertical-navigation/__docs__/site-stories.js'),
+	'visual-picker': require('@salesforce/design-system-react/components/visual-picker/__docs__/site-stories.js'),
 	'welcome-mat': require('@salesforce/design-system-react/components/welcome-mat/__docs__/site-stories.js'),
 };
 
