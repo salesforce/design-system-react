@@ -132,7 +132,7 @@ class WelcomeMat extends React.Component {
 				<div className="slds-welcome-mat__info-description slds-text-longform">
 					<p>{this.props.labels.description}</p>
 				</div>
-				{this.props.variant === 'info-only' &&
+				{this.props.variant === 'info-only' ||
 				this.props.variant === 'splash' ? (
 					<div className="slds-welcome-mat__info-actions">
 						{this.props.onRenderInfoActions()
@@ -175,7 +175,7 @@ class WelcomeMat extends React.Component {
 										React.cloneElement(child, {
 											isComplete:
 												this.state.completedSteps === this.state.totalSteps
-													? 'complete'
+													? true
 													: null,
 										})
 									)
@@ -206,7 +206,11 @@ class WelcomeMat extends React.Component {
 		);
 
 		return (
-			<Modal isOpen={this.props.isOpen} size="small" id={`${this.getId}-modal`}>
+			<Modal
+				isOpen={this.props.isOpen}
+				size="small"
+				id={`${this.getId()}-modal`}
+			>
 				<div
 					className={classNames(
 						'slds-welcome-mat',

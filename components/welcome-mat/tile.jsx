@@ -48,7 +48,12 @@ const propTypes = {
 	/**
 	 * Variant of the Welcome Mat Tile
 	 */
-	variant: PropTypes.oneOf(['steps', 'info-only']),
+	variant: PropTypes.oneOf([
+		'steps',
+		'info-only',
+		'splash',
+		'trailhead-connected',
+	]),
 };
 
 const defaultProps = {
