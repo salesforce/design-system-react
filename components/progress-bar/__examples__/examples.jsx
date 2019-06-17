@@ -28,3 +28,12 @@ export const MEDIUM_BAR = () => (
 export const LARGE_BAR = () => (
 	<ProgressBar id="progress-bar-large" value={20} thickness="large" />
 );
+
+export const VERTICAL_BAR = () => (
+	<ProgressBar
+		id="progress-bar-vertical"
+		orientation="vertical"
+		value={20}
+		thickness="large"
+	/>
+);

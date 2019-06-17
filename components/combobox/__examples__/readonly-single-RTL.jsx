@@ -2,9 +2,7 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 // eslint-disable-next-line camelcase
-import DirectionSettings from '~/components/utilities/direction';
-import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
+import UNSAFE_DirectionSettings from '~/components/utilities/UNSAFE_direction';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -46,6 +44,10 @@ const accounts = [
 	},
 ];
 
+/**
+ * Combobox rendered in RTL mode. Note that styles might look broken since `salesforce-lightning-design-system.css` styles are loaded in LTR mode.
+ * SLDS doesn't ship a static version of their css in RTL at the moment.
+ */
 class Example extends React.Component {
 	constructor(props) {
 		super(props);
@@ -59,7 +61,12 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<DirectionSettings.Provider value="rtl">
+				<h1>1. Combobox in RTL mode.</h1>
+				<h2 style={{ fontSize: '10px' }}>
+					Note that <i>design-system.css</i> styles are in LTR. See example code
+					for more info.
+				</h2>
+				<UNSAFE_DirectionSettings.Provider value="rtl">
 					<div dir="rtl" style={{ width: '300px' }}>
 						<Combobox
 							id="combobox-readonly-single"
@@ -89,7 +96,7 @@ class Example extends React.Component {
 							variant="readonly"
 						/>
 					</div>
-				</DirectionSettings.Provider>
+				</UNSAFE_DirectionSettings.Provider>
 			</IconSettings>
 		);
 	}

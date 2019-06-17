@@ -14,7 +14,7 @@ import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
 // eslint-disable-next-line camelcase
-import DirectionSettings from '../../utilities/direction';
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
 
 const options = [
 	{
@@ -58,9 +58,10 @@ const getDropdown = (props) => (
 );
 
 const makeRtl = (component) => (
-	<DirectionSettings.Provider value="rtl">
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
 		<div dir="rtl">{component}</div>
-	</DirectionSettings.Provider>
+	</UNSAFE_DirectionSettings.Provider>
 );
 
 class DropdownControlled extends React.Component {

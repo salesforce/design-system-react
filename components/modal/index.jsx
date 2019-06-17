@@ -148,9 +148,9 @@ const propTypes = {
 		'info',
 	]),
 	/**
-	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
+	 * Specifies the modal's width. May be deprecated in favor of `width` in the future.
 	 */
-	size: PropTypes.oneOf(['medium', 'large']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/**
 	 * Content underneath the heading in the modal header.
 	 */
@@ -301,12 +301,10 @@ class Modal extends React.Component {
 				aria-labelledby={dialogLabelledBy}
 				aria-modal={true}
 				className={classNames(
-					{
-						'slds-modal': true,
-						'slds-fade-in-open': true,
-						'slds-modal_large': this.props.size === 'large',
-						'slds-modal_prompt': this.isPrompt(),
-					},
+					'slds-modal',
+					'slds-fade-in-open',
+					this.props.size ? `slds-modal_${this.props.size}` : null,
+					{ 'slds-modal_prompt': this.isPrompt() },
 					this.props.className
 				)}
 				onClick={this.dismissModalOnClickOutside}

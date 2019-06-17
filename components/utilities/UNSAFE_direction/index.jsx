@@ -14,15 +14,16 @@ DIRECTIONS.RTL = 'rtl';
  * The dir attribute is essential to set the direction of text to display and enable HTML in right-to-left.
  * For instance, setting `dir='rtl'` will cause block elements and table columns to start on the right and flow from right to left.
  *
- * Note: This context is prefixed with UNSAFE because it is not a publicly supported feature.
- *
+ * Note: (1) This context is prefixed with UNSAFE because it is not a publicly supported feature.
+ *       (2) When testing this feature in the storybooks, styles consumed from `salesforce-lightning-design-system.css` may appear broken.
+ *           This is expected since Design System React loads only the LTR version since SLDS doesn't ship a static version of RTL.
  * Example on how to use the context to set your component right-to-left:
- * <DirectionSettings.Provider value="rtl">
+ * <UNSAFE_DirectionSettings.Provider value="rtl">
  *      <Combobox ... />
- * </DirectionSettings.Provider>
+ * </UNSAFE_DirectionSettings.Provider>
  */
 // eslint-disable-next-line camelcase
-const DirectionSettings = React.createContext('ltr');
+const UNSAFE_DirectionSettings = React.createContext('ltr');
 
 // eslint-disable-next-line camelcase
-export { DirectionSettings as default, DIRECTIONS };
+export { UNSAFE_DirectionSettings as default, DIRECTIONS };

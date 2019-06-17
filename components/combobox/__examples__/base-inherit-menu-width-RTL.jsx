@@ -5,7 +5,7 @@ import Icon from '~/components/icon';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import IconSettings from '~/components/icon-settings';
 // eslint-disable-next-line camelcase
-import DirectionSettings from '~/components/utilities/direction';
+import UNSAFE_DirectionSettings from '~/components/utilities/UNSAFE_direction';
 
 const accounts = [
 	{
@@ -61,6 +61,10 @@ const accountsWithIcon = accounts.map((elem) => ({
 	},
 }));
 
+/**
+ * Combobox rendered in RTL mode. Note that styles might look broken since `salesforce-lightning-design-system.css` styles are loaded in LTR mode.
+ * SLDS doesn't ship a static version of their css in RTL at the moment.
+ */
 class Example extends React.Component {
 	constructor(props) {
 		super(props);
@@ -75,7 +79,12 @@ class Example extends React.Component {
 		return (
 			<div dir="rtl">
 				<IconSettings iconPath="/assets/icons">
-					<DirectionSettings.Provider value="rtl">
+					<h1>1. Combobox in RTL mode.</h1>
+					<h2 style={{ fontSize: '10px' }}>
+						Note that <i>design-system.css</i> styles are in LTR. See example
+						code for more info.
+					</h2>
+					<UNSAFE_DirectionSettings.Provider value="rtl">
 						<Combobox
 							id="combobox-base-inherit-menu-width"
 							disabled={this.props.disabled}
@@ -148,7 +157,7 @@ class Example extends React.Component {
 							selection={this.state.selection}
 							value={this.state.inputValue}
 						/>
-					</DirectionSettings.Provider>
+					</UNSAFE_DirectionSettings.Provider>
 				</IconSettings>
 			</div>
 		);
