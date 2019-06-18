@@ -317,7 +317,7 @@ exports[`Base Multiple DOM Snapshot 1`] = `
                 className="slds-col slds-no-flex slds-grid slds-align-bottom"
               >
                 <div
-                  className="slds-grid"
+                  className="slds-col slds-no-flex slds-grid slds-align-top"
                 >
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger_click"
@@ -389,7 +389,7 @@ exports[`Base Multiple DOM Snapshot 1`] = `
           className="slds-grid slds-grid_vertical slds-scrollable_none"
         >
           <a
-            className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+            className="slds-split-view__list-header slds-grid slds-text-link_reset"
             href="javascript:void(0);"
             onClick={[Function]}
             role="button"
@@ -989,7 +989,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
                 <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
-                <div class=\\"slds-grid\\">
+                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
                   <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
                   <button
                     class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
@@ -998,7 +998,7 @@ exports[`Base Multiple HTML Snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon_xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon_xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
           <ul
             class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" aria-multiselectable=\\"true\\" role=\\"listbox\\">
             <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"99\\">99</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Biotech, Inc.\\">Biotech, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Biotech, Inc.\\">Nurturing</span></div></div></a></li>
@@ -1263,7 +1263,7 @@ exports[`Base Open DOM Snapshot 1`] = `
                 className="slds-col slds-no-flex slds-grid slds-align-bottom"
               >
                 <div
-                  className="slds-grid"
+                  className="slds-col slds-no-flex slds-grid slds-align-top"
                 >
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger_click"
@@ -1335,7 +1335,7 @@ exports[`Base Open DOM Snapshot 1`] = `
           className="slds-grid slds-grid_vertical slds-scrollable_none"
         >
           <a
-            className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+            className="slds-split-view__list-header slds-grid slds-text-link_reset"
             href="javascript:void(0);"
             onClick={[Function]}
             role="button"
@@ -1934,7 +1934,7 @@ exports[`Base Open HTML Snapshot 1`] = `
                 <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
-                <div class=\\"slds-grid\\">
+                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
                   <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
                   <button
                     class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
@@ -1943,7 +1943,7 @@ exports[`Base Open HTML Snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon_xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon_xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
           <ul
             class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" role=\\"listbox\\">
             <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"99\\">99</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Biotech, Inc.\\">Biotech, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Biotech, Inc.\\">Nurturing</span></div></div></a></li>
@@ -2208,7 +2208,7 @@ exports[`Custom DOM Snapshot 1`] = `
                 className="slds-col slds-no-flex slds-grid slds-align-bottom"
               >
                 <div
-                  className="slds-grid"
+                  className="slds-col slds-no-flex slds-grid slds-align-top"
                 >
                   <div
                     className="slds-dropdown-trigger slds-dropdown-trigger_click"
@@ -2280,7 +2280,7 @@ exports[`Custom DOM Snapshot 1`] = `
           className="slds-grid slds-grid_vertical slds-scrollable_none"
         >
           <a
-            className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+            className="slds-split-view__list-header slds-grid slds-text-link_reset"
             href="javascript:void(0);"
             onClick={[Function]}
             role="button"
@@ -2617,7 +2617,7 @@ exports[`Custom HTML Snapshot 1`] = `
                 <p class=\\"slds-text-body_small slds-line-height_reset\\">42 items • Updated just now</p>
               </div>
               <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
-                <div class=\\"slds-grid\\">
+                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
                   <div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click\\" id=\\"header-right-refresh\\"><button class=\\"slds-button slds-button_icon-more slds-button_icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
                   <button
                     class=\\"slds-button slds-button_icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
@@ -2626,7 +2626,7 @@ exports[`Custom HTML Snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon_xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon_xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
           <ul
             class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" role=\\"listbox\\">
             <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><span class=\\"slds-icon_container slds-icon_container_circle slds-icon-action-call\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#call\\"></use></svg></span><span class=\\"slds-text-heading_small slds-m-left_medium\\">Riley Shultz</span></div></a></li>

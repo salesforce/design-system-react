@@ -68,6 +68,7 @@ exports[`Panel Filtering Default Snapshot DOM Snapshot 1`] = `
                   onMouseEnter={null}
                   onMouseLeave={null}
                   tabIndex="0"
+                  type="button"
                 >
                   <span
                     className="slds-assistive-text"
@@ -117,6 +118,7 @@ exports[`Panel Filtering Default Snapshot DOM Snapshot 1`] = `
                   onMouseEnter={null}
                   onMouseLeave={null}
                   tabIndex="0"
+                  type="button"
                 >
                   <span
                     className="slds-assistive-text"
@@ -178,6 +180,7 @@ exports[`Panel Filtering Default Snapshot DOM Snapshot 1`] = `
                   onMouseEnter={null}
                   onMouseLeave={null}
                   tabIndex="0"
+                  type="button"
                 >
                   <span
                     className="slds-assistive-text"
@@ -255,7 +258,7 @@ exports[`Panel Filtering Default Snapshot HTML Snapshot 1`] = `
         <ol class=\\"slds-list_vertical slds-list_vertical-space\\">
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid_vertical-align-center\\">
-              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button_reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body_small\\">Show Me</p><p>All Products</p></button></div>
+              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button_reset slds-grow slds-has-blur-focus\\" type=\\"button\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body_small\\">Show Me</p><p>All Products</p></button></div>
             </div>
           </li>
         </ol>
@@ -263,14 +266,14 @@ exports[`Panel Filtering Default Snapshot HTML Snapshot 1`] = `
         <ol class=\\"slds-list_vertical slds-list_vertical-space\\">
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid_vertical-align-center\\">
-              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button_reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-created-date\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body_small\\">Created Date</p><p>equals THIS WEEK</p></button></div>
+              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button_reset slds-grow slds-has-blur-focus\\" type=\\"button\\" id=\\"sample-panel-filtering-created-date\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body_small\\">Created Date</p><p>equals THIS WEEK</p></button></div>
               <button
                 class=\\"slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small\\" title=\\"Remove Filter: Created Date equals THIS WEEK\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Created Date equals THIS WEEK</span></button>
             </div>
           </li>
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid_vertical-align-center\\">
-              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button_reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-list-price\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body_small\\">List Price</p><p>greater than &quot;500&quot;</p></button></div>
+              <div class=\\"slds-grow\\" style=\\"display:inline-block\\"><button class=\\"slds-button_reset slds-grow slds-has-blur-focus\\" type=\\"button\\" id=\\"sample-panel-filtering-list-price\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body_small\\">List Price</p><p>greater than &quot;500&quot;</p></button></div>
               <button
                 class=\\"slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small\\" title=\\"Remove Filter: List Price greater than &quot;500&quot;\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon_hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: List Price greater than &quot;500&quot;</span></button>
             </div>
