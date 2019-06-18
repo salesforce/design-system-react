@@ -6,14 +6,14 @@ exports[`Navigation
 		variant
 	DOM Snapshot 1`] = `
 <nav
-  className="slds-nav-vertical slds-nav-vertical_shade CUSTOM-CLASSNAME"
+  className="slds-nav-vertical CUSTOM-CLASSNAME"
   id="CUSTOM-ID"
 >
   <div
     className="slds-nav-vertical__section"
   >
     <h2
-      className="slds-nav-vertical__title slds-text-title_caps"
+      className="slds-nav-vertical__title"
       id="CUSTOM-ID-reports"
     >
       Reports
@@ -90,7 +90,7 @@ exports[`Navigation
     className="slds-nav-vertical__section"
   >
     <h2
-      className="slds-nav-vertical__title slds-text-title_caps"
+      className="slds-nav-vertical__title"
       id="CUSTOM-ID-folders"
     >
       Folders
@@ -149,7 +149,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     className="slds-nav-vertical__section"
   >
     <h2
-      className="slds-nav-vertical__title slds-text-title_caps"
+      className="slds-nav-vertical__title"
       id="sample-navigation-reports"
     >
       Reports
@@ -226,7 +226,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
     className="slds-nav-vertical__section"
   >
     <h2
-      className="slds-nav-vertical__title slds-text-title_caps"
+      className="slds-nav-vertical__title"
       id="sample-navigation-folders"
     >
       Folders
@@ -279,7 +279,7 @@ exports[`Navigation Default DOM Snapshot 1`] = `
 exports[`Navigation Default HTML Snapshot 1`] = `
 "<nav id=\\"sample-navigation\\" class=\\"slds-nav-vertical\\">
   <div class=\\"slds-nav-vertical__section\\">
-    <h2 id=\\"sample-navigation-reports\\" class=\\"slds-nav-vertical__title slds-text-title_caps\\">Reports</h2>
+    <h2 id=\\"sample-navigation-reports\\" class=\\"slds-nav-vertical__title\\">Reports</h2>
     <ul>
       <li class=\\"slds-nav-vertical__item slds-is-active\\"><a data-id=\\"recent_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">Recent</a></li>
       <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"my_reports\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-reports\\">Created by Me</a></li>
@@ -289,7 +289,7 @@ exports[`Navigation Default HTML Snapshot 1`] = `
     </ul>
   </div>
   <div class=\\"slds-nav-vertical__section\\">
-    <h2 id=\\"sample-navigation-folders\\" class=\\"slds-nav-vertical__title slds-text-title_caps\\">Folders</h2>
+    <h2 id=\\"sample-navigation-folders\\" class=\\"slds-nav-vertical__title\\">Folders</h2>
     <ul>
       <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"my_folders\\" href=\\"http://www.google.com\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-folders\\">Created by Me</a></li>
       <li class=\\"slds-nav-vertical__item\\"><a data-id=\\"shared_folders\\" href=\\"javascript:void(0);\\" class=\\"slds-nav-vertical__action\\" aria-describedby=\\"sample-navigation-folders\\">Shared with Me</a></li>

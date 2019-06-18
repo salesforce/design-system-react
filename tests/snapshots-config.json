@@ -1,4 +1,5 @@
 {
+	"rootDir": "../",
 	"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
 	"testEnvironment": "node",
 	"testPathIgnorePatterns": [
