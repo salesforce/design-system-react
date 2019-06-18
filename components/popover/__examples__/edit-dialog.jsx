@@ -13,8 +13,6 @@ class Example extends React.Component {
 
 	constructor(props) {
 		super(props);
-		const defaultFirstName = 'John';
-		const defaultLastName = 'Smith';
 		this.state = {
 			isOpen: this.props.isOpen,
 			firstName: DEFAULT_FIRST_NAME, // stores firstName in edit input field
