@@ -6,6 +6,7 @@ import Thickness from '../__examples__/thickness';
 import Color from '../__examples__/color';
 import Radius from '../__examples__/radius';
 import Descriptive from '../__examples__/descriptive';
+import Vertical from '../__examples__/vertical';
 
 storiesOf(PROGRESS_BAR, module)
 	.addDecorator((getStory) => (
@@ -15,4 +16,5 @@ storiesOf(PROGRESS_BAR, module)
 	.add('Descriptive', () => <Descriptive />)
 	.add('Color', () => <Color />)
 	.add('Radius', () => <Radius />)
-	.add('Thickness', () => <Thickness />);
+	.add('Thickness', () => <Thickness />)
+	.add('Vertical', () => <Vertical />);
