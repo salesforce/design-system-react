@@ -1915,7 +1915,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-media__figure"
                     >
                       <div
-                        className="slds-progress-ring slds-progress-ring_large"
+                        className="slds-progress-ring slds-progress-ring_active-step slds-progress-ring_large"
                       >
                         <div
                           aria-valuemax="100"
