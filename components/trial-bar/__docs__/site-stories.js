@@ -4,7 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/progress-bar/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/trial-bar/__examples__/default.jsx'),
 ];
 
 module.exports = siteStories;
