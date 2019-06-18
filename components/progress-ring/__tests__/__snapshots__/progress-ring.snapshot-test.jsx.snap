@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default DOM Snapshot 1`] = `
+"<div class=\\"slds-grid slds-grid_pull-padded slds-grid_vertical-align-center slds-wrap\\">
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 1 0 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"40\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 1 0 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 1 0 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#lock\\"></use></svg></span></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_complete\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_complete\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"40\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_complete\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"><span title=\\"Complete\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_complete\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"40\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"><span title=\\"Warning\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"40\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"><span title=\\"Expired\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_active-step\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_active-step\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"40\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_active-step\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"70\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 -0.30901699437494756 -0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_active-step\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_active-step slds-progress-ring_large\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_warning slds-progress-ring_large\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"40\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 -0.8090169943749473 0.5877852522924732 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_expired slds-progress-ring_large\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"70\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" style=\\"transform:scaleX(1) rotate(-90deg)\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 -0.30901699437494756 -0.9510565162951535 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"><span title=\\"Expired\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span></div>
+    </div>
+  </div>
+  <div class=\\"slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center\\">
+    <div class=\\"slds-progress-ring slds-progress-ring_complete slds-progress-ring_large\\">
+      <div aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\" class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+      <div class=\\"slds-progress-ring__content\\"></div>
+    </div>
+  </div>
+</div>"
+`;
