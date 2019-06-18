@@ -19,7 +19,7 @@ const defaultProps = {
 		save: 'Save',
 	},
 };
-class EditDialogPopover extends React.Component {
+class EditDialog extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	static displayName = POPOVER_EDIT_DIALOG;
@@ -110,6 +110,6 @@ class EditDialogPopover extends React.Component {
 	}
 }
 
-EditDialogPopover.defaultProps = defaultProps;
+EditDialog.defaultProps = defaultProps;
 
-export default EditDialogPopover;
+export default EditDialog;

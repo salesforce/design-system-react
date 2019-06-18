@@ -111,6 +111,8 @@ export const PROGRESS_INDICATOR_STEP_VERTICAL =
 	'SLDSProgressIndicatorStepVertical';
 export const PROGRESS_RING = 'SLDSProgressRing';
 export const PROGRESS_BAR = 'SLDSProgressBar';
+export const SETUP_ASSISTANT = 'SLDSSetupAssistant';
+export const SETUP_ASSISTANT_STEP = 'SLDSSetupAssistantStep';
 export const SCOPED_NOTIFICATION = 'SLDSScopedNotification';
 export const SLIDER = 'SLDSSlider';
 export const SPINNER = 'SLDSSpinner';
@@ -134,3 +136,5 @@ export const TREE_BRANCH = 'SLDSTreeBranch';
 export const TREE_ITEM = 'SLDSTreeItem';
 export const VERTICAL_NAVIGATION = 'SLDSVerticalNavigation';
 export const VERTICAL_NAVIGATION_ITEM = 'SLDSVerticalNavigationItem';
+export const VISUAL_PICKER = 'SLDSVisualPicker';
+export const VISUAL_PICKER_LINK = 'SLDSVisualPickerLink';

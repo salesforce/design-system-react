@@ -262,6 +262,12 @@ export RadioGroup from './radio-group';
 export SLDSScopedNotification from './scoped-notification';
 export ScopedNotification from './scoped-notification';
 
+export SLDSSetupAssistant from './setup-assistant';
+export SetupAssistant from './setup-assistant';
+
+export SLDSSetupAssistantStep from './setup-assistant/step';
+export SetupAssistantStep from './setup-assistant/step';
+
 export SLDSSlider from './slider';
 export Slider from './slider';
 
@@ -306,8 +312,17 @@ export Tree from './tree';
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
+export SLDSVisualPicker from './visual-picker';
+export VisualPicker from './visual-picker';
+
+export SLDSVisualPickerLink from './visual-picker/link';
+export VisualPickerLink from './visual-picker/link';
+
 export SLDSDynamicIcon from './dynamic-icon';
 export DynamicIcon from './dynamic-icon';
 
 // Library utilities
 export log from '../utilities/log';
+
+// eslint-disable-next-line camelcase
+export UNSAFE_DirectionSettings from './utilities/UNSAFE_direction';

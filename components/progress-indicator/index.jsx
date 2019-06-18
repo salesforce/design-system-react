@@ -156,14 +156,23 @@ function checkSteps(steps) {
 }
 
 /**
- * Check if an item is from an array of items when 'items' is an array;
- * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
+ * Check if an item is from an array of items.
+ * If items argument is not an array, it will be treated as an object comparison between item & items.
  */
 function findStep(item, items) {
-	if (Array.isArray(items)) {
-		return !!find(items, item);
-	}
-	return JSON.stringify(item) === JSON.stringify(items);
+	if (!item || !items) return false;
+
+	const itemsArray = !Array.isArray(items) ? [items] : items;
+
+	return !!find(itemsArray, (arrayItem) => {
+		if (arrayItem === item) {
+			return true;
+		}
+		if (arrayItem.id !== undefined && item.id !== undefined) {
+			return arrayItem.id === item.id;
+		}
+		return JSON.stringify(arrayItem) === JSON.stringify(item);
+	});
 }
 
 /**
@@ -256,6 +265,7 @@ class ProgressIndicator extends React.Component {
 						step={step}
 						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
 						tooltipPosition={tooltipPosition}
+						variant={this.props.variant}
 					/>
 				))}
 			</Progress>

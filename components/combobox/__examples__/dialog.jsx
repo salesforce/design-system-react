@@ -1,6 +1,6 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import Checkbox from '~/components/checkbox';
+import Checkbox from '~/components/forms/checkbox';
 import Combobox from '~/components/combobox';
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover';
@@ -35,9 +35,9 @@ class Example extends React.Component {
 		return inputValue;
 	};
 
-	handleCheckboxChange(target, value) {
+	handleCheckboxChange(targetChecked, target, value) {
 		const { checked } = this.state;
-		if (target.checked) {
+		if (targetChecked) {
 			checked.push({
 				id: target.id,
 				label: value,
@@ -101,8 +101,12 @@ class Example extends React.Component {
 													id={`checkbox-${i}`}
 													key={`checkbox-${i + 1}`}
 													labels={{ label: language }}
-													onChange={(e) => {
-														this.handleCheckboxChange(e.target, language);
+													onChange={(checked, e) => {
+														this.handleCheckboxChange(
+															checked,
+															e.target,
+															language
+														);
 													}}
 												/>
 											))}

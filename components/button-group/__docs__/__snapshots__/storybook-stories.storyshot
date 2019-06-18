@@ -342,6 +342,74 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <ul
+    className="slds-button-group-list"
+  >
+    <li>
+      <button
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="refresh-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Refresh
+      </button>
+    </li>
+    <li>
+      <button
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="edit-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Edit
+      </button>
+    </li>
+    <li>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="options"
+        onClick={[Function]}
+        onFocus={null}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-options"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            More Options
+          </span>
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
 exports[`DOM snapshots SLDSButtonGroup More Icon 1`] = `
 <div
   className="slds-p-around_medium"

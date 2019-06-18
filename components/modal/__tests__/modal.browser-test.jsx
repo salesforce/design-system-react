@@ -69,7 +69,6 @@ describe('SLDSModal: ', function() {
 				portalClassName: 'portal-class-name-test',
 			});
 		});
-
 		it('has correct containerClassName, contentClassName, contentStyle, and portalClassName', () => {
 			const modalContainer = getModalNode(document.body).querySelector(
 				'.slds-modal__container.container-class-name-test'
@@ -84,6 +83,33 @@ describe('SLDSModal: ', function() {
 				'body > .portal-class-name-test'
 			);
 			expect(modalPortal).to.exist;
+		});
+	});
+
+	describe('Sizing', () => {
+		it('size is set to small', () => {
+			const cmp = getModal({
+				isOpen: true,
+				size: 'small',
+			});
+			const modal = getModalNode(document.body);
+			expect(modal.className).to.include('slds-modal_small');
+		});
+		it('size is set to medium', () => {
+			const cmp = getModal({
+				isOpen: true,
+				size: 'medium',
+			});
+			const modal = getModalNode(document.body);
+			expect(modal.className).to.include('slds-modal_medium');
+		});
+		it('size is set to large', () => {
+			const cmp = getModal({
+				isOpen: true,
+				size: 'large',
+			});
+			const modal = getModalNode(document.body);
+			expect(modal.className).to.include('slds-modal_large');
 		});
 	});
 
@@ -122,7 +148,7 @@ describe('SLDSModal: ', function() {
 			modal = getModalNode(document.body);
 		});
 
-		it('adds the large class', () => {
+		it('size is set to large', () => {
 			expect(modal.className).to.include('slds-modal_large');
 		});
 
@@ -148,6 +174,7 @@ describe('SLDSModal: ', function() {
 			// eslint-disable-next-line no-unused-vars
 			const cmp = getModal({
 				isOpen: true,
+				size: 'medium',
 			});
 			const modal = getModalNode(document.body);
 			const role = modal.getAttribute('role');

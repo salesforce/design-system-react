@@ -128,7 +128,7 @@ const propTypes = {
 	/**
 	 * Determines the type of the tooltip.
 	 */
-	variant: PropTypes.oneOf(['base', 'learnMore']),
+	variant: PropTypes.oneOf(['base', 'learnMore', 'list-item']),
 };
 
 const defaultProps = {
