@@ -2991,8 +2991,7 @@
                     "name": "shape",
                     "value": {
                         "heading": {
-                            "name": "custom",
-                            "raw": "PropTypes.heading",
+                            "name": "string",
                             "required": false
                         },
                         "label": {
@@ -3131,21 +3130,21 @@
             },
             "onRenderVisualPicker": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown with checkbox (only for non-coverable visual picker variant)"
             },
             "onRenderVisualPickerSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
             },
             "onRenderVisualPickerNotSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
@@ -12399,8 +12398,7 @@
                     "name": "shape",
                     "value": {
                         "heading": {
-                            "name": "custom",
-                            "raw": "PropTypes.heading",
+                            "name": "string",
                             "required": false
                         },
                         "label": {
@@ -12410,7 +12408,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\"."
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the radio input"
             },
             "name": {
                 "type": {
@@ -12482,21 +12480,21 @@
             },
             "onRenderVisualPicker": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if radio is not selected (only for non-coverable visual picker variant)"
             },
             "onRenderVisualPickerSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
             },
             "onRenderVisualPickerNotSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
@@ -15727,6 +15725,98 @@
         "route": "vertical-navigation",
         "display-name": "Vertical Navigation",
         "SLDS-component-path": "/components/vertical-navigation",
+        "dependencies": []
+    },
+    "visual-picker": {
+        "description": "Visual Picker Component",
+        "methods": [],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Label for the visual picker"
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker is coverable on selection"
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker has a vertical layout",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "links": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker has links as children",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size for visual picker",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "visual-pickers",
+        "display-name": "Visual Pickers",
+        "SLDS-component-path": "/components/visual-picker",
         "dependencies": []
     }
 }
