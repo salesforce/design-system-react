@@ -412,7 +412,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                 />
               </svg>
             </div>
-            <section
+            <div
               className="absolute-positioned"
               id="combobox-base-inherit-menu-width-listbox"
               onKeyDown={[Function]}
@@ -774,7 +774,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                   </span>
                 </li>
               </ul>
-            </section>
+            </div>
           </div>
         </div>
       </div>
@@ -3216,15 +3216,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
             role="combobox"
           >
             <div
-              aria-expanded={false}
-              aria-haspopup="listbox"
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
               role="none"
             >
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
-                aria-controls="combobox-readonly-single-listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 disabled={false}
