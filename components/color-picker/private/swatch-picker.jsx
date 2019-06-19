@@ -5,6 +5,9 @@ import SwatchOption from './swatch-option';
 import KEYS from '../../../utilities/key-code';
 import EventUtil from '../../../utilities/event';
 
+import { DIRECTIONS } from '../../utilities/UNSAFE_direction';
+import LanguageDirection from '../../utilities/UNSAFE_direction/private/language-direction';
+
 class SwatchPicker extends React.Component {
 	static displayName = 'SLDSSwatchPicker';
 
@@ -52,14 +55,22 @@ class SwatchPicker extends React.Component {
 	handleKeyDown = (event, props) => {
 		const keyDownCallbacks = {
 			[KEYS.RIGHT]: () => {
-				this.selectPreviousColor(event, props);
+				if (props.direction === DIRECTIONS.RTL) {
+					this.selectNextColor(event, props);
+				} else {
+					this.selectPreviousColor(event, props);
+				}
 			},
 			[KEYS.DOWN]: () => {
 				this.selectPreviousColor(event, props);
 			},
 
 			[KEYS.LEFT]: () => {
-				this.selectNextColor(event, props);
+				if (props.direction === DIRECTIONS.RTL) {
+					this.selectPreviousColor(event, props);
+				} else {
+					this.selectNextColor(event, props);
+				}
 			},
 			[KEYS.UP]: () => {
 				this.selectNextColor(event, props);
@@ -114,4 +125,4 @@ class SwatchPicker extends React.Component {
 	}
 }
 
-export default SwatchPicker;
+export default LanguageDirection(SwatchPicker);

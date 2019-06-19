@@ -18,6 +18,8 @@ import {
 import ColorPicker from '../index';
 import KEYS from '../../../utilities/key-code';
 
+import { makeRTL } from '~/components/utilities/UNSAFE_direction';
+
 chai.use(chaiEnzyme());
 
 const selectors = {
@@ -182,6 +184,100 @@ describe('SLDSColorPicker', function describeFunction() {
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('click');
+			});
+		});
+
+		describe('Swatch keyboard navigation', function describeFunction3() {
+			it('pressing right will move the color to the next one', function(done) {
+				wrapper = mount(
+					<ColorPicker
+						isOpen
+						value="#ff0000"
+						swatchColors={['#ff0000', '#0000ff']}
+						events={{
+							onWorkingColorChange: (event, { color }) => {
+								expect(color.hex).to.equal('#0000ff');
+								done();
+							},
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.RIGHT,
+					which: KEYS.RIGHT,
+				});
+			});
+
+			it('pressing left will move the color to the previous one', function(done) {
+				wrapper = mount(
+					<ColorPicker
+						isOpen
+						value="#0000ff"
+						swatchColors={['#ff0000', '#0000ff']}
+						events={{
+							onWorkingColorChange: (event, { color }) => {
+								expect(color.hex).to.equal('#ff0000');
+								done();
+							},
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.LEFT,
+					which: KEYS.LEFT,
+				});
+			});
+
+			it('pressing right in RTL will move the color to the previous one', function(done) {
+				wrapper = mount(makeRTL(
+					<ColorPicker
+						isOpen
+						value="#0000ff"
+						swatchColors={['#ff0000', '#0000ff']}
+						events={{
+							onWorkingColorChange: (event, { color }) => {
+								expect(color.hex).to.equal('#ff0000');
+								done();
+							},
+						}}
+					/>,
+					{ attachTo: mountNode }
+				));
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.RIGHT,
+					which: KEYS.RIGHT,
+				});
+			});
+
+			it('pressing left in RTL will move the color to the next one', function(done) {
+				wrapper = mount(makeRTL(
+					<ColorPicker
+						isOpen
+						value="#ff0000"
+						swatchColors={['#ff0000', '#0000ff']}
+						events={{
+							onWorkingColorChange: (event, { color }) => {
+								expect(color.hex).to.equal('#0000ff');
+								done();
+							},
+						}}
+					/>,
+					{ attachTo: mountNode }
+				));
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.LEFT,
+					which: KEYS.LEFT,
+				});
 			});
 		});
 

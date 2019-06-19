@@ -8,6 +8,8 @@ import { COLOR_PICKER } from '../../../utilities/constants';
 
 import Default from '../__examples__/default';
 
+import { makeRTL } from '~/components/utilities/UNSAFE_direction';
+
 const HEX_REGEX_6_DIGITS = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 
 const handleChange = (event, data) => {
@@ -30,6 +32,14 @@ storiesOf(COLOR_PICKER, module)
 			labels={{ label: 'Choose Color' }}
 			id="default-color-picker"
 		/>
+	))
+	.add('Default - Right to Left (RTL)', () => (
+		makeRTL(<ColorPicker
+			className="test_class_name"
+			events={{ onChange: handleChange }}
+			labels={{ label: 'Choose Color' }}
+			id="default-color-picker"
+		/>)
 	))
 	.add('Custom Only', () => (
 		<ColorPicker
