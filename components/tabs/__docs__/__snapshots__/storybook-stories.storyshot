@@ -25,7 +25,7 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
         <li
           aria-controls="main-tabs-demo-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="main-tabs-demo-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -43,7 +43,7 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
         <li
           aria-controls="main-tabs-demo-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="main-tabs-demo-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -61,7 +61,7 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
         <li
           aria-controls="main-tabs-demo-slds-tabs_panel-2"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="main-tabs-demo-slds-tabs_tab-2"
           role="tab"
           tabIndex={null}
@@ -283,7 +283,7 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
           aria-controls="tabs-checkbox-tabs-1-slds-tabs_panel-0"
           aria-disabled={false}
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="tabs-checkbox-tabs-1-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -303,7 +303,7 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
           aria-controls="tabs-checkbox-tabs-1-slds-tabs_panel-1"
           aria-disabled={true}
           aria-selected="false"
-          className="slds-text-title_caps slds-disabled slds-tabs_default__item"
+          className="slds-disabled slds-tabs_default__item"
           id="tabs-checkbox-tabs-1-slds-tabs_tab-1"
           role="tab"
           tabIndex="-1"
@@ -323,7 +323,7 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
           aria-controls="tabs-checkbox-tabs-1-slds-tabs_panel-2"
           aria-disabled={true}
           aria-selected="false"
-          className="slds-text-title_caps slds-disabled slds-tabs_default__item"
+          className="slds-disabled slds-tabs_default__item"
           id="tabs-checkbox-tabs-1-slds-tabs_tab-2"
           role="tab"
           tabIndex="-1"
@@ -476,7 +476,7 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
         <li
           aria-controls="getCustomContentTabs-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="getCustomContentTabs-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -516,7 +516,7 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
         <li
           aria-controls="getCustomContentTabs-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="getCustomContentTabs-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -594,7 +594,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
         <li
           aria-controls="nested-tabs-demo-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="nested-tabs-demo-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -612,7 +612,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
         <li
           aria-controls="nested-tabs-demo-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="nested-tabs-demo-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -630,7 +630,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
         <li
           aria-controls="nested-tabs-demo-slds-tabs_panel-2"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="nested-tabs-demo-slds-tabs_tab-2"
           role="tab"
           tabIndex={null}
@@ -751,7 +751,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
               <li
                 aria-controls="nested-second-layer-slds-tabs_panel-0"
                 aria-selected="true"
-                className="slds-text-title_caps slds-active slds-tabs_default__item"
+                className="slds-active slds-tabs_default__item"
                 id="nested-second-layer-slds-tabs_tab-0"
                 role="tab"
                 tabIndex="0"
@@ -769,7 +769,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
               <li
                 aria-controls="nested-second-layer-slds-tabs_panel-1"
                 aria-selected="false"
-                className="slds-text-title_caps slds-tabs_default__item"
+                className="slds-tabs_default__item"
                 id="nested-second-layer-slds-tabs_tab-1"
                 role="tab"
                 tabIndex={null}
@@ -787,7 +787,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
               <li
                 aria-controls="nested-second-layer-slds-tabs_panel-2"
                 aria-selected="false"
-                className="slds-text-title_caps slds-tabs_default__item"
+                className="slds-tabs_default__item"
                 id="nested-second-layer-slds-tabs_tab-2"
                 role="tab"
                 tabIndex={null}
@@ -869,7 +869,7 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                     <li
                       aria-controls="nested-third-layer-slds-tabs_panel-0"
                       aria-selected="true"
-                      className="slds-text-title_caps slds-active slds-tabs_default__item"
+                      className="slds-active slds-tabs_default__item"
                       id="nested-third-layer-slds-tabs_tab-0"
                       role="tab"
                       tabIndex="0"
@@ -1021,7 +1021,7 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
         <li
           aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1039,7 +1039,7 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
         <li
           aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -1057,7 +1057,7 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
         <li
           aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-2"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-2"
           role="tab"
           tabIndex={null}
@@ -1075,7 +1075,7 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
         <li
           aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-3"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-3"
           role="tab"
           tabIndex={null}
@@ -1093,7 +1093,7 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
         <li
           aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-4"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-4"
           role="tab"
           tabIndex={null}
@@ -1198,7 +1198,7 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
         <li
           aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_scoped__item"
+          className="slds-active slds-tabs_scoped__item"
           id="scoped-tabs-demo-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1216,7 +1216,7 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
         <li
           aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_scoped__item"
+          className="slds-tabs_scoped__item"
           id="scoped-tabs-demo-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -1234,7 +1234,7 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
         <li
           aria-controls="scoped-tabs-demo-slds-tabs_panel-2"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_scoped__item"
+          className="slds-tabs_scoped__item"
           id="scoped-tabs-demo-slds-tabs_tab-2"
           role="tab"
           tabIndex={null}
@@ -1339,7 +1339,7 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
         <li
           aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="DemoTabsInterceptSelect-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1357,7 +1357,7 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
         <li
           aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="DemoTabsInterceptSelect-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -1416,7 +1416,7 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
         <li
           aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="DemoTabsInterceptSelect2-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1434,7 +1434,7 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
         <li
           aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-1"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="DemoTabsInterceptSelect2-slds-tabs_tab-1"
           role="tab"
           tabIndex={null}
@@ -1500,7 +1500,7 @@ exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
         <li
           aria-controls="tabs-demo-id-1-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="tabs-demo-id-1-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1547,7 +1547,7 @@ exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
         <li
           aria-controls="tabs-demo-id-2-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="tabs-demo-id-2-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1608,7 +1608,7 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
         <li
           aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
           aria-selected="true"
-          className="slds-text-title_caps slds-active slds-tabs_default__item"
+          className="slds-active slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-0"
           role="tab"
           tabIndex="0"
@@ -1627,7 +1627,7 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
           aria-controls="disabled-tabs-demo-slds-tabs_panel-1"
           aria-disabled={true}
           aria-selected="false"
-          className="slds-text-title_caps slds-disabled slds-tabs_default__item"
+          className="slds-disabled slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-1"
           role="tab"
           tabIndex="-1"
@@ -1646,7 +1646,7 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
         <li
           aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-2"
           role="tab"
           tabIndex={null}
@@ -1664,7 +1664,7 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
         <li
           aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
           aria-selected="false"
-          className="slds-text-title_caps slds-tabs_default__item"
+          className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-3"
           role="tab"
           tabIndex={null}
