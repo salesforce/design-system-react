@@ -216,6 +216,7 @@ class WelcomeMat extends React.Component {
 						'slds-welcome-mat',
 						this.props.children ? null : 'slds-welcome-mat_splash'
 					)}
+					id={this.getId()}
 				>
 					<div className="slds-welcome-mat__content slds-grid">
 						{this.props.children ? (
