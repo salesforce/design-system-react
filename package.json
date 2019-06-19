@@ -146,7 +146,7 @@
 		"eslint-plugin-json": "^1.4.0",
 		"eslint-plugin-prefer-object-spread": "^1.2.1",
 		"eslint-find-rules": "^3.3.1",
-		"eslint-plugin-import": "^2.16.0",
+		"eslint-plugin-import": "^2.17.3",
 		"eslint-plugin-jsx-a11y": "^6.2.1",
 		"eslint-plugin-react": "^7.12.4",
 		"express": "^4.15.5",
@@ -197,7 +197,7 @@
 		"style-loader": "^0.17.0",
 		"webpack": "^3.4.1",
 		"webpack-dev-middleware": "^1.12.0",
-		"webpack-hot-middleware": "^2.18.2",
+		"webpack-hot-middleware": "^2.25.0",
 		"xml2js": "^0.4.19"
 	},
 	"components": [
