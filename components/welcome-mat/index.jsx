@@ -9,7 +9,6 @@ import classNames from 'classnames';
 
 import Modal from '~/components/modal';
 import ProgressBar from '~/components/progress-bar';
-import Checkbox from '~/components/checkbox';
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -50,7 +49,6 @@ const propTypes = {
 	labels: PropTypes.shape({
 		title: PropTypes.string,
 		description: PropTypes.string,
-		doNotShowAgain: PropTypes.string,
 	}),
 	/**
 	 *	Variant of the WelcomeMat
@@ -66,9 +64,13 @@ const propTypes = {
 	 */
 	onRenderInfoActions: PropTypes.func,
 	/**
-	 *
+	 *  Infobadge for trailhead variant
 	 */
 	infoBadge: PropTypes.func,
+	/**
+	 *  Do not show again checkbox for info-only variant
+	 */
+	doNotShowAgainCheckbox: PropTypes.func,
 };
 
 const defaultProps = {
@@ -139,21 +141,9 @@ class WelcomeMat extends React.Component {
 							? this.props.onRenderInfoActions()
 							: null}
 						<div className="slds-m-top_large">
-							<Checkbox
-								assistiveText={{
-									label:
-										this.props.assistiveText &&
-										this.props.assistiveText.doNotShowAgain
-											? this.props.assistiveText.doNotShowAgain
-											: `Don't show this again`,
-								}}
-								id={`${this.getId()}-do-not-show-again-checkbox`}
-								labels={{
-									label: this.props.labels.doNotShowAgain
-										? this.props.labels.doNotShowAgain
-										: `Don't show this again`,
-								}}
-							/>
+							{this.props.doNotShowAgainCheckbox()
+								? this.props.doNotShowAgainCheckbox()
+								: null}
 						</div>
 					</div>
 				) : null}

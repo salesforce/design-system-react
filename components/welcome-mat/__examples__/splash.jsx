@@ -2,6 +2,7 @@ import React from 'react';
 import WelcomeMat from '~/components/welcome-mat';
 import Button from '~/components/button';
 import IconSettings from '~/components/icon-settings';
+import Checkbox from '~/components/checkbox';
 
 class Example extends React.Component {
 	static displayName = 'welcomeMatSplashExample';
@@ -18,6 +19,16 @@ class Example extends React.Component {
 								description:
 									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
 							}}
+							doNotShowAgainCheckbox={() => (
+								<Checkbox
+									assistiveText={{
+										label: `Don't show this again`,
+									}}
+									labels={{
+										label: `Don't show this again`,
+									}}
+								/>
+							)}
 							onRenderInfoActions={() => (
 								<Button
 									type="button"

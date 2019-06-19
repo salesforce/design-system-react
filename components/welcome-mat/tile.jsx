@@ -89,7 +89,7 @@ class Tile extends React.Component {
 					<div className="slds-welcome-mat__tile-figure">
 						<div className="slds-welcome-mat__tile-icon-container">
 							<Icon category="utility" name={this.props.icon} />
-							{this.props.isComplete ? (
+							{this.props.isComplete && this.props.variant !== 'info-only' ? (
 								<Icon category="action" name="check" />
 							) : null}
 						</div>
@@ -114,7 +114,7 @@ class Tile extends React.Component {
 					this.props.variant === 'info-only'
 						? 'slds-welcome-mat__tile_info-only'
 						: null,
-					this.props.isComplete && !this.props.isInfoOnly
+					this.props.isComplete && this.props.variant !== 'info-only'
 						? 'slds-welcome-mat__tile_complete'
 						: null,
 					this.props.className

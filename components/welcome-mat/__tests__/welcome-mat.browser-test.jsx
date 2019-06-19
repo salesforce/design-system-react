@@ -5,7 +5,9 @@ import assign from 'lodash.assign';
 import { expect } from 'chai';
 
 import IconSettings from '../../icon-settings';
+import SLDSButton from '../../button';
 import Settings from '../../settings';
+import SLDSCheckbox from '../../checkbox';
 
 // const { Simulate } = TestUtils;
 
@@ -144,6 +146,66 @@ describe('SLDSWelcomeMat: ', function() {
 				WelcomeMatInfo.querySelector('.slds-welcome-mat__info-progress p')
 					.textContent
 			).to.eql('2/5 units completed');
+		});
+	});
+
+	describe('Info-Only Variant', () => {
+		beforeEach(() => {
+			getWelcomeMat({
+				variant: 'info-only',
+				labels,
+				id: 'welcome-mat-test',
+				children: tiles,
+				doNotShowAgainCheckbox: () => (
+					<SLDSCheckbox
+						assistiveText={{
+							label: `Don't show this again`,
+						}}
+						labels={{
+							label: `Don't show this again`,
+						}}
+					/>
+				),
+				onRenderInfoActions: () => (
+					<SLDSButton
+						type="button"
+						variant="brand"
+						title="Learn More"
+						label="Learn More"
+					/>
+				),
+			});
+		});
+		it('renders welcome mat', () => {
+			const WelcomeMatContainer = getWelcomeMatNode(
+				document.body
+			).querySelector('.slds-welcome-mat');
+			expect(WelcomeMatContainer).to.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__content')).to
+				.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__info')).to
+				.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__tiles')).to
+				.exist;
+			expect(
+				WelcomeMatContainer.querySelectorAll(
+					'.slds-welcome-mat__tile_info-only'
+				).length
+			).to.eql(5);
+		});
+		it('shows info action button and do not show checkbox', () => {
+			const WelcomeMatContainer = getWelcomeMatNode(
+				document.body
+			).querySelector('.slds-welcome-mat');
+			expect(
+				WelcomeMatContainer.querySelector('.slds-welcome-mat__info-actions')
+			).to.exist;
+			expect(
+				WelcomeMatContainer.querySelector(
+					'.slds-welcome-mat__info-actions button'
+				)
+			).to.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-checkbox')).to.exist;
 		});
 	});
 });
