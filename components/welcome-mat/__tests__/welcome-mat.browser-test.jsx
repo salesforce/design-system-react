@@ -43,7 +43,7 @@ describe('SLDSWelcomeMat: ', function() {
 			<IconSettings iconPath="/assets/icons">{welcomeMatInstance}</IconSettings>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.render(opener, container);
+		renderedNode = ReactDOM.hydrate(opener, container);
 		return renderedNode;
 	};
 

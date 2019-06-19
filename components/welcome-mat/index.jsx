@@ -19,12 +19,6 @@ const displayName = WELCOME_MAT;
 
 const propTypes = {
 	/**
-	 *  **Assistive text for accessibility**
-	 */
-	assistiveText: PropTypes.shape({
-		doNotShowAgain: PropTypes.string,
-	}),
-	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
 	className: PropTypes.oneOfType([
