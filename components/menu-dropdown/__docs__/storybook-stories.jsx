@@ -217,6 +217,7 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Base', () =>
 		getDropdown({
 			align: 'right',
+			id: 'base',
 			label: 'Dropdown Click',
 			onClick: (...rest) => {
 				action('Clicked')(...rest);
@@ -230,6 +231,7 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Base with icon', () =>
 		getDropdown({
 			align: 'right',
+			id: 'base-with-icon',
 			label: 'Dropdown Click',
 			iconCategory: 'utility',
 			iconName: 'down',
@@ -246,6 +248,7 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Render inline', () =>
 		getDropdown({
 			align: 'right',
+			id: 'render-inline',
 			label: 'Dropdown Click',
 			menuPosition: 'relative',
 			onClick: (...rest) => {
@@ -259,6 +262,7 @@ storiesOf(MENU_DROPDOWN, module)
 	)
 	.add('Render inline w/ Nubbins', () =>
 		getDropdownPositioned({
+			id: 'render-inline-nubbins',
 			menuPosition: 'relative',
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
@@ -268,6 +272,7 @@ storiesOf(MENU_DROPDOWN, module)
 	)
 	.add('Custom Trigger', () =>
 		getDropdownCustomTrigger({
+			id: 'custom-trigger',
 			tabIndex: '-1',
 			assistiveText: { icon: 'Custom Dropdown Trigger' },
 			onSelect: (...rest) => {
@@ -278,6 +283,7 @@ storiesOf(MENU_DROPDOWN, module)
 	)
 	.add('Custom Content', () =>
 		getDropdownCustomContent({
+			id: 'custom-content',
 			label: 'Custom Content Dropdown Click',
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
@@ -292,6 +298,7 @@ storiesOf(MENU_DROPDOWN, module)
 			iconCategory: 'utility',
 			iconName: 'settings',
 			iconVariant: 'more',
+			id: 'hover',
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
@@ -307,6 +314,7 @@ storiesOf(MENU_DROPDOWN, module)
 				iconCategory: 'utility',
 				iconName: 'settings',
 				iconVariant: 'more',
+				id: 'hover-1',
 				onSelect: (...rest) => {
 					action('Selected')(...rest);
 				},
@@ -319,6 +327,7 @@ storiesOf(MENU_DROPDOWN, module)
 				iconCategory: 'utility',
 				iconName: 'settings',
 				iconVariant: 'more',
+				id: 'hover-2',
 				onSelect: (...rest) => {
 					action('Selected')(...rest);
 				},
@@ -335,6 +344,7 @@ storiesOf(MENU_DROPDOWN, module)
 			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border-filled',
+			id: 'checkmark',
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
@@ -350,6 +360,7 @@ storiesOf(MENU_DROPDOWN, module)
 			iconCategory: 'utility',
 			iconName: 'down',
 			iconVariant: 'border-filled',
+			id: 'hover-with-checkmark',
 			onMouseEnter: action('Mouse enter'),
 			onMouseLeave: action('Mouse leave'),
 			onSelect: (...rest) => {
@@ -363,6 +374,7 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Controled w/ isOpen', () => (
 		<DropdownControlled
 			align="right"
+			id="controlled-is-open"
 			label="Dropdown Click"
 			options={options}
 		/>
