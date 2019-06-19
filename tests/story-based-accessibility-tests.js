@@ -69,6 +69,12 @@ describe('aXe Testing', function aXeFunction() {
 					rules: {
 						// Added due to autocomplete bug in browsers. Invalid value of "test" is passed into `autoComplete` intentionally.
 						'autocomplete-valid': { enabled: false },
+						// .slds-combobox[aria-haspopup="dialog" is not currently supported by aXe-core
+						// See issue https://github.com/dequelabs/axe-core/issues/1009
+						'aria-required-children': {
+							enabled: false,
+							selector: '.slds-combobox[aria-haspopup="dialog"',
+						},
 					},
 				})
 			).toHaveNoViolations();
