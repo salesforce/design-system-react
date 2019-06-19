@@ -4542,10 +4542,10 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               </svg>
             </div>
             <section
-              aria-describedby="combobox-unique-id-popover-dialog-body"
+              aria-describedby="combobox-unique-id-dialog-body"
               aria-labelledby="combobox-unique-id-label"
               className="absolute-positioned ignore-react-onclickoutside slds-popover slds-popover_full-width"
-              id="combobox-unique-id-popover-popover"
+              id="combobox-unique-id-popover"
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -4581,7 +4581,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               </button>
               <div
                 className="slds-popover__body"
-                id="combobox-unique-id-popover-dialog-body"
+                id="combobox-unique-id-dialog-body"
               >
                 <div>
                   <div
