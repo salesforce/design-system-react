@@ -312,6 +312,11 @@ export Tree from './tree';
 export SLDSTrialBar from './trial-bar';
 export TrialBar from './trial-bar';
 
+export SLDSTrialBarDropdown from './trial-bar/dropdown';
+export TrialBarDropdown from './trial-bar/dropdown';
+export SLDSTrialBarButton from './trial-bar/button';
+export TrialBarButton from './trial-bar/button';
+
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
