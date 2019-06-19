@@ -184,10 +184,6 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * Establishes directional context for component. Defaults to left-to-right.
-	 */
-	direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
-	/**
 	 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 	 */
 	disabled: PropTypes.bool,
@@ -402,7 +398,6 @@ const propTypes = {
 
 const defaultProps = {
 	align: 'left',
-	direction: DIRECTIONS.LTR,
 	hoverCloseDelay: 300,
 	length: '5',
 	menuPosition: 'absolute',

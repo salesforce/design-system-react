@@ -307,7 +307,6 @@ const defaultProps = {
 		removePill: ', Press delete or backspace to remove',
 		selectedListboxLabel: 'Selected Options:',
 	},
-	direction: DIRECTIONS.LTR,
 	events: {},
 	labels: {
 		cancelButton: 'Cancel',
