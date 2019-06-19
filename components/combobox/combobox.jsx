@@ -442,7 +442,7 @@ class Combobox extends React.Component {
 			footer: popoverFooter,
 			footerClassName: 'slds-popover__footer_form',
 			hasNoNubbin: true,
-			id: `${this.getId()}-popover`,
+			id: this.getId(),
 			isOpen: this.state.isOpen,
 			hasNoTriggerStyles: true,
 			onOpen: this.handleOpen,
