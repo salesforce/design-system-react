@@ -78,6 +78,28 @@ describe('SLDSButton: ', () => {
 		});
 	});
 
+	describe('Form Props Render ', () => {
+		let cmp;
+		let btn;
+		const formAction = 'http://localhost/some/url';
+
+		beforeEach(() => {
+			cmp = getButton({
+				id: 'custom-id',
+				formAction,
+			});
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeButton();
+		});
+
+		it('renders formAction prop', () => {
+			expect(btn.formAction).to.equal(formAction);
+		});
+	});
+
 	describe('Icon with Label Button Props Render', () => {
 		let cmp;
 		let btn;
