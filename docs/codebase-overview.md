@@ -34,6 +34,7 @@ If you want to [contribute](/CONTRIBUTING.md), we hope that this overview will h
   * [Use `className[NODE]` prefix for other nodes](#use-classnamenode-prefix-for-other-nodes)
   * [Boolean props: Use `is`, `has`, and `can` prefixes or `-able` suffix](#boolean-props-use-is-has-and-can-prefixes-or--able-suffix)
   * [No truthy defaults for boolean type props](#no-truthy-defaults-for-boolean-type-props)
+  * [Adding a default prop may be a breaking change](#adding-a-default-prop-may-be-a-breaking-change)
   * [Use `event, { key: value }` in callback parameters](#use-event--key-value--in-callback-parameters)
   * [Transpile this library before using](#transpile-this-library-before-using)
   * [Only propose SLDS components](#only-propose-slds-components)
@@ -227,6 +228,10 @@ If a prop is a boolean, please prefix with `is` or `can`, `has`, or suffix it wi
 #### No truthy defaults for boolean type props
 
 This will prevent consumers from having to write `propName={false}`. HTML defaults many attributes to true if no value is provided, such as `checked` instead of `checked="true"`. To maintain JSX's HTML-like syntax, please avoid asking a developer to use `propName={false}`. This may require using the opposite word, such as `isInline` instead of `isModal`.
+
+#### Adding a default prop may be a breaking change
+
+If adding a default prop changes the component visually from what it was without the default prop, it is considered a breaking change. Default props are very helpful and welcome if there are no changes to the component or are part of a new component. One alternative option is to create a value not specified by the design system that results in the originally rendered markup.
 
 #### Use `event, { key: value }` in callback parameters
 
