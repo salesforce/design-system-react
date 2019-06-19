@@ -309,6 +309,9 @@ export UtilityIcon from './utilities/utility-icon';
 export SLDSTree from './tree';
 export Tree from './tree';
 
+export SLDSTrialBar from './trial-bar';
+export TrialBar from './trial-bar';
+
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
