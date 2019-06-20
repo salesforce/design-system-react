@@ -23,7 +23,7 @@ const previousNextCarouselNavigator = (props) => (
 			iconCategory="utility"
 			iconName={props.iconName}
 			iconVariant="border-filled"
-			iconSize="small"
+			iconSize="medium"
 			onClick={props.onClick}
 			variant="icon"
 		/>
