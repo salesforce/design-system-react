@@ -36,7 +36,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -570,7 +570,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -601,7 +601,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -630,7 +630,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -659,7 +659,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -753,7 +753,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -1287,7 +1287,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -1318,7 +1318,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -1347,7 +1347,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -1376,7 +1376,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -1441,7 +1441,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -1975,7 +1975,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -2006,7 +2006,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2035,7 +2035,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2083,12 +2083,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
     >
       <div
         className="slds-is-relative"
-        style={
-          Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="slds-carousel__stage slds-show"
@@ -2541,7 +2536,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2570,7 +2565,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2599,7 +2594,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2628,7 +2623,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2657,7 +2652,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2686,7 +2681,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2715,7 +2710,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -2792,12 +2787,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
       </span>
       <div
         className="slds-is-relative"
-        style={
-          Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="slds-carousel__stage slds-show"
@@ -3250,7 +3240,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3279,7 +3269,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3308,7 +3298,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3337,7 +3327,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3366,7 +3356,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3395,7 +3385,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3424,7 +3414,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -3490,7 +3480,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -3961,7 +3951,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -3992,7 +3982,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4021,7 +4011,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4050,7 +4040,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4079,7 +4069,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4108,7 +4098,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4137,7 +4127,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4166,7 +4156,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
@@ -4243,7 +4233,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <button
-              className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+              className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
               disabled={true}
               onClick={[Function]}
               type="button"
@@ -4686,7 +4676,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <button
-              className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+              className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -4717,7 +4707,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             style={
               Object {
                 "margin": 0,
-                "padding": "0 8px",
+                "padding": "0 5px",
               }
             }
           >
@@ -4746,7 +4736,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             style={
               Object {
                 "margin": 0,
-                "padding": "0 8px",
+                "padding": "0 5px",
               }
             }
           >
@@ -4775,7 +4765,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             style={
               Object {
                 "margin": 0,
-                "padding": "0 8px",
+                "padding": "0 5px",
               }
             }
           >
