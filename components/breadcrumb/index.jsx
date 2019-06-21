@@ -67,19 +67,10 @@ const Breadcrumb = (props) => {
 					...props.assistiveText,
 				}.label;
 
-	let overflowDropdownMenuProps = {
-		...overflowDropdownMenu.props,
-		id: `${props.id}-dropdown`,
-		iconCategory: 'utility',
-		iconName: 'threedots',
-		iconVariant: 'bare',
-		threedots: true,
-	};
-
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
 			<ol className="slds-breadcrumb slds-list_horizontal">
-				{overflowDropdownMenu && <Dropdown {...overflowDropdownMenuProps} />}
+				{overflowDropdownMenu && getBreadcrumbDropdown(overflowDropdownMenu)}
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
@@ -94,10 +85,20 @@ const Breadcrumb = (props) => {
 	);
 };
 
+const getBreadcrumbDropdown = (overflowDropdownMenu) => {
+	let overflowDropdownMenuProps = {
+		...overflowDropdownMenu.props,
+		id: `${props.id}-dropdown`,
+		iconCategory: 'utility',
+		iconName: 'threedots',
+		iconVariant: 'bare',
+		threedots: true,
+	};
+	return <Dropdown {...overflowDropdownMenuProps} />;
+};
+
 Breadcrumb.displayName = BREADCRUMB;
-
 Breadcrumb.propTypes = propTypes;
-
 Breadcrumb.defaultProps = defaultProps;
 
 export default Breadcrumb;
