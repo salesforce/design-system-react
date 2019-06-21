@@ -9019,6 +9019,17 @@
                 "required": false,
                 "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
             },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds inverse class to the dropdown",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "isOpen": {
                 "type": {
                     "name": "bool"
@@ -15661,6 +15672,74 @@
         "route": "tree",
         "display-name": "Tree",
         "SLDS-component-path": "/components/trees",
+        "dependencies": []
+    },
+    "trial-bar": {
+        "description": "Trial bar components are used to provide an interactive and educational prospect experience for setup.",
+        "methods": [],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<TrialBarButton />` or `<TrialBarDropdown />` to define the structure of the trial bar.\n```\n<TrialBar>\n  <TrialBarButton />\n  <TrialBarDropdown />\n</TrialBar>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the component. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "timeLeft": {
+                            "name": "string",
+                            "description": "Amount of time left in trial, e.g. `30`",
+                            "required": false
+                        },
+                        "timeLeftUnit": {
+                            "name": "string",
+                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Renders the labels in the trial bar."
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Renders the actions section of the trial bar."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Customs styles to be applied to the component."
+            }
+        },
+        "route": "trial-bars",
+        "display-name": "Trial Bars",
+        "SLDS-component-path": "/components/trial-bar",
         "dependencies": []
     },
     "vertical-navigation": {

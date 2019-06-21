@@ -809,6 +809,13 @@
 			"url-slug": "trees"
 		},
 		{
+			"component": "trial-bar",
+			"status": "prototype",
+			"display-name": "Trial Bars",
+			"SLDS-component-path": "/components/trial-bar",
+			"url-slug": "trial-bars"
+		},
+		{
 			"component": "vertical-navigation",
 			"status": "prod",
 			"display-name": "Vertical Navigation",
