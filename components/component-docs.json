@@ -5696,7 +5696,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
+                "description": "An [Input](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
             },
             "isOpen": {
                 "type": {
@@ -15080,6 +15080,13 @@
             },
             {
                 "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getIsOpen",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
