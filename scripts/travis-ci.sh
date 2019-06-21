@@ -4,7 +4,7 @@
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
 # Jest markup & image snapshot tests (this is here so this variable can be used in runTest & elsewhere)
-SNAPSHOT_TESTS='npm run test:snapshot'
+SNAPSHOT_TESTS='npm run test:stories'
 SKIP_SNAPSHOT_TESTS=false
 
 function runTests() {
