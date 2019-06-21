@@ -87,10 +87,10 @@
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
 		"react-highlighter": "^0.4.0",
-		"react-modal": "3.4.4",
+		"react-modal": "3.8.1",
 		"react-onclickoutside": "^6.5.0",
 		"react-required-if": "^1.0.3",
-		"react-text-truncate": "^0.12.0",
+		"react-text-truncate": "^0.14.1",
 		"shortid": "^2.2.14",
 		"warning": "^3.0.0"
 	},
@@ -110,7 +110,7 @@
 		"@babel/plugin-transform-modules-amd": "^7.2.0",
 		"@babel/plugin-transform-modules-commonjs": "^7.2.0",
 		"@babel/polyfill": "^7.2.5",
-		"@babel/preset-env": "^7.3.4",
+		"@babel/preset-env": "^7.4.5",
 		"@babel/preset-react": "^7.0.0",
 		"@salesforce-ux/design-system": "^2.8.3",
 		"@salesforce-ux/icons": "7.x",
@@ -165,7 +165,7 @@
 		"karma-chai-sinon": "^0.1.5",
 		"karma-chrome-launcher": "^2.2.0",
 		"karma-cli": "^1.0.0",
-		"karma-coverage": "^1.0.0",
+		"karma-coverage": "^1.1.2",
 		"karma-mocha": "^1.0.1",
 		"karma-sourcemap-loader": "^0.3.5",
 		"karma-spec-reporter": "^0.0.31",
@@ -808,6 +808,13 @@
 			},
 			"SLDS-component-path": "/components/trees",
 			"url-slug": "trees"
+		},
+		{
+			"component": "trial-bar",
+			"status": "prototype",
+			"display-name": "Trial Bars",
+			"SLDS-component-path": "/components/trial-bar",
+			"url-slug": "trial-bars"
 		},
 		{
 			"component": "vertical-navigation",
