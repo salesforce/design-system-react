@@ -156,7 +156,7 @@ describe('SLDSWelcomeMat: ', function() {
 				labels,
 				id: 'welcome-mat-test',
 				children: tiles,
-				doNotShowAgainCheckbox: () => (
+				doNotShowAgainCheckbox: (
 					<SLDSCheckbox
 						assistiveText={{
 							label: `Don't show this again`,

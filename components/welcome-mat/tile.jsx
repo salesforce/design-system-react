@@ -30,8 +30,13 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
-
+	/**
+	 * Title for the tile component.
+	 */
 	title: PropTypes.string,
+	/**
+	 * Description for the tile component.
+	 */
 	description: PropTypes.string,
 	/**
 	 * Href for the tile link

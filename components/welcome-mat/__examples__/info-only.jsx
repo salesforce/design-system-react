@@ -20,7 +20,7 @@ class Example extends React.Component {
 								description:
 									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
 							}}
-							doNotShowAgainCheckbox={() => (
+							doNotShowAgainCheckbox={
 								<Checkbox
 									assistiveText={{
 										label: `Don't show this again`,
@@ -29,7 +29,7 @@ class Example extends React.Component {
 										label: `Don't show this again`,
 									}}
 								/>
-							)}
+							}
 							onRenderInfoActions={() => (
 								<Button
 									type="button"

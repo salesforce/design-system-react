@@ -58,13 +58,13 @@ const propTypes = {
 	 */
 	onRenderInfoActions: PropTypes.func,
 	/**
-	 *  Infobadge for trailhead variant
+	 *  Accepts a single WelcomeMatInfoBadge component, to be used with the trailhead variant
 	 */
-	infoBadge: PropTypes.func,
+	infoBadge: PropTypes.node,
 	/**
 	 *  Do not show again checkbox for info-only variant
 	 */
-	doNotShowAgainCheckbox: PropTypes.func,
+	doNotShowAgainCheckbox: PropTypes.node,
 };
 
 const defaultProps = {
@@ -135,8 +135,8 @@ class WelcomeMat extends React.Component {
 							? this.props.onRenderInfoActions()
 							: null}
 						<div className="slds-m-top_large">
-							{this.props.doNotShowAgainCheckbox()
-								? this.props.doNotShowAgainCheckbox()
+							{this.props.doNotShowAgainCheckbox
+								? this.props.doNotShowAgainCheckbox
 								: null}
 						</div>
 					</div>
@@ -148,14 +148,13 @@ class WelcomeMat extends React.Component {
 						<div
 							className={classNames(
 								'slds-welcome-mat__info-progress',
-								// eslint-disable-next-line eqeqeq
-								this.state.completedSteps == this.state.totalSteps
+								this.state.completedSteps === this.state.totalSteps
 									? 'slds-welcome-mat__info-progress_complete'
 									: null
 							)}
 						>
 							{this.props.variant === 'trailhead-connected'
-								? React.Children.map(this.props.infoBadge(), (child) =>
+								? React.Children.map(this.props.infoBadge, (child) =>
 										React.cloneElement(child, {
 											isComplete:
 												this.state.completedSteps === this.state.totalSteps

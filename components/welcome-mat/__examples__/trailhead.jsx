@@ -20,7 +20,7 @@ class Example extends React.Component {
 								description:
 									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
 							}}
-							infoBadge={() => (
+							infoBadge={
 								<WelcomeMatInfoBadge
 									image="/assets/images/welcome-mat/trailhead_badge@2x.png"
 									onCompleteRenderActions={() => (
@@ -40,7 +40,7 @@ class Example extends React.Component {
 										<strong>Lightning Explorer</strong>
 									</p>
 								</WelcomeMatInfoBadge>
-							)}
+							}
 							variant="trailhead-connected"
 						>
 							<WelcomeMatTile

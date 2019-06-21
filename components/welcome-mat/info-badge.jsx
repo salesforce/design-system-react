@@ -12,11 +12,15 @@ import Icon from '~/components/icon';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-import { WELCOME_MAT_TILE } from '../../utilities/constants';
+import { WELCOME_MAT_BADGE } from '../../utilities/constants';
 
-const displayName = WELCOME_MAT_TILE;
+const displayName = WELCOME_MAT_BADGE;
 
 const propTypes = {
+	/**
+	 *  **Assistive text for accessibility.**
+	 * * `completed` : For users of assistive technology, assistive text for completed icon.
+	 */
 	assistiveText: PropTypes.shape({
 		completed: PropTypes.string,
 	}),
