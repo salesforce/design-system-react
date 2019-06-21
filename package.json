@@ -135,7 +135,7 @@
 		"concurrently": "^4.1.0",
 		"cross-env": "^5.2.0",
 		"css-loader": "^0.28.0",
-		"enzyme": "^3.8.0",
+		"enzyme": "^3.10.0",
 		"enzyme-adapter-react-16": "^1.9.1",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "^17.1.0",
