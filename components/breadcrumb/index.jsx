@@ -20,13 +20,35 @@ import componentDoc from './docs.json';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
-import Menu from './private/menu';
+import Dropdown from './../menu-dropdown';
+
+const propTypes = {
+	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: The assistive text for the breadcrumb trail.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
+	/**
+	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	 */
+	id: PropTypes.string,
+	/**
+	 * Overflow menu of the type [Dropdown](/components/menu-dropdowns)
+	 */
+	overflowDropdownMenu: PropTypes.node,
+	/**
+	 * An array of react elements presumably anchor elements.
+	 */
+	trail: PropTypes.array,
+};
 
 const defaultProps = {
 	assistiveText: {
 		label: 'Breadcrumbs',
 	},
-	parentIndex: 0,
 };
 
 /**
@@ -35,7 +57,7 @@ const defaultProps = {
 const Breadcrumb = (props) => {
 	checkProps(BREADCRUMB, props, componentDoc);
 
-	const { parentIndex } = props;
+	let { overflowDropdownMenu } = props;
 	let { trail } = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
@@ -44,23 +66,20 @@ const Breadcrumb = (props) => {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
 				}.label;
-	let menuTrail = [];
-	if (parentIndex) {
-		menuTrail = trail.slice(0, parentIndex);
-		menuTrail = menuTrail.map((item) => ({
-			label: item.props.children,
-			value: item.props.children,
-		}));
-		trail = trail.slice(parentIndex);
-	}
+
+	let overflowDropdownMenuProps = {
+		...overflowDropdownMenu.props,
+		id: `${props.id}-dropdown`,
+		iconCategory: 'utility',
+		iconName: 'threedots',
+		iconVariant: 'bare',
+		threedots: true,
+	};
+
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
 			<ol className="slds-breadcrumb slds-list_horizontal">
-				{menuTrail.length > 0 && (
-					<li className="slds-breadcrumb__item" key="menu">
-						<Menu items={menuTrail} id={props.id} />
-					</li>
-				)}
+				{overflowDropdownMenu && <Dropdown {...overflowDropdownMenuProps} />}
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
@@ -77,28 +96,7 @@ const Breadcrumb = (props) => {
 
 Breadcrumb.displayName = BREADCRUMB;
 
-Breadcrumb.propTypes = {
-	/**
-	 * **Assistive text for accessibility.**
-	 * This object is merged with the default props object on every render.
-	 * * `label`: The assistive text for the breadcrumb trail.
-	 */
-	assistiveText: PropTypes.shape({
-		label: PropTypes.string,
-	}),
-	/**
-	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-	 */
-	id: PropTypes.string,
-	/**
-	 * Index of the parent entity, before which there is an overflow menu
-	 */
-	parentIndex: PropTypes.number,
-	/**
-	 * An array of react elements presumably anchor elements.
-	 */
-	trail: PropTypes.array,
-};
+Breadcrumb.propTypes = propTypes;
 
 Breadcrumb.defaultProps = defaultProps;
 

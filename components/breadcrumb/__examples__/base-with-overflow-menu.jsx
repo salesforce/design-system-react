@@ -2,15 +2,13 @@ import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
 import BreadCrumb from '~/components/breadcrumb'; // `~` is replaced with design-system-react at runtime
+import Dropdown from '~/components/menu-dropdown';
 
 class Example extends React.Component {
 	static displayName = 'BreadCrumbExample';
 
 	render() {
 		const trail = [
-			<a href="javascript:void(0);">Menu Item 1</a>,
-			<a href="javascript:void(0);">Menu Item 2</a>,
-			<a href="javascript:void(0);">Menu Item 3</a>,
 			<a href="javascript:void(0);">Parent Entity</a>,
 			<a href="javascript:void(0);">Parent Record Name</a>,
 		];
@@ -20,7 +18,23 @@ class Example extends React.Component {
 				<BreadCrumb
 					id="ADFA34_"
 					assistiveText={{ label: 'Breadcrumb with overflow menu' }}
-					parentIndex={3}
+					overflowDropdownMenu={
+						<Dropdown
+							assistiveText={{ icon: 'More Options' }}
+							iconCategory="utility"
+							iconName="down"
+							iconVariant="border-filled"
+							onSelect={(value) => {
+								console.log('selected: ', value);
+							}}
+							options={[
+								{ label: 'Menu Item One', value: 'A0' },
+								{ label: 'Menu Item Two', value: 'B0' },
+								{ label: 'Menu Item Three', value: 'C0' },
+								{ label: 'Menu Item Four', value: 'D0' },
+							]}
+						/>
+					}
 					trail={trail}
 				/>
 			</IconSettings>
