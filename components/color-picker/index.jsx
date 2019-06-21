@@ -397,7 +397,11 @@ class ColorPicker extends React.Component {
 		return (
 			<Popover
 				ariaLabelledby={`color-picker-label-${this.generatedId}`}
-				align={this.props.direction === DIRECTIONS.RTL ? "bottom right" : "bottom left"}
+				align={
+					this.props.direction === DIRECTIONS.RTL
+						? 'bottom right'
+						: 'bottom left'
+				}
 				body={popoverBody}
 				className={classNames(
 					'slds-color-picker__selector',

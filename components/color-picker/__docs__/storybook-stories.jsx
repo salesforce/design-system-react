@@ -33,14 +33,16 @@ storiesOf(COLOR_PICKER, module)
 			id="default-color-picker"
 		/>
 	))
-	.add('Default - Right to Left (RTL)', () => (
-		makeRTL(<ColorPicker
-			className="test_class_name"
-			events={{ onChange: handleChange }}
-			labels={{ label: 'Choose Color' }}
-			id="default-color-picker"
-		/>)
-	))
+	.add('Default - Right to Left (RTL)', () =>
+		makeRTL(
+			<ColorPicker
+				className="test_class_name"
+				events={{ onChange: handleChange }}
+				labels={{ label: 'Choose Color' }}
+				id="default-color-picker"
+			/>
+		)
+	)
 	.add('Custom Only', () => (
 		<ColorPicker
 			events={{ onChange: handleChange }}

@@ -235,20 +235,22 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 
 			it('pressing right in RTL will move the color to the previous one', function(done) {
-				wrapper = mount(makeRTL(
-					<ColorPicker
-						isOpen
-						value="#0000ff"
-						swatchColors={['#ff0000', '#0000ff']}
-						events={{
-							onWorkingColorChange: (event, { color }) => {
-								expect(color.hex).to.equal('#ff0000');
-								done();
-							},
-						}}
-					/>,
-					{ attachTo: mountNode }
-				));
+				wrapper = mount(
+					makeRTL(
+						<ColorPicker
+							isOpen
+							value="#0000ff"
+							swatchColors={['#ff0000', '#0000ff']}
+							events={{
+								onWorkingColorChange: (event, { color }) => {
+									expect(color.hex).to.equal('#ff0000');
+									done();
+								},
+							}}
+						/>,
+						{ attachTo: mountNode }
+					)
+				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('keyDown', {
@@ -258,20 +260,22 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 
 			it('pressing left in RTL will move the color to the next one', function(done) {
-				wrapper = mount(makeRTL(
-					<ColorPicker
-						isOpen
-						value="#ff0000"
-						swatchColors={['#ff0000', '#0000ff']}
-						events={{
-							onWorkingColorChange: (event, { color }) => {
-								expect(color.hex).to.equal('#0000ff');
-								done();
-							},
-						}}
-					/>,
-					{ attachTo: mountNode }
-				));
+				wrapper = mount(
+					makeRTL(
+						<ColorPicker
+							isOpen
+							value="#ff0000"
+							swatchColors={['#ff0000', '#0000ff']}
+							events={{
+								onWorkingColorChange: (event, { color }) => {
+									expect(color.hex).to.equal('#0000ff');
+									done();
+								},
+							}}
+						/>,
+						{ attachTo: mountNode }
+					)
+				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
 				swatch.simulate('keyDown', {
