@@ -388,7 +388,7 @@ class Carousel extends React.Component {
 		const itemWidth =
 			(this.state.stageWidth || this.stageWidth) / this.props.itemsPerPanel;
 		const carouselMargins = hasPreviousNextPanelNavigation
-			? { marginLeft: '60px', marginRight: '60px' }
+			? { marginLeft: '44px', marginRight: '44px' }
 			: {};
 		return (
 			<div

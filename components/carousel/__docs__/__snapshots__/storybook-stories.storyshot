@@ -5,6 +5,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
   style={
     Object {
       "maxWidth": "1280px",
+      "padding": "20px",
     }
   }
 >
@@ -20,8 +21,8 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -693,6 +694,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
   style={
     Object {
       "maxWidth": "1280px",
+      "padding": "20px",
     }
   }
 >
@@ -737,8 +739,8 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -1410,6 +1412,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
   style={
     Object {
       "maxWidth": "1280px",
+      "padding": "20px",
     }
   }
 >
@@ -1425,8 +1428,8 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -3464,8 +3467,8 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -4217,8 +4220,8 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
           className="slds-is-relative"
           style={
             Object {
-              "marginLeft": "60px",
-              "marginRight": "60px",
+              "marginLeft": "44px",
+              "marginRight": "44px",
             }
           }
         >
