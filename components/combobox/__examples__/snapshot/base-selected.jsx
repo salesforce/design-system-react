@@ -46,6 +46,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
+					assistiveText={{ label: 'Search' }}
 					id="combobox-unique-id"
 					labels={{
 						placeholder: 'Search Salesforce',

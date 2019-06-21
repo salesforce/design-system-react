@@ -35,6 +35,7 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
+import { DIRECTIONS } from '../utilities/UNSAFE_direction';
 
 import checkProps from './check-props';
 
@@ -306,6 +307,7 @@ const defaultProps = {
 		removePill: ', Press delete or backspace to remove',
 		selectedListboxLabel: 'Selected Options:',
 	},
+	direction: DIRECTIONS.LTR,
 	events: {},
 	labels: {
 		cancelButton: 'Cancel',
@@ -440,7 +442,7 @@ class Combobox extends React.Component {
 			footer: popoverFooter,
 			footerClassName: 'slds-popover__footer_form',
 			hasNoNubbin: true,
-			id: `${this.getId()}`,
+			id: this.getId(),
 			isOpen: this.state.isOpen,
 			hasNoTriggerStyles: true,
 			onOpen: this.handleOpen,
@@ -465,9 +467,11 @@ class Combobox extends React.Component {
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
+		const alignment =
+			this.props.direction === DIRECTIONS.RTL ? 'bottom right' : 'bottom left';
 		return !this.props.disabled && this.getIsOpen() ? (
 			<Dialog
-				align="bottom left"
+				align={alignment}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}
@@ -726,6 +730,7 @@ class Combobox extends React.Component {
 				options: this.props.options,
 			});
 
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			if (this.state.isOpen) {
 				menuItemSelectScroll({
 					container: this.menuRef,
@@ -954,12 +959,14 @@ class Combobox extends React.Component {
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
-					aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
+					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
 					role="combobox"
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={`${this.getId()}-listbox`}
+						aria-controls={
+							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+						}
 						aria-activedescendant={
 							this.state.activeOption
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
@@ -1092,7 +1099,9 @@ class Combobox extends React.Component {
 				>
 					<InnerInput
 						aria-autocomplete="list"
-						aria-controls={`${this.getId()}-listbox`}
+						aria-controls={
+							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+						}
 						aria-activedescendant={
 							this.state.activeOption
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
@@ -1102,8 +1111,6 @@ class Combobox extends React.Component {
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
-							'aria-expanded': this.getIsOpen(),
-							'aria-haspopup': 'listbox',
 							className: 'slds-combobox__form-element',
 							role: 'none',
 						}}
@@ -1191,7 +1198,9 @@ class Combobox extends React.Component {
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1343,13 +1352,14 @@ class Combobox extends React.Component {
 						)}
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-						aria-owns={`${this.getId()}`} // eslint-disable-line jsx-a11y/aria-proptypes
 						role="combobox"
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
 								aria-autocomplete="none"
-								aria-controls={`${this.getId()}`}
+								aria-controls={
+									this.getIsOpen() ? `${this.getId()}-popover` : undefined
+								}
 								aria-describedby={this.getErrorId()}
 								autoComplete="off"
 								className="slds-combobox__input"
@@ -1426,7 +1436,9 @@ class Combobox extends React.Component {
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1438,8 +1450,6 @@ class Combobox extends React.Component {
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
-								'aria-expanded': this.getIsOpen(),
-								'aria-haspopup': 'listbox',
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
@@ -1538,7 +1548,9 @@ class Combobox extends React.Component {
 					>
 						<InnerInput
 							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
@@ -1550,8 +1562,6 @@ class Combobox extends React.Component {
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
-								'aria-expanded': this.getIsOpen(),
-								'aria-haspopup': 'listbox',
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
@@ -1597,7 +1607,7 @@ class Combobox extends React.Component {
 	};
 
 	render() {
-		const props = this.props;
+		const { props } = this;
 		// Merge objects of strings with their default object
 		const assistiveText = assign(
 			{},

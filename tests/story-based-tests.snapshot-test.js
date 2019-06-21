@@ -52,6 +52,10 @@ For more information, please review: https://github.com/salesforce/design-system
 // the suffix `NoTest` to the story's name.
 const skipStoryshotTest = 'NoTest';
 
+// If a Storybook story should not be visual regression tested, please add
+// the suffix `NoImageTest` to the story's name.
+const skipImageStoryshotTest = 'NoImageTest';
+
 // Create DOM snapshot tests from Storybook stories
 initStoryshots({
 	configPath: '.storybook-based-tests',
@@ -65,7 +69,7 @@ initStoryshots({
  * Color and position are the same. This is a pixel to pixel comparison.
  * See https://github.com/americanexpress/jest-image-snapshot for options.
  */
-const getMatchOptions = ({ context: { kind, story }, url }) => ({
+const getMatchOptions = () => ({
 	failureThreshold: 0.2,
 	failureThresholdType: 'percent',
 	// 0.02 appears to ignore slight gray changes in SLDS
@@ -114,7 +118,10 @@ describe('Image Snapshots', function imageSnapshotFunction() {
 	// snapshot tests.
 	initStoryshots({
 		configPath: '.storybook-based-tests',
-		storyNameRegex: new RegExp(`^((?!.*?(${skipStoryshotTest})).)*$`, 'g'),
+		storyNameRegex: new RegExp(
+			`^((?!.*?(${skipStoryshotTest}|${skipImageStoryshotTest})).)*$`,
+			'g'
+		),
 		suite: 'Image storyshots',
 		test: imageSnapshot({
 			storybookUrl: `http://localhost:${port}`,

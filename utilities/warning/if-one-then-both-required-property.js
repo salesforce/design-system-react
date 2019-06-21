@@ -6,12 +6,12 @@
 // This function will deliver an error message to the browser console one property is used but not both that are required. Either use neither or both properties.
 import warning from 'warning';
 
-let ifOneThenBothRequiredProperty;
+let ifOneThenBothRequiredProperty = function ifOneThenBothRequiredPropertyFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	ifOneThenBothRequiredProperty = function(
+	ifOneThenBothRequiredProperty = function ifOneThenBothRequiredPropertyFunction(
 		control,
 		props,
 		selectedProps,
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 	};
 } else {
-	ifOneThenBothRequiredProperty = function() {};
+	ifOneThenBothRequiredProperty = function ifOneThenBothRequiredPropertyFunction() {};
 }
 
 export default ifOneThenBothRequiredProperty;

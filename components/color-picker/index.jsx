@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/sort-comp */
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -238,7 +239,9 @@ const defaultProps = {
  */
 class ColorPicker extends React.Component {
 	static displayName = COLOR_PICKER;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {
@@ -394,6 +397,8 @@ class ColorPicker extends React.Component {
 					this.props.classNameMenu
 				)}
 				footer={popoverFooter}
+				hasNoCloseButton
+				hasNoNubbin
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				id={`slds-color-picker__selector-${this.generatedId}`}
 				isOpen={this.state.isOpen}
@@ -421,10 +426,12 @@ class ColorPicker extends React.Component {
 		const newColor = ColorUtils.getNewColor(
 			color,
 			this.props.events.onValidateWorkingColor,
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			this.state.workingColor
 		);
 		this.setState({
 			workingColor: newColor,
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			previousWorkingColor: this.state.workingColor,
 		});
 
@@ -464,6 +471,7 @@ class ColorPicker extends React.Component {
 	handleCancelState = () => {
 		const workingColor = ColorUtils.getNewColor(
 			{
+				// eslint-disable-next-line react/no-access-state-in-setstate
 				hex: this.state.currentColor,
 			},
 			this.props.events.onValidateWorkingColor
@@ -514,10 +522,12 @@ class ColorPicker extends React.Component {
 			const newColor = ColorUtils.getDeltaColor(
 				colorProperties,
 				this.props.events.onValidateWorkingColor,
+				// eslint-disable-next-line react/no-access-state-in-setstate
 				this.state.workingColor
 			);
 			this.setState({
 				workingColor: newColor,
+				// eslint-disable-next-line react/no-access-state-in-setstate
 				previousWorkingColor: this.state.workingColor,
 			});
 
@@ -537,6 +547,7 @@ class ColorPicker extends React.Component {
 	handleSubmitButtonClick = (event) => {
 		this.setState({
 			isOpen: false,
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			currentColor: this.state.workingColor.hex,
 			colorErrorMessage: '',
 		});
@@ -551,13 +562,16 @@ class ColorPicker extends React.Component {
 	handleSwatchButtonClick = () => {
 		const workingColor = ColorUtils.getNewColor(
 			{
+				// eslint-disable-next-line react/no-access-state-in-setstate
 				hex: this.state.workingColor.hex,
 			},
 			this.props.events.onValidateWorkingColor
 		);
 		this.setState({
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			isOpen: !this.state.isOpen,
 			workingColor,
+			// eslint-disable-next-line react/no-access-state-in-setstate
 			previousWorkingColor: this.state.previousWorkingColor,
 		});
 		if (this.props.onRequestOpen) {

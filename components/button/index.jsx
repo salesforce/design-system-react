@@ -11,9 +11,11 @@ import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
 import componentDoc from './docs.json';
+// eslint-disable-next-line import/no-cycle
 import Tooltip from '../tooltip';
 
 import getAriaProps from '../../utilities/get-aria-props';
+import getFormProps from '../../utilities/get-form-props';
 
 import { BUTTON } from '../../utilities/constants';
 
@@ -30,7 +32,7 @@ const defaultProps = {
 /**
  * The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.
  * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
- * Although not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.
+ * Although not listed in the prop table, all `aria-*` and `form*` props will be added to the `button` element if passed in.
  */
 class Button extends React.Component {
 	static displayName = BUTTON;
@@ -210,7 +212,7 @@ class Button extends React.Component {
 	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
-		let iconVariant = this.props.iconVariant;
+		let { iconVariant } = this.props;
 		const iconMore = iconVariant === 'more';
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
@@ -301,7 +303,10 @@ class Button extends React.Component {
 
 	renderButton = () => {
 		const ariaProps = getAriaProps(this.props);
+		const formProps = getFormProps(this.props);
+
 		return (
+			// eslint-disable-next-line react/button-has-type
 			<button
 				className={this.getClassName()}
 				disabled={this.props.disabled}
@@ -323,9 +328,10 @@ class Button extends React.Component {
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
-				type={this.props.type}
+				type={this.props.type || 'button'}
 				style={this.props.style}
 				{...ariaProps}
+				{...formProps}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 

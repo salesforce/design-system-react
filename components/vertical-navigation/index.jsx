@@ -69,9 +69,10 @@ class VerticalNavigation extends React.Component {
 	getId = () => this.props.id || this.generatedId;
 
 	getSelectedId = () => {
-		const categories = this.props.categories;
+		const { categories } = this.props;
 		let selectedId;
 		if (this.props.selectedId) {
+			// eslint-disable-next-line prefer-destructuring
 			selectedId = this.props.selectedId;
 		} else if (
 			categories.length > 0 &&

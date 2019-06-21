@@ -39,11 +39,6 @@ const defaultIds = {
 	heading: `${defaultProps.id}-dialog-heading`,
 };
 
-const getNodes = ({ wrapper }) => ({
-	popover: wrapper.find('.slds-popover'),
-	closeButton: wrapper.find('.slds-popover__close'),
-});
-
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  * This wrapping component will be similar to your wrapping component
@@ -57,6 +52,7 @@ class DemoComponent extends React.Component {
 	};
 
 	static defaultProps = defaultProps;
+
 	state = {};
 
 	// event handlers
@@ -123,7 +119,6 @@ describe('SLDSPopover', function() {
 		it('has aria-labelledby/aria-describedby on popover', function() {
 			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 
-			const trigger = wrapper.find('#sample-popover');
 			const popover = wrapper.find(`#${defaultIds.popover}`);
 			expect(popover).to.have.attr('aria-labelledby', defaultIds.heading);
 			expect(popover).to.have.attr('aria-describedby', defaultIds.body);
@@ -262,7 +257,6 @@ describe('SLDSPopover', function() {
 				<DemoComponent
 					onClick={triggerClicked}
 					onOpen={() => {
-						const nodes = getNodes({ wrapper });
 						expect(document.activeElement.id).to.equal(`${defaultIds.popover}`);
 						done();
 					}}

@@ -19,6 +19,7 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
   * Browse to [http://localhost:8001](http://localhost:8001)
 * Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
   `npm run test:snapshot components/button/`.
+* The entire test suite may take up to 10 minutes to run. To update Jest snapshots for a single component, use `npm run test:snapshot:update -- -t=popover` where the test name contains `popover`.
 
 ### React Storybook
 
@@ -39,7 +40,7 @@ There are two parts to code linting: style and quality. [Prettier](https://prett
 
 Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
 
-To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`.
+To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated for each Storybook story. To update existing snapshots, please use `npm run test:snapshot:update`.
 
 Use Jest to test the presence of:
 

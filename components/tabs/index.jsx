@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -139,12 +140,6 @@ class Tabs extends React.Component {
 		this.flavor = this.getVariant();
 		this.setState({
 			selectedIndex: this.props.defaultSelectedIndex,
-		});
-	}
-
-	componentWillUnmount() {
-		this.setState({
-			focus: false,
 		});
 	}
 
@@ -309,7 +304,6 @@ class Tabs extends React.Component {
 		do {
 			if (nodeAncestor === this.tabsNode) return true;
 			else if (nodeAncestor.getAttribute('data-tabs')) break;
-
 			nodeAncestor = nodeAncestor.parentElement;
 		} while (nodeAncestor);
 

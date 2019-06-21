@@ -79,8 +79,8 @@ class Example extends React.Component {
 		// example of passing in an SLDSInput component to a SLDSCombobox
 		const inputElement = (
 			<Input
+				label="Search"
 				autoComplete="test"
-				id="id_from_input_prop"
 				placeholder="My overridden placeholder"
 			/>
 		);

@@ -17,6 +17,7 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
+// eslint-disable-next-line import/no-cycle
 import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -63,6 +64,14 @@ const propTypes = {
 	 * Content inside Tooltip.
 	 */
 	content: PropTypes.node.isRequired,
+	/**
+	 * CSS classes to be added to the popover dialog. That is the element with `.slds-popover` on it.
+	 */
+	dialogClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -119,7 +128,7 @@ const propTypes = {
 	/**
 	 * Determines the type of the tooltip.
 	 */
-	variant: PropTypes.oneOf(['base', 'learnMore']),
+	variant: PropTypes.oneOf(['base', 'learnMore', 'list-item']),
 };
 
 const defaultProps = {
@@ -193,13 +202,14 @@ class Tooltip extends React.Component {
 				/>,
 			];
 		} else {
+			// eslint-disable-next-line prefer-destructuring
 			children = this.props.children;
 		}
 
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
 				key: i, // eslint-disable-line react/no-array-index-key
-				'aria-describedby': this.getId(),
+				'aria-describedby': this.getIsOpen() ? this.getId() : undefined,
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
@@ -212,10 +222,15 @@ class Tooltip extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getIsOpen() {
+		return this.props.isOpen === undefined
+			? this.state.isOpen
+			: this.props.isOpen;
+	}
+
 	getTooltip() {
-		const isOpen =
-			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
-		const align = this.props.align;
+		const isOpen = this.getIsOpen();
+		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
 		const deprecatedWay = this.props.variant === 'error';
@@ -224,9 +239,14 @@ class Tooltip extends React.Component {
 			<Dialog
 				closeOnTabKey
 				hasNubbin
-				contentsClassName={classNames('slds-popover', 'slds-popover_tooltip', {
-					'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-				})}
+				contentsClassName={classNames(
+					'slds-popover',
+					'slds-popover_tooltip',
+					{
+						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+					},
+					this.props.dialogClassName
+				)}
 				align={align}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}

@@ -72,7 +72,9 @@ const listItemWithContent = (ListItemContent) => {
 		static displayName = `${DISPLAY_NAME}(${ListItemContent.displayName ||
 			ListItemContent.name ||
 			'Component'})`;
+
 		static propTypes = propsTypes;
+
 		static defaultProps = defaultProps;
 
 		onClick(event) {
