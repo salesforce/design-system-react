@@ -396,7 +396,6 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
               }
             >
               <span
-                aria-describedby="status-tooltip"
                 className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -1533,7 +1532,6 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
               }
             >
               <span
-                aria-describedby="status-tooltip"
                 className="slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
                 onBlur={[Function]}
                 onFocus={[Function]}

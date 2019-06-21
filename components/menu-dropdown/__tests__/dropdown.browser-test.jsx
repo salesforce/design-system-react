@@ -137,6 +137,19 @@ describe('SLDSMenuDropdown', function() {
 		});
 	});
 
+	describe('Inverse', () => {
+		beforeEach(mountComponent(<DemoComponent inverse />));
+
+		afterEach(unmountComponent);
+
+		it('has correct CSS class for inverse', function() {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.button.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.hasClass('slds-dropdown_inverse')).to.equal(true);
+		});
+	});
+
 	describe('Custom Content Present', () => {
 		beforeEach(
 			mountComponent(

@@ -452,9 +452,12 @@ class Dialog extends React.Component {
 			...this.props.style,
 		};
 
-		const contents = (
-			<section // eslint-disable-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions
-				className={
+		const outerTag = this.props.variant === 'popover' ? 'section' : 'div';
+
+		const contents = React.createElement(
+			outerTag,
+			{
+				className:
 					classNames(
 						{
 							'absolute-positioned': this.props.position === 'absolute',
@@ -466,20 +469,20 @@ class Dialog extends React.Component {
 						this.props.hasNubbin &&
 							getNubbinClassName(this.props.align, this.state.popperData),
 						this.props.contentsClassName
-					) || undefined
-				}
-				style={style}
-				onMouseDown={this.props.onMouseDown}
-				onKeyDown={this.handleKeyDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref={this.setDialogContent}
-				role={role}
-				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
-				{...this.props.containerProps}
-			>
-				{this.props.children}
-			</section>
+					) || undefined,
+
+				style,
+				onMouseDown: this.props.onMouseDown,
+				onKeyDown: this.handleKeyDown,
+				onMouseEnter: this.props.onMouseEnter,
+				onMouseLeave: this.props.onMouseLeave,
+				ref: this.setDialogContent,
+				role,
+				tabIndex: this.props.variant === 'popover' ? '-1' : undefined,
+				...this.props.containerProps,
+			},
+
+			this.props.children
 		);
 
 		const subRenders = {
