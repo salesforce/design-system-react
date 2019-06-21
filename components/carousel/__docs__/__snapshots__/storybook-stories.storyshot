@@ -37,7 +37,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -571,7 +571,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -755,7 +755,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -1289,7 +1289,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -1444,7 +1444,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -1978,7 +1978,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -3483,7 +3483,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -3954,7 +3954,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -4236,7 +4236,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <button
-              className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
               disabled={true}
               onClick={[Function]}
               type="button"
@@ -4679,7 +4679,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <button
-              className="slds-button slds-button_icon-border-filled slds-button_icon slds-carousel__button"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
               disabled={false}
               onClick={[Function]}
               type="button"
