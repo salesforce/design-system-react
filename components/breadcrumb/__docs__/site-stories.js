@@ -6,6 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/base.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/one-item.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/base-with-overflow-menu.jsx'),
 ];
 
 module.exports = siteStories;
