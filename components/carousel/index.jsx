@@ -387,7 +387,9 @@ class Carousel extends React.Component {
 		const isNextBtnDisabled = !(isInfinite || this.canGoToNext());
 		const itemWidth =
 			(this.state.stageWidth || this.stageWidth) / this.props.itemsPerPanel;
-
+		const carouselMargins = hasPreviousNextPanelNavigation
+			? { marginLeft: '44px', marginRight: '44px' }
+			: {};
 		return (
 			<div
 				className={classnames('slds-carousel', this.props.className)}
@@ -402,10 +404,7 @@ class Carousel extends React.Component {
 							onClick={this.onAutoplayBtnClick}
 						/>
 					)}
-					<div
-						className="slds-is-relative"
-						style={{ marginLeft: '60px', marginRight: '60px' }}
-					>
+					<div className="slds-is-relative" style={carouselMargins}>
 						{hasPreviousNextPanelNavigation && (
 							<PreviousNextCarouselNavigator
 								assistiveText={this.props.assistiveText.previousPanel}

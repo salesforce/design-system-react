@@ -81,6 +81,7 @@ class Example extends React.Component {
 				<div
 					style={{
 						maxWidth: '1280px',
+						padding: '20px',
 					}}
 				>
 					<Carousel
