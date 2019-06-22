@@ -15,6 +15,7 @@ import DateUtil from '../../../utilities/date';
 import KEYS from '../../../utilities/key-code';
 
 import { DIRECTIONS } from '../../utilities/UNSAFE_direction';
+import LanguageDirection from '../../utilities/UNSAFE_direction/private/language-direction';
 
 const handleClick = (event, { date, onSelectDate }) => {
 	onSelectDate(event, { date });
@@ -204,4 +205,4 @@ DatepickerCalendarDay.propTypes = {
 	onRequestInternalFocusDate: PropTypes.func,
 };
 
-export default DatepickerCalendarDay;
+export default LanguageDirection(DatepickerCalendarDay);

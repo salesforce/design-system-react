@@ -5604,27 +5604,6 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`. _Tested with snapshot testing._"
             },
-            "direction": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "DIRECTIONS.LTR",
-                            "computed": true
-                        },
-                        {
-                            "value": "DIRECTIONS.RTL",
-                            "computed": true
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Establishes directional context for component. Defaults to left-to-right.",
-                "defaultValue": {
-                    "value": "DIRECTIONS.LTR",
-                    "computed": true
-                }
-            },
             "disabled": {
                 "type": {
                     "name": "bool"

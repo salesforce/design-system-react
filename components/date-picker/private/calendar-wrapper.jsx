@@ -209,7 +209,6 @@ class DatepickerCalendarWrapper extends React.Component {
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
 					dateDisabled={this.props.dateDisabled}
-					direction={this.props.direction}
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
