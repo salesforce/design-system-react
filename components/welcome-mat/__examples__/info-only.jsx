@@ -22,6 +22,7 @@ class Example extends React.Component {
 							}}
 							doNotShowAgainCheckbox={
 								<Checkbox
+									id="welcome-mat-checkbox"
 									assistiveText={{
 										label: `Don't show this again`,
 									}}
@@ -36,6 +37,7 @@ class Example extends React.Component {
 									variant="brand"
 									title="Learn More"
 									label="Learn More"
+									id="welcome-mat-button"
 								/>
 							)}
 							variant="info-only"
@@ -44,30 +46,36 @@ class Example extends React.Component {
 								title="Welcome to Salesforce!"
 								description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 								icon="animal_and_nature"
-								onClick="javascript:void(0);"
+								id="welcome-mat-tile-1"
+								href="javascript:void(0);"
 							/>
 							<WelcomeMatTile
 								title="Learn About OpenCTI!"
 								description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 								icon="call"
-								onClick="javascript:void(0);"
+								id="welcome-mat-tile-2"
+								href="javascript:void(0);"
 							/>
 							<WelcomeMatTile
 								title="Power Up the Utility Bar"
 								description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
-								onClick="javascript:void(0);"
 								icon="call"
+								id="welcome-mat-tile-3"
+								href="javascript:void(0);"
 							/>
 							<WelcomeMatTile
 								title="Customize your view"
 								description="Tailor your cases to your team&#x27;s workflow with custom list views."
 								icon="upload"
+								href="javascript:void(0);"
+								id="welcome-mat-tile-4"
 							/>
 							<WelcomeMatTile
 								title="Share the Knowledge"
 								description="Harness your team&#x27;s collective know-how with our powerful knowledge base."
-								onClick="javascript:void(0);"
 								icon="knowledge_base"
+								href="javascript:void(0);"
+								id="welcome-mat-tile-5"
 							/>
 						</WelcomeMat>
 					</div>

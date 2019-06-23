@@ -21,6 +21,7 @@ class Example extends React.Component {
 							}}
 							doNotShowAgainCheckbox={
 								<Checkbox
+									id="welcome-mat-checkbox"
 									assistiveText={{
 										label: `Don't show this again`,
 									}}
@@ -35,6 +36,7 @@ class Example extends React.Component {
 									variant="brand"
 									title="Learn More"
 									label="Learn More"
+									id="welcome-mat-button"
 								/>
 							)}
 							variant="splash"

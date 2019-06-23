@@ -13,7 +13,7 @@ import SLDSCheckbox from '../../checkbox';
 
 import SLDSWelcomeMat from '../../welcome-mat';
 import SLDSWelcomeMatTile from '../../welcome-mat/tile';
-// import WelcomeMatInfoBadge from '../../welcome-mat/info-badge';
+import WelcomeMatInfoBadge from '../../welcome-mat/info-badge';
 
 describe('SLDSWelcomeMat: ', function() {
 	let container;
@@ -206,6 +206,144 @@ describe('SLDSWelcomeMat: ', function() {
 				)
 			).to.exist;
 			expect(WelcomeMatContainer.querySelector('.slds-checkbox')).to.exist;
+		});
+	});
+
+	describe('Splash Variant', () => {
+		beforeEach(() => {
+			getWelcomeMat({
+				variant: 'splash',
+				labels,
+				id: 'welcome-mat-test',
+				doNotShowAgainCheckbox: (
+					<SLDSCheckbox
+						assistiveText={{
+							label: `Don't show this again`,
+						}}
+						labels={{
+							label: `Don't show this again`,
+						}}
+					/>
+				),
+				onRenderInfoActions: () => (
+					<SLDSButton
+						type="button"
+						variant="brand"
+						title="Learn More"
+						label="Learn More"
+					/>
+				),
+			});
+		});
+		it('renders welcome mat', () => {
+			const WelcomeMatContainer = getWelcomeMatNode(
+				document.body
+			).querySelector('.slds-welcome-mat');
+			expect(WelcomeMatContainer).to.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__content')).to
+				.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__info')).to
+				.exist;
+		});
+
+		it('does not render any tiles', () => {
+			const WelcomeMatContainer = getWelcomeMatNode(
+				document.body
+			).querySelector('.slds-welcome-mat');
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__tiles')).to
+				.not.exist;
+		});
+		it('shows info action button and do not show checkbox', () => {
+			const WelcomeMatContainer = getWelcomeMatNode(
+				document.body
+			).querySelector('.slds-welcome-mat');
+			expect(
+				WelcomeMatContainer.querySelector('.slds-welcome-mat__info-actions')
+			).to.exist;
+			expect(
+				WelcomeMatContainer.querySelector(
+					'.slds-welcome-mat__info-actions button'
+				)
+			).to.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-checkbox')).to.exist;
+		});
+	});
+
+	describe('Trailhead Variant', () => {
+		beforeEach(() => {
+			getWelcomeMat({
+				variant: 'trailhead-connected',
+				labels,
+				children: tiles,
+				infoBadge: (
+					<WelcomeMatInfoBadge
+						image="/assets/images/welcome-mat/trailhead_badge@2x.png"
+						onCompleteRenderActions={() => (
+							<>
+								<p>Cha-ching! You earned the badge.</p>
+								<SLDSButton
+									className="slds-m-top_medium"
+									type="button"
+									variant="brand"
+									title="View on your Trailblazer Profile"
+									label="View on your Trailblazer Profile"
+								/>
+							</>
+						)}
+					>
+						<p>
+							<strong>Lightning Explorer</strong>
+						</p>
+					</WelcomeMatInfoBadge>
+				),
+				id: 'welcome-mat-test',
+			});
+		});
+		it('renders welcome mat', () => {
+			const WelcomeMatContainer = getWelcomeMatNode(
+				document.body
+			).querySelector('.slds-welcome-mat');
+			expect(WelcomeMatContainer).to.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__content')).to
+				.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__info')).to
+				.exist;
+			expect(WelcomeMatContainer.querySelector('.slds-welcome-mat__tiles')).to
+				.exist;
+			ReactDOM.unmountComponentAtNode(container);
+			expect(
+				WelcomeMatContainer.querySelector('.slds-welcome-mat__tiles')
+					.childElementCount
+			).to.eql(5);
+			expect(
+				WelcomeMatContainer.querySelectorAll('.slds-welcome-mat__tile_complete')
+					.length
+			).to.eql(2);
+		});
+		it('shows trailhead badge', () => {
+			const WelcomeMatInfo = getWelcomeMatNode(document.body).querySelector(
+				'.slds-welcome-mat__info'
+			);
+			expect(WelcomeMatInfo.querySelector('.slds-welcome-mat__info-badge')).to
+				.exist;
+			expect(
+				WelcomeMatInfo.querySelector(
+					'.slds-welcome-mat__info-progress p strong'
+				).textContent
+			).to.eql('Lightning Explorer');
+		});
+		it('shows labels correctly', () => {
+			const WelcomeMatInfo = getWelcomeMatNode(document.body).querySelector(
+				'.slds-welcome-mat__info'
+			);
+			expect(
+				WelcomeMatInfo.querySelector('.slds-welcome-mat__info-title')
+					.textContent
+			).to.eql(title);
+			expect(
+				WelcomeMatInfo.querySelector('.slds-welcome-mat__info-description')
+					.textContent
+			).to.eql(description);
 		});
 	});
 });
