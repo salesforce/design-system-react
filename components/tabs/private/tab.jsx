@@ -130,7 +130,7 @@ class Tab extends React.Component {
 					'slds-tabs_default__item': variant === 'default',
 					'slds-tabs_scoped__item': variant === 'scoped',
 				})}
-				role="tab"
+				role="presentation"
 				ref={(node) => {
 					this.node = node;
 				}}
@@ -149,7 +149,7 @@ class Tab extends React.Component {
 						'slds-tabs_scoped__link': variant === 'scoped',
 					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
-					role="presentation"
+					role="tab"
 					tabIndex="-1"
 					aria-disabled={disabled}
 				>

@@ -7,10 +7,16 @@ class CustomColorForm extends React.Component {
 	static displayName = 'SLDSCustomColorForm';
 
 	render() {
+		let describedBy;
+
+		if (this.props.errorTextWorkingColor || this.props.color.errors) {
+			describedBy = `color-picker-custom-error-${this.props.id}`;
+		}
+
 		return (
 			<div className="slds-color-picker__custom-inputs">
 				<Input
-					aria-describedby={`color-picker-custom-error-${this.props.id}`}
+					aria-describedby={describedBy}
 					className={classNames('slds-color-picker__input-custom-hex', {
 						'slds-has-error':
 							this.props.color.errors && this.props.color.errors.hex,
@@ -22,7 +28,7 @@ class CustomColorForm extends React.Component {
 					value={this.props.color.hex}
 				/>
 				<Input
-					aria-describedby={`color-picker-custom-error-${this.props.id}`}
+					aria-describedby={describedBy}
 					className={classNames('slds-color-picker__input-custom-r', {
 						'slds-has-error':
 							this.props.color.errors && this.props.color.errors.red,
@@ -34,7 +40,7 @@ class CustomColorForm extends React.Component {
 					value={String(this.props.color.rgb.red)}
 				/>
 				<Input
-					aria-describedby={`color-picker-custom-error-${this.props.id}`}
+					aria-describedby={describedBy}
 					className={classNames('slds-color-picker__input-custom-g', {
 						'slds-has-error':
 							this.props.color.errors && this.props.color.errors.green,
@@ -46,7 +52,7 @@ class CustomColorForm extends React.Component {
 					value={String(this.props.color.rgb.green)}
 				/>
 				<Input
-					aria-describedby={`color-picker-custom-error-${this.props.id}`}
+					aria-describedby={describedBy}
 					className={classNames('slds-color-picker__input-custom-b', {
 						'slds-has-error':
 							this.props.color.errors && this.props.color.errors.blue,

@@ -37,6 +37,7 @@ class CustomColor extends React.Component {
 				<CustomColorForm
 					color={this.props.color}
 					id={this.props.id}
+					errorTextWorkingColor={this.props.errorTextWorkingColor}
 					labels={this.props.labels}
 					onBlueChange={this.props.onBlueChange}
 					onGreenChange={this.props.onGreenChange}
