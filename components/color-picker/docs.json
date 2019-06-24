@@ -1,0 +1,7 @@
+{
+	"component": "color-picker",
+	"status": "prod",
+	"display-name": "Color Pickers",
+	"SLDS-component-path": "/components/color-picker",
+	"url-slug": "color-picker"
+}
