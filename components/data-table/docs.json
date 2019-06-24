@@ -1,0 +1,26 @@
+{
+    "component": "data-table",
+    "status": "prod",
+    "display-name": "Data Tables",
+    "last-accessibility-review": {
+        "date-iso-8601": "2017/01/01",
+        "deprecated-accessibility": "true",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+    },
+    "SLDS-component-path": "/components/data-tables",
+    "dependencies": [
+        {
+            "component": "cell"
+        },
+        {
+            "component": "column"
+        },
+        {
+            "component": "highlight-cell"
+        },
+        {
+            "component": "row-actions"
+        }
+    ],
+    "url-slug": "data-tables"
+}
