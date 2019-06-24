@@ -26,9 +26,13 @@ const port = process.env.PORT || 8002;
 app.use(
 	'/assets',
 	express.static(
-		`${rootPath}/node_modules/@salesforce-ux/design-system/assets/`
+		path.join(
+			__dirname,
+			`${rootPath}/node_modules/@salesforce-ux/design-system/assets/`
+		)
 	)
 );
+app.use('/assets', express.static(path.join(__dirname, `${rootPath}/assets/`)));
 app.use(express.static(`${rootPath}/storybook-based-tests`));
 
 console.log(`
@@ -39,10 +43,10 @@ QUEUEING: STORY-BASED DOM SNAPSHOT TESTING
 EXECUTING /tests/story-based-tests.snapshot-test.js
 BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
 
-This script uses Jest to call Storyshots 
-https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 
-Storybook story found at http://localhost:9001. This stores a copy of the 
-DOM on load in a text file. If you need an open menu tested, then you will 
+This script uses Jest to call Storyshots
+https://github.com/storybooks/storybook/tree/next/addons/storyshots on each
+Storybook story found at http://localhost:9001. This stores a copy of the
+DOM on load in a text file. If you need an open menu tested, then you will
 need to open the menu with the \`isOpen\` prop.
 
 For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
@@ -86,13 +90,13 @@ QUEUEING: STORY-BASED VISUAL REGRESSION SNAPSHOT TESTING
 EXECUTING /tests/story-based-tests.snapshot-test.js
 BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
 
-This script uses Jest to call Storyshots 
-https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 
-Storybook story found at http://localhost:9001. This stores a PNG on load and 
-compares it to PNGs previously captured. If you need an open menu tested, then 
+This script uses Jest to call Storyshots
+https://github.com/storybooks/storybook/tree/next/addons/storyshots on each
+Storybook story found at http://localhost:9001. This stores a PNG on load and
+compares it to PNGs previously captured. If you need an open menu tested, then
 you will need to open the menu with the \`isOpen\` prop.
 
-PLEASE DO NOT USE \`git add -A\` WHEN COMMITING PNGs. ONLY ADD IMAGES THAT 
+PLEASE DO NOT USE \`git add -A\` WHEN COMMITING PNGs. ONLY ADD IMAGES THAT
 ARE RELATED TO YOUR PULL REQUEST. Each PNG adds up and bloats the repository.
 
 For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md

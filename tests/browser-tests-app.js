@@ -32,6 +32,8 @@ app.use(
 		path.join(__dirname, '../node_modules/@salesforce-ux/design-system/assets')
 	)
 );
+app.use('/assets', express.static(path.join(__dirname, '../assets/')));
+
 app.use(
 	'/assets/icons',
 	express.static(
