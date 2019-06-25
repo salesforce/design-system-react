@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
-import EditDialogPopover from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
+import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
@@ -85,7 +85,7 @@ class Example extends React.Component {
 					<span className="slds-p-right_x-small">
 						{this.state.prevFirstName} {this.state.prevLastName}
 					</span>
-					<EditDialogPopover
+					<EditDialog
 						ariaLabelledby="Edit Name"
 						body={editDialogPopoverBody}
 						isModified={

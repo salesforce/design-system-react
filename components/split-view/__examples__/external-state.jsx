@@ -78,7 +78,7 @@ const listOptions = [
 	},
 ];
 
-const headerNavRight = (
+const headerNavRight = () => (
 	<div>
 		<Dropdown
 			id="header-nav-right-more"
@@ -202,14 +202,14 @@ class Example extends React.Component {
 			<SplitViewHeader
 				key="1"
 				contentRight={headerContentRight}
-				navRight={headerNavRight}
+				onRenderControls={headerNavRight}
 				iconAssistiveText="User"
 				iconCategory="standard"
 				iconName="lead"
 				info="42 items • Updated just now"
 				title={headerTitle}
 				truncate
-				variant="objectHome"
+				variant="object-home"
 			/>,
 			<SplitViewListbox
 				key="2"
@@ -332,6 +332,7 @@ class Example extends React.Component {
 								onOpen: (e) => this.onSplitViewOpen(e),
 								onClose: (e) => this.onSplitViewClose(e),
 							}}
+							id="SplitViewBase-external-state"
 							isOpen={this.state.isOpen}
 							master={this.masterView()}
 							detail={this.detailView()}

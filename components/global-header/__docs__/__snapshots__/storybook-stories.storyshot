@@ -51,7 +51,6 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               <div
                 aria-expanded={false}
                 aria-haspopup="listbox"
-                aria-owns="header-search-custom-id-listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -62,7 +61,6 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
-                    aria-controls="header-search-custom-id-listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -537,7 +535,6 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               <div
                 aria-expanded={false}
                 aria-haspopup="listbox"
-                aria-owns="header-search-custom-id-listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -548,7 +545,6 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
-                    aria-controls="header-search-custom-id-listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -914,7 +910,6 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               <div
                 aria-expanded={false}
                 aria-haspopup="listbox"
-                aria-owns="header-search-custom-id-listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -925,7 +920,6 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
-                    aria-controls="header-search-custom-id-listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"

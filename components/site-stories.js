@@ -60,6 +60,7 @@ const documentationSiteLiveExamples = {
 	toast: require('@salesforce/design-system-react/components/toast/__docs__/site-stories.js'),
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
 	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
+	'trial-bar': require('@salesforce/design-system-react/components/trial-bar/__docs__/site-stories.js'),
 	'vertical-navigation': require('@salesforce/design-system-react/components/vertical-navigation/__docs__/site-stories.js'),
 	'visual-picker': require('@salesforce/design-system-react/components/visual-picker/__docs__/site-stories.js'),
 };
