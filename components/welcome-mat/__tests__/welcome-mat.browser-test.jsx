@@ -71,7 +71,7 @@ describe('SLDSWelcomeMat: ', function() {
 			title="Welcome to Salesforce!"
 			description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 			icon="animal_and_nature"
-			onClick="javascript:void(0);"
+			href="javascript:void(0);"
 			isComplete
 		/>,
 		<SLDSWelcomeMatTile
@@ -129,6 +129,14 @@ describe('SLDSWelcomeMat: ', function() {
 				WelcomeMatContainer.querySelectorAll('.slds-welcome-mat__tile_complete')
 					.length
 			).to.eql(2);
+		});
+		it('tile links have correct href', () => {
+			const WelcomeMatTiles = getWelcomeMatNode(document.body).querySelectorAll(
+				'.slds-welcome-mat__tile a'
+			);
+			WelcomeMatTiles.forEach((tile) => {
+				expect(tile.href).to.eql.toString('javascript:void(0)');
+			});
 		});
 		it('shows labels correctly', () => {
 			const WelcomeMatInfo = getWelcomeMatNode(document.body).querySelector(
