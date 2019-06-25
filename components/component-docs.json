@@ -15824,6 +15824,13 @@
                 "required": false,
                 "description": "HTML id for component."
             },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props."
+            },
             "className": {
                 "type": {
                     "name": "union",
