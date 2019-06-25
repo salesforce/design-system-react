@@ -1,0 +1,7 @@
+{
+    "component": "page-header",
+    "status": "prod",
+    "display-name": "Page Headers",
+    "SLDS-component-path": "/components/page-headers",
+    "url-slug": "page-headers"
+}
