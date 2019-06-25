@@ -39,7 +39,6 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 	LIST,
 } from '../../utilities/constants';
-import { DIRECTIONS } from '../utilities/UNSAFE_direction';
 
 const documentDefined = typeof document !== 'undefined';
 
