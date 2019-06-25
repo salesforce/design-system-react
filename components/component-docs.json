@@ -4324,6 +4324,13 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
+            "direction": {
+                "defaultValue": {
+                    "value": "DIRECTIONS.LTR",
+                    "computed": true
+                },
+                "required": false
+            },
             "events": {
                 "type": {
                     "name": "shape",

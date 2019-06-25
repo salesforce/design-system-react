@@ -103,6 +103,10 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * TODO - Remove this unused prop in the next major release
+	 */
+	direction: DIRECTIONS.LTR,
+	/**
 	 * Event Callbacks
 	 * * `onBlur`: Called when `input` removes focus.
 	 * * `onChange`: Called when keyboard events occur within `input`
