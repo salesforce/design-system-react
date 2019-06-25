@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
-import MenuDropdown from '~/components/menu-dropdown/menu-dropdown';
-import Button from '~/components/button';
+import Dropdown from '../menu-dropdown';
+import DropdownTrigger from '../menu-dropdown/button-trigger';
+import MenuDropdown from '../menu-dropdown/menu-dropdown';
+import Button from '../button';
 
 import { TRIAL_BAR_DROPDOWN } from '../../utilities/constants';
 
