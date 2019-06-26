@@ -1616,7 +1616,6 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
         }
       >
         <button
-          aria-describedby="field-level-help-tooltip"
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
@@ -1712,7 +1711,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
             Help
           </span>
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="field-level-help-tooltip"
           onKeyDown={[Function]}
@@ -1730,7 +1729,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           >
             Some helpful information
           </div>
-        </section>
+        </div>
       </div>
       <div
         className="slds-form-element__control"

@@ -57,8 +57,9 @@ Use Jest to test the presence of:
 
 Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
 
-* `/tests/story-based-tests.snapshot-test.js`
-* `/tests/story-based-accessibility-tests.js`
+* `/tests/story-based.accessibility-test.js`
+* `/tests/story-based.image-test.js`
+* `/tests/story-based.snapshot-test.js`
 
 #### Story removal from test suite
 
