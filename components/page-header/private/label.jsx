@@ -3,20 +3,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import classnames from 'classnames';
 
 import Breadcrumb from '../../breadcrumb';
 
 const displayName = 'PageHeaderLabel';
 const propTypes = {
-	/**
-	 * Optional class name
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
 	/**
 	 * Contents of label section
 	 */
