@@ -153,11 +153,7 @@ class Step extends React.Component {
 	renderSummary() {
 		let progressRingTheme;
 
-		if (
-			this.props.progress > 0 &&
-			this.props.progress < 100 &&
-			this.getIsOpen()
-		) {
+		if (this.props.progress > 0 && this.props.progress < 100) {
 			progressRingTheme = 'active';
 		} else if (this.props.progress === 100) {
 			progressRingTheme = 'complete';

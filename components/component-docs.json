@@ -1153,13 +1153,6 @@
                     "computed": false
                 }
             },
-            "styleContainer": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the containing `nav` tag"
-            },
             "trail": {
                 "type": {
                     "name": "array"
@@ -1437,7 +1430,7 @@
         ]
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` and `form*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -2998,8 +2991,7 @@
                     "name": "shape",
                     "value": {
                         "heading": {
-                            "name": "custom",
-                            "raw": "PropTypes.heading",
+                            "name": "string",
                             "required": false
                         },
                         "label": {
@@ -4937,13 +4929,6 @@
                 "required": true,
                 "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
             },
-            "joined": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Makes DataTable joinable with PageHeader by adding appropriate classes/styling"
-            },
             "noRowHover": {
                 "type": {
                     "name": "bool"
@@ -5711,7 +5696,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
+                "description": "An [Input](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
             },
             "isOpen": {
                 "type": {
@@ -9034,6 +9019,17 @@
                 "required": false,
                 "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
             },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds inverse class to the dropdown",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "isOpen": {
                 "type": {
                     "name": "bool"
@@ -11488,32 +11484,60 @@
     },
     "page-header": {
         "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "_getClassNames",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "className",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
         "props": {
             "className": {
                 "type": {
-                    "name": "union",
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Optional class name",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
                     "value": [
                         {
-                            "name": "array"
+                            "value": "'base'",
+                            "computed": false
                         },
                         {
-                            "name": "object"
+                            "value": "'object-home'",
+                            "computed": false
                         },
                         {
-                            "name": "string"
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Optional class name"
-            },
-            "details": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of detail blocks (used in \"recordHome\" variant)"
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             },
             "label": {
                 "type": {
@@ -11528,7 +11552,37 @@
                     ]
                 },
                 "required": false,
-                "description": "The label property can be a string or a React element"
+                "description": "The info property can be a string or a React element"
+            },
+            "title": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The title property can be a string or a React element"
+            },
+            "info": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The info property can be a string or a React element"
             },
             "icon": {
                 "type": {
@@ -11536,6 +11590,13 @@
                 },
                 "required": false,
                 "description": "The page header icon"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
             },
             "iconCategory": {
                 "type": {
@@ -11564,14 +11625,7 @@
                     ]
                 },
                 "required": false,
-                "description": "The icon category"
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+                "description": "The icons category"
             },
             "iconPosition": {
                 "type": {
@@ -11644,97 +11698,39 @@
                 "required": false,
                 "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
             },
-            "info": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The info property can be a string or a React element"
-            },
-            "joined": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Makes PageHeader joinable with DataTable by adding appropriate classes/styling"
-            },
-            "nameSwitcherDropdown": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Used with the `object-home` variant. Accepts a node, typically a Dropdown component"
-            },
             "onRenderActions": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
+            },
+            "details": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of buttons which appear on the component's right hand side.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
             },
             "onRenderControls": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
-            },
-            "title": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The title property can be a string or a React element"
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
             },
             "trail": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of react elements presumably anchor <a> elements."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'object-home'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'record-home'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'related-list'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
+                "description": "An array of react elements presumably anchor <a> elements.",
                 "defaultValue": {
-                    "value": "'base'",
+                    "value": "[]",
                     "computed": false
                 }
             }
@@ -12125,6 +12121,38 @@
                 },
                 "required": true,
                 "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Orientation of the progress bar to be used",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component",
+                "defaultValue": {
+                    "value": "{\n    height: '100%',\n}",
+                    "computed": false
+                }
             }
         },
         "route": "progress-bars",
@@ -12381,8 +12409,7 @@
                     "name": "shape",
                     "value": {
                         "heading": {
-                            "name": "custom",
-                            "raw": "PropTypes.heading",
+                            "name": "string",
                             "required": false
                         },
                         "label": {
@@ -15070,6 +15097,13 @@
                 "returns": null
             },
             {
+                "name": "getIsOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getTooltip",
                 "docblock": null,
                 "modifiers": [],
@@ -15640,6 +15674,74 @@
         "SLDS-component-path": "/components/trees",
         "dependencies": []
     },
+    "trial-bar": {
+        "description": "Trial bar components are used to provide an interactive and educational prospect experience for setup.",
+        "methods": [],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<TrialBarButton />` or `<TrialBarDropdown />` to define the structure of the trial bar.\n```\n<TrialBar>\n  <TrialBarButton />\n  <TrialBarDropdown />\n</TrialBar>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the component. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "timeLeft": {
+                            "name": "string",
+                            "description": "Amount of time left in trial, e.g. `30`",
+                            "required": false
+                        },
+                        "timeLeftUnit": {
+                            "name": "string",
+                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Renders the labels in the trial bar."
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Renders the actions section of the trial bar."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Customs styles to be applied to the component."
+            }
+        },
+        "route": "trial-bars",
+        "display-name": "Trial Bars",
+        "SLDS-component-path": "/components/trial-bar",
+        "dependencies": []
+    },
     "vertical-navigation": {
         "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
         "methods": [
@@ -15721,6 +15823,13 @@
                 },
                 "required": false,
                 "description": "HTML id for component."
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props."
             },
             "className": {
                 "type": {

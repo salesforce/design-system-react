@@ -164,17 +164,15 @@ exports[`Datepicker
                   role="combobox"
                 >
                   <div
-                    aria-expanded={false}
-                    aria-haspopup="listbox"
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
                     role="none"
                   >
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
-                      aria-controls="CUSTOM-ID-year-picklist-listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
+                      disabled={false}
                       id="CUSTOM-ID-year-picklist"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -874,6 +872,12 @@ exports[`Datepicker
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label"
+      htmlFor="sample-datepicker"
+    >
+      Date
+    </label>
     <div
       className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
     >
@@ -1016,17 +1020,15 @@ exports[`Datepicker
                   role="combobox"
                 >
                   <div
-                    aria-expanded={false}
-                    aria-haspopup="listbox"
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
                     role="none"
                   >
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
-                      aria-controls="sample-datepicker-year-picklist-listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
+                      disabled={false}
                       id="sample-datepicker-year-picklist"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -1724,6 +1726,12 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label"
+      htmlFor="sample-datepicker"
+    >
+      Date
+    </label>
     <div
       className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
     >
@@ -1866,17 +1874,15 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
                   role="combobox"
                 >
                   <div
-                    aria-expanded={false}
-                    aria-haspopup="listbox"
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
                     role="none"
                   >
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
-                      aria-controls="sample-datepicker-year-picklist-listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
+                      disabled={false}
                       id="sample-datepicker-year-picklist"
                       onBlur={[Function]}
                       onChange={[Function]}
@@ -2569,7 +2575,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
 
 exports[`Datepicker Default HTML Snapshot 1`] = `
 "<div class=\\"slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\">
-  <div class=\\"slds-form-element\\">
+  <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"sample-datepicker\\">Date</label>
     <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon_right\\"><input type=\\"text\\" class=\\"slds-input\\" id=\\"sample-datepicker\\" placeholder=\\"Pick a Date\\" value=\\"7/23/2014\\" /><button class=\\"slds-button slds-button_icon slds-input__icon slds-input__icon_right\\" type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#event\\"></use></svg><span class=\\"slds-assistive-text\\">Open Calendar</span></button></div>
   </div>
   <div class=\\"slds-datepicker slds-dropdown slds-dropdown_left\\">
@@ -2586,8 +2592,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
             <div class=\\"slds-form-element__control\\">
               <div class=\\"slds-combobox_container\\">
                 <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
-                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"sample-datepicker-year-picklist-listbox\\" autoComplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\"
-                      role=\\"textbox\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></div>
+                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" autoComplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></div>
                 </div>
               </div>
             </div>
