@@ -28,16 +28,17 @@
 		"start": "npx start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
 		"static:start": "node app",
 		"static:build": "npx build-storybook -o ./storybook",
-		"storyshots:build": "npx build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
-		"storyshots:start": "node app --folder=storybook-based-tests",
-		"test": "npm run test:banner && npx concurrently \"npm:lint\" \"npm:test:unit\" \"npm:test:snapshot\" \"npm run build:docs && npm run test:docs\"",
+		"test": "npm run test:banner && npx concurrently \"npm:lint\" \"npm:test:unit\" \"npm:test:dom-snapshot\" \"npm:test:image-snapshot\" \"npm:test:accessibility\" \"npm run build:docs && npm run test:docs\"",
 		"test:banner": "node ./scripts/print-tests-top-banner.js",
 		"test:docs": "npx babel-node ./tests/component-docs-test.js",
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
-		"test:snapshot": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --config=tests/snapshots-config.json",
-		"test:snapshot:update": "cross-env NODE_ENV=test npm run storyshots:build && npx jest --updateSnapshot --config=tests/snapshots-config.json",
-		"test:accessibility": "cross-env NODE_ENV=test npx jest --config=tests/a11y-config.json",
+		"test:stories": "npm run test:dom-snapshot && npm run test:image-snapshot",
+		"test:dom-snapshot": "cross-env NODE_ENV=test npx jest --runInBand --config=tests/story-based-tests.dom-snapshot-test.config.json",
+		"test:image-snapshot": "cross-env NODE_ENV=test npm run static:build && npx jest --runInBand --config=tests/story-based-tests.snapshot-test.config.json",
+		"test:dom-snapshot:update": "cross-env NODE_ENV=test npx jest --updateSnapshot --config=tests/story-based-tests.dom-snapshot-test.config.json",
+		"test:image-snapshot:update": "cross-env NODE_ENV=test npm run static:build && npx jest --updateSnapshot --config=tests/story-based-tests.snapshot-test.config.json",
+		"test:accessibility": "cross-env NODE_ENV=test npx jest --runInBand --config=tests/story-based-tests.accessibility-test.config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
 		"upload-diffs": "scripts/upload-diffs.sh",
@@ -49,7 +50,7 @@
 		"url": "git+ssh://git@github.com/salesforce/design-system-react.git"
 	},
 	"jest": {
-		"preset": "./tests/snapshots-config.json"
+		"preset": "./tests/story-based-tests.dom-snapshot-test.config.json"
 	},
 	"keywords": [
 		"react",
