@@ -15,6 +15,10 @@ import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import initStoryshots from '@storybook/addon-storyshots';
 
+// Add tests to this file to exclude them from testing
+import excludeFromTests from './exclude-story-config';
+import { getExcludeKindRegex } from './storyshots-helpers';
+
 // Add aXe to Jest expect
 expect.extend(toHaveNoViolations);
 // Make compatible with React 16
@@ -59,8 +63,11 @@ For more information, please review: https://github.com/salesforce/design-system
 
 describe('aXe Testing', function aXeFunction() {
 	initStoryshots({
-		configPath: '.storybook-based-tests',
+		configPath: '.storybook',
 		suite: 'aXe storyshots',
+		storyKindRegex: getExcludeKindRegex({
+			arrayOfStoryKind: excludeFromTests.accessibility.storyKind,
+		}),
 		test: async ({ story, context }) => {
 			const component = story.render(context);
 			const wrapper = mount(component);
