@@ -13,7 +13,7 @@ import SnaphotDefault from '../__examples__/snapshot-default';
 import WeekdayPicker from '../__examples__/weekday-picker';
 
 // eslint-disable-next-line camelcase
-import UNSAFE_DirectionSettings from '~/components/utilities/UNSAFE_direction';
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
 
 const makeRtl = (component) => (
 	// eslint-disable-next-line

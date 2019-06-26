@@ -6,7 +6,7 @@ import { renderMarkup } from '../../../tests/snapshot-helpers';
 import SnapshotDefault from '../__examples__/snapshot-default';
 
 // eslint-disable-next-line camelcase
-import UNSAFE_DirectionSettings from '~/components/utilities/UNSAFE_direction';
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
 
 const makeRtl = (component) => (
 	// eslint-disable-next-line
