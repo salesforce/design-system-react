@@ -127,7 +127,7 @@
 		"babel-jest": "^23.0.1",
 		"babel-loader": "^8.0.0-beta.3",
 		"babel-plugin-import-noop": "^1.0.1",
-		"babel-plugin-istanbul": "^4.1.6",
+		"babel-plugin-istanbul": "^5.1.4",
 		"babel-plugin-root-import": "^6.1.0",
 		"basic-auth": "^1.0.4",
 		"chai": "^4.0.1",
