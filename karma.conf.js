@@ -1,6 +1,5 @@
 /* eslint-env node */
 /* eslint-disable import/no-extraneous-dependencies */
-const webpackConfig = require('./webpack.config');
 const karmaWebpack = require('karma-webpack');
 const karmaMocha = require('karma-mocha');
 const karmaChaiSinon = require('karma-chai-sinon');
@@ -8,6 +7,7 @@ const karmaSourcemapLoader = require('karma-sourcemap-loader');
 const karmaChromeLauncher = require('karma-chrome-launcher');
 const karmaSpecReporter = require('karma-spec-reporter');
 const karmaCoverage = require('karma-coverage');
+const webpackConfig = require('./webpack.config');
 
 webpackConfig.devtool = 'inline-source-map';
 webpackConfig.externals = {
@@ -18,7 +18,7 @@ webpackConfig.externals = {
 };
 
 // Karma configuration
-const configExport = function(config) {
+const configExport = function configExportFunction(config) {
 	config.set({
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',

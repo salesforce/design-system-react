@@ -12,6 +12,7 @@ import CustomTarget from '../__examples__/custom-target';
 import Header from '../__examples__/header';
 import Error from '../__examples__/error';
 import Walkthrough from '../__examples__/walkthrough';
+import EditDialog from '../__examples__/edit-dialog';
 import WalkthroughAction from '../__examples__/walkthrough-action';
 import Warning from '../__examples__/warning';
 import AlternativeHeader from '../__examples__/alternative-header';
@@ -139,4 +140,6 @@ storiesOf(POPOVER, module)
 	.add('Walkthrough', () => <Walkthrough action={action} />)
 	.add('Walkthrough - Open', () => <Walkthrough action={action} isOpen />)
 	.add('Walkthrough Action', () => <WalkthroughAction />)
-	.add('Walkthrough Action - Open', () => <WalkthroughAction isOpen />);
+	.add('Walkthrough Action - Open', () => <WalkthroughAction isOpen />)
+	.add('Edit Dialog', () => <EditDialog />)
+	.add('Edit Dialog  - Open', () => <EditDialog isOpen />);

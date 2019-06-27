@@ -2,7 +2,6 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import TestUtils from 'react-dom/test-utils';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import classNames from 'classnames';
@@ -24,8 +23,6 @@ import {
  * https://github.com/producthunt/chai-enzyme
  */
 chai.use(chaiEnzyme());
-
-const { Simulate } = TestUtils;
 
 const COMPONENT_CSS_CLASSES = {
 	wrapper: 'slds-tabs_default_wrapper',

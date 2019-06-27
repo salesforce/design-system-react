@@ -7,12 +7,12 @@
 // This function will deliver an error message to the browser console about the future of a removal and moving of a property's valid value to another prop. This makes the most sense to be used with `oneOf` prop types.
 import warning from 'warning';
 
-let deprecated = function() {};
+let deprecated = function deprecatedFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	deprecated = function(
+	deprecated = function deprecatedFunction(
 		control,
 		{
 			propAsString, // key name of prop being warned about

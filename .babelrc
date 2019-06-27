@@ -4,10 +4,7 @@
 			"@babel/preset-env",
 			{
 				"targets": {
-					"browsers": [
-						"last 2 versions",
-						"ie 11"
-					],
+					"browsers": ["last 2 versions", "ie 11"],
 					"node": "8.9.4"
 				}
 			}
@@ -18,8 +15,7 @@
 		"@babel/plugin-proposal-object-rest-spread",
 		"@babel/plugin-proposal-class-properties",
 		"@babel/plugin-proposal-export-default-from",
-		"@babel/plugin-proposal-export-namespace-from",
-		"root-import"
+		"@babel/plugin-proposal-export-namespace-from"
 	],
 	"env": {
 		"amd": {
@@ -31,10 +27,7 @@
 					"@babel/preset-env",
 					{
 						"targets": {
-							"browsers": [
-								"last 2 versions",
-								"ie 11"
-							],
+							"browsers": ["last 2 versions", "ie 11"],
 							"node": "8.9.4"
 						},
 						"modules": false
@@ -56,7 +49,17 @@
 			"plugins": ["istanbul"]
 		}
 	},
-	"ignore": [
-		"preset/**"
+	"ignore": ["preset/**"],
+	"overrides": [
+		{
+			"test": "**/__examples__/**",
+			"plugins": [
+				"@babel/plugin-proposal-object-rest-spread",
+				"@babel/plugin-proposal-class-properties",
+				"@babel/plugin-proposal-export-default-from",
+				"@babel/plugin-proposal-export-namespace-from",
+				"root-import"
+			]
+		}
 	]
 }

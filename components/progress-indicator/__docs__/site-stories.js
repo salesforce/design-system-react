@@ -5,6 +5,7 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/progress-indicator/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/progress-indicator/__examples__/vertical.jsx'),
 ];
 
 module.exports = siteStories;

@@ -20,9 +20,10 @@ if [ "$GIT_SSH_KEY" != "" ]; then
 
 	npm install --unsafe-perm
 
-	if [ "$IS_BUILD_SERVER" = "true" ]; then
+	if ([ "$IS_BUILD_SERVER" = "true" ] && [ -f "patch.md" ]) || ([ "$IS_BUILD_SERVER" = "true" ] && [ -f "minor.md" ]); then
 		echo "## This is a build server."
-		echo "Cloning"
+		echo "## File 'patch.md' OR 'minor.md' exists."
+		echo "Cloning project within project for release build."
 		# setup git environment
 		git clone "${ORIGIN:-git@github.com:salesforce-ux/design-system-react.git}"
 		cd design-system-react

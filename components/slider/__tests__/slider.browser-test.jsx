@@ -27,7 +27,6 @@ chai.use(chaiEnzyme());
 
 const {
 	findRenderedDOMComponentWithTag,
-	scryRenderedDOMComponentsWithTag,
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 

@@ -204,6 +204,7 @@ class ButtonStateful extends React.Component {
 					onMouseEnter={onMouseEnter}
 					onMouseLeave={this.handleBlur}
 					tabIndex={tabIndex}
+					type="button"
 				>
 					<ButtonIcon
 						disabled={disabled}
@@ -233,6 +234,7 @@ class ButtonStateful extends React.Component {
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
+				type="button"
 			>
 				<span className="slds-text-not-selected">
 					<ButtonIcon

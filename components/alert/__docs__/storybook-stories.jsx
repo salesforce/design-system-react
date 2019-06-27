@@ -15,7 +15,7 @@ import CustomStyles from '../__examples__/custom-style';
 
 storiesOf(ALERT, module)
 	.addDecorator((getStory) => (
-		<div className="slds-p-around_medium">{getStory()}</div>
+		<div className="slds-p-around_medium slds-p-top_xx-large">{getStory()}</div>
 	))
 	.add('Info', () => <Info />)
 	.add('Warning', () => <Warning />)

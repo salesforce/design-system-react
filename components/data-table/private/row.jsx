@@ -140,7 +140,7 @@ const DataTableRow = (props) => {
 				</td>
 			) : null}
 			{props.columns.map((column, index) => {
-				const Cell = column.Cell;
+				const { Cell } = column;
 				const cellId = `${props.id}-${DATA_TABLE_CELL}-${
 					column.props.property
 				}`;
