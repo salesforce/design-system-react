@@ -178,7 +178,7 @@
 		"mocha": "^6.1.4",
 		"node-sass": "^4.5.0",
 		"normalizr": "^3.2.4",
-		"object.entries": "^1.0.4",
+		"object.entries": "^1.1.0",
 		"phantomjs-polyfill-find-index": "^1.0.1",
 		"phantomjs-polyfill-includes": "^1.0.2",
 		"prettier": "1.9.2",
