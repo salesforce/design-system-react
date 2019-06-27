@@ -828,6 +828,13 @@
 			"display-name": "Visual Pickers",
 			"SLDS-component-path": "/components/visual-picker",
 			"url-slug": "visual-pickers"
+		},
+		{
+			"component": "welcome-mat",
+			"status": "prod",
+			"display-name": "Welcome Mat",
+			"SLDS-component-path": "/components/welcome-mat",
+			"url-slug": "welcome-mat"
 		}
 	],
 	"documentation": {

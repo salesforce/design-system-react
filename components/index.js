@@ -326,6 +326,12 @@ export VisualPicker from './visual-picker';
 export SLDSVisualPickerLink from './visual-picker/link';
 export VisualPickerLink from './visual-picker/link';
 
+export SLDSWelcomeMat from './welcome-mat';
+export WelcomeMat from './welcome-mat';
+
+export SLDSWelcomeMatTile from './welcome-mat/tile';
+export WelcomeMatTile from './welcome-mat/tile';
+
 export SLDSDynamicIcon from './dynamic-icon';
 export DynamicIcon from './dynamic-icon';
 
