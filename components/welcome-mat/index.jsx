@@ -6,13 +6,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
-import Modal from '~/components/modal';
-import ProgressBar from '~/components/progress-bar';
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Modal from '../modal';
+import ProgressBar from '../progress-bar';
+
 import { WELCOME_MAT } from '../../utilities/constants';
 
 const displayName = WELCOME_MAT;

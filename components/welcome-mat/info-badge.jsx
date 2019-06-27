@@ -5,13 +5,13 @@
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import Icon from '~/components/icon';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Icon from '../icon';
+
 import { WELCOME_MAT_BADGE } from '../../utilities/constants';
 
 const displayName = WELCOME_MAT_BADGE;
