@@ -92,7 +92,7 @@
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.14.1",
 		"shortid": "^2.2.14",
-		"warning": "^3.0.0"
+		"warning": "^4.0.3"
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.8.3",
