@@ -18,6 +18,9 @@ import UtilityIcon from '../utilities/utility-icon';
 
 import { ICON } from '../../utilities/constants';
 
+import { DIRECTIONS } from '../utilities/UNSAFE_direction';
+import LanguageDirection from '../utilities/UNSAFE_direction/private/language-direction';
+
 const defaultProps = {
 	assistiveText: {},
 	category: 'standard',
@@ -42,6 +45,7 @@ const Icon = (props) => {
 		size,
 		style,
 		title,
+		direction
 	} = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
@@ -58,6 +62,7 @@ const Icon = (props) => {
 			className={classNames(
 				{
 					'slds-icon_container': category !== 'utility',
+					'slds-icon_flip': direction === DIRECTIONS.RTL,
 					'slds-icon_container_circle': category === 'action',
 					[`slds-icon-${category}-${kababCaseName}`]:
 						category !== 'utility' && category !== 'doctype' && !path,
@@ -183,4 +188,4 @@ Icon.propTypes = {
 
 Icon.defaultProps = defaultProps;
 
-export default Icon;
+export default LanguageDirection(Icon);

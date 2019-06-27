@@ -55,6 +55,35 @@ exports[`DOM snapshots SLDSIcon Base: Standard (custom styles) 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSIcon Category: Action - Right to Left (RTL) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    dir="rtl"
+  >
+    <span
+      className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+      title="description of icon"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon"
+      >
+        <use
+          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Description of icon
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSIcon Category: Action 1`] = `
 <div
   className="slds-p-around_medium"
@@ -149,6 +178,35 @@ exports[`DOM snapshots SLDSIcon Category: External Path 1`] = `
       We got news!
     </span>
   </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Standard - Right to Left (RTL) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    dir="rtl"
+  >
+    <span
+      className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+      title="description of icon"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon"
+      >
+        <use
+          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Description of icon
+      </span>
+    </span>
+  </div>
 </div>
 `;
 
