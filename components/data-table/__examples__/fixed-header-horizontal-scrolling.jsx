@@ -222,6 +222,7 @@ class Example extends React.Component {
 						}}
 						fixedHeader
 						fixedLayout
+						keyboardNavigation
 						items={this.state.items}
 						id="DataTableExample-FixedHeaders"
 						onRowChange={this.handleChanged}

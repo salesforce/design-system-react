@@ -132,7 +132,7 @@ class DataTable extends React.Component {
 		/**
 		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
 		 *
-		 * The advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
+		 * When `keyboardNavigation` is enabled, the advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
 		 * Wrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:
 		 * ```
 		 * const InteractiveButton = DataTableInteractiveElement(Button);
@@ -163,6 +163,10 @@ class DataTable extends React.Component {
 				id: PropTypes.string.isRequired,
 			})
 		).isRequired,
+		/**
+		 * Enables keyboard navigation when this is an advanced table.
+		 */
+		keyboardNavigation: PropTypes.bool.isRequired,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -252,7 +256,7 @@ class DataTable extends React.Component {
 			tableHasFocus: false,
 			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
 			// when another component requires its own focus behavior (e.g. menu dropdown).
-			allowKeyboardNavigation: true,
+			allowKeyboardNavigation: props.keyboardNavigation,
 		};
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};

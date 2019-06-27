@@ -126,6 +126,7 @@ class Example extends React.Component {
 							selectRow: 'select this row',
 						}}
 						fixedLayout
+						keyboardNavigation
 						items={this.state.items}
 						id="DataTableExample-SingleRequiredSelect"
 						onRowChange={this.handleChanged}
