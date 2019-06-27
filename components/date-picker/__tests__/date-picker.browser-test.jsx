@@ -12,6 +12,16 @@ import Datepicker from '../../date-picker';
 import Input from '../../input';
 import KEYS from '../../../utilities/key-code';
 
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
+
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
  */
@@ -32,6 +42,7 @@ class DemoComponent extends React.Component {
 
 	static propTypes = {
 		isOpen: PropTypes.bool,
+		isRtl: PropTypes.bool,
 	};
 
 	static defaultProps = defaultProps;
@@ -41,11 +52,13 @@ class DemoComponent extends React.Component {
 	// event handlers
 
 	render() {
-		return (
+		const component = (
 			<IconSettings iconPath="/assets/icons">
 				<Datepicker {...this.props} />
 			</IconSettings>
 		);
+
+		return this.props.isRtl ? makeRtl(component) : component;
 	}
 }
 
@@ -253,6 +266,31 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
+			it('navigates to next day with the opposite button for RTL', function(done) {
+				wrapper = mount(
+					<DemoComponent
+						isRtl
+						isOpen
+						menuPosition="relative"
+						onCalendarFocus={(event, data) => {
+							expect(data.date.getTime()).to.equal(
+								new Date(2007, 0, 7).getTime()
+							);
+							done();
+						}}
+					/>
+				);
+
+				const selectedDay = wrapper.find(
+					'.datepicker__month [aria-selected=true]'
+				);
+				selectedDay.simulate('keyDown', {
+					key: 'Left',
+					keyCode: KEYS.LEFT,
+					which: KEYS.LEFT,
+				});
+			});
+
 			it('navigates to previous week (that is of a previous month)', function(done) {
 				wrapper = mount(
 					<DemoComponent
@@ -298,6 +336,31 @@ describe('SLDSDatepicker', function describeFunction() {
 					key: 'Left',
 					keyCode: KEYS.LEFT,
 					which: KEYS.LEFT,
+				});
+			});
+
+			it('navigates to previous day with the opposite button for RTL', function(done) {
+				wrapper = mount(
+					<DemoComponent
+						isRtl
+						isOpen
+						menuPosition="relative"
+						onCalendarFocus={(event, data) => {
+							expect(data.date.getTime()).to.equal(
+								new Date(2007, 0, 5).getTime()
+							);
+							done();
+						}}
+					/>
+				);
+
+				const selectedDay = wrapper.find(
+					'.datepicker__month [aria-selected=true]'
+				);
+				selectedDay.simulate('keyDown', {
+					key: 'Right',
+					keyCode: KEYS.RIGHT,
+					which: KEYS.RIGHT,
 				});
 			});
 

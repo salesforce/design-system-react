@@ -141,3 +141,6 @@ export const VERTICAL_NAVIGATION = 'SLDSVerticalNavigation';
 export const VERTICAL_NAVIGATION_ITEM = 'SLDSVerticalNavigationItem';
 export const VISUAL_PICKER = 'SLDSVisualPicker';
 export const VISUAL_PICKER_LINK = 'SLDSVisualPickerLink';
+export const WELCOME_MAT = 'SLDSWelcomeMat';
+export const WELCOME_MAT_TILE = 'SLDSWelcomeMatTile';
+export const WELCOME_MAT_BADGE = 'SLDSWelcomeMatBadge';

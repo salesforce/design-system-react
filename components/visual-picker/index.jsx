@@ -18,6 +18,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props.
+	 */
+	children: PropTypes.node,
+	/**
 	 * CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
