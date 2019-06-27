@@ -32,9 +32,7 @@ const ModalTrigger = {
 			</Modal>
 		);
 
-		if (comp && el) {
-			ReactDOM.render(comp, el);
-		}
+		ReactDOM.render(comp, el);
 	},
 };
 
