@@ -163,7 +163,7 @@
 		"karma": "^1.7.0",
 		"karma-chai-sinon": "^0.1.5",
 		"karma-chrome-launcher": "^2.2.0",
-		"karma-cli": "^1.0.0",
+		"karma-cli": "^2.0.0",
 		"karma-coverage": "^1.1.2",
 		"karma-mocha": "^1.0.1",
 		"karma-sourcemap-loader": "^0.3.5",
