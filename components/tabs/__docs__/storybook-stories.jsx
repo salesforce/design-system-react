@@ -91,7 +91,7 @@ const getTabsNested = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>
-					And they&rsquo;re <a href="#amazing">amazing</a>.
+					And they&rsquo;re amazing.
 				</p>
 			</Panel>
 			<Panel label="Tab 2">
@@ -100,15 +100,8 @@ const getTabsNested = () => (
 
 				<Input
 					id="unique-id-123"
-					name="left-clickable-icon"
+					name="tab-input-example"
 					label="Input Label"
-					iconLeft={
-						<InputIcon
-							name="search"
-							category="utility"
-							onClick={action('search icon clicked')}
-						/>
-					}
 					placeholder="You can tab onto this to focus it."
 				/>
 			</Panel>
@@ -482,7 +475,7 @@ const getTabsDisabled = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It&quot;s awesome.</p>
+				<p>It's awesome.</p>
 				<p>
 					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
 					around. Try it!

@@ -134,9 +134,6 @@ class Tab extends React.Component {
 				ref={(node) => {
 					this.node = node;
 				}}
-				aria-selected={selected ? 'true' : 'false'}
-				aria-disabled={disabled}
-				aria-controls={panelId}
 				tabIndex={tabIndex}
 				id={id}
 				title={typeof children === 'string' ? children : null}
@@ -151,7 +148,9 @@ class Tab extends React.Component {
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="tab"
 					tabIndex="-1"
+					aria-controls={panelId}
 					aria-disabled={disabled}
+					aria-selected={selected ? 'true' : 'false'}
 				>
 					{children}
 				</a>
