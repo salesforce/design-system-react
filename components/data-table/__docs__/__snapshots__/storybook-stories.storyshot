@@ -6189,6 +6189,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <th
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -6223,6 +6226,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
@@ -6252,12 +6256,15 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
                   }
                 }
+                tabIndex="0"
               >
                 <div
                   className="slds-form-element"
@@ -6272,7 +6279,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -6293,7 +6303,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6310,7 +6322,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6322,7 +6336,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6334,7 +6350,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6346,7 +6364,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6358,7 +6378,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6370,7 +6392,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6390,6 +6414,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -6399,6 +6426,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -6411,7 +6439,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -6437,6 +6465,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -6457,7 +6487,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -6478,7 +6511,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6495,7 +6530,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6507,7 +6544,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6519,7 +6558,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6531,7 +6572,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6543,7 +6586,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6555,7 +6600,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6575,6 +6622,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -6584,6 +6634,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -6596,7 +6647,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -6622,6 +6673,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -6642,7 +6695,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -6663,7 +6719,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6680,7 +6738,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6692,7 +6752,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6704,7 +6766,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6716,7 +6780,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6728,7 +6794,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6740,7 +6808,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6760,6 +6830,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -6769,6 +6842,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -6781,7 +6855,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -6807,6 +6881,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -6827,7 +6903,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -6848,7 +6927,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6865,7 +6946,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6877,7 +6960,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6889,7 +6974,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6901,7 +6988,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6913,7 +7002,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6925,7 +7016,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -6945,6 +7038,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -6954,6 +7050,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -6966,7 +7063,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -6992,6 +7089,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -7012,7 +7111,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -7033,7 +7135,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7050,7 +7154,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7062,7 +7168,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7074,7 +7182,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7086,7 +7196,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7098,7 +7210,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7110,7 +7224,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7130,6 +7246,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -7139,6 +7258,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -7151,7 +7271,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -7177,6 +7297,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -7197,7 +7319,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -7218,7 +7343,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7235,7 +7362,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7247,7 +7376,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7259,7 +7390,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7271,7 +7404,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7283,7 +7418,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7295,7 +7432,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7315,6 +7454,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -7324,6 +7466,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -7336,7 +7479,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -7362,6 +7505,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -7382,7 +7527,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -7403,7 +7551,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7420,7 +7570,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7432,7 +7584,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7444,7 +7598,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7456,7 +7612,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7468,7 +7626,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7480,7 +7640,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7500,6 +7662,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -7509,6 +7674,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -7521,7 +7687,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -7547,6 +7713,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -7567,7 +7735,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -7588,7 +7759,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7605,7 +7778,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7617,7 +7792,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7629,7 +7806,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7641,7 +7820,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7653,7 +7834,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7665,7 +7848,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7685,6 +7870,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -7694,6 +7882,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -7706,7 +7895,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -7732,6 +7921,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -7752,7 +7943,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -7773,7 +7967,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7790,7 +7986,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7802,7 +8000,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7814,7 +8014,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7826,7 +8028,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7838,7 +8042,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7850,7 +8056,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7870,6 +8078,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -7879,6 +8090,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -7891,7 +8103,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -7917,6 +8129,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -7937,7 +8151,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -7958,7 +8175,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7975,7 +8194,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7987,7 +8208,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -7999,7 +8222,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8011,7 +8236,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8023,7 +8250,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8035,7 +8264,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8055,6 +8286,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -8064,6 +8298,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -8076,7 +8311,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -8102,6 +8337,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -8122,7 +8359,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -8143,7 +8383,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8160,7 +8402,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8172,7 +8416,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8184,7 +8430,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8196,7 +8444,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8208,7 +8458,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8220,7 +8472,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8240,6 +8494,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -8249,6 +8506,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -8261,7 +8519,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -8287,6 +8545,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
             >
               <td
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={
                   Object {
@@ -8307,7 +8567,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow"
+                        onBlur={[Function]}
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -8328,7 +8591,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <th
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8345,7 +8610,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </th>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8357,7 +8624,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8369,7 +8638,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8381,7 +8652,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8393,7 +8666,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8405,7 +8680,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 </div>
               </td>
               <td
-                className={null}
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
               >
@@ -8425,6 +8702,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 className=""
                 data-label="Actions"
                 onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
                 style={
                   Object {
                     "width": "3.25rem",
@@ -8434,6 +8714,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
+                  onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={null}
                   onKeyDown={[Function]}
@@ -8446,7 +8727,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -8509,6 +8790,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
           aria-multiselectable="true"
           className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
           id="DataTableExample-FixedHeaders"
+          onBlur={[Function]}
           role="grid"
           style={
             Object {
@@ -8522,6 +8804,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
             >
               <th
                 className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -8557,7 +8841,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                           checked={false}
                           id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                           name="SelectAll"
+                          onBlur={[Function]}
                           onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
                           type="checkbox"
                         />
                         <label
@@ -8584,6 +8871,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
@@ -8611,7 +8899,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                             checked={false}
                             id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
                             name="SelectAll"
+                            onBlur={[Function]}
                             onChange={[Function]}
+                            onFocus={[Function]}
+                            tabIndex="-1"
                             type="checkbox"
                           />
                           <label
@@ -8637,6 +8928,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -8649,7 +8942,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 <a
                   className="slds-th__action slds-text-link_reset"
                   href="javascript:void(0)"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
                   role="button"
                   style={
                     Object {
@@ -8661,7 +8957,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "visibility": "hidden",
                     }
                   }
-                  tabIndex="0"
+                  tabIndex="-1"
                 >
                   <span
                     className="slds-assistive-text"
@@ -8701,13 +8997,17 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
                     href="javascript:void(0)"
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
                     role="button"
                     style={
                       Object {
@@ -8718,7 +9018,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         "width": "100%",
                       }
                     }
-                    tabIndex={0}
+                    tabIndex="-1"
                   >
                     <span
                       className="slds-assistive-text"
@@ -8757,6 +9057,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -8767,7 +9069,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 }
               >
                 <span
-                  className="slds-p-horizontal_x-small"
+                  className="slds-p-horizontal_x-small slds-th__action"
                   style={
                     Object {
                       "display": "flex",
@@ -8793,11 +9095,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <span
-                    className="slds-p-horizontal_x-small"
+                    className="slds-p-horizontal_x-small slds-th__action"
                     style={
                       Object {
                         "alignItems": "center",
@@ -8822,6 +9125,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -8832,7 +9137,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 }
               >
                 <span
-                  className="slds-p-horizontal_x-small"
+                  className="slds-p-horizontal_x-small slds-th__action"
                   style={
                     Object {
                       "display": "flex",
@@ -8858,11 +9163,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <span
-                    className="slds-p-horizontal_x-small"
+                    className="slds-p-horizontal_x-small slds-th__action"
                     style={
                       Object {
                         "alignItems": "center",
@@ -8887,6 +9193,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -8897,7 +9205,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 }
               >
                 <span
-                  className="slds-p-horizontal_x-small"
+                  className="slds-p-horizontal_x-small slds-th__action"
                   style={
                     Object {
                       "display": "flex",
@@ -8923,11 +9231,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <span
-                    className="slds-p-horizontal_x-small"
+                    className="slds-p-horizontal_x-small slds-th__action"
                     style={
                       Object {
                         "alignItems": "center",
@@ -8952,6 +9261,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -8964,7 +9275,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 <a
                   className="slds-th__action slds-text-link_reset"
                   href="javascript:void(0)"
+                  onBlur={[Function]}
                   onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
                   role="button"
                   style={
                     Object {
@@ -8976,7 +9290,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "visibility": "hidden",
                     }
                   }
-                  tabIndex="0"
+                  tabIndex="-1"
                 >
                   <span
                     className="slds-assistive-text"
@@ -9009,13 +9323,17 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
                     href="javascript:void(0)"
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
                     role="button"
                     style={
                       Object {
@@ -9026,7 +9344,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         "width": "100%",
                       }
                     }
-                    tabIndex={0}
+                    tabIndex="-1"
                   >
                     <span
                       className="slds-assistive-text"
@@ -9058,6 +9376,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -9068,7 +9388,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 }
               >
                 <span
-                  className="slds-p-horizontal_x-small"
+                  className="slds-p-horizontal_x-small slds-th__action"
                   style={
                     Object {
                       "display": "flex",
@@ -9094,11 +9414,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <span
-                    className="slds-p-horizontal_x-small"
+                    className="slds-p-horizontal_x-small slds-th__action"
                     style={
                       Object {
                         "alignItems": "center",
@@ -9123,6 +9444,8 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
                 scope="col"
                 style={
                   Object {
@@ -9133,7 +9456,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 }
               >
                 <span
-                  className="slds-p-horizontal_x-small"
+                  className="slds-p-horizontal_x-small slds-th__action"
                   style={
                     Object {
                       "display": "flex",
@@ -9159,11 +9482,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       "display": "flex",
                       "flexDirection": "row",
                       "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
                     }
                   }
                 >
                   <span
-                    className="slds-p-horizontal_x-small"
+                    className="slds-p-horizontal_x-small slds-th__action"
                     style={
                       Object {
                         "alignItems": "center",
@@ -11897,7 +12221,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="0"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -11993,7 +12321,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="1"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12065,7 +12397,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="2"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12161,7 +12497,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="3"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12233,7 +12573,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="4"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12329,7 +12673,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="5"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12522,7 +12870,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="6"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12618,7 +12970,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="7"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12690,7 +13046,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="8"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12786,7 +13146,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="9"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12858,7 +13222,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="10"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -12954,7 +13322,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="11"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13147,7 +13519,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="12"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13243,7 +13619,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="13"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13315,7 +13695,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="14"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13411,7 +13795,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="15"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13483,7 +13871,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="16"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13579,7 +13971,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="17"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13772,7 +14168,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="18"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13868,7 +14268,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="19"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -13940,7 +14344,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="20"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -14036,7 +14444,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="21"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -14108,7 +14520,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="22"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"
@@ -14204,7 +14620,11 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 Array [
                   <InteractiveElementSLDSCheckbox
                     id="23"
-                    label="Option"
+                    labels={
+                      Object {
+                        "label": "Option",
+                      }
+                    }
                   />,
                   <InteractiveElementSLDSButton
                     label="Open"

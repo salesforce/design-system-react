@@ -12,17 +12,21 @@ const InteractiveButton = DataTableInteractiveElement(Button);
 const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
 
 let index = 0;
-const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell {...props}>
-		<InteractiveCheckBox id={`${index++}`} label="Option" />
-		<InteractiveButton
-			onClick={(event) => {
-				event.preventDefault();
-			}}
-			label="Open"
-		/>
-	</DataTableCell>
-);
+const CustomDataTableCell = ({ children, ...props }) => {
+	const cell = (
+		<DataTableCell {...props}>
+			<InteractiveCheckBox id={`${index}`} labels={{ label: "Option" }} />
+			<InteractiveButton
+				onClick={(event) => {
+					event.preventDefault();
+				}}
+				label="Open"
+			/>
+		</DataTableCell>
+	);
+	index += 1;
+	return cell
+};
 CustomDataTableCell.displayName = DataTableCell.displayName;
 
 const columns = [

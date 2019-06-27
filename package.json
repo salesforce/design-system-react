@@ -189,7 +189,7 @@
 		"react-docgen": "^4.0.1",
 		"react-dom": "^16.8",
 		"react-hot-loader": "^1.2.7",
-		"react-test-renderer": "^16.4",
+		"react-test-renderer": "^16.8",
 		"regenerator-runtime": "^0.11.1",
 		"sinon": "^4.5.0",
 		"sinon-chai": "^2.14.0",

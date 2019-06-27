@@ -35,6 +35,7 @@ import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
 import TableContext from './private/table-context';
+import Mode from './private/mode';
 
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
@@ -45,11 +46,6 @@ import {
 	DATA_TABLE_HEAD,
 	DATA_TABLE_ROW,
 } from '../../utilities/constants';
-
-export const Mode = Object.freeze({
-	NAVIGATION: 'navigation',
-	ACTIONABLE: 'actionable',
-});
 
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
@@ -308,137 +304,6 @@ class DataTable extends React.Component {
 		return null;
 	}
 
-	changeActiveCell(rowIndex, columnIndex) {
-		this.setState({
-			tableHasFocus: true,
-			activeCell: { rowIndex, columnIndex },
-		});
-	}
-
-	changeActiveElement(activeElement) {
-		this.setState({ activeElement });
-	}
-
-	handleKeyDown(event) {
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
-				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
-				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
-				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
-				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
-				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
-			},
-		});
-	}
-
-	handleKeyDownUp() {
-		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: this.state.activeCell.columnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownDown() {
-		const newRowIndex = Math.min(
-			this.state.activeCell.rowIndex + 1,
-			this.props.items.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: this.state.activeCell.columnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownLeft() {
-		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: this.state.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownRight() {
-		const newColumnIndex = Math.min(
-			this.state.activeCell.columnIndex + 1,
-			this.props.children.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: this.state.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownEnter() {
-		if (this.state.mode === Mode.NAVIGATION) {
-			const { rowIndex, columnIndex } = this.state.activeCell;
-			let activeElement = null;
-			if (this.interactiveElements[rowIndex][columnIndex]) {
-				activeElement = this.interactiveElements[rowIndex][columnIndex][0];
-			}
-			this.setState({
-				mode: Mode.ACTIONABLE,
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownEscape() {
-		if (this.state.mode === Mode.ACTIONABLE) {
-			this.setState({
-				mode: Mode.NAVIGATION,
-				activeElement: null,
-			});
-		}
-	}
-
-	registerInteractiveElement(rowIndex, columnIndex, elementId) {
-		if (!this.interactiveElements[rowIndex]) {
-			this.interactiveElements[rowIndex] = {};
-		}
-		if (!this.interactiveElements[rowIndex][columnIndex]) {
-			this.interactiveElements[rowIndex][columnIndex] = [];
-		}
-		this.interactiveElements[rowIndex][columnIndex].push(elementId);
-	}
-
 	handleToggleAll = (e, { checked }) => {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
@@ -550,6 +415,137 @@ class DataTable extends React.Component {
 			}
 		}
 	};
+
+	changeActiveCell(rowIndex, columnIndex) {
+		this.setState({
+			tableHasFocus: true,
+			activeCell: { rowIndex, columnIndex },
+		});
+	}
+
+	changeActiveElement(activeElement) {
+		this.setState({ activeElement });
+	}
+
+	handleKeyDown(event) {
+		mapKeyEventCallbacks(event, {
+			callbacks: {
+				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
+				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
+				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
+				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
+				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
+				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
+			},
+		});
+	}
+
+	handleKeyDownUp() {
+		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownDown() {
+		const newRowIndex = Math.min(
+			this.state.activeCell.rowIndex + 1,
+			this.props.items.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownLeft() {
+		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownRight() {
+		const newColumnIndex = Math.min(
+			this.state.activeCell.columnIndex + 1,
+			this.props.children.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownEnter() {
+		if (this.state.mode === Mode.NAVIGATION) {
+			const { rowIndex, columnIndex } = this.state.activeCell;
+			let activeElement = null;
+			if (this.interactiveElements[rowIndex][columnIndex]) {
+				[activeElement] = this.interactiveElements[rowIndex][columnIndex];
+			}
+			this.setState({
+				mode: Mode.ACTIONABLE,
+				activeElement,
+			});
+		}
+	}
+
+	handleKeyDownEscape() {
+		if (this.state.mode === Mode.ACTIONABLE) {
+			this.setState({
+				mode: Mode.NAVIGATION,
+				activeElement: null,
+			});
+		}
+	}
+
+	registerInteractiveElement(rowIndex, columnIndex, elementId) {
+		if (!this.interactiveElements[rowIndex]) {
+			this.interactiveElements[rowIndex] = {};
+		}
+		if (!this.interactiveElements[rowIndex][columnIndex]) {
+			this.interactiveElements[rowIndex][columnIndex] = [];
+		}
+		this.interactiveElements[rowIndex][columnIndex].push(elementId);
+	}
 
 	// ### Render
 	render() {
