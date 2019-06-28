@@ -5,24 +5,46 @@ Before releasing the library publicly, please make sure all examples work in the
 ## Release to your own fork
 
 Any library consumer can publish to their own fork. If you are waiting on a code review, one option is that you can temporarily release a tag to your own fork of this library. The structure of the NPM module differs from repository folder. To release, please replace the username `interactivellama` with your git username and follow theses steps:
+
 * Set your remote. `git remote rename origin git@github.com:interactivellama/design-system-react.git`
 * Build the library. `npm run dist`
 * Change to the built NPM module folder. `cd .tmp-npm`
 * Create a tag. `git tag v0.8.15`
 * Push a tag up to your fork. `git push origin v0.8.15`
 
-In your project's `package.json`, please update your dependency to the tag you released. 
+In your project's `package.json`, please update your dependency to the tag you released.
+
 ```
 "@salesforce/design-system-react": "git+ssh://git@github.com:interactivellama/design-system-react.git#v0.8.15-npm",
 ```
 
-## Release with build server (preferred)
+## Build `master` banch into site locally
+
+This is a private repository. Site will currently run on Node `v8.6.0`
+
+* `git clone git@github.com:salesforce-ux/design-system-react-site.git` into sibling folder next to `design-system-react`.
+* `npm run local-update`. This builds `design-system-react` and copies the node_module build `/.tmp-npm` into the site repo.
+* Review updated component examples and prop tables
+* Add missing homepage thumbnails for new components by screen capturing from [deployed storybook](http://design-system-react-components.herokuapp.com/). Images will look best with a white background.
+* Push to `upstream:master`
+
+## Release with build server
 
 1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
 1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you, push back to the library repository. This is a [convenient list](https://github.com/salesforce/design-system-react/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc) of pull requests.
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
-### Manual release
+# Deploy new version in site
+
+* `npm run release`
+* Enter version number
+* Check updated component examples and prop tables
+* Push to `upstream:master`
+* Log into Heroku
+* Check deployed staging site.
+* Promote staging app to production app. You will need promotion rights to the Heroku application.
+
+### Manual release if needed
 
 1. **Choose one**: `npm run release:patch` or `npm run release:minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
