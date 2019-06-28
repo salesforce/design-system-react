@@ -168,6 +168,19 @@ Icon.propTypes = {
 	 */
 	path: PropTypes.string,
 	/**
+	 * Background theme color for the icon. **Only compatible with icon category `standard`**
+	 */
+	productTheme: PropTypes.oneOf([
+		'global-setup',
+		'service-cloud',
+		'industry-cloud',
+		'sales-cloud',
+		'commerce-cloud',
+		'community-cloud',
+		'marketing-cloud',
+		'quip',
+	]),
+	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 	 */
 	size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
