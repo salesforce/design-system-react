@@ -1,5 +1,5 @@
 /*
- * STORY-BASED SNAPSHOT TESTING
+ * STORY-BASED VISUAL REGRESSION SNAPSHOT TESTING
  *
  * This uses StoryShots to iterate over stories created in Storybook to
  * automatically create DOM and image snapshot tests.
@@ -7,15 +7,17 @@
  * For more information, please visit:
  * https://github.com/storybooks/storybook/tree/master/addons/storyshots
  */
-
 // Ran in Jest Node environment
 
+// If you are looking for DOM markup snapshots, see story-based-tests.dom-snapshot-test.js
+
+import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
 import express from 'express';
-import initStoryshots, {
-	imageSnapshot,
-	multiSnapshotWithOptions,
-} from '@storybook/addon-storyshots';
 import path from 'path';
+
+// Add tests to this file to exclude them from testing
+import excludeFromTests from './exclude-story-config';
+import { getExcludeKindRegex, skipStoryShotTest } from './storyshots-helpers';
 
 // Express server setup. `npm run storyshots:build` must be run first.
 const rootPath = path.resolve(__dirname, '../');
@@ -29,41 +31,7 @@ app.use(
 		`${rootPath}/node_modules/@salesforce-ux/design-system/assets/`
 	)
 );
-app.use(express.static(`${rootPath}/storybook-based-tests`));
-
-console.log(`
-★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
-QUEUEING: STORY-BASED DOM SNAPSHOT TESTING
-★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
-
-EXECUTING /tests/story-based-tests.snapshot-test.js
-BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
-
-This script uses Jest to call Storyshots 
-https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 
-Storybook story found at http://localhost:9001. This stores a copy of the 
-DOM on load in a text file. If you need an open menu tested, then you will 
-need to open the menu with the \`isOpen\` prop.
-
-For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
-`);
-
-// If a Storybook story should not be tested by Storyshots, please add
-// the suffix `NoTest` to the story's name.
-const skipStoryshotTest = 'NoTest';
-
-// If a Storybook story should not be visual regression tested, please add
-// the suffix `NoImageTest` to the story's name.
-const skipImageStoryshotTest = 'NoImageTest';
-
-// Create DOM snapshot tests from Storybook stories
-initStoryshots({
-	configPath: '.storybook-based-tests',
-	storyNameRegex: new RegExp(`^((?!.*?(${skipStoryshotTest})).)*$`, 'g'),
-	suite: 'DOM snapshots',
-	integrityOptions: { cwd: __dirname }, // start searching from the current directory
-	test: multiSnapshotWithOptions({}),
-});
+app.use(express.static(`${rootPath}/storybook`));
 
 /* jest-image-snapshot
  * Color and position are the same. This is a pixel to pixel comparison.
@@ -84,7 +52,7 @@ QUEUEING: STORY-BASED VISUAL REGRESSION SNAPSHOT TESTING
 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
 
 EXECUTING /tests/story-based-tests.snapshot-test.js
-BASED ON STORYBOOK STORIES FOUND IN /components/story-based-tests.js
+BASED ON STORYBOOK STORIES FOUND IN /components/storybook-stories.js
 
 This script uses Jest to call Storyshots 
 https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 
@@ -97,6 +65,10 @@ ARE RELATED TO YOUR PULL REQUEST. Each PNG adds up and bloats the repository.
 
 For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
 `);
+
+// If a Storybook story should not be visual regression tested, please add
+// the suffix `NoImageTest` to the story's name.
+const skipImageStoryShotTest = 'NoImageTest';
 
 describe('Image Snapshots', function imageSnapshotFunction() {
 	beforeAll(() => {
@@ -117,11 +89,14 @@ describe('Image Snapshots', function imageSnapshotFunction() {
 	// all components have been audited for compatibility with Jest
 	// snapshot tests.
 	initStoryshots({
-		configPath: '.storybook-based-tests',
+		configPath: '.storybook',
 		storyNameRegex: new RegExp(
-			`^((?!.*?(${skipStoryshotTest}|${skipImageStoryshotTest})).)*$`,
+			`^((?!.*?(${skipStoryShotTest}|${skipImageStoryShotTest})).)*$`,
 			'g'
 		),
+		storyKindRegex: getExcludeKindRegex({
+			arrayOfStoryKind: excludeFromTests.visualRegression.storyKind,
+		}),
 		suite: 'Image storyshots',
 		test: imageSnapshot({
 			storybookUrl: `http://localhost:${port}`,

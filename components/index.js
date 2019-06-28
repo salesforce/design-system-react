@@ -309,6 +309,14 @@ export UtilityIcon from './utilities/utility-icon';
 export SLDSTree from './tree';
 export Tree from './tree';
 
+export SLDSTrialBar from './trial-bar';
+export TrialBar from './trial-bar';
+
+export SLDSTrialBarDropdown from './trial-bar/dropdown';
+export TrialBarDropdown from './trial-bar/dropdown';
+export SLDSTrialBarButton from './trial-bar/button';
+export TrialBarButton from './trial-bar/button';
+
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
@@ -317,6 +325,12 @@ export VisualPicker from './visual-picker';
 
 export SLDSVisualPickerLink from './visual-picker/link';
 export VisualPickerLink from './visual-picker/link';
+
+export SLDSWelcomeMat from './welcome-mat';
+export WelcomeMat from './welcome-mat';
+
+export SLDSWelcomeMatTile from './welcome-mat/tile';
+export WelcomeMatTile from './welcome-mat/tile';
 
 export SLDSDynamicIcon from './dynamic-icon';
 export DynamicIcon from './dynamic-icon';

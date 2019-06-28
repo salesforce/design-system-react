@@ -2991,8 +2991,7 @@
                     "name": "shape",
                     "value": {
                         "heading": {
-                            "name": "custom",
-                            "raw": "PropTypes.heading",
+                            "name": "string",
                             "required": false
                         },
                         "label": {
@@ -3131,21 +3130,21 @@
             },
             "onRenderVisualPicker": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown with checkbox (only for non-coverable visual picker variant)"
             },
             "onRenderVisualPickerSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
             },
             "onRenderVisualPickerNotSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
@@ -5697,7 +5696,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
+                "description": "An [Input](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
             },
             "isOpen": {
                 "type": {
@@ -9019,6 +9018,17 @@
                 },
                 "required": false,
                 "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
+            },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds inverse class to the dropdown",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "isOpen": {
                 "type": {
@@ -12399,8 +12409,7 @@
                     "name": "shape",
                     "value": {
                         "heading": {
-                            "name": "custom",
-                            "raw": "PropTypes.heading",
+                            "name": "string",
                             "required": false
                         },
                         "label": {
@@ -12410,7 +12419,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\"."
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the radio input"
             },
             "name": {
                 "type": {
@@ -12482,21 +12491,21 @@
             },
             "onRenderVisualPicker": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if radio is not selected (only for non-coverable visual picker variant)"
             },
             "onRenderVisualPickerSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
             },
             "onRenderVisualPickerNotSelected": {
                 "type": {
-                    "name": "node"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
@@ -15088,6 +15097,13 @@
                 "returns": null
             },
             {
+                "name": "getIsOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getTooltip",
                 "docblock": null,
                 "modifiers": [],
@@ -15658,6 +15674,74 @@
         "SLDS-component-path": "/components/trees",
         "dependencies": []
     },
+    "trial-bar": {
+        "description": "Trial bar components are used to provide an interactive and educational prospect experience for setup.",
+        "methods": [],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<TrialBarButton />` or `<TrialBarDropdown />` to define the structure of the trial bar.\n```\n<TrialBar>\n  <TrialBarButton />\n  <TrialBarDropdown />\n</TrialBar>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the component. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "timeLeft": {
+                            "name": "string",
+                            "description": "Amount of time left in trial, e.g. `30`",
+                            "required": false
+                        },
+                        "timeLeftUnit": {
+                            "name": "string",
+                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Renders the labels in the trial bar."
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Renders the actions section of the trial bar."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Customs styles to be applied to the component."
+            }
+        },
+        "route": "trial-bars",
+        "display-name": "Trial Bars",
+        "SLDS-component-path": "/components/trial-bar",
+        "dependencies": []
+    },
     "vertical-navigation": {
         "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
         "methods": [
@@ -15727,6 +15811,234 @@
         "route": "vertical-navigation",
         "display-name": "Vertical Navigation",
         "SLDS-component-path": "/components/vertical-navigation",
+        "dependencies": []
+    },
+    "visual-picker": {
+        "description": "Visual Picker Component",
+        "methods": [],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Label for the visual picker"
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker is coverable on selection"
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker has a vertical layout",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "links": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker has links as children",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size for visual picker",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "visual-pickers",
+        "display-name": "Visual Pickers",
+        "SLDS-component-path": "/components/visual-picker",
+        "dependencies": []
+    },
+    "welcome-mat": {
+        "description": "A Welcome Mat provides a series of unordered items a user can click to learn about a thematic topic.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the WelcomeMat's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the WelcomeMat's HTML id. Generate a new one if no ID present."
+            },
+            {
+                "name": "getCount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "whether the modal is open",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "description": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'steps'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info-only'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'splash'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'trailhead-connected'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variant of the WelcomeMat",
+                "defaultValue": {
+                    "value": "'steps'",
+                    "computed": false
+                }
+            },
+            "onRenderInfoActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Link to learn more button"
+            },
+            "infoBadge": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a single WelcomeMatInfoBadge component, to be used with the trailhead variant"
+            },
+            "doNotShowAgainCheckbox": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Do not show again checkbox for info-only variant"
+            }
+        },
+        "route": "welcome-mat",
+        "display-name": "Welcome Mat",
+        "SLDS-component-path": "/components/welcome-mat",
         "dependencies": []
     }
 }
