@@ -51,14 +51,25 @@ const defaultProps = {
 	},
 };
 
+const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
+	const overflowDropdownMenuProps = {
+		...overflowDropdownMenu.props,
+		id: `${props.id}-dropdown`,
+		iconCategory: 'utility',
+		iconName: 'threedots',
+		iconVariant: 'bare',
+		threedots: true,
+	};
+	return <Dropdown {...overflowDropdownMenuProps} />;
+};
+
 /**
  * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
  */
 const Breadcrumb = (props) => {
 	checkProps(BREADCRUMB, props, componentDoc);
 
-	let { overflowDropdownMenu } = props;
-	let { trail } = props;
+	const { overflowDropdownMenu, trail } = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -84,18 +95,6 @@ const Breadcrumb = (props) => {
 			</ol>
 		</nav>
 	);
-};
-
-const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
-	let overflowDropdownMenuProps = {
-		...overflowDropdownMenu.props,
-		id: `${props.id}-dropdown`,
-		iconCategory: 'utility',
-		iconName: 'threedots',
-		iconVariant: 'bare',
-		threedots: true,
-	};
-	return <Dropdown {...overflowDropdownMenuProps} />;
 };
 
 Breadcrumb.displayName = BREADCRUMB;
