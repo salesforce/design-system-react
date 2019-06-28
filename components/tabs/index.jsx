@@ -263,7 +263,7 @@ class Tabs extends React.Component {
 					parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
 				}
 
-				const index = [].slice.call(node.parentNode.children).indexOf(node);
+				const index = [].slice.call(parentNode.children).indexOf(node);
 				this.setSelected(index);
 				return;
 			}

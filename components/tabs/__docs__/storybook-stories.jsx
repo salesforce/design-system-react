@@ -16,7 +16,6 @@ import Panel from '../../tabs/panel';
 
 // Used in the Nested story
 import Input from '../../input';
-import InputIcon from '../../icon/input-icon';
 
 // Used in the Conditinal story
 import Checkbox from '../../checkbox';
