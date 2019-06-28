@@ -1413,7 +1413,7 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "Provide children of the type `<ButtonGroup />` to define the structure of the toolbar section.\n```\n<BuilderHeaderNav>\n  <BuilderHeaderToolbar>\n    <ButtonGroup />\n    <ButtonGroup />\n  </BuilderHeaderToolbar>\n</BuilderHeader>\n```"
+                            "description": "Provide children of the type `<ButtonGroup />` to define the structure of the toolbar section.\n```\n<BuilderHeader>\n  <BuilderHeaderToolbar>\n    <ButtonGroup />\n    <ButtonGroup />\n  </BuilderHeaderToolbar>\n</BuilderHeader>\n```"
                         },
                         "onRenderActions": {
                             "type": {

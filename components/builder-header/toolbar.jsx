@@ -19,7 +19,7 @@ const propTypes = {
 	/**
 	 * Provide children of the type `<ButtonGroup />` to define the structure of the toolbar section.
 	 * ```
-	 * <BuilderHeaderNav>
+	 * <BuilderHeader>
 	 *   <BuilderHeaderToolbar>
 	 *     <ButtonGroup />
 	 *     <ButtonGroup />
