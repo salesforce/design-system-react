@@ -16,6 +16,8 @@ import classNames from '../../utilities/class-names';
 // ## Children
 import UtilityIcon from '../utilities/utility-icon';
 
+import IconBackgrounds from '../../utilities/product-tokens/icon-backgrounds';
+
 import { ICON } from '../../utilities/constants';
 
 const defaultProps = {
@@ -40,9 +42,13 @@ const Icon = (props) => {
 		name,
 		path,
 		size,
-		style,
 		title,
+		productTheme,
 	} = props;
+
+	let { style } = props;
+
+	style = { ...style, backgroundColor: IconBackgrounds[productTheme] };
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
