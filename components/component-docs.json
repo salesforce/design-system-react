@@ -16039,6 +16039,232 @@
         "route": "welcome-mat",
         "display-name": "Welcome Mat",
         "SLDS-component-path": "/components/welcome-mat",
-        "dependencies": []
+        "dependencies": [
+            {
+                "info-badge": {
+                    "description": "InfoBadge component item represents a tile in a Welcome Mat",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Welcome Mat Info Badge's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Welcome Mat Info Badge's HTML id. Generate a new one if no ID present."
+                        },
+                        {
+                            "name": "getCompletedText",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "completed": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `completed` : For users of assistive technology, assistive text for completed icon."
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "image": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Icon for the tile"
+                        },
+                        "isComplete": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Whether the trail is completed",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        },
+                        "onCompleteRenderActions": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Actions to be rendered on completion of the trail"
+                        },
+                        "variant": {
+                            "defaultValue": {
+                                "value": "'steps'",
+                                "computed": false
+                            },
+                            "required": false
+                        }
+                    },
+                    "name": "info-badge",
+                    "source": "/components/welcome-mat/info-badge.jsx"
+                }
+            },
+            {
+                "tile": {
+                    "description": "Tile component item represents a tile in a Welcome Mat",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Welcome Mat Tile's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Welcome Mat Tile's HTML id. Generate a new one if no ID present."
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "completedIcon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `completeIcon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the complete icon means.",
+                            "defaultValue": {
+                                "value": "{\n    completedIcon: 'Completed',\n}",
+                                "computed": false
+                            }
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Title for the tile component."
+                        },
+                        "description": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Description for the tile component."
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Href for the tile link"
+                        },
+                        "icon": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Icon for the tile"
+                        },
+                        "isComplete": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Whether the tile is completed",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        },
+                        "variant": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'steps'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'info-only'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'splash'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'trailhead-connected'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Variant of the Welcome Mat Tile",
+                            "defaultValue": {
+                                "value": "'steps'",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "tile",
+                    "source": "/components/welcome-mat/tile.jsx"
+                }
+            }
+        ]
     }
 }

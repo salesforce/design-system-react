@@ -3,5 +3,13 @@
   "status": "prod",
   "display-name": "Welcome Mat",
   "SLDS-component-path": "/components/welcome-mat",
-  "url-slug": "welcome-mat"
+  "url-slug": "welcome-mat",
+  "dependencies": [
+	{
+	  "component": "info-badge"
+	},
+	{
+	  "component": "tile"
+	}
+  ]
 }
