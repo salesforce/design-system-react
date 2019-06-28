@@ -67,7 +67,7 @@ const UtilityIcon = (
 	} else {
 		// Otherwise, use external URLs for icons
 		const svgAssetName =
-			direction === DIRECTIONS.RTL ? 'symbols.svg' : 'symbols.svg'
+			direction === DIRECTIONS.RTL ? 'symbols-rtl.svg' : 'symbols.svg';
 		modifiedPath =
 			context.iconPath &&
 			`${context.iconPath}/${category}-sprite/svg/${svgAssetName}#${name}`;

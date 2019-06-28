@@ -408,7 +408,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                 className="slds-input__icon slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#search"
                 />
               </svg>
             </div>
@@ -452,14 +452,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+                        className="slds-icon_container slds-icon-standard-account"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -500,14 +500,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+                        className="slds-icon_container slds-icon-standard-account"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -548,14 +548,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+                        className="slds-icon_container slds-icon-standard-account"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -596,14 +596,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+                        className="slds-icon_container slds-icon-standard-account"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -644,14 +644,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-opportunity"
+                        className="slds-icon_container slds-icon-standard-opportunity"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
                           />
                         </svg>
                         <span
@@ -692,14 +692,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-account"
+                        className="slds-icon_container slds-icon-standard-account"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -740,14 +740,14 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                       className="slds-media__figure"
                     >
                       <span
-                        className="slds-icon_container slds-icon_flip slds-icon-standard-opportunity"
+                        className="slds-icon_container slds-icon-standard-opportunity"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
                           />
                         </svg>
                         <span
@@ -3246,7 +3246,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
                   className="slds-icon slds-icon_x-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
                   />
                 </svg>
               </span>

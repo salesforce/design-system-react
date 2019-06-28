@@ -25,14 +25,14 @@ exports[`Default Action Icon Right to Left (RTL) DOM Snapshot 1`] = `
   dir="rtl"
 >
   <span
-    className="slds-icon_container slds-icon_flip slds-icon_container_circle slds-icon-action-description"
+    className="slds-icon_container slds-icon_container_circle slds-icon-action-description"
   >
     <svg
       aria-hidden="true"
       className="slds-icon slds-icon_small"
     >
       <use
-        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+        xlinkHref="/assets/icons/action-sprite/svg/symbols-rtl.svg#description"
       />
     </svg>
     <span
