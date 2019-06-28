@@ -90,9 +90,7 @@ const getTabsNested = () => (
 		<Tabs id="nested-tabs-demo">
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
-				<p>
-					And they&rsquo;re amazing.
-				</p>
+				<p>And they&rsquo;re amazing.</p>
 			</Panel>
 			<Panel label="Tab 2">
 				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
@@ -475,7 +473,7 @@ const getTabsDisabled = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&rsquo;s awesome.</p>
 				<p>
 					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
 					around. Try it!

@@ -256,11 +256,11 @@ class Tabs extends React.Component {
 					return;
 				}
 
-				let parentNode = node.parentNode;
+				let parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
 
 				if (parentNode.nodeName === 'LI') {
 					node = node.parentNode;
-					parentNode = node.parentNode;
+					parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
 				}
 
 				const index = [].slice.call(node.parentNode.children).indexOf(node);
