@@ -4324,11 +4324,12 @@
                 "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "direction": {
-                "defaultValue": {
-                    "value": "DIRECTIONS.LTR",
-                    "computed": true
+                "type": {
+                    "name": "custom",
+                    "raw": "DIRECTIONS.LTR"
                 },
-                "required": false
+                "required": false,
+                "description": "TODO - Remove this unused prop in the next major release"
             },
             "events": {
                 "type": {

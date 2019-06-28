@@ -240,7 +240,7 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Base with icon, dropdown right-aligned', () =>
 		getDropdown({
 			align: 'right',
-			id: 'base-with-icon',
+			id: 'right-align-with-icon',
 			label: 'Dropdown Click',
 			iconCategory: 'utility',
 			iconName: 'down',
@@ -262,6 +262,7 @@ storiesOf(MENU_DROPDOWN, module)
 				iconCategory: 'utility',
 				iconName: 'down',
 				iconPosition: 'right',
+				id: 'right-align-with-icon-rtl',
 				onClick: (...rest) => {
 					action('Clicked')(...rest);
 				},
@@ -279,6 +280,7 @@ storiesOf(MENU_DROPDOWN, module)
 			iconCategory: 'utility',
 			iconName: 'down',
 			iconPosition: 'right',
+			id: 'left-align-with-icon',
 			onClick: (...rest) => {
 				action('Clicked')(...rest);
 			},
@@ -296,6 +298,7 @@ storiesOf(MENU_DROPDOWN, module)
 				iconCategory: 'utility',
 				iconName: 'down',
 				iconPosition: 'right',
+				id: 'left-align-with-icon-rtl',
 				onClick: (...rest) => {
 					action('Clicked')(...rest);
 				},
@@ -334,6 +337,7 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Render inline w/ Nubbins, right-to-left', () =>
 		makeRtl(
 			getDropdownPositioned({
+				id: 'render-inline-nubbins-rtl',
 				menuPosition: 'relative',
 				onSelect: (...rest) => {
 					action('Selected')(...rest);
@@ -433,6 +437,7 @@ storiesOf(MENU_DROPDOWN, module)
 				iconCategory: 'utility',
 				iconName: 'down',
 				iconVariant: 'border-filled',
+				id: 'checkmark-rtl',
 				onSelect: (...rest) => {
 					action('Selected')(...rest);
 				},
