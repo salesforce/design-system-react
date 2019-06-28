@@ -70,7 +70,8 @@ const Breadcrumb = (props) => {
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
 			<ol className="slds-breadcrumb slds-list_horizontal">
-				{overflowDropdownMenu && getBreadcrumbDropdown(overflowDropdownMenu)}
+				{overflowDropdownMenu &&
+					getBreadcrumbDropdown(overflowDropdownMenu, props)}
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
@@ -85,7 +86,7 @@ const Breadcrumb = (props) => {
 	);
 };
 
-const getBreadcrumbDropdown = (overflowDropdownMenu) => {
+const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
 	let overflowDropdownMenuProps = {
 		...overflowDropdownMenu.props,
 		id: `${props.id}-dropdown`,
