@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import classNames from 'classnames';
+import { DIRECTIONS } from './../components/utilities/UNSAFE_direction';
 
 // Translates the prop into a string popper can use https://popper.js.org/popper-documentation.html#Popper.placements
 const mapPropToPopperPlacement = (align, direction) => {
@@ -34,7 +35,7 @@ const mapPropToPopperPlacement = (align, direction) => {
 		default:
 			placement = align;
 	}
-	if (direction === 'rtl') {
+	if (direction === DIRECTIONS.RTL) {
 		if (placement.indexOf('left') > -1) {
 			placement = placement.replace('left', 'right');
 		} else if (placement.indexOf('right') > -1) {
