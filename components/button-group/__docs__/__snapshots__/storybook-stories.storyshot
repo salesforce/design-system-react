@@ -253,7 +253,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
   >
     <button
       aria-live="polite"
-      className="slds-button slds-not-selected slds-button_icon-border-filled"
+      className="slds-button slds-not-selected slds-button_icon-border"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -276,7 +276,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
     </button>
     <button
       aria-live="polite"
-      className="slds-button slds-not-selected slds-button_icon-border-filled"
+      className="slds-button slds-not-selected slds-button_icon-border"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
