@@ -48,7 +48,7 @@ const Icon = (props) => {
 
 	let { style } = props;
 
-	style = { ...style, backgroundColor: IconBackgrounds[productTheme] };
+	style = { backgroundColor: IconBackgrounds[productTheme], ...style };
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
