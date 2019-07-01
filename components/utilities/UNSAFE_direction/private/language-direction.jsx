@@ -8,8 +8,8 @@ const LanguageDirectionHOC = (WrappedComponent) => {
 	return class LanguageDirection extends Component {
 		static displayName = `LanguageDirection(${componentName})`;
 
-		getWrappedComponent = (state) => {
-			return <WrappedComponent {...this.props} direction={state} />;
+		getWrappedComponent = (value) => {
+			return <WrappedComponent {...this.props} direction={value} />;
 		};
 
 		render() {
