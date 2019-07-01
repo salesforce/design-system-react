@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React, { Component, useContext } from 'react';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '..';
 
@@ -8,14 +8,15 @@ const LanguageDirectionHOC = (WrappedComponent) => {
 		WrappedComponent.displayName || WrappedComponent.name || 'Component';
 	return class LanguageDirection extends Component {
 		static displayName = `LanguageDirection(${componentName})`;
-
 		// eslint-disable-next-line camelcase
-		static contextType = UNSAFE_DirectionSettings;
+		// static contextType = UNSAFE_DirectionSettings;
+
+		languageDirectionWrapper = (state) => {
+			return <WrappedComponent {...this.props} direction={state} />;
+		};
 
 		render() {
-			const props = { ...this.props };
-			props.direction = this.context;
-			return React.createElement(WrappedComponent, props);
+			return <UNSAFE_DirectionSettings.Consumer>{this.languageDirectionWrapper}</UNSAFE_DirectionSettings.Consumer>
 		}
 	};
 };
