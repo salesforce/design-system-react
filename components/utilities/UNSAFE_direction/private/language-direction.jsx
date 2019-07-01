@@ -8,12 +8,17 @@ const LanguageDirectionHOC = (WrappedComponent) => {
 	return class LanguageDirection extends Component {
 		static displayName = `LanguageDirection(${componentName})`;
 
-		getWrappedComponent = (value) => {
-			return <WrappedComponent {...this.props} direction={value} />;
-		};
+		getWrappedComponent = (value) => (
+			<WrappedComponent {...this.props} direction={value} />
+		);
 
 		render() {
-			return <UNSAFE_DirectionSettings.Consumer>{this.getWrappedComponent}</UNSAFE_DirectionSettings.Consumer>
+			return (
+				// eslint-disable-next-line react/jsx-pascal-case
+				<UNSAFE_DirectionSettings.Consumer>
+					{this.getWrappedComponent}
+				</UNSAFE_DirectionSettings.Consumer>
+			);
 		}
 	};
 };
