@@ -191,6 +191,9 @@ class WelcomeMat extends React.Component {
 
 		return (
 			<Modal
+				assistiveText={{
+					dialogLabelledBy: `${this.getId()}-label`,
+				}}
 				isOpen={this.props.isOpen}
 				size="small"
 				id={`${this.getId()}-modal`}
