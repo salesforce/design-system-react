@@ -65,7 +65,7 @@ class Example extends React.Component {
 								name="search"
 							/>
 						),
-						label: 'salesforce',
+						label: 'Search in Salesforce',
 						onClick: (event) => {
 							if (this.props.action) {
 								this.props.action('onClick')(event);
@@ -83,7 +83,7 @@ class Example extends React.Component {
 								name="search"
 							/>
 						),
-						label: 'search in Accounts',
+						label: (searchTerm) => [searchTerm && searchTerm.length > 0 ? <span className="slds-text-title_bold">{`"${searchTerm}" `}</span> : "Search ", 'in Accounts'],
 						onClick: (event) => {
 							if (this.props.action) {
 								this.props.action('onClick')(event);

@@ -122,7 +122,7 @@ const propTypes = {
 		PropTypes.shape({
 			id: PropTypes.string,
 			icon: PropTypes.node,
-			label: PropTypes.string,
+			label: PropTypes.string || PropTypes.func,
 			onClick: PropTypes.func,
 		})
 	),
@@ -139,21 +139,47 @@ const propTypes = {
 };
 
 const defaultProps = {
-	menuRef: () => {},
+	menuRef: () => { },
+	optionsSearchEntity: [],
+	optionsAddItem: [],
+	inputValue: ""
 };
 
 const getOptions = (props) => {
 	const options = [];
 	if (props.optionsSearchEntity.length > 0) {
-		const localOptionsSearchEntity = props.optionsSearchEntity.map((entity) => ({...entity, type: 'header'}));
+		const localOptionsSearchEntity = props.optionsSearchEntity.map((entity) => ({ ...entity, type: 'header' }));
 		options.push(...localOptionsSearchEntity);
 	}
 	options.push(...props.options);
 	if (props.optionsAddItem.length > 0) {
-		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({...entity, type: 'footer'}));
+		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({ ...entity, type: 'footer' }));
 		options.push(...localOptionsAddItem);
 	}
 	return options;
+};
+
+const setBold = (label, searchTerm) => {
+	if (!label || label.length === 0 || !searchTerm || searchTerm.length === 0) {
+		return label;
+	}
+	const position = label.toLowerCase().indexOf(searchTerm.toLowerCase());
+	if (position > -1) {
+		return [
+			label.substr(0, position),
+			<span className="slds-text-title_bold">{`${label.substr(position, searchTerm.length)}`}</span>,
+			label.substr(position + searchTerm.length)
+		]
+	}
+	return label;
+};
+
+const renderLabel = (labelProp, searchTerm) => {
+	if (typeof labelProp === 'string') {
+		return labelProp;
+	}
+
+	return labelProp(searchTerm);
 }
 
 const Menu = (props) => {
@@ -192,50 +218,52 @@ const Menu = (props) => {
 					</span>
 				</li>
 			) : (
-				<li
-					className="slds-has-divider_top-space"
-					role="separator"
-					key={`menu-separator-${optionData.id}`}
-				/>
-			);
-		} else if (optionData.type === 'header') {
+					<li
+						className="slds-has-divider_top-space"
+						role="separator"
+						key={`menu-separator-${optionData.id}`}
+					/>
+				);
+		}
+		if (optionData.type === 'header') {
 			return (<li key={`menu-header-${optionData.id}}`} role="presentation" className="slds-listbox__item">
-					<div
-						onClick={(event) => optionData.onClick(event)}
-						aria-selected="false"
-						id={optionData.id}
-						className={classNames(
-							'slds-media slds-listbox__option',
-							'slds-listbox__option_entity slds-listbox__option_term',
-							{ 'slds-has-focus': active }
-						)}
-						role="option"
-					>
-						<span className="slds-media__figure slds-listbox__option-icon">
-							{optionData.icon}
-						</span>
-						<span className="slds-media__body">
-							{optionData.label}
-						</span>
-					</div>
-				</li>)
-		} else if (optionData.type === 'footer') {
+				<div
+					onClick={(event) => optionData.onClick(event)}
+					aria-selected="false"
+					id={optionData.id}
+					className={classNames(
+						'slds-media slds-listbox__option',
+						'slds-listbox__option_entity slds-listbox__option_term',
+						{ 'slds-has-focus': active }
+					)}
+					role="option"
+				>
+					<span className="slds-media__figure slds-listbox__option-icon">
+						{optionData.icon}
+					</span>
+					<span className="slds-media__body">
+						{renderLabel(optionData.label, props.inputValue)}
+					</span>
+				</div>
+			</li>)
+		}
+		if (optionData.type === 'footer') {
 			return (<li key={`menu-header-${optionData.id}}`} role="presentation" className="slds-listbox__item">
-					<div
-						aria-selected="false"
-						onClick={(event) => optionData.onClick(event)}
-						id={optionData.id}
-						className={classNames(
-							'slds-media slds-listbox__option',
-							'slds-listbox__option_entity slds-listbox__option_term',
-							{ 'slds-has-focus': active }
-						)}
-						role="option"
-					>
-						<span className="slds-media__figure slds-listbox__option-icon">{optionData.icon}</span>
-						<span className="slds-media__body">{optionData.label}</span>
-					</div>
-				</li>);
+				<div
+					aria-selected="false"
+					onClick={(event) => optionData.onClick(event)}
+					id={optionData.id}
+					className={classNames(
+						'slds-media slds-listbox__option',
+						'slds-listbox__option_entity slds-listbox__option_term',
+						{ 'slds-has-focus': active }
+					)}
+					role="option"
+				>
+					<span className="slds-media__figure slds-listbox__option-icon">{optionData.icon}</span>
+					<span className="slds-media__body">{renderLabel(optionData.label, props.inputValue)}</span>
+				</div>
+			</li>);
 		}
 
 		const disabledProps = {};
@@ -263,8 +291,8 @@ const Menu = (props) => {
 						optionData.disabled
 							? null
 							: (event) => {
-									props.onSelect(event, { option: optionData });
-								}
+								props.onSelect(event, { option: optionData });
+							}
 					}
 					role="option"
 				>
@@ -279,26 +307,26 @@ const Menu = (props) => {
 							option={optionData}
 						/>
 					) : (
-						<span className="slds-media__body">
-							<span
-								className={classNames(
-									'slds-listbox__option-text',
-									'slds-listbox__option-text_entity',
-									{ 'slds-disabled-text': optionData.disabled }
-								)}
-							>
-								{optionData.label}
+							<span className="slds-media__body">
+								<span
+									className={classNames(
+										'slds-listbox__option-text',
+										'slds-listbox__option-text_entity',
+										{ 'slds-disabled-text': optionData.disabled }
+									)}
+								>
+									{setBold(optionData.label, props.inputValue)}
+								</span>
+								<span
+									className={classNames(
+										'slds-listbox__option-meta slds-listbox__option-meta_entity',
+										{ 'slds-disabled-text': optionData.disabled }
+									)}
+								>
+									{optionData.subTitle}
+								</span>
 							</span>
-							<span
-								className={classNames(
-									'slds-listbox__option-meta slds-listbox__option-meta_entity',
-									{ 'slds-disabled-text': optionData.disabled }
-								)}
-							>
-								{optionData.subTitle}
-							</span>
-						</span>
-					)}
+						)}
 				</span>
 			),
 			checkbox: (
@@ -318,11 +346,11 @@ const Menu = (props) => {
 						optionData.disabled
 							? null
 							: (event) => {
-									props.onSelect(event, {
-										selection: props.selection,
-										option: optionData,
-									});
-								}
+								props.onSelect(event, {
+									selection: props.selection,
+									option: optionData,
+								});
+							}
 					}
 					role="option"
 				>
@@ -342,20 +370,20 @@ const Menu = (props) => {
 								option={optionData}
 							/>
 						) : (
-							<span
-								className={classNames('slds-truncate', {
-									'slds-disabled-text': optionData.disabled,
-								})}
-								title={optionData.label}
-							>
-								{selected ? (
-									<span className="slds-assistive-text">
-										{props.assistiveText.optionSelectedInMenu}
-									</span>
-								) : null}{' '}
-								{optionData.label}
-							</span>
-						)}
+								<span
+									className={classNames('slds-truncate', {
+										'slds-disabled-text': optionData.disabled,
+									})}
+									title={optionData.label}
+								>
+									{selected ? (
+										<span className="slds-assistive-text">
+											{props.assistiveText.optionSelectedInMenu}
+										</span>
+									) : null}{' '}
+									{optionData.label}
+								</span>
+							)}
 					</span>
 				</span>
 			),
@@ -421,16 +449,16 @@ const Menu = (props) => {
 			{menuOptions.length ? (
 				menuOptions
 			) : (
-				<li
-					className="slds-listbox__item slds-listbox__status"
-					role="status"
-					aria-live="polite"
-				>
-					<span className="slds-m-left_x-large slds-p-vertical_medium">
-						{props.labels.noOptionsFound}
-					</span>
-				</li>
-			)}
+					<li
+						className="slds-listbox__item slds-listbox__status"
+						role="status"
+						aria-live="polite"
+					>
+						<span className="slds-m-left_x-large slds-p-vertical_medium">
+							{props.labels.noOptionsFound}
+						</span>
+					</li>
+				)}
 			{props.loading ? (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
