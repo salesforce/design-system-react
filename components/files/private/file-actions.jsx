@@ -7,11 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import Icon from '~/components/icon';
 
 import { FILES_ACTIONS } from '../../../utilities/constants';
+import Button from '../../button';
+import Icon from '../../icon';
 
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -20,30 +19,55 @@ const FileActions = (props) => {
 	const actions = (
 		<div className="slds-file__actions-menu">
 			<div className="slds-button-group" role="group">
-				<a
-					className={classNames(
-						'slds-button',
-						'slds-button_icon',
-						'slds-button_icon',
-						'slds-button_icon-x-small',
-						props.title ? null : 'slds-button_icon-inverse'
-					)}
-					href={props.downloadLink}
-					title="Download"
-				>
-					<Icon
-						assistiveText={{ label: 'download' }}
-						category="utility"
-						name="download"
-						size="xx-small"
-						inverse={!props.title}
-					/>
-					<span className="slds-assistive-text">Download</span>
-				</a>
+				{typeof props.onClickDownload === 'function' ? (
+					<Button
+						type="button"
+						variant="icon"
+						iconSize="x-small"
+						onClick={
+							typeof props.onClickDownload === 'function'
+								? props.onClickDownload
+								: null
+						}
+						title="Download"
+					>
+						<Icon
+							assistiveText={{ label: 'download' }}
+							category="utility"
+							name="download"
+							size="xx-small"
+							inverse={!props.title}
+						/>
+					</Button>
+				) : null}
+				{typeof props.onClickMoreActions === 'function' ? (
+					<Button
+						type="button"
+						variant="icon"
+						iconSize="x-small"
+						onClick={
+							typeof props.onClickMoreActions === 'function'
+								? props.onClickMoreActions
+								: null
+						}
+						title="More Actions"
+					>
+						<Icon
+							assistiveText={{ label: 'More Actions' }}
+							category="utility"
+							name="down"
+							size="xx-small"
+							inverse={!props.title}
+						/>
+					</Button>
+				) : null}
 			</div>
 		</div>
 	);
-	if (props.downloadLink) {
+	if (
+		typeof props.onClickDownload === 'function' ||
+		typeof props.onClickMoreActions
+	) {
 		if (props.title) {
 			return actions;
 		}
@@ -58,12 +82,13 @@ FileActions.displayName = FILES_ACTIONS;
 
 FileActions.propTypes = {
 	/**
-	 *  Link in the download action button; doesnt show download button if empty
+	 *  Action to be done on clicking download button; doesnt show download button if empty
 	 */
-	downloadLink: PropTypes.PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.node,
-	]),
+	onClickDownload: PropTypes.func,
+	/**
+	 *  Action to be done on clicking more actions button; doesn't show More actions button if empty
+	 */
+	onClickMoreActions: PropTypes.func,
 	/**
 	 *  Title for the File
 	 */

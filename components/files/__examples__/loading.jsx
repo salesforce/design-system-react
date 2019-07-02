@@ -1,29 +1,27 @@
 import React from 'react';
 import Files from '~/components/files';
+import File from '~/components/files/file';
+import IconSettings from '~/components/icon-settings';
+import Icon from '~/components/icon';
 
 class Example extends React.Component {
 	static displayName = 'filesLoadingExample';
 
 	render() {
 		return (
-			<div style={{ position: 'relative', display: 'flex', height: '5rem' }}>
-				<div style={{ width: '20rem', padding: '1rem' }}>
-					<Files
-						id="file-without-title"
-						onClick="javascript:void(0);"
-						isLoading
-					/>
-				</div>
-				<div style={{ width: '20rem', padding: '1rem' }}>
-					<Files
+			<IconSettings iconPath="/assets/icons">
+				<Files>
+					<File id="file-without-title" href="javascript:void(0);" isLoading />
+					<File
 						id="file-with-title"
-						onClick="javascript:void(0);"
+						href="javascript:void(0);"
+						icon={<Icon category="doctype" name="image" />}
 						isLoading
 						title="Image Title"
 						type="image"
 					/>
-				</div>
-			</div>
+				</Files>
+			</IconSettings>
 		);
 	}
 }

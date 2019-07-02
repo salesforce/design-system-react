@@ -7,9 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '~/components/icon';
 
 import { FILES_FIGURE } from '../../../utilities/constants';
+
+import Spinner from '../../spinner';
 
 /**
  * A file can have a image, an icon or a loading animation as its thumbnail
@@ -17,18 +18,20 @@ import { FILES_FIGURE } from '../../../utilities/constants';
 const FileFigure = (props) => {
 	if (props.isLoading) {
 		return (
-			<div role="status" className="slds-spinner slds-spinner_medium">
-				<span className="slds-assistive-text">Loading</span>
-				<div className="slds-spinner__dot-a" />
-				<div className="slds-spinner__dot-b" />
-			</div>
+			<Spinner
+				size="medium"
+				variant="base"
+				assistiveText={{ label: 'Loading' }}
+				containerStyle={{ zIndex: '1' }}
+			/>
 		);
-	} else if (props.image) {
+	}
+	if (props.image) {
 		return (
-			<React.Fragment>
+			<a href={props.href}>
 				<span className="slds-assistive-text">Preview:</span>
 				<img src={props.image} alt={props.title || props.type} />
-			</React.Fragment>
+			</a>
 		);
 	}
 	return (
@@ -38,11 +41,9 @@ const FileFigure = (props) => {
 				className="slds-file__icon slds-icon_container"
 				title={props.title || props.type}
 			>
-				<Icon
-					assistiveText={{ label: props.title || props.type }}
-					category="doctype"
-					name={props.type}
-				/>
+				{React.cloneElement(props.icon, {
+					size: null,
+				})}
 			</span>
 		</React.Fragment>
 	);
@@ -53,9 +54,9 @@ FileFigure.displayName = FILES_FIGURE;
 FileFigure.propTypes = {
 	isLoading: PropTypes.bool,
 	image: PropTypes.string,
-	onClick: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	type: PropTypes.string,
 	title: PropTypes.string,
+	href: PropTypes.string,
 };
 
 FileFigure.defaultProps = {

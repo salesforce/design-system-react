@@ -1,43 +1,36 @@
 import React from 'react';
 import Files from '~/components/files';
 import File from '~/components/files/file';
-import MoreFiles from '~/components/files/more-files';
 import IconSettings from '~/components/icon-settings';
 import Icon from '~/components/icon';
 
 class Example extends React.Component {
-	static displayName = 'filesLoadingExample';
+	static displayName = 'filesExample';
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Files>
 					<File
-						id="file-without-title"
-						image="/assets/images/placeholder-img@16x9.jpg"
-						onClickDownload={() => {
-							console.log('Download Button Clicked');
-						}}
-						onClickMoreActions={() => {
-							console.log('Download Button Clicked');
-						}}
-					/>
-					<File
-						id="file-with-title"
-						href="javascript:void(0);"
-						title="Image Title"
+						title="Proposal.pdf"
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
-						onClickDownload={() => {
-							console.log('Download Button Clicked');
-						}}
-						onClickMoreActions={() => {
-							console.log('Download Button Clicked');
-						}}
+						href="javascript:void(0);"
+						crop="1-by-1"
 					/>
-					<MoreFiles
-						count="22+"
+					<File
+						title="Proposal.pdf"
+						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
+						href="javascript:void(0);"
+						crop="16-by-9"
+					/>
+					<File
+						title="Proposal.pdf"
+						icon={<Icon category="doctype" name="pdf" />}
+						image="/assets/images/placeholder-img@16x9.jpg"
+						href="javascript:void(0);"
+						crop="4-by-3"
 					/>
 				</Files>
 			</IconSettings>

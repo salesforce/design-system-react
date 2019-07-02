@@ -6,6 +6,7 @@ import NoImage from '../__examples__/no-image';
 import NoTitle from '../__examples__/no-title';
 import Actions from '../__examples__/actions';
 import Loading from '../__examples__/loading';
+import Cropped from '../__examples__/crops';
 
 storiesOf(FILES, module)
 	.addDecorator((getStory) => (
@@ -15,4 +16,5 @@ storiesOf(FILES, module)
 	.add('w/o Image', () => <NoImage />)
 	.add('w/o Title', () => <NoTitle />)
 	.add('w/ Actions', () => <Actions />)
-	.add('Loading', () => <Loading />);
+	.add('Loading', () => <Loading />)
+	.add('Cropped', () => <Cropped />);
