@@ -14,6 +14,7 @@
 import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
 import express from 'express';
 import path from 'path';
+
 // Add tests to this file to exclude them from testing
 
 import excludeFromTests from './exclude-story-config';
@@ -68,41 +69,56 @@ ARE RELATED TO YOUR PULL REQUEST. Each PNG adds up and bloats the repository.
 For more information, please review: https://github.com/salesforce/design-system-react/blob/master/tests/README.md
 `);
 
+const chunk = (arr, size) =>
+	arr.reduce(
+		(chunks, el, i) =>
+			(i % size ? chunks[chunks.length - 1].push(el) : chunks.push([el])) &&
+			chunks,
+		[]
+	);
+
+const chunkedStories = chunk(excludeFromTests.visualRegression.storyKind, 10);
+
 // If a Storybook story should not be visual regression tested, please add
 // the suffix `NoImageTest` to the story's name.
 const skipImageStoryShotTest = 'NoImageTest';
 
-describe('Image Snapshots', function imageSnapshotFunction() {
-	beforeAll(() => {
-		// Start Express server
-		server = app.listen(port, () => {
-			console.log('Storybook server listening on port ', server.address().port);
+chunkedStories.forEach((subArrayOfStories) => {
+	describe('Image Snapshots', function imageSnapshotFunction() {
+		beforeAll(() => {
+			// Start Express server
+			server = app.listen(port, () => {
+				console.log(
+					'Storybook server listening on port ',
+					server.address().port
+				);
+			});
 		});
-	});
 
-	afterAll(() => {
-		// Stop Express server
-		server.close(() => {
-			console.log('Shutting down the server running Storybook');
+		afterAll(() => {
+			// Stop Express server
+			server.close(() => {
+				console.log('Shutting down the server running Storybook');
+			});
 		});
-	});
 
-	// Use custom storybook config that uses a subset of stories until
-	// all components have been audited for compatibility with Jest
-	// snapshot tests.
-	initStoryshots({
-		configPath: '.storybook',
-		storyNameRegex: new RegExp(
-			`^((?!.*?(${skipStoryShotTest}|${skipImageStoryShotTest})).)*$`,
-			'g'
-		),
-		storyKindRegex: getExcludeKindRegex({
-			arrayOfStoryKind: excludeFromTests.visualRegression.storyKind,
-		}),
-		suite: 'Image storyshots',
-		test: imageSnapshot({
-			storybookUrl: `http://localhost:${port}`,
-			getMatchOptions,
-		}),
+		// Use custom storybook config that uses a subset of stories until
+		// all components have been audited for compatibility with Jest
+		// snapshot tests.
+		initStoryshots({
+			configPath: '.storybook',
+			storyNameRegex: new RegExp(
+				`^((?!.*?(${skipStoryShotTest}|${skipImageStoryShotTest})).)*$`,
+				'g'
+			),
+			storyKindRegex: getExcludeKindRegex({
+				arrayOfStoryKind: subArrayOfStories,
+			}),
+			suite: 'Image storyshots',
+			test: imageSnapshot({
+				storybookUrl: `http://localhost:${port}`,
+				getMatchOptions,
+			}),
+		});
 	});
 });
