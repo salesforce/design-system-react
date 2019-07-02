@@ -28,10 +28,7 @@ const port = process.env.PORT || 8002;
 app.use(
 	'/assets',
 	express.static(
-		path.join(
-			__dirname,
-			`${rootPath}/node_modules/@salesforce-ux/design-system/assets/`
-		)
+		`${rootPath}/node_modules/@salesforce-ux/design-system/assets/`
 	)
 );
 app.use('/assets', express.static(path.join(__dirname, `${rootPath}/assets/`)));
