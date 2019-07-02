@@ -111,7 +111,7 @@ const propTypes = {
 		PropTypes.shape({
 			id: PropTypes.string,
 			icon: PropTypes.node,
-			label: PropTypes.string,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 			onClick: PropTypes.func,
 		})
 	),
@@ -122,7 +122,7 @@ const propTypes = {
 		PropTypes.shape({
 			id: PropTypes.string,
 			icon: PropTypes.node,
-			label: PropTypes.string || PropTypes.func,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 			onClick: PropTypes.func,
 		})
 	),
@@ -193,7 +193,8 @@ const Menu = (props) => {
 	const menuOptions = getOptions(props).map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&
-			isEqual(optionData, props.activeOption);
+			props.activeOption &&
+			isEqual(optionData.id, props.activeOption.id);
 		const selected = props.isSelected({
 			selection: props.selection,
 			option: optionData

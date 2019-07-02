@@ -53,7 +53,6 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					isOpen
 					id="combobox-unique-id"
 					optionsSearchEntity={[{
 						id: 'options-search-id-1',

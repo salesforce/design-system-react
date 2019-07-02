@@ -311,12 +311,13 @@ const propTypes = {
 	/**
 	 * Object for creating new item below the options
 	 */
-	optionsAddItem: PropTypes.shape({
-		id: PropTypes.string,
-		icon: PropTypes.node,
-		label: PropTypes.string || PropTypes.func,
-		onClick: PropTypes.func,
-	}),
+	optionsAddItem: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			icon: PropTypes.node,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+			onClick: PropTypes.func,
+		})),
 	/**
 	 * Object for creating new item on top of the options
 	 */
@@ -324,7 +325,7 @@ const propTypes = {
 		PropTypes.shape({
 			id: PropTypes.string,
 			icon: PropTypes.node,
-			label: PropTypes.string || PropTypes.func,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 			onClick: PropTypes.func,
 		})
 	),
@@ -675,7 +676,7 @@ class Combobox extends React.Component {
 			return;
 		}
 
-		if (this.state.activeOption.type === 'header' || this.state.activeOption.type === 'footer') {
+		if (this.state.activeOption && (this.state.activeOption.type === 'header' || this.state.activeOption.type === 'footer')) {
 			this.state.activeOption.onClick(event);
 			return;
 		}
