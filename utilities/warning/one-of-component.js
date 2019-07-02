@@ -6,11 +6,11 @@
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
 
-let oneOfComponent = function() {};
+let oneOfComponent = function oneOfComponentFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
-	oneOfComponent = function(
+	oneOfComponent = function oneOfComponentFunction(
 		control,
 		props,
 		propName,

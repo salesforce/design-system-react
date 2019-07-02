@@ -9,6 +9,9 @@ class Example extends React.Component {
 	render() {
 		return (
 			<Datepicker
+				labels={{
+					label: 'Date',
+				}}
 				isIsoWeekday
 				onChange={(event, data) => {
 					if (this.props.action) {

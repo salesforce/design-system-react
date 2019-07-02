@@ -1,4 +1,7 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -67,7 +70,7 @@ const Lookup = class extends React.Component {
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 		/**
 		 * Class names to be added to the tag classed with `slds-lookup`.
 		 */

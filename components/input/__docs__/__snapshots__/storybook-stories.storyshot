@@ -1616,7 +1616,6 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
         }
       >
         <button
-          aria-describedby="field-level-help-tooltip"
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}

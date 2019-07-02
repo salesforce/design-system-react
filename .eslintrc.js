@@ -36,6 +36,7 @@ module.exports = {
 				'no-console': 'off',
 				// TODO: This should be removed.
 				'no-unused-vars': 'off',
+				'react/no-access-state-in-setstate': 'off',
 			},
 		},
 		{
@@ -64,6 +65,7 @@ module.exports = {
 				sinon: true,
 			},
 			rules: {
+				'func-names': 'off',
 				// devDependencies are used
 				'import/no-extraneous-dependencies': 'off',
 				// console is used in tests
@@ -71,11 +73,10 @@ module.exports = {
 				// TODO: This should be removed.
 				'no-unused-expressions': 'off',
 				// TODO: This should be removed.
-				'no-unused-vars': 'off',
-				// TODO: This should be removed.
 				'prefer-arrow-callback': 'off',
 				// TODO: This should be removed.
 				'react/display-name': 'off',
+				'react/no-access-state-in-setstate': 'off',
 			},
 		},
 		{
@@ -135,24 +136,11 @@ module.exports = {
 		// to start appearing. All lint warnings errors should be meaningful, and
 		// therefore, there should never intentionally be any.
 
-		// static class properties/method is still too low of a babel stage
-		'class-methods-use-this': 'warn',
 		// We are open to changing this to always use a trailing comma,
 		// in order to make re-sorting easier
 		'comma-dangle': [2, 'only-multiline'],
-		// TODO: Should be removed
-		'func-names': 'off',
-		// May consider removing
-		'function-paren-newline': 'off',
-		// currently used in older files, this should be removed
-		'no-param-reassign': [
-			2,
-			{
-				props: false,
-			},
-		],
-		// currently used in older files
-		'no-plusplus': 'off',
+
+		'import/no-useless-path-segments': 'off',
 		// Should be removed in the future. `event` is the main global used now.
 		'no-restricted-globals': 'off',
 		// Would prefer all mixed operators as errors, but this conflicts
@@ -170,10 +158,8 @@ module.exports = {
 				allowSamePrecedence: true,
 			},
 		],
-		// May consider removing
-		'object-curly-newline': 'off',
-		// May consider removing
-		'prefer-destructuring': 'off',
+
+		'react/destructuring-assignment': ['error', { ignoreClassFields: true }],
 
 		// May consider removing. Would be unable to test for undefined props.
 		'react/default-props-match-prop-types': 'off',
@@ -189,8 +175,6 @@ module.exports = {
 		'react/require-default-props': 'off',
 		// Components that are top-level should be classes, so the DOM ref exists
 		'react/prefer-stateless-function': 'off',
-		// Prevent multiple component definition per file
-		'react/no-multi-comp': 'off',
 
 		// javascript:void(0) is present in SLDS markup
 		'jsx-a11y/anchor-is-valid': 'off',
@@ -207,6 +191,7 @@ module.exports = {
 		// TODO: Should be removed. All mouse interactions should be able
 		// to be done with the keyboard.
 		'jsx-a11y/click-events-have-key-events': 'off',
+		'jsx-a11y/label-has-associated-control': 'off',
 
 		// Enforce single underscore modifiers for BEM class names
 		'@salesforce/slds-react/no-double-dash-modifier': 'error',

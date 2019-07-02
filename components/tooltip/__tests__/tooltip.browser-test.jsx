@@ -8,11 +8,7 @@ import TestUtils from 'react-dom/test-utils';
 import SLDSTooltip from '../../tooltip';
 import SLDSButton from '../../button';
 
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate, findRenderedDOMComponentWithTag } = TestUtils;
 
 describe('SLDSTooltip: ', function() {
 	let body;

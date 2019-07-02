@@ -49,7 +49,7 @@ const propTypes = {
 	/**
 	 * Determines component style
 	 */
-	variant: PropTypes.oneOf(['base', 'modal']),
+	variant: PropTypes.oneOf(['base', 'modal', 'setup-assistant']),
 };
 
 /**
@@ -71,10 +71,18 @@ class Progress extends React.Component {
 					'slds-progress',
 					{ 'slds-progress_shade': this.props.variant === 'modal' },
 					{ 'slds-progress_vertical': this.props.orientation === 'vertical' },
+					{ 'slds-progress_success': this.props.variant === 'setup-assistant' },
 					this.props.className
 				)}
 			>
-				<ol className="slds-progress__list">{this.props.children}</ol>
+				<ol
+					className={classNames('slds-progress__list', {
+						'slds-progress__list-bordered':
+							this.props.variant === 'setup-assistant',
+					})}
+				>
+					{this.props.children}
+				</ol>
 				{this.props.orientation !== 'vertical' && (
 					<ProgressBar
 						value={this.props.value}

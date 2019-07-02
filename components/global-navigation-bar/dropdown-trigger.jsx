@@ -155,7 +155,6 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		}
 
 		return (
-			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<li
 				aria-haspopup="true"
 				className={classNames(
@@ -178,18 +177,20 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 				ref={triggerRef}
 				style={listItemstyle}
 			>
-				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				<a className="slds-context-bar__label-action">{label}</a>
+				<a className="slds-context-bar__label-action" title={label}>
+					<span className="slds-truncate" title={label}>
+						{label}
+					</span>
+				</a>
 				<div className="slds-context-bar__icon-action slds-p-left_none">
 					<Button
 						assistiveText={this.props.assistiveText}
 						{...rest}
-						className="slds-context-bar__button slds-context-bar-action__trigger"
+						className="slds-context-bar__button"
 						aria-haspopup="true"
 						iconCategory="utility"
 						iconName="chevrondown"
 						iconVariant="bare"
-						iconSize="x-small"
 						variant="icon"
 					/>
 				</div>

@@ -22,10 +22,8 @@ import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
 import Popover from '../../../components/popover';
-import KEYS, { keyObjects } from '../../../utilities/key-code';
-import LETTERKEYS, {
-	keyObjects as letterKeyObjects,
-} from '../../../utilities/letter-key-code';
+import { keyObjects } from '../../../utilities/key-code';
+import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
 import IconSettings from '../../../components/icon-settings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -169,7 +167,7 @@ class DemoComponent extends React.Component {
 								selection: data.selection,
 							});
 						},
-						onOpen: (event) => {
+						onOpen: () => {
 							this.props.onOpen();
 						},
 					}}
@@ -211,7 +209,7 @@ const getNodes = ({ wrapper }) => ({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSCombobox', function() {
+describe('SLDSCombobox', function describeFunction() {
 	let mountNode;
 	let wrapper;
 
@@ -290,7 +288,7 @@ describe('SLDSCombobox', function() {
 				allPillsRemoved: [],
 			};
 			const selectionIndexedStates = Object.keys(selectionKeyedStates).map(
-				(key, index) => selectionKeyedStates[key]
+				(key) => selectionKeyedStates[key]
 			);
 
 			let counter = 0;
@@ -371,7 +369,7 @@ describe('SLDSCombobox', function() {
 
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes = getNodes({ wrapper });
-			for (let i = 0; i < 3; i++) {
+			for (let i = 0; i < 3; i += 1) {
 				nodes.input.simulate('keyDown', letterKeyObjects.A);
 			}
 
@@ -382,7 +380,7 @@ describe('SLDSCombobox', function() {
 				menuListItem.instance().className.search('slds-has-focus') > -1
 			).to.eql(true);
 
-			const scrollTop = nodes.menuListbox.instance().scrollTop;
+			const { scrollTop } = nodes.menuListbox.instance();
 			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 		});
 
@@ -393,12 +391,11 @@ describe('SLDSCombobox', function() {
 			let nodes = getNodes({ wrapper });
 			let i;
 			let menuListItem;
-			let scrollTop;
 
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes = getNodes({ wrapper });
 
-			for (i = 0; i < 8; i++) {
+			for (i = 0; i < 8; i += 1) {
 				nodes.input.simulate('keyDown', keyObjects.DOWN);
 			}
 
@@ -409,10 +406,10 @@ describe('SLDSCombobox', function() {
 				menuListItem.instance().className.search('slds-has-focus') > -1
 			).to.eql(true);
 
-			scrollTop = nodes.menuListbox.instance().scrollTop;
-			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+			const { scrollTop: scrollTop1 } = nodes.menuListbox.instance();
+			expect(scrollTop1 === 98 || scrollTop1 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 
-			for (i = 0; i < 8; i++) {
+			for (i = 0; i < 8; i += 1) {
 				nodes.input.simulate('keyDown', keyObjects.UP);
 			}
 
@@ -423,8 +420,8 @@ describe('SLDSCombobox', function() {
 				menuListItem.instance().className.search('slds-has-focus') > -1
 			).to.eql(true);
 
-			scrollTop = nodes.menuListbox.instance().scrollTop;
-			expect(scrollTop === 4 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+			const { scrollTop: scrollTop2 } = nodes.menuListbox.instance();
+			expect(scrollTop2 === 4 || scrollTop2 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 		});
 	});
 

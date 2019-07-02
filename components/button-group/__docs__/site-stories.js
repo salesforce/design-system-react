@@ -6,6 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/more-icon.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/icon-group.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/list-variant.jsx'),
 ];
 
 module.exports = siteStories;

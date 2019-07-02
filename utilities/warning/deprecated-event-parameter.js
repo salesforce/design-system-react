@@ -7,12 +7,12 @@
 // This function will deliver a warning message to the browser console about an event parameter change.
 import lowPriorityWarning from './low-priority-warning';
 
-let deprecated = function() {};
+let deprecated = function deprecatedFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	deprecated = function(
+	deprecated = function deprecatedFunction(
 		control,
 		{
 			oldEventParameterOrder, // flag that tells which parameter order is in use

@@ -81,7 +81,9 @@ const defaultProps = {
  */
 class SplitView extends React.Component {
 	static displayName = SPLIT_VIEW;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {

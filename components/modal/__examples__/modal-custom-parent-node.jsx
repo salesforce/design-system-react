@@ -24,7 +24,7 @@ class Example extends React.Component {
 					isOpen={this.state.isOpen}
 					onRequestClose={this.toggleOpen}
 					parentSelector={this.getParent}
-					title="Modal header"
+					heading="Modal header"
 				>
 					<section className="slds-p-around_medium">
 						<p>

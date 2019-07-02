@@ -28,7 +28,7 @@ class DemoIcon extends React.Component {
 	}
 }
 
-describe('SLDSIcon: ', function() {
+describe('SLDSIcon: ', function describeFunction() {
 	describe('Standard Icon Props Render', function() {
 		let svg;
 
@@ -74,7 +74,7 @@ describe('SLDSIcon: ', function() {
 		});
 	});
 
-	describe('Custom Icon Props Render', function() {
+	describe('Custom Icon Props Render', function describeFunction2() {
 		let svg;
 
 		beforeEach(
@@ -111,7 +111,7 @@ describe('SLDSIcon: ', function() {
 		});
 	});
 
-	describe('Action Icon Props Render', function() {
+	describe('Action Icon Props Render', function describeFunction() {
 		let svg;
 
 		beforeEach(
@@ -160,9 +160,7 @@ describe('SLDSIcon: ', function() {
 		});
 	});
 
-	describe('Utility Icon Props Render', function() {
-		let svg;
-
+	describe('Utility Icon Props Render', function describeFunction() {
 		beforeEach(
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
@@ -188,7 +186,7 @@ describe('SLDSIcon: ', function() {
 		});
 	});
 
-	describe('Icon with external path renders', function() {
+	describe('Icon with external path renders', function describeFunction() {
 		let use;
 
 		beforeEach(

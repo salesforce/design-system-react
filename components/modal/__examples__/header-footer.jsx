@@ -50,7 +50,7 @@ class Example extends React.Component {
 			<Modal
 				isOpen={this.state.noFooterIsOpen}
 				onRequestClose={this.toggleNofooterIsOpen}
-				title="Modal Header"
+				heading="Modal Header"
 			>
 				<section className="slds-p-around_medium">
 					<p>

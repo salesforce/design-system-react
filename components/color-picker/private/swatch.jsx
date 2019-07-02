@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const Swatch = ({ color, style, label, labels }) => {
 	const innerStyle = {
 		backgroundColor: color,
-		border: '1px solid #cccccc',
 		...style,
 	};
 	let assistiveText;

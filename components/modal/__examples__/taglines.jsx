@@ -31,7 +31,7 @@ class Example extends React.Component {
 								<a href="javascript:void(0);">contain links or be a link.</a>
 							</span>
 						}
-						title="Modal header"
+						heading="Modal header"
 					>
 						<section className="slds-p-around_medium">
 							<p>

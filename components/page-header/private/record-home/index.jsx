@@ -10,6 +10,7 @@ const displayName = 'PageHeaderRecordHome';
 const propTypes = {
 	/**
 	 * Content to appear on the right hand side of the page header
+	 * 'contentRight' prop will be deprecated soon, instead use 'onRenderActions'
 	 */
 	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
@@ -51,7 +52,7 @@ const RecordHome = (props) => (
 				/>
 			</div>
 			<div className="slds-col slds-no-flex slds-grid slds-align-top">
-				{props.contentRight}
+				{props.onRenderActions ? props.onRenderActions : props.contentRight}
 			</div>
 		</div>
 		<DetailRow details={props.details} />

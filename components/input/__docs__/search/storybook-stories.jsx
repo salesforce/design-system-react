@@ -15,6 +15,7 @@ storiesOf(SEARCH, module)
 	.add('Standard', () => (
 		<Search
 			assistiveText={{ label: 'Search' }}
+			id="search-standard"
 			placeholder="Search"
 			name="search-input"
 			onChange={action('change')}
