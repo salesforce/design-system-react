@@ -1,7 +1,6 @@
 /* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import { expect } from 'chai';
-import { mount } from 'enzyme';
 
 import SLDSIconSettings from '../../icon-settings';
 import SLDSGlobalHeader from '../../global-header';

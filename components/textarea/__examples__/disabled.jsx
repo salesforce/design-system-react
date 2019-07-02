@@ -11,6 +11,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Textarea
 					name="disabled"
+					id="text-area-disabled"
 					label="Textarea Label"
 					disabled
 					placeholder="Placeholder Text"

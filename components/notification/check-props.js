@@ -4,10 +4,10 @@
 
 import componentIsDeprecated from '../../utilities/warning/component-is-deprecated';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT) {
+	checkProps = function checkPropsFunction(COMPONENT) {
 		componentIsDeprecated(
 			COMPONENT,
 			'Please use Alert or Toast in the future. Notications is not the same component in SLDS any longer.'

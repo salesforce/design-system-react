@@ -14,6 +14,14 @@ class Example extends React.Component {
 						<ProgressRing value={20} theme="warning" hasIcon />
 					</div>
 					<div className="slds-col_padded">
+						<ProgressRing
+							flowDirection="fill"
+							value={40}
+							theme="warning"
+							hasIcon
+						/>
+					</div>
+					<div className="slds-col_padded">
 						<ProgressRing value={100} theme="warning" />
 					</div>
 				</div>
@@ -22,6 +30,6 @@ class Example extends React.Component {
 	}
 }
 
-Example.displayName = 'ProgressRingDefault';
+Example.displayName = 'ProgressRingWarningExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

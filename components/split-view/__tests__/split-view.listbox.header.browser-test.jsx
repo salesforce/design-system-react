@@ -1,7 +1,7 @@
 import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 import IconSettings from '../../../components/icon-settings';

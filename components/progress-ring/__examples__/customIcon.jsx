@@ -16,12 +16,21 @@ class Example extends React.Component {
 							icon={<Icon category="utility" name="lock" />}
 						/>
 					</div>
+					<div className="slds-col_padded">
+						<ProgressRing
+							value={60}
+							theme="expired"
+							hasIcon
+							icon={<Icon category="utility" name="lock" />}
+							flowDirection="fill"
+						/>
+					</div>
 				</div>
 			</IconSettings>
 		);
 	}
 }
 
-Example.displayName = 'ProgressRingDefault';
+Example.displayName = 'ProgressRingCustomIconExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

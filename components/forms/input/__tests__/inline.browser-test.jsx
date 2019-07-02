@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
 
 import chai from 'chai';
 
@@ -9,9 +8,7 @@ import IconSettings from '../../../icon-settings';
 
 const should = chai.should();
 
-const { Simulate } = TestUtils;
-
-describe('Inline Edit: ', function() {
+describe('Inline Edit: ', function describeFunction() {
 	const sampleValue = 'Sample value';
 
 	const renderInlineEdit = (instance) =>
@@ -37,7 +34,7 @@ describe('Inline Edit: ', function() {
 
 	const getTrigger = (dom) => getStatic(dom).querySelector('.slds-button');
 
-	describe('Structure', function() {
+	describe('Structure', function describeFunction2() {
 		beforeEach(
 			renderInlineEdit(
 				<InlineEdit id="inline-edit-standard" value={sampleValue} />

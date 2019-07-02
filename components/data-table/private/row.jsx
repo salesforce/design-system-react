@@ -118,7 +118,7 @@ class DataTableRow extends React.Component {
 					</td>
 				) : null}
 				{this.props.columns.map((column) => {
-					const Cell = column.Cell;
+					const { Cell } = column;
 					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${
 						column.props.property
 					}`;

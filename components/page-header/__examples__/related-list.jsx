@@ -13,7 +13,9 @@ class Example extends React.Component {
 	render() {
 		const controls = () => (
 			<div className="slds-button-group" role="group">
-				<button className="slds-button slds-button_neutral">Add Contact</button>
+				<button type="button" className="slds-button slds-button_neutral">
+					Add Contact
+				</button>
 				<div className="slds-button_last">
 					<Button
 						iconCategory="utility"

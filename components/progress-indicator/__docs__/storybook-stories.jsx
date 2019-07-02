@@ -9,6 +9,7 @@ import Default from '../__examples__/default';
 import Modal from '../__examples__/modal';
 import StepError from '../__examples__/step-error';
 import VerticalProgressIndicator from '../__examples__/vertical';
+import SetupAssistant from '../__examples__/setup-assistant';
 
 const steps = [
 	{
@@ -118,4 +119,5 @@ storiesOf(PROGRESS_INDICATOR, module)
 			errorSteps={manySteps.slice(4, 5)}
 			orientation="vertical"
 		/>
-	));
+	))
+	.add('SetupAssistant', () => <SetupAssistant />);

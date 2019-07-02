@@ -5,6 +5,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
   style={
     Object {
       "maxWidth": "1280px",
+      "padding": "20px",
     }
   }
 >
@@ -20,8 +21,8 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -29,14 +30,14 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           className="slds-carousel__col-center slds-is-absolute"
           style={
             Object {
-              "left": "-60px",
-              "margin": "0 25px",
+              "left": "-38px",
+              "margin": "-12px 0 0",
               "top": "50%",
             }
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -46,7 +47,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
               />
             </svg>
             <span
@@ -63,21 +64,21 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             className="slds-carousel__panels slds-is-relative"
             style={
               Object {
-                "transform": "translateX(0px)",
+                "transform": "translateX(NaNpx)",
               }
             }
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-three-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-three-items-example-1"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -85,10 +86,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -125,7 +127,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Extend Salesforce with the #1 business marketplace.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -138,15 +140,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-three-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-three-items-example-2"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -154,10 +156,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -194,7 +197,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Use the Object Manager to add fields, build layouts, and more.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -207,15 +210,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-three-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-three-items-example-3"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -223,10 +226,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -235,7 +239,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -250,7 +254,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -263,7 +267,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Get the mobile app that's just for Salesforce admins.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -276,15 +280,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-three-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-three-items-example-4"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -292,10 +296,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -332,7 +337,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Description for carousel item #4
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -345,15 +350,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-three-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-three-items-example-5"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -361,10 +366,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -401,7 +407,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Description for carousel item #5
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -414,15 +420,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-three-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-three-items-example-6"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -430,10 +436,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -442,7 +449,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -470,7 +477,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Description for carousel item #6
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -483,15 +490,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-three-items-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-three-items-example-7"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -499,10 +506,11 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -539,7 +547,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
                     Description for carousel item #7
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -556,14 +564,14 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           className="slds-carousel__col-center slds-is-absolute"
           style={
             Object {
-              "margin": "0 25px",
-              "right": "-60px",
+              "margin": "-12px 0 0",
+              "right": "-38px",
               "top": "50%",
             }
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -573,7 +581,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
               />
             </svg>
             <span
@@ -594,26 +602,26 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-carousel-three-items-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
             tabIndex="0"
-            title="Visit App Exchange, Click to Customize, Download SalesforceA"
+            title="Visit App Exchange, Click to Customize, Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Visit App Exchange, Click to Customize, Download SalesforceA
+              Visit App Exchange, Click to Customize, Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -623,15 +631,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-three-items-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -652,15 +660,15 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-three-items-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -681,17 +689,18 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
+exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`] = `
 <div
   style={
     Object {
       "maxWidth": "1280px",
+      "padding": "20px",
     }
   }
 >
   <div
     className="slds-carousel"
-    id="carousel-three-items-with-auto-play-example"
+    id="carousel-three-items-controlled-example"
     onKeyDown={[Function]}
   >
     <div
@@ -699,6 +708,11 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
     >
       <span
         className="slds-carousel__autoplay"
+        style={
+          Object {
+            "left": "66px",
+          }
+        }
       >
         <button
           className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon"
@@ -711,7 +725,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#pause"
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#play"
             />
           </svg>
           <span
@@ -725,11 +739,42 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
+        <div
+          className="slds-carousel__col-center slds-is-absolute"
+          style={
+            Object {
+              "left": "-38px",
+              "margin": "-12px 0 0",
+              "top": "50%",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Previous Panel
+            </span>
+          </button>
+        </div>
         <div
           className="slds-carousel__stage slds-show"
         >
@@ -737,21 +782,21 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             className="slds-carousel__panels slds-is-relative"
             style={
               Object {
-                "transform": "translateX(0px)",
+                "transform": "translateX(NaNpx)",
               }
             }
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-three-items-controlled-example-1"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -759,13 +804,14 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
-                tabIndex="0"
+                tabIndex="-1"
               >
                 <div
                   className="slds-carousel__image"
@@ -799,10 +845,10 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Extend Salesforce with the #1 business marketplace.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     Get Started
@@ -812,15 +858,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-three-items-controlled-example-2"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -828,13 +874,14 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
-                tabIndex="0"
+                tabIndex="-1"
               >
                 <div
                   className="slds-carousel__image"
@@ -868,10 +915,10 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Use the Object Manager to add fields, build layouts, and more.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     Get Started
@@ -881,15 +928,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-three-items-controlled-example-3"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -897,19 +944,20 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
-                tabIndex="0"
+                tabIndex="-1"
               >
                 <div
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -924,7 +972,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -937,10 +985,10 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Get the mobile app that's just for Salesforce admins.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     Get Started
@@ -950,15 +998,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-three-items-controlled-example-4"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -966,13 +1014,14 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
-                tabIndex="-1"
+                tabIndex="0"
               >
                 <div
                   className="slds-carousel__image"
@@ -1006,10 +1055,10 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Description for carousel item #4
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="-1"
+                    tabIndex="0"
                     type="button"
                   >
                     Get Started
@@ -1019,15 +1068,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-three-items-controlled-example-5"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1035,13 +1084,14 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
-                tabIndex="-1"
+                tabIndex="0"
               >
                 <div
                   className="slds-carousel__image"
@@ -1075,10 +1125,10 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Description for carousel item #5
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="-1"
+                    tabIndex="0"
                     type="button"
                   >
                     Learn More
@@ -1088,15 +1138,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-three-items-controlled-example-6"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1104,19 +1154,20 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
-                tabIndex="-1"
+                tabIndex="0"
               >
                 <div
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -1144,10 +1195,10 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Description for carousel item #6
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="-1"
+                    tabIndex="0"
                     type="button"
                   >
                     Learn More
@@ -1157,15 +1208,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-three-items-controlled-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-three-items-controlled-example-7"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1173,10 +1224,11 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -1213,7 +1265,7 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
                     Description for carousel item #7
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -1226,6 +1278,37 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
             </div>
           </div>
         </div>
+        <div
+          className="slds-carousel__col-center slds-is-absolute"
+          style={
+            Object {
+              "margin": "-12px 0 0",
+              "right": "-38px",
+              "top": "50%",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Next Panel
+            </span>
+          </button>
+        </div>
       </div>
       <ul
         className="slds-carousel__indicators slds-col slds-text-align_center"
@@ -1237,26 +1320,26 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-1"
-            aria-selected={true}
-            className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            aria-controls="panel-0"
+            aria-selected={false}
+            className="slds-carousel__indicator-action"
+            id="indicator-id-carousel-three-items-controlled-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
-            tabIndex="0"
-            title="Visit App Exchange, Click to Customize, Download SalesforceA"
+            tabIndex="-1"
+            title="Visit App Exchange, Click to Customize, Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Visit App Exchange, Click to Customize, Download SalesforceA
+              Visit App Exchange, Click to Customize, Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -1266,20 +1349,20 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-2"
-            aria-selected={false}
-            className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            aria-controls="panel-1"
+            aria-selected={true}
+            className="slds-carousel__indicator-action slds-is-active"
+            id="indicator-id-carousel-three-items-controlled-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
             title="Carousel Item 4, Carousel Item 5, Carousel Item 6"
           >
             <span
@@ -1295,15 +1378,15 @@ exports[`DOM snapshots SLDSCarousel 3 items with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-three-items-controlled-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1329,6 +1412,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
   style={
     Object {
       "maxWidth": "1280px",
+      "padding": "20px",
     }
   }
 >
@@ -1344,8 +1428,8 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -1353,14 +1437,14 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           className="slds-carousel__col-center slds-is-absolute"
           style={
             Object {
-              "left": "-60px",
-              "margin": "0 25px",
+              "left": "-38px",
+              "margin": "-12px 0 0",
               "top": "50%",
             }
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -1370,7 +1454,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
               />
             </svg>
             <span
@@ -1387,21 +1471,21 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             className="slds-carousel__panels slds-is-relative"
             style={
               Object {
-                "transform": "translateX(0px)",
+                "transform": "translateX(NaNpx)",
               }
             }
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-five-items-example-1"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1409,10 +1493,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -1449,7 +1534,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Extend Salesforce with the #1 business marketplace.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -1462,15 +1547,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-five-items-example-2"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1478,10 +1563,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -1518,7 +1604,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Use the Object Manager to add fields, build layouts, and more.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -1531,15 +1617,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-five-items-example-3"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1547,10 +1633,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -1559,7 +1646,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -1574,7 +1661,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -1587,7 +1674,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Get the mobile app that's just for Salesforce admins.
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -1600,15 +1687,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-five-items-example-4"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1616,10 +1703,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -1656,7 +1744,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Description for carousel item #4
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -1669,15 +1757,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-five-items-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-five-items-example-5"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1685,10 +1773,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -1725,7 +1814,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Description for carousel item #5
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="0"
@@ -1738,15 +1827,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-five-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-five-items-example-6"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1754,10 +1843,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -1766,7 +1856,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -1794,7 +1884,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Description for carousel item #6
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -1807,15 +1897,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-five-items-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-five-items-example-7"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -1823,10 +1913,11 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -1863,7 +1954,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
                     Description for carousel item #7
                   </div>
                   <button
-                    className="slds-button slds-button_neutral slds-button_outline-brand"
+                    className="slds-button slds-button_neutral"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -1880,14 +1971,14 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           className="slds-carousel__col-center slds-is-absolute"
           style={
             Object {
-              "margin": "0 25px",
-              "right": "-60px",
+              "margin": "-12px 0 0",
+              "right": "-38px",
               "top": "50%",
             }
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -1897,7 +1988,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
               />
             </svg>
             <span
@@ -1918,26 +2009,26 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-carousel-five-items-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
             tabIndex="0"
-            title="Visit App Exchange, Click to Customize, Download SalesforceA, Carousel Item 4, Carousel Item 5"
+            title="Visit App Exchange, Click to Customize, Download Salesforce Apps, Carousel Item 4, Carousel Item 5"
           >
             <span
               className="slds-assistive-text"
             >
-              Visit App Exchange, Click to Customize, Download SalesforceA, Carousel Item 4, Carousel Item 5
+              Visit App Exchange, Click to Customize, Download Salesforce Apps, Carousel Item 4, Carousel Item 5
             </span>
           </a>
         </li>
@@ -1947,15 +2038,15 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-five-items-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1980,7 +2071,8 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
 <div
   style={
     Object {
-      "maxWidth": "1280px",
+      "margin": "0 auto",
+      "maxWidth": "774px",
     }
   }
 >
@@ -1994,12 +2086,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
     >
       <div
         className="slds-is-relative"
-        style={
-          Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="slds-carousel__stage slds-show"
@@ -2008,21 +2095,21 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             className="slds-carousel__panels slds-is-relative"
             style={
               Object {
-                "transform": "translateX(0px)",
+                "transform": "translateX(NaNpx)",
               }
             }
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-default-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-default-example-1"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2030,10 +2117,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -2074,15 +2162,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-default-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-default-example-2"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2090,10 +2178,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2134,15 +2223,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-default-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-default-example-3"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2150,10 +2239,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2162,7 +2252,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -2177,7 +2267,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -2194,15 +2284,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-default-example-3"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-default-example-4"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2210,10 +2300,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2254,15 +2345,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-default-example-4"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-default-example-5"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2270,10 +2361,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2314,15 +2406,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-default-example-5"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-default-example-6"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2330,10 +2422,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2342,7 +2435,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -2374,15 +2467,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-default-example-6"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-default-example-7"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2390,10 +2483,11 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2445,15 +2539,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-carousel-default-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2474,15 +2568,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-default-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2503,26 +2597,26 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-default-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
             tabIndex="-1"
-            title="Download SalesforceA"
+            title="Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Download SalesforceA
+              Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -2532,15 +2626,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-carousel-default-example-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2561,15 +2655,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-carousel-default-example-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2590,15 +2684,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-carousel-default-example-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2619,15 +2713,15 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-7"
+            aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-7"
+            id="indicator-id-carousel-default-example-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2648,11 +2742,12 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
+exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
 <div
   style={
     Object {
-      "maxWidth": "1280px",
+      "margin": "0 auto",
+      "maxWidth": "774px",
     }
   }
 >
@@ -2666,6 +2761,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
     >
       <span
         className="slds-carousel__autoplay"
+        style={
+          Object {
+            "left": "66px",
+          }
+        }
       >
         <button
           className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon"
@@ -2690,12 +2790,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
       </span>
       <div
         className="slds-is-relative"
-        style={
-          Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="slds-carousel__stage slds-show"
@@ -2704,21 +2799,21 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             className="slds-carousel__panels slds-is-relative"
             style={
               Object {
-                "transform": "translateX(0px)",
+                "transform": "translateX(NaNpx)",
               }
             }
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-default-with-auto-play-example-1"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2726,10 +2821,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -2770,15 +2866,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-default-with-auto-play-example-2"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2786,10 +2882,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2830,15 +2927,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-default-with-auto-play-example-3"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2846,10 +2943,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2858,7 +2956,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -2873,7 +2971,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -2890,15 +2988,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-3"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-default-with-auto-play-example-4"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2906,10 +3004,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -2950,15 +3049,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-4"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-default-with-auto-play-example-5"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -2966,10 +3065,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3010,15 +3110,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-5"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-default-with-auto-play-example-6"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3026,10 +3126,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3038,7 +3139,7 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -3070,15 +3171,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-default-with-auto-play-example-6"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-default-with-auto-play-example-7"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3086,10 +3187,11 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3141,15 +3243,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-carousel-default-with-auto-play-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3170,15 +3272,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-default-with-auto-play-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3199,26 +3301,26 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-default-with-auto-play-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
             tabIndex="-1"
-            title="Download SalesforceA"
+            title="Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Download SalesforceA
+              Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -3228,15 +3330,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-carousel-default-with-auto-play-example-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3257,15 +3359,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-carousel-default-with-auto-play-example-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3286,15 +3388,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-carousel-default-with-auto-play-example-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3315,15 +3417,15 @@ exports[`DOM snapshots SLDSCarousel Default with AutoPlay NoImageTest 1`] = `
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-7"
+            aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-7"
+            id="indicator-id-carousel-default-with-auto-play-example-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3348,7 +3450,8 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
 <div
   style={
     Object {
-      "maxWidth": "1280px",
+      "margin": "0 auto",
+      "maxWidth": "774px",
     }
   }
 >
@@ -3364,8 +3467,8 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
         className="slds-is-relative"
         style={
           Object {
-            "marginLeft": "60px",
-            "marginRight": "60px",
+            "marginLeft": "44px",
+            "marginRight": "44px",
           }
         }
       >
@@ -3373,14 +3476,14 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           className="slds-carousel__col-center slds-is-absolute"
           style={
             Object {
-              "left": "-60px",
-              "margin": "0 25px",
+              "left": "-38px",
+              "margin": "-12px 0 0",
               "top": "50%",
             }
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -3390,7 +3493,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
               />
             </svg>
             <span
@@ -3407,21 +3510,21 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             className="slds-carousel__panels slds-is-relative"
             style={
               Object {
-                "transform": "translateX(0px)",
+                "transform": "translateX(NaNpx)",
               }
             }
           >
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-1"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-0"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-1"
+              id="content-id-carousel-default-with-navigation-example-1"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3429,10 +3532,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="0"
@@ -3473,15 +3577,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-2"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-1"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-2"
+              id="content-id-carousel-default-with-navigation-example-2"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3489,10 +3593,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3533,15 +3638,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-3"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-2"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-3"
+              id="content-id-carousel-default-with-navigation-example-3"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3549,10 +3654,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3561,7 +3667,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -3576,7 +3682,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                   <h2
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </h2>
                   <div
                     className="slds-p-bottom_x-small slds-text-body_small"
@@ -3593,15 +3699,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-4"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-3"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-4"
+              id="content-id-carousel-default-with-navigation-example-4"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3609,10 +3715,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3653,15 +3760,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-5"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-4"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-5"
+              id="content-id-carousel-default-with-navigation-example-5"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3669,10 +3776,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3713,15 +3821,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-6"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-5"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-6"
+              id="content-id-carousel-default-with-navigation-example-6"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3729,10 +3837,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3741,7 +3850,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                   className="slds-carousel__image"
                 >
                   <img
-                    alt="SalesforceA"
+                    alt="Salesforce Apps"
                     src="/assets/images/carousel/carousel-03.jpg"
                   />
                 </div>
@@ -3773,15 +3882,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
             </div>
             <div
               aria-hidden="false"
-              aria-labelledby="indicator-id-7"
+              aria-labelledby="indicator-id-carousel-default-with-navigation-example-6"
               className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-              id="content-id-7"
+              id="content-id-carousel-default-with-navigation-example-7"
               role="tabpanel"
               style={
                 Object {
                   "margin": 0,
                   "maxWidth": "NaNpx",
-                  "padding": "0 8px",
+                  "padding": "0 6px",
                 }
               }
             >
@@ -3789,10 +3898,11 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
                 className="slds-carousel__panel-action slds-text-link_reset"
                 href="https://www.salesforce.com"
                 onClick={[Function]}
+                onFocus={[Function]}
                 style={
                   Object {
                     "backgroundColor": "white",
-                    "margin": "auto",
+                    "width": "100%",
                   }
                 }
                 tabIndex="-1"
@@ -3837,14 +3947,14 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           className="slds-carousel__col-center slds-is-absolute"
           style={
             Object {
-              "margin": "0 25px",
-              "right": "-60px",
+              "margin": "-12px 0 0",
+              "right": "-38px",
               "top": "50%",
             }
           }
         >
           <button
-            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
             disabled={false}
             onClick={[Function]}
             type="button"
@@ -3854,7 +3964,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
               />
             </svg>
             <span
@@ -3875,15 +3985,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="panel-0"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
-            id="indicator-id-1"
+            id="indicator-id-carousel-default-with-navigation-example-0"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3904,15 +4014,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="panel-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-2"
+            id="indicator-id-carousel-default-with-navigation-example-1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3933,26 +4043,26 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="panel-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-3"
+            id="indicator-id-carousel-default-with-navigation-example-2"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             role="tab"
             tabIndex="-1"
-            title="Download SalesforceA"
+            title="Download Salesforce Apps"
           >
             <span
               className="slds-assistive-text"
             >
-              Download SalesforceA
+              Download Salesforce Apps
             </span>
           </a>
         </li>
@@ -3962,15 +4072,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="panel-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-4"
+            id="indicator-id-carousel-default-with-navigation-example-3"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3991,15 +4101,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="panel-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-5"
+            id="indicator-id-carousel-default-with-navigation-example-4"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4020,15 +4130,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="panel-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-6"
+            id="indicator-id-carousel-default-with-navigation-example-5"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4049,15 +4159,15 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           style={
             Object {
               "margin": 0,
-              "padding": "0 8px",
+              "padding": "0 5px",
             }
           }
         >
           <a
-            aria-controls="panel-7"
+            aria-controls="panel-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
-            id="indicator-id-7"
+            id="indicator-id-carousel-default-with-navigation-example-6"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -4110,8 +4220,8 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
           className="slds-is-relative"
           style={
             Object {
-              "marginLeft": "60px",
-              "marginRight": "60px",
+              "marginLeft": "44px",
+              "marginRight": "44px",
             }
           }
         >
@@ -4119,14 +4229,14 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             className="slds-carousel__col-center slds-is-absolute"
             style={
               Object {
-                "left": "-60px",
-                "margin": "0 25px",
+                "left": "-38px",
+                "margin": "-12px 0 0",
                 "top": "50%",
               }
             }
           >
             <button
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
               disabled={true}
               onClick={[Function]}
               type="button"
@@ -4136,7 +4246,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
                 />
               </svg>
               <span
@@ -4153,21 +4263,21 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               className="slds-carousel__panels slds-is-relative"
               style={
                 Object {
-                  "transform": "translateX(0px)",
+                  "transform": "translateX(NaNpx)",
                 }
               }
             >
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-1"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-0"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-1"
+                id="content-id-carousel-with-custom-items-example-1"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4216,15 +4326,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-2"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-0"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-2"
+                id="content-id-carousel-with-custom-items-example-2"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4273,15 +4383,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-3"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-0"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-3"
+                id="content-id-carousel-with-custom-items-example-3"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4298,13 +4408,13 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
                   <div
                     className="slds-carousel__content-title"
                   >
-                    Download SalesforceA
+                    Download Salesforce Apps
                   </div>
                   <div
                     className="slds-carousel__image"
                   >
                     <img
-                      alt="SalesforceA"
+                      alt="Salesforce Apps"
                       src="/assets/images/carousel/carousel-03.jpg"
                     />
                   </div>
@@ -4330,15 +4440,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-4"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-1"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-4"
+                id="content-id-carousel-with-custom-items-example-4"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4387,15 +4497,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-5"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-1"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-5"
+                id="content-id-carousel-with-custom-items-example-5"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4444,15 +4554,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-6"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-1"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-6"
+                id="content-id-carousel-with-custom-items-example-6"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4475,7 +4585,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
                     className="slds-carousel__image"
                   >
                     <img
-                      alt="SalesforceA"
+                      alt="Salesforce Apps"
                       src="/assets/images/carousel/carousel-03.jpg"
                     />
                   </div>
@@ -4501,15 +4611,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
               </div>
               <div
                 aria-hidden="false"
-                aria-labelledby="indicator-id-7"
+                aria-labelledby="indicator-id-carousel-with-custom-items-example-2"
                 className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
-                id="content-id-7"
+                id="content-id-carousel-with-custom-items-example-7"
                 role="tabpanel"
                 style={
                   Object {
                     "margin": 0,
                     "maxWidth": "NaNpx",
-                    "padding": "0 8px",
+                    "padding": "0 6px",
                   }
                 }
               >
@@ -4562,14 +4672,14 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             className="slds-carousel__col-center slds-is-absolute"
             style={
               Object {
-                "margin": "0 25px",
-                "right": "-60px",
+                "margin": "-12px 0 0",
+                "right": "-38px",
                 "top": "50%",
               }
             }
           >
             <button
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small slds-button_icon slds-carousel__button"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-small slds-button_icon slds-carousel__button"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -4579,7 +4689,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -4600,26 +4710,26 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             style={
               Object {
                 "margin": 0,
-                "padding": "0 8px",
+                "padding": "0 5px",
               }
             }
           >
             <a
-              aria-controls="panel-1"
+              aria-controls="panel-0"
               aria-selected={true}
               className="slds-carousel__indicator-action slds-is-active"
-              id="indicator-id-1"
+              id="indicator-id-carousel-with-custom-items-example-0"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               role="tab"
               tabIndex="0"
-              title="Visit App Exchange, Click to Customize, Download SalesforceA"
+              title="Visit App Exchange, Click to Customize, Download Salesforce Apps"
             >
               <span
                 className="slds-assistive-text"
               >
-                Visit App Exchange, Click to Customize, Download SalesforceA
+                Visit App Exchange, Click to Customize, Download Salesforce Apps
               </span>
             </a>
           </li>
@@ -4629,15 +4739,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             style={
               Object {
                 "margin": 0,
-                "padding": "0 8px",
+                "padding": "0 5px",
               }
             }
           >
             <a
-              aria-controls="panel-2"
+              aria-controls="panel-1"
               aria-selected={false}
               className="slds-carousel__indicator-action"
-              id="indicator-id-2"
+              id="indicator-id-carousel-with-custom-items-example-1"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4658,15 +4768,15 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             style={
               Object {
                 "margin": 0,
-                "padding": "0 8px",
+                "padding": "0 5px",
               }
             }
           >
             <a
-              aria-controls="panel-3"
+              aria-controls="panel-2"
               aria-selected={false}
               className="slds-carousel__indicator-action"
-              id="indicator-id-3"
+              id="indicator-id-carousel-with-custom-items-example-2"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}

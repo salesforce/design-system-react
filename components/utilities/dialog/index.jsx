@@ -27,6 +27,8 @@ import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
 import IconSettings from '../../icon-settings';
+import { DIRECTIONS } from '../UNSAFE_direction';
+import LanguageDirection from '../UNSAFE_direction/private/language-direction';
 
 /*
  * A Dialog is content that is separate from the typical flow of a page. It typically overlays other elements in the document flow. This is achieved with elevation (`z-index`) and one of the following: relative position, absolute position, or a new top-level React render tree (portal). A boundary element is a scrolling ancestor element or the edge of the browser (window/viewport). This element typically has an overflow (overflow-y/overflow-x) style that is scroll, hidden, or auto. Inverted placement is the flipping of the overlay element from top to bottom or left to right in order stay within a boundary element.
@@ -97,6 +99,10 @@ class Dialog extends React.Component {
 		 * Props passed along to wrapping div. This allows one less wrapping `div` to be in the markup. dialog children are expected to be wrapper in a single `div`.
 		 */
 		containerProps: PropTypes.object,
+		/**
+		 * Establishes directional context for component. Defaults to left-to-right.
+		 */
+		direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
 		/**
 		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
 		 */
@@ -184,6 +190,7 @@ class Dialog extends React.Component {
 
 	static defaultProps = {
 		align: 'bottom left',
+		direction: DIRECTIONS.LTR,
 		offset: '0px 0px',
 		outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 	};
@@ -271,11 +278,15 @@ class Dialog extends React.Component {
 
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
+
+		const leftValue = this.props.direction === DIRECTIONS.RTL ? right : left;
+		const rightValue = this.props.direction === DIRECTIONS.RTL ? 0 : right;
+
 		return {
 			...popperData.style,
-			left,
+			left: leftValue,
 			top,
-			right,
+			right: rightValue,
 			position,
 		};
 	};
@@ -295,8 +306,10 @@ class Dialog extends React.Component {
 		this.handleClose();
 	};
 
-	handleClose = (event, data) => {
-		this.setState({ triggerPopperJS: true });
+	handleClose = (event, data = {}) => {
+		if (!data.componentWillUnmount) {
+			this.setState({ triggerPopperJS: true });
+		}
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}
@@ -439,9 +452,12 @@ class Dialog extends React.Component {
 			...this.props.style,
 		};
 
-		const contents = (
-			<section // eslint-disable-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions
-				className={
+		const outerTag = this.props.variant === 'popover' ? 'section' : 'div';
+
+		const contents = React.createElement(
+			outerTag,
+			{
+				className:
 					classNames(
 						{
 							'absolute-positioned': this.props.position === 'absolute',
@@ -453,20 +469,20 @@ class Dialog extends React.Component {
 						this.props.hasNubbin &&
 							getNubbinClassName(this.props.align, this.state.popperData),
 						this.props.contentsClassName
-					) || undefined
-				}
-				style={style}
-				onMouseDown={this.props.onMouseDown}
-				onKeyDown={this.handleKeyDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref={this.setDialogContent}
-				role={role}
-				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
-				{...this.props.containerProps}
-			>
-				{this.props.children}
-			</section>
+					) || undefined,
+
+				style,
+				onMouseDown: this.props.onMouseDown,
+				onKeyDown: this.handleKeyDown,
+				onMouseEnter: this.props.onMouseEnter,
+				onMouseLeave: this.props.onMouseLeave,
+				ref: this.setDialogContent,
+				role,
+				tabIndex: this.props.variant === 'popover' ? '-1' : undefined,
+				...this.props.containerProps,
+			},
+
+			this.props.children
 		);
 
 		const subRenders = {
@@ -506,4 +522,4 @@ Dialog.contextTypes = {
 	iconPath: PropTypes.string,
 };
 
-export default Dialog;
+export default LanguageDirection(Dialog);

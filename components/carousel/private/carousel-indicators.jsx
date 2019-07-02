@@ -24,10 +24,10 @@ class CarouselIndicators extends React.Component {
 		}
 	}
 
-	onFocus = () => {
+	onFocus = (event) => {
 		this[`indicator${this.props.currentIndex}`].focus();
 		if (this.props.onFocus) {
-			this.props.onFocus();
+			this.props.onFocus(event);
 		}
 	};
 
@@ -39,8 +39,7 @@ class CarouselIndicators extends React.Component {
 				className="slds-carousel__indicators slds-col slds-text-align_center"
 				role="tablist"
 			>
-				{[...Array(props.noOfIndicators).keys()].map((key) => {
-					const index = key + 1;
+				{[...Array(props.noOfIndicators).keys()].map((index) => {
 					const isSelectedPanel = index === props.currentIndex;
 					const indicatorActionClassName = classnames(
 						'slds-carousel__indicator-action',
@@ -53,13 +52,13 @@ class CarouselIndicators extends React.Component {
 					let title = `${index}`;
 
 					if (props.items && props.items.length > 0) {
-						const startItemIndex = (index - 1) * props.itemsPerPanel;
+						const startItemIndex = index * props.itemsPerPanel;
 						let autoIndicatorText = '';
 
 						for (
 							let i = startItemIndex;
 							i < startItemIndex + props.itemsPerPanel;
-							i++
+							i += 1
 						) {
 							if (props.items[i] && props.items[i].heading) {
 								autoIndicatorText = !autoIndicatorText
@@ -80,13 +79,13 @@ class CarouselIndicators extends React.Component {
 							className="slds-carousel__indicator slds-m-horizontal_xx-small"
 							key={index}
 							role="presentation"
-							style={{ margin: 0, padding: '0 8px' }}
+							style={{ margin: 0, padding: '0 5px' }}
 						>
 							<a
 								ref={(component) => {
 									this[`indicator${index}`] = component;
 								}}
-								id={`indicator-id-${index}`}
+								id={`indicator-id-${props.carouselId}-${index}`}
 								className={indicatorActionClassName}
 								role="tab"
 								tabIndex={isSelectedPanel ? '0' : '-1'}
@@ -94,7 +93,7 @@ class CarouselIndicators extends React.Component {
 								aria-controls={`panel-${index}`}
 								title={title}
 								onBlur={props.onBlur}
-								onClick={() => props.onClick(index)}
+								onClick={(event) => props.onClick(event, index)}
 								onFocus={this.onFocus}
 							>
 								<span className="slds-assistive-text">{assistiveText}</span>
@@ -115,6 +114,10 @@ CarouselIndicators.defaultProps = {
 
 // ### Prop Types
 CarouselIndicators.propTypes = {
+	/**
+	 * Carousel HTML ID
+	 */
+	carouselId: PropTypes.string,
 	/**
 	 * CSS classes that are applied to the component
 	 */

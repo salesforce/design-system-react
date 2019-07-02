@@ -16,8 +16,7 @@ test('MenuPicklist Default HTML Snapshot', () => {
 		jsBeautify.html(
 			ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />),
 			{}
-		),
-		'utf-8'
+		)
 	);
 	expect(domTree).toMatchSnapshot();
 });

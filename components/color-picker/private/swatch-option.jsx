@@ -6,10 +6,16 @@ const handleClick = (event, { hex, onSelect }) => {
 	onSelect(event, { hex });
 };
 const selectedStyle = {
-	border: '1px solid #9e9e9e',
-	boxShadow: 'rgb(117, 112, 112) 1px 1px 1px',
+	border: '1px solid #141414',
+	borderRadius: '2px',
 	margin: '3px',
 };
+
+const selectedInnerStyle = {
+	border: '1px solid white',
+	borderRadius: '2px',
+};
+
 class SwatchOption extends React.Component {
 	static displayName = 'SLDSSwatchOption';
 
@@ -39,6 +45,12 @@ class SwatchOption extends React.Component {
 					}}
 					ref={this.props.swatchOptionRef}
 					role="option"
+					style={
+						this.props.workingColor &&
+						this.props.workingColor === this.props.color
+							? selectedInnerStyle
+							: {}
+					}
 					tabIndex={this.props.tabIndex}
 				>
 					<Swatch color={this.props.color} labels={this.props.labels} />

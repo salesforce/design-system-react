@@ -79,7 +79,7 @@ class Example extends React.Component {
 		}
 
 		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
+		const { sortDirection } = sortColumn;
 		const newState = {
 			sortColumn: sortProperty,
 			sortColumnDirection: {

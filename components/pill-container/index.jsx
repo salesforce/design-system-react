@@ -172,7 +172,7 @@ class PillContainer extends React.Component {
 	handleNavigatePillContainer = (event, { direction }) => {
 		const offsets = { next: 1, previous: -1 };
 		this.setState((prevState) => {
-			const options = this.props.options;
+			const { options } = this.props;
 			const isLastOptionAndRightIsPressed =
 				prevState.activeSelectedOptionIndex + 1 === options.length &&
 				direction === 'next';
@@ -228,8 +228,8 @@ class PillContainer extends React.Component {
 	};
 
 	resetActiveSelectedOption = () => {
-		const options = this.props.options;
-		let activeSelectedOptionIndex = this.state.activeSelectedOptionIndex;
+		const { options } = this.props;
+		let { activeSelectedOptionIndex } = this.state;
 
 		if (!options[activeSelectedOptionIndex]) {
 			if (options.length > 0 && activeSelectedOptionIndex >= options.length) {

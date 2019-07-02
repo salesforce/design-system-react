@@ -1,3 +1,4 @@
+/* eslint-disable import/no-useless-path-segments */
 /*
  * STORY-BASED EXAMPLES
  *
@@ -16,6 +17,7 @@ export AppLauncher from '../components/app-launcher/__docs__/storybook-stories';
 export Avatar from '../components/avatar/__docs__/storybook-stories';
 export BrandBand from '../components/brand-band/__docs__/storybook-stories';
 export Breadcrumb from '../components/breadcrumb/__docs__/storybook-stories';
+export BuilderHeader from '../components/builder-header/__docs__/storybook-stories';
 export Button from '../components/button/__docs__/storybook-stories';
 export ButtonGroup from '../components/button-group/__docs__/storybook-stories';
 export ButtonStateful from '../components/button-stateful/__docs__/storybook-stories';
@@ -24,6 +26,7 @@ export Carousel from '../components/carousel/__docs__/storybook-stories';
 export Checkbox from '../components/checkbox/__docs__/storybook-stories';
 export ColorPicker from '../components/color-picker/__docs__/storybook-stories';
 export Combobox from '../components/combobox/__docs__/storybook-stories';
+export ExpandableSection from '../components/expandable-section/__docs__/storybook-stories';
 export Filter from '../components/filter/__docs__/storybook-stories';
 export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/storybook-stories';
 export DataTable from '../components/data-table/__docs__/storybook-stories';
@@ -55,6 +58,7 @@ export RadioGroup from '../components/radio-group/__docs__/storybook-stories';
 export Radio from '../components/radio/__docs__/storybook-stories';
 export RadioButtonGroup from '../components/radio-button-group/__docs__/storybook-stories';
 export ScopedNotification from '../components/scoped-notification/__docs__/storybook-stories';
+export SetupAssistant from '../components/setup-assistant/__docs__/storybook-stories';
 export Slider from '../components/slider/__docs__/storybook-stories';
 export SplitView from '../components/split-view/__docs__/storybook-stories';
 export Spinner from '../components/spinner/__docs__/storybook-stories';
@@ -63,4 +67,7 @@ export TimePicker from '../components/time-picker/__docs__/storybook-stories';
 export Toast from '../components/toast/__docs__/storybook-stories';
 export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
+export TrialBar from '../components/trial-bar/__docs__/storybook-stories';
 export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
+export VisualPicker from '../components/visual-picker/__docs__/storybook-stories';
+export WelcomeMat from '../components/welcome-mat/__docs__/storybook-stories';

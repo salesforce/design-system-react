@@ -41,7 +41,6 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -125,7 +124,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -147,7 +145,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
         <section
           aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
           aria-labelledby="color-picker-label-color-picker"
-          className="absolute-positioned slds-nubbin_top-left ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
+          className="absolute-positioned ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
           id="slds-color-picker__selector-color-picker-popover"
           onKeyDown={[Function]}
           onMouseEnter={null}
@@ -162,26 +160,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           }
           tabIndex="-1"
         >
-          <button
-            className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon"
-            >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Close dialog
-            </span>
-          </button>
           <div
             className="slds-popover__body"
             id="slds-color-picker__selector-color-picker-dialog-body"
@@ -201,7 +179,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 <li
                   aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
                   aria-selected="true"
-                  className="slds-text-title_caps slds-active slds-tabs_default__item"
+                  className="slds-active slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-0"
                   role="tab"
                   tabIndex="0"
@@ -219,7 +197,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 <li
                   aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
                   aria-selected="false"
-                  className="slds-text-title_caps slds-tabs_default__item"
+                  className="slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-1"
                   role="tab"
                   tabIndex={null}
@@ -256,6 +234,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -263,7 +242,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#e3abec",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -285,6 +263,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -292,7 +271,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#c2dbf7",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -314,6 +292,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -321,7 +300,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#9fd6ff",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -343,6 +321,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -350,7 +329,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#9de7da",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -372,6 +350,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -379,7 +358,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#9df0c0",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -401,6 +379,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -408,7 +387,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#fff099",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -430,6 +408,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -437,7 +416,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#fed49a",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -459,6 +437,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -466,7 +445,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#d073e0",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -488,6 +466,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -495,7 +474,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#86baf3",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -517,6 +495,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -524,7 +503,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#5ebbff",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -546,6 +524,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -553,7 +532,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#44d8be",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -575,6 +553,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -582,7 +561,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#3be282",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -604,6 +582,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -611,7 +590,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#ffe654",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -633,6 +611,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -640,7 +619,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#ffb758",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -662,6 +640,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -669,7 +648,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#bd35bd",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -691,6 +669,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -698,7 +677,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#5779c1",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -720,6 +698,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -727,7 +706,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#5679c0",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -749,6 +727,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -756,7 +735,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#00aea9",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -778,6 +756,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -785,7 +764,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#3cba4c",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -807,6 +785,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -814,7 +793,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#f5bc25",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -836,6 +814,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -843,7 +822,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#f99221",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -865,6 +843,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -872,7 +851,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#580d8c",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -894,6 +872,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -901,7 +880,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#001970",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -923,6 +901,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -930,7 +909,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#0a2399",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -952,6 +930,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -959,7 +938,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#0b7477",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -981,6 +959,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -988,7 +967,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#0b6b50",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -1010,6 +988,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -1017,7 +996,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#b67e11",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -1039,6 +1017,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={-1}
                     >
                       <span
@@ -1046,7 +1025,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         style={
                           Object {
                             "backgroundColor": "#b85d0d",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -1063,8 +1041,8 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                     role="presentation"
                     style={
                       Object {
-                        "border": "1px solid #9e9e9e",
-                        "boxShadow": "rgb(117, 112, 112) 1px 1px 1px",
+                        "border": "1px solid #141414",
+                        "borderRadius": "2px",
                         "margin": "3px",
                       }
                     }
@@ -1074,6 +1052,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                       className="slds-color-picker__swatch-trigger"
                       onClick={[Function]}
                       role="option"
+                      style={Object {}}
                       tabIndex={0}
                     >
                       <span
@@ -1082,7 +1061,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                           Object {
                             "backgroundColor": "",
                             "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                            "border": "1px solid #cccccc",
                           }
                         }
                       >
@@ -1463,7 +1441,6 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -1546,7 +1523,6 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -1629,7 +1605,6 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -1712,7 +1687,6 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -1795,7 +1769,6 @@ exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -1878,7 +1851,6 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -1944,7 +1916,6 @@ exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
             style={
               Object {
                 "backgroundColor": "#invalid",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -2031,7 +2002,6 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
             style={
               Object {
                 "backgroundColor": "#000000",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -2113,7 +2083,6 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
             style={
               Object {
                 "backgroundColor": "#000000",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -2196,7 +2165,6 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >
@@ -2279,7 +2247,6 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
               Object {
                 "backgroundColor": "",
                 "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                "border": "1px solid #cccccc",
               }
             }
           >

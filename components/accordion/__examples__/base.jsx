@@ -33,7 +33,7 @@ class Example extends React.Component {
 		return (
 			<Dropdown
 				align="right"
-				id="ButtonGroupExampleDropdown"
+				id={selectedItem.id}
 				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				buttonClassName="slds-shrink-none"
@@ -70,13 +70,20 @@ class Example extends React.Component {
 	}
 
 	togglePanel(event, data) {
-		this.setState((state) => ({
-			...state,
-			expandedPanels: {
-				...state.expandedPanels,
-				[data.id]: !state.expandedPanels[data.id],
+		this.setState(
+			{
+				expandedPanels: {},
 			},
-		}));
+			() => {
+				this.setState((state) => ({
+					...state,
+					expandedPanels: {
+						...state.expandedPanels,
+						[data.id]: !state.expandedPanels[data.id],
+					},
+				}));
+			}
+		);
 		if (this.props.action) {
 			const dataAsArray = Object.keys(data).map((id) => data[id]);
 			this.props.action('onClick')(event, ...dataAsArray);

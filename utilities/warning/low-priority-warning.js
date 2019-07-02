@@ -3,10 +3,10 @@
 
 /* eslint-disable import/no-mutable-exports */
 
-let lowPriorityWarning = function() {};
+let lowPriorityWarning = function printWarningFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const printWarning = function(originalMessage, ...args) {
+	const printWarning = function printWarningFunction(originalMessage, ...args) {
 		let argIndex = 0;
 		const message = `Warning: ${originalMessage.replace(/%s/g, () => {
 			const argument = args[argIndex];

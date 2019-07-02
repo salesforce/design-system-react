@@ -25,9 +25,9 @@ const items = [
 	},
 	{
 		id: 3,
-		heading: 'Download SalesforceA',
+		heading: 'Download Salesforce Apps',
 		description: "Get the mobile app that's just for Salesforce admins.",
-		imageAssistiveText: 'SalesforceA',
+		imageAssistiveText: 'Salesforce Apps',
 		src: '/assets/images/carousel/carousel-03.jpg',
 		href: 'https://www.salesforce.com',
 	},
@@ -51,7 +51,7 @@ const items = [
 		id: 6,
 		heading: 'Carousel Item 6',
 		description: 'Description for carousel item #6',
-		imageAssistiveText: 'SalesforceA',
+		imageAssistiveText: 'Salesforce Apps',
 		src: '/assets/images/carousel/carousel-03.jpg',
 		href: 'https://www.salesforce.com',
 	},
@@ -73,7 +73,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div
 					style={{
-						maxWidth: '1280px',
+						margin: '0 auto',
+						maxWidth: '774px',
 					}}
 				>
 					<Carousel

@@ -1,12 +1,15 @@
 {
     "component": "app-launcher",
-    "status": "prototype",
+    "status": "prod",
     "display-name": "App Launcher",
-    "SLDS-component-path": "/components/app-launcher/#flavor-default",
+    "SLDS-component-path": "/components/app-launcher",
     "dependencies": [
         {
-            "component": "section"
+            "component": "expandable-section"
         },
+		{
+			"component": "link"
+		},
         {
             "component": "tile"
         }

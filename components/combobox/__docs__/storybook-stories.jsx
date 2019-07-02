@@ -12,6 +12,7 @@ import BaseMenuItemDisabled from '../__examples__/base-menu-item-disabled';
 import BaseMenuItemDisabledTooltipOpen from '../__examples__/base-menu-item-disabled-tooltip-open';
 import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled-tooltip';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
+import BaseInheritMenuWidthRTL from '../__examples__/base-inherit-menu-width-RTL';
 import Dialog from '../__examples__/dialog.jsx';
 import Disabled from '../__examples__/disabled';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
@@ -24,6 +25,7 @@ import InlineMultipleLoading from '../__examples__/inline-multiple-loading';
 import BaseCustomMenuItem from '../__examples__/base-custom-menu-item';
 import BaseCustomMenuItemDisabled from '../__examples__/base-custom-menu-item-disabled';
 import ReadOnly from '../__examples__/readonly-single';
+import ReadOnlyRTL from '../__examples__/readonly-single-RTL';
 import ReadOnlyDisabled from '../__examples__/readonly-single-disabled';
 import ReadOnlyMenuItemDisabled from '../__examples__/readonly-menu-item-disabled';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
@@ -99,8 +101,14 @@ storiesOf(COMBOBOX, module)
 	.add('Base Inherit Menu Width', () => (
 		<BaseInheritMenuWidth action={action} />
 	))
+	.add('Base Inherit Menu Width - Right to Left (RTL)', () => (
+		<BaseInheritMenuWidthRTL action={action} />
+	))
 	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
+	.add('Readonly Single Selection - Right to Left (RTL)', () => (
+		<ReadOnlyRTL action={action} />
+	))
 	.add('Readonly Single Selection Disabled', () => (
 		<ReadOnlyDisabled action={action} />
 	))

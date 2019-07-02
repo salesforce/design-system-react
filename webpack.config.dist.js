@@ -1,8 +1,8 @@
 /* eslint-env node */
 const fs = require('fs');
 const webpack = require('webpack');
-const packageJson = require('./package.json');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
+const packageJson = require('./package.json');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
 const license = fs.readFileSync('./LICENSE.txt', 'utf8');
