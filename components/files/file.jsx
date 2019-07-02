@@ -15,7 +15,6 @@ import { FILES_FILE } from '../../utilities/constants';
 
 import FileFigure from './private/file-figure';
 import FileActions from './private/file-actions';
-import Icon from '../../.tmp-esm/components/icon';
 
 const displayName = FILES_FILE;
 
