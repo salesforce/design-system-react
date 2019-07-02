@@ -28,7 +28,7 @@
 		"start": "npx start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
 		"static:start": "node app",
 		"static:build": "npx build-storybook -o ./storybook",
-		"test": "npm run test:banner && npx concurrently \"npm:lint\" \"npm:test:unit\" \"npm:test:dom-snapshot\" \"npm:test:image-snapshot\" \"npm:test:accessibility\" \"npm run build:docs && npm run test:docs\"",
+		"test": "npm run test:banner && npx concurrently \"npm:lint\" \"npm:test:unit\" \"npm:test:dom-snapshot\" \"npm:test:image-snapshot\"  \"npm run build:docs && npm run test:docs\"",
 		"test:banner": "node ./scripts/print-tests-top-banner.js",
 		"test:docs": "npx babel-node ./tests/component-docs-test.js",
 		"test:fix": "npm run lint:fix && npm run test",
