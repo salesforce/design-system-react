@@ -59,7 +59,7 @@ const propTypes = {
 	/**
 	 *  Title for the File
 	 */
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 };
 
 const defaultProps = {

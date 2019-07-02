@@ -56,11 +56,11 @@ FileFigure.propTypes = {
 	/**
 	 *  Image/Figure for the file
 	 */
-	image: PropTypes.string.isRequired,
+	image: PropTypes.string,
 	/**
 	 *  Title for the file
 	 */
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 };
 
 FileFigure.defaultProps = {
