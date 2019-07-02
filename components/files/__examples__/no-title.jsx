@@ -9,8 +9,9 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Files>
+				<Files id="files-with-no-title-example">
 					<File
+						id="file-with-no-title"
 						image="/assets/images/placeholder-img@16x9.jpg"
 						href="javascript:void(0);"
 					/>

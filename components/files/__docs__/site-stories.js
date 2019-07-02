@@ -5,8 +5,10 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/crops.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/loading.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/no-title.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/with-external-icon.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/no-image.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/files/__examples__/actions.jsx'),
 ];

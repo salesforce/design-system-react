@@ -28,10 +28,10 @@ const FileFigure = (props) => {
 	}
 	if (props.image) {
 		return (
-			<a href={props.href}>
+			<React.Fragment>
 				<span className="slds-assistive-text">Preview:</span>
 				<img src={props.image} alt={props.title || props.type} />
-			</a>
+			</React.Fragment>
 		);
 	}
 	return (
@@ -56,7 +56,6 @@ FileFigure.propTypes = {
 	image: PropTypes.string,
 	type: PropTypes.string,
 	title: PropTypes.string,
-	href: PropTypes.string,
 };
 
 FileFigure.defaultProps = {

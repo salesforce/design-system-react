@@ -24,11 +24,7 @@ const FileActions = (props) => {
 						type="button"
 						variant="icon"
 						iconSize="x-small"
-						onClick={
-							typeof props.onClickDownload === 'function'
-								? props.onClickDownload
-								: null
-						}
+						onClick={props.onClickDownload}
 						title="Download"
 					>
 						<Icon
@@ -45,11 +41,7 @@ const FileActions = (props) => {
 						type="button"
 						variant="icon"
 						iconSize="x-small"
-						onClick={
-							typeof props.onClickMoreActions === 'function'
-								? props.onClickMoreActions
-								: null
-						}
+						onClick={props.onClickMoreActions}
 						title="More Actions"
 					>
 						<Icon
@@ -66,7 +58,7 @@ const FileActions = (props) => {
 	);
 	if (
 		typeof props.onClickDownload === 'function' ||
-		typeof props.onClickMoreActions
+		typeof props.onClickMoreActions === 'function'
 	) {
 		if (props.title) {
 			return actions;

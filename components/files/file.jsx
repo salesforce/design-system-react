@@ -15,6 +15,7 @@ import { FILES_FILE } from '../../utilities/constants';
 
 import FileFigure from './private/file-figure';
 import FileActions from './private/file-actions';
+import Icon from '../../.tmp-esm/components/icon';
 
 const displayName = FILES_FILE;
 
@@ -60,10 +61,6 @@ const propTypes = {
 	 *  Title for the File
 	 */
 	title: PropTypes.string,
-	/**
-	 *  Icon showing the type of the File
-	 */
-	icon: PropTypes.node,
 };
 
 const defaultProps = {
@@ -109,7 +106,6 @@ class File extends React.Component {
 							isLoading={this.props.isLoading}
 							image={this.props.image}
 							title={this.props.title}
-							href={this.props.href}
 							icon={this.props.icon}
 						/>
 					</a>
@@ -133,6 +129,13 @@ class File extends React.Component {
 						</figcaption>
 					) : null}
 				</figure>
+				{this.props.externalIcon ? (
+					<div className="slds-file__external-icon">
+						{React.cloneElement(this.props.externalIcon, {
+							containerClassName: 'slds-file__icon slds-icon_container',
+						})}
+					</div>
+				) : null}
 				<FileActions
 					onClickDownload={this.props.onClickDownload}
 					onClickMoreActions={this.props.onClickMoreActions}

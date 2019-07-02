@@ -10,8 +10,9 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Files>
+				<Files id="files-default-example">
 					<File
+						id="file-default-example"
 						title="Proposal.pdf"
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"

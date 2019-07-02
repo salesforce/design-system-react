@@ -10,8 +10,9 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Files>
+				<Files id="files-with-crop-example">
 					<File
+						id="file-crop-1-1"
 						title="Proposal.pdf"
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
@@ -19,6 +20,7 @@ class Example extends React.Component {
 						crop="1-by-1"
 					/>
 					<File
+						id="file-crop-16-9"
 						title="Proposal.pdf"
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
@@ -26,6 +28,7 @@ class Example extends React.Component {
 						crop="16-by-9"
 					/>
 					<File
+						id="file-crop-4-3"
 						title="Proposal.pdf"
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"

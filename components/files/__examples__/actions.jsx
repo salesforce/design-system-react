@@ -11,7 +11,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Files>
+				<Files id="files-with-actions-example">
 					<File
 						id="file-without-title"
 						image="/assets/images/placeholder-img@16x9.jpg"
@@ -36,6 +36,7 @@ class Example extends React.Component {
 						}}
 					/>
 					<MoreFiles
+						id="more-file-card"
 						count="22+"
 						image="/assets/images/placeholder-img@16x9.jpg"
 					/>

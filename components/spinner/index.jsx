@@ -35,7 +35,7 @@ const propTypes = {
 	/**
 	 * Custom css properties applied to Spinner container
 	 */
-	containerStyle: PropTypes.string,
+	containerStyle: PropTypes.object,
 	/**
 	 * Unique html id placed on div with role="status".
 	 */
@@ -70,7 +70,15 @@ const defaultProps = {
  */
 const Spinner = (props) => {
 	checkProps(SPINNER, props, componentDoc);
-	const { containerClassName, containerStyle, id, isDelayed, isInput, size, variant } = props;
+	const {
+		containerClassName,
+		containerStyle,
+		id,
+		isDelayed,
+		isInput,
+		size,
+		variant,
+	} = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -88,7 +96,10 @@ const Spinner = (props) => {
 	});
 
 	return (
-		<div className={classNames(containerClassName, 'slds-spinner_container')} style={containerStyle}>
+		<div
+			className={classNames(containerClassName, 'slds-spinner_container')}
+			style={containerStyle}
+		>
 			<div
 				aria-hidden="false"
 				className={spinnerClassName}

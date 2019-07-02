@@ -10,11 +10,12 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Files id="files-with-no-image-example">
+				<Files id="files-with-external-icon-example">
 					<File
-						id="file-with-no-image"
+						id="file-with-external-icon"
 						title="Image Title"
 						icon={<Icon category="doctype" name="pdf" />}
+						externalIcon={<Icon category="utility" name="salesforce1" />}
 						href="javascript:void(0);"
 					/>
 				</Files>
