@@ -113,7 +113,7 @@
 		"@babel/preset-env": "^7.4.5",
 		"@babel/preset-react": "^7.0.0",
 		"@salesforce-ux/design-system": "^2.9.3",
-		"@salesforce-ux/icons": "7.x",
+		"@salesforce-ux/icons": "9.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-actions": "^3.4.10",
 		"@storybook/addon-storyshots": "^3.4.10",
