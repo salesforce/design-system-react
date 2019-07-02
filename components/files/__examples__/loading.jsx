@@ -11,7 +11,11 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Files id="files-loading-example">
-					<File id="file-without-title-loading" href="javascript:void(0);" isLoading />
+					<File
+						id="file-without-title-loading"
+						href="javascript:void(0);"
+						isLoading
+					/>
 					<File
 						id="file-with-title-loading"
 						href="javascript:void(0);"

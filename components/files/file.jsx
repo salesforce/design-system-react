@@ -59,12 +59,12 @@ const propTypes = {
 	/**
 	 *  Title for the File
 	 */
-	title: PropTypes.string,
+	title: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
 	isLoading: false,
-	type: 'unknown',
+	crop: '16-by-9',
 };
 
 /**
