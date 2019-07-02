@@ -23,7 +23,7 @@ const accounts = [
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
 		type: 'account',
-	}
+	},
 ];
 
 const accountsWithIcon = accounts.map((elem) => ({
@@ -55,32 +55,36 @@ class Example extends React.Component {
 				<Combobox
 					isOpen
 					id="combobox-unique-id"
-					optionsSearchEntity={[{
-						id: 'my-new-id',
-						icon: (
-							<Icon
-								assistiveText={{ label: 'add' }}
-								size="x-small"
-								category="utility"
-								name="search"
-							/>
-						),
-						label: 'salesforce',
-						onClick: (event) => console.log('onClick', event),
-					}]}
-					optionsAddItem={[{
-						id: 'my-new-id',
-						icon: (
-							<Icon
-								assistiveText={{ label: 'add' }}
-								category="utility"
-								size="x-small"
-								name="add"
-							/>
-						),
-						label: 'New Entity',
-						onClick: (event) => console.log('onClick', event),
-					}]}
+					optionsSearchEntity={[
+						{
+							id: 'my-new-id',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: 'salesforce',
+							onClick: (event) => console.log('onClick', event),
+						},
+					]}
+					optionsAddItem={[
+						{
+							id: 'my-new-id',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									category="utility"
+									size="x-small"
+									name="add"
+								/>
+							),
+							label: 'New Entity',
+							onClick: (event) => console.log('onClick', event),
+						},
+					]}
 					events={{
 						onChange: (event, { value }) => {
 							console.log('onChange', event, value);

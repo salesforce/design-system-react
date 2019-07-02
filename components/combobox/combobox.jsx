@@ -301,10 +301,6 @@ const propTypes = {
 	 */
 	defaultValue: PropTypes.string,
 	/**
-	 * Provided to input to make it disabled
-	 */
-	disabled: PropTypes.bool,
-	/**
 	 * Add loading spiner below the options
 	 */
 	loading: PropTypes.bool,
@@ -317,7 +313,8 @@ const propTypes = {
 			icon: PropTypes.node,
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 			onClick: PropTypes.func,
-		})),
+		})
+	),
 	/**
 	 * Object for creating new item on top of the options
 	 */
@@ -575,7 +572,7 @@ class Combobox extends React.Component {
 			options.push(...localProps.optionsAddItem);
 		}
 		return options;
-	}
+	};
 
 	getTargetElement = () => this.inputRef;
 
@@ -676,7 +673,11 @@ class Combobox extends React.Component {
 			return;
 		}
 
-		if (this.state.activeOption && (this.state.activeOption.type === 'header' || this.state.activeOption.type === 'footer')) {
+		if (
+			this.state.activeOption &&
+			(this.state.activeOption.type === 'header' ||
+				this.state.activeOption.type === 'footer')
+		) {
 			this.state.activeOption.onClick(event);
 			return;
 		}
@@ -1053,7 +1054,6 @@ class Combobox extends React.Component {
 						onChange={this.handleInputChange}
 						placeholder={labels.placeholder}
 						defaultValue={props.defaultValue}
-						disabled={props.disabled}
 						readOnly={
 							!!(props.predefinedOptionsOnly && this.state.activeOption)
 						}
@@ -1166,7 +1166,6 @@ class Combobox extends React.Component {
 									: null
 							}
 							aria-describedby={this.getErrorId()}
-							disabled={props.disabled}
 							defaultValue={props.defaultValue}
 							autoComplete="off"
 							className="slds-combobox__input"
@@ -1257,7 +1256,6 @@ class Combobox extends React.Component {
 						role="combobox"
 					>
 						<InnerInput
-							disabled={props.disabled}
 							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
 							aria-controls={
@@ -1501,7 +1499,6 @@ class Combobox extends React.Component {
 						role="combobox"
 					>
 						<InnerInput
-							disabled={props.disabled}
 							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
 							aria-controls={
@@ -1615,7 +1612,6 @@ class Combobox extends React.Component {
 						role="combobox"
 					>
 						<InnerInput
-							disabled={props.disabled}
 							defaultValue={props.defaultValue}
 							aria-autocomplete="list"
 							aria-controls={

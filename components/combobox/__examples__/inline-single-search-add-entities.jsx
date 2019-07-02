@@ -23,7 +23,7 @@ const accounts = [
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
 		type: 'account',
-	}
+	},
 ];
 
 const accountsWithIcon = accounts.map((elem) => ({
@@ -54,62 +54,74 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
-					optionsSearchEntity={[{
-						id: 'options-search-id-1',
-						icon: (
-							<Icon
-								assistiveText={{ label: 'add' }}
-								size="x-small"
-								category="utility"
-								name="search"
-							/>
-						),
-						label: 'Search in Salesforce',
-						onClick: (event) => {
-							if (this.props.action) {
-								this.props.action('onClick')(event);
-							} else if (console) {
-								console.log('onClick', event);
-							}
+					optionsSearchEntity={[
+						{
+							id: 'options-search-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: 'Search in Salesforce',
+							onClick: (event) => {
+								if (this.props.action) {
+									this.props.action('onClick')(event);
+								} else if (console) {
+									console.log('onClick', event);
+								}
+							},
 						},
-					}, {
-						id: 'search-in-account-id',
-						icon: (
-							<Icon
-								assistiveText={{ label: 'add in Accounts' }}
-								size="x-small"
-								category="utility"
-								name="search"
-							/>
-						),
-						label: (searchTerm) => [searchTerm && searchTerm.length > 0 ? <span className="slds-text-title_bold">{`"${searchTerm}" `}</span> : "Search ", 'in Accounts'],
-						onClick: (event) => {
-							if (this.props.action) {
-								this.props.action('onClick')(event);
-							} else if (console) {
-								console.log('onClick', event);
-							}
+						{
+							id: 'search-in-account-id',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add in Accounts' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: (searchTerm) => [
+								searchTerm && searchTerm.length > 0 ? (
+									<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
+								) : (
+									'Search '
+								),
+								'in Accounts',
+							],
+							onClick: (event) => {
+								if (this.props.action) {
+									this.props.action('onClick')(event);
+								} else if (console) {
+									console.log('onClick', event);
+								}
+							},
 						},
-					}]}
-					optionsAddItem={[{
-						id: 'options-add-id-1',
-						icon: (
-							<Icon
-								assistiveText={{ label: 'add' }}
-								category="utility"
-								size="x-small"
-								name="add"
-							/>
-						),
-						label: 'New Entity',
-						onClick: (event) => {
-							if (this.props.action) {
-								this.props.action('onClick')(event);
-							} else if (console) {
-								console.log('onClick', event);
-							}
+					]}
+					optionsAddItem={[
+						{
+							id: 'options-add-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									category="utility"
+									size="x-small"
+									name="add"
+								/>
+							),
+							label: 'New Entity',
+							onClick: (event) => {
+								if (this.props.action) {
+									this.props.action('onClick')(event);
+								} else if (console) {
+									console.log('onClick', event);
+								}
+							},
 						},
-					}]}
+					]}
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {

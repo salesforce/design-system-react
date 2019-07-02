@@ -1,7 +1,5 @@
 /* eslint-env jest */
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { renderMarkup, testDOMandHTML } from '../../../tests/snapshot-helpers';
+import { testDOMandHTML } from '../../../tests/snapshot-helpers';
 
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 import SnapshotBaseOpenMenuSubHeader from '../__examples__/snapshot/base-open-menu-sub-header';
