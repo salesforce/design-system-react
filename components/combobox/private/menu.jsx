@@ -175,7 +175,7 @@ const setBold = (label, searchTerm) => {
 };
 
 const renderLabel = (labelProp, searchTerm) => {
-	if (typeof labelProp === 'string') {
+	if (labelProp == null || typeof labelProp === 'string') {
 		return labelProp;
 	}
 

@@ -56,7 +56,7 @@ class Example extends React.Component {
 					isOpen
 					id="combobox-unique-id"
 					optionsSearchEntity={[{
-						id: 'my-new-id',
+						id: 'options-search-id-1',
 						icon: (
 							<Icon
 								assistiveText={{ label: 'add' }}
@@ -93,7 +93,7 @@ class Example extends React.Component {
 						},
 					}]}
 					optionsAddItem={[{
-						id: 'my-new-id',
+						id: 'options-add-id-1',
 						icon: (
 							<Icon
 								assistiveText={{ label: 'add' }}
