@@ -33,7 +33,7 @@
 		"test:docs": "npx babel-node ./tests/component-docs-test.js",
 		"test:fix": "npm run lint:fix && npm run test",
 		"test:unit": "cross-env NODE_ENV=test npx karma start --single-run",
-		"test:stories": "npm run test:dom-snapshot && npm run test:image-snapshot",
+		"test:stories": "npm run test:dom-snapshot",
 		"test:dom-snapshot": "cross-env NODE_ENV=test npx jest --runInBand --config=tests/story-based-tests.dom-snapshot-test.config.json",
 		"test:image-snapshot": "cross-env NODE_ENV=test npm run static:build && npx jest --runInBand --config=tests/story-based-tests.snapshot-test.config.json",
 		"test:dom-snapshot:update": "cross-env NODE_ENV=test npx jest --updateSnapshot --config=tests/story-based-tests.dom-snapshot-test.config.json",
