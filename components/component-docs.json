@@ -15793,6 +15793,28 @@
                 "required": false,
                 "description": "Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._"
             },
+            "hasShadedBackground": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines if the vertical navigation has a shaded background",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isCompact": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Compact variant of the vertical navigation",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "selectedId": {
                 "type": {
                     "name": "string"

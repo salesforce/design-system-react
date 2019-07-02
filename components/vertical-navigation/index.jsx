@@ -50,6 +50,14 @@ class VerticalNavigation extends React.Component {
 		 */
 		categories: PropTypes.array,
 		/**
+		 * Determines if the vertical navigation has a shaded background
+		 */
+		hasShadedBackground: PropTypes.bool,
+		/**
+		 * Compact variant of the vertical navigation
+		 */
+		isCompact: PropTypes.bool,
+		/**
 		 * The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._
 		 */
 		selectedId: PropTypes.string,
@@ -59,7 +67,10 @@ class VerticalNavigation extends React.Component {
 		onSelect: PropTypes.func,
 	};
 
-	static defaultProps = {};
+	static defaultProps = {
+		isCompact: false,
+		hasShadedBackground: false,
+	};
 
 	componentWillMount() {
 		this.generatedId = shortid.generate();
@@ -89,7 +100,14 @@ class VerticalNavigation extends React.Component {
 		return (
 			<nav
 				id={rootId}
-				className={classNames('slds-nav-vertical', this.props.className)}
+				className={classNames(
+					'slds-nav-vertical',
+					{
+						'slds-nav-vertical_shade': this.props.hasShadedBackground,
+						'slds-nav-vertical_compact': this.props.isCompact,
+					},
+					this.props.className
+				)}
 			>
 				{this.props.categories.map((category) => {
 					const categoryId = `${rootId}-${category.id}`;
