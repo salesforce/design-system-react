@@ -41,7 +41,7 @@ const Icon = (props) => {
 		path,
 		size,
 		style,
-		title
+		title,
 	} = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
