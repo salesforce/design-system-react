@@ -305,7 +305,28 @@ const propTypes = {
 	 */
 	loading: PropTypes.bool,
 	/**
-	 * Object for creating new item below the options
+	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`.**
+	 * Each object can contain:
+	 * * `id`: A unique identifier string.
+	 * * `icon`: An `Icon` component to be displayed to the left of the menu item `label`.
+	 * * `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.
+	 * * `onClick`: Callback triggered when selecting menu item.
+	 * ```
+	 * {
+	 * 	id: '1',
+	 * 	icon: (
+	 *  	<Icon
+	 * 			assistiveText={{ label: 'add' }}
+	 * 			category="utility"
+	 * 			size="x-small"
+	 * 			name="add"
+	 * 		/>
+	 * 	),
+	 * 	label: 'New Entity'
+	 * 	onClick: (event) => console.log('onClick', event),
+	 * }
+	 * ```
+	 * _Tested with snapshot testing._
 	 */
 	optionsAddItem: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -316,7 +337,30 @@ const propTypes = {
 		})
 	),
 	/**
-	 * Object for creating new item on top of the options
+	 * **Array of item objects in the dropdown menu that is displayed above the list of `options`.**
+	 * Each object can contain:
+	 * * `id`: A unique identifier string.
+	 * * `icon`: An `Icon` component to be displayed to the left of the menu item `label`.
+	 * * `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.
+	 * * `onClick`: Callback triggered when selecting menu item.
+	 * ```
+	 * {
+	 *	id: '1',
+	 *	icon: (
+	 *		<Icon
+	 *			assistiveText={{ label: 'Add in Accounts' }}
+	 *			size="x-small"
+	 *			category="utility"
+	 *			name="search"
+	 *		/>
+	 *	),
+	 *	label: (searchTerm) => {
+	 *		return `${searchTerm} in Accounts`;
+	 *	},
+	 *	onClick: (event) => console.log('onClick', event),
+	 * }
+	 * ```
+	 * _Tested with snapshot testing._
 	 */
 	optionsSearchEntity: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -327,9 +371,9 @@ const propTypes = {
 		})
 	),
 	/**
-	 * Element which should be Combobox for creating grouped comboboxes
+	 * `Combobox` prop for creating grouped comboboxes.
 	 */
-	entityCombobox: PropTypes.element,
+	entityCombobox: PropTypes.node,
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
 };
 
@@ -561,8 +605,8 @@ class Combobox extends React.Component {
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
 
-	getOptions = (props) => {
-		const localProps = props || this.props;
+	getOptions = (props = this.props) => {
+		const localProps = props;
 		const options = [];
 		if (localProps.optionsSearchEntity.length > 0) {
 			options.push(...localProps.optionsSearchEntity);
@@ -807,7 +851,7 @@ class Combobox extends React.Component {
 		this.setState((prevState) => {
 			const isLastOptionAndRightIsPressed =
 				prevState.activeSelectedOptionIndex + 1 ===
-					this.props.selection.length && direction === 'next';
+				this.props.selection.length && direction === 'next';
 			const isFirstOptionAndLeftIsPressed =
 				prevState.activeSelectedOptionIndex === 0 && direction === 'previous';
 			let newState;
@@ -1062,7 +1106,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								props.value
 								: props.value
 						}
 						{...userDefinedProps.input}
@@ -1110,118 +1154,118 @@ class Combobox extends React.Component {
 		props,
 		userDefinedProps,
 	}) => (
-		<div className="slds-form-element__control">
-			<div
-				className={classNames('slds-combobox_container', {
-					'slds-has-inline-listbox': props.selection.length,
-				})}
-			>
-				{props.selection.length ? (
-					<SelectedListBox
-						activeOption={this.state.activeSelectedOption}
-						activeOptionIndex={this.state.activeSelectedOptionIndex}
-						assistiveText={assistiveText}
-						events={{
-							onBlurPill: this.handleBlurPill,
-							onClickPill: this.handlePillClickSelectedListbox,
-							onPillFocus: this.handlePillFocus,
-							onRequestFocus: this.handleRequestFocusSelectedListbox,
-							onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
-							onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
-							onRequestRemove: this.handleRemoveSelectedOption,
-						}}
-						id={`${this.getId()}-selected-listbox`}
-						labels={labels}
-						selectedListboxRef={this.setSelectedListboxRef}
-						selection={props.selection}
-						listboxHasFocus={this.state.listboxHasFocus}
-					/>
-				) : null}
+			<div className="slds-form-element__control">
 				<div
-					className={classNames(
-						'slds-combobox',
-						'slds-dropdown-trigger',
-						'slds-dropdown-trigger_click',
-						'ignore-react-onclickoutside',
-						{
-							'slds-is-open': this.getIsOpen(),
-						},
-						{
-							'slds-has-error': props.errorText,
-						},
-						props.className
-					)}
-					aria-expanded={this.getIsOpen()}
-					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-					role="combobox"
-				>
-					<InnerInput
-						aria-autocomplete="list"
-						aria-controls={
-							this.getIsOpen() ? `${this.getId()}-listbox` : undefined
-						}
-						aria-activedescendant={
-							this.state.activeOption
-								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
-								: null
-						}
-						aria-describedby={this.getErrorId()}
-						defaultValue={props.defaultValue}
-						autoComplete="off"
-						className="slds-combobox__input"
-						containerProps={{
-							className: 'slds-combobox__form-element',
-							role: 'none',
-						}}
-						iconRight={
-							<InputIcon
-								category="utility"
-								name="search"
-								title={labels.inputIconTitle}
-							/>
-						}
-						id={this.getId()}
-						onFocus={this.handleInputFocus}
-						onBlur={this.handleInputBlur}
-						onKeyDown={this.handleKeyDown}
-						inputRef={this.setInputRef}
-						onClick={() => {
-							this.openDialog();
-						}}
-						onChange={this.handleInputChange}
-						placeholder={labels.placeholder}
-						readOnly={
-							!!(props.predefinedOptionsOnly && this.state.activeOption)
-						}
-						required={props.required}
-						role="textbox"
-						value={
-							props.predefinedOptionsOnly
-								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
-								: props.value
-						}
-						{...userDefinedProps.input}
-					/>
-					{this.getDialog({
-						menuRenderer: this.renderMenu({ assistiveText, labels }),
+					className={classNames('slds-combobox_container', {
+						'slds-has-inline-listbox': props.selection.length,
 					})}
-					{props.errorText && (
-						<div id={this.getErrorId()} className="slds-form-element__help">
-							{props.errorText}
-						</div>
-					)}
+				>
+					{props.selection.length ? (
+						<SelectedListBox
+							activeOption={this.state.activeSelectedOption}
+							activeOptionIndex={this.state.activeSelectedOptionIndex}
+							assistiveText={assistiveText}
+							events={{
+								onBlurPill: this.handleBlurPill,
+								onClickPill: this.handlePillClickSelectedListbox,
+								onPillFocus: this.handlePillFocus,
+								onRequestFocus: this.handleRequestFocusSelectedListbox,
+								onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
+								onRequestFocusOnPreviousPill: this.handleNavigateSelectedListbox,
+								onRequestRemove: this.handleRemoveSelectedOption,
+							}}
+							id={`${this.getId()}-selected-listbox`}
+							labels={labels}
+							selectedListboxRef={this.setSelectedListboxRef}
+							selection={props.selection}
+							listboxHasFocus={this.state.listboxHasFocus}
+						/>
+					) : null}
+					<div
+						className={classNames(
+							'slds-combobox',
+							'slds-dropdown-trigger',
+							'slds-dropdown-trigger_click',
+							'ignore-react-onclickoutside',
+							{
+								'slds-is-open': this.getIsOpen(),
+							},
+							{
+								'slds-has-error': props.errorText,
+							},
+							props.className
+						)}
+						aria-expanded={this.getIsOpen()}
+						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						role="combobox"
+					>
+						<InnerInput
+							aria-autocomplete="list"
+							aria-controls={
+								this.getIsOpen() ? `${this.getId()}-listbox` : undefined
+							}
+							aria-activedescendant={
+								this.state.activeOption
+									? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+									: null
+							}
+							aria-describedby={this.getErrorId()}
+							defaultValue={props.defaultValue}
+							autoComplete="off"
+							className="slds-combobox__input"
+							containerProps={{
+								className: 'slds-combobox__form-element',
+								role: 'none',
+							}}
+							iconRight={
+								<InputIcon
+									category="utility"
+									name="search"
+									title={labels.inputIconTitle}
+								/>
+							}
+							id={this.getId()}
+							onFocus={this.handleInputFocus}
+							onBlur={this.handleInputBlur}
+							onKeyDown={this.handleKeyDown}
+							inputRef={this.setInputRef}
+							onClick={() => {
+								this.openDialog();
+							}}
+							onChange={this.handleInputChange}
+							placeholder={labels.placeholder}
+							readOnly={
+								!!(props.predefinedOptionsOnly && this.state.activeOption)
+							}
+							required={props.required}
+							role="textbox"
+							value={
+								props.predefinedOptionsOnly
+									? (this.state.activeOption && this.state.activeOption.label) ||
+									props.value
+									: props.value
+							}
+							{...userDefinedProps.input}
+						/>
+						{this.getDialog({
+							menuRenderer: this.renderMenu({ assistiveText, labels }),
+						})}
+						{props.errorText && (
+							<div id={this.getErrorId()} className="slds-form-element__help">
+								{props.errorText}
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
-	);
+		);
 
 	renderInlineSingle = ({ assistiveText, labels, props, userDefinedProps }) => {
 		const iconLeft =
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
-						containerClassName: 'slds-combobox__input-entity-icon',
-					})
+					containerClassName: 'slds-combobox__input-entity-icon',
+				})
 				: null;
 
 		const value =
@@ -1264,8 +1308,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1295,8 +1339,8 @@ class Combobox extends React.Component {
 										}}
 									/>
 								) : (
-									<InputIcon category="utility" name="search" />
-								)
+										<InputIcon category="utility" name="search" />
+									)
 							}
 							iconLeft={iconLeft}
 							id={this.getId()}
@@ -1322,8 +1366,8 @@ class Combobox extends React.Component {
 							value={
 								props.predefinedOptionsOnly
 									? (this.state.activeOption &&
-											this.state.activeOption.label) ||
-										props.value
+										this.state.activeOption.label) ||
+									props.value
 									: value
 							}
 							{...userDefinedProps.input}
@@ -1473,7 +1517,7 @@ class Combobox extends React.Component {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
-					`${props.selection.length} options selected`
+				`${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1507,8 +1551,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1620,8 +1664,8 @@ class Combobox extends React.Component {
 							aria-activedescendant={
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
-											this.state.activeOption.id
-										}`
+									this.state.activeOption.id
+									}`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1735,8 +1779,8 @@ class Combobox extends React.Component {
 				) : null}
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
-							subRenderParameters
-						)
+						subRenderParameters
+					)
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);
@@ -1762,8 +1806,8 @@ class Combobox extends React.Component {
 				</div>
 			</div>
 		) : (
-			mainCombobox
-		);
+				mainCombobox
+			);
 	}
 }
 /* eslint-enable jsx-a11y/role-supports-aria-props */

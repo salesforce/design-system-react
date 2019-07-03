@@ -14,7 +14,6 @@ import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
 import BaseInheritMenuWidthRTL from '../__examples__/base-inherit-menu-width-RTL';
 import Dialog from '../__examples__/dialog.jsx';
-import Disabled from '../__examples__/disabled';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
@@ -51,7 +50,6 @@ import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__example
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
 import SnapshotBaseLabelRequired from '../__examples__/snapshot/base-label-required';
 import SnapshotInlineMultipleOpenLoading from '../__examples__/snapshot/inline-multiple-open-loading';
-import SnapshotBaseDisabled from '../__examples__/snapshot/disabled';
 import SnapshotInlineSingleSearchAddEntitiesOpen from '../__examples__/snapshot/inline-single-search-add-entities-open';
 import SnapshotInlineSingleEntityCombobox from '../__examples__/snapshot/inline-single-entity-combobox';
 
@@ -60,7 +58,6 @@ storiesOf(COMBOBOX, module)
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base', () => <Base action={action} />)
-	.add('Disabled', () => <Disabled action={action} />)
 	.add('Base Pre-defined Options Only', () => (
 		<PredefinedOptionsOnly action={action} />
 	))
@@ -176,7 +173,6 @@ storiesOf(COMBOBOX, module)
 	.add('Snapshot Readonly Single Selection Custom Menu Item', () => (
 		<SnapshotReadonlySingleSelectionCustomMenuItemOpen action={action} />
 	))
-	.add('Snapshot Base Disabled', () => <SnapshotBaseDisabled action={action} />)
 	.add('Snapshot Inline Single Search/Add Entities Open', () => (
 		<SnapshotInlineSingleSearchAddEntitiesOpen action={action} />
 	))
