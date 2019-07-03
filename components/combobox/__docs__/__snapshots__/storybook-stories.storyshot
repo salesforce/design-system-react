@@ -374,9 +374,10 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
           className="slds-combobox_container"
         >
           <div
-            aria-expanded={false}
+            aria-expanded={true}
             aria-haspopup="listbox"
-            className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+            aria-owns="combobox-base-inherit-menu-width-listbox"
+            className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
             role="combobox"
           >
             <div
@@ -386,6 +387,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
+                aria-controls="combobox-base-inherit-menu-width-listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-base-inherit-menu-width"
@@ -409,6 +411,369 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
+            </div>
+            <div
+              className="absolute-positioned"
+              id="combobox-base-inherit-menu-width-listbox"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="listbox"
+              style={
+                Object {
+                  "outline": 0,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                }
+              }
+            >
+              <ul
+                className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+                role="presentation"
+                style={
+                  Object {
+                    "maxWidth": "500px",
+                    "position": "relative",
+                    "width": "auto",
+                  }
+                }
+              >
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-1"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        A very very very very very very very very very very very long title to show how menu width will behave
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                        Account • San Francisco 
+                      </span>
+                    </span>
+                  </span>
+                </li>
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-2"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        Salesforce.com, Inc.
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                        Account • San Francisco
+                      </span>
+                    </span>
+                  </span>
+                </li>
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-3"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        Paddy's Pub
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                        Account • Boston, MA
+                      </span>
+                    </span>
+                  </span>
+                </li>
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-4"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        Opportunities
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                        Opportunity • San Francisco, CA
+                      </span>
+                    </span>
+                  </span>
+                </li>
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-5"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-opportunity"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        Nakatomi Investments
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                        Opportunity • Chicago, IL
+                      </span>
+                    </span>
+                  </span>
+                </li>
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-6"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        Acme Landscaping
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                         
+                      </span>
+                    </span>
+                  </span>
+                </li>
+                <li
+                  className="slds-listbox__item"
+                  role="presentation"
+                >
+                  <span
+                    aria-selected={false}
+                    className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                    id="combobox-base-inherit-menu-width-listbox-option-7"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <span
+                      className="slds-media__figure"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-opportunity"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      >
+                        Acme Construction
+                      </span>
+                      <span
+                        className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      >
+                        Opportunity • Grand Marais, MN
+                      </span>
+                    </span>
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
