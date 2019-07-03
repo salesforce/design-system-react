@@ -1,6 +1,7 @@
 import React from 'react';
 import WelcomeMat from '~/components/welcome-mat';
 import WelcomeMatTile from '~/components/welcome-mat/tile';
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
@@ -23,7 +24,7 @@ class Example extends React.Component {
 							<WelcomeMatTile
 								title="Welcome to Salesforce!"
 								description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
-								icon="animal_and_nature"
+								icon={<Icon category="utility" name="animal_and_nature" />}
 								id="welcome-mat-tile-1"
 								href="javascript:void(0);"
 								isComplete
@@ -31,7 +32,7 @@ class Example extends React.Component {
 							<WelcomeMatTile
 								title="Learn About OpenCTI!"
 								description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
-								icon="call"
+								icon={<Icon category="utility" name="call" />}
 								id="welcome-mat-tile-2"
 								href="javascript:void(0);"
 								isComplete
@@ -41,21 +42,21 @@ class Example extends React.Component {
 								description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
 								id="welcome-mat-tile-3"
 								href="javascript:void(0);"
-								icon="call"
+								icon={<Icon category="utility" name="call" />}
 							/>
 							<WelcomeMatTile
 								title="Customize your view"
 								description="Tailor your cases to your team&#x27;s workflow with custom list views."
 								id="welcome-mat-tile-4"
 								href="javascript:void(0);"
-								icon="upload"
+								icon={<Icon category="utility" name="upload" />}
 							/>
 							<WelcomeMatTile
 								title="Share the Knowledge"
 								description="Harness your team&#x27;s collective know-how with our powerful knowledge base."
 								id="welcome-mat-tile-5"
 								href="javascript:void(0);"
-								icon="knowledge_base"
+								icon={<Icon category="utility" name="knowledge_base" />}
 							/>
 						</WelcomeMat>
 					</div>
