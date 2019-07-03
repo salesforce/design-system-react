@@ -108,7 +108,7 @@ UtilityIcon.propTypes = {
 };
 
 UtilityIcon.defaultProps = {
-	category: 'utility'
+	category: 'utility',
 };
 
 UtilityIcon.contextTypes = {
