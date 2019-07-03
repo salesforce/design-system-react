@@ -308,7 +308,7 @@ const propTypes = {
 	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`.**
 	 * Each object can contain:
 	 * * `id`: A unique identifier string.
-	 * * `icon`: An `Icon` component to be displayed to the left of the menu item `label`.
+	 * * `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.
 	 * * `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.
 	 * * `onClick`: Callback triggered when selecting menu item.
 	 * ```
@@ -340,7 +340,7 @@ const propTypes = {
 	 * **Array of item objects in the dropdown menu that is displayed above the list of `options`.**
 	 * Each object can contain:
 	 * * `id`: A unique identifier string.
-	 * * `icon`: An `Icon` component to be displayed to the left of the menu item `label`.
+	 * * `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.
 	 * * `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.
 	 * * `onClick`: Callback triggered when selecting menu item.
 	 * ```
@@ -371,7 +371,7 @@ const propTypes = {
 		})
 	),
 	/**
-	 * `Combobox` prop for creating grouped comboboxes.
+	 * Node of type [Combobox](/components/comboboxes/) for creating grouped comboboxes.
 	 */
 	entityCombobox: PropTypes.node,
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
