@@ -139,10 +139,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-	menuRef: () => { },
-	optionsSearchEntity: [],
-	optionsAddItem: [],
 	inputValue: '',
+	menuRef: () => { },
+	optionsAddItem: [],
+	optionsSearchEntity: [],
 };
 
 const getOptions = (props) => {
