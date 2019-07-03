@@ -9,15 +9,14 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-inherit-menu-width.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-predefined-options-only.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/dialog.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-multiple.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-entity-combobox.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-search-add-entities.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-multiple.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-multiple-loading.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/readonly-single.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/readonly-multiple.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/required-input-error-state.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-entity-combobox.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-search-add-entities.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-multiple-loading.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/dialog.jsx'),
 ];
 
 module.exports = siteStories;
