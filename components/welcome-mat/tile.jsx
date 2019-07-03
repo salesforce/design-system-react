@@ -19,6 +19,14 @@ const displayName = WELCOME_MAT_TILE;
 
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `completeIcon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the complete icon means.
+	 */
+	assistiveText: PropTypes.shape({
+		completedIcon: PropTypes.string,
+	}),
+	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
 	className: PropTypes.oneOfType([
@@ -45,7 +53,7 @@ const propTypes = {
 	/**
 	 * Icon for the tile
 	 */
-	icon: PropTypes.string,
+	icon: PropTypes.node,
 	/**
 	 * Whether the tile is completed
 	 */
@@ -62,6 +70,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		completedIcon: 'Completed',
+	},
 	isComplete: false,
 	variant: 'steps',
 };
@@ -82,6 +93,10 @@ class Tile extends React.Component {
 	}
 
 	render() {
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const body = (
 			<React.Fragment>
 				<div
@@ -93,9 +108,16 @@ class Tile extends React.Component {
 				>
 					<div className="slds-welcome-mat__tile-figure">
 						<div className="slds-welcome-mat__tile-icon-container">
-							<Icon category="utility" name={this.props.icon} />
+							{this.props.icon}
 							{this.props.isComplete && this.props.variant !== 'info-only' ? (
-								<Icon category="action" name="check" />
+								<Icon
+									assistiveText={{
+										label: assistiveText.completedIcon,
+									}}
+									category="action"
+									name="check"
+									title={assistiveText.completedIcon}
+								/>
 							) : null}
 						</div>
 					</div>

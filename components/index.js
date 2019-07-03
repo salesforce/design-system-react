@@ -329,6 +329,9 @@ export VisualPickerLink from './visual-picker/link';
 export SLDSWelcomeMat from './welcome-mat';
 export WelcomeMat from './welcome-mat';
 
+export SLDSWelcomeMatInfoBadge from './welcome-mat/info-badge';
+export WelcomeMatInfoBadge from './welcome-mat/info-badge';
+
 export SLDSWelcomeMatTile from './welcome-mat/tile';
 export WelcomeMatTile from './welcome-mat/tile';
 

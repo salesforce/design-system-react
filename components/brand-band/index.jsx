@@ -68,10 +68,7 @@ class BrandBand extends React.Component {
 		return (
 			<div
 				style={{
-					background:
-						props.theme === 'lightning-blue'
-							? 'rgb(176, 196, 223)'
-							: 'rgb(250, 250, 249)',
+					background: 'rgb(176, 196, 223)',
 					height: '100%',
 					position: 'relative',
 					width: '100%',
@@ -79,8 +76,7 @@ class BrandBand extends React.Component {
 					...props.styleContainer,
 				}}
 			>
-				{props.theme === 'lightning-blue' &&
-					BrandBand.injectLightningBlueStyles()}
+				{BrandBand.injectLightningBlueStyles()}
 				<div
 					className={classNames(
 						'slds-brand-band',
@@ -91,7 +87,7 @@ class BrandBand extends React.Component {
 							'slds-brand-band_cover': props.backgroundSize === 'cover',
 							'slds-brand-band_none': props.image === 'none',
 
-							'dsr-brand-band_lightning-blue': props.theme === 'lightning-blue',
+							'dsr-brand-band_lightning-blue': true,
 						},
 						props.className
 					)}
