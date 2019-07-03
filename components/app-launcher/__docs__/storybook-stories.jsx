@@ -28,7 +28,7 @@ import { canUseDOM } from '../../../utilities/execution-environment';
 // used by Modal component
 if (canUseDOM && document.querySelector('#root')) {
 	SLDSSettings.setAppElement('#root');
-} else {
+} else if (canUseDOM) {
 	SLDSSettings.setAppElement(document.createElement('div'));
 }
 

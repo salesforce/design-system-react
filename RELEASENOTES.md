@@ -31,7 +31,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
-## Release 0.10.6
+## Release 0.10.7
 
 **Major Features**
 
@@ -52,6 +52,7 @@ These are changes that have backwards-compatible solutions present and that comp
 * `EditDialogPopover`: Now defined on site
 * `ExpandableSection`: Add to `site-stories.js`
 * `Checkbox` and `Radio`: Fix typo in `labels` prop
+* Fixed issue with component paths that was causing build errors in some projects
 
 **Documentation**
 
@@ -83,6 +84,10 @@ These are changes that have backwards-compatible solutions present and that comp
 * `macaddress` update from 0.2.8 to 0.2.9 (security)
 * `merge` update from 1.2.0 to 1.2.1 (security)
 * `react-dev-utils` update from 5.0.1 to 5.0.3 (security)
+
+## Release 0.10.6
+
+**Please use 0.10.7 instead as there was a bug in this release causing build errors in some projects**
 
 ## Release 0.10.5
 

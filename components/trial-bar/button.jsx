@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '~/components/button';
+import Button from '../button';
 import { TRIAL_BAR_BUTTON } from '../../utilities/constants';
 
 // This component accepts the same props as Button.
