@@ -18,7 +18,15 @@ import {
 import ColorPicker from '../index';
 import KEYS from '../../../utilities/key-code';
 
-import { makeRTL } from '~/components/utilities/UNSAFE_direction';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
 
 chai.use(chaiEnzyme());
 
@@ -236,7 +244,7 @@ describe('SLDSColorPicker', function describeFunction() {
 
 			it('pressing right in RTL will move the color to the previous one', function(done) {
 				wrapper = mount(
-					makeRTL(
+					makeRtl(
 						<ColorPicker
 							isOpen
 							value="#0000ff"
@@ -261,7 +269,7 @@ describe('SLDSColorPicker', function describeFunction() {
 
 			it('pressing left in RTL will move the color to the next one', function(done) {
 				wrapper = mount(
-					makeRTL(
+					makeRtl(
 						<ColorPicker
 							isOpen
 							value="#ff0000"

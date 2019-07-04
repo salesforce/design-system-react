@@ -25,12 +25,5 @@ DIRECTIONS.RTL = 'rtl';
 // eslint-disable-next-line camelcase
 const UNSAFE_DirectionSettings = React.createContext('ltr');
 
-const makeRTL = (component) => (
-	// eslint-disable-next-line
-	<UNSAFE_DirectionSettings.Provider value="rtl">
-		<div dir="rtl">{component}</div>
-	</UNSAFE_DirectionSettings.Provider>
-);
-
 // eslint-disable-next-line camelcase
-export { UNSAFE_DirectionSettings as default, DIRECTIONS, makeRTL };
+export { UNSAFE_DirectionSettings as default, DIRECTIONS };

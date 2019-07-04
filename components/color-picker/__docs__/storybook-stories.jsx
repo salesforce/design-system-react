@@ -8,7 +8,15 @@ import { COLOR_PICKER } from '../../../utilities/constants';
 
 import Default from '../__examples__/default';
 
-import { makeRTL } from '~/components/utilities/UNSAFE_direction';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
 
 const HEX_REGEX_6_DIGITS = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 
@@ -34,7 +42,7 @@ storiesOf(COLOR_PICKER, module)
 		/>
 	))
 	.add('Default - Right to Left (RTL)', () =>
-		makeRTL(
+		makeRtl(
 			<ColorPicker
 				className="test_class_name"
 				events={{ onChange: handleChange }}
