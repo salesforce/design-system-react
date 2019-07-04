@@ -19,6 +19,7 @@ import TabsPanel from '../tabs/panel';
 import Popover from '../popover';
 
 import ColorUtils from '../../utilities/color';
+
 import { COLOR_PICKER } from '../../utilities/constants';
 
 import componentDoc from './docs.json';
