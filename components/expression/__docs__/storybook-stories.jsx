@@ -5,11 +5,15 @@ import { EXPRESSION } from '../../../utilities/constants';
 
 import BaseExample from '../__examples__/base';
 import MultipleCondition from '../__examples__/multiple-conditions';
+import ExpressionGroup from '../__examples__/with-group';
+
 
 storiesOf(EXPRESSION, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Base Example', () => <BaseExample />)
-	.add('w/ Multiple Conditions', () => <MultipleCondition />);
+	.add('w/ Musltiple Conditions', () => <MultipleCondition />)
+	.add('w/ Expression Group', () => <ExpressionGroup />);
+
 

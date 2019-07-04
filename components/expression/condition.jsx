@@ -46,7 +46,7 @@ const propTypes = {
 	}),
 
 	resourcesList: PropTypes.arrayOf(PropTypes.object),
-	resourceSelection: PropTypes.object,
+	resourceSelected: PropTypes.object,
 	onChangeResource: PropTypes.func,
 
 	operator: PropTypes.oneOf(['equal', 'notEqual', 'greaterThan', 'lessThan']),
@@ -92,7 +92,7 @@ class ExpressionCondition extends React.Component {
 	}
 
 	getResourceSelected(){
-		const selection = this.props.resourceSelection;
+		const selection = this.props.resourceSelected;
 		const selected = [];
 		selected.push(selection);
 		return selected;
@@ -164,11 +164,14 @@ class ExpressionCondition extends React.Component {
 									labels={{ label: this.props.labels && this.props.labels.operator ? this.props.labels.operator : "Operator"}}
 									options={operatorSelections}
 									selection={this.getOperatorSelected()}
+									singleInputDisabled={!this.props.resourceSelected}
+
 								/>
 							</div>
 							<div className="slds-col">
 								<Input
 									label={this.props.labels && this.props.labels.value ? this.props.labels.value : "Value" }
+									disabled={!this.props.resourceSelected}
 								/>
 							</div>
 							<div className="slds-col slds-grow-none">

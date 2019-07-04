@@ -130,46 +130,71 @@ class ExpressionGroup extends React.Component {
 	}
 
 	render() {
+
+		const triggerCombobox = (<Combobox
+			events={{
+				onSelect: (event, data) => this.triggerChange(event, data)
+			}}
+			multiple={false}
+			options={Triggers}
+			variant="readonly"
+			labels={{ label: this.props.labels ? this.props.labels.takeAction : "Take Action When" }}
+			selection={this.getTriggerSelection()}
+		/>);
+
+		const buttons = (<div className="slds-expression__buttons">
+			<Button
+				iconCategory="utility"
+				iconName="add"
+				iconPosition="left"
+				label={this.props.labels ? this.props.labels.addCondition : "Add Condition" }
+				onClick={() => {
+					// eslint-disable-next-line no-unused-expressions
+					typeof this.props.onAddCondition === "function" ? this.props.onAddCondition() : null;
+				}}
+			/>
+			{ !this.props.child ? (
+				<Button
+					iconCategory="utility"
+					iconName="add"
+					iconPosition="left"
+					label={this.props.labels ? this.props.labels.addGroup : "Add Group" }
+					onClick={() => {
+						// eslint-disable-next-line no-unused-expressions
+						typeof this.props.onAddGroup === "function" ? this.props.onAddGroup() : null;
+					}}
+				/>) : null
+			}
+		</div>);
+
 		return (
-			<div className={classNames(this.props.className)} id={this.getId()}>
-				<div className="slds-expression__options">
-					<Combobox
-						events={{
-							onSelect: (event, data) => this.triggerChange(event, data)
-						}}
-						multiple={false}
-						options={Triggers}
-						variant="readonly"
-						labels={{ label: this.props.labels ? this.props.labels.takeAction : "Take Action When" }}
-						selection={this.getTriggerSelection()}
-					/>
-				</div>
-				<ul>
-					{this.props.children}
-				</ul>
-				<div className="slds-expression__buttons">
-					<Button
-						iconCategory="utility"
-						iconName="add"
-						iconPosition="left"
-						label={this.props.labels ? this.props.labels.addCondition : "Add Condition" }
-						onClick={() => {
-							// eslint-disable-next-line no-unused-expressions
-							typeof this.props.onAddCondition === "function" ? this.props.onAddCondition() : null;
-						}}
-					/>
-					<Button
-						iconCategory="utility"
-						iconName="add"
-						iconPosition="left"
-						label={this.props.labels ? this.props.labels.addGroup : "Add Group" }
-						onClick={() => {
-							// eslint-disable-next-line no-unused-expressions
-							typeof this.props.onAddGroup === "function" ? this.props.onAddGroup() : null;
-						}}
-					/>
-				</div>
-			</div>
+			 this.props.child ? (
+				 <li className="slds-expression__group">
+					 <fieldset>
+						 <legend className="slds-expression__legend slds-expression__legend_group">
+							<span>AND</span>
+							<span className="slds-assistive-text">Condition Group 1</span>
+						 </legend>
+						 <div className="slds-expression__options">
+							 {triggerCombobox}
+						 </div>
+						 <ul>
+										 {this.props.children}
+							</ul>
+							{buttons}
+					 </fieldset>
+				 </li>
+				) : (
+					<div className={classNames(this.props.className)} id={this.getId()}>
+						<div className="slds-expression__options">
+							{triggerCombobox}
+						</div>
+						<ul>
+							{this.props.children}
+						</ul>
+						{buttons}
+					</div>
+				)
 		)
 	}
 }

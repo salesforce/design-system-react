@@ -7,7 +7,7 @@ import ExpressionCondition from '~/components/expression/condition';
 
 
 class Example extends React.Component {
-	static displayName = 'ExpressionMultipleConditionExample';
+	static displayName = 'ExpressionWithExpressionGroupExample';
 
 	render() {
 		const ResourcesList = [
@@ -49,12 +49,19 @@ class Example extends React.Component {
 							onChangeResource={(e,obj) => console.log("resource: ", obj)}
 							onDelete={() => console.log("Delete Condition Button Clicked")}
 						/>
-						<ExpressionCondition
-							resourcesList={ResourcesList}
-							labels={{
-								condition: "AND"
-							}}
-						/>
+						<ExpressionGroup triggerType="any" child>
+							<ExpressionCondition
+								resourcesList={ResourcesList}
+								resourceSelected={{
+									id: '1',
+									label: 'Resource 1'
+								}}
+							/>
+							<ExpressionCondition
+								labels={{ condition: "OR" }}
+								resourcesList={ResourcesList}
+							/>
+						</ExpressionGroup>
 					</ExpressionGroup>
 				</Expression>
 			</IconSettings>
