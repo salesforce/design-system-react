@@ -21,9 +21,6 @@ import Popover from '../popover';
 import ColorUtils from '../../utilities/color';
 import { COLOR_PICKER } from '../../utilities/constants';
 
-import { DIRECTIONS } from '../utilities/UNSAFE_direction';
-import LanguageDirection from '../utilities/UNSAFE_direction/private/language-direction';
-
 import componentDoc from './docs.json';
 
 const propTypes = {
@@ -59,10 +56,6 @@ const propTypes = {
 	 * Unique ID for component.
 	 */
 	id: PropTypes.string,
-	/**
-	 * Establishes directional context for component. Defaults to left-to-right.
-	 */
-	direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
 	/**
 	 * Disables the input and button.
 	 */
@@ -188,7 +181,6 @@ const defaultProps = {
 			'Use arrow keys to select a saturation and brightness, on an x and y axis.',
 		hueSlider: 'Select Hue',
 	},
-	direction: DIRECTIONS.LTR,
 	events: {},
 	labels: {
 		blueAbbreviated: 'B',
@@ -397,11 +389,7 @@ class ColorPicker extends React.Component {
 		return (
 			<Popover
 				ariaLabelledby={`color-picker-label-${this.generatedId}`}
-				align={
-					this.props.direction === DIRECTIONS.RTL
-						? 'bottom right'
-						: 'bottom left'
-				}
+				align="bottom left"
 				body={popoverBody}
 				className={classNames(
 					'slds-color-picker__selector',
@@ -637,4 +625,4 @@ class ColorPicker extends React.Component {
 	}
 }
 
-export default LanguageDirection(ColorPicker);
+export default ColorPicker;
