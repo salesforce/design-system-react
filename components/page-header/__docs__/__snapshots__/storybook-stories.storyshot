@@ -1480,7 +1480,6 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
             }
           >
             <p
-              aria-describedby="page-header-truncate-tooltip"
               className="slds-truncate"
               onBlur={[Function]}
               onFocus={[Function]}

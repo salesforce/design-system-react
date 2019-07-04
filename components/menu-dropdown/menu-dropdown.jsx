@@ -233,6 +233,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * Adds inverse class to the dropdown
+	 */
+	inverse: PropTypes.bool,
+	/**
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 	 */
 	isOpen: PropTypes.bool,
@@ -402,6 +406,7 @@ const defaultProps = {
 	menuPosition: 'absolute',
 	openOn: 'click',
 	width: 'medium',
+	inverse: false,
 };
 
 /**
@@ -921,7 +926,10 @@ class MenuDropdown extends React.Component {
 					`slds-dropdown_${this.props.width}`,
 					'ignore-react-onclickoutside',
 					this.props.className,
-					positionClassName
+					positionClassName,
+					{
+						'slds-dropdown_inverse': this.props.inverse,
+					}
 				)}
 				context={this.context}
 				hasNubbin={hasNubbin}
