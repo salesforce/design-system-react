@@ -255,9 +255,9 @@ describe('SLDSColorPicker', function describeFunction() {
 									done();
 								},
 							}}
-						/>,
-						{ attachTo: mountNode }
-					)
+						/>
+					),
+					{ attachTo: mountNode }
 				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
@@ -280,9 +280,9 @@ describe('SLDSColorPicker', function describeFunction() {
 									done();
 								},
 							}}
-						/>,
-						{ attachTo: mountNode }
-					)
+						/>
+					),
+					{ attachTo: mountNode }
 				);
 
 				const swatch = wrapper.find(selectors.swatch).first();
