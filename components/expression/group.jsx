@@ -167,9 +167,30 @@ class ExpressionGroup extends React.Component {
 			}
 		</div>);
 
+		const body = (
+			<>
+				{this.props.triggerType === "custom" ? (
+					<div className="slds-expression__custom-logic">
+						<div className="slds-form-element">
+							<label className="slds-form-element__label" htmlFor="text-input-id-43">Custom Logic</label>
+							<div className="slds-form-element__control">
+								<input
+									className="slds-input"
+									type="text"
+									value="1 AND 2" />
+								</div>
+						</div>
+					</div>
+				) : null }
+				<ul>
+					{this.props.children}
+				</ul>
+			</>
+		);
+
 		return (
 			 this.props.child ? (
-				 <li className="slds-expression__group">
+				 <li className={classNames('slds-expression__group', this.props.className)} id={this.getId()}>
 					 <fieldset>
 						 <legend className="slds-expression__legend slds-expression__legend_group">
 							<span>AND</span>
@@ -178,10 +199,8 @@ class ExpressionGroup extends React.Component {
 						 <div className="slds-expression__options">
 							 {triggerCombobox}
 						 </div>
-						 <ul>
-										 {this.props.children}
-							</ul>
-							{buttons}
+						 {body}
+						 {buttons}
 					 </fieldset>
 				 </li>
 				) : (
@@ -189,9 +208,7 @@ class ExpressionGroup extends React.Component {
 						<div className="slds-expression__options">
 							{triggerCombobox}
 						</div>
-						<ul>
-							{this.props.children}
-						</ul>
+						{body}
 						{buttons}
 					</div>
 				)
