@@ -61,7 +61,7 @@ const calculateD = (fillPercent) => {
  * Displays the progress ring shape.
  */
 const ProgressRingShape = (props) => {
-	const progressStyles = {};
+	const progressStyles = { height: '2rem' };
 
 	if (props.flowDirection === 'fill') {
 		progressStyles.transform = 'scaleX(1) rotate(-90deg)';
