@@ -317,6 +317,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         role="progressbar"
                         style={
                           Object {
+                            "height": "2rem",
                             "transform": "scaleX(1) rotate(-90deg)",
                           }
                         }
@@ -581,6 +582,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         role="progressbar"
                         style={
                           Object {
+                            "height": "2rem",
                             "transform": "scaleX(1) rotate(-90deg)",
                           }
                         }
@@ -875,6 +877,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         role="progressbar"
                         style={
                           Object {
+                            "height": "2rem",
                             "transform": "scaleX(1) rotate(-90deg)",
                           }
                         }
@@ -1139,6 +1142,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         role="progressbar"
                         style={
                           Object {
+                            "height": "2rem",
                             "transform": "scaleX(1) rotate(-90deg)",
                           }
                         }
@@ -1366,6 +1370,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         role="progressbar"
                         style={
                           Object {
+                            "height": "2rem",
                             "transform": "scaleX(1) rotate(-90deg)",
                           }
                         }
@@ -1661,6 +1666,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           role="progressbar"
                           style={
                             Object {
+                              "height": "2rem",
                               "transform": "scaleX(1) rotate(-90deg)",
                             }
                           }
@@ -1925,6 +1931,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           role="progressbar"
                           style={
                             Object {
+                              "height": "2rem",
                               "transform": "scaleX(1) rotate(-90deg)",
                             }
                           }
@@ -2232,6 +2239,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           role="progressbar"
                           style={
                             Object {
+                              "height": "2rem",
                               "transform": "scaleX(1) rotate(-90deg)",
                             }
                           }
@@ -2496,6 +2504,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           role="progressbar"
                           style={
                             Object {
+                              "height": "2rem",
                               "transform": "scaleX(1) rotate(-90deg)",
                             }
                           }
@@ -2723,6 +2732,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           role="progressbar"
                           style={
                             Object {
+                              "height": "2rem",
                               "transform": "scaleX(1) rotate(-90deg)",
                             }
                           }
@@ -2938,6 +2948,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   role="progressbar"
                   style={
                     Object {
+                      "height": "2rem",
                       "transform": "scaleX(1) rotate(-90deg)",
                     }
                   }
@@ -3039,6 +3050,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   role="progressbar"
                   style={
                     Object {
+                      "height": "2rem",
                       "transform": "scaleX(1) rotate(-90deg)",
                     }
                   }
@@ -3123,6 +3135,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   role="progressbar"
                   style={
                     Object {
+                      "height": "2rem",
                       "transform": "scaleX(1) rotate(-90deg)",
                     }
                   }
@@ -3224,6 +3237,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   role="progressbar"
                   style={
                     Object {
+                      "height": "2rem",
                       "transform": "scaleX(1) rotate(-90deg)",
                     }
                   }
@@ -3333,6 +3347,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   role="progressbar"
                   style={
                     Object {
+                      "height": "2rem",
                       "transform": "scaleX(1) rotate(-90deg)",
                     }
                   }
