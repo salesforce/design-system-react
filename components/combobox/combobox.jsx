@@ -35,7 +35,6 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
-import { DIRECTIONS } from '../utilities/UNSAFE_direction';
 
 import checkProps from './check-props';
 
