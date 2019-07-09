@@ -307,7 +307,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     className="slds-media__figure"
                   >
                     <div
-                      className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                      className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                     >
                       <div
                         aria-valuemax="100"
@@ -315,7 +315,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={100}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -346,33 +350,41 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     </div>
                   </div>
                   <div
-                    className="slds-setup-assistant__step-summary-content slds-media__body"
+                    className="slds-media__body slds-m-top_x-small"
                   >
-                    <h3
-                      className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    <div
+                      className="slds-media"
                     >
-                      <button
-                        aria-controls="hub-expandable-step-1-detail-content"
-                        className="slds-button slds-button_reset"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="slds-setup-assistant__step-summary-content slds-media__body"
                       >
-                        Add Users to Your Org
-                      </button>
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div
-                    className="slds-media__figure slds-media__figure_reverse"
-                  >
-                    <p
-                      className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                    >
-                      4 mins
-                    </p>
+                        <h3
+                          className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                        >
+                          <button
+                            aria-controls="hub-expandable-step-1-detail-content"
+                            className="slds-button slds-button_reset"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Add Users to Your Org
+                          </button>
+                        </h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                      </div>
+                      <div
+                        className="slds-media__figure slds-media__figure_reverse"
+                      >
+                        <p
+                          className="slds-text-align_right slds-text-color_weak"
+                        >
+                          4 mins
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -389,7 +401,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-1-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-completed slds-is-active"
@@ -567,7 +579,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={0}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -586,33 +602,41 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     </div>
                   </div>
                   <div
-                    className="slds-setup-assistant__step-summary-content slds-media__body"
+                    className="slds-media__body slds-m-top_x-small"
                   >
-                    <h3
-                      className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    <div
+                      className="slds-media"
                     >
-                      <button
-                        aria-controls="hub-expandable-step-2-detail-content"
-                        className="slds-button slds-button_reset"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="slds-setup-assistant__step-summary-content slds-media__body"
                       >
-                        Create Profiles for Your Users
-                      </button>
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div
-                    className="slds-media__figure slds-media__figure_reverse"
-                  >
-                    <p
-                      className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                    >
-                      10 mins
-                    </p>
+                        <h3
+                          className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                        >
+                          <button
+                            aria-controls="hub-expandable-step-2-detail-content"
+                            className="slds-button slds-button_reset"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Create Profiles for Your Users
+                          </button>
+                        </h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                      </div>
+                      <div
+                        className="slds-media__figure slds-media__figure_reverse"
+                      >
+                        <p
+                          className="slds-text-align_right slds-text-color_weak"
+                        >
+                          10 mins
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -629,7 +653,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-2-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -841,7 +865,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     className="slds-media__figure"
                   >
                     <div
-                      className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                      className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                     >
                       <div
                         aria-valuemax="100"
@@ -849,7 +873,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={100}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -880,33 +908,41 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     </div>
                   </div>
                   <div
-                    className="slds-setup-assistant__step-summary-content slds-media__body"
+                    className="slds-media__body slds-m-top_x-small"
                   >
-                    <h3
-                      className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    <div
+                      className="slds-media"
                     >
-                      <button
-                        aria-controls="hub-expandable-step-3-detail-content"
-                        className="slds-button slds-button_reset"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="slds-setup-assistant__step-summary-content slds-media__body"
                       >
-                        Learn How to Use Profiles to control Visibility
-                      </button>
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div
-                    className="slds-media__figure slds-media__figure_reverse"
-                  >
-                    <p
-                      className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                    >
-                      15 mins
-                    </p>
+                        <h3
+                          className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                        >
+                          <button
+                            aria-controls="hub-expandable-step-3-detail-content"
+                            className="slds-button slds-button_reset"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Learn How to Use Profiles to control Visibility
+                          </button>
+                        </h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                      </div>
+                      <div
+                        className="slds-media__figure slds-media__figure_reverse"
+                      >
+                        <p
+                          className="slds-text-align_right slds-text-color_weak"
+                        >
+                          15 mins
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -923,7 +959,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-3-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-completed slds-is-active"
@@ -1101,7 +1137,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={0}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -1120,33 +1160,41 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     </div>
                   </div>
                   <div
-                    className="slds-setup-assistant__step-summary-content slds-media__body"
+                    className="slds-media__body slds-m-top_x-small"
                   >
-                    <h3
-                      className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    <div
+                      className="slds-media"
                     >
-                      <button
-                        aria-controls="hub-expandable-step-4-detail-content"
-                        className="slds-button slds-button_reset"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="slds-setup-assistant__step-summary-content slds-media__body"
                       >
-                        Turn on tracking for profiles
-                      </button>
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div
-                    className="slds-media__figure slds-media__figure_reverse"
-                  >
-                    <p
-                      className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                    >
-                      10 mins
-                    </p>
+                        <h3
+                          className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                        >
+                          <button
+                            aria-controls="hub-expandable-step-4-detail-content"
+                            className="slds-button slds-button_reset"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Turn on tracking for profiles
+                          </button>
+                        </h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                      </div>
+                      <div
+                        className="slds-media__figure slds-media__figure_reverse"
+                      >
+                        <p
+                          className="slds-text-align_right slds-text-color_weak"
+                        >
+                          10 mins
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1163,7 +1211,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-4-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -1316,7 +1364,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         aria-valuenow={0}
                         className="slds-progress-ring__progress"
                         role="progressbar"
-                        style={Object {}}
+                        style={
+                          Object {
+                            "transform": "scaleX(1) rotate(-90deg)",
+                          }
+                        }
                       >
                         <svg
                           viewBox="-1 -1 2 2"
@@ -1335,33 +1387,41 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     </div>
                   </div>
                   <div
-                    className="slds-setup-assistant__step-summary-content slds-media__body"
+                    className="slds-media__body slds-m-top_x-small"
                   >
-                    <h3
-                      className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                    <div
+                      className="slds-media"
                     >
-                      <button
-                        aria-controls="hub-expandable-step-5-detail-content"
-                        className="slds-button slds-button_reset"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button"
+                      <div
+                        className="slds-setup-assistant__step-summary-content slds-media__body"
                       >
-                        Setup Einstein Visibility for Admins
-                      </button>
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <div
-                    className="slds-media__figure slds-media__figure_reverse"
-                  >
-                    <p
-                      className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                    >
-                      10 mins
-                    </p>
+                        <h3
+                          className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                        >
+                          <button
+                            aria-controls="hub-expandable-step-5-detail-content"
+                            className="slds-button slds-button_reset"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Setup Einstein Visibility for Admins
+                          </button>
+                        </h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                      </div>
+                      <div
+                        className="slds-media__figure slds-media__figure_reverse"
+                      >
+                        <p
+                          className="slds-text-align_right slds-text-color_weak"
+                        >
+                          10 mins
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1378,7 +1438,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                   id="hub-expandable-step-5-progress-indicator"
                 >
                   <ol
-                    className="slds-progress__list"
+                    className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
                       className="slds-progress__item slds-is-active"
@@ -1497,6 +1557,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
     >
       <div
         id="card-setup-assistant-progress-bar"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
       >
         <div
           className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
@@ -1516,7 +1581,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
           </span>
         </div>
         <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow={50}
           className="slds-progress-bar slds-progress-bar_circular"
+          role="progressbar"
         >
           <span
             className="slds-progress-bar__value slds-progress-bar__value_success"
@@ -1582,7 +1651,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-media__figure"
                     >
                       <div
-                        className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                        className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                       >
                         <div
                           aria-valuemax="100"
@@ -1590,7 +1659,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={100}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -1621,33 +1694,41 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       </div>
                     </div>
                     <div
-                      className="slds-setup-assistant__step-summary-content slds-media__body"
+                      className="slds-media__body slds-m-top_x-small"
                     >
-                      <h3
-                        className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                      <div
+                        className="slds-media"
                       >
-                        <button
-                          aria-controls="card-step-1-detail-content"
-                          className="slds-button slds-button_reset"
-                          disabled={false}
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="slds-setup-assistant__step-summary-content slds-media__body"
                         >
-                          Add Users to Your Org
-                        </button>
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </p>
-                    </div>
-                    <div
-                      className="slds-media__figure slds-media__figure_reverse"
-                    >
-                      <p
-                        className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                      >
-                        4 mins
-                      </p>
+                          <h3
+                            className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                          >
+                            <button
+                              aria-controls="card-step-1-detail-content"
+                              className="slds-button slds-button_reset"
+                              disabled={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              Add Users to Your Org
+                            </button>
+                          </h3>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          </p>
+                        </div>
+                        <div
+                          className="slds-media__figure slds-media__figure_reverse"
+                        >
+                          <p
+                            className="slds-text-align_right slds-text-color_weak"
+                          >
+                            4 mins
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1664,7 +1745,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-1-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed slds-is-active"
@@ -1834,7 +1915,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-media__figure"
                     >
                       <div
-                        className="slds-progress-ring slds-progress-ring_large"
+                        className="slds-progress-ring slds-progress-ring_active-step slds-progress-ring_large"
                       >
                         <div
                           aria-valuemax="100"
@@ -1842,7 +1923,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={33}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -1861,33 +1946,41 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       </div>
                     </div>
                     <div
-                      className="slds-setup-assistant__step-summary-content slds-media__body"
+                      className="slds-media__body slds-m-top_x-small"
                     >
-                      <h3
-                        className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                      <div
+                        className="slds-media"
                       >
-                        <button
-                          aria-controls="card-step-2-detail-content"
-                          className="slds-button slds-button_reset"
-                          disabled={false}
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="slds-setup-assistant__step-summary-content slds-media__body"
                         >
-                          Create Profiles for Your Users
-                        </button>
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </p>
-                    </div>
-                    <div
-                      className="slds-media__figure slds-media__figure_reverse"
-                    >
-                      <p
-                        className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                      >
-                        10 mins
-                      </p>
+                          <h3
+                            className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                          >
+                            <button
+                              aria-controls="card-step-2-detail-content"
+                              className="slds-button slds-button_reset"
+                              disabled={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              Create Profiles for Your Users
+                            </button>
+                          </h3>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          </p>
+                        </div>
+                        <div
+                          className="slds-media__figure slds-media__figure_reverse"
+                        >
+                          <p
+                            className="slds-text-align_right slds-text-color_weak"
+                          >
+                            10 mins
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1904,7 +1997,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-2-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed"
@@ -2129,7 +2222,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-media__figure"
                     >
                       <div
-                        className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                        className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
                       >
                         <div
                           aria-valuemax="100"
@@ -2137,7 +2230,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={100}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2168,33 +2265,41 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       </div>
                     </div>
                     <div
-                      className="slds-setup-assistant__step-summary-content slds-media__body"
+                      className="slds-media__body slds-m-top_x-small"
                     >
-                      <h3
-                        className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                      <div
+                        className="slds-media"
                       >
-                        <button
-                          aria-controls="card-step-3-detail-content"
-                          className="slds-button slds-button_reset"
-                          disabled={false}
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="slds-setup-assistant__step-summary-content slds-media__body"
                         >
-                          Learn How to Use Profiles to control Visibility
-                        </button>
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </p>
-                    </div>
-                    <div
-                      className="slds-media__figure slds-media__figure_reverse"
-                    >
-                      <p
-                        className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                      >
-                        15 mins
-                      </p>
+                          <h3
+                            className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                          >
+                            <button
+                              aria-controls="card-step-3-detail-content"
+                              className="slds-button slds-button_reset"
+                              disabled={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              Learn How to Use Profiles to control Visibility
+                            </button>
+                          </h3>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          </p>
+                        </div>
+                        <div
+                          className="slds-media__figure slds-media__figure_reverse"
+                        >
+                          <p
+                            className="slds-text-align_right slds-text-color_weak"
+                          >
+                            15 mins
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2211,7 +2316,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-3-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-completed slds-is-active"
@@ -2389,7 +2494,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={0}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2408,33 +2517,41 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       </div>
                     </div>
                     <div
-                      className="slds-setup-assistant__step-summary-content slds-media__body"
+                      className="slds-media__body slds-m-top_x-small"
                     >
-                      <h3
-                        className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                      <div
+                        className="slds-media"
                       >
-                        <button
-                          aria-controls="card-step-4-detail-content"
-                          className="slds-button slds-button_reset"
-                          disabled={false}
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="slds-setup-assistant__step-summary-content slds-media__body"
                         >
-                          Turn on tracking for profiles
-                        </button>
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </p>
-                    </div>
-                    <div
-                      className="slds-media__figure slds-media__figure_reverse"
-                    >
-                      <p
-                        className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                      >
-                        10 mins
-                      </p>
+                          <h3
+                            className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                          >
+                            <button
+                              aria-controls="card-step-4-detail-content"
+                              className="slds-button slds-button_reset"
+                              disabled={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              Turn on tracking for profiles
+                            </button>
+                          </h3>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          </p>
+                        </div>
+                        <div
+                          className="slds-media__figure slds-media__figure_reverse"
+                        >
+                          <p
+                            className="slds-text-align_right slds-text-color_weak"
+                          >
+                            10 mins
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2451,7 +2568,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-4-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-active"
@@ -2604,7 +2721,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           aria-valuenow={0}
                           className="slds-progress-ring__progress"
                           role="progressbar"
-                          style={Object {}}
+                          style={
+                            Object {
+                              "transform": "scaleX(1) rotate(-90deg)",
+                            }
+                          }
                         >
                           <svg
                             viewBox="-1 -1 2 2"
@@ -2623,33 +2744,41 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       </div>
                     </div>
                     <div
-                      className="slds-setup-assistant__step-summary-content slds-media__body"
+                      className="slds-media__body slds-m-top_x-small"
                     >
-                      <h3
-                        className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                      <div
+                        className="slds-media"
                       >
-                        <button
-                          aria-controls="card-step-5-detail-content"
-                          className="slds-button slds-button_reset"
-                          disabled={false}
-                          onClick={[Function]}
-                          type="button"
+                        <div
+                          className="slds-setup-assistant__step-summary-content slds-media__body"
                         >
-                          Setup Einstein Visibility for Admins
-                        </button>
-                      </h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </p>
-                    </div>
-                    <div
-                      className="slds-media__figure slds-media__figure_reverse"
-                    >
-                      <p
-                        className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-                      >
-                        10 mins
-                      </p>
+                          <h3
+                            className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                          >
+                            <button
+                              aria-controls="card-step-5-detail-content"
+                              className="slds-button slds-button_reset"
+                              disabled={false}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              Setup Einstein Visibility for Admins
+                            </button>
+                          </h3>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                          </p>
+                        </div>
+                        <div
+                          className="slds-media__figure slds-media__figure_reverse"
+                        >
+                          <p
+                            className="slds-text-align_right slds-text-color_weak"
+                          >
+                            10 mins
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2666,7 +2795,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                     id="card-step-5-progress-indicator"
                   >
                     <ol
-                      className="slds-progress__list"
+                      className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
                         className="slds-progress__item slds-is-active"
@@ -2799,7 +2928,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               className="slds-media__figure"
             >
               <div
-                className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
               >
                 <div
                   aria-valuemax="100"
@@ -2807,7 +2936,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={100}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -2838,34 +2971,42 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               </div>
             </div>
             <div
-              className="slds-setup-assistant__step-summary-content slds-media__body"
+              className="slds-media__body slds-m-top_x-small"
             >
-              <h3
-                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              <div
+                className="slds-media"
               >
-                Add Users to Your Org
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div
-              className="slds-media__figure slds-media__figure_reverse"
-            >
-              <button
-                className="slds-button slds-button_outline-brand"
-                disabled={false}
-                id="step-progress-step-1-action"
-                onClick={[Function]}
-                type="button"
-              >
-                Add Users
-              </button>
-              <p
-                className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-              >
-                4 mins
-              </p>
+                <div
+                  className="slds-setup-assistant__step-summary-content slds-media__body"
+                >
+                  <h3
+                    className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                  >
+                    Add Users to Your Org
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+                <div
+                  className="slds-media__figure slds-media__figure_reverse"
+                >
+                  <button
+                    className="slds-button slds-button_outline-brand"
+                    disabled={false}
+                    id="step-progress-step-1-action"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Add Users
+                  </button>
+                  <p
+                    className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                  >
+                    4 mins
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2896,7 +3037,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={0}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -2915,29 +3060,37 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               </div>
             </div>
             <div
-              className="slds-setup-assistant__step-summary-content slds-media__body"
+              className="slds-media__body slds-m-top_x-small"
             >
-              <h3
-                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              <div
+                className="slds-media"
               >
-                Create Profiles for Your Users
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div
-              className="slds-media__figure slds-media__figure_reverse"
-            >
-              <button
-                className="slds-button slds-button_outline-brand"
-                disabled={false}
-                id="step-progress-step-2-action"
-                onClick={[Function]}
-                type="button"
-              >
-                Add Profiles
-              </button>
+                <div
+                  className="slds-setup-assistant__step-summary-content slds-media__body"
+                >
+                  <h3
+                    className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                  >
+                    Create Profiles for Your Users
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+                <div
+                  className="slds-media__figure slds-media__figure_reverse"
+                >
+                  <button
+                    className="slds-button slds-button_outline-brand"
+                    disabled={false}
+                    id="step-progress-step-2-action"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Add Profiles
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2960,7 +3113,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               className="slds-media__figure"
             >
               <div
-                className="slds-progress-ring slds-progress-ring_large slds-progress-ring_complete"
+                className="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large"
               >
                 <div
                   aria-valuemax="100"
@@ -2968,7 +3121,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={100}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -2999,34 +3156,42 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               </div>
             </div>
             <div
-              className="slds-setup-assistant__step-summary-content slds-media__body"
+              className="slds-media__body slds-m-top_x-small"
             >
-              <h3
-                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              <div
+                className="slds-media"
               >
-                Learn How to Use Profiles to control Visibility
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div
-              className="slds-media__figure slds-media__figure_reverse"
-            >
-              <button
-                className="slds-button_reset slds-text-link"
-                disabled={false}
-                id="step-progress-step-3-action"
-                onClick={[Function]}
-                type="button"
-              >
-                View on Trailhead
-              </button>
-              <p
-                className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
-              >
-                15 mins
-              </p>
+                <div
+                  className="slds-setup-assistant__step-summary-content slds-media__body"
+                >
+                  <h3
+                    className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                  >
+                    Learn How to Use Profiles to control Visibility
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+                <div
+                  className="slds-media__figure slds-media__figure_reverse"
+                >
+                  <button
+                    className="slds-button_reset slds-text-link"
+                    disabled={false}
+                    id="step-progress-step-3-action"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    View on Trailhead
+                  </button>
+                  <p
+                    className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+                  >
+                    15 mins
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -3057,7 +3222,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={0}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -3076,53 +3245,61 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               </div>
             </div>
             <div
-              className="slds-setup-assistant__step-summary-content slds-media__body"
-            >
-              <h3
-                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
-              >
-                Turn on tracking for profiles
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div
-              className="slds-media__figure slds-media__figure_reverse"
+              className="slds-media__body slds-m-top_x-small"
             >
               <div
-                className="slds-form-element"
+                className="slds-media"
               >
-                <label
-                  className="slds-checkbox_toggle slds-grid"
-                  htmlFor="step-progress-step-4-action"
+                <div
+                  className="slds-setup-assistant__step-summary-content slds-media__body"
                 >
-                  <input
-                    aria-describedby="step-progress-step-4-action-desc"
-                    id="step-progress-step-4-action"
-                    onChange={[Function]}
-                    type="checkbox"
-                  />
-                  <span
-                    aria-live="assertive"
-                    className="slds-checkbox_faux_container"
-                    id="step-progress-step-4-action-desc"
+                  <h3
+                    className="slds-setup-assistant__step-summary-title slds-text-heading_small"
                   >
-                    <span
-                      className="slds-checkbox_faux"
-                    />
-                    <span
-                      className="slds-checkbox_on"
+                    Turn on tracking for profiles
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+                <div
+                  className="slds-media__figure slds-media__figure_reverse"
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <label
+                      className="slds-checkbox_toggle slds-grid"
+                      htmlFor="step-progress-step-4-action"
                     >
-                      Enabled
-                    </span>
-                    <span
-                      className="slds-checkbox_off"
-                    >
-                      Disabled
-                    </span>
-                  </span>
-                </label>
+                      <input
+                        aria-describedby="step-progress-step-4-action-desc"
+                        id="step-progress-step-4-action"
+                        onChange={[Function]}
+                        type="checkbox"
+                      />
+                      <span
+                        aria-live="assertive"
+                        className="slds-checkbox_faux_container"
+                        id="step-progress-step-4-action-desc"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-checkbox_on"
+                        >
+                          Enabled
+                        </span>
+                        <span
+                          className="slds-checkbox_off"
+                        >
+                          Disabled
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -3154,7 +3331,11 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                   aria-valuenow={0}
                   className="slds-progress-ring__progress"
                   role="progressbar"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "transform": "scaleX(1) rotate(-90deg)",
+                    }
+                  }
                 >
                   <svg
                     viewBox="-1 -1 2 2"
@@ -3173,29 +3354,37 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
               </div>
             </div>
             <div
-              className="slds-setup-assistant__step-summary-content slds-media__body"
+              className="slds-media__body slds-m-top_x-small"
             >
-              <h3
-                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              <div
+                className="slds-media"
               >
-                Setup Einstein Visibility for Admins
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-            </div>
-            <div
-              className="slds-media__figure slds-media__figure_reverse"
-            >
-              <button
-                className="slds-button_reset slds-text-link"
-                disabled={false}
-                id="step-progress-step-5-action"
-                onClick={[Function]}
-                type="button"
-              >
-                Watch Video
-              </button>
+                <div
+                  className="slds-setup-assistant__step-summary-content slds-media__body"
+                >
+                  <h3
+                    className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+                  >
+                    Setup Einstein Visibility for Admins
+                  </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </div>
+                <div
+                  className="slds-media__figure slds-media__figure_reverse"
+                >
+                  <button
+                    className="slds-button_reset slds-text-link"
+                    disabled={false}
+                    id="step-progress-step-5-action"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Watch Video
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

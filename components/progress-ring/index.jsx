@@ -15,6 +15,7 @@ import ProgressRingShape from './private/ring-shape';
  * The themes available for the progress ring
  */
 export const THEME_OPTIONS = Object.freeze({
+	ACTIVE: 'active',
 	WARNING: 'warning',
 	EXPIRED: 'expired',
 	COMPLETE: 'complete',
@@ -24,9 +25,10 @@ export const THEME_OPTIONS = Object.freeze({
  * The CSS classes associated with each theme
  */
 const THEME_CLASSES = {
-	[THEME_OPTIONS.COMPLETE]: 'slds-progress-ring_complete',
+	[THEME_OPTIONS.ACTIVE]: 'slds-progress-ring_active-step',
 	[THEME_OPTIONS.WARNING]: 'slds-progress-ring_warning',
 	[THEME_OPTIONS.EXPIRED]: 'slds-progress-ring_expired',
+	[THEME_OPTIONS.COMPLETE]: 'slds-progress-ring_complete',
 };
 
 const propTypes = {
@@ -45,7 +47,7 @@ const propTypes = {
 	/**
 	 * The theme applied to the ring.
 	 */
-	theme: PropTypes.oneOf(['warning', 'expired', 'complete']),
+	theme: PropTypes.oneOf(['active', 'warning', 'expired', 'complete']),
 	/**
 	 * Overrides the icon to be displayed.
 	 */
@@ -62,10 +64,15 @@ const propTypes = {
 	 * Direction that the progress ring "flows." Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`
 	 */
 	flowDirection: PropTypes.oneOf(['drain', 'fill']),
+	/**
+	 * Size of the progress ring. Default is 'medium'
+	 */
+	size: PropTypes.oneOf(['medium', 'large']),
 };
 
 const defaultProps = {
 	flowDirection: 'drain',
+	size: 'medium',
 };
 
 /**
@@ -115,7 +122,9 @@ class ProgressRing extends React.Component {
 		return (
 			<ProgressRingShape
 				id={this.props.id}
-				className={classNames(this.props.className, this.themeClass())}
+				className={classNames(this.props.className, this.themeClass(), {
+					'slds-progress-ring_large': this.props.size === 'large',
+				})}
 				fillPercentDecimal={this.percentDecimal()}
 				flowDirection={this.props.flowDirection}
 			>

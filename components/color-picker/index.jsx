@@ -397,6 +397,8 @@ class ColorPicker extends React.Component {
 					this.props.classNameMenu
 				)}
 				footer={popoverFooter}
+				hasNoCloseButton
+				hasNoNubbin
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				id={`slds-color-picker__selector-${this.generatedId}`}
 				isOpen={this.state.isOpen}

@@ -11,7 +11,7 @@ const propTypes = {
 	/**
 	 * Provide children of the types `<BuilderHeaderNavLink />` or `<BuilderHeaderNavDropdown />` to define the structure of the navigation section.
 	 * ```
-	 * <BuilderHeaderNav>
+	 * <BuilderHeader>
 	 *   <BuilderHeaderNav>
 	 *     <BuilderHeaderNavLink />
 	 *     <BuilderHeaderNavDropdown />

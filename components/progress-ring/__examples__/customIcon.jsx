@@ -31,6 +31,6 @@ class Example extends React.Component {
 	}
 }
 
-Example.displayName = 'ProgressRingDefault';
+Example.displayName = 'ProgressRingCustomIconExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

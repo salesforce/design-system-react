@@ -25,6 +25,7 @@ const documentationSiteLiveExamples = {
 	'data-table': require('@salesforce/design-system-react/components/data-table/__docs__/site-stories.js'),
 	'date-picker': require('@salesforce/design-system-react/components/date-picker/__docs__/site-stories.js'),
 	'dynamic-icon': require('@salesforce/design-system-react/components/dynamic-icon/__docs__/site-stories.js'),
+	'expandable-section': require('@salesforce/design-system-react/components/expandable-section/__docs__/site-stories.js'),
 	icon: require('@salesforce/design-system-react/components/icon/__docs__/site-stories.js'),
 	illustration: require('@salesforce/design-system-react/components/illustration/__docs__/site-stories.js'),
 	input: require('@salesforce/design-system-react/components/input/__docs__/site-stories.js'),
@@ -51,6 +52,7 @@ const documentationSiteLiveExamples = {
 	radio: require('@salesforce/design-system-react/components/radio/__docs__/site-stories.js'),
 	tabs: require('@salesforce/design-system-react/components/tabs/__docs__/site-stories.js'),
 	'scoped-notification': require('@salesforce/design-system-react/components/scoped-notification/__docs__/site-stories.js'),
+	'setup-assistant': require('@salesforce/design-system-react/components/setup-assistant/__docs__/site-stories.js'),
 	slider: require('@salesforce/design-system-react/components/slider/__docs__/site-stories.js'),
 	spinner: require('@salesforce/design-system-react/components/spinner/__docs__/site-stories.js'),
 	'split-view': require('@salesforce/design-system-react/components/split-view/__docs__/site-stories.js'),
@@ -58,7 +60,10 @@ const documentationSiteLiveExamples = {
 	toast: require('@salesforce/design-system-react/components/toast/__docs__/site-stories.js'),
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
 	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
+	'trial-bar': require('@salesforce/design-system-react/components/trial-bar/__docs__/site-stories.js'),
 	'vertical-navigation': require('@salesforce/design-system-react/components/vertical-navigation/__docs__/site-stories.js'),
+	'visual-picker': require('@salesforce/design-system-react/components/visual-picker/__docs__/site-stories.js'),
+	'welcome-mat': require('@salesforce/design-system-react/components/welcome-mat/__docs__/site-stories.js'),
 };
 
 module.exports = documentationSiteLiveExamples;

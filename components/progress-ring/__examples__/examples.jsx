@@ -66,6 +66,46 @@ class Example extends React.Component {
 					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
 						<ProgressRing value={100} theme="expired" />
 					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing value={20} theme="active" />
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing flowDirection="fill" value={40} theme="active" />
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing
+							flowDirection="fill"
+							value={70}
+							theme="active"
+							hasIcon
+						/>
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing value={100} theme="active" />
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing size="large" value={20} theme="active" />
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing
+							flowDirection="fill"
+							size="large"
+							value={40}
+							theme="warning"
+						/>
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing
+							flowDirection="fill"
+							size="large"
+							value={70}
+							theme="expired"
+							hasIcon
+						/>
+					</div>
+					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
+						<ProgressRing size="large" value={100} theme="complete" />
+					</div>
 				</div>
 			</IconSettings>
 		);
