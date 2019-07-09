@@ -1153,13 +1153,6 @@
                     "computed": false
                 }
             },
-            "styleContainer": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the containing `nav` tag"
-            },
             "trail": {
                 "type": {
                     "name": "array"
@@ -11491,32 +11484,60 @@
     },
     "page-header": {
         "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "_getClassNames",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "className",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
         "props": {
             "className": {
                 "type": {
-                    "name": "union",
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Optional class name",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
                     "value": [
                         {
-                            "name": "array"
+                            "value": "'base'",
+                            "computed": false
                         },
                         {
-                            "name": "object"
+                            "value": "'object-home'",
+                            "computed": false
                         },
                         {
-                            "name": "string"
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "Optional class name"
-            },
-            "details": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of detail blocks (used in \"recordHome\" variant)"
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             },
             "label": {
                 "type": {
@@ -11531,7 +11552,37 @@
                     ]
                 },
                 "required": false,
-                "description": "The label property can be a string or a React element"
+                "description": "The info property can be a string or a React element"
+            },
+            "title": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The title property can be a string or a React element"
+            },
+            "info": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The info property can be a string or a React element"
             },
             "icon": {
                 "type": {
@@ -11539,6 +11590,13 @@
                 },
                 "required": false,
                 "description": "The page header icon"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
             },
             "iconCategory": {
                 "type": {
@@ -11567,14 +11625,7 @@
                     ]
                 },
                 "required": false,
-                "description": "The icon category"
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+                "description": "The icons category"
             },
             "iconPosition": {
                 "type": {
@@ -11647,90 +11698,39 @@
                 "required": false,
                 "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
             },
-            "info": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The info property can be a string or a React element"
-            },
-            "nameSwitcherDropdown": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Used with the `object-home` variant. Accepts a node, typically a Dropdown component"
-            },
             "onRenderActions": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
+                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
+            },
+            "details": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of buttons which appear on the component's right hand side.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
             },
             "onRenderControls": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
-            },
-            "title": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The title property can be a string or a React element"
+                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
             },
             "trail": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of react elements presumably anchor <a> elements."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'object-home'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'record-home'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'related-list'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
+                "description": "An array of react elements presumably anchor <a> elements.",
                 "defaultValue": {
-                    "value": "'base'",
+                    "value": "[]",
                     "computed": false
                 }
             }
