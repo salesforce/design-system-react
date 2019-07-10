@@ -40,9 +40,9 @@ const propTypes = {
 	 */
 	overflowDropdownMenu: PropTypes.node,
 	/**
-	 * An array of react elements presumably anchor elements.
+	 * An array of anchor elements that define the path to the current record.
 	 */
-	trail: PropTypes.array,
+	trail: PropTypes.array.isRequired,
 };
 
 const defaultProps = {

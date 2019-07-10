@@ -1171,8 +1171,8 @@
                 "type": {
                     "name": "array"
                 },
-                "required": false,
-                "description": "An array of react elements presumably anchor elements."
+                "required": true,
+                "description": "An array of anchor elements that define the path to the current record."
             }
         },
         "route": "breadcrumbs",

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
-import BreadCrumb from '~/components/breadcrumb'; // `~` is replaced with design-system-react at runtime
+import Breadcrumb from '~/components/breadcrumb'; // `~` is replaced with design-system-react at runtime
 import Dropdown from '~/components/menu-dropdown';
 
 class Example extends React.Component {
@@ -15,7 +15,7 @@ class Example extends React.Component {
 
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<BreadCrumb
+				<Breadcrumb
 					id="ADFA34_"
 					assistiveText={{ label: 'Breadcrumb with overflow menu' }}
 					overflowDropdownMenu={
