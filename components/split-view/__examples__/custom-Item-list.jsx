@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconSettings from '~/components/icon-settings';
-import SplitView from '~/components/split-view/index';
-import SplitViewHeader from '~/components/split-view/header';
-import SplitViewListbox from '~/components/split-view/listbox';
-import Icon from '~/components/icon';
+
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
+import Icon from '~/components/icon';
+import IconSettings from '~/components/icon-settings';
 import PageHeaderControl from '~/components/page-header/control';
+import SplitView from '~/components/split-view/index';
+import SplitViewHeader from '~/components/split-view/header';
+import SplitViewListbox from '~/components/split-view/listbox';
 
 const SORT_OPTIONS = {
 	UP: 'up',
@@ -214,9 +215,13 @@ class Example extends React.Component {
 				key="1"
 				onRenderActions={headerActions}
 				onRenderControls={headerControls}
-				iconAssistiveText="User"
-				iconCategory="standard"
-				iconName="lead"
+				icon={
+					<Icon
+						assistiveText={{ label: 'User' }}
+						category="standard"
+						name="lead"
+					/>
+				}
 				info="42 items • Updated just now"
 				title={headerTitle}
 				truncate

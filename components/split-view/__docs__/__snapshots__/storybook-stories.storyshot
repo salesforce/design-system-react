@@ -199,7 +199,11 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                         />
                       </svg>
-                      
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        User
+                      </span>
                     </span>
                      
                   </div>
@@ -1049,7 +1053,11 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                         />
                       </svg>
-                      
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        User
+                      </span>
                     </span>
                      
                   </div>
@@ -1898,7 +1906,11 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                           xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                         />
                       </svg>
-                      
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        User
+                      </span>
                     </span>
                      
                   </div>
@@ -2511,7 +2523,11 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                             xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                           />
                         </svg>
-                        
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          User
+                        </span>
                       </span>
                        
                     </div>

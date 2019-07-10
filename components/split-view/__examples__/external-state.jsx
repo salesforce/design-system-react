@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import SplitView from '~/components/split-view/index';
 import SplitViewHeader from '~/components/split-view/header';
@@ -206,9 +208,13 @@ class Example extends React.Component {
 				key="1"
 				onRenderActions={headerActions}
 				onRenderControls={headerControls}
-				iconAssistiveText="User"
-				iconCategory="standard"
-				iconName="lead"
+				icon={
+					<Icon
+						assistiveText={{ label: 'User' }}
+						category="standard"
+						name="lead"
+					/>
+				}
 				info="42 items • Updated just now"
 				title={headerTitle}
 				truncate

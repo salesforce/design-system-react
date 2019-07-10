@@ -30,7 +30,11 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
                   xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
-              
+              <span
+                className="slds-assistive-text"
+              >
+                Opportunity
+              </span>
             </span>
              
           </div>
@@ -96,7 +100,11 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                   xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
-              
+              <span
+                className="slds-assistive-text"
+              >
+                Opportunity
+              </span>
             </span>
              
           </div>
@@ -329,7 +337,11 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                   xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
-              
+              <span
+                className="slds-assistive-text"
+              >
+                User
+              </span>
             </span>
              
           </div>
@@ -894,7 +906,11 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                   xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
-              
+              <span
+                className="slds-assistive-text"
+              >
+                Opportunity
+              </span>
             </span>
              
           </div>
@@ -1276,7 +1292,11 @@ exports[`DOM snapshots SLDSPageHeader Record Home (field updates) 1`] = `
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
                   />
                 </svg>
-                
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
               </span>
                
             </div>
@@ -1401,7 +1421,11 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                   xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
-              
+              <span
+                className="slds-assistive-text"
+              >
+                Opportunity
+              </span>
             </span>
              
           </div>

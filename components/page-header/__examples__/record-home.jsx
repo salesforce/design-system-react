@@ -4,6 +4,7 @@ import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header';
 import PageHeaderControl from '~/components/page-header/control';
@@ -71,9 +72,13 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					details={details}
-					iconAssistiveText={{ icon: 'User' }}
-					iconCategory="standard"
-					iconName="opportunity"
+					icon={
+						<Icon
+							assistiveText={{ label: 'User' }}
+							category="standard"
+							name="opportunity"
+						/>
+					}
 					label="Record Type"
 					onRenderActions={actions}
 					title="Record Title"

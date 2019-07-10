@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
+import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
 import PageHeader from '../../page-header';
 import PageHeaderControl from '../../page-header/control';
@@ -74,9 +75,9 @@ const recordHomeDetails = [
 
 describe('PageHeader: ', function() {
 	const defaultPropsRecordHome = {
-		iconAssistiveText: 'User',
-		iconCategory: 'standard',
-		iconName: 'user',
+		icon: (
+			<Icon assistiveText={{ label: 'User' }} category="standard" name="user" />
+		),
 		label: 'Record Type',
 		title: 'Record Title',
 		variant: 'record-home',

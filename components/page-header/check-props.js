@@ -15,6 +15,46 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
+		deprecatedProperty(
+			COMPONENT,
+			props.iconCategory,
+			'iconCategory',
+			'icon',
+			createDocUrl('icon')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.iconName,
+			'iconName',
+			'icon',
+			createDocUrl('icon')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.iconPosition,
+			'iconPosition',
+			'icon',
+			createDocUrl('icon')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.iconSize,
+			'iconSize',
+			'icon',
+			createDocUrl('icon')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.iconVariant,
+			'iconVariant',
+			'icon',
+			createDocUrl('icon')
+		);
+
 		if (props.variant === 'objectHome') {
 			deprecatedPropertyValue(
 				COMPONENT,

@@ -23,26 +23,6 @@ const propTypes = {
 	 */
 	icon: PropTypes.element,
 	/**
-	 * The icon category
-	 */
-	iconCategory: PropTypes.string,
-	/**
-	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
-	 */
-	iconName: PropTypes.string,
-	/**
-	 * If omitted, icon position is centered.
-	 */
-	iconPosition: PropTypes.string,
-	/**
-	 * Determines the size of the icon.
-	 */
-	iconSize: PropTypes.string,
-	/**
-	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
-	 */
-	iconVariant: PropTypes.string,
-	/**
 	 * The info property can be a string or a React element
 	 */
 	info: PropTypes.node,
@@ -75,70 +55,83 @@ const propTypes = {
 	variant: PropTypes.string,
 };
 
-const ObjectHome = (props) => (
-	<>
-		<div className="slds-page-header__row">
-			<div className="slds-page-header__col-title">
-				<MediaObject
-					body={
-						<>
-							{props.trail ? (
-								<Label style={{ lineHeight: '1.3' }} trail={props.trail} />
-							) : null}
-							<div className="slds-page-header__name">
-								<Title
-									content={props.title}
-									label={!props.trail ? props.label : null}
-								/>
-								{props.nameSwitcherDropdown ? (
-									<div className="slds-page-header__name-switcher">
-										{props.nameSwitcherDropdown}
-									</div>
+const ObjectHome = (props) => {
+	let icon;
+
+	// Backwards compatibility
+	if (props.iconName) {
+		icon = (
+			<Icon
+				category={props.iconCategory}
+				className="slds-page-header__icon"
+				name={props.iconName}
+				position={props.iconPosition}
+				size={props.iconSize}
+				variant={props.iconVariant}
+			/>
+		);
+	} else if (props.icon) {
+		let iconClasses = 'slds-page-header__icon';
+
+		if (props.icon.props) {
+			iconClasses = classnames(props.icon.props.className, iconClasses);
+		}
+
+		icon = React.cloneElement(props.icon, { className: iconClasses });
+	}
+
+	return (
+		<>
+			<div className="slds-page-header__row">
+				<div className="slds-page-header__col-title">
+					<MediaObject
+						body={
+							<>
+								{props.trail ? (
+									<Label style={{ lineHeight: '1.3' }} trail={props.trail} />
 								) : null}
-							</div>
-						</>
-					}
-					figure={
-						props.iconName ? (
-							<Icon
-								category={props.iconCategory}
-								className="slds-page-header__icon"
-								name={props.iconName}
-								position={props.iconPosition}
-								size={props.iconSize}
-								variant={props.iconVariant}
-							/>
-						) : (
-							props.icon
-						)
-					}
+								<div className="slds-page-header__name">
+									<Title
+										content={props.title}
+										label={!props.trail ? props.label : null}
+									/>
+									{props.nameSwitcherDropdown ? (
+										<div className="slds-page-header__name-switcher">
+											{props.nameSwitcherDropdown}
+										</div>
+									) : null}
+								</div>
+							</>
+						}
+						figure={icon}
+					/>
+				</div>
+				<Controls
+					className={classnames({
+						'slds-align-middle slds-p-bottom_none':
+							!props.onRenderControls && !props.navRight,
+					})}
+					contentRight={props.contentRight}
+					onRenderActions={props.onRenderActions}
+					type="actions"
 				/>
 			</div>
-			<Controls
-				className={classnames({
-					'slds-align-middle slds-p-bottom_none':
-						!props.onRenderControls && !props.navRight,
-				})}
-				contentRight={props.contentRight}
-				onRenderActions={props.onRenderActions}
-				type="actions"
-			/>
-		</div>
-		<div className="slds-page-header__row">
-			<div className="slds-page-header__col-meta">
-				<Info content={props.info} variant={props.variant} />
+			<div className="slds-page-header__row">
+				<div className="slds-page-header__col-meta">
+					<Info content={props.info} variant={props.variant} />
+				</div>
+				<Controls
+					className={classnames({
+						'slds-align-middle': !props.onRenderActions && !props.comntentRight,
+					})}
+					navRight={props.navRight}
+					onRenderControls={props.onRenderControls}
+					type="controls"
+				/>
 			</div>
-			<Controls
-				className={classnames({
-					'slds-align-middle': !props.onRenderActions && !props.comntentRight,
-				})}
-				navRight={props.navRight}
-				onRenderControls={props.onRenderControls}
-				type="controls"
-			/>
-		</div>
-	</>
-);
+		</>
+	);
+};
 
 ObjectHome.displayName = displayName;
 ObjectHome.propTypes = propTypes;

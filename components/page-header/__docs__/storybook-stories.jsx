@@ -2,6 +2,7 @@
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { PAGE_HEADER } from '../../../utilities/constants';
+import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
 import SLDSPageHeader from '../../page-header';
 import SLDSPageHeaderControl from '../../page-header/control';
@@ -74,9 +75,13 @@ class DemoPageHeader extends React.Component {
 
 	render() {
 		const defaultProps = {
-			iconAssistiveText: 'User',
-			iconCategory: 'standard',
-			iconName: 'user',
+			icon: (
+				<Icon
+					assistiveText={{ label: 'User' }}
+					category="standard"
+					name="user"
+				/>
+			),
 			label: 'Record Type',
 			title: 'Record Title',
 			variant: 'record-home',
@@ -388,18 +393,26 @@ storiesOf(PAGE_HEADER, module)
 	))
 	.add('Base', () =>
 		getPageHeader({
-			iconAssistiveText: 'Opportunity',
-			iconCategory: 'standard',
-			iconName: 'opportunity',
+			icon: (
+				<Icon
+					assistiveText={{ label: 'Opportunity' }}
+					category="standard"
+					name="opportunity"
+				/>
+			),
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 			title: 'Rohde Corp - 80,000 Widgets',
 		})
 	)
 	.add('Base with controls', () =>
 		getPageHeader({
-			iconAssistiveText: 'Opportunity',
-			iconCategory: 'standard',
-			iconName: 'opportunity',
+			icon: (
+				<Icon
+					assistiveText={{ label: 'Opportunity' }}
+					category="standard"
+					name="opportunity"
+				/>
+			),
 			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 			onRenderControls: baseControls,
 			title: 'Rohde Corp - 80,000 Widgets',
@@ -408,9 +421,13 @@ storiesOf(PAGE_HEADER, module)
 	.add('Record Home (truncates)', () =>
 		getPageHeader({
 			details: recordHomeDetails,
-			iconAssistiveText: 'Opportunity',
-			iconCategory: 'standard',
-			iconName: 'opportunity',
+			icon: (
+				<Icon
+					assistiveText={{ label: 'Opportunity' }}
+					category="standard"
+					name="opportunity"
+				/>
+			),
 			label: 'Opportunity',
 			onRenderActions: recordHomeActions,
 			title: 'Acme - 1,200 Widgets',
