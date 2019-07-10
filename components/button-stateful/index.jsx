@@ -105,7 +105,14 @@ const propTypes = {
 	/**
 	 * Different types of buttons
 	 */
-	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
+	variant: PropTypes.oneOf([
+		'base',
+		'neutral',
+		'brand',
+		'destructive',
+		'icon',
+		'icon-filled',
+	]),
 };
 
 // i18n
@@ -135,12 +142,14 @@ class ButtonStateful extends React.Component {
 
 	getClassName(active) {
 		return classNames(this.props.className, 'slds-button', {
-			'slds-button_neutral': this.props.variant !== 'icon',
+			'slds-button_neutral':
+				this.props.variant !== 'icon' && this.props.variant !== 'icon-filled',
 			'slds-button_inverse': this.props.variant === 'inverse',
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
 			'slds-max-small-button_stretch': this.props.responsive,
 			'slds-button_icon-border': this.props.variant === 'icon',
+			'slds-button_icon-border-filled': this.props.variant === 'icon-filled',
 		});
 	}
 
@@ -187,7 +196,7 @@ class ButtonStateful extends React.Component {
 
 		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
-		if (variant === 'icon') {
+		if (variant === 'icon' || variant === 'icon-filled') {
 			return (
 				<button
 					aria-live="polite"
