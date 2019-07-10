@@ -6,7 +6,6 @@ import KEYS from '../../../utilities/key-code';
 import EventUtil from '../../../utilities/event';
 
 import { DIRECTIONS } from '../../utilities/UNSAFE_direction';
-import LanguageDirection from '../../utilities/UNSAFE_direction/private/language-direction';
 
 class SwatchPicker extends React.Component {
 	static displayName = 'SLDSSwatchPicker';
@@ -125,4 +124,4 @@ class SwatchPicker extends React.Component {
 	}
 }
 
-export default LanguageDirection(SwatchPicker);
+export default SwatchPicker;

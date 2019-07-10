@@ -22,6 +22,9 @@ import ColorUtils from '../../utilities/color';
 
 import { COLOR_PICKER } from '../../utilities/constants';
 
+import { DIRECTIONS } from '../utilities/UNSAFE_direction';
+import LanguageDirection from '../utilities/UNSAFE_direction/private/language-direction';
+
 import componentDoc from './docs.json';
 
 const propTypes = {
@@ -57,6 +60,10 @@ const propTypes = {
 	 * Unique ID for component.
 	 */
 	id: PropTypes.string,
+	/**
+	 * Establishes directional context for component. Defaults to left-to-right.
+	 */
+	direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
 	/**
 	 * Disables the input and button.
 	 */
@@ -182,6 +189,7 @@ const defaultProps = {
 			'Use arrow keys to select a saturation and brightness, on an x and y axis.',
 		hueSlider: 'Select Hue',
 	},
+	direction: DIRECTIONS.LRT,
 	events: {},
 	labels: {
 		blueAbbreviated: 'B',
@@ -319,6 +327,7 @@ class ColorPicker extends React.Component {
 				<TabsPanel label={labels.swatchTab}>
 					<SwatchPicker
 						color={this.state.workingColor}
+						direction={this.props.direction}
 						labels={labels}
 						onSelect={this.handleSwatchSelect}
 						swatchColors={this.props.swatchColors}
@@ -626,4 +635,4 @@ class ColorPicker extends React.Component {
 	}
 }
 
-export default ColorPicker;
+export default LanguageDirection(ColorPicker);
