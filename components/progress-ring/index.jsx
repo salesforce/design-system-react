@@ -122,6 +122,7 @@ class ProgressRing extends React.Component {
 		return (
 			<ProgressRingShape
 				id={this.props.id}
+				size={this.props.size}
 				className={classNames(this.props.className, this.themeClass(), {
 					'slds-progress-ring_large': this.props.size === 'large',
 				})}
