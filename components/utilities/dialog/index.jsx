@@ -505,14 +505,17 @@ class Dialog extends React.Component {
 						}),
 						{}
 					);
+				const wrapped = (
+					// eslint-disable-next-line
+					<UNSAFE_DirectionSettings.Provider value={this.props.direction}>
+						<IconSettings {...truthyIconSettingsContext}>
+							{contents}
+						</IconSettings>
+					</UNSAFE_DirectionSettings.Provider>
+				);
 				return (
-					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>{
-							// eslint-disable-next-line
-						}<UNSAFE_DirectionSettings.Provider value={this.props.direction}>
-							<IconSettings {...truthyIconSettingsContext}>
-								{contents}
-							</IconSettings>
-						</UNSAFE_DirectionSettings.Provider>
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						{wrapped}
 					</Portal>
 				);
 			},
