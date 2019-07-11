@@ -32,7 +32,6 @@ export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/st
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 export DatePicker from '../components/date-picker/__docs__/storybook-stories';
 export DynamicIcon from '../components/dynamic-icon/__docs__/storybook-stories';
-export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 export Input from '../components/input/__docs__/storybook-stories';
 export Teaxtarea from '../components/textarea/__docs__/storybook-stories';
@@ -43,6 +42,7 @@ export Icon from '../components/icon/__docs__/storybook-stories';
 export Illustration from '../components/illustration/__docs__/storybook-stories';
 export Lookup from '../components/lookup/__docs__/storybook-stories';
 export MediaObject from '../components/media-object/__docs__/storybook-stories';
+export MenuDropdown from '../components/menu-dropdown/__docs__/storybook-stories';
 export Modal from '../components/modal/__docs__/storybook-stories';
 export Notification from '../components/notification/__docs__/storybook-stories';
 export PageHeader from '../components/page-header/__docs__/storybook-stories';
