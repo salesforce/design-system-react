@@ -40,9 +40,7 @@ storiesOf(ICON, module)
 		</div>
 	))
 	.add('Category: Standard', () => <Standard />)
-	.add('Category: Standard - Right to Left (RTL)', () =>
-		makeRtl(<Standard />)
-	)
+	.add('Category: Standard - Right to Left (RTL)', () => makeRtl(<Standard />))
 	.add('Category: Utility', () => <Utility />)
 	.add('Category: Action', () => <Action />)
 	.add('Category: Doctype', () => <Doctype />)
