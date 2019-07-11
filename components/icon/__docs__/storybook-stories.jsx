@@ -22,6 +22,8 @@ import SizesLarge from '../__examples__/sizes-large';
 import Categories from '../__examples__/categories';
 import Colors from '../__examples__/colors';
 import Sizes from '../__examples__/sizes';
+import ProductThemes from '../__examples__/product-themes.jsx';
+
 storiesOf(ICON, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -75,6 +77,7 @@ storiesOf(ICON, module)
 			icon={download}
 		/>
 	))
+	.add('Product Themes', () => <ProductThemes />)
 	.add('Docs site Categories', () => <Categories />)
 	.add('Docs site Colors', () => <Colors />)
 	.add('Docs site Sizes', () => <Sizes />);

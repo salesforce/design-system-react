@@ -8171,6 +8171,47 @@
                 "required": false,
                 "description": "Path to the icon. This will override any global icon settings"
             },
+            "productTheme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'global-setup'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'service-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'industry-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'sales-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'commerce-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'community-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'marketing-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'quip'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Background theme color for the icon. **Only compatible with icon category `standard`**"
+            },
             "size": {
                 "type": {
                     "name": "enum",
