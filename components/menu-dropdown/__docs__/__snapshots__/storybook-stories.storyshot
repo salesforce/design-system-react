@@ -325,6 +325,46 @@ exports[`DOM snapshots SLDSMenuDropdown Hover with Checkmark 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSMenuDropdown Overflow Actions 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="checkmark"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-checkmark"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSMenuDropdown Render inline 1`] = `
 <div
   className="slds-p-around_medium slds-text-align_center"
