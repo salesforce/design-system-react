@@ -21,9 +21,6 @@ class Example extends React.Component {
 					overflowDropdownMenu={
 						<Dropdown
 							assistiveText={{ icon: 'More Options' }}
-							iconCategory="utility"
-							iconName="down"
-							iconVariant="border-filled"
 							onSelect={(value) => {
 								console.log('selected: ', value);
 							}}

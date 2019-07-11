@@ -55,10 +55,13 @@ const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
 	const overflowDropdownMenuProps = {
 		...overflowDropdownMenu.props,
 		id: `${props.id}-dropdown`,
+		buttonVariant: 'icon',
 		iconCategory: 'utility',
 		iconName: 'threedots',
-		iconVariant: 'bare',
+		iconSize: 'x-small',
+		iconVariant: 'border-filled',
 		threedots: true,
+		variant: 'action',
 	};
 	return <Dropdown {...overflowDropdownMenuProps} />;
 };
