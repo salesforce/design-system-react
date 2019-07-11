@@ -371,6 +371,10 @@ const propTypes = {
 		PropTypes.array,
 	]),
 	/**
+	 * Sets the variant to be used for the dropdown.
+	 */
+	variant: PropTypes.oneOf(['base', 'action']),
+	/**
 	 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 	 */
 	tooltip: PropTypes.node,
@@ -405,6 +409,7 @@ const defaultProps = {
 	length: '5',
 	menuPosition: 'absolute',
 	openOn: 'click',
+	variant: 'base',
 	width: 'medium',
 	inverse: false,
 };
@@ -908,7 +913,8 @@ class MenuDropdown extends React.Component {
 
 		const positions = DropdownToDialogNubbinMapping[align].split(' ');
 		positionClassName = classNames(
-			positions.map((position) => `slds-dropdown_${position}`)
+			positions.map((position) => `slds-dropdown_${position}`),
+			{ 'slds-dropdown_actions': this.props.variant === 'action' }
 		);
 
 		// FOR BACKWARDS COMPATIBILITY

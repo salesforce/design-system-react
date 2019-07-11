@@ -27,6 +27,7 @@ class Example extends React.Component {
 							{ label: 'B Option', value: 'B0' },
 							{ label: 'C Option', value: 'C0' },
 						]}
+						variant="action"
 					/>
 				</ButtonGroup>
 			</IconSettings>
