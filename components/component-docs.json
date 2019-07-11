@@ -2147,6 +2147,10 @@
                         {
                             "value": "'icon'",
                             "computed": false
+                        },
+                        {
+                            "value": "'icon-filled'",
+                            "computed": false
                         }
                     ]
                 },
@@ -9327,6 +9331,27 @@
                 },
                 "required": false,
                 "description": "Current selected menu item."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'action'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Sets the variant to be used for the dropdown.",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             },
             "tooltip": {
                 "type": {
