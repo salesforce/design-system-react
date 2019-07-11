@@ -24,6 +24,7 @@ import Colors from '../__examples__/colors';
 import Sizes from '../__examples__/sizes';
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+import ProductThemes from '../__examples__/product-themes.jsx';
 
 const makeRtl = (component) => (
 	// eslint-disable-next-line
@@ -88,6 +89,7 @@ storiesOf(ICON, module)
 			icon={download}
 		/>
 	))
+	.add('Product Themes', () => <ProductThemes />)
 	.add('Docs site Categories', () => <Categories />)
 	.add('Docs site Colors', () => <Colors />)
 	.add('Docs site Sizes', () => <Sizes />);
