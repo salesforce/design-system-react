@@ -51,6 +51,12 @@ const options = [
 	{ label: 'E2 Option Super Super Long', value: 'E1' },
 ];
 
+const actionOptions = [
+	{ label: 'A Option', value: 'A0' },
+	{ label: 'B Option', value: 'B0' },
+	{ label: 'C Option', value: 'C0' },
+];
+
 const getDropdown = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')} />
 );
@@ -378,4 +384,20 @@ storiesOf(MENU_DROPDOWN, module)
 			label="Dropdown Click"
 			options={options}
 		/>
-	));
+	))
+	.add('Overflow Actions', () =>
+		getDropdown({
+			assistiveText: { icon: 'More Options' },
+			buttonVariant: 'icon',
+			checkmark: true,
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconVariant: 'border-filled',
+			id: 'checkmark',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options: actionOptions,
+			variant: 'action',
+		})
+	);
