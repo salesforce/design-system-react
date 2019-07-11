@@ -20,11 +20,51 @@ import componentDoc from './docs.json';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
+import Dropdown from './../menu-dropdown';
+
+const propTypes = {
+	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: The assistive text for the breadcrumb trail.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
+	/**
+	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	 */
+	id: PropTypes.string,
+	/**
+	 * Overflow menu of the type [Dropdown](/components/menu-dropdowns)
+	 */
+	overflowDropdownMenu: PropTypes.node,
+	/**
+	 * Custom styles to be passed to the containing `nav` tag
+	 */
+	styleContainer: PropTypes.object,
+	/**
+	 * An array of anchor elements that define the path to the current record.
+	 */
+	trail: PropTypes.array.isRequired,
+};
 
 const defaultProps = {
 	assistiveText: {
 		label: 'Breadcrumbs',
 	},
+};
+
+const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
+	const overflowDropdownMenuProps = {
+		...overflowDropdownMenu.props,
+		id: `${props.id}-dropdown`,
+		iconCategory: 'utility',
+		iconName: 'threedots',
+		iconVariant: 'bare',
+		threedots: true,
+	};
+	return <Dropdown {...overflowDropdownMenuProps} />;
 };
 
 /**
@@ -33,7 +73,7 @@ const defaultProps = {
 const Breadcrumb = (props) => {
 	checkProps(BREADCRUMB, props, componentDoc);
 
-	const { trail } = props;
+	const { overflowDropdownMenu, trail } = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -49,6 +89,8 @@ const Breadcrumb = (props) => {
 			style={props.styleContainer}
 		>
 			<ol className="slds-breadcrumb slds-list_horizontal">
+				{overflowDropdownMenu &&
+					getBreadcrumbDropdown(overflowDropdownMenu, props)}
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
@@ -64,26 +106,7 @@ const Breadcrumb = (props) => {
 };
 
 Breadcrumb.displayName = BREADCRUMB;
-
-Breadcrumb.propTypes = {
-	/**
-	 * **Assistive text for accessibility.**
-	 * This object is merged with the default props object on every render.
-	 * * `label`: The assistive text for the breadcrumb trail.
-	 */
-	assistiveText: PropTypes.shape({
-		label: PropTypes.string,
-	}),
-	/**
-	 * Custom styles to be passed to the containing `nav` tag
-	 */
-	styleContainer: PropTypes.object,
-	/**
-	 * An array of react elements presumably anchor elements.
-	 */
-	trail: PropTypes.array,
-};
-
+Breadcrumb.propTypes = propTypes;
 Breadcrumb.defaultProps = defaultProps;
 
 export default Breadcrumb;

@@ -38,7 +38,7 @@ import EventUtil from '../../utilities/event';
 function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
-		(node.nodeName === 'LI' && node.getAttribute('role') === 'tab')
+		(node.nodeName === 'LI' && node.getAttribute('role') === 'presentation')
 	);
 }
 
@@ -256,7 +256,14 @@ class Tabs extends React.Component {
 					return;
 				}
 
-				const index = [].slice.call(node.parentNode.children).indexOf(node);
+				let parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
+
+				if (parentNode.nodeName === 'LI') {
+					node = node.parentNode;
+					parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
+				}
+
+				const index = [].slice.call(parentNode.children).indexOf(node);
 				this.setSelected(index);
 				return;
 			}

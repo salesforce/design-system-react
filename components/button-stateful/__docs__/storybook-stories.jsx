@@ -26,7 +26,7 @@ storiesOf(BUTTON_STATEFUL, module)
 	.add('Icon', () =>
 		getButtonStateful({
 			assistiveText: { icon: 'Icon button' },
-			variant: 'icon',
+			variant: 'icon-filled',
 			label: 'Neutral Icon',
 			iconName: 'check',
 			onFocus: action('hover'),

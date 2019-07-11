@@ -30,6 +30,10 @@ const propTypes = {
 	 * Direction that the progress ring "flows." Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`
 	 */
 	flowDirection: PropTypes.oneOf(['drain', 'fill']),
+	/**
+	 * Size of the progress ring. Default is 'medium'
+	 */
+	size: PropTypes.oneOf(['medium', 'large']),
 };
 
 const defaultProps = {
@@ -61,7 +65,7 @@ const calculateD = (fillPercent) => {
  * Displays the progress ring shape.
  */
 const ProgressRingShape = (props) => {
-	const progressStyles = {};
+	const progressStyles = { height: props.size === 'large' ? '2rem' : '1.5rem' };
 
 	if (props.flowDirection === 'fill') {
 		progressStyles.transform = 'scaleX(1) rotate(-90deg)';

@@ -67,7 +67,6 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-color-picker"
             className="slds-input"
             disabled={true}
             id="color-picker-summary-input-color-picker"
@@ -177,36 +176,36 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 role="tablist"
               >
                 <li
-                  aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
-                  aria-selected="true"
                   className="slds-active slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-0"
-                  role="tab"
+                  role="presentation"
                   tabIndex="0"
                   title="Default"
                 >
                   <a
+                    aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
+                    aria-selected="true"
                     className="slds-active slds-tabs_default__link"
                     href="javascript:void(0);"
-                    role="presentation"
+                    role="tab"
                     tabIndex="-1"
                   >
                     Default
                   </a>
                 </li>
                 <li
-                  aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
-                  aria-selected="false"
                   className="slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-1"
-                  role="tab"
+                  role="presentation"
                   tabIndex={null}
                   title="Custom"
                 >
                   <a
+                    aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
+                    aria-selected="false"
                     className="slds-tabs_default__link"
                     href="javascript:void(0);"
-                    role="presentation"
+                    role="tab"
                     tabIndex="-1"
                   >
                     Custom
@@ -1239,7 +1238,9 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                                   >
                                     <span
                                       className="slds-assistive-text"
-                                    />
+                                    >
+                                      Transparent Swatch
+                                    </span>
                                   </span>
                                 </span>
                               </label>
@@ -1265,7 +1266,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         className="slds-form-element__control"
                       >
                         <input
-                          aria-describedby="color-picker-custom-error-color-picker"
                           className="slds-input"
                           id="color-picker-input-hex-color-picker"
                           maxLength="7"
@@ -1288,7 +1288,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         className="slds-form-element__control"
                       >
                         <input
-                          aria-describedby="color-picker-custom-error-color-picker"
                           className="slds-input"
                           id="color-picker-input-r-color-picker"
                           maxLength="3"
@@ -1311,7 +1310,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         className="slds-form-element__control"
                       >
                         <input
-                          aria-describedby="color-picker-custom-error-color-picker"
                           className="slds-input"
                           id="color-picker-input-g-color-picker"
                           maxLength="3"
@@ -1334,7 +1332,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                         className="slds-form-element__control"
                       >
                         <input
-                          aria-describedby="color-picker-custom-error-color-picker"
                           className="slds-input"
                           id="color-picker-input-b-color-picker"
                           maxLength="3"
@@ -1385,7 +1382,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-color-picker"
             className="slds-input"
             id="color-picker-summary-input-color-picker"
             onChange={[Function]}
@@ -1467,7 +1463,6 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-custom-only-color-picker"
             className="slds-input"
             id="color-picker-summary-input-custom-only-color-picker"
             onChange={[Function]}
@@ -1549,7 +1544,6 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-Custom-tab-default-color-picker"
             className="slds-input"
             id="color-picker-summary-input-Custom-tab-default-color-picker"
             onChange={[Function]}
@@ -1631,7 +1625,6 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-custom-validator-color-picker"
             className="slds-input"
             id="color-picker-summary-input-custom-validator-color-picker"
             onChange={[Function]}
@@ -1713,7 +1706,6 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-default-color-picker"
             className="slds-input"
             id="color-picker-summary-input-default-color-picker"
             onChange={[Function]}
@@ -1795,7 +1787,6 @@ exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-default-color-picker"
             className="slds-input"
             id="color-picker-summary-input-default-color-picker"
             onChange={[Function]}
@@ -1822,7 +1813,6 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
     >
       <label
         className="slds-color-picker__summary-label"
-        htmlFor="color-picker-summary-input-hidden-input-color-picker"
         id="color-picker-label-hidden-input-color-picker"
       >
         Choose Color
@@ -2028,7 +2018,6 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-predefined-color-picker"
             className="slds-input"
             id="color-picker-summary-input-predefined-color-picker"
             onChange={[Function]}
@@ -2109,7 +2098,6 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-predefined-only-color-picker"
             className="slds-input"
             id="color-picker-summary-input-predefined-only-color-picker"
             onChange={[Function]}
@@ -2191,7 +2179,6 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-swatch-only-color-picker"
             className="slds-input"
             id="color-picker-summary-input-swatch-only-color-picker"
             onChange={[Function]}
@@ -2273,7 +2260,6 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
           className="slds-form-element__control"
         >
           <input
-            aria-describedby="color-picker-summary-error-working-color-error-state-color-picker"
             className="slds-input"
             id="color-picker-summary-input-working-color-error-state-color-picker"
             onChange={[Function]}
