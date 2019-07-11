@@ -49,41 +49,9 @@ const propTypes = {
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * The page header icon
+	 * The page header icon. Expects an Icon component
 	 */
 	icon: PropTypes.element,
-	/**
-	 * The icon category
-	 */
-	iconCategory: PropTypes.oneOf([
-		'action',
-		'custom',
-		'doctype',
-		'standard',
-		'utility',
-	]),
-	/**
-	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
-	 */
-	iconName: PropTypes.string,
-	/**
-	 * If omitted, icon position is centered.
-	 */
-	iconPosition: PropTypes.oneOf(['left', 'right']),
-	/**
-	 * Determines the size of the icon.
-	 */
-	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	/**
-	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
-	 */
-	iconVariant: PropTypes.oneOf([
-		'container',
-		'border',
-		'border-filled',
-		'small',
-		'more',
-	]),
 	/**
 	 * The info property can be a string or a React element
 	 */

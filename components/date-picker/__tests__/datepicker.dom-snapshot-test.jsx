@@ -5,6 +5,16 @@ import { renderMarkup } from '../../../tests/snapshot-helpers';
 
 import SnapshotDefault from '../__examples__/snapshot-default';
 
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
+
 test('Datepicker Default DOM Snapshot', () => {
 	const domTree = renderer.create(<SnapshotDefault />).toJSON();
 	expect(domTree).toMatchSnapshot();
@@ -72,6 +82,14 @@ test(`Datepicker
 	DOM Snapshot`, () => {
 	const domTree = renderer
 		.create(<SnapshotDefault {...customProps} />)
+		.toJSON();
+	expect(domTree).toMatchSnapshot();
+});
+
+test(`Datepicker
+	Right-to-Left (RTL)`, () => {
+	const domTree = renderer
+		.create(makeRtl(<SnapshotDefault {...customProps} />))
 		.toJSON();
 	expect(domTree).toMatchSnapshot();
 });

@@ -4,6 +4,7 @@ import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header';
 import PageHeaderControl from '~/components/page-header/control';
@@ -128,9 +129,13 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					iconAssistiveText="Opportunity"
-					iconCategory="standard"
-					iconName="opportunity"
+					icon={
+						<Icon
+							assistiveText={{ label: 'Opportunity' }}
+							category="standard"
+							name="opportunity"
+						/>
+					}
 					info="10 items • Updated 13 minutes ago"
 					label="Opportunities"
 					nameSwitcherDropdown={

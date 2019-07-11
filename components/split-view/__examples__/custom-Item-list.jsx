@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconSettings from '~/components/icon-settings';
-import SplitView from '~/components/split-view/index';
-import SplitViewHeader from '~/components/split-view/header';
-import SplitViewListbox from '~/components/split-view/listbox';
-import Icon from '~/components/icon';
+
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
+import Icon from '~/components/icon';
+import IconSettings from '~/components/icon-settings';
+import PageHeaderControl from '~/components/page-header/control';
+import SplitView from '~/components/split-view/index';
+import SplitViewHeader from '~/components/split-view/header';
+import SplitViewListbox from '~/components/split-view/listbox';
 
 const SORT_OPTIONS = {
 	UP: 'up',
@@ -52,8 +54,8 @@ const listOptions = [
 	},
 ];
 
-const headerNavRight = () => (
-	<div>
+const headerActions = () => (
+	<PageHeaderControl>
 		<Dropdown
 			id="header-nav-right-more"
 			align="right"
@@ -66,55 +68,57 @@ const headerNavRight = () => (
 				{ label: 'Menu Item Two', value: 'B0' },
 			]}
 		/>
-	</div>
+	</PageHeaderControl>
 );
 
-const headerContentRight = (
-	<div>
-		<Dropdown
-			id="header-right-refresh"
-			buttonClassName="slds-m-right_xx-small"
-			assistiveText={{ icon: 'Checkmark with right icon' }}
-			buttonVariant="icon"
-			checkmark
-			iconCategory="utility"
-			iconName="side_list"
-			iconSize="large"
-			iconVariant="more"
-			align="right"
-			onSelect={(value) => {
-				console.log('selected: ', value);
-			}}
-			options={[
-				{ label: 'Display As', type: 'header' },
-				{
-					label: 'Table View',
-					value: 'A0',
-					rightIcon: {
-						category: 'utility',
-						name: 'table',
+const headerControls = () => (
+	<>
+		<PageHeaderControl>
+			<Dropdown
+				id="header-right-refresh"
+				assistiveText={{ icon: 'Checkmark with right icon' }}
+				buttonVariant="icon"
+				checkmark
+				iconCategory="utility"
+				iconName="side_list"
+				iconSize="large"
+				iconVariant="more"
+				align="right"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Display As', type: 'header' },
+					{
+						label: 'Table View',
+						value: 'A0',
+						rightIcon: {
+							category: 'utility',
+							name: 'table',
+						},
 					},
-				},
-				{
-					label: 'List View',
-					value: 'B0',
-					rightIcon: {
-						category: 'utility',
-						name: 'side_list',
+					{
+						label: 'List View',
+						value: 'B0',
+						rightIcon: {
+							category: 'utility',
+							name: 'side_list',
+						},
 					},
-				},
-			]}
-			value="B0"
-		/>
-
-		<Button
-			assistiveText={{ icon: 'Refresh' }}
-			iconCategory="utility"
-			iconName="refresh"
-			iconVariant="border"
-			variant="icon"
-		/>
-	</div>
+				]}
+				value="B0"
+			/>
+		</PageHeaderControl>
+		<PageHeaderControl>
+			<Button
+				assistiveText={{ icon: 'Refresh' }}
+				iconCategory="utility"
+				iconName="refresh"
+				iconVariant="border"
+				variant="icon"
+			/>
+		</PageHeaderControl>
+	</>
 );
 
 const headerTitle = (
@@ -209,11 +213,15 @@ class Example extends React.Component {
 		return [
 			<SplitViewHeader
 				key="1"
-				contentRight={headerContentRight}
-				onRenderControls={headerNavRight}
-				iconAssistiveText="User"
-				iconCategory="standard"
-				iconName="lead"
+				onRenderActions={headerActions}
+				onRenderControls={headerControls}
+				icon={
+					<Icon
+						assistiveText={{ label: 'User' }}
+						category="standard"
+						name="lead"
+					/>
+				}
 				info="42 items • Updated just now"
 				title={headerTitle}
 				truncate

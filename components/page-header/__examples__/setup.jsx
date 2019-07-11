@@ -44,7 +44,6 @@ class Example extends React.Component {
 								label: 'Home',
 							}}
 							category="standard"
-							className="slds-page-header__icon"
 							name="home"
 							style={{
 								backgroundColor: '#ea7600',

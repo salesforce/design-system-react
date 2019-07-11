@@ -43,6 +43,7 @@ This is a private repository. Site will currently run on Node `v8.6.0`
 * Log into Heroku
 * Check deployed staging site.
 * Promote staging app to production app. You will need promotion rights to the Heroku application.
+* Test the module in a minimal Create React App (CRA) to confirm the release build. Storybook and the documentation website are set up for consuming the library in very specfic ways which include Babel transpiling. Unless the library is tested outside of them, build errors may not be caught.
 
 ### Manual release if needed
 
