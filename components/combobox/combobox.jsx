@@ -35,7 +35,6 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyLetterMenuItemSelect from '../../utilities/key-letter-menu-item-select';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
-import { DIRECTIONS } from '../utilities/UNSAFE_direction';
 
 import checkProps from './check-props';
 
@@ -307,7 +306,6 @@ const defaultProps = {
 		removePill: ', Press delete or backspace to remove',
 		selectedListboxLabel: 'Selected Options:',
 	},
-	direction: DIRECTIONS.LTR,
 	events: {},
 	labels: {
 		cancelButton: 'Cancel',
@@ -467,11 +465,9 @@ class Combobox extends React.Component {
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
-		const alignment =
-			this.props.direction === DIRECTIONS.RTL ? 'bottom right' : 'bottom left';
 		return !this.props.disabled && this.getIsOpen() ? (
 			<Dialog
-				align={alignment}
+				align="bottom left"
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritWidthOf={this.props.inheritWidthOf}

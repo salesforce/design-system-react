@@ -4743,13 +4743,6 @@
                     "value": "'base'",
                     "computed": false
                 }
-            },
-            "direction": {
-                "defaultValue": {
-                    "value": "DIRECTIONS.LTR",
-                    "computed": true
-                },
-                "required": false
             }
         },
         "context": {
