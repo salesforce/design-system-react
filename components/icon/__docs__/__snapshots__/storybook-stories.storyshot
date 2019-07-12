@@ -641,6 +641,225 @@ exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-account"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#2A739E",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Global Setup
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-address"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#7f2443",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#address"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Service Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-answer-best"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#4c2248",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#answer_best"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Industry Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-canvas"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#00857d",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#canvas"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Sales Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#41693d",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Commerce Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#ffc20e",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Community Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#ea7600",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Marketing Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#cf451d",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Quip
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSIcon Size: Large 1`] = `
 <div
   className="slds-p-around_medium"

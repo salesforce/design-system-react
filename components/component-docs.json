@@ -1153,12 +1153,26 @@
                     "computed": false
                 }
             },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
+            },
+            "overflowDropdownMenu": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Overflow menu of the type [Dropdown](/components/menu-dropdowns)"
+            },
             "trail": {
                 "type": {
                     "name": "array"
                 },
-                "required": false,
-                "description": "An array of react elements presumably anchor elements."
+                "required": true,
+                "description": "An array of anchor elements that define the path to the current record."
             }
         },
         "route": "breadcrumbs",
@@ -4729,13 +4743,6 @@
                     "value": "'base'",
                     "computed": false
                 }
-            },
-            "direction": {
-                "defaultValue": {
-                    "value": "DIRECTIONS.LTR",
-                    "computed": true
-                },
-                "required": false
             }
         },
         "context": {
@@ -8156,6 +8163,47 @@
                 },
                 "required": false,
                 "description": "Path to the icon. This will override any global icon settings"
+            },
+            "productTheme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'global-setup'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'service-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'industry-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'sales-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'commerce-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'community-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'marketing-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'quip'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Background theme color for the icon. **Only compatible with icon category `standard`**"
             },
             "size": {
                 "type": {
