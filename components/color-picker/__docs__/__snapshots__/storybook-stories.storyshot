@@ -1697,7 +1697,7 @@ exports[`DOM snapshots SLDSColorPicker Default - Right to Left (RTL) 1`] = `
               className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
               />
             </svg>
           </button>
@@ -1709,7 +1709,6 @@ exports[`DOM snapshots SLDSColorPicker Default - Right to Left (RTL) 1`] = `
             className="slds-form-element__control"
           >
             <input
-              aria-describedby="color-picker-summary-error-default-color-picker"
               className="slds-input"
               id="color-picker-summary-input-default-color-picker"
               onChange={[Function]}

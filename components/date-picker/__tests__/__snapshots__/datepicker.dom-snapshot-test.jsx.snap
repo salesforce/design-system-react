@@ -900,7 +900,7 @@ exports[`Datepicker
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event"
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#event"
             />
           </svg>
           <span
@@ -948,7 +948,7 @@ exports[`Datepicker
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#left"
                   />
                 </svg>
                 <span
@@ -986,7 +986,7 @@ exports[`Datepicker
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#right"
                   />
                 </svg>
                 <span
@@ -1046,7 +1046,7 @@ exports[`Datepicker
                           className="slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
                           />
                         </svg>
                       </span>
