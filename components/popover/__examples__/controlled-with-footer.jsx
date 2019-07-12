@@ -4,13 +4,11 @@ import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-import { action, decorateAction } from '@storybook/addon-actions';
-
 class Example extends React.Component {
 	static displayName = 'PopoverExample';
 
 	state = {
-		isOpen: false,
+		isOpen: false
 	};
 
 	handleOpen = () => {
@@ -48,11 +46,7 @@ class Example extends React.Component {
 						footer={
 							<div className="slds-text-align_right">
 								<Button label="Cancel" onClick={this.handleCancel} />
-								<Button
-									variant="brand"
-									label="Apply"
-									onClick={this.handleApply}
-								/>
+								<Button variant="brand" label="Apply" onClick={this.handleApply} />
 							</div>
 						}
 						heading="Confirmation"
