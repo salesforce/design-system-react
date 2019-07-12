@@ -3,7 +3,6 @@ import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
 import Icon from '../../icon';
-import Dropdown from '../../menu-dropdown';
 import BuilderHeader from '..';
 import BuilderHeaderNav from '../nav';
 import BuilderHeaderNavLink from '../nav-link';
@@ -16,13 +15,13 @@ const Example = (props) => (
 			assistiveText={{
 				backIcon: 'Back',
 				helpIcon: 'Help',
-				icon: 'Builder',
+				icon: 'Builder'
 			}}
 			labels={{
 				back: 'Back',
 				help: 'Help',
 				pageType: 'Page Type',
-				title: 'App Name',
+				title: 'App Name'
 			}}
 			style={{ position: 'relative' }}
 		>
@@ -39,15 +38,12 @@ const Example = (props) => (
 					iconName="page"
 					id="dropdown"
 					label="Dropdown"
-					options={[
-						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' },
-					]}
+					options={[ { label: 'Menu Item One', value: 'A0' }, { label: 'Menu Item Two', value: 'B0' } ]}
 				/>
 			</BuilderHeaderNav>
 			<BuilderHeaderToolbar
 				assistiveText={{
-					actions: 'Document Actions',
+					actions: 'Document Actions'
 				}}
 				onRenderActions={() => (
 					<div>
@@ -58,15 +54,8 @@ const Example = (props) => (
 							size="x-small"
 							style={{ fill: '#4BCA81' }}
 						/>
-						<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_small">
-							Saved
-						</span>
-						<Button
-							iconCategory="utility"
-							iconName="right"
-							iconPosition="left"
-							label="Run"
-						/>
+						<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_small">Saved</span>
+						<Button iconCategory="utility" iconName="right" iconPosition="left" label="Run" />
 						<Button label="Save As" />
 						<Button label="Save" variant="brand" />
 					</div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import IconSettings from '~/components/icon-settings';
-import Icon from '~/components/icon';
 import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
@@ -15,12 +14,7 @@ class Example extends React.Component {
 						<ProgressRing value={20} theme="expired" hasIcon />
 					</div>
 					<div className="slds-col_padded">
-						<ProgressRing
-							flowDirection="fill"
-							value={40}
-							theme="expired"
-							hasIcon
-						/>
+						<ProgressRing flowDirection="fill" value={40} theme="expired" hasIcon />
 					</div>
 					<div className="slds-col_padded">
 						<ProgressRing value={100} theme="expired" />

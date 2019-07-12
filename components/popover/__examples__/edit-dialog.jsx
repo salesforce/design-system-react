@@ -3,7 +3,6 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
-import Button from '~/components/button';
 
 const DEFAULT_FIRST_NAME = 'John';
 const DEFAULT_LAST_NAME = 'Smith';
@@ -18,7 +17,7 @@ class Example extends React.Component {
 			firstName: DEFAULT_FIRST_NAME, // stores firstName in edit input field
 			lastName: DEFAULT_LAST_NAME, // stores lastName in edit input field
 			prevFirstName: DEFAULT_FIRST_NAME,
-			prevLastName: DEFAULT_LAST_NAME,
+			prevLastName: DEFAULT_LAST_NAME
 		};
 	}
 
@@ -43,7 +42,7 @@ class Example extends React.Component {
 		this.setState({
 			isOpen: false,
 			firstName: this.state.prevFirstName,
-			lastName: this.state.prevLastName,
+			lastName: this.state.prevLastName
 		});
 	};
 
@@ -51,13 +50,13 @@ class Example extends React.Component {
 		this.setState({
 			prevFirstName: this.state.firstName,
 			prevLastName: this.state.lastName,
-			isOpen: false,
+			isOpen: false
 		});
 	};
 
 	handleOpen = () => {
 		this.setState({
-			isOpen: true,
+			isOpen: true
 		});
 	};
 
