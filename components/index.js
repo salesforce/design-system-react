@@ -92,6 +92,13 @@ export Combobox from './combobox';
 export SLDSExpandableSection from './expandable-section';
 export ExpandableSection from './expandable-section';
 
+export SLDSFiles from './files';
+export Files from './files';
+export SLDSFile from './files/file';
+export File from './files/file';
+export SLDSMoreFiles from './files/more-files';
+export MoreFiles from './files/more-files';
+
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
 export comboboxAddSubheadings from './combobox/add-subheadings';

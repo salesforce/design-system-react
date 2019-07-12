@@ -4,6 +4,7 @@ import File from '~/components/files/file';
 import MoreFiles from '~/components/files/more-files';
 import IconSettings from '~/components/icon-settings';
 import Icon from '~/components/icon';
+import Dropdown from '~/components/menu-dropdown';
 
 class Example extends React.Component {
 	static displayName = 'filesLoadingExample';
@@ -15,25 +16,53 @@ class Example extends React.Component {
 					<File
 						id="file-without-title"
 						image="/assets/images/placeholder-img@16x9.jpg"
+						hasNoVisibleTitle
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						onClickDownload={() => {
 							console.log('Download Button Clicked');
 						}}
-						onClickMoreActions={() => {
-							console.log('Download Button Clicked');
-						}}
+						moreActionsDropdown={
+							<Dropdown
+								iconVariant="more"
+								onSelect={(value) => {
+									console.log('selected: ', value);
+								}}
+								options={[
+									{ label: 'Menu Item One', value: 'A0' },
+									{ label: 'Menu Item Two', value: 'B0' },
+								]}
+								value="A0"
+							/>
+						}
 					/>
 					<File
 						id="file-with-title"
 						href="javascript:void(0);"
-						title="Image Title"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
 						onClickDownload={() => {
 							console.log('Download Button Clicked');
 						}}
-						onClickMoreActions={() => {
-							console.log('Download Button Clicked');
-						}}
+						moreActionsDropdown={
+							<Dropdown
+								iconCategory="utility"
+								iconName="down"
+								iconVariant="border-filled"
+								onSelect={(value) => {
+									console.log('selected: ', value);
+								}}
+								options={[
+									{ label: 'Menu Item One', value: 'A0' },
+									{ label: 'Menu Item Two', value: 'B0' },
+								]}
+								value="A0"
+							/>
+						}
 					/>
 					<MoreFiles
 						id="more-file-card"

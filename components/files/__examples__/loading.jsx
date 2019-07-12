@@ -13,16 +13,19 @@ class Example extends React.Component {
 				<Files id="files-loading-example">
 					<File
 						id="file-without-title-loading"
-						href="javascript:void(0);"
+						hasNoVisibleTitle
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						isLoading
 					/>
 					<File
 						id="file-with-title-loading"
-						href="javascript:void(0);"
 						icon={<Icon category="doctype" name="image" />}
 						isLoading
-						title="Image Title"
-						type="image"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 					/>
 				</Files>
 			</IconSettings>

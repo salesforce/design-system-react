@@ -30,14 +30,22 @@ const FileFigure = (props) => {
 		return (
 			<React.Fragment>
 				<span className="slds-assistive-text">Preview:</span>
-				<img src={props.image} alt={props.title} />
+				<img
+					src={props.image}
+					alt={
+						props.assistiveText ? props.assistiveText.image : props.labels.title
+					}
+				/>
 			</React.Fragment>
 		);
 	}
 	return (
 		<React.Fragment>
 			<span className="slds-assistive-text">Preview:</span>
-			<span className="slds-file__icon slds-icon_container" title={props.title}>
+			<span
+				className="slds-file__icon slds-icon_container"
+				title={props.labels.title}
+			>
 				{React.cloneElement(props.icon, {
 					size: null,
 				})}
@@ -49,6 +57,9 @@ const FileFigure = (props) => {
 FileFigure.displayName = FILES_FIGURE;
 
 FileFigure.propTypes = {
+	assistiveText: PropTypes.shape({
+		image: PropTypes.string,
+	}),
 	/**
 	 *  Whether the file figure is loading
 	 */
@@ -58,9 +69,11 @@ FileFigure.propTypes = {
 	 */
 	image: PropTypes.string,
 	/**
-	 *  Title for the file
+	 *  Labels for the file figure component
 	 */
-	title: PropTypes.string,
+	labels: PropTypes.shape({
+		title: PropTypes.string.isRequired,
+	}),
 };
 
 FileFigure.defaultProps = {

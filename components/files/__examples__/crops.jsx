@@ -13,23 +13,27 @@ class Example extends React.Component {
 				<Files id="files-with-crop-example">
 					<File
 						id="file-crop-1-1"
-						title="Proposal.pdf"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
-						href="javascript:void(0);"
 						crop="1-by-1"
 					/>
 					<File
 						id="file-crop-16-9"
-						title="Proposal.pdf"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
-						href="javascript:void(0);"
 						crop="16-by-9"
 					/>
 					<File
 						id="file-crop-4-3"
-						title="Proposal.pdf"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
 						href="javascript:void(0);"

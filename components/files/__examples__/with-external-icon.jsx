@@ -13,10 +13,11 @@ class Example extends React.Component {
 				<Files id="files-with-external-icon-example">
 					<File
 						id="file-with-external-icon"
-						title="Image Title"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
 						icon={<Icon category="doctype" name="pdf" />}
 						externalIcon={<Icon category="utility" name="salesforce1" />}
-						href="javascript:void(0);"
 					/>
 				</Files>
 			</IconSettings>

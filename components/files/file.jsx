@@ -19,6 +19,9 @@ import FileActions from './private/file-actions';
 const displayName = FILES_FILE;
 
 const propTypes = {
+	assistiveText: PropTypes.shape({
+		image: PropTypes.string,
+	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
@@ -37,9 +40,9 @@ const propTypes = {
 	 */
 	onClickDownload: PropTypes.func,
 	/**
-	 *  Action to be done on clicking more actions button; doesn't show More actions button if empty
+	 *  Dropdown for More Actions doesn't show More actions button if empty
 	 */
-	onClickMoreActions: PropTypes.func,
+	moreActionsDropdown: PropTypes.node,
 	/**
 	 *  Link to External Icon
 	 */
@@ -57,16 +60,20 @@ const propTypes = {
 	 */
 	href: PropTypes.string,
 	/**
-	 *  Title for the File
+	 *  Labels for the File Component
 	 */
-	title: PropTypes.string,
+	labels: PropTypes.shape({
+		title: PropTypes.string.isRequired,
+	}),
+	hasNoVisibleTitle: PropTypes.bool,
 };
 
 const defaultProps = {
-	isLoading: false,
 	crop: '16-by-9',
+	href: 'javascript:void(0);',
+	isLoading: false,
+	hasNoVisibleTitle: false,
 };
-
 /**
  * File is a component that represents content uploaded as an attachment.
  */
@@ -89,7 +96,7 @@ class File extends React.Component {
 				className={classNames(
 					'slds-file',
 					'slds-file_card',
-					this.props.title ? 'slds-has-title' : null,
+					!this.props.hasNoVisibleTitle ? 'slds-has-title' : null,
 					this.props.className
 				)}
 			>
@@ -102,13 +109,20 @@ class File extends React.Component {
 						)}
 					>
 						<FileFigure
+							assistiveText={{
+								image: this.props.assistiveText
+									? this.props.assistiveText.image
+									: null,
+							}}
+							labels={{
+								title: this.props.labels.title,
+							}}
 							isLoading={this.props.isLoading}
 							image={this.props.image}
-							title={this.props.title}
 							icon={this.props.icon}
 						/>
 					</a>
-					{this.props.title ? (
+					{!this.props.hasNoVisibleTitle ? (
 						<figcaption className="slds-file__title slds-file__title_card">
 							<div className="slds-media__figure slds-line-height_reset">
 								{this.props.icon
@@ -120,9 +134,9 @@ class File extends React.Component {
 							<div className="slds-media__body">
 								<span
 									className="slds-file__text slds-truncate"
-									title={this.props.title}
+									title={this.props.labels.title}
 								>
-									{this.props.title}
+									{this.props.labels.title}
 								</span>
 							</div>
 						</figcaption>
@@ -136,9 +150,9 @@ class File extends React.Component {
 					</div>
 				) : null}
 				<FileActions
+					hasNoVisibleTitle={this.props.hasNoVisibleTitle}
 					onClickDownload={this.props.onClickDownload}
-					onClickMoreActions={this.props.onClickMoreActions}
-					title={this.props.title}
+					moreActionsDropdown={this.props.moreActionsDropdown}
 				/>
 			</div>
 		);

@@ -32,35 +32,19 @@ const FileActions = (props) => {
 							category="utility"
 							name="download"
 							size="xx-small"
-							inverse={!props.title}
+							inverse={props.hasNoVisibleTitle}
 						/>
 					</Button>
 				) : null}
-				{typeof props.onClickMoreActions === 'function' ? (
-					<Button
-						type="button"
-						variant="icon"
-						iconSize="x-small"
-						onClick={props.onClickMoreActions}
-						title="More Actions"
-					>
-						<Icon
-							assistiveText={{ label: 'More Actions' }}
-							category="utility"
-							name="down"
-							size="xx-small"
-							inverse={!props.title}
-						/>
-					</Button>
-				) : null}
+				{props.moreActionsDropdown ? props.moreActionsDropdown : null}
 			</div>
 		</div>
 	);
 	if (
 		typeof props.onClickDownload === 'function' ||
-		typeof props.onClickMoreActions === 'function'
+		props.moreActionsDropdown
 	) {
-		if (props.title) {
+		if (!props.hasNoVisibleTitle) {
 			return actions;
 		}
 		return (
@@ -78,13 +62,13 @@ FileActions.propTypes = {
 	 */
 	onClickDownload: PropTypes.func,
 	/**
-	 *  Action to be done on clicking more actions button; doesn't show More actions button if empty
+	 *  Dropdown for More Actions; doesn't show More actions button if empty
 	 */
-	onClickMoreActions: PropTypes.func,
+	moreActionsDropdown: PropTypes.node,
 	/**
-	 *  Title for the File
+	 *  Labels for the file component
 	 */
-	title: PropTypes.string,
+	hasNoVisibleTitle: PropTypes.bool,
 };
 
 export default FileActions;

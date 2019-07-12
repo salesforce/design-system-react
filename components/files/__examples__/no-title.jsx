@@ -12,8 +12,11 @@ class Example extends React.Component {
 				<Files id="files-with-no-title-example">
 					<File
 						id="file-with-no-title"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
+						hasNoVisibleTitle
 						image="/assets/images/placeholder-img@16x9.jpg"
-						href="javascript:void(0);"
 					/>
 				</Files>
 			</IconSettings>

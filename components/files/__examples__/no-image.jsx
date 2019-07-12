@@ -13,9 +13,13 @@ class Example extends React.Component {
 				<Files id="files-with-no-image-example">
 					<File
 						id="file-with-no-image"
-						title="Image Title"
+						labels={{
+							title: 'Proposal.pdf',
+						}}
+						assistiveText={{
+							image: 'Placeholder image',
+						}}
 						icon={<Icon category="doctype" name="pdf" />}
-						href="javascript:void(0);"
 					/>
 				</Files>
 			</IconSettings>

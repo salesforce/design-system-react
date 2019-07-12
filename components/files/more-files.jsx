@@ -38,6 +38,11 @@ const propTypes = {
 	href: PropTypes.string,
 };
 
+const defaultProps = {
+	crop: '16-by-9',
+	href: 'javascript:void(0);',
+};
+
 class MoreFiles extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();
@@ -87,5 +92,6 @@ class MoreFiles extends React.Component {
 
 MoreFiles.displayName = displayName;
 MoreFiles.propTypes = propTypes;
+MoreFiles.defaultProps = defaultProps;
 
 export default MoreFiles;
