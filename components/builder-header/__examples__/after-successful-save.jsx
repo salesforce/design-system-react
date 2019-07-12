@@ -2,7 +2,6 @@ import React from 'react';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
-import Dropdown from '../../menu-dropdown';
 import Tooltip from '../../tooltip';
 import BuilderHeader from '..';
 import BuilderHeaderNav from '../nav';
@@ -16,13 +15,13 @@ const Example = (props) => (
 			assistiveText={{
 				backIcon: 'Back',
 				helpIcon: 'Help',
-				icon: 'Builder',
+				icon: 'Builder'
 			}}
 			labels={{
 				back: 'Back',
 				help: 'Help',
 				pageType: 'Page Type',
-				title: 'App Name',
+				title: 'App Name'
 			}}
 			style={{ position: 'relative' }}
 		>
@@ -39,33 +38,21 @@ const Example = (props) => (
 					iconName="page"
 					id="dropdown"
 					label="Dropdown"
-					options={[
-						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' },
-					]}
+					options={[ { label: 'Menu Item One', value: 'A0' }, { label: 'Menu Item Two', value: 'B0' } ]}
 				/>
 			</BuilderHeaderNav>
 			<BuilderHeaderToolbar
 				assistiveText={{
-					actions: 'Document Actions',
+					actions: 'Document Actions'
 				}}
 				onRenderActions={() => (
 					<div>
-						<Tooltip
-							id="status-tooltip"
-							align="bottom"
-							content="Last modified on June 1, 2018 by SysAdmin"
-						>
+						<Tooltip id="status-tooltip" align="bottom" content="Last modified on June 1, 2018 by SysAdmin">
 							<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_small">
 								Saved 5 mins ago
 							</span>
 						</Tooltip>
-						<Button
-							iconCategory="utility"
-							iconName="right"
-							iconPosition="left"
-							label="Run"
-						/>
+						<Button iconCategory="utility" iconName="right" iconPosition="left" label="Run" />
 						<Button label="Save As" />
 						<Button label="Save" variant="brand" />
 					</div>
