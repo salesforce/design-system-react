@@ -1639,6 +1639,92 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSColorPicker Default - Right to Left (RTL) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    dir="rtl"
+  >
+    <div
+      className="slds-color-picker test_class_name"
+    >
+      <div
+        className="slds-color-picker__summary"
+      >
+        <label
+          className="slds-color-picker__summary-label"
+          htmlFor="color-picker-summary-input-default-color-picker"
+          id="color-picker-label-default-color-picker"
+        >
+          Choose Color
+        </label>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <button
+            className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+            disabled={false}
+            id="slds-color-picker__summary-button-default-color-picker"
+            onClick={[Function]}
+            onFocus={null}
+            onMouseEnter={null}
+            onMouseLeave={null}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          className="slds-form-element slds-color-picker__summary-input slds-align-top"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              aria-describedby="color-picker-summary-error-default-color-picker"
+              className="slds-input"
+              id="color-picker-summary-input-default-color-picker"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSColorPicker Default 1`] = `
 <div
   className="slds-p-around_medium"
