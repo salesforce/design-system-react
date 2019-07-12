@@ -1,46 +1,45 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';
-import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
 	{
 		id: '1',
 		label: 'Acme',
-		subTitle: 'Account • San Francisco',
+		subTitle: 'Account • San Francisco'
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
-		subTitle: 'Account • San Francisco',
+		subTitle: 'Account • San Francisco'
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
-		subTitle: 'Account • Boston, MA',
+		subTitle: 'Account • Boston, MA'
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
-		subTitle: 'Account • San Francisco, CA',
+		subTitle: 'Account • San Francisco, CA'
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
-		subTitle: 'Account • Beloit, WI',
+		subTitle: 'Account • Beloit, WI'
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
-		subTitle: 'Account • Chicago, IL',
+		subTitle: 'Account • Chicago, IL'
 	},
 	{ id: '7', label: 'Acme Landscaping' },
 	{
 		id: '8',
 		label: 'Acme Construction',
-		subTitle: 'Account • Grand Marais, MN',
-	},
+		subTitle: 'Account • Grand Marais, MN'
+	}
 ];
 
 class Example extends React.Component {
@@ -49,7 +48,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: [],
+			selection: []
 		};
 	}
 
@@ -62,27 +61,24 @@ class Example extends React.Component {
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({
 								inputValue: '',
-								selection: data.selection,
+								selection: data.selection
 							});
 						},
 						onSelect: (event, data) => {
 							if (this.props.action) {
-								this.props.action('onSelect')(
-									event,
-									...Object.keys(data).map((key) => data[key])
-								);
+								this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
 							} else if (console) {
 								console.log('onSelect', event, data);
 							}
 							this.setState({
 								inputValue: '',
-								selection: data.selection,
+								selection: data.selection
 							});
-						},
+						}
 					}}
 					labels={{
 						label: 'Search',
-						placeholder: 'Search Salesforce',
+						placeholder: 'Search Salesforce'
 					}}
 					multiple
 					options={accounts}
