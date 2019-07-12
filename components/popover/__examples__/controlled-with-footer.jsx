@@ -8,7 +8,7 @@ class Example extends React.Component {
 	static displayName = 'PopoverExample';
 
 	state = {
-		isOpen: false
+		isOpen: false,
 	};
 
 	handleOpen = () => {
@@ -46,7 +46,11 @@ class Example extends React.Component {
 						footer={
 							<div className="slds-text-align_right">
 								<Button label="Cancel" onClick={this.handleCancel} />
-								<Button variant="brand" label="Apply" onClick={this.handleApply} />
+								<Button
+									variant="brand"
+									label="Apply"
+									onClick={this.handleApply}
+								/>
 							</div>
 						}
 						heading="Confirmation"

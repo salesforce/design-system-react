@@ -10,8 +10,8 @@ import Combobox from '~/components/combobox';
 const options = {
 	'show-me': [
 		{ id: 1, label: 'All Products', value: 'all-products' },
-		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' }
-	]
+		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' },
+	],
 };
 
 class Example extends React.Component {
@@ -19,16 +19,16 @@ class Example extends React.Component {
 
 	static propTypes() {
 		return {
-			align: PropTypes.string
+			align: PropTypes.string,
 		};
 	}
 
 	state = {
 		'show-me': {
-			comboboxSelection: [ options['show-me'][0] ],
+			comboboxSelection: [options['show-me'][0]],
 			selectedItem: options['show-me'][0],
-			isActive: true
-		}
+			isActive: true,
+		},
 	};
 
 	onChangePredicate = (event, { id }) => {
@@ -36,8 +36,8 @@ class Example extends React.Component {
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				selectedItem: this.state[idSuffix].comboboxSelection
-			}
+				selectedItem: this.state[idSuffix].comboboxSelection,
+			},
 		});
 	};
 
@@ -46,8 +46,8 @@ class Example extends React.Component {
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				isActive: false
-			}
+				isActive: false,
+			},
 		});
 	};
 
@@ -70,14 +70,14 @@ class Example extends React.Component {
 									this.setState({
 										'show-me': {
 											...this.state['show-me'],
-											comboboxSelection: data.selection
-										}
+											comboboxSelection: data.selection,
+										},
 									});
-								}
+								},
 							}}
 							labels={{
 								label: 'Show Me',
-								placeholder: 'Select record type'
+								placeholder: 'Select record type',
 							}}
 							menuPosition="relative"
 							options={options['show-me']}

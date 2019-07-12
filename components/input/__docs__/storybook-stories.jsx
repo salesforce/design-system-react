@@ -19,7 +19,7 @@ const iconClicked = action;
 const clearIcon = (
 	<InputIcon
 		assistiveText={{
-			icon: 'clear'
+			icon: 'clear',
 		}}
 		name="clear"
 		category="utility"
@@ -28,7 +28,7 @@ const clearIcon = (
 const clearIconClickable = (
 	<InputIcon
 		assistiveText={{
-			icon: 'clear'
+			icon: 'clear',
 		}}
 		name="clear"
 		category="utility"
@@ -39,7 +39,7 @@ const searchIcon = <InputIcon name="search" category="utility" />;
 const searchIconClickable = (
 	<InputIcon
 		assistiveText={{
-			icon: 'Search'
+			icon: 'Search',
 		}}
 		name="search"
 		category="utility"
@@ -47,7 +47,9 @@ const searchIconClickable = (
 	/>
 );
 storiesOf(INPUT, module)
-	.addDecorator((getStory) => <div className="slds-p-around_medium">{getStory()}</div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around_medium">{getStory()}</div>
+	))
 	.add('Base', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
@@ -64,7 +66,7 @@ storiesOf(INPUT, module)
 						</h1>
 						<Input
 							assistiveText={{
-								label: 'My label'
+								label: 'My label',
 							}}
 							id="assistiveLabel-id"
 							placeholder="My placeholder"
@@ -79,13 +81,15 @@ storiesOf(INPUT, module)
 			<section>
 				<ol>
 					<li className="slds-p-bottom_large">
-						<h1 className="slds-text-title_caps slds-p-vertical_medium">Input with custom style</h1>
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
+							Input with custom style
+						</h1>
 						<Input
 							autoComplete="off"
 							styleInput={{
 								width: 130,
 								height: 30,
-								background: '#efffff'
+								background: '#efffff',
 							}}
 							id="custom-style"
 							label="My Label"
@@ -101,7 +105,9 @@ storiesOf(INPUT, module)
 			<section>
 				<ol>
 					<li className="slds-p-bottom_large">
-						<h1 className="slds-text-title_caps slds-p-vertical_medium">1. Base Input with left icon</h1>
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
+							1. Base Input with left icon
+						</h1>
 						<Input
 							id="with-left-icon"
 							label="My label"
@@ -121,7 +127,9 @@ storiesOf(INPUT, module)
 						/>
 					</li>
 					<li className="slds-p-bottom_large">
-						<h1 className="slds-text-title_caps slds-p-vertical_medium">3. Base Input with right icon</h1>
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
+							3. Base Input with right icon
+						</h1>
 						<Input
 							id="with-right-icon"
 							label="My Label"
@@ -183,7 +191,7 @@ storiesOf(INPUT, module)
 						<Input
 							id="with-left-clickable-right-and-spinner"
 							assistiveText={{
-								spinner: 'Field data is loading'
+								spinner: 'Field data is loading',
 							}}
 							hasSpinner
 							iconLeft={searchIcon}
@@ -200,11 +208,13 @@ storiesOf(INPUT, module)
 	.add('Fixed Text', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">Input with Fixed Text</h1>
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Input with Fixed Text
+				</h1>
 				<Input
 					id="fixed-text"
 					assistiveText={{
-						label: 'My Label'
+						label: 'My Label',
 					}}
 					name="fixed-text"
 					label="My Label"
@@ -217,34 +227,62 @@ storiesOf(INPUT, module)
 	.add('Read Only', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">Read only Input</h1>
-				<Input id="read-only" name="read-only" label="My Label" readOnly value="Read Only Value" />
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Read only Input
+				</h1>
+				<Input
+					id="read-only"
+					name="read-only"
+					label="My Label"
+					readOnly
+					value="Read Only Value"
+				/>
 			</section>
 		</IconSettings>
 	))
 	.add('Static Input', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">Static Input</h1>
-				<Input id="static-input" name="static-input" label="My Label" isStatic value="Static value" />
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Static Input
+				</h1>
+				<Input
+					id="static-input"
+					name="static-input"
+					label="My Label"
+					isStatic
+					value="Static value"
+				/>
 			</section>
 		</IconSettings>
 	))
 	.add('Disabled Input', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">Disabled Input</h1>
-				<Input id="disabled-input" name="disabled-input" label="My Label" disabled value="Disabled value" />
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Disabled Input
+				</h1>
+				<Input
+					id="disabled-input"
+					name="disabled-input"
+					label="My Label"
+					disabled
+					value="Disabled value"
+				/>
 			</section>
 		</IconSettings>
 	))
 	.add('Required Input in Error State', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">Example Button</h1>
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Example Button
+				</h1>
 				<Button label="Test" />
 
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">Required Input with Error</h1>
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Required Input with Error
+				</h1>
 				<Input
 					id="required-input-error"
 					aria-describedby="error-1"
@@ -259,7 +297,9 @@ storiesOf(INPUT, module)
 	))
 	.add('Inline Help', () => <InlineHelpInput />)
 	.add('Field Level Help', () => <FieldLevelHelpInput />)
-	.add('Field Level Help, Tooltip Open', () => <FieldLevelHelpInput tooltipOpen />)
+	.add('Field Level Help, Tooltip Open', () => (
+		<FieldLevelHelpInput tooltipOpen />
+	))
 	.add('Counter Input', () => <CounterInput />)
 	.add('Counter Static Input', () => <CounterStaticInput />)
 	.add('Docs site Default', () => <Default />)

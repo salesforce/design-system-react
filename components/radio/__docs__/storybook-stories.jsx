@@ -16,6 +16,8 @@ class RadioExample extends React.Component {
 	}
 }
 storiesOf(RADIO, module)
-	.addDecorator((getStory) => <div className="slds-p-around_medium">{getStory()}</div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around_medium">{getStory()}</div>
+	))
 	.add('Base', () => <RadioExample heading="Base" />)
 	.add('Docs site Disabled', () => <Disabled />);

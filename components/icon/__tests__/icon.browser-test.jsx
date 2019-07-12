@@ -8,7 +8,10 @@ import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 
 chai.use(chaiEnzyme());
 
@@ -48,7 +51,9 @@ describe('SLDSIcon: ', function describeFunction() {
 		});
 
 		it('renders assistive text', function() {
-			expect(this.wrapper.find('.slds-assistive-text')).to.have.text('Log a Call');
+			expect(this.wrapper.find('.slds-assistive-text')).to.have.text(
+				'Log a Call'
+			);
 		});
 
 		it('renders icon name class on svg', function() {
@@ -73,7 +78,12 @@ describe('SLDSIcon: ', function describeFunction() {
 		beforeEach(
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
-					<DemoIcon assistiveText={{ label: 'Heart' }} category="custom" name="custom1" size="small" />
+					<DemoIcon
+						assistiveText={{ label: 'Heart' }}
+						category="custom"
+						name="custom1"
+						size="small"
+					/>
 				</IconSettings>
 			)
 		);
@@ -124,7 +134,9 @@ describe('SLDSIcon: ', function describeFunction() {
 		});
 
 		it('renders assistive text', function() {
-			expect(this.wrapper.find('.slds-assistive-text')).to.have.text('Announcements');
+			expect(this.wrapper.find('.slds-assistive-text')).to.have.text(
+				'Announcements'
+			);
 		});
 
 		it('renders round container', function() {

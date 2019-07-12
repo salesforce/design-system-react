@@ -5,19 +5,44 @@ import DataTableColumn from '~/components/data-table/column';
 import IconSettings from '~/components/icon-settings';
 
 const columns = [
-	<DataTableColumn key="opportunity" label="Opportunity Name" property="opportunityName" width="6em" />,
+	<DataTableColumn
+		key="opportunity"
+		label="Opportunity Name"
+		property="opportunityName"
+		width="6em"
+	/>,
 
-	<DataTableColumn key="account-name" label="Account Name" property="accountName" width="5em" />,
+	<DataTableColumn
+		key="account-name"
+		label="Account Name"
+		property="accountName"
+		width="5em"
+	/>,
 
-	<DataTableColumn key="close-date" label="Close Date" property="closeDate" width="5em" />,
+	<DataTableColumn
+		key="close-date"
+		label="Close Date"
+		property="closeDate"
+		width="5em"
+	/>,
 
 	<DataTableColumn key="stage" label="Stage" property="stage" width="5em" />,
 
-	<DataTableColumn key="confidence" label="Confidence" property="confidence" width="5em" />,
+	<DataTableColumn
+		key="confidence"
+		label="Confidence"
+		property="confidence"
+		width="5em"
+	/>,
 
 	<DataTableColumn key="amount" label="Amount" property="amount" width="5em" />,
 
-	<DataTableColumn key="contact" label="Contact" property="contact" width="6em" />
+	<DataTableColumn
+		key="contact"
+		label="Contact"
+		property="contact"
+		width="6em"
+	/>,
 ];
 
 class Example extends React.Component {
@@ -33,7 +58,7 @@ class Example extends React.Component {
 				stage: 'Prospecting',
 				confidence: '20%',
 				amount: '$25k',
-				contact: 'jrogers@cloudhub.com'
+				contact: 'jrogers@cloudhub.com',
 			},
 			{
 				id: '5GJOOOPWU7',
@@ -43,7 +68,7 @@ class Example extends React.Component {
 				stage: 'Prospecting',
 				confidence: '20%',
 				amount: '$25k',
-				contact: 'jrogers@cloudhub.com'
+				contact: 'jrogers@cloudhub.com',
 			},
 			{
 				id: '8IKZHZZV81',
@@ -53,17 +78,23 @@ class Example extends React.Component {
 				stage: 'Prospecting',
 				confidence: '20%',
 				amount: '$25k',
-				contact: 'jrogers@cloudhub.com'
-			}
-		]
+				contact: 'jrogers@cloudhub.com',
+			},
+		],
 	};
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">Basic Fixed Layout</h3>
-					<DataTable items={this.state.items} id="DataTableExample-1-default" fixedLayout>
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Basic Fixed Layout
+					</h3>
+					<DataTable
+						items={this.state.items}
+						id="DataTableExample-1-default"
+						fixedLayout
+					>
 						{columns}
 					</DataTable>
 				</div>

@@ -6,14 +6,20 @@ import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
-import { Simulate, findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import {
+	Simulate,
+	findRenderedDOMComponentWithClass,
+} from 'react-dom/test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Dropdown from '../../menu-dropdown';
@@ -30,7 +36,7 @@ const menuOptions = [
 	{ label: 'A super short', value: 'A0' },
 	{ label: 'B Option Super Super Long', value: 'B0' },
 	{ label: 'C Option', value: 'C0' },
-	{ disabled: true, label: 'D Option', value: 'D0' }
+	{ disabled: true, label: 'D Option', value: 'D0' },
 ];
 
 const defaultProps = {
@@ -42,7 +48,7 @@ const defaultProps = {
 	openOn: 'click',
 	options: menuOptions,
 	placeholder: 'Select a contact',
-	value: 'B0'
+	value: 'B0',
 };
 
 /* eslint-disable react/prop-types */
@@ -97,7 +103,9 @@ const getNodes = ({ wrapper }) => ({
 	button: wrapper.find('.slds-dropdown-trigger button'),
 	menu: wrapper.find('.slds-dropdown'),
 	customContent: wrapper.find('#custom-dropdown-menu-content'),
-	customContentLink: wrapper.find('#custom-dropdown-menu-content #custom-dropdown-menu-content-link')
+	customContentLink: wrapper.find(
+		'#custom-dropdown-menu-content #custom-dropdown-menu-content-link'
+	),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -111,7 +119,11 @@ const getNodes = ({ wrapper }) => ({
  */
 describe('SLDSMenuDropdown', function() {
 	describe('Styling', () => {
-		beforeEach(mountComponent(<DemoComponent menuStyle={{ height: '500px' }} width="small" />));
+		beforeEach(
+			mountComponent(
+				<DemoComponent menuStyle={{ height: '500px' }} width="small" />
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -143,7 +155,9 @@ describe('SLDSMenuDropdown', function() {
 			mountComponent(
 				<DemoComponent nubbinPosition="top left" openOn="click">
 					<DropdownCustomContent />
-					<List options={[ { label: 'Custom Content Option' }, ...menuOptions ]} />
+					<List
+						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
+					/>
 				</DemoComponent>
 			)
 		);
@@ -171,7 +185,9 @@ describe('SLDSMenuDropdown', function() {
 			const buttonId = nodes.trigger.prop('id');
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find(`li#${buttonId}-item-0`).text()).to.equal('Custom Content Option');
+			expect(openNodes.menu.find(`li#${buttonId}-item-0`).text()).to.equal(
+				'Custom Content Option'
+			);
 		});
 	});
 
@@ -229,7 +245,10 @@ describe('SLDSMenuDropdown', function() {
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			openNodes.menu.find('li a').first().simulate('click', {});
+			openNodes.menu
+				.find('li a')
+				.first()
+				.simulate('click', {});
 			expect(selected.value).to.equal('A0');
 		});
 	});
@@ -252,9 +271,14 @@ describe('SLDSMenuDropdown', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			const anchorRole = openNodes.menu.find('li a').first().prop('role');
+			const anchorRole = openNodes.menu
+				.find('li a')
+				.first()
+				.prop('role');
 			const match =
-				anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox';
+				anchorRole === 'menuitem' ||
+				anchorRole === 'menuitemradio' ||
+				anchorRole === 'menuitemcheckbox';
 			expect(match).to.be.true;
 		});
 
@@ -262,7 +286,10 @@ describe('SLDSMenuDropdown', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			const lastItemAriaDisabledRole = openNodes.menu.find('li a').at(3).prop('aria-disabled');
+			const lastItemAriaDisabledRole = openNodes.menu
+				.find('li a')
+				.at(3)
+				.prop('aria-disabled');
 			expect(lastItemAriaDisabledRole).to.be.true;
 		});
 	});
@@ -285,7 +312,9 @@ describe('SLDSMenuDropdown', function() {
 
 		it('<button> has assistiveText', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
-			expect(nodes.button.find('.slds-assistive-text').text()).to.equal('more options');
+			expect(nodes.button.find('.slds-assistive-text').text()).to.equal(
+				'more options'
+			);
 		});
 	});
 
@@ -336,7 +365,10 @@ describe('SLDSMenuDropdown', function() {
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.length).to.equal(1);
-			openNodes.menu.find('.slds-dropdown__item a').first().simulate('keyDown', keyObjects.ESCAPE);
+			openNodes.menu
+				.find('.slds-dropdown__item a')
+				.first()
+				.simulate('keyDown', keyObjects.ESCAPE);
 			const closedNodes = getNodes({ wrapper: this.wrapper });
 			expect(closedNodes.menu.length).to.equal(0);
 		});
@@ -351,11 +383,15 @@ describe('SLDSMenuDropdown', function() {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			let openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(1);
+			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
+				1
+			);
 			const firstNode = openNodes.menu.find('.slds-dropdown__item a').at(0);
 			firstNode.simulate('click');
 			openNodes = getNodes({ wrapper: this.wrapper });
-			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(2);
+			expect(openNodes.menu.find('.slds-dropdown__item svg').length).to.equal(
+				2
+			);
 			// item with checkmark has proper aria markup
 			expect(firstNode).attr('aria-checked', 'true');
 			expect(firstNode).attr('role', 'menuitemcheckbox');
@@ -371,7 +407,10 @@ describe('SLDSMenuDropdown', function() {
 			body = document.createElement('div');
 			document.body.appendChild(body);
 			// eslint-disable-next-line react/no-render-return-value
-			return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
+			return ReactDOM.render(
+				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				body
+			);
 		};
 
 		function removeDropdownTrigger() {
@@ -379,7 +418,8 @@ describe('SLDSMenuDropdown', function() {
 			document.body.removeChild(body);
 		}
 
-		const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
+		const createDropdown = (props) =>
+			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
 		const dropItDown = (props) => renderDropdown(createDropdown(props));
@@ -393,7 +433,7 @@ describe('SLDSMenuDropdown', function() {
 			cmp = dropItDown({
 				buttonClassName: 'dijkstrafied',
 				openOn: 'hover',
-				hoverCloseDelay: 2
+				hoverCloseDelay: 2,
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
@@ -454,7 +494,10 @@ describe('SLDSMenuDropdown', function() {
 			body = document.createElement('div');
 			document.body.appendChild(body);
 			// eslint-disable-next-line react/no-render-return-value
-			return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
+			return ReactDOM.render(
+				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				body
+			);
 		};
 
 		function removeDropdownTrigger() {
@@ -462,7 +505,8 @@ describe('SLDSMenuDropdown', function() {
 			document.body.removeChild(body);
 		}
 
-		const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
+		const createDropdown = (props) =>
+			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
 		const dropItDown = (props) => renderDropdown(createDropdown(props));

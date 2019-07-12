@@ -8,185 +8,185 @@ import Search from '../../forms/input/search';
 const sampleNodes = {
 	0: {
 		id: 0,
-		nodes: [ 1, 2, 3, 7 ]
+		nodes: [1, 2, 3, 7],
 	},
 	1: {
 		label: 'Grains',
 		type: 'item',
-		id: 1
+		id: 1,
 	},
 	2: {
 		label: 'Fruits',
 		type: 'branch',
 		id: 2,
-		nodes: [ 4, 5 ]
+		nodes: [4, 5],
 	},
 	3: {
 		label: 'Nuts',
 		type: 'branch',
 		_iconClass: 'glyphicon-file',
 		id: 3,
-		nodes: [ 8, 9, 10, 11 ]
+		nodes: [8, 9, 10, 11],
 	},
 	4: {
 		assistiveText: 'Ground Fruits',
 		label: 'Ground Fruits',
 		type: 'branch',
 		id: 4,
-		nodes: [ 12, 13, 14 ]
+		nodes: [12, 13, 14],
 	},
 	5: {
 		label: 'Tree Fruits',
 		type: 'branch',
 		id: 5,
-		nodes: [ 15, 16, 17, 18, 19, 6 ]
+		nodes: [15, 16, 17, 18, 19, 6],
 	},
 	6: {
 		label: 'Raspberries',
 		type: 'item',
-		id: 6
+		id: 6,
 	},
 	7: {
 		label: 'Empty folder',
 		type: 'branch',
-		id: 7
+		id: 7,
 	},
 	8: {
 		label: 'Almonds',
 		type: 'item',
-		id: 8
+		id: 8,
 	},
 	9: {
 		label: 'Cashews',
 		type: 'item',
-		id: 9
+		id: 9,
 	},
 	10: {
 		label: 'Pecans',
 		type: 'item',
-		id: 10
+		id: 10,
 	},
 	11: {
 		label: 'Walnuts',
 		type: 'item',
-		id: 11
+		id: 11,
 	},
 	12: {
 		label: 'Watermelon',
 		type: 'item',
-		id: 12
+		id: 12,
 	},
 	13: {
 		label: 'Canteloupe',
 		type: 'item',
 		_iconClass: 'glyphicon-file',
-		id: 13
+		id: 13,
 	},
 	14: {
 		label: 'Strawberries',
 		type: 'item',
-		id: 14
+		id: 14,
 	},
 	15: {
 		label: 'Peaches',
 		type: 'item',
-		id: 15
+		id: 15,
 	},
 	16: {
 		label: 'Pears',
 		type: 'item',
 		_iconClass: 'glyphicon-file',
-		id: 16
+		id: 16,
 	},
 	17: {
 		label: 'Citrus',
 		type: 'branch',
 		id: 17,
-		nodes: [ 20, 21, 22, 23 ]
+		nodes: [20, 21, 22, 23],
 	},
 	18: {
 		label: 'Apples',
 		type: 'branch',
 		id: 18,
-		nodes: [ 24, 25, 26, 27 ]
+		nodes: [24, 25, 26, 27],
 	},
 	19: {
 		label: 'Cherries',
 		type: 'branch',
 		id: 19,
-		nodes: [ 28, 29, 30, 31, 32, 33 ]
+		nodes: [28, 29, 30, 31, 32, 33],
 	},
 	20: {
 		label: 'Orange',
 		type: 'item',
-		id: 20
+		id: 20,
 	},
 	21: {
 		label: 'Grapefruit',
 		type: 'item',
-		id: 21
+		id: 21,
 	},
 	22: {
 		label: 'Lemon',
 		type: 'item',
-		id: 22
+		id: 22,
 	},
 	23: {
 		label: 'Lime',
 		type: 'item',
-		id: 23
+		id: 23,
 	},
 	24: {
 		label: 'Granny Smith',
 		type: 'item',
-		id: 24
+		id: 24,
 	},
 	25: {
 		label: 'Pinklady',
 		type: 'item',
 		_iconClass: 'glyphicon-file',
-		id: 25
+		id: 25,
 	},
 	26: {
 		label: 'Rotten',
 		type: 'item',
-		id: 26
+		id: 26,
 	},
 	27: {
 		label: 'Jonathan',
 		type: 'item',
-		id: 27
+		id: 27,
 	},
 	28: {
 		label: 'Balaton',
 		type: 'item',
-		id: 28
+		id: 28,
 	},
 	29: {
 		label: 'Erdi Botermo',
 		type: 'item',
-		id: 29
+		id: 29,
 	},
 	30: {
 		label: 'Montmorency',
 		type: 'item',
-		id: 30
+		id: 30,
 	},
 	31: {
 		label: 'Queen Ann',
 		type: 'item',
-		id: 31
+		id: 31,
 	},
 	32: {
 		label: 'Ulster',
 		type: 'item',
-		id: 32
+		id: 32,
 	},
 	33: {
 		label: 'Viva',
 		type: 'item',
-		id: 33
-	}
+		id: 33,
+	},
 };
 
 /*
@@ -257,15 +257,16 @@ class Example extends React.Component {
 
 	static defaultProps = {
 		heading: 'Miscellaneous Foods',
-		id: 'example-tree'
+		id: 'example-tree',
 	};
 
 	state = {
 		nodes: this.props.nodes || sampleNodes,
-		searchTerm: this.props.searchable ? 'fruit' : undefined
+		searchTerm: this.props.searchable ? 'fruit' : undefined,
 	};
 
-	getNodes = (node) => (node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : []);
+	getNodes = (node) =>
+		node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : [];
 
 	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified. Object and arrays are reference variables.
 	handleExpandClick = (event, data) => {
@@ -274,7 +275,7 @@ class Example extends React.Component {
 			customLog: this.props.log,
 			event,
 			eventName: 'Expand Branch',
-			data
+			data,
 		});
 		const selected = data.select ? true : data.node.selected;
 		this.setState((prevState) => ({
@@ -285,10 +286,10 @@ class Example extends React.Component {
 					[data.node.id]: {
 						...data.node,
 						expanded: data.expand,
-						selected
-					}
-				}
-			}
+						selected,
+					},
+				},
+			},
 		}));
 	};
 
@@ -298,19 +299,22 @@ class Example extends React.Component {
 			customLog: this.props.log,
 			event,
 			eventName: 'Node Selected',
-			data
+			data,
 		});
 		if (this.props.multipleSelection) {
-			if (!this.props.noBranchSelection || (this.props.noBranchSelection && data.node.type !== 'branch')) {
+			if (
+				!this.props.noBranchSelection ||
+				(this.props.noBranchSelection && data.node.type !== 'branch')
+			) {
 				// Take the previous state, expand it, overwrite the `nodes` key with the previous state's `nodes` key expanded with the id of the node just clicked selected
 				this.setState((prevState) => ({
 					...prevState,
 					nodes: {
 						...prevState.nodes,
 						...{
-							[data.node.id]: { ...data.node, selected: data.select }
-						}
-					}
+							[data.node.id]: { ...data.node, selected: data.select },
+						},
+					},
 				}));
 			}
 		} else if (this.props.noBranchSelection && data.node.type === 'branch') {
@@ -321,9 +325,9 @@ class Example extends React.Component {
 				nodes: {
 					...prevState.nodes,
 					...{
-						[data.node.id]: { ...data.node, expanded: !data.node.expanded }
-					}
-				}
+						[data.node.id]: { ...data.node, expanded: !data.node.expanded },
+					},
+				},
 			}));
 		} else {
 			// SINGLE SELECTION
@@ -336,8 +340,8 @@ class Example extends React.Component {
 					? {
 							[prevState.selectedNode.id]: {
 								...prevState.nodes[prevState.selectedNode.id],
-								selected: false
-							}
+								selected: false,
+							},
 						}
 					: {};
 				return {
@@ -346,10 +350,10 @@ class Example extends React.Component {
 						...prevState.nodes,
 						...{
 							[data.node.id]: { ...data.node, selected: data.select },
-							...selectedNode
-						}
+							...selectedNode,
+						},
 					},
-					selectedNode: data.node
+					selectedNode: data.node,
 				};
 			});
 		}
@@ -360,7 +364,7 @@ class Example extends React.Component {
 			action: this.props.action,
 			event,
 			eventName: 'Tree scrolled',
-			data
+			data,
 		});
 	};
 
