@@ -26,7 +26,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
               Preview:
             </span>
             <img
-              alt="Proposal.pdf"
+              alt={null}
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -82,7 +82,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
               Preview:
             </span>
             <img
-              alt="Proposal.pdf"
+              alt={null}
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -138,7 +138,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
               Preview:
             </span>
             <img
-              alt="Proposal.pdf"
+              alt={null}
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -206,7 +206,7 @@ exports[`DOM snapshots SLDSFiles Default 1`] = `
               Preview:
             </span>
             <img
-              alt="Proposal.pdf"
+              alt="Placeholder image"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -362,9 +362,9 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
             >
               <span
                 className="slds-file__text slds-truncate"
-                title="Image Title"
+                title="Proposal.pdf"
               >
-                Image Title
+                Proposal.pdf
               </span>
             </div>
           </figcaption>
@@ -393,6 +393,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
+            href="javascript:void(0);"
           >
             <span
               className="slds-assistive-text"
@@ -400,10 +401,21 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               Preview:
             </span>
             <img
+              alt={null}
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
         </figure>
+        <style>
+          
+					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:before
+					{ background: none; }
+					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:after
+					{ background: none; }
+					.files-more-actions &gt; button:first-child
+					{ border-radius: 0 0.25rem 0.25rem 0!important;}
+			
+        </style>
         <div
           className="slds-file__title slds-file__title_scrim"
         >
@@ -437,29 +449,34 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   </span>
                 </span>
               </button>
-              <button
-                className="slds-button slds-button_icon"
-                disabled={false}
+              <div
+                className="slds-dropdown-trigger slds-dropdown-trigger_click files-more-actions"
+                id="HJwZ5yXYrZS"
                 onClick={[Function]}
-                title="More Actions"
-                type="button"
+                onFocus={null}
+                onKeyDown={[Function]}
+                onMouseEnter={null}
+                onMouseLeave={null}
               >
-                <span>
+                <button
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  className="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare ignore-click-HJwZ5yXYrZS"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
                   <svg
                     aria-hidden="true"
-                    className="slds-icon slds-icon_xx-small"
+                    className="slds-button__icon"
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
                     />
                   </svg>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Actions
-                  </span>
-                </span>
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -483,7 +500,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               Preview:
             </span>
             <img
-              alt="Image Title"
+              alt={null}
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -512,13 +529,23 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
             >
               <span
                 className="slds-file__text slds-truncate"
-                title="Image Title"
+                title="Proposal.pdf"
               >
-                Image Title
+                Proposal.pdf
               </span>
             </div>
           </figcaption>
         </figure>
+        <style>
+          
+					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:before
+					{ background: none; }
+					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:after
+					{ background: none; }
+					.files-more-actions &gt; button:first-child
+					{ border-radius: 0 0.25rem 0.25rem 0!important;}
+			
+        </style>
         <div
           className="slds-file__actions-menu"
         >
@@ -549,29 +576,34 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                 </span>
               </span>
             </button>
-            <button
-              className="slds-button slds-button_icon"
-              disabled={false}
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger_click files-more-actions"
+              id="rkt-cJ7FHbB"
               onClick={[Function]}
-              title="More Actions"
-              type="button"
+              onFocus={null}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
             >
-              <span>
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="slds-button slds-button_icon slds-button_icon-bare ignore-click-rkt-cJ7FHbB"
+                disabled={false}
+                onClick={[Function]}
+                tabIndex="0"
+                type="button"
+              >
                 <svg
                   aria-hidden="true"
-                  className="slds-icon slds-icon_xx-small slds-icon-text-default"
+                  className="slds-button__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  More Actions
-                </span>
-              </span>
-            </button>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -585,7 +617,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
       >
         <figure>
           <a
-            className="slds-file__crop slds-file__crop_4-by-3"
+            className="slds-file__crop slds-file__crop_16-by-9"
+            href="javascript:void(0);"
           >
             <div
               className="slds-file_overlay"
@@ -662,7 +695,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
             </span>
             <span
               className="slds-file__icon slds-icon_container"
-              title="Image Title"
+              title="Proposal.pdf"
             >
               <span
                 className="slds-icon_container"
@@ -704,9 +737,9 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
             >
               <span
                 className="slds-file__text slds-truncate"
-                title="Image Title"
+                title="Proposal.pdf"
               >
-                Image Title
+                Proposal.pdf
               </span>
             </div>
           </figcaption>
@@ -761,7 +794,7 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
             </span>
             <span
               className="slds-file__icon slds-icon_container"
-              title="Image Title"
+              title="Proposal.pdf"
             >
               <span
                 className="slds-icon_container"
@@ -803,9 +836,9 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
             >
               <span
                 className="slds-file__text slds-truncate"
-                title="Image Title"
+                title="Proposal.pdf"
               >
-                Image Title
+                Proposal.pdf
               </span>
             </div>
           </figcaption>
@@ -842,6 +875,7 @@ exports[`DOM snapshots SLDSFiles w/o Title 1`] = `
               Preview:
             </span>
             <img
+              alt={null}
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>

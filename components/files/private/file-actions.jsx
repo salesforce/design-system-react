@@ -36,7 +36,15 @@ const FileActions = (props) => {
 						/>
 					</Button>
 				) : null}
-				{props.moreActionsDropdown ? props.moreActionsDropdown : null}
+				{props.moreActionsDropdown
+					? React.cloneElement(props.moreActionsDropdown, {
+							overlay: false,
+							buttonVariant: 'icon',
+							buttonInverse: props.hasNoVisibleTitle,
+							className: 'files-more-actions-dropdown',
+							triggerClassName: 'files-more-actions',
+						})
+					: null}
 			</div>
 		</div>
 	);

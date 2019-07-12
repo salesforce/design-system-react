@@ -25,7 +25,9 @@ class Example extends React.Component {
 						}}
 						moreActionsDropdown={
 							<Dropdown
-								iconVariant="more"
+								iconCategory="utility"
+								iconName="down"
+								iconVariant="bare"
 								onSelect={(value) => {
 									console.log('selected: ', value);
 								}}
@@ -52,7 +54,7 @@ class Example extends React.Component {
 							<Dropdown
 								iconCategory="utility"
 								iconName="down"
-								iconVariant="border-filled"
+								iconVariant="bare"
 								onSelect={(value) => {
 									console.log('selected: ', value);
 								}}

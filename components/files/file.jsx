@@ -78,6 +78,19 @@ const defaultProps = {
  * File is a component that represents content uploaded as an attachment.
  */
 class File extends React.Component {
+	static injectMoreActionsStyles() {
+		return (
+			<style>{`
+					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:before
+					{ background: none; }
+					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:after
+					{ background: none; }
+					.files-more-actions > button:first-child
+					{ border-radius: 0 0.25rem 0.25rem 0!important;}
+			`}</style>
+		);
+	}
+
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
@@ -149,6 +162,7 @@ class File extends React.Component {
 						})}
 					</div>
 				) : null}
+				{this.props.moreActionsDropdown ? File.injectMoreActionsStyles() : null}
 				<FileActions
 					hasNoVisibleTitle={this.props.hasNoVisibleTitle}
 					onClickDownload={this.props.onClickDownload}
