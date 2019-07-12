@@ -27,7 +27,8 @@ import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
 import IconSettings from '../../icon-settings';
-import { DIRECTIONS } from '../UNSAFE_direction';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings, { DIRECTIONS } from '../UNSAFE_direction';
 import LanguageDirection from '../UNSAFE_direction/private/language-direction';
 
 /*
@@ -506,11 +507,17 @@ class Dialog extends React.Component {
 						}),
 						{}
 					);
-				return (
-					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+				const wrapped = (
+					// eslint-disable-next-line
+					<UNSAFE_DirectionSettings.Provider value={this.props.direction}>
 						<IconSettings {...truthyIconSettingsContext}>
 							{contents}
 						</IconSettings>
+					</UNSAFE_DirectionSettings.Provider>
+				);
+				return (
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						{wrapped}
 					</Portal>
 				);
 			},
