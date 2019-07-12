@@ -173,8 +173,6 @@ describe('SLDSIcon: ', function describeFunction() {
 	});
 
 	describe('Icon with external path renders', function describeFunction() {
-		let use;
-
 		beforeEach(
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">
