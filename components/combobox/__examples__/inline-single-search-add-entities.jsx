@@ -24,6 +24,12 @@ const accounts = [
 		subTitle: 'Account • Boston, MA',
 		type: 'account',
 	},
+	{
+		id: '4',
+		label: 'Tyrell Corp',
+		subTitle: 'Account • San Francisco, CA',
+		type: 'account',
+	},
 ];
 
 const accountsWithIcon = accounts.map((elem) => ({
@@ -88,8 +94,8 @@ class Example extends React.Component {
 								searchTerm && searchTerm.length > 0 ? (
 									<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
 								) : (
-									'Search '
-								),
+										'Search '
+									),
 								'in Accounts',
 							],
 							onClick: (event) => {
