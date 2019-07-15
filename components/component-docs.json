@@ -1167,6 +1167,13 @@
                 "required": false,
                 "description": "Overflow menu of the type [Dropdown](/components/menu-dropdowns)"
             },
+            "styleContainer": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the containing `nav` tag"
+            },
             "trail": {
                 "type": {
                     "name": "array"
@@ -2146,6 +2153,10 @@
                         },
                         {
                             "value": "'icon'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'icon-filled'",
                             "computed": false
                         }
                     ]
@@ -4935,6 +4946,13 @@
                 },
                 "required": true,
                 "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
+            },
+            "joined": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Makes DataTable joinable with PageHeader by adding appropriate classes/styling"
             },
             "noRowHover": {
                 "type": {
@@ -11532,31 +11550,119 @@
     },
     "page-header": {
         "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
-        "methods": [
-            {
-                "name": "_getClassNames",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "className",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
+        "methods": [],
         "props": {
             "className": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "Optional class name",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Optional class name"
+            },
+            "details": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of detail blocks (used in \"recordHome\" variant)"
+            },
+            "label": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The label property can be a string or a React element"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "The page header icon. Expects an Icon component"
+            },
+            "info": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The info property can be a string or a React element"
+            },
+            "joined": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Makes PageHeader joinable with DataTable by adding appropriate classes/styling"
+            },
+            "nameSwitcherDropdown": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Used with the `object-home` variant. Accepts a node, typically a Dropdown component"
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
+            },
+            "onRenderControls": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
+            },
+            "title": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The title property can be a string or a React element"
+            },
+            "trail": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of react elements presumably anchor <a> elements."
             },
             "variant": {
                 "type": {
@@ -11584,201 +11690,6 @@
                 "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
                 "defaultValue": {
                     "value": "'base'",
-                    "computed": false
-                }
-            },
-            "label": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The info property can be a string or a React element"
-            },
-            "title": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The title property can be a string or a React element"
-            },
-            "info": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The info property can be a string or a React element"
-            },
-            "icon": {
-                "type": {
-                    "name": "element"
-                },
-                "required": false,
-                "description": "The page header icon"
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
-            },
-            "iconCategory": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'action'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'custom'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'doctype'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'standard'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'utility'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The icons category"
-            },
-            "iconPosition": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'left'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'right'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "If omitted, icon position is centered."
-            },
-            "iconSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the size of the icon."
-            },
-            "iconVariant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'container'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border-filled'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'more'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
-            },
-            "onRenderActions": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Content to appear on the right hand side of the page header\nprop 'contentRight' will be deprecated soon, use 'onRenderActions' instead"
-            },
-            "details": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of buttons which appear on the component's right hand side.",
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
-            },
-            "onRenderControls": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Nav content which appears in the upper right hand corner.\nprop 'navRight' will be deprecated soon, use 'onRenderControls' instead"
-            },
-            "trail": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of react elements presumably anchor <a> elements.",
-                "defaultValue": {
-                    "value": "[]",
                     "computed": false
                 }
             }

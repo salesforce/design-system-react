@@ -3,48 +3,88 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
+import Controls from '../controls';
+import Icon from '../../../icon';
+import Info from '../info';
 import MediaObject from '../../../media-object';
+import Title from '../title';
 
 const displayName = 'PageHeaderBase';
 const propTypes = {
 	/**
-	 * Icon node passed by PageHeader
+	 * The page header icon
 	 */
 	icon: PropTypes.node,
 	/**
-	 * Title node passed by PageHeader
-	 */
-	title: PropTypes.node,
-	/**
-	 * Info node passed by PageHeader
+	 * The info property can be a string or a React element
 	 */
 	info: PropTypes.node,
 	/**
 	 * Nav content which appears in the upper right hand corner.
-	 * 'navRight' prop will be deprecated soon, instaed use 'onRenderControls'
+	 * prop 'navRight' will be deprecated soon, use 'onRenderControls' instead
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	onRenderControls: PropTypes.func,
+	/**
+	 * The title property can be a string or a React element
+	 */
+	title: PropTypes.node,
+	/**
+	 * The type of component
+	 */
+	variant: PropTypes.string,
 };
 
-const Base = (props) => (
-	<div className="slds-grid slds-page-header__row">
-		<div className="slds-col slds-page-header__col-title">
-			<MediaObject
-				body={
-					<div>
-						{props.title}
-						{props.info}
-					</div>
-				}
-				className="slds-no-space slds-grow"
-				figure={props.icon}
+const Base = (props) => {
+	let icon;
+
+	// Backwards compatibility
+	if (props.iconName) {
+		icon = (
+			<Icon
+				category={props.iconCategory}
+				className="slds-page-header__icon"
+				name={props.iconName}
+				position={props.iconPosition}
+				size={props.iconSize}
+				variant={props.iconVariant}
+			/>
+		);
+	} else if (props.icon) {
+		let iconClasses = 'slds-page-header__icon';
+
+		if (props.icon.props) {
+			iconClasses = classnames(props.icon.props.className, iconClasses);
+		}
+
+		icon = React.cloneElement(props.icon, { className: iconClasses });
+	}
+
+	return (
+		<div className="slds-page-header__row">
+			<div className="slds-page-header__col-title">
+				<MediaObject
+					body={
+						<>
+							<div className="slds-page-header__name">
+								<Title content={props.title} />
+							</div>
+							<Info content={props.info} variant={props.variant} />
+						</>
+					}
+					figure={icon}
+				/>
+			</div>
+			<Controls
+				className="slds-align-middle"
+				navRight={props.navRight}
+				onRenderControls={props.onRenderControls}
+				type="controls"
 			/>
 		</div>
-		<div className="slds-col slds-no-flex slds-grid slds-align-top">
-			{props.onRenderControls ? props.onRenderControls : props.navRight}
-		</div>
-	</div>
-);
+	);
+};
 Base.displayName = displayName;
 Base.propTypes = propTypes;
 

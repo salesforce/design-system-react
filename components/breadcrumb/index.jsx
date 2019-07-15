@@ -40,6 +40,10 @@ const propTypes = {
 	 */
 	overflowDropdownMenu: PropTypes.node,
 	/**
+	 * Custom styles to be passed to the containing `nav` tag
+	 */
+	styleContainer: PropTypes.object,
+	/**
 	 * An array of anchor elements that define the path to the current record.
 	 */
 	trail: PropTypes.array.isRequired,
@@ -79,7 +83,11 @@ const Breadcrumb = (props) => {
 				}.label;
 
 	return (
-		<nav role="navigation" aria-label={assistiveText}>
+		<nav
+			role="navigation"
+			aria-label={assistiveText}
+			style={props.styleContainer}
+		>
 			<ol className="slds-breadcrumb slds-list_horizontal">
 				{overflowDropdownMenu &&
 					getBreadcrumbDropdown(overflowDropdownMenu, props)}

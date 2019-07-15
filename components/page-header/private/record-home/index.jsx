@@ -3,61 +3,95 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
+import Controls from '../controls';
 import DetailRow from '../detail-row';
+import Icon from '../../../icon';
 import MediaObject from '../../../media-object';
+import Title from '../title';
 
 const displayName = 'PageHeaderRecordHome';
 const propTypes = {
 	/**
-	 * Content to appear on the right hand side of the page header
-	 * 'contentRight' prop will be deprecated soon, instead use 'onRenderActions'
-	 */
-	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
-	 * An array of detail blocks
+	 * An array of detail blocks (used in "recordHome" variant)
 	 */
 	details: PropTypes.array,
 	/**
-	 * Icon node passed by PageHeader
-	 */
-	icon: PropTypes.node,
-	/**
-	 * Info node passed by PageHeader
-	 */
-	info: PropTypes.node,
-	/**
-	 * Heading above title
+	 * The label property can be a string or a React element
 	 */
 	label: PropTypes.node,
 	/**
-	 * Title node passed by PageHeader
+	 * The page header icon
+	 */
+	icon: PropTypes.element,
+	/**
+	 * Content to appear on the right hand side of the page header
+	 * prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead
+	 */
+	onRenderActions: PropTypes.func,
+	/**
+	 * The title property can be a string or a React element
 	 */
 	title: PropTypes.node,
 };
 
-const RecordHome = (props) => (
-	<div>
-		<div className="slds-grid">
-			<div className="slds-col slds-has-flexi-truncate">
-				<MediaObject
-					body={
-						<div>
-							{props.label}
-							{props.title}
-							{props.info}
-						</div>
-					}
-					className="slds-no-space slds-grow"
-					figure={props.icon}
+const RecordHome = (props) => {
+	let icon;
+
+	// Backwards compatibility
+	if (props.iconName) {
+		icon = (
+			<Icon
+				category={props.iconCategory}
+				className="slds-page-header__icon"
+				name={props.iconName}
+				position={props.iconPosition}
+				size={props.iconSize}
+				variant={props.iconVariant}
+			/>
+		);
+	} else if (props.icon) {
+		let iconClasses = 'slds-page-header__icon';
+
+		if (props.icon.props) {
+			iconClasses = classnames(props.icon.props.className, iconClasses);
+		}
+
+		icon = React.cloneElement(props.icon, { className: iconClasses });
+	}
+
+	return (
+		<>
+			<div className="slds-page-header__row">
+				<div className="slds-page-header__col-title">
+					<MediaObject
+						body={
+							<>
+								<div className="slds-page-header__name">
+									<Title content={props.title} label={props.label} />
+								</div>
+							</>
+						}
+						figure={icon}
+					/>
+				</div>
+				<Controls
+					contentRight={props.contentRight}
+					onRenderActions={props.onRenderActions}
+					type="actions"
 				/>
 			</div>
-			<div className="slds-col slds-no-flex slds-grid slds-align-top">
-				{props.onRenderActions ? props.onRenderActions : props.contentRight}
-			</div>
-		</div>
-		<DetailRow details={props.details} />
-	</div>
-);
+			{props.details ? (
+				<div className="slds-page-header__row slds-page-header__row_gutters">
+					<div className="slds-page-header__col-details">
+						<DetailRow details={props.details} />
+					</div>
+				</div>
+			) : null}
+		</>
+	);
+};
 
 RecordHome.displayName = displayName;
 RecordHome.propTypes = propTypes;
