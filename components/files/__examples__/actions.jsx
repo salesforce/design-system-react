@@ -25,6 +25,7 @@ class Example extends React.Component {
 						}}
 						moreActionsDropdown={
 							<Dropdown
+								id="file-more-actions"
 								iconCategory="utility"
 								iconName="down"
 								iconVariant="bare"
@@ -52,6 +53,7 @@ class Example extends React.Component {
 						}}
 						moreActionsDropdown={
 							<Dropdown
+								id="file-with-title-more-actions"
 								iconCategory="utility"
 								iconName="down"
 								iconVariant="bare"

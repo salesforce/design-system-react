@@ -451,7 +451,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               </button>
               <div
                 className="slds-dropdown-trigger slds-dropdown-trigger_click files-more-actions"
-                id="HJwZ5yXYrZS"
+                id="file-more-actions"
                 onClick={[Function]}
                 onFocus={null}
                 onKeyDown={[Function]}
@@ -461,7 +461,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
-                  className="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare ignore-click-HJwZ5yXYrZS"
+                  className="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare ignore-click-file-more-actions"
                   disabled={false}
                   onClick={[Function]}
                   tabIndex="0"
@@ -578,7 +578,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
             </button>
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger_click files-more-actions"
-              id="rkt-cJ7FHbB"
+              id="file-with-title-more-actions"
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
@@ -588,7 +588,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="slds-button slds-button_icon slds-button_icon-bare ignore-click-rkt-cJ7FHbB"
+                className="slds-button slds-button_icon slds-button_icon-bare ignore-click-file-with-title-more-actions"
                 disabled={false}
                 onClick={[Function]}
                 tabIndex="0"
