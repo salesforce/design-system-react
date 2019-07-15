@@ -115,7 +115,7 @@
 		"@salesforce-ux/design-system": "^2.9.3",
 		"@salesforce-ux/icons": "9.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
-		"@storybook/addon-actions": "^3.4.10",
+		"@storybook/addon-actions": "^5.1.9",
 		"@storybook/addon-storyshots": "^3.4.10",
 		"@storybook/addons": "^3.4.10",
 		"@storybook/react": "^3.4.10",
