@@ -16,7 +16,7 @@ class Example extends React.Component {
 							labels={{
 								title: 'The Lightning Experience is here!',
 								description:
-									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
+									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes.',
 							}}
 							id="welcome-mat-steps-complete-example"
 							variant="steps"
