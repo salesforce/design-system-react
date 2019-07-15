@@ -15921,7 +15921,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "whether the modal is open",
+                "description": "Whether the modal is open",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -15979,6 +15979,13 @@
                 },
                 "required": false,
                 "description": "Link to learn more button"
+            },
+            "onRequestClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback to fire when modal is dismissed"
             },
             "infoBadge": {
                 "type": {

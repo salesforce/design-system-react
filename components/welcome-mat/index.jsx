@@ -32,7 +32,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * whether the modal is open
+	 * Whether the modal is open
 	 */
 	isOpen: PropTypes.bool,
 	/**
@@ -58,6 +58,10 @@ const propTypes = {
 	 * Link to learn more button
 	 */
 	onRenderInfoActions: PropTypes.func,
+	/**
+	 * Callback to fire when modal is dismissed
+	 */
+	onRequestClose: PropTypes.func,
 	/**
 	 *  Accepts a single WelcomeMatInfoBadge component, to be used with the trailhead variant
 	 */
@@ -195,6 +199,7 @@ class WelcomeMat extends React.Component {
 					dialogLabelledBy: `${this.getId()}-label`,
 				}}
 				isOpen={this.props.isOpen}
+				onRequestClose={this.props.onRequestClose}
 				size="small"
 				id={`${this.getId()}-modal`}
 			>

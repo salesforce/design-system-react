@@ -9,9 +9,21 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'welcomeMatExample';
 
+	state = {
+		isOpen: this.props.isOpen || false,
+	};
+
+	toggleOpen = () => {
+		this.setState({ isOpen: !this.state.isOpen });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
+				<Button
+					label="Open Trailhead Complete WelcomeMat"
+					onClick={this.toggleOpen}
+				/>
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
@@ -25,7 +37,7 @@ class Example extends React.Component {
 								<WelcomeMatInfoBadge
 									image="/assets/images/welcome-mat/trailhead_badge@2x.png"
 									onCompleteRenderActions={() => (
-										<>
+										<React.Fragment>
 											<p>Cha-ching! You earned the badge.</p>
 											<Button
 												className="slds-m-top_medium"
@@ -35,7 +47,7 @@ class Example extends React.Component {
 												title="View on your Trailblazer Profile"
 												label="View on your Trailblazer Profile"
 											/>
-										</>
+										</React.Fragment>
 									)}
 								>
 									<p>
@@ -43,6 +55,8 @@ class Example extends React.Component {
 									</p>
 								</WelcomeMatInfoBadge>
 							}
+							isOpen={this.state.isOpen}
+							onRequestClose={this.toggleOpen}
 							variant="trailhead-connected"
 						>
 							<WelcomeMatTile
