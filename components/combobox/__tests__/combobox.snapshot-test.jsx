@@ -137,11 +137,6 @@ testDOMandHTML({
 	Component: SnapshotInlineMultipleOpenLoading,
 });
 testDOMandHTML({
-	name: 'Base Disabled',
-	test,
-	Component: SnapshotDisabled,
-});
-testDOMandHTML({
 	name: 'Snapshot Inline Single Search/Add Entities Open',
 	test,
 	Component: SnapshotInlineSingleSearchAddEntitiesOpen,
