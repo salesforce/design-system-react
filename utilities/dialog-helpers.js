@@ -2,11 +2,12 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import classNames from 'classnames';
+import { DIRECTIONS } from './../components/utilities/UNSAFE_direction';
 
 // Translates the prop into a string popper can use https://popper.js.org/popper-documentation.html#Popper.placements
-const mapPropToPopperPlacement = (propString) => {
+const mapPropToPopperPlacement = (align, direction) => {
 	let placement;
-	switch (propString) {
+	switch (align) {
 		case 'top left':
 			placement = 'top-start';
 			break;
@@ -32,7 +33,18 @@ const mapPropToPopperPlacement = (propString) => {
 			placement = 'left-end';
 			break;
 		default:
-			placement = propString;
+			placement = align;
+	}
+	if (direction === DIRECTIONS.RTL) {
+		if (placement.indexOf('left') > -1) {
+			placement = placement.replace('left', 'right');
+		} else if (placement.indexOf('right') > -1) {
+			placement = placement.replace('right', 'left');
+		} else if (placement.indexOf('start') > -1) {
+			placement = placement.replace('start', 'end');
+		} else if (placement.indexOf('end') > -1) {
+			placement = placement.replace('end', 'start');
+		}
 	}
 	return placement;
 };

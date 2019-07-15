@@ -4,8 +4,6 @@ import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-import { action, decorateAction } from '@storybook/addon-actions';
-
 class Example extends React.Component {
 	static displayName = 'PopoverExample';
 

@@ -99,6 +99,7 @@ export const PANEL_FILTER_GROUP = 'SLDSFilterGroup';
 export const PANEL_FILTER_LIST = 'SLDSFilterList';
 export const PANEL_FILTER_LIST_HEADING = 'SLDSPanelFilterListHeading';
 export const PAGE_HEADER = 'SLDSPageHeader';
+export const PAGE_HEADER_CONTROL = 'SLDSPageHeaderControl';
 export const PILL = 'SLDSPill';
 export const PILL_CONTAINER = 'SLDSPillContainer';
 export const POPOVER = 'SLDSPopover';

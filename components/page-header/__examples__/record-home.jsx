@@ -1,46 +1,52 @@
 import React from 'react';
 
-import IconSettings from '~/components/icon-settings';
-import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
+import Icon from '~/components/icon';
+import IconSettings from '~/components/icon-settings';
+import PageHeader from '~/components/page-header';
+import PageHeaderControl from '~/components/page-header/control';
 
 class Example extends React.Component {
 	static displayName = 'RecordHomePageHeaderExample';
 
 	render() {
 		const actions = () => (
-			<div>
-				<ButtonStateful
-					key="PageHeaderFollowButton"
-					iconSize="medium"
-					stateOne={{ iconName: 'add', label: 'Follow' }}
-					stateTwo={{ iconName: 'check', label: 'Following' }}
-					stateThree={{ iconName: 'close', label: 'Unfollow' }}
-				/>
-				<ButtonGroup>
-					<Button label="Edit" />
-					<Button label="Delete" />
-					<Button label="Clone" />
-					<Dropdown
-						align="right"
-						assistiveText={{ icon: 'More Options' }}
-						iconCategory="utility"
-						iconName="down"
-						iconVariant="border-filled"
-						id="dropdown-record-home-example"
-						options={[
-							{ label: 'Menu Item One', value: 'A0' },
-							{ label: 'Menu Item Two', value: 'B0' },
-							{ label: 'Menu Item Three', value: 'C0' },
-							{ type: 'divider' },
-							{ label: 'Menu Item Four', value: 'D0' },
-						]}
+			<>
+				<PageHeaderControl>
+					<ButtonStateful
+						key="PageHeaderFollowButton"
+						iconSize="medium"
+						stateOne={{ iconName: 'add', label: 'Follow' }}
+						stateTwo={{ iconName: 'check', label: 'Following' }}
+						stateThree={{ iconName: 'close', label: 'Unfollow' }}
 					/>
-				</ButtonGroup>
-			</div>
+				</PageHeaderControl>
+				<PageHeaderControl>
+					<ButtonGroup variant="list">
+						<Button label="Edit" />
+						<Button label="Delete" />
+						<Button label="Clone" />
+						<Dropdown
+							align="right"
+							assistiveText={{ icon: 'More Options' }}
+							iconCategory="utility"
+							iconName="down"
+							iconVariant="border-filled"
+							id="dropdown-record-home-example"
+							options={[
+								{ label: 'Menu Item One', value: 'A0' },
+								{ label: 'Menu Item Two', value: 'B0' },
+								{ label: 'Menu Item Three', value: 'C0' },
+								{ type: 'divider' },
+								{ label: 'Menu Item Four', value: 'D0' },
+							]}
+						/>
+					</ButtonGroup>
+				</PageHeaderControl>
+			</>
 		);
 
 		const details = [
@@ -65,12 +71,16 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
-					onRenderActions={actions}
 					details={details}
-					iconAssistiveText={{ icon: 'User' }}
-					iconCategory="standard"
-					iconName="user"
+					icon={
+						<Icon
+							assistiveText={{ label: 'User' }}
+							category="standard"
+							name="opportunity"
+						/>
+					}
 					label="Record Type"
+					onRenderActions={actions}
 					title="Record Title"
 					variant="record-home"
 				/>
