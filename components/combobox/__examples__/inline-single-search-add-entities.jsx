@@ -94,8 +94,8 @@ class Example extends React.Component {
 								searchTerm && searchTerm.length > 0 ? (
 									<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
 								) : (
-										'Search '
-									),
+									'Search '
+								),
 								'in Accounts',
 							],
 							onClick: (event) => {

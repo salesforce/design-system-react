@@ -140,7 +140,7 @@ const propTypes = {
 
 const defaultProps = {
 	inputValue: '',
-	menuRef: () => { },
+	menuRef: () => {},
 	optionsAddItem: [],
 	optionsSearchEntity: [],
 };
@@ -229,12 +229,12 @@ const Menu = (props) => {
 					</span>
 				</li>
 			) : (
-					<li
-						className="slds-has-divider_top-space"
-						role="separator"
-						key={`menu-separator-${optionData.id}`}
-					/>
-				);
+				<li
+					className="slds-has-divider_top-space"
+					role="separator"
+					key={`menu-separator-${optionData.id}`}
+				/>
+			);
 		}
 		if (optionData.type === 'header') {
 			return (
@@ -318,8 +318,8 @@ const Menu = (props) => {
 						optionData.disabled
 							? null
 							: (event) => {
-								props.onSelect(event, { option: optionData });
-							}
+									props.onSelect(event, { option: optionData });
+								}
 					}
 					role="option"
 				>
@@ -334,26 +334,26 @@ const Menu = (props) => {
 							option={optionData}
 						/>
 					) : (
-							<span className="slds-media__body">
-								<span
-									className={classNames(
-										'slds-listbox__option-text',
-										'slds-listbox__option-text_entity',
-										{ 'slds-disabled-text': optionData.disabled }
-									)}
-								>
-									{setBold(optionData.label, props.inputValue)}
-								</span>
-								<span
-									className={classNames(
-										'slds-listbox__option-meta slds-listbox__option-meta_entity',
-										{ 'slds-disabled-text': optionData.disabled }
-									)}
-								>
-									{optionData.subTitle}
-								</span>
+						<span className="slds-media__body">
+							<span
+								className={classNames(
+									'slds-listbox__option-text',
+									'slds-listbox__option-text_entity',
+									{ 'slds-disabled-text': optionData.disabled }
+								)}
+							>
+								{setBold(optionData.label, props.inputValue)}
 							</span>
-						)}
+							<span
+								className={classNames(
+									'slds-listbox__option-meta slds-listbox__option-meta_entity',
+									{ 'slds-disabled-text': optionData.disabled }
+								)}
+							>
+								{optionData.subTitle}
+							</span>
+						</span>
+					)}
 				</span>
 			),
 			checkbox: (
@@ -373,11 +373,11 @@ const Menu = (props) => {
 						optionData.disabled
 							? null
 							: (event) => {
-								props.onSelect(event, {
-									selection: props.selection,
-									option: optionData,
-								});
-							}
+									props.onSelect(event, {
+										selection: props.selection,
+										option: optionData,
+									});
+								}
 					}
 					role="option"
 				>
@@ -397,20 +397,20 @@ const Menu = (props) => {
 								option={optionData}
 							/>
 						) : (
-								<span
-									className={classNames('slds-truncate', {
-										'slds-disabled-text': optionData.disabled,
-									})}
-									title={optionData.label}
-								>
-									{selected ? (
-										<span className="slds-assistive-text">
-											{props.assistiveText.optionSelectedInMenu}
-										</span>
-									) : null}{' '}
-									{optionData.label}
-								</span>
-							)}
+							<span
+								className={classNames('slds-truncate', {
+									'slds-disabled-text': optionData.disabled,
+								})}
+								title={optionData.label}
+							>
+								{selected ? (
+									<span className="slds-assistive-text">
+										{props.assistiveText.optionSelectedInMenu}
+									</span>
+								) : null}{' '}
+								{optionData.label}
+							</span>
+						)}
 					</span>
 				</span>
 			),
@@ -476,16 +476,16 @@ const Menu = (props) => {
 			{menuOptions.length ? (
 				menuOptions
 			) : (
-					<li
-						className="slds-listbox__item slds-listbox__status"
-						role="status"
-						aria-live="polite"
-					>
-						<span className="slds-m-left_x-large slds-p-vertical_medium">
-							{props.labels.noOptionsFound}
-						</span>
-					</li>
-				)}
+				<li
+					className="slds-listbox__item slds-listbox__status"
+					role="status"
+					aria-live="polite"
+				>
+					<span className="slds-m-left_x-large slds-p-vertical_medium">
+						{props.labels.noOptionsFound}
+					</span>
+				</li>
+			)}
 			{props.loading ? (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
