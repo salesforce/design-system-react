@@ -116,7 +116,7 @@
 		"@salesforce-ux/icons": "9.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-actions": "^3.4.10",
-		"@storybook/addon-storyshots": "^3.4.10",
+		"@storybook/addon-storyshots": "^5.1.9",
 		"@storybook/addons": "^3.4.10",
 		"@storybook/react": "^3.4.10",
 		"async": "^2.0.0-rc.5",
