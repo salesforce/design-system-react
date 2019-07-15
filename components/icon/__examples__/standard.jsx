@@ -12,7 +12,7 @@ class Example extends React.Component {
 				<Icon
 					assistiveText={{ label: 'Description of icon' }}
 					category="standard"
-					name="account"
+					name="branch_merge"
 					title="description of icon"
 				/>
 			</IconSettings>

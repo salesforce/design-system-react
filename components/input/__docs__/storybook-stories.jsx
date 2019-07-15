@@ -5,7 +5,6 @@ import { INPUT } from '../../../utilities/constants';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
 import Input from '../';
-import Tooltip from '../../tooltip';
 import InputIcon from '../../icon/input-icon';
 import CounterInput from '../__examples__/counter-input';
 import CounterStaticInput from '../__examples__/counter-static-input';

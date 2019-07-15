@@ -22,7 +22,16 @@ import SizesLarge from '../__examples__/sizes-large';
 import Categories from '../__examples__/categories';
 import Colors from '../__examples__/colors';
 import Sizes from '../__examples__/sizes';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
 import ProductThemes from '../__examples__/product-themes.jsx';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
 
 storiesOf(ICON, module)
 	.addDecorator((getStory) => (
@@ -31,6 +40,7 @@ storiesOf(ICON, module)
 		</div>
 	))
 	.add('Category: Standard', () => <Standard />)
+	.add('Category: Standard - Right to Left (RTL)', () => makeRtl(<Standard />))
 	.add('Category: Utility', () => <Utility />)
 	.add('Category: Action', () => <Action />)
 	.add('Category: Doctype', () => <Doctype />)
