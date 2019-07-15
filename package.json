@@ -72,7 +72,7 @@
 	"main": "components/index.js",
 	"homepage": "https://react.lightningdesignsystem.com",
 	"dependencies": {
-		"@salesforce/babel-preset-design-system-react": "^1.0.0",
+		"@salesforce/babel-preset-design-system-react": "^3.0.0",
 		"classnames": "^2.2.5",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
